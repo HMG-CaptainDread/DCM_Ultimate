@@ -1,0 +1,747 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+    <!-- PARENTS -->
+        <!-- GEMS -->
+            <ThingDef ParentName="ResourceBase" Name="DCM_GemBase" Abstract="True">
+                <graphicData>
+                    <graphicClass>Graphic_StackCount</graphicClass>
+                </graphicData>
+                <soundDrop>ChunkRock_Drop</soundDrop>
+                <soundInteract>ChunkRock_Drop</soundInteract>
+                <useHitPoints>false</useHitPoints>
+                <healthAffectsPrice>false</healthAffectsPrice>
+                <burnableByRecipe>false</burnableByRecipe>
+                <smeltable>false</smeltable>
+            </ThingDef>
+            <!-- CUT GEMSTONES -->
+                <ThingDef ParentName="DCM_GemBase" Name="DCM_CutGemBase" Abstract="True">
+                    <statBases>
+                        <StuffPower_Insulation_Cold>3</StuffPower_Insulation_Cold>
+                        <StuffPower_Insulation_Heat>0</StuffPower_Insulation_Heat>
+                    </statBases>
+                    <thingCategories>
+                        <li>DCM_U_Cut_Gemstones_CAT</li>
+                    </thingCategories>
+                    <stuffProps>
+                        <categories>
+                            <li>Stony</li>
+                        </categories>
+                        <constructEffect>ConstructMetal</constructEffect>
+                        <soundImpactBullet>BulletImpact_Wood</soundImpactBullet>
+                        <soundImpactMelee>MeleeHit_Stone</soundImpactMelee>
+                        <soundMeleeHitBlunt>MeleeHit_Stone</soundMeleeHitBlunt>
+                        <soundMeleeHitSharp>MeleeHit_Stone</soundMeleeHitSharp>
+                        <statFactors>
+                            <Flammability>0</Flammability>
+                        </statFactors>
+                    </stuffProps>
+                    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+                </ThingDef>
+            <!-- RAW GEMSTONES -->
+                <ThingDef ParentName="DCM_GemBase" Name="DCM_RawGemBase" Abstract="True">
+                    <thingCategories>
+                        <li>DCM_U_Raw_Gemstones_CAT</li>
+                    </thingCategories>
+                    <deepCountPerPortion>5</deepCountPerPortion>
+                    <deepLumpSizeRange>1~4</deepLumpSizeRange>
+                </ThingDef>
+    <!-- CUT GEMSTONES -->
+        <!-- AMBER -->
+            <ThingDef ParentName="DCM_CutGemBase">
+                <defName>DCM_U_Cut_Amber</defName>
+                <label>cut amber</label>
+                <description>A piece of amber cut into a pretty shape. Amber is fossilised tree sap.</description>
+                <graphicData>
+                    <texPath>Modules/Gems/Things/Items/Resources/Cut/Amber</texPath>
+                </graphicData>
+                <statBases>
+                    <MarketValue>6.25</MarketValue>
+                    <Mass>0.15</Mass>
+                    <StuffPower_Armor_Blunt>0.16</StuffPower_Armor_Blunt>
+                    <StuffPower_Armor_Heat>0.19</StuffPower_Armor_Heat>
+                    <StuffPower_Armor_Sharp>0.31</StuffPower_Armor_Sharp>
+                    <BluntDamageMultiplier>1.5</BluntDamageMultiplier>
+                    <SharpDamageMultiplier>1.5</SharpDamageMultiplier>
+                </statBases>
+                <stuffProps>
+                    <stuffAdjective>amber</stuffAdjective>
+                    <commonality>0.05</commonality>
+                    <color>(184,108,64)</color>
+                    <statOffsets>
+                        <Beauty>12</Beauty>
+                    </statOffsets>
+                    <statFactors>
+                        <MaxHitPoints>0.13</MaxHitPoints>
+                        <Beauty>2.7</Beauty>
+                        <WorkToBuild>1.73</WorkToBuild>
+                        <WorkToMake>0.4</WorkToMake>
+                    </statFactors>
+                </stuffProps>
+            </ThingDef>
+        <!-- AMETHYST -->
+            <ThingDef ParentName="DCM_CutGemBase">
+                <defName>DCM_U_Cut_Amethyst</defName>
+                <label>amethyst</label>
+                <description>A pretty purple gem.</description>
+                <graphicData>
+                    <texPath>Modules/Gems/Things/Items/Resources/Cut/Amethyst</texPath>
+                </graphicData>
+                <statBases>
+                    <MarketValue>50</MarketValue>
+                    <Mass>0.1</Mass>
+                    <StuffPower_Armor_Blunt>0.45</StuffPower_Armor_Blunt>
+                    <StuffPower_Armor_Heat>0.54</StuffPower_Armor_Heat>
+                    <StuffPower_Armor_Sharp>0.9</StuffPower_Armor_Sharp>
+                    <BluntDamageMultiplier>2</BluntDamageMultiplier>
+                    <SharpDamageMultiplier>2</SharpDamageMultiplier>                    
+                </statBases>
+                <stuffProps>
+                    <stuffAdjective>amethyst</stuffAdjective>
+                    <commonality>0.05</commonality>
+                    <color>(148,72,188)</color>
+                    <statOffsets>
+                        <Beauty>15</Beauty>
+                    </statOffsets>
+                    <statFactors>
+                        <MaxHitPoints>0.5</MaxHitPoints>
+                        <Beauty>3</Beauty>
+                        <WorkToMake>3</WorkToMake>
+                        <WorkToBuild>3</WorkToBuild>
+                    </statFactors>
+                </stuffProps>
+            </ThingDef>
+        <!-- CITRINE -->
+            <ThingDef ParentName="DCM_CutGemBase">
+                <defName>DCM_U_Cut_Citrine</defName>
+                <label>citrine</label>
+                <description>Yellow quartz, quite pretty.</description>
+                <graphicData>
+                    <texPath>Modules/Gems/Things/Items/Resources/Cut/Citrine</texPath>
+                </graphicData>
+                <statBases>
+                    <MarketValue>3.95</MarketValue>
+                    <Mass>0.4</Mass>
+                    <StuffPower_Armor_Blunt>0.48</StuffPower_Armor_Blunt>
+                    <StuffPower_Armor_Heat>0.39</StuffPower_Armor_Heat>
+                    <StuffPower_Armor_Sharp>0.96</StuffPower_Armor_Sharp>
+                    <BluntDamageMultiplier>1.5</BluntDamageMultiplier>
+                    <SharpDamageMultiplier>1.5</SharpDamageMultiplier>                    
+                </statBases>
+                <stuffProps>
+                    <stuffAdjective>citrine</stuffAdjective>
+                    <commonality>0.05</commonality>
+                    <color>(206,140,80)</color>
+                    <statOffsets>
+                        <Beauty>8</Beauty>
+                    </statOffsets>
+                    <statFactors>
+                        <MaxHitPoints>0.53</MaxHitPoints>
+                        <Beauty>2.2</Beauty>
+                        <WorkToMake>1.5</WorkToMake>
+                        <WorkToBuild>5.3</WorkToBuild>
+                    </statFactors>
+                </stuffProps>
+            </ThingDef>
+        <!-- DIAMOND -->
+            <ThingDef ParentName="DCM_CutGemBase">
+                <defName>DCM_U_Cut_Diamond</defName>
+                <label>diamond</label>
+                <description>A pretty clear gem.</description>
+                <graphicData>
+                    <texPath>Modules/Gems/Things/Items/Resources/Cut/Diamond</texPath>
+                </graphicData>
+                <statBases>
+                    <MarketValue>100</MarketValue>
+                    <Mass>0.1</Mass>
+                    <StuffPower_Armor_Blunt>0.45</StuffPower_Armor_Blunt>
+                    <StuffPower_Armor_Heat>0.54</StuffPower_Armor_Heat>
+                    <StuffPower_Armor_Sharp>0.9</StuffPower_Armor_Sharp>
+                    <BluntDamageMultiplier>3</BluntDamageMultiplier>
+                    <SharpDamageMultiplier>3</SharpDamageMultiplier>                    
+                </statBases>
+                <stuffProps>
+                    <stuffAdjective>diamond</stuffAdjective>
+                    <commonality>0.01</commonality>
+                    <color>(184,225,225)</color>
+                    <statOffsets>
+                        <Beauty>20</Beauty>
+                    </statOffsets>
+                    <statFactors>
+                        <MaxHitPoints>0.5</MaxHitPoints>
+                        <Beauty>5</Beauty>
+                        <WorkToMake>5</WorkToMake>
+                        <WorkToBuild>5</WorkToBuild>
+                    </statFactors>
+                </stuffProps>
+            </ThingDef>
+        <!-- EMERALD -->
+            <ThingDef ParentName="DCM_CutGemBase">
+                <defName>DCM_U_Cut_Emerald</defName>
+                <label>emerald</label>
+                <description>A pretty green gem.</description>
+                <graphicData>
+                    <texPath>Modules/Gems/Things/Items/Resources/Cut/Emerald</texPath>
+                </graphicData>
+                <statBases>
+                    <MarketValue>10</MarketValue>
+                    <Mass>0.4</Mass>
+                    <StuffPower_Armor_Blunt>0.53</StuffPower_Armor_Blunt>
+                    <StuffPower_Armor_Heat>0.65</StuffPower_Armor_Heat>
+                    <StuffPower_Armor_Sharp>1.07</StuffPower_Armor_Sharp>
+                    <BluntDamageMultiplier>1.5</BluntDamageMultiplier>
+                    <SharpDamageMultiplier>1.5</SharpDamageMultiplier>                    
+                </statBases>
+                <stuffProps>
+                    <stuffAdjective>emerald</stuffAdjective>
+                    <commonality>0.05</commonality>
+                    <color>(117,153,94)</color>
+                    <statOffsets>
+                        <Beauty>20</Beauty>
+                    </statOffsets>
+                    <statFactors>
+                        <MaxHitPoints>0.53</MaxHitPoints>
+                        <Beauty>4</Beauty>
+                        <WorkToMake>1.5</WorkToMake>
+                        <WorkToBuild>1.73</WorkToBuild>
+                    </statFactors>
+                </stuffProps>
+            </ThingDef>
+        <!-- LAPIS LAZULI -->
+            <ThingDef ParentName="DCM_CutGemBase">
+                <defName>DCM_U_Cut_LapisLazuli</defName>
+                <label>lapis lazuli</label>
+                <description>A pretty blue gem.</description>
+                <graphicData>
+                    <texPath>Modules/Gems/Things/Items/Resources/Cut/Lapis Lazuli</texPath>
+                </graphicData>
+                <statBases>
+                    <MarketValue>5</MarketValue>
+                    <Mass>0.5</Mass>
+                    <StuffPower_Armor_Blunt>0.45</StuffPower_Armor_Blunt>
+                    <StuffPower_Armor_Heat>0.54</StuffPower_Armor_Heat>
+                    <StuffPower_Armor_Sharp>0.9</StuffPower_Armor_Sharp>                    
+                    <BluntDamageMultiplier>2</BluntDamageMultiplier>
+                    <SharpDamageMultiplier>2</SharpDamageMultiplier>                    
+                </statBases>
+                <stuffProps>
+                    <stuffAdjective>lapis lazuli</stuffAdjective>
+                    <commonality>0.05</commonality>
+                    <color>(57,160,237)</color>
+                    <statOffsets>
+                        <Beauty>15</Beauty>
+                    </statOffsets>
+                    <statFactors>
+                        <MaxHitPoints>0.5</MaxHitPoints>
+                        <Beauty>3</Beauty>
+                        <WorkToMake>3</WorkToMake>
+                        <WorkToBuild>3</WorkToBuild>
+                    </statFactors>
+                </stuffProps>
+            </ThingDef>
+        <!-- MOONSTONE -->
+            <ThingDef ParentName="DCM_CutGemBase">
+                <defName>DCM_U_Cut_Moonstone</defName>
+                <label>moonstone</label>
+                <description>A pretty white gem.</description>
+                <graphicData>
+                    <texPath>Modules/Gems/Things/Items/Resources/Cut/Moonstone</texPath>
+                </graphicData>
+                <statBases>
+                    <MarketValue>5</MarketValue>
+                    <Mass>0.5</Mass>
+                    <StuffPower_Armor_Blunt>0.45</StuffPower_Armor_Blunt>
+                    <StuffPower_Armor_Heat>0.54</StuffPower_Armor_Heat>
+                    <StuffPower_Armor_Sharp>0.9</StuffPower_Armor_Sharp>
+                    <BluntDamageMultiplier>2</BluntDamageMultiplier>
+                    <SharpDamageMultiplier>2</SharpDamageMultiplier>                    
+                </statBases>
+                <stuffProps>
+                    <stuffAdjective>moonstone</stuffAdjective>
+                    <commonality>0.05</commonality>
+                    <color>(255,242,241)</color>
+                    <statOffsets>
+                        <Beauty>15</Beauty>
+                    </statOffsets>
+                    <statFactors>
+                        <MaxHitPoints>0.5</MaxHitPoints>
+                        <Beauty>3</Beauty>
+                        <WorkToMake>3</WorkToMake>
+                        <WorkToBuild>3</WorkToBuild>
+                    </statFactors>
+                </stuffProps>
+            </ThingDef>
+        <!-- ONYX -->
+            <ThingDef ParentName="DCM_CutGemBase">
+                <defName>DCM_U_Cut_Onyx</defName>
+                <label>onyx</label>
+                <description>A pretty black gem.</description>
+                <graphicData>
+                    <texPath>Modules/Gems/Things/Items/Resources/Cut/Onyx</texPath>
+                </graphicData>
+                <statBases>
+                    <MarketValue>7.35</MarketValue>
+                    <Mass>0.2</Mass>
+                    <StuffPower_Armor_Blunt>0.48</StuffPower_Armor_Blunt>
+                    <StuffPower_Armor_Heat>0.58</StuffPower_Armor_Heat>
+                    <StuffPower_Armor_Sharp>0.96</StuffPower_Armor_Sharp>
+                    <BluntDamageMultiplier>1.5</BluntDamageMultiplier>
+                    <SharpDamageMultiplier>1.5</SharpDamageMultiplier>                    
+                </statBases>
+                <stuffProps>
+                    <stuffAdjective>onyx</stuffAdjective>
+                    <commonality>0.04</commonality>
+                    <color>(43,43,43)</color>
+                    <statOffsets>
+                        <Beauty>14</Beauty>
+                    </statOffsets>
+                    <statFactors>
+                        <MaxHitPoints>0.53</MaxHitPoints>
+                        <Beauty>3.4</Beauty>
+                        <WorkToMake>1.5</WorkToMake>
+                        <WorkToBuild>5.38</WorkToBuild>
+                    </statFactors>
+                </stuffProps>
+            </ThingDef>
+        <!-- OPAL -->
+            <ThingDef ParentName="DCM_CutGemBase">
+                <defName>DCM_U_Cut_Opal</defName>
+                <label>opal</label>
+                <description>A pretty multicoloured gem.</description>
+                <graphicData>
+                    <texPath>Modules/Gems/Things/Items/Resources/Cut/Opal</texPath>
+                </graphicData>
+                <statBases>
+                    <MarketValue>10</MarketValue>
+                    <Mass>0.5</Mass>
+                    <StuffPower_Armor_Blunt>0.45</StuffPower_Armor_Blunt>
+                    <StuffPower_Armor_Heat>0.54</StuffPower_Armor_Heat>
+                    <StuffPower_Armor_Sharp>0.9</StuffPower_Armor_Sharp>
+                    <BluntDamageMultiplier>2</BluntDamageMultiplier>
+                    <SharpDamageMultiplier>2</SharpDamageMultiplier>                    
+                </statBases>
+                <stuffProps>
+                    <stuffAdjective>opal</stuffAdjective>
+                    <commonality>0.05</commonality>
+                    <color>(17,157,167)</color>
+                    <statOffsets>
+                        <Beauty>15</Beauty>
+                    </statOffsets>
+                    <statFactors>
+                        <MaxHitPoints>0.5</MaxHitPoints>
+                        <Beauty>3</Beauty>
+                        <WorkToMake>3</WorkToMake>
+                        <WorkToBuild>3</WorkToBuild>
+                    </statFactors>
+                </stuffProps>
+            </ThingDef>
+        <!-- PERIDOT -->
+            <ThingDef ParentName="DCM_CutGemBase">
+                <defName>DCM_U_Cut_Peridot</defName>
+                <label>peridot</label>
+                <description>A pretty light green gem.</description>
+                <graphicData>
+                    <texPath>Modules/Gems/Things/Items/Resources/Cut/Peridot</texPath>
+                </graphicData>
+                <statBases>
+                    <MarketValue>25</MarketValue>
+                    <Mass>0.1</Mass>
+                    <StuffPower_Armor_Blunt>0.45</StuffPower_Armor_Blunt>
+                    <StuffPower_Armor_Heat>0.54</StuffPower_Armor_Heat>
+                    <StuffPower_Armor_Sharp>0.9</StuffPower_Armor_Sharp>
+                    <BluntDamageMultiplier>2</BluntDamageMultiplier>
+                    <SharpDamageMultiplier>2</SharpDamageMultiplier>                    
+                </statBases>
+                <stuffProps>
+                    <stuffAdjective>peridot</stuffAdjective>
+                    <commonality>0.05</commonality>
+                    <color>(176,255,146)</color>
+                    <statOffsets>
+                        <Beauty>15</Beauty>
+                    </statOffsets>
+                    <statFactors>
+                        <MaxHitPoints>0.5</MaxHitPoints>
+                        <Beauty>3</Beauty>
+                        <WorkToMake>3</WorkToMake>
+                        <WorkToBuild>3</WorkToBuild>
+                    </statFactors>
+                </stuffProps>
+            </ThingDef>
+        <!-- QUARTZ -->
+            <ThingDef ParentName="DCM_CutGemBase">
+                <defName>DCM_U_Cut_Quartz</defName>
+                <label>quartz</label>
+                <description>A pretty pink and white gem.</description>
+                <graphicData>
+                    <texPath>Modules/Gems/Things/Items/Resources/Cut/Quartz</texPath>
+                </graphicData>
+                <statBases>
+                    <MarketValue>15</MarketValue>
+                    <Mass>0.1</Mass>
+                    <StuffPower_Armor_Blunt>0.45</StuffPower_Armor_Blunt>
+                    <StuffPower_Armor_Heat>0.54</StuffPower_Armor_Heat>
+                    <StuffPower_Armor_Sharp>0.9</StuffPower_Armor_Sharp>
+                    <BluntDamageMultiplier>2</BluntDamageMultiplier>
+                    <SharpDamageMultiplier>2</SharpDamageMultiplier>                    
+                </statBases>
+                <stuffProps>
+                    <stuffAdjective>quartz</stuffAdjective>
+                    <commonality>0.05</commonality>
+                    <color>(255,219,208)</color>
+                    <statOffsets>
+                        <Beauty>15</Beauty>
+                    </statOffsets>
+                    <statFactors>
+                        <MaxHitPoints>0.5</MaxHitPoints>
+                        <Beauty>3</Beauty>
+                        <WorkToMake>3</WorkToMake>
+                        <WorkToBuild>3</WorkToBuild>
+                    </statFactors>
+                </stuffProps>
+            </ThingDef>
+        <!-- RUBY -->
+            <ThingDef ParentName="DCM_CutGemBase">
+                <defName>DCM_U_Cut_Ruby</defName>
+                <label>ruby</label>
+                <description>A pretty red gem.</description>
+                <graphicData>
+                    <texPath>Modules/Gems/Things/Items/Resources/Cut/Ruby</texPath>
+                </graphicData>
+                <statBases>
+                    <MarketValue>16.65</MarketValue>
+                    <Mass>0.6</Mass>
+                    <StuffPower_Armor_Blunt>0.62</StuffPower_Armor_Blunt>
+                    <StuffPower_Armor_Heat>0.75</StuffPower_Armor_Heat>
+                    <StuffPower_Armor_Sharp>1.24</StuffPower_Armor_Sharp>
+                    <BluntDamageMultiplier>1.5</BluntDamageMultiplier>
+                    <SharpDamageMultiplier>1.5</SharpDamageMultiplier>                    
+                </statBases>
+                <stuffProps>
+                    <stuffAdjective>ruby</stuffAdjective>
+                    <commonality>0.02</commonality>
+                    <color>(170,49,49)</color>
+                    <statOffsets>
+                        <Beauty>28</Beauty>
+                    </statOffsets>
+                    <statFactors>
+                        <MaxHitPoints>0.7</MaxHitPoints>
+                        <Beauty>5.2</Beauty>
+                        <WorkToMake>1.9</WorkToMake>
+                        <WorkToBuild>7</WorkToBuild>
+                    </statFactors>
+                </stuffProps>
+            </ThingDef>
+        <!-- SAPPHIRE -->
+            <ThingDef ParentName="DCM_CutGemBase">
+                <defName>DCM_U_Cut_Sapphire</defName>
+                <label>sapphire</label>
+                <description>A pretty blue gem.</description>
+                <graphicData>
+                    <texPath>Modules/Gems/Things/Items/Resources/Cut/Sapphire</texPath>
+                </graphicData>
+                <statBases>
+                    <MarketValue>13</MarketValue>
+                    <Mass>0.6</Mass>
+                    <StuffPower_Armor_Blunt>0.62</StuffPower_Armor_Blunt>
+                    <StuffPower_Armor_Heat>0.75</StuffPower_Armor_Heat>
+                    <StuffPower_Armor_Sharp>1.24</StuffPower_Armor_Sharp>
+                    <BluntDamageMultiplier>1.5</BluntDamageMultiplier>
+                    <SharpDamageMultiplier>1.5</SharpDamageMultiplier>                    
+                </statBases>
+                <stuffProps>
+                    <stuffAdjective>sapphire</stuffAdjective>
+                    <commonality>0.02</commonality>
+                    <color>(60,109,158)</color>
+                    <statOffsets>
+                        <Beauty>24</Beauty>
+                    </statOffsets>
+                    <statFactors>
+                        <MaxHitPoints>0.7</MaxHitPoints>
+                        <Beauty>4.5</Beauty>
+                        <WorkToMake>1.9</WorkToMake>
+                        <WorkToBuild>7</WorkToBuild>
+                    </statFactors>
+                </stuffProps>
+            </ThingDef>
+        <!-- TOPAZ -->
+            <ThingDef ParentName="DCM_CutGemBase">
+                <defName>DCM_U_Cut_Topaz</defName>
+                <label>topaz</label>
+                <description>A pretty yellow gem.</description>
+                <graphicData>
+                    <texPath>Modules/Gems/Things/Items/Resources/Cut/Topaz</texPath>
+                </graphicData>
+                <statBases>
+                    <MarketValue>50</MarketValue>
+                    <Mass>0.1</Mass>
+                    <StuffPower_Armor_Blunt>0.45</StuffPower_Armor_Blunt>
+                    <StuffPower_Armor_Heat>0.54</StuffPower_Armor_Heat>
+                    <StuffPower_Armor_Sharp>0.9</StuffPower_Armor_Sharp>
+                    <BluntDamageMultiplier>2</BluntDamageMultiplier>
+                    <SharpDamageMultiplier>2</SharpDamageMultiplier>                    
+                </statBases>
+                <stuffProps>
+                    <stuffAdjective>topaz</stuffAdjective>
+                    <commonality>0.1</commonality>
+                    <color>(240,200,8)</color>
+                    <statOffsets>
+                        <Beauty>15</Beauty>
+                    </statOffsets>
+                    <statFactors>
+                        <MaxHitPoints>0.5</MaxHitPoints>
+                        <Beauty>3</Beauty>
+                        <WorkToMake>3</WorkToMake>
+                        <WorkToBuild>3</WorkToBuild>
+                    </statFactors>
+                </stuffProps>
+            </ThingDef>
+        <!-- TURQUOISE -->
+            <ThingDef ParentName="DCM_CutGemBase">
+                <defName>DCM_U_Cut_Turquoise</defName>
+                <label>turquoise</label>
+                <description>A pretty light blue gem.</description>
+                <graphicData>
+                    <texPath>Modules/Gems/Things/Items/Resources/Cut/Turquoise</texPath>
+                </graphicData>
+                <statBases>
+                    <MarketValue>5</MarketValue>
+                    <Mass>0.1</Mass>
+                    <StuffPower_Armor_Blunt>0.45</StuffPower_Armor_Blunt>
+                    <StuffPower_Armor_Heat>0.54</StuffPower_Armor_Heat>
+                    <StuffPower_Armor_Sharp>0.9</StuffPower_Armor_Sharp>
+                    <BluntDamageMultiplier>2</BluntDamageMultiplier>
+                    <SharpDamageMultiplier>2</SharpDamageMultiplier>                    
+                </statBases>
+                <stuffProps>
+                    <stuffAdjective>emerald</stuffAdjective>
+                    <commonality>0.05</commonality>
+                    <color>(144,252,249)</color>
+                    <statOffsets>
+                        <Beauty>15</Beauty>
+                    </statOffsets>
+                    <statFactors>
+                        <MaxHitPoints>0.5</MaxHitPoints>
+                        <Beauty>3</Beauty>
+                        <WorkToMake>3</WorkToMake>
+                        <WorkToBuild>3</WorkToBuild>
+                    </statFactors>
+                </stuffProps>
+            </ThingDef>
+    <!-- RAW GEMSTONES -->
+        <!-- AMBER -->
+            <ThingDef ParentName="DCM_RawGemBase">
+                <defName>DCM_U_Raw_Amber</defName>
+                <label>raw amber</label>
+                <description>A chunk of raw, uncut amber. Amber is fossilised tree sap.</description>
+                <graphicData>
+                    <texPath>Modules/Gems/Things/Items/Resources/Raw/Amber</texPath>
+                </graphicData>
+                <statBases>
+                    <MarketValue>3</MarketValue>
+                    <Mass>0.3</Mass>
+                </statBases>
+                <deepCommonality>0.4</deepCommonality>
+            </ThingDef>
+        <!-- AMETHYST -->
+            <ThingDef ParentName="DCM_RawGemBase">
+                <defName>DCM_U_Raw_Amethyst</defName>
+                <label>raw amethyst</label>
+                <description>A chunk of raw, uncut amethyst.</description>
+                <graphicData>
+                    <texPath>Modules/Gems/Things/Items/Resources/Raw/Amethyst</texPath>
+                </graphicData>
+                <statBases>
+                    <MarketValue>22</MarketValue>
+                    <Mass>0.3</Mass>
+                </statBases>
+                <deepCommonality>0.1</deepCommonality>
+            </ThingDef>
+        <!-- CITRINE -->
+            <ThingDef ParentName="DCM_RawGemBase">
+                <defName>DCM_U_Raw_Citrine</defName>
+                <label>raw citrine</label>
+                <description>A chunk of raw, uncut citrine.</description>
+                <graphicData>
+                    <texPath>Modules/Gems/Things/Items/Resources/Raw/Citrine</texPath>
+                </graphicData>
+                <statBases>
+                    <MarketValue>1.8</MarketValue>
+                    <Mass>0.7</Mass>
+                </statBases>
+                <deepCommonality>0.5</deepCommonality>
+            </ThingDef>
+        <!-- DIAMOND -->
+            <ThingDef ParentName="DCM_RawGemBase">
+                <defName>DCM_U_Raw_Diamond</defName>
+                <label>raw diamond</label>
+                <description>A chunk of raw, uncut diamond.</description>
+                <graphicData>
+                    <texPath>Modules/Gems/Things/Items/Resources/Raw/Diamond</texPath>
+                </graphicData>
+                <statBases>
+                    <MarketValue>40</MarketValue>
+                    <Mass>0.2</Mass>
+                </statBases>
+                <deepCommonality>0.05</deepCommonality>
+            </ThingDef>
+        <!-- EMERALD -->
+            <ThingDef ParentName="DCM_RawGemBase">
+                <defName>DCM_U_Raw_Emerald</defName>
+                <label>raw emerald</label>
+                <description>A chunk of raw, uncut emerald.</description>
+                <graphicData>
+                    <texPath>Modules/Gems/Things/Items/Resources/Raw/Emerald</texPath>
+                </graphicData>
+                <statBases>
+                    <MarketValue>4</MarketValue>
+                    <Mass>0.7</Mass>
+                </statBases>
+                <deepCommonality>0.2</deepCommonality>
+            </ThingDef>
+        <!-- LAPIS LAZULI -->
+            <ThingDef ParentName="DCM_RawGemBase">
+                <defName>DCM_U_Raw_LapisLazuli</defName>
+                <label>raw lapis lazuli</label>
+                <description>A chunk of raw, uncut lapis lazuli.</description>
+                <graphicData>
+                    <texPath>Modules/Gems/Things/Items/Resources/Raw/Lapis Lazuli</texPath>
+                </graphicData>
+                <statBases>
+                    <MarketValue>1.75</MarketValue>
+                    <Mass>0.9</Mass>
+                </statBases>
+                <deepCommonality>0.5</deepCommonality>
+            </ThingDef>
+        <!-- MOONSTONE -->
+            <ThingDef ParentName="DCM_RawGemBase">
+                <defName>DCM_U_Raw_Moonstone</defName>
+                <label>raw moonstone</label>
+                <description>A chunk of raw, uncut moonstone.</description>
+                <graphicData>
+                    <texPath>Modules/Gems/Things/Items/Resources/Raw/Moonstone</texPath>
+                </graphicData>
+                <statBases>
+                    <MarketValue>2</MarketValue>
+                    <Mass>0.8</Mass>
+                </statBases>
+                <deepCommonality>0.5</deepCommonality>
+            </ThingDef>
+        <!-- ONYX -->
+            <ThingDef ParentName="DCM_RawGemBase">
+                <defName>DCM_U_Raw_Onyx</defName>
+                <label>raw onyx</label>
+                <description>A chunk of raw, uncut onyx.</description>
+                <graphicData>
+                    <texPath>Modules/Gems/Things/Items/Resources/Raw/Onyx</texPath>
+                </graphicData>
+                <statBases>
+                    <MarketValue>3.25</MarketValue>
+                    <Mass>0.4</Mass>
+                </statBases>
+                <deepCommonality>0.3</deepCommonality>
+            </ThingDef>
+        <!-- OPAL -->
+            <ThingDef ParentName="DCM_RawGemBase">
+                <defName>DCM_U_Raw_Opal</defName>
+                <label>raw opal</label>
+                <description>A chunk of raw, uncut opal.</description>
+                <graphicData>
+                    <texPath>Modules/Gems/Things/Items/Resources/Raw/Opal</texPath>
+                </graphicData>
+                <statBases>
+                    <MarketValue>4</MarketValue>
+                    <Mass>0.9</Mass>
+                </statBases>
+                <deepCommonality>0.1</deepCommonality>
+            </ThingDef>
+        <!-- PERIDOT -->
+            <ThingDef ParentName="DCM_RawGemBase">
+                <defName>DCM_U_Raw_Peridot</defName>
+                <label>raw peridot</label>
+                <description>A chunk of raw, uncut peridot.</description>
+                <graphicData>
+                    <texPath>Modules/Gems/Things/Items/Resources/Raw/Peridot</texPath>
+                </graphicData>
+                <statBases>
+                    <MarketValue>10</MarketValue>
+                    <Mass>0.2</Mass>
+                </statBases>
+                <deepCommonality>5</deepCommonality>
+            </ThingDef>
+        <!-- QUARTZ -->
+            <ThingDef ParentName="DCM_RawGemBase">
+                <defName>DCM_U_Raw_Quartz</defName>
+                <label>raw quartz</label>
+                <description>A chunk of raw, uncut quartz.</description>
+                <graphicData>
+                    <texPath>Modules/Gems/Things/Items/Resources/Raw/Quartz</texPath>
+                </graphicData>
+                <statBases>
+                    <MarketValue>6</MarketValue>
+                    <Mass>0.2</Mass>
+                </statBases>
+                <deepCommonality>1</deepCommonality>
+            </ThingDef>
+        <!-- RUBY -->
+            <ThingDef ParentName="DCM_RawGemBase">
+                <defName>DCM_U_Raw_Ruby</defName>
+                <label>raw ruby</label>
+                <description>A chunk of raw, uncut ruby.</description>
+                <graphicData>
+                    <texPath>Modules/Gems/Things/Items/Resources/Raw/Ruby</texPath>
+                </graphicData>
+                <statBases>
+                    <MarketValue>7.25</MarketValue>
+                    <Mass>0.9</Mass>
+                </statBases>
+                <deepCommonality>0.1</deepCommonality>
+            </ThingDef>
+        <!-- SAPPHIRE -->
+            <ThingDef ParentName="DCM_RawGemBase">
+                <defName>DCM_U_Raw_Sapphire</defName>
+                <label>raw sapphire</label>
+                <description>A chunk of raw, uncut sapphire.</description>
+                <graphicData>
+                    <texPath>Modules/Gems/Things/Items/Resources/Raw/Sapphire</texPath>
+                </graphicData>
+                <statBases>
+                    <MarketValue>5.5</MarketValue>
+                    <Mass>0.9</Mass>
+                </statBases>
+                <deepCommonality>0.1</deepCommonality>
+            </ThingDef>
+        <!-- TOPAZ -->
+            <ThingDef ParentName="DCM_RawGemBase">
+                <defName>DCM_U_Raw_Topaz</defName>
+                <label>raw topaz</label>
+                <description>A chunk of raw, uncut topaz.</description>
+                <graphicData>
+                    <texPath>Modules/Gems/Things/Items/Resources/Raw/Topaz</texPath>
+                </graphicData>
+                <statBases>
+                    <MarketValue>20</MarketValue>
+                    <Mass>0.2</Mass>
+                </statBases>
+                <deepCommonality>0.5</deepCommonality>
+            </ThingDef>
+        <!-- TURQUOISE -->
+            <ThingDef ParentName="DCM_RawGemBase">
+                <defName>DCM_U_Raw_Turquoise</defName>
+                <label>raw turquoise</label>
+                <description>A chunk of raw, uncut turquoise.</description>
+                <graphicData>
+                    <texPath>Modules/Gems/Things/Items/Resources/Raw/Turquoise</texPath>
+                </graphicData>
+                <statBases>
+                    <MarketValue>2</MarketValue>
+                    <Mass>0.2</Mass>
+                </statBases>
+                <deepCommonality>0.5</deepCommonality>
+            </ThingDef>
+
+
+
+
+
+
+
+</Defs>
