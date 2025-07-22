@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<!-- <></> -->
+
+	<!-- COCOA TREE -->
+	<!-- change to cacao pods -->
+
+	<!-- CORN -->
+		<!-- change the second harvest to "chaff" (can be made into biomass) -->
+		<Operation Class="PatchOperationAdd">
+			<xpath>Defs/ThingDef[defName="Plant_Corn"]</xpath>
+			<value>
+				<plant>
+					<harvestAfterGrowth>0.71</harvestAfterGrowth>
+					<lifespanDaysPerGrowDays>4</lifespanDaysPerGrowDays>
+					<harvestMinGrowth>0.8</harvestMinGrowth>
+					<harvestWork>90</harvestWork>
+				</plant>
+				<modExtensions>
+					<li Class="VEF.Plants.DualCropExtension">
+						<secondaryOutput>DCM_OM_Straw</secondaryOutput>
+						<outPutAmount>10</outPutAmount>
+					</li>
+				</modExtensions>
+			</value>
+		</Operation>
+		<Operation Class="PatchOperationReplace">
+			<xpath>Defs/ThingDef[defName="Plant_Corn"]/plant/harvestYield</xpath>
+			<value>
+				<harvestYield>12</harvestYield>
+			</value>
+		</Operation>
+		<Operation Class="PatchOperationReplace">
+			<xpath>Defs/ThingDef[defName="Plant_Corn"]/description</xpath>
+			<value>
+				<description>A tall grain plant which produces ears of soft, edible seeds. While corn takes a long time to grow, it yields lots of food compared to other crops. Harvested corn takes a long time to spoil.\n\nLifespan Days:&lt;color=#33cc33&gt;45.2 &lt;/color&gt;\nFirst Harvest(Real Grow Days):&lt;color=#33cc33&gt;20.86 &lt;/color&gt;\nAdditional Harvest Days:&lt;color=#33cc33&gt;6.05 &lt;/color&gt;\nAdditional Harvests:&lt;color=#33cc33&gt;4 &lt;/color&gt;\nHarvest Work:&lt;color=#33cc33&gt;90/harvest &lt;/color&gt;\n*Based on &lt;color=#cc3300&gt;Fertile Soil Values(1.0). &lt;/color&gt;</description>
+			</value>
+		</Operation>
+
+	<!-- COTTON -->
+		<!-- change to cotton, reharvest crop until death -->
+		<Operation Class="PatchOperationAdd">
+			<xpath>Defs/ThingDef[defName="Plant_Cotton"]</xpath>
+			<value>
+				<plant>
+					<lifespanDaysPerGrowDays>6</lifespanDaysPerGrowDays>
+					<harvestMinGrowth>0.8</harvestMinGrowth>
+					<harvestWork>95</harvestWork>
+				</plant>
+			</value>
+		</Operation>
+		<Operation Class="PatchOperationReplace">
+			<xpath>Defs/ThingDef[defName="Plant_Corn"]/plant/harvestYield</xpath>
+			<value>
+				<harvestYield>12</harvestYield>
+			</value>
+		</Operation>
+
+	<!-- DEVILSTRAND -->
+	<!-- change to devilstrand fibers, reharvest until death -->
+
+	<!-- HAYGRASS -->
+	<!-- change to "wet grass", to be dried into hay or fermented into biomass and gas -->
+
+	<!-- HOPS -->
+	<!-- add second harvest of chaff (can be made into biomass) -->
+
+	<!-- SMOKELEAF -->
+	<!-- change all recipes using smokeleaf leaves to use the second "bud" harvest -->
+
+	<!-- STRAWBERRY -->
+	<!-- change to drop strawberries, reharvest until death -->
+
+	<!--  -->
+
+	<!-- ROSE -->
+	<!-- change to drop roses -->
+
+</Patch>
