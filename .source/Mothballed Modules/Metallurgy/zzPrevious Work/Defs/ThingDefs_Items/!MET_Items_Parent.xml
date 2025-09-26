@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!-- i made these to cover code for a bunch of shit in this module, the specific parent -->
+    <!-- abstracts are in respective files (ore parent abstract is in ores.xml for example) -->
+        <!-- METALS -->
+            <ThingDef ParentName="ResourceBase" Name="DCM_MetalBase" Abstract="True">
+                <graphicData>
+                    <graphicClass>Graphic_StackCount</graphicClass>
+                </graphicData>
+                <soundDrop>Metal_Drop</soundDrop>
+                <soundInteract>Metal_Drop</soundInteract>
+                <useHitPoints>false</useHitPoints>
+                <healthAffectsPrice>false</healthAffectsPrice>
+                <burnableByRecipe>false</burnableByRecipe>
+            </ThingDef>
+            <!-- BARS OF METAL -->
+                <ThingDef ParentName="DCM_MetalBase" Name="DCM_NonOreMetalBase" Abstract="True">
+                    <smeltable>true</smeltable>
+                    <stuffProps>
+                        <categories>
+                            <li>Metallic</li>
+                        </categories>
+                        <appearance>Metal</appearance>
+                        <constructEffect>ConstructMetal</constructEffect>
+                        <soundImpactBullet>BulletImpact_Metal</soundImpactBullet>
+                        <soundImpactMelee>Pawn_Melee_Punch_HitBuilding_Metal</soundImpactMelee>
+                        <soundMeleeHitBlunt>MeleeHit_Metal_Blunt</soundMeleeHitBlunt>
+                        <soundMeleeHitSharp>MeleeHit_Metal_Sharp</soundMeleeHitSharp>                 
+                        <statFactors>
+                            <Flammability>0</Flammability>
+                        </statFactors>
+                    </stuffProps>
+                    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+                </ThingDef>
+</Defs>
