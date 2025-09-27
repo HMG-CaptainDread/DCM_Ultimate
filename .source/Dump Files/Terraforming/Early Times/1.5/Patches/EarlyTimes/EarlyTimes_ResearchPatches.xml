@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>	
+
+	<Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>Early Times</li>
+		<li>Early Times (Continued)</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<operations>
+			
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/TerraformTech.TerrainTerraformRuleSet[defName="Terraform_PlaceRoad"]/researchPrerequisites</xpath>
+				<value>
+					<li>TS_Roads</li>
+				</value>
+			</li>
+		
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ResearchProjectDef[defName="MedTimes_Terraforming"]/prerequisites</xpath>
+				<value>
+					<li>TS_SparkOfInterest</li>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ResearchProjectDef[defName="MedTimes_Fertilization"]/prerequisites</xpath>
+				<value>
+					<li>TS_Agriculture</li>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ResearchProjectDef[defName="MedTimes_WaterTerraforming"]/prerequisites</xpath>
+				<value>
+					<li>TS_MethodicalResearch</li>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ResearchProjectDef[defName="TerraformTech_WallTerraform"]/prerequisites</xpath>
+				<value>
+					<li>MedTimes_ReinforcedStructure</li>
+					<li>Stonecutting</li>
+					<li>MedTimes_Terraforming</li>
+				</value>
+			</li>
+		</operations>
+	</match>
+	  <nomatch Class="PatchOperationSequence">
+		<operations>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ResearchProjectDef[defName="TerraformTech_WallTerraform"]/prerequisites</xpath>
+				<value>
+					<li>MedTimes_Terraforming</li>
+				</value>
+			</li>
+		</operations>
+	</nomatch>
+  </Operation>
+	
+</Patch>

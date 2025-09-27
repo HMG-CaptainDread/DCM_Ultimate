@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <ThingDef ParentName="BenchBase">
+        <defName>VED_TechprintCompiler</defName>
+        <label>techprint compiler</label>
+        <description>A workplace created on the basis of an ancient computer. Using algorithms known only to the creators, it allows you to read ancient techprints in order to restore some of the lost data and reveal the secrets of ancient technologies.</description>
+        <thingClass>Building_WorkTable</thingClass>
+        <graphicData>
+            <texPath>Things/Building/Production/TechprintCompiler/TechprintCompiler</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <drawSize>(3.5,1.5)</drawSize>
+            <damageData>
+                <cornerTL>Damage/Corner</cornerTL>
+                <cornerTR>Damage/Corner</cornerTR>
+                <cornerBL>Damage/Corner</cornerBL>
+                <cornerBR>Damage/Corner</cornerBR>
+            </damageData>
+        </graphicData>
+        <castEdgeShadows>true</castEdgeShadows>
+        <staticSunShadowHeight>0.20</staticSunShadowHeight>
+        <costList>
+            <Steel>75</Steel>
+            <ComponentSpacer>5</ComponentSpacer>
+            <VED_AncientTechprint>10</VED_AncientTechprint>
+        </costList>
+        <altitudeLayer>Building</altitudeLayer>
+        <fillPercent>0.5</fillPercent>
+        <useHitPoints>True</useHitPoints>
+        <statBases>
+            <WorkToBuild>5000</WorkToBuild>
+            <MaxHitPoints>250</MaxHitPoints>
+            <Flammability>1.0</Flammability>
+        </statBases>
+        <size>(3,1)</size>
+        <designationCategory>Production</designationCategory>
+        <passability>PassThroughOnly</passability>
+        <pathCost>50</pathCost>
+        <hasInteractionCell>True</hasInteractionCell>
+        <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+        <uiOrder>2620</uiOrder>
+        <surfaceType>Item</surfaceType>
+        <recipes>
+            <li>VED_Make_Techprint_ArtificialMetabolism</li>
+            <li>VED_Make_Techprint_BrainWiring</li>
+            <li>VED_Make_Techprint_CataphractArmor</li>
+            <li>VED_Make_Techprint_CircadianInfluence</li>
+            <li>VED_Make_Techprint_CompactWeaponry</li>
+            <li>VED_Make_Techprint_FleshShaping</li>
+            <li>VED_Make_Techprint_HealingFactors</li>
+            <li>VED_Make_Techprint_JumpPack</li>
+            <li>VED_Make_Techprint_MolecularAnalysis</li>
+            <li>VED_Make_Techprint_NeuralComputation</li>
+            <li>VED_Make_Techprint_SkinHardening</li>
+            <li>VED_Make_Techprint_SpecializedLimbs</li>
+            <li>VED_Make_Techprint_VenomSynthesis</li>
+        </recipes>
+        <inspectorTabs>
+            <li>ITab_Bills</li>
+        </inspectorTabs>
+        <comps>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <shortCircuitInRain>true</shortCircuitInRain>
+                <basePowerConsumption>100</basePowerConsumption>
+            </li>
+            <li Class="CompProperties_Flickable"/>
+            <li Class="CompProperties_Glower">
+                <glowRadius>2</glowRadius>
+                <glowColor>(0,235,35,0)</glowColor>
+            </li>
+            <li Class="CompProperties_Breakdownable"/>
+            <li>
+                <compClass>CompReportWorkSpeed</compClass>
+            </li>
+        </comps>
+        <building>
+            <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+            <buildingTags>
+                <li>Production</li>
+            </buildingTags>
+        </building>
+        <constructEffect>ConstructMetal</constructEffect>
+        <researchPrerequisites>
+            <li>MicroelectronicsBasics</li>
+        </researchPrerequisites>
+        <designationHotKey>Misc7</designationHotKey>
+        <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+        <placeWorkers>
+            <li>PlaceWorker_ReportWorkSpeedPenalties</li>
+            <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+        </placeWorkers>
+    </ThingDef>
+
+</Defs>

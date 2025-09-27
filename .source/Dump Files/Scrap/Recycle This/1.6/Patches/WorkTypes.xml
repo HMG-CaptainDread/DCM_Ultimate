@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationAdd">
+    <xpath>*/DesignationCategoryDef[defName = "Orders"]/specialDesignatorClasses</xpath>
+    <value>
+      <li>RecycleThis.Designator_DestroyThing</li>
+      <li>RecycleThis.Designator_RecycleThing</li>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/WorkTypeDef[defName="Crafting"]/naturalPriority</xpath>
+    <value>
+      <naturalPriority>430</naturalPriority>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/WorkTypeDef[defName="Art"]/naturalPriority</xpath>
+    <value>
+      <naturalPriority>400</naturalPriority>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/WorkGiverDef[defName="DoBillsSmelter"]/workType</xpath>
+    <value>
+      <workType>RecycleThis_Recycle</workType>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/ThingDef[defName="Mech_Fabricor"]</xpath>
+    <success>Always</success>
+    <match Class="PatchOperationAdd">
+      <xpath>/Defs/ThingDef[defName="Mech_Fabricor"]/race/mechEnabledWorkTypes</xpath>
+      <value>
+        <li>RecycleThis_Recycle</li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/ThingDef[defName="Mech_AdvancedFabricor"]</xpath>
+    <success>Always</success>
+    <match Class="PatchOperationAdd">
+      <xpath>/Defs/ThingDef[defName="Mech_AdvancedFabricor"]/race/mechEnabledWorkTypes</xpath>
+      <value>
+        <li>RecycleThis_Recycle</li>
+      </value>
+    </match>
+  </Operation>
+</Patch>

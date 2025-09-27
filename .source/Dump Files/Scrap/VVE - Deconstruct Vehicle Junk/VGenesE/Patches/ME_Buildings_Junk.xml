@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+  <!-- <Operation Class="PatchOperationSequence">
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>/Defs/ThingDef[defName="AG_JunkBuildingBase"]/building</xpath>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>/Defs/ThingDef[defName="AG_JunkBuildingBase"]</xpath>
+          <value>
+            <building>
+              <deconstructible>true</deconstructible>
+            </building>
+          </value>
+        </nomatch>
+        <match Class="PatchOperationReplace">
+          <xpath>/Defs/ThingDef[defName="AG_JunkBuildingBase"]/building</xpath>
+          <value>
+            <building>
+              <deconstructible>true</deconstructible>
+            </building>
+          </value>
+        </match>
+      </li>
+    </operations>
+  </Operation> -->
+
+  <Operation Class="PatchOperationSequence">
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>/Defs/ThingDef[defName="AG_AncientFaultyLamp" or defName="AG_RuinedLabLamp"]/thingCategories</xpath>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>/Defs/ThingDef[defName="AG_AncientFaultyLamp" or defName="AG_RuinedLabLamp"]</xpath>
+          <value>
+            <thingCategories>
+              <li>BuildingsFurniture</li>
+            </thingCategories>
+          </value>
+        </nomatch>
+        <match Class="PatchOperationReplace">
+          <xpath>/Defs/ThingDef[defName="AG_AncientFaultyLamp" or defName="AG_RuinedLabLamp"]/thingCategories</xpath>
+          <value>
+            <thingCategories>
+              <li>BuildingsFurniture</li>
+            </thingCategories>
+          </value>
+        </match>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>/Defs/ThingDef[defName="AG_AncientFaultyLamp" or defName="AG_RuinedLabLamp"]/minifiedDef</xpath>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>/Defs/ThingDef[defName="AG_AncientFaultyLamp" or defName="AG_RuinedLabLamp"]</xpath>
+          <value>
+            <minifiedDef>MinifiedThing</minifiedDef>
+          </value>
+        </nomatch>
+        <match Class="PatchOperationReplace">
+          <xpath>/Defs/ThingDef[defName="AG_AncientFaultyLamp" or defName="AG_RuinedLabLamp"]/minifiedDef</xpath>
+          <value>
+            <minifiedDef>MinifiedThing</minifiedDef>
+          </value>
+        </match>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>/Defs/ThingDef[defName="AG_AncientFaultyLamp" or defName="AG_RuinedLabLamp"]/statBases/mass</xpath>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>/Defs/ThingDef[defName="AG_AncientFaultyLamp" or defName="AG_RuinedLabLamp"]/statBases</xpath>
+          <value>
+            <Mass>5</Mass>
+          </value>
+        </nomatch>
+        <match Class="PatchOperationReplace">
+          <xpath>/Defs/ThingDef[defName="AG_AncientFaultyLamp" or defName="AG_RuinedLabLamp"]/statBases/mass</xpath>
+          <value>
+            <Mass>5</Mass>
+          </value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="PatchOperationSequence">
+    <!-- Large structires -->
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[ defName="AG_AncientWastepackAtomizer" or defName="AG_AncientSubcoreRipscanner" or defName="AG_AncientLargeMechGestator" or defName="AG_AncientMechGestator" or defName="AG_AncientLargeRecharger" or defName="AG_AncientHugeBank" or defName="AG_AncientGeneProcessor" or defName="AG_AncientGeneExtractor" or defName="AG_AncientGeneAssembler"]/costList</xpath>
+        <value>
+          <costList>
+            <Steel>41</Steel>
+            <ComponentIndustrial>1</ComponentIndustrial>
+            <ChunkSlagSteel>1</ChunkSlagSteel>
+          </costList>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="PatchOperationSequence">
+    <!-- Small structires -->
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[ defName="AG_AncientBasicRecharger" or defName="AG_AncientBandNode" or defName="AG_AncientVitalsMonitor" or defName="AG_AncientLamp" or defName="AG_AncientGrowthVat" or defName="AG_AncientGeneBank" or defName="AG_AncientPollutionPump"]/costList</xpath>
+        <value>
+          <costList>
+            <Steel>15</Steel>
+            <ChunkSlagSteel>1</ChunkSlagSteel>
+          </costList>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>
