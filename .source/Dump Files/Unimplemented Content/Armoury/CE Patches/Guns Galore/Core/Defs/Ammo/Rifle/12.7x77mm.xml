@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo127x77mm</defName>
+		<label>12.7x77mm</label>
+		<parent>AmmoRifles</parent>
+    <iconPath>UI/Icons/ThingCategories/CaliberRifle</iconPath>
+	</ThingCategoryDef>
+	
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef MayRequireAnyOf="cgf1.gunsgalore.coldwar.uk,cgf1.gunsgalore.coldwar.usa">
+		<defName>AmmoSet_127x77mm</defName>
+		<label>12.7x77mm</label>
+		<ammoTypes>
+			<Ammo_127x77mm_FMJ>Bullet_127x77mm_FMJ</Ammo_127x77mm_FMJ>			
+		</ammoTypes>
+		<similarTo>AmmoSet_Rifle</similarTo>
+	</CombatExtended.AmmoSetDef>
+	
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="127x77mmBase" ParentName="SmallAmmoBase" Abstract="True" MayRequireAnyOf="cgf1.gunsgalore.coldwar.uk,cgf1.gunsgalore.coldwar.usa">
+		<description>Shortened .50 BMG cartridge used in spotting rifles.</description>
+		<statBases>
+		<Mass>0.09</Mass>
+		<Bulk>0.12</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo127x77mm</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="127x77mmBase" MayRequireAnyOf="cgf1.gunsgalore.coldwar.uk,cgf1.gunsgalore.coldwar.usa">
+		<defName>Ammo_127x77mm_FMJ</defName>
+		<label>12.7x77mm cartridge (FMJ)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Rifle/FMJ</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.37</MarketValue>
+		</statBases>
+		<ammoClass>FullMetalJacket</ammoClass>
+		<cookOffProjectile>Bullet_127x77mm_FMJ</cookOffProjectile>
+	</ThingDef>
+	<!-- ================== Projectiles ================== -->
+	
+	<ThingDef Name="Base127x77mmBullet" ParentName="BaseBulletCE" Abstract="true" MayRequireAnyOf="cgf1.gunsgalore.coldwar.uk,cgf1.gunsgalore.coldwar.usa">
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>101</speed>
+			<dropsCasings>true</dropsCasings>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base127x77mmBullet" MayRequireAnyOf="cgf1.gunsgalore.coldwar.uk,cgf1.gunsgalore.coldwar.usa">
+		<defName>Bullet_127x77mm_FMJ</defName>
+		<label>12.7x77mm bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>25</damageAmountBase>
+			<armorPenetrationSharp>4</armorPenetrationSharp>
+			<armorPenetrationBlunt>77.92</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+	
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequireAnyOf="cgf1.gunsgalore.coldwar.uk,cgf1.gunsgalore.coldwar.usa">
+		<defName>MakeAmmo_127x77mm_FMJ</defName>
+		<label>make 12.7x77mm (FMJ) cartridge x500</label>
+		<description>Craft 500 12.7x77mm (FMJ) cartridges.</description>
+		<jobString>Making 12.7x77mm (FMJ) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>92</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_127x77mm_FMJ>500</Ammo_127x77mm_FMJ>
+		</products>
+    	<workAmount>9200</workAmount>
+	</RecipeDef>
+	
+</Defs>

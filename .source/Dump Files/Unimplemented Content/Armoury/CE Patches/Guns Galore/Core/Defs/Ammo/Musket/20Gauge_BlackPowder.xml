@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo20Gauge_BlackPowder</defName>
+		<label>20 Gauge Black Powder</label>
+		<parent>AmmoRifles</parent>
+		<iconPath>UI/Icons/ThingCategories/CaliberRifle</iconPath>
+	</ThingCategoryDef>
+	
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_20Gauge_BlackPowder</defName>
+		<label>20 Gauge Black Powder</label>
+		<ammoTypes>
+			<Ammo_20Gauge_BlackPowder>Bullet_20Gauge_BlackPowder</Ammo_20Gauge_BlackPowder>
+		</ammoTypes>
+		<similarTo>AmmoSet_Shotgun</similarTo>
+	</CombatExtended.AmmoSetDef>
+	
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="20Gauge_BlackPowderBase" ParentName="AmmoBase" Abstract="True">
+		<description>A brass cartridge containing several round projectiles and black powder, fired by industrial era shotguns.</description>
+		<statBases>
+			<Mass>0.044</Mass>
+			<Bulk>0.05</Bulk>
+		</statBases>
+		<tradeTags>
+		  <li>CE_PreIndustrialAmmo</li>
+		  <li>CE_AutoEnableTrade</li>
+		  <li>CE_AutoEnableCrafting</li>
+		  <li>CE_AutoEnableCrafting_FueledSmithy</li>
+		  <li>CE_AutoEnableCrafting_ElectricSmithy</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo20Gauge_BlackPowder</li>
+		</thingCategories>
+		<techLevel>Medieval</techLevel>
+		<stackLimit>1000</stackLimit>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="20Gauge_BlackPowderBase">
+		<defName>Ammo_20Gauge_BlackPowder</defName>
+		<label>20 Gauge Black Powder</label>
+		<graphicData>
+			<texPath>CGF1/Ammo/Shotgun/BlackPowder</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.18</MarketValue>
+		</statBases>
+		<ammoClass>BuckShot</ammoClass>
+	</ThingDef>
+	
+	<!-- ================== Projectile ================== -->
+	
+	<ThingDef Name="20Gauge_BlackPowderBullet" ParentName="BaseBulletCE" Abstract="true">
+		<graphicData>
+			<texPath>Things/Projectile/Shotgun_Pellet</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<dropsCasings>true</dropsCasings>
+			<casingMoteDefname>Fleck_ShotgunShell</casingMoteDefname>
+			<casingFilthDefname>Filth_ShotgunAmmoCasings</casingFilthDefname>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="20Gauge_BlackPowderBullet">
+		<defName>Bullet_20Gauge_BlackPowder</defName>
+		<label>20 Gauge pellet</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<speed>77</speed>
+			<damageAmountBase>5</damageAmountBase>
+			<pelletCount>15</pelletCount>
+			<armorPenetrationSharp>1.5</armorPenetrationSharp>
+			<armorPenetrationBlunt>1.7</armorPenetrationBlunt>	
+			<spreadMult>14.7</spreadMult>
+		</projectile>
+	</ThingDef>
+  
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase">
+		<defName>MakeAmmo_20Gauge_BlackPowder</defName>
+		<label>make 20 Gauge Black Powder Shells x100</label>
+		<description>Craft 100 20 Gauge Black Powder Shells.</description>
+		<jobString>Making 20 Gauge Black Powder Shells.</jobString>
+		<researchPrerequisite>CE_Gunpowder</researchPrerequisite>
+    	<workAmount>1800</workAmount>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+					<li>Steel</li>
+				</thingDefs>
+			</filter>
+			<count>18</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_20Gauge_BlackPowder>100</Ammo_20Gauge_BlackPowder>
+		</products>
+	</RecipeDef>
+	
+</Defs>

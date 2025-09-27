@@ -1,0 +1,410 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo444Marlin</defName>
+		<label>.444 Marlin</label>
+		<parent>AmmoRifles</parent>
+    <iconPath>UI/Icons/ThingCategories/CaliberRifle</iconPath>
+	</ThingCategoryDef>
+	
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>AmmoSet_444Marlin</defName>
+		<label>.444 Marlin</label>
+		<ammoTypes>
+			<Ammo_444Marlin_FMJ>Bullet_444Marlin_FMJ</Ammo_444Marlin_FMJ>
+			<Ammo_444Marlin_AP>Bullet_444Marlin_AP</Ammo_444Marlin_AP>
+			<Ammo_444Marlin_HP>Bullet_444Marlin_HP</Ammo_444Marlin_HP>
+			<Ammo_444Marlin_Incendiary>Bullet_444Marlin_Incendiary</Ammo_444Marlin_Incendiary>
+			<Ammo_444Marlin_HE>Bullet_444Marlin_HE</Ammo_444Marlin_HE>
+			<Ammo_444Marlin_Sabot>Bullet_444Marlin_Sabot</Ammo_444Marlin_Sabot>				
+		</ammoTypes>
+		<similarTo>AmmoSet_Rifle</similarTo>
+	</CombatExtended.AmmoSetDef>
+	
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="444MarlinBase" ParentName="SmallAmmoBase" Abstract="True" MayRequire="cgf1.gunsgalore.magnum.i">
+		<description>Powerful cartridge designed for lever-action rifles as a successor to the .45-70 Gov't.</description>
+		<statBases>
+		<Mass>0.031</Mass>
+		<Bulk>0.03</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo444Marlin</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="444MarlinBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Ammo_444Marlin_FMJ</defName>
+		<label>.444 Marlin cartridge (FMJ)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Rifle/FMJ</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.13</MarketValue>
+		</statBases>
+		<ammoClass>FullMetalJacket</ammoClass>
+		<cookOffProjectile>Bullet_444Marlin_FMJ</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="444MarlinBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Ammo_444Marlin_AP</defName>
+		<label>.444 Marlin cartridge (AP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Rifle/AP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.13</MarketValue>
+		</statBases>
+		<ammoClass>ArmorPiercing</ammoClass>
+		<cookOffProjectile>Bullet_444Marlin_AP</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="444MarlinBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Ammo_444Marlin_HP</defName>
+		<label>.444 Marlin cartridge (HP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Rifle/HP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.13</MarketValue>
+		</statBases>
+		<ammoClass>HollowPoint</ammoClass>
+		<cookOffProjectile>Bullet_444Marlin_HP</cookOffProjectile>
+	</ThingDef>
+	
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="444MarlinBase" MayRequire="cgf1.gunsgalore.magnum.i">
+    <defName>Ammo_444Marlin_Incendiary</defName>
+    <label>.444 Marlin cartridge (AP-I)</label>
+    <graphicData>
+      <texPath>Things/Ammo/Rifle/Incendiary</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>0.20</MarketValue>
+    </statBases>
+    <ammoClass>IncendiaryAP</ammoClass>
+    <cookOffProjectile>Bullet_444Marlin_Incendiary</cookOffProjectile>
+  </ThingDef>
+
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="444MarlinBase" MayRequire="cgf1.gunsgalore.magnum.i">
+    <defName>Ammo_444Marlin_HE</defName>
+    <label>.444 Marlin cartridge (AP-HE)</label>
+    <graphicData>
+      <texPath>Things/Ammo/Rifle/HE</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>0.34</MarketValue>
+    </statBases>
+    <ammoClass>ExplosiveAP</ammoClass>
+    <cookOffProjectile>Bullet_444Marlin_HE</cookOffProjectile>
+  </ThingDef>
+ 
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="444MarlinBase" MayRequire="cgf1.gunsgalore.magnum.i">
+    <defName>Ammo_444Marlin_Sabot</defName>
+    <label>.444 Marlin cartridge (Sabot)</label>
+    <graphicData>
+      <texPath>Things/Ammo/Rifle/Sabot</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>0.15</MarketValue>
+	  <Mass>0.024</Mass>
+    </statBases>
+    <ammoClass>Sabot</ammoClass>
+    <cookOffProjectile>Bullet_444Marlin_Sabot</cookOffProjectile>
+  </ThingDef>
+  
+	<!-- ================== Projectiles ================== -->
+	
+	<ThingDef Name="Base444MarlinBullet" ParentName="BaseBulletCE" Abstract="true" MayRequire="cgf1.gunsgalore.magnum.i">
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>134</speed>
+			<dropsCasings>true</dropsCasings>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base444MarlinBullet" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Bullet_444Marlin_FMJ</defName>
+		<label>.444 Marlin bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>23</damageAmountBase>
+			<armorPenetrationSharp>6</armorPenetrationSharp>
+			<armorPenetrationBlunt>76.32</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base444MarlinBullet" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Bullet_444Marlin_AP</defName>
+		<label>.444 Marlin bullet (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>14</damageAmountBase>
+			<armorPenetrationSharp>12</armorPenetrationSharp>
+			<armorPenetrationBlunt>76.32</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base444MarlinBullet" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Bullet_444Marlin_HP</defName>
+		<label>.444 Marlin bullet (HP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>29</damageAmountBase>
+			<armorPenetrationSharp>3</armorPenetrationSharp>
+			<armorPenetrationBlunt>76.32</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	  <ThingDef ParentName="Base444MarlinBullet" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Bullet_444Marlin_Incendiary</defName>
+		<label>.444 Marlin bullet (AP-I)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+		  <damageAmountBase>14</damageAmountBase>
+		  <armorPenetrationSharp>12</armorPenetrationSharp>
+		  <armorPenetrationBlunt>76.32</armorPenetrationBlunt>
+		  <secondaryDamage>
+				<li>
+			  	<def>Flame_Secondary</def>
+			  	<amount>9</amount>
+				</li>
+		  </secondaryDamage>
+		</projectile>
+	  </ThingDef>
+	  
+	  <ThingDef ParentName="Base444MarlinBullet" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Bullet_444Marlin_HE</defName>
+		<label>.444 Marlin bullet (AP-HE)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+		  <damageAmountBase>23</damageAmountBase>
+		  <armorPenetrationSharp>6</armorPenetrationSharp>
+		  <armorPenetrationBlunt>76.32</armorPenetrationBlunt>
+		  <secondaryDamage>
+				<li>
+			  	<def>Bomb_Secondary</def>
+			  	<amount>14</amount>
+				</li>
+		  </secondaryDamage>
+		</projectile>
+	  </ThingDef>
+
+	  <ThingDef ParentName="Base444MarlinBullet" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Bullet_444Marlin_Sabot</defName>
+		<label>.444 Marlin bullet (Sabot)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+		  <damageAmountBase>12</damageAmountBase>
+		  <armorPenetrationSharp>21</armorPenetrationSharp>
+		  <armorPenetrationBlunt>97.88</armorPenetrationBlunt>
+		  <speed>201</speed>
+		</projectile>
+	  </ThingDef>
+	  
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>MakeAmmo_444Marlin_FMJ</defName>
+		<label>make .444 Marlin (FMJ) cartridge x500</label>
+		<description>Craft 500 .444 Marlin (FMJ) cartridges.</description>
+		<jobString>Making .444 Marlin (FMJ) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>32</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_444Marlin_FMJ>500</Ammo_444Marlin_FMJ>
+		</products>
+    	<workAmount>3200</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>MakeAmmo_444Marlin_AP</defName>
+		<label>make .444 Marlin (AP) cartridge x500</label>
+		<description>Craft 500 .444 Marlin (AP) cartridges.</description>
+		<jobString>Making .444 Marlin (AP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>32</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_444Marlin_AP>500</Ammo_444Marlin_AP>
+		</products>
+	<workAmount>3840</workAmount>		
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>MakeAmmo_444Marlin_HP</defName>
+		<label>make .444 Marlin (HP) cartridge x500</label>
+		<description>Craft 500 .444 Marlin (HP) cartridges.</description>
+		<jobString>Making .444 Marlin (HP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>32</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_444Marlin_HP>500</Ammo_444Marlin_HP>
+		</products>
+	<workAmount>3200</workAmount>		
+	</RecipeDef>
+
+  <RecipeDef ParentName="AdvancedAmmoRecipeBase" MayRequire="cgf1.gunsgalore.magnum.i">
+    <defName>MakeAmmo_444Marlin_Incendiary</defName>
+    <label>make .444 Marlin (AP-I) cartridge x500</label>
+    <description>Craft 500 .444 Marlin (AP-I) cartridges.</description>
+    <jobString>Making .444 Marlin (AP-I) cartridges.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>32</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Prometheum</li>
+          </thingDefs>
+        </filter>
+        <count>5</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+        <li>Prometheum</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_444Marlin_Incendiary>500</Ammo_444Marlin_Incendiary>
+    </products>
+    <workAmount>5200</workAmount>
+  </RecipeDef>
+  
+  <RecipeDef ParentName="AdvancedAmmoRecipeBase" MayRequire="cgf1.gunsgalore.magnum.i">
+    <defName>MakeAmmo_444Marlin_HE</defName>
+    <label>make .444 Marlin (AP-HE) cartridge x500</label>
+    <description>Craft 500 .444 Marlin (AP-HE) cartridges.</description>
+    <jobString>Making .444 Marlin (AP-HE) cartridges.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>32</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>FSX</li>
+          </thingDefs>
+        </filter>
+        <count>10</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+        <li>FSX</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_444Marlin_HE>500</Ammo_444Marlin_HE>
+    </products>
+    <workAmount>7200</workAmount>
+  </RecipeDef>
+  
+  <RecipeDef ParentName="AdvancedAmmoRecipeBase" MayRequire="cgf1.gunsgalore.magnum.i">
+    <defName>MakeAmmo_444Marlin_Sabot</defName>
+    <label>make .444 Marlin (Sabot) cartridge x500</label>
+    <description>Craft 500 .444 Marlin (Sabot) cartridges.</description>
+    <jobString>Making .444 Marlin (Sabot) cartridges.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>14</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Uranium</li>
+          </thingDefs>
+        </filter>
+        <count>5</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </filter>
+        <count>5</count>
+      </li>		  
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+        <li>Uranium</li>
+        <li>Chemfuel</li>		
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_444Marlin_Sabot>500</Ammo_444Marlin_Sabot>
+    </products>
+    <workAmount>4400</workAmount>
+  </RecipeDef>
+	
+</Defs>

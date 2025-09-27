@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+    <Operation Class="PatchOperationSequence">
+        <operations>
+
+            <!--===== TOOLS FOR THE TOOL GOD =====-->
+            <li Class="PatchOperationReplace">
+                <xpath>
+				    /Defs/ThingDef[
+                    defName = "HRK_DTSRS" or
+                    defName = "HRK_DTHTI" or
+					defName = "HRK_DTMDRX" or
+					defName = "HRK_DTMDRX_C" or
+                    defName = "HRK_DT308MDRX" or
+					defName = "HRK_DT308MDRX_C" or
+                    defName = "HRK_DTMicron"]/tools
+                </xpath>
+                <value>
+                    <tools>
+                        <li Class="CombatExtended.ToolCE">
+                            <label>stock</label>
+                            <capacities>
+                                <li>Blunt</li>
+                            </capacities>
+                            <power>8</power>
+                            <cooldownTime>1.55</cooldownTime>
+                            <chanceFactor>1.5</chanceFactor>
+                            <armorPenetrationBlunt>2.755</armorPenetrationBlunt>
+                            <linkedBodyPartsGroup>Stock</linkedBodyPartsGroup>
+                        </li>
+                        <li Class="CombatExtended.ToolCE">
+                            <label>barrel</label>
+                            <capacities>
+                                <li>Blunt</li>
+                            </capacities>
+                            <power>5</power>
+                            <cooldownTime>2.02</cooldownTime>
+                            <armorPenetrationBlunt>1.630</armorPenetrationBlunt>
+                            <linkedBodyPartsGroup>Barrel</linkedBodyPartsGroup>
+                        </li>
+                        <li Class="CombatExtended.ToolCE">
+                            <label>muzzle</label>
+                            <capacities>
+                                <li>Poke</li>
+                            </capacities>
+                            <power>8</power>
+                            <cooldownTime>1.55</cooldownTime>
+                            <armorPenetrationBlunt>2.755</armorPenetrationBlunt>
+                            <linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+                        </li>
+                    </tools>
+                </value>
+            </li>
+
+            <!--===== HRK_DTMicron =====-->
+            <li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+                <defName>HRK_DTMicron</defName>
+                <statBases>
+                    <WorkToMake>37000</WorkToMake>
+                    <SightsEfficiency>1.1</SightsEfficiency>
+                    <ShotSpread>0.11</ShotSpread>
+                    <SwayFactor>0.93</SwayFactor>
+                    <Bulk>5.95</Bulk>
+                    <Mass>3.33</Mass>
+                    <RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+                </statBases>
+                <costList>
+                    <Steel>40</Steel>
+                    <ComponentIndustrial>7</ComponentIndustrial>
+                    <Chemfuel>5</Chemfuel>
+                </costList>
+                <Properties>
+                    <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+                    <hasStandardCommand>True</hasStandardCommand>
+                    <defaultProjectile>Bullet_300AACBlackout_FMJ</defaultProjectile>
+                    <burstShotCount>6</burstShotCount>
+                    <ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+                    <warmupTime>0.8</warmupTime>
+                    <range>44</range>
+                    <soundCast>HRK_Shot_DTMDRX</soundCast>
+                    <soundCastTail>GunTail_Medium</soundCastTail>
+                    <muzzleFlashScale>9</muzzleFlashScale>
+                    <recoilAmount>1.20</recoilAmount>
+                </Properties>
+                <AmmoUser>
+                    <magazineSize>30</magazineSize>
+                    <reloadTime>4.5</reloadTime>
+                    <ammoSet>AmmoSet_300AACBlackout</ammoSet>
+                </AmmoUser>
+                <FireModes>
+                    <aiAimMode>Snapshot</aiAimMode>
+                    <aiUseBurstMode>false</aiUseBurstMode>
+                    <aimedBurstShotCount>3</aimedBurstShotCount>
+                </FireModes>
+                <weaponTags>
+                    <li>CE_SMG</li>
+                    <li>CE_AI_AssaultWeapon</li>
+                    <li>CE_OneHandedWeapon</li>
+                </weaponTags>
+            </li>
+
+
+            <!--===== HRK_DTMDRX =====-->
+            <li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+                <defName>HRK_DTMDRX</defName>
+                <statBases>
+                    <WorkToMake>36500</WorkToMake>
+                    <SightsEfficiency>1.00</SightsEfficiency>
+                    <ShotSpread>0.09</ShotSpread>
+                    <SwayFactor>1.07</SwayFactor>
+                    <Bulk>6.98</Bulk>
+                    <Mass>3.72</Mass>
+                    <RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+                </statBases>
+                <costList>
+                    <Steel>40</Steel>
+                    <ComponentIndustrial>6</ComponentIndustrial>
+                    <Chemfuel>10</Chemfuel>
+                </costList>
+                <Properties>
+                    <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+                    <hasStandardCommand>True</hasStandardCommand>
+                    <defaultProjectile>Bullet_556x45mmNATO_FMJ</defaultProjectile>
+                    <burstShotCount>6</burstShotCount>
+                    <ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+                    <warmupTime>1.1</warmupTime>
+                    <range>50</range>
+                    <soundCast>HRK_Shot_DTMDRX</soundCast>
+                    <soundCastTail>GunTail_Medium</soundCastTail>
+                    <muzzleFlashScale>9</muzzleFlashScale>
+                    <recoilAmount>1.41</recoilAmount>
+                </Properties>
+                <AmmoUser>
+                    <magazineSize>30</magazineSize>
+                    <reloadTime>4.5</reloadTime>
+                    <ammoSet>AmmoSet_556x45mmNATO</ammoSet>
+                </AmmoUser>
+                <FireModes>
+                    <aiAimMode>AimedShot</aiAimMode>
+                    <aiUseBurstMode>True</aiUseBurstMode>
+                    <aimedBurstShotCount>3</aimedBurstShotCount>
+                </FireModes>
+                <weaponTags>
+                    <li>CE_AI_Rifle</li>
+                </weaponTags>
+            </li>
+
+            <!--===== HRK_DTMDRX_C =====-->
+            <li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+                <defName>HRK_DTMDRX_C</defName>
+                <statBases>
+                    <WorkToMake>40000</WorkToMake>
+                    <SightsEfficiency>1.1</SightsEfficiency>
+                    <ShotSpread>0.05</ShotSpread>
+                    <SwayFactor>1.37</SwayFactor>
+                    <Bulk>8.98</Bulk>
+                    <Mass>4.72</Mass>
+                    <RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+                </statBases>
+                <costList>
+                    <Steel>50</Steel>
+                    <ComponentIndustrial>7</ComponentIndustrial>
+                    <Chemfuel>10</Chemfuel>
+                </costList>
+                <Properties>
+                    <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+                    <hasStandardCommand>True</hasStandardCommand>
+                    <defaultProjectile>Bullet_556x45mmNATO_FMJ</defaultProjectile>
+                    <burstShotCount>6</burstShotCount>
+                    <ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+                    <warmupTime>1</warmupTime>
+                    <range>50</range>
+                    <soundCast>HRK_Shot_DTSDMDRX</soundCast>
+                    <soundCastTail>GunTail_Medium</soundCastTail>
+                    <muzzleFlashScale>9</muzzleFlashScale>
+                    <recoilAmount>1.25</recoilAmount>
+                </Properties>
+                <AmmoUser>
+                    <magazineSize>30</magazineSize>
+                    <reloadTime>4.5</reloadTime>
+                    <ammoSet>AmmoSet_556x45mmNATO</ammoSet>
+                </AmmoUser>
+                <FireModes>
+                    <aiAimMode>AimedShot</aiAimMode>
+                    <aiUseBurstMode>True</aiUseBurstMode>
+                    <aimedBurstShotCount>3</aimedBurstShotCount>
+                </FireModes>
+                <weaponTags>
+                    <li>CE_AI_Rifle</li>
+                </weaponTags>
+            </li>
+
+            <!--===== HRK_308MDRX =====-->
+            <li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+                <defName>HRK_DT308MDRX</defName>
+                <statBases>
+                    <WorkToMake>36500</WorkToMake>
+                    <SightsEfficiency>1.00</SightsEfficiency>
+                    <ShotSpread>0.09</ShotSpread>
+                    <SwayFactor>1.07</SwayFactor>
+                    <Bulk>6.98</Bulk>
+                    <Mass>3.72</Mass>
+                    <RangedWeapon_Cooldown>0.37</RangedWeapon_Cooldown>
+                </statBases>
+                <costList>
+                    <Steel>40</Steel>
+                    <ComponentIndustrial>6</ComponentIndustrial>
+                    <Chemfuel>10</Chemfuel>
+                </costList>
+                <Properties>
+                    <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+                    <hasStandardCommand>True</hasStandardCommand>
+                    <defaultProjectile>Bullet_762x51mmNATO_FMJ</defaultProjectile>
+                    <burstShotCount>6</burstShotCount>
+                    <ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+                    <warmupTime>1.1</warmupTime>
+                    <range>53</range>
+                    <soundCast>HRK_Shot_DTMDRX</soundCast>
+                    <soundCastTail>GunTail_Medium</soundCastTail>
+                    <muzzleFlashScale>9</muzzleFlashScale>
+                    <recoilAmount>2.07</recoilAmount>
+                </Properties>
+                <AmmoUser>
+                    <magazineSize>20</magazineSize>
+                    <reloadTime>4.5</reloadTime>
+                    <ammoSet>AmmoSet_762x51mmNATO</ammoSet>
+                </AmmoUser>
+                <FireModes>
+                    <aiAimMode>AimedShot</aiAimMode>
+                    <aiUseBurstMode>True</aiUseBurstMode>
+                    <aimedBurstShotCount>3</aimedBurstShotCount>
+                </FireModes>
+                <weaponTags>
+                    <li>CE_AI_Rifle</li>
+                </weaponTags>
+            </li>
+
+            <!--===== HRK_308MDRX_C =====-->
+            <li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+                <defName>HRK_DT308MDRX_C</defName>
+                <statBases>
+                    <WorkToMake>42500</WorkToMake>
+                    <SightsEfficiency>2.24</SightsEfficiency>
+                    <ShotSpread>0.05</ShotSpread>
+                    <SwayFactor>1.41</SwayFactor>
+                    <Bulk>8.98</Bulk>
+                    <Mass>4.72</Mass>
+                    <RangedWeapon_Cooldown>0.37</RangedWeapon_Cooldown>
+                </statBases>
+                <costList>
+                    <Steel>50</Steel>
+                    <ComponentIndustrial>7</ComponentIndustrial>
+                    <Chemfuel>10</Chemfuel>
+                </costList>
+                <Properties>
+                    <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+                    <hasStandardCommand>True</hasStandardCommand>
+                    <defaultProjectile>Bullet_762x51mmNATO_FMJ</defaultProjectile>
+                    <burstShotCount>6</burstShotCount>
+                    <ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+                    <warmupTime>1.3</warmupTime>
+                    <range>53</range>
+                    <soundCast>HRK_Shot_DTSDMDRX</soundCast>
+                    <soundCastTail>GunTail_Medium</soundCastTail>
+                    <muzzleFlashScale>9</muzzleFlashScale>
+                    <recoilAmount>1.84</recoilAmount>
+                </Properties>
+                <AmmoUser>
+                    <magazineSize>20</magazineSize>
+                    <reloadTime>4.5</reloadTime>
+                    <ammoSet>AmmoSet_762x51mmNATO</ammoSet>
+                </AmmoUser>
+                <FireModes>
+                    <aiAimMode>AimedShot</aiAimMode>
+                    <aiUseBurstMode>True</aiUseBurstMode>
+                    <aimedBurstShotCount>3</aimedBurstShotCount>
+                </FireModes>
+                <weaponTags>
+                    <li>CE_AI_Rifle</li>
+                </weaponTags>
+            </li>
+
+            <!-- ========== HRK_DTSRS ========== -->
+            <li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+                <defName>HRK_DTSRS</defName>
+                <statBases>
+                    <Mass>5.6</Mass>
+                    <RangedWeapon_Cooldown>1.18</RangedWeapon_Cooldown>
+                    <SightsEfficiency>2.60</SightsEfficiency>
+                    <ShotSpread>0.04</ShotSpread>
+                    <SwayFactor>1.61</SwayFactor>
+                    <Bulk>9.53</Bulk>
+                    <WorkToMake>34000</WorkToMake>
+                </statBases>
+                <costList>
+                    <Chemfuel>5</Chemfuel>
+                    <Steel>60</Steel>
+                    <ComponentIndustrial>6</ComponentIndustrial>
+                </costList>
+                <Properties>
+                    <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+                    <hasStandardCommand>true</hasStandardCommand>
+                    <defaultProjectile>Bullet_338Lapua_FMJ</defaultProjectile>
+                    <warmupTime>1.6</warmupTime>
+                    <range>75</range>
+                    <soundCast>HRK_Shot_DTSRS</soundCast>
+                    <soundCastTail>GunTail_Heavy</soundCastTail>
+                    <muzzleFlashScale>9</muzzleFlashScale>
+                    <recoilAmount>2.29</recoilAmount>
+                </Properties>
+                <AmmoUser>
+                    <magazineSize>5</magazineSize>
+                    <reloadTime>4.5</reloadTime>
+                    <ammoSet>AmmoSet_338Lapua</ammoSet>
+                </AmmoUser>
+                <FireModes>
+                    <aiAimMode>AimedShot</aiAimMode>
+                </FireModes>
+                <weaponTags>
+                    <li>Bipod_DMR</li>
+                    <li>CE_AI_SR</li>
+                </weaponTags>
+            </li>
+
+            <!-- ========== HRK_DTHTI ========== -->
+            <li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+                <defName>HRK_DTHTI</defName>
+                <statBases>
+                    <Mass>9.18</Mass>
+                    <RangedWeapon_Cooldown>1.17</RangedWeapon_Cooldown>
+                    <SightsEfficiency>3.50</SightsEfficiency>
+                    <ShotSpread>0.02</ShotSpread>
+                    <SwayFactor>2.17</SwayFactor>
+                    <Bulk>11.27</Bulk>
+                    <WorkToMake>49500</WorkToMake>
+                </statBases>
+                <costList>
+                    <Chemfuel>10</Chemfuel>
+                    <Steel>75</Steel>
+                    <ComponentIndustrial>7</ComponentIndustrial>
+                </costList>
+                <Properties>
+                    <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+                    <hasStandardCommand>true</hasStandardCommand>
+                    <defaultProjectile>Bullet_408CheyenneTactical_FMJ</defaultProjectile>
+                    <warmupTime>3.85</warmupTime>
+                    <range>92</range>
+                    <soundCast>HRK_Shot_DTHTI</soundCast>
+                    <soundCastTail>GunTail_Heavy</soundCastTail>
+                    <muzzleFlashScale>14</muzzleFlashScale>
+                    <recoilAmount>2.19</recoilAmount>
+                </Properties>
+                <AmmoUser>
+                    <magazineSize>5</magazineSize>
+                    <reloadTime>4.5</reloadTime>
+                    <ammoSet>AmmoSet_408CheyenneTactical</ammoSet>
+                </AmmoUser>
+                <FireModes>
+                    <aiUseBurstMode>FALSE</aiUseBurstMode>
+                    <aiAimMode>AimedShot</aiAimMode>
+                </FireModes>
+                <weaponTags>
+                    <li>Bipod_AMR</li>
+                    <li>CE_AI_SR</li>
+                </weaponTags>
+            </li>
+
+            <li Class="PatchOperationRemove">
+                <xpath>/Defs/ThingDef[defName="HRK_DTHTI"]/equippedStatOffsets</xpath>
+            </li>
+
+        </operations>
+    </Operation>
+</Patch>

@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<Defs>
+
+   <ThingDef ParentName="BenchBase">
+      <defName>GS_RealspaceManifold</defName>
+      <label>Greyscythe Realspace Manifold</label>
+      <thingClass>Building_WorkTable</thingClass>
+      <description>A highly advanced workbench designed to interface with Greyscythe Industries' Realspace Folding Interface, which is used to manufacture extremely advanced implants by folding multiple times the possible information architechture onto itself.</description>
+      <graphicData>
+         <texPath>Things/Building/Production/GS_RealspaceManifold</texPath>
+         <graphicClass>Graphic_Multi</graphicClass>
+         <drawSize>(3.5,1.5)</drawSize>
+         <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+      </graphicData>
+      <castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.20</staticSunShadowHeight>
+      <costList>
+         <Silver>500</Silver>
+		 <Gold>55</Gold>
+		 <Plasteel>200</Plasteel>
+         <ComponentSpacer>16</ComponentSpacer>
+      </costList>
+      <constructEffect>ConstructMetal</constructEffect>
+      <altitudeLayer>Building</altitudeLayer>
+      <fillPercent>0.5</fillPercent>
+      <useHitPoints>True</useHitPoints>
+      <statBases>
+         <WorkToBuild>10000</WorkToBuild>
+         <MaxHitPoints>500</MaxHitPoints>
+         <Flammability>0</Flammability>
+         <Cleanliness>-1</Cleanliness>
+      </statBases>
+      <size>(3,1)</size>
+      <comps>
+         <li Class="CompProperties_Power">
+            <compClass>CompPowerTrader</compClass>
+            <shortCircuitInRain>true</shortCircuitInRain>
+            <basePowerConsumption>450</basePowerConsumption>
+         </li>
+         <li Class="CompProperties_Flickable"/>
+         <li Class="CompProperties_Glower">
+        <glowRadius>5</glowRadius>
+        <glowColor>(225,165,75,0</glowColor>
+      </li>
+         <li Class="CompProperties_AffectedByFacilities">
+            <linkableFacilities>
+               <li>ToolCabinet</li>
+            </linkableFacilities>
+         </li>
+         <li Class="CompProperties_Breakdownable"/>
+      </comps>
+      <designationCategory>Production</designationCategory>
+      <passability>PassThroughOnly</passability>
+      <pathCost>60</pathCost>
+      <hasInteractionCell>True</hasInteractionCell>
+      <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+      <surfaceType>Item</surfaceType>
+      <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+      <inspectorTabs>
+         <li>ITab_Bills</li>
+      </inspectorTabs>
+      <building>
+         <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+      </building>
+      <placeWorkers>
+         <li>PlaceWorker_ShowFacilitiesConnections</li>
+         <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+      </placeWorkers>
+      <researchPrerequisites>
+         <li>GS_Research_UltraBionics</li>
+      </researchPrerequisites>
+   </ThingDef>
+   
+</Defs>

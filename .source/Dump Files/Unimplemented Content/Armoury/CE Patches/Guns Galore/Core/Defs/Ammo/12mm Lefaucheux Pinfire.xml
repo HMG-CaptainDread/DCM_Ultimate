@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingCategoryDef>
+    <defName>Ammo12mmLefaucheuxPinfire</defName>
+    <label>12mm Lefaucheux Pinfire</label>
+    <parent>AmmoPistols</parent>
+    <iconPath>UI/Icons/ThingCategories/CaliberPistol</iconPath>
+  </ThingCategoryDef>
+
+  <!-- ==================== AmmoSet ========================== -->
+
+  <CombatExtended.AmmoSetDef MayRequire="cgf1.gunsgalore.industrialage.i">
+    <defName>AmmoSet_12mmLefaucheuxPinfire</defName>
+    <label>12mm Lefaucheux Pinfire</label>
+    <ammoTypes>
+      <Ammo_12mmLefaucheuxPinfire_FMJ>Bullet_12mmLefaucheuxPinfire_FMJ</Ammo_12mmLefaucheuxPinfire_FMJ>
+    </ammoTypes>
+		<similarTo>AmmoSet_Pistol</similarTo>
+  </CombatExtended.AmmoSetDef>
+
+  <!-- ==================== Ammo ========================== -->
+
+  <ThingDef Class="CombatExtended.AmmoDef" Name="12mmLefaucheuxPinfireBase" ParentName="SmallAmmoBase" Abstract="True" MayRequire="cgf1.gunsgalore.industrialage.i">
+    <description>Old pinfire pistol cartridge used in revolvers.</description>
+    <statBases>
+      <Mass>0.003</Mass>
+      <Bulk>0.01</Bulk>
+    </statBases>
+    <tradeTags>
+      <li>CE_AutoEnableTrade</li>
+      <li>CE_AutoEnableCrafting</li>
+    </tradeTags>
+    <thingCategories>
+      <li>Ammo12mmLefaucheuxPinfire</li>
+    </thingCategories>
+  </ThingDef>
+
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="12mmLefaucheuxPinfireBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+    <defName>Ammo_12mmLefaucheuxPinfire_FMJ</defName>
+    <label>12mm Lefaucheux Pinfire cartridge (FMJ)</label>
+    <graphicData>
+      <texPath>Things/Ammo/Pistol/FMJ</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>0.03</MarketValue>
+    </statBases>
+    <ammoClass>FullMetalJacket</ammoClass>
+    <cookOffProjectile>Bullet_12mmLefaucheuxPinfire_FMJ</cookOffProjectile>
+  </ThingDef>
+
+  <!-- ================== Projectiles ================== -->
+
+  <ThingDef Name="Base12mmLefaucheuxPinfireBullet" ParentName="BaseBulletCE" Abstract="true" MayRequire="cgf1.gunsgalore.industrialage.i">
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <damageDef>Bullet</damageDef>
+      <speed>25</speed>
+      <dropsCasings>true</dropsCasings>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="Base12mmLefaucheuxPinfireBullet" MayRequire="cgf1.gunsgalore.industrialage.i">
+    <defName>Bullet_12mmLefaucheuxPinfire_FMJ</defName>
+    <label>12mm Lefaucheux Pinfire bullet (FMJ)</label>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <damageAmountBase>4</damageAmountBase>
+      <armorPenetrationSharp>1</armorPenetrationSharp>
+      <armorPenetrationBlunt>1.35</armorPenetrationBlunt>
+    </projectile>
+  </ThingDef>
+
+  <!-- ==================== Recipes ========================== -->
+
+  <!-- Standard manufacture -->
+  <RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+    <defName>MakeAmmo_12mmLefaucheuxPinfire_FMJ</defName>
+    <label>make 12mm Lefaucheux Pinfire (FMJ) cartridge x500</label>
+    <description>Craft 500 12mm Lefaucheux Pinfire (FMJ) cartridges.</description>
+    <jobString>Making 12mm Lefaucheux Pinfire (FMJ) cartridges.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>6</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_12mmLefaucheuxPinfire_FMJ>500</Ammo_12mmLefaucheuxPinfire_FMJ>
+    </products>
+    <workAmount>600</workAmount>
+  </RecipeDef>
+
+</Defs>

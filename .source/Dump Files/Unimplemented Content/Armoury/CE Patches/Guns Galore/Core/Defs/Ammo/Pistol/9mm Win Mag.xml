@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo9mmWinMag</defName>
+		<label>9mm Win Mag</label>
+		<parent>AmmoPistols</parent>
+		<iconPath>UI/Icons/ThingCategories/CaliberPistol</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>AmmoSet_9mmWinMag</defName>
+		<label>9mm Win Mag</label>
+		<ammoTypes>
+			<Ammo_9mmWinMag_FMJ>Bullet_9mmWinMag_FMJ</Ammo_9mmWinMag_FMJ>
+			<Ammo_9mmWinMag_AP>Bullet_9mmWinMag_AP</Ammo_9mmWinMag_AP>
+			<Ammo_9mmWinMag_HP>Bullet_9mmWinMag_HP</Ammo_9mmWinMag_HP>			
+		</ammoTypes>
+		<similarTo>AmmoSet_Pistol</similarTo>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="9mmWinMagBase" ParentName="SmallAmmoBase" Abstract="True" MayRequire="cgf1.gunsgalore.magnum.i">
+		<description>A powerful centerfire handgun cartridge for semi-automatic pistols, now obscure.</description>
+		<statBases>
+			<Mass>0.014</Mass>
+			<Bulk>0.01</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo9mmWinMag</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="9mmWinMagBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Ammo_9mmWinMag_FMJ</defName>
+		<label>9mm Win Mag cartridge (FMJ)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/FMJ</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.07</MarketValue>
+		</statBases>
+		<ammoClass>FullMetalJacket</ammoClass>
+		<cookOffProjectile>Bullet_9mmWinMag_FMJ</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="9mmWinMagBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Ammo_9mmWinMag_AP</defName>
+		<label>9mm Win Mag cartridge (AP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/AP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.07</MarketValue>
+		</statBases>
+		<ammoClass>ArmorPiercing</ammoClass>
+		<cookOffProjectile>Bullet_9mmWinMag_AP</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="9mmWinMagBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Ammo_9mmWinMag_HP</defName>
+		<label>9mm Win Mag cartridge (HP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/HP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.07</MarketValue>
+		</statBases>
+		<ammoClass>HollowPoint</ammoClass>
+		<cookOffProjectile>Bullet_9mmWinMag_HP</cookOffProjectile>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="Base9mmWinMagBullet" ParentName="BaseBulletCE" Abstract="true" MayRequire="cgf1.gunsgalore.magnum.i">
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>88</speed>
+			<dropsCasings>true</dropsCasings>
+			<casingMoteDefname>Fleck_PistolAmmoCasings</casingMoteDefname>
+			<casingFilthDefname>Filth_PistolAmmoCasings</casingFilthDefname>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base9mmWinMagBullet" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Bullet_9mmWinMag_FMJ</defName>
+		<label>9mm Win Mag bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>12</damageAmountBase>
+			<armorPenetrationSharp>4</armorPenetrationSharp>
+			<armorPenetrationBlunt>13.56</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base9mmWinMagBullet" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Bullet_9mmWinMag_AP</defName>
+		<label>9mm Win Mag bullet (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>9</damageAmountBase>
+			<armorPenetrationSharp>8</armorPenetrationSharp>
+			<armorPenetrationBlunt>13.56</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base9mmWinMagBullet" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Bullet_9mmWinMag_HP</defName>
+		<label>9mm Win Mag bullet (HP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>19</damageAmountBase>
+			<armorPenetrationSharp>2</armorPenetrationSharp>
+			<armorPenetrationBlunt>13.56</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>MakeAmmo_9mmWinMag_FMJ</defName>
+		<label>make 9mm Win Mag cartridge x500</label>
+		<description>Craft 500 9mm Win Mag cartridges.</description>
+		<jobString>Making 9mm Win Mag cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>16</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_9mmWinMag_FMJ>500</Ammo_9mmWinMag_FMJ>
+		</products>
+		<workAmount>1600</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>MakeAmmo_9mmWinMag_AP</defName>
+		<label>make 9mm Win Mag (AP) cartridge x500</label>
+		<description>Craft 500 9mm Win Mag (AP) cartridges.</description>
+		<jobString>Making 9mm Win Mag (AP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>16</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_9mmWinMag_AP>500</Ammo_9mmWinMag_AP>
+		</products>
+		<workAmount>1920</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>MakeAmmo_9mmWinMag_HP</defName>
+		<label>make 9mm Win Mag (HP) cartridge x500</label>
+		<description>Craft 500 9mm Win Mag (HP) cartridges.</description>
+		<jobString>Making 9mm Win Mag (HP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>16</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_9mmWinMag_HP>500</Ammo_9mmWinMag_HP>
+		</products>
+		<workAmount>1600</workAmount>
+	</RecipeDef>
+
+</Defs>

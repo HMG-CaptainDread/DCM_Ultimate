@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingCategoryDef>
+    <defName>Ammo11x178mmR</defName>
+    <label>11x17.8mmR</label>
+    <parent>AmmoPistols</parent>
+    <iconPath>UI/Icons/ThingCategories/CaliberPistol</iconPath>
+  </ThingCategoryDef>
+
+  <!-- ==================== AmmoSet ========================== -->
+
+  <CombatExtended.AmmoSetDef MayRequire="cgf1.gunsgalore.industrialage.i">
+    <defName>AmmoSet_11x178mmR</defName>
+    <label>11x17.8mmR</label>
+    <ammoTypes>
+      <Ammo_11x178mmR_FMJ>Bullet_11x178mmR_FMJ</Ammo_11x178mmR_FMJ>
+    </ammoTypes>
+		<similarTo>AmmoSet_Pistol</similarTo>
+  </CombatExtended.AmmoSetDef>
+
+  <!-- ==================== Ammo ========================== -->
+
+  <ThingDef Class="CombatExtended.AmmoDef" Name="11x178mmRBase" ParentName="SmallAmmoBase" Abstract="True" MayRequire="cgf1.gunsgalore.industrialage.i">
+    <description>Old pistol cartridge used in revolvers.</description>
+    <statBases>
+      <Mass>0.006</Mass>
+      <Bulk>0.01</Bulk>
+    </statBases>
+    <tradeTags>
+      <li>CE_AutoEnableTrade</li>
+      <li>CE_AutoEnableCrafting</li>
+    </tradeTags>
+    <thingCategories>
+      <li>Ammo11x178mmR</li>
+    </thingCategories>
+  </ThingDef>
+
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="11x178mmRBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+    <defName>Ammo_11x178mmR_FMJ</defName>
+    <label>11x17.8mmR cartridge (FMJ)</label>
+    <graphicData>
+      <texPath>Things/Ammo/Pistol/FMJ</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>0.04</MarketValue>
+    </statBases>
+    <ammoClass>FullMetalJacket</ammoClass>
+    <cookOffProjectile>Bullet_11x178mmR_FMJ</cookOffProjectile>
+  </ThingDef>
+
+  <!-- ================== Projectiles ================== -->
+
+  <ThingDef Name="Base11x178mmRBullet" ParentName="BaseBulletCE" Abstract="true" MayRequire="cgf1.gunsgalore.industrialage.i">
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <damageDef>Bullet</damageDef>
+      <speed>40</speed>
+      <dropsCasings>true</dropsCasings>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="Base11x178mmRBullet" MayRequire="cgf1.gunsgalore.industrialage.i">
+    <defName>Bullet_11x178mmR_FMJ</defName>
+    <label>11x17.8mmR bullet (FMJ)</label>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <damageAmountBase>4</damageAmountBase>
+      <armorPenetrationSharp>1.5</armorPenetrationSharp>
+      <armorPenetrationBlunt>1.6</armorPenetrationBlunt>
+    </projectile>
+  </ThingDef>
+
+  <!-- ==================== Recipes ========================== -->
+
+  <!-- Standard manufacture -->
+  <RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+    <defName>MakeAmmo_11x178mmR_FMJ</defName>
+    <label>make 11x17.8mmR (FMJ) cartridge x500</label>
+    <description>Craft 500 11x17.8mmR (FMJ) cartridges.</description>
+    <jobString>Making 11x17.8mmR (FMJ) cartridges.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>7</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_11x178mmR_FMJ>500</Ammo_11x178mmR_FMJ>
+    </products>
+    <workAmount>800</workAmount>
+  </RecipeDef>
+
+</Defs>

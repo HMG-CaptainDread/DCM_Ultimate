@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo2mmKolibri</defName>
+		<label>2mm Kolibri</label>
+		<parent>AmmoPistols</parent>
+		<iconPath>UI/Icons/ThingCategories/CaliberPistol</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>AmmoSet_2mmKolibri</defName>
+		<label>2mm Kolibri</label>
+		<ammoTypes>
+			<Ammo_2mmKolibri_FMJ>Bullet_2mmKolibri_FMJ</Ammo_2mmKolibri_FMJ>		
+		</ammoTypes>
+		<similarTo>AmmoSet_Pistol</similarTo>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="2mmKolibriBase" ParentName="SmallAmmoBase" Abstract="True" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+		<description>One of the smallest pistol cartridges ever put into production.</description>
+		<statBases>
+			<Mass>0.001</Mass>
+			<Bulk>0.01</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo2mmKolibri</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="2mmKolibriBase" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>Ammo_2mmKolibri_FMJ</defName>
+		<label>2mm Kolibri cartridge (FMJ)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/FMJ</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.02</MarketValue>
+		</statBases>
+		<ammoClass>FullMetalJacket</ammoClass>
+		<cookOffProjectile>Bullet_2mmKolibri_FMJ</cookOffProjectile>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="Base2mmKolibriBullet" ParentName="BaseBulletCE" Abstract="true" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>40</speed>
+			<dropsCasings>true</dropsCasings>
+			<casingMoteDefname>Fleck_PistolAmmoCasings</casingMoteDefname>
+			<casingFilthDefname>Filth_PistolAmmoCasings</casingFilthDefname>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base2mmKolibriBullet" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>Bullet_2mmKolibri_FMJ</defName>
+		<label>2mm Kolibri bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>1</damageAmountBase>
+			<armorPenetrationSharp>4</armorPenetrationSharp>
+			<armorPenetrationBlunt>9.58</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>MakeAmmo_2mmKolibri_FMJ</defName>
+		<label>make 2mm Kolibri cartridge x500</label>
+		<description>Craft 500 2mm Kolibri cartridges.</description>
+		<jobString>Making 2mm Kolibri cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>4</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_2mmKolibri_FMJ>500</Ammo_2mmKolibri_FMJ>
+		</products>
+		<workAmount>400</workAmount>
+	</RecipeDef>
+
+</Defs>
