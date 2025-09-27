@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo440CorBon</defName>
+		<label>.440 Cor-Bon</label>
+		<parent>AmmoPistols</parent>
+		<iconPath>UI/Icons/ThingCategories/CaliberPistol</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>AmmoSet_440CorBon</defName>
+		<label>.440 Cor-Bon</label>
+		<ammoTypes>
+			<Ammo_440CorBon_FMJ>Bullet_440CorBon_FMJ</Ammo_440CorBon_FMJ>
+			<Ammo_440CorBon_AP>Bullet_440CorBon_AP</Ammo_440CorBon_AP>
+			<Ammo_440CorBon_HP>Bullet_440CorBon_HP</Ammo_440CorBon_HP>			
+		</ammoTypes>
+		<similarTo>AmmoSet_PistolMagnum</similarTo>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="440CorBonBase" ParentName="SmallAmmoBase" Abstract="True" MayRequire="cgf1.gunsgalore.magnum.i">
+		<description>Obsolete cartridge made from a .50 AE case necked down to accept .44 Magnum bullets.</description>
+		<statBases>
+			<Mass>0.025</Mass>
+			<Bulk>0.02</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo440CorBon</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="440CorBonBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Ammo_440CorBon_FMJ</defName>
+		<label>.440 Cor-Bon cartridge (FMJ)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/FMJ</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.11</MarketValue>
+		</statBases>
+		<ammoClass>FullMetalJacket</ammoClass>
+		<cookOffProjectile>Bullet_440CorBon_FMJ</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="440CorBonBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Ammo_440CorBon_AP</defName>
+		<label>.440 Cor-Bon cartridge (AP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/AP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.11</MarketValue>
+		</statBases>
+		<ammoClass>ArmorPiercing</ammoClass>
+		<cookOffProjectile>Bullet_440CorBon_AP</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="440CorBonBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Ammo_440CorBon_HP</defName>
+		<label>.440 Cor-Bon cartridge (HP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/HP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.11</MarketValue>
+		</statBases>
+		<ammoClass>HollowPoint</ammoClass>
+		<cookOffProjectile>Bullet_440CorBon_HP</cookOffProjectile>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="Base440CorBonBullet" ParentName="BaseBulletCE" Abstract="true" MayRequire="cgf1.gunsgalore.magnum.i">
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>110</speed>
+			<dropsCasings>true</dropsCasings>
+			<casingMoteDefname>Fleck_PistolAmmoCasings</casingMoteDefname>
+			<casingFilthDefname>Filth_PistolAmmoCasings</casingFilthDefname>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base440CorBonBullet" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Bullet_440CorBon_FMJ</defName>
+		<label>.440 Cor-Bon bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>19</damageAmountBase>
+			<armorPenetrationSharp>7</armorPenetrationSharp>
+			<armorPenetrationBlunt>47.04</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base440CorBonBullet" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Bullet_440CorBon_AP</defName>
+		<label>.440 Cor-Bon bullet (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>12</damageAmountBase>
+			<armorPenetrationSharp>14</armorPenetrationSharp>
+			<armorPenetrationBlunt>47.04</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base440CorBonBullet" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Bullet_440CorBon_HP</defName>
+		<label>.440 Cor-Bon bullet (HP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>25</damageAmountBase>
+			<armorPenetrationSharp>3.5</armorPenetrationSharp>
+			<armorPenetrationBlunt>47.04</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>MakeAmmo_440CorBon_FMJ</defName>
+		<label>make .440 Cor-Bon cartridge x500</label>
+		<description>Craft 500 .440 Cor-Bon cartridges.</description>
+		<jobString>Making .440 Cor-Bon cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>26</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_440CorBon_FMJ>500</Ammo_440CorBon_FMJ>
+		</products>
+		<workAmount>2600</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>MakeAmmo_440CorBon_AP</defName>
+		<label>make .440 Cor-Bon (AP) cartridge x500</label>
+		<description>Craft 500 .440 Cor-Bon (AP) cartridges.</description>
+		<jobString>Making .440 Cor-Bon (AP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>26</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_440CorBon_AP>500</Ammo_440CorBon_AP>
+		</products>
+		<workAmount>3120</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>MakeAmmo_440CorBon_HP</defName>
+		<label>make .440 Cor-Bon (HP) cartridge x500</label>
+		<description>Craft 500 .440 Cor-Bon (HP) cartridges.</description>
+		<jobString>Making .440 Cor-Bon (HP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>26</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_440CorBon_HP>500</Ammo_440CorBon_HP>
+		</products>
+		<workAmount>2600</workAmount>
+	</RecipeDef>
+
+</Defs>

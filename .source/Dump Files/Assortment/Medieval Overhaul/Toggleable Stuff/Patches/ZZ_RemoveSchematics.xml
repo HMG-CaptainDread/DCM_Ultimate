@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<Operation Class="VEF.PatchOperationToggableSequence">
+		<enabled>False</enabled>
+		<mods>
+		  <li>Medieval Overhaul</li>
+		</mods>
+		<label>[Tech] Remove the required research schematics:</label>
+		<operations>
+		
+			<li Class="PatchOperationConditional">
+			  <xpath>Defs/ResearchProjectDef/modExtensions/li[@Class='MedievalOverhaul.RequiredSchematic']</xpath>
+			  <match Class="PatchOperationRemove">
+				  	<xpath>Defs/ResearchProjectDef/modExtensions/li[@Class='MedievalOverhaul.RequiredSchematic']</xpath>
+			  </match>	
+			</li>
+			
+			<!-- baseCost 400 -->
+			
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ResearchProjectDef[
+				defName="DankPyon_Crossbow" or
+				defName="DankPyon_Tar"
+				][baseCost]/baseCost</xpath>
+				<value>
+					<baseCost>1000</baseCost>
+				</value>
+			</li>
+			
+			<!-- baseCost 600 -->
+			
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ResearchProjectDef[
+				defName="DankPyon_MilitaryPolearms" or
+				defName="DankPyon_MilitaryMaces" or
+				defName="DankPyon_MilitaryBlades"
+				][baseCost]/baseCost</xpath>
+				<value>
+					<baseCost>1200</baseCost>
+				</value>
+			</li>
+			
+			<!-- baseCost 700 -->
+			
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ResearchProjectDef[
+				defName="DankPyon_HeavyCrossbow" or
+				defName="DankPyon_Gunpowder"
+				][baseCost]/baseCost</xpath>
+				<value>
+					<baseCost>1300</baseCost>
+				</value>
+			</li>
+			
+			<!-- baseCost 800 -->
+			
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ResearchProjectDef[
+				defName="DankPyon_AdvancedCooking"
+				][baseCost]/baseCost</xpath>
+				<value>
+					<baseCost>1400</baseCost>
+				</value>
+			</li>
+			
+			<!-- baseCost 1000 -->
+
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ResearchProjectDef[
+				defName="DankPyon_Trebuchet" or
+				defName="DankPyon_Steel" or
+				defName="DankPyon_Gunpowder" or
+				defName="Greatbow" or
+				defName="DankPyon_NoblePolearms"  or
+				defName="DankPyon_NobleMaces"  or
+				defName="LongBlades"
+				][baseCost]/baseCost</xpath>
+				<value>
+					<baseCost>1600</baseCost>
+				</value>
+			</li>
+			
+			<!-- baseCost 1200 -->
+
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ResearchProjectDef[
+				defName="DankPyon_WarBow"
+				][baseCost]/baseCost</xpath>
+				<value>
+					<baseCost>1800</baseCost>
+				</value>
+			</li>
+			
+			<!-- baseCost 2500 -->
+
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/ResearchProjectDef[
+				defName="DankPyon_RepeaterBallista"
+				][baseCost]/baseCost</xpath>
+				<value>
+					<baseCost>3100</baseCost>
+				</value>
+			</li>
+		
+			<!-- Biotech DLC Schematics -->
+			
+			<li Class="PatchOperationConditional">
+			  <xpath>Defs/ResearchProjectDef[defName="DankPyon_IntermediateCooking"]/requiredAnalyzed</xpath>
+			  <match Class="PatchOperationRemove">
+				  	<xpath>Defs/ResearchProjectDef[defName="DankPyon_IntermediateCooking"]/requiredAnalyzed</xpath>
+			  </match>	
+			</li>
+		
+			<li Class="PatchOperationConditional">
+			  <xpath>Defs/ResearchProjectDef[defName="DankPyon_AdvancedCooking"]/requiredAnalyzed</xpath>
+			  <match Class="PatchOperationRemove">
+				  	<xpath>Defs/ResearchProjectDef[defName="DankPyon_AdvancedCooking"]/requiredAnalyzed</xpath>
+			  </match>	
+			</li>
+		
+			<li Class="PatchOperationConditional">
+			  <xpath>Defs/ResearchProjectDef[defName="DankPyon_MilitaryBlades"]/requiredAnalyzed</xpath>
+			  <match Class="PatchOperationRemove">
+				  	<xpath>Defs/ResearchProjectDef[defName="DankPyon_MilitaryBlades"]/requiredAnalyzed</xpath>
+			  </match>	
+			</li>
+		
+			<li Class="PatchOperationConditional">
+			  <xpath>Defs/ResearchProjectDef[defName="LongBlades"]/requiredAnalyzed</xpath>
+			  <match Class="PatchOperationRemove">
+				  	<xpath>Defs/ResearchProjectDef[defName="LongBlades"]/requiredAnalyzed</xpath>
+			  </match>	
+			</li>
+		
+			<li Class="PatchOperationConditional">
+			  <xpath>Defs/ResearchProjectDef[defName="DankPyon_MilitaryMaces"]/requiredAnalyzed</xpath>
+			  <match Class="PatchOperationRemove">
+				  	<xpath>Defs/ResearchProjectDef[defName="DankPyon_MilitaryMaces"]/requiredAnalyzed</xpath>
+			  </match>	
+			</li>
+		
+			<li Class="PatchOperationConditional">
+			  <xpath>Defs/ResearchProjectDef[defName="DankPyon_NobleMaces"]/requiredAnalyzed</xpath>
+			  <match Class="PatchOperationRemove">
+				  	<xpath>Defs/ResearchProjectDef[defName="DankPyon_NobleMaces"]/requiredAnalyzed</xpath>
+			  </match>	
+			</li>
+		
+			<li Class="PatchOperationConditional">
+			  <xpath>Defs/ResearchProjectDef[defName="DankPyon_MilitaryPolearms"]/requiredAnalyzed</xpath>
+			  <match Class="PatchOperationRemove">
+				  	<xpath>Defs/ResearchProjectDef[defName="DankPyon_MilitaryPolearms"]/requiredAnalyzed</xpath>
+			  </match>	
+			</li>
+		
+			<li Class="PatchOperationConditional">
+			  <xpath>Defs/ResearchProjectDef[defName="DankPyon_NoblePolearms"]/requiredAnalyzed</xpath>
+			  <match Class="PatchOperationRemove">
+				  	<xpath>Defs/ResearchProjectDef[defName="DankPyon_NoblePolearms"]/requiredAnalyzed</xpath>
+			  </match>	
+			</li>
+		
+			<li Class="PatchOperationConditional">
+			  <xpath>Defs/ResearchProjectDef[defName="DankPyon_Crossbow"]/requiredAnalyzed</xpath>
+			  <match Class="PatchOperationRemove">
+				  	<xpath>Defs/ResearchProjectDef[defName="DankPyon_Crossbow"]/requiredAnalyzed</xpath>
+			  </match>	
+			</li>
+		
+			<li Class="PatchOperationConditional">
+			  <xpath>Defs/ResearchProjectDef[defName="DankPyon_RepeaterBallista"]/requiredAnalyzed</xpath>
+			  <match Class="PatchOperationRemove">
+				  	<xpath>Defs/ResearchProjectDef[defName="DankPyon_RepeaterBallista"]/requiredAnalyzed</xpath>
+			  </match>	
+			</li>
+		
+			<li Class="PatchOperationConditional">
+			  <xpath>Defs/ResearchProjectDef[defName="DankPyon_HeavyCrossbow"]/requiredAnalyzed</xpath>
+			  <match Class="PatchOperationRemove">
+				  	<xpath>Defs/ResearchProjectDef[defName="DankPyon_HeavyCrossbow"]/requiredAnalyzed</xpath>
+			  </match>	
+			</li>
+		
+			<li Class="PatchOperationConditional">
+			  <xpath>Defs/ResearchProjectDef[defName="DankPyon_Plasteel"]/requiredAnalyzed</xpath>
+			  <match Class="PatchOperationRemove">
+				  	<xpath>Defs/ResearchProjectDef[defName="DankPyon_Plasteel"]/requiredAnalyzed</xpath>
+			  </match>	
+			</li>
+		
+			<li Class="PatchOperationConditional">
+			  <xpath>Defs/ResearchProjectDef[defName="DankPyon_Tar"]/requiredAnalyzed</xpath>
+			  <match Class="PatchOperationRemove">
+				  	<xpath>Defs/ResearchProjectDef[defName="DankPyon_Tar"]/requiredAnalyzed</xpath>
+			  </match>	
+			</li>
+		
+			<li Class="PatchOperationConditional">
+			  <xpath>Defs/ResearchProjectDef[defName="DankPyon_Gunpowder"]/requiredAnalyzed</xpath>
+			  <match Class="PatchOperationRemove">
+				  	<xpath>Defs/ResearchProjectDef[defName="DankPyon_Gunpowder"]/requiredAnalyzed</xpath>
+			  </match>	
+			</li>
+		
+			<li Class="PatchOperationConditional">
+			  <xpath>Defs/ResearchProjectDef[defName="Greatbow"]/requiredAnalyzed</xpath>
+			  <match Class="PatchOperationRemove">
+				  	<xpath>Defs/ResearchProjectDef[defName="Greatbow"]/requiredAnalyzed</xpath>
+			  </match>	
+			</li>
+		
+			<li Class="PatchOperationConditional">
+			  <xpath>Defs/ResearchProjectDef[defName="DankPyon_WarBow"]/requiredAnalyzed</xpath>
+			  <match Class="PatchOperationRemove">
+				  	<xpath>Defs/ResearchProjectDef[defName="DankPyon_WarBow"]/requiredAnalyzed</xpath>
+			  </match>	
+			</li>
+		</operations>
+	</Operation>
+</Patch>	

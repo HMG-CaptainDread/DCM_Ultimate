@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="SADinghy"]/comps/li[@Class="CompProperties_Refuelable"]/fuelFilter/thingDefs</xpath>
+		<value>
+			<li>DankPyon_Straw</li>
+			<li>DankPyon_DriedHay</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>LWM's Fuel Filter</li>
+		</mods>
+		<nomatch Class="PatchOperationSequence">
+			<operations>
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="SADinghy"]/comps</xpath>
+					<value>
+						<li Class="MedievalOverhaul.CompProperties_StoreFuelThing"/>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="SADinghy"]</xpath>
+					<value>
+						<inspectorTabs>
+							<li>MedievalOverhaul.ITab_Fuel</li>
+						</inspectorTabs>
+					</value>
+				</li>
+
+			</operations>
+		</nomatch>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[
+		defName="SADinghy" or
+		defName="SAPioneer" or
+		defName="SAFatMuffalo" or
+		defName="SASpitefulMoth" or
+		defName="SAAdvancedpioneer" or
+		defName="SASandmanta"]/comps/li[@Class="CompProperties_Refuelable"]/initialFuelPercent
+		</xpath>
+		<value>
+			<initialFuelPercent>0.01</initialFuelPercent>
+		</value>
+	</Operation>
+
+</Patch>
+ 

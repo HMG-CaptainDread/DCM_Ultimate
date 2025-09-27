@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	
+	<!-- Prosthetic Eye -->
+
+	<HediffDef ParentName="FSFAddedBodyPartProsthetic">
+		<defName>FSFProstheticEye</defName>
+		<label>prosthetic eye</label>
+		<labelNoun>a prosthetic eye</labelNoun>
+		<description>An installed prosthetic eye.</description>
+		<descriptionHyperlinks><ThingDef>FSFProstheticEye</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>FSFProstheticEye</spawnThingOnRemoved>
+		<woundAnchorRange>0</woundAnchorRange>
+		<displayWound>true</displayWound>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>0.80</partEfficiency>
+		</addedPartProps>
+		<renderNodeProperties>
+			<li Class="PawnRenderNodeProperties_Eye">
+				<workerClass>PawnRenderNodeWorker_HediffEye</workerClass>
+				<texPath>Things/Pawn/Wounds/BionicEye</texPath>
+				<parentTagDef>Head</parentTagDef>
+				<drawSize>0.15</drawSize>
+				<drawData>
+					<defaultData>
+						<layer>56</layer>
+						<offset>(0, 0, -0.25)</offset>
+					</defaultData>
+					<dataWest>
+						<flip>true</flip>
+					</dataWest>
+				</drawData>
+			</li>
+		</renderNodeProperties>
+	</HediffDef>
+	
+	<ThingDef ParentName="BodyPartProstheticMakeableBase">
+		<defName>FSFProstheticEye</defName>
+		<label>prosthetic eye</label>
+		<description>A eye prosthesis. It's not as efficient as the real thing but it's better than nothing.</description>
+		<descriptionHyperlinks><RecipeDef>InstallFSFProstheticEye</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Steel>20</Steel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+		</costList>
+		<butcherProducts>
+			<Steel>20</Steel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+		</butcherProducts>
+		<statBases>
+			<Mass>0.3</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="SurgeryInstallBodyPartProstheticBase">
+		<defName>InstallFSFProstheticEye</defName>
+		<label>install prosthetic eye</label>
+		<description>Install a prosthetic eye.</description>
+		<descriptionHyperlinks>
+			<ThingDef>FSFProstheticEye</ThingDef>
+			<HediffDef>FSFProstheticEye</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing prosthetic eye.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>FSFProstheticEye</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>FSFProstheticEye</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Eye</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>FSFProstheticEye</addsHediff>
+		<uiIconThing>FSFProstheticEye</uiIconThing>
+	</RecipeDef>
+	
+	<!-- Prosthetic Hand -->
+	
+	<HediffDef ParentName="FSFAddedBodyPartProsthetic">
+		<defName>FSFProstheticHand</defName>
+		<label>prosthetic hand</label>
+		<labelNoun>a prosthetic hand</labelNoun>
+		<description>An installed prosthetic hand.</description>
+		<descriptionHyperlinks><ThingDef>FSFProstheticHand</ThingDef></descriptionHyperlinks>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+					<li>
+						<label>fist</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>8.2</power> <!-- Same as natural fist -->
+						<cooldownTime>2</cooldownTime>
+					</li>
+				</tools>
+			</li>
+		</comps>
+		<spawnThingOnRemoved>FSFProstheticHand</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>0.80</partEfficiency>
+		</addedPartProps>
+  </HediffDef>
+	
+	<ThingDef ParentName="BodyPartProstheticMakeableBase">
+		<defName>FSFProstheticHand</defName>
+		<label>prosthetic hand</label>
+		<description>A hand prosthesis. While it lacks a neural interface, its complex arrangement of internal joints allows it to mimic natural movement quite convincingly. Still, it is inferior to a real hand.</description>
+		<descriptionHyperlinks><RecipeDef>InstallFSFProstheticHand</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Steel>10</Steel>
+			<ComponentIndustrial>2</ComponentIndustrial>
+		</costList>
+		<butcherProducts>
+			<Steel>10</Steel>
+			<ComponentIndustrial>2</ComponentIndustrial>
+		</butcherProducts>
+		<statBases>
+			<Mass>2</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="SurgeryInstallBodyPartProstheticBase">
+		<defName>InstallFSFProstheticHand</defName>
+		<label>install prosthetic hand</label>
+		<description>Install a prosthetic hand.</description>
+		<descriptionHyperlinks>
+			<ThingDef>FSFProstheticHand</ThingDef>
+			<HediffDef>FSFProstheticHand</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing prosthetic hand.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+					<li>FSFProstheticHand</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>FSFProstheticHand</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Hand</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>FSFProstheticHand</addsHediff>
+		<uiIconThing>FSFProstheticHand</uiIconThing>
+	</RecipeDef>
+	
+	<!-- Prosthetic Foot -->
+	
+	<HediffDef ParentName="FSFAddedBodyPartProsthetic">
+		<defName>FSFProstheticFoot</defName>
+		<label>prosthetic foot</label>
+		<labelNoun>a prosthetic foot</labelNoun>
+		<description>An installed prosthetic foot.</description>
+		<descriptionHyperlinks><ThingDef>FSFProstheticFoot</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>FSFProstheticFoot</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>0.95</partEfficiency>
+		</addedPartProps>
+  </HediffDef>
+	
+	<ThingDef ParentName="BodyPartProstheticMakeableBase">
+		<defName>FSFProstheticFoot</defName>
+		<label>prosthetic foot</label>
+		<description>A foot prosthesis. While it lacks a neural interface, its complex arrangement of internal joints allows it to mimic natural movement quite convincingly. Still, it is inferior to a real foot.</description>
+		<descriptionHyperlinks><RecipeDef>InstallFSFProstheticFoot</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Steel>10</Steel>
+			<ComponentIndustrial>2</ComponentIndustrial>
+		</costList>
+		<butcherProducts>
+			<Steel>10</Steel>
+			<ComponentIndustrial>2</ComponentIndustrial>
+		</butcherProducts>
+		<statBases>
+			<Mass>2</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="SurgeryInstallBodyPartProstheticBase">
+		<defName>InstallFSFProstheticFoot</defName>
+		<label>install prosthetic foot</label>
+		<description>Install a prosthetic foot.</description>
+		<descriptionHyperlinks>
+			<ThingDef>FSFProstheticFoot</ThingDef>
+			<HediffDef>FSFProstheticFoot</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing prosthetic foot.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+					<li>FSFProstheticFoot</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>FSFProstheticFoot</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Foot</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>FSFProstheticFoot</addsHediff>
+		<uiIconThing>FSFProstheticFoot</uiIconThing>
+	</RecipeDef>
+	
+	<!-- Prosthetic Spine -->
+	
+	<HediffDef ParentName="FSFAddedBodyPartProsthetic">
+		<defName>FSFProstheticSpine</defName>
+		<label>prosthetic spine</label>
+		<labelNoun>a prosthetic spine</labelNoun>
+		<description>An installed prosthetic spine.</description>
+		<descriptionHyperlinks><ThingDef>FSFProstheticSpine</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>FSFProstheticSpine</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>0.80</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+	
+	<ThingDef ParentName="BodyPartProstheticMakeableBase">
+		<defName>FSFProstheticSpine</defName>
+		<label>prosthetic spine</label>
+		<description>A spine prosthesis. It's not as efficient as the real thing but it's better than nothing.</description>
+		<descriptionHyperlinks><RecipeDef>InstallFSFProstheticSpine</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Steel>30</Steel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+		</costList>
+		<butcherProducts>
+			<Steel>30</Steel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+		</butcherProducts>
+		<statBases>
+			<Mass>2</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="SurgeryInstallBodyPartProstheticBase">
+		<defName>InstallFSFProstheticSpine</defName>
+		<label>install prosthetic spine</label>
+		<description>Install a prosthetic spine.</description>
+		<descriptionHyperlinks>
+			<ThingDef>FSFProstheticSpine</ThingDef>
+			<HediffDef>FSFProstheticSpine</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing prosthetic spine.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>FSFProstheticSpine</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>FSFProstheticSpine</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Spine</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>FSFProstheticSpine</addsHediff>
+		<uiIconThing>FSFProstheticSpine</uiIconThing>
+	</RecipeDef>
+	
+	<!-- Prosthetic Lung -->
+	
+	<HediffDef ParentName="FSFAddedBodyPartProsthetic">
+		<defName>FSFSimpleProstheticLung</defName>
+		<label>prosthetic lung</label>
+		<labelNoun>a prosthetic lung</labelNoun>
+		<description>An installed prosthetic lung.</description>
+		<descriptionHyperlinks><ThingDef>FSFSimpleProstheticLung</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>FSFSimpleProstheticLung</spawnThingOnRemoved>
+		<preventsLungRot>true</preventsLungRot>
+		<stages>
+			<li>
+				<makeImmuneTo>
+					<li>LungRot</li>
+				</makeImmuneTo>
+			</li>
+		</stages>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>0.80</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+	
+	<ThingDef ParentName="BodyPartProstheticMakeableBase">
+		<defName>FSFSimpleProstheticLung</defName>
+		<label>prosthetic lung</label>
+		<description>A lung prosthesis. It's not as efficient as the real thing but it's better than nothing.</description>
+		<descriptionHyperlinks><RecipeDef>InstallFSFSimpleProstheticLung</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Steel>25</Steel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+		</costList>
+		<butcherProducts>
+			<Steel>25</Steel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+		</butcherProducts>
+		<statBases>
+			<Mass>2</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="SurgeryInstallBodyPartProstheticBase">
+		<defName>InstallFSFSimpleProstheticLung</defName>
+		<label>install prosthetic lung</label>
+		<description>Install a prosthetic lung.</description>
+		<descriptionHyperlinks>
+			<ThingDef>FSFSimpleProstheticLung</ThingDef>
+			<HediffDef>FSFSimpleProstheticLung</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing prosthetic lung.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>FSFSimpleProstheticLung</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>FSFSimpleProstheticLung</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Lung</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>FSFSimpleProstheticLung</addsHediff>
+		<uiIconThing>FSFSimpleProstheticLung</uiIconThing>
+	</RecipeDef>
+	
+	<!-- Prosthetic Kidney -->
+	
+	<HediffDef ParentName="FSFAddedBodyPartProsthetic">
+		<defName>FSFSimpleProstheticKidney</defName>
+		<label>prosthetic kidney</label>
+		<labelNoun>a prosthetic kidney</labelNoun>
+		<description>An installed prosthetic kidney.</description>
+		<descriptionHyperlinks><ThingDef>FSFSimpleProstheticKidney</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>FSFSimpleProstheticKidney</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>0.80</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+	
+	<ThingDef ParentName="BodyPartProstheticMakeableBase">
+		<defName>FSFSimpleProstheticKidney</defName>
+		<label>prosthetic kidney</label>
+		<description>A kidney prosthesis. It's not as efficient as the real thing but it's better than nothing.</description>
+		<descriptionHyperlinks><RecipeDef>InstallFSFSimpleProstheticKidney</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Steel>20</Steel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+		</costList>
+		<butcherProducts>
+			<Steel>20</Steel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+		</butcherProducts>
+		<statBases>
+			<Mass>2</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="SurgeryInstallBodyPartProstheticBase">
+		<defName>InstallFSFSimpleProstheticKidney</defName>
+		<label>install prosthetic kidney</label>
+		<description>Install a prosthetic kidney.</description>
+		<descriptionHyperlinks>
+			<ThingDef>FSFSimpleProstheticKidney</ThingDef>
+			<HediffDef>FSFSimpleProstheticKidney</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing prosthetic kidney.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>FSFSimpleProstheticKidney</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>FSFSimpleProstheticKidney</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Kidney</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>FSFSimpleProstheticKidney</addsHediff>
+		<uiIconThing>FSFSimpleProstheticKidney</uiIconThing>
+	</RecipeDef>
+	
+	<!-- Prosthetic Liver -->
+	
+	<HediffDef ParentName="FSFAddedBodyPartProsthetic">
+		<defName>FSFSimpleProstheticLiver</defName>
+		<label>prosthetic liver</label>
+		<labelNoun>a prosthetic liver</labelNoun>
+		<description>An installed prosthetic liver.</description>
+		<descriptionHyperlinks><ThingDef>FSFSimpleProstheticLiver</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>FSFSimpleProstheticLiver</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>0.80</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+	
+	<ThingDef ParentName="BodyPartProstheticMakeableBase">
+		<defName>FSFSimpleProstheticLiver</defName>
+		<label>prosthetic liver</label>
+		<description>A liver prosthesis. It's not as efficient as the real thing but it's better than nothing.</description>
+		<descriptionHyperlinks><RecipeDef>InstallFSFSimpleProstheticLiver</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Steel>20</Steel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+		</costList>
+		<butcherProducts>
+			<Steel>20</Steel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+		</butcherProducts>
+		<statBases>
+			<Mass>2</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="SurgeryInstallBodyPartProstheticBase">
+		<defName>InstallFSFSimpleProstheticLiver</defName>
+		<label>install prosthetic liver</label>
+		<description>Install a prosthetic liver.</description>
+		<descriptionHyperlinks>
+			<ThingDef>FSFSimpleProstheticLiver</ThingDef>
+			<HediffDef>FSFSimpleProstheticLiver</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing prosthetic liver.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>FSFSimpleProstheticLiver</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>FSFSimpleProstheticLiver</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Liver</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>FSFSimpleProstheticLiver</addsHediff>
+		<uiIconThing>FSFSimpleProstheticLiver</uiIconThing>
+	</RecipeDef>
+	
+	<!-- Prosthetic stomach -->	
+	
+	<HediffDef ParentName="FSFAddedBodyPartProsthetic">
+		<defName>FSFSimpleProstheticStomach</defName>
+		<label>prosthetic stomach</label>
+		<labelNoun>a prosthetic stomach</labelNoun>
+		<description>An installed prosthetic stomach.</description>
+		<descriptionHyperlinks><ThingDef>FSFSimpleProstheticStomach</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>FSFSimpleProstheticStomach</spawnThingOnRemoved>
+		<stages>
+			<li>
+				<makeImmuneTo>
+					<li>GutWorms</li>
+				</makeImmuneTo>
+			</li>
+		</stages>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>0.80</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+	
+	<ThingDef ParentName="BodyPartProstheticMakeableBase">
+		<defName>FSFSimpleProstheticStomach</defName>
+		<label>prosthetic stomach</label>
+		<description>A stomach prosthesis. It's not as efficient as the real thing but it's better than nothing.</description>
+		<descriptionHyperlinks><RecipeDef>InstallFSFSimpleProstheticStomach</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Steel>20</Steel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+		</costList>
+		<butcherProducts>
+			<Steel>20</Steel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+		</butcherProducts>
+		<statBases>
+			<Mass>2</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="SurgeryInstallBodyPartProstheticBase">
+		<defName>InstallFSFSimpleProstheticStomach</defName>
+		<label>install prosthetic stomach</label>
+		<description>Install a prosthetic stomach.</description>
+		<descriptionHyperlinks>
+			<ThingDef>FSFSimpleProstheticStomach</ThingDef>
+			<HediffDef>FSFSimpleProstheticStomach</HediffDef>
+		</descriptionHyperlinks>
+		<workerClass>Recipe_InstallArtificialBodyPart</workerClass>
+		<jobString>Installing prosthetic stomach.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>FSFSimpleProstheticStomach</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>FSFSimpleProstheticStomach</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Stomach</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>FSFSimpleProstheticStomach</addsHediff>
+		<uiIconThing>FSFSimpleProstheticStomach</uiIconThing>
+	</RecipeDef>
+
+</Defs>

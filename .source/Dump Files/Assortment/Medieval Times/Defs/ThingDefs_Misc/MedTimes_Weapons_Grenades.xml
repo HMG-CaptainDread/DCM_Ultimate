@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!-- Start of thingDefs -->
+  <!-- ==================== Bases ========================== -->
+
+  <ThingDef Name="MedTimes_RangedGrenade" Abstract="True">
+    <equipmentType>Secondary</equipmentType>
+    <label>equipment lacks label</label>
+    <thingClass>ThingWithComps</thingClass>
+	<drawerType>MapMeshOnly</drawerType>
+    <category>Item</category>
+    <useHitPoints>true</useHitPoints>
+    <selectable>true</selectable>
+    <graphicData>
+      <onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+    </graphicData>
+    <drawGUIOverlay>true</drawGUIOverlay>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+      <DeteriorationRate>3</DeteriorationRate>
+      <SellPriceFactor>0.9</SellPriceFactor>
+      <Mass>1</Mass>	  
+	  <Beauty>-5</Beauty>	  
+    </statBases>
+    <altitudeLayer>Item</altitudeLayer>
+    <description>Equipment lacks desc.</description>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li>
+        <compClass>CompEquippable</compClass>
+      </li>
+    </comps>
+    <alwaysHaulable>true</alwaysHaulable>
+    <tickerType>Never</tickerType>
+    <tradeTags><li>MedTimes_Gear</li></tradeTags>		
+  </ThingDef>
+
+
+  <ThingDef Name="MedTimes_RangedGrenade_Proj" Abstract="True">
+    <category>Projectile</category>
+    <altitudeLayer>Projectile</altitudeLayer>
+    <thingClass>Projectile_Explosive</thingClass>
+    <label>projectile</label>
+    <tickerType>Normal</tickerType>
+    <useHitPoints>False</useHitPoints>
+    <neverMultiSelect>True</neverMultiSelect>
+    <graphicData>
+      <shaderType>Transparent</shaderType>
+    </graphicData>
+    <projectile>
+      <speed>12</speed>
+      <flyOverhead>false</flyOverhead>
+    </projectile>
+  </ThingDef>
+
+
+  <!-- ==================== Makeable Grenades ========================== -->
+  <!-- ==================== Frag grenade ========================== -->
+
+  <ThingDef ParentName="MedTimes_RangedGrenade_Proj">
+    <defName>MedTimes_Ranged_MedievalGrenade_Proj</defName>
+    <label>Medieval Grenade</label>
+    <thingClass>Projectile_Explosive</thingClass>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponGrenade/MedTimes_Grenade</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <explosionRadius >1.5</explosionRadius >
+      <damageDef>Flame</damageDef>
+      <damageAmountBase>10</damageAmountBase>
+      <preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="MedTimes_RangedGrenade">
+    <defName>MedTimes_Ranged_MedievalGrenade</defName>
+    <equipmentType>Primary</equipmentType>
+    <label>Medieval Grenades</label>
+    <description>Very Old-school clay pots filled with a flammable liquid and wood pitch. Contains a burning wick for when it explodes on it's target.</description>
+		<smeltable>true</smeltable>	
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponGrenade/MedTimes_Grenades</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Interact_MolotovCocktail</soundInteract>
+    <techLevel>Medieval</techLevel>
+    <costList>
+      <Steel>25</Steel>
+      <MedTimes_Resource_AdobeBricks>5</MedTimes_Resource_AdobeBricks>	  
+      <MedTimes_Resource_Quicklime>1</MedTimes_Resource_Quicklime>	  
+    </costList>	
+    <statBases>
+	  <WorkToMake>5000</WorkToMake> 	
+      <MarketValue>200</MarketValue>
+      <RangedWeapon_Cooldown>2.66</RangedWeapon_Cooldown>
+    </statBases>
+    <verbs>
+      <li>
+        <label>Throw Medieval Grenade</label>
+        <verbClass>Verb_LaunchProjectile</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <range>12.9</range>
+        <forcedMissRadius>1.0</forcedMissRadius>
+        <warmupTime>0.9</warmupTime>
+        <noiseRadius>4</noiseRadius>
+        <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>		
+        <soundCast>ThrowMolotovCocktail</soundCast>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+        <defaultProjectile>MedTimes_Ranged_MedievalGrenade_Proj</defaultProjectile>
+      </li>
+    </verbs>
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <recipeUsers>
+        <li>MedTimes_CraftingStation</li>	  
+      </recipeUsers>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+    </recipeMaker>		
+    <weaponTags><li>MedTimes_Weapon_Sapper</li></weaponTags>
+    <thingCategories><li>Grenades</li></thingCategories>	
+  </ThingDef>
+
+
+
+
+
+  <!-- ==================== Non-Makeable Grenades ========================== -->
+ <!-- Holy Hand Grenade --> 
+  <ThingDef ParentName="MedTimes_RangedGrenade_Proj">
+    <defName>MedTimes_Ranged_GrenadeAntiochProj</defName>
+    <label>Holy Hand Grenade</label>
+    <thingClass>Projectile_Explosive</thingClass>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponGrenade/MedTimes_GrenadeAntioch</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>	
+    <projectile>	
+      <explosionRadius >12</explosionRadius >
+      <damageDef>Flame</damageDef>
+      <damageAmountBase>35</damageAmountBase>
+      <preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+      <preExplosionSpawnChance>0.45</preExplosionSpawnChance>
+      <soundExplode>MortarIncendiary_Explode</soundExplode>	
+      <soundAmbient>MortarRound_Ambient</soundAmbient>	  
+    </projectile>
+  </ThingDef>
+ 
+  <ThingDef ParentName="MedTimes_RangedGrenade">
+    <defName>MedTimes_Ranged_GrenadesAntioch</defName>
+    <equipmentType>Primary</equipmentType>
+    <label>Holy Hand Grenade Of Antioch (Art)</label>
+    <description>(Artifact) 
+	A single-use holy relic. Very Old and sacred relic that originated from "Earth" and the "Cult of Monty" during the late 22st century. It is unknown exactly when how or why these relics where created, only the massive destruction that they are capable of. 
+
+	From The Book of Armaments 2:9-21 
+	"And the Lord spake, saying, First shalt
+    thou take out the Holy Pin.
+
+    Then, shalt thou count to three, no more,
+    no less.
+
+    Three shalt be the number thou shalt
+    count, and the number of the counting
+    shalt be three.
+
+    Four shalt thou not count,
+    nor either count thou two, excepting that
+    thou then proceed to three.
+
+    Five is right out.
+
+    Once the number three,
+    being the third number, be reached, then
+    lobbest thou thy Holy Hand Grenade of
+    Antioch towards thy foe, who being
+    naughty in my sight, shall snuf it."
+	~Amen</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponGrenade/MedTimes_GrenadesAntioch</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+	  <drawSize>(0.7,0.7)</drawSize> 	  
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponGrenade/MedTimes_GrenadesAntioch_Art</uiIconPath>		
+    <soundInteract>Interact_MolotovCocktail</soundInteract>
+    <techLevel>Medieval</techLevel>
+    <costList>
+      <Steel>25</Steel>
+      <MedTimes_Resource_Quicklime>1</MedTimes_Resource_Quicklime>	  
+    </costList>	
+    <statBases>
+      <MarketValue>1200</MarketValue>
+	  <Mass>1</Mass>	  
+      <RangedWeapon_Cooldown>2.66</RangedWeapon_Cooldown>
+    </statBases>
+    <verbs>	
+      <li>	  
+        <label>Throw Holy Hand Grenade</label>
+        <verbClass>Verb_ShootOneUse</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <range>12.9</range>
+        <forcedMissRadius>1.0</forcedMissRadius>
+        <warmupTime>3.0</warmupTime>
+        <noiseRadius>40</noiseRadius>
+		<onlyManualCast>true</onlyManualCast>
+		<stopBurstWithoutLos>false</stopBurstWithoutLos>		
+        <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>	
+        <soundCast>ThrowGrenade</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>		
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+        <defaultProjectile>MedTimes_Ranged_GrenadeAntiochProj</defaultProjectile>
+      </li>
+    </verbs>
+    <thingCategories><li>WeaponsRangedGrenades_Art</li></thingCategories>	
+    <tradeTags><li>MedTimes_Artifact</li></tradeTags>
+    <thingSetMakerTags>
+		<li>PeaceTalksGift</li>
+		<li>ItemStashQuest</li>
+		<li>BanditCampQuestRewards</li>
+		<li>AncientTempleContents</li>
+		<li>AncientPodContents</li>
+    </thingSetMakerTags>		
+  </ThingDef> 
+
+<!-- Holy Hand Grenade Dud --> 
+  <ThingDef ParentName="MedTimes_RangedGrenade_Proj">
+    <defName>MedTimes_Ranged_GrenadeAntiochProj_Dud</defName>
+    <label>Holy Hand Grenade</label>
+    <thingClass>Projectile_Explosive</thingClass>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponGrenade/MedTimes_GrenadeAntioch</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>	
+      <explosionRadius >12</explosionRadius >
+      <damageDef>Bomb</damageDef>
+      <damageAmountBase>1</damageAmountBase>
+      <preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+      <preExplosionSpawnChance>0.45</preExplosionSpawnChance>
+      <soundExplode>Mortar_LaunchA</soundExplode>	
+      <soundAmbient>MortarRound_Ambient</soundAmbient>	  
+    </projectile>
+  </ThingDef>
+ 
+  <ThingDef ParentName="MedTimes_RangedGrenade">
+    <defName>MedTimes_Ranged_GrenadesAntioch_Dud</defName>
+    <equipmentType>Primary</equipmentType>
+    <label>Holy Hand Grenade Of Antioch (Art)</label>
+    <description>(Artifact) 
+	A single-use holy relic. Very Old and sacred relic that originated from "Earth" and the "Cult of Monty" during the late 22st century. It is unknown exactly when how or why these relics where created, only the massive destruction that they are capable of. 
+
+	From The Book of Armaments 2:9-21 
+	"And the Lord spake, saying, First shalt
+    thou take out the Holy Pin.
+
+    Then, shalt thou count to three, no more,
+    no less.
+
+    Three shalt be the number thou shalt
+    count, and the number of the counting
+    shalt be three.
+
+    Four shalt thou not count,
+    nor either count thou two, excepting that
+    thou then proceed to three.
+
+    Five is right out.
+
+    Once the number three,
+    being the third number, be reached, then
+    lobbest thou thy Holy Hand Grenade of
+    Antioch towards thy foe, who being
+    naughty in my sight, shall snuf it."
+	~Amen</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponGrenade/MedTimes_GrenadesAntioch</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+	  <drawSize>(0.7,0.7)</drawSize> 	  
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponGrenade/MedTimes_GrenadesAntioch_Art</uiIconPath>
+    <soundInteract>Interact_MolotovCocktail</soundInteract>
+    <techLevel>Medieval</techLevel>
+    <costList>
+      <Steel>25</Steel>
+      <MedTimes_Resource_Quicklime>1</MedTimes_Resource_Quicklime>	  
+    </costList>	
+    <statBases>
+      <MarketValue>1200</MarketValue>
+	  <Mass>1</Mass>	  
+      <RangedWeapon_Cooldown>2.66</RangedWeapon_Cooldown>
+    </statBases>
+    <verbs>	
+      <li>	  
+        <label>Throw Holy Hand Grenade</label>
+        <verbClass>Verb_ShootOneUse</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <range>12.9</range>
+        <forcedMissRadius>1.0</forcedMissRadius>
+        <warmupTime>3.0</warmupTime>
+        <noiseRadius>40</noiseRadius>
+		<onlyManualCast>true</onlyManualCast>
+		<stopBurstWithoutLos>false</stopBurstWithoutLos>		
+        <ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>	
+        <soundCast>ThrowGrenade</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>		
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+        <defaultProjectile>MedTimes_Ranged_GrenadeAntiochProj_Dud</defaultProjectile>
+      </li>
+    </verbs>
+    <thingCategories><li>WeaponsRangedGrenades_Art</li></thingCategories>	
+    <tradeTags><li>MedTimes_Artifact</li></tradeTags>
+    <thingSetMakerTags>
+		<li>PeaceTalksGift</li>
+		<li>ItemStashQuest</li>
+		<li>BanditCampQuestRewards</li>
+		<li>AncientTempleContents</li>
+		<li>AncientPodContents</li>
+    </thingSetMakerTags>		
+  </ThingDef>
+  
+<!-- End of thingDefs -->   
+</Defs>

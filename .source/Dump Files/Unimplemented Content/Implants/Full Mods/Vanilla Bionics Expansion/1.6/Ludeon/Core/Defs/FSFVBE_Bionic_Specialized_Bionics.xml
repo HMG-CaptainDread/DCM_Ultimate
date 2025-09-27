@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	
+		<!-- Bionic Power Arm -->
+	
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>FSFBionicPowerArm</defName>
+		<label>bionic power arm</label>
+		<labelNoun>a bionic power arm</labelNoun>
+		<description>An installed bionic power arm.</description>
+		<descriptionHyperlinks><ThingDef>FSFBionicPowerArm</ThingDef></descriptionHyperlinks>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+					<li>
+						<label>claw</label>
+						<capacities>
+							<li>Scratch</li>
+						</capacities>
+						<power>22</power>
+						<cooldownTime>2</cooldownTime>
+						<soundMeleeHit>Pawn_Melee_PowerClaw_Hit</soundMeleeHit>
+						<soundMeleeMiss>Pawn_Melee_PowerClaw_Miss</soundMeleeMiss>
+						<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+					</li>
+				</tools>
+			</li>
+        	<li MayRequire="V1024.EBFramework" Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust">
+            	<scaleAdjustment>0.5</scaleAdjustment>
+        	</li>
+		</comps>
+		<spawnThingOnRemoved>FSFBionicPowerArm</spawnThingOnRemoved>
+		<addedPartProps>
+			<isGoodWeapon>true</isGoodWeapon>
+			<solid>true</solid>
+			<partEfficiency>1.25</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	
+	<ThingDef ParentName="BodyPartBionicBase">
+		<defName>FSFBionicPowerArm</defName>
+		<label>bionic power arm</label>
+		<description>An advanced artificial arm fitted with retractable power claw blades. Silenced mini-servos give great strength, while the biogel nerve-link gives exquisite control. A lattice-dust healing system allows it to recover from damage.</description>
+		<descriptionHyperlinks><RecipeDef>InstallFSFBionicPowerArm</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<BionicArm>1</BionicArm>
+			<PowerClaw>1</PowerClaw>
+		</costList>
+		<butcherProducts>
+			<BionicArm>1</BionicArm>
+			<PowerClaw>1</PowerClaw>
+		</butcherProducts>
+		<recipeMaker>
+			<researchPrerequisites>
+				<li>Bionics</li>
+			</researchPrerequisites>
+		</recipeMaker>
+		<thingSetMakerTags><li>RewardStandardMidFreq</li></thingSetMakerTags>
+		<statBases>
+			<Mass>6</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+			<li>AdvancedWeapon</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+		<defName>InstallFSFBionicPowerArm</defName>
+		<label>install bionic power arm</label>
+		<description>Install a bionic power arm.</description>
+		<descriptionHyperlinks>
+			<ThingDef>FSFBionicPowerArm</ThingDef>
+			<HediffDef>FSFBionicPowerArm</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing bionic power arm.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>FSFBionicPowerArm</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>FSFBionicPowerArm</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>FSFBionicPowerArm</addsHediff>
+		<uiIconThing>FSFBionicPowerArm</uiIconThing>
+	</RecipeDef>
+
+</Defs>

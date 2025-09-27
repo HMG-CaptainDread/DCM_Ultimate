@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo500Linebaugh</defName>
+		<label>.500 Linebaugh</label>
+		<parent>AmmoPistols</parent>
+		<iconPath>UI/Icons/ThingCategories/CaliberPistol</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>AmmoSet_500Linebaugh</defName>
+		<label>.500 Linebaugh</label>
+		<ammoTypes>
+			<Ammo_500Linebaugh_FMJ>Bullet_500Linebaugh_FMJ</Ammo_500Linebaugh_FMJ>
+			<Ammo_500Linebaugh_AP>Bullet_500Linebaugh_AP</Ammo_500Linebaugh_AP>
+			<Ammo_500Linebaugh_HP>Bullet_500Linebaugh_HP</Ammo_500Linebaugh_HP>			
+		</ammoTypes>
+		<similarTo>AmmoSet_PistolMagnum</similarTo>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="500LinebaughBase" ParentName="SmallAmmoBase" Abstract="True" MayRequire="cgf1.gunsgalore.magnum.i">
+		<description>A very large and very powerful proprietary pistol cartridge.</description>
+		<statBases>
+			<Mass>0.041</Mass>
+			<Bulk>0.03</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo500Linebaugh</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="500LinebaughBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Ammo_500Linebaugh_FMJ</defName>
+		<label>.500 Linebaugh cartridge (FMJ)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/FMJ</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.17</MarketValue>
+		</statBases>
+		<ammoClass>FullMetalJacket</ammoClass>
+		<cookOffProjectile>Bullet_500Linebaugh_FMJ</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="500LinebaughBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Ammo_500Linebaugh_AP</defName>
+		<label>.500 Linebaugh cartridge (AP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/AP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.17</MarketValue>
+		</statBases>
+		<ammoClass>ArmorPiercing</ammoClass>
+		<cookOffProjectile>Bullet_500Linebaugh_AP</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="500LinebaughBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Ammo_500Linebaugh_HP</defName>
+		<label>.500 Linebaugh cartridge (HP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/HP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.17</MarketValue>
+		</statBases>
+		<ammoClass>HollowPoint</ammoClass>
+		<cookOffProjectile>Bullet_500Linebaugh_HP</cookOffProjectile>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="Base500LinebaughBullet" ParentName="BaseBulletCE" Abstract="true" MayRequire="cgf1.gunsgalore.magnum.i">
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>80</speed>
+			<dropsCasings>true</dropsCasings>
+			<casingMoteDefname>Fleck_PistolAmmoCasings</casingMoteDefname>
+			<casingFilthDefname>Filth_PistolAmmoCasings</casingFilthDefname>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base500LinebaughBullet" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Bullet_500Linebaugh_FMJ</defName>
+		<label>.500 Linebaugh bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>20</damageAmountBase>
+			<armorPenetrationSharp>7</armorPenetrationSharp>
+			<armorPenetrationBlunt>44.8</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base500LinebaughBullet" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Bullet_500Linebaugh_AP</defName>
+		<label>.500 Linebaugh bullet (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>13</damageAmountBase>
+			<armorPenetrationSharp>14</armorPenetrationSharp>
+			<armorPenetrationBlunt>44.8</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base500LinebaughBullet" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Bullet_500Linebaugh_HP</defName>
+		<label>.500 Linebaugh bullet (HP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>26</damageAmountBase>
+			<armorPenetrationSharp>3.5</armorPenetrationSharp>
+			<armorPenetrationBlunt>44.8</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>MakeAmmo_500Linebaugh_FMJ</defName>
+		<label>make .500 Linebaugh cartridge x500</label>
+		<description>Craft 500 .500 Linebaugh cartridges.</description>
+		<jobString>Making .500 Linebaugh cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>42</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_500Linebaugh_FMJ>500</Ammo_500Linebaugh_FMJ>
+		</products>
+		<workAmount>4200</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>MakeAmmo_500Linebaugh_AP</defName>
+		<label>make .500 Linebaugh (AP) cartridge x500</label>
+		<description>Craft 500 .500 Linebaugh (AP) cartridges.</description>
+		<jobString>Making .500 Linebaugh (AP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>42</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_500Linebaugh_AP>500</Ammo_500Linebaugh_AP>
+		</products>
+		<workAmount>5040</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>MakeAmmo_500Linebaugh_HP</defName>
+		<label>make .500 Linebaugh (HP) cartridge x500</label>
+		<description>Craft 500 .500 Linebaugh (HP) cartridges.</description>
+		<jobString>Making .500 Linebaugh (HP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>42</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_500Linebaugh_HP>500</Ammo_500Linebaugh_HP>
+		</products>
+		<workAmount>4200</workAmount>
+	</RecipeDef>
+
+</Defs>

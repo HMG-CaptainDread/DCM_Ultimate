@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<Operation Class="MO_Patches.PatchOperation_ToggleSettings">
+		<settings>
+			<li>building_bloat</li>
+		</settings>
+		<active Class="PatchOperationSequence">
+			<operations>
+
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[defName="VCE_CheesePress"]/designationCategory</xpath>
+					<match Class="PatchOperationRemove">
+						<xpath>Defs/ThingDef[defName="VCE_CheesePress"]/designationCategory</xpath>
+					</match>
+				</li>
+
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[defName="VCE_CheesePress"]/researchPrerequisites</xpath>
+					<match Class="PatchOperationRemove">
+						<xpath>Defs/ThingDef[defName="VCE_CheesePress"]/researchPrerequisites</xpath>
+					</match>
+				</li>
+
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ResearchProjectDef[defName="VCE_CheeseMaking"]</xpath>
+					<match Class="PatchOperationRemove">
+						<xpath>Defs/ResearchProjectDef[defName="VCE_CheeseMaking"]</xpath>
+					</match>
+				</li>
+
+			</operations>
+		</active>
+	</Operation>
+
+</Patch>

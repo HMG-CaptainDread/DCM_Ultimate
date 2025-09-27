@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>		
+	<!-- praying -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/JoyGiverDef[defName = "Pray"]/joyKind</xpath>
+		<value>
+			<joyKind>WorshipGods</joyKind>	
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/JobDef[defName = "Pray"]/joyKind</xpath>
+		<value>
+			<joyKind>WorshipGods</joyKind>	
+		</value>
+	</Operation>
+	
+	<!-- ========== Core Objects Balances ========== -->
+	<!-- Light-bulb Power Consumption -->	
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "StandingLamp"]/comps/li[@Class = "CompProperties_Power"]/basePowerConsumption</xpath>
+		<value>
+        <basePowerConsumption>35</basePowerConsumption>
+		</value>
+	</Operation>
+	
+	<!-- Sunlamp Power Consumption -->	
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "SunLamp"]/comps/li[@Class = "CompProperties_Power"]/basePowerConsumption</xpath>
+		<value>
+        <basePowerConsumption>1000</basePowerConsumption>
+		</value>
+	</Operation>	
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/RecipeDef[defName="Make_Patchleather"]</xpath>
+		<value>
+			<researchPrerequisite>TS_PrimitiveClothing</researchPrerequisite>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/RecipeDef[defName="Make_Patchleather"]/recipeUsers</xpath>
+		<value>
+			<li>CraftingSpot</li>
+			<li>MedTimes_CraftingStation</li>
+			<li>MedTimes_TailoringStation</li>
+		</value>
+	</Operation>
+<!-- ========== Core Neolithic Weapon Ranges ========== -->
+<!-- Change Short Bow Range -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Bow_Short"]/verbs/li/range</xpath>
+		<value>
+			<range>15</range>	
+		</value>
+	</Operation>
+
+	<!-- Change Pila Range -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Pila"]/verbs/li/range</xpath>
+		<value>
+			<range>6</range>	
+		</value>
+	</Operation>
+
+	<!-- Change recurve Bow Range -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Bow_Recurve"]/verbs/li/range</xpath>
+		<value>
+			<range>16</range>	
+		</value>
+	</Operation>		
+	
+	<!-- Change Great Bow Range -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Bow_Great"]/verbs/li/range</xpath>
+		<value>
+			<range>20</range>	
+		</value>
+	</Operation>	
+	
+	
+	<!-- ========== Core Item Materials Balance ========== -->
+	<!-- Steel -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Steel"]/stuffProps/statFactors/MaxHitPoints</xpath>
+		<value>
+			<MaxHitPoints>2</MaxHitPoints>	
+		</value>
+	</Operation>
+
+	
+	<!-- ========== Core Item Graphics ========== -->
+	<!-- Change Basic Shirt Icon -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_BasicShirt"]/graphicData/texPath</xpath>
+		<value>
+			<texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Clothing/TeeShirt/TeeShirt</texPath>	
+		</value>
+	</Operation>
+
+	<!-- Change Basic Shirt Worn Graphic -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_BasicShirt"]/apparel/wornGraphicPath</xpath>
+		<value>
+			<wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Clothing/TeeShirt/TeeShirt</wornGraphicPath>
+		</value>
+	</Operation>
+
+	<!-- Change Basic Pants Worn Graphic -->
+	<Operation Class="PatchOperationSequence">
+	  <success>Always</success>
+	  <operations>
+		<li Class="PatchOperationTest">
+		  <xpath>/Defs/ThingDef[defName = "Apparel_Pants"]/apparel/wornGraphicPath</xpath>
+		  <success>Invert</success>
+		</li>
+		<li Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[defName = "Apparel_Pants"]/apparel</xpath>
+			<value>
+				<wornGraphicPath />
+			</value>
+		</li>
+	  </operations>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_Pants"]/apparel/wornGraphicPath</xpath>
+		<value>
+			<wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Clothing/Pants/Pants</wornGraphicPath>
+		</value>
+	</Operation>
+	
+	
+	<!-- Change Flak Pants Worn Graphic -->
+	<Operation Class="PatchOperationSequence">
+	  <success>Always</success>
+	  <operations>
+		<li Class="PatchOperationTest">
+		  <xpath>/Defs/ThingDef[defName = "Apparel_FlakPants"]/apparel/wornGraphicPath</xpath>
+		  <success>Invert</success>
+		</li>
+		<li Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[defName = "Apparel_FlakPants"]/apparel</xpath>
+			<value>
+				<wornGraphicPath />
+			</value>
+		</li>
+	  </operations>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_FlakPants"]/apparel/wornGraphicPath</xpath>
+		<value>
+			<wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Clothing/FlakPants/Pants</wornGraphicPath>
+		</value>
+	</Operation>	
+
+	<!-- ========== Core Item Category Changes ========== -->
+	<!-- Change Sheild Belt Categories -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_ShieldBelt"]/thingCategories</xpath>
+		<value>
+			<thingCategories>
+				<li>Accessories</li>
+			</thingCategories>
+		</value>
+	</Operation>
+	
+	<!-- Change Smokepop Belt Categories -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_SmokepopBelt"]/thingCategories</xpath>
+		<value>
+			<thingCategories>
+				<li>Accessories</li>
+			</thingCategories>
+		</value>
+	</Operation>	
+	
+	<!-- Change Simple Helmet Categories -->
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName = "Apparel_SimpleHelmet"]</xpath>
+		<value>
+			<thingCategories>
+				<li>HeadArmour</li>
+			</thingCategories>
+		</value>
+	</Operation>
+
+	<!-- Change Advanced Helmet Categories -->
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName = "Apparel_AdvancedHelmet"]</xpath>
+		<value>
+			<thingCategories>
+				<li>HeadArmour</li>
+			</thingCategories>
+		</value>
+	</Operation>
+
+	<!-- Change Advanced Helmet Categories -->
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[@Name = "ApparelArmorHelmetPowerBase"]</xpath>
+		<value>
+			<thingCategories>
+				<li>HeadArmour</li>
+			</thingCategories>
+		</value>
+	</Operation>	
+	
+<!-- Change Tribalwear Categories -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_TribalA"]/thingCategories</xpath>
+		<value>
+			<thingCategories>
+				<li>Bodygear</li>
+			</thingCategories>
+		</value>
+	</Operation>	
+	
+	<!-- Change Parka Categories -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_Parka"]/thingCategories</xpath>
+		<value>
+			<thingCategories>
+				<li>Outergear</li>
+			</thingCategories>
+		</value>
+	</Operation>		
+	
+	<!-- Change Pants Categories -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_Pants"]/thingCategories</xpath>
+		<value>
+			<thingCategories>
+				<li>Bodygear</li>
+			</thingCategories>
+		</value>
+	</Operation>	
+
+	<!-- Change T-shirt Categories -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_BasicShirt"]/thingCategories</xpath>
+		<value>
+			<thingCategories>
+				<li>Bodygear</li>
+			</thingCategories>
+		</value>
+	</Operation>
+
+	<!-- Change button-down shirt Categories -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_CollarShirt"]/thingCategories</xpath>
+		<value>
+			<thingCategories>
+				<li>Bodygear</li>
+			</thingCategories>
+		</value>
+	</Operation>	
+	
+	<!-- Change duster Categories -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_Duster"]/thingCategories</xpath>
+		<value>
+			<thingCategories>
+				<li>Outergear</li>
+			</thingCategories>
+		</value>
+	</Operation>	
+	
+	<!-- Change jacket Categories -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_Jacket"]/thingCategories</xpath>
+		<value>
+			<thingCategories>
+				<li>Outergear</li>
+			</thingCategories>
+		</value>
+	</Operation>
+
+	<!-- Change plate armor Categories -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_PlateArmor"]/thingCategories</xpath>
+		<value>
+			<thingCategories>
+				<li>BodyArmour</li>
+			</thingCategories>
+		</value>
+	</Operation>
+	
+	<!-- Change Flak Vest armor Categories -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_FlakVest"]/thingCategories</xpath>
+		<value>
+			<thingCategories>
+				<li>BodyArmour</li>
+			</thingCategories>
+		</value>
+	</Operation>
+	
+	<!-- Change Flak Jacket armor Categories -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_FlakJacket"]/thingCategories</xpath>
+		<value>
+			<thingCategories>
+				<li>BodyArmour</li>
+			</thingCategories>
+		</value>
+	</Operation>	
+	
+	<!-- Change Flak Pants armor Categories -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_FlakPants"]/thingCategories</xpath>
+		<value>
+			<thingCategories>
+				<li>BodyArmour</li>
+			</thingCategories>
+		</value>
+	</Operation>		
+
+	<!-- Change power armor Categories -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[@Name="ApparelArmorPowerBase"]/thingCategories</xpath>
+		<value>
+			<thingCategories>
+				<li>BodyArmour</li>
+			</thingCategories>
+		</value>
+	</Operation>	
+		
+
+	<!-- ========== Core Armour to Non-Deadmans ========== -->
+	<!-- Change Plate Armor to Non-Deadmans -->
+	<Operation Class="PatchOperationSequence">
+	  <success>Always</success>
+	  <operations>
+		<li Class="PatchOperationTest">
+		  <xpath>/Defs/ThingDef[defName = "Apparel_PlateArmor"]/apparel/careIfWornByCorpse</xpath>
+		  <success>Invert</success>
+		</li>	  
+		<li Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[defName = "Apparel_PlateArmor"]/apparel</xpath>
+			<value><careIfWornByCorpse /></value>
+		</li>	  
+	  </operations>
+	</Operation>	  
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_PlateArmor"]/apparel/careIfWornByCorpse</xpath>
+		<value>
+			<careIfWornByCorpse>false</careIfWornByCorpse>	
+		</value>
+	</Operation>
+
+	<!-- Change Flak Vest to Non-Deadmans -->
+	<Operation Class="PatchOperationSequence">
+	  <success>Always</success>
+	  <operations>
+		<li Class="PatchOperationTest">
+		  <xpath>/Defs/ThingDef[defName = "Apparel_FlakVest"]/apparel/careIfWornByCorpse</xpath>
+		  <success>Invert</success>
+		</li>	  
+		<li Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[defName = "Apparel_FlakVest"]/apparel</xpath>
+			<value><careIfWornByCorpse /></value>
+		</li>	  
+	  </operations>
+	</Operation>	  
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_FlakVest"]/apparel/careIfWornByCorpse</xpath>
+		<value>
+			<careIfWornByCorpse>false</careIfWornByCorpse>	
+		</value>
+	</Operation>
+	
+	<!-- Change Flak Jacket to Non-Deadmans -->
+	<Operation Class="PatchOperationSequence">
+	  <success>Always</success>
+	  <operations>
+		<li Class="PatchOperationTest">
+		  <xpath>/Defs/ThingDef[defName = "Apparel_FlakJacket"]/apparel/careIfWornByCorpse</xpath>
+		  <success>Invert</success>
+		</li>	  
+		<li Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[defName = "Apparel_FlakJacket"]/apparel</xpath>
+			<value><careIfWornByCorpse /></value>
+		</li>	  
+	  </operations>
+	</Operation>	  
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_FlakJacket"]/apparel/careIfWornByCorpse</xpath>
+		<value>
+			<careIfWornByCorpse>false</careIfWornByCorpse>	
+		</value>
+	</Operation>	
+	
+	<!-- Change Flak Pants to Non-Deadmans -->
+	<Operation Class="PatchOperationSequence">
+	  <success>Always</success>
+	  <operations>
+		<li Class="PatchOperationTest">
+		  <xpath>/Defs/ThingDef[defName = "Apparel_FlakPants"]/apparel/careIfWornByCorpse</xpath>
+		  <success>Invert</success>
+		</li>	  
+		<li Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[defName = "Apparel_FlakPants"]/apparel</xpath>
+			<value><careIfWornByCorpse /></value>
+		</li>	  
+	  </operations>
+	</Operation>	  
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_FlakPants"]/apparel/careIfWornByCorpse</xpath>
+		<value>
+			<careIfWornByCorpse>false</careIfWornByCorpse>	
+		</value>
+	</Operation>	
+	
+	<!-- Change Power Armor to Non-Deadmans -->
+	<Operation Class="PatchOperationSequence">
+	  <success>Always</success>
+	  <operations>
+		<li Class="PatchOperationTest">
+		  <xpath>/Defs/ThingDef[defName = "Apparel_PowerArmor"]/apparel/careIfWornByCorpse</xpath>
+		  <success>Invert</success>
+		</li>	  
+		<li Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[defName = "Apparel_PowerArmor"]/apparel</xpath>
+			<value><careIfWornByCorpse /></value>
+		</li>	  
+	  </operations>
+	</Operation>	  
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_PowerArmor"]/apparel/careIfWornByCorpse</xpath>
+		<value>
+			<careIfWornByCorpse>false</careIfWornByCorpse>	
+		</value>
+	</Operation>
+
+	<!-- Change Simple Helmet to Non-Deadmans -->
+	<Operation Class="PatchOperationSequence">
+	  <success>Always</success>
+	  <operations>
+		<li Class="PatchOperationTest">
+		  <xpath>/Defs/ThingDef[defName = "Apparel_SimpleHelmet"]/apparel/careIfWornByCorpse</xpath>
+		  <success>Invert</success>
+		</li>	  
+		<li Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[defName = "Apparel_SimpleHelmet"]/apparel</xpath>
+			<value><careIfWornByCorpse /></value>
+		</li>	  
+	  </operations>
+	</Operation>	  
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_SimpleHelmet"]/apparel/careIfWornByCorpse</xpath>
+		<value>
+			<careIfWornByCorpse>false</careIfWornByCorpse>	
+		</value>
+	</Operation>
+
+	<!-- Change Advanced Helmet to Non-Deadmans -->
+	<Operation Class="PatchOperationSequence">
+	  <success>Always</success>
+	  <operations>
+		<li Class="PatchOperationTest">
+		  <xpath>/Defs/ThingDef[defName = "Apparel_AdvancedHelmet"]/apparel/careIfWornByCorpse</xpath>
+		  <success>Invert</success>
+		</li>	  
+		<li Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[defName = "Apparel_AdvancedHelmet"]/apparel</xpath>
+			<value><careIfWornByCorpse /></value>
+		</li>	  
+	  </operations>
+	</Operation>	  
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_AdvancedHelmet"]/apparel/careIfWornByCorpse</xpath>
+		<value>
+			<careIfWornByCorpse>false</careIfWornByCorpse>	
+		</value>
+	</Operation>
+
+	<!-- Change Power Armor Helmet to Non-Deadmans -->
+	<Operation Class="PatchOperationSequence">
+	  <success>Always</success>
+	  <operations>
+		<li Class="PatchOperationTest">
+		  <xpath>/Defs/ThingDef[defName = "Apparel_PowerArmorHelmet"]/apparel/careIfWornByCorpse</xpath>
+		  <success>Invert</success>
+		</li>	  
+		<li Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[defName = "Apparel_PowerArmorHelmet"]/apparel</xpath>
+			<value><careIfWornByCorpse /></value>
+		</li>	  
+	  </operations>
+	</Operation>	  
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_PowerArmorHelmet"]/apparel/careIfWornByCorpse</xpath>
+		<value>
+			<careIfWornByCorpse>false</careIfWornByCorpse>	
+		</value>
+	</Operation>	
+	
+</Patch>
+

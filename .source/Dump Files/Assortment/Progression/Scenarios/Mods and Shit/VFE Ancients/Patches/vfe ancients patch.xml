@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>    
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ScenarioDef[defName="RE_NewVault"]/scenario/summary</xpath>
+        <value>
+            <summary>A lone super-soldier awakes in a heavily fortified ancient lab. </summary>
+        </value>
+    </Operation>
+
+
+
+
+
+
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Factions Expanded - Tribals</li>
+		</mods>
+		<match Class="PatchOperationAdd">
+			<xpath>/Defs</xpath>
+			<value>
+  <ScenarioDef Name="VFEA_NewVault">
+    <defName>Ferny_TribalVault</defName>
+    <label>Locked Out</label>
+    <description>With each passing day you stare at your fellow companions hibernating in cryptosleep sarcophagi. One day, when your life is nearing its end, you will wake your successor, and his watch will begin. Every day for the last hundreds of years your outpost was awaiting orders from High Command which may no longer exist. Will today be the day you not only wake up, but also open your eyes?
+	
+Note: Since you start alone with random superpowers and weaknesses, this is a difficult scenario.</description>
+    <scenario>
+      <summary>A small group of wild men locked outside of an ancient vault. Very challenging.</summary>
+      <playerFaction>
+        <def>PlayerFaction</def>
+        <factionDef>VFET_WildMen</factionDef>
+      </playerFaction>
+      <parts>
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <text>With each passing day you stare at your fellow companions hibernating in cryptosleep sarcophagi. One day, when your life is nearing its end, you will wake your successor, and his watch will begin. Every day for the last hundreds of years your outpost was awaiting orders from High Command which may no longer exist. Will today be the day you not only wake up, but also open your eyes?</text>
+          <closeSound>GameStartSting</closeSound>
+        </li>
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns">
+          <def>ConfigPage_ConfigureStartingPawns</def>
+          <pawnCount>4</pawnCount>
+          <pawnChoiceCount>8</pawnChoiceCount>
+        </li>
+        <!-- Player starting stuff spawn method-->
+        <li Class="VFECore.ScenPart_ArriveAtEdge">
+          <def>VFEC_PlayerPawnsArriveMethodEdge</def>
+          <location>(48, 0, 0)</location>
+        </li>
+        <li Class="KCSG.ScenPart_AddStartingStructure">
+          <def>VFEC_AddStartingStructure</def>
+          <structureLabel>A sealed vault</structureLabel>
+          <spawnConduits>False</spawnConduits>
+          <nearMapCenter>True</nearMapCenter>
+          <fullClear>True</fullClear>
+          <chooseFrom>
+            <li>VFEA_SealedVaultAlpha</li>
+            <li>VFEA_SealedVaultBravo</li>
+            <li>VFEA_SealedVaultCharlie</li>
+            <li>VFEA_SealedVaultDelta</li>
+            <li>VFEA_SealedVaultEpsilon</li>
+            <li>VFEA_SealedVaultF</li>
+            <li>VFEA_SealedVaultG</li>
+            <li>VFEA_SealedVaultH</li>
+            <li>VFEA_SealedVaultI</li>
+            <li>VFEA_SealedVaultJ</li>
+          </chooseFrom>
+        </li>
+        <li Class="VFEAncients.ScenPart_ReconnectAllPowerBuildings">
+			<def>VFEC_ReconnectAllPowerBuildings</def>
+		</li>
+      </parts>
+    </scenario>
+  </ScenarioDef>
+			</value>
+		</match>
+	</Operation>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Spacer -->
+
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="VFEA_Mending"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="VFEA_Mending"]/tags</xpath>
+                                <value>
+                                    <li>FernySpacerStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="VFEA_Mending"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>FernySpacerStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+</Patch>

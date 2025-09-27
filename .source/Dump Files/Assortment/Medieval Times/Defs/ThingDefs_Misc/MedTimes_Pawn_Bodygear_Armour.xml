@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!-- Start of thingDefs -->
+<!-- ================== General Armour Classes ================ --> 
+  <!-- Armour Base Class -->
+  <ThingDef Name="MedTimes_ArmourBase" Abstract="True">
+    <thingClass>Apparel</thingClass>
+    <category>Item</category>
+	    <techLevel>Medieval</techLevel>	
+    <selectable>True</selectable>
+	<drawerType>MapMeshOnly</drawerType>
+    <pathCost>10</pathCost>
+    <useHitPoints>False</useHitPoints>
+    <graphicData>
+      <onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+    </graphicData>
+    <drawGUIOverlay>true</drawGUIOverlay>	
+    <statBases>
+      <SellPriceFactor>0.8</SellPriceFactor>
+      <Insulation_Cold>3</Insulation_Cold>
+		<EquipDelay>5</EquipDelay>	   
+	  <Beauty>-5</Beauty>
+      <Mass>10</Mass>	  
+    </statBases>
+    <altitudeLayer>Item</altitudeLayer>
+    <alwaysHaulable>True</alwaysHaulable>
+    <tickerType>Never</tickerType>
+
+    <apparel>
+		<careIfWornByCorpse>false</careIfWornByCorpse>	
+		<layers><li>Middle</li></layers>	
+		<defaultOutfitTags><li>Soldier</li></defaultOutfitTags>
+      <bodyPartGroups>
+        <li>Torso</li>
+		<li>Shoulders</li>
+		<li>Arms</li>
+		<li>Legs</li>			
+      </bodyPartGroups>		
+    </apparel>	
+    <comps><li Class="CompProperties_Forbiddable"/></comps>	  
+  </ThingDef>
+  
+  
+<!-- (Non-Nanite Base Class) Makeable -->
+<ThingDef Name="MedTimes_ArmourBaseNN" ParentName="MedTimes_ArmourBase" Abstract="True"> 
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+      <DeteriorationRate>2</DeteriorationRate>	  
+    </statBases>
+    <equippedStatOffsets>
+      <MoveSpeed>-0.12</MoveSpeed>
+    </equippedStatOffsets>	
+     <comps>	  
+      <li><compClass>CompQuality</compClass></li>
+    </comps>		
+    <tradeTags><li>MedTimes_Gear</li></tradeTags>	
+    <thingCategories><li>BodyArmour</li></thingCategories>		
+  </ThingDef>  
+  
+  
+<!-- ================================== Tier 0 Classes =================================-->
+<!-- ================== Wooden Plate Classes ================ -->
+<!-- (Light Class) Tier 0 Non-Makeable -->
+<ThingDef Name="MedTimes_Armour_T0_L" ParentName="MedTimes_ArmourBaseNN" Abstract="True">  	
+	<costList><WoodLog>35</WoodLog></costList>	
+    <statBases>	
+      <ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.3</ArmorRating_Sharp>  
+    </statBases>			
+  </ThingDef>
+
+<!-- (Light Class) Tier 0 Makeable -->
+<ThingDef Name="MedTimes_Craft_Armour_T0_L" ParentName="MedTimes_Armour_T0_L" Abstract="True">  
+    <statBases>
+      <WorkToMake>5000</WorkToMake>
+    </statBases>
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+	  <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+      <recipeUsers>
+		<li>CraftingSpot</li>
+		<li>MedTimes_CraftingStation</li>			
+      </recipeUsers>
+	</recipeMaker>  
+  </ThingDef>
+
+  
+<!-- ================================== Tier 1 Classes =================================-->
+<!-- ==== Light Classes ==== -->
+<!-- (Light Class) Tier 1 Non-Makeable -->
+<ThingDef Name="MedTimes_Armour_T1_L" ParentName="MedTimes_ArmourBaseNN" Abstract="True">  
+	<costList><Steel>50</Steel></costList>
+    <statBases>
+      <ArmorRating_Blunt>0.25</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.55</ArmorRating_Sharp> 
+    </statBases>	
+  </ThingDef>
+
+<!-- (Light Class) Tier 1 Makeable -->
+<ThingDef Name="MedTimes_Smith_Armour_T1_L" ParentName="MedTimes_Armour_T1_L" Abstract="True">  
+    <statBases>
+      <WorkToMake>10000</WorkToMake>
+    </statBases>
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>	  
+      <recipeUsers>
+		<li>MedTimes_BlacksmithForge</li>		
+      </recipeUsers>
+		<skillRequirements>
+				<Crafting>4</Crafting>
+		</skillRequirements>	   
+	</recipeMaker>
+  </ThingDef>
+  
+<!-- ==== Heavy Classes ==== -->
+<!-- (Heavy Class) Tier 1 Non-Makeable -->
+<ThingDef Name="MedTimes_Armour_T1_H" ParentName="MedTimes_ArmourBaseNN" Abstract="True">  
+	<costList><Steel>100</Steel></costList>	
+    <statBases>	
+      <ArmorRating_Blunt>0.25</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.65</ArmorRating_Sharp>
+       <Mass>15</Mass>	  
+    </statBases>	
+    <equippedStatOffsets>
+      <MoveSpeed>-0.2</MoveSpeed>  
+    </equippedStatOffsets>	
+  </ThingDef>
+  
+<!-- (Heavy Class) Tier 1 Makeable -->
+<ThingDef Name="MedTimes_Smith_Armour_T1_H" ParentName="MedTimes_Armour_T1_H" Abstract="True">  
+    <statBases>
+      <WorkToMake>15000</WorkToMake>
+    </statBases>
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>	  
+      <recipeUsers>
+		<li>MedTimes_BlacksmithForge</li>	
+      </recipeUsers>
+		<skillRequirements>
+				<Crafting>6</Crafting>
+		</skillRequirements>	  
+	</recipeMaker>
+  </ThingDef>
+  
+  
+  
+<!-- ================================== Tier 2 Classes =================================-->
+<!-- ==== Light Classes ==== -->
+<!-- (Light Class) Tier 2 Non-Makeable -->
+<ThingDef Name="MedTimes_Armour_T2_L" ParentName="MedTimes_ArmourBaseNN" Abstract="True">  
+	<costList><Steel>50</Steel></costList>	
+    <statBases>
+      <ArmorRating_Blunt>0.35</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.75</ArmorRating_Sharp>	  
+    </statBases>	
+  </ThingDef>
+
+<!-- (Light Class) Tier 2 Makeable -->	
+<ThingDef Name="MedTimes_Smith_Armour_T2_L" ParentName="MedTimes_Armour_T2_L" Abstract="True">  
+    <statBases>
+      <WorkToMake>20000</WorkToMake>
+    </statBases>
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>	  
+      <recipeUsers>
+		<li>MedTimes_BlacksmithForgeTierTwo</li>
+      </recipeUsers>
+		<skillRequirements>
+				<Crafting>4</Crafting>
+		</skillRequirements>	  
+	</recipeMaker>
+  </ThingDef> 
+  
+<!-- (Light Class) Tier 2 Exceptional Makeable -->		
+<ThingDef Name="MedTimes_Smith_Armour_T2_LX" ParentName="MedTimes_Armour_T2_L" Abstract="True">  	
+    <statBases>
+      <WorkToMake>30000</WorkToMake>
+      <ArmorRating_Blunt>0.4</ArmorRating_Blunt>	  
+    </statBases>
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>	  
+      <recipeUsers>
+		<li>MedTimes_BlacksmithForgeTierTwo</li>
+      </recipeUsers>
+		<skillRequirements>
+				<Crafting>8</Crafting>
+		</skillRequirements>	  
+	</recipeMaker>
+  </ThingDef>  
+
+  
+<!-- ==== Heavy Classes ==== --> 
+<!-- (Heavy Class) Tier 2 Non-Makeable -->
+<ThingDef Name="MedTimes_Armour_T2_H" ParentName="MedTimes_ArmourBaseNN" Abstract="True">  
+	<costList><Steel>100</Steel></costList>	
+    <statBases>	
+      <ArmorRating_Blunt>0.4</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.85</ArmorRating_Sharp>
+      <Mass>15</Mass>	  
+    </statBases>	
+    <equippedStatOffsets>
+      <MoveSpeed>-0.2</MoveSpeed>  	  
+    </equippedStatOffsets>	
+  </ThingDef>
+
+<!-- (Heavy Class) Tier 2 Makeable -->	
+<ThingDef Name="MedTimes_Smith_Armour_T2_H" ParentName="MedTimes_Armour_T2_H" Abstract="True">  
+    <statBases>
+      <WorkToMake>30000</WorkToMake>
+    </statBases>
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>	  
+      <recipeUsers>
+		<li>MedTimes_BlacksmithForgeTierTwo</li>
+      </recipeUsers>
+		<skillRequirements>
+				<Crafting>6</Crafting>
+		</skillRequirements>		  
+	</recipeMaker>
+  </ThingDef> 
+
+ 
+<!-- (Heavy Class) Tier 2 Exceptional Makeable -->		
+<ThingDef Name="MedTimes_Smith_Armour_T2_HX" ParentName="MedTimes_Armour_T2_H" Abstract="True">  	
+    <statBases>
+      <WorkToMake>30000</WorkToMake>
+      <ArmorRating_Blunt>0.45</ArmorRating_Blunt>	  
+    </statBases>
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>	  
+      <recipeUsers>
+		<li>MedTimes_BlacksmithForgeTierTwo</li>
+      </recipeUsers>
+		<skillRequirements>
+				<Crafting>10</Crafting>
+		</skillRequirements>	  
+	</recipeMaker>
+  </ThingDef>   
+  
+ 
+<!-- ================================== Tier 0 Armours =================================-->
+<!-- ==== Light Armours ==== -->
+<!-- == Wooden Plates Armour == --> 
+<!-- Wooden Vest Plates(Shell): Norm Apparel --> 
+  <ThingDef ParentName="MedTimes_Craft_Armour_T0_L">
+    <defName>MedTimes_WoodenPlates</defName>
+    <label>Wooden Plates</label>
+    <description>(Tier: 0, Light)[Movespeed: -12%] A vest made of wooden plates strapped to the chest, back and shoulders. The cheapest and most basic of protection available.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/Wooden_Plates/MedTimes_Wooden</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <apparel>	
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/Wooden_Plates/MedTimes_Wooden</wornGraphicPath>    
+	</apparel>
+		<generateCommonality>0.6</generateCommonality>		
+  </ThingDef>
+
+ <!-- == Berserker Armour == --> 
+<!-- (Light) Berserker: Norm Apparel-->   
+  <ThingDef ParentName="MedTimes_Armour_T0_L">
+    <defName>MedTimes_Berserker</defName>
+    <label>Berserker's Chain</label>
+    <description>(Tier: 0, Light)[MeleeDodge: +25%][Movespeed: -5%] A heavily used chain-mail skirt strapped on by a belt. Used by members of the Warbourne cult.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/Berserker/MedTimes_Berserker</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+		<equippedStatOffsets>
+			<MeleeDodgeChance>0.25</MeleeDodgeChance>
+			<MoveSpeed>-0.05</MoveSpeed> 			
+		</equippedStatOffsets>		
+    <apparel>
+		<layers><li>OnSkin</li><li>Middle</li></layers>		
+		<wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/Berserker/MedTimes_Berserker</wornGraphicPath>
+    </apparel>
+  </ThingDef>   
+
+
+  
+<!-- ================================== Tier 1 Armours =================================-->  
+<!-- ==== Light Armours ==== -->
+<!-- == Plate Jack and Chains == --> 
+<!-- (Light) Plate & Chains: Norm Apparel-->
+  <ThingDef ParentName="MedTimes_Smith_Armour_T1_L">
+    <defName>MedTimes_PlateJack</defName>
+    <label>Steel Plates Armour</label>
+    <description>(Tier: 1, Light)[Movespeed: -12%] A vest made of steel plates strapped to the chest and back. Shoulder plates and jack chains have also been added for extra protection. This is as basic as plate armour gets, maximizing locations and minimizing materials.</description>
+	<graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/Plate_Steel/Plate_Steel/MedTimes_Plate_Steel</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>	
+    <apparel>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/Plate_Steel/Plate_Steel/MedTimes_Plate_Steel</wornGraphicPath>  
+    </apparel>
+  </ThingDef>	
+  		
+
+  
+<!-- ==== Heavy Armours ==== --> 
+<!-- == Scaled Hauberk Armour == --> 
+<!-- (Heavy) Scaled Hauberk: Norm Apparel-->   
+  <ThingDef ParentName="MedTimes_Smith_Armour_T1_H">
+    <defName>MedTimes_Hauberk</defName>
+    <label>Scaled Hauberk</label>
+    <description>(Tier: 1, Heavy)[Movespeed: -20%] A long coat which goes down to the knees. It is covered in scaled steel plates, larger plates and chains have been added throughout for added protection.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/Hauberk/Hauberk/MedTimes_Hauberk</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>	
+    <apparel>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/Hauberk/Hauberk/MedTimes_Hauberk</wornGraphicPath>
+    </apparel>
+  </ThingDef>
+
+
+ 
+<!-- ================================== Tier 2 Armour =================================-->
+<!-- ==== Light Armours ==== -->
+<!-- == Brigandine Armour == --> 
+<!-- (Light) Brigandine: Norm Apparel-->   
+  <ThingDef ParentName="MedTimes_Smith_Armour_T2_LX">
+    <defName>MedTimes_Brigandine</defName>
+    <label>Brigandine</label>
+    <description>(Tier: 2, Light)[Movespeed: -12%] A long coat which goes down to the knees. It's interior is covered in steel plates, hidden by the outside layers, larger plates have been added throughout for extra protection.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/Brigandine/Brigandine/MedTimes_Brigandine</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>		
+    <apparel>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/Brigandine/Brigandine/MedTimes_Brigandine</wornGraphicPath> 
+    </apparel>
+  </ThingDef>   
+
+  
+  
+<!-- == Warbourne Armour == --> 
+<!-- (Light) Warbourne: Norm Apparel-->   
+  <ThingDef ParentName="MedTimes_Armour_T2_L">
+    <defName>MedTimes_Warbourne</defName>
+    <label>Warbourne's Chain</label>
+    <description>(Tier: 2, Light)[MeleeDodge: +8%][Movespeed: -12%] A heavily used chain-mail vest with shoulder pads strapped on. Used by members of the Warbourne cult.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/Warbourne/MedTimes_Warbourne</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+		<equippedStatOffsets>
+			<MeleeDodgeChance>0.08</MeleeDodgeChance>			
+		</equippedStatOffsets>		
+    <apparel>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/Warbourne/MedTimes_Warbourne</wornGraphicPath>
+    </apparel>
+  </ThingDef> 
+
+
+  
+<!-- ==== Heavy Armours ==== -->
+<!-- == Encased Steel Armour == --> 
+<!-- (Heavy) Full Plate Armour: Norm Apparel--> 
+<ThingDef ParentName="MedTimes_Smith_Armour_T2_H">
+    <defName>MedTimes_EncasedSteel</defName>
+    <label>Encased Steel Armour</label>
+    <description>(Tier: 2, Heavy)[Movespeed: -20%] This heavy armour made of many metal plates and leather padded chain-mail. It provides good protection from all sorts of attacks, but at the cost of slowing the wearer down.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/EncasedSteel/EncasedSteel/MedTimes_EncasedSteel</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <apparel>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/EncasedSteel/EncasedSteel/MedTimes_EncasedSteel</wornGraphicPath> 
+    </apparel>
+  </ThingDef>
+
+  
+<!-- == Royal Plate Armour == -->
+<!-- (Heavy) Royal Plate, Standard Apparel --> 
+  <ThingDef ParentName="MedTimes_Smith_Armour_T2_HX">
+    <defName>MedTimes_RoyalPlated</defName>
+    <label>Royal Plated Armour</label>
+    <description>(Tier: 2, Heavy)[Movespeed: -20%] This heavy armour made of many metal plates and leather padded chain-mail. It provides good protection from all sorts of attacks, but at the cost of slowing the wearer down.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/RoyalPlated/RoyalPlated/MedTimes_RoyalPlated</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <apparel>	
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/RoyalPlated/RoyalPlated/MedTimes_RoyalPlated</wornGraphicPath> 	  
+    </apparel>	
+  </ThingDef>  
+
+<!-- (Heavy) Royal Death Plate, Standard Apparel --> 
+  <ThingDef ParentName="MedTimes_Smith_Armour_T2_HX">
+    <defName>MedTimes_RoyalPlated_Death</defName>
+    <label>Royal Death Plate Armour</label>
+    <description>(Tier: 2, Heavy)[Movespeed: -20%] This heavy armour made of many metal plates and leather padded chain-mail. It provides good protection from all sorts of attacks, but at the cost of slowing the wearer down.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/RoyalPlated/RoyalPlated_Death/MedTimes_RoyalPlated</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <apparel>	
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/RoyalPlated/RoyalPlated_Death/MedTimes_RoyalPlated</wornGraphicPath>
+    </apparel>
+  </ThingDef>     
+  
+<!-- Capes --> 
+<!-- (Heavy) Royal Plate, Blue Caped: Hot Apparel --> 
+  <ThingDef ParentName="MedTimes_Smith_Armour_T2_HX">
+    <defName>MedTimes_RoyalPlated_CapedBlue</defName>
+    <label>Royal Plated Armour and Cape</label>
+    <description>(Tier: 2, Heavy)[Movespeed: -20%] This heavy armour made of many metal plates and leather padded chain-mail. It also contains a large furry cape to help keep the wearer warmer and help identify him on the field of battle. Also included is a small low-tech water cooling system to help keep the wearer from overheating. It provides good protection from all sorts of attacks, but at the cost of slowing the wearer down.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/RoyalPlated/RoyalPlated_Blue/MedTimes_Royal_Plate_Blue</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+	  <Insulation_Cold>36</Insulation_Cold>
+      <Insulation_Heat>10</Insulation_Heat>	  
+    </statBases>
+    <apparel>	
+      <layers><li>Middle</li><li>Shell</li></layers>	
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/RoyalPlated/RoyalPlated_Blue/MedTimes_Royal_Plate_Blue</wornGraphicPath>	     
+	</apparel>	
+  </ThingDef>   
+  
+<!-- (Heavy) Royal Plate, Green Caped: Hot Apparel --> 
+   <ThingDef ParentName="MedTimes_Armour_T2_H">
+    <defName>MedTimes_RoyalPlated_CapedGreen</defName>
+    <label>Society Royal Plated Armour</label>
+    <description>(Tier: 2, Heavy)[Movespeed: -20%] This heavy armour made of many metal plates and leather padded chain-mail. It also contains a large furry cape to help keep the wearer warmer and help identify him on the field of battle. Also included is a small low-tech water cooling system to help keep the wearer from overheating. It provides good protection from all sorts of attacks, but at the cost of slowing the wearer down.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/RoyalPlated/RoyalPlated_Green/MedTimes_Royal_Plate_Green</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>	
+	  <Insulation_Cold>36</Insulation_Cold>
+      <Insulation_Heat>10</Insulation_Heat>	  
+    </statBases>
+    <apparel>	
+      <layers><li>Middle</li><li>Shell</li></layers>	
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/RoyalPlated/RoyalPlated_Green/MedTimes_Royal_Plate_Green</wornGraphicPath>  
+      <tags><li>MedTimes_Armor_RoyalGuard</li></tags>  
+    </apparel>
+		<generateCommonality>0.6</generateCommonality>		
+  </ThingDef>
+  
+<!-- (Heavy) Royal Plate, Orange Caped: Hot Apparel --> 
+   <ThingDef ParentName="MedTimes_Armour_T2_H">
+    <defName>MedTimes_RoyalPlated_CapedOrange</defName>
+    <label>Warband Royal Plated Armour</label>
+    <description>(Tier: 2, Heavy)[Movespeed: -20%] This heavy armour made of many metal plates and leather padded chain-mail. It also contains a large furry cape to help keep the wearer warmer and help identify him on the field of battle. Also included is a small low-tech water cooling system to help keep the wearer from overheating. It provides good protection from all sorts of attacks, but at the cost of slowing the wearer down.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/RoyalPlated/RoyalPlated_Orange/MedTimes_Royal_Plate_Orange</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>	
+	  <Insulation_Cold>36</Insulation_Cold>
+      <Insulation_Heat>10</Insulation_Heat>	  
+    </statBases>
+    <apparel>	
+      <layers><li>Middle</li><li>Shell</li></layers>	
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/RoyalPlated/RoyalPlated_Orange/MedTimes_Royal_Plate_Orange</wornGraphicPath>  
+      <tags><li>MedTimes_Armor_Warband_RoyalGuard</li></tags>  
+    </apparel>
+		<generateCommonality>0.6</generateCommonality>	
+  </ThingDef>
+
+<!-- End of thingDefs -->	
+</Defs>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+		<Operation Class="PatchOperationSequence">
+			<operations>
+
+					<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[
+						defName = "CGF1_MWP_Turret_Agar_Union_RepeatingGun_" or
+						defName = "CGF1_MWP_Turret_BillinghurstRequa_Battery_" or
+						defName = "CGF1_MWP_Turret_GatlingGun_M1862_" or
+						defName = "CGF1_MWP_Turret_GatlingGun_M1865_"		 			
+					]/thingClass</xpath>
+					<value>
+					  <thingClass>CombatExtended.Building_TurretGunCE</thingClass>
+					</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[	
+						defName = "CGF1_MWP_Turret_Agar_Union_RepeatingGun_" or
+						defName = "CGF1_MWP_Turret_BillinghurstRequa_Battery_" or
+						defName = "CGF1_MWP_Turret_GatlingGun_M1862_" or
+						defName = "CGF1_MWP_Turret_GatlingGun_M1865_"
+					]/fillPercent</xpath>
+					<value>
+					  <fillPercent>0.85</fillPercent>
+					</value>
+				</li>
+
+		<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+			<defName>CGF1_MWP_TurretGun_Agar_Union_RepeatingGun_</defName>
+			<statBases>
+				<RangedWeapon_Cooldown>0.4</RangedWeapon_Cooldown>
+				<SightsEfficiency>1</SightsEfficiency>
+				<ShotSpread>0.04</ShotSpread>
+				<SwayFactor>1.16</SwayFactor>
+			</statBases>
+				<Properties>
+					<recoilAmount>1.17</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>True</hasStandardCommand>
+					<defaultProjectile>Bullet_58CaliberBall</defaultProjectile>
+					<warmupTime>1.6</warmupTime>
+					<range>65</range>
+					<burstShotCount>8</burstShotCount>
+					<ticksBetweenBurstShots>45</ticksBetweenBurstShots>
+					<soundCast>CGF1_MWP_SFX_MG_Light3</soundCast>
+					<soundCastTail>GunTail_Heavy</soundCastTail>
+					<muzzleFlashScale>10</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+			  </Properties>
+			  <AmmoUser>
+					<magazineSize>15</magazineSize>
+					<reloadTime>10</reloadTime>
+					<ammoSet>AmmoSet_MusketBall_58Caliber</ammoSet>
+			  </AmmoUser>
+			  <FireModes>
+					<aimedBurstShotCount>5</aimedBurstShotCount>
+					<aiAimMode>SuppressFire</aiAimMode>
+			  </FireModes>
+			  <weaponTags Inherit="False">
+					<li>TurretGun</li>
+			  </weaponTags>
+			</li>
+		<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+			<defName>CGF1_MWP_TurretGun_BillinghurstRequa_Battery_</defName>
+			<statBases>
+				<RangedWeapon_Cooldown>0.3</RangedWeapon_Cooldown>
+				<SightsEfficiency>1</SightsEfficiency>
+				<ShotSpread>0.04</ShotSpread>
+				<SwayFactor>1.16</SwayFactor>
+			</statBases>
+				<Properties>
+					<recoilAmount>1.17</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>True</hasStandardCommand>
+					<defaultProjectile>Bullet_58CaliberBall</defaultProjectile>
+					<warmupTime>1</warmupTime>
+					<range>62</range>
+					<burstShotCount>25</burstShotCount>
+					<soundCast>CGF1_MWP_SFX_Musket1</soundCast>
+					<soundCastTail>GunTail_Heavy</soundCastTail>
+					<muzzleFlashScale>10</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+			  </Properties>
+			  <AmmoUser>
+					<magazineSize>25</magazineSize>
+					<reloadTime>20</reloadTime>
+					<ammoSet>AmmoSet_MusketBall_58Caliber</ammoSet>
+			  </AmmoUser>
+			  <FireModes>
+					<aimedBurstShotCount>25</aimedBurstShotCount>
+					<aiAimMode>SuppressFire</aiAimMode>
+					<noSnapshot>true</noSnapshot>
+					<noSingleShot>true</noSingleShot>
+			  </FireModes>
+			  <weaponTags Inherit="False">
+					<li>TurretGun</li>
+			  </weaponTags>
+			</li>
+		<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+			<defName>CGF1_MWP_TurretGun_GatlingGun_M1862_</defName>
+			<statBases>
+				<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+				<SightsEfficiency>1</SightsEfficiency>
+				<ShotSpread>0.05</ShotSpread>
+				<SwayFactor>1.16</SwayFactor>
+			</statBases>
+				<Properties>
+					<recoilAmount>1.17</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>True</hasStandardCommand>
+					<defaultProjectile>Bullet_58CaliberBall</defaultProjectile>
+					<warmupTime>1.4</warmupTime>
+					<range>62</range>
+					<burstShotCount>10</burstShotCount>
+					<ticksBetweenBurstShots>28</ticksBetweenBurstShots>
+					<soundCast>CGF1_MWP_SFX_MG_Heavy3</soundCast>
+					<soundCastTail>GunTail_Heavy</soundCastTail>
+					<muzzleFlashScale>10</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+			  </Properties>
+			  <AmmoUser>
+					<magazineSize>15</magazineSize>
+					<reloadTime>10</reloadTime>
+					<ammoSet>AmmoSet_MusketBall_58Caliber</ammoSet>
+			  </AmmoUser>
+			  <FireModes>
+					<aiUseBurstMode>false</aiUseBurstMode>
+					<aimedBurstShotCount>5</aimedBurstShotCount>
+					<aiAimMode>SuppressFire</aiAimMode>
+			  </FireModes>
+			  <weaponTags Inherit="False">
+					<li>TurretGun</li>
+			  </weaponTags>
+		</li>
+		<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+			<defName>CGF1_MWP_TurretGun_GatlingGun_M1865_</defName>
+			<statBases>
+				<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+				<SightsEfficiency>1</SightsEfficiency>
+				<ShotSpread>0.04</ShotSpread>
+				<SwayFactor>1.16</SwayFactor>
+			</statBases>
+				<Properties>
+					<recoilAmount>1.17</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>True</hasStandardCommand>
+					<defaultProjectile>Bullet_5070GovtTrapdoor_FMJ</defaultProjectile>
+					<warmupTime>1.4</warmupTime>
+					<range>62</range>
+					<burstShotCount>10</burstShotCount>
+					<ticksBetweenBurstShots>28</ticksBetweenBurstShots>
+					<soundCast>CGF1_MWP_SFX_MG_Heavy3</soundCast>
+					<soundCastTail>GunTail_Heavy</soundCastTail>
+					<muzzleFlashScale>10</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+			  </Properties>
+			  <AmmoUser>
+					<magazineSize>15</magazineSize>
+					<reloadTime>10</reloadTime>
+					<ammoSet>AmmoSet_5070GovtTrapdoor</ammoSet>
+			  </AmmoUser>
+			  <FireModes>
+					<aiUseBurstMode>false</aiUseBurstMode>
+					<aimedBurstShotCount>5</aimedBurstShotCount>
+					<aiAimMode>SuppressFire</aiAimMode>
+			  </FireModes>
+			  <weaponTags Inherit="False">
+					<li>TurretGun</li>
+			  </weaponTags>
+			</li>
+			
+
+		</operations>
+	</Operation>
+</Patch>    

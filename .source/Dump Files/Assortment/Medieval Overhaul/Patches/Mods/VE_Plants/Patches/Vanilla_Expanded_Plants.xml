@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="VCE_Grass"]/plant</xpath>
+		<value>
+			<harvestYield>1</harvestYield>
+			<harvestedThingDef>Hay</harvestedThingDef>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="VCE_TallGrass"]/plant</xpath>
+		<value>
+			<harvestYield>2</harvestYield>
+			<harvestedThingDef>Hay</harvestedThingDef>
+		</value>
+	</Operation>
+
+	<!-- Onion Integration -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="VCE_Onion"]/plant/harvestedThingDef</xpath>
+		<value>
+			<harvestedThingDef>DankPyon_RawOnions</harvestedThingDef>
+		</value>
+	</Operation>
+				 
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="DankPyon_Plant_Onions"]/plant</xpath>
+		<value>
+			<neverBlightable>true</neverBlightable>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="DankPyon_Plant_Onions"]/description</xpath>
+		<value>
+			<description>Stringy green stalks which give way to a bulbous, fragrant head contained in a papery skin. Onion is a versatile ingredient, making for a good base in vegetable dishes as well as a delicious accompaniment to meat-based meals.\n\n&lt;color=#E5E54C&gt;Gameplay effect:&lt;/color&gt; Onion isn't affected by blight.</description>
+		</value>
+	</Operation>
+				
+	<!-- Pumpkin Integration -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="VCE_Pumpkin"]/plant/harvestedThingDef</xpath>
+		<value>
+			<harvestedThingDef>DankPyon_RawPumpkins</harvestedThingDef>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="DankPyon_Plant_Pumpkins"]/plant</xpath>
+		<value>
+			<harvestFailable>false</harvestFailable>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="DankPyon_Plant_Pumpkins"]/description</xpath>
+		<value>
+			<description>A thin green vine which gives way to a characteristically massive orange vegetable, a good visuaOperationzation of "big things come in small packages". Not particularly tasty on its own, but it makes for a variety of hearty seasonal meals.\n\n&lt;color=#E5E54C&gt;Gameplay effect:&lt;/color&gt; Pumpkin harvests will always suceed, independently of the colonist's plants skill.</description>
+		</value>
+	</Operation>
+				
+	<!-- Cabbage Integration -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="VCE_Cabbage"]/plant/harvestedThingDef</xpath>
+		<value>
+			<harvestedThingDef>DankPyon_RawCabbages</harvestedThingDef>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="DankPyon_Plant_Cabbages"]/plant</xpath>
+		<value>
+			<dieFromToxicFallout>false</dieFromToxicFallout>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="DankPyon_Plant_Cabbages"]/description</xpath>
+		<value>
+			<description>Green heads of cabbage. A vegetable made up of many leaves stacked on top of each other. Cabbage is especially good as an ingredient in salads and soups.\n\n&lt;color=#E5E54C&gt;Gameplay effect:&lt;/color&gt; Cabbages are unaffected by toxic fallout and, contrary to other plants, won't die from it.</description>
+		</value>
+	</Operation>
+
+	<!-- Tomato Integration -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="VCE_Tomato"]/plant/harvestedThingDef</xpath>
+		<value>
+			<harvestedThingDef>DankPyon_RawTomatoes</harvestedThingDef>
+		</value>
+	</Operation>
+
+	<!-- Add Research -->
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="VCE_Beet" or defName="VCE_Peas"]/plant</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>DankPyon_BasicAgriculture</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="VCE_Pepper" or defName="VCE_Eggplant" or defName="VCE_Agave"]/plant</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>DankPyon_IntermediateAgriculture</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+
+</Patch>

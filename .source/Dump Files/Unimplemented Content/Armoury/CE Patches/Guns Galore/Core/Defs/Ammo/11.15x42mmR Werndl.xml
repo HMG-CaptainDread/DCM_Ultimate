@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo1115x42mmRWerndl</defName>
+		<label>11.15x42mmR Werndl</label>
+		<parent>AmmoRifles</parent>
+    <iconPath>UI/Icons/ThingCategories/CaliberRifle</iconPath>
+	</ThingCategoryDef>
+	
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>AmmoSet_1115x42mmRWerndl</defName>
+		<label>11.15x42mmR Werndl</label>
+		<ammoTypes>
+			<Ammo_1115x42mmRWerndl_FMJ>Bullet_1115x42mmRWerndl_FMJ</Ammo_1115x42mmRWerndl_FMJ>		
+		</ammoTypes>
+		<similarTo>AmmoSet_Rifle</similarTo>
+	</CombatExtended.AmmoSetDef>
+	
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="1115x42mmRWerndlBase" ParentName="SmallAmmoBase" Abstract="True" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<description>Rimfire rifle cartridge found mostly in outdated rifles.</description>
+		<statBases>
+		<Mass>0.020</Mass>
+		<Bulk>0.04</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo1115x42mmRWerndl</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="1115x42mmRWerndlBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>Ammo_1115x42mmRWerndl_FMJ</defName>
+		<label>11.15x42mmR Werndl cartridge (FMJ)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Rifle/FMJ</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.11</MarketValue>
+		</statBases>
+		<ammoClass>FullMetalJacket</ammoClass>
+		<cookOffProjectile>Bullet_1115x42mmRWerndl_FMJ</cookOffProjectile>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+	
+	<ThingDef Name="Base1115x42mmRWerndlBullet" ParentName="BaseBulletCE" Abstract="true" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>60</speed>
+			<dropsCasings>true</dropsCasings>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base1115x42mmRWerndlBullet" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>Bullet_1115x42mmRWerndl_FMJ</defName>
+		<label>11.15x42mmR Werndl bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>15</damageAmountBase>
+			<armorPenetrationSharp>5.25</armorPenetrationSharp>
+			<armorPenetrationBlunt>26.65</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>MakeAmmo_1115x42mmRWerndl_FMJ</defName>
+		<label>make 11.15x42mmR Werndl (FMJ) cartridge x500</label>
+		<description>Craft 500 11.15x42mmR Werndl (FMJ) cartridges.</description>
+		<jobString>Making 11.15x42mmR Werndl (FMJ) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>28</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_1115x42mmRWerndl_FMJ>500</Ammo_1115x42mmRWerndl_FMJ>
+		</products>
+    	<workAmount>2800</workAmount>
+	</RecipeDef>
+
+</Defs>

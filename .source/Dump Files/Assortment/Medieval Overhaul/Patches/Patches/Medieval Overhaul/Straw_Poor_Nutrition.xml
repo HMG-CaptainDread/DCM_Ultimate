@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="DankPyon_Straw"]/statBases</xpath>
+		<value>
+			<Nutrition>0.01</Nutrition>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="DankPyon_Straw"]/description</xpath>
+		<value>
+			<description>Leftover stalks from harvesting grain, harvested and compacted for storage. Straw is a poor animal feed, and inedible for humans.</description>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="DankPyon_Straw"]/ingestible/optimalityOffsetFeedingAnimals</xpath>
+		<value>
+			<optimalityOffsetFeedingAnimals>-5</optimalityOffsetFeedingAnimals>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="DankPyon_Straw"]/thingCategories</xpath>
+		<value>
+			<thingCategories>
+				<li>Feed</li>
+			</thingCategories>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ProcessorFramework.ProcessDef[defName="DankPyon_StrawProcess"]/thingDef</xpath>
+		<value>
+			<thingDef>DankPyon_DriedHay</thingDef>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/RecipeDef[defName="DankPyon_CraftFlour_Manual"]/products/Hay</xpath>
+		<match Class="PatchOperationReplace">
+			<xpath>Defs/RecipeDef[defName="DankPyon_CraftFlour_Manual"]/products/Hay</xpath>
+			<value>
+				<DankPyon_Straw>1</DankPyon_Straw>
+			</value>
+		</match>
+	</Operation>
+
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/RecipeDef[defName="DankPyon_CraftFlour"]/products/Hay</xpath>
+		<match Class="PatchOperationReplace">
+			<xpath>Defs/RecipeDef[defName="DankPyon_CraftFlour"]/products/Hay</xpath>
+			<value>
+				<DankPyon_Straw>1</DankPyon_Straw>
+			</value>
+		</match>
+	</Operation>
+
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/RecipeDef[defName="DankPyon_CraftFlourBulk"]/products/Hay</xpath>
+		<match Class="PatchOperationReplace">
+			<xpath>Defs/RecipeDef[defName="DankPyon_CraftFlourBulk"]/products/Hay</xpath>
+			<value>
+				<DankPyon_Straw>10</DankPyon_Straw>
+			</value>
+		</match>
+	</Operation>
+
+</Patch>

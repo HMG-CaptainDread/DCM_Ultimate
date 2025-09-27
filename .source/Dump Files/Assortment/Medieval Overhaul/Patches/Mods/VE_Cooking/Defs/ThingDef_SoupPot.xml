@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>MO_SoupPot</defName>
+		<label>soup pot</label>
+		<description>A metallic pot used for boiling water and maintaining it at a constant temperature. It is typically used to simmer soup over an extended period of time. Ingredients are submerged in water and left to cook over an extended period, allowing the flavors of the ingredients to gradually deepen and blend over time.</description>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<graphicData>
+			<texPath>Things/Building/Production/StewPot</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(1.5,1.5)</drawSize>
+			<shaderType>CutoutComplex</shaderType>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<thingCategories>
+			<li>BuildingsProduction</li>
+		</thingCategories>
+		<stuffCategories>
+			<li>Metallic</li>
+		</stuffCategories>
+		<costStuffCount>40</costStuffCount>
+		<altitudeLayer>Building</altitudeLayer>
+		<rotatable>true</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<uiIconScale>0.5</uiIconScale>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<techLevel>Medieval</techLevel>
+		<statBases>
+			<Mass>10</Mass>
+			<WorkToBuild>800</WorkToBuild>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<size>(1,1)</size>
+		<designationCategory>Production</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<researchPrerequisites>
+			<li>VCE_SoupCooking</li>
+		</researchPrerequisites>
+		<building>
+			<isMealSource>true</isMealSource>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+			<buildingTags>
+				<li>Production</li>
+			</buildingTags>
+		</building>
+		<comps>
+			<li Class="CompProperties_Refuelable">
+				<fuelConsumptionRate>3.33</fuelConsumptionRate>
+				<fuelCapacity>20.0</fuelCapacity>
+				<fuelConsumptionPerTickInRain>0.0006</fuelConsumptionPerTickInRain>
+				<fuelFilter>
+					<thingDefs>
+						<li>DankPyon_RawWood</li>
+						<li>DankPyon_RawDarkWood</li>
+						<li>WoodLog</li>
+					</thingDefs>
+				</fuelFilter>
+				<initialFuelPercent>0.0</initialFuelPercent>
+				<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+				<consumeFuelOnlyWhenUsed>false</consumeFuelOnlyWhenUsed>
+			</li>
+			<li Class="ProcessorFramework.CompProperties_Processor">
+				<capacity>2</capacity>
+				<independentProcesses>false</independentProcesses>
+				<processes>
+					<li>VCE_CookedSoupSimple</li>
+					<li>VCE_CookedSoupFine</li>
+					<li>VCE_CookedSoupLavish</li>
+					<li>VCE_CookedSoupGourmet</li>
+					<li>MO_BoneSoup</li>
+					<li>MO_LentilSoup</li>
+					<li>MO_MushroomSoup</li>
+					<li>MO_BreadSoup</li>
+					<li>MO_PumpkinSoup</li>
+					<li>MO_CheeseSoup</li>
+				</processes>
+			</li>
+		</comps>
+		<minifiedDef>MinifiedThing</minifiedDef>
+	</ThingDef>
+
+</Defs>

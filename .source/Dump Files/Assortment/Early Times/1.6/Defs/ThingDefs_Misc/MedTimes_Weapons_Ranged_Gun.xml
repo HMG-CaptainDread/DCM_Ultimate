@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!-- Bullet Base Class -->
+  <ThingDef Name="MedTimes_BulletBase" ParentName="MedTimes_ProjectileBase" Abstract="True">
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>		
+      <shaderType>Transparent</shaderType>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+    </projectile>	
+  </ThingDef>   
+  
+<!-- ======= Guns ====== -->  
+<!-- Gun Bullets -->  
+  <ThingDef ParentName="MedTimes_BulletBase">
+    <defName>MedTimes_Ball_Musket</defName>
+    <label>Musket Ball</label>
+    <graphicData>
+      <texPath>Bullets/MedTimes_LeadShot</texPath>
+    </graphicData>		
+    <projectile>
+      <armorPenetrationBase>0.2</armorPenetrationBase>  
+      <damageAmountBase>20</damageAmountBase>
+      <speed>68</speed>
+      <stoppingPower>1.25</stoppingPower>	  
+    </projectile>
+  </ThingDef>
+  
+   <ThingDef ParentName="MedTimes_BulletBase">
+    <defName>MedTimes_Ball_Blunderbuss</defName>
+    <label>Musket Ball</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Shotgun</texPath>
+    </graphicData>		
+    <projectile>
+      <damageAmountBase>41</damageAmountBase>
+      <speed>58</speed>
+      <stoppingPower>0.95</stoppingPower>	  
+    </projectile>
+  </ThingDef>
+  
+<!-- Smoothbore Musket -->  
+  <ThingDef ParentName="MedTimes_RangedNN">
+    <defName>MedTimes_Ranged_Musket</defName>
+    <label>Smoothbore Musket</label>
+    <description>A simple smoothbore musket made of cast steel, uses loose smoked powder which makes reloading a pain, but does massive amounts of damage and is accurate when compared to the crossbow.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/MedTimes_Musket</texPath>	
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>	  
+    </graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+	<stuffCategories>
+      <li>Metallic</li> 
+    </stuffCategories>
+    <costStuffCount>60</costStuffCount>	
+    <costList>
+	  <Steel>10</Steel>
+	  <WoodLog>35</WoodLog>
+    </costList>
+	<statBases>
+	  <WorkToMake>10000</WorkToMake> 	
+      <AccuracyTouch>0.65</AccuracyTouch>
+      <AccuracyShort>0.70</AccuracyShort>
+      <AccuracyMedium>0.95</AccuracyMedium>
+      <AccuracyLong>0.35</AccuracyLong>
+      <RangedWeapon_Cooldown>2.25</RangedWeapon_Cooldown> 
+      <Mass>3</Mass>	   
+    </statBases>
+    <equippedAngleOffset>45</equippedAngleOffset>	
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>1.5</warmupTime>
+		<soundCast>MedTimes_Sound_MusketFire</soundCast>
+		<soundCastTail>GunTail_Medium</soundCastTail>
+		<muzzleFlashScale>9</muzzleFlashScale>
+        <defaultProjectile>MedTimes_Ball_Musket</defaultProjectile>
+        <range>23</range>
+      </li>
+    </verbs>	
+    <recipeMaker>
+	  <researchPrerequisite>MedTimes_BasicFirearms</researchPrerequisite>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <recipeUsers>
+        <li>FueledSmithy</li>	  
+        <li>ElectricSmithy</li>	  
+      </recipeUsers>
+		<skillRequirements>
+				<Crafting>8</Crafting>
+		</skillRequirements>		  	  
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+    </recipeMaker>	
+    <weaponTags>
+		<li>Gun</li>
+	</weaponTags>
+  </ThingDef>  
+  
+<!-- Hand pistol -->  
+  <ThingDef ParentName="MedTimes_RangedNN">
+    <defName>MedTimes_Ranged_Pistol</defName>
+    <label>Smoothbore Pistol</label>
+    <description>A simple smoothbore pistol made of cast steel, uses loose smoked powder which makes reloading a pain, but does massive amounts of damage.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/MedTimes_Pistol</texPath>	
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>	  
+    </graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>	
+	<stuffCategories>
+      <li>Metallic</li> 
+    </stuffCategories>
+    <costStuffCount>20</costStuffCount>	
+    <costList>
+	  <Steel>10</Steel>
+	  <WoodLog>15</WoodLog>
+    </costList>
+	<statBases>
+	  <WorkToMake>7000</WorkToMake> 	
+      <AccuracyTouch>0.85</AccuracyTouch>
+      <AccuracyShort>0.90</AccuracyShort>
+      <AccuracyMedium>0.70</AccuracyMedium>
+      <AccuracyLong>0.35</AccuracyLong>
+      <RangedWeapon_Cooldown>1.25</RangedWeapon_Cooldown>  
+      <Mass>1.25</Mass>	  
+    </statBases>
+    <equippedAngleOffset>45</equippedAngleOffset>	
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>1.0</warmupTime>
+		<soundCast>MedTimes_Sound_MusketFire</soundCast>
+		<soundCastTail>GunTail_Medium</soundCastTail>
+		<muzzleFlashScale>9</muzzleFlashScale>
+        <defaultProjectile>MedTimes_Ball_Musket</defaultProjectile>
+        <range>25</range>
+      </li>
+    </verbs>	
+    <recipeMaker>
+	  <researchPrerequisite>MedTimes_BasicFirearms</researchPrerequisite>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <recipeUsers>
+        <li>FueledSmithy</li>	  
+        <li>ElectricSmithy</li>	  
+      </recipeUsers>
+		<skillRequirements>
+			<Crafting>8</Crafting>
+		</skillRequirements>		  	  
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+    </recipeMaker>	
+    <weaponTags>
+		<li>Gun</li>
+	</weaponTags>
+  </ThingDef>  
+  
+  
+<!-- Blunderbuss -->  
+  <ThingDef ParentName="MedTimes_RangedNN">
+    <defName>MedTimes_Ranged_Blunderbuss</defName>
+    <label>Musketon</label>
+    <description>A wide-barrel musket that fires several pelelts a time, highly inccurate but does massive amounts of damage.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/MedTimes_Blunderbuss</texPath>	
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>	  
+    </graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+	<stuffCategories>
+      <li>Metallic</li> 
+    </stuffCategories>
+    <costStuffCount>70</costStuffCount>	
+    <costList>
+	  <Steel>10</Steel>
+	  <WoodLog>35</WoodLog>
+    </costList>
+	<statBases>
+	  <WorkToMake>11000</WorkToMake> 		      
+	  <AccuracyTouch>0.70</AccuracyTouch>
+      <AccuracyShort>0.80</AccuracyShort>
+      <AccuracyMedium>0.95</AccuracyMedium>
+      <AccuracyLong>0.55</AccuracyLong>
+      <RangedWeapon_Cooldown>4</RangedWeapon_Cooldown>  
+      <Mass>3.5</Mass>	   
+    </statBases>
+    <equippedAngleOffset>45</equippedAngleOffset>	
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>1.5</warmupTime>
+		<soundCast>MedTimes_Sound_MusketFire</soundCast>
+		<soundCastTail>GunTail_Medium</soundCastTail>
+		<muzzleFlashScale>9</muzzleFlashScale>
+        <defaultProjectile>MedTimes_Ball_Blunderbuss</defaultProjectile>
+        <range>23</range>
+      </li>
+    </verbs>	
+    <recipeMaker>
+	  <researchPrerequisite>MedTimes_BasicFirearms</researchPrerequisite>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <recipeUsers>
+        <li>FueledSmithy</li>	  
+        <li>ElectricSmithy</li>	  
+      </recipeUsers>
+		<skillRequirements>
+			<Crafting>8</Crafting>
+		</skillRequirements>		  	  
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+    </recipeMaker>	
+    <weaponTags>
+		<li>Gun</li>
+	</weaponTags>
+  </ThingDef>  
+</Defs>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>          
+<Patch>       
+          <Operation Class="PatchOperationFindMod">
+            <mods>
+              <li>Medieval Overhaul</li>
+            </mods>
+            <match Class="PatchOperationSequence">
+              <operations>
+                  <li Class="PatchOperationReplace">
+                      <xpath>Defs/ThingDef[defName="VFEC_Turret_Scorpion"]/designationCategory</xpath>
+                      <value>
+                      <designationCategory></designationCategory>
+                      </value>
+                  </li>
+                  <li Class="PatchOperationAdd">
+                        <xpath>/Defs</xpath>
+                        <value>
+                        <ReplaceLib.ReplacerDef>
+                            <defName>MedievalOverhaul_VFEClassical_Scorpion</defName>
+                            <replacers>
+                                <li>
+                                    <replace>VFEC_Turret_Scorpion</replace>
+                                    <with>DankPyon_Turret_Scorpio</with>
+                                </li>
+                            </replacers>
+                        </ReplaceLib.ReplacerDef>
+                        </value>
+                  </li>
+                  <li Class="PatchOperationRemove">
+                      <xpath>Defs/ResearchProjectDef[defName="DankPyon_Jewelry"]</xpath>
+                  </li>
+                  <li Class="PatchOperationReplace">
+                      <xpath>Defs/ResearchProjectDef[defName="VFEC_Scorpion"]/label</xpath>
+                      <value>
+                        <label>Jewelry</label>
+                      </value>
+                  </li>
+                  <li Class="PatchOperationReplace">
+                      <xpath>Defs/ThingDef[defName="DankPyon_JewelryBench"]/researchPrerequisites</xpath>
+                      <value>
+                        <researchPrerequisites>
+                          <li>VFEC_Scorpion</li>
+                        </researchPrerequisites>
+                      </value>
+                  </li>
+                  <li Class="PatchOperationReplace">
+                      <xpath>Defs/ResearchProjectDef[defName="VFEC_Scorpion"]/description</xpath>
+                      <value>
+                        <description>Refine valuable jewels into wearable accessories.</description>
+                      </value>
+                  </li>
+                  <li Class="PatchOperationReplace">
+                      <xpath>Defs/ThingDef[@Name="DankPyon_NecklaceBase"]/recipeMaker/researchPrerequisite</xpath>
+                      <value>
+                        <researchPrerequisite>VFEC_Scorpion</researchPrerequisite>
+                      </value>
+                  </li>
+                  <li Class="PatchOperationReplace">
+                      <xpath>Defs/ThingDef[@Name="DankPyon_NecklaceBase"]/recipeMaker/researchPrerequisites</xpath>
+                      <value>
+                        <researchPrerequisites>
+                                <li>VFEC_Scorpion</li>
+                        </researchPrerequisites>
+                      </value>
+                  </li>
+              </operations>
+            </match>
+          </Operation>
+</Patch>

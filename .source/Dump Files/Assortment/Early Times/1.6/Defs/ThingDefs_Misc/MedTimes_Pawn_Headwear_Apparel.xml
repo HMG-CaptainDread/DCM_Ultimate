@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!-- Start of thingDefs -->
+<!-- ================== Headgear Classes ================ --> 
+<!-- Headgear Base Class -->
+  <ThingDef Name="MedTimes_Headgear" Abstract="True">
+    <thingClass>Apparel</thingClass>
+    <category>Item</category>
+    <selectable>True</selectable>
+    <pathCost>10</pathCost>
+    <useHitPoints>True</useHitPoints>
+    <graphicData>
+      <onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(0.8,0.8)</drawSize>	  
+	</graphicData>
+    <drawGUIOverlay>true</drawGUIOverlay>
+    <altitudeLayer>Item</altitudeLayer>
+    <alwaysHaulable>True</alwaysHaulable>
+    <tickerType>Never</tickerType>	
+    <statBases>
+		<WorkToMake>3000</WorkToMake>
+		<MaxHitPoints>100</MaxHitPoints>	  
+		<Flammability>1.0</Flammability>
+		<DeteriorationRate>2</DeteriorationRate>
+		<SellPriceFactor>0.5</SellPriceFactor>
+		<EquipDelay>2</EquipDelay>			  
+		<Beauty>-3</Beauty>
+		<Mass>1</Mass>		
+    </statBases>
+	<equippedStatOffsets>
+		<MeleeDodgeChance>0.05</MeleeDodgeChance>			
+	</equippedStatOffsets>	
+    <apparel>	
+		<countsAsClothingForNudity>false</countsAsClothingForNudity>
+		<careIfWornByCorpse>false</careIfWornByCorpse>
+		<defaultOutfitTags>
+			<li>Worker</li>
+			<li>Soldier</li>
+		</defaultOutfitTags>  
+		<bodyPartGroups>
+			<li>FullHead</li>
+		</bodyPartGroups>
+		<layers>
+			<li>Overhead</li>
+		</layers>
+	 </apparel>		
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li><compClass>CompQuality</compClass></li>
+    </comps>
+    <thingCategories>
+		<li>Headgear</li>
+	</thingCategories>	
+    <tradeTags>
+		<li>MedTimes_Gear</li>
+	</tradeTags>
+</ThingDef>
+
+  
+<!-- (Colorable) Headgear Base Class -->
+  <ThingDef Name="MedTimes_Headgear_Colors" ParentName="MedTimes_Headgear" Abstract="True">
+    <costStuffCount>35</costStuffCount>
+	<stuffCategories>
+      <li>Fabric</li>
+      <li>Leathery</li>	  
+    </stuffCategories>
+	<comps>
+      <li><compClass>CompColorable</compClass></li>
+    </comps>	
+    <colorGenerator Class="ColorGenerator_StandardApparel" />		
+  </ThingDef>  
+  
+   
+<!-- (Colorable) Tailored Apparel Medieval Base Class -->  
+  <ThingDef Name="MedTimes_Tail_Headgear_Colors" ParentName="MedTimes_Headgear_Colors" Abstract="True">
+    <recipeMaker>
+	  <researchPrerequisite>MedTimes_MedievalTailoring</researchPrerequisite>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Tailor</effectWorking>
+      <soundWorking>Recipe_Tailor</soundWorking>
+      <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>	  
+      <recipeUsers>
+        <li>MedTimes_TailoringStation</li>
+        <li>HandTailoringBench</li>
+        <li>ElectricTailoringBench</li>
+      </recipeUsers>
+    </recipeMaker>
+  </ThingDef>  
+
+<!-- ============================= Headwear Apparel ==============================--> 	 
+<!-- Arming Cap -->		 
+<ThingDef ParentName="MedTimes_Tail_Headgear_Colors">
+    <defName>MedTimes_Headgear_ArmingCap</defName>
+    <label>Arming Cap</label>
+    <description>A soft cap made of leather or fabrics and a layer of padding. Great for keeping warm in winter.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Headwear/ArmingCap/MedTimes_ArmingCap</texPath>
+    </graphicData>
+    <statBases>
+      <StuffEffectMultiplierArmor>0.3</StuffEffectMultiplierArmor>
+      <StuffEffectMultiplierInsulation_Cold>0.10</StuffEffectMultiplierInsulation_Cold>
+      <StuffEffectMultiplierInsulation_Heat>0.10</StuffEffectMultiplierInsulation_Heat>
+    </statBases>	
+    <apparel>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Headwear/ArmingCap/MedTimes_ArmingCap</wornGraphicPath>  
+    </apparel>
+		<generateCommonality>0.6</generateCommonality>		
+  </ThingDef>
+    
+  <!-- Winter Hat -->		 
+  <ThingDef ParentName="MedTimes_Tail_Headgear_Colors">
+    <defName>MedTimes_Headgear_WinterHat</defName>
+    <label>Winter Hat</label>
+    <description>A soft cap made of leather or fabrics and a layer of padding. Simple design which is great for keeping warm, it has become very popular in the north and a local status symbol for hard drinking hooligans.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Headwear/WinterHat/MedTimes_WinterHat</texPath>
+    </graphicData>
+    <statBases>
+      <StuffEffectMultiplierArmor>0.2</StuffEffectMultiplierArmor>
+      <StuffEffectMultiplierInsulation_Cold>0.50</StuffEffectMultiplierInsulation_Cold>
+      <StuffEffectMultiplierInsulation_Heat>0</StuffEffectMultiplierInsulation_Heat>
+    </statBases>		
+    <apparel>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Headwear/WinterHat/MedTimes_WinterHat</wornGraphicPath>	  
+    </apparel>	
+  </ThingDef>  
+  
+<!-- End of thingDefs -->
+</Defs>

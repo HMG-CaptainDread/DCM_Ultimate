@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo8x57mmM88Patrone</defName>
+		<label>8x57mm M/88 Patrone</label>
+		<parent>AmmoPistols</parent>
+		<iconPath>UI/Icons/ThingCategories/CaliberPistol</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef MayRequire="cgf1.comradespack.rifles">
+		<defName>AmmoSet_8x57mmM88Patrone</defName>
+		<label>8x57mm M/88 Patrone</label>
+		<ammoTypes>
+			<Ammo_8x57mmM88Patrone_FMJ>Bullet_8x57mmM88Patrone_FMJ</Ammo_8x57mmM88Patrone_FMJ>
+			<Ammo_8x57mmM88Patrone_AP>Bullet_8x57mmM88Patrone_AP</Ammo_8x57mmM88Patrone_AP>
+			<Ammo_8x57mmM88Patrone_HP>Bullet_8x57mmM88Patrone_HP</Ammo_8x57mmM88Patrone_HP>			
+		</ammoTypes>
+		<similarTo>AmmoSet_Pistol</similarTo>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="8x57mmM88PatroneBase" ParentName="SmallAmmoBase" Abstract="True" MayRequire="cgf1.comradespack.rifles">
+		<description>Obsolete rifle cartridge used in bolt-action rifles, the predecessor to the 7.92x57mm Mauser.</description>
+		<statBases>
+			<Mass>0.031</Mass>
+			<Bulk>0.03</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo8x57mmM88Patrone</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="8x57mmM88PatroneBase" MayRequire="cgf1.comradespack.rifles">
+		<defName>Ammo_8x57mmM88Patrone_FMJ</defName>
+		<label>8x57mm M/88 Patrone cartridge (FMJ)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/FMJ</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.14</MarketValue>
+		</statBases>
+		<ammoClass>FullMetalJacket</ammoClass>
+		<cookOffProjectile>Bullet_8x57mmM88Patrone_FMJ</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="8x57mmM88PatroneBase" MayRequire="cgf1.comradespack.rifles">
+		<defName>Ammo_8x57mmM88Patrone_AP</defName>
+		<label>8x57mm M/88 Patrone cartridge (AP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/AP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.14</MarketValue>
+		</statBases>
+		<ammoClass>ArmorPiercing</ammoClass>
+		<cookOffProjectile>Bullet_8x57mmM88Patrone_AP</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="8x57mmM88PatroneBase" MayRequire="cgf1.comradespack.rifles">
+		<defName>Ammo_8x57mmM88Patrone_HP</defName>
+		<label>8x57mm M/88 Patrone cartridge (HP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/HP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.14</MarketValue>
+		</statBases>
+		<ammoClass>HollowPoint</ammoClass>
+		<cookOffProjectile>Bullet_8x57mmM88Patrone_HP</cookOffProjectile>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="Base8x57mmM88PatroneBullet" ParentName="BaseBulletCE" Abstract="true" MayRequire="cgf1.comradespack.rifles">
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>124</speed>
+			<dropsCasings>true</dropsCasings>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base8x57mmM88PatroneBullet" MayRequire="cgf1.comradespack.rifles">
+		<defName>Bullet_8x57mmM88Patrone_FMJ</defName>
+		<label>8x57mm M/88 Patrone bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>19</damageAmountBase>
+			<armorPenetrationSharp>6</armorPenetrationSharp>
+			<armorPenetrationBlunt>56.5</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base8x57mmM88PatroneBullet" MayRequire="cgf1.comradespack.rifles">
+		<defName>Bullet_8x57mmM88Patrone_AP</defName>
+		<label>8x57mm M/88 Patrone bullet (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>12</damageAmountBase>
+			<armorPenetrationSharp>12</armorPenetrationSharp>
+			<armorPenetrationBlunt>56.5</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base8x57mmM88PatroneBullet" MayRequire="cgf1.comradespack.rifles">
+		<defName>Bullet_8x57mmM88Patrone_HP</defName>
+		<label>8x57mm M/88 Patrone bullet (HP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>24</damageAmountBase>
+			<armorPenetrationSharp>3</armorPenetrationSharp>
+			<armorPenetrationBlunt>56.5</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.comradespack.rifles">
+		<defName>MakeAmmo_8x57mmM88Patrone_FMJ</defName>
+		<label>make 8x57mm M/88 Patrone cartridge x500</label>
+		<description>Craft 500 8x57mm M/88 Patrone cartridges.</description>
+		<jobString>Making 8x57mm M/88 Patrone cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>34</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_8x57mmM88Patrone_FMJ>500</Ammo_8x57mmM88Patrone_FMJ>
+		</products>
+		<workAmount>3400</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.comradespack.rifles">
+		<defName>MakeAmmo_8x57mmM88Patrone_AP</defName>
+		<label>make 8x57mm M/88 Patrone (AP) cartridge x500</label>
+		<description>Craft 500 8x57mm M/88 Patrone (AP) cartridges.</description>
+		<jobString>Making 8x57mm M/88 Patrone (AP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>34</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_8x57mmM88Patrone_AP>500</Ammo_8x57mmM88Patrone_AP>
+		</products>
+		<workAmount>4080</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.comradespack.rifles">
+		<defName>MakeAmmo_8x57mmM88Patrone_HP</defName>
+		<label>make 8x57mm M/88 Patrone (HP) cartridge x500</label>
+		<description>Craft 500 8x57mm M/88 Patrone (HP) cartridges.</description>
+		<jobString>Making 8x57mm M/88 Patrone (HP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>34</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_8x57mmM88Patrone_HP>500</Ammo_8x57mmM88Patrone_HP>
+		</products>
+		<workAmount>3400</workAmount>
+	</RecipeDef>
+
+</Defs>

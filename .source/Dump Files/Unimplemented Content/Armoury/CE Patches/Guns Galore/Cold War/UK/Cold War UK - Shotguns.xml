@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+		<Operation Class="PatchOperationSequence">
+			<operations>
+			
+				<li Class="PatchOperationReplace">
+					<xpath>
+						/Defs/ThingDef[
+							defName = "CGF1_MWP_Browning_L32A1_" or
+							defName = "CGF1_MWP_Browning_L32A1_Shorty_"
+						]/tools
+					</xpath>
+					<value>
+						<tools>
+							<li Class="CombatExtended.ToolCE">
+								<label>stock</label>
+								<capacities>
+									<li>Blunt</li>
+								</capacities>
+								<power>8</power>
+								<cooldownTime>1.55</cooldownTime>
+								<chanceFactor>1.5</chanceFactor>
+								<armorPenetrationBlunt>2.755</armorPenetrationBlunt>
+								<linkedBodyPartsGroup>Stock</linkedBodyPartsGroup>
+							</li>
+							<li Class="CombatExtended.ToolCE">
+								<label>barrel</label>
+								<capacities>
+									<li>Blunt</li>
+								</capacities>
+								<power>5</power>
+								<cooldownTime>2.02</cooldownTime>
+								<armorPenetrationBlunt>1.630</armorPenetrationBlunt>
+								<linkedBodyPartsGroup>Barrel</linkedBodyPartsGroup>
+							</li>
+							<li Class="CombatExtended.ToolCE">
+								<label>muzzle</label>
+								<capacities>
+									<li>Poke</li>
+								</capacities>
+								<power>8</power>
+								<cooldownTime>1.55</cooldownTime>
+								<armorPenetrationBlunt>2.755</armorPenetrationBlunt>
+								<linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+							</li>
+						</tools>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>
+						/Defs/ThingDef[
+							defName = "CGF1_MWP_Browning_L32A1_Stockless_" or
+							defName = "CGF1_MWP_Browning_L32A1_SawedOff_"
+						]/tools
+					</xpath>
+					<value>
+						<tools>
+                        <li Class="CombatExtended.ToolCE">
+                           <label>grip</label>
+                           <capacities>
+                              <li>Blunt</li>
+                           </capacities>
+                           <power>2</power>
+                           <cooldownTime>1.54</cooldownTime>
+                           <chanceFactor>1.5</chanceFactor>
+                           <armorPenetrationBlunt>0.555</armorPenetrationBlunt>
+                           <linkedBodyPartsGroup>Grip</linkedBodyPartsGroup>
+                        </li>
+                        <li Class="CombatExtended.ToolCE">
+                           <label>muzzle</label>
+                           <capacities>
+                              <li>Poke</li>
+                           </capacities>
+                           <power>2</power>
+                           <cooldownTime>1.54</cooldownTime>
+                           <armorPenetrationBlunt>0.555</armorPenetrationBlunt>
+                           <linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+                        </li>
+						</tools>
+					</value>
+				</li>
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>CGF1_MWP_Browning_L32A1_</defName>
+					<statBases>
+                        <SightsEfficiency>1.00</SightsEfficiency>
+                        <ShotSpread>0.16</ShotSpread>
+                        <SwayFactor>1.27</SwayFactor>
+                        <Bulk>11</Bulk>
+						<Mass>4.1</Mass>
+						<RangedWeapon_Cooldown>0.40</RangedWeapon_Cooldown>
+					</statBases>
+					<Properties>
+                           <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+                           <hasStandardCommand>true</hasStandardCommand>
+                           <defaultProjectile>Bullet_12Gauge_Buck</defaultProjectile>
+                           <warmupTime>0.6</warmupTime>
+                           <range>16</range>
+                           <soundCast>CGF1_MWP_SFX_Shotgun1</soundCast>
+                           <soundCastTail>GunTail_Heavy</soundCastTail>
+                           <muzzleFlashScale>9</muzzleFlashScale>
+						   <recoilAmount>2.75</recoilAmount>
+                     </Properties>
+					 <AmmoUser>
+						<magazineSize>4</magazineSize>
+						<reloadTime>0.85</reloadTime>
+						<reloadOneAtATime>true</reloadOneAtATime>
+						<ammoSet>AmmoSet_12Gauge</ammoSet>
+					</AmmoUser>
+					<FireModes>
+                        <aiAimMode>AimedShot</aiAimMode>
+					</FireModes>
+					<weaponTags>
+						<li>CE_AI_AssaultWeapon</li>
+					</weaponTags>
+				</li>
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>CGF1_MWP_Browning_L32A1_Shorty_</defName>
+					<statBases>
+                        <SightsEfficiency>0.75</SightsEfficiency>
+                        <ShotSpread>0.20</ShotSpread>
+                        <SwayFactor>1.55</SwayFactor>
+                        <Bulk>7.00</Bulk>
+						<Mass>3.65</Mass>
+						<RangedWeapon_Cooldown>0.40</RangedWeapon_Cooldown>
+					</statBases>
+					<Properties>
+                           <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+                           <hasStandardCommand>true</hasStandardCommand>
+                           <defaultProjectile>Bullet_12Gauge_Buck</defaultProjectile>
+                           <warmupTime>0.6</warmupTime>
+                           <range>16</range>
+                           <soundCast>CGF1_MWP_SFX_Shotgun1</soundCast>
+                           <soundCastTail>GunTail_Heavy</soundCastTail>
+                           <muzzleFlashScale>9</muzzleFlashScale>
+						   <recoilAmount>3.00</recoilAmount>
+                     </Properties>
+					 <AmmoUser>
+						<magazineSize>4</magazineSize>
+						<reloadTime>0.85</reloadTime>
+						<reloadOneAtATime>true</reloadOneAtATime>
+						<ammoSet>AmmoSet_12Gauge</ammoSet>
+					</AmmoUser>
+					<FireModes>
+                        <aiAimMode>Snapshot</aiAimMode>
+					</FireModes>
+					<weaponTags>
+						<li>CE_AI_AssaultWeapon</li>
+					</weaponTags>
+				</li>
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>CGF1_MWP_Browning_L32A1_Stockless_</defName>
+					<statBases>
+                        <SightsEfficiency>1.00</SightsEfficiency>
+                        <ShotSpread>0.16</ShotSpread>
+                        <SwayFactor>1.27</SwayFactor>
+                        <Bulk>8</Bulk>
+						<Mass>3.85</Mass>
+						<RangedWeapon_Cooldown>0.40</RangedWeapon_Cooldown>
+					</statBases>
+					<Properties>
+                           <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+                           <hasStandardCommand>true</hasStandardCommand>
+                           <defaultProjectile>Bullet_12Gauge_Buck</defaultProjectile>
+                           <warmupTime>0.6</warmupTime>
+                           <range>16</range>
+                           <soundCast>CGF1_MWP_SFX_Shotgun1</soundCast>
+                           <soundCastTail>GunTail_Heavy</soundCastTail>
+                           <muzzleFlashScale>9</muzzleFlashScale>
+						   <recoilAmount>3.00</recoilAmount>
+                     </Properties>
+					 <AmmoUser>
+						<magazineSize>4</magazineSize>
+						<reloadTime>0.85</reloadTime>
+						<reloadOneAtATime>true</reloadOneAtATime>
+						<ammoSet>AmmoSet_12Gauge</ammoSet>
+					</AmmoUser>
+					<FireModes>
+                        <aiAimMode>Snapshot</aiAimMode>
+					</FireModes>
+					<weaponTags>
+						<li>CE_AI_AssaultWeapon</li>
+					</weaponTags>
+				</li>
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>CGF1_MWP_Browning_L32A1_SawedOff_</defName>
+					<statBases>
+                        <SightsEfficiency>0.5</SightsEfficiency>
+                        <ShotSpread>0.24</ShotSpread>
+                        <SwayFactor>1.27</SwayFactor>
+                        <Bulk>5</Bulk>
+						<Mass>3.35</Mass>
+						<RangedWeapon_Cooldown>0.40</RangedWeapon_Cooldown>
+					</statBases>
+					<Properties>
+                           <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+                           <hasStandardCommand>true</hasStandardCommand>
+                           <defaultProjectile>Bullet_12Gauge_Buck</defaultProjectile>
+                           <warmupTime>0.55</warmupTime>
+                           <range>12</range>
+                           <soundCast>CGF1_MWP_SFX_Shotgun1</soundCast>
+                           <soundCastTail>GunTail_Heavy</soundCastTail>
+                           <muzzleFlashScale>9</muzzleFlashScale>
+						   <recoilAmount>3.25</recoilAmount>
+                     </Properties>
+					 <AmmoUser>
+						<magazineSize>4</magazineSize>
+						<reloadTime>0.85</reloadTime>
+						<reloadOneAtATime>true</reloadOneAtATime>
+						<ammoSet>AmmoSet_12Gauge</ammoSet>
+					</AmmoUser>
+					<FireModes>
+                        <aiAimMode>Snapshot</aiAimMode>
+					</FireModes>
+					<weaponTags>
+						<li>CE_AI_AssaultWeapon</li>
+					</weaponTags>
+				</li>
+
+			</operations>
+	</Operation>
+
+</Patch>

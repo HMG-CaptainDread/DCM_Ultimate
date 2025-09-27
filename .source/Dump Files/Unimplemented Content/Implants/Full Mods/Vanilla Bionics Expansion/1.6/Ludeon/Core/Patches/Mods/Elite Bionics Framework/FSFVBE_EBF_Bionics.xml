@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+	
+	<Operation Class="PatchOperationSequence">
+		<success>Normal</success>
+		<operations>
+			
+			<!-- Add EBF Health Modifiers -->
+
+			<li MayRequire="V1024.EBFramework" Class="PatchOperationAdd">
+				<xpath>/Defs/HediffDef[defName = "BionicEye"]</xpath>
+				<value>
+					<comps>
+        				<li Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust">
+            				<scaleAdjustment>0.25</scaleAdjustment>
+        				</li>
+    				</comps>
+				</value>
+			</li>
+
+			<li MayRequire="V1024.EBFramework" Class="PatchOperationAdd">
+				<xpath>/Defs/HediffDef[defName = "BionicArm"]/comps</xpath>
+				<value>
+        			<li Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust">
+            			<scaleAdjustment>0.25</scaleAdjustment>
+        			</li>
+				</value>
+			</li>
+
+			<li MayRequire="V1024.EBFramework" Class="PatchOperationAdd">
+				<xpath>/Defs/HediffDef[defName = "BionicLeg"]</xpath>
+				<value>
+					<comps>
+        				<li Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust">
+            				<scaleAdjustment>0.25</scaleAdjustment>
+        				</li>
+    				</comps>
+				</value>
+			</li>
+
+			<li MayRequire="V1024.EBFramework" Class="PatchOperationAdd">
+				<xpath>/Defs/HediffDef[defName = "BionicSpine"]</xpath>
+				<value>
+					<comps>
+        				<li Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust">
+            				<scaleAdjustment>0.25</scaleAdjustment>
+        				</li>
+    				</comps>
+				</value>
+			</li>
+
+			<li MayRequire="V1024.EBFramework" Class="PatchOperationAdd">
+				<xpath>/Defs/HediffDef[defName = "BionicHeart"]</xpath>
+				<value>
+					<comps>
+        				<li Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust">
+            				<scaleAdjustment>0.25</scaleAdjustment>
+        				</li>
+    				</comps>
+				</value>
+			</li>
+
+			<li MayRequire="V1024.EBFramework" Class="PatchOperationAdd">
+				<xpath>/Defs/HediffDef[defName = "BionicStomach"]</xpath>
+				<value>
+					<comps>
+        				<li Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust">
+            				<scaleAdjustment>0.25</scaleAdjustment>
+        				</li>
+    				</comps>
+				</value>
+			</li>
+			
+			<li MayRequire="V1024.EBFramework" Class="PatchOperationAdd">
+				<xpath>/Defs/HediffDef[defName = "BionicEar"]</xpath>
+				<value>
+					<comps>
+        				<li Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust">
+            				<scaleAdjustment>0.25</scaleAdjustment>
+        				</li>
+    				</comps>
+				</value>
+			</li>
+			
+			<li MayRequire="V1024.EBFramework" Class="PatchOperationConditional">		
+				<xpath>/Defs/HediffDef[defName = "BionicJaw"]/comps</xpath>
+				<match Class="PatchOperationAdd">
+					<xpath>/Defs/HediffDef[defName = "BionicJaw"]/comps</xpath>
+					<value>
+        				<li Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust">
+            				<scaleAdjustment>0.25</scaleAdjustment>
+        				</li>
+					</value>
+				</match>				
+				<nomatch Class="PatchOperationAdd">
+					<xpath>/Defs/HediffDef[defName = "BionicJaw"]</xpath>
+					<value>
+						<comps>
+    	    				<li Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust">
+        	    				<scaleAdjustment>0.25</scaleAdjustment>
+	        				</li>
+    					</comps>
+					</value>
+				</nomatch>
+			</li>
+			
+		</operations>
+	</Operation>
+	
+</Patch>

@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!-- Start of thingDefs -->
+<!-- =========================== Accessory Base Class =========================== -->
+<!-- Accessory Makeable Base Class -->
+  <ThingDef Name="MedTimes_HandArmour" Abstract="True">
+    <thingClass>Apparel</thingClass>
+    <category>Item</category>
+    <selectable>True</selectable>
+    <pathCost>10</pathCost>
+    <altitudeLayer>Item</altitudeLayer>
+    <alwaysHaulable>True</alwaysHaulable>
+    <tickerType>Never</tickerType>	
+    <drawGUIOverlay>true</drawGUIOverlay>		
+    <graphicData>
+      <onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(0.8,0.8)</drawSize>	  
+	</graphicData>
+    <statBases>
+      <SellPriceFactor>0.9</SellPriceFactor>
+      <Insulation_Cold>3</Insulation_Cold>
+		<EquipDelay>2</EquipDelay>	  
+		<Beauty>-3</Beauty>
+		<Mass>1</Mass>	  
+    </statBases>
+    <apparel>
+		<careIfWornByCorpse>false</careIfWornByCorpse>		
+		<defaultOutfitTags><li>Soldier</li></defaultOutfitTags>		
+		<bodyPartGroups><li>Hands</li></bodyPartGroups>
+		<layers><li>Middle</li></layers>	
+	</apparel>		
+    <comps><li Class="CompProperties_Forbiddable"/></comps>		
+  </ThingDef>
+
+  
+<!-- (Non-Nanite Base Class) Makeable -->
+<ThingDef Name="MedTimes_HandArmourNN" ParentName="MedTimes_HandArmour" Abstract="True"> 
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+      <DeteriorationRate>2</DeteriorationRate>	  
+    </statBases>
+     <comps>	  
+      <li><compClass>CompQuality</compClass></li>
+    </comps>		
+    <tradeTags><li>MedTimes_Gear</li></tradeTags>
+    <thingCategories><li>HandArmour</li></thingCategories>		
+  </ThingDef>    
+  
+  
+<!-- ================================== Tier 0 Classes =================================-->
+<!-- ==== Light Classes ==== -->
+<!-- (Light Class) Tier 0 Non-Makeable -->
+  <ThingDef Name="MedTimes_HandArmour_T0_L" ParentName="MedTimes_HandArmourNN" Abstract="True">
+    <costList>
+      <WoodLog>25</WoodLog> 
+    </costList>
+    <statBases>
+      <ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.3</ArmorRating_Sharp>
+    </statBases>
+    <equippedStatOffsets>
+      <MeleeHitChance>0.05</MeleeHitChance>	
+      <WorkSpeedGlobal>0.025</WorkSpeedGlobal>		  
+    </equippedStatOffsets>	
+  </ThingDef>
+  
+<!-- (Light Class) Tier 0 Makeable -->  
+<ThingDef Name="MedTimes_Craft_HandArmour_T0_L" ParentName="MedTimes_HandArmour_T0_L" Abstract="True">  
+    <statBases>
+      <WorkToMake>3000</WorkToMake>
+    </statBases>
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+	  <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+      <recipeUsers>
+		<li>CraftingSpot</li>
+		<li>MedTimes_CraftingStation</li>			
+      </recipeUsers>
+	</recipeMaker>  
+  </ThingDef>  
+  
+  
+  
+<!-- ================================== Tier 1 Classes =================================-->
+<!-- ==== Light Classes ==== -->  
+<!-- (Light Class) Tier 1 Non-Makeable -->
+  <ThingDef Name="MedTimes_HandArmour_T1_L" ParentName="MedTimes_HandArmourNN" Abstract="True">
+    <costList>
+      <Steel>25</Steel> 
+    </costList>
+    <statBases>
+      <ArmorRating_Blunt>0.25</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.55</ArmorRating_Sharp>
+    </statBases>
+    <equippedStatOffsets>
+      <MeleeHitChance>0.05</MeleeHitChance>
+      <WorkSpeedGlobal>0.05</WorkSpeedGlobal>		  
+    </equippedStatOffsets>	
+  </ThingDef>
+  
+<!-- (Light Class) Tier 1 Makeable -->
+<ThingDef Name="MedTimes_Smith_HandArmour_T1_L" ParentName="MedTimes_HandArmour_T1_L" Abstract="True">  
+    <statBases>
+      <WorkToMake>3000</WorkToMake>
+    </statBases>
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>	  
+      <recipeUsers>
+		<li>MedTimes_BlacksmithForge</li>		
+      </recipeUsers>
+		<skillRequirements>
+				<Crafting>4</Crafting>
+		</skillRequirements>	  
+	</recipeMaker>
+  </ThingDef>  
+  
+  
+  
+<!-- ==== Heavy Classes ==== -->  
+<!-- (Heavy Class) Tier 1 Non-Makeable -->
+  <ThingDef Name="MedTimes_HandArmour_T1_H" ParentName="MedTimes_HandArmourNN" Abstract="True">
+    <costList>
+      <Steel>35</Steel> 
+    </costList>
+    <statBases>
+      <ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.65</ArmorRating_Sharp>
+    </statBases>
+    <equippedStatOffsets>
+      <MeleeHitChance>0.1</MeleeHitChance>	  	  	  
+    </equippedStatOffsets>	
+  </ThingDef> 
+
+  <!-- (Heavy Class) Tier 1 Makeable -->
+<ThingDef Name="MedTimes_Smith_HandArmour_T1_H" ParentName="MedTimes_HandArmour_T1_H" Abstract="True">  
+    <statBases>
+      <WorkToMake>4500</WorkToMake>
+    </statBases>
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>	  
+      <recipeUsers>
+		<li>MedTimes_BlacksmithForge</li>	
+      </recipeUsers>
+		<skillRequirements>
+				<Crafting>6</Crafting>
+		</skillRequirements>	  
+	</recipeMaker>
+  </ThingDef>
+  
+  
+  
+<!-- ================================== Tier 2 Classes =================================-->
+<!-- ==== Light Classes ==== -->
+<!-- (Light Class) Tier 2 Non-Makeable -->  
+  <ThingDef Name="MedTimes_HandArmour_T2_L" ParentName="MedTimes_HandArmourNN" Abstract="True">
+    <costList>
+      <Steel>25</Steel> 
+    </costList>
+    <statBases>
+      <ArmorRating_Blunt>0.35</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.75</ArmorRating_Sharp>
+    </statBases>
+    <equippedStatOffsets>
+      <MeleeHitChance>0.05</MeleeHitChance>
+      <WorkSpeedGlobal>0.05</WorkSpeedGlobal>		  
+    </equippedStatOffsets>		
+  </ThingDef>  
+
+<!-- (Light Class) Tier 2 Makeable -->	
+<ThingDef Name="MedTimes_Smith_HandArmour_T2_L" ParentName="MedTimes_HandArmour_T2_L" Abstract="True">  
+    <statBases>
+      <WorkToMake>3000</WorkToMake>
+    </statBases>
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>	  
+      <recipeUsers>
+		<li>MedTimes_BlacksmithForgeTierTwo</li>
+      </recipeUsers>
+		<skillRequirements>
+				<Crafting>4</Crafting>
+		</skillRequirements>	  
+	</recipeMaker>
+  </ThingDef>   
+
+<!-- (Light Class) Tier 2 Exceptional Makeable -->	
+  <ThingDef Name="MedTimes_Smith_HandArmour_T2_LX" ParentName="MedTimes_HandArmour_T2_L" Abstract="True">
+    <statBases>
+      <WorkToMake>5000</WorkToMake>
+      <ArmorRating_Blunt>0.4</ArmorRating_Blunt>	  
+    </statBases>
+  <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>	
+      <recipeUsers>
+		<li>MedTimes_BlacksmithForgeTierTwo</li>  
+	  </recipeUsers>
+		<skillRequirements>
+				<Crafting>8</Crafting>
+		</skillRequirements>	  
+	</recipeMaker>	
+  </ThingDef> 
+  
+  
+  
+<!-- ==== Heavy Classes ==== -->
+<!-- (Heavy Class) Tier 2 Non-Makeable -->  
+  <ThingDef Name="MedTimes_HandArmour_T2_H" ParentName="MedTimes_HandArmourNN" Abstract="True">
+    <costList>
+      <Steel>35</Steel> 
+    </costList>
+    <statBases>
+      <ArmorRating_Blunt>0.4</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.85</ArmorRating_Sharp>
+    </statBases>
+    <equippedStatOffsets>
+      <MeleeHitChance>0.1</MeleeHitChance>	  	  	  
+    </equippedStatOffsets>		
+  </ThingDef>  
+
+<!-- (Heavy Class) Tier 2 Makeable -->	
+<ThingDef Name="MedTimes_Smith_HandArmour_T2_H" ParentName="MedTimes_HandArmour_T2_H" Abstract="True">  
+    <statBases>
+      <WorkToMake>4500</WorkToMake>
+    </statBases>
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>	  
+      <recipeUsers>
+		<li>MedTimes_BlacksmithForgeTierTwo</li>
+      </recipeUsers>
+		<skillRequirements>
+				<Crafting>6</Crafting>
+		</skillRequirements>		  
+	</recipeMaker>
+  </ThingDef>    
+  
+<!-- (Heavy Class) Tier 2 Exceptional Makeable -->	
+  <ThingDef Name="MedTimes_Smith_HandArmour_T2_HX" ParentName="MedTimes_HandArmour_T2_H" Abstract="True">
+    <statBases>
+      <WorkToMake>5000</WorkToMake>
+      <ArmorRating_Blunt>0.45</ArmorRating_Blunt>	  
+    </statBases>
+  <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>	
+      <recipeUsers>
+		<li>MedTimes_BlacksmithForgeTierTwo</li>  
+	  </recipeUsers>
+		<skillRequirements>
+				<Crafting>10</Crafting>
+		</skillRequirements>		  
+	</recipeMaker>	
+  </ThingDef>  
+
+
+
+  
+<!-- =========================== Actual Hand Armour Items =========================== --> 
+<!-- ==================== Tier 0 ================= -->
+<!-- ==== Light Armours ==== --> 
+<!-- Wooden Plated Gloves -->
+<ThingDef ParentName="MedTimes_Craft_HandArmour_T0_L">
+    <defName>MedTimes_Bracers_Wooden</defName>
+    <label>Wooden Bracers</label>
+    <description>(Tier: 0, Light)[MeleeHit: +5%][Workspeed: +5%] Bracers made from various wooden plates strapped together. Clearly designed for hand to hand combat.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Handwear/MedTimes_Bracers_Wooden</texPath>
+      <drawSize>(0.7,0.7)</drawSize>		  
+    </graphicData>		
+</ThingDef>
+  
+  
+<!-- ==================== Tier 1 ================= --> 
+<!-- ==== Light Armours ==== -->
+<!-- Steel Plated Gloves -->
+<ThingDef ParentName="MedTimes_Smith_HandArmour_T1_L">
+    <defName>MedTimes_Gloves_Plated</defName>
+    <label>Plated Gloves</label>
+    <description>(Tier: 1, Light)[MeleeHit: +5%][Workspeed: +5%] Fingerless gloves made from leather and containing various steel plates. Clearly designed for hand to hand combat.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Handwear/MedTimes_Gloves_Plated</texPath>	  
+    </graphicData>		
+</ThingDef>
+
+
+<!-- ==== Heavy Armours ==== -->  
+<!-- Scaled Gloves -->
+<ThingDef ParentName="MedTimes_Smith_HandArmour_T1_H">
+    <defName>MedTimes_Gloves_Scaled</defName>
+    <label>Scaled Gloves</label>
+    <description>(Tier: 1, Heavy)[MeleeHit: +10%] Gloves made from leather and covered in small steel plates in a pattern generally described as "Scaled". Clearly designed for hand to hand combat.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Handwear/MedTimes_Gaunlets_Scaled</texPath>	  
+    </graphicData>
+</ThingDef>
+
+
+
+<!-- ==================== Tier 2 ================= -->  
+<!-- ==== Light Armours ==== --> 
+<!-- Lamellar Gauntlets -->
+<ThingDef ParentName="MedTimes_Smith_HandArmour_T2_L">
+    <defName>MedTimes_Gauntlets_Plated</defName>
+    <label>Full Plated Gauntlets</label>
+    <description>(Tier: 2, Light)[MeleeHit: +5%][Workspeed: +5%] A sturdy leather glove covered in steel plates. designed for maximum protection without hampering mobility.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Handwear/MedTimes_Gauntlets_FullPlated</texPath>		  
+    </graphicData>
+</ThingDef>  
+
+<!-- Lamellar Gauntlets -->
+<ThingDef ParentName="MedTimes_HandArmour_T2_L">
+    <defName>MedTimes_Gauntlets_Warbourne</defName>
+    <label>Warbourne's Gauntlets</label>
+    <description>(Tier: 2, Light)[MeleeHit: +10%][Workspeed: +5%] A sturdy leather glove covered in chainmail. The outer guard is comprised of steel scales and a metal plate.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Handwear/MedTimes_Gauntlets_Warbourne</texPath>		  
+    </graphicData>
+    <equippedStatOffsets>
+      <MeleeHitChance>0.1</MeleeHitChance>	  	  	  
+    </equippedStatOffsets>		
+</ThingDef> 
+
+<!-- Archers Bracers -->
+<ThingDef ParentName="MedTimes_Smith_HandArmour_T2_LX">
+    <defName>MedTimes_Bracer_Archer</defName>
+    <label>Archer's Bracers</label>
+    <description>(Tier: 2, Light)[ShootAcc: +7.5%][MeleeHit: +5%][Workspeed: +5%] A bracer and hand covering made from leather and covered in steel plates. The bracer is positioned so as to protect the forearm from string lash and the hands have finger tip protection, allowing the user to concentrate on his target. Clearly designed for ranged combat.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Handwear/MedTimes_Bracer_Archer</texPath>		  
+    </graphicData>
+    <equippedStatOffsets>
+      <ShootingAccuracyPawn>0.075</ShootingAccuracyPawn>	  	  	  
+    </equippedStatOffsets>	
+</ThingDef>  
+  
+  
+<!-- ==== Heavy Armours ==== -->  
+<!-- Steel Gauntlets -->
+<ThingDef ParentName="MedTimes_Smith_HandArmour_T2_H">
+    <defName>MedTimes_Gauntlets_EncasedSteel</defName>
+    <label>Encased Steel Gauntlets</label>
+    <description>(Tier: 2, Heavy)[MeleeHit: +10%] A pair of steel gauntlets, The hand is compleatly encased in a steel mitten, the bulky steel means it's difficult to complete daily tasks. The extra hand protection, however, means far less fear of losing a finger when trying to strike an opponent. This makes them truly a necessity for hand to hand combat</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Handwear/MedTimes_Gauntlets_EncasedSteel</texPath>	
+    </graphicData>
+</ThingDef>
+  
+<!-- Royal Plated Gauntlets -->
+<ThingDef ParentName="MedTimes_Smith_HandArmour_T2_HX">
+    <defName>MedTimes_Gauntlets_RoyalPlated</defName>
+    <label>Royal Plated Gauntlets</label>
+    <description>(Tier: 2, Heavy)[MeleeHit: +10%][Workspeed: +2.5%] A pair of steel gauntlets, Although the articulating variety, the bulky steel means it's difficult to complete daily tasks. The extra hand protection, however, means far less fear of losing a finger when trying to strike an opponent. This makes them truly a necessity for hand to hand combat</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Handwear/MedTimes_Gauntlets_RoyalPlated</texPath>
+    </graphicData>
+    <equippedStatOffsets>
+      <WorkSpeedGlobal>0.025</WorkSpeedGlobal>  	  	  
+    </equippedStatOffsets>		
+</ThingDef>  
+ 
+  
+<!-- End of thingDefs -->
+</Defs>

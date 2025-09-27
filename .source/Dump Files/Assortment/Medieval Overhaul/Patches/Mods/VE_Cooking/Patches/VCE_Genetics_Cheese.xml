@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Genetics Expanded</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[defName="VCE_WeirdCheese"]/thingCategories</xpath>
+					<match Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="VCE_WeirdCheese"]/thingCategories</xpath>
+						<value>
+							<thingCategories>
+								<li>DankPyon_Cheese</li>
+							</thingCategories>
+						</value>
+					</match>
+				</li>
+
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[defName="VCE_MechaCheese"]/thingCategories</xpath>
+					<match Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="VCE_MechaCheese"]/thingCategories</xpath>
+						<value>
+							<thingCategories>
+								<li>DankPyon_Cheese</li>
+							</thingCategories>
+						</value>
+					</match>
+				</li>
+
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[defName="VCE_BearffaloCheese"]/thingCategories</xpath>
+					<match Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="VCE_BearffaloCheese"]/thingCategories</xpath>
+						<value>
+							<thingCategories>
+								<li>DankPyon_Cheese</li>
+							</thingCategories>
+						</value>
+					</match>
+				</li>
+
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[defName="VCE_ThrumffaloGouda"]/thingCategories</xpath>
+					<match Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="VCE_ThrumffaloGouda"]/thingCategories</xpath>
+						<value>
+							<thingCategories>
+								<li>DankPyon_Cheese</li>
+							</thingCategories>
+						</value>
+					</match>
+				</li>
+
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[defName="VCE_LumpyCheese"]/thingCategories</xpath>
+					<match Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="VCE_LumpyCheese"]/thingCategories</xpath>
+						<value>
+							<thingCategories>
+								<li>DankPyon_Cheese</li>
+							</thingCategories>
+						</value>
+					</match>
+				</li>
+
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[defName="VCE_ChickenffaloCheese"]/thingCategories</xpath>
+					<match Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="VCE_ChickenffaloCheese"]/thingCategories</xpath>
+						<value>
+							<thingCategories>
+								<li>DankPyon_Cheese</li>
+							</thingCategories>
+						</value>
+					</match>
+				</li>
+
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[defName="VCE_BrownCheese"]/thingCategories</xpath>
+					<match Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="VCE_BrownCheese"]/thingCategories</xpath>
+						<value>
+							<thingCategories>
+								<li>DankPyon_Cheese</li>
+							</thingCategories>
+						</value>
+					</match>
+				</li>
+
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[defName="VCE_HairyCheese"]/thingCategories</xpath>
+					<match Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="VCE_HairyCheese"]/thingCategories</xpath>
+						<value>
+							<thingCategories>
+								<li>DankPyon_Cheese</li>
+							</thingCategories>
+						</value>
+					</match>
+				</li>
+
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[defName="VCE_RatCheese"]/thingCategories</xpath>
+					<match Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="VCE_RatCheese"]/thingCategories</xpath>
+						<value>
+							<thingCategories>
+								<li>DankPyon_Cheese</li>
+							</thingCategories>
+						</value>
+					</match>
+				</li>
+
+				<!-- AA VCE Cheese Processes -->
+				<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+
+						<ProcessorFramework.ProcessDef>
+							<defName>VCE_MO_WeirdMilkIntoCheese</defName>
+							<thingDef>VCE_WeirdCheese</thingDef>
+							<ingredientFilter>
+								<thingDefs>
+									<li>GR_WeirdMilk</li>
+								</thingDefs>
+							</ingredientFilter>
+							<processDays>1</processDays><!-- in days, a day is 60,000 ticks -->
+							<capacityFactor>1.0</capacityFactor>
+							<efficiency>0.5</efficiency>
+							<usesTemperature>true</usesTemperature>
+							<temperatureSafe>-1.0~32.0</temperatureSafe>
+							<temperatureIdeal>7.0~32.0</temperatureIdeal>
+							<ruinedPerDegreePerHour>2.5</ruinedPerDegreePerHour><!-- percent per degree per hour -->
+							<speedBelowSafe>0.1</speedBelowSafe>
+							<speedAboveSafe>1.0</speedAboveSafe>
+							<sunFactor>1.0~1.0</sunFactor>
+							<rainFactor>1.0~1.0</rainFactor>
+							<snowFactor>1.0~1.0</snowFactor>
+							<windFactor>1.0~1.0</windFactor>
+							<unpoweredFactor>0.0</unpoweredFactor>
+							<unfueledFactor>0.0</unfueledFactor>
+							<powerUseFactor>1.0</powerUseFactor>
+							<fuelUseFactor>0.0</fuelUseFactor>
+							<filledGraphicSuffix>Filled</filledGraphicSuffix>
+							<usesQuality>true</usesQuality>
+							<qualityDays>(10, 15, 25, 35, 40, 45, 75)</qualityDays>
+							<color>(255, 255, 255)</color><!-- 0-255 or 0.0-1.0 -->
+							<customLabel/>
+							<destroyChance>0.0</destroyChance>
+						</ProcessorFramework.ProcessDef>
+
+						<ProcessorFramework.ProcessDef>
+							<defName>VCE_MO_MechaMilkIntoCheese</defName>
+							<thingDef>VCE_MechaCheese</thingDef>
+							<ingredientFilter>
+								<thingDefs>
+									<li>GR_MechaMilk</li>
+								</thingDefs>
+							</ingredientFilter>
+							<processDays>1</processDays><!-- in days, a day is 60,000 ticks -->
+							<capacityFactor>1.0</capacityFactor>
+							<efficiency>0.025</efficiency>
+							<usesTemperature>true</usesTemperature>
+							<temperatureSafe>-1.0~32.0</temperatureSafe>
+							<temperatureIdeal>7.0~32.0</temperatureIdeal>
+							<ruinedPerDegreePerHour>2.5</ruinedPerDegreePerHour><!-- percent per degree per hour -->
+							<speedBelowSafe>0.1</speedBelowSafe>
+							<speedAboveSafe>1.0</speedAboveSafe>
+							<sunFactor>1.0~1.0</sunFactor>
+							<rainFactor>1.0~1.0</rainFactor>
+							<snowFactor>1.0~1.0</snowFactor>
+							<windFactor>1.0~1.0</windFactor>
+							<unpoweredFactor>0.0</unpoweredFactor>
+							<unfueledFactor>0.0</unfueledFactor>
+							<powerUseFactor>1.0</powerUseFactor>
+							<fuelUseFactor>0.0</fuelUseFactor>
+							<filledGraphicSuffix>Filled</filledGraphicSuffix>
+							<usesQuality>true</usesQuality>
+							<qualityDays>(10, 15, 25, 35, 40, 45, 75)</qualityDays>
+							<color>(255, 255, 255)</color><!-- 0-255 or 0.0-1.0 -->
+							<customLabel/>
+							<destroyChance>0.0</destroyChance>
+						</ProcessorFramework.ProcessDef>
+
+						<ProcessorFramework.ProcessDef>
+							<defName>VCE_MO_BearffaloMilkIntoCheese</defName>
+							<thingDef>VCE_BearffaloCheese</thingDef>
+							<ingredientFilter>
+								<thingDefs>
+									<li>GR_BearffaloMilk</li>
+								</thingDefs>
+							</ingredientFilter>
+							<processDays>1</processDays><!-- in days, a day is 60,000 ticks -->
+							<capacityFactor>1.0</capacityFactor>
+							<efficiency>0.5</efficiency>
+							<usesTemperature>true</usesTemperature>
+							<temperatureSafe>-1.0~32.0</temperatureSafe>
+							<temperatureIdeal>7.0~32.0</temperatureIdeal>
+							<ruinedPerDegreePerHour>2.5</ruinedPerDegreePerHour><!-- percent per degree per hour -->
+							<speedBelowSafe>0.1</speedBelowSafe>
+							<speedAboveSafe>1.0</speedAboveSafe>
+							<sunFactor>1.0~1.0</sunFactor>
+							<rainFactor>1.0~1.0</rainFactor>
+							<snowFactor>1.0~1.0</snowFactor>
+							<windFactor>1.0~1.0</windFactor>
+							<unpoweredFactor>0.0</unpoweredFactor>
+							<unfueledFactor>0.0</unfueledFactor>
+							<powerUseFactor>1.0</powerUseFactor>
+							<fuelUseFactor>0.0</fuelUseFactor>
+							<filledGraphicSuffix>Filled</filledGraphicSuffix>
+							<usesQuality>true</usesQuality>
+							<qualityDays>(10, 15, 25, 35, 40, 45, 75)</qualityDays>
+							<color>(255, 255, 255)</color><!-- 0-255 or 0.0-1.0 -->
+							<customLabel/>
+							<destroyChance>0.0</destroyChance>
+						</ProcessorFramework.ProcessDef>
+							
+						<ProcessorFramework.ProcessDef>
+							<defName>VCE_MO_ThrumffaloMilkIntoCheese</defName>
+							<thingDef>VCE_ThrumffaloGouda</thingDef>
+							<ingredientFilter>
+								<thingDefs>
+									<li>GR_ThrumffaloMilk</li>
+								</thingDefs>
+							</ingredientFilter>
+							<processDays>1</processDays><!-- in days, a day is 60,000 ticks -->
+							<capacityFactor>1.0</capacityFactor>
+							<efficiency>0.5</efficiency>
+							<usesTemperature>true</usesTemperature>
+							<temperatureSafe>-1.0~32.0</temperatureSafe>
+							<temperatureIdeal>7.0~32.0</temperatureIdeal>
+							<ruinedPerDegreePerHour>2.5</ruinedPerDegreePerHour><!-- percent per degree per hour -->
+							<speedBelowSafe>0.1</speedBelowSafe>
+							<speedAboveSafe>1.0</speedAboveSafe>
+							<sunFactor>1.0~1.0</sunFactor>
+							<rainFactor>1.0~1.0</rainFactor>
+							<snowFactor>1.0~1.0</snowFactor>
+							<windFactor>1.0~1.0</windFactor>
+							<unpoweredFactor>0.0</unpoweredFactor>
+							<unfueledFactor>0.0</unfueledFactor>
+							<powerUseFactor>1.0</powerUseFactor>
+							<fuelUseFactor>0.0</fuelUseFactor>
+							<filledGraphicSuffix>Filled</filledGraphicSuffix>
+							<usesQuality>true</usesQuality>
+							<qualityDays>(10, 15, 25, 35, 40, 45, 75)</qualityDays>
+							<color>(255, 255, 255)</color><!-- 0-255 or 0.0-1.0 -->
+							<customLabel/>
+							<destroyChance>0.0</destroyChance>
+						</ProcessorFramework.ProcessDef>
+							
+						<ProcessorFramework.ProcessDef>
+							<defName>VCE_MO_MuffalochickenMilkIntoCheese</defName>
+							<thingDef>VCE_LumpyCheese</thingDef>
+							<ingredientFilter>
+								<thingDefs>
+									<li>GR_MuffalochickenMilk</li>
+								</thingDefs>
+							</ingredientFilter>
+							<processDays>1</processDays><!-- in days, a day is 60,000 ticks -->
+							<capacityFactor>1.0</capacityFactor>
+							<efficiency>0.5</efficiency>
+							<usesTemperature>true</usesTemperature>
+							<temperatureSafe>-1.0~32.0</temperatureSafe>
+							<temperatureIdeal>7.0~32.0</temperatureIdeal>
+							<ruinedPerDegreePerHour>2.5</ruinedPerDegreePerHour><!-- percent per degree per hour -->
+							<speedBelowSafe>0.1</speedBelowSafe>
+							<speedAboveSafe>1.0</speedAboveSafe>
+							<sunFactor>1.0~1.0</sunFactor>
+							<rainFactor>1.0~1.0</rainFactor>
+							<snowFactor>1.0~1.0</snowFactor>
+							<windFactor>1.0~1.0</windFactor>
+							<unpoweredFactor>0.0</unpoweredFactor>
+							<unfueledFactor>0.0</unfueledFactor>
+							<powerUseFactor>1.0</powerUseFactor>
+							<fuelUseFactor>0.0</fuelUseFactor>
+							<filledGraphicSuffix>Filled</filledGraphicSuffix>
+							<usesQuality>true</usesQuality>
+							<qualityDays>(10, 15, 25, 35, 40, 45, 75)</qualityDays>
+							<color>(255, 255, 255)</color><!-- 0-255 or 0.0-1.0 -->
+							<customLabel/>
+							<destroyChance>0.0</destroyChance>
+						</ProcessorFramework.ProcessDef>
+							
+						<ProcessorFramework.ProcessDef>
+							<defName>VCE_MO_ChickenffaloMilkIntoCheese</defName>
+							<thingDef>VCE_ChickenffaloCheese</thingDef>
+							<ingredientFilter>
+								<thingDefs>
+									<li>GR_ChickenffaloMilk</li>
+								</thingDefs>
+							</ingredientFilter>
+							<processDays>1</processDays><!-- in days, a day is 60,000 ticks -->
+							<capacityFactor>1.0</capacityFactor>
+							<efficiency>0.5</efficiency>
+							<usesTemperature>true</usesTemperature>
+							<temperatureSafe>-1.0~32.0</temperatureSafe>
+							<temperatureIdeal>7.0~32.0</temperatureIdeal>
+							<ruinedPerDegreePerHour>2.5</ruinedPerDegreePerHour><!-- percent per degree per hour -->
+							<speedBelowSafe>0.1</speedBelowSafe>
+							<speedAboveSafe>1.0</speedAboveSafe>
+							<sunFactor>1.0~1.0</sunFactor>
+							<rainFactor>1.0~1.0</rainFactor>
+							<snowFactor>1.0~1.0</snowFactor>
+							<windFactor>1.0~1.0</windFactor>
+							<unpoweredFactor>0.0</unpoweredFactor>
+							<unfueledFactor>0.0</unfueledFactor>
+							<powerUseFactor>1.0</powerUseFactor>
+							<fuelUseFactor>0.0</fuelUseFactor>
+							<filledGraphicSuffix>Filled</filledGraphicSuffix>
+							<usesQuality>true</usesQuality>
+							<qualityDays>(10, 15, 25, 35, 40, 45, 75)</qualityDays>
+							<color>(255, 255, 255)</color><!-- 0-255 or 0.0-1.0 -->
+							<customLabel/>
+							<destroyChance>0.0</destroyChance>
+						</ProcessorFramework.ProcessDef>
+							
+						<ProcessorFramework.ProcessDef>
+							<defName>VCE_MO_MuffalobearIntoCheese</defName>
+							<thingDef>VCE_BrownCheese</thingDef>
+							<ingredientFilter>
+								<thingDefs>
+									<li>GR_MuffalobearMilk</li>
+								</thingDefs>
+							</ingredientFilter>
+							<processDays>1</processDays><!-- in days, a day is 60,000 ticks -->
+							<capacityFactor>1.0</capacityFactor>
+							<efficiency>0.5</efficiency>
+							<usesTemperature>true</usesTemperature>
+							<temperatureSafe>-1.0~32.0</temperatureSafe>
+							<temperatureIdeal>7.0~32.0</temperatureIdeal>
+							<ruinedPerDegreePerHour>2.5</ruinedPerDegreePerHour><!-- percent per degree per hour -->
+							<speedBelowSafe>0.1</speedBelowSafe>
+							<speedAboveSafe>1.0</speedAboveSafe>
+							<sunFactor>1.0~1.0</sunFactor>
+							<rainFactor>1.0~1.0</rainFactor>
+							<snowFactor>1.0~1.0</snowFactor>
+							<windFactor>1.0~1.0</windFactor>
+							<unpoweredFactor>0.0</unpoweredFactor>
+							<unfueledFactor>0.0</unfueledFactor>
+							<powerUseFactor>1.0</powerUseFactor>
+							<fuelUseFactor>0.0</fuelUseFactor>
+							<filledGraphicSuffix>Filled</filledGraphicSuffix>
+							<usesQuality>true</usesQuality>
+							<qualityDays>(10, 15, 25, 35, 40, 45, 75)</qualityDays>
+							<color>(255, 255, 255)</color><!-- 0-255 or 0.0-1.0 -->
+							<customLabel/>
+							<destroyChance>0.0</destroyChance>
+						</ProcessorFramework.ProcessDef>
+							
+						<ProcessorFramework.ProcessDef>
+							<defName>VCE_MO_WolffaloIntoCheese</defName>
+							<thingDef>VCE_HairyCheese</thingDef>
+							<ingredientFilter>
+								<thingDefs>
+									<li>GR_WolffaloMilk</li>
+								</thingDefs>
+							</ingredientFilter>
+							<processDays>1</processDays><!-- in days, a day is 60,000 ticks -->
+							<capacityFactor>1.0</capacityFactor>
+							<efficiency>0.5</efficiency>
+							<usesTemperature>true</usesTemperature>
+							<temperatureSafe>-1.0~32.0</temperatureSafe>
+							<temperatureIdeal>7.0~32.0</temperatureIdeal>
+							<ruinedPerDegreePerHour>2.5</ruinedPerDegreePerHour><!-- percent per degree per hour -->
+							<speedBelowSafe>0.1</speedBelowSafe>
+							<speedAboveSafe>1.0</speedAboveSafe>
+							<sunFactor>1.0~1.0</sunFactor>
+							<rainFactor>1.0~1.0</rainFactor>
+							<snowFactor>1.0~1.0</snowFactor>
+							<windFactor>1.0~1.0</windFactor>
+							<unpoweredFactor>0.0</unpoweredFactor>
+							<unfueledFactor>0.0</unfueledFactor>
+							<powerUseFactor>1.0</powerUseFactor>
+							<fuelUseFactor>0.0</fuelUseFactor>
+							<filledGraphicSuffix>Filled</filledGraphicSuffix>
+							<usesQuality>true</usesQuality>
+							<qualityDays>(10, 15, 25, 35, 40, 45, 75)</qualityDays>
+							<color>(255, 255, 255)</color><!-- 0-255 or 0.0-1.0 -->
+							<customLabel/>
+							<destroyChance>0.0</destroyChance>
+						</ProcessorFramework.ProcessDef>
+							
+						<ProcessorFramework.ProcessDef>
+							<defName>VCE_MO_RatMilkIntoCheese</defName>
+							<thingDef>VCE_RatCheese</thingDef>
+							<ingredientFilter>
+								<thingDefs>
+									<li>GR_RatMilk</li>
+								</thingDefs>
+							</ingredientFilter>
+							<processDays>1</processDays><!-- in days, a day is 60,000 ticks -->
+							<capacityFactor>1.0</capacityFactor>
+							<efficiency>0.5</efficiency>
+							<usesTemperature>true</usesTemperature>
+							<temperatureSafe>-1.0~32.0</temperatureSafe>
+							<temperatureIdeal>7.0~32.0</temperatureIdeal>
+							<ruinedPerDegreePerHour>2.5</ruinedPerDegreePerHour><!-- percent per degree per hour -->
+							<speedBelowSafe>0.1</speedBelowSafe>
+							<speedAboveSafe>1.0</speedAboveSafe>
+							<sunFactor>1.0~1.0</sunFactor>
+							<rainFactor>1.0~1.0</rainFactor>
+							<snowFactor>1.0~1.0</snowFactor>
+							<windFactor>1.0~1.0</windFactor>
+							<unpoweredFactor>0.0</unpoweredFactor>
+							<unfueledFactor>0.0</unfueledFactor>
+							<powerUseFactor>1.0</powerUseFactor>
+							<fuelUseFactor>0.0</fuelUseFactor>
+							<filledGraphicSuffix>Filled</filledGraphicSuffix>
+							<usesQuality>true</usesQuality>
+							<qualityDays>(10, 15, 25, 35, 40, 45, 75)</qualityDays>
+							<color>(255, 255, 255)</color><!-- 0-255 or 0.0-1.0 -->
+							<customLabel/>
+							<destroyChance>0.0</destroyChance>
+						</ProcessorFramework.ProcessDef>
+
+					</value>
+				</li>
+
+				<!-- Add Cheese Processes to Press -->
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="DankPyon_Presser"]/comps/li[@Class="ProcessorFramework.CompProperties_Processor"]/processes</xpath>
+					<value>
+						<li>VCE_MO_WeirdMilkIntoCheese</li>
+						<li>VCE_MO_MechaMilkIntoCheese</li>
+						<li>VCE_MO_BearffaloMilkIntoCheese</li>
+						<li>VCE_MO_ThrumffaloMilkIntoCheese</li>
+						<li>VCE_MO_MuffalochickenMilkIntoCheese</li>
+						<li>VCE_MO_ChickenffaloMilkIntoCheese</li>
+						<li>VCE_MO_MuffalobearIntoCheese</li>
+						<li>VCE_MO_WolffaloIntoCheese</li>
+						<li>VCE_MO_RatMilkIntoCheese</li>
+					</value>
+				</li>
+
+			</operations>
+		</match>
+	</Operation>
+
+</Patch>

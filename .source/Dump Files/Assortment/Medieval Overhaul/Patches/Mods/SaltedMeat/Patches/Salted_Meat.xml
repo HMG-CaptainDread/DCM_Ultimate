@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationRemove">
+		<xpath>Defs/ThingDef[defName="SM_MeatRack" or defName="SM_SausagePost"]/costList</xpath>
+	</Operation>
+				
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="SM_MeatRack" or defName="SM_SausagePost"]</xpath>
+		<value>
+			<stuffCategories>
+				<li>Woody</li>
+			</stuffCategories>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="SM_MeatRack"]</xpath>
+		<value>
+			<costStuffCount>30</costStuffCount>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="SM_SausagePost"]</xpath>
+		<value>
+			<costStuffCount>20</costStuffCount>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ResearchProjectDef[defName="SM_SaltingTechniques"]</xpath>
+		<value>
+			<tab>DankPyon_MedievalResearchTab</tab>
+			<prerequisites>
+				<li>Pemmican</li>
+			</prerequisites>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="SM_SaltingTechniques"]/researchViewX</xpath>
+		<value>
+			<researchViewX>2.00</researchViewX>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="SM_SaltingTechniques"]/researchViewY</xpath>
+		<value>
+			<researchViewY>1.40</researchViewY>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ProcessorFramework.ProcessDef[defName="SM_SaltedMeat"]/ingredientFilter/disallowedThingDefs</xpath>
+		<value>
+			<li>DankPyon_DriedMeat</li>
+			<li>DankPyon_DriedMeat_Human</li>
+			<li>DankPyon_DriedMeat_Insect</li>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ProcessorFramework.ProcessDef[defName="SM_Sausage"]/ingredientFilter/thingDefs</xpath>
+		<value>
+			<li>DankPyon_Sausages</li>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/RecipeDef[defName="SM_MakeSausage"]/researchPrerequisite</xpath>
+		<match Class="PatchOperationRemove">
+			<xpath>Defs/RecipeDef[defName="SM_MakeSausage"]/researchPrerequisite</xpath>
+		</match>
+	</Operation>
+				
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/RecipeDef[defName="SM_MakeSausage"]/recipeUsers</xpath>
+		<match Class="PatchOperationRemove">
+			<xpath>Defs/RecipeDef[defName="SM_MakeSausage"]/recipeUsers</xpath>
+		</match>
+	</Operation>
+				
+	<!-- Filtering for processes -->
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ProcessorFramework.ProcessDef[defName="DankPyon_DriedMeatProcess"]/ingredientFilter/disallowedThingDefs</xpath>
+		<value>
+			<li>SM_SaltedMeat</li>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ProcessorFramework.ProcessDef[defName="DankPyon_SmokedMeatProcess"]/ingredientFilter/disallowedThingDefs</xpath>
+		<match Class="PatchOperationAdd">
+			<xpath>Defs/ProcessorFramework.ProcessDef[defName="DankPyon_SmokedMeatProcess"]/ingredientFilter/disallowedThingDefs</xpath>
+			<value>
+				<li>SM_SaltedMeat</li>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>Defs/ProcessorFramework.ProcessDef[defName="DankPyon_SmokedMeatProcess"]/ingredientFilter</xpath>
+			<value>
+				<disallowedThingDefs><li>SM_SaltedMeat</li></disallowedThingDefs>
+			</value>
+		</nomatch>
+	</Operation>
+
+	<!-- Salted Fish -->
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Fishing Expanded</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+						
+				<li Class="PatchOperationRemove">
+					<xpath>Defs/ThingDef[defName="SM_FishDrier"]/costList</xpath>
+				</li>
+							
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="SM_FishDrier"]</xpath>
+					<value>
+						<stuffCategories>
+							<li>Woody</li>
+						</stuffCategories>
+					</value>
+				</li>
+							
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="SM_FishDrier"]</xpath>
+					<value>
+						<costStuffCount>15</costStuffCount>
+						<costList>
+							<Cloth>10</Cloth>
+						</costList>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ProcessorFramework.ProcessDef[defName="SM_DriedFish"]/ingredientFilter/disallowedThingDefs</xpath>
+					<value>
+						<li>DankPyon_DriedFish</li>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="SM_DriedFish"]/label</xpath>
+					<value>
+						<label>salted fish</label>
+					</value>
+				</li>
+
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ProcessorFramework.ProcessDef[defName="DankPyon_SmokedMeatProcess"]/ingredientFilter/disallowedThingDefs</xpath>
+					<match Class="PatchOperationAdd">
+						<xpath>Defs/ProcessorFramework.ProcessDef[defName="DankPyon_SmokedMeatProcess"]/ingredientFilter/disallowedThingDefs</xpath>
+						<value>
+							<li>SM_DriedFish</li>
+						</value>
+					</match>
+					<nomatch Class="PatchOperationAdd">
+						<xpath>Defs/ProcessorFramework.ProcessDef[defName="DankPyon_SmokedMeatProcess"]/ingredientFilter</xpath>
+						<value>
+							<disallowedThingDefs><li>SM_DriedFish</li></disallowedThingDefs>
+						</value>
+					</nomatch>
+				</li>
+				
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ProcessorFramework.ProcessDef[defName="DankPyon_DriedFishProcess"]/ingredientFilter/disallowedThingDefs</xpath>
+					<value>
+						<li>SM_DriedFish</li>
+					</value>
+				</li>
+
+			</operations>
+		</match>
+	</Operation>
+
+</Patch>

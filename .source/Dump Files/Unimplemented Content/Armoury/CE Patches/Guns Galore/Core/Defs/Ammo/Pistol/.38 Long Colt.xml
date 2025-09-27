@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo38LongColt</defName>
+		<label>.38 Long Colt</label>
+		<parent>AmmoRifles</parent>
+		<iconPath>UI/Icons/ThingCategories/CaliberRifle</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_38LongColt</defName>
+		<label>.38 Long Colt</label>
+		<ammoTypes>
+			<Ammo_38LongColt_FMJ>Bullet_38LongColt_FMJ</Ammo_38LongColt_FMJ>
+			<Ammo_38LongColt_AP>Bullet_38LongColt_AP</Ammo_38LongColt_AP>
+			<Ammo_38LongColt_HP>Bullet_38LongColt_HP</Ammo_38LongColt_HP>			
+		</ammoTypes>
+		<similarTo>AmmoSet_Pistol</similarTo>
+	</CombatExtended.AmmoSetDef>
+	
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_38LongColt_Revolver</defName>
+		<label>.38 Long Colt</label>
+		<ammoTypes>
+			<Ammo_38LongColt_FMJ>Bullet_38LongColt_FMJ</Ammo_38LongColt_FMJ>
+			<Ammo_38LongColt_AP>Bullet_38LongColt_AP</Ammo_38LongColt_AP>
+			<Ammo_38LongColt_HP>Bullet_38LongColt_HP</Ammo_38LongColt_HP>
+			<Ammo_38ShortColt_FMJ>Bullet_38ShortColt_FMJ</Ammo_38ShortColt_FMJ>
+			<Ammo_38ShortColt_AP>Bullet_38ShortColt_AP</Ammo_38ShortColt_AP>
+			<Ammo_38ShortColt_HP>Bullet_38ShortColt_HP</Ammo_38ShortColt_HP>				
+		</ammoTypes>
+		<similarTo>AmmoSet_Pistol</similarTo>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="38LongColtBase" ParentName="SmallAmmoBase" Abstract="True">
+		<description>Low caliber handgun cartridge used in old revolvers, but compatible with most modern .357 and .38 ones as well.</description>
+		<statBases>
+			<Mass>0.0113</Mass>
+			<Bulk>0.01</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo38LongColt</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="38LongColtBase">
+		<defName>Ammo_38LongColt_FMJ</defName>
+		<label>.38 Long Colt cartridge (FMJ)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Rifle/FMJ</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.06</MarketValue>
+		</statBases>
+		<ammoClass>FullMetalJacket</ammoClass>
+		<cookOffProjectile>Bullet_38LongColt_FMJ</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="38LongColtBase">
+		<defName>Ammo_38LongColt_AP</defName>
+		<label>.38 Long Colt cartridge (AP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/AP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.06</MarketValue>
+		</statBases>
+		<ammoClass>ArmorPiercing</ammoClass>
+		<cookOffProjectile>Bullet_38LongColt_AP</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="38LongColtBase">
+		<defName>Ammo_38LongColt_HP</defName>
+		<label>.38 Long Colt cartridge (HP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/HP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.06</MarketValue>
+		</statBases>
+		<ammoClass>HollowPoint</ammoClass>
+		<cookOffProjectile>Bullet_38LongColt_HP</cookOffProjectile>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="Base38LongColtBullet" ParentName="BaseBulletCE" Abstract="true">
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>47</speed>
+			<dropsCasings>true</dropsCasings>
+			<casingMoteDefname>Fleck_PistolAmmoCasings</casingMoteDefname>
+			<casingFilthDefname>Filth_PistolAmmoCasings</casingFilthDefname>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base38LongColtBullet">
+		<defName>Bullet_38LongColt_FMJ</defName>
+		<label>.38 Long Colt bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>8</damageAmountBase>
+			<armorPenetrationSharp>3</armorPenetrationSharp>
+			<armorPenetrationBlunt>4.42</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base38LongColtBullet">
+		<defName>Bullet_38LongColt_AP</defName>
+		<label>.38 Long Colt bullet (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>5</damageAmountBase>
+			<armorPenetrationSharp>6</armorPenetrationSharp>
+			<armorPenetrationBlunt>4.42</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base38LongColtBullet">
+		<defName>Bullet_38LongColt_HP</defName>
+		<label>.38 Long Colt bullet (HP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>10</damageAmountBase>
+			<armorPenetrationSharp>1.5</armorPenetrationSharp>
+			<armorPenetrationBlunt>4.42</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase">
+		<defName>MakeAmmo_38LongColt_FMJ</defName>
+		<label>make .38 Long Colt (FMJ) cartridge x500</label>
+		<description>Craft 500 .38 Long Colt (FMJ) cartridges.</description>
+		<jobString>Making .38 Long Colt (FMJ) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>14</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_38LongColt_FMJ>500</Ammo_38LongColt_FMJ>
+		</products>
+		<workAmount>1400</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase">
+		<defName>MakeAmmo_38LongColt_AP</defName>
+		<label>make .38 Long Colt (AP) cartridge x500</label>
+		<description>Craft 500 .38 Long Colt (AP) cartridges.</description>
+		<jobString>Making .38 Long Colt (AP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>14</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_38LongColt_AP>500</Ammo_38LongColt_AP>
+		</products>
+		<workAmount>1680</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase">
+		<defName>MakeAmmo_38LongColt_HP</defName>
+		<label>make .38 Long Colt (HP) cartridge x500</label>
+		<description>Craft 500 .38 Long Colt (HP) cartridges.</description>
+		<jobString>Making .38 Long Colt (HP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>14</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_38LongColt_HP>500</Ammo_38LongColt_HP>
+		</products>
+		<workAmount>1400</workAmount>
+	</RecipeDef>
+
+</Defs>

@@ -1,0 +1,749 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- THRONES -->
+		<Operation Class="PatchOperationAdd">
+			<xpath>/Defs/RoyalTitleDef[defName="Esquire" or defName="Knight" or defName="Praetor" or defName="Baron"  or defName="Count"]/throneRoomRequirements/li[@Class="RoomRequirement_HasAssignedThroneAnyOf"]/things</xpath>
+			<value>
+					<li>ThroneA</li>
+					<li>ThroneB</li>
+					<li>ThroneC</li>
+					<li>GrandThroneA</li>
+					<li>GrandThroneB</li>
+					<li>GrandThroneC</li>
+			</value>
+		</Operation>
+		<Operation Class="PatchOperationAdd">
+			<xpath>/Defs/RoyalTitleDef[@Name="BaseEmpireTitleNPC"]/throneRoomRequirements/li[@Class="RoomRequirement_HasAssignedThroneAnyOf"]/things</xpath>
+			<value>
+					<li>GrandThroneA</li>
+					<li>GrandThroneB</li>
+					<li>GrandThroneC</li>
+			</value>
+		</Operation>
+	<!-- GET RIMPED -->
+		<Operation Class="PatchOperationAdd">
+			<xpath>/Defs/WorkTypeDef[defName="MiscTraining_CombatTraining"]/relevantSkills</xpath>
+			<order>Append</order>
+			<value>
+				<li>Melee</li>
+			</value>
+		</Operation>
+	<!-- INDUSTRIAL AGE -->
+		<!-- ROYALTY -->
+		<Operation Class="PatchOperationSequence">
+    <operations>
+      <!-- first ensure that IndustrialAge.RoomRequirement_ThingCountAnyOf is used instead of RoomRequirement_ThingCount (ignoring any errors if it was already replaced) -->
+      <!-- <li Class="PatchOperationReplace"> -->
+      <!-- <success>Always</success> -->
+      <!-- <xpath>/Defs/RoyalTitleDef/throneRoomRequirements/li[@Class = "RoomRequirement_ThingCount"][thingDef = "Brazier"][count = 2]</xpath> -->
+      <!-- <value> -->
+      <!-- <li Class="IndustrialAge.RoomRequirement_ThingCountAnyOf"> -->
+      <!-- <things> -->
+      <!-- <li>Brazier</li> -->
+      <!-- </things> -->
+      <!-- <count>2</count> -->
+      <!-- </li> -->
+      <!-- </value> -->
+      <!-- </li> -->
+      <!-- now either another mod has already created a RoomRequirement_ThingCountAnyOf or we did it ourselves, so add our furniture to the requirements: -->
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/RoyalTitleDef/throneRoomRequirements/li[contains(@Class, "RoomRequirement_ThingAnyOfCount")]/things[li = "Brazier"]</xpath>
+        <value>
+          <li>Jecrell_ChandelierRoyal</li>
+        </value>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/RoyalTitleDef/throneRoomRequirements/li[contains(@Class, "RoomRequirement_ThingAnyOfCount")]/things[li = "Brazier"]</xpath>
+        <value>
+          <li>Jecrell_Chandelier</li>
+          <li>Jecrell_Candelabra</li>
+        </value>
+      </li>
+      <!-- these new light sources must also be lit! -->
+      <li Class="PatchOperationInsert">
+        <xpath>/Defs/RoyalTitleDef/throneRoomRequirements/li[@Class = "RoomRequirement_AllThingsAnyOfAreGlowing"][labelKey = "RoomRequirementAllBraziersMustBeLit"]</xpath>
+        <value>
+          <li Class="RoomRequirement_AllThingsAreGlowing">
+            <labelKey>Estate_RoomRequirementAllRoyalChandeliersMustBeLit</labelKey>
+            <thingDef>Jecrell_ChandelierRoyal</thingDef>
+          </li>
+          <li Class="RoomRequirement_AllThingsAreGlowing">
+            <labelKey>Estate_RoomRequirementAllChandeliersMustBeLit</labelKey>
+            <thingDef>Jecrell_Chandelier</thingDef>
+          </li>
+          <li Class="RoomRequirement_AllThingsAreGlowing">
+            <labelKey>Estate_RoomRequirementAllCandelabraMustBeLit</labelKey>
+            <thingDef>Jecrell_Candelabra</thingDef>
+          </li>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+	<!-- TELESCOPE PATCH -->
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/JoyGiverDef[defName="UseTelescope"]/thingDefs</xpath>
+		<value>
+		<li>Estate_Telescope</li>
+		</value>
+	</Operation>
+	<!-- CULTS CANDLE PATCH -->
+	<Operation Class="PatchOperationSequence">
+    <success>Always</success>
+    <operations>
+      <li Class="PatchOperationTest">
+        <xpath>Defs/ThingDef[defName = "Cults_AlcoveTorch"]</xpath>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs</xpath>
+        <value>
+          <ThingDef ParentName="BuildingBase">
+            <defName>Cults_AlcoveCandle</defName>
+            <label>alcove (candle)</label>
+            <description>A recess in a wall with a candle standing inside.</description>
+            <thingClass>Building</thingClass>
+            <category>Building</category>
+            <altitudeLayer>BuildingOnTop</altitudeLayer>
+            <fillPercent>0.2</fillPercent>
+            <useHitPoints>true</useHitPoints>
+            <stuffCategories>
+              <li>Metallic</li>
+              <li>Woody</li>
+              <li>Stony</li>
+            </stuffCategories>
+            <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+            <selectable>true</selectable>
+            <tickerType>Normal</tickerType>
+            <rotatable>true</rotatable>
+            <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+            <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+            <designationCategory>Structure</designationCategory>
+            <holdsRoof>false</holdsRoof>
+            <staticSunShadowHeight>1.0</staticSunShadowHeight>
+            <blockLight>false</blockLight>
+            <drawerType>RealtimeOnly</drawerType>
+            <building>
+              <isEdifice>false</isEdifice>
+              <isInert>false</isInert>
+              <canPlaceOverWall>true</canPlaceOverWall>
+            </building>
+            <statBases>
+              <MaxHitPoints>50</MaxHitPoints>
+              <Flammability>1.0</Flammability>
+              <WorkToBuild>250</WorkToBuild>
+            </statBases>
+            <graphicData>
+              <texPath>Things/Walls/AlcoveCandle</texPath>
+              <graphicClass>Graphic_Multi</graphicClass>
+              <shaderType>CutoutComplex</shaderType>
+              <drawSize>1.5</drawSize>
+              <damageData>
+                <!--  no damage marks because they don't move with the door
+						<rect>(0,0.12,1,0.76)</rect>-->
+                <enabled>false</enabled>
+              </damageData>
+            </graphicData>
+            <uiIconPath>Things/Walls/AlcoveCandle_MenuIcon</uiIconPath>
+            <costStuffCount>25</costStuffCount>
+            <costList>
+              <Jecrell_Wax>20</Jecrell_Wax>
+            </costList>
+            <designationHotKey>Misc1</designationHotKey>
+            <placeWorkers>
+              <li>PlaceWorker_Heater</li>
+              <li>JecsTools.PlaceWorker_OnTopOfWalls</li>
+            </placeWorkers>
+            <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+            <comps>
+              <li Class="CompProperties_Refuelable">
+                <fuelConsumptionRate>2.2</fuelConsumptionRate>
+                <fuelCapacity>20.0</fuelCapacity>
+                <fuelConsumptionPerTickInRain>0.0006</fuelConsumptionPerTickInRain>
+                <fuelFilter>
+                  <thingDefs>
+                    <li>Jecrell_Wax</li>
+                  </thingDefs>
+                </fuelFilter>
+                <destroyOnNoFuel>false</destroyOnNoFuel>
+              </li>
+              <li Class="CompProperties_Glower">
+                <glowRadius>6</glowRadius>
+                <glowColor>(252,187,113,0)</glowColor>
+              </li>
+              <li Class="CompProperties_HeatPusher">
+                <heatPerSecond>3.5</heatPerSecond>
+                <heatPushMaxTemperature>23</heatPushMaxTemperature>
+              </li>
+            </comps>
+          </ThingDef>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+	<!-- DRESSER REPLACER -->
+	<Operation Class="PatchOperationInsert">
+    <xpath>Defs/ThingDef/comps/li/linkableFacilities/li[text()="Dresser"]</xpath>
+    <value>
+      <li>Anon2Dresser</li>
+    </value>
+  </Operation>
+	<!-- END TABLE REPLACER -->
+	<Operation Class="PatchOperationInsert">
+    <xpath>Defs/ThingDef/comps/li/linkableFacilities/li[text()="EndTable"]</xpath>
+    <value>
+      <li>Anon2EndTable</li>
+      <li>Anon2RoyalEndTable</li>
+      <li>Anon2EndTableLight</li>
+      <li>Anon2RoyalEndTableLight</li>
+    </value>
+  </Operation>
+	<!-- FILE CABINET REPLACER -->
+	<Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName = "SimpleResearchBench"]/comps</xpath>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>Defs/ThingDef[defName = "SimpleResearchBench"]</xpath>
+      <value>
+        <comps>
+          <li Class="CompProperties_AffectedByFacilities">
+            <linkableFacilities>
+              <li>Anon2FileCabinet</li>
+            </linkableFacilities>
+          </li>
+        </comps>
+      </value>
+    </nomatch>
+    <match Class="PatchOperationConditional">
+      <xpath>Defs/ThingDef[defName = "SimpleResearchBench"]/comps/li[@Class = "CompProperties_AffectedByFacilities"]</xpath>
+      <nomatch Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName = "SimpleResearchBench"]/comps</xpath>
+        <value>
+          <li Class="CompProperties_AffectedByFacilities">
+            <linkableFacilities>
+              <li>Anon2FileCabinet</li>
+            </linkableFacilities>
+          </li>
+        </value>
+      </nomatch>
+      <match Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName = "SimpleResearchBench"]/comps/li[@Class = "CompProperties_AffectedByFacilities"]/linkableFacilities</xpath>
+        <value>
+          <li>Anon2FileCabinet</li>
+        </value>
+      </match>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/ThingDef[defName = "HiTechResearchBench"]/comps/li[@Class = "CompProperties_AffectedByFacilities"]/linkableFacilities</xpath>
+    <value>
+      <li>Anon2FileCabinet</li>
+    </value>
+  </Operation>
+	<!-- MORE FURNITURE ROYALTY PATCHES -->
+	<Operation Class="PatchOperationConditional">
+    <xpath>/Defs/RoyalTitleDef/bedroomRequirements/li[@Class="RoomRequirement_Thing" and thingDef="EndTable"]</xpath>
+    <success>Always</success>
+    <match Class="PatchOperationReplace">
+      <xpath>/Defs/RoyalTitleDef/bedroomRequirements/li[@Class="RoomRequirement_Thing" and thingDef="EndTable"]</xpath>
+      <value>
+        <li Class="RoomRequirement_ThingAnyOf">
+          <things>
+            <li>EndTable</li>
+          </things>
+        </li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/RoyalTitleDef/bedroomRequirements/li[@Class="RoomRequirement_Thing" and thingDef="Dresser"]</xpath>
+    <success>Always</success>
+    <match Class="PatchOperationReplace">
+      <xpath>/Defs/RoyalTitleDef/bedroomRequirements/li[@Class="RoomRequirement_Thing" and thingDef="Dresser"]</xpath>
+      <value>
+        <li Class="RoomRequirement_ThingAnyOf">
+          <things>
+            <li>Dresser</li>
+          </things>
+        </li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/RoyalTitleDef/bedroomRequirements/li[@Class="RoomRequirement_ThingAnyOf"]/things[li="EndTable"]</xpath>
+    <success>Always</success>
+    <match Class="PatchOperationAdd">
+      <xpath>/Defs/RoyalTitleDef/bedroomRequirements/li[@Class="RoomRequirement_ThingAnyOf"]/things[li="EndTable"]</xpath>
+      <value>
+        <li>Anon2EndTable</li>
+        <li>Anon2RoyalEndTable</li>
+        <li>Anon2EndTableLight</li>
+        <li>Anon2RoyalEndTableLight</li>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/RoyalTitleDef/bedroomRequirements/li[@Class="RoomRequirement_ThingAnyOf"]/things[li="Dresser"]</xpath>
+    <success>Always</success>
+    <match Class="PatchOperationAdd">
+      <xpath>/Defs/RoyalTitleDef/bedroomRequirements/li[@Class="RoomRequirement_ThingAnyOf"]/things[li="Dresser"]</xpath>
+      <value>
+        <li>Anon2Dresser</li>
+      </value>
+    </match>
+  </Operation>
+	<!-- VANILLA TAXIDERMY RECIPES -->
+	<Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "ElectricCrematorium"]/recipes</xpath>
+    <value>
+      <li>BurnAnimalHead</li>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "Campfire"]/recipes</xpath>
+    <value>
+      <li>BurnAnimalHead</li>
+    </value>
+  </Operation>
+	<!-- VANILLA TAXIDERMY BUTCHERY -->
+	<Operation Class="PatchOperationConditional">
+    <xpath>*/PawnKindDef[defName = "Thrumbo"]/lifeStages/li[3]/butcherBodyPart</xpath>
+    <nomatch Class="PatchOperationAdd">
+    <xpath>*/ThingDef[defName = "Thrumbo"]</xpath>
+    <value>
+        <butcherBodyPart>
+          <bodyPartGroup>HeadAttackTool</bodyPartGroup>
+          <thing>ThrumboHead</thing>
+          <allowFemale>true</allowFemale>
+        </butcherBodyPart>
+    </value>
+    </nomatch>
+    <match Class="PatchOperationReplace">
+    <xpath>*/PawnKindDef[defName = "Thrumbo"]/lifeStages/li[3]/butcherBodyPart</xpath>
+    <value>
+        <butcherBodyPart>
+          <bodyPartGroup>HeadAttackTool</bodyPartGroup>
+          <thing>ThrumboHead</thing>
+          <allowFemale>true</allowFemale>
+        </butcherBodyPart>
+    </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/PawnKindDef[defName = "Rhinoceros"]/lifeStages/li[3]</xpath>
+    <value>
+        <butcherBodyPart>
+          <bodyPartGroup>HeadAttackTool</bodyPartGroup>
+          <thing>RhinoHead</thing>
+          <allowFemale>true</allowFemale>
+        </butcherBodyPart>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>*/PawnKindDef[defName = "Bear_Polar"]/lifeStages/li[3]/butcherBodyPart</xpath>
+    <nomatch Class="PatchOperationAdd">
+    <xpath>*/ThingDef[defName = "Bear_Polar"]</xpath>
+    <value>
+        <butcherBodyPart>
+          <bodyPartGroup>HeadAttackTool</bodyPartGroup>
+          <thing>PolarBearHead</thing>
+          <allowFemale>true</allowFemale>
+        </butcherBodyPart>
+    </value>
+    </nomatch>
+    <match Class="PatchOperationReplace">
+    <xpath>*/PawnKindDef[defName = "Bear_Polar"]/lifeStages/li[3]/butcherBodyPart</xpath>
+    <value>
+        <butcherBodyPart>
+          <bodyPartGroup>HeadAttackTool</bodyPartGroup>
+          <thing>PolarBearHead</thing>
+          <allowFemale>true</allowFemale>
+        </butcherBodyPart>
+    </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/PawnKindDef[defName = "Bear_Polar"]/lifeStages/li[3]</xpath>
+    <value>
+        <butcherBodyPart>
+          <bodyPartGroup>HeadAttackTool</bodyPartGroup>
+          <thing>PolarBearHead</thing>
+          <allowFemale>true</allowFemale>
+        </butcherBodyPart>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/PawnKindDef[defName = "Panther"]/lifeStages/li[3]</xpath>
+    <value>
+        <butcherBodyPart>
+          <bodyPartGroup>HeadAttackTool</bodyPartGroup>
+          <thing>PantherHead</thing>
+          <allowFemale>true</allowFemale>
+        </butcherBodyPart>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/PawnKindDef[defName = "Megasloth"]/lifeStages/li[3]</xpath>
+    <value>
+        <butcherBodyPart>
+          <bodyPartGroup>HeadAttackTool</bodyPartGroup>
+          <thing>MegaslothHead</thing>
+          <allowFemale>true</allowFemale>
+        </butcherBodyPart>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/PawnKindDef[defName = "Lynx"]/lifeStages/li[3]</xpath>
+    <value>
+        <butcherBodyPart>
+          <bodyPartGroup>HeadAttackTool</bodyPartGroup>
+          <thing>LynxHead</thing>
+          <allowFemale>true</allowFemale>
+        </butcherBodyPart>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/PawnKindDef[defName = "Ibex"]/lifeStages/li[3]</xpath>
+    <value>
+        <butcherBodyPart>
+          <bodyPartGroup>HeadAttackTool</bodyPartGroup>
+          <thing>IbexHead</thing>
+          <allowFemale>true</allowFemale>
+        </butcherBodyPart>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>*/PawnKindDef[defName = "Bear_Grizzly"]/lifeStages/li[3]/butcherBodyPart</xpath>
+    <nomatch Class="PatchOperationAdd">
+    <xpath>*/ThingDef[defName = "Bear_Grizzly"]</xpath>
+    <value>
+        <butcherBodyPart>
+          <bodyPartGroup>HeadAttackTool</bodyPartGroup>
+          <thing>GrizzlyBearHead</thing>
+          <allowFemale>true</allowFemale>
+        </butcherBodyPart>
+    </value>
+    </nomatch>
+    <match Class="PatchOperationReplace">
+    <xpath>*/PawnKindDef[defName = "Bear_Grizzly"]/lifeStages/li[3]/butcherBodyPart</xpath>
+    <value>
+        <butcherBodyPart>
+          <bodyPartGroup>HeadAttackTool</bodyPartGroup>
+          <thing>GrizzlyBearHead</thing>
+          <allowFemale>true</allowFemale>
+        </butcherBodyPart>
+    </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/PawnKindDef[defName = "Bear_Grizzly"]/lifeStages/li[3]</xpath>
+    <value>
+        <butcherBodyPart>
+          <bodyPartGroup>HeadAttackTool</bodyPartGroup>
+          <thing>GrizzlyBearHead</thing>
+          <allowFemale>true</allowFemale>
+        </butcherBodyPart>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/PawnKindDef[defName = "Gazelle"]/lifeStages/li[3]</xpath>
+    <value>
+        <butcherBodyPart>
+          <bodyPartGroup>HeadAttackTool</bodyPartGroup>
+          <thing>GazelleHead</thing>
+          <allowFemale>true</allowFemale>
+        </butcherBodyPart>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/PawnKindDef[defName = "Elk"]/lifeStages/li[3]</xpath>
+    <value>
+        <butcherBodyPart>
+          <bodyPartGroup>HeadAttackTool</bodyPartGroup>
+          <thing>ElkHead</thing>
+          <allowFemale>false</allowFemale>
+        </butcherBodyPart>
+    </value>
+  </Operation>
+	<Operation Class="PatchOperationConditional">
+    <xpath>*/PawnKindDef[defName = "Elephant"]/lifeStages/li[3]/butcherBodyPart</xpath>
+    <nomatch Class="PatchOperationAdd">
+    <xpath>*/ThingDef[defName = "Elephant"]</xpath>
+    <value>
+        <butcherBodyPart>
+          <bodyPartGroup>HeadAttackTool</bodyPartGroup>
+          <thing>ElephantHead</thing>
+          <allowFemale>true</allowFemale>
+        </butcherBodyPart>
+    </value>
+    </nomatch>
+    <match Class="PatchOperationReplace">
+    <xpath>*/PawnKindDef[defName = "Elephant"]/lifeStages/li[3]/butcherBodyPart</xpath>
+    <value>
+        <butcherBodyPart>
+          <bodyPartGroup>HeadAttackTool</bodyPartGroup>
+          <thing>ElephantHead</thing>
+          <allowFemale>true</allowFemale>
+        </butcherBodyPart>
+    </value>
+    </match>
+  </Operation>
+	<Operation Class="PatchOperationAdd">
+    <xpath>/Defs/PawnKindDef[defName = "Dromedary"]/lifeStages/li[3]</xpath>
+    <value>
+        <butcherBodyPart>
+          <bodyPartGroup>HeadAttackTool</bodyPartGroup>
+          <thing>DromedaryHead</thing>
+          <allowFemale>true</allowFemale>
+        </butcherBodyPart>
+    </value>
+  </Operation>
+	<Operation Class="PatchOperationAdd">
+    <xpath>/Defs/PawnKindDef[defName = "Deer"]/lifeStages/li[3]</xpath>
+    <value>
+        <butcherBodyPart>
+          <bodyPartGroup>HeadAttackTool</bodyPartGroup>
+          <thing>DeerHead</thing>
+          <allowFemale>false</allowFemale>
+        </butcherBodyPart>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/PawnKindDef[defName = "Cougar"]/lifeStages/li[3]</xpath>
+    <value>
+        <butcherBodyPart>
+          <bodyPartGroup>HeadAttackTool</bodyPartGroup>
+          <thing>CougarHead</thing>
+          <allowFemale>true</allowFemale>
+        </butcherBodyPart>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/PawnKindDef[defName = "Caribou"]/lifeStages/li[3]</xpath>
+    <value>
+        <butcherBodyPart>
+          <bodyPartGroup>HeadAttackTool</bodyPartGroup>
+          <thing>CaribouHead</thing>
+          <allowFemale>true</allowFemale>
+        </butcherBodyPart>
+    </value>
+  </Operation>
+	<Operation Class="PatchOperationAdd">
+    <xpath>/Defs/PawnKindDef[defName = "Muffalo"]/lifeStages/li[3]</xpath>
+    <value>
+        <butcherBodyPart>
+          <bodyPartGroup>HeadAttackTool</bodyPartGroup>
+          <thing>MuffaloHead</thing>
+          <allowFemale>true</allowFemale>
+        </butcherBodyPart>
+    </value>
+  </Operation>
+	<!-- BASILISK -->
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/PawnKindDef[defName = "Basilisk"]/lifeStages/li[3]</xpath>
+		<value>
+			<butcherBodyPart>
+			<bodyPartGroup>HeadAttackTool</bodyPartGroup>
+			<thing>BasiliskHead</thing>
+			<allowFemale>true</allowFemale>
+			</butcherBodyPart>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/RecipeDef[defName = "BurnAnimalHead"]/ingredients/li[1]/filter/ThingDefs</xpath>
+		<value>
+			<li>BasiliskHead</li>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/RecipeDef[defName = "BurnAnimalHead"]/fixedIngredientFilter/ThingDefs</xpath>
+		<value>
+			<li>BasiliskHead</li>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName = "TTable"]/recipes</xpath>
+		<value>
+			<li>MountBasiliskHead</li>
+		</value>
+	</Operation>
+
+	<!-- RIMKEA FIREPLACE -->
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/WorkGiverDef[defName = "DoBillsCookCampfire"]/fixedBillGiverDefs</xpath>
+		<value>
+			<li>FEERSTELL</li>
+		</value>
+	</Operation>
+	<!-- RIMKEA CHUNKS -->
+	<Operation Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<li Class="PatchOperationRemove">
+				<xpath>
+				Defs/ThingDef[defName = "ChunkGranite"]/stuffProps | 
+				Defs/ThingDef[defName = "ChunkSlate"]/stuffProps | 
+				Defs/ThingDef[defName = "ChunkLimestone"]/stuffProps | 
+				Defs/ThingDef[defName = "ChunkMarble"]/stuffProps | 
+				Defs/ThingDef[defName = "ChunkSandstone"]/stuffProps
+				</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>
+				Defs/ThingDef[defName = "ChunkGranite"]/resourceReadoutPriority | 
+				Defs/ThingDef[defName = "ChunkSlate"]/resourceReadoutPriority | 
+				Defs/ThingDef[defName = "ChunkLimestone"]/resourceReadoutPriority | 
+				Defs/ThingDef[defName = "ChunkMarble"]/resourceReadoutPriority | 
+				Defs/ThingDef[defName = "ChunkSandstone"]/resourceReadoutPriority
+				</xpath>
+			</li>
+		</operations>
+	</Operation>
+	<Operation Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName = "ChunkGranite"]</xpath>
+				<value>
+					<stuffProps>
+						<categories>
+							<li>Chunky</li>
+						</categories>
+						<statOffsets>
+							<WorkToBuild>140</WorkToBuild>
+						</statOffsets>
+						<color>(105,95,97)</color>
+						<soundImpactBullet>BulletImpact_Metal</soundImpactBullet>
+						<soundMeleeHitSharp>MeleeHit_Metal_Sharp</soundMeleeHitSharp>
+						<soundMeleeHitBlunt>MeleeHit_Metal_Blunt</soundMeleeHitBlunt>
+						<soundImpactMelee>Pawn_Melee_Punch_HitBuilding_Metal</soundImpactMelee>
+						<stuffAdjective>granite</stuffAdjective>
+						<statFactors>
+							<MarketValue>0.5</MarketValue>
+							<MaxHitPoints>1.7</MaxHitPoints>
+							<WorkToBuild>5.25</WorkToBuild>
+						</statFactors>
+					</stuffProps>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName = "ChunkSlate"]</xpath>
+				<value>
+					<stuffProps>
+						<categories>
+							<li>Chunky</li>
+						</categories>
+						<statOffsets>
+							<WorkToBuild>140</WorkToBuild>
+						</statOffsets>
+						<color>(70,70,70)</color>
+						<soundImpactBullet>BulletImpact_Metal</soundImpactBullet>
+						<soundMeleeHitSharp>MeleeHit_Metal_Sharp</soundMeleeHitSharp>
+						<soundMeleeHitBlunt>MeleeHit_Metal_Blunt</soundMeleeHitBlunt>
+						<soundImpactMelee>Pawn_Melee_Punch_HitBuilding_Metal</soundImpactMelee>
+						<stuffAdjective>slate</stuffAdjective>
+						<statFactors>
+							<Beauty>0.8</Beauty>
+							<MarketValue>0.38</MarketValue>
+							<MaxHitPoints>1.3</MaxHitPoints>
+							<WorkToBuild>4.5</WorkToBuild>
+						</statFactors>
+					</stuffProps>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName = "ChunkLimestone"]</xpath>
+				<value>
+					<stuffProps>
+						<categories>
+							<li>Chunky</li>
+						</categories>
+						<statOffsets>
+							<WorkToBuild>140</WorkToBuild>
+						</statOffsets>
+						<color>(158,153,135)</color>
+						<soundImpactBullet>BulletImpact_Metal</soundImpactBullet>
+						<soundMeleeHitSharp>MeleeHit_Metal_Sharp</soundMeleeHitSharp>
+						<soundMeleeHitBlunt>MeleeHit_Metal_Blunt</soundMeleeHitBlunt>
+						<soundImpactMelee>Pawn_Melee_Punch_HitBuilding_Metal</soundImpactMelee>
+						<stuffAdjective>limestone</stuffAdjective>
+						<statFactors>
+							<MarketValue>0.4</MarketValue>
+							<MaxHitPoints>1.55</MaxHitPoints>
+							<WorkToBuild>4.8</WorkToBuild>
+						</statFactors>
+					</stuffProps>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName = "ChunkMarble"]</xpath>
+				<value>
+					<stuffProps>
+						<categories>
+							<li>Chunky</li>
+						</categories>
+						<statOffsets>
+							<WorkToBuild>140</WorkToBuild>
+						</statOffsets>
+						<color>(132,135,132)</color>
+						<soundImpactBullet>BulletImpact_Metal</soundImpactBullet>
+						<soundMeleeHitSharp>MeleeHit_Metal_Sharp</soundMeleeHitSharp>
+						<soundMeleeHitBlunt>MeleeHit_Metal_Blunt</soundMeleeHitBlunt>
+						<soundImpactMelee>Pawn_Melee_Punch_HitBuilding_Metal</soundImpactMelee>
+						<stuffAdjective>marble</stuffAdjective>
+						<statFactors>
+							<Beauty>1.35</Beauty>
+							<MarketValue>0.45</MarketValue>
+							<MaxHitPoints>1.2</MaxHitPoints>
+							<WorkToBuild>5.5</WorkToBuild>
+							<WorkToMake>1.15</WorkToMake>
+						</statFactors>
+					</stuffProps>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName = "ChunkSandstone"]</xpath>
+				<value>
+					<stuffProps>
+						<categories>
+							<li>Chunky</li>
+						</categories>
+						<statOffsets>
+							<WorkToBuild>140</WorkToBuild>
+						</statOffsets>
+						<color>(126,104,94)</color>
+						<soundImpactBullet>BulletImpact_Metal</soundImpactBullet>
+						<soundMeleeHitSharp>MeleeHit_Metal_Sharp</soundMeleeHitSharp>
+						<soundMeleeHitBlunt>MeleeHit_Metal_Blunt</soundMeleeHitBlunt>
+						<soundImpactMelee>Pawn_Melee_Punch_HitBuilding_Metal</soundImpactMelee>
+						<stuffAdjective>sandstone</stuffAdjective>
+						<statFactors>
+							<Beauty>1.1</Beauty>
+							<MarketValue>0.4</MarketValue>
+							<MaxHitPoints>1.4</MaxHitPoints>
+							<WorkToBuild>5.0</WorkToBuild>
+							<WorkToMake>1.1</WorkToMake>
+						</statFactors>
+					</stuffProps>
+				</value>
+			</li>
+		</operations>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>
+			Defs/ThingDef[defName = "ChunkGranite"] | 
+			Defs/ThingDef[defName = "ChunkSlate"] |
+			Defs/ThingDef[defName = "ChunkLimestone"] | 
+			Defs/ThingDef[defName = "ChunkMarble"] |
+			Defs/ThingDef[defName = "ChunkSandstone"]
+		</xpath>
+		<success>Always</success>
+		<value>
+			<resourceReadoutPriority>Middle</resourceReadoutPriority>
+		</value>
+	</Operation>
+
+
+</Patch>
