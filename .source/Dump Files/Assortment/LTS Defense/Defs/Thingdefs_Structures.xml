@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <ThingDef MayRequire="LimeTreeSnake.Furnishing" ParentName="LTS_StructureBase">
+        <defName>LTS_Chainfence</defName>
+        <label>chain fence</label>
+        <description>A chain fence made to keep out unwanteds whilst still giving vision! Very ugly though but perfect for keeping Z's away, but those are not real right?</description>
+        <graphicData>
+            <texPath>Buildings/ChainLinkFence_Atlas</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <linkType>Asymmetric</linkType>
+            <linkFlags>
+                <li>Fences</li>
+            </linkFlags>
+            <asymmetricLink>
+                <linkToDoors>false</linkToDoors>
+                <linkFlags>
+                    <li>Wall</li>
+                    <li>Rock</li>
+                </linkFlags>
+            </asymmetricLink>
+            <shadowData>
+                <volume>(0.3, 0.5, 0.3)</volume>
+                <offset>(0,0,-0.23)</offset>
+            </shadowData>
+            <damageData>
+                <rect>(0.35,0.1,0.3,0.7)</rect>
+            </damageData>
+        </graphicData>
+        <uiIconPath>Buildings/ChainLinkFence_UI</uiIconPath>
+        <statBases>
+            <MaxHitPoints>100</MaxHitPoints>
+            <WorkToBuild>200</WorkToBuild>
+            <Flammability>1.0</Flammability>
+            <Beauty>-1</Beauty>
+        </statBases>
+        <disableImpassableShotOverConfigError>true</disableImpassableShotOverConfigError>
+        <costStuffCount>2</costStuffCount>
+        <altitudeLayer>Building</altitudeLayer>
+        <passability>Impassable</passability>
+        <blockWind>false</blockWind>
+        <fillPercent>0.1</fillPercent>
+        <drawStyleCategory>Defenses</drawStyleCategory>
+        <tickerType>Never</tickerType>
+        <rotatable>false</rotatable>
+        <selectable>true</selectable>
+        <neverMultiSelect>true</neverMultiSelect>
+        <useStuffTerrainAffordance>true</useStuffTerrainAffordance>
+        <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+        <canOverlapZones>false</canOverlapZones>
+        <stuffCategories>
+            <li>Metallic</li>
+        </stuffCategories>
+        <building>
+            <isPlaceOverableWall>true</isPlaceOverableWall>
+            <blueprintGraphicData>
+                <texPath>Buildings/ChainLinkFence_Atlas_Blueprint</texPath>
+                <graphicClass>Graphic_Single</graphicClass>
+                <linkType>Asymmetric</linkType>
+                <linkFlags>
+                    <li>Fences</li>
+                </linkFlags>
+                <asymmetricLink>
+                    <linkToDoors>true</linkToDoors>
+                    <linkFlags>
+                        <li>Wall</li>
+                        <li>Rock</li>
+                    </linkFlags>
+                </asymmetricLink>
+            </blueprintGraphicData>
+            <relatedBuildCommands>
+                <li>LTS_ChainGateS</li>
+                <li>LTS_ChainGateL</li>
+            </relatedBuildCommands>
+        </building>
+    </ThingDef>
+
+    <ThingDef MayRequire="LimeTreeSnake.Furnishing" ParentName="LTS_FenceGateBase">
+        <defName>LTS_ChainGateS</defName>
+        <label>chain gate</label>
+        <description>A chain gate made to keep out unwanteds whilst still giving vision! Very ugly though but perfect for keeping Z's away, but those are not real right?</description>
+        <statBases>
+            <MaxHitPoints>100</MaxHitPoints>
+            <WorkToBuild>200</WorkToBuild>
+            <DoorOpenSpeed>1</DoorOpenSpeed>
+            <StyleDominance MayRequire="Ludeon.RimWorld.Ideology">10</StyleDominance>
+        </statBases>
+        <graphicData>
+            <texPath>Buildings/ChainGateS</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <drawSize>(1.0,1.0)</drawSize>
+        </graphicData>
+        <staticSunShadowHeight>0</staticSunShadowHeight>
+        <uiIconPath>Buildings/ChainGateS_UI_north</uiIconPath>
+        <costStuffCount>20</costStuffCount>
+        <stuffCategories>
+            <li>Metallic</li>
+        </stuffCategories>
+        <building>
+            <blueprintGraphicData>
+                <texPath>Buildings/ChainGateS_UI</texPath>
+                <graphicClass>Graphic_Multi</graphicClass>
+                <drawSize>(1.0,1.0)</drawSize>
+            </blueprintGraphicData>
+            <relatedBuildCommands>
+                <li>LTS_Chainfence</li>
+            </relatedBuildCommands>
+        </building>
+        <size>(1,1)</size>
+    </ThingDef>
+    <ThingDef MayRequire="LimeTreeSnake.Furnishing" ParentName="LTS_FenceGateBase">
+        <defName>LTS_ChainGateL</defName>
+        <label>large chain gate</label>
+        <description>A chain gate made to keep out unwanteds whilst still giving vision! Very ugly though but perfect for keeping Z's away, but those are not real right?</description>
+        <statBases>
+            <MaxHitPoints>150</MaxHitPoints>
+            <WorkToBuild>300</WorkToBuild>
+            <DoorOpenSpeed>1</DoorOpenSpeed>
+            <StyleDominance MayRequire="Ludeon.RimWorld.Ideology">10</StyleDominance>
+        </statBases>
+        <graphicData>
+            <texPath>Buildings/ChainGateL</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <drawSize>(2.0,2.0)</drawSize>
+        </graphicData>
+        <staticSunShadowHeight>0</staticSunShadowHeight>
+        <rotatable>true</rotatable>
+        <uiIconPath>Buildings/ChainGateL_UI_north</uiIconPath>
+        <costStuffCount>40</costStuffCount>
+        <stuffCategories>
+            <li>Metallic</li>
+        </stuffCategories>
+        <building>
+            <blueprintGraphicData>
+                <texPath>Buildings/ChainGateL_UI</texPath>
+                <graphicClass>Graphic_Multi</graphicClass>
+                <drawSize>(2.0,2.0)</drawSize>
+                <drawOffsetNorth>(0,0,-0.1)</drawOffsetNorth>
+                <drawOffsetSouth>(0,0,-0.1)</drawOffsetSouth>
+            </blueprintGraphicData>
+            <relatedBuildCommands>
+                <li>LTS_Chainfence</li>
+            </relatedBuildCommands>
+        </building>
+        <size>(2,1)</size>
+    </ThingDef>
+</Defs>

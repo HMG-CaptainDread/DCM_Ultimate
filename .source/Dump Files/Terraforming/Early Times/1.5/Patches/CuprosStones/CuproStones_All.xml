@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>		
+
+	<Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Cupro's Stones</li>
+        </mods>		
+        <match Class="PatchOperationSequence">
+            <operations>
+				<li Class="TerraformTech.PatchOperationReplicate">
+					<xpath>/Defs/ThingDef[@ParentName = "STN_NormalChunkBase"
+										or @ParentName = "STN_GraniticChunkBase"
+										or @ParentName = "STN_SmoothChunkBase"
+										or @ParentName = "STN_MarbledChunkBase"
+										or @ParentName = "STN_BandedChunkBase"]</xpath>
+					<xpathFrom>graphicData/color</xpathFrom>
+					<xpathTo>stuffProps/color</xpathTo>
+				</li>	
+				<li Class="TerraformTech.PatchOperationReplicate">
+					<xpath>/Defs/ThingDef[@ParentName = "STN_NormalChunkBase"
+										or @ParentName = "STN_GraniticChunkBase"
+										or @ParentName = "STN_SmoothChunkBase"
+										or @ParentName = "STN_MarbledChunkBase"
+										or @ParentName = "STN_BandedChunkBase"]</xpath>
+					<xpathFrom>label</xpathFrom>
+					<xpathTo>stuffProps/stuffAdjective</xpathTo>
+				</li>
+				
+			</operations>
+		</match>
+    </Operation>
+	
+	
+</Patch>
+

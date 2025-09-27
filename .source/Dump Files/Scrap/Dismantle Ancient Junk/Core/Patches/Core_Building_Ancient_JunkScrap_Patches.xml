@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+<!-- AncientMechBuildingBase -->
+
+<Operation Class="PatchOperationConditional">
+	<success>Normal</success>
+	<xpath>*/ThingDef[@Name="AncientMechBuildingBase"]/building/alwaysDeconstructible</xpath>
+	<!-- AncientMechBuildingBase alwaysDeconstructible -->
+	<match Class="PatchOperationReplace">
+		<xpath>*/ThingDef[@Name="AncientMechBuildingBase"]/building/alwaysDeconstructible</xpath>
+		<value>
+			<alwaysDeconstructible>true</alwaysDeconstructible>
+		</value>
+	</match>
+	<nomatch Class="PatchOperationAdd">
+		<xpath>*/ThingDef[@Name="AncientMechBuildingBase"]/building</xpath>
+		<value>
+			<alwaysDeconstructible>true</alwaysDeconstructible>
+		</value>
+	</nomatch>
+</Operation>
+
+<Operation Class="PatchOperationConditional">
+	<success>Normal</success>
+	<!-- AncientMechBuildingBase deconstructible check -->
+	<xpath>*/ThingDef[@Name="AncientMechBuildingBase"]/building/deconstructible</xpath>
+	<!-- deconstructible false -->
+	<match Class="PatchOperationReplace">
+		<xpath>*/ThingDef[@Name="AncientMechBuildingBase"]/building/deconstructible</xpath>
+		<value>
+			<deconstructible>true</deconstructible>
+		</value>
+	</match>
+	<!-- deconstructible add -->
+	<nomatch Class="PatchOperationAdd">
+		<xpath>*/ThingDef[@Name="AncientMechBuildingBase"]/building</xpath>
+		<value>
+			<deconstructible>true</deconstructible>
+		</value>
+	</nomatch>
+</Operation>
+
+<Operation Class="PatchOperationConditional">
+	<success>Normal</success>
+	<xpath>*/ThingDef[@Name="AncientMechBuildingBase"]/statBases/WorkToBuild</xpath>
+	<!-- AncientMechBuildingBase WorkToBuild 3000 to 10000 -->
+	<match Class="PatchOperationReplace">
+		<xpath>*/ThingDef[@Name="AncientMechBuildingBase"]/statBases/WorkToBuild</xpath>
+		<value>
+			<WorkToBuild>10000</WorkToBuild>
+		</value>
+	</match>
+	<nomatch Class="PatchOperationAdd">
+		<xpath>*/ThingDef[@Name="AncientMechBuildingBase"]/statBases</xpath>
+		<value>
+			<WorkToBuild>10000</WorkToBuild>
+		</value>
+	</nomatch>
+</Operation>
+
+<!-- NonDeconstructibleAncientBuildingBase -->
+
+<Operation Class="PatchOperationConditional">
+	<success>Normal</success>
+	<!-- NonDeconstructibleAncientBuildingBase deconstructible check -->
+	<xpath>*/ThingDef[@Name="NonDeconstructibleAncientBuildingBase"]/building/deconstructible</xpath>
+	<!-- Deconstructible false -->
+	<match Class="PatchOperationReplace">
+		<xpath>*/ThingDef[@Name="NonDeconstructibleAncientBuildingBase"]/building/deconstructible</xpath>
+		<value>
+			<deconstructible>true</deconstructible>
+		</value>
+	</match>
+	<!-- deconstructible add -->
+	<nomatch Class="PatchOperationAdd">
+		<xpath>*/ThingDef[@Name="NonDeconstructibleAncientBuildingBase"]/building</xpath>
+		<value>
+			<deconstructible>true</deconstructible>
+		</value>
+	</nomatch>
+</Operation>
+
+<Operation Class="PatchOperationConditional">
+	<success>Normal</success>
+	<!-- NonDeconstructibleAncientBuildingBase alwaysDeconstructible check -->
+	<xpath>*/ThingDef[@Name="NonDeconstructibleAncientBuildingBase"]/building/alwaysDeconstructible</xpath>
+	<!-- alwaysDeconstructible false -->
+	<match Class="PatchOperationReplace">
+		<xpath>*/ThingDef[@Name="NonDeconstructibleAncientBuildingBase"]/building/alwaysDeconstructible</xpath>
+		<value>
+			<alwaysDeconstructible>true</alwaysDeconstructible>
+		</value>
+	</match>
+	<!-- alwaysDeconstructible add -->
+	<nomatch Class="PatchOperationAdd">
+		<xpath>*/ThingDef[@Name="NonDeconstructibleAncientBuildingBase"]/building</xpath>
+		<value>
+			<alwaysDeconstructible>true</alwaysDeconstructible>
+		</value>
+	</nomatch>
+</Operation>
+
+<!-- AncientLargeMechGestator and AncientMechGestator and AncientMechGestatorTank -->
+
+<Operation Class="PatchOperationConditional">
+	<success>Normal</success>
+	<!-- AncientLargeMechGestator and AncientMechGestator and AncientMechGestatorTank deconstructible check -->
+	<xpath>*/ThingDef[defName="AncientLargeMechGestator" or defName="AncientMechGestator" or defName="AncientMechGestatorTank"]/building/deconstructible</xpath>
+	<!-- Deconstructible false -->
+	<match Class="PatchOperationReplace">
+		<xpath>*/ThingDef[defName="AncientLargeMechGestator" or defName="AncientMechGestator" or defName="AncientMechGestatorTank"]/building/deconstructible</xpath>
+		<value>
+			<deconstructible>true</deconstructible>
+		</value>
+	</match>
+	<!-- deconstructible add -->
+	<nomatch Class="PatchOperationAdd">
+		<xpath>*/ThingDef[defName="AncientLargeMechGestator" or defName="AncientMechGestator" or defName="AncientMechGestatorTank"]/building</xpath>
+		<value>
+			<deconstructible>true</deconstructible>
+		</value>
+	</nomatch>
+</Operation>
+
+<Operation Class="PatchOperationAdd">
+	<!-- Ancient Mech Gestator, Ancient Basic Recharger, Ancient Standard Recharger -->
+	<xpath>*/ThingDef[defName="AncientMechGestator" or defName="AncientBasicRecharger" or defName="AncientStandardRecharger"]</xpath>
+	<order>Append</order>
+	<value>
+		<costList>
+			<ChunkSlagSteel>4</ChunkSlagSteel>
+		</costList>
+	</value>
+</Operation>
+
+<Operation Class="PatchOperationAdd">
+	<!-- Ancient Large Mech Gestator -->
+	<xpath>*/ThingDef[defName="AncientLargeMechGestator"]</xpath>
+	<order>Append</order>
+	<value>
+		<costList>
+			<ChunkSlagSteel>5</ChunkSlagSteel>
+		</costList>
+	</value>
+</Operation>
+
+</Patch>

@@ -1,0 +1,2690 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+	<!-- M60 MAIN TURRET -->
+	<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+		<defName>M60A3MBT_MainTurret</defName>
+		<label>Main Turret</label>
+		<description>Main tank cannon.</description>
+		
+		<turretType>Rotatable</turretType>
+		<shotSound>Shot_105mm_Fire</shotSound>
+		<reloadSound>Shot_Cannon_Reload</reloadSound>
+		
+		<projectile>Bullet_105mm_MainTurret</projectile>
+		<reloadTimer>4.4</reloadTimer>
+		<warmUpTimer>3.4</warmUpTimer>
+		<chargePerAmmoCount>5</chargePerAmmoCount>
+		
+		<magazineCapacity>1</magazineCapacity>
+		<genericAmmo>true</genericAmmo>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>1.35</rotationSpeed>
+		
+		<projectileOffset>4.15</projectileOffset>
+		
+		<minRange>4</minRange>
+		<maxRange>64.9</maxRange>
+		
+		<recoil>
+			<distanceTotal>0.7</distanceTotal>
+			<distancePerTick>0.15</distancePerTick>
+			<speedMultiplierPostRecoil>0.35</speedMultiplierPostRecoil>
+		</recoil>
+		
+		<vehicleRecoil>
+			<distanceTotal>0.35</distanceTotal>
+			<distancePerTick>0.15</distancePerTick>
+			<speedMultiplierPostRecoil>0.75</speedMultiplierPostRecoil>
+		</vehicleRecoil>
+		
+		<attachProjectileFlag>VVE_Tank</attachProjectileFlag>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<spreadRadius>4</spreadRadius>
+				<label>Single</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Things/Vehicles/Tier3/Tier3_M60A3MBT/M60_TankTurret_Full</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>CutoutComplexPattern</shaderType>
+			<drawSize>(12.5, 12.5)</drawSize>
+		</graphicData>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+		
+		<motes>
+			<li>
+				<cycles>1</cycles>
+				<moteDef>Mote_CannonPlume</moteDef>
+				<offset>(0, 0, 2)</offset>
+				<animationType>Reset</animationType>
+			</li>
+		</motes>
+	</Vehicles.VehicleTurretDef>
+
+
+	<!-- M60A3 MG TURRET -->
+	<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+		<defName>M60A3MBT_MGTurret</defName>
+		<label>MG Turret</label>
+		<description>Mahcine Gun Turret.</description>
+		
+		<turretType>Rotatable</turretType>
+		<shotSound>Shot_762mm_Fire</shotSound>
+		<reloadSound>762mm_Reload</reloadSound>
+		
+		<projectile>HE_762mm_Bullet</projectile>
+		<reloadTimer>7</reloadTimer>
+		<warmUpTimer>0.5</warmUpTimer>
+		<chargePerAmmoCount>0.25</chargePerAmmoCount>
+		
+		<magazineCapacity>100</magazineCapacity>
+		<genericAmmo>true</genericAmmo>
+		
+		<autoSnapTargeting>true</autoSnapTargeting>
+		
+		<projectileOffset>1</projectileOffset>
+		
+		<maxRange>28.9</maxRange>
+		
+		<recoil>
+			<distanceTotal>0.15</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		
+		<attachProjectileFlag>VVE_Tank</attachProjectileFlag>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>8</shotsPerBurst>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>45</ticksBetweenBursts>
+				<burstsTillWarmup>0.5</burstsTillWarmup>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Things/Vehicles/Tier3/Tier3_M60A3MBT/M60_MGTurret_Full</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>CutoutComplexPattern</shaderType>
+			<drawSize>(2.5, 2.5)</drawSize>
+		</graphicData>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+	</Vehicles.VehicleTurretDef>
+
+
+
+	<!-- VVE SECONDARY WEAPONS -->
+		<!-- LMG COAX -->
+		<Vehicles.VehicleTurretDef Name="TGBM_VVECoaxialLMGBase" ParentName="VehicleTurretBase">
+		<defName>TGBM_VVECoaxialLMG</defName>
+		<label>coaxial machine gun</label>
+		<description>A mounted variant of a rifle-caliber machine gun. For when one wants to conserve main gun ammo, or not use it at all. Generally recommended to grab it and hold the trigger during an assault or defense.</description>
+		
+		<turretType>Rotatable</turretType>
+		<shotSound>GunShotA</shotSound>
+		
+		<projectile>Bullet_MiniTurret</projectile>
+		<reloadTimer>2.4</reloadTimer>
+		<warmUpTimer>1.2</warmUpTimer>
+		
+		<chargePerAmmoCount>0.25</chargePerAmmoCount>
+		
+		<magazineCapacity>75</magazineCapacity>
+		<genericAmmo>true</genericAmmo>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>3</rotationSpeed>
+		
+		<projectileOffset>1</projectileOffset>
+		
+		<maxRange>28.9</maxRange>
+		
+		<recoil>
+			<distanceTotal>0.12</distanceTotal>
+			<distancePerTick>0.04</distancePerTick>
+			<speedMultiplierPostRecoil>0.15</speedMultiplierPostRecoil>
+		</recoil>
+		
+		<attachProjectileFlag>VVE_Tank</attachProjectileFlag>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>3~6</shotsPerBurst>
+				<ticksBetweenShots>7</ticksBetweenShots>
+				<ticksBetweenBursts>30~60</ticksBetweenBursts>
+				<burstsTillWarmup>3</burstsTillWarmup>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+				
+				<applyShooterAccuracy>true</applyShooterAccuracy>
+				
+				<accuracyTouch>0.40</accuracyTouch>
+				<accuracyShort>0.80</accuracyShort>
+				<accuracyMedium>0.75</accuracyMedium>
+				<accuracyLong>0.70</accuracyLong>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Things/Vehicles/Armament/VVE_CoaxialMG</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(1, 1)</drawSize>
+		</graphicData>
+		
+		<gizmoIconTexPath>TGBM_ThirdParty_UI/TGBM_Coaxial_UI</gizmoIconTexPath>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+	</Vehicles.VehicleTurretDef>
+		<!-- LMG PINTLE -->
+		<Vehicles.VehicleTurretDef Name="TGBM_VVEPintleLMG" ParentName="VehicleTurretBase">
+		<defName>TGBM_VVEPintleLMG</defName>
+		<label>pintle-mounted machine gun</label>
+		<description>A mounted variant of a rifle-caliber machine gun. Generally recommended to grab it and hold the trigger during an assault or defense.</description>
+		
+		<turretType>Rotatable</turretType>
+		<shotSound>GunShotA</shotSound>
+		
+		<projectile>Bullet_MiniTurret</projectile>
+		<reloadTimer>2.4</reloadTimer>
+		<warmUpTimer>1.2</warmUpTimer>
+		
+		<chargePerAmmoCount>0.25</chargePerAmmoCount>
+		
+		<magazineCapacity>75</magazineCapacity>
+		<genericAmmo>true</genericAmmo>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>2.5</rotationSpeed>
+		
+		<projectileOffset>1</projectileOffset>
+		
+		<maxRange>28.9</maxRange>
+		
+		<recoil>
+			<distanceTotal>0.12</distanceTotal>
+			<distancePerTick>0.04</distancePerTick>
+			<speedMultiplierPostRecoil>0.15</speedMultiplierPostRecoil>
+		</recoil>
+		
+		<attachProjectileFlag>VVE_Tank</attachProjectileFlag>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>3~6</shotsPerBurst>
+				<ticksBetweenShots>7</ticksBetweenShots>
+				<ticksBetweenBursts>30~60</ticksBetweenBursts>
+				<burstsTillWarmup>3</burstsTillWarmup>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+				
+				<applyShooterAccuracy>true</applyShooterAccuracy>
+				
+				<accuracyTouch>0.40</accuracyTouch>
+				<accuracyShort>0.80</accuracyShort>
+				<accuracyMedium>0.75</accuracyMedium>
+				<accuracyLong>0.70</accuracyLong>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Things/Vehicles/Armament/VVE_AddonGun</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(1, 1)</drawSize>
+		</graphicData>
+		
+		<gizmoIconTexPath>TGBM_ThirdParty_UI/TGBM_Coaxial_UI</gizmoIconTexPath>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+	</Vehicles.VehicleTurretDef>
+		<!-- HMG PINTLE -->
+		<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+		<defName>TGBM_VVEPintleHMG</defName>
+		<label>pintle-mounted machine gun</label>
+		<description>A wide-caliber mounted heavy machine gun. Effective for tearing down cover, taking down large targets and destroying limbs with its solid slugs.</description>
+		
+		<turretType>Rotatable</turretType>
+		<shotSound>TGBM_Shot_HeavyMachineGun</shotSound>
+		
+		<projectile>TGBM_Bullet_HMG</projectile>
+		<reloadTimer>2.4</reloadTimer>
+		<warmUpTimer>1.2</warmUpTimer>
+		
+		<chargePerAmmoCount>0.25</chargePerAmmoCount>
+		
+		<magazineCapacity>100</magazineCapacity>
+		<genericAmmo>true</genericAmmo>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>1.7</rotationSpeed>
+		
+		<projectileOffset>1</projectileOffset>
+		
+		<maxRange>32.9</maxRange>
+		
+		<recoil>
+			<distanceTotal>0.12</distanceTotal>
+			<distancePerTick>0.04</distancePerTick>
+			<speedMultiplierPostRecoil>0.15</speedMultiplierPostRecoil>
+		</recoil>
+		
+		<attachProjectileFlag>VVE_Tank</attachProjectileFlag>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>3~6</shotsPerBurst>
+				<ticksBetweenShots>9</ticksBetweenShots>
+				<ticksBetweenBursts>120</ticksBetweenBursts>
+				<burstsTillWarmup>2</burstsTillWarmup>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+				
+				<applyShooterAccuracy>true</applyShooterAccuracy>
+				
+				<accuracyTouch>0.40</accuracyTouch>
+				<accuracyShort>0.80</accuracyShort>
+				<accuracyMedium>0.75</accuracyMedium>
+				<accuracyLong>0.70</accuracyLong>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Things/Vehicles/Armament/CEA_M2HB</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(2, 2)</drawSize>
+		</graphicData>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+	</Vehicles.VehicleTurretDef>
+		<!-- FLAMETHROWER COAX -->
+		<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+		<defName>TGBM_VVECoaxialFlamer</defName>
+		<label>coaxial flamethrower</label>
+		<description>A mounted flamethrower. Fun to play with. Loads from its own pressurized fuel reserve.</description>
+		
+		<turretType>Rotatable</turretType>
+		<shotSound>VVE_Shot_BunsenCannonSound</shotSound>
+		
+		<projectile>VVE_Bullet_Bunsen</projectile>
+		<reloadTimer>8.4</reloadTimer>
+		<warmUpTimer>1.2</warmUpTimer>
+		
+		<chargePerAmmoCount>5</chargePerAmmoCount>
+		
+		<magazineCapacity>75</magazineCapacity>
+		<genericAmmo>true</genericAmmo>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>3.6</rotationSpeed>
+		
+		<projectileOffset>1</projectileOffset>
+		
+		<maxRange>14.9</maxRange>
+		<minRange>3.9</minRange>
+		
+		<attachProjectileFlag>VVE_Tank</attachProjectileFlag>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenBursts>1</ticksBetweenBursts>
+				<forcedMissRadius>2.9</forcedMissRadius>
+				<label>Fire Spew</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Things/Vehicles/Armament/VVE_CoaxialMG</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(1, 1)</drawSize>
+		</graphicData>
+		
+		<gizmoIconTexPath>TGBM_ThirdParty_UI/TGBM_Coaxial_UI</gizmoIconTexPath>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Chemfuel</li>
+			</thingDefs>
+		</ammunition>
+	</Vehicles.VehicleTurretDef>
+		<!-- MMG -->
+		<Vehicles.VehicleTurretDef Name="TGBM_WisentMMG" ParentName="VehicleTurretBase">
+		<defName>TGBM_WisentMMG</defName>
+		<label>medium machine gun</label>
+		<description>A mounted rifle-caliber machine gun. Considered the standard in most aspects and is the indecisive logistics manager's catch-all solution.</description>
+		
+		<turretType>Rotatable</turretType>
+		<shotSound>TGBM_Shot_MediumMachineGun</shotSound>
+		
+		<projectile>Bullet_MiniTurret</projectile>
+		<reloadTimer>2.4</reloadTimer>
+		<reloadTimerMultiplierPerCrewCount>
+			<points>
+				<li>(1, 1)</li>
+				<li>(2, 0.75)</li>
+			</points>
+		</reloadTimerMultiplierPerCrewCount>
+		
+		<warmUpTimer>1.2</warmUpTimer>
+		<chargePerAmmoCount>0.25</chargePerAmmoCount>
+		
+		<magazineCapacity>75</magazineCapacity>
+		<genericAmmo>true</genericAmmo>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>2.2</rotationSpeed>
+		
+		<projectileOffset>1</projectileOffset>
+		
+		<maxRange>28.9</maxRange>
+		
+		<recoil>
+			<distanceTotal>0.15</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		
+		<attachProjectileFlag>VVE_Tank</attachProjectileFlag>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>6</shotsPerBurst>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>30~60</ticksBetweenBursts>
+				<burstsTillWarmup>3</burstsTillWarmup>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+				
+				<applyShooterAccuracy>true</applyShooterAccuracy>
+				
+				<accuracyTouch>0.40</accuracyTouch>
+				<accuracyShort>0.80</accuracyShort>
+				<accuracyMedium>0.75</accuracyMedium>
+				<accuracyLong>0.70</accuracyLong>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Things/Vehicles/Armament/TGBM_M240_shield_c</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>CutoutComplexPattern</shaderType>
+			<drawSize>(2.2, 2.2)</drawSize>
+		</graphicData>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+	</Vehicles.VehicleTurretDef>
+		<!-- HMG -->
+		<Vehicles.VehicleTurretDef Name="TGBM_WisentHMG" ParentName="VehicleTurretBase">
+		<defName>TGBM_WisentHMG</defName>
+		<label>heavy machine gun</label>
+		<description>A wide-caliber mounted heavy machine gun. Effective for tearing down cover, taking down large targets and destroying limbs with its solid slugs.</description>
+		
+		<turretType>Rotatable</turretType>
+		<shotSound>TGBM_Shot_HeavyMachineGun</shotSound>
+		
+		<projectile>TGBM_Bullet_HMG</projectile>
+		<reloadTimer>4</reloadTimer>
+		<reloadTimerMultiplierPerCrewCount>
+			<points>
+				<li>(1, 1)</li>
+				<li>(2, 0.75)</li>
+			</points>
+		</reloadTimerMultiplierPerCrewCount>
+		
+		<warmUpTimer>1.4</warmUpTimer>
+		<chargePerAmmoCount>0.25</chargePerAmmoCount>
+		
+		<magazineCapacity>75</magazineCapacity>
+		<genericAmmo>true</genericAmmo>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>2</rotationSpeed>
+		
+		<projectileOffset>1.5</projectileOffset>
+		
+		<maxRange>32.9</maxRange>
+		
+		<recoil>
+			<distanceTotal>0.15</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		
+		<attachProjectileFlag>VVE_Tank</attachProjectileFlag>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>6</shotsPerBurst>
+				<ticksBetweenShots>9</ticksBetweenShots>
+				<ticksBetweenBursts>120</ticksBetweenBursts>
+				<burstsTillWarmup>2</burstsTillWarmup>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+				
+				<applyShooterAccuracy>true</applyShooterAccuracy>
+				
+				<accuracyTouch>0.40</accuracyTouch>
+				<accuracyShort>0.80</accuracyShort>
+				<accuracyMedium>0.75</accuracyMedium>
+				<accuracyLong>0.70</accuracyLong>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Things/Vehicles/Armament/TGBM_M2HB_shield_b</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>CutoutComplexPattern</shaderType>
+			<drawSize>(2.5, 2.5)</drawSize>
+		</graphicData>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+	</Vehicles.VehicleTurretDef>
+		<!-- GMG -->
+		<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+		<defName>TGBM_ExposedGMG</defName>
+		<label>grenade machine gun</label>
+		<description>A mounted grenade machine gun. Due to its rapid fire capability with explosive rounds, it can be said one has to be slightly crazy to use this weapon. Has a minimum arming range to ensure operator safety.</description>
+		
+		<turretType>Rotatable</turretType>
+		<shotSound>Shot_IncendiaryLauncher</shotSound>
+		
+		<projectile>TGBM_Bullet_ExplosiveLauncherRound</projectile>
+		<reloadTimer>4</reloadTimer>
+		<reloadTimerMultiplierPerCrewCount>
+			<points>
+				<li>(1, 1)</li>
+				<li>(2, 0.75)</li>
+			</points>
+		</reloadTimerMultiplierPerCrewCount>
+		
+		<warmUpTimer>1.5</warmUpTimer>
+		<chargePerAmmoCount>5</chargePerAmmoCount>
+		
+		<magazineCapacity>40</magazineCapacity>
+		<genericAmmo>true</genericAmmo>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>1.7</rotationSpeed>
+		
+		<projectileOffset>1</projectileOffset>
+		
+		<minRange>2</minRange>
+		<maxRange>32.9</maxRange>
+		
+		<recoil>
+			<distanceTotal>0.15</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		
+		<attachProjectileFlag>VVE_Tank</attachProjectileFlag>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>3</shotsPerBurst>
+				<ticksBetweenShots>10</ticksBetweenShots>
+				<ticksBetweenBursts>30~60</ticksBetweenBursts>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+				
+				<applyShooterAccuracy>true</applyShooterAccuracy>
+				
+				<accuracyTouch>0.40</accuracyTouch>
+				<accuracyShort>0.80</accuracyShort>
+				<accuracyMedium>0.75</accuracyMedium>
+				<accuracyLong>0.70</accuracyLong>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Things/TGBM_ThirdParty_Vehicles/CEA_Mk19</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(2.6, 2.6)</drawSize>
+		</graphicData>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+	</Vehicles.VehicleTurretDef>
+		<!-- RECOILLESS -->
+		<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+		<defName>TGBM_ExposedRecoillessRifle</defName>
+		<label>recoilless rifle</label>
+		<description>A mounted recoilless rifle capable of firing explosive rounds. Due to its reloadability, one does not have to be that crazy to use it. Has a minimum arming range to ensure operator safety.</description>
+		
+		<turretType>Rotatable</turretType>
+		<shotSound>InfernoCannon_Fire</shotSound>
+		<reloadSound>Artillery_ShellLoaded</reloadSound>
+		
+		<projectile>TGBM_Bullet_RecoillessLauncherRound</projectile>
+		<reloadTimer>6</reloadTimer>
+		<reloadTimerMultiplierPerCrewCount>
+			<points>
+				<li>(1, 1)</li>
+				<li>(2, 0.75)</li>
+			</points>
+		</reloadTimerMultiplierPerCrewCount>
+		
+		<warmUpTimer>2.0</warmUpTimer>
+		<chargePerAmmoCount>10</chargePerAmmoCount>
+		
+		<magazineCapacity>1</magazineCapacity>
+		<genericAmmo>true</genericAmmo>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>2</rotationSpeed>
+		
+		<projectileOffset>1</projectileOffset>
+		
+		<minRange>5</minRange>
+		<maxRange>40.9</maxRange>
+		
+		<recoil>
+			<distanceTotal>0.15</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		
+		<attachProjectileFlag>VVE_Tank</attachProjectileFlag>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenShots>60</ticksBetweenShots>
+				<ticksBetweenBursts>120</ticksBetweenBursts>
+				<label>Single</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+				
+				<applyShooterAccuracy>true</applyShooterAccuracy>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Things/TGBM_ThirdParty_Vehicles/GHTek_CarlGustaf</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(1.6, 1.6)</drawSize>
+		</graphicData>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+	</Vehicles.VehicleTurretDef>
+		<!-- MINIGUN -->
+		<Vehicles.VehicleTurretDef Name="TGBM_ExposedMinigun" ParentName="VehicleTurretBase">
+		<defName>TGBM_ExposedMinigun</defName>
+		<label>minigun</label>
+		<description>A mounted rotary machine gun that uses an electric motor to quickly cycle rounds through it. It is far more effectively used when in a fixed position rather than handheld, such example can be seen here; mounted on a vehicle.</description>
+		
+		<turretType>Rotatable</turretType>
+		<shotSound>Shot_Minigun</shotSound>
+		
+		<projectile>Bullet_Minigun</projectile>
+		<reloadTimer>4</reloadTimer>
+		<reloadTimerMultiplierPerCrewCount>
+			<points>
+				<li>(1, 1)</li>
+				<li>(2, 0.75)</li>
+			</points>
+		</reloadTimerMultiplierPerCrewCount>
+		
+		<warmUpTimer>2.0</warmUpTimer>
+		<chargePerAmmoCount>0.25</chargePerAmmoCount>
+		
+		<magazineCapacity>200</magazineCapacity>
+		<genericAmmo>true</genericAmmo>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>2</rotationSpeed>
+		
+		<projectileOffset>1</projectileOffset>
+		
+		<maxRange>30.9</maxRange>
+		
+		<recoil>
+			<distanceTotal>0.15</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		
+		<attachProjectileFlag>VVE_Tank</attachProjectileFlag>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>25</shotsPerBurst>
+				<ticksBetweenShots>2</ticksBetweenShots>
+				<ticksBetweenBursts>30~60</ticksBetweenBursts>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+				
+				<applyShooterAccuracy>true</applyShooterAccuracy>
+				
+				<accuracyTouch>0.20</accuracyTouch>
+				<accuracyShort>0.30</accuracyShort>
+				<accuracyMedium>0.25</accuracyMedium>
+				<accuracyLong>0.20</accuracyLong>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Things/TGBM_ThirdParty_Vehicles/GHTek_M134</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(2.5, 2.5)</drawSize>
+		</graphicData>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+	</Vehicles.VehicleTurretDef>
+		<!-- MMG WINDOW -->
+		<Vehicles.VehicleTurretDef ParentName="TGBM_WisentMMG">
+		<defName>TGBM_WindowMMG</defName>
+		
+		<shotSound>TGBM_Shot_MediumMachineGun</shotSound>
+		
+		<projectile>Bullet_MiniTurret</projectile>
+		<reloadTimer>2.4</reloadTimer>
+		<warmUpTimer>1.2</warmUpTimer>
+		
+		<magazineCapacity>75</magazineCapacity>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>3</rotationSpeed>
+		
+		<maxRange>28.9</maxRange>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>6</shotsPerBurst>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>30~60</ticksBetweenBursts>
+				<burstsTillWarmup>6</burstsTillWarmup>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+				
+				<applyShooterAccuracy>true</applyShooterAccuracy>
+				
+				<accuracyTouch>0.40</accuracyTouch>
+				<accuracyShort>0.80</accuracyShort>
+				<accuracyMedium>0.75</accuracyMedium>
+				<accuracyLong>0.70</accuracyLong>
+			</li>
+		</fireModes>
+		
+		<graphicData>
+			<texPath>Things/Vehicles/Armament/TGBM_M240_stickout</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(2.2, 2.2)</drawSize>
+		</graphicData>
+	</Vehicles.VehicleTurretDef>
+		<!-- HMG WINDOW -->
+		<Vehicles.VehicleTurretDef ParentName="TGBM_WisentHMG">
+		<defName>TGBM_WindowHMG</defName>
+		
+		<shotSound>TGBM_Shot_HeavyMachineGun</shotSound>
+		
+		<projectile>TGBM_Bullet_HMG</projectile>
+		<reloadTimer>4</reloadTimer>
+		<warmUpTimer>1.4</warmUpTimer>
+
+		<magazineCapacity>75</magazineCapacity>
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>2</rotationSpeed>
+		
+		<maxRange>32.9</maxRange>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>6</shotsPerBurst>
+				<ticksBetweenShots>9</ticksBetweenShots>
+				<ticksBetweenBursts>120</ticksBetweenBursts>
+				<burstsTillWarmup>2</burstsTillWarmup>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+				
+				<applyShooterAccuracy>true</applyShooterAccuracy>
+				
+				<accuracyTouch>0.40</accuracyTouch>
+				<accuracyShort>0.80</accuracyShort>
+				<accuracyMedium>0.75</accuracyMedium>
+				<accuracyLong>0.70</accuracyLong>
+			</li>
+		</fireModes>
+		
+		<graphicData>
+			<texPath>Things/Vehicles/Armament/TGBM_M2HB_stickout</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(2.2, 2.2)</drawSize>
+		</graphicData>
+	</Vehicles.VehicleTurretDef>
+		<!-- MINIGUN WINDOW -->
+		<Vehicles.VehicleTurretDef ParentName="TGBM_ExposedMinigun">
+		<defName>TGBM_WindowMinigun</defName>
+		
+		<shotSound>Shot_Minigun</shotSound>
+		
+		<projectile>Bullet_Minigun</projectile>
+		<reloadTimer>4</reloadTimer>
+		<warmUpTimer>2.5</warmUpTimer>
+		
+		<magazineCapacity>200</magazineCapacity>
+		<autoSnapTargeting>false</autoSnapTargeting>
+		
+		<maxRange>30.9</maxRange>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>25</shotsPerBurst>
+				<ticksBetweenShots>3</ticksBetweenShots>
+				<ticksBetweenBursts>30~60</ticksBetweenBursts>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+				
+				<applyShooterAccuracy>true</applyShooterAccuracy>
+				
+				<accuracyTouch>0.20</accuracyTouch>
+				<accuracyShort>0.30</accuracyShort>
+				<accuracyMedium>0.25</accuracyMedium>
+				<accuracyLong>0.20</accuracyLong>
+			</li>
+		</fireModes>
+		
+		<graphicData>
+			<texPath>Things/TGBM_ThirdParty_Vehicles/GHTek_M134_stickout</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(2.5, 2.5)</drawSize>
+		</graphicData>
+	</Vehicles.VehicleTurretDef>
+		<!-- LMG COAX SPRINGFIELD -->
+		<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+		<defName>TGBM_VVECoaxial_Springfield</defName>
+		<label>coaxial machine gun</label>
+		<description>A mounted variant of a rifle-caliber machine gun.</description>
+		
+		<turretType>Rotatable</turretType>
+		<shotSound>GunShotA</shotSound>
+		
+		<projectile>Bullet_MiniTurret</projectile>
+		<reloadTimer>2.4</reloadTimer>
+		<warmUpTimer>1.2</warmUpTimer>
+		
+		<chargePerAmmoCount>0.25</chargePerAmmoCount>
+		
+		<magazineCapacity>75</magazineCapacity>
+		<genericAmmo>true</genericAmmo>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>3</rotationSpeed>
+		
+		<projectileOffset>1</projectileOffset>
+		
+		<maxRange>28.9</maxRange>
+		
+		<recoil>
+			<distanceTotal>0.12</distanceTotal>
+			<distancePerTick>0.04</distancePerTick>
+			<speedMultiplierPostRecoil>0.15</speedMultiplierPostRecoil>
+		</recoil>
+		
+		<attachProjectileFlag>VVE_Tank</attachProjectileFlag>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>3~6</shotsPerBurst>
+				<ticksBetweenShots>7</ticksBetweenShots>
+				<ticksBetweenBursts>30~60</ticksBetweenBursts>
+				<burstsTillWarmup>3</burstsTillWarmup>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+				
+				<applyShooterAccuracy>true</applyShooterAccuracy>
+				
+				<accuracyTouch>0.40</accuracyTouch>
+				<accuracyShort>0.80</accuracyShort>
+				<accuracyMedium>0.75</accuracyMedium>
+				<accuracyLong>0.70</accuracyLong>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Things/Vehicles/Armament/VVE_CoaxialMG</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(1, 1)</drawSize>
+		</graphicData>
+		
+		<gizmoIconTexPath>TGBM_ThirdParty_UI/TGBM_Coaxial_UI</gizmoIconTexPath>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+	</Vehicles.VehicleTurretDef>
+		<!-- LMG COAX BUFFED -->
+		<Vehicles.VehicleTurretDef ParentName="TGBM_VVECoaxialLMGBase">
+		<defName>TGBM_VVECoaxialMMG</defName>
+		<shotSound>GunShotA</shotSound>
+		
+		<projectile>Bullet_MiniTurret</projectile>
+		<reloadTimer>2.4</reloadTimer>
+		<warmUpTimer>1.2</warmUpTimer>
+		
+		<magazineCapacity>75</magazineCapacity>
+		<autoSnapTargeting>false</autoSnapTargeting>
+		
+		<maxRange>28.9</maxRange>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>3~6</shotsPerBurst>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>30~60</ticksBetweenBursts>
+				<burstsTillWarmup>6</burstsTillWarmup>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+				
+				<applyShooterAccuracy>true</applyShooterAccuracy>
+				
+				<accuracyTouch>0.40</accuracyTouch>
+				<accuracyShort>0.80</accuracyShort>
+				<accuracyMedium>0.75</accuracyMedium>
+				<accuracyLong>0.70</accuracyLong>
+			</li>
+		</fireModes>
+	</Vehicles.VehicleTurretDef>
+		<!-- LMG PINTLE BUFFED -->
+		<Vehicles.VehicleTurretDef ParentName="TGBM_VVEPintleLMG">
+		<defName>TGBM_VVEPintleMMG</defName>
+		
+		<shotSound>GunShotA</shotSound>
+		
+		<projectile>Bullet_MiniTurret</projectile>
+		<reloadTimer>2.4</reloadTimer>
+		<warmUpTimer>1.2</warmUpTimer>
+		
+		<magazineCapacity>75</magazineCapacity>
+		<autoSnapTargeting>false</autoSnapTargeting>
+		
+		<maxRange>28.9</maxRange>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>3~6</shotsPerBurst>
+				<ticksBetweenShots>5</ticksBetweenShots>
+				<ticksBetweenBursts>30~60</ticksBetweenBursts>
+				<burstsTillWarmup>6</burstsTillWarmup>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+				
+				<applyShooterAccuracy>true</applyShooterAccuracy>
+				
+				<accuracyTouch>0.40</accuracyTouch>
+				<accuracyShort>0.80</accuracyShort>
+				<accuracyMedium>0.75</accuracyMedium>
+				<accuracyLong>0.70</accuracyLong>
+			</li>
+		</fireModes>
+	</Vehicles.VehicleTurretDef>
+		<!-- BUNSEN TURRET -->
+		<Vehicles.VehicleTurretDef ParentName="BunsenMainTurret">
+		<defName>TGBM_BunsenLauncherCopy</defName>
+		<label>inferno launcher turret</label>
+		<description>A lightly-armored turret with a mechanoid-style flamebolt launcher. Takes fuel directly from the chemtank of the vehicle. Quite devastating against soft targets and flammable structures, but struggles against armored targets.</description>
+		<projectile>Bullet_InfernoCannon</projectile>
+		<shotSound>Shot_IncendiaryLauncher</shotSound>
+		<warmUpTimer>1.25</warmUpTimer>
+		
+		<rotationSpeed>3.35</rotationSpeed>
+		
+		<reloadTimer>8.4</reloadTimer>
+		<magazineCapacity>5</magazineCapacity>
+		<maxRange>26.9</maxRange>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenBursts>1</ticksBetweenBursts>
+				<forcedMissRadius>2.9</forcedMissRadius>
+				<label>Fire Spew</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+		</fireModes>
+		
+		<graphicData>
+			<texPath>Things/TGBM_ThirdParty_Vehicles/VVEU_Bunsen_LauncherTurret</texPath>
+		</graphicData>
+		
+		<motes>
+			<li>
+				<cycles>1</cycles>
+				<moteDef>Mote_CannonPlume</moteDef>
+				<animationType>Reset</animationType>
+			</li>
+		</motes>
+	</Vehicles.VehicleTurretDef>
+		<!-- GOLIATH TURRET -->
+		<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+		<defName>TGBM_GoliathPDCopy</defName>
+		<label>military turret</label>
+		<description>An automated intermediate-caliber twin turret designed for urban combat.</description>
+		
+		<turretType>Rotatable</turretType>
+		<shotSound>GunShotA</shotSound>
+		
+		<projectile>Bullet_MiniTurret</projectile>
+		
+		<reloadTimer>2.4</reloadTimer>
+		<warmUpTimer>1.2</warmUpTimer>
+		<chargePerAmmoCount>0.25</chargePerAmmoCount>
+		<magazineCapacity>75</magazineCapacity>
+		<genericAmmo>true</genericAmmo>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>2</rotationSpeed>
+		
+		<projectileOffset>1</projectileOffset>
+		
+		<minRange>3</minRange>
+		<maxRange>29.9</maxRange>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>3~6</shotsPerBurst>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>25</ticksBetweenBursts>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+		</fireModes>
+		
+		<graphicData>
+			<texPath>Things/TGBM_ThirdParty_Vehicles/AddonMilitaryTurret</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(2, 2)</drawSize>
+		</graphicData>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+	</Vehicles.VehicleTurretDef>
+		<!-- BADGER TURRET -->
+		<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+		<defName>TGBM_BadgerTurretCopy</defName>
+		<label>badger chain gun</label>
+		<description>A light ergonomic turret with improved fire control systems and smoke grenade launchers. Fires high-explosive rounds, which make it perform well against soft targets but poorly against armor.</description>
+		<turretType>Rotatable</turretType>
+		<shotSound>VVE_IFVCannonSound</shotSound>
+		
+		<projectile>TGBM_Bullet_ExplosiveIFVRound</projectile>
+		<reloadTimer>4.4</reloadTimer>
+		<warmUpTimer>3.2</warmUpTimer>
+		
+		<magazineCapacity>150</magazineCapacity>
+		<genericAmmo>true</genericAmmo>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>2.6</rotationSpeed>
+		
+		<projectileOffset>2.25</projectileOffset>
+		
+		<minRange>2.9</minRange>
+		<maxRange>29.9</maxRange>
+		
+		<recoil>
+			<distanceTotal>0.15</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		
+		<attachProjectileFlag>VVE_Tank</attachProjectileFlag>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenShots>120</ticksBetweenShots>
+				<ticksBetweenBursts>120</ticksBetweenBursts>
+				<forcedMissRadius>0.9</forcedMissRadius>
+				<label>Single</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>5</shotsPerBurst>
+				<ticksBetweenShots>16</ticksBetweenShots>
+				<ticksBetweenBursts>120</ticksBetweenBursts>
+				<forcedMissRadius>2.9</forcedMissRadius>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Things/TGBM_ThirdParty_Vehicles/VVET3_BadgerTurret</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>CutoutComplexPattern</shaderType>
+			<drawSize>(4, 4)</drawSize>
+		</graphicData>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+	</Vehicles.VehicleTurretDef>
+		<!-- 20MM AUTOCANNON -->
+		<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+		<defName>TGBM_UdarAutocannon</defName>
+		<label>bow autocannon</label>
+		<description>A vehicle-mounted self-loading cannon. Although considered overkill by most, it was designed to meet the needs of planetary defense armies facing insectoid and mechanoid hordes.</description>
+		
+		<turretType>Rotatable</turretType>
+		<shotSound>Shot_Autocannon</shotSound>
+		
+		<projectile>Bullet_AutocannonTurret</projectile>
+		<reloadTimer>4</reloadTimer>
+		<warmUpTimer>1.2</warmUpTimer>
+		
+		<chargePerAmmoCount>2</chargePerAmmoCount>
+		
+		<magazineCapacity>90</magazineCapacity>
+		<genericAmmo>true</genericAmmo>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>2</rotationSpeed>
+		
+		<projectileOffset>1</projectileOffset>
+		
+		<maxRange>32.9</maxRange>
+		
+		<recoil>
+			<distanceTotal>0.12</distanceTotal>
+			<distancePerTick>0.04</distancePerTick>
+			<speedMultiplierPostRecoil>0.15</speedMultiplierPostRecoil>
+		</recoil>
+		
+		<attachProjectileFlag>VVE_Tank</attachProjectileFlag>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>3</shotsPerBurst>
+				<ticksBetweenShots>18</ticksBetweenShots>
+				<ticksBetweenBursts>30~60</ticksBetweenBursts>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Things/Vehicles/Armament/TGBM_CoaxialAutocannon</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(1.5, 1.5)</drawSize>
+		</graphicData>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+	</Vehicles.VehicleTurretDef>
+		<!-- FLAK TURRET -->
+		<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+		<defName>TGBM_ExposedFlakTurret</defName>
+		<label>flak turret</label>
+		<description>An ancient-pattern flak emplacement mounted on vehicles such as self-propelled artillery. Originally designed to take down high-flying aircraft at the time, but can be angled to the surface to fire on ground targets.</description>
+		
+		<turretType>Rotatable</turretType>
+		<shotSound>Shot_TurretSniper</shotSound>
+		<reloadSound>Artillery_ShellLoaded</reloadSound>
+		
+		<projectile>TGBM_Bullet_ExplosiveFlakRound</projectile>
+		<reloadTimer>6</reloadTimer>
+		<reloadTimerMultiplierPerCrewCount>
+			<points>
+				<li>(1, 1)</li>
+				<li>(2, 0.75)</li>
+				<li>(3, 0.5)</li>
+			</points>
+		</reloadTimerMultiplierPerCrewCount>
+		
+		<warmUpTimer>3.0</warmUpTimer>
+		<chargePerAmmoCount>2</chargePerAmmoCount>
+		
+		<magazineCapacity>1</magazineCapacity>
+		<genericAmmo>true</genericAmmo>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>1.5</rotationSpeed>
+		
+		<projectileOffset>1</projectileOffset>
+		
+		<minRange>8</minRange>
+		<maxRange>45.9</maxRange>
+		
+		<recoil>
+			<distanceTotal>0.15</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		
+		<attachProjectileFlag>VVE_Tank</attachProjectileFlag>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenShots>60</ticksBetweenShots>
+				<ticksBetweenBursts>120</ticksBetweenBursts>
+				<label>Single</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Things/TGBM_ThirdParty_Vehicles/CE_FlakTurret</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>CutoutComplexPattern</shaderType>
+			<drawSize>(4, 4)</drawSize>
+		</graphicData>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+		
+		<motes>
+			<li>
+				<cycles>1</cycles>
+				<moteDef>Mote_CannonPlume</moteDef>
+				<offset>(0, 0, 3.35)</offset>
+				<animationType>Reset</animationType>
+			</li>
+		</motes>
+	</Vehicles.VehicleTurretDef>
+		<!-- MMG NOMAD -->
+		<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+		<defName>TGBM_NomadMMG</defName>
+		<label>Mounted turret</label>
+		<description>A mounted medium machine gun.</description>
+		
+		<turretType>Rotatable</turretType>
+		<shotSound>TGBM_Shot_MediumMachineGun</shotSound>
+		
+		<projectile>Bullet_MiniTurret</projectile>
+		<reloadTimer>2.4</reloadTimer>
+		<warmUpTimer>1.2</warmUpTimer>
+		<chargePerAmmoCount>0.25</chargePerAmmoCount>
+		
+		<magazineCapacity>75</magazineCapacity>
+		<genericAmmo>true</genericAmmo>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>2</rotationSpeed>
+		
+		<projectileOffset>1</projectileOffset>
+		
+		<maxRange>28.9</maxRange>
+		
+		<recoil>
+			<distanceTotal>0.15</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		
+		<attachProjectileFlag>VVE_Tank</attachProjectileFlag>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>3~6</shotsPerBurst>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>30~60</ticksBetweenBursts>
+				<burstsTillWarmup>6</burstsTillWarmup>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+				
+				<applyShooterAccuracy>true</applyShooterAccuracy>
+				
+				<accuracyTouch>0.40</accuracyTouch>
+				<accuracyShort>0.80</accuracyShort>
+				<accuracyMedium>0.75</accuracyMedium>
+				<accuracyLong>0.70</accuracyLong>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Things/Vehicles/Armament/VVE_FullM240Turret_Alt</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(4, 4)</drawSize>
+		</graphicData>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+	</Vehicles.VehicleTurretDef>
+		<!-- HMG NOMAD -->
+		<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+		<defName>TGBM_NomadHMG</defName>
+		<label>Mounted turret</label>
+		<description>A mounted heavy machine gun.</description>
+		
+		<turretType>Rotatable</turretType>
+		<shotSound>TGBM_Shot_HeavyMachineGun</shotSound>
+		
+		<projectile>TGBM_Bullet_HMG</projectile>
+		<reloadTimer>4</reloadTimer>
+		<warmUpTimer>1.4</warmUpTimer>
+		<chargePerAmmoCount>0.25</chargePerAmmoCount>
+		
+		<magazineCapacity>75</magazineCapacity>
+		<genericAmmo>true</genericAmmo>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>2</rotationSpeed>
+		
+		<projectileOffset>1</projectileOffset>
+		
+		<maxRange>32.9</maxRange>
+		
+		<recoil>
+			<distanceTotal>0.15</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		
+		<attachProjectileFlag>VVE_Tank</attachProjectileFlag>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>3~6</shotsPerBurst>
+				<ticksBetweenShots>9</ticksBetweenShots>
+				<ticksBetweenBursts>120</ticksBetweenBursts>
+				<burstsTillWarmup>2</burstsTillWarmup>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+				
+				<applyShooterAccuracy>true</applyShooterAccuracy>
+				
+				<accuracyTouch>0.40</accuracyTouch>
+				<accuracyShort>0.80</accuracyShort>
+				<accuracyMedium>0.75</accuracyMedium>
+				<accuracyLong>0.70</accuracyLong>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Things/Vehicles/Armament/VVE_FullM2Turret_Alt</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(4, 4)</drawSize>
+		</graphicData>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+	</Vehicles.VehicleTurretDef>
+		<!-- LMG NOMAD -->
+		<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+		<defName>TGBM_NomadLMG</defName>
+		<label>Mounted turret</label>
+		<description>A mounted light machine gun.</description>
+		
+		<turretType>Rotatable</turretType>
+		<shotSound>Shot_AssaultRifle</shotSound>
+		
+		<projectile>Bullet_AssaultRifle</projectile>
+		<reloadTimer>2.4</reloadTimer>
+		<warmUpTimer>1.2</warmUpTimer>
+		<chargePerAmmoCount>0.25</chargePerAmmoCount>
+		
+		<magazineCapacity>150</magazineCapacity>
+		<genericAmmo>true</genericAmmo>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>2</rotationSpeed>
+		
+		<projectileOffset>1</projectileOffset>
+		
+		<maxRange>28.9</maxRange>
+		
+		<recoil>
+			<distanceTotal>0.15</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		
+		<attachProjectileFlag>VVE_Tank</attachProjectileFlag>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>8~12</shotsPerBurst>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>30~60</ticksBetweenBursts>
+				<burstsTillWarmup>12</burstsTillWarmup>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+				
+				<applyShooterAccuracy>true</applyShooterAccuracy>
+				
+				<accuracyTouch>0.40</accuracyTouch>
+				<accuracyShort>0.80</accuracyShort>
+				<accuracyMedium>0.75</accuracyMedium>
+				<accuracyLong>0.70</accuracyLong>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Things/Vehicles/Armament/VVE_FullM240Turret_Alt</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(4, 4)</drawSize>
+		</graphicData>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+	</Vehicles.VehicleTurretDef>
+		<!-- GMG NOMAD -->
+		<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+		<defName>TGBM_NomadGMG</defName>
+		<label>Mounted turret</label>
+		<description>A mounted grenade machine gun. Has a minimum arming range to ensure operator safety.</description>
+		
+		<turretType>Rotatable</turretType>
+		<shotSound>Shot_IncendiaryLauncher</shotSound>
+		
+		<projectile>TGBM_Bullet_ExplosiveLauncherRound</projectile>
+		<reloadTimer>4</reloadTimer>
+		<warmUpTimer>1.5</warmUpTimer>
+		<chargePerAmmoCount>5</chargePerAmmoCount>
+		
+		<magazineCapacity>40</magazineCapacity>
+		<genericAmmo>true</genericAmmo>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>2</rotationSpeed>
+		
+		<projectileOffset>1</projectileOffset>
+		
+		<minRange>2</minRange>
+		<maxRange>32.9</maxRange>
+		
+		<recoil>
+			<distanceTotal>0.15</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		
+		<attachProjectileFlag>VVE_Tank</attachProjectileFlag>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>3</shotsPerBurst>
+				<ticksBetweenShots>10</ticksBetweenShots>
+				<forcedMissRadius>2.9</forcedMissRadius>
+				<ticksBetweenBursts>30~60</ticksBetweenBursts>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+				
+				<applyShooterAccuracy>true</applyShooterAccuracy>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Things/Vehicles/Armament/VVE_FullMk19Turret</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(4, 4)</drawSize>
+		</graphicData>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+	</Vehicles.VehicleTurretDef>
+		<!-- PALADIN BASE -->
+		<Vehicles.VehicleTurretDef Abstract="True" Name="TGBM_PaladinTurretCopyBase" ParentName="VehicleTurretBase" MayRequire="OskarPotocki.VanillaVehiclesExpandedTier3">
+		<defName>TGBM_PaladinTurretCopy</defName>
+		<label>paladin smoke grenade launcher</label>
+		<description>A smoke grenade launcher mounted on a Paladin LAV. Excellent for providing smoke cover to infantry, this turret has no offensive capabilities.</description>
+		
+		<turretType>Rotatable</turretType>
+		<shotSound>Shot_IncendiaryLauncher</shotSound>
+		
+		<projectile>Bullet_SmokeLauncher</projectile>
+		<reloadTimer>3.5</reloadTimer>
+		<chargePerAmmoCount>5</chargePerAmmoCount>
+		
+		<magazineCapacity>50</magazineCapacity>
+		<genericAmmo>true</genericAmmo>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>2.95</rotationSpeed>
+		
+		<projectileOffset>1</projectileOffset>
+		
+		<minRange>2</minRange>
+		<maxRange>23.9</maxRange>
+		
+		<recoil>
+			<distanceTotal>0.15</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		
+		<attachProjectileFlag>VVE_Tank</attachProjectileFlag>
+
+		<graphicData>
+			<texPath>Things/Vehicles/Tier3/Tier3_LAV/Tier3_LAV_CannonTop</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(2, 2)</drawSize>
+		</graphicData>
+	</Vehicles.VehicleTurretDef>
+		<!-- EMP PALADIN -->
+		<Vehicles.VehicleTurretDef ParentName="TGBM_PaladinTurretCopyBase" MayRequire="OskarPotocki.VanillaVehiclesExpandedTier3">
+		<defName>TGBM_PaladinTurret_EMP</defName>
+		<label>paladin EMP grenade launcher</label>
+		<description>An EMP grenade launcher mounted on a Paladin LAV.</description>
+		
+		<projectile>Bullet_EMPLauncher</projectile>
+		<warmUpTimer>1.5</warmUpTimer>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenShots>120</ticksBetweenShots>
+				<ticksBetweenBursts>120</ticksBetweenBursts>
+				<label>Single</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>3</shotsPerBurst>
+				<ticksBetweenShots>10</ticksBetweenShots>
+				<forcedMissRadius>2.9</forcedMissRadius>
+				<ticksBetweenBursts>90</ticksBetweenBursts>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+		</fireModes>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+	</Vehicles.VehicleTurretDef>
+		<!-- GRENADE PALADIN -->
+		<Vehicles.VehicleTurretDef ParentName="TGBM_PaladinTurretCopyBase" MayRequire="OskarPotocki.VanillaVehiclesExpandedTier3">
+		<defName>TGBM_PaladinTurret_Explosive</defName>
+		<label>paladin explosive grenade launcher</label>
+		<description>An explosive grenade launcher mounted on a Paladin LAV.</description>
+		
+		<projectile>TGBM_Bullet_ExplosiveLauncherRound</projectile>
+		<warmUpTimer>1.5</warmUpTimer>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenShots>120</ticksBetweenShots>
+				<ticksBetweenBursts>120</ticksBetweenBursts>
+				<label>Single</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>3</shotsPerBurst>
+				<ticksBetweenShots>10</ticksBetweenShots>
+				<forcedMissRadius>2.9</forcedMissRadius>
+				<ticksBetweenBursts>90</ticksBetweenBursts>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+		</fireModes>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Chemfuel</li>
+			</thingDefs>
+		</ammunition>
+	</Vehicles.VehicleTurretDef>
+		<!-- M1128 MGS PALADIN -->
+		<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+		<defName>TGBM_Paladin_MGSTurret</defName>
+		<label>anti-tank turret</label>
+		<description>A long-range, direct-fire turret with an autoloader. Offers similar performance to the Marshal's turret.</description>
+		
+		<turretType>Rotatable</turretType>
+		<shotSound>VVE_Shot_MarshalCannonSound</shotSound>
+		<reloadSound>VVE_MarshalReloadSound</reloadSound>
+		
+		<projectile>TGBM_Bullet_ExplosiveMBTRound</projectile>
+		<reloadTimer>5</reloadTimer>
+		
+		<warmUpTimer>3.5</warmUpTimer>
+		<chargePerAmmoCount>5</chargePerAmmoCount>
+		
+		<magazineCapacity>1</magazineCapacity>
+		<genericAmmo>true</genericAmmo>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>1.35</rotationSpeed>
+		
+		<projectileOffset>3</projectileOffset>
+		
+		<minRange>4</minRange>
+		<maxRange>74.9</maxRange>
+		
+		<recoil>
+			<distanceTotal>0.7</distanceTotal>
+			<distancePerTick>0.15</distancePerTick>
+			<speedMultiplierPostRecoil>0.35</speedMultiplierPostRecoil>
+		</recoil>
+		
+		<attachProjectileFlag>VVE_Tank</attachProjectileFlag>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<spreadRadius>4</spreadRadius>
+				<label>Single</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Things/Vehicles/Armament/TGBM_Paladin_MGSTurret</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>CutoutComplexPattern</shaderType>
+			<drawSize>(11, 11)</drawSize>
+		</graphicData>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+		
+		<motes>
+			<li>
+				<cycles>1</cycles>
+				<moteDef>Mote_CannonPlume</moteDef>
+				<offset>(0, 0, 1.5)</offset>
+				<animationType>Reset</animationType>
+			</li>
+		</motes>
+	</Vehicles.VehicleTurretDef>
+		<!-- M1296 PALADIN -->
+		<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+		<defName>TGBM_Paladin_DragoonTurret</defName>
+		<label>paladin chain gun</label>
+		<description>A light ergonomic turret with improved fire control systems and smoke grenade launchers. Fires high-explosive rounds, which make it perform well against soft targets but poorly against armor.</description>
+		<turretType>Rotatable</turretType>
+		<shotSound>VVE_IFVCannonSound</shotSound>
+		<reloadSound>VVE_IFVCannonReload</reloadSound>
+		
+		<projectile>TGBM_Bullet_ExplosiveIFVRound</projectile>
+		<reloadTimer>4.4</reloadTimer>
+		<reloadTimerMultiplierPerCrewCount>
+			<points>
+				<li>(1, 1)</li>
+				<li>(2, 0.75)</li>
+			</points>
+		</reloadTimerMultiplierPerCrewCount>
+		<warmUpTimer>3.2</warmUpTimer>
+		
+		<magazineCapacity>150</magazineCapacity>
+		<genericAmmo>true</genericAmmo>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>2.6</rotationSpeed>
+		
+		<projectileOffset>2.25</projectileOffset>
+		
+		<minRange>2.9</minRange>
+		<maxRange>29.9</maxRange>
+		
+		<recoil>
+			<distanceTotal>0.15</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		
+		<attachProjectileFlag>VVE_Tank</attachProjectileFlag>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenShots>120</ticksBetweenShots>
+				<ticksBetweenBursts>120</ticksBetweenBursts>
+				<forcedMissRadius>0.9</forcedMissRadius>
+				<label>Single</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>5</shotsPerBurst>
+				<ticksBetweenShots>16</ticksBetweenShots>
+				<ticksBetweenBursts>120</ticksBetweenBursts>
+				<forcedMissRadius>2.9</forcedMissRadius>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Things/Vehicles/Armament/TGBM_Paladin_DragoonTurret</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>CutoutComplexPattern</shaderType>
+			<drawSize>(5, 5)</drawSize>
+		</graphicData>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+	</Vehicles.VehicleTurretDef>
+	<!-- CART TACHANKA TURRET -->
+	<Vehicles.VehicleTurretDef ParentName="TC_BaseTurret">
+		<defName>TC_Tachanka_Turret</defName>
+		<label>main turret</label>
+		<!-- 砲塔的渲染顯示 -->
+		<graphicData>
+			<texPath>Vehicles/Tachanka/Tachanka_Turret</texPath>
+			<drawSize>2</drawSize>
+		</graphicData>
+		<!-- <uiIconPath>Soviet/DTM_Icon</uiIconPath> -->
+		<!-- 彈藥與裝填容量相關 -->
+		<reloadTimer>4</reloadTimer>
+		<magazineCapacity>50</magazineCapacity>
+		<chargePerAmmoCount>1</chargePerAmmoCount>
+		<genericAmmo>true</genericAmmo>
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+		<!-- 射程與射界相關 -->
+		<minRange>2</minRange>
+		<maxRange>32</maxRange>
+		<rotationSpeed>1.95</rotationSpeed>	
+		<!-- 射擊相關 -->
+		<warmUpTimer>1.5</warmUpTimer>
+		<shotSound>AA_Fire</shotSound>
+		<projectile>Tachanka_MG_Bullet</projectile>
+		<projectileOffset>1.1</projectileOffset>		<!-- 出膛前后偏移，主要是能讓子彈能從炮口飛出去 -->
+		<projectileShifting>							<!-- 出膛左右偏移，多砲管可以根據list來回切 -->
+			<!-- <li>-1</li> -->
+			<li>0</li>
+		  </projectileShifting>
+		<!-- 炮口製退動畫 -->
+		<recoil>
+			<distanceTotal>0.15</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		<!-- 射擊模式 -->
+		<fireModes>
+			<li>
+				<shotsPerBurst>3</shotsPerBurst>
+				<ticksBetweenShots>4</ticksBetweenShots>
+				<ticksBetweenBursts>220</ticksBetweenBursts>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+				<accuracyTouch>0.75</accuracyTouch>
+               <accuracyShort>0.60</accuracyShort>
+               <accuracyMedium>0.50</accuracyMedium>
+               <accuracyLong>0.55</accuracyLong>
+			</li>
+		</fireModes>
+	</Vehicles.VehicleTurretDef>
+	<!-- FIREWALL TURRET -->
+	<Vehicles.VehicleTurretDef ParentName="TC_BaseTurret">
+		<defName>TC_FireWall_Turret</defName>
+		<label>main turret</label>
+		<!-- 砲塔的渲染顯示 -->
+		<graphicData>
+			<texPath>Vehicles/FireWall/FireWall_Turret</texPath>
+			<drawSize>3</drawSize>
+		</graphicData>
+		<!-- <uiIconPath>Soviet/DTM_Icon</uiIconPath> -->
+		<!-- 彈藥與裝填容量相關 -->
+		<reloadTimer>4</reloadTimer>
+		<magazineCapacity>75</magazineCapacity>
+		<chargePerAmmoCount>1</chargePerAmmoCount>
+		<genericAmmo>true</genericAmmo>
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+		<!-- 射程與射界相關 -->
+		<minRange>2</minRange>
+		<maxRange>32</maxRange>
+		<rotationSpeed>1.95</rotationSpeed>	
+		<!-- 射擊相關 -->
+		<warmUpTimer>1.5</warmUpTimer>
+		<shotSound>AA_Fire</shotSound>
+		<projectile>FireWall_MG_Bullet</projectile>
+		<projectileOffset>1.1</projectileOffset>		<!-- 出膛前后偏移，主要是能讓子彈能從炮口飛出去 -->
+		<projectileShifting>							<!-- 出膛左右偏移，多砲管可以根據list來回切 -->
+			<!-- <li>-1</li> -->
+			<li>0</li>
+		  </projectileShifting>
+		<!-- 炮口製退動畫 -->
+		<recoil>
+			<distanceTotal>0.15</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		<!-- 射擊模式 -->
+		<fireModes>
+			<li>
+				<shotsPerBurst>8</shotsPerBurst>
+				<ticksBetweenShots>3</ticksBetweenShots>
+				<ticksBetweenBursts>180</ticksBetweenBursts>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+				<accuracyTouch>0.75</accuracyTouch>
+               <accuracyShort>0.50</accuracyShort>
+               <accuracyMedium>0.50</accuracyMedium>
+               <accuracyLong>0.55</accuracyLong>
+			</li>
+		</fireModes>
+	</Vehicles.VehicleTurretDef>
+	<!-- BATTERING RAM TURRET -->
+	<Vehicles.VehicleTurretDef ParentName="TC_BaseTurret">
+		<defName>TC_BatteringRam_Turret</defName>
+		<label>main turret</label>
+		<!-- 砲塔的渲染顯示 -->
+		<graphicData>
+			<texPath>Vehicles/BatteringRam/BatteringRam_Turret</texPath>
+			<drawSize>6</drawSize>
+		</graphicData>
+		<!-- 彈藥與裝填容量相關 -->
+		<reloadTimer>4.5</reloadTimer>
+		<magazineCapacity>1</magazineCapacity>
+		<chargePerAmmoCount>5</chargePerAmmoCount>
+		<genericAmmo>true</genericAmmo>
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+		<!-- 射程與射界相關 -->
+		<minRange>2</minRange>
+		<maxRange>42.9</maxRange>
+		<rotationSpeed>1</rotationSpeed>
+		<!-- 射擊相關 -->
+		<warmUpTimer>2.5</warmUpTimer>
+		<shotSound>BigGun_Fire</shotSound>
+		<reloadSound>Artillery_ShellLoaded</reloadSound>
+		<projectile>BatteringRam_Bullet_HEShell</projectile>
+		<projectileOffset>6</projectileOffset>		<!-- 出膛前后偏移，主要是能讓子彈能從炮口飛出去 -->
+		<projectileShifting>							<!-- 出膛左右偏移，多砲管可以根據list來回切 -->
+			<!-- <li>-1</li> -->
+			<li>0</li>
+		  </projectileShifting>
+		<!-- 炮口製退動畫 -->
+		<recoil>
+			<distanceTotal>0.15</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		<!-- 射擊模式 -->
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenBursts>1</ticksBetweenBursts>
+				<forcedMissRadius>4</forcedMissRadius>
+				<label>Single Shot</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+		</fireModes>
+		<motes>
+			<li>
+				<cycles>1</cycles>
+				<moteDef>Mote_CannonPlume</moteDef>
+				<animationType>Reset</animationType>
+			</li>
+		</motes>
+	</Vehicles.VehicleTurretDef>
+	<!-- PIPE ORGAN TURRET -->
+	<Vehicles.VehicleTurretDef ParentName="TC_BaseTurret"> <!--改装所调用的炮塔来源-->
+		<defName>TC_PipeOrgan_Turret</defName>
+		<label>main turret</label>
+		<!-- 砲塔的渲染顯示 -->
+		<graphicData>
+			<texPath>Vehicles/PipeOrgan/PipeOrgan_Turret</texPath>
+			<drawSize>3</drawSize>
+		</graphicData>
+		<!-- <uiIconPath>Soviet/DTM_Icon</uiIconPath> -->
+		<!-- 彈藥與裝填容量相關 -->
+		<reloadTimer>4</reloadTimer>
+		<magazineCapacity>75</magazineCapacity>
+		<chargePerAmmoCount>1</chargePerAmmoCount>
+		<genericAmmo>true</genericAmmo>
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+		<!-- 射程與射界相關 -->
+		<minRange>2</minRange>
+		<maxRange>42</maxRange>
+		<rotationSpeed>1.95</rotationSpeed>	
+		<!-- 射擊相關 -->
+		<warmUpTimer>1.5</warmUpTimer>
+		<shotSound>Shot_Autocannon</shotSound>
+		<projectile>Bullet_AutocannonTurret</projectile>
+		<projectileOffset>1.1</projectileOffset>		<!-- 出膛前后偏移，主要是能讓子彈能從炮口飛出去 -->
+		<projectileShifting>							<!-- 出膛左右偏移，多砲管可以根據list來回切 -->
+			<!-- <li>-1</li> -->
+			<li>0</li>
+		  </projectileShifting>
+		<!-- 炮口製退動畫 -->
+		<recoil>
+			<distanceTotal>0.15</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		<!-- 射擊模式 -->
+		<fireModes>
+			<li>
+				<shotsPerBurst>3</shotsPerBurst>
+				<ticksBetweenShots>20</ticksBetweenShots>
+				<ticksBetweenBursts>120</ticksBetweenBursts>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+		</fireModes>
+	</Vehicles.VehicleTurretDef>
+	<!-- ROCKET TURRET -->
+	<Vehicles.VehicleTurretDef ParentName="TC_BaseTurret">
+		<defName>TC_PipeOrgan_Rocket</defName>
+		<label>rocket turret</label>
+		<!-- 砲塔的渲染顯示 -->
+		<graphicData>
+			<texPath>Vehicles/PipeOrgan/PipeOrgan_Tow</texPath>
+			<drawSize>3</drawSize>
+		</graphicData>
+		<!-- <uiIconPath>Soviet/DTM_Icon</uiIconPath> -->
+		<!-- 彈藥與裝填容量相關 -->
+		<reloadTimer>5</reloadTimer>
+		<magazineCapacity>75</magazineCapacity>
+		<chargePerAmmoCount>5</chargePerAmmoCount>
+		<genericAmmo>true</genericAmmo>
+		<ammunition>
+			<thingDefs>
+				<li>Chemfuel</li>
+			</thingDefs>
+		</ammunition>
+		<!-- 射程與射界相關 -->
+		<minRange>2</minRange>
+		<maxRange>52</maxRange>
+		<rotationSpeed>1.95</rotationSpeed>	
+		<!-- 射擊相關 -->
+		<warmUpTimer>1.5</warmUpTimer>
+		<shotSound>RocketswarmLauncher_Fire</shotSound>
+		<projectile>PipeOrgan_Rocket_Bullet</projectile>
+		<projectileOffset>1.1</projectileOffset>		<!-- 出膛前后偏移，主要是能讓子彈能從炮口飛出去 -->
+		<projectileShifting>							<!-- 出膛左右偏移，多砲管可以根據list來回切 -->
+			<!-- <li>-1</li> -->
+			<li>0</li>
+		  </projectileShifting>
+		<!-- 炮口製退動畫 -->
+		<recoil>
+			<distanceTotal>0.15</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		<!-- 射擊模式 -->
+		<fireModes>
+			<li>
+				<shotsPerBurst>2</shotsPerBurst>
+				<ticksBetweenShots>60</ticksBetweenShots>
+				<ticksBetweenBursts>420</ticksBetweenBursts>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+		</fireModes>
+	</Vehicles.VehicleTurretDef>
+	<!-- CRUSHER TURRET -->
+	<Vehicles.VehicleTurretDef ParentName="TC_BaseTurret">
+		<defName>TC_Crusher_Turret</defName>
+		<label>main turret</label>
+		<!-- 砲塔的渲染顯示 -->
+		<graphicData>
+			<texPath>Vehicles/Crusher/Crusher_Turret</texPath>
+			<drawSize>6</drawSize>
+		</graphicData>
+		<!-- 彈藥與裝填容量相關 -->
+		<reloadTimer>2.5</reloadTimer>
+		<magazineCapacity>1</magazineCapacity>
+		<chargePerAmmoCount>5</chargePerAmmoCount>
+		<genericAmmo>true</genericAmmo>
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+		<!-- 射程與射界相關 -->
+		<minRange>2</minRange>
+		<maxRange>35.9</maxRange>
+		<rotationSpeed>1</rotationSpeed>
+		<!-- 射擊相關 -->
+		<warmUpTimer>1.5</warmUpTimer>
+		<shotSound>Bmp_Fire</shotSound>
+		<reloadSound>Artillery_ShellLoaded</reloadSound>
+		<projectile>Crusher_Bullet_HEATShell</projectile>
+		<projectileOffset>6</projectileOffset>		<!-- 出膛前后偏移，主要是能讓子彈能從炮口飛出去 -->
+		<projectileShifting>							<!-- 出膛左右偏移，多砲管可以根據list來回切 -->
+			<!-- <li>-1</li> -->
+			<li>0</li>
+		  </projectileShifting>
+		<!-- 炮口製退動畫 -->
+		<recoil>
+			<distanceTotal>0.15</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		<!-- 射擊模式 -->
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenBursts>1</ticksBetweenBursts>
+				<forcedMissRadius>4</forcedMissRadius>
+				<label>Single Shot</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+		</fireModes>
+		<motes>
+			<li>
+				<cycles>1</cycles>
+				<moteDef>Mote_CannonPlume</moteDef>
+				<animationType>Reset</animationType>
+			</li>
+		</motes>
+	</Vehicles.VehicleTurretDef>
+	<!-- CRUSHER MG TURRET -->
+	<Vehicles.VehicleTurretDef ParentName="TC_BaseTurret">
+		<defName>Crusher_MG_Turret</defName>
+		<label>mini turret</label>
+		<!-- 砲塔的渲染顯示 -->
+		<graphicData>
+			<texPath>Vehicles/Crusher/Crusher_MG</texPath>
+			<drawSize>3</drawSize>
+		</graphicData>
+		<!-- <uiIconPath>Soviet/DTM_Icon</uiIconPath> -->
+		<!-- 彈藥與裝填容量相關 -->
+		<reloadTimer>4</reloadTimer>
+		<magazineCapacity>60</magazineCapacity>
+		<chargePerAmmoCount>1</chargePerAmmoCount>
+		<genericAmmo>true</genericAmmo>
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+		<!-- 射程與射界相關 -->
+		<minRange>2</minRange>
+		<maxRange>32</maxRange>
+		<rotationSpeed>1.95</rotationSpeed>	
+		<!-- 射擊相關 -->
+		<warmUpTimer>1.5</warmUpTimer>
+		<shotSound>GunShotA</shotSound>
+		<projectile>Crusher_MG_Bullet</projectile>
+		<projectileOffset>1.1</projectileOffset>		<!-- 出膛前后偏移，主要是能讓子彈能從炮口飛出去 -->
+		<projectileShifting>							<!-- 出膛左右偏移，多砲管可以根據list來回切 -->
+			<!-- <li>-1</li> -->
+			<li>0</li>
+		  </projectileShifting>
+		<!-- 炮口製退動畫 -->
+		<recoil>
+			<distanceTotal>0.15</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		<!-- 射擊模式 -->
+		<fireModes>
+			<li>
+				<shotsPerBurst>2</shotsPerBurst>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+		</fireModes>
+	</Vehicles.VehicleTurretDef>
+	<!-- TECHNICAL VEHICLE BASE -->
+	<Vehicles.VehicleTurretDef Name="TC_BaseTurret" ParentName="VehicleTurretBase" Abstract="True">
+		<turretType>Rotatable</turretType>
+		<graphicData>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>CutoutComplexPattern</shaderType>
+		</graphicData>
+		<!-- 目標相關的，別動它 -->		
+		<autoSnapTargeting>false</autoSnapTargeting>	<!-- 自動瞄準 -->	
+		<!-- <attachProjectileFlag>VVE_Tank</attachProjectileFlag> 不知道幹啥的，先註解掉 -->
+	</Vehicles.VehicleTurretDef>
+	<!-- FELLOWTOWN TURRET -->
+	<Vehicles.VehicleTurretDef ParentName="TC_BaseTurret">
+		<defName>TC_Fellowtown_Turret</defName>
+		<label>main turret</label>
+		<!-- 砲塔的渲染顯示 -->
+		<graphicData>
+			<texPath>Vehicles/Fellowtown/Fellowtown_Turret</texPath>
+			<drawSize>6</drawSize>
+		</graphicData>
+		<!-- <uiIconPath>Soviet/DTM_Icon</uiIconPath> -->
+		<!-- 彈藥與裝填容量相關 -->
+		<reloadTimer>4</reloadTimer>
+		<magazineCapacity>75</magazineCapacity>
+		<chargePerAmmoCount>1</chargePerAmmoCount>
+		<genericAmmo>true</genericAmmo>
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+		<!-- 射程與射界相關 -->
+		<minRange>2</minRange>
+		<maxRange>42</maxRange>
+		<rotationSpeed>1.95</rotationSpeed>	
+		<!-- 射擊相關 -->
+		<warmUpTimer>0.7</warmUpTimer>
+		<shotSound>ZU_Fire</shotSound>
+		<projectile>Fellowtown_AA_Bullet</projectile>
+		<projectileOffset>1.1</projectileOffset>		<!-- 出膛前后偏移，主要是能讓子彈能從炮口飛出去 -->
+		<projectileShifting>							<!-- 出膛左右偏移，多砲管可以根據list來回切 -->
+			<!-- <li>-1</li> -->
+			<li>0</li>
+		  </projectileShifting>
+		<!-- 炮口製退動畫 -->
+		<recoil>
+			<distanceTotal>0.15</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		<!-- 射擊模式 -->
+		<fireModes>
+			<li>
+				<shotsPerBurst>6</shotsPerBurst>
+				<ticksBetweenShots>2</ticksBetweenShots>
+				<ticksBetweenBursts>120</ticksBetweenBursts>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+				<accuracyTouch>0.60</accuracyTouch>
+               <accuracyShort>0.50</accuracyShort>
+               <accuracyMedium>0.60</accuracyMedium>
+               <accuracyLong>0.55</accuracyLong>
+			</li>
+		</fireModes>
+	</Vehicles.VehicleTurretDef>
+	<!-- KATYUSHA TURRET -->
+	<Vehicles.VehicleTurretDef ParentName="TC_BaseTurret">
+		<defName>TC_Katyusha_Turret</defName>
+		<label>main turret</label>
+		<!-- 砲塔的渲染顯示 -->
+		<graphicData>
+			<texPath>Vehicles/Katyusha/Katyusha_Turret</texPath>
+			<drawSize>3</drawSize>
+		</graphicData>
+		<!-- <uiIconPath>Soviet/DTM_Icon</uiIconPath> -->
+		<!-- 彈藥與裝填容量相關 -->
+		<reloadTimer>5</reloadTimer>
+		<magazineCapacity>75</magazineCapacity>
+		<chargePerAmmoCount>5</chargePerAmmoCount>
+		<genericAmmo>true</genericAmmo>
+		<ammunition>
+			<thingDefs>
+				<li>Chemfuel</li>
+			</thingDefs>
+		</ammunition>
+		<!-- 射程與射界相關 -->
+		<minRange>2</minRange>
+		<maxRange>52</maxRange>
+		<rotationSpeed>1.95</rotationSpeed>	
+		<!-- 射擊相關 -->
+		<warmUpTimer>1.5</warmUpTimer>
+		<shotSound>RocketswarmLauncher_Fire</shotSound>
+		<projectile>Katyusha_Rocket_Bullet</projectile>
+		<projectileOffset>1.1</projectileOffset>		<!-- 出膛前后偏移，主要是能讓子彈能從炮口飛出去 -->
+		<projectileShifting>							<!-- 出膛左右偏移，多砲管可以根據list來回切 -->
+			<!-- <li>-1</li> -->
+			<li>0</li>
+		  </projectileShifting>
+		<!-- 炮口製退動畫 -->
+		<recoil>
+			<distanceTotal>0.15</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		<!-- 射擊模式 -->
+		<fireModes>
+			<li>
+				<shotsPerBurst>4</shotsPerBurst>
+				<ticksBetweenShots>30</ticksBetweenShots>
+				<ticksBetweenBursts>120</ticksBetweenBursts>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+				<forcedMissRadius>5</forcedMissRadius>
+			</li>
+		</fireModes>
+	</Vehicles.VehicleTurretDef>
+	<!-- VASILEK TURRET -->
+	<Vehicles.VehicleTurretDef ParentName="TC_BaseTurret">
+		<defName>TC_Vasilek_Turret</defName>
+		<label>main turret</label>
+		<!-- 砲塔的渲染顯示 -->
+		<graphicData>
+			<texPath>Vehicles/Vasilek/Vasilek_Turret</texPath>
+			<drawSize>3</drawSize>
+		</graphicData>
+		<!-- <uiIconPath>Soviet/DTM_Icon</uiIconPath> -->
+		<!-- 彈藥與裝填容量相關 -->
+		<reloadTimer>8</reloadTimer>
+		<magazineCapacity>1</magazineCapacity>
+		<chargePerAmmoCount>1</chargePerAmmoCount>
+		<genericAmmo>true</genericAmmo>
+		<ammunition>
+			<thingDefs>
+				<li>Shell_HighExplosive</li>
+			</thingDefs>
+		</ammunition>
+		<!-- 射程與射界相關 -->
+		<minRange>2</minRange>
+		<maxRange>159</maxRange>
+		<rotationSpeed>8</rotationSpeed>	
+		<!-- 射擊相關 -->
+		<warmUpTimer>1.5</warmUpTimer>
+		<shotSound>Mortar_LaunchA</shotSound>
+		<projectile>Vasilek_Shell_HighExplosive</projectile>
+		<projectileOffset>1.1</projectileOffset>		<!-- 出膛前后偏移，主要是能讓子彈能從炮口飛出去 -->
+		<projectileShifting>							<!-- 出膛左右偏移，多砲管可以根據list來回切 -->
+			<!-- <li>-1</li> -->
+			<li>0</li>
+		  </projectileShifting>
+		<!-- 炮口製退動畫 -->
+		<recoil>
+			<distanceTotal>0.05</distanceTotal>
+			<distancePerTick>0.025</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		<!-- 射擊模式 -->
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenShots>30</ticksBetweenShots>
+				<ticksBetweenBursts>120</ticksBetweenBursts>
+				<label>Single Shot</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+				<forcedMissRadius>3</forcedMissRadius>
+			</li>
+		</fireModes>
+				<motes>
+		</motes>
+	</Vehicles.VehicleTurretDef>
+	<!-- Z277 AUTOCANNON -->
+	<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+		<defName>Z277_Autocannon</defName>
+		<label>Z277 Turret</label>
+		<description>Fires VERY quickly.</description>
+		<turretType>Rotatable</turretType>
+		<shotSound>Synthetik_Z277Autocannon</shotSound>
+		<projectile>Bullet_Z277Cannon</projectile>
+		<reloadTimer>7.8</reloadTimer>
+		<warmUpTimer>1.25</warmUpTimer>
+
+		<magazineCapacity>1200</magazineCapacity>
+		<chargePerAmmoCount>1</chargePerAmmoCount>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>0.5</rotationSpeed>
+
+		<hitFlags>All</hitFlags>
+		<minRange>4</minRange>
+		<maxRange>45.9</maxRange>
+		
+		<attachProjectileFlag>Tank</attachProjectileFlag>
+		<projectileOffset>1.85</projectileOffset>
+		<projectileShifting>
+			<li>0.6</li>
+			<li>-0.6</li>
+			<li>0.75</li>
+			<li>-0.75</li>
+		</projectileShifting>
+
+		<recoil>
+			<distanceTotal>0.1</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+
+		<fireModes>
+			<li>
+				<shotsPerBurst>4</shotsPerBurst>
+				<spreadRadius>3</spreadRadius>
+				<ticksBetweenShots>1</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<label>Single</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>16</shotsPerBurst>
+				<spreadRadius>3</spreadRadius>
+				<ticksBetweenShots>1</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>32</shotsPerBurst>
+				<spreadRadius>3</spreadRadius>
+				<ticksBetweenShots>1</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<label>Auto</label>
+				<texPath>UI/Gizmos/FireRate_Auto</texPath>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Synthetik/Vehicles/Z277_Top</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>CutoutComplexPattern</shaderType>
+			<drawSize>5</drawSize>
+		</graphicData>
+
+		<gizmoIconTexPath>Synthetik/Icons/Flak_Icon</gizmoIconTexPath>
+		<gizmoDescription>0.9cm Machinegun</gizmoDescription>
+
+		<ammunition>
+			<categories>
+				<li>SynthetikZ277Machinegun</li>
+			</categories>
+		</ammunition>
+
+		<motes>
+			<li>
+				<cycles>1</cycles>
+				<moteDef>Mote_MuzzleFlash_Synthetik</moteDef>
+				<animationType>Reset</animationType>
+			</li>
+		</motes>
+	</Vehicles.VehicleTurretDef>
+	<!-- Z277 ROCKET -->
+	<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+		<defName>Z277_RocketTube</defName>
+		<label>Z277 Turret</label>
+		<description>Meant for destroying static positions.</description>
+		<turretType>Rotatable</turretType>
+		<shotSound>Synthetik_Z277Rocket</shotSound>
+		<projectile>Bullet_Z277Rocket</projectile>
+		<reloadTimer>9.8</reloadTimer>
+		<warmUpTimer>1.25</warmUpTimer>
+
+		<magazineCapacity>8</magazineCapacity>
+		<chargePerAmmoCount>1</chargePerAmmoCount>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>0.5</rotationSpeed>
+
+		<hitFlags>All</hitFlags>
+		<minRange>4</minRange>
+		<maxRange>45.9</maxRange>
+		
+		<attachProjectileFlag>Tank</attachProjectileFlag>
+		<projectileOffset>0.25</projectileOffset>
+		<projectileShifting>
+			<li>1.05</li>
+			<li>0.95</li>
+			<li>1.05</li>
+			<li>0.95</li>
+			<li>-1.05</li>
+			<li>-0.95</li>
+			<li>-1.05</li>
+			<li>-0.95</li>
+		</projectileShifting>
+
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<spreadRadius>3</spreadRadius>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<label>Single</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>4</shotsPerBurst>
+				<spreadRadius>3</spreadRadius>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<label>Quad</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>8</shotsPerBurst>
+				<spreadRadius>3</spreadRadius>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<label>Fire everything</label>
+				<texPath>UI/Gizmos/FireRate_Auto</texPath>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Synthetik/Vehicles/Z277_Top</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>CutoutComplexPattern</shaderType>
+			<drawSize>0.5</drawSize>
+		</graphicData>
+
+		<gizmoIconTexPath>Synthetik/Icons/Rocket_Icon</gizmoIconTexPath>
+		<gizmoDescription>76mm Rocket Tube</gizmoDescription>
+
+		<ammunition>
+			<categories>
+				<li>SynthetikRocket</li>
+			</categories>
+		</ammunition>
+
+		<motes>
+			<li>
+				<cycles>1</cycles>
+				<moteDef>Mote_MuzzleFlash_Synthetik</moteDef>
+				<animationType>Reset</animationType>
+			</li>
+		</motes>
+	</Vehicles.VehicleTurretDef>
+	<!-- SATURN 7 MAIN GUN -->
+	<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+		<defName>Sat7_MainGun</defName>
+		<label>Saturn 7 Main gun</label>
+		<description>Fires shells at near-instant speeds.</description>
+		<turretType>Rotatable</turretType>
+		<shotSound>Synthetik_Sat7MainGun</shotSound>
+		<projectile>Bullet_Sat7HE</projectile>
+		<reloadTimer>9.8</reloadTimer>
+		<warmUpTimer>1.0</warmUpTimer>
+		<magazineCapacity>24</magazineCapacity>
+		<chargePerAmmoCount>1</chargePerAmmoCount>
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>0.5</rotationSpeed>
+		<projectileOffset>6.0</projectileOffset>
+		<hitFlags>IntendedTarget</hitFlags>
+		<attachProjectileFlag>Tank</attachProjectileFlag>
+		<minRange>10</minRange>
+		<maxRange>62.9</maxRange>
+
+		<recoil>
+			<distanceTotal>0.1</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<spreadRadius>3</spreadRadius>
+				<ticksBetweenShots>60</ticksBetweenShots>
+				<ticksBetweenBursts>588</ticksBetweenBursts>
+				<label>Single</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Synthetik/Vehicles/Sat7_Top</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>CutoutComplexPattern</shaderType>
+			<drawSize>7.5</drawSize>
+		</graphicData>
+
+		<gizmoIconTexPath>Synthetik/Icons/Cannon_Icon</gizmoIconTexPath>
+		<gizmoDescription>100mm Energy Cannon</gizmoDescription>
+
+		<ammunition>
+			<categories>
+				<li>SynthetikCannon</li>
+			</categories>
+		</ammunition>
+
+		<motes>
+			<li>
+				<cycles>1</cycles>
+				<moteDef>Mote_CannonPlume</moteDef>
+				<animationType>Reset</animationType>
+			</li>
+		</motes>
+	</Vehicles.VehicleTurretDef>
+	<!-- SATURN 7 COAX LASER -->
+	<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+		<defName>Sat7_CoaxLaser</defName>
+		<label>Saturn 7 Laser machinegun</label>
+		<description>A rapid-fire laser weapon.</description>
+		<turretType>Rotatable</turretType>
+		<shotSound>Synthetik_Sat7Coax</shotSound>
+		<projectile>Bullet_Sat7Laser</projectile>
+		<reloadTimer>7.8</reloadTimer>
+		<warmUpTimer>1.5</warmUpTimer>
+		<magazineCapacity>150</magazineCapacity>
+		<chargePerAmmoCount>1</chargePerAmmoCount>
+		<hitFlags>All</hitFlags>
+		<autoSnapTargeting>true</autoSnapTargeting>
+		<rotationSpeed>2.0</rotationSpeed>
+		<projectileOffset>0.2</projectileOffset>
+		<maxRange>45.9</maxRange>
+
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<label>Single</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>4</shotsPerBurst>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<spreadRadius>1</spreadRadius>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>8</shotsPerBurst>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>90</ticksBetweenBursts>
+				<label>Auto</label>
+				<texPath>UI/Gizmos/FireRate_Auto</texPath>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Synthetik/Vehicles/Sat7_LaserMG_Top</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>CutoutComplexPattern</shaderType>
+			<drawSize>(0.25, 0.25)</drawSize>
+		</graphicData>
+
+		<gizmoIconTexPath>Synthetik/Icons/Coax_Icon</gizmoIconTexPath>
+		<gizmoDescription>Laser Machinegun</gizmoDescription>
+
+		<ammunition>
+			<categories>
+				<li>SynthetikLaser</li>
+			</categories>
+		</ammunition>
+
+		<motes>
+			<li>
+				<cycles>1</cycles>
+				<moteDef>Mote_LaserFlash</moteDef>
+				<animationType>Reset</animationType>
+			</li>
+		</motes>
+	</Vehicles.VehicleTurretDef>
+	<!-- SATURN 7 TOP LASER -->
+	<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+		<defName>Sat7_TopLaser</defName>
+		<label>Saturn 7 Laser machinegun</label>
+		<description>A rapid-fire laser weapon.</description>
+		<turretType>Rotatable</turretType>
+		<shotSound>Synthetik_Sat7Coax</shotSound>
+		<projectile>Bullet_Sat7Laser</projectile>
+		<reloadTimer>7.8</reloadTimer>
+		<warmUpTimer>1.5</warmUpTimer>
+		<magazineCapacity>150</magazineCapacity>
+		<chargePerAmmoCount>1</chargePerAmmoCount>
+		<hitFlags>IntendedTarget</hitFlags>
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>1.25</rotationSpeed>
+		<projectileOffset>0.4</projectileOffset>
+		<maxRange>45.9</maxRange>
+
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<label>Single</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>4</shotsPerBurst>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<spreadRadius>1</spreadRadius>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>8</shotsPerBurst>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>90</ticksBetweenBursts>
+				<label>Auto</label>
+				<texPath>UI/Gizmos/FireRate_Auto</texPath>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Synthetik/Vehicles/Sat7_LaserMG_Top</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>CutoutComplexPattern</shaderType>
+			<drawSize>(0.67, 0.67)</drawSize>
+		</graphicData>
+
+		<gizmoIconTexPath>Synthetik/Icons/Top_turret_Icon</gizmoIconTexPath>
+		<gizmoDescription>Laser Machinegun</gizmoDescription>
+
+		<ammunition>
+			<categories>
+				<li>SynthetikLaser</li>
+			</categories>
+		</ammunition>
+
+		<motes>
+			<li>
+				<cycles>1</cycles>
+				<moteDef>Mote_LaserFlash</moteDef>
+				<animationType>Reset</animationType>
+			</li>
+		</motes>
+
+	</Vehicles.VehicleTurretDef>
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+</Defs>

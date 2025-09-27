@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+	<!-- ========== Coal Intergration ========== -->		
+	<!-- Coal to Fueled Smithy -->	
+	<Operation Class="PatchOperationReplace">
+	    <xpath>/Defs/ThingDef[defName = "FueledSmithy"]/comps/li[@Class = "CompProperties_Refuelable"]/fuelFilter/thingDefs</xpath>
+	    <value>
+			<thingDefs>
+				<li>Resource_Coal</li>
+			</thingDefs>
+	    </value>
+	</Operation>	
+
+	<!-- Coal to Fueled Stove -->	
+	<Operation Class="PatchOperationAdd">
+	    <xpath>/Defs/ThingDef[defName = "FueledStove"]/comps/li[@Class = "CompProperties_Refuelable"]/fuelFilter/thingDefs</xpath>
+	    <value>
+             <li>Resource_Coal</li>
+	    </value>
+	</Operation>
+
+	<!-- Coal to generator -->	
+	<Operation Class="PatchOperationReplace">
+	    <xpath>/Defs/ThingDef[defName = "WoodFiredGenerator"]/comps/li[@Class = "CompProperties_Refuelable"]/fuelFilter/thingDefs</xpath>
+	    <value>
+			<thingDefs>
+				<li>Resource_Coal</li>
+			</thingDefs>
+	    </value>
+	</Operation>	
+	
+	<!-- === Outlander === -->	
+	<!-- Adding Goods to Outlander Base -->
+	<Operation Class="PatchOperationAdd">
+	    <xpath>/Defs/TraderKindDef[defName = "Base_Outlander_Standard"]/stockGenerators</xpath>
+	    <value>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>Resource_Coal</thingDef>
+				<countRange>
+					<min>750</min>
+					<max>1100</max>
+				</countRange>
+			</li>
+	    </value>
+	</Operation>	
+
+<!-- Adding Goods to Outlander Bulk Goods Caravan -->
+	<Operation Class="PatchOperationAdd">
+	    <xpath>/Defs/TraderKindDef[defName = "Caravan_Outlander_BulkGoods"]/stockGenerators</xpath>
+	    <value>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>Resource_Coal</thingDef>
+				<countRange>
+					<min>150</min>
+					<max>400</max>
+				</countRange>
+			</li>	
+	    </value>
+	</Operation>
+	
+	<!-- Adding Goods to Outlander Combat Supplier Caravan -->
+	<Operation Class="PatchOperationAdd">
+	    <xpath>/Defs/TraderKindDef[defName = "Caravan_Outlander_CombatSupplier"]/stockGenerators</xpath>
+	    <value>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>Resource_Coal</thingDef>
+			</li>
+	    </value>
+	</Operation>	
+
+	<!-- Adding Goods to Outlander Exotic Goods Caravan -->
+	<Operation Class="PatchOperationAdd">
+	    <xpath>/Defs/TraderKindDef[defName = "Caravan_Outlander_Exotic"]/stockGenerators</xpath>
+	    <value>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>Resource_Coal</thingDef>
+			</li>			
+	    </value>
+	</Operation>	
+
+	<!-- Adding Goods to Outlander Visitor -->
+	<Operation Class="PatchOperationAdd">
+	    <xpath>/Defs/TraderKindDef[defName = "Visitor_Outlander_Standard"]/stockGenerators</xpath>
+	    <value>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>Resource_Coal</thingDef>
+			</li>
+	    </value>
+	</Operation>	
+	
+	
+	<!-- === Orbital === -->	
+	<!-- Adding Goods to Orbital Bulk Goods -->
+	<Operation Class="PatchOperationAdd">
+	    <xpath>/Defs/TraderKindDef[defName = "Orbital_BulkGoods"]/stockGenerators</xpath>
+	    <value>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>Resource_Coal</thingDef>
+				<price>Cheap</price>
+				<countRange>
+					<min>500</min>
+					<max>1000</max>
+				</countRange>
+			</li>
+	    </value>
+	</Operation>
+
+</Patch>
+

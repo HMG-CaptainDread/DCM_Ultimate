@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>[HLX] ReGrowth - Core</li>
+		  <li>ReGrowth: Core and Framework</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<operations>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/TerraformTech.TerrainTerraformRuleSet[defName="Terraform_BasicSoilRemoval"]/rules/li[patchTag="SoilFromGravel"]/sourceDefs</xpath>
+				<value>
+					<li>RG_LavaRock</li>
+					<li>RG_RubbleSoil</li>
+				</value>
+			</li>
+
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/TerraformTech.TerrainTerraformRuleSet[defName="Terraform_BasicSoilRemoval"]/rules/li[patchTag="SoilFromEtcSoil"]/sourceDefs</xpath>
+				<value>
+					<li>RG_TundraSoil</li>
+				</value>
+			</li>
+		</operations>
+	</match>
+  </Operation>
+</Patch>

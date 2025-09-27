@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- M82A1 Mounted sniper rifle -->
+  
+    <!--=============== M82A1 ===============-->
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>RN2Gun_M82A1_ATSniper</defName>
+    <label>M82A1</label>
+	 <description>The Barrett M82 (standardized by the U.S. military as the M107) is a recoil-operated, semi-automatic, anti-materiel precision rifle developed by the American company Barrett Firearms Manufacturing.
+
+Also called the Light Fifty (due to its chambering of the .50 BMG 12.7×99mm NATO cartridge), the weapon is classified in three variants: the original M82A1 (and M82A3) models, the bullpup M82A2 model, and the Barrett M107A1, with an attached muzzle brake (designed to accept a suppressor, and made out of titanium instead of steel).</description>
+    <thingClass>Building_TurretGun</thingClass>
+	<drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <texPath>Things/Building/Security/M2_Browning/MG_Tripod</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2,2)</drawSize>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+    </graphicData>
+    <uiIconPath>Things/Building/Security/M82A1/M82A1_Display</uiIconPath>
+    <minifiedDef>MinifiedThing</minifiedDef>
+	<altitudeLayer>Building</altitudeLayer>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+	<thingCategories>
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+    <statBases>
+	<Mass>17</Mass>
+      <MaxHitPoints>300</MaxHitPoints>
+      <Flammability>0.5</Flammability>
+      <WorkToBuild>5200</WorkToBuild>
+      <Beauty>-60</Beauty>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_Mannable">
+        <manWorkType>Violent</manWorkType>
+      </li>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_Refuelable">
+        <fuelLabel>Shots until ammo box change</fuelLabel>
+        <fuelGizmoLabel>ammunition box</fuelGizmoLabel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </fuelFilter>
+        <fuelCapacity>10</fuelCapacity>
+        <initialFuelPercent>1</initialFuelPercent>
+        <autoRefuelPercent>0.1667</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <minimumFueledThreshold>1</minimumFueledThreshold>
+        <atomicFueling>true</atomicFueling>
+        <fuelMultiplier>2</fuelMultiplier>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <outOfFuelMessage>Cannot shoot: Needs more ammo</outOfFuelMessage>
+        <fuelIconPath>UI/AmmoMag_50BMG</fuelIconPath>
+      </li>
+    </comps>
+	<size>(2,2)</size>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.75</fillPercent>
+    <!--<castEdgeShadows>true</castEdgeShadows>-->
+    <hasTooltip>true</hasTooltip>
+    <costList>
+      <Steel>95</Steel>
+      <ComponentIndustrial>10</ComponentIndustrial>
+    </costList>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+    <constructEffect>ConstructMetal</constructEffect>
+    <specialDisplayRadius>52</specialDisplayRadius>
+    <building>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>RN2Gun_M82A1Mounted</turretGunDef>
+      <turretBurstWarmupTime>3.57</turretBurstWarmupTime>
+      <turretBurstCooldownTime>5</turretBurstCooldownTime>
+    </building>
+    <researchPrerequisites><li>GunTurrets</li></researchPrerequisites>
+  </ThingDef>
+  
+  <!-- Gun itself -->
+  
+    <ThingDef ParentName="RNBaseWeaponTurret">
+    <defName>RN2Gun_M82A1Mounted</defName>
+    <label>M82A1</label>
+    <description>The Barrett M82, standardized by the U.S. military as the M107, is a recoil-operated, semi-automatic anti-materiel sniper system developed by the American Barrett Firearms Manufacturing company. Despite its designation as an anti-materiel rifle, it is used by some armed forces as an anti-personnel system. 
+	
+It is also called the Light Fifty for its .50 BMG (12.7×99mm NATO) chambering and significantly lighter weight compared to previous applications.</description>
+    <graphicData>
+      <texPath>Things/Building/Security/M82A1/M82A1</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <AccuracyTouch>0.97</AccuracyTouch>
+      <AccuracyShort>1.15</AccuracyShort>
+      <AccuracyMedium>1.47</AccuracyMedium>
+      <AccuracyLong>1.75</AccuracyLong>
+      <RangedWeapon_Cooldown>5</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>5</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <defaultProjectile>RNBullet_50BMG_MountedSniper</defaultProjectile>
+        <warmupTime>5</warmupTime>
+        <range>52</range>
+        <ticksBetweenBurstShots>9</ticksBetweenBurstShots>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>RNShot50Cal</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+        <consumeFuelPerShot>1</consumeFuelPerShot>
+      </li>
+    </verbs>
+  </ThingDef>
+  
+  <ThingDef ParentName="BaseBullet">
+    <defName>RNBullet_50BMG_MountedSniper</defName>
+    <label>.50 BMG bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Big</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>80</damageAmountBase>
+      <stoppingPower>5</stoppingPower>
+	  <armorPenetrationBase>0.82</armorPenetrationBase>
+      <speed>90</speed>
+    </projectile>
+  </ThingDef>
+  
+</Defs>

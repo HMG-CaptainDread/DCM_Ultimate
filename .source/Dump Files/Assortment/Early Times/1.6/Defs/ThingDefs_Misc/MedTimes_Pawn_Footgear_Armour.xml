@@ -1,0 +1,444 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!-- Start of thingDefs -->
+    <!-- =========================== Foot Armour Base Classes =========================== -->
+	<!-- FootArmour Base Class -->
+    <ThingDef Name="MedTimes_FootArmour" Abstract="True">
+        <thingClass>Apparel</thingClass>
+        <category>Item</category>
+        <selectable>True</selectable>
+        <pathCost>10</pathCost>
+        <altitudeLayer>Item</altitudeLayer>
+        <alwaysHaulable>True</alwaysHaulable>
+        <tickerType>Never</tickerType>
+        <drawGUIOverlay>true</drawGUIOverlay>
+        <graphicData>
+            <onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(0.8,0.8)</drawSize>
+        </graphicData>
+        <statBases>
+            <SellPriceFactor>0.6</SellPriceFactor>
+            <Insulation_Cold>3</Insulation_Cold>
+            <EquipDelay>2</EquipDelay>
+            <Beauty>-3</Beauty>
+            <Mass>1</Mass>
+        </statBases>
+        <apparel>
+			<countsAsClothingForNudity>false</countsAsClothingForNudity>
+            <careIfWornByCorpse>false</careIfWornByCorpse>
+            <defaultOutfitTags>
+                <li>Soldier</li>
+            </defaultOutfitTags>
+            <bodyPartGroups>
+                <li>Feet</li>
+            </bodyPartGroups>
+            <layers>
+                <li>Middle</li>
+            </layers>
+        </apparel>
+        <comps>
+            <li Class="CompProperties_Forbiddable" />
+        </comps>
+    </ThingDef>
+    <!-- (Base Class) Makeable -->
+    <ThingDef Name="MedTimes_FootArmourNN" ParentName="MedTimes_FootArmour" Abstract="True">
+        <useHitPoints>True</useHitPoints>
+        <statBases>
+            <MaxHitPoints>65</MaxHitPoints>
+            <Flammability>1.0</Flammability>
+            <DeteriorationRate>2</DeteriorationRate>
+        </statBases>
+        <comps>
+            <li>
+                <compClass>CompQuality</compClass>
+            </li>
+        </comps>
+        <tradeTags>
+            <li>MedTimes_Gear</li>
+        </tradeTags>
+        <thingCategories>
+            <li>FootArmour</li>
+        </thingCategories>
+    </ThingDef>
+    <!-- ================================== Tier 0 Classes =================================-->
+    <!-- ==== Light Classes ==== -->
+    <!-- (Light Class) Tier 0 Non-Makeable -->
+    <ThingDef Name="MedTimes_FootArmour_T0_L" ParentName="MedTimes_FootArmourNN" Abstract="True">
+        <costStuffCount>25</costStuffCount>	    
+		<statBases>
+            <Mass>1.2</Mass>
+        </statBases>
+        <equippedStatOffsets>
+            <MoveSpeed>0.08</MoveSpeed>
+        </equippedStatOffsets>
+    </ThingDef>
+    <!-- (Light Class) Tier 0 Makeable -->
+    <ThingDef Name="MedTimes_Craft_FootArmour_T0_L" ParentName="MedTimes_FootArmour_T0_L" Abstract="True">
+        <statBases>
+            <WorkToMake>3000</WorkToMake>
+        </statBases>
+        <recipeMaker>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Crafting</workSkill>
+            <effectWorking>Smith</effectWorking>
+            <soundWorking>Recipe_Smith</soundWorking>
+            <researchPrerequisite>TS_PrimitiveArmor</researchPrerequisite>
+            <unfinishedThingDef>UnfinishedArmor</unfinishedThingDef>
+            <recipeUsers>
+                <li>CraftingSpot</li>
+                <li>MedTimes_CraftingStation</li>
+            </recipeUsers>
+        </recipeMaker>
+    </ThingDef>
+    <!-- ================================== Tier 1 Classes =================================-->
+    <!-- ==== Light Classes ==== -->
+    <!-- (Light Class) Tier 1 Non-Makeable -->
+    <ThingDef Name="MedTimes_FootArmour_T1_L" ParentName="MedTimes_FootArmourNN" Abstract="True">
+        <costStuffCount>25</costStuffCount>
+		<statBases>
+            <Mass>1.8</Mass>
+        </statBases>
+        <equippedStatOffsets>
+            <MoveSpeed>0.08</MoveSpeed>
+        </equippedStatOffsets>
+    </ThingDef>
+    <!-- (Light Class) Tier 1 Makeable -->
+    <ThingDef Name="MedTimes_Smith_FootArmour_T1_L" ParentName="MedTimes_FootArmour_T1_L" Abstract="True">
+        <statBases>
+            <WorkToMake>3000</WorkToMake>
+        </statBases>
+        <recipeMaker>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Crafting</workSkill>
+            <effectWorking>Smith</effectWorking>
+            <soundWorking>Recipe_Smith</soundWorking>
+            <researchPrerequisite>MedTimes_ArmorScaled</researchPrerequisite>
+            <unfinishedThingDef>UnfinishedArmor</unfinishedThingDef>
+            <recipeUsers>
+                <li>MedTimes_BlacksmithForge</li>
+                <li>MedTimes_ElectricBlacksmithForge</li>
+            </recipeUsers>
+            <skillRequirements>
+                <Crafting>4</Crafting>
+            </skillRequirements>
+        </recipeMaker>
+    </ThingDef>
+    <!-- ==== Heavy Classes ==== -->
+    <!-- (Heavy Class) Tier 1 Non-Makeable -->
+    <ThingDef Name="MedTimes_FootArmour_T1_H" ParentName="MedTimes_FootArmourNN" Abstract="True">
+        <costStuffCount>35</costStuffCount>
+		<statBases>
+            <Mass>2.4</Mass>
+        </statBases>
+        <equippedStatOffsets>
+            <MoveSpeed>-0.05</MoveSpeed>
+        </equippedStatOffsets>
+    </ThingDef>
+    <!-- (Heavy Class) Tier 1 Makeable -->
+    <ThingDef Name="MedTimes_Smith_FootArmour_T1_H" ParentName="MedTimes_FootArmour_T1_H" Abstract="True">
+        <statBases>
+            <WorkToMake>4500</WorkToMake>
+        </statBases>
+        <recipeMaker>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Crafting</workSkill>
+            <effectWorking>Smith</effectWorking>
+            <soundWorking>Recipe_Smith</soundWorking>
+            <researchPrerequisite>MedTimes_ArmorScaled</researchPrerequisite>
+            <unfinishedThingDef>UnfinishedArmor</unfinishedThingDef>
+            <recipeUsers>
+                <li>MedTimes_BlacksmithForge</li>
+                <li>MedTimes_ElectricBlacksmithForge</li>
+            </recipeUsers>
+            <skillRequirements>
+                <Crafting>6</Crafting>
+            </skillRequirements>
+        </recipeMaker>
+    </ThingDef>
+    <!-- ================================== Tier 2 Classes =================================-->
+    <!-- ==== Light Classes ==== -->
+    <!-- (Light Class) Tier 2 Non-Makeable -->
+    <ThingDef Name="MedTimes_FootArmour_T2_L" ParentName="MedTimes_FootArmourNN" Abstract="True">
+        <costStuffCount>25</costStuffCount>
+		<statBases>
+            <Mass>2.1</Mass>
+        </statBases>
+        <equippedStatOffsets>
+            <MoveSpeed>0.04</MoveSpeed>
+        </equippedStatOffsets>
+    </ThingDef>
+    <!-- (Light Class) Tier 2 Makeable -->
+    <ThingDef Name="MedTimes_Smith_FootArmour_T2_L" ParentName="MedTimes_FootArmour_T2_L" Abstract="True">
+        <statBases>
+            <WorkToMake>3000</WorkToMake>
+        </statBases>
+        <recipeMaker>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Crafting</workSkill>
+            <effectWorking>Smith</effectWorking>
+            <soundWorking>Recipe_Smith</soundWorking>
+            <unfinishedThingDef>UnfinishedArmor</unfinishedThingDef>
+            <researchPrerequisite>PlateArmor</researchPrerequisite>
+            <recipeUsers>
+                <li>MedTimes_BlacksmithForgeTierTwo</li>
+                <li>MedTimes_ElectricBlacksmithForgeTierTwo</li>
+            </recipeUsers>
+            <skillRequirements>
+                <Crafting>4</Crafting>
+            </skillRequirements>
+        </recipeMaker>
+    </ThingDef>
+    <!-- ==== Heavy Classes ==== -->
+    <!-- (Heavy Class) Tier 2 Non-Makeable -->
+    <ThingDef Name="MedTimes_FootArmour_T2_H" ParentName="MedTimes_FootArmourNN" Abstract="True">
+        <costStuffCount>25</costStuffCount>
+		<statBases>
+            <Mass>3.2</Mass>
+        </statBases>
+        <equippedStatOffsets>
+            <MoveSpeed>-0.1</MoveSpeed>
+        </equippedStatOffsets>
+    </ThingDef>
+    <!-- (Heavy Class) Tier 2 Makeable -->
+    <ThingDef Name="MedTimes_Smith_FootArmour_T2_H" ParentName="MedTimes_FootArmour_T2_H" Abstract="True">
+        <statBases>
+            <WorkToMake>4500</WorkToMake>
+        </statBases>
+        <recipeMaker>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Crafting</workSkill>
+            <effectWorking>Smith</effectWorking>
+            <soundWorking>Recipe_Smith</soundWorking>
+            <unfinishedThingDef>UnfinishedArmor</unfinishedThingDef>
+            <researchPrerequisite>PlateArmor</researchPrerequisite>
+            <recipeUsers>
+                <li>MedTimes_BlacksmithForgeTierTwo</li>
+                <li>MedTimes_ElectricBlacksmithForgeTierTwo</li>
+            </recipeUsers>
+            <skillRequirements>
+                <Crafting>6</Crafting>
+            </skillRequirements>
+        </recipeMaker>
+    </ThingDef>
+    <!-- (Heavy Class) Tier 2 Exceptional Makeable -->
+    <ThingDef Name="MedTimes_Smith_FootArmour_T2_HX" ParentName="MedTimes_FootArmour_T2_H" Abstract="True">
+        <statBases>
+            <WorkToMake>4500</WorkToMake>
+        </statBases>
+        <recipeMaker>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Crafting</workSkill>
+            <effectWorking>Smith</effectWorking>
+            <soundWorking>Recipe_Smith</soundWorking>
+            <unfinishedThingDef>UnfinishedArmor</unfinishedThingDef>
+            <researchPrerequisite>PlateArmor</researchPrerequisite>
+            <recipeUsers>
+                <li>ElectricSmithy</li>
+                <li>FueledSmithy</li>
+            </recipeUsers>
+            <skillRequirements>
+                <Crafting>10</Crafting>
+            </skillRequirements>
+        </recipeMaker>
+    </ThingDef>
+    <!-- =========================== Actual Foot Armour Items =========================== -->
+    <!-- ==================== Tier 0 ================= -->
+    <!-- ==== Light Armours ==== -->
+    <!-- Wooden Boots -->
+    <ThingDef ParentName="MedTimes_Craft_FootArmour_T0_L">
+        <defName>MedTimes_Boots_Armour</defName>
+        <label>Protective Boots</label>
+        <description>A pair of boots with wooden soles and material plates strapped on.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Boots_Armour</texPath>
+        </graphicData>
+		<costList>
+            <Leather_Patch>25</Leather_Patch>
+		</costList>      
+        <statBases>
+            <StuffEffectMultiplierArmor>0.85</StuffEffectMultiplierArmor>
+            <ArmorRating_Blunt>0.06</ArmorRating_Blunt>
+            <ArmorRating_Sharp>0.0</ArmorRating_Sharp>			
+			<Insulation_Cold>3</Insulation_Cold>
+        </statBases>       
+		<stuffCategories>
+            <li>Metallic</li>
+            <li>Woody</li>
+            <li>Leathery</li>
+        </stuffCategories>
+    </ThingDef>
+    <!-- ==================== Tier 1================= -->
+    <!-- ==== Light Armours ==== -->
+    <!-- Steel Plated Boots -->
+    <ThingDef ParentName="MedTimes_Smith_FootArmour_T1_L">
+        <defName>MedTimes_Boots_Plated</defName>
+        <label>Steel Plated Boots</label>
+        <description>A pair of leather boots with steel shin guards strapped on.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Boots_Plated</texPath>
+        </graphicData>
+		<costList>
+            <Leather_Patch>30</Leather_Patch>
+		</costList>
+        <statBases>
+            <StuffEffectMultiplierArmor>0.55</StuffEffectMultiplierArmor>
+            <ArmorRating_Blunt>0.0</ArmorRating_Blunt>
+            <ArmorRating_Sharp>0.05</ArmorRating_Sharp>
+        </statBases>
+        <stuffCategories>
+            <li>Metallic</li>
+        </stuffCategories>
+    </ThingDef>
+    <!-- ==== Heavy Armours ==== -->
+    <!-- Scaled Boots -->
+    <ThingDef ParentName="MedTimes_Smith_FootArmour_T1_H">
+        <defName>MedTimes_Boots_Scaled</defName>
+        <label>Scaled Boots</label>
+        <description>A pair of leather boots covered in small steel plates in a pattern generally described as "Scaled".</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Boots_Scaled</texPath>
+        </graphicData>
+        <stuffCategories>
+            <li>Metallic</li>
+        </stuffCategories>
+		<costList>
+            <Leather_Patch>30</Leather_Patch>
+		</costList>
+        <statBases>
+            <StuffEffectMultiplierArmor>0.55</StuffEffectMultiplierArmor>
+            <ArmorRating_Blunt>0.0</ArmorRating_Blunt>
+            <ArmorRating_Sharp>0.15</ArmorRating_Sharp>
+        </statBases>
+    </ThingDef>
+    <!-- ==================== Tier 2================= -->
+    <!-- ==== Light Armours ==== -->
+    <ThingDef ParentName="MedTimes_Smith_FootArmour_T2_L">
+        <defName>MedTimes_Boots_FullPlated</defName>
+        <label>Full Plated Boots</label>
+        <description>A pair of leather boots with metallic plates strapped on in such a way so as to provide maximum mobility without reducing protection.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Boots_FullPlated</texPath>
+        </graphicData>
+        <stuffCategories>
+            <li>Metallic</li>
+        </stuffCategories>
+		<costList>
+            <Leather_Patch>30</Leather_Patch>
+		</costList>
+        <statBases>
+            <StuffEffectMultiplierArmor>0.77</StuffEffectMultiplierArmor>
+            <ArmorRating_Blunt>0.0</ArmorRating_Blunt>
+            <ArmorRating_Sharp>0.05</ArmorRating_Sharp>
+        </statBases>
+    </ThingDef>
+    <ThingDef ParentName="MedTimes_FootArmour_T2_L">
+        <defName>MedTimes_Boots_Warbourne</defName>
+        <label>Warbourne's Boots</label>
+        <description>A pair of leather boots covered in chainmail. Steel plates have been added on to cover the straps and toes as well as winged steel poleyn to cover the knee. The soles of this boot are covered in a thick leather so as to help improve mobility.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Boots_Warbourne</texPath>
+        </graphicData>
+        <equippedStatOffsets>
+            <MeleeDodgeChance>0.08</MeleeDodgeChance>
+        </equippedStatOffsets>
+		<costList>
+            <Leather_Patch>30</Leather_Patch>
+		</costList>
+        <stuffCategories>
+            <li>Metallic</li>
+        </stuffCategories>
+        <statBases>
+            <StuffEffectMultiplierArmor>0.77</StuffEffectMultiplierArmor>
+            <ArmorRating_Blunt>0.0</ArmorRating_Blunt>
+            <ArmorRating_Sharp>0.05</ArmorRating_Sharp>
+        </statBases>
+    </ThingDef>
+    <!-- ==== Heavy Armours ==== -->
+    <!-- Steel Encased Boots -->
+    <ThingDef ParentName="MedTimes_Smith_FootArmour_T2_H">
+        <defName>MedTimes_Boots_EncasedSteel</defName>
+        <label>Encased Steel Boots</label>
+        <description>A pair of leather boots encased entirely in steel plate. Excellent defense, but at a cost to mobility when compared to other forms of footwear.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Boots_SteelEncased</texPath>
+        </graphicData>
+        <stuffCategories>
+            <li>Metallic</li>
+        </stuffCategories>
+		<costList>
+            <Leather_Patch>30</Leather_Patch>
+		</costList>
+        <statBases>
+            <StuffEffectMultiplierArmor>0.88</StuffEffectMultiplierArmor>
+            <ArmorRating_Blunt>0.0</ArmorRating_Blunt>
+            <ArmorRating_Sharp>0.217</ArmorRating_Sharp>
+        </statBases>
+    </ThingDef>
+    <!-- Royal Plated Boots -->
+    <ThingDef ParentName="MedTimes_Smith_FootArmour_T2_HX">
+        <defName>MedTimes_Boots_RoyalPlated</defName>
+        <label>Royal Plated Boots</label>
+        <description>A pair of leather boots encased in both small and large steel plates . Excellent defense, but at a cost to mobility when compared to other forms of footwear.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Boots_RoyalPlated</texPath>
+        </graphicData>
+        <stuffCategories>
+            <li>Metallic</li>
+        </stuffCategories>
+		<costList>
+			<Gold>10</Gold>
+            <Leather_Patch>30</Leather_Patch>
+		</costList>
+        <statBases>
+            <StuffEffectMultiplierArmor>0.95</StuffEffectMultiplierArmor>
+            <ArmorRating_Blunt>0.0</ArmorRating_Blunt>
+            <ArmorRating_Sharp>0.03</ArmorRating_Sharp>
+        </statBases>
+    </ThingDef>
+    <!-- Warlord Boots -->
+    <ThingDef ParentName="MedTimes_Smith_FootArmour_T2_HX">
+        <defName>MedTimes_Boots_Warlord</defName>
+        <label>Warlord Boots</label>
+        <description>A pair of boots made from high quality leather encased in protective plates and scales to provide maximum protection and minimize weight. Excellent defense with not high cost for mobility.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Boots_Warlord</texPath>
+        </graphicData>
+        <apparel>            
+			<tags>
+                <li>MedTimes_Armour_Warlord</li>
+            </tags>
+        </apparel>
+        <stuffCategories>
+            <li>Metallic</li>
+        </stuffCategories>
+		<tradeability>Sellable</tradeability>
+		<costList>
+            <Leather_Patch>5</Leather_Patch>
+            <Leather_Thrumbo>20</Leather_Thrumbo>
+		</costList>
+        <equippedStatOffsets>
+            <MoveSpeed>0.05</MoveSpeed>
+        </equippedStatOffsets>
+        <statBases>
+            <Mass>2.1</Mass>
+            <WorkToMake>240000</WorkToMake>
+            <StuffEffectMultiplierArmor>1.1</StuffEffectMultiplierArmor>
+            <ArmorRating_Blunt>0.15</ArmorRating_Blunt>
+            <ArmorRating_Sharp>0.4</ArmorRating_Sharp>
+            <ArmorRating_Heat>0.2</ArmorRating_Heat>
+            <Insulation_Cold>8</Insulation_Cold>
+            <Insulation_Heat>1</Insulation_Heat>
+        </statBases>
+        <recipeMaker>
+            <researchPrerequisite>MedTimes_CombatArmor</researchPrerequisite>
+			<recipeUsers>
+                <li>ElectricSmithy</li>
+            </recipeUsers>
+        </recipeMaker>
+		<thingSetMakerTags>
+			<li>RewardStandardLowFreq</li>
+		</thingSetMakerTags>
+    </ThingDef>
+    <!-- End of thingDefs -->
+</Defs>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingDef ParentName="AdaptiveStorageBase">
+        <defName>ReelStorageWineRack</defName>
+		<label>wine rack</label>
+		<graphicData>
+			<texPath>Things/Building/KitchenProps/WineRack/WineRack</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(2,2)</drawSize>
+			<drawRotated>false</drawRotated>
+		</graphicData>
+		<uiIconScale>0.6</uiIconScale>
+		<description>A civilized storage rack designed to hold wine and other alcoholic beverages for enjoyment or trade. Items stored inside will not deteriorate over time. \n\n&lt;color=#E5E54C&gt;Storage stats:&lt;/color&gt; 
+Stack size total: 10 
+Stack per tile: 10 
+
+Allowed items: Beer, Wine, Simple Spirits, Luxury Spirits</description>
+		<fillPercent>0.20</fillPercent>
+		<size>(1,1)</size>
+        	<rotatable>true</rotatable>
+        	<defaultPlacingRot>South</defaultPlacingRot>
+        	<researchPrerequisites>
+			<li>ReelMedievalStorage</li>
+			<li>Brewing</li>
+        	</researchPrerequisites>
+		<statBases>
+			<MaxHitPoints>60</MaxHitPoints>
+			<WorkToBuild>300</WorkToBuild>
+			<Beauty>0</Beauty>
+			<Mass>4.5</Mass>
+            		<Flammability>1</Flammability>
+		</statBases>
+		<costList>
+			<WoodLog>35</WoodLog>
+		</costList>
+		<building>
+			<preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+            		<ignoreStoredThingsBeauty>false</ignoreStoredThingsBeauty>
+			<maxItemsInCell>10</maxItemsInCell>
+			<fixedStorageSettings>
+				<filter>
+					<specialFiltersToAllow>
+						<li MayRequire="ludeon.rimworld.ideology">AllowVegetarian</li>
+					</specialFiltersToAllow>
+					<disallowNotEverStorable>true</disallowNotEverStorable>
+					<categories>
+                       				<li MayRequire="vanillaexpanded.vbrewe">VBE_DrinksSimpleSpirits</li>               	
+                        			<li MayRequire="vanillaexpanded.vbrewe">VBE_DrinksLuxurySpirits</li>       						
+					</categories>
+					<thingDefs>  
+                        			<li>Beer</li>	           						
+					</thingDefs>
+				</filter>
+			</fixedStorageSettings>
+			<defaultStorageSettings>
+				<priority>Preferred</priority>
+				<filter>
+					<categories>
+                       				<li MayRequire="vanillaexpanded.vbrewe">VBE_DrinksSimpleSpirits</li>               	
+                        			<li MayRequire="vanillaexpanded.vbrewe">VBE_DrinksLuxurySpirits</li>       						
+					</categories>
+					<thingDefs>  
+                        			<li>Beer</li>	           						
+					</thingDefs>
+				</filter>
+			</defaultStorageSettings>
+			<paintable>false</paintable>
+		</building>
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<thingCategories>
+			<li>BuildingsFurniture</li>
+		</thingCategories>
+	</ThingDef>
+</Defs>

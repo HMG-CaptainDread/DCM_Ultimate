@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+<!-- Replace CubeSculptureBase is Deconstructible -->
+
+<Operation Class="PatchOperationConditional" MayRequire="Ludeon.RimWorld.Anomaly">
+	<xpath>Defs/ThingDef[@Name="CubeSculptureBase"]/building/deconstructible</xpath>
+	<match Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[@Name="CubeSculptureBase"]/building/deconstructible</xpath>
+			<value>
+				<alwaysDeconstructible>true</alwaysDeconstructible>
+			</value>
+	</match>
+	<nomatch Class="PatchOperationTest">
+		<xpath>*/ThingDef[defName = "MealSurvivalPack"]</xpath>
+		<success>Always</success>
+	</nomatch>
+</Operation>
+
+<!-- Add CubeSculpture Stuff -->
+
+<!-- Stone Cube Sculpture -->
+
+<Operation Class="PatchOperationConditional" MayRequire="Ludeon.RimWorld.Anomaly">
+	<xpath>Defs/ThingDef[defName="StoneCubeSculpture"]</xpath>
+	<match Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="StoneCubeSculpture"]</xpath>
+			<value>
+				<costList>
+					<ChunkSandstone>2</ChunkSandstone>
+				</costList>
+			</value>
+	</match>
+	<nomatch Class="PatchOperationTest">
+		<xpath>*/ThingDef[defName = "MealSurvivalPack"]</xpath>
+		<success>Always</success>
+	</nomatch>
+</Operation>
+
+<!-- Sand Cube Sculpture -->
+
+<Operation Class="PatchOperationConditional" MayRequire="Ludeon.RimWorld.Anomaly">
+	<xpath>Defs/ThingDef[defName="SandCubeSculpture"]</xpath>
+	<match Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="SandCubeSculpture"]</xpath>
+			<value>
+				<costList>
+					<BlocksSandstone>8</BlocksSandstone>
+				</costList>
+			</value>
+	</match>
+	<nomatch Class="PatchOperationTest">
+		<xpath>*/ThingDef[defName = "MealSurvivalPack"]</xpath>
+		<success>Always</success>
+	</nomatch>
+</Operation>
+
+<!-- Scrap Cube Sculpture -->
+
+<Operation Class="PatchOperationConditional" MayRequire="Ludeon.RimWorld.Anomaly">
+	<xpath>Defs/ThingDef[defName="ScrapCubeSculpture"]</xpath>
+	<match Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="ScrapCubeSculpture"]</xpath>
+			<value>
+				<costList>
+					<ChunkSlagSteel>1</ChunkSlagSteel>
+				</costList>
+			</value>
+	</match>
+	<nomatch Class="PatchOperationTest">
+		<xpath>*/ThingDef[defName = "MealSurvivalPack"]</xpath>
+		<success>Always</success>
+	</nomatch>
+</Operation>
+
+</Patch>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+	<Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Simple Chains: Lumber</li>
+        </mods>		
+        <match Class="PatchOperationSequence">
+            <operations>
+				<li Class="PatchOperationAdd">
+					<success>Always</success>
+					<xpath>Defs/ThingDef[
+						defName="StoolNeolithic" or 
+						defName="TableNeolithic" or 
+						defName="MedTimes_SmallTable" or 
+						defName="TS_ToolPile" or 
+						defName="MedTimes_ButcherBlock" or 
+						defName="MedTimes_Fencing" or 
+						defName="EarlyTimes_AnimalTrap" or 
+						defName="MedTimes_Trap_WoodenBarricade" or 
+						defName="EarlyTimes_AirlockPrimitive" or 
+						defName="MedTimes_Gate" or 
+						defName="EarlyTimes_Wall"]/stuffCategories</xpath>
+					<value>
+						<li>RawWoody</li>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="MedTimes_BedHide"]/costList/WoodLog</xpath>
+					<value>
+						<Owl_GreenLumber>10</Owl_GreenLumber>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="MedTimes_BedHideDouble"]/costList/WoodLog</xpath>
+					<value>
+						<Owl_GreenLumber>18</Owl_GreenLumber>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="MedTimes_CorpseBonfire"]/costList/WoodLog</xpath>
+					<value>
+						<Owl_Firewood>50</Owl_Firewood>
+					</value>
+				</li>	
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName="Owl_CarpentersTrestle"]</xpath>
+					<value>    
+						<researchPrerequisites>
+						  <li>TS_Crafting</li>
+						</researchPrerequisites>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName="Owl_WoodDryingRack"]</xpath>
+					<value>    
+						<researchPrerequisites>
+						  <li>TS_Crafting</li>
+						</researchPrerequisites>
+					</value>
+				</li>	
+            </operations>
+		</match>
+    </Operation>
+	
+</Patch>

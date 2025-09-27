@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingCategoryDef>
+    <defName>Ammo50-90Sharps</defName>
+    <label>.50-90 Sharps</label>
+    <parent>AmmoRifles</parent>
+    <iconPath>UI/Icons/ThingCategories/CaliberRifle</iconPath>
+  </ThingCategoryDef>
+  <!-- ==================== AmmoSet ========================== -->
+  <CombatExtended.AmmoSetDef>
+    <defName>AmmoSet_50-90Sharps_BP</defName>
+    <label>.50-90 Sharps (BP)</label>
+    <ammoTypes>
+      <Ammo_50-90Sharps_BP>Bullet_50-90Sharps_BP</Ammo_50-90Sharps_BP>
+    </ammoTypes>
+  </CombatExtended.AmmoSetDef>
+  <!-- ==================== Ammo ========================== -->
+  <ThingDef Class="CombatExtended.AmmoDef" Name="50-90SharpsBase" ParentName="SmallAmmoBase" Abstract="True">
+    <description>Ancient mid-late 19th century bullet traditionally loaded with 90 grains of black powder and used in the Sharps Model 1874.</description>
+    <statBases>
+      <Mass>0.01</Mass>
+      <Bulk>0.02</Bulk>
+    </statBases>
+    <tradeTags>
+      <li>CE_AutoEnableTrade</li>
+      <li>CE_AutoEnableCrafting</li>
+    </tradeTags>
+    <thingCategories>
+      <li>Ammo50-90Sharps</li>
+    </thingCategories>
+  </ThingDef>
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="50-90SharpsBase">
+    <defName>Ammo_50-90Sharps_BP</defName>
+    <label>.50-90 Sharps (BP)</label>
+    <graphicData>
+      <texPath>Things/Ammo/50-90Sharps</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>0.05</MarketValue>
+    </statBases>
+    <ammoClass>BlackPowder</ammoClass>
+    <cookOffProjectile>Bullet_50-90Sharps_BP</cookOffProjectile>
+  </ThingDef>
+  <!-- ================== Projectiles ================== -->
+  <ThingDef Class="CombatExtended.AmmoDef" Name="Base50-90SharpsBullet" ParentName="BaseBulletCE" Abstract="true">
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <damageDef>Bullet</damageDef>
+      <speed>110</speed>
+      <dropsCasings>true</dropsCasings>
+    </projectile>
+  </ThingDef>
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="Base50-90SharpsBullet">
+    <defName>Bullet_50-90Sharps_BP</defName>
+    <label>.50-90 Sharps (BP)</label>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <damageAmountBase>31</damageAmountBase>
+      <armorPenetrationSharp>16</armorPenetrationSharp>
+      <armorPenetrationBlunt>38.480</armorPenetrationBlunt>
+    </projectile>
+  </ThingDef>
+  <!-- ==================== Recipes ========================== -->
+  <RecipeDef ParentName="AmmoRecipeBase">
+    <defName>MakeAmmo_50-90Sharps_BP</defName>
+    <label>make .50-90 Sharps (BP) cartridge x500</label>
+    <description>Craft 500 .50-90 Sharps (BP) cartridges.</description>
+    <jobString>Making .50-90 Sharps (BP) cartridges.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>21</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_50-90Sharps_BP>500</Ammo_50-90Sharps_BP>
+    </products>
+    <workAmount>5750</workAmount>
+  </RecipeDef>
+</Defs>

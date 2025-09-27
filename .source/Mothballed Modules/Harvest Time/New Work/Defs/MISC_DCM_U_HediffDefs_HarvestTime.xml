@@ -1,0 +1,870 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- VGP -->
+	<!-- VEGETABLE GARDEN -->
+		<!-- CAFFEINE -->
+			<HediffDef>
+				<defName>Caffeine</defName>
+				<label>caffeine</label>
+				<description>Caffeine is flowing through your viens! You need less sleep. And move faster.</description>
+				<initialSeverity>2</initialSeverity>
+				<defaultLabelColor>(0.062, 0.76, 0.05)</defaultLabelColor>
+				<hediffClass>HediffWithComps</hediffClass>
+				<isBad>false</isBad>
+				<comps>
+					<li Class="HediffCompProperties_SeverityPerDay">
+						<severityPerDay>-1.0</severityPerDay>
+					</li>
+				</comps>
+				<stages>
+					<li>
+					<minSeverity>0.01</minSeverity>
+					<label>wired</label>
+						<capMods>
+							<li>
+								<capacity>Moving</capacity>
+								<offset>0.1</offset>
+							</li>
+							<li>
+								<capacity>Consciousness</capacity>
+								<offset>0.1</offset>
+							</li>
+						</capMods>
+					</li>
+					<li>
+					<minSeverity>0.15</minSeverity>
+					<label>jacked up</label>
+						<capMods>
+							<li>
+								<capacity>Moving</capacity>
+								<offset>0.2</offset>
+							</li>
+							<li>
+								<capacity>Consciousness</capacity>
+								<offset>0.15</offset>
+							</li>
+						</capMods>
+					</li>
+					<li>
+					<minSeverity>0.35</minSeverity>
+					<label>blackout</label>
+						<capMods>
+							<li>
+								<capacity>Consciousness</capacity>
+								<setMax>0.1</setMax>
+							</li>
+						</capMods>
+					</li>
+				</stages>
+			</HediffDef>
+		<!-- ATE STEW -->
+			<HediffDef>
+				<defName>HedStew</defName>
+				<label>Ate Stew</label>
+				<description>Ate a really good meal!</description>
+				<initialSeverity>1</initialSeverity>
+				<defaultLabelColor>(0.062, 0.76, 0.05)</defaultLabelColor>
+				<hediffClass>HediffWithComps</hediffClass>
+				<isBad>false</isBad>
+				<comps>
+				<li Class="HediffCompProperties_SeverityPerDay">
+					<severityPerDay>-1.0</severityPerDay>
+				</li>
+				</comps>
+				<stages>
+					<li>
+					<minSeverity>0</minSeverity>
+					<label>Well Fed: Stew</label>
+					<painFactor>0.9</painFactor>
+						<capMods>
+						<li>
+							<capacity>Consciousness</capacity>
+							<offset>0.1</offset>
+						</li>
+						<li>
+							<capacity>Metabolism</capacity>
+							<offset>0.5</offset>
+						</li>
+						<li>
+							<capacity>BloodFiltration</capacity>
+							<offset>0.1</offset>
+						</li>
+						<li>
+							<capacity>BloodPumping</capacity>
+							<offset>0.1</offset>
+						</li>
+						</capMods>
+					</li>
+				</stages>
+			</HediffDef>
+		<!-- ATE STIRFRY -->
+			<HediffDef>
+				<defName>HedStirfry</defName>
+				<label>Ate Stirfry</label>
+				<description>Ate a really good meal!</description>
+				<initialSeverity>1</initialSeverity>
+				<defaultLabelColor>(0.062, 0.76, 0.05)</defaultLabelColor>
+				<hediffClass>HediffWithComps</hediffClass>
+				<isBad>false</isBad>
+				<comps>
+				<li Class="HediffCompProperties_SeverityPerDay">
+					<severityPerDay>-1.0</severityPerDay>
+				</li>
+				</comps>
+				<stages>
+					<li>
+					<minSeverity>0</minSeverity>
+					<label>Well Fed: Stirfry</label>
+						<capMods>
+						<li>
+							<capacity>Manipulation</capacity>
+							<offset>0.1</offset>
+						</li>
+						<li>
+							<capacity>BloodFiltration</capacity>
+							<offset>0.1</offset>
+						</li>
+						</capMods>
+					</li>
+				</stages>
+			</HediffDef>
+		<!-- ATE FRUIT -->
+			<HediffDef>
+				<defName>VP_AteFruit</defName>
+				<description>You've ate a something good. And are feeling the positive effects of that.</description>
+				<hediffClass>HediffWithComps</hediffClass>
+				<label>Ate fruit</label>
+				<defaultLabelColor>(0.8,0.5,0.5)</defaultLabelColor>
+				<initialSeverity>0.8</initialSeverity>
+				<comps>
+					<li Class="HediffCompProperties_SeverityPerDay">
+						<severityPerDay>-0.8</severityPerDay>
+					</li>
+				</comps>
+				<stages>
+					<li>
+						<label>initial-hidden</label>
+						<becomeVisible>false</becomeVisible>
+					</li>
+					<li>
+						<minSeverity>0.01</minSeverity>
+						<label>ate fruit</label>
+						<becomeVisible>false</becomeVisible>
+					</li>
+				</stages>
+			</HediffDef>
+		<!-- FRUIT DRINK -->
+			<HediffDef>
+				<defName>GoodHappy</defName>
+				<label>Fruit Drink</label>
+				<description>I had fruity drink. I feel better inside.</description>
+				<defaultLabelColor>(0.062, 0.76, 0.05)</defaultLabelColor>
+				<hediffClass>HediffWithComps</hediffClass>
+				<initialSeverity>2</initialSeverity>
+				<isBad>false</isBad>
+				<comps>
+				<li Class="HediffCompProperties_SeverityPerDay">
+					<severityPerDay>-1.0</severityPerDay>
+				</li>
+				</comps>
+				<stages>
+					<li>
+					<minSeverity>0</minSeverity>
+					<label>Healthy Drink, Feeling Better.</label>
+						<capMods>
+						<li>
+							<capacity>BloodFiltration</capacity>
+							<offset>0.10</offset>
+						</li>
+
+						</capMods>
+					</li>
+				</stages>
+			</HediffDef>
+		<!-- REFRESHED -->
+			<HediffDef>
+				<defName>VG_BarTea</defName>
+				<label>Refreshed</label>
+				<description>I had something really good! I feel refreshed.</description>
+				<defaultLabelColor>(0.062, 0.76, 0.05)</defaultLabelColor>
+				<hediffClass>HediffWithComps</hediffClass>
+				<initialSeverity>2</initialSeverity>
+				<isBad>false</isBad>
+				<comps>
+				<li Class="HediffCompProperties_SeverityPerDay">
+					<severityPerDay>-1.0</severityPerDay>
+				</li>
+				</comps>
+				<stages>
+					<li>
+					<minSeverity>0</minSeverity>
+					<label>Healthy Drink, Feeling Refreshed</label>
+						<capMods>
+						<li>
+							<capacity>BloodFiltration</capacity>
+							<offset>0.05</offset>
+						</li>
+						</capMods>
+					</li>
+				</stages>
+			</HediffDef>
+		<!-- ATE HONEY -->
+			<HediffDef>
+				<defName>VP_AteHoney</defName>
+				<description>You've ate a something good. And are feeling the positive effects of that.</description>
+				<hediffClass>HediffWithComps</hediffClass>
+				<label>Ate Honey</label>
+				<defaultLabelColor>(0.8,0.5,0.5)</defaultLabelColor>
+				<initialSeverity>0.8</initialSeverity>
+				<comps>
+					<li Class="HediffCompProperties_SeverityPerDay">
+						<severityPerDay>-0.8</severityPerDay>
+					</li>
+				</comps>
+				<stages>
+					<li>
+						<label>initial-hidden</label>
+						<becomeVisible>false</becomeVisible>
+					</li>
+					<li>
+						<minSeverity>0.01</minSeverity>
+						<label>ate honey</label>
+						<becomeVisible>false</becomeVisible>
+					</li>
+				</stages>
+			</HediffDef>
+	<!-- THREE SISTERS -->
+		<!-- ATE FRUIT -->
+			<HediffDef>
+				<defName>VP_AteFruit</defName>
+				<description>You've ate a something good. And are feeling the positive effects of that.</description>
+				<hediffClass>HediffWithComps</hediffClass>
+				<label>Ate fruit</label>
+				<defaultLabelColor>(0.8,0.5,0.5)</defaultLabelColor>
+				<initialSeverity>0.8</initialSeverity>
+				<comps>
+					<li Class="HediffCompProperties_SeverityPerDay">
+						<severityPerDay>-0.8</severityPerDay>
+					</li>
+				</comps>
+				<stages>
+					<li>
+						<label>initial-hidden</label>
+						<becomeVisible>false</becomeVisible>
+					</li>
+					<li>
+						<minSeverity>0.01</minSeverity>
+						<label>ate fruit</label>
+						<becomeVisible>false</becomeVisible>
+					</li>
+				</stages>
+			</HediffDef>
+	<!-- MORE VEGGIES -->
+		<!-- ATE FRUIT -->
+			<HediffDef>
+				<defName>VP_AteFruit</defName>
+				<description>You've ate a something good. And are feeling the positive effects of that.</description>
+				<hediffClass>HediffWithComps</hediffClass>
+				<label>Ate fruit</label>
+				<defaultLabelColor>(0.8,0.5,0.5)</defaultLabelColor>
+				<initialSeverity>0.8</initialSeverity>
+				<comps>
+					<li Class="HediffCompProperties_SeverityPerDay">
+						<severityPerDay>-0.8</severityPerDay>
+					</li>
+				</comps>
+				<stages>
+					<li>
+						<label>initial-hidden</label>
+						<becomeVisible>false</becomeVisible>
+					</li>
+					<li>
+						<minSeverity>0.01</minSeverity>
+						<label>ate fruit</label>
+						<becomeVisible>false</becomeVisible>
+					</li>
+				</stages>
+			</HediffDef>
+	<!-- GARDEN MEDICINE -->
+		<!-- DANDELION TEA HIGH -->
+			<HediffDef>
+				<defName>dandelionTeaHigh</defName>
+				<label>high on dandelion tea</label>
+				<labelNoun>a dandelion tea high</labelNoun>
+				<description>Active dandelion tea in the bloodstream. Generates a mild boosted immunity effect. Allowing faster recoveries to diseases and injures.</description>
+				<hediffClass>Hediff_High</hediffClass>
+				<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+				<scenarioCanAdd>true</scenarioCanAdd>
+				<maxSeverity>1.0</maxSeverity>
+				<isBad>false</isBad>
+				<comps>
+				<li Class="HediffCompProperties_SeverityPerDay">
+					<severityPerDay>-1.0</severityPerDay>
+					<showHoursToRecover>true</showHoursToRecover>
+				</li>
+				</comps>
+				<stages>
+					<li>
+					<minSeverity>1.0</minSeverity>
+					<label>boosted immunity</label>
+						<capMods>
+						<li>
+							<capacity>BloodFiltration</capacity>
+							<offset>0.15</offset>
+						</li>
+						</capMods>
+					</li>
+				</stages>
+			</HediffDef>
+		<!-- ANTIBIOTICS -->
+			<HediffDef>
+				<defName>Antibiotics</defName>
+				<label>antibiotics</label>
+				<description>Antibiotics are used to speed up the recovery time from sickness. Helps prevent infections.</description>
+				<defaultLabelColor>(0.062, 0.76, 0.05)</defaultLabelColor>
+				<initialSeverity>0.35</initialSeverity>
+				<hediffClass>HediffWithComps</hediffClass>
+				<isBad>false</isBad>
+				<comps>
+				<li Class="HediffCompProperties_SeverityPerDay">
+					<severityPerDay>-0.25</severityPerDay>
+				</li>
+				</comps>
+				<stages>
+						<li>
+					<minSeverity>0.20</minSeverity>
+					<makeImmuneTo>
+						<li>WoundInfection</li>
+					</makeImmuneTo>
+					</li>
+					<li>
+					<minSeverity>0.25</minSeverity>
+					<label>boosted immunedefency</label>
+						<capMods>
+						<li>
+							<capacity>BloodFiltration</capacity>
+							<offset>0.35</offset>
+						</li>
+						</capMods>
+					</li>
+				</stages>
+			</HediffDef>
+		<!-- DE-WORM -->
+			<HediffDef>
+				<defName>DewormHigh</defName>
+				<hediffClass>HediffWithComps</hediffClass>
+				<label>de-worm</label>
+				<description>Drug-induced immunity to certain parasites. This only blocks new parasites; it does nothing for those who are already infected with parasites, even if their parasites are dormant.</description>
+				<defaultLabelColor>(0.062, 0.76, 0.05)</defaultLabelColor>
+				<scenarioCanAdd>true</scenarioCanAdd>
+				<maxSeverity>1.0</maxSeverity>
+				<isBad>false</isBad>
+				<comps>
+				<li Class="HediffCompProperties_SeverityPerDay">
+					<severityPerDay>-0.18</severityPerDay>
+				</li>
+				</comps>
+				<stages>
+					<li>
+					<makeImmuneTo>
+						<li>GutWorms</li>
+						<li>MuscleParasites</li>
+					</makeImmuneTo>
+					</li>
+				</stages>
+			</HediffDef>
+		<!-- FLUEZ -->
+			<HediffDef>
+				<defName>FluEzHigh</defName>
+				<hediffClass>HediffWithComps</hediffClass>
+				<description>You've taken medicine that helps protect from the flu.</description>
+				<label>Flu Ez</label>
+				<defaultLabelColor>(0.062, 0.76, 0.05)</defaultLabelColor>
+				<scenarioCanAdd>true</scenarioCanAdd>
+				<maxSeverity>1.0</maxSeverity>
+				<isBad>false</isBad>
+				<comps>
+				<li Class="HediffCompProperties_SeverityPerDay">
+					<severityPerDay>-0.18</severityPerDay>
+				</li>
+				</comps>
+				<stages>
+					<li>
+					<makeImmuneTo>
+						<li>Flu</li>
+						<li>Animal_Flu</li>
+						</makeImmuneTo>
+				</li>
+				</stages>
+			</HediffDef>
+		<!-- IBUPROFEN -->
+			<HediffDef>
+				<defName>IbuprofenHigh</defName>
+				<description>You've taken medicine that helps with the pain.</description>
+				<hediffClass>HediffWithComps</hediffClass>
+				<label>Ibuprofen</label>
+				<defaultLabelColor>(0.062, 0.76, 0.05)</defaultLabelColor>
+				<scenarioCanAdd>true</scenarioCanAdd>
+				<maxSeverity>1.0</maxSeverity>
+				<isBad>false</isBad>
+				<comps>
+				<li Class="HediffCompProperties_SeverityPerDay">
+					<severityPerDay>-0.4</severityPerDay>
+				</li>
+				</comps>
+				<stages>
+					<li>
+					<minSeverity>0.1</minSeverity>
+					<label>feeling better</label>
+					<painFactor>0.3</painFactor>
+					</li>
+				</stages>
+			</HediffDef>
+		<!-- MECHA-GONE -->
+			<HediffDef>
+				<defName>MechaGoneHigh</defName>
+				<hediffClass>HediffWithComps</hediffClass>
+				<label>MechaGone</label>
+				<description>Drug-induced immunity to certain illnesses. This only blocks new infections; it does nothing for those who are already infected, even if their infection is dormant.</description>
+				<defaultLabelColor>(0.062, 0.76, 0.05)</defaultLabelColor>
+				<scenarioCanAdd>true</scenarioCanAdd>
+				<maxSeverity>1.0</maxSeverity>
+				<isBad>false</isBad>
+				<comps>
+				<li Class="HediffCompProperties_SeverityPerDay">
+					<severityPerDay>-0.2</severityPerDay>
+				</li>
+				</comps>
+				<stages>
+					<li>
+					<makeImmuneTo>
+						<li>FibrousMechanites</li>
+						<li>SensoryMechanites</li>
+					</makeImmuneTo>
+					</li>
+				</stages>
+			</HediffDef>
+		<!-- TOBACCO -->
+			<HediffDef>
+				<defName>Tobacco</defName>
+				<hediffClass>Hediff_Alcohol</hediffClass>
+				<label>tobacco</label>
+				<description>Tobacco is grown for drying and smoking. It is also used for trade.</description>
+				<defaultLabelColor>(0,0.7,0)</defaultLabelColor>
+				<initialSeverity>0.2</initialSeverity>
+				<scenarioCanAdd>true</scenarioCanAdd>
+				<isBad>false</isBad>
+				<comps>
+				<li Class="HediffCompProperties_Effecter">
+					<stateEffecter>Drunk</stateEffecter>
+					<severityIndices>
+					<min>3</min>
+					<max>5</max>
+					</severityIndices>
+				</li>
+				<li Class="HediffCompProperties_SeverityPerDay">
+					<severityPerDay>-1.0</severityPerDay>
+				</li>
+				</comps>
+				<stages>
+					<li>
+					<minSeverity>0.01</minSeverity>
+					<label>comfortably numb</label>
+					<painFactor>0.9</painFactor>
+						<capMods>
+						<li>
+							<capacity>Manipulation</capacity>
+							<offset>0.05</offset>
+						</li>
+						<li>
+							<capacity>Moving</capacity>
+							<offset>-0.05</offset>
+						</li>
+						</capMods>
+					</li>
+					<li>
+					<minSeverity>0.4</minSeverity>
+					<label>comfortably buzzed</label>
+					<painFactor>0.8</painFactor>
+						<capMods>
+						<li>
+							<capacity>Manipulation</capacity>
+							<offset>0.15</offset>
+						</li>
+						<li>
+							<capacity>Moving</capacity>
+							<offset>-0.1</offset>
+						</li>
+						</capMods>
+					</li>
+					<li>
+					<minSeverity>1</minSeverity>
+					<label>blackout</label>
+					<painFactor>0.1</painFactor>
+						<capMods>
+						<li>
+							<capacity>Consciousness</capacity>
+							<setMax>0.1</setMax>
+						</li>
+						</capMods>
+					</li>
+				</stages>
+			</HediffDef>
+		<!-- TOBACCO TOLERANCE -->
+			<HediffDef ParentName="DrugToleranceBase">
+				<defName>TobaccoTolerance</defName>
+				<label>tobacco tolerance</label>
+				<description>Because of an tobacco addiction, this person needs to regularly consume more the drug to get that fix.</description>
+				<comps>
+				<li Class="HediffCompProperties_SeverityPerDay">
+					<severityPerDay>-0.016</severityPerDay>
+				</li>
+				<li Class="HediffCompProperties_DrugEffectFactor">
+					<chemical>Tobacco</chemical>
+				</li>
+				</comps>
+					<hediffGivers>
+						<li Class="HediffGiver_RandomDrugEffect">
+							<hediff>Asthma</hediff>
+							<baseMtbDays>180</baseMtbDays>
+							<minSeverity>0.50</minSeverity>
+							<partsToAffect>
+								<li>Lung</li>
+							</partsToAffect>
+							<countToAffect>2</countToAffect>
+						</li>
+						<li Class="HediffGiver_RandomDrugEffect">
+							<hediff>Carcinoma</hediff>
+							<baseMtbDays>180</baseMtbDays>
+							<minSeverity>0.40</minSeverity>
+							<partsToAffect>
+								<li>Lung</li>
+							</partsToAffect>
+							<countToAffect>1</countToAffect>
+						</li>
+					</hediffGivers>
+			</HediffDef>
+		<!-- TOBACCO ADDICTION -->
+			<HediffDef ParentName="AddictionBase">
+				<defName>TobaccoAddiction</defName>
+				<hediffClass>Hediff_Addiction</hediffClass>
+				<label>tobacco addiction</label>
+				<description>Due to prolonged use of tobacco, this person needs to regularly consume the drug to get that fix.</description>
+				<chemicalNeed>Chemical_Tobacco</chemicalNeed>
+				<comps>
+				<li Class="HediffCompProperties_SeverityPerDay">
+					<severityPerDay>-0.05</severityPerDay>
+				</li>
+				</comps>
+				<stages>
+				<li>
+				</li>
+				<li>
+					<label>withdrawal</label>
+					<socialFightChanceFactor>2.0</socialFightChanceFactor>
+					<capMods>
+					<li>
+						<capacity>Consciousness</capacity>
+						<offset>-0.20</offset>
+					</li>
+					<li>
+						<capacity>Moving</capacity>
+						<offset>-0.20</offset>
+					</li>
+					<li>
+						<capacity>Manipulation</capacity>
+						<offset>-0.50</offset>
+					</li>
+					</capMods>
+				</li>
+				</stages>
+			</HediffDef>
+		<!-- GLITTERWORLD INOCULATION -->
+			<HediffDef>
+				<defName>gw_InoculationHigh</defName>
+				<hediffClass>Hediff_High</hediffClass>
+				<label>glitterworld inoculation</label>
+				<description>Glitterworld inoculation provides immunity to certain illnesses. This only blocks new infections; it does nothing for those who are already infected, even if their infection is dormant.</description>
+				<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+				<scenarioCanAdd>true</scenarioCanAdd>
+				<maxSeverity>15.0</maxSeverity>
+				<isBad>false</isBad>
+				<comps>
+				<li Class="HediffCompProperties_SeverityPerDay">
+					<severityPerDay>-1</severityPerDay>
+					<showHoursToRecover>true</showHoursToRecover>
+				</li>
+				</comps>
+				<stages>
+					<li>
+					<makeImmuneTo>
+						<li>Malaria</li>
+						<li>SleepingSickness</li>
+						<li>Plague</li>
+						<li>WoundInfection</li>
+						<li>GutWorms</li>
+						<li>MuscleParasites</li>
+						<li>Flu</li>
+						<li>FibrousMechanites</li>
+						<li>SensoryMechanites</li>
+					</makeImmuneTo>
+					</li>
+				</stages>
+			</HediffDef>
+	<!-- GARDEN GOURMET -->
+		<!-- ATE DESSERT -->
+			<HediffDef>
+				<defName>HedDesert</defName>
+				<label>Ate Desert</label>
+					<description>You've ate a good meal. And are feeling the positive effects of that.</description>
+				<defaultLabelColor>(0.062, 0.76, 0.05)</defaultLabelColor>
+				<initialSeverity>1</initialSeverity>
+				<hediffClass>HediffWithComps</hediffClass>
+				<isBad>false</isBad>
+				<comps>
+				<li Class="HediffCompProperties_SeverityPerDay">
+					<severityPerDay>-1.0</severityPerDay>
+				</li>
+				</comps>
+				<stages>
+					<li>
+					<minSeverity>0</minSeverity>
+					<label>Well Fed: Desert</label>
+						<capMods>
+						<li>
+							<capacity>Moving</capacity>
+							<offset>0.25</offset>
+						</li>
+						<li>
+							<capacity>BloodPumping</capacity>
+							<offset>0.1</offset>
+						</li>
+						</capMods>
+					</li>
+				</stages>
+			</HediffDef>
+		<!-- ATE CANDY -->
+			<HediffDef>
+				<defName>HedCandy</defName>
+					<description>You've ate a good meal. And are feeling the positive effects of that.</description>
+				<label>Ate Candy</label>
+				<defaultLabelColor>(0.062, 0.76, 0.05)</defaultLabelColor>
+				<initialSeverity>1</initialSeverity>
+				<hediffClass>HediffWithComps</hediffClass>
+				<isBad>false</isBad>
+				<comps>
+				<li Class="HediffCompProperties_SeverityPerDay">
+					<severityPerDay>-1.0</severityPerDay>
+				</li>
+				</comps>
+				<stages>
+					<li>
+					<minSeverity>0</minSeverity>
+					<label>Well Fed: Candy</label>
+					<painFactor>0.9</painFactor>
+						<capMods>
+						<li>
+							<capacity>Moving</capacity>
+							<offset>0.25</offset>
+						</li>
+						</capMods>
+					</li>
+				</stages>
+			</HediffDef>
+		<!-- ATE A BAKED GOOD -->
+			<HediffDef>
+				<defName>HedBakedGood</defName>
+					<description>You've ate a good baked meal. And are feeling the positive effects of that.</description>
+				<label>Ate a Baked Good.</label>
+				<defaultLabelColor>(0.062, 0.76, 0.05)</defaultLabelColor>
+				<initialSeverity>1</initialSeverity>
+				<hediffClass>HediffWithComps</hediffClass>
+				<isBad>false</isBad>
+				<comps>
+					<li Class="HediffCompProperties_SeverityPerDay">
+						<severityPerDay>-1.0</severityPerDay>
+					</li>
+				</comps>
+				<stages>
+					<li>
+						<minSeverity>0</minSeverity>
+						<label>Well Fed: Baked Good</label>
+						<capMods>
+							<li>
+								<capacity>Consciousness</capacity>
+								<offset>0.1</offset>
+							</li>
+							<li>
+								<capacity>Metabolism</capacity>
+								<offset>0.25</offset>
+							</li>
+						</capMods>
+					</li>
+				</stages>
+			</HediffDef>
+		<!-- ATE SIMPLE GARDEN MEAL -->
+			<HediffDef>
+				<defName>HedSimpleGarden</defName>
+				<label>Ate Simple Garden Meal</label>
+					<description>You've ate a good meal. And are feeling the positive effects of that.</description>
+				<defaultLabelColor>(0.062, 0.76, 0.05)</defaultLabelColor>
+				<initialSeverity>1</initialSeverity>
+				<hediffClass>HediffWithComps</hediffClass>
+				<isBad>false</isBad>
+				<comps>
+				<li Class="HediffCompProperties_SeverityPerDay">
+					<severityPerDay>-1.0</severityPerDay>
+				</li>
+				</comps>
+				<stages>
+					<li>
+					<minSeverity>0</minSeverity>
+					<label>Well Fed: Simple Garden Meal</label>
+						<capMods>
+						<li>
+							<capacity>BloodPumping</capacity>
+							<offset>0.2</offset>
+						</li>
+						</capMods>
+					</li>
+				</stages>
+			</HediffDef>
+		<!-- ATE FINE GARDEN MEAL -->
+			<HediffDef>
+				<defName>HedGardenMeal</defName>
+					<description>You've ate a good meal. And are feeling the positive effects of that.</description>
+				<label>Ate Fine Garden Meal</label>
+				<defaultLabelColor>(0.062, 0.76, 0.05)</defaultLabelColor>
+				<initialSeverity>1</initialSeverity>
+				<hediffClass>HediffWithComps</hediffClass>
+				<isBad>false</isBad>
+				<comps>
+				<li Class="HediffCompProperties_SeverityPerDay">
+					<severityPerDay>-1.0</severityPerDay>
+				</li>
+				</comps>
+				<stages>
+					<li>
+					<minSeverity>0</minSeverity>
+					<label>Well Fed: Fine Garden Meal</label>
+						<capMods>
+						<li>
+							<capacity>Metabolism</capacity>
+							<offset>0.2</offset>
+						</li>
+						<li>
+							<capacity>BloodPumping</capacity>
+							<offset>0.2</offset>
+						</li>
+					</capMods>
+					</li>
+				</stages>
+			</HediffDef>
+		<!-- ATE LAVISH GARDEN MEAL -->
+			<HediffDef>
+				<defName>HedLavishGardenMeal</defName>
+					<description>You've ate a lavish garden meal. And are feeling the positive effects of that.</description>
+				<label>Ate Lavish Garden Meal</label>
+				<defaultLabelColor>(0.062, 0.76, 0.05)</defaultLabelColor>
+				<initialSeverity>1</initialSeverity>
+				<hediffClass>HediffWithComps</hediffClass>
+				<isBad>false</isBad>
+				<comps>
+				<li Class="HediffCompProperties_SeverityPerDay">
+					<severityPerDay>-1.0</severityPerDay>
+				</li>
+				</comps>
+				<stages>
+					<li>
+					<minSeverity>0</minSeverity>
+					<label>Well Fed: Lavish Garden Meal</label>
+						<capMods>
+						<li>
+							<capacity>Metabolism</capacity>
+							<offset>0.2</offset>
+						</li>
+						<li>
+							<capacity>Manipulation</capacity>
+							<offset>0.2</offset>
+						</li>
+						<li>
+							<capacity>BloodPumping</capacity>
+							<offset>0.2</offset>
+						</li>
+					</capMods>
+					</li>
+				</stages>
+			</HediffDef>
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+</Defs>

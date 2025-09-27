@@ -1,0 +1,893 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<ThingDef Name="GS_HyperBionicBase" ParentName="BodyPartBase" Abstract="True">
+		<techLevel>Archotech</techLevel>
+		<thingCategories>
+			<li>GS_BodyPartsBionicHyper</li>
+		</thingCategories>
+		<graphicData>
+			<texPath>Things/Item/Health/HealthItem</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.80</drawSize>
+			<color>(240,210,140)</color>
+		</graphicData>
+		<statBases>
+			<WorkToMake>100000</WorkToMake>
+		</statBases>
+		<recipeMaker>
+			<displayPriority>600</displayPriority>
+		</recipeMaker>
+	</ThingDef>
+	
+	<ThingDef Name="GS_HyperBionicMakeableBase" ParentName="GS_HyperBionicBase" Abstract="True">
+		<recipeMaker>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>	
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<recipeUsers>
+				<li>GS_RealspaceManifold</li>
+			</recipeUsers>
+			<skillRequirements>
+				<Crafting>15</Crafting>
+			</skillRequirements>
+			<unfinishedThingDef>UnfinishedHealthItemProsthetic</unfinishedThingDef>
+			<researchPrerequisite>GS_Research_HyperBionics</researchPrerequisite>
+		</recipeMaker>
+	</ThingDef>
+	
+	<ThingDef Name="GS_HyperImplantMakeableBase" ParentName="GS_HyperBionicBase" Abstract="True">
+		<recipeMaker>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>	
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<recipeUsers>
+				<li>GS_RealspaceManifold</li>
+			</recipeUsers>
+			<skillRequirements>
+				<Crafting>16</Crafting>
+			</skillRequirements>
+			<unfinishedThingDef>UnfinishedHealthItemProsthetic</unfinishedThingDef>
+			<researchPrerequisite>GS_Research_HyperBionics</researchPrerequisite>
+		</recipeMaker>
+	</ThingDef>
+	
+	<RecipeDef Name="GS_SurgeryInstallHyperBionicBase" ParentName="SurgeryInstallBodyPartArtificialBase" Abstract="True">
+		<skillRequirements>
+			<Medicine>15</Medicine>
+		</skillRequirements>
+	</RecipeDef>
+	
+<!-- 
+		*** Central Hyperlane ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_centralhyperlane</defName>
+		<label>Central Hyperlane</label>
+		<labelNoun>an installed Central Hyperlane</labelNoun>
+		<defaultLabelColor>(1.0, 0.8, 0.4)</defaultLabelColor>
+		<description>A cutting-edge spinal replacement that is not only tougher and stronger than a natural spine, but increases the transmission speed of all signals sent through it, using realspace folds to transmit signals faster than light, allowing supernatural reaction speeds.</description>
+		<descriptionHyperlinks><ThingDef>GS_centralhyperlane</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Consciousness</capacity>
+				<offset>0.5</offset>
+				</li>
+				<li>
+				<capacity>Sight</capacity>
+				<offset>0.25</offset>
+				</li>
+				<li>
+				<capacity>Hearing</capacity>
+				<offset>0.25</offset>
+				</li>
+				<li>
+				<capacity>Manipulation</capacity>
+				<offset>0.2</offset>
+				</li>
+				<li>
+				<capacity>Moving</capacity>
+				<offset>0.2</offset>
+				</li>
+			</capMods>
+			<statOffsets>
+				<GS_Evade_EvadeProjectileChance>12</GS_Evade_EvadeProjectileChance>
+				<GS_Evade_EvadeMeleeChance>12</GS_Evade_EvadeMeleeChance>
+				<MeleeHitChance>12</MeleeHitChance>
+				<ShootingAccuracyPawn>12</ShootingAccuracyPawn>
+				<CarryingCapacity>75</CarryingCapacity>
+				<VEF_MassCarryCapacity>75</VEF_MassCarryCapacity>
+			</statOffsets>
+			<statFactors>
+				<MoveSpeed>1.2</MoveSpeed>
+				<VEF_RangeAttackSpeedFactor>1.2</VEF_RangeAttackSpeedFactor>
+				<VEF_MeleeAttackSpeedFactor>1.2</VEF_MeleeAttackSpeedFactor>
+				<MeleeDamageFactor>1.2</MeleeDamageFactor>
+			</statFactors>
+			</li>
+		</stages>
+		<spawnThingOnRemoved>GS_centralhyperlane</spawnThingOnRemoved>
+		<addedPartProps>
+			<betterThanNatural>true</betterThanNatural>
+			<solid>true</solid>
+			<partEfficiency>1.85</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+
+	<ThingDef ParentName="GS_HyperBionicMakeableBase">
+		<defName>GS_centralhyperlane</defName>
+		<label>Central Hyperlane</label>
+		<description>A cutting-edge spinal replacement that is not only tougher and stronger than a natural spine, but increases the transmission speed of all signals sent through it, using realspace folds to transmit signals faster than light, allowing supernatural reaction speeds.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installcentralhyperlane</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<Gold>12</Gold>
+		<Plasteel>45</Plasteel>
+		<Hyperweave>60</Hyperweave>
+		<ComponentSpacer>12</ComponentSpacer>
+		</costList>
+		<statBases>
+		<Mass>4.5</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallHyperBionicBase">
+		<defName>GS_Installcentralhyperlane</defName>
+		<label>install Central Hyperlane</label>
+		<description>Install a Central Hyperlane.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_centralhyperlane</ThingDef>
+		<HediffDef>GS_hediff_centralhyperlane</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Central Hyperlane.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_centralhyperlane</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_centralhyperlane</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Spine</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_centralhyperlane</addsHediff>
+	</RecipeDef>
+	
+<!-- 
+		*** Synthblood Fabricator ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_synthbloodfab</defName>
+		<label>Synthblood Fabricator</label>
+		<labelNoun>an installed Synthblood Fabricator</labelNoun>
+		<defaultLabelColor>(1.0, 0.8, 0.4)</defaultLabelColor>
+		<description>A cutting-edge liver replacement that replaces the blood it processes with high-capacity hyper-effecient synthblood, which enriches the carried antibodies and oxygen.</description>
+		<descriptionHyperlinks><ThingDef>GS_synthbloodfab</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Consciousness</capacity>
+				<offset>0.15</offset>
+				</li>
+				<li>
+				<capacity>BloodPumping</capacity>
+				<offset>0.25</offset>
+				</li>
+				<li>
+				<capacity>BloodFiltration</capacity>
+				<offset>0.5</offset>
+				</li>
+				<li>
+				<capacity>Manipulation</capacity>
+				<offset>0.2</offset>
+				</li>
+				<li>
+				<capacity>Moving</capacity>
+				<offset>0.2</offset>
+				</li>
+			</capMods>
+			<statOffsets>
+				<GS_Evade_EvadeProjectileChance>8</GS_Evade_EvadeProjectileChance>
+				<GS_Evade_EvadeMeleeChance>8</GS_Evade_EvadeMeleeChance>
+			</statOffsets>
+			<statFactors>
+				<LifespanFactor>1.75</LifespanFactor>
+				<ImmunityGainSpeed>1.35</ImmunityGainSpeed>
+				<InjuryHealingFactor>1.35</InjuryHealingFactor>
+			</statFactors>
+			</li>
+		</stages>
+		<spawnThingOnRemoved>GS_synthbloodfab</spawnThingOnRemoved>
+		<addedPartProps>
+			<betterThanNatural>true</betterThanNatural>
+			<solid>true</solid>
+			<partEfficiency>1.85</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+
+	<ThingDef ParentName="GS_HyperBionicMakeableBase">
+		<defName>GS_synthbloodfab</defName>
+		<label>Synthblood Fabricator</label>
+		<description>A cutting-edge liver replacement that replaces the blood it processes with high-capacity hyper-effecient synthblood, which enriches the carried antibodies and oxygen.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installsynthbloodfab</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<Silver>40</Silver>
+		<Hyperweave>115</Hyperweave>
+		<ComponentSpacer>12</ComponentSpacer>
+		</costList>
+		<statBases>
+		<Mass>0.5</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallHyperBionicBase">
+		<defName>GS_Installsynthbloodfab</defName>
+		<label>install Synthblood Fabricator</label>
+		<description>Install a Synthblood Fabricator.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_synthbloodfab</ThingDef>
+		<HediffDef>GS_hediff_synthbloodfab</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Synthblood Fabricator.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_synthbloodfab</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_synthbloodfab</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Liver</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_synthbloodfab</addsHediff>
+	</RecipeDef>
+	
+<!-- 
+		*** Synthblood Scrubbers ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_synthbloodpump</defName>
+		<label>Synthblood Scrubbers</label>
+		<labelNoun>an installed Synthblood Scrubbers</labelNoun>
+		<defaultLabelColor>(1.0, 0.8, 0.4)</defaultLabelColor>
+		<description>A cutting-edge kidney replacement that scrubs all the blood that passes through with energising ion transmissions, restoring them to pristine state while replacing any that fall beneath an acceptable degradation threshold.</description>
+		<descriptionHyperlinks><ThingDef>GS_synthbloodpump</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Consciousness</capacity>
+				<offset>0.075</offset>
+				</li>
+				<li>
+				<capacity>BloodPumping</capacity>
+				<offset>0.125</offset>
+				</li>
+				<li>
+				<capacity>BloodFiltration</capacity>
+				<offset>0.25</offset>
+				</li>
+				<li>
+				<capacity>Breathing</capacity>
+				<offset>0.1</offset>
+				</li>
+				<li>
+				<capacity>Metabolism</capacity>
+				<offset>0.15</offset>
+				</li>
+			</capMods>
+			<statOffsets>
+				<RestRateMultiplier>0.15</RestRateMultiplier>
+			</statOffsets>
+			<statFactors>
+				<LifespanFactor>1.15</LifespanFactor>
+				<ImmunityGainSpeed>1.15</ImmunityGainSpeed>
+				<InjuryHealingFactor>1.25</InjuryHealingFactor>
+			</statFactors>
+			<totalBleedFactor>0.5</totalBleedFactor>
+			</li>
+		</stages>
+		<spawnThingOnRemoved>GS_synthbloodpump</spawnThingOnRemoved>
+		<addedPartProps>
+			<betterThanNatural>true</betterThanNatural>
+			<solid>true</solid>
+			<partEfficiency>1.85</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+
+	<ThingDef ParentName="GS_HyperBionicMakeableBase">
+		<defName>GS_synthbloodpump</defName>
+		<label>Synthblood Scrubbers</label>
+		<description>A cutting-edge liver replacement that replaces the blood it processes with high-capacity hyper-effecient synthblood, which enriches the carried antibodies and oxygen.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installsynthbloodpump</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<Gold>3</Gold>
+		<Hyperweave>35</Hyperweave>
+		<ComponentSpacer>9</ComponentSpacer>
+		</costList>
+		<statBases>
+		<Mass>1.5</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallHyperBionicBase">
+		<defName>GS_Installsynthbloodpump</defName>
+		<label>install Synthblood Scrubbers</label>
+		<description>Install a Synthblood Scrubbers.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_synthbloodpump</ThingDef>
+		<HediffDef>GS_hediff_synthbloodpump</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Synthblood Scrubbers.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_synthbloodpump</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_synthbloodpump</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Kidney</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_synthbloodpump</addsHediff>
+	</RecipeDef>
+	
+<!-- 
+		*** GS-Core ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_gscore</defName>
+		<label>GS-Core</label>
+		<labelNoun>an installed GS-Core</labelNoun>
+		<defaultLabelColor>(1.0, 0.8, 0.4)</defaultLabelColor>
+		<description>An absolute top-of-the-line heart replacement, a quantum supercomputer compressed into the size of a palm-sized cube. It monitors and regulates every single aspect of a person's body, ensuring that every single aspect is operating at above-optimal performance.</description>
+		<descriptionHyperlinks><ThingDef>GS_gscore</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Consciousness</capacity>
+				<offset>0.35</offset>
+				</li>
+				<li>
+				<capacity>BloodPumping</capacity>
+				<offset>0.66</offset>
+				</li>
+				<li>
+				<capacity>BloodFiltration</capacity>
+				<offset>0.25</offset>
+				</li>
+				<li>
+				<capacity>Breathing</capacity>
+				<offset>0.15</offset>
+				</li>
+				<li>
+				<capacity>Manipulation</capacity>
+				<offset>0.25</offset>
+				</li>
+				<li>
+				<capacity>Moving</capacity>
+				<offset>0.25</offset>
+				</li>
+			</capMods>
+			<statOffsets>
+				<MoveSpeed>4.25</MoveSpeed>
+			</statOffsets>
+			<statFactors>
+				<LifespanFactor>1.25</LifespanFactor>
+				<InjuryHealingFactor>1.25</InjuryHealingFactor>
+				<VEF_MeleeAttackSpeedFactor>1.25</VEF_MeleeAttackSpeedFactor>
+				<VEF_RangeAttackSpeedFactor>1.25</VEF_RangeAttackSpeedFactor>
+			</statFactors>
+			<totalBleedFactor>0.5</totalBleedFactor>
+			</li>
+		</stages>
+		<spawnThingOnRemoved>GS_gscore</spawnThingOnRemoved>
+		<addedPartProps>
+			<betterThanNatural>true</betterThanNatural>
+			<solid>true</solid>
+			<partEfficiency>1.85</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+
+	<ThingDef ParentName="GS_HyperBionicMakeableBase">
+		<defName>GS_gscore</defName>
+		<label>GS-Core</label>
+		<description>An absolute top-of-the-line heart replacement, a quantum supercomputer compressed into the size of a palm-sized cube. It monitors and regulates every single aspect of a person's body, ensuring that every single aspect is operating at above-optimal performance.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installgscore</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<Uranium>25</Uranium>
+		<Gold>9</Gold>
+		<Hyperweave>100</Hyperweave>
+		<ComponentSpacer>12</ComponentSpacer>
+		</costList>
+		<statBases>
+		<Mass>1.5</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallHyperBionicBase">
+		<defName>GS_Installgscore</defName>
+		<label>install GS-Core</label>
+		<description>Install a GS-Core.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_gscore</ThingDef>
+		<HediffDef>GS_hediff_gscore</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing GS-Core.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_gscore</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_gscore</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Heart</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_gscore</addsHediff>
+	</RecipeDef>
+	
+<!-- 
+		*** Ultramind ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_ultramind</defName>
+		<label>Ultramind</label>
+		<labelNoun>an installed Ultramind</labelNoun>
+		<defaultLabelColor>(1.0, 0.8, 0.4)</defaultLabelColor>
+		<description>An injection of extremely aggressive mechanites that scrolls and saves all information in a person's brain, before eventually reconstructing an advanced computerized fascilimile, which performs at greatly increased capacity compared to a natural brain.</description>
+		<descriptionHyperlinks><ThingDef>GS_ultramind</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Consciousness</capacity>
+				<offset>0.65</offset>
+				</li>
+				<li>
+				<capacity>Sight</capacity>
+				<offset>0.25</offset>
+				</li>
+				<li>
+				<capacity>Hearing</capacity>
+				<offset>0.25</offset>
+				</li>
+			</capMods>
+			<statOffsets>
+				<GS_Evade_EvadeProjectileChance>12.5</GS_Evade_EvadeProjectileChance>
+				<GS_Evade_EvadeMeleeChance>12.5</GS_Evade_EvadeMeleeChance>
+				<GlobalLearningFactor>0.75</GlobalLearningFactor>
+				<MeditationFocusGain>0.45</MeditationFocusGain>
+				<PsychicEntropyRecoveryRate>0.45</PsychicEntropyRecoveryRate>
+				<PsychicEntropyMax>20</PsychicEntropyMax>
+				<ShootingAccuracyPawn>8.5</ShootingAccuracyPawn>
+				<MeleeHitChance>8.5</MeleeHitChance>
+			</statOffsets>
+			<statFactors>
+				<MortarMissRadiusFactor>0.85</MortarMissRadiusFactor>
+			</statFactors>
+			</li>
+		</stages>
+		<spawnThingOnRemoved>GS_ultramind</spawnThingOnRemoved>
+		<addedPartProps>
+			<betterThanNatural>true</betterThanNatural>
+			<solid>true</solid>
+			<partEfficiency>1.85</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+
+	<ThingDef ParentName="GS_HyperBionicMakeableBase">
+		<defName>GS_ultramind</defName>
+		<label>Ultramind</label>
+		<description>An injection of extremely aggressive mechanites that scrolls and saves all information in a person's brain, before eventually reconstructing an advanced computerized fascilimile, which performs at greatly increased capacity compared to a natural brain.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installultramind</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<Gold>8</Gold>
+		<Hyperweave>120</Hyperweave>
+		<ComponentSpacer>12</ComponentSpacer>
+		</costList>
+		<statBases>
+		<Mass>1.5</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallHyperBionicBase">
+		<defName>GS_Installultramind</defName>
+		<label>install Ultramind</label>
+		<description>Install a Ultramind.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_ultramind</ThingDef>
+		<HediffDef>GS_hediff_ultramind</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Ultramind.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_ultramind</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_ultramind</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Brain</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_ultramind</addsHediff>
+	</RecipeDef>
+	
+<!-- 
+		*** cyberintergrate ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_cyberintergrate</defName>
+		<label>Full Cybernetic Integration</label>
+		<labelNoun>Full Cybernetic Integration</labelNoun>
+		<defaultLabelColor>(1.0, 0.8, 0.4)</defaultLabelColor>
+		<description>A complete replacement of the circulatory and nervous systems with highly advanced and effecient nanofiber ultra-transmitters. An extremely dangerous and painful surgery, one of the final steps for full cybernetic transcendence.</description>
+		<descriptionHyperlinks><ThingDef>GS_cyberintergrate</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_cyberintergrate</spawnThingOnRemoved>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Consciousness</capacity>
+				<offset>0.35</offset>
+				</li>
+				<li>
+				<capacity>Sight</capacity>
+				<offset>0.15</offset>
+				</li>
+				<li>
+				<capacity>Hearing</capacity>
+				<offset>0.15</offset>
+				</li>
+				<li>
+				<capacity>Manipulation</capacity>
+				<offset>0.15</offset>
+				</li>
+				<li>
+				<capacity>Moving</capacity>
+				<offset>0.15</offset>
+				</li>
+			</capMods>
+			<statOffsets>
+				<GS_Evade_EvadeProjectileChance>8</GS_Evade_EvadeProjectileChance>
+				<GS_Evade_EvadeMeleeChance>8</GS_Evade_EvadeMeleeChance>
+			</statOffsets>
+			<statFactors>
+				<PawnTrapSpringChance>0.8</PawnTrapSpringChance>
+			</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_HyperImplantMakeableBase">
+		<defName>GS_cyberintergrate</defName>
+		<label>Full Cybernetic Integration</label>
+		<description>A complete replacement of the circulatory and nervous systems with highly advanced and effecient nanofiber ultra-transmitters. An extremely dangerous and painful surgery, one of the final steps for full cybernetic transcendence.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installcyberintergrate</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Gold>10</Gold>
+			<Hyperweave>120</Hyperweave>
+			<ComponentSpacer>12</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>6</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallImplantBase">
+		<defName>GS_Installcyberintergrate</defName>
+		<label>install Full Cybernetic Integration</label>
+		<description>Install a full body cybernetic integration.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_cyberintergrate</ThingDef>
+			<HediffDef>GS_Hediff_cyberintergrate</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Full Cybernetic Integration.</jobString>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_cyberintergrate</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_cyberintergrate</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Torso</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_cyberintergrate</addsHediff>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removecyberintergrate</defName>
+		<label>remove cyberintergrate</label>
+		<description>Remove cyberintergrate.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_cyberintergrate</ThingDef>
+		<HediffDef>GS_Hediff_cyberintergrate</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing cyberintergrate.</jobString>
+		<removesHediff>GS_Hediff_cyberintergrate</removesHediff>
+	</RecipeDef>
+	
+<!-- 
+		*** skelemuscle ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_skelemuscle</defName>
+		<label>Skeletomuscular Reinforcement</label>
+		<labelNoun>Skeletomuscular Reinforcement</labelNoun>
+		<defaultLabelColor>(1.0, 0.8, 0.4)</defaultLabelColor>
+		<description>A complete replacement of the skeletomuscular system with reinforced armored bones and highly compressed kinetic-storage musculature. An extremely dangerous and painful surgery, one of the final steps for full cybernetic transcendence.</description>
+		<descriptionHyperlinks><ThingDef>GS_skelemuscle</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_skelemuscle</spawnThingOnRemoved>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Consciousness</capacity>
+				<offset>0.15</offset>
+				</li>
+				<li>
+				<capacity>BloodPumping</capacity>
+				<offset>0.25</offset>
+				</li>
+				<li>
+				<capacity>Manipulation</capacity>
+				<offset>0.35</offset>
+				</li>
+				<li>
+				<capacity>Moving</capacity>
+				<offset>0.35</offset>
+				</li>
+			</capMods>
+			<statOffsets>
+				<GS_Evade_EvadeProjectileChance>8</GS_Evade_EvadeProjectileChance>
+				<GS_Evade_EvadeMeleeChance>8</GS_Evade_EvadeMeleeChance>
+				<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+				<ArmorRating_Sharp>0.3</ArmorRating_Sharp>
+			</statOffsets>
+			<statFactors>
+				<VEF_MeleeAttackDamageFactor>1.25</VEF_MeleeAttackDamageFactor>
+				<VEF_RangeAttackSpeedFactor>1.15</VEF_RangeAttackSpeedFactor>
+				<ShootingAccuracyPawn>1.15</ShootingAccuracyPawn>
+				<IncomingDamageFactor>0.85</IncomingDamageFactor>
+				<StaggerDurationFactor>0.5</StaggerDurationFactor>
+			</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_HyperImplantMakeableBase">
+		<defName>GS_skelemuscle</defName>
+		<label>Skeletomuscular Reinforcement</label>
+		<description>A complete replacement of the skeletomuscular system with reinforced armored bones and highly compressed kinetic-storage musculature. An extremely dangerous and painful surgery, one of the final steps for full cybernetic transcendence.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installskelemuscle</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Plasteel>80</Plasteel>
+			<Hyperweave>200</Hyperweave>
+			<ComponentSpacer>12</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>8</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallImplantBase">
+		<defName>GS_Installskelemuscle</defName>
+		<label>install Skeletomuscular Reinforcement</label>
+		<description>Install a full body Skeletomuscular Reinforcement.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_skelemuscle</ThingDef>
+			<HediffDef>GS_Hediff_skelemuscle</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Skeletomuscular Reinforcement.</jobString>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_skelemuscle</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_skelemuscle</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Torso</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_skelemuscle</addsHediff>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removeskelemuscle</defName>
+		<label>remove skelemuscle</label>
+		<description>Remove skelemuscle.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_skelemuscle</ThingDef>
+		<HediffDef>GS_Hediff_skelemuscle</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing skelemuscle.</jobString>
+		<removesHediff>GS_Hediff_skelemuscle</removesHediff>
+	</RecipeDef>
+	
+<!-- 
+		*** ambiskull ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_ambiskull</defName>
+		<label>Ambiskull</label>
+		<labelNoun>Ambiskull</labelNoun>
+		<defaultLabelColor>(1.0, 0.8, 0.4)</defaultLabelColor>
+		<description>A full plating of the skull's internals and externals, armoring it against harm while increasing the conductivity and cushioning of the internals.</description>
+		<descriptionHyperlinks><ThingDef>GS_ambiskull</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_ambiskull</spawnThingOnRemoved>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Consciousness</capacity>
+				<offset>0.25</offset>
+				</li>
+				<li>
+				<capacity>Hearing</capacity>
+				<offset>0.15</offset>
+				</li>
+				<li>
+				<capacity>Sight</capacity>
+				<offset>0.15</offset>
+				</li>
+			</capMods>
+			<statOffsets>
+				<GS_Evade_EvadeProjectileChance>5</GS_Evade_EvadeProjectileChance>
+				<GS_Evade_EvadeMeleeChance>5</GS_Evade_EvadeMeleeChance>
+				<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+				<ArmorRating_Sharp>0.3</ArmorRating_Sharp>
+				<ArmorRating_Heat>0.3</ArmorRating_Heat>
+			</statOffsets>
+			<statFactors>
+				<IncomingDamageFactor>0.85</IncomingDamageFactor>
+				<StaggerDurationFactor>0.85</StaggerDurationFactor>
+			</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_HyperImplantMakeableBase">
+		<defName>GS_ambiskull</defName>
+		<label>Ambiskull</label>
+		<description>A full plating of the skull's internals and externals, armoring it against harm while increasing the conductivity and cushioning of the internals.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installambiskull</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Gold>4</Gold>
+			<Plasteel>35</Plasteel>
+			<Hyperweave>60</Hyperweave>
+			<ComponentSpacer>7</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>3</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallImplantBase">
+		<defName>GS_Installambiskull</defName>
+		<label>install Ambiskull</label>
+		<description>Install an Ambiskull implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_ambiskull</ThingDef>
+			<HediffDef>GS_Hediff_ambiskull</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Ambiskull.</jobString>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_ambiskull</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_ambiskull</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Skull</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_ambiskull</addsHediff>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removeambiskull</defName>
+		<label>remove ambiskull</label>
+		<description>Remove ambiskull.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_ambiskull</ThingDef>
+		<HediffDef>GS_Hediff_ambiskull</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing ambiskull.</jobString>
+		<removesHediff>GS_Hediff_ambiskull</removesHediff>
+	</RecipeDef>
+	
+</Defs>

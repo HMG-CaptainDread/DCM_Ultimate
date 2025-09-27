@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>         
+        <!--  IS IT XENO OR ANIMAL GENETICS?   -->     
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/QuestScriptDef[defName="GR_OpportunitySite_AbandonedLab"]/questDescriptionRules/rulesStrings</xpath>
+                    <value>
+                        <rulesStrings>
+                          <li>questDescription(askerIsNull==true)->We've intercepted radio transmissions from a seemingly abandoned animal genetics lab not far from [map_definite]. The site may have some interesting ancient technology scattered around, so it could be a good idea to investigate it.\n\nWe should be well prepared, as genetic monstrosities may still be roaming the derelict installation.</li>
+                        </rulesStrings>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchTabDef[defName="GR_GeneticReseach"]/label</xpath>
+                    <value>
+                        <label>Genetics</label>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/DesignationCategoryDef[defName="GR_GeneticsTab"]/label</xpath>
+                    <value>
+                        <label>Bestiagenics</label>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/DesignationCategoryDef[defName="GR_GeneticsTab"]/description</xpath>
+                    <value>
+                        <description>Bestiagenic experimentation.</description>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="GR_GeneticsTinkeringTable"]/label</xpath>
+                    <value>
+                        <label>bestiagenic tinkering table</label>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="GR_ElectroWomb"]/label</xpath>
+                    <value>
+                        <label>animal electrowomb</label>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="GR_LargeElectroWomb"]/label</xpath>
+                    <value>
+                        <label>large animal electrowomb</label>
+                    </value>
+                </Operation>        
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="GR_NutrientVat"]/description</xpath>
+                    <value>
+                        <description>A slurry of liquefied organic pulp fills this reinforced glass vat. This solution is used by genetic experiments, and increases work speed when placed near a bestiagenic workbench. One workbench can use to up to two nutrient vats.</description>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/SitePartDef[defName="GR_AbandonedLab"]/label</xpath>
+                    <value>
+                        <label>abandoned bestiagenetics lab</label>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/SitePartDef[defName="GR_AbandonedLab"]/description</xpath>
+                    <value>
+                        <description>A recently-discovered abandoned animal genetics lab.</description>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/QuestScriptDef[defName="GR_OpportunitySite_AbandonedLab"]/questNameRules/rulesStrings</xpath>
+                    <value>
+                        <rulesStrings>
+                            <li>questName(priority=1)->[journey] the [adjectiveLab] [ruins]</li>
+                            <li>journey->Journey to</li>
+                            <li>journey->Expedition to</li>
+                            <li>journey->Mission to</li>
+                            <li>journey->Exploration of</li>
+                            <li>journey->Investigation of</li>
+                            <li>journey->Research into</li>
+                            <li>adjectiveLab->Abandoned</li>
+                            <li>adjectiveLab->Derelict</li>
+                            <li>adjectiveLab->Dilapidated</li>
+                            <li>adjectiveLab->Run down</li>
+                            <li>adjectiveLab->Desolate</li>
+                            <li>ruins->bestiagenetics lab</li>      
+                            <li>ruins->bestiagenics installation</li>
+                            <li>ruins->animal genetics laboratory</li>
+                            <li>ruins->animal research post</li>
+                        </rulesStrings>
+                    </value>
+                </Operation>
+
+
+
+
+
+
+
+
+
+
+        <!--  REST OF THE PATCH   -->  
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="GR_TissueGrinder"]/label</xpath>
+                    <value>
+                        <label>animal tissue grinder</label>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="GR_GeneticAlteration"]/label</xpath>
+                    <value>
+                        <label>basic genetic sampling</label>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="GR_GeneticAlteration"]/prerequisites</xpath>
+                    <value>
+                    <prerequisites>
+                        <li>MicroelectronicsBasics</li>
+                    </prerequisites>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationAdd">
+                    <xpath>Defs/ResearchProjectDef[defName="GR_GeneticAlteration"]</xpath>
+                    <value>
+                      <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                    </value>
+                </Operation>
+
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="GR_GeneticAlteration"]/description</xpath>
+                    <value>
+                        <description>Begin exploring the potential in extracting genetic material from creatures. Sample genoframes from wildlife and genes from your colonists for use in genetic alteration.</description>
+                    </value>
+                </Operation>
+
+                <Operation Class="PatchOperationAdd">
+                    <xpath>Defs/ResearchProjectDef[defName="GeneProcessor"]</xpath>
+                    <value>
+                        <tab>GR_GeneticReseach</tab>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationAdd">
+                    <xpath>Defs/ResearchProjectDef[defName="Archogenetics"]</xpath>
+                    <value>
+                        <tab>GR_GeneticReseach</tab>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="GeneProcessor"]/researchViewX</xpath>
+                    <value>
+                        <researchViewX>2</researchViewX>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="GeneProcessor"]/researchViewY</xpath>
+                    <value>
+                        <researchViewY>4.90</researchViewY>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="Archogenetics"]/researchViewX</xpath>
+                    <value>
+                        <researchViewX>3</researchViewX>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="Archogenetics"]/researchViewY</xpath>
+                    <value>
+                        <researchViewY>4.90</researchViewY>
+                    </value>
+                </Operation>
+
+                <Operation Class="PatchOperationRemove">
+                    <xpath>Defs/ThingDef[@Name="GeneBuildingBase"]/researchPrerequisites</xpath>
+                </Operation>
+
+                <Operation Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="GeneBank"]</xpath>
+                    <value>
+                        <researchPrerequisites><li>GR_GeneticAlteration</li></researchPrerequisites>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="GeneExtractor"]/researchPrerequisites</xpath>
+                    <value>
+                        <researchPrerequisites><li>GR_GeneticAlteration</li></researchPrerequisites>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="GeneAssembler"]</xpath>
+                    <value>
+                        <researchPrerequisites><li>Xenogermination</li></researchPrerequisites>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="GR_GeneticEngineering"]/label</xpath>
+                    <value>
+                        <label>animal hybrids</label>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="GR_GeneticEngineering"]/prerequisites</xpath>
+                    <value>
+                    <prerequisites>
+                        <li>GR_GeneticAlteration</li>
+                    </prerequisites>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationAdd">
+                    <xpath>Defs/ResearchProjectDef[defName="GR_GeneticEngineering"]</xpath>
+                    <value>
+                      <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationAdd">
+                    <xpath>Defs/ResearchProjectDef[defName="GR_GeneticDuplication"]</xpath>
+                    <value>
+                      <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationAdd">
+                    <xpath>Defs/ResearchProjectDef[defName="GR_HybridImplantology"]</xpath>
+                    <value>
+                      <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationAdd">
+                    <xpath>Defs/ResearchProjectDef[defName="GR_GeneticCompatibility"]</xpath>
+                    <value>
+                      <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationAdd">
+                    <xpath>Defs/ResearchProjectDef[defName="GR_GeneticMechahybridization"]</xpath>
+                    <value>
+                      <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="GR_GeneticDuplication"]/prerequisites</xpath>
+                    <value>
+                    <prerequisites>
+                        <li>GR_GeneticAlteration</li>
+                    </prerequisites>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="GR_GeneticMechahybridization"]/prerequisites</xpath>
+                    <value>
+                    <prerequisites>
+                        <li>GR_GeneticEngineering</li>
+                    </prerequisites>
+                    </value>
+                </Operation>
+                
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="GR_GeneticEngineering"]/label</xpath>
+                    <value>
+                        <label>animal hybrids</label>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="GR_GeneticEngineering"]/researchViewX</xpath>
+                    <value>
+                        <researchViewX>1</researchViewX>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="GR_GeneticDuplication"]/label</xpath>
+                    <value>
+                        <label>genome duplication</label>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="GR_GeneticDuplication"]/researchViewX</xpath>
+                    <value>
+                        <researchViewX>1</researchViewX>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="GR_HybridImplantology"]/label</xpath>
+                    <value>
+                        <label>animal implants</label>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="GR_GeneticCompatibility"]/label</xpath>
+                    <value>
+                        <label>human implants</label>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="GR_GeneticCompatibility"]/researchViewX</xpath>
+                    <value>
+                        <researchViewX>3</researchViewX>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="GR_GeneticMechahybridization"]/label</xpath>
+                    <value>
+                        <label>biomechanical lab beacons</label>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="Xenogermination"]/label</xpath>
+                    <value>
+                        <label>Xenogerm assembly</label>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationAdd">
+                    <xpath>Defs/ResearchProjectDef[defName="Xenogermination"]</xpath>
+                    <value>
+                        <tab>GR_GeneticReseach</tab>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="Xenogermination"]/researchViewX</xpath>
+                    <value>
+                        <researchViewX>1</researchViewX>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="Xenogermination"]/researchViewY</xpath>
+                    <value>
+                        <researchViewY>4.90</researchViewY>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="Xenogermination"]/prerequisites</xpath>
+                    <value>
+                    <prerequisites>
+                        <li>GR_GeneticAlteration</li>
+                    </prerequisites>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="Xenogermination"]/description</xpath>
+                    <value>
+                    <description>Begin producing xenotype altering xenogerms from extracted genes.</description>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="GR_GeneticEngineering"]/description</xpath>
+                    <value>
+                    <description>Create new animal hybrids with the Genomorpher, gestate them in an Animal Electrowomb and create boosters at the Bestiagenics Tinkering Table.</description>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="GR_GeneticAlteration"]/techLevel</xpath>
+                    <value><techLevel>Spacer</techLevel></value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="GR_GeneticEngineering"]/techLevel</xpath>
+                    <value><techLevel>Spacer</techLevel></value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="GR_HybridImplantology"]/techLevel</xpath>
+                    <value><techLevel>Spacer</techLevel></value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="GR_GeneticCompatibility"]/techLevel</xpath>
+                    <value><techLevel>Spacer</techLevel></value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="GR_GeneticDuplication"]/techLevel</xpath>
+                    <value><techLevel>Spacer</techLevel></value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="Xenogermination"]/techLevel</xpath>
+                    <value><techLevel>Spacer</techLevel></value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="GeneProcessor"]/techLevel</xpath>
+                    <value><techLevel>Spacer</techLevel></value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ResearchProjectDef[defName="Archogenetics"]/techLevel</xpath>
+                    <value><techLevel>Spacer</techLevel></value>
+                </Operation>
+                <Operation Class="PatchOperationAdd">
+                    <xpath>Defs/ResearchProjectDef[defName="Xenogermination"]</xpath>
+                    <value>
+                      <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                    </value>
+                </Operation>
+</Patch>

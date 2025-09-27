@@ -1,0 +1,935 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+<!-- Start of thingDefs -->
+
+ <!-- ================== Melee Weapon Classes ================ --> 
+  <!-- Melee Weapon Base Class --> 
+  <ThingDef Name="MedTimes_Melee_Rare" Abstract="True">
+    <category>Item</category>
+    <thingClass>ThingWithComps</thingClass>
+    <techLevel>Medieval</techLevel>	
+    <equipmentType>Primary</equipmentType>
+	<smeltable>false</smeltable>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass> 	
+      <onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+      <shaderType>Transparent</shaderType>	  
+    </graphicData>
+    <statBases>
+      <SellPriceFactor>0.9</SellPriceFactor>  
+	  <Beauty>-5</Beauty>	  
+    </statBases>
+    <pathCost>10</pathCost>
+    <selectable>True</selectable>
+    <alwaysHaulable>True</alwaysHaulable>
+    <drawGUIOverlay>true</drawGUIOverlay>
+    <altitudeLayer>Item</altitudeLayer>
+    <tickerType>Never</tickerType>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li><compClass>CompEquippable</compClass></li>
+    </comps>	
+    <weaponTags>
+		<li>MedievalShields_ValidSidearm</li>
+		<li MayRequire="Ludeon.RimWorld.Royalty">MedievalMeleeDecent</li>
+	</weaponTags>	
+  </ThingDef>
+
+  
+ <!-- ================== Artifact Classes ================ -->   
+  <!-- (Artifact) Melee Weapon Base Class -->
+  <ThingDef Name="MedTimes_Melee_Art" ParentName="MedTimes_Melee_Rare" Abstract="True">
+      <useHitPoints>True</useHitPoints>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <Flammability>1.0</Flammability>	
+      <DeteriorationRate>1</DeteriorationRate>  
+    </statBases>  
+	
+    <equippedStatOffsets>
+      <MeleeHitChance>0.08</MeleeHitChance>  
+    </equippedStatOffsets>		
+    <comps>
+      <li><compClass>CompQuality</compClass></li>
+      <li Class="CompProperties_Art">
+        <nameMaker>NamerArtWeaponMelee</nameMaker>
+        <descriptionMaker>ArtDescription_WeaponMelee</descriptionMaker>
+        <minQualityForArtistic>Excellent</minQualityForArtistic>
+      </li>
+    </comps>	
+    <inspectorTabs><li>ITab_Art</li></inspectorTabs>
+    <thingCategories><li>WeaponsMelee_Art</li></thingCategories>	
+    <tradeTags><li>MedTimes_Artifact</li></tradeTags>			
+  </ThingDef>  
+  
+  
+  <!-- ================== Artifact Handle Types ================ -->  
+  <!-- Shaft Handle Artifact Class -->
+  <ThingDef Name="MedTimes_Melee_Art_Shaft" ParentName="MedTimes_Melee_Art" Abstract="True">
+    <tools>
+      <li>
+        <label>shaft</label>
+        <capacities>
+          <li>Blunt</li>
+          <li>Poke</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>2.1</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>  
+
+  <!-- Basic Handle Artifact Class -->
+  <ThingDef Name="MedTimes_Melee_Art_Handle" ParentName="MedTimes_Melee_Art" Abstract="True">
+    <tools>
+      <li>
+        <label>handle</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>10</power>
+        <cooldownTime>1.95</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>    
+
+
+
+   <!-- ================== Legendary Classes ================ -->   
+  <!-- (Legendary) Melee Weapon Base Class -->
+  <ThingDef Name="MedTimes_Melee_Leg" ParentName="MedTimes_Melee_Rare" Abstract="True">
+    <useHitPoints>False</useHitPoints>
+	<costList><MedTimes_NaniteVial>1</MedTimes_NaniteVial></costList>		
+    <equippedStatOffsets>
+      <MeleeHitChance>0.1</MeleeHitChance>  
+    </equippedStatOffsets>		
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Intellectual</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>MedTimes_UnfinishedNanite</unfinishedThingDef>	  
+      <recipeUsers>
+		<li>MedTimes_EternityForge</li>
+      </recipeUsers>
+		<skillRequirements>
+				<Intellectual>10</Intellectual>
+		</skillRequirements>		  
+	</recipeMaker>	
+    <thingCategories><li>WeaponsMelee_Leg</li></thingCategories>	
+    <tradeTags><li>MedTimes_Legendary</li></tradeTags>
+    <thingSetMakerTags>
+		<li>PeaceTalksGift</li>
+		<li>ItemStashQuest</li>
+		<li>BanditCampQuestRewards</li>
+		<li>AncientTempleContents</li>
+		<li>AncientPodContents</li>
+    </thingSetMakerTags>		
+  </ThingDef>  
+  
+  
+<!-- ================== Legendary Handle Types ================ -->  
+  <!-- Shaft Handle Legendary Class -->
+  <ThingDef Name="MedTimes_Melee_Leg_Shaft" ParentName="MedTimes_Melee_Leg" Abstract="True">
+    <tools>
+      <li>
+        <label>shaft</label>
+        <capacities>
+          <li>Blunt</li>
+          <li>Poke</li>
+        </capacities>
+        <power>18.6</power>
+        <cooldownTime>2.1</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>  
+
+  <!-- Basic Handle Legendary Class -->
+  <ThingDef Name="MedTimes_Melee_Leg_Handle" ParentName="MedTimes_Melee_Leg" Abstract="True">
+    <tools>
+      <li>
+        <label>handle</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>15.5</power>
+        <cooldownTime>1.95</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>  
+  
+  
+  
+<!-- ================== Super Legendary X Types ================ -->  
+<!-- (Legendary) Melee Weapon Base Class -->
+  <ThingDef Name="MedTimes_Melee_LegX" ParentName="MedTimes_Melee_Rare" Abstract="True">
+    <useHitPoints>False</useHitPoints>
+    <thingCategories><li>WeaponsMelee_Leg</li></thingCategories>	
+    <tradeTags><li>MedTimes_Legendary</li></tradeTags>
+    <thingSetMakerTags>
+      <li>RewardSpecial</li>
+    </thingSetMakerTags>	
+  </ThingDef>    
+
+  
+<!-- ================== Legendary X Handle Types ================ -->  
+<!-- Shaft Handle Legendary Class -->
+  <ThingDef Name="MedTimes_Melee_LegX_Shaft" ParentName="MedTimes_Melee_LegX" Abstract="True">
+    <tools>
+      <li>
+        <label>shaft</label>
+        <capacities>
+          <li>Blunt</li>
+          <li>Poke</li>
+        </capacities>
+        <power>19</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>  
+
+<!-- Basic Handle Legendary Class -->
+  <ThingDef Name="MedTimes_Melee_LegX_Handle" ParentName="MedTimes_Melee_LegX" Abstract="True">
+    <tools>
+      <li>
+        <label>handle</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>15</power>
+        <cooldownTime>1.8</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+
+  
+  
+<!-- ========================= ACTUAL WEAPONS ===================================== -->
+<!-- ========================= Melee Weapons (Artifact) ===================================== -->
+<!-- (Medieval) Blackheart - 1h Knife -->
+  <ThingDef ParentName="MedTimes_Melee_Art_Handle">
+    <defName>MedTimes_Melee_KnifeBlackheart_Art</defName>
+    <label>Blackheart (Art)</label>
+    <description>(Artifact)(Cut)[MeleeHit: +8%] Apparently this is supposed to be a "Bowie" knife, but the blade length of over a foot leaves one to wonder if the term "knife" should truly be used to describe the blade. The pattern weld blade is of high quality and despite it's size it is truly agile in the hand. Several of these knives are scattered around the planet and each one is not only considered a treasure, but is highly sought after by soldiers and collectors alike.</description>
+
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_KnifeBlackheart</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_KnifeBlackheart_Art</uiIconPath>	
+    <equippedAngleOffset>-40</equippedAngleOffset>
+	
+    <statBases>
+		<MarketValue>3800</MarketValue>
+		<Mass>0.8</Mass>	
+    </statBases>
+    <tools>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>1.6</cooldownTime>
+      </li>
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>14.5</power>
+        <cooldownTime>1.6</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef> 
+  
+  
+<!-- (Medieval) Techno Sword - 1h Sword -->
+  <ThingDef ParentName="MedTimes_Melee_Art_Handle">
+    <defName>MedTimes_Melee_SwordTechno_Art</defName>
+    <label>Techno Sword (Art)</label>
+    <description>(Artifact)(Cut)[MeleeHit: +8%] This the sword feels odd in the hand and clumsy in the swing. It's center of balance is off and it's grip is uncomfortable. It is clear that this swords creator was not a practitioner of the martial arts or swordplay in general. Having said that this sword is still a marvel of modern technology. It is lightweight and unbelievably sturdy in it's construction. The sword uses condensed electricity to create a plasma like effect along it's edge. Heater coils at the center of the blade prevent it from overheating and condensator conduits regulate the heat and distribution. The sword is made primarily of plasteel along with a various unknown components and materials, the handle being made from some form of rubber and synthetic leather. This sword was likely mass-produced on a glitter-world for military applications, which means it was never used in actual combat. Their are quite a few of these kicking around the planet, the poor glitter-world soldier who wound up here probably pissed himself before giving up the blade, voluntarily or not.</description>
+
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_SwordTechno</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_SwordTechno_Art</uiIconPath>	
+    <equippedAngleOffset>-40</equippedAngleOffset>
+	
+    <statBases>
+		<MarketValue>4000</MarketValue>
+		<Mass>1.0</Mass>	
+    </statBases>
+
+    <tools>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>16</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>18.5</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef> 
+
+  
+<!-- (Medieval) Fun Bunny Mace - 1h Mace -->
+  <ThingDef ParentName="MedTimes_Melee_Art_Handle">
+    <defName>MedTimes_Melee_FunBunny_Art</defName>
+    <label>Fun Bunny (Art)</label>
+     <description>(Artifact)(Blunt)[MeleeHit: +8%] The warlord known as Torvald was an exceptionally cruel man. It is stated that every Saturday he would hold the public executions of his enemies. Among his followers it was considered a "holy day", and the executions would take on a theatrical tone. It is said that Torvald himself would take part in the public executions and would always use a weapon which he would refer to as his "Fun Bunny" because of the funny ears on the handle. It is also said that he would wrap the end of these peculiar maces in barbed wire to increase the spectacle of the executions. He would continue to beat the corpses of his victims until the handle of his "Fun Bunny" broke off and than lament to his audience at the loss of his "Fun Bunny". It is said that he was continually trying to "add strokes" to his "game", extending the gruesome display for his audience. Torvald likely had hundreds of these made and this mace is probably a genuine article. It's history might make some uneasy, but it's hard to deny it's value as a tool of war. Besides, their is no way of knowing if this one was used or if it is even actually one of those maces or simply a reproduction...</description>
+
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_FunBunny</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_FunBunny_Art</uiIconPath>	
+    <equippedAngleOffset>-40</equippedAngleOffset>
+	
+    <statBases>
+		<MarketValue>3200</MarketValue>
+		<Mass>1.5</Mass>	
+    </statBases>
+
+    <tools>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>18</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>16.5</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+      <li>
+        <label>impact</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>15</power>
+        <cooldownTime>2</cooldownTime>
+      </li>	  
+    </tools>
+  </ThingDef> 
+  
+  
+<!-- (Medieval) Viscious - 2h Sword -->
+  <ThingDef ParentName="MedTimes_Melee_Art_Handle">
+    <defName>MedTimes_Melee_SwordVicious_Art</defName>
+    <label>Viscious (Art)</label>
+    <description>(Artifact)(Cut)[MeleeHit: +8%] It appears to be an old katana with a Damascus like pattern weld on the blade. Although old and a bit rusty, it is of high quality and in great condition. Their are a few of these kicking around on the planet and not much is known about their origins. Most likely they where a collectors items on a nearby glitter-world and wound up here through some act of great stupidity. At one point you heard a tall-tale that it was a sword collectors convention were they wanted to test out some blades on local wildlife. Of course things went horribly wrong for them when some local raiders showed up instead. Pure speculation, I'm sure, but still an interesting story.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_SwordVicious</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_SwordVicious_Art</uiIconPath>	
+    <equippedAngleOffset>-40</equippedAngleOffset>
+
+    <statBases>
+		<MarketValue>4200</MarketValue>
+		<Mass>1.0</Mass>	
+    </statBases>
+
+    <tools>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>18</power>
+        <cooldownTime>1.95</cooldownTime>
+      </li>
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>18.5</power>
+        <cooldownTime>1.95</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>    
+  
+<!-- (Medieval) The Wargod - 2h Sword -->
+  <ThingDef ParentName="MedTimes_Melee_Art_Handle">
+    <defName>MedTimes_Melee_SwordWargod_Art</defName>
+    <label>The Wargod (Art)</label>
+    <description>(Artifact)(Cut)[MeleeHit: +8%] The famous warrior known as Pang Li or "Mud Tiger" to his enemies sowed a story of chaos and destruction across the southern continents of this world. A small general who fought against an overwhelmingly large empire, He would have had a massive empire himself to rival the great conquorers of history, if not for the fact that he pillaged and burned everything in his wake. The events took place thousands of years ago and the effects of his bloody rampage can still be felt to this day. His sword known as "The Wargod" is famous and now resides in stories of legend, heraldry and on many lords banners throughout the land. This sword is a faithful recreation of that legendary blade, or perhaps the blade itself, One can never really tell.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_WarGod</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_WarGod_Art</uiIconPath>	
+    <equippedAngleOffset>-40</equippedAngleOffset>
+
+    <statBases>
+		<MarketValue>4600</MarketValue>
+		<Mass>1.6</Mass>	
+    </statBases>
+
+    <tools>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>12.5</power>
+        <cooldownTime>2.3</cooldownTime>
+      </li>
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>25</power>
+        <cooldownTime>2.3</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>      
+  
+  
+<!-- (Medieval) Caladbog - 2h Sword -->
+  <ThingDef ParentName="MedTimes_Melee_Art_Handle">
+    <defName>MedTimes_Melee_SwordCaladbog_Art</defName>
+    <label>Caladbog (Art)</label>
+    <description>(Artifact)(Cut)[MeleeHit: +8%] A legendary great-sword originally wielded by Fergus mac Róich. The term Caladbog means "Hard Cleft", and referred to the blades ability to cut through the more common iron blades of the time. It is rumored to have been passed down until it fell in the hands of King Arthur of Camelot at which point the blade was referred to as Caliburn. Eventually through romanticization and the great tradition of story telling, the blade became commonly known as Excalibur. Weather or not this is the actual blade or merely a reproduction is unknown, however, one would assume this is merely a knock off imitation of the actual blade, especially as their are rumours of a nearby industrial world mass producing these. The blades materials are high quality and massive amounts of effort and technical expertise went into it's construction. At the very least, this is the finest blade money can buy.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_SwordCaladbog</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_SwordCaladbog_Art</uiIconPath>	
+    <equippedAngleOffset>-40</equippedAngleOffset>
+
+    <statBases>
+		<MarketValue>4300</MarketValue>
+		<Mass>1.25</Mass>	
+    </statBases>
+
+    <tools>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>20</power>
+        <cooldownTime>2.5</cooldownTime>
+      </li>
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>25</power>
+        <cooldownTime>2.5</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>   
+
+  
+<!-- (Medieval) Answeller - 2h Sword -->
+  <ThingDef ParentName="MedTimes_Melee_Art_Handle">
+    <defName>MedTimes_Melee_SwordAnsweller_Art</defName>
+    <label>Answeller (Art)</label>
+    <description>(Artifact)(Cut)[MeleeHit: +8%] Also known as the "Ice Fang Blade". Answeller is the legendary blade used by the Hero and eventual king of the north "Balbarous". The legend details the epic rise and fall of the northern kingdom known as Escalia and it's struggles against the empire known simply as "The Great Father's Court". The story is full of politics and treason and eventually ends with the fall of Escalia. Escalia's fall came after Balbarous's brother, Saboba marries his secret lover Cassandra, She is the Daughter of Melatoris and is considered a princess of "The Great Father's Court". After this marriage Saboba turns his army on his brother and with the aid of Cassandra and her father's armies an epic battle occurs in a place known as "The fields of snow and ice" which is often described as a large underground cavern. According to legend, Balbarous is slain and the world falls under the "Tyranny of the sun". In the stories the deft sword is described in detail, including the famous blue crystal gem encased in the pommel which is known as the "Heart of the North". As a result over the years many skilled blacksmiths have gone to great lengths to re-create the blade as it was described in legend. whether this is the legendary blade or simply another recreation is unknown, however it is clearly a finely crafted blade made of exquisite materials.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_SwordAnsweller</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_SwordAnsweller_Art</uiIconPath>	
+    <equippedAngleOffset>-40</equippedAngleOffset>
+
+    <statBases>
+		<MarketValue>5200</MarketValue>
+		<Mass>1.25</Mass>	
+    </statBases>
+    <tools>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>21</power>
+        <cooldownTime>2.4</cooldownTime>
+      </li>
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>24</power>
+        <cooldownTime>2.4</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>   
+
+ 
+<!-- (Medieval) Talent Breaker - 2h Club -->
+  <ThingDef ParentName="MedTimes_Melee_Art_Shaft">
+    <defName>MedTimes_Melee_ClubTalentBreaker_Art</defName>
+    <label>Talent Breaker (Art)</label>
+    <description>(Artifact)(Blunt)[MeleeHit: +8%] A local favorite on this Rimworld, these massive clubs are mass produced on nearby industrial worlds and shipped to various Rimworlds across the system. This combined with a handful of resourceful local towns capable of production means their are quite a few of these kicking around. These clubs are colloquially known as "Talent Breakers" as they have been used by unskilled practitioners to defeat their more talented adversaries. A lucky strike with this weapon can cripple or kill a heavily armoured opponent outright. As such many local lords have begun regulating the sale and use of this and various other weapons to try and minimize the risk of them falling into the hands of raiders and brigands.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_ClubTalentBreaker</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_ClubTalentBreaker_Art</uiIconPath>	
+    <equippedAngleOffset>-40</equippedAngleOffset>
+
+    <statBases>
+		<MarketValue>3000</MarketValue>
+		<Mass>2</Mass>	
+    </statBases>
+
+    <tools>
+      <li>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>25</power>
+        <cooldownTime>2.5</cooldownTime>
+      </li>
+    </tools>
+	
+  </ThingDef>   
+
+
+  
+ <!-- ========================= Melee Weapons (Legendary) ===================================== -->  
+
+ <!-- (Medieval) Blackheart - 1h Knife --> 
+  <ThingDef ParentName="MedTimes_Melee_Leg_Handle">
+    <defName>MedTimes_Melee_KnifeBlackheart_Leg</defName>
+    <label>Blackheart (Leg)</label>
+    <description>(Legendary)(Cut)[MeleeHit: +10%] Apparently this is supposed to be a "Bowie" knife, but the blade length of over a foot leaves one to wonder if the term "knife" should truly be used to describe the blade. The pattern weld blade is of high quality and despite it's size it is truly agile in the hand. Several of these knives are scattered around the planet and each one is not only considered a treasure, but is highly sought after by soldiers and collectors alike.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_KnifeBlackheart</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_KnifeBlackheart_Leg</uiIconPath>	
+    <equippedAngleOffset>-40</equippedAngleOffset>
+	<costList><MedTimes_Melee_KnifeBlackheart_Art>1</MedTimes_Melee_KnifeBlackheart_Art></costList>	
+    <statBases>
+		<Mass>0.8</Mass>	
+    </statBases>
+    <tools>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>18.6</power>
+        <cooldownTime>1.6</cooldownTime>
+      </li>
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>22</power>
+        <cooldownTime>1.6</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef> 
+  
+
+<!-- (Medieval) Techno Sword - 1h Sword -->
+  <ThingDef ParentName="MedTimes_Melee_Leg_Handle">
+    <defName>MedTimes_Melee_SwordTechno_Leg</defName>
+    <label>Techno Sword (Leg)</label>
+    <description>(Legendary)(Cut)[MeleeHit: +10%] This the sword feels odd in the hand and clumsy in the swing. It's center of balance is off and it's grip is uncomfortable. It is clear that this swords creator was not a practitioner of the martial arts or swordplay in general. Having said that this sword is still a marvel of modern technology. It is lightweight and unbelievably sturdy in it's construction. The sword uses condensed electricity to create a plasma like effect along it's edge. Heater coils at the center of the blade prevent it from overheating and condensator conduits regulate the heat and distribution. The sword is made primarily of plasteel along with a various unknown components and materials, the handle being made from some form of rubber and synthetic leather. This sword was likely mass-produced on a glitter-world for military applications, which means it was never used in actual combat. Their are quite a few of these kicking around the planet, the poor glitter-world soldier who wound up here probably pissed himself before giving up the blade, voluntarily or not.</description>
+
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_SwordTechno</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_SwordTechno_Leg</uiIconPath>	
+    <equippedAngleOffset>-40</equippedAngleOffset>
+	<costList><MedTimes_Melee_SwordTechno_Art>1</MedTimes_Melee_SwordTechno_Art></costList>	
+    <statBases>
+		<Mass>1.0</Mass>	
+    </statBases>
+    <tools>
+     <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>24</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>28</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef> 
+
+<!-- (Medieval) Fun Bunny Mace - 1h Mace -->
+  <ThingDef ParentName="MedTimes_Melee_Leg_Handle">
+    <defName>MedTimes_Melee_FunBunny_Leg</defName>
+    <label>Fun Bunny (Leg)</label>
+    <description>(Legendary)(Blunt)[MeleeHit: +10%] The warlord known as Torvald was an exceptionally cruel man. It is stated that every Saturday he would hold the public executions of his enemies. Among his followers it was considered a "holy day", and the executions would take on a theatrical tone. It is said that Torvald himself would take part in the public executions and would always use a weapon which he would refer to as his "Fun Bunny" because of the funny ears on the handle. It is also said that he would wrap the end of these peculiar maces in barbed wire to increase the spectacle of the executions. He would continue to beat the corpses of his victims until the handle of his "Fun Bunny" broke off and than lament to his audience at the loss of his "Fun Bunny". It is said that he was continually trying to "add strokes" to his "game", extending the gruesome display for his audience. Torvald likely had hundreds of these made and this mace is probably a genuine article. It's history might make some uneasy, but it's hard to deny it's value as a tool of war. Besides, their is no way of knowing if this one was used or if it is even actually one of those maces or simply a reproduction...</description>
+
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_FunBunny</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_FunBunny_Leg</uiIconPath>	
+    <equippedAngleOffset>-40</equippedAngleOffset>
+	
+	<costList><MedTimes_Melee_FunBunny_Art>1</MedTimes_Melee_FunBunny_Art></costList>
+	
+    <statBases>
+		<Mass>1.5</Mass>	
+    </statBases>
+
+    <tools>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>28</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>25.5</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+      <li>
+        <label>impact</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>23.2</power>
+        <cooldownTime>2</cooldownTime>
+      </li>	  
+    </tools>
+  </ThingDef> 
+
+  
+<!-- (Medieval) Viscious - 2h Sword -->
+  <ThingDef ParentName="MedTimes_Melee_Leg_Handle">
+    <defName>MedTimes_Melee_SwordVicious_Leg</defName>
+    <label>Viscious (Leg)</label>
+    <description>(Legendary)(Cut)[MeleeHit: +10%] It appears to be an old katana with a Damascus like pattern weld on the blade. Although old and a bit rusty, it is of high quality and in great condition. Their are a few of these kicking around on the planet and not much is known about their origins. Most likely they where a collectors items on a nearby glitter-world and wound up here through some act of great stupidity. At one point you heard a tall-tale that it was a sword collectors convention were they wanted to test out some blades on local wildlife. Of course things went horribly wrong for them when some local raiders showed up instead. Pure speculation, I'm sure, but still an interesting story.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_SwordVicious</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_SwordVicious_Leg</uiIconPath>	
+    <equippedAngleOffset>-40</equippedAngleOffset>
+	<costList><MedTimes_Melee_SwordVicious_Art>1</MedTimes_Melee_SwordVicious_Art></costList>
+    <statBases>
+		<Mass>1.0</Mass>	
+    </statBases>
+    <tools>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>28</power>
+        <cooldownTime>1.95</cooldownTime>
+      </li>
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>28.6</power>
+        <cooldownTime>1.95</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>  
+  
+<!-- (Medieval) The Wargod - 2h Sword -->
+  <ThingDef ParentName="MedTimes_Melee_Leg_Handle">
+    <defName>MedTimes_Melee_SwordWargod_Leg</defName>
+    <label>The Wargod (Leg)</label>
+    <description>(Artifact)(Cut)[MeleeHit: +10%] The famous warrior known as Pang Li or "Mud Tiger" to his enemies sowed a story of chaos and destruction across the southern continents of this world. A small general who fought against an overwhelmingly large empire, He would have had a massive empire himself to rival the great conquorers of history, if not for the fact that he pillaged and burned everything in his wake. The events took place thousands of years ago and the effects of his bloody rampage can still be felt to this day. His sword known as "The Wargod" is famous and now resides in stories of legend, heraldry and on many lords banners throughout the land. This sword is a faithful recreation of that legendary blade, or perhaps the blade itself, One can never really tell.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_WarGod</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_WarGod_Leg</uiIconPath>	
+    <equippedAngleOffset>-40</equippedAngleOffset>
+	<costList><MedTimes_Melee_SwordWargod_Art>1</MedTimes_Melee_SwordWargod_Art></costList>
+    <statBases>
+		<Mass>1.6</Mass>	
+    </statBases>
+    <tools>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>19</power>
+        <cooldownTime>2.3</cooldownTime>
+      </li>
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>38</power>
+        <cooldownTime>2.3</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>  
+  
+<!-- (Medieval) Caladbog - 2h Sword -->
+  <ThingDef ParentName="MedTimes_Melee_Leg_Handle">
+    <defName>MedTimes_Melee_SwordCaladbog_Leg</defName>
+    <label>Caladbog (Leg)</label>
+    <description>(Legendary)(Cut)[MeleeHit: +10%] A legendary great-sword originally wielded by Fergus mac Róich. The term Caladbog means "Hard Cleft", and referred to the blades ability to cut through the more common iron blades of the time. It is rumored to have been passed down until it fell in the hands of King Arthur of Camelot at which point the blade was referred to as Caliburn. Eventually through romanticization and the great tradition of story telling, the blade became commonly known as Excalibur. Weather or not this is the actual blade or merely a reproduction is unknown, however, one would assume this is merely a knock off imitation of the actual blade, especially as their are rumours of a nearby industrial world mass producing these. The blades materials are high quality and massive amounts of effort and technical expertise went into it's construction. At the very least, this is the finest blade money can buy.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_SwordCaladbog</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_SwordCaladbog_Leg</uiIconPath>	
+    <equippedAngleOffset>-40</equippedAngleOffset>
+	<costList><MedTimes_Melee_SwordCaladbog_Art>1</MedTimes_Melee_SwordCaladbog_Art></costList>	
+    <statBases>
+		<Mass>1.25</Mass>	
+    </statBases>
+    <tools>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>31</power>
+        <cooldownTime>2.5</cooldownTime>
+      </li>
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>39</power>
+        <cooldownTime>2.5</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef> 
+
+  
+ <!-- (Medieval) Answeller - 2h Sword -->
+  <ThingDef ParentName="MedTimes_Melee_Leg_Handle">
+    <defName>MedTimes_Melee_SwordAnsweller_Leg</defName>
+    <label>Answeller (Leg)</label>
+    <description>(Legendary)(Cut)[MeleeHit: +10%] Also known as the "Ice Fang Blade". Answeller is the legendary blade used by the Hero and eventual king of the north "Balbarous". The legend details the epic rise and fall of the northern kingdom known as Escalia and it's struggles against the empire known simply as "The Great Father's Court". The story is full of politics and treason and eventually ends with the fall of Escalia. Escalia's fall came after Balbarous's brother, Saboba marries his secret lover Cassandra, She is the Daughter of Melatoris and is considered a princess of "The Great Father's Court". After this marriage Saboba turns his army on his brother and with the aid of Cassandra and her father's armies an epic battle occurs in a place known as "The fields of snow and ice" which is often described as a large underground cavern. According to legend, Balbarous is slain and the world falls under the "Tyranny of the sun". In the stories the deft sword is described in detail, including the famous blue crystal gem encased in the pommel which is known as the "Heart of the North". As a result over the years many skilled blacksmiths have gone to great lengths to re-create the blade as it was described in legend. whether this is the legendary blade or simply another recreation is unknown, however it is clearly a finely crafted blade made of exquisite materials.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_SwordAnsweller</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_SwordAnsweller_Leg</uiIconPath>	
+    <equippedAngleOffset>-40</equippedAngleOffset>
+	<costList><MedTimes_Melee_SwordAnsweller_Art>1</MedTimes_Melee_SwordAnsweller_Art></costList>
+    <statBases>
+		<Mass>1.25</Mass>	
+    </statBases>
+    <tools>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>32.5</power>
+        <cooldownTime>2.4</cooldownTime>
+      </li>
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>37</power>
+        <cooldownTime>2.4</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>   
+
+  
+<!-- (Medieval) Talent Breaker - 2h Club -->
+  <ThingDef ParentName="MedTimes_Melee_Leg_Shaft">
+    <defName>MedTimes_Melee_ClubTalentBreaker_Leg</defName>
+    <label>Talent Breaker (Leg)</label>
+    <description>(Artifact)(Blunt)[MeleeHit: +10%] A local favorite on this Rimworld, these massive clubs are mass produced on nearby industrial worlds and shipped to various Rimworlds across the system. This combined with a handful of resourceful local towns capable of production means their are quite a few of these kicking around. These clubs are colloquially known as "Talent Breakers" as they have been used by unskilled practitioners to defeat their more talented adversaries. A lucky strike with this weapon can cripple or kill a heavily armoured opponent outright. As such many local lords have begun regulating the sale and use of this and various other weapons to try and minimize the risk of them falling into the hands of raiders and brigands.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_ClubTalentBreaker</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_ClubTalentBreaker_Leg</uiIconPath>	
+    <equippedAngleOffset>-40</equippedAngleOffset>
+	<costList><MedTimes_Melee_ClubTalentBreaker_Art>1</MedTimes_Melee_ClubTalentBreaker_Art></costList>
+    <statBases>
+		<Mass>2</Mass>	
+    </statBases>
+    <tools>
+      <li>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>39</power>
+        <cooldownTime>2.5</cooldownTime>
+      </li>
+    </tools>		
+  </ThingDef>   
+
+  
+<!-- ================ Super Special Weapons ================== --> 
+<!-- (Medieval) Fragment of Mjolnir - 1h Hammer -->
+  <ThingDef ParentName="MedTimes_Melee_LegX_Handle">
+    <defName>MedTimes_Melee_HammerFragment_Leg</defName>
+    <label>Fragment of Mjolnir (Leg)</label>
+    <description>(Legendary)(Blunt)[GeneralLaborSpeed: +15%][MeleeHit: +12%] In Norse tradition Mjolnir is the hammer of the God Thor, said to be able to summon lightning, level mountains or craft the greatest of weapons. This is not that, but rather claims to have a fragment of the once legendary hammer encased in its center. The truth of these claims is highly sceptical. However, it is true that the hammer itself is of extraordinary value, containing somewhat mystical properties. In the center appears to be some sort of gem. The gem pulsates in the light and shimmers as if it is on fire. Small black tendrils seem to have over many centuries wormed their way out towards the surrounding encasement. They seem to be seeking an exit from the gemstone's prison and the encased gemstone is undoubtedly alive. A rare oddity and perhaps extremely dangerous...</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_HammerFragment</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_HammerFragment_Leg</uiIconPath>	
+    <equippedAngleOffset>-40</equippedAngleOffset>
+
+    <statBases>
+		<MarketValue>8500</MarketValue>
+		<Mass>1</Mass>	
+    </statBases>
+	<equippedStatOffsets>
+		<GeneralLaborSpeed>0.15</GeneralLaborSpeed>
+		<MeleeHitChance>0.12</MeleeHitChance> 	
+	</equippedStatOffsets>
+    <tools>
+      <li>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>32</power>
+        <cooldownTime>2.0</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef> 
+  
+  
+<!-- (Medieval) Vidar's Cleaver - 2h Axe -->
+  <ThingDef ParentName="MedTimes_Melee_LegX_Shaft">
+    <defName>MedTimes_Melee_AxeBlood_Leg</defName>
+    <label>Blood Blade (Leg)</label>
+    <description>(Legendary)(Cut)[MeleeHit: +12%] Blood blades are said to be mystical items, cursed by the hundreds or potentially thousands of lost souls slain upon their edge. Distinct for their blood red blade which seems to shift in the light, they will occasionally surface from time to time and are highly valued by collectors and warriors alike.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_AxeBlood</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_AxeBlood_Leg</uiIconPath>	
+    <equippedAngleOffset>-40</equippedAngleOffset>
+
+    <statBases>
+		<MarketValue>8100</MarketValue>
+		<Mass>2</Mass>	
+    </statBases>
+
+	<equippedStatOffsets>
+		<MeleeHitChance>0.12</MeleeHitChance> 	
+	</equippedStatOffsets>	
+    <tools>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>40</power>
+        <cooldownTime>3</cooldownTime>
+      </li>	  
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>48</power>
+        <cooldownTime>3</cooldownTime>
+      </li>
+    </tools>	
+  </ThingDef>   
+
+  
+<!-- (Medieval) Vidar's Cleaver - 2h Axe -->
+  <ThingDef ParentName="MedTimes_Melee_LegX_Shaft">
+    <defName>MedTimes_Melee_AxeVidar_Leg</defName>
+    <label>Vidar's Cleaver (Leg)</label>
+    <description>(Legendary)(Cut)[MeleeHit: +12%] No one knows where these barbaric looking 2-handed axes came from, only that they have woven a tale of bloodshed on the battlefield. It is not uncommon to see one of these axes split a man in two when in the hands of a skilled practitioner. As such these particular axes have become highly sought after by collectors and warlords alike. Locals have named the weapon after Vidar, the Norse god of war and vengeance. Said to be patron to mercenaries everywhere, He is the son of Odin and is known as the silent god with a heavy boot. He is also said to be second in power only to Thor, meaning stronger than Odin himself.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_AxeVidar</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_AxeVidar_Leg</uiIconPath>	
+    <equippedAngleOffset>-40</equippedAngleOffset>
+
+    <statBases>
+		<MarketValue>9000</MarketValue>
+		<Mass>3</Mass>	
+    </statBases>
+
+	<equippedStatOffsets>
+		<MeleeHitChance>0.12</MeleeHitChance> 	
+	</equippedStatOffsets>	
+    <tools>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>40</power>
+        <cooldownTime>3</cooldownTime>
+      </li>	  
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>50</power>
+        <cooldownTime>3</cooldownTime>
+      </li>
+    </tools>	
+  </ThingDef>   
+
+  
+<!-- (Medieval) Void Hammer - 2h Hammer -->
+  <ThingDef ParentName="MedTimes_Melee_LegX_Shaft">
+    <defName>MedTimes_Melee_HammerVoid_Leg</defName>
+    <label>Void Hammer (Leg)</label>
+    <description>(Legendary)(Blunt)[MeleeHit: +12%] A 2-handed hammer that has become a local legend, several of these are floating around all made by the same creator some time ago. The craftsmanship is top notch, but as beautiful as the craftsmanship is, it's the stone that the hammer is made of that is truly unique. It is a smooth black stone that feels cold to the touch and is simply referred to as a "Void Stone". No one knows how they are made, but a high end scientist named "Davin" from a local glitter-world hypothesized that they are actually some form of a prince Rupert's drop that contains a small amount of dark matter inside. Either way the stones are notoriously heavy and pretty much indestructible.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_HammerVoid</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_HammerVoid_Leg</uiIconPath>	
+    <equippedAngleOffset>-40</equippedAngleOffset>
+
+    <statBases>
+		<MarketValue>8800</MarketValue>
+		<Mass>3</Mass>	
+    </statBases>
+
+	<equippedStatOffsets>
+		<MeleeHitChance>0.12</MeleeHitChance> 	
+	</equippedStatOffsets>
+	
+    <tools>
+      <li>
+        <label>head</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>50</power>
+        <cooldownTime>3</cooldownTime>
+      </li>
+    </tools>	
+  </ThingDef>   
+  
+<!-- End of thingDefs --> 
+</Defs>

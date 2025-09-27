@@ -1,0 +1,64 @@
+<Patch>
+
+    <!-- Crashlanded -->
+    <Operation Class="PatchOperationAdd">
+        <xpath>/Defs/ScenarioDef[defName="Crashlanded"]/scenario/parts</xpath>
+        <value>
+			<li Class="ScenPart_ScatterThingsAnywhere">
+			  <def>ScatterThingsAnywhere</def>
+			  <thingDef>WoodLog</thingDef>
+			  <count>400</count>
+			</li>      
+			<li Class="ScenPart_ScatterThingsNearPlayerStart">
+			  <def>ScatterThingsNearPlayerStart</def>
+			  <thingDef>Cloth</thingDef>
+			  <count>175</count>
+			</li>    
+        </value>
+    </Operation>
+	
+	<Operation Class="PatchOperationSequence">
+	  <success>Always</success>
+	  <operations>
+		<li Class="PatchOperationTest">
+		  <xpath>/Defs/ScenarioDef[defName="Crashlanded"]/scenario/parts/li[def="StartingThing_Defined" and thingDef="Apparel_FlakPants"]</xpath>
+		</li>	  
+		<li Class="PatchOperationTest">
+		  <xpath>/Defs/ScenarioDef[defName="Crashlanded"]/scenario/parts/li[def="StartingThing_Defined" and thingDef="Apparel_FlakPants"]/stuff</xpath>
+		  <success>Invert</success>
+		</li>	  
+		<li Class="PatchOperationAdd">
+			<xpath>/Defs/ScenarioDef[defName="Crashlanded"]/scenario/parts/li[def="StartingThing_Defined" and thingDef="Apparel_FlakPants"]</xpath>
+			<value>
+				<stuff>Plasteel</stuff>
+			</value>
+		</li>	  
+	  </operations>
+	</Operation>
+	
+	<Operation Class="PatchOperationSequence">
+	  <success>Always</success>
+	  <operations>
+		<li Class="PatchOperationTest">
+		  <xpath>/Defs/ScenarioDef[defName="Crashlanded"]/scenario/parts/li[def="StartingThing_Defined" and thingDef="Apparel_FlakVest"]</xpath>
+		</li>	  
+		<li Class="PatchOperationTest">
+		  <xpath>/Defs/ScenarioDef[defName="Crashlanded"]/scenario/parts/li[def="StartingThing_Defined" and thingDef="Apparel_FlakVest"]/stuff</xpath>
+		  <success>Invert</success>
+		</li>	  
+		<li Class="PatchOperationAdd">
+			<xpath>/Defs/ScenarioDef[defName="Crashlanded"]/scenario/parts/li[def="StartingThing_Defined" and thingDef="Apparel_FlakVest"]</xpath>
+			<value>
+				<stuff>Plasteel</stuff>
+			</value>
+		</li>	  
+	  </operations>
+	</Operation>
+
+    <Operation Class="PatchOperationAttributeSet">
+        <xpath>/Defs/ScenarioDef[defName="LostTribe"]</xpath>
+		<attribute>Name</attribute>
+		<value>MedTimes_LostTribe</value>
+    </Operation>
+	
+</Patch>

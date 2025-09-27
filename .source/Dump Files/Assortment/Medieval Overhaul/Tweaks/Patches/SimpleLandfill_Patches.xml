@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="XmlExtensions.FindMod">
+    <mods>
+      <li>Simple Landfill</li>
+    </mods>
+    <logic>and</logic>
+    <caseTrue>
+
+      <li Class="XmlExtensions.OptionalPatch">
+        <modId>zenlor.MOTweaks</modId>
+        <key>mot-integration-simplelandfill</key>
+        <defaultValue>True</defaultValue>
+        <caseTrue>
+
+            <li Class="PatchOperationReplace">
+                <xpath>/Defs/ResearchProjectDef[defName="Moat"]/techLevel</xpath>
+                <value>
+                    <techLevel>Neolithic</techLevel>
+                </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+                <xpath>/Defs/ResearchProjectDef[defName="Moat"]/researchViewX</xpath>
+                <value>
+                    <researchViewX>4.00</researchViewX>
+                </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+                <xpath>/Defs/ResearchProjectDef[defName="Moat"]/researchViewY</xpath>
+                <value>
+                    <researchViewY>4.65</researchViewY>
+                </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+                <xpath>/Defs/ResearchProjectDef[defName="SoilLaying"]/techLevel</xpath>
+                <value>
+                    <techLevel>Medieval</techLevel>
+                </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+                <xpath>/Defs/ResearchProjectDef[defName="SoilLaying"]/researchViewX</xpath>
+                <value>
+                    <researchViewX>5.00</researchViewX>
+                </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+                <xpath>/Defs/ResearchProjectDef[defName="SoilLaying"]/researchViewY</xpath>
+                <value>
+                    <researchViewY>4.65</researchViewY>
+                </value>
+            </li>
+
+            <li Class="PatchOperationAdd">
+                <xpath>/Defs/ResearchProjectDef[defName="SoilLaying"]</xpath>
+                <value>
+                    <prerequisites>
+                        <li>Moat</li>
+                    </prerequisites>
+                </value>
+            </li>
+
+
+        </caseTrue>
+      </li>
+    </caseTrue>
+  </Operation>
+</Patch>

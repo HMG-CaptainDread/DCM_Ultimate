@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+
+	<!--Add TS_ThinkingSpot to Workgiver-->
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/WorkGiverDef[defName = "Research"]/fixedBillGiverDefs</xpath>
+		<value>
+			<li>TS_ThinkingSpot</li>
+		</value>
+	</Operation>
+	<!--Add TS_ThinkingSpot to Recipe-->
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/RecipeDef[defName = "ResearchTech"]/recipeUsers</xpath>
+		<value>
+			<li>TS_ThinkingSpot</li>
+		</value>
+	</Operation>
+	<!--Add Bill and Bookshelf to TS_ThinkingSpot-->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "TS_ThinkingSpot"]/thingClass</xpath>
+		<value>
+			<thingClass>Building_WorkTable</thingClass>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName = "TS_ThinkingSpot"]</xpath>
+		<value>
+			<inspectorTabs>
+				<li>ITab_Bills</li>
+			</inspectorTabs>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationConditional">
+		<xpath>/Defs/ThingDef[defName = "TS_ThinkingSpot"]/comps</xpath>
+		<match Class="PatchOperationConditional">
+			<xpath>/Defs/ThingDef[defName = "TS_ThinkingSpot"]/comps/li/linkableFacilities</xpath>
+			<nomatch Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName = "TS_ThinkingSpot"]/comps</xpath>
+				<value>
+					<li Class="CompProperties_AffectedByFacilities">
+						<linkableFacilities />
+					</li>
+				</value>
+			</nomatch>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[defName = "TS_ThinkingSpot"]</xpath>
+			<value>
+				<comps>
+					<li Class="CompProperties_AffectedByFacilities">
+						<linkableFacilities />
+					</li>
+				</comps>
+			</value>
+		</nomatch>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName = "TS_ThinkingSpot"]/comps/li/linkableFacilities</xpath>
+		<value>
+			<li>BookShelf</li>
+		</value>
+	</Operation>
+
+</Patch>

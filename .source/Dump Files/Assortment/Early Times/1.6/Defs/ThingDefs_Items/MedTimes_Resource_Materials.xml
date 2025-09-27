@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Ice Blocks -->
+  <ThingDef ParentName="MedTimes_ResourceBase">
+    <defName>MedTimes_Resource_IceBlocks</defName>
+    <label>Ice Blocks</label>
+    <description>Water which has been frozen to create Ice, unbelievably an extremely valuable resource, especially in hot environments. Careful as ice tends to melt at above 0°C</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Ice/MedTimes_IceBlocks</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Stone_Drop</soundInteract>
+    <soundDrop>Stone_Drop</soundDrop>
+    <statBases>
+      <MaxHitPoints>30</MaxHitPoints>	
+      <MarketValue>3.5</MarketValue>
+      <DeteriorationRate>15</DeteriorationRate>
+      <Mass>0.5</Mass>	  
+    </statBases>
+    <thingCategories>
+      <li>ResourcesRaw</li>
+    </thingCategories>
+    <stuffProps>
+      <stuffAdjective>Ice</stuffAdjective>
+      <appearance>Bricks</appearance>	  
+      <categories>
+        <li>MedTimes_Ice</li>		
+      </categories>  
+      <color>(180,210,230)</color>
+      <commonality>0.01</commonality>
+      <constructEffect>ConstructMetal</constructEffect>
+      <soundImpactBullet>BulletImpact_Ground</soundImpactBullet>
+      <soundMeleeHitSharp>MeleeHit_Stone</soundMeleeHitSharp>
+      <soundMeleeHitBlunt>MeleeHit_Stone</soundMeleeHitBlunt>
+      <statOffsets>
+        <Beauty>2</Beauty>
+      </statOffsets>
+      <statFactors>
+        <MaxHitPoints>2</MaxHitPoints>
+        <Flammability>0</Flammability>
+        <Beauty>1.2</Beauty>
+        <WorkToMake>1.2</WorkToMake>
+      </statFactors>	  
+    </stuffProps>
+    <tickerType>Rare</tickerType>		
+	<comps>
+	  <li>
+		<compClass>EarlyTimes.CompStackMelter</compClass>
+	  </li>
+	  <li Class="EarlyTimes.CompProperties_HeatPusherIce">
+		<compClass>CompHeatPusher</compClass>
+		<heatPerSecond>-1</heatPerSecond>
+		<heatPushMinTemperature>1</heatPushMinTemperature>	
+	  </li>
+	</comps>	
+  </ThingDef>
+   
+<!-- Coal Chunks -->  
+  <ThingDef ParentName="ResourceBase">
+    <defName>Resource_Coal</defName>
+    <label>Coal Chunks</label>
+    <description>An extremely brittle rock. worthless in construction, however, it's highly flamable nature makes it great fuel for fire.
+	(Special thanks and credit to "Flesh Forge" for idea's and implementation surrounding Coal concepts.)</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Coal/MedTimes_Coal</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(0.8,0.8)</drawSize>	  
+    </graphicData>
+    <stackLimit>800</stackLimit>  
+    <soundInteract>Stone_Drop</soundInteract>
+    <soundDrop>Stone_Drop</soundDrop>
+    <statBases>
+      <MarketValue>1</MarketValue>
+      <MaxHitPoints>100</MaxHitPoints>	  
+      <Mass>0.1</Mass>
+      <DeteriorationRate>2</DeteriorationRate>
+	  <Beauty>-10</Beauty>	  
+      <Flammability>2.0</Flammability>	  
+    </statBases>
+    <thingCategories>
+      <li>ResourcesRaw</li>
+    </thingCategories>
+    <deepCommonality>5</deepCommonality>
+    <deepCountPerPortion>400</deepCountPerPortion>   
+	<deepLumpSizeRange>
+      <min>21</min>
+      <max>63</max>
+    </deepLumpSizeRange>
+    <stuffProps>
+      <stuffAdjective>Coal</stuffAdjective>	
+      <appearance>Bricks</appearance>	  
+      <categories>
+        <li>MedTimes_Coal</li>
+      </categories>
+      <commonality>0.01</commonality>	  
+      <color>(30,30,30)</color>
+      <constructEffect>ConstructMetal</constructEffect>
+      <soundImpactBullet>BulletImpact_Metal</soundImpactBullet>
+      <soundMeleeHitSharp>MeleeHit_Metal_Sharp</soundMeleeHitSharp>
+      <soundMeleeHitBlunt>MeleeHit_Metal_Blunt</soundMeleeHitBlunt>
+    </stuffProps>
+  </ThingDef>
+  
+</Defs>

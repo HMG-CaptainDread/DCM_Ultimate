@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <FactionDef ParentName="FactionBase" Name="K4G_WW2FactionBase" Abstract="True">
+    <categoryTag>WW2</categoryTag>
+    <listOrderPriority>30</listOrderPriority>
+    <settlementGenerationWeight>1</settlementGenerationWeight>
+    <requiredCountAtGameStart>1</requiredCountAtGameStart>
+    <canMakeRandomly>true</canMakeRandomly>
+    <canSiege>true</canSiege>
+    <canStageAttacks>true</canStageAttacks>
+    <techLevel>Industrial</techLevel>
+    <settlementNameMaker>NamerSettlementOutlander</settlementNameMaker>
+    <disallowedPrecepts>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Male_Mandatory</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Female_Mandatory</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Male_CoveringAnythingButGroinDisapproved</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Female_CoveringAnythingButGroinDisapproved</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Male_NoRules</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Female_NoRules</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Male_UncoveredGroinChestHairOrFaceDisapproved</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Female_UncoveredGroinChestHairOrFaceDisapproved</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">ApparelDesired_Soft_Subordinate</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">ApparelDesired_Strong_Subordinate</li>
+    </disallowedPrecepts>
+    <backstoryFilters>
+      <li>
+        <categories>
+          <li>Outlander</li>
+        </categories>
+        <commonality>1</commonality>
+      </li>
+    </backstoryFilters>
+    <allowedArrivalTemperatureRange>-10~45</allowedArrivalTemperatureRange>
+    <raidLootMaker>K4G_WW2RaidLootMaker</raidLootMaker>
+    <maxPawnCostPerTotalPointsCurve>
+      <points>
+        <li>(0,35)</li>
+        <li>(70, 50)</li>
+        <li>(700, 100)</li>
+        <li>(1300, 150)</li>
+        <li>(100000, 10000)</li>
+      </points>
+    </maxPawnCostPerTotalPointsCurve>
+    <settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
+  </FactionDef>
+  
+  <ThingSetMakerDef>
+    <defName>K4G_WW2RaidLootMaker</defName>
+    <root Class="ThingSetMaker_MarketValue">
+      <fixedParams>
+        <filter>
+          <thingDefs>
+            <li>Silver</li>
+            <li>MedicineIndustrial</li>
+            <li>ComponentIndustrial</li>
+            <li>MealSurvivalPack</li>
+            <li>Neutroamine</li>
+          </thingDefs>
+        </filter>
+      </fixedParams>
+    </root>
+  </ThingSetMakerDef>
+
+<!-- United States -->  
+  <FactionDef ParentName="K4G_WW2FactionBase">
+    <defName>K4G_WW2UnitedStates</defName>
+    <label>United States (Allies 1941-1945)</label>
+    <description>The United States is a member of the Allies.</description>
+    <colorSpectrum>
+      <li>(1, 1, 1)</li>
+      <li>(1, 1, 1)</li>
+    </colorSpectrum>
+    <pawnSingular>American soldier</pawnSingular>
+    <pawnsPlural>American soldiers</pawnsPlural>
+    <leaderTitle>president</leaderTitle>
+    <factionIconPath>World/WorldObjects/Expanding/UnitedStates</factionIconPath>
+	<fixedName>United States</fixedName>
+    <allowedCultures><li>K4G_WW2CultureUnitedStates</li></allowedCultures>
+    <structureMemeWeights>
+      <Structure_Ideological MayRequire="Ludeon.RimWorld.Ideology">2</Structure_Ideological>
+    </structureMemeWeights>
+    <requiredMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Individualist</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">HumanPrimacy</li>
+    </requiredMemes>
+    <allowedMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Individualist</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">HumanPrimacy</li>
+    </allowedMemes>
+    <caravanTraderKinds>
+      <li>K4G_Caravan_WW2UnitedStates_Logistics</li>
+    </caravanTraderKinds>
+    <visitorTraderKinds>
+      <li>K4G_Visitor_WW2UnitedStates_Standard</li>
+    </visitorTraderKinds>
+    <baseTraderKinds>
+      <li>K4G_Base_WW2UnitedStates_Standard</li>
+    </baseTraderKinds>
+    <permanentEnemyToEveryoneExcept>
+      <li>PlayerColony</li>
+      <li>PlayerTribe</li>
+      <li>OutlanderCivil</li>
+      <li>TribeCivil</li>
+      <li>Ancients</li>
+      <li>K4G_WW2PlayerColonyAllies</li>
+	  <li>K4G_WW2UnitedStates</li>
+	  <li>K4G_WW2UnitedKingdom</li>
+	  <li>K4G_WW2RussiaAllies</li>
+	  <li>K4G_WW2FranceAllies</li>
+	  <li>K4G_WW2FranceExile</li>
+	  <li>K4G_WW2ItalyCoBelligerentAllies</li>
+	  <li>K4G_WW2FinlandIndependent</li>
+	  <li>K4G_WW2FinlandCoBelligerentAllies</li>
+	  <li>K4G_WW2FinlandCoBelligerentGermany</li>
+    </permanentEnemyToEveryoneExcept>
+    <pawnGroupMakers>
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>100</commonality>
+		<!--Spawn Chance Totals
+		Private 7
+		Rifleman 10
+		Infantry 10
+		Medic 5
+		Machine Gunner 5
+		Sniper 2
+		Grenadier 5
+		Anti-Tank 2
+		Officer 5
+		Leader 1-->
+        <options>
+          <K4G_WW2AmericanPrivate>7</K4G_WW2AmericanPrivate>
+          <K4G_WW2AmericanRifleman>7</K4G_WW2AmericanRifleman>
+          <K4G_WW2AmericanRiflemanShared>3</K4G_WW2AmericanRiflemanShared>
+          <K4G_WW2AmericanInfantry>10</K4G_WW2AmericanInfantry>
+          <K4G_WW2AmericanMedic>5</K4G_WW2AmericanMedic>
+          <K4G_WW2AmericanMachineGunner>3</K4G_WW2AmericanMachineGunner>
+          <K4G_WW2AmericanMachineGunnerShared>2</K4G_WW2AmericanMachineGunnerShared>
+          <K4G_WW2AmericanSniper>2</K4G_WW2AmericanSniper>
+          <K4G_WW2AmericanGrenadier>5</K4G_WW2AmericanGrenadier>
+          <K4G_WW2AmericanAntiTank>1.5</K4G_WW2AmericanAntiTank>
+          <K4G_WW2AmericanAntiTankShared>0.5</K4G_WW2AmericanAntiTankShared>
+          <K4G_WW2AmericanOfficer>2.5</K4G_WW2AmericanOfficer>
+          <K4G_WW2AmericanOfficerB>2.5</K4G_WW2AmericanOfficerB>
+          <K4G_WW2AmericanLeader>0.5</K4G_WW2AmericanLeader>
+          <K4G_WW2AmericanLeaderB>0.5</K4G_WW2AmericanLeaderB>
+        </options>
+      </li>
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>15</commonality>
+        <disallowedStrategies>
+          <li>Siege</li>
+        </disallowedStrategies>
+		<!--Spawn Chance Totals
+		Rifleman 2
+		Infantry 1
+		Grenadier 10
+		Anti-Tank 5
+		Officer 2
+		Leader 1-->
+        <options>
+          <K4G_WW2AmericanRifleman>1.5</K4G_WW2AmericanRifleman>
+          <K4G_WW2AmericanRiflemanShared>0.5</K4G_WW2AmericanRiflemanShared>
+          <K4G_WW2AmericanInfantry>1</K4G_WW2AmericanInfantry>
+          <K4G_WW2AmericanGrenadier>10</K4G_WW2AmericanGrenadier>
+          <K4G_WW2AmericanAntiTank>3</K4G_WW2AmericanAntiTank>
+          <K4G_WW2AmericanAntiTankShared>2</K4G_WW2AmericanAntiTankShared>
+          <K4G_WW2AmericanOfficer>1</K4G_WW2AmericanOfficer>
+          <K4G_WW2AmericanOfficerB>1</K4G_WW2AmericanOfficerB>
+          <K4G_WW2AmericanLeader>0.5</K4G_WW2AmericanLeader>
+          <K4G_WW2AmericanLeaderB>0.5</K4G_WW2AmericanLeaderB>
+        </options>
+      </li>
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>10</commonality>
+		<!--Spawn Chance Totals
+		Sniper 10-->
+        <options>
+          <K4G_WW2AmericanSniper>10</K4G_WW2AmericanSniper>
+        </options>
+      </li>
+      <li>
+        <kindDef>Peaceful</kindDef>
+		<!--Spawn Chance Totals
+		Private 10
+		Rifleman 10
+		Infantry 10
+		Medic 10
+		Machine Gunner 2
+		Sniper 2
+		Grenadier 2
+		Anti-Tank 2
+		Officer 7
+		Leader 1-->
+        <options>
+          <K4G_WW2AmericanPrivate>10</K4G_WW2AmericanPrivate>
+          <K4G_WW2AmericanRifleman>7</K4G_WW2AmericanRifleman>
+          <K4G_WW2AmericanRiflemanShared>3</K4G_WW2AmericanRiflemanShared>
+          <K4G_WW2AmericanInfantry>10</K4G_WW2AmericanInfantry>
+          <K4G_WW2AmericanMedic>10</K4G_WW2AmericanMedic>
+          <K4G_WW2AmericanMachineGunner>1.5</K4G_WW2AmericanMachineGunner>
+          <K4G_WW2AmericanMachineGunnerShared>0.5</K4G_WW2AmericanMachineGunnerShared>
+          <K4G_WW2AmericanSniper>2</K4G_WW2AmericanSniper>
+          <K4G_WW2AmericanGrenadier>2</K4G_WW2AmericanGrenadier>
+          <K4G_WW2AmericanAntiTank>1.5</K4G_WW2AmericanAntiTank>
+          <K4G_WW2AmericanAntiTankShared>0.5</K4G_WW2AmericanAntiTankShared>
+          <K4G_WW2AmericanOfficer>3.5</K4G_WW2AmericanOfficer>
+          <K4G_WW2AmericanOfficerB>3.5</K4G_WW2AmericanOfficerB>
+          <K4G_WW2AmericanLeader>0.5</K4G_WW2AmericanLeader>
+          <K4G_WW2AmericanLeaderB>0.5</K4G_WW2AmericanLeaderB>
+        </options>
+      </li>
+      <li>
+        <kindDef>Trader</kindDef>
+		<!--Spawn Chance Totals
+		Logistics Officer 1
+		Private 10
+		Rifleman 10
+		Infantry 10
+		Medic 10
+		Machine Gunner 2
+		Sniper 2
+		Grenadier 2
+		Anti-Tank 2
+		Officer 7-->
+        <traders>
+          <K4G_WW2AmericanLogisticsOfficer>0.5</K4G_WW2AmericanLogisticsOfficer>
+          <K4G_WW2AmericanLogisticsOfficerB>0.5</K4G_WW2AmericanLogisticsOfficerB>
+        </traders>
+        <carriers>
+          <Muffalo>1</Muffalo>
+          <Dromedary>5</Dromedary>
+        </carriers>
+        <guards>
+          <K4G_WW2AmericanPrivate>10</K4G_WW2AmericanPrivate>
+          <K4G_WW2AmericanRifleman>7</K4G_WW2AmericanRifleman>
+          <K4G_WW2AmericanRiflemanShared>3</K4G_WW2AmericanRiflemanShared>
+          <K4G_WW2AmericanInfantry>10</K4G_WW2AmericanInfantry>
+          <K4G_WW2AmericanMedic>10</K4G_WW2AmericanMedic>
+          <K4G_WW2AmericanMachineGunner>1.5</K4G_WW2AmericanMachineGunner>
+          <K4G_WW2AmericanMachineGunnerShared>0.5</K4G_WW2AmericanMachineGunnerShared>
+          <K4G_WW2AmericanSniper>2</K4G_WW2AmericanSniper>
+          <K4G_WW2AmericanGrenadier>2</K4G_WW2AmericanGrenadier>
+          <K4G_WW2AmericanAntiTank>1.5</K4G_WW2AmericanAntiTank>
+          <K4G_WW2AmericanAntiTankShared>0.5</K4G_WW2AmericanAntiTankShared>
+          <K4G_WW2AmericanOfficer>3.5</K4G_WW2AmericanOfficer>
+          <K4G_WW2AmericanOfficerB>3.5</K4G_WW2AmericanOfficerB>
+        </guards>
+      </li>
+      <li>
+        <kindDef>Settlement</kindDef>
+		<!--Spawn Chance Totals
+		Private 10
+		Rifleman 10
+		Infantry 10
+		Medic 10
+		Machine Gunner 5
+		Sniper 3
+		Grenadier 2
+		Anti-Tank 2
+		Officer 7
+		Leader 1-->
+        <options>
+          <K4G_WW2AmericanPrivate>10</K4G_WW2AmericanPrivate>
+          <K4G_WW2AmericanRifleman>7</K4G_WW2AmericanRifleman>
+          <K4G_WW2AmericanRiflemanShared>3</K4G_WW2AmericanRiflemanShared>
+          <K4G_WW2AmericanInfantry>10</K4G_WW2AmericanInfantry>
+          <K4G_WW2AmericanMedic>10</K4G_WW2AmericanMedic>
+          <K4G_WW2AmericanMachineGunner>3.5</K4G_WW2AmericanMachineGunner>
+          <K4G_WW2AmericanMachineGunnerShared>1.5</K4G_WW2AmericanMachineGunnerShared>
+          <K4G_WW2AmericanSniper>3</K4G_WW2AmericanSniper>
+          <K4G_WW2AmericanGrenadier>2</K4G_WW2AmericanGrenadier>
+          <K4G_WW2AmericanAntiTank>1.5</K4G_WW2AmericanAntiTank>
+          <K4G_WW2AmericanAntiTankShared>0.5</K4G_WW2AmericanAntiTankShared>
+          <K4G_WW2AmericanOfficer>3.5</K4G_WW2AmericanOfficer>
+          <K4G_WW2AmericanOfficerB>3.5</K4G_WW2AmericanOfficerB>
+          <K4G_WW2AmericanLeader>0.5</K4G_WW2AmericanLeader>
+          <K4G_WW2AmericanLeaderB>0.5</K4G_WW2AmericanLeaderB>
+        </options>
+      </li>
+    </pawnGroupMakers>
+    <maxConfigurableAtWorldCreation>9999</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>10</configurationListOrderPriority>
+  </FactionDef>
+
+</Defs>

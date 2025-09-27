@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+<!-- non-deconstructible another base -->
+<Operation Class="PatchOperationAdd">
+	<xpath>/Defs</xpath>
+	<value>
+		<ThingDef Abstract="True" Name="CantDeconstructibleAncientBuildingBase" ParentName="BuildingBase">
+			<building>
+				<claimable>false</claimable>
+				<isInert>true</isInert>
+				<canLandGravshipOn>true</canLandGravshipOn>
+				<deconstructible>false</deconstructible>
+				<displayAttackToDestroyOnInspectPane>true</displayAttackToDestroyOnInspectPane>
+				<alwaysDeconstructible>false</alwaysDeconstructible>
+			</building>
+			<passability>Impassable</passability>
+			<canOverlapZones>false</canOverlapZones>
+			<altitudeLayer>Building</altitudeLayer>
+			<statBases>
+				<WorkToBuild>3000</WorkToBuild>
+				<Flammability>0</Flammability>
+			</statBases>
+		</ThingDef>
+	</value>
+</Operation>
+
+<!-- Add non-deconstructible another base -->
+<Operation Class="PatchOperationConditional">
+	<xpath>Defs/ThingDef[defName="AncientExostriderRemains"]/comps</xpath>
+	<match Class="PatchOperationAttributeSet">
+		<xpath>Defs/ThingDef[defName="AncientExostriderRemains"]</xpath>
+			<attribute>ParentName</attribute>
+			<value>CantDeconstructibleAncientBuildingBase</value>
+	</match>
+	<nomatch Class="PatchOperationTest">
+		<xpath>*/ThingDef[defName = "MealSurvivalPack"]</xpath>
+		<success>Always</success>
+	</nomatch>
+</Operation>
+
+</Patch>

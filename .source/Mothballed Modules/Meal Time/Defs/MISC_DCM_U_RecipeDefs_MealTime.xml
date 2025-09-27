@@ -1,0 +1,2839 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- CANNIBAL AND INSECT MEALS -->
+		<!-- BASE DEFINITION -->
+			<RecipeDef Name="CAN_CannibalDefinitionBase" Abstract="True">
+				<workSpeedStat>CookSpeed</workSpeedStat>
+				<requiredGiverWorkType>Cooking</requiredGiverWorkType>
+				<effectWorking>Cook</effectWorking>
+				<soundWorking>Recipe_CookMeal</soundWorking>
+				<allowMixingIngredients>true</allowMixingIngredients>
+				<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+				<workSkill>Cooking</workSkill>
+			</RecipeDef>
+		<!-- INGREDIENT BASES -->
+			<RecipeDef Name="CAN_CookMealBase" ParentName="CAN_CannibalDefinitionBase" Abstract="True">
+				<fixedIngredientFilter>
+				<thingDefs>
+					<li>Meat_Human</li>
+				</thingDefs>
+				<categories>
+					<li>PlantFoodRaw</li>
+					<li>AnimalProductRaw</li>
+				</categories>
+				<specialFiltersToDisallow>
+					<li>AllowPlantFood</li>
+				</specialFiltersToDisallow>
+				</fixedIngredientFilter>
+				<defaultIngredientFilter>
+				<thingDefs>
+					<li>Meat_Human</li>
+				</thingDefs>
+				<categories>
+					<li>PlantFoodRaw</li>
+					<li>AnimalProductRaw</li>
+				</categories>
+				<disallowedCategories>
+					<li>EggsFertilized</li>
+				</disallowedCategories>
+				<disallowedThingDefs>
+					<li>InsectJelly</li>
+				</disallowedThingDefs>
+				</defaultIngredientFilter>
+			</RecipeDef>
+			<RecipeDef Name="CAN_InsectMealBase" ParentName="CAN_CannibalDefinitionBase" Abstract="True">
+				<fixedIngredientFilter>
+				<thingDefs>
+					<li>Meat_Megaspider</li>
+				</thingDefs>
+				<categories>
+					<li>PlantFoodRaw</li>
+					<li>AnimalProductRaw</li>
+				</categories>
+				<specialFiltersToDisallow>
+					<li>AllowPlantFood</li>
+				</specialFiltersToDisallow>
+				</fixedIngredientFilter>
+				<defaultIngredientFilter>
+				<thingDefs>
+					<li>Meat_Megaspider</li>
+				</thingDefs>
+				<categories>
+					<li>PlantFoodRaw</li>
+					<li>AnimalProductRaw</li>
+				</categories>
+				<disallowedCategories>
+					<li>EggsFertilized</li>
+				</disallowedCategories>
+				<disallowedThingDefs>
+					<li>InsectJelly</li>
+				</disallowedThingDefs>
+				</defaultIngredientFilter>
+			</RecipeDef>
+		<!-- COOKING BASES -->
+			<RecipeDef Name="CAN_CannibalCampfire" ParentName="CAN_CookMealBase" Abstract="True">
+				<recipeUsers>
+				<li>ElectricStove</li>
+				<li>FueledStove</li>
+				<li>Campfire</li>
+				</recipeUsers>
+			</RecipeDef>
+			<RecipeDef Name="CAN_CannibalStove" ParentName="CAN_CookMealBase" Abstract="True">
+				<recipeUsers>
+				<li>ElectricStove</li>
+				<li>FueledStove</li>
+				</recipeUsers>
+			</RecipeDef>
+			<RecipeDef Name="CAN_CannibalButcher" ParentName="CAN_CookMealBase" Abstract="True">
+				<recipeUsers>
+				<li>ButcherSpot</li>
+				<li>TableButcher</li>
+				</recipeUsers>
+			</RecipeDef>
+			<RecipeDef Name="CAN_InsectCampfire" ParentName="CAN_InsectMealBase" Abstract="True">
+				<recipeUsers>
+				<li>ElectricStove</li>
+				<li>FueledStove</li>
+				<li>Campfire</li>
+				</recipeUsers>
+			</RecipeDef>
+			<RecipeDef Name="CAN_InsectStove" ParentName="CAN_InsectMealBase" Abstract="True">
+				<recipeUsers>
+				<li>ElectricStove</li>
+				<li>FueledStove</li>
+				</recipeUsers>
+			</RecipeDef>
+			<RecipeDef Name="CAN_InsectButcher" ParentName="CAN_InsectMealBase" Abstract="True">
+				<recipeUsers>
+				<li>ButcherSpot</li>
+				<li>TableButcher</li>
+				</recipeUsers>
+			</RecipeDef>
+		<!-- CANNIBAL MEALS -->
+			<RecipeDef Name="CAN_CannibalSimpleMeal" ParentName="CAN_CannibalCampfire">
+				<defName>CAN_CookCannibalMealSimple</defName>
+				<label>cook cannibal simple meal</label>
+				<description>Cooks a straightforward meal from human meat.</description>
+				<jobString>Cooking simple meal.</jobString>
+				<ingredients>
+				<li>
+					<filter>
+					<thingDefs>
+						<li>Meat_Human</li>
+					</thingDefs>
+					</filter>
+					<count>0.5</count>
+				</li>
+				</ingredients>
+				<products>
+				<CAN_CannibalMealSimple>1</CAN_CannibalMealSimple>
+				</products>
+				<workAmount>300</workAmount>
+			</RecipeDef>
+			<RecipeDef Name="CAN_CannibalFineMeal" ParentName="CAN_CannibalStove">
+				<defName>CAN_CookCannibalMealFine</defName>
+				<label>cook cannibal fine meal</label>
+				<description>Cooks a somewhat complex cannibal meal from a combination of human meat and organic ingredients.</description>
+				<jobString>Cooking fine meal.</jobString>
+				<ingredients>
+				<li>
+					<filter>
+					<thingDefs>
+						<li>Meat_Human</li>
+					</thingDefs>
+					</filter>
+					<count>0.25</count>
+				</li>
+				<li>
+					<filter>
+					<categories>
+						<li>AnimalProductRaw</li>
+						<li>PlantFoodRaw</li>
+					</categories>
+					</filter>
+					<count>0.25</count>
+				</li>
+				</ingredients>
+				<products>
+				<CAN_CannibalMealFine>1</CAN_CannibalMealFine>
+				</products>
+				<workAmount>480</workAmount>
+				<skillRequirements>
+				<Cooking>6</Cooking>
+				</skillRequirements>
+			</RecipeDef>
+			<RecipeDef Name="CAN_CannibalLavishMeal" ParentName="CAN_CannibalStove">
+				<defName>CAN_CookCannibalMealLavish</defName>
+				<label>cook cannibal lavish meal</label>
+				<description>Cooks a very complex cannibal meal from a combination of human meat and organic ingredients. Much of the ingredients are wasted.</description>
+				<jobString>Cooking lavish meal.</jobString>
+				<ingredients>
+				<li>
+					<filter>
+					<thingDefs>
+						<li>Meat_Human</li>
+					</thingDefs>
+					</filter>
+					<count>0.5</count>
+				</li>
+				<li>
+					<filter>
+					<categories>
+						<li>AnimalProductRaw</li>
+						<li>PlantFoodRaw</li>
+					</categories>
+					</filter>
+					<count>0.5</count>
+				</li>
+				</ingredients>
+				<products>
+				<CAN_CannibalMealLavish>1</CAN_CannibalMealLavish>
+				</products>
+				<workAmount>840</workAmount>
+				<skillRequirements>
+				<Cooking>8</Cooking>
+				</skillRequirements>
+			</RecipeDef>
+			<RecipeDef Name="CAN_CannibalSurvivalMeal" ParentName="CAN_CannibalStove">
+				<defName>CAN_CookCannibalMealSurvival</defName>
+				<label>cook cannibal packaged survival meal</label>
+				<description>Cooks a packaged survival cannibal meal from a combination of human meat and organic ingredients. Much of the ingredients are wasted.</description>
+				<jobString>Cooking survival meal.</jobString>
+				<ingredients>
+				<li>
+					<filter>
+					<thingDefs>
+						<li>Meat_Human</li>
+					</thingDefs>
+					</filter>
+					<count>0.30</count>
+				</li>
+				<li>
+					<filter>
+					<categories>
+						<li>AnimalProductRaw</li>
+						<li>PlantFoodRaw</li>
+					</categories>
+					</filter>
+					<count>0.30</count>
+				</li>
+				</ingredients>
+				<products>
+				<CAN_CannibalMealSurvivalPack>1</CAN_CannibalMealSurvivalPack>
+				</products>
+				<workAmount>480</workAmount>
+				<skillRequirements>
+				<Cooking>8</Cooking>
+				</skillRequirements>
+				<researchPrerequisite>PackagedSurvivalMeal</researchPrerequisite>
+			</RecipeDef>
+			<RecipeDef Name="CAN_MakeCannibalPemmican" ParentName="CAN_CannibalCampfire">
+				<defName>CAN_MakeCannibalPemmican</defName>
+				<label>Make cannibal pemmican</label>
+				<description>Make cannibal pemmican, a preserved combination of human meat and organic food. It doesn't taste amazing, but lasts a year without refrigeration.</description>
+				<jobString>Making pemmican.</jobString>
+				<ingredients>
+				<li>
+					<filter>
+					<thingDefs>
+						<li>Meat_Human</li>
+					</thingDefs>
+					</filter>
+					<count>0.25</count>
+				</li>
+				<li>
+					<filter>
+					<categories>
+						<li>AnimalProductRaw</li>
+						<li>PlantFoodRaw</li>
+					</categories>
+					</filter>
+					<count>0.25</count>
+				</li>
+				</ingredients>
+				<products>
+				<CAN_CannibalPemmican>16</CAN_CannibalPemmican>
+				</products>
+				<researchPrerequisite>Pemmican</researchPrerequisite>
+				<workAmount>720</workAmount>
+			</RecipeDef>
+			<RecipeDef Name="CAN_MakeCannibalKibble" ParentName="CAN_CannibalButcher">
+				<defName>CAN_MakeCannibalKibble</defName>
+				<label>make cannibal kibble</label>
+				<description>Make animal kibble by combining raw human and plants.</description>
+				<jobString>Making cannibal kibble.</jobString>
+				<fixedIngredientFilter>
+				<thingDefs>
+					<li>Hay</li>
+				</thingDefs>
+				</fixedIngredientFilter>
+				<ingredients>
+				<li>
+					<filter>
+					<thingDefs>
+						<li>Meat_Human</li>
+					</thingDefs>
+					</filter>
+					<count>1</count>
+				</li>
+				<li>
+					<filter>
+					<categories>
+						<li>PlantFoodRaw</li>
+					</categories>
+					<thingDefs>
+						<li>Hay</li>
+					</thingDefs>
+					</filter>
+					<count>1</count>
+				</li>
+				</ingredients>
+				<products>
+				<CAN_CannibalKibble>50</CAN_CannibalKibble>
+				</products>
+				<workAmount>450</workAmount>
+			</RecipeDef>
+		<!-- CANNIBAL MEALS (BULK) -->
+			<RecipeDef Name="CAN_CookCannibalMealSimpleBulk" ParentName="CAN_CannibalCampfire">
+				<defName>CAN_CookCannibalMealSimpleBulk</defName>
+				<label>cook cannibal simple meal x4</label>
+				<description>Cook 4 straightforward cannibal meals from human meat.</description>
+				<jobString>Cooking 4 simple meals.</jobString>
+				<ingredients>
+				<li>
+					<filter>
+					<thingDefs>
+						<li>Meat_Human</li>
+					</thingDefs>
+					</filter>
+					<count>2</count>
+				</li>
+				</ingredients>
+				<products>
+				<CAN_CannibalMealSimple>4</CAN_CannibalMealSimple>
+				</products>
+				<workAmount>1200</workAmount>
+			</RecipeDef>
+			<RecipeDef Name="CAN_CookCannibalMealFineBulk" ParentName="CAN_CannibalStove">
+				<defName>CAN_CookCannibalMealFineBulk</defName>
+				<label>cook cannibal fine meal x4</label>
+				<description>Cook 4 somewhat complex cannibal meals from a combination of human meat and plant ingredients.</description>
+				<jobString>Cooking 4 fine meals.</jobString>
+				<ingredients>
+				<li>
+					<filter>
+					<thingDefs>
+						<li>Meat_Human</li>
+					</thingDefs>
+					</filter>
+					<count>1</count>
+				</li>
+				<li>
+					<filter>
+					<categories>
+						<li>AnimalProductRaw</li>
+						<li>PlantFoodRaw</li>
+					</categories>
+					</filter>
+					<count>1</count>
+				</li>
+				</ingredients>
+				<products>
+				<CAN_CannibalMealFine>4</CAN_CannibalMealFine>
+				</products>
+				<workAmount>1800</workAmount>
+				<skillRequirements>
+				<Cooking>6</Cooking>
+				</skillRequirements>
+			</RecipeDef>
+			<RecipeDef Name="CAN_CookMealCannibalLavishBulk" ParentName="CAN_CannibalStove">
+				<defName>CAN_CookMealCannibalLavishBulk</defName>
+				<label>cook cannibal lavish meal x4</label>
+				<description>Cook 4 very complex cannibal meals from a combination of human meat and plant ingredients. Much of the ingredients are wasted.</description>
+				<jobString>Cooking 4 lavish meals.</jobString>
+				<ingredients>
+				<li>
+					<filter>
+					<thingDefs>
+						<li>Meat_Human</li>
+					</thingDefs>
+					</filter>
+					<count>2</count>
+				</li>
+				<li>
+					<filter>
+					<categories>
+						<li>AnimalProductRaw</li>
+						<li>PlantFoodRaw</li>
+					</categories>
+					</filter>
+					<count>2</count>
+				</li>
+				</ingredients>
+				<products>
+				<CAN_CannibalMealLavish>4</CAN_CannibalMealLavish>
+				</products>
+				<workAmount>3240</workAmount>
+				<skillRequirements>
+				<Cooking>8</Cooking>
+				</skillRequirements>
+			</RecipeDef>
+			<RecipeDef Name="CAN_CookCannibalMealSurvivalBulk" ParentName="CAN_CannibalStove">
+				<defName>CAN_CookCannibalMealSurvivalBulk</defName>
+				<label>cook cannibal packaged survival meal x4</label>
+				<description>Prepare 4 packaged survival cannibal meals from a combination of human meat and plant ingredients. Much of the ingredients are wasted in the preservation process.</description>
+				<jobString>Cooking 4 survival meals.</jobString>
+				<ingredients>
+				<li>
+					<filter>
+					<thingDefs>
+						<li>Meat_Human</li>
+					</thingDefs>
+					</filter>
+					<count>1.20</count>
+				</li>
+				<li>
+					<filter>
+					<categories>
+						<li>AnimalProductRaw</li>
+						<li>PlantFoodRaw</li>
+					</categories>
+					</filter>
+					<count>1.20</count>
+				</li>
+				</ingredients>
+				<products>
+				<CAN_CannibalMealSurvivalPack>4</CAN_CannibalMealSurvivalPack>
+				</products>
+				<workAmount>1800</workAmount>
+				<skillRequirements>
+				<Cooking>8</Cooking>
+				</skillRequirements>
+				<researchPrerequisite>PackagedSurvivalMeal</researchPrerequisite>
+			</RecipeDef>
+			<RecipeDef Name="CAN_MakeCannibalPemmicanBulk" ParentName="CAN_CannibalCampfire">
+				<defName>CAN_MakeCannibalPemmicanBulk</defName>
+				<label>Make cannibal pemmican x4</label>
+				<description>Make bulk cannibal pemmican, a preserved combination of human meat and organic food. It doesn't taste amazing, but lasts a year without refrigeration.</description>
+				<jobString>Making bulk pemmican.</jobString>
+				<ingredients>
+				<li>
+					<filter>
+					<thingDefs>
+						<li>Meat_Human</li>
+					</thingDefs>
+					</filter>
+					<count>1</count>
+				</li>
+				<li>
+					<filter>
+					<categories>
+						<li>AnimalProductRaw</li>
+						<li>PlantFoodRaw</li>
+					</categories>
+					</filter>
+					<count>1</count>
+				</li>
+				</ingredients>
+				<products>
+				<CAN_CannibalPemmican>64</CAN_CannibalPemmican>
+				</products>
+				<researchPrerequisite>Pemmican</researchPrerequisite>
+				<workAmount>2820</workAmount>
+			</RecipeDef>
+		<!-- INSECT MEALS -->
+			<RecipeDef Name="CAN_InsectSimpleMeal" ParentName="CAN_InsectCampfire">
+				<defName>CAN_CookInsectSimpleMeal</defName>
+				<label>cook insect simple meal</label>
+				<description>Cooks a straightforward meal from insect meat.</description>
+				<jobString>Cooking simple meal.</jobString>
+				<ingredients>
+				<li>
+					<filter>
+					<thingDefs>
+						<li>Meat_Megaspider</li>
+					</thingDefs>
+					</filter>
+					<count>0.5</count>
+				</li>
+				</ingredients>
+				<products>
+				<CAN_InsectMealSimple>1</CAN_InsectMealSimple>
+				</products>
+				<workAmount>300</workAmount>
+			</RecipeDef>
+			<RecipeDef Name="CAN_InsectFineMeal" ParentName="CAN_InsectStove">
+				<defName>CAN_CookInsectFineMeal</defName>
+				<label>cook insect fine meal</label>
+				<description>Cooks a somewhat complex insect meal from a combination of insect meat and organic ingredients.</description>
+				<jobString>Cooking fine meal.</jobString>
+				<ingredients>
+				<li>
+					<filter>
+					<thingDefs>
+						<li>Meat_Megaspider</li>
+					</thingDefs>
+					</filter>
+					<count>0.25</count>
+				</li>
+				<li>
+					<filter>
+					<categories>
+						<li>AnimalProductRaw</li>
+						<li>PlantFoodRaw</li>
+					</categories>
+					</filter>
+					<count>0.25</count>
+				</li>
+				</ingredients>
+				<products>
+				<CAN_InsectMealFine>1</CAN_InsectMealFine>
+				</products>
+				<workAmount>480</workAmount>
+				<skillRequirements>
+				<Cooking>6</Cooking>
+				</skillRequirements>
+			</RecipeDef>
+			<RecipeDef Name="CAN_InsectLavishMeal" ParentName="CAN_InsectStove">
+				<defName>CAN_CookInsectLavishMeal</defName>
+				<label>cook insect lavish meal</label>
+				<description>Cooks a very complex insect meal from a combination of insect meat and organic ingredients. Much of the ingredients are wasted.</description>
+				<jobString>Cooking lavish meal.</jobString>
+				<ingredients>
+				<li>
+					<filter>
+					<thingDefs>
+						<li>Meat_Megaspider</li>
+					</thingDefs>
+					</filter>
+					<count>0.5</count>
+				</li>
+				<li>
+					<filter>
+					<categories>
+						<li>AnimalProductRaw</li>
+						<li>PlantFoodRaw</li>
+					</categories>
+					</filter>
+					<count>0.5</count>
+				</li>
+				</ingredients>
+				<products>
+				<CAN_InsectMealLavish>1</CAN_InsectMealLavish>
+				</products>
+				<workAmount>840</workAmount>
+				<skillRequirements>
+				<Cooking>8</Cooking>
+				</skillRequirements>
+			</RecipeDef>
+			<RecipeDef Name="CAN_InsectSurvivalMeal" ParentName="CAN_InsectStove">
+				<defName>CAN_CookInsectSurvivalMeal</defName>
+				<label>cook insect survival meal</label>
+				<description>Cooks a packaged survival insect meal from a combination of insect meat and organic ingredients. Much of the ingredients are wasted.</description>
+				<jobString>Cooking survival meal.</jobString>
+				<ingredients>
+				<li>
+					<filter>
+					<thingDefs>
+						<li>Meat_Megaspider</li>
+					</thingDefs>
+					</filter>
+					<count>0.3</count>
+				</li>
+				<li>
+					<filter>
+					<categories>
+						<li>AnimalProductRaw</li>
+						<li>PlantFoodRaw</li>
+					</categories>
+					</filter>
+					<count>0.3</count>
+				</li>
+				</ingredients>
+				<products>
+				<CAN_InsectMealSurvivalPack>1</CAN_InsectMealSurvivalPack>
+				</products>
+				<workAmount>480</workAmount>
+				<skillRequirements>
+				<Cooking>8</Cooking>
+				</skillRequirements>
+				<researchPrerequisite>PackagedSurvivalMeal</researchPrerequisite>
+			</RecipeDef>
+			<RecipeDef Name="CAN_MakeInsectPemmican" ParentName="CAN_InsectCampfire">
+				<defName>CAN_MakeInsectPemmican</defName>
+				<label>Make insect pemmican</label>
+				<description>Make insect pemmican, a preserved combination of insect meat and organic food. It doesn't taste amazing, but lasts a year without refrigeration.</description>
+				<jobString>Making pemmican.</jobString>
+				<ingredients>
+				<li>
+					<filter>
+					<thingDefs>
+						<li>Meat_Megaspider</li>
+					</thingDefs>
+					</filter>
+					<count>0.25</count>
+				</li>
+				<li>
+					<filter>
+					<categories>
+						<li>AnimalProductRaw</li>
+						<li>PlantFoodRaw</li>
+					</categories>
+					</filter>
+					<count>0.25</count>
+				</li>
+				</ingredients>
+				<products>
+				<CAN_InsectPemmican>16</CAN_InsectPemmican>
+				</products>
+				<researchPrerequisite>Pemmican</researchPrerequisite>
+				<workAmount>720</workAmount>
+			</RecipeDef>
+			<RecipeDef Name="CAN_MakeInsectKibble" ParentName="CAN_InsectButcher">
+				<defName>CAN_MakeInsectKibble</defName>
+				<label>Make insect kibble</label>
+				<description>Make animal kibble by combining raw insect and plants.</description>
+				<jobString>Making insect kibble.</jobString>
+				<fixedIngredientFilter>
+				<thingDefs>
+					<li>Hay</li>
+				</thingDefs>
+				</fixedIngredientFilter>
+				<ingredients>
+				<li>
+					<filter>
+					<thingDefs>
+						<li>Meat_Megaspider</li>
+					</thingDefs>
+					</filter>
+					<count>1</count>
+				</li>
+				<li>
+					<filter>
+					<categories>
+						<li>PlantFoodRaw</li>
+					</categories>
+					<thingDefs>
+						<li>Hay</li>
+					</thingDefs>
+					</filter>
+					<count>1</count>
+				</li>
+				</ingredients>
+				<products>
+				<CAN_InsectKibble>50</CAN_InsectKibble>
+				</products>
+				<workAmount>450</workAmount>
+			</RecipeDef>
+		<!-- INSECT MEALS (BULK) -->
+			<RecipeDef Name="CAN_CookInsectSimpleMealBulk" ParentName="CAN_InsectCampfire">
+				<defName>CAN_CookInsectSimpleMealBulk</defName>
+				<label>cook insect simple meal x4</label>
+				<description>Cooks a straightforward meal from insect meat.</description>
+				<jobString>Cooking simple meal.</jobString>
+				<ingredients>
+				<li>
+					<filter>
+					<thingDefs>
+						<li>Meat_Megaspider</li>
+					</thingDefs>
+					</filter>
+					<count>2</count>
+				</li>
+				</ingredients>
+				<products>
+				<CAN_InsectMealSimple>4</CAN_InsectMealSimple>
+				</products>
+				<workAmount>1200</workAmount>
+			</RecipeDef>
+			<RecipeDef Name="CAN_CookInsectFineMealBulk" ParentName="CAN_InsectStove">
+				<defName>CAN_CookInsectFineMealBulk</defName>
+				<label>cook insect fine meal x4</label>
+				<description>Cooks a somewhat complex insect meal from a combination of insect meat and organic ingredients.</description>
+				<jobString>Cooking fine meal.</jobString>
+				<ingredients>
+				<li>
+					<filter>
+					<thingDefs>
+						<li>Meat_Megaspider</li>
+					</thingDefs>
+					</filter>
+					<count>1</count>
+				</li>
+				<li>
+					<filter>
+					<categories>
+						<li>AnimalProductRaw</li>
+						<li>PlantFoodRaw</li>
+					</categories>
+					</filter>
+					<count>1</count>
+				</li>
+				</ingredients>
+				<products>
+				<CAN_InsectMealFine>4</CAN_InsectMealFine>
+				</products>
+				<workAmount>1800</workAmount>
+				<skillRequirements>
+				<Cooking>6</Cooking>
+				</skillRequirements>
+			</RecipeDef>
+			<RecipeDef Name="CAN_CookInsectLavishMealBulk" ParentName="CAN_InsectStove">
+				<defName>CAN_CookInsectLavishMealBulk</defName>
+				<label>cook insect lavish meal x4</label>
+				<description>Cooks a very complex insect meal from a combination of insect meat and organic ingredients. Much of the ingredients are wasted.</description>
+				<jobString>Cooking lavish meal.</jobString>
+				<ingredients>
+				<li>
+					<filter>
+					<thingDefs>
+						<li>Meat_Megaspider</li>
+					</thingDefs>
+					</filter>
+					<count>2</count>
+				</li>
+				<li>
+					<filter>
+					<categories>
+						<li>AnimalProductRaw</li>
+						<li>PlantFoodRaw</li>
+					</categories>
+					</filter>
+					<count>2</count>
+				</li>
+				</ingredients>
+				<products>
+				<CAN_InsectMealLavish>4</CAN_InsectMealLavish>
+				</products>
+				<workAmount>3240</workAmount>
+				<skillRequirements>
+				<Cooking>8</Cooking>
+				</skillRequirements>
+			</RecipeDef>
+			<RecipeDef Name="CAN_CookInsectSurvivalMealBulk" ParentName="CAN_InsectStove">
+				<defName>CAN_CookInsectSurvivalMealBulk</defName>
+				<label>cook insect survival meal x4</label>
+				<description>Cooks a packaged survival insect meal from a combination of insect meat and organic ingredients. Much of the ingredients are wasted.</description>
+				<jobString>Cooking survival meal.</jobString>
+				<ingredients>
+				<li>
+					<filter>
+					<thingDefs>
+						<li>Meat_Megaspider</li>
+					</thingDefs>
+					</filter>
+					<count>1.20</count>
+				</li>
+				<li>
+					<filter>
+					<categories>
+						<li>AnimalProductRaw</li>
+						<li>PlantFoodRaw</li>
+					</categories>
+					</filter>
+					<count>1.20</count>
+				</li>
+				</ingredients>
+				<products>
+				<CAN_InsectMealSurvivalPack>4</CAN_InsectMealSurvivalPack>
+				</products>
+				<workAmount>1800</workAmount>
+				<skillRequirements>
+				<Cooking>8</Cooking>
+				</skillRequirements>
+				<researchPrerequisite>PackagedSurvivalMeal</researchPrerequisite>
+			</RecipeDef>
+			<RecipeDef Name="CAN_MakeInsectPemmicanBulk" ParentName="CAN_InsectCampfire">
+				<defName>CAN_MakeInsectPemmicanBulk</defName>
+				<label>Make insect pemmican x4</label>
+				<description>Make insect pemmican, a preserved combination of insect meat and organic food. It doesn't taste amazing, but lasts a year without refrigeration.</description>
+				<jobString>Making pemmican.</jobString>
+				<ingredients>
+				<li>
+					<filter>
+					<thingDefs>
+						<li>Meat_Megaspider</li>
+					</thingDefs>
+					</filter>
+					<count>1</count>
+				</li>
+				<li>
+					<filter>
+					<categories>
+						<li>AnimalProductRaw</li>
+						<li>PlantFoodRaw</li>
+					</categories>
+					</filter>
+					<count>1</count>
+				</li>
+				</ingredients>
+				<products>
+				<CAN_InsectPemmican>64</CAN_InsectPemmican>
+				</products>
+				<researchPrerequisite>Pemmican</researchPrerequisite>
+				<workAmount>2820</workAmount>
+			</RecipeDef>
+	<!-- VBE - COFFEES AND TEAS -->
+		<!-- COFFEES -->
+			<!-- MAKE ESPRESSO -->
+				<RecipeDef>
+					<defName>VBE_MakeCoffeeFast</defName>
+					<label>make espresso coffee</label>
+					<description>Make a warm, bitter beverage usually complemented with milk and sugar. A favorite among students and office workers across the galaxy due to high caffeine content and pleasing aroma. Brewing coffee in a espresso machine is generally much faster.</description>
+					<jobString>Making coffee.</jobString>
+					<workSkill>Cooking</workSkill>
+					<workSpeedStat>CookSpeed</workSpeedStat>
+					<workAmount>500</workAmount>
+					<effectWorking>Cook</effectWorking>
+					<soundWorking>Recipe_Brewing</soundWorking>
+					<allowMixingIngredients>true</allowMixingIngredients>
+					<recipeUsers>
+						<li>VBE_EspressoMachineBuilding</li>
+					</recipeUsers>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>VBE_RawCoffee</li>
+								</thingDefs>
+							</filter>
+							<count>25</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>VBE_RawCoffee</li>
+						</thingDefs>
+						<categories>
+						</categories>
+					</fixedIngredientFilter>
+					<defaultIngredientFilter>
+						<thingDefs>
+							<li>VBE_RawCoffee</li>
+						</thingDefs>
+						<categories>
+						</categories>
+					</defaultIngredientFilter>
+					<products>
+						<VBE_HotCoffee>5</VBE_HotCoffee>
+					</products>
+					<researchPrerequisite>VBE_EspressoMachine</researchPrerequisite>
+				</RecipeDef>
+			<!-- REHEAT ICED COFFEE -->
+				<RecipeDef>
+					<defName>VBE_ReheatCoffee</defName>
+					<label>reheat iced coffee</label>
+					<description>This espresso machine has a small built-in grill to reheat iced coffee.</description>
+					<jobString>Reheating iced coffee.</jobString>
+					<workSkill>Cooking</workSkill>
+					<workSpeedStat>CookSpeed</workSpeedStat>
+					<workAmount>500</workAmount>
+					<effectWorking>Cook</effectWorking>
+					<soundWorking>Recipe_Brewing</soundWorking>
+					<allowMixingIngredients>true</allowMixingIngredients>
+					<recipeUsers>
+						<li>VBE_EspressoMachineBuilding</li>
+					</recipeUsers>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>VBE_IceCoffee</li>
+								</thingDefs>
+							</filter>
+							<count>25</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>VBE_IceCoffee</li>
+						</thingDefs>
+						<categories>
+						</categories>
+					</fixedIngredientFilter>
+					<defaultIngredientFilter>
+						<thingDefs>
+							<li>VBE_IceCoffee</li>
+						</thingDefs>
+						<categories>
+						</categories>
+					</defaultIngredientFilter>
+					<products>
+						<VBE_HotCoffee>25</VBE_HotCoffee>
+					</products>
+					<researchPrerequisite>VBE_EspressoMachine</researchPrerequisite>
+				</RecipeDef>
+			<!-- BREW LATTE -->
+				<RecipeDef>
+					<defName>VBE_BrewLatteCoffee</defName>
+					<label>brew latte coffee</label>
+					<description>Brew a potent espresso mixed with fresh milk to help ease bitterness before pouring and serving. Lattes have a reputation of being particularly meant for “sophisticated” individuals.</description>
+					<jobString>Brewing latte coffee.</jobString>
+					<workSkill>Cooking</workSkill>
+					<workSpeedStat>CookSpeed</workSpeedStat>
+					<workAmount>600</workAmount>
+					<effectWorking>Cook</effectWorking>
+					<soundWorking>Recipe_Brewing</soundWorking>
+					<allowMixingIngredients>true</allowMixingIngredients>
+					<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>		
+					<recipeUsers>
+						<li>VBE_EspressoMachineBuilding</li>
+					</recipeUsers>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>VBE_IceCoffee</li>
+									<li>VBE_HotCoffee</li>
+								</thingDefs>
+							</filter>
+							<count>0.7</count>
+						</li>
+						<li Name="VBE_MilkIngredient">
+							<filter>
+								<thingDefs>
+									<li>Milk</li>
+								</thingDefs>
+							</filter>
+							<count>0.5</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>VBE_IceCoffee</li>
+							<li>VBE_HotCoffee</li>
+							<li>Milk</li>
+						</thingDefs>
+						<categories>
+						</categories>
+					</fixedIngredientFilter>
+					<defaultIngredientFilter>
+						<thingDefs>
+							<li>VBE_IceCoffee</li>
+							<li>VBE_HotCoffee</li>
+							<li>Milk</li>
+						</thingDefs>
+						<categories>
+						</categories>
+					</defaultIngredientFilter>
+					<products>
+						<VBE_LatteCoffee>10</VBE_LatteCoffee>
+					</products>
+					<researchPrerequisite>VBE_EspressoMachine</researchPrerequisite>
+				</RecipeDef>
+			<!-- BREW MOCHA -->
+				<RecipeDef>
+					<defName>VBE_BrewMochaCoffee</defName>
+					<label>brew mocha coffee</label>
+					<description>Brew a coffee mixed with sweet and luxurious chocolate. Those of snobbish persuasion would argue mocha is more of a dessert than an actual coffee drink.</description>
+					<jobString>Brewing mocha coffee.</jobString>
+					<workSkill>Cooking</workSkill>
+					<workSpeedStat>CookSpeed</workSpeedStat>
+					<workAmount>600</workAmount>
+					<effectWorking>Cook</effectWorking>
+					<soundWorking>Recipe_Brewing</soundWorking>
+					<allowMixingIngredients>true</allowMixingIngredients>
+					<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>		
+					<recipeUsers>
+						<li>VBE_EspressoMachineBuilding</li>
+					</recipeUsers>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>VBE_IceCoffee</li>
+									<li>VBE_HotCoffee</li>
+								</thingDefs>
+							</filter>
+							<count>0.7</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>Chocolate</li>
+								</thingDefs>
+							</filter>
+							<count>0.3</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>VBE_IceCoffee</li>
+							<li>VBE_HotCoffee</li>
+							<li>Chocolate</li>
+						</thingDefs>
+						<categories>
+						</categories>
+					</fixedIngredientFilter>
+					<defaultIngredientFilter>
+						<thingDefs>
+							<li>VBE_IceCoffee</li>
+							<li>VBE_HotCoffee</li>
+							<li>Chocolate</li>
+						</thingDefs>
+						<categories>
+						</categories>
+					</defaultIngredientFilter>
+					<products>
+						<VBE_MochaCoffee>10</VBE_MochaCoffee>
+					</products>
+					<researchPrerequisite>VBE_EspressoMachine</researchPrerequisite>
+				</RecipeDef>
+			<!-- BREW IRISH COFFEE -->
+				<RecipeDef>
+					<defName>VBE_BrewIrishCoffee</defName>
+					<label>brew irish coffee</label>
+					<description>Brew a drink made with whiskey and coffee blended thoroughly before forming a head and being topped with a spoonful of whipped cream. Perfect for those who just got out of bed and are already wanting to go back to it.</description>
+					<jobString>Brewing irish coffee.</jobString>
+					<workSkill>Cooking</workSkill>
+					<workSpeedStat>CookSpeed</workSpeedStat>
+					<workAmount>600</workAmount>
+					<effectWorking>Cook</effectWorking>
+					<soundWorking>Recipe_Brewing</soundWorking>
+					<allowMixingIngredients>true</allowMixingIngredients>
+					<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>		
+					<recipeUsers>
+						<li>VBE_EspressoMachineBuilding</li>
+					</recipeUsers>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>VBE_IceCoffee</li>
+									<li>VBE_HotCoffee</li>
+								</thingDefs>
+							</filter>
+							<count>0.7</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>VBE_Whiskey</li>
+								</thingDefs>
+							</filter>
+							<count>0.4</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>VBE_IceCoffee</li>
+							<li>VBE_HotCoffee</li>
+							<li>VBE_Whiskey</li>
+						</thingDefs>
+						<categories>
+						</categories>
+					</fixedIngredientFilter>
+					<defaultIngredientFilter>
+						<thingDefs>
+							<li>VBE_IceCoffee</li>
+							<li>VBE_HotCoffee</li>
+							<li>VBE_Whiskey</li>
+						</thingDefs>
+						<categories>
+						</categories>
+					</defaultIngredientFilter>
+					<products>
+						<VBE_IrishCoffee>10</VBE_IrishCoffee>
+					</products>
+					<researchPrerequisite>VBE_EspressoMachine</researchPrerequisite>
+				</RecipeDef>
+			<!-- BREW CANNIBAL COFFEE -->
+				<RecipeDef>
+					<defName>VBE_BrewCannibalCoffee</defName>
+					<label>brew cannibal coffee</label>
+					<description>Brew a drink... for a very particular... refined coffee drinker.</description>
+					<jobString>Brewing cannibal coffee.</jobString>
+					<workSkill>Cooking</workSkill>
+					<workSpeedStat>CookSpeed</workSpeedStat>
+					<workAmount>600</workAmount>
+					<effectWorking>Cook</effectWorking>
+					<soundWorking>Recipe_Brewing</soundWorking>
+					<allowMixingIngredients>true</allowMixingIngredients>
+					<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>		
+					<recipeUsers>
+						<li>VBE_EspressoMachineBuilding</li>
+					</recipeUsers>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>VBE_IceCoffee</li>
+									<li>VBE_HotCoffee</li>
+								</thingDefs>
+							</filter>
+							<count>0.7</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>Meat_Human</li>
+								</thingDefs>
+							</filter>
+							<count>0.5</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>VBE_IceCoffee</li>
+							<li>VBE_HotCoffee</li>
+							<li>Meat_Human</li>
+						</thingDefs>
+						<categories>
+						</categories>
+					</fixedIngredientFilter>
+					<defaultIngredientFilter>
+						<thingDefs>
+							<li>VBE_IceCoffee</li>
+							<li>VBE_HotCoffee</li>
+							<li>Meat_Human</li>
+						</thingDefs>
+						<categories>
+						</categories>
+					</defaultIngredientFilter>
+					<products>
+						<VBE_CannibalCoffee>10</VBE_CannibalCoffee>
+					</products>
+					<researchPrerequisite>VBE_EspressoMachine</researchPrerequisite>
+				</RecipeDef>
+		<!-- TEAS -->
+			<!-- MAKE FAST TEA -->
+				<RecipeDef>
+					<defName>VBE_MakeTeaFast</defName>
+					<label>make fast tea</label>
+					<description>Make a pleasing, aromatic beverage prepared by steeping a bag of tea leaves in boiling water. Brewing tea in this specially prepared espresso machine is generally much faster.</description>
+					<jobString>Making fast tea.</jobString>
+					<workSkill>Cooking</workSkill>
+					<workSpeedStat>CookSpeed</workSpeedStat>
+					<workAmount>500</workAmount>
+					<effectWorking>Cook</effectWorking>
+					<soundWorking>Recipe_Brewing</soundWorking>
+					<allowMixingIngredients>true</allowMixingIngredients>
+					<recipeUsers>
+						<li>VBE_EspressoMachineBuilding</li>
+					</recipeUsers>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>VBE_RawTea</li>
+								</thingDefs>
+							</filter>
+							<count>25</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>VBE_RawTea</li>
+						</thingDefs>
+						<categories>
+						</categories>
+					</fixedIngredientFilter>
+					<defaultIngredientFilter>
+						<thingDefs>
+							<li>VBE_RawTea</li>
+						</thingDefs>
+						<categories>
+						</categories>
+					</defaultIngredientFilter>
+					<products>
+						<VBE_Tea>5</VBE_Tea>
+					</products>
+					<researchPrerequisite>Brewing</researchPrerequisite>
+				</RecipeDef>
+			<!-- MAKE BLACK TEA -->
+				<RecipeDef>
+					<defName>VBE_MakeBlackTea</defName>
+					<label>make black tea</label>
+					<description>Make a particularly bitter tea cut with creamy milk, wakes one up a bit and relaxes one's mind.</description>
+					<jobString>Making black tea.</jobString>
+					<workSkill>Cooking</workSkill>
+					<workSpeedStat>CookSpeed</workSpeedStat>
+					<workAmount>600</workAmount>
+					<effectWorking>Cook</effectWorking>
+					<soundWorking>Recipe_Brewing</soundWorking>
+					<allowMixingIngredients>true</allowMixingIngredients>
+					<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+					<recipeUsers>
+						<li>VBE_EspressoMachineBuilding</li>
+					</recipeUsers>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>VBE_Tea</li>
+								</thingDefs>
+							</filter>
+							<count>0.8</count>
+						</li>
+						<li Name="VBE_MilkIngredient">
+							<filter>
+								<thingDefs>
+									<li>Milk</li>
+								</thingDefs>
+							</filter>
+							<count>0.5</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>VBE_Tea</li>
+							<li>Milk</li>
+						</thingDefs>
+						<categories>
+						</categories>
+					</fixedIngredientFilter>
+					<defaultIngredientFilter>
+						<thingDefs>
+							<li>VBE_Tea</li>
+							<li>Milk</li>
+						</thingDefs>
+						<categories>
+						</categories>
+					</defaultIngredientFilter>
+					<products>
+						<VBE_BlackTea>10</VBE_BlackTea>
+					</products>
+					<researchPrerequisite>VBE_EspressoMachine</researchPrerequisite>
+				</RecipeDef>
+			<!-- MAKE YUENYEUNG -->
+				<RecipeDef>
+					<defName>VBE_MakeYuenYeung</defName>
+					<label>make yuenyeung</label>
+					<description>Make a mixture of coffee and tea. Tea and coffee drinkers respectively set their differences aside while concocting this unholy amalgamation. Whether it’s served hot or cold it’s equally confusing to the imbiber.</description>
+					<jobString>Making yuenyeung.</jobString>
+					<workSkill>Cooking</workSkill>
+					<workSpeedStat>CookSpeed</workSpeedStat>
+					<workAmount>600</workAmount>
+					<effectWorking>Cook</effectWorking>
+					<soundWorking>Recipe_Brewing</soundWorking>
+					<allowMixingIngredients>true</allowMixingIngredients>
+					<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+					<recipeUsers>
+						<li>VBE_EspressoMachineBuilding</li>
+					</recipeUsers>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>VBE_Tea</li>
+								</thingDefs>
+							</filter>
+							<count>0.8</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>VBE_IceCoffee</li>
+									<li>VBE_HotCoffee</li>
+								</thingDefs>
+							</filter>
+							<count>0.7</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>VBE_Tea</li>
+							<li>VBE_IceCoffee</li>
+							<li>VBE_HotCoffee</li>
+						</thingDefs>
+						<categories>
+						</categories>
+					</fixedIngredientFilter>
+					<defaultIngredientFilter>
+						<thingDefs>
+							<li>VBE_Tea</li>
+							<li>VBE_IceCoffee</li>
+							<li>VBE_HotCoffee</li>
+						</thingDefs>
+						<categories>
+						</categories>
+					</defaultIngredientFilter>
+					<products>
+						<VBE_Yuenyeung>10</VBE_Yuenyeung>
+					</products>
+					<researchPrerequisite>VBE_EspressoMachine</researchPrerequisite>
+				</RecipeDef>
+			<!-- MAKE KOMBUCHA TEA -->
+				<RecipeDef>
+					<defName>VBE_MakeKombucha</defName>
+					<label>make kombucha tea</label>
+					<description>Make a sugary tea left out to ferment, after fermenting the end product is a sweet and sour, sometimes even naturally fizzy drink known as kombucha. Praised for health benefits, though some remain skeptical.</description>
+					<jobString>Making kombucha tea.</jobString>
+					<workSkill>Cooking</workSkill>
+					<workSpeedStat>CookSpeed</workSpeedStat>
+					<workAmount>600</workAmount>
+					<effectWorking>Cook</effectWorking>
+					<soundWorking>Recipe_Brewing</soundWorking>
+					<allowMixingIngredients>true</allowMixingIngredients>
+					<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+					<recipeUsers>
+						<li>VBE_EspressoMachineBuilding</li>
+					</recipeUsers>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>VBE_Tea</li>
+								</thingDefs>
+							</filter>
+							<count>0.8</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>RawFungus</li>
+								</thingDefs>
+							</filter>
+							<count>0.5</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>VBE_Tea</li>
+							<li>RawFungus</li>
+						</thingDefs>
+						<categories>
+						</categories>
+					</fixedIngredientFilter>
+					<defaultIngredientFilter>
+						<thingDefs>
+							<li>VBE_Tea</li>
+							<li>RawFungus</li>
+						</thingDefs>
+						<categories>
+						</categories>
+					</defaultIngredientFilter>
+					<products>
+						<VBE_Kombucha>10</VBE_Kombucha>
+					</products>
+					<researchPrerequisite>VBE_EspressoMachine</researchPrerequisite>
+				</RecipeDef>
+		<!-- VANILLA COOKING EXPANDED -->
+			<!-- COFFEES -->
+				<!-- BREW MINT COFFEE -->
+					<RecipeDef>
+						<defName>VBE_BrewMintCoffee</defName>
+						<label>brew mint coffee</label>
+						<description>Brew a bitter espresso mixed with cream or milk, then further mixed with mint oil and garnished. Cool and velvety coffee gives way to an even cooler, soothing aftertaste, not to mention great smelling breath.</description>
+						<jobString>Brewing mint coffee.</jobString>
+						<workSkill>Cooking</workSkill>
+						<workSpeedStat>CookSpeed</workSpeedStat>
+						<workAmount>600</workAmount>
+						<effectWorking>Cook</effectWorking>
+						<soundWorking>Recipe_Brewing</soundWorking>
+						<allowMixingIngredients>true</allowMixingIngredients>
+						<ingredientValueGetterClass>VEF.Cooking.IngredientValueGetter_NutritionWithExtraIngredient</ingredientValueGetterClass>
+						<recipeUsers>
+							<li>VBE_EspressoMachineBuilding</li>
+						</recipeUsers>
+						<ingredients>
+							<li>
+								<filter>
+									<thingDefs>
+										<li>VBE_IceCoffee</li>
+										<li>VBE_HotCoffee</li>
+
+									</thingDefs>
+								</filter>
+								<count>0.7</count>
+							</li>
+							<li>
+								<filter>
+									<thingDefs>
+										<li>VBE_MintLeaves</li>
+
+									</thingDefs>
+								</filter>
+								<count>3</count>
+							</li>
+						</ingredients>
+						<fixedIngredientFilter>
+							<thingDefs>
+								<li>VBE_IceCoffee</li>
+								<li>VBE_HotCoffee</li>
+								<li>VBE_MintLeaves</li>
+							</thingDefs>
+							<categories>
+							</categories>
+						</fixedIngredientFilter>
+						<defaultIngredientFilter>
+							<thingDefs>
+								<li>VBE_IceCoffee</li>
+								<li>VBE_HotCoffee</li>
+								<li>VBE_MintLeaves</li>
+							</thingDefs>
+							<categories>
+							</categories>
+						</defaultIngredientFilter>
+						<products>
+							<VBE_MintCoffee>10</VBE_MintCoffee>
+						</products>
+						<researchPrerequisite>VBE_EspressoMachine</researchPrerequisite>
+					</RecipeDef>
+				<!-- BREW DALGONA COFFEE -->
+					<RecipeDef>
+						<defName>VBE_BrewDalgonaCoffee</defName>
+						<label>brew dalgona coffee</label>
+						<description>Brew a trendy, newer drink in the world of coffee rumored to originate from far off steamworlds. Coffee granules are rapidly mixed with sugar to form a thick, luxuriously sweet foam. Afterwards the foam is dispersed over deeply chilled milk before drinking.</description>
+						<jobString>Brewing dalgona coffee.</jobString>
+						<workSkill>Cooking</workSkill>
+						<workSpeedStat>CookSpeed</workSpeedStat>
+						<workAmount>600</workAmount>
+						<effectWorking>Cook</effectWorking>
+						<soundWorking>Recipe_Brewing</soundWorking>
+						<allowMixingIngredients>true</allowMixingIngredients>
+						<ingredientValueGetterClass>VEF.Cooking.IngredientValueGetter_NutritionWithExtraIngredient</ingredientValueGetterClass>
+						<recipeUsers>
+							<li>VBE_EspressoMachineBuilding</li>
+						</recipeUsers>
+						<ingredients>
+							<li>
+								<filter>
+									<thingDefs>
+										<li>VBE_IceCoffee</li>
+										<li>VBE_HotCoffee</li>
+
+									</thingDefs>
+								</filter>
+								<count>0.7</count>
+							</li>
+							<li>
+								<filter>
+									<thingDefs>
+										<li>VCE_RawSugar</li>
+
+									</thingDefs>
+								</filter>
+								<count>3</count>
+							</li>
+						</ingredients>
+						<fixedIngredientFilter>
+							<thingDefs>
+								<li>VBE_IceCoffee</li>
+								<li>VBE_HotCoffee</li>
+								<li>VCE_RawSugar</li>
+							</thingDefs>
+							<categories>
+							</categories>
+						</fixedIngredientFilter>
+						<defaultIngredientFilter>
+							<thingDefs>
+								<li>VBE_IceCoffee</li>
+								<li>VBE_HotCoffee</li>
+								<li>VCE_RawSugar</li>
+							</thingDefs>
+							<categories>
+							</categories>
+						</defaultIngredientFilter>
+						<products>
+							<VBE_DalgonaCoffee>10</VBE_DalgonaCoffee>
+						</products>
+						<researchPrerequisite>VBE_EspressoMachine</researchPrerequisite>
+					</RecipeDef>
+			<!-- TEAS -->
+				<!-- MAKE GREEN TEA -->
+					<RecipeDef>
+						<defName>VBE_MakeGreenTea</defName>
+						<label>make green tea</label>
+						<description>Make a light, citrusy green tea spiked with sugar to create a buttery, almost nutty flavor.</description>
+						<jobString>Making green tea.</jobString>
+						<workSkill>Cooking</workSkill>
+						<workSpeedStat>CookSpeed</workSpeedStat>
+						<workAmount>600</workAmount>
+						<effectWorking>Cook</effectWorking>
+						<soundWorking>Recipe_Brewing</soundWorking>
+						<allowMixingIngredients>true</allowMixingIngredients>
+						<ingredientValueGetterClass>VEF.Cooking.IngredientValueGetter_NutritionWithExtraIngredient</ingredientValueGetterClass>
+						<recipeUsers>
+							<li>VBE_EspressoMachineBuilding</li>
+						</recipeUsers>
+						<ingredients>
+							<li>
+								<filter>
+									<thingDefs>
+										<li>VBE_Tea</li>
+									</thingDefs>
+								</filter>
+								<count>0.8</count>
+							</li>
+							<li>
+								<filter>
+									<thingDefs>
+										<li>VCE_RawSugar</li>
+
+									</thingDefs>
+								</filter>
+								<count>3</count>
+							</li>
+						</ingredients>
+						<fixedIngredientFilter>
+							<thingDefs>
+								<li>VBE_Tea</li>
+								<li>VCE_RawSugar</li>
+							</thingDefs>
+							<categories>
+							</categories>
+						</fixedIngredientFilter>
+						<defaultIngredientFilter>
+							<thingDefs>
+								<li>VBE_Tea</li>
+								<li>VCE_RawSugar</li>
+							</thingDefs>
+							<categories>
+							</categories>
+						</defaultIngredientFilter>
+						<products>
+							<VBE_GreenTea>10</VBE_GreenTea>
+						</products>
+						<researchPrerequisite>VBE_EspressoMachine</researchPrerequisite>
+					</RecipeDef>
+				<!-- MAKE MINT TEA -->
+					<RecipeDef>
+						<defName>VBE_MakeMintTea</defName>
+						<label>make mint tea</label>
+						<description>Make black tea leaves mixed with mint leaves and deeply steeped, then garnished with additional mint leaves. Leaves your breath surprisingly fresh.</description>
+						<jobString>Making mint tea.</jobString>
+						<workSkill>Cooking</workSkill>
+						<workSpeedStat>CookSpeed</workSpeedStat>
+						<workAmount>600</workAmount>
+						<effectWorking>Cook</effectWorking>
+						<soundWorking>Recipe_Brewing</soundWorking>
+						<allowMixingIngredients>true</allowMixingIngredients>
+						<ingredientValueGetterClass>VEF.Cooking.IngredientValueGetter_NutritionWithExtraIngredient</ingredientValueGetterClass>
+						<recipeUsers>
+							<li>VBE_EspressoMachineBuilding</li>
+						</recipeUsers>
+						<ingredients>
+							<li>
+								<filter>
+									<thingDefs>
+										<li>VBE_Tea</li>
+									</thingDefs>
+								</filter>
+								<count>0.8</count>
+							</li>
+							<li>
+								<filter>
+									<thingDefs>
+										<li>VBE_MintLeaves</li>
+
+									</thingDefs>
+								</filter>
+								<count>3</count>
+							</li>
+						</ingredients>
+						<fixedIngredientFilter>
+							<thingDefs>
+								<li>VBE_Tea</li>
+								<li>VBE_MintLeaves</li>
+							</thingDefs>
+							<categories>
+							</categories>
+						</fixedIngredientFilter>
+						<defaultIngredientFilter>
+							<thingDefs>
+								<li>VBE_Tea</li>
+								<li>VBE_MintLeaves</li>
+							</thingDefs>
+							<categories>
+							</categories>
+						</defaultIngredientFilter>
+						<products>
+							<VBE_MintTea>10</VBE_MintTea>
+						</products>
+						<researchPrerequisite>VBE_EspressoMachine</researchPrerequisite>
+					</RecipeDef>
+				<!-- MAKE MASALA CHAI -->
+					<RecipeDef>
+						<defName>VBE_MakeMasalaChai</defName>
+						<label>make masala chai</label>
+						<description>Make a musty, warm, almost woody tea crafted by simple leaves and complex spices. Alleged to be good against high cholesterol.</description>
+						<jobString>Making masala chai.</jobString>
+						<workSkill>Cooking</workSkill>
+						<workSpeedStat>CookSpeed</workSpeedStat>
+						<workAmount>600</workAmount>
+						<effectWorking>Cook</effectWorking>
+						<soundWorking>Recipe_Brewing</soundWorking>
+						<allowMixingIngredients>true</allowMixingIngredients>
+						<ingredientValueGetterClass>VEF.Cooking.IngredientValueGetter_NutritionWithExtraIngredient</ingredientValueGetterClass>
+						<recipeUsers>
+							<li>VBE_EspressoMachineBuilding</li>
+						</recipeUsers>
+						<ingredients>
+							<li>
+								<filter>
+									<thingDefs>
+										<li>VBE_Tea</li>
+									</thingDefs>
+								</filter>
+								<count>0.8</count>
+							</li>
+							<li>
+								<filter>
+									<thingDefs>
+										<li>VCE_RawSpices</li>
+
+									</thingDefs>
+								</filter>
+								<count>3</count>
+							</li>
+						</ingredients>
+						<fixedIngredientFilter>
+							<thingDefs>
+								<li>VBE_Tea</li>
+								<li>VCE_RawSpices</li>
+							</thingDefs>
+							<categories>
+							</categories>
+						</fixedIngredientFilter>
+						<defaultIngredientFilter>
+							<thingDefs>
+								<li>VBE_Tea</li>
+								<li>VCE_RawSpices</li>
+							</thingDefs>
+							<categories>
+							</categories>
+						</defaultIngredientFilter>
+						<products>
+							<VBE_MasalaChai>10</VBE_MasalaChai>
+						</products>
+						<researchPrerequisite>VBE_EspressoMachine</researchPrerequisite>
+					</RecipeDef>
+				<!-- MAKE NOON CHAI -->
+					<RecipeDef>
+						<defName>VBE_MakeNoonChai</defName>
+						<label>make noon chai</label>
+						<description>Make an ancient Kashmiri tea mixing tea leaves, a pinch of salt and baking soda, which results in an striking pink beverage that is famous for being not only delicious but also healthy for the body. Very efficient for treating those with a high blood pressure.</description>
+						<jobString>Making noon chai.</jobString>
+						<workSkill>Cooking</workSkill>
+						<workSpeedStat>CookSpeed</workSpeedStat>
+						<workAmount>600</workAmount>
+						<effectWorking>Cook</effectWorking>
+						<soundWorking>Recipe_Brewing</soundWorking>
+						<allowMixingIngredients>true</allowMixingIngredients>
+						<ingredientValueGetterClass>VEF.Cooking.IngredientValueGetter_NutritionWithExtraIngredient</ingredientValueGetterClass>
+						<recipeUsers>
+							<li>VBE_EspressoMachineBuilding</li>
+						</recipeUsers>
+						<ingredients>
+							<li>
+								<filter>
+									<thingDefs>
+										<li>VBE_Tea</li>
+									</thingDefs>
+								</filter>
+								<count>0.8</count>
+							</li>
+							<li>
+								<filter>
+									<thingDefs>
+										<li>VCE_Salt</li>
+
+									</thingDefs>
+								</filter>
+								<count>3</count>
+							</li>
+						</ingredients>
+						<fixedIngredientFilter>
+							<thingDefs>
+								<li>VBE_Tea</li>
+								<li>VCE_Salt</li>
+							</thingDefs>
+							<categories>
+							</categories>
+						</fixedIngredientFilter>
+						<defaultIngredientFilter>
+							<thingDefs>
+								<li>VBE_Tea</li>
+								<li>VCE_Salt</li>
+							</thingDefs>
+							<categories>
+							</categories>
+						</defaultIngredientFilter>
+						<products>
+							<VBE_NoonChai>10</VBE_NoonChai>
+						</products>
+						<researchPrerequisite>VBE_EspressoMachine</researchPrerequisite>
+					</RecipeDef>
+		<!-- VANILLA PLANTS EXPANDED -->
+			<!-- COFFEES -->
+				<!-- BREW ESPRESSO ROMANO -->
+					<RecipeDef>
+						<defName>VBE_BrewLemonCoffee</defName>
+						<label>brew espresso romano</label>
+						<description>Brew an already acidic coffee garnished with a wedge of more acidic lemon, meant to be juiced into the coffee before quickly consumed while hot. An acquired taste to be sure but lauded by those who do prefer it.</description>
+						<jobString>Brewing espresso romano.</jobString>
+						<workSkill>Cooking</workSkill>
+						<workSpeedStat>CookSpeed</workSpeedStat>
+						<workAmount>600</workAmount>
+						<effectWorking>Cook</effectWorking>
+						<soundWorking>Recipe_Brewing</soundWorking>
+						<allowMixingIngredients>true</allowMixingIngredients>
+						<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+						<recipeUsers>
+							<li>VBE_EspressoMachineBuilding</li>
+						</recipeUsers>
+						<ingredients>
+							<li>
+								<filter>
+									<thingDefs>
+										<li>VBE_IceCoffee</li>
+										<li>VBE_HotCoffee</li>
+
+									</thingDefs>
+								</filter>
+								<count>0.7</count>
+							</li>
+							<li>
+								<filter>
+									<thingDefs>
+										<li>VCE_RawLemon</li>
+
+									</thingDefs>
+								</filter>
+								<count>0.5</count>
+							</li>
+						</ingredients>
+						<fixedIngredientFilter>
+							<thingDefs>
+								<li>VBE_IceCoffee</li>
+								<li>VBE_HotCoffee</li>
+								<li>VCE_RawLemon</li>
+							</thingDefs>
+							<categories>
+							</categories>
+						</fixedIngredientFilter>
+						<defaultIngredientFilter>
+							<thingDefs>
+								<li>VBE_IceCoffee</li>
+								<li>VBE_HotCoffee</li>
+								<li>VCE_RawLemon</li>
+							</thingDefs>
+							<categories>
+							</categories>
+						</defaultIngredientFilter>
+						<products>
+							<VBE_LemonCoffee>10</VBE_LemonCoffee>
+						</products>
+						<researchPrerequisite>VBE_EspressoMachine</researchPrerequisite>
+					</RecipeDef>
+			<!-- LEMONADES -->
+				<!-- MIX LEMONADE -->
+					<RecipeDef>
+						<defName>VBE_MixLemonade</defName>
+						<label>mix lemonade</label>
+						<description>Squeeze a few lemons, mix the juice with water and add some sugar.</description>
+						<jobString>Mixing lemonade.</jobString>
+						<workSpeedStat>CookSpeed</workSpeedStat>
+						<effectWorking>Cook</effectWorking>
+						<soundWorking>Recipe_Brewing</soundWorking>
+						<allowMixingIngredients>true</allowMixingIngredients>
+						<recipeUsers>
+							<li>Brewery</li>
+							<li>VBE_Bar</li>
+						</recipeUsers>
+						<ingredients>
+							<li>
+								<filter>
+									<thingDefs>
+										<li>VCE_RawLemon</li>
+									</thingDefs>
+								</filter>
+								<count>25</count>
+							</li>
+						</ingredients>
+						<products>
+							<VBE_Lemonade>20</VBE_Lemonade>
+						</products>
+					</RecipeDef>
+			<!-- TEAS -->
+				<!-- MAKE LEMON TEA -->
+					<RecipeDef>
+						<defName>VBE_MakeLemonTea</defName>
+						<label>make lemon tea</label>
+						<description>Make a dark tea cut with water, chilled and garnished with a wedge of bright lemon.</description>
+						<jobString>Making lemon tea.</jobString>
+						<workSkill>Cooking</workSkill>
+						<workSpeedStat>CookSpeed</workSpeedStat>
+						<workAmount>600</workAmount>
+						<effectWorking>Cook</effectWorking>
+						<soundWorking>Recipe_Brewing</soundWorking>
+						<allowMixingIngredients>true</allowMixingIngredients>
+						<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+						<recipeUsers>
+							<li>VBE_EspressoMachineBuilding</li>
+						</recipeUsers>
+						<ingredients>
+							<li>
+								<filter>
+									<thingDefs>
+										<li>VBE_Tea</li>
+									</thingDefs>
+								</filter>
+								<count>0.8</count>
+							</li>
+							<li>
+								<filter>
+									<thingDefs>
+										<li>VCE_RawLemon</li>
+
+									</thingDefs>
+								</filter>
+								<count>0.5</count>
+							</li>
+						</ingredients>
+						<fixedIngredientFilter>
+							<thingDefs>
+								<li>VBE_Tea</li>
+								<li>VCE_RawLemon</li>
+							</thingDefs>
+							<categories>
+							</categories>
+						</fixedIngredientFilter>
+						<defaultIngredientFilter>
+							<thingDefs>
+								<li>VBE_Tea</li>
+								<li>VCE_RawLemon</li>
+							</thingDefs>
+							<categories>
+							</categories>
+						</defaultIngredientFilter>
+						<products>
+							<VBE_LemonTea>10</VBE_LemonTea>
+						</products>
+						<researchPrerequisite>VBE_EspressoMachine</researchPrerequisite>
+					</RecipeDef>
+				<!-- MAKE EARL GREY TEA -->
+					<RecipeDef>
+						<defName>VBE_MakeEarlGreyTea</defName>
+						<label>make earl grey tea</label>
+						<description>Make a very strong and semi-sweet fruity tea. Floral notes dance around one's pallet at even the most dull scent. People who finish the drink feel strangely urged to colonize.</description>
+						<jobString>Making earl grey tea.</jobString>
+						<workSkill>Cooking</workSkill>
+						<workSpeedStat>CookSpeed</workSpeedStat>
+						<workAmount>600</workAmount>
+						<effectWorking>Cook</effectWorking>
+						<soundWorking>Recipe_Brewing</soundWorking>
+						<allowMixingIngredients>true</allowMixingIngredients>
+						<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+						<recipeUsers>
+							<li>VBE_EspressoMachineBuilding</li>
+						</recipeUsers>
+						<ingredients>
+							<li>
+								<filter>
+									<thingDefs>
+										<li>VBE_Tea</li>
+									</thingDefs>
+								</filter>
+								<count>0.8</count>
+							</li>
+							<li>
+								<filter>
+									<thingDefs>
+										<li>VCE_RawOrange</li>
+
+									</thingDefs>
+								</filter>
+								<count>0.5</count>
+							</li>
+						</ingredients>
+						<fixedIngredientFilter>
+							<thingDefs>
+								<li>VBE_Tea</li>
+								<li>VCE_RawOrange</li>
+							</thingDefs>
+							<categories>
+							</categories>
+						</fixedIngredientFilter>
+						<defaultIngredientFilter>
+							<thingDefs>
+								<li>VBE_Tea</li>
+								<li>VCE_RawOrange</li>
+							</thingDefs>
+							<categories>
+							</categories>
+						</defaultIngredientFilter>
+						<products>
+							<VBE_EarlGreyTea>10</VBE_EarlGreyTea>
+						</products>
+						<researchPrerequisite>VBE_EspressoMachine</researchPrerequisite>
+					</RecipeDef>
+	<!-- VCE - STEWS -->
+		<!-- PREPARE SIMPLE STEW -->
+			<RecipeDef ParentName="CookMealBase">
+				<defName>VCE_CookStewSimple</defName>
+				<label>prepare simple stew</label>
+				<description>Prepare a simple uncooked stew quickly made from a few ingredients.</description>
+				<jobString>Preparing simple stew.</jobString>
+				<workSpeedStat>CookSpeed</workSpeedStat>
+				<effectWorking>Cook</effectWorking>
+				<soundWorking>Recipe_CookMeal</soundWorking>
+				<allowMixingIngredients>true</allowMixingIngredients>
+				<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+				<recipeUsers>
+					<li>Campfire</li>
+					<li>FueledStove</li>
+					<li>ElectricStove</li>
+				</recipeUsers>
+				<ingredients>
+					<li>
+						<filter>
+							<categories>
+								<li>FoodRaw</li>
+							</categories>
+						</filter>
+						<count>4</count>
+					</li>
+				</ingredients>
+				<products>
+					<VCE_UncookedStewSimple>1</VCE_UncookedStewSimple>
+				</products>
+				<researchPrerequisite>
+					<li>VCE_StewCooking</li>
+				</researchPrerequisite>
+			</RecipeDef>
+		<!-- PREPARE FINE STEW -->
+			<RecipeDef ParentName="CookMealBase">
+				<defName>VCE_CookStewFine</defName>
+				<label>prepare fine stew</label>
+				<description>Prepare a fine uncooked stew assembled with care from a wide selection of ingredients.</description>
+				<jobString>Preparing fine stew.</jobString>
+				<workSpeedStat>CookSpeed</workSpeedStat>
+				<effectWorking>Cook</effectWorking>
+				<soundWorking>Recipe_CookMeal</soundWorking>
+				<allowMixingIngredients>true</allowMixingIngredients>
+				<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+				<recipeUsers>
+					<li>Campfire</li>
+					<li>FueledStove</li>
+					<li>ElectricStove</li>
+				</recipeUsers>
+				<ingredients>
+					<li>
+						<filter>
+							<categories>
+								<li>MeatRaw</li>
+								<li>AnimalProductRaw</li>
+							</categories>
+						</filter>
+						<count>2</count>
+					</li>
+					<li>
+						<filter>
+							<categories>
+								<li>PlantFoodRaw</li>
+							</categories>
+						</filter>
+						<count>2</count>
+					</li>
+				</ingredients>
+				<products>
+					<VCE_UncookedStewFine>1</VCE_UncookedStewFine>
+				</products>
+				<skillRequirements>
+					<Cooking>4</Cooking>
+				</skillRequirements>
+				<researchPrerequisite>
+					<li>VCE_StewCooking</li>
+				</researchPrerequisite>
+			</RecipeDef>
+		<!-- PREPARE LAVISH STEW -->
+			<RecipeDef ParentName="CookMealBase">
+				<defName>VCE_CookStewLavish</defName>
+				<label>prepare lavish stew</label>
+				<description>Prepare a lavish uncooked stew. A masterpiece of the culinary arts, this stew nourishes the body, mind, and soul.</description>
+				<jobString>Preparing lavish Stew.</jobString>
+				<workSpeedStat>CookSpeed</workSpeedStat>
+				<effectWorking>Cook</effectWorking>
+				<soundWorking>Recipe_CookMeal</soundWorking>
+				<allowMixingIngredients>true</allowMixingIngredients>
+				<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+				<recipeUsers>
+					<li>Campfire</li>
+					<li>FueledStove</li>
+					<li>ElectricStove</li>
+				</recipeUsers>
+				<ingredients>
+					<li>
+						<filter>
+							<categories>
+								<li>MeatRaw</li>
+								<li>AnimalProductRaw</li>
+							</categories>
+						</filter>
+						<count>4</count>
+					</li>
+					<li>
+						<filter>
+							<categories>
+								<li>PlantFoodRaw</li>
+							</categories>
+						</filter>
+						<count>4</count>
+					</li>
+				</ingredients>
+				<products>
+					<VCE_UncookedStewLavish>1</VCE_UncookedStewLavish>
+				</products>
+				<skillRequirements>
+					<Cooking>8</Cooking>
+				</skillRequirements>
+				<researchPrerequisite>
+					<li>VCE_StewCooking</li>
+				</researchPrerequisite>
+			</RecipeDef>
+	<!-- RANDY BURGER -->
+		<!-- COOK RANDY BURGER -->
+			<RecipeDef ParentName="CookMealBase">
+				<defName>RH2CookMeal_RandyBurger</defName>
+				<label>cook randy burger</label>
+				<description>Cook a somewhat complex meal from a combination of meat and plant ingredients.</description>
+				<jobString>Cooking randy burger.</jobString>
+				<workSpeedStat>CookSpeed</workSpeedStat>
+				<effectWorking>Cook</effectWorking>
+				<soundWorking>Recipe_CookMeal</soundWorking>
+				<allowMixingIngredients>true</allowMixingIngredients>
+				<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+				<ingredients>
+				<li>
+					<filter>
+					<categories>
+						<li>MeatRaw</li>
+						<li>AnimalProductRaw</li>
+					</categories>
+					</filter>
+					<count>0.25</count>
+				</li>
+				<li>
+					<filter>
+					<categories>
+						<li>PlantFoodRaw</li>
+					</categories>
+					</filter>
+					<count>0.15</count>
+				</li>
+				</ingredients>
+				<products>
+				<RH2Meal_RandyBurger>1</RH2Meal_RandyBurger>
+				</products>
+				<skillRequirements>
+				<Cooking>5</Cooking>
+				</skillRequirements>
+				<recipeUsers>
+					<li>FueledStove</li>
+					<li>ElectricStove</li>
+				</recipeUsers>
+			</RecipeDef>
+		<!-- COOK RANDY BURGER (BULK) -->
+			<RecipeDef ParentName="CookMealBase">
+				<defName>RH2CookMeal_RandyBurger_Bulk</defName>
+				<label>cook randy burger x4</label>
+				<description>Cook 4 somewhat complex meals from a combination of meat and plant ingredients.</description>
+				<jobString>Cooking 4 randy burgers.</jobString>
+				<workAmount>1400</workAmount>
+				<workSpeedStat>CookSpeed</workSpeedStat>
+				<effectWorking>Cook</effectWorking>
+				<soundWorking>Recipe_CookMeal</soundWorking>
+				<allowMixingIngredients>true</allowMixingIngredients>
+				<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+				<ingredients>
+				<li>
+					<filter>
+					<categories>
+						<li>MeatRaw</li>
+						<li>AnimalProductRaw</li>
+					</categories>
+					</filter>
+					<count>1.0</count>
+				</li>
+				<li>
+					<filter>
+					<categories>
+						<li>PlantFoodRaw</li>
+					</categories>
+					</filter>
+					<count>0.60</count>
+				</li>
+				</ingredients>
+				<products>
+				<RH2Meal_RandyBurger>4</RH2Meal_RandyBurger>
+				</products>
+				<skillRequirements>
+				<Cooking>5</Cooking>
+				</skillRequirements>
+				<recipeUsers>
+					<li>FueledStove</li>
+					<li>ElectricStove</li>
+				</recipeUsers>
+			</RecipeDef>
+	<!-- MRE MOD -->
+		<!-- GERMAN MRE -->
+			<!-- MAKE MRE -->
+				<RecipeDef ParentName="CookMealBase">
+					<defName>MakeGERMRE</defName>
+					<label>Make German military EPA</label>
+					<description>Create a German military EPA.</description>
+					<jobString>Making a German military EPA.</jobString>
+					<workAmount>600</workAmount>
+					<workSpeedStat>CookSpeed</workSpeedStat>
+					<requiredGiverWorkType>Cooking</requiredGiverWorkType>
+					<effectWorking>Cook</effectWorking>
+					<soundWorking>Recipe_CookMeal</soundWorking>
+					<allowMixingIngredients>true</allowMixingIngredients>
+					<recipeUsers>
+					<li>ElectricStove</li>
+					<li>FueledStove</li>
+					</recipeUsers>
+					<ingredients>
+					<li>
+						<filter>
+						<categories>
+							<li>MeatRaw</li>
+							<li>AnimalProductRaw</li>
+						</categories>
+						</filter>
+						<count>9</count>
+					</li>
+					<li>
+						<filter>
+						<categories>
+							<li>PlantFoodRaw</li>
+						</categories>
+						</filter>
+						<count>9</count>
+					</li>
+					</ingredients>
+					<products>
+					<MealGERMRE>1</MealGERMRE>
+					</products>
+					<skillRequirements>
+					<Crafting>2</Crafting>
+					<Cooking>7</Cooking>
+					</skillRequirements>
+					<researchPrerequisite>PackagedSurvivalMeal</researchPrerequisite>
+				</RecipeDef>
+			<!-- MAKE MRE (BULK) -->
+				<RecipeDef ParentName="CookMealBase">
+					<defName>MakeGERMREBulk</defName>
+					<label>Make German military EPA x4</label>
+					<description>Create 4 German military EPAs.</description>
+					<jobString>Making 4 German military EPAs.</jobString>
+					<workAmount>800</workAmount>
+					<workSpeedStat>CookSpeed</workSpeedStat>
+					<requiredGiverWorkType>Cooking</requiredGiverWorkType>
+					<effectWorking>Cook</effectWorking>
+					<soundWorking>Recipe_CookMeal</soundWorking>
+					<allowMixingIngredients>true</allowMixingIngredients>
+					<recipeUsers>
+					<li>ElectricStove</li>
+					<li>FueledStove</li>
+					</recipeUsers>
+					<ingredients>
+					<li>
+						<filter>
+						<categories>
+							<li>MeatRaw</li>
+							<li>AnimalProductRaw</li>
+						</categories>
+						</filter>
+						<count>36</count>
+					</li>
+					<li>
+						<filter>
+						<categories>
+							<li>PlantFoodRaw</li>
+						</categories>
+						</filter>
+						<count>36</count>
+					</li>
+					</ingredients>
+					<products>
+					<MealGERMRE>4</MealGERMRE>
+					</products>
+					<skillRequirements>
+					<Crafting>2</Crafting>
+					<Cooking>7</Cooking>
+					</skillRequirements>
+					<researchPrerequisite>PackagedSurvivalMeal</researchPrerequisite>
+				</RecipeDef>
+			<!-- MAKE VEGETARIAN MRE -->
+				<RecipeDef ParentName="CookMealBase">
+					<defName>MakeGERMRE_Veg</defName>
+					<label>Make vegetarian German EPA</label>
+					<description>Create vegetarian German military EPA.</description>
+					<jobString>Making vegetarian German military EPA.</jobString>
+					<workAmount>700</workAmount>
+					<recipeUsers>
+					<li>ElectricStove</li>
+					<li>FueledStove</li>
+					</recipeUsers>
+					<ingredients>
+					<li>
+						<filter>
+						<categories>
+							<li>PlantFoodRaw</li>
+						</categories>
+						</filter>
+						<count>13</count>
+					</li>
+					</ingredients>
+					<products>
+					<MealGERMRE_Veg>1</MealGERMRE_Veg>
+					</products>
+					<skillRequirements>
+					<Crafting>2</Crafting>
+					<Cooking>7</Cooking>
+					</skillRequirements>
+				</RecipeDef>
+			<!-- MAKE MEAT ONLY MRE -->
+				<RecipeDef ParentName="CookMealBase">
+					<defName>MakeGERMRE_Carn</defName>
+					<label>Make meat-only German EPA</label>
+					<description>Create meat-only German military EPA.</description>
+					<jobString>Making meat-only German military EPA.</jobString>
+					<workAmount>700</workAmount>
+					<recipeUsers>
+					<li>ElectricStove</li>
+					<li>FueledStove</li>
+					</recipeUsers>
+					<ingredients>
+					<li>
+						<filter>
+						<categories>
+							<li>MeatRaw</li>
+							<li>AnimalProductRaw</li>
+						</categories>
+						</filter>
+						<count>13</count>
+					</li>
+					</ingredients>
+					<products>
+					<MealGERMRE_Carn>1</MealGERMRE_Carn>
+					</products>
+					<skillRequirements>
+					<Crafting>2</Crafting>
+					<Cooking>7</Cooking>
+					</skillRequirements>
+				</RecipeDef>
+		<!-- JAPANESE MRE -->
+			<!-- MAKE JSDF MRE -->
+				<RecipeDef ParentName="CookMealBase">
+					<defName>MakeJAPMRE</defName>
+					<label>Make JSDF military ration</label>
+					<description>Create a JSDF military ration.</description>
+					<jobString>Making a JSDF military ration.</jobString>
+					<workAmount>600</workAmount>
+					<workSpeedStat>CookSpeed</workSpeedStat>
+					<requiredGiverWorkType>Cooking</requiredGiverWorkType>
+					<effectWorking>Cook</effectWorking>
+					<soundWorking>Recipe_CookMeal</soundWorking>
+					<allowMixingIngredients>true</allowMixingIngredients>
+					<recipeUsers>
+					<li>ElectricStove</li>
+					<li>FueledStove</li>
+					</recipeUsers>
+					<ingredients>
+					<li>
+						<filter>
+						<categories>
+							<li>MeatRaw</li>
+							<li>AnimalProductRaw</li>
+						</categories>
+						</filter>
+						<count>9</count>
+					</li>
+					<li>
+						<filter>
+						<categories>
+							<li>PlantFoodRaw</li>
+						</categories>
+						</filter>
+						<count>9</count>
+					</li>
+					</ingredients>
+					<products>
+					<MealJAPMRE>1</MealJAPMRE>
+					</products>
+					<skillRequirements>
+					<Crafting>2</Crafting>
+					<Cooking>7</Cooking>
+					</skillRequirements>
+					<researchPrerequisite>PackagedSurvivalMeal</researchPrerequisite>
+				</RecipeDef>
+			<!-- MAKE JSDF MRE (BULK) -->
+				<RecipeDef ParentName="CookMealBase">
+					<defName>MakeJAPMREBulk</defName>
+					<label>Make JSDF military ration x4</label>
+					<description>Create 4 JSDF military rations.</description>
+					<jobString>Making 4 JSDF military rations.</jobString>
+					<workAmount>800</workAmount>
+					<workSpeedStat>CookSpeed</workSpeedStat>
+					<requiredGiverWorkType>Cooking</requiredGiverWorkType>
+					<effectWorking>Cook</effectWorking>
+					<soundWorking>Recipe_CookMeal</soundWorking>
+					<allowMixingIngredients>true</allowMixingIngredients>
+					<recipeUsers>
+					<li>ElectricStove</li>
+					<li>FueledStove</li>
+					</recipeUsers>
+					<ingredients>
+					<li>
+						<filter>
+						<categories>
+							<li>MeatRaw</li>
+							<li>AnimalProductRaw</li>
+						</categories>
+						</filter>
+						<count>36</count>
+					</li>
+					<li>
+						<filter>
+						<categories>
+							<li>PlantFoodRaw</li>
+						</categories>
+						</filter>
+						<count>38</count>
+					</li>
+					</ingredients>
+					<products>
+					<MealJAPMRE>4</MealJAPMRE>
+					</products>
+					<skillRequirements>
+					<Crafting>2</Crafting>
+					<Cooking>7</Cooking>
+					</skillRequirements>
+					<researchPrerequisite>PackagedSurvivalMeal</researchPrerequisite>
+				</RecipeDef>
+			<!-- MAKE VEGETARIAN JSDF MRE -->
+				<RecipeDef ParentName="CookMealBase">
+					<defName>MakeJAPMRE_Veg</defName>
+					<label>Make vegetarian JSDF ration</label>
+					<description>Create vegetarian JSDF MRE.</description>
+					<jobString>Making vegetarian JSDF MRE.</jobString>
+					<workAmount>700</workAmount>
+					<recipeUsers>
+					<li>ElectricStove</li>
+					<li>FueledStove</li>
+					</recipeUsers>
+					<ingredients>
+					<li>
+						<filter>
+						<categories>
+							<li>PlantFoodRaw</li>
+						</categories>
+						</filter>
+						<count>13</count>
+					</li>
+					</ingredients>
+					<products>
+					<MealJAPMRE_Veg>1</MealJAPMRE_Veg>
+					</products>
+					<skillRequirements>
+					<Crafting>2</Crafting>
+					<Cooking>7</Cooking>
+					</skillRequirements>
+				</RecipeDef>
+			<!-- MAKE MEAT ONLY JSDF MRE -->
+				<RecipeDef ParentName="CookMealBase">
+					<defName>MakeJAPMRE_Carn</defName>
+					<label>Make meat-only JSDF ration</label>
+					<description>Create meat-only JSDF MRE.</description>
+					<jobString>Making meat-only JSDF MRE.</jobString>
+					<workAmount>700</workAmount>
+					<recipeUsers>
+					<li>ElectricStove</li>
+					<li>FueledStove</li>
+					</recipeUsers>
+					<ingredients>
+					<li>
+						<filter>
+						<categories>
+							<li>MeatRaw</li>
+							<li>AnimalProductRaw</li>
+						</categories>
+						</filter>
+						<count>13</count>
+					</li>
+					</ingredients>
+					<products>
+					<MealJAPMRE_Carn>1</MealJAPMRE_Carn>
+					</products>
+					<skillRequirements>
+					<Crafting>2</Crafting>
+					<Cooking>7</Cooking>
+					</skillRequirements>
+				</RecipeDef>
+		<!-- RUSSIAN MRE -->
+			<!-- MAKE RUSSIAN MRE -->
+				<RecipeDef ParentName="CookMealBase">
+					<defName>MakeRUSMRE</defName>
+					<label>Make Russian military IRP</label>
+					<description>Create a Russian military IRP.</description>
+					<jobString>Making a Russian military IRP.</jobString>
+					<workAmount>600</workAmount>
+					<workSpeedStat>CookSpeed</workSpeedStat>
+					<requiredGiverWorkType>Cooking</requiredGiverWorkType>
+					<effectWorking>Cook</effectWorking>
+					<soundWorking>Recipe_CookMeal</soundWorking>
+					<allowMixingIngredients>true</allowMixingIngredients>
+					<recipeUsers>
+					<li>ElectricStove</li>
+					<li>FueledStove</li>
+					</recipeUsers>
+					<ingredients>
+					<li>
+						<filter>
+						<categories>
+							<li>MeatRaw</li>
+							<li>AnimalProductRaw</li>
+						</categories>
+						</filter>
+						<count>9</count>
+					</li>
+					<li>
+						<filter>
+						<categories>
+							<li>PlantFoodRaw</li>
+						</categories>
+						</filter>
+						<count>9</count>
+					</li>
+					</ingredients>
+					<products>
+					<MealRUSMRE>1</MealRUSMRE>
+					</products>
+					<skillRequirements>
+					<Crafting>2</Crafting>
+					<Cooking>7</Cooking>
+					</skillRequirements>
+					<researchPrerequisite>PackagedSurvivalMeal</researchPrerequisite>
+				</RecipeDef>
+			<!-- MAKE RUSSIAN MRE (BULK) -->
+				<RecipeDef ParentName="CookMealBase">
+					<defName>MakeRUSMREBulk</defName>
+					<label>Make Russian military IRP x4</label>
+					<description>Create 4 Russian IRPs.</description>
+					<jobString>Making 4 Russian IRPs.</jobString>
+					<workAmount>800</workAmount>
+					<workSpeedStat>CookSpeed</workSpeedStat>
+					<requiredGiverWorkType>Cooking</requiredGiverWorkType>
+					<effectWorking>Cook</effectWorking>
+					<soundWorking>Recipe_CookMeal</soundWorking>
+					<allowMixingIngredients>true</allowMixingIngredients>
+					<recipeUsers>
+					<li>ElectricStove</li>
+					<li>FueledStove</li>
+					</recipeUsers>
+					<ingredients>
+					<li>
+						<filter>
+						<categories>
+							<li>MeatRaw</li>
+							<li>AnimalProductRaw</li>
+						</categories>
+						</filter>
+						<count>36</count>
+					</li>
+					<li>
+						<filter>
+						<categories>
+							<li>PlantFoodRaw</li>
+						</categories>
+						</filter>
+						<count>36</count>
+					</li>
+					</ingredients>
+					<products>
+					<MealRUSMRE>4</MealRUSMRE>
+					</products>
+					<skillRequirements>
+					<Crafting>2</Crafting>
+					<Cooking>7</Cooking>
+					</skillRequirements>
+					<researchPrerequisite>PackagedSurvivalMeal</researchPrerequisite>
+				</RecipeDef>
+			<!-- MAKE VEGETARIAN RUSSIAN MRE -->
+				<RecipeDef ParentName="CookMealBase">
+					<defName>MakeRUSMRE_Veg</defName>
+					<label>Make vegetarian Russian IRP</label>
+					<description>Create vegetarian Russian IRP.</description>
+					<jobString>Making vegetarian Russian IRP.</jobString>
+					<workAmount>700</workAmount>
+					<recipeUsers>
+					<li>ElectricStove</li>
+					<li>FueledStove</li>
+					</recipeUsers>
+					<ingredients>
+					<li>
+						<filter>
+						<categories>
+							<li>PlantFoodRaw</li>
+						</categories>
+						</filter>
+						<count>13</count>
+					</li>
+					</ingredients>
+					<products>
+					<MealRUSMRE_Veg>1</MealRUSMRE_Veg>
+					</products>
+					<skillRequirements>
+					<Crafting>2</Crafting>
+					<Cooking>7</Cooking>
+					</skillRequirements>
+				</RecipeDef>
+			<!-- MAKE MEAT ONLY RUSSIAN MRE -->
+				<RecipeDef ParentName="CookMealBase">
+					<defName>MakeRUSMRE_Carn</defName>
+					<label>Make meat-only Russian IRP</label>
+					<description>Create meat-only Russian IRP.</description>
+					<jobString>Making meat-only Russian IRP.</jobString>
+					<workAmount>700</workAmount>
+					<recipeUsers>
+					<li>ElectricStove</li>
+					<li>FueledStove</li>
+					</recipeUsers>
+					<ingredients>
+					<li>
+						<filter>
+						<categories>
+							<li>MeatRaw</li>
+							<li>AnimalProductRaw</li>
+						</categories>
+						</filter>
+						<count>13</count>
+					</li>
+					</ingredients>
+					<products>
+					<MealRUSMRE_Carn>1</MealRUSMRE_Carn>
+					</products>
+					<skillRequirements>
+					<Crafting>2</Crafting>
+					<Cooking>7</Cooking>
+					</skillRequirements>
+				</RecipeDef>
+		<!-- TURKISH MRE -->
+			<!-- MAKE TURKISH MRE -->
+				<RecipeDef ParentName="CookMealBase">
+					<defName>MakeTURMRE</defName>
+					<label>Make Turkish "Ta!Da!" MRE</label>
+					<description>Create a Turkish "Ta!Da!" MRE.</description>
+					<jobString>Making a Turkish "Ta!Da!" MRE.</jobString>
+					<workAmount>600</workAmount>
+					<workSpeedStat>CookSpeed</workSpeedStat>
+					<requiredGiverWorkType>Cooking</requiredGiverWorkType>
+					<effectWorking>Cook</effectWorking>
+					<soundWorking>Recipe_CookMeal</soundWorking>
+					<allowMixingIngredients>true</allowMixingIngredients>
+					<recipeUsers>
+					<li>ElectricStove</li>
+					<li>FueledStove</li>
+					</recipeUsers>
+					<ingredients>
+					<li>
+						<filter>
+						<categories>
+							<li>MeatRaw</li>
+							<li>AnimalProductRaw</li>
+						</categories>
+						</filter>
+						<count>9</count>
+					</li>
+					<li>
+						<filter>
+						<categories>
+							<li>PlantFoodRaw</li>
+						</categories>
+						</filter>
+						<count>9</count>
+					</li>
+					</ingredients>
+					<products>
+					<MealTURMRE>1</MealTURMRE>
+					</products>
+					<skillRequirements>
+					<Crafting>2</Crafting>
+					<Cooking>7</Cooking>
+					</skillRequirements>
+					<researchPrerequisite>PackagedSurvivalMeal</researchPrerequisite>
+				</RecipeDef>
+			<!-- MAKE TURKISH MRE (BULK) -->
+				<RecipeDef ParentName="CookMealBase">
+					<defName>MakeTURMREBulk</defName>
+					<label>Make Turkish "Ta!Da!" MRE x4</label>
+					<description>Create 4 Turkish MREs.</description>
+					<jobString>Making 4 Turkish MREs.</jobString>
+					<workAmount>800</workAmount>
+					<workSpeedStat>CookSpeed</workSpeedStat>
+					<requiredGiverWorkType>Cooking</requiredGiverWorkType>
+					<effectWorking>Cook</effectWorking>
+					<soundWorking>Recipe_CookMeal</soundWorking>
+					<allowMixingIngredients>true</allowMixingIngredients>
+					<recipeUsers>
+					<li>ElectricStove</li>
+					<li>FueledStove</li>
+					</recipeUsers>
+					<ingredients>
+					<li>
+						<filter>
+						<categories>
+							<li>MeatRaw</li>
+							<li>AnimalProductRaw</li>
+						</categories>
+						</filter>
+						<count>36</count>
+					</li>
+					<li>
+						<filter>
+						<categories>
+							<li>PlantFoodRaw</li>
+						</categories>
+						</filter>
+						<count>36</count>
+					</li>
+					</ingredients>
+					<products>
+					<MealTURMRE>4</MealTURMRE>
+					</products>
+					<skillRequirements>
+					<Crafting>2</Crafting>
+					<Cooking>7</Cooking>
+					</skillRequirements>
+					<researchPrerequisite>PackagedSurvivalMeal</researchPrerequisite>
+				</RecipeDef>
+			<!-- MAKE VEGETARIAN TURKISH MRE -->
+				<RecipeDef ParentName="CookMealBase">
+					<defName>MakeTURMRE_Veg</defName>
+					<label>Make vegetarian Turkish MRE</label>
+					<description>Create vegetarian Turkish MRE.</description>
+					<jobString>Making vegetarian Turkish MRE.</jobString>
+					<workAmount>700</workAmount>
+					<recipeUsers>
+					<li>ElectricStove</li>
+					<li>FueledStove</li>
+					</recipeUsers>
+					<ingredients>
+					<li>
+						<filter>
+						<categories>
+							<li>PlantFoodRaw</li>
+						</categories>
+						</filter>
+						<count>13</count>
+					</li>
+					</ingredients>
+					<products>
+					<MealTURMRE_Veg>1</MealTURMRE_Veg>
+					</products>
+					<skillRequirements>
+					<Crafting>2</Crafting>
+					<Cooking>7</Cooking>
+					</skillRequirements>
+				</RecipeDef>
+			<!-- MAKE MEAT ONLY TURKISH MRE -->
+				<RecipeDef ParentName="CookMealBase">
+					<defName>MakeTURMRE_Carn</defName>
+					<label>Make meat-only Turkish MRE</label>
+					<description>Create meat-only Turkish MRE.</description>
+					<jobString>Making meat-only Turkish MRE.</jobString>
+					<workAmount>700</workAmount>
+					<recipeUsers>
+					<li>ElectricStove</li>
+					<li>FueledStove</li>
+					</recipeUsers>
+					<ingredients>
+					<li>
+						<filter>
+						<categories>
+							<li>MeatRaw</li>
+							<li>AnimalProductRaw</li>
+						</categories>
+						</filter>
+						<count>13</count>
+					</li>
+					</ingredients>
+					<products>
+					<MealTURMRE_Carn>1</MealTURMRE_Carn>
+					</products>
+					<skillRequirements>
+					<Crafting>2</Crafting>
+					<Cooking>7</Cooking>
+					</skillRequirements>
+				</RecipeDef>
+		<!-- AMERICAN MRE -->
+			<!-- MAKE AMERICAN MRE -->
+				<RecipeDef ParentName="CookMealBase">
+					<defName>MakeUSAMRE</defName>
+					<label>Make US Military MRE</label>
+					<description>Create a US Military MRE.</description>
+					<jobString>Making a US Military MRE.</jobString>
+					<workAmount>600</workAmount>
+					<workSpeedStat>CookSpeed</workSpeedStat>
+					<requiredGiverWorkType>Cooking</requiredGiverWorkType>
+					<effectWorking>Cook</effectWorking>
+					<soundWorking>Recipe_CookMeal</soundWorking>
+					<allowMixingIngredients>true</allowMixingIngredients>
+					<recipeUsers>
+					<li>ElectricStove</li>
+					<li>FueledStove</li>	
+					</recipeUsers>
+					<ingredients>
+					<li>
+						<filter>
+						<categories>
+							<li>MeatRaw</li>
+							<li>AnimalProductRaw</li>
+						</categories>
+						</filter>
+						<count>9</count>
+					</li>
+					<li>
+						<filter>
+						<categories>
+							<li>PlantFoodRaw</li>
+						</categories>
+						</filter>
+						<count>9</count>
+					</li>
+					</ingredients>
+					<products>
+					<MealUSAMRE>1</MealUSAMRE>
+					</products>
+					<skillRequirements>
+					<Crafting>2</Crafting>
+					<Cooking>7</Cooking>
+					</skillRequirements>
+					<researchPrerequisite>PackagedSurvivalMeal</researchPrerequisite>
+				</RecipeDef>
+			<!-- MAKE AMERICAN MRE (BULK) -->
+				<RecipeDef ParentName="CookMealBase">
+					<defName>MakeUSAMREBulk</defName>
+					<label>Make US MRE x4</label>
+					<description>Create a US Military MRE x4</description>
+					<jobString>Making 4 US MRE`s.</jobString>
+					<workAmount>800</workAmount>
+					<workSpeedStat>CookSpeed</workSpeedStat>
+					<requiredGiverWorkType>Cooking</requiredGiverWorkType>
+					<effectWorking>Cook</effectWorking>
+					<soundWorking>Recipe_CookMeal</soundWorking>
+					<allowMixingIngredients>true</allowMixingIngredients>
+					<recipeUsers>
+					<li>ElectricStove</li>
+					<li>FueledStove</li>
+					</recipeUsers>
+					<ingredients>
+					<li>
+						<filter>
+						<customSummary>protein</customSummary>
+						<categories>
+							<li>MeatRaw</li>
+							<li>AnimalProductRaw</li>
+						</categories>
+						</filter>
+						<count>36</count>
+					</li>
+					<li>
+						<filter>
+						<categories>
+							<li>PlantFoodRaw</li>
+						</categories>
+						</filter>
+						<count>36</count>
+					</li>
+					</ingredients>
+					<products>
+					<MealUSAMRE>4</MealUSAMRE>
+					</products>
+					<skillRequirements>
+					<Crafting>2</Crafting>
+					<Cooking>7</Cooking>
+					</skillRequirements>
+					<researchPrerequisite>PackagedSurvivalMeal</researchPrerequisite>
+				</RecipeDef>
+			<!-- MAKE VEGETARIAN AMERICAN MRE -->
+				<RecipeDef ParentName="CookMealBase">
+					<defName>MakeUSAMRE_Veg</defName>
+					<label>Make vegetarian US MRE</label>
+					<description>Create a vegetarian version of the US military MRE.</description>
+					<workAmount>700</workAmount>
+					<recipeUsers>
+						<li>ElectricStove</li>
+						<li>FueledStove</li>
+					</recipeUsers>
+					<ingredients>
+						<li>
+						<filter>
+							<categories>
+							<li>PlantFoodRaw</li>
+							</categories>
+						</filter>
+						<count>13</count>
+						</li>
+					</ingredients>
+					<products>
+						<MealUSAMRE_Veg>1</MealUSAMRE_Veg>
+					</products>
+					<skillRequirements>
+					<Crafting>2</Crafting>
+						<Cooking>7</Cooking>
+					</skillRequirements>
+				</RecipeDef>
+			<!-- MAKE MEAT ONLY AMERICAN MRE -->
+				<RecipeDef ParentName="CookMealBase">
+					<defName>MakeUSAMRE_Carn</defName>
+					<label>Make meat-only US MRE</label>
+					<description>Cooking a meat version of the US military MRE.</description>	
+						<recipeUsers>
+						<li>ElectricStove</li>
+						<li>FueledStove</li>
+					</recipeUsers>
+					<ingredients>
+						<li>
+						<filter>
+							<categories>
+							<li>MeatRaw</li>
+							<li>AnimalProductRaw</li>
+							</categories>
+						</filter>
+						<count>13</count>
+						</li>
+					</ingredients>
+						<skillRequirements>
+					<Crafting>2</Crafting>
+						<Cooking>7</Cooking>
+					</skillRequirements>
+					<products>
+						<MealUSAMRE_Carn>1</MealUSAMRE_Carn>
+					</products>
+				</RecipeDef>
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+</Defs>

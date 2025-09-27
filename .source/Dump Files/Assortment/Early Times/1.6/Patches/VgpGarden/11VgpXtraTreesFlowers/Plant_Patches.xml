@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+	<mods>
+		<li>VGP Xtra Trees and Flowers</li>	
+	</mods>
+	<match Class="PatchOperationSequence">
+	<success>Always</success>
+		<operations>
+			<li Class="PatchOperationAdd">	
+				<xpath>/Defs/ThingDef[defName = "PlantPlumeriaDECO"]/plant
+				</xpath>
+				<value>
+					<sowResearchPrerequisites>
+						<li>TS_Botany</li>
+					</sowResearchPrerequisites>
+				</value>
+			</li>
+			<li Class="PatchOperationConditional">
+				<xpath>/Defs/ThingDef[defName = "PlantPlumeria"]/plant/sowResearchPrerequisites</xpath>
+				<match Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[defName = "PlantPlumeria"]/plant/sowResearchPrerequisites</xpath>
+					<value>
+						<sowResearchPrerequisites>
+							<li>TS_Botany</li>
+						</sowResearchPrerequisites>
+					</value>
+				</match>
+				<nomatch Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName = "PlantPlumeria"]/plant</xpath>
+					<value>
+						<sowResearchPrerequisites>
+							<li>TS_Botany</li>
+						</sowResearchPrerequisites>
+					</value>
+				</nomatch>
+			</li>
+		</operations>
+	</match>
+ </Operation>
+ 
+    
+</Patch>

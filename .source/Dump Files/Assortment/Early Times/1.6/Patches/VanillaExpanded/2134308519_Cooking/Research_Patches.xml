@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>Vanilla Cooking Expanded</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ResearchProjectDef[defName = "VCE_CondimentsResearch"]/techLevel</xpath>		
+				<value>
+					<techLevel>Industrial</techLevel>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ResearchProjectDef[defName = "VCE_CondimentsResearch"]</xpath>		
+				<value>
+					<prerequisites>
+						<li>MedTimes_Cooking</li>
+					</prerequisites>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ResearchProjectDef[defName = "VCE_SoupCooking"]/prerequisites</xpath>		
+				<value>
+					<li>MedTimes_Cooking</li>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ResearchProjectDef[defName = "VCE_Grilling"]/prerequisites</xpath>		
+				<value>
+					<prerequisites>
+						<li>MedTimes_MedievalCrafting</li>
+						<li>TS_PrimitiveCooking</li>
+					</prerequisites>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ResearchProjectDef[defName = "VCE_DeepFrying"]/prerequisites</xpath>		
+				<value>
+					<li>MedTimes_Cooking</li>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ResearchProjectDef[defName = "VCE_Canning"]/prerequisites</xpath>		
+				<value>
+					<prerequisites>
+						<li>MedTimes_Cooking</li>
+						<li>MedTimes_Mechanization</li>
+					</prerequisites>
+				</value>
+			</li>
+			
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/ResearchProjectDef[defName = "VCE_CheeseMaking"]</xpath>		
+			</li>
+			
+			
+		</operations>
+	</match>
+  </Operation>
+  
+</Patch>
+
+
+
+

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>VGP Garden Resources</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ResearchProjectDef[defName="resourceleafs"]</xpath>		
+				<value>
+					<prerequisites>
+						<li>MultiAnalyzer</li>
+						<li>TS_DomHerb</li>
+					</prerequisites>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ResearchProjectDef[defName="resourceleafs"]/techLevel</xpath>		
+				<value>
+					<techLevel>Industrial</techLevel>
+				</value>
+			</li>
+		</operations>
+	</match>
+  </Operation>
+    
+</Patch>
