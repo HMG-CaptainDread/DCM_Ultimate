@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<!-- If youre going to copy, please at least give credit, I spent hours collecting data for this-->
+
+	<CombatExtended.AmmoCategoryDef>
+		<defName>SynLaserCell</defName>
+		<label>Laser Cell</label>
+		<labelShort>Laser</labelShort>
+		<description>An energy cell used for powering weapons firing energy bolts.</description>
+	</CombatExtended.AmmoCategoryDef>
+
+	<CombatExtended.AmmoCategoryDef>
+		<defName>SynLaserCellAP</defName>
+		<label>Laser Cell Overdrive</label>
+		<labelShort>Overdrive</labelShort>
+		<description>A special energy cell used for powering weapons firing energy bolts. Does less damage but penetrates armor better</description>
+	</CombatExtended.AmmoCategoryDef>
+
+	<CombatExtended.AmmoCategoryDef>
+		<defName>SynLaserCellIncendiary</defName>
+		<label>Lithium Cell</label>
+		<labelShort>Lithium</labelShort>
+		<description>A special energy cell used for powering weapons firing energy bolts. Has a chance to ignite targets.</description>
+	</CombatExtended.AmmoCategoryDef>
+
+	<ThingCategoryDef>
+		<defName>AmmoSynthetikLaserCell</defName>
+		<label>Laser Cell</label>
+		<parent>AmmoAdvanced</parent>
+		<iconPath>Synthetik/Ammo/Laser/LaserCell/Laser_a</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_SynthetikLaserCell</defName>
+		<label>Laser Cell</label>
+		<ammoTypes>
+			<Ammo_SynthetikLaserCell>Bullet_SynthetikLaserCell</Ammo_SynthetikLaserCell>
+			<Ammo_SynthetikLaserCellAP>Bullet_SynthetikLaserCellAP</Ammo_SynthetikLaserCellAP>
+			<Ammo_SynthetikLaserCellIncendiary>Bullet_SynthetikLaserCellIncendiary</Ammo_SynthetikLaserCellIncendiary>
+		</ammoTypes>
+		<similarTo>AmmoSet_ChargedRifle</similarTo>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="AmmoSynthetikLaserCellBase" ParentName="AmmoBase" Abstract="True">
+		<description>Energy - Laser Cell\nAn energy cell used for directed energy weapons.</description>
+		<statBases>
+			<Mass>0.01</Mass>
+			<Bulk>0.01</Bulk>
+			<MarketValue>42.32</MarketValue>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>AmmoSynthetikLaserCell</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="Ammo09cmSplitBase">
+		<defName>Ammo_SynthetikLaserCell</defName>
+		<label>Laser energy cell</label>
+		<graphicData>
+			<texPath>Synthetik/Ammo/Laser/LaserCell</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<ammoClass>SynLaserCell</ammoClass>
+		<comps> <!-- Meant for the containment system failing-->
+			<li Class="CombatExtended.CompProperties_ExplosiveCE">
+				<explosiveRadius>2.5</explosiveRadius>
+				<damageAmountBase>50</damageAmountBase>
+				<explosiveDamageType>Thermobaric</explosiveDamageType>
+				<chanceToStartFire>0.55</chanceToStartFire>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="Ammo09cmSplitBase">
+		<defName>Ammo_SynthetikLaserCellAP</defName>
+		<label>Laser energy cell (Overdrive)</label>
+		<graphicData>
+			<texPath>Synthetik/Ammo/Laser/Overdrive</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<ammoClass>SynLaserCellAP</ammoClass>
+		<comps> <!-- Meant for the containment system failing-->
+			<li Class="CombatExtended.CompProperties_ExplosiveCE">
+				<explosiveRadius>2.5</explosiveRadius>
+				<damageAmountBase>50</damageAmountBase>
+				<explosiveDamageType>Thermobaric</explosiveDamageType>
+				<chanceToStartFire>0.55</chanceToStartFire>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="Ammo09cmSplitBase">
+		<defName>Ammo_SynthetikLaserCellIncendiary</defName>
+		<label>Laser energy cell (Lithium)</label>
+		<graphicData>
+			<texPath>Synthetik/Ammo/Laser/LithiumCell</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<ammoClass>SynLaserCellIncendiary</ammoClass>
+		<comps> <!-- Meant for the containment system failing-->
+			<li Class="CombatExtended.CompProperties_ExplosiveCE">
+				<explosiveRadius>2.5</explosiveRadius>
+				<damageAmountBase>50</damageAmountBase>
+				<explosiveDamageType>Thermobaric</explosiveDamageType>
+				<chanceToStartFire>0.55</chanceToStartFire>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="BaseSynthetikLaserCell" ParentName="BaseBulletCE" Abstract="true">
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>(1,2)</drawSize>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>168</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseSynthetikLaserCell">
+		<defName>Bullet_SynthetikLaserCell</defName>
+		<label>Energy bolt</label>
+		<graphicData>
+			<texPath>Synthetik/Projectile/Laser_Projectile</texPath>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>18</damageAmountBase>
+			<armorPenetrationSharp>30</armorPenetrationSharp>
+			<armorPenetrationBlunt>0.001</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Flame_Secondary</def>
+					<amount>5</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseSynthetikLaserCell">
+		<defName>Bullet_SynthetikLaserCellAP</defName>
+		<label>Energy bolt (Overdrive)</label>
+		<graphicData>
+			<texPath>Synthetik/Projectile/Overdrive_Projectile</texPath>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>14</damageAmountBase>
+			<armorPenetrationSharp>40</armorPenetrationSharp>
+			<armorPenetrationBlunt>0.001</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Flame_Secondary</def>
+					<amount>2</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseSynthetikLaserCell">
+		<defName>Bullet_SynthetikLaserCellIncendiary</defName>
+		<label>Energy bolt (Lithium)</label>
+		<graphicData>
+			<texPath>Synthetik/Projectile/Lithium_Projectile</texPath>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>14</damageAmountBase>
+			<armorPenetrationSharp>20</armorPenetrationSharp>
+			<armorPenetrationBlunt>0.001</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Flame_Secondary</def>
+					<amount>8</amount>
+				</li>
+				<li>
+					<def>Flame</def>
+					<amount>8</amount>
+					<chance>0.33</chance>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+		<defName>MakeAmmo_SynthetikLaserCell</defName>
+		<label>make laser energy cell x200</label>
+		<description>Craft 200 laser energy cells.</description>
+		<jobString>Making laser energy cells.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>2</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Plasteel</li>
+					</thingDefs>
+				</filter>
+				<count>4</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentIndustrial</li>
+					</thingDefs>
+				</filter>
+				<count>3</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>Plasteel</li>
+				<li>ComponentIndustrial</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_SynthetikLaserCell>200</Ammo_SynthetikLaserCell>
+		</products>
+		<workAmount>3600</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+		<defName>MakeAmmo_SynthetikLaserCellAP</defName>
+		<label>make laser energy cell (overdrive) x200</label>
+		<description>Craft 200 laser energy (overdrive) cells.</description>
+		<jobString>Making laser energy (overdrive) cells.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>2</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Plasteel</li>
+					</thingDefs>
+				</filter>
+				<count>4</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentIndustrial</li>
+					</thingDefs>
+				</filter>
+				<count>3</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>Plasteel</li>
+				<li>ComponentIndustrial</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_SynthetikLaserCellAP>200</Ammo_SynthetikLaserCellAP>
+		</products>
+		<workAmount>3600</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+		<defName>MakeAmmo_SynthetikLaserCellIncendiary</defName>
+		<label>make laser energy cell (lithium) x200</label>
+		<description>Craft 200 laser energy (lithium) cells.</description>
+		<jobString>Making laser energy (lithium) cells.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>2</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Plasteel</li>
+					</thingDefs>
+				</filter>
+				<count>4</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentIndustrial</li>
+					</thingDefs>
+				</filter>
+				<count>3</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>Plasteel</li>
+				<li>ComponentIndustrial</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_SynthetikLaserCellIncendiary>200</Ammo_SynthetikLaserCellIncendiary>
+		</products>
+		<workAmount>3600</workAmount>
+	</RecipeDef>
+</Defs>

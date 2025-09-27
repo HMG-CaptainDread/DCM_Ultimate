@@ -1,0 +1,765 @@
+<Defs>
+
+  <!--=============== Mini-turret ===============-->
+
+		
+  <ThingDef ParentName="BuildingBase">
+    <defName>Turret_MiniTurretLaser</defName>
+    <label>Grav turret</label>
+    <description>An ultratech weapon that emits gamma ray laser bursts in a rapid sequence, assisted by an internal system making use of a graviton field. The accelerated gamma beams can pierce shields and most armors.</description>
+    <thingClass>Building_TurretGun</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <texPath>Things/Building/Gravship/Gravship_Turret_Base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+      <shadowData>
+        <volume>(0.0,0.0,0.0)</volume>
+        <offset>(0,0,0)</offset>
+      </shadowData>
+    </graphicData>
+    <uiIconPath>Things/Building/Gravship/Gravship_ProbeTurret_UI</uiIconPath>
+    <uiIconScale>1.0</uiIconScale>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <altitudeLayer>Building</altitudeLayer>
+    <stealable>false</stealable>
+    <rotatable>false</rotatable>
+    <thingCategories>
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>1250</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <WorkToBuild>10000</WorkToBuild>
+      <Mass>50</Mass>
+      <ShootingAccuracyTurret>0.97</ShootingAccuracyTurret>
+    </statBases>
+	<stealable>false</stealable>
+    <tickerType>Normal</tickerType>
+    <comps>
+			<li>
+				<compClass>CompColorable</compClass>
+			</li>
+      <li Class="CompProperties_Stunnable">
+        <affectedDamageDefs>
+          <li>Stun</li>
+          <li>EMP</li>
+        </affectedDamageDefs>
+      </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>150</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Explosive">
+        <wickTicks>240</wickTicks>
+        <explosiveRadius>0</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+      </li>
+      <li Class="CompProperties_Stunnable">
+        <useLargeEMPEffecter>true</useLargeEMPEffecter>
+        <empChancePerTick>0.03</empChancePerTick>
+        <affectedDamageDefs>
+          <li>EMP</li>
+        </affectedDamageDefs>
+      </li>
+      <li Class="CompProperties_Breakdownable"/>
+    </comps>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.50</fillPercent>
+	<pathCost>50</pathCost>
+    <hasTooltip>true</hasTooltip>
+		<costList>
+			<Steel>100</Steel>
+			<Plasteel>25</Plasteel>
+			<GravlitePanel>50</GravlitePanel>
+			<ComponentIndustrial>3</ComponentIndustrial>
+			<ComponentSpacer>1</ComponentSpacer>
+			<Gravcore>1</Gravcore>
+		</costList>
+    <costStuffCount>20</costStuffCount>
+    <stuffCategories Inherit="False">
+      <li>Metallic</li>
+    </stuffCategories>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>Odyssey</designationCategory>
+    <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+    <building>
+	<isAirtight>false</isAirtight>
+      <combatPower>45</combatPower>   <!-- same as a scavenger -->
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>Gun_GravshipMiniTurretLaser</turretGunDef>
+      <turretBurstCooldownTime>3</turretBurstCooldownTime>
+	  <paintable>true</paintable>
+	  <turretTopDrawSize>0.95</turretTopDrawSize>
+      <relatedBuildCommands Inherit="False">
+        <li>PowerConduit</li>
+        <li>GravshipHull</li>
+        <li>GravshipHullArmor</li>
+        <li>GravshipHullPowered</li>
+        <li>GravshipHullSolar</li>
+        <li>VacBarrier</li>
+      </relatedBuildCommands>
+      <relatedTerrain>
+        <li>Substructure</li>
+      </relatedTerrain>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
+      <li>PlaceWorker_OnSubstructure</li>
+    </placeWorkers>
+    <designationHotKey>Misc2</designationHotKey>
+    <researchPrerequisites>
+      <li>GunTurrets</li>
+      <li>BeamWeapons</li>
+      <li>OrbitalTech</li>
+      <li>StandardGravtech</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_GravshipMiniTurretLaserShot</defName>
+    <label>Grav turret laser</label>
+    <thingClass>Beam</thingClass>
+    <graphicData>
+      <texPath>Things/Projectile/ChargeLanceShot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>BeamBypassShields</damageDef>
+      <damageAmountBase>11</damageAmountBase>
+      <beamMoteDef>Mote_BeamRepeaterLaser</beamMoteDef>
+      <beamStartOffset>0.5</beamStartOffset>
+      <armorPenetrationBase>0.5</armorPenetrationBase>
+    </projectile>
+  </ThingDef>
+
+
+
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>Gun_GravshipMiniTurretLaser</defName>
+    <label>Gravship beam turret</label>
+    <description>An ultratech weapon that emits gamma ray laser bursts in a rapid sequence, assisted by an internal system making use of a graviton field. The accelerated gamma beams can pierce shields and most armors.</description>
+    <graphicData>
+	<texPath>Things/Building/Gravship/Gravship_ProbeTurret_Top</texPath>
+			<drawSize>(0.8,0.8)</drawSize>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <AccuracyTouch>0.75</AccuracyTouch>
+      <AccuracyShort>0.70</AccuracyShort>
+      <AccuracyMedium>0.65</AccuracyMedium>
+      <AccuracyLong>0.6</AccuracyLong>
+      <RangedWeapon_Cooldown>3</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>50</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+	<stealable>false</stealable>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <defaultProjectile>Bullet_GravshipMiniTurretLaserShot</defaultProjectile>
+        <warmupTime>0.25</warmupTime>
+        <minRange>0</minRange>
+        <range>32.0</range>
+        <ticksBetweenBurstShots>5</ticksBetweenBurstShots>
+        <burstShotCount>12</burstShotCount>
+        <soundCast>Shot_BeamRepeater</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+        <aimingChargeMote>Mote_BeamRepeater_Charge</aimingChargeMote>
+        <aimingChargeMoteOffset>1.07</aimingChargeMoteOffset>
+      </li>
+    </verbs>
+  </ThingDef>
+
+	
+	
+	
+	
+  <!--=============== Gauss-turret ===============-->
+
+		
+  <ThingDef ParentName="BuildingBase">
+    <defName>Gravship_Gauss_Turret</defName>
+    <label>Gravship gauss turret</label>
+    <description>A large anti-material cannon that uses electromagnets to launch large metallic darts at extreme velocities. This cannon is intended for defensive use on gravships, so it will aim at raiders and other nearby targets.</description>
+    <thingClass>Building_TurretGun</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <texPath>Things/Building/Gravship/Turret_Base_Two</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(4.40,4.40)</drawSize>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+      <shadowData>
+        <volume>(0.0,0.0,0.0)</volume>
+        <offset>(0,0,0)</offset>
+      </shadowData>
+    </graphicData>
+    <uiIconPath>Things/Building/Gravship/Gravship_GaussTurret_UI</uiIconPath>
+    <uiIconScale>1.0</uiIconScale>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <altitudeLayer>Building</altitudeLayer>
+    <stealable>false</stealable>
+    <rotatable>false</rotatable>
+    <thingCategories>
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>1750</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <WorkToBuild>12500</WorkToBuild>
+      <Mass>125</Mass>
+      <ShootingAccuracyTurret>0.95</ShootingAccuracyTurret>
+    </statBases>
+    <size>(3,3)</size>
+	<stealable>false</stealable>
+    <tickerType>Normal</tickerType>
+    <comps>
+			<li>
+				<compClass>CompColorable</compClass>
+			</li>
+      <li Class="CompProperties_Stunnable">
+        <affectedDamageDefs>
+          <li>Stun</li>
+          <li>EMP</li>
+        </affectedDamageDefs>
+      </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>150</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Explosive">
+        <wickTicks>240</wickTicks>
+        <explosiveRadius>0</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+      </li>
+      <li Class="CompProperties_Stunnable">
+        <useLargeEMPEffecter>true</useLargeEMPEffecter>
+        <empChancePerTick>0.03</empChancePerTick>
+        <affectedDamageDefs>
+          <li>EMP</li>
+        </affectedDamageDefs>
+      </li>
+      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_Refuelable">
+        <fuelLabel>Shots until barrel change</fuelLabel>
+        <fuelGizmoLabel>Barrel durability</fuelGizmoLabel>
+        <outOfFuelMessage>Needs new barrel</outOfFuelMessage>
+        <fuelFilter><thingDefs><li>Steel</li></thingDefs></fuelFilter>
+        <fuelCapacity>600</fuelCapacity>
+        <fuelMultiplier>20.0</fuelMultiplier>
+        <initialFuelPercent>0</initialFuelPercent>
+        <autoRefuelPercent>0.5</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <minimumFueledThreshold>1</minimumFueledThreshold>
+        <factorByDifficulty>true</factorByDifficulty>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+      </li>
+    </comps>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.50</fillPercent>
+	<pathCost>50</pathCost>
+    <hasTooltip>true</hasTooltip>
+		<costList>
+			<Steel>200</Steel>
+			<Plasteel>40</Plasteel>
+			<GravlitePanel>100</GravlitePanel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+			<ComponentSpacer>6</ComponentSpacer>
+		</costList>
+    <costStuffCount>10</costStuffCount>
+    <stuffCategories Inherit="False">
+      <li>Metallic</li>
+    </stuffCategories>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>Odyssey</designationCategory>
+    <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+    <building>
+	<isAirtight>false</isAirtight>
+      <combatPower>45</combatPower>   <!-- same as a scavenger -->
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>Gun_GravshipGaussTurretTop</turretGunDef>
+      <turretBurstCooldownTime>3</turretBurstCooldownTime>
+	  <paintable>true</paintable>
+	  <turretTopDrawSize>3.80</turretTopDrawSize>
+      <relatedBuildCommands Inherit="False">
+        <li>PowerConduit</li>
+        <li>GravshipHull</li>
+        <li>GravshipHullArmor</li>
+        <li>GravshipHullPowered</li>
+        <li>GravshipHullSolar</li>
+        <li>VacBarrier</li>
+      </relatedBuildCommands>
+      <relatedTerrain>
+        <li>Substructure</li>
+      </relatedTerrain>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
+      <li>PlaceWorker_OnSubstructure</li>
+    </placeWorkers>
+    <designationHotKey>Misc2</designationHotKey>
+    <researchPrerequisites>
+      <li>SniperTurret</li>
+      <li>OrbitalTech</li>
+      <li>StandardGravtech</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+
+  <ThingDef ParentName="BaseGrenadeProjectile">
+    <defName>Bullet_GravshipGaussTurretShot</defName>
+    <label>Gravship gauss shot</label>
+    <graphicData>
+      <texPath>Things/Projectile/ChargeLanceShot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bomb</damageDef>
+	  <explosionRadius>1</explosionRadius>
+      <damageAmountBase>22</damageAmountBase>
+      <speed>160</speed>
+	  <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+    </projectile>
+  </ThingDef>
+
+
+
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>Gun_GravshipGaussTurretTop</defName>
+    <label>Gravship gauss turret</label>
+    <description>A large anti-material cannon that uses electromagnets to launch large metallic darts at extreme velocities. This cannon is intended for defensive use on gravships, so it will aim at raiders and other nearby targets.</description>
+    <graphicData>
+	<texPath>Things/Building/Gravship/Gravship_GaussTurret_Top</texPath>
+			<drawSize>(0.8,0.8)</drawSize>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <AccuracyTouch>0.95</AccuracyTouch>
+      <AccuracyShort>0.90</AccuracyShort>
+      <AccuracyMedium>0.85</AccuracyMedium>
+      <AccuracyLong>0.80</AccuracyLong>
+      <RangedWeapon_Cooldown>3.2</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>50</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <size>(3,3)</size>
+	<stealable>false</stealable>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <defaultProjectile>Bullet_GravshipGaussTurretShot</defaultProjectile>
+        <warmupTime>0</warmupTime>
+        <minRange>2</minRange>
+        <range>50.0</range>
+		<forcedMissRadius>2</forcedMissRadius>
+        <ticksBetweenBurstShots>15</ticksBetweenBurstShots>
+        <burstShotCount>3</burstShotCount>
+        <soundCast>Shot_Autocannon</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+        <consumeFuelPerShot>1</consumeFuelPerShot>
+      </li>
+    </verbs>
+		<altitudeLayer>MetaOverlays</altitudeLayer>
+  </ThingDef>
+	
+  <!-- Ancient Armored Turret -->
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>Turret_GravshipArmoredTurret</defName>
+    <label>gravship defender turret</label>
+    <description>An armored security turret designed for gravships to use at close range.</description>
+    <thingClass>Building_TurretGun</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <tradeability>None</tradeability>
+    <uiIconPath>Things/Building/Ancient/ArmoredTurret/AncientArmoredTurret_MenuIcon</uiIconPath>
+    <graphicData>
+      <texPath>Things/Building/Ancient/ArmoredTurret/AncientArmoredTurret_Base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3,3)</drawSize>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+      <shadowData>
+        <volume>(0.27,0.25,0.27)</volume>
+        <offset>(0,0,0)</offset>
+      </shadowData>
+    </graphicData>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <altitudeLayer>Building</altitudeLayer>
+    <stealable>false</stealable>
+    <rotatable>false</rotatable>
+    <thingCategories>
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <Mass>25</Mass>
+      <Beauty>-20</Beauty>
+      <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret>
+    </statBases>
+    <researchPrerequisites>
+      <li>GunTurrets</li>
+      <li>BasicGravtech</li>
+    </researchPrerequisites>
+		<costList>
+			<Steel>130</Steel>
+			<ComponentIndustrial>3</ComponentIndustrial>
+		</costList>
+    <costStuffCount>20</costStuffCount>
+    <stuffCategories Inherit="False">
+      <li>Metallic</li>
+    </stuffCategories>
+    <tickerType>Normal</tickerType>
+    <comps>
+		<li>
+			<compClass>CompColorable</compClass>
+		</li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>100</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_Explosive">
+        <wickTicks>240</wickTicks>
+        <explosiveRadius>0</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+      </li>
+      <li Class="CompProperties_Stunnable">
+        <affectedDamageDefs>
+          <li>Stun</li>
+          <li>EMP</li>
+        </affectedDamageDefs>
+      </li>
+      <li Class="CompProperties_Refuelable">
+        <fuelLabel>Shots until barrel change</fuelLabel>
+        <fuelGizmoLabel>Barrel durability</fuelGizmoLabel>
+        <outOfFuelMessage>Needs new barrel</outOfFuelMessage>
+        <fuelFilter><thingDefs><li>Steel</li></thingDefs></fuelFilter>
+        <fuelCapacity>240</fuelCapacity>
+        <fuelMultiplier>20</fuelMultiplier>
+        <initialFuelPercent>1</initialFuelPercent>
+        <autoRefuelPercent>0.5</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <minimumFueledThreshold>1</minimumFueledThreshold>
+        <factorByDifficulty>true</factorByDifficulty>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+      </li>
+    </comps>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.4</fillPercent>
+    <hasTooltip>true</hasTooltip>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>Odyssey</designationCategory>
+    <building>
+      <combatPower>45</combatPower> <!-- same as a scavenger -->
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>Gun_GravshipArmoredTurret</turretGunDef>
+      <turretBurstCooldownTime>2.5</turretBurstCooldownTime>
+    </building>
+  </ThingDef>
+	
+	
+	
+  <ThingDef ParentName="BaseBullet">
+    <defName>Bullet_GravshipArmoredTurret</defName>
+    <label>gravship defender turret bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>16</damageAmountBase>
+      <speed>120</speed>
+    </projectile>
+  </ThingDef>
+
+
+
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>Gun_GravshipArmoredTurret</defName>
+    <label>ancient defender turret gun</label>
+    <description>A powerful anti-armor beam weapon. This weapon is intended to destroy ground level crafts, so it can't aim high enough to hit aerial targets.\n\nThis beam is strong enough to deal damage through armor, and does heavy damage to structures in it's path.</description>
+    <graphicData>
+      <texPath>Things/Building/Ancient/ArmoredTurret/AncientArmoredTurret_Top</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <AccuracyTouch>0.90</AccuracyTouch>
+      <AccuracyShort>0.80</AccuracyShort>
+      <AccuracyMedium>0.70</AccuracyMedium>
+      <AccuracyLong>0.60</AccuracyLong>
+      <RangedWeapon_Cooldown>2.5</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>5</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <defaultProjectile>Bullet_AncientArmoredTurret</defaultProjectile>
+        <warmupTime>0</warmupTime>
+        <range>36.9</range>
+        <ticksBetweenBurstShots>4</ticksBetweenBurstShots>
+        <burstShotCount>6</burstShotCount>
+        <soundCast>GunShotA</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+        <consumeFuelPerShot>1</consumeFuelPerShot>
+      </li>
+    </verbs>
+  </ThingDef>
+  
+	
+	<!-- Biotech Beam Turret Anticraft-->
+	<!-- I tried rebuilding the code to have no reference to itself but it hates me idk-->
+	
+	
+  <ThingDef ParentName="BuildingBase" Name="Gravship_Anticraft_Beam" Abstract="True"> 
+    <thingClass>Building_TurretGun</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <texPath>Things/Building/Gravship/Turret_Base_Two</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(4.40,4.40)</drawSize>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+      <shadowData>
+        <volume>(0.0,0.0,0.0)</volume>
+        <offset>(0,0,0)</offset>
+      </shadowData>
+    </graphicData>  
+    <altitudeLayer>Building</altitudeLayer>
+    <stealable>false</stealable>
+    <rotatable>false</rotatable>
+    <size>(3,3)</size>
+    <statBases>
+      <MaxHitPoints>1750</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <WorkToBuild>12500</WorkToBuild>
+      <Mass>125</Mass>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.5</fillPercent>
+    <hasTooltip>true</hasTooltip>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>Odyssey</designationCategory>
+    <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+    <building>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretTopDrawSize>3.80</turretTopDrawSize>
+      <turretBurstCooldownTime>3</turretBurstCooldownTime>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+      <!--<li>PlaceWorker_ShowTurretRadius</li>-->
+    </placeWorkers>
+    <designationHotKey>Misc3</designationHotKey>    
+    <uiIconScale>1</uiIconScale>
+    <comps>
+      <li Class="CompProperties_Stunnable">
+        <useLargeEMPEffecter>true</useLargeEMPEffecter>
+        <empChancePerTick>0.03</empChancePerTick>
+        <affectedDamageDefs>
+          <li>EMP</li>
+        </affectedDamageDefs>
+      </li>
+    </comps>
+  </ThingDef>
+
+
+  <ThingDef ParentName="Gravship_Anticraft_Beam">
+    <defName>Gravship_Anticraft_BeamTurret</defName>
+    <label>Gravship anticraft turret</label>
+    <description>A powerful anti-armor beam weapon. This weapon is intended to destroy ground level crafts, so it can't aim high enough to hit aerial targets.\n\nThis beam is strong enough to deal damage through armor, and does heavy damage to structures in it's path.</description>
+    <uiIconPath>Things/Building/Gravship/Gravship_AnticraftTurret_UI</uiIconPath>
+    <techLevel>Ultra</techLevel>
+    <statBases>
+      <ShootingAccuracyTurret>1.00</ShootingAccuracyTurret>
+    </statBases>
+		<costList>
+			<Steel>200</Steel>
+			<Plasteel>40</Plasteel>
+			<GravlitePanel>100</GravlitePanel>
+			<ComponentIndustrial>8</ComponentIndustrial>
+			<ComponentSpacer>16</ComponentSpacer>
+			<Gravcore>1</Gravcore>
+		</costList>
+    <costStuffCount>10</costStuffCount>
+    <stuffCategories Inherit="False">
+      <li>Metallic</li>
+    </stuffCategories>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <wickTicks>240</wickTicks>
+        <explosiveRadius>0</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+      </li>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>1500</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Breakdownable"/>
+    </comps>
+    <building>
+      <turretGunDef>Gun_GravshipAnticraftBeamTurretTop</turretGunDef>
+      <turretBurstCooldownTime>3</turretBurstCooldownTime>
+    </building>
+    <researchPrerequisites>
+      <li>BeamWeapons</li>
+      <li>SniperTurret</li>
+      <li>OrbitalTech</li>
+      <li>AdvancedGravtech</li>
+	</researchPrerequisites>
+  </ThingDef>
+
+  <DamageDef ParentName="Beam" Name="AnticraftBeam">
+    <defName>AnticraftBeam</defName>
+    <label>beam</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} has been dematerialized by an anticraft turret.</deathMessage>
+    <hediff>BeamWound</hediff>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Bullet</impactSoundType>
+    <armorCategory>Sharp</armorCategory>
+    <overkillPctToDestroyPart>0~0.7</overkillPctToDestroyPart>
+    <isRanged>true</isRanged>
+    <makesAnimalsFlee>true</makesAnimalsFlee>
+    <defaultDamage>11</defaultDamage>
+    <defaultArmorPenetration>0.50</defaultArmorPenetration>
+    <buildingDamageFactorImpassable>3</buildingDamageFactorImpassable>
+    <buildingDamageFactorPassable>1.5</buildingDamageFactorPassable>
+    <plantDamageFactor>2</plantDamageFactor>
+    <explosionHeatEnergyPerCell>15</explosionHeatEnergyPerCell>
+    <explosionCellFleck>BlastFlame</explosionCellFleck>
+    <explosionColorCenter>(1, 0.7, 0.7)</explosionColorCenter>
+    <explosionColorEdge>(1, 1, 0.7)</explosionColorEdge>
+    <soundExplosion>Explosion_Flame</soundExplosion>
+    <combatLogRules>Damage_Flame</combatLogRules>
+  </DamageDef>
+
+
+
+<ThingDef ParentName="BaseWeaponTurret">
+    <defName>Gun_GravshipAnticraftBeamTurretTop</defName>
+    <label>Gravship anticraft turret</label>
+    <description>A self-loading large-bore cannon designed to attach to a turret.</description>
+    <graphicData>
+	<texPath>Things/Building/Gravship/Gravship_AnticraftTurret_Top</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <AccuracyTouch>1</AccuracyTouch>
+      <AccuracyShort>1</AccuracyShort>
+      <AccuracyMedium>1</AccuracyMedium>
+      <AccuracyLong>1</AccuracyLong>
+      <RangedWeapon_Cooldown>3</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>40</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_ShootBeam</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>1.0</warmupTime>
+        <range>50</range>
+        <minRange>2.5</minRange>
+        <beamFullWidthRange>55</beamFullWidthRange>
+        <burstShotCount>20</burstShotCount>
+        <showBurstShotStats>false</showBurstShotStats>
+        <beamWidth>0.05</beamWidth>
+        <beamFireSizeRange>0.5</beamFireSizeRange>
+        <ticksBetweenBurstShots>10</ticksBetweenBurstShots>
+        <beamDamageDef>AnticraftBeam</beamDamageDef>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>50</muzzleFlashScale>
+        <soundCastBeam>BeamGraser_Shooting</soundCastBeam>
+        <beamGroundFleckDef>Fleck_BeamBurn</beamGroundFleckDef>
+        <beamFleckChancePerTick>1</beamFleckChancePerTick>
+        <beamMaxDeviation>0.5</beamMaxDeviation>
+        <beamCurvature>0.5</beamCurvature>
+        <beamMoteDef>Mote_AnticraftBeamBase</beamMoteDef>
+        <beamEndEffecterDef>GraserBeam_End</beamEndEffecterDef>
+        <beamChanceToStartFire>1</beamChanceToStartFire>
+        <beamChanceToAttachFire>1</beamChanceToAttachFire>
+        <beamHitsNeighborCells>true</beamHitsNeighborCells>
+        <beamCantHitWithinMinRange>false</beamCantHitWithinMinRange>
+        <beamHitsNeighborCellsRequiresLOS>true</beamHitsNeighborCellsRequiresLOS>
+        <beamSetsGroundOnFire>true</beamSetsGroundOnFire>
+        <beamLineFleckDef>Fleck_BeamSpark</beamLineFleckDef>
+        <beamStartOffset>0</beamStartOffset>
+        <ai_BeamIsIncendiary>true</ai_BeamIsIncendiary>
+        <highlightColor>(1,1,1,1)</highlightColor>
+        <secondaryHighlightColor>(0.5,0.5,0.5,1)</secondaryHighlightColor>
+        <beamTargetsGround>false</beamTargetsGround>
+        <beamLineFleckChanceCurve>
+          <points>
+            <li>(2, 2)</li>
+            <li>(-2, -2)</li>
+            <li>(3, 3)</li>
+          </points>
+        </beamLineFleckChanceCurve>
+        <flammabilityAttachFireChanceCurve>
+          <points>
+            <li>(2, 2)</li>
+            <li>(-2, -2)</li>
+            <li>(3, 3)</li>
+          </points>
+        </flammabilityAttachFireChanceCurve>
+      </li>
+    </verbs>
+  </ThingDef>
+  
+  <ThingDef ParentName="MoteBase">
+    <defName>Mote_AnticraftBeamBase</defName>
+    <thingClass>MoteDualAttached</thingClass>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <mote>
+      <fadeInTime>0.2</fadeInTime>
+      <fadeOutTime>0.3</fadeOutTime>
+      <solidTime>999999</solidTime>
+      <needsMaintenance>True</needsMaintenance>
+      <rotateTowardsTarget>True</rotateTowardsTarget>
+      <scaleToConnectTargets>True</scaleToConnectTargets>
+      <fadeOutUnmaintained>True</fadeOutUnmaintained>
+    </mote>
+    <drawOffscreen>true</drawOffscreen>
+    <graphicData>
+      <texPath>Things/Mote/AnticraftBeam</texPath>
+      <graphicClass>Graphic_MoteWithAgeSecs</graphicClass>
+      <shaderType>MoteBeam</shaderType>
+      <shaderParameters>
+        <_ExtraTexA>/Things/Mote/BeamSecondaryNoise_A</_ExtraTexA>
+        <_ExtraTexB>/Things/Mote/BeamSecondaryNoise_B</_ExtraTexB>
+        <_ScrollSpeedA>-4 </_ScrollSpeedA>
+        <_ScrollSpeedB>3</_ScrollSpeedB>
+        <_Intensity>2</_Intensity>
+      </shaderParameters>
+    </graphicData>
+  </ThingDef>
+  
+  
+</Defs>
