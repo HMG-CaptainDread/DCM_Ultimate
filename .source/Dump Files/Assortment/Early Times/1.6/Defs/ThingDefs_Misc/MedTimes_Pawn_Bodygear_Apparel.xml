@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!-- Start of thingDefs --> 
+<!-- ================== Apparel Classes ================ --> 
+<!-- Apparel Base Class -->
+  <ThingDef Name="MedTimes_ApparelBase" Abstract="True">
+    <thingClass>Apparel</thingClass>
+    <category>Item</category>
+	<techLevel>Medieval</techLevel>	
+    <selectable>True</selectable>
+    <pathCost>10</pathCost>
+    <useHitPoints>True</useHitPoints>
+    <graphicData>
+      <onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+    </graphicData>
+    <drawGUIOverlay>true</drawGUIOverlay>	
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+      <DeteriorationRate>2</DeteriorationRate>
+      <SellPriceFactor>0.5</SellPriceFactor>
+		<EquipDelay>2</EquipDelay>			  	  
+		<Beauty>-5</Beauty>
+		<Mass>2.5</Mass>		
+    </statBases>
+    <altitudeLayer>Item</altitudeLayer>
+    <alwaysHaulable>True</alwaysHaulable>
+    <tickerType>Never</tickerType>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li><compClass>CompColorable</compClass></li>
+      <li><compClass>CompQuality</compClass></li>
+    </comps>
+    <colorGenerator Class="ColorGenerator_StandardApparel" />
+    <tradeTags>
+		<li>MedTimes_Gear</li>
+	</tradeTags>	
+  </ThingDef>
+
+  
+
+  <!-- Apparel Medieval Base -->  
+  <ThingDef Name="MedTimes_Apparel_Tier1" ParentName="MedTimes_ApparelBase" Abstract="True">
+    <thingCategories>
+		<li>Bodygear</li>
+	</thingCategories>
+	<stuffCategories>
+      <li>Fabric</li>
+      <li>Leathery</li>	  
+    </stuffCategories>
+    <costStuffCount>50</costStuffCount>	
+    <statBases>
+	  <WorkToMake>5000</WorkToMake>
+      <StuffEffectMultiplierArmor>0.2</StuffEffectMultiplierArmor>
+      <StuffEffectMultiplierInsulation_Cold>0.10</StuffEffectMultiplierInsulation_Cold>
+      <StuffEffectMultiplierInsulation_Heat>0.10</StuffEffectMultiplierInsulation_Heat>  
+    </statBases>
+    <apparel>	
+      <defaultOutfitTags>
+		<li>Worker</li>
+	  </defaultOutfitTags>
+      <layers>
+		<li>OnSkin</li>
+	  </layers>	  
+    </apparel>			
+  </ThingDef>
+  
+  <!-- (Medieval) Un-Makeable Tabard (Class) -->
+  <ThingDef Name="MedTimes_ApparelTabard" ParentName="MedTimes_ApparelBase" Abstract="True">  
+    <thingCategories>
+		<li>Outergear</li>
+	</thingCategories>	
+    <stuffCategories>
+      <li>Fabric</li>
+      <li>Leathery</li>	  
+    </stuffCategories>	
+    <statBases>
+      <WorkToMake>4000</WorkToMake>
+	  <StuffEffectMultiplierArmor>0.2</StuffEffectMultiplierArmor>
+      <StuffEffectMultiplierInsulation_Cold>0.60</StuffEffectMultiplierInsulation_Cold>
+      <StuffEffectMultiplierInsulation_Heat>0.85</StuffEffectMultiplierInsulation_Heat>
+    </statBases>		
+    <apparel>
+      <defaultOutfitTags>
+        <li>Worker</li>
+        <li>Soldier</li>
+      </defaultOutfitTags>	
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Shoulders</li>
+        <li>Legs</li>
+      </bodyPartGroups>	
+      <layers>
+		<li>Shell</li>
+	  </layers>	  
+    </apparel>	
+  </ThingDef>
+
+  <!-- Tailored Apparel Medieval Large Base -->  
+  <ThingDef Name="MedTimes_ApparelJacket" ParentName="MedTimes_ApparelBase" Abstract="True">
+    <thingCategories>
+		<li>BodyArmour</li>
+	</thingCategories>	
+	<costStuffCount>80</costStuffCount>
+    <statBases>
+      <WorkToMake>7500</WorkToMake>
+      <StuffEffectMultiplierArmor>0.3</StuffEffectMultiplierArmor>	  
+      <StuffEffectMultiplierInsulation_Cold>0.10</StuffEffectMultiplierInsulation_Cold>
+      <StuffEffectMultiplierInsulation_Heat>0.10</StuffEffectMultiplierInsulation_Heat>
+      <Insulation_Cold>3</Insulation_Cold>		  
+    </statBases>
+    <apparel>
+      <defaultOutfitTags>
+		<li>Soldier</li>
+	  </defaultOutfitTags>	
+      <bodyPartGroups>
+        <li>Torso</li>
+		<li>Shoulders</li>
+		<li>Arms</li>
+	    <li>Legs</li>		
+      </bodyPartGroups>	 	
+      <layers>
+		<li>Middle</li>
+	  </layers>  
+    </apparel>	
+  </ThingDef>
+  
+<!-- Tailored Apparel Medieval Base Class -->  
+  <ThingDef Name="MedTimes_Tail_Apparel_Tier1" ParentName="MedTimes_Apparel_Tier1" Abstract="True">
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Tailor</effectWorking>
+      <soundWorking>Recipe_Tailor</soundWorking>
+      <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>	  
+      <recipeUsers>
+        <li>MedTimes_TailoringStation</li>
+        <li>HandTailoringBench</li>
+      </recipeUsers>
+		<researchPrerequisite>MedTimes_MedievalTailoring</researchPrerequisite>
+    </recipeMaker>
+  </ThingDef>  
+
+<!-- (Medieval) Makeable Tabard (Class) -->
+<ThingDef Name="MedTimes_Tail_ApparelTabard" ParentName="MedTimes_ApparelTabard" Abstract="True">  	
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Tailor</effectWorking>
+      <soundWorking>Recipe_Tailor</soundWorking>
+      <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>	  
+      <recipeUsers>
+        <li>MedTimes_TailoringStation</li>
+        <li>HandTailoringBench</li>
+      </recipeUsers>
+		<researchPrerequisite>MedTimes_MedievalTailoring</researchPrerequisite>
+    </recipeMaker>
+  </ThingDef>
+  
+<!-- (Medieval) Makeable Tabard (Class) -->
+<ThingDef Name="MedTimes_Tail_ApparelJacket" ParentName="MedTimes_ApparelJacket" Abstract="True">  	
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Tailor</effectWorking>
+      <soundWorking>Recipe_Tailor</soundWorking>
+      <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>	  
+      <recipeUsers>
+        <li>MedTimes_TailoringStation</li>
+        <li>HandTailoringBench</li>
+      </recipeUsers>
+	  <researchPrerequisite>MedTimes_MedievalTailoring</researchPrerequisite>
+    </recipeMaker>
+  </ThingDef>
+  
+<!-- ============================= Body Apparel ==============================--> 	 
+<!-- Suspenders --> 
+  <ThingDef ParentName="MedTimes_Tail_Apparel_Tier1">
+    <defName>MedTimes_AppBody_Trousers</defName>
+    <label>Suspended Trousers</label>
+    <description>Medieval era pants, they fit awkwardly and are stitched together with clearly visible leather laces. You need a pair of suspenders to keep these up.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Clothing/Suspenders/MedTimes_Suspenders</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <apparel>
+      <bodyPartGroups>
+        <li>Legs</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Clothing/Suspenders/MedTimes_Suspenders</wornGraphicPath> 	  
+    </apparel>
+  </ThingDef>
+ 
+<!-- Stripped Suspenders -->  
+  <ThingDef ParentName="MedTimes_Tail_Apparel_Tier1">
+    <defName>MedTimes_AppBody_TrousersStriped</defName>
+    <label>Suspended Striped Trousers</label>
+    <description>Medieval era pants, they fit awkwardly and are stitched together with clearly visible leather laces. You need a pair of suspenders to keep these up. At least they have strips to show the owners originality.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Clothing/Suspenders_Striped/MedTimes_Suspenders_Striped</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <apparel>
+      <bodyPartGroups>
+        <li>Legs</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Clothing/Suspenders_Striped/MedTimes_Suspenders_Striped</wornGraphicPath> 
+	</apparel>
+  </ThingDef> 
+  
+<!-- Medieval Shirt 'Tunic' -->  
+  <ThingDef ParentName="MedTimes_Tail_Apparel_Tier1">
+    <defName>MedTimes_AppBody_Tunic</defName>
+    <label>Tunic</label>
+    <description>Medieval era shirt, stitched together with clearly visible leather laces.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Clothing/Tunic/MedTimes_Tunic</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+      </bodyPartGroups>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Clothing/Tunic/MedTimes_Tunic</wornGraphicPath>	 	  
+    </apparel>	
+  </ThingDef>
+  
+  
+<!-- ============= Middle Layer apparel =================-->
+<!-- Padded Jacket -->		 
+  <ThingDef ParentName="MedTimes_Tail_ApparelJacket">
+    <defName>MedTimes_ArmBody_Gambison</defName>
+    <label>Gambison</label>
+    <description>A long coat which is heavily padded to help protect the wearer. It is also referred to as an aketon. It is good for defence against blunt weapons and is designed to be worn under another heavier set of armour. Since this one is made of fabrics, the coat breathes and doesn't get nearly as hot as one might suspect.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/Gambison/MedTimes_Gambison</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <stuffCategories><li>Fabric</li></stuffCategories>	
+    <apparel>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/Gambison/MedTimes_Gambison</wornGraphicPath>	  
+    </apparel>		
+  </ThingDef>
+ 
+<!-- (Medieval) Padded Jacket 'Leather' -->  
+ <ThingDef ParentName="MedTimes_Tail_ApparelJacket">
+    <defName>MedTimes_ArmBody_PaddedJacket</defName>
+    <label>Padded Jacket</label>
+    <description>A long leather coat which is heavily padded to help protect the wearer. This one is made from treated animal hides. It has extra layers of hardened animal hides for extra protection and is designed for use under heavier armour. All this of course means it can get quite hot underneath.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/PaddedJacket/MedTimes_PaddedJacket</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <stuffCategories>
+		<li>Leathery</li>
+	</stuffCategories>	
+    <apparel>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/PaddedJacket/MedTimes_PaddedJacket</wornGraphicPath>  
+      <tags>
+        <li>MedTimes_Armor_Conscript</li>
+        <li>MedTimes_Armor_Warband_Conscript</li>		
+      </tags>
+	</apparel>	
+  </ThingDef>
+
+  
+<!-- ============= Shell Layer  =================-->	
+<!-- Freelancer's Tabbard -->  
+  <ThingDef ParentName="MedTimes_Tail_ApparelTabard">
+    <defName>MedTimes_ShellBody_TabardFreelancer</defName>
+    <label>Freelancer's Tabard</label>
+    <description>In battle sometimes it becomes necessary to distinguish friend from foe, that is where the tabard comes in. It is basically a flag that can be worn.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Clothing/Tabard/Tabard/MedTimes_Tabard</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <costStuffCount>50</costStuffCount>	
+    <apparel>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Clothing/Tabard/Tabard/MedTimes_Tabard</wornGraphicPath> 
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Shoulders</li>
+        <li>Legs</li>
+      </bodyPartGroups>	
+      <layers>
+		<li>Shell</li>
+	  </layers>	  	  
+	</apparel>
+		<generateCommonality>0.6</generateCommonality>		
+  </ThingDef>	
+
+  <!-- Blue Tabbard -->  
+  <ThingDef ParentName="MedTimes_Tail_ApparelTabard">
+    <defName>MedTimes_ShellBody_TabardBlue</defName>
+    <label>Blue Tabard</label>
+    <description>In battle sometimes it becomes necessary to distinguish friend from foe, that is where this blue tabard comes in. It is basically a flag that can be worn.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Clothing/Tabard/Tabard_Blue/MedTimes_Tabard_Blue</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <costStuffCount>50</costStuffCount>	
+    <apparel>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Clothing/Tabard/Tabard_Blue/MedTimes_Tabard_Blue</wornGraphicPath> 
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Shoulders</li>
+        <li>Legs</li>
+      </bodyPartGroups>	
+      <layers>
+		<li>Shell</li>
+	  </layers>
+	</apparel>
+  </ThingDef>
+  
+  <!-- Green Tabbard -->  
+  <ThingDef ParentName="MedTimes_ApparelTabard">
+    <defName>MedTimes_ShellBody_TabardGreen</defName>
+    <label>Society Tabard</label>
+    <description>In battle sometimes it becomes necessary to distinguish friend from foe, that is where this green tabard comes in. It is basically a flag that can be worn.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Clothing/Tabard/Tabard_Green/MedTimes_Tabard_Green</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <costStuffCount>50</costStuffCount>	
+    <apparel>	
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Clothing/Tabard/Tabard_Green/MedTimes_Tabard_Green</wornGraphicPath>
+      <tags>
+        <li>MedTimes_Armor_Peasant</li>	  
+	  	<li>MedTimes_Armor_Conscript</li>
+		<li>MedTimes_Armor_Soldier</li>	
+	  </tags>
+    </apparel>
+		<generateCommonality>0.6</generateCommonality>		
+  </ThingDef>
+ 
+  <!-- Orange Tabbard -->  
+  <ThingDef ParentName="MedTimes_ApparelTabard">
+    <defName>MedTimes_ShellBody_TabardOrange</defName>
+    <label>Warband Tabard</label>
+    <description>In battle sometimes it becomes necessary to distinguish friend from foe, that is where this orange tabard comes in. It is basically a flag that can be worn.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Clothing/Tabard/Tabard_Orange/MedTimes_Tabard_Orange</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>	
+    <costStuffCount>50</costStuffCount>	
+    <apparel>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Clothing/Tabard/Tabard_Orange/MedTimes_Tabard_Orange</wornGraphicPath>
+      <tags>
+        <li>MedTimes_Armor_Warband_Peasant</li>	  
+        <li>MedTimes_Armor_Warband_Conscript</li>		
+		<li>MedTimes_Armor_Warband_Soldier</li>	
+	  </tags>
+    </apparel>
+		<generateCommonality>0.6</generateCommonality>	
+  </ThingDef>
+  
+  <!-- Red Tabbard -->  
+  <ThingDef ParentName="MedTimes_ApparelTabard">
+    <defName>MedTimes_App_TabardRed</defName>
+    <label>Warbourne Tabard</label>
+    <description>In battle sometimes it becomes necessary to distinguish friend from foe, that is where this red tabard comes in. It is basically a flag that can be worn.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Clothing/Tabard/Tabard_Red/MedTimes_Tabard</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>	
+    <costStuffCount>50</costStuffCount>	
+    <apparel>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Clothing/Tabard/Tabard_Red/MedTimes_Tabard</wornGraphicPath>
+      <tags>
+		<li>MedTimes_ArmorTag_Warbourne</li>
+	  </tags>
+    </apparel>
+		<generateCommonality>0.6</generateCommonality>	
+  </ThingDef>  
+ 
+<!-- Medieval Cloak: Cold Apparel --> 
+  <ThingDef ParentName="MedTimes_ApparelBase">
+    <defName>MedTimes_ShellBody_Cloak</defName>
+    <description>A long cloak made of furs and leathers for blocking harsh winds and the bone chilling cold. Neolithic era tech, yet still highly effective. Unless your indoors, in which case you'll likely collapse from a heat stroke.</description>
+    <label>Winter Cloak</label>
+	    <techLevel>Neolithic</techLevel>	
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Clothing/Cloak/MedTimes_Cloak</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	<costStuffCount>80</costStuffCount>
+    <thingCategories>
+      <li>Outergear</li>
+    </thingCategories>
+    <stuffCategories>
+      <li>Leathery</li>
+      <li>Fabric</li>	  
+    </stuffCategories>	
+    <statBases>
+      <MarketValue>35</MarketValue>
+      <WorkToMake>5000</WorkToMake>	  
+      <StuffEffectMultiplierArmor>0.3</StuffEffectMultiplierArmor>
+      <StuffEffectMultiplierInsulation_Cold>2.00</StuffEffectMultiplierInsulation_Cold>
+      <StuffEffectMultiplierInsulation_Heat>0.00</StuffEffectMultiplierInsulation_Heat>
+      <Insulation_Heat>-6</Insulation_Heat>	  
+    </statBases>
+    <apparel>
+      <tags>
+        <li>Cape</li>
+      </tags>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+		<li>Legs</li>
+      </bodyPartGroups>
+      <layers>
+		<li>Shell</li>
+	  </layers>		  
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Clothing/Cloak/MedTimes_Cloak</wornGraphicPath>	  
+    </apparel>
+    <recipeMaker>
+	  <researchPrerequisite>MedTimes_Toolworking</researchPrerequisite>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Tailor</effectWorking>
+      <soundWorking>Recipe_Tailor</soundWorking>
+      <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>	  
+      <recipeUsers>
+        <li>CraftingSpot</li>
+        <li>MedTimes_TailoringStation</li>	
+        <li>HandTailoringBench</li>	
+      </recipeUsers>
+    </recipeMaker>	
+  </ThingDef>
+  
+<!-- Medieval Cape: Hot Apparel --> 
+  <ThingDef ParentName="MedTimes_ApparelBase">
+    <defName>MedTimes_ShellBody_Cape</defName>
+    <description>A long cape made from softened leather or a breathable cloth.</description>
+    <label>Summer Cape</label>
+	    <techLevel>Neolithic</techLevel>	
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Clothing/Cape/MedTimes_Cape</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+		<costStuffCount>80</costStuffCount>
+    <thingCategories>
+      <li>Outergear</li>
+    </thingCategories>
+    <stuffCategories>
+      <li>Leathery</li>
+      <li>Fabric</li>	  
+    </stuffCategories>	
+    <statBases>
+      <MarketValue>35</MarketValue>
+      <WorkToMake>5000</WorkToMake>	  
+      <StuffEffectMultiplierArmor>0.3</StuffEffectMultiplierArmor>
+      <StuffEffectMultiplierInsulation_Cold>0.60</StuffEffectMultiplierInsulation_Cold>
+      <StuffEffectMultiplierInsulation_Heat>0.85</StuffEffectMultiplierInsulation_Heat> 
+    </statBases>
+    <apparel>
+      <tags>
+        <li>Cape</li>
+        <li>Royal</li>
+        <li>RoyalTier2</li>
+      </tags>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+		<li>Legs</li>
+      </bodyPartGroups>
+      <layers>
+		<li>Shell</li>
+	  </layers>		  
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Clothing/Cape/MedTimes_Cape</wornGraphicPath>	  
+    </apparel>
+    <recipeMaker>
+	  <researchPrerequisite>MedTimes_Toolworking</researchPrerequisite>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Tailor</effectWorking>
+      <soundWorking>Recipe_Tailor</soundWorking>
+      <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>	  
+      <recipeUsers>
+        <li>CraftingSpot</li>
+        <li>MedTimes_TailoringStation</li>	
+        <li>HandTailoringBench</li>	
+      </recipeUsers>
+    </recipeMaker>	
+  </ThingDef>    
+<!-- End of thingDefs --> 
+</Defs>

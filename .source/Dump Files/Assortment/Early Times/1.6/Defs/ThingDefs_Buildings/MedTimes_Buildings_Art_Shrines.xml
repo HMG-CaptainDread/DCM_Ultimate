@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!-- Totem shrines -->
+    <ThingDef ParentName="MedTimes_ArtworkAnyQuality" Name="ET_TotemBase" Abstract="True">
+        <passability>PassThroughOnly</passability>
+        <statBases>
+            <Flammability>1.0</Flammability>
+        </statBases>
+        <stuffCategories>
+            <li>Woody</li>
+            <li>Stony</li>
+        </stuffCategories>
+        <building>
+            <joyKind>Meditative</joyKind>
+            <watchBuildingStandDistanceRange>
+                <min>2</min>
+                <max>4</max>
+            </watchBuildingStandDistanceRange>
+            <watchBuildingStandRectWidth>5</watchBuildingStandRectWidth>
+        </building>
+        <socialPropernessMatters>false</socialPropernessMatters>
+        <recipeMaker>
+            <researchPrerequisite>ET_Religions</researchPrerequisite>
+            <recipeUsers>
+                <li>CraftingSpot</li>
+                <li>MedTimes_ArtisanStation</li>
+                <li>TableSculpting</li>
+            </recipeUsers>
+        </recipeMaker>
+    </ThingDef>
+    <ThingDef ParentName="ET_TotemBase">
+        <defName>EarlyTimes_Shrine_Nature</defName>
+        <label>Shrine totem</label>
+        <description>A grand, tall tribal totem. Manifestation of forces of nature. Pray to the forces of nature to bestow the support upon feeble beings.</description>
+        <graphicData>
+            <texPath>Things/Building/Art/Totem/Totem</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>CutoutComplex</shaderType>
+            <drawRotated>false</drawRotated>
+            <allowFlip>false</allowFlip>
+            <drawSize>(2,2)</drawSize>
+            <shadowData>
+                <volume>(0.5, 1, 0.25)</volume>
+                <offset>(0,0,-0.75)</offset>
+            </shadowData>
+        </graphicData>
+        <uiIconPath>Things/Building/Art/Totem/Totem</uiIconPath>
+        <size>(1,1)</size>
+        <fillPercent>0.75</fillPercent>
+        <statBases>
+            <MaxHitPoints>250</MaxHitPoints>
+            <Beauty>20</Beauty>
+            <WorkToMake>35000</WorkToMake>
+            <JoyGainFactor>1.2</JoyGainFactor>
+            <Mass>20</Mass>
+			<MeditationFocusStrength>0.20</MeditationFocusStrength>
+        </statBases>
+		<comps>
+		  <li Class="CompProperties_MeditationFocus">
+			<statDef>MeditationFocusStrength</statDef>
+			<focusTypes>
+			  <li>Artistic</li>
+			</focusTypes>
+		  </li>
+		</comps>
+        <costStuffCount>110</costStuffCount>
+    </ThingDef>
+    <!-- ========= God Shrines ========= -->
+    <!-- Random Number God Shrine -->
+    <ThingDef ParentName="MedTimes_ArtworkQuality">
+        <defName>MedTimes_Shrine_RandomNumberGod</defName>
+        <label>Shrine to the Random Number God</label>
+        <description>"Praise be to his glory, for the Random Number God can giveth, and the Random Number God can taketh away. Oh God of the random number generator, your sovereign hand will be my guide, where chance may fail, when fear surrounds me, you alone may provide light in the darkness."</description>
+        <graphicData>
+            <texPath>Things/Building/Art/PantheonOfGods/MedTimes_RandomNumberGod</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(2,2.66)</drawSize>
+            <drawRotated>false</drawRotated>
+            <allowFlip>false</allowFlip>
+        </graphicData>
+        <uiIconPath>Things/Building/Art/PantheonOfGods/MedTimes_RandomNumberGod_Icon</uiIconPath>
+        <size>(1,1)</size>
+        <statBases>
+            <MaxHitPoints>250</MaxHitPoints>
+            <Beauty>140</Beauty>
+            <WorkToMake>18000</WorkToMake>
+            <Flammability>0.5</Flammability>
+            <JoyGainFactor>1</JoyGainFactor>
+            <Mass>70</Mass>
+			<MeditationFocusStrength>0.22</MeditationFocusStrength>
+        </statBases>
+        <costList>
+            <MedTimes_PitchGlue>4</MedTimes_PitchGlue>
+            <WoodLog>120</WoodLog>
+            <Steel>60</Steel>
+        </costList>
+        <building>
+            <joyKind>Meditative</joyKind>
+            <watchBuildingStandDistanceRange>
+                <min>2</min>
+                <max>5</max>
+            </watchBuildingStandDistanceRange>
+            <watchBuildingStandRectWidth>5</watchBuildingStandRectWidth>
+        </building>
+		<comps>
+		  <li Class="CompProperties_MeditationFocus">
+			<statDef>MeditationFocusStrength</statDef>
+			<focusTypes>
+			  <li>Artistic</li>
+			</focusTypes>
+		  </li>
+		</comps>
+        <socialPropernessMatters>false</socialPropernessMatters>
+        <recipeMaker>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Artistic</workSkill>
+            <unfinishedThingDef>UnfinishedSculpture</unfinishedThingDef>
+            <effectWorking>Sculpt</effectWorking>
+            <soundWorking>Recipe_Sculpt</soundWorking>
+            <researchPrerequisite>MedTimes_Religions</researchPrerequisite>
+            <recipeUsers>
+                <li>MedTimes_ArtisanStation</li>
+            </recipeUsers>
+        </recipeMaker>
+    </ThingDef>
+    <!-- Shrine to the Creator -->
+    <ThingDef ParentName="MedTimes_ArtworkQuality">
+        <defName>MedTimes_Shrine_Creator</defName>
+        <label>Shrine of the Creator</label>
+        <description>Some say our universe was created by an all powerful being, that the threads of fate itself are woven, the laws of our world decided and the truth's of our being unmasked by a single all powerful entity. In the pantheon of gods we refer to this individual as Tynan, the Creator. We have come to understand that this one being can change our world irrevocably based on a whim. As such it is only right to give him homage so that we may avoid his wrath.</description>
+        <graphicData>
+            <texPath>Things/Building/Art/PantheonOfGods/MedTimes_Tynan</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(2,2.66)</drawSize>
+            <drawRotated>false</drawRotated>
+            <allowFlip>false</allowFlip>
+        </graphicData>
+        <uiIconPath>Things/Building/Art/PantheonOfGods/MedTimes_Tynan_Icon</uiIconPath>
+        <size>(1,1)</size>
+        <stuffCategories>
+            <li>Metallic</li>
+            <li>Stony</li>
+            <li>Woody</li>
+        </stuffCategories>
+        <costList>
+            <MedTimes_PitchGlue>3</MedTimes_PitchGlue>
+        </costList>
+        <costStuffCount>160</costStuffCount>
+        <statBases>
+            <MaxHitPoints>250</MaxHitPoints>
+            <Beauty>140</Beauty>
+            <WorkToMake>18000</WorkToMake>
+            <Flammability>0.5</Flammability>
+            <JoyGainFactor>1</JoyGainFactor>
+            <Mass>70</Mass>
+			<MeditationFocusStrength>0.22</MeditationFocusStrength>
+        </statBases>
+        <building>
+            <joyKind>Meditative</joyKind>
+            <watchBuildingStandDistanceRange>
+                <min>2</min>
+                <max>5</max>
+            </watchBuildingStandDistanceRange>
+            <watchBuildingStandRectWidth>5</watchBuildingStandRectWidth>
+        </building>
+		<comps>
+		  <li Class="CompProperties_MeditationFocus">
+			<statDef>MeditationFocusStrength</statDef>
+			<focusTypes>
+			  <li>Artistic</li>
+			</focusTypes>
+		  </li>
+		</comps>
+        <socialPropernessMatters>false</socialPropernessMatters>
+        <recipeMaker>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Artistic</workSkill>
+            <unfinishedThingDef>UnfinishedSculpture</unfinishedThingDef>
+            <effectWorking>Sculpt</effectWorking>
+            <soundWorking>Recipe_Sculpt</soundWorking>
+            <researchPrerequisite>MedTimes_Religions</researchPrerequisite>
+            <recipeUsers>
+                <li>MedTimes_ArtisanStation</li>
+            </recipeUsers>
+        </recipeMaker>
+    </ThingDef>
+    <!-- Shrine to Pang Li -->
+    <ThingDef ParentName="MedTimes_ArtworkQuality">
+        <defName>MedTimes_Shrine_PangLi</defName>
+        <label>Shrine to Pang Li</label>
+        <description>Originally a wanderer amoung the southern tribes, Pang Li Joined the Tsutda Nation as a mercenary soldier. Over many years he earned a reputation as a fearless warrior and brilliant tactitian, eventually earning himself a commision as a general in the standing army. After a little over a decade of skirmishes and wars with surrounding nations and tribes, Pang Li found himself as a national hero to the Tsutda people and a source of pride to the growing Tsutda Nation. It is during this time that Pang had earned himself the nickname "Mud Tiger", for his fierce guerrilla tactics and tenacity in battle. It wasen't until The Empires southern unification war however, that Pang earned his other title, "God of Death". The small and wealthy nation of Tsutda found itself in an all out war with the growing Imperial Empire, this conflict would last over 70 years and would not end until Pang Li's death at the "Craig of White Cliffs". Before his death Pang Li had waged total war against the empire. True to his form, Pang Li spent the last 70 years of his life burning villages, harrassing supply lines and warding off the empires military campaigns in a guerrilla style hit and run warfare. Numerous books have been written about his campaigns and his tactics have even been studied off-world at major galactic institutions. Although Pang Li was never able to capitalize on his victories or take the Imperial Empires capital, it is said that he was responsible for the personal suicides of imperial emperors; Tarquis VIII, Menicasus III and Menicasus IV, along with the executions for failure of over 30 supreme commanders. By the end of the war close to half the empire lay in ruins, ashes to the waste. It is estimated that at least a third of the empires population had been culled in the war, exact estimates on Tsutda casualties remain elusive as Pang Li employed many mercenaries and bandits throughout the war. The empire never gave up and with Pang Li's death the tsutda nation was forced to surrender, being asorbed into the growing world power. Due to the losses suffered at the hands of Pang Li, the Empire would not unify the continent for another 300 years after the War of Southern Unification. After his death, Pang Li would become an object of fear for the Empire, and his campaigns a horror story to tell children for generations to come. Perhaps most suprisingly was the ancestor cult that sprung up in his wake. The people of Tsutda and many other nations began worshiping his memory and claimed his time on the planet to be Odin's journey to the mortal realm. Others suggested that he was Odin's son or a re-incartion of a warrior god. Many stories arouse including the notion that he lived to be 235 years old. Many myths and legends now surround the ancient figure as he has become a symbol of resolute defiance and the warrior mindset. His tactical series "Lectures on War" have become sacred scriptures to many who view his teachings as a guide to life. Of all the cults surrounding this figure the most prevalent and dangerous however are the "Warborne", a group of fanatics that wander the land seeking death in battle.</description>
+        <graphicData>
+            <texPath>Things/Building/Art/PantheonOfGods/MedTimes_PangLi</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(2,2.66)</drawSize>
+            <drawRotated>false</drawRotated>
+            <allowFlip>false</allowFlip>
+        </graphicData>
+        <uiIconPath>Things/Building/Art/PantheonOfGods/MedTimes_PangLi_Icon</uiIconPath>
+        <size>(1,1)</size>
+        <stuffCategories>
+            <li>Metallic</li>
+            <li>Stony</li>
+            <li>Woody</li>
+        </stuffCategories>
+        <costList>
+            <MedTimes_PitchGlue>4</MedTimes_PitchGlue>
+        </costList>
+        <costStuffCount>160</costStuffCount>
+        <statBases>
+            <MaxHitPoints>250</MaxHitPoints>
+            <Beauty>140</Beauty>
+            <WorkToMake>18000</WorkToMake>
+            <Flammability>0.5</Flammability>
+            <JoyGainFactor>1</JoyGainFactor>
+            <Mass>70</Mass>
+			<MeditationFocusStrength>0.28</MeditationFocusStrength>
+        </statBases>
+        <building>
+            <joyKind>Meditative</joyKind>
+            <watchBuildingStandDistanceRange>
+                <min>2</min>
+                <max>5</max>
+            </watchBuildingStandDistanceRange>
+            <watchBuildingStandRectWidth>5</watchBuildingStandRectWidth>
+        </building>
+		<comps>
+		  <li Class="CompProperties_MeditationFocus">
+			<statDef>MeditationFocusStrength</statDef>
+			<focusTypes>
+			  <li>Artistic</li>
+			</focusTypes>
+		  </li>
+		</comps>
+        <recipeMaker Inherit="False" />
+        <socialPropernessMatters>false</socialPropernessMatters>
+        <thingSetMakerTags>
+            <li>RewardStandardLowFreq</li>
+        </thingSetMakerTags>
+    </ThingDef>
+</Defs>

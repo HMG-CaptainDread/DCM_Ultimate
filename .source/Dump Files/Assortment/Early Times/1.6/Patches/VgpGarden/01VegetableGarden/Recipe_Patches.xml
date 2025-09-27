@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>VGP Vegetable Garden</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[defName = "MakeChocolatemilk"]/recipeUsers</xpath>		
+				<value>
+					  <li>MedTimes_Firepit</li>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[ defName = "MakeChocolatemilk" or 
+										defName = "Fruitdrink" or 
+										defName = "BrewCoffee" or 
+										defName = "BulkBrewCoffee" or 
+										defName = "BrewTea" or 
+										defName = "BulkBrewTea" or 
+										defName = "BrewBarleyTea" or 
+										defName = "BulkBrewBarleyTea"]/recipeUsers</xpath>		
+				<value>
+					  <li>MedTimes_FoodPrepStation</li>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[ defName = "Stirfrymeal" or 
+										defName = "Cookstewpot" or 
+										defName = "Make_Hardtack" or 
+										defName = "Make_HardtackBulk"]/recipeUsers</xpath>		
+				<value>
+					  <li>MedTimes_StoneHearth</li>
+					  <li>MedTimes_FoodPrepStation</li>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[defName = "DisassembleWoodenWeapon"]/recipeUsers</xpath>		
+				<value>
+					<li>MedTimes_CraftingStation</li>
+					<li>MedTimes_BlacksmithForge</li>
+					<li>MedTimes_ElectricBlacksmithForge</li>
+					<li>MedTimes_BlacksmithForgeTierTwo</li>
+					<li>MedTimes_ElectricBlacksmithForgeTierTwo</li>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/RecipeDef[defName = "VG_MakebulkPemmican"]/researchPrerequisite</xpath>		
+				<value>
+					<researchPrerequisite>TS_PrimitiveCooking</researchPrerequisite>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/RecipeDef[defName = "VG_MakebulkPemmican"]/recipeUsers</xpath>		
+				<value>
+					<recipeUsers>
+						<li>MedTimes_Firepit</li>
+						<li>MedTimes_StoneHearth</li>
+						<li>ElectricStove</li>
+						<li>FueledStove</li>
+					</recipeUsers>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[defName = "MakeSilage" or defName = "MakebulkSilage" or defName = "VG_MakebulkKibble"]/recipeUsers</xpath>		
+				<value>
+					<li>MedTimes_ButcherBlock</li>
+				</value>
+			</li>  
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[defName = "MakeBambooWood"]/recipeUsers</xpath>		
+				<value>
+					<li>MedTimes_ArtisanStation</li>
+				</value>
+			</li>  
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[defName = "MakeIronWood"]/recipeUsers</xpath>		
+				<value>
+					<li>MedTimes_ButcherBlock</li>
+				</value>
+			</li>  
+			
+			
+		</operations>
+	</match>
+  </Operation>
+    
+</Patch>

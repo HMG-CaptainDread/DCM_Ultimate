@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>Alpha Biomes</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<!--<success>Always</success>-->
+		<operations>
+		
+			<!-- fungis (mykotic)-->
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName = "AB_Glowstool"]/plant</xpath>		
+				<value>
+					<sowResearchPrerequisites>
+						<li>TS_FungusDom</li>
+					</sowResearchPrerequisites>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName = "AB_LilacBeacon" or 
+									  defName = "AB_WitchesOyster" or 
+									  defName = "AB_AgaricusDomeCap" or 
+									  defName = "AB_GiantAgarilux" or 
+									  defName = "AB_ArbuscularMycorrhiza" or 
+									  defName = "AB_DribblingCap" or 
+									  defName = "AB_RecurvedStropharia" or 
+									  defName = "AB_SlimyPholiota" or 
+									  defName = "AB_Agarilux"]/plant/sowResearchPrerequisites</xpath>		
+				<value>
+					<li>TS_FungusDom</li>
+				</value>
+			</li>
+			
+			<!-- forsakens -->
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName = "AB_GiantStikehr"]/plant/sowResearchPrerequisites</xpath>		
+				<value>
+					<li>TS_FungusDom</li>
+				</value>
+			</li>
+			
+			<!-- sowtags -->
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName = "AB_WildRadagast" or 
+									  defName = "AB_GiantGamma" or 
+									  defName = "AB_Glowstool" or 
+									  defName = "AB_AgaricusDomeCap"]/plant/sowTags</xpath>		
+				<value>
+					<li>Hydroponic</li>
+				</value>
+			</li>
+			
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName = "AB_Bryolux"]/plant</xpath>		
+				<value>
+					<mustBeWildToSow>true</mustBeWildToSow>
+					<sowResearchPrerequisites>
+					<li>TS_FungusDom</li>
+					</sowResearchPrerequisites>
+					<sowTags>
+						<li>Ground</li>				
+					</sowTags>
+				</value>
+			</li>
+			
+			
+			
+		</operations>
+	</match>
+  </Operation>
+    
+</Patch>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>VGP Garden Tools</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<!-- blk stuff, BEGONE, too many stuff to patch up -->
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[defName="MakeCompostStarter" or 
+									   defName="MakeBulkCompostStarter" or 
+									   defName="MakeFertilizer"]/recipeUsers</xpath>
+				<value>
+					<li>MedTimes_ButcherBlock</li>
+				</value>			   
+			</li>	
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[defName="MakeCompostStarter" or 
+									   defName="MakeBulkCompostStarter" or 
+									   defName="MakeFertilizer"]</xpath>
+				<value>
+					<researchPrerequisite>MedTimes_Fertilization</researchPrerequisite>
+				</value>			   
+			</li>		
+		</operations>
+	</match>
+  </Operation>
+    
+</Patch>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>VGP Soylent Production</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<li Class="PatchOperationSequence">
+				<success>Always</success>
+				<operations>
+					<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@Name="DriedFoodRecipe"]/fixedIngredientFilter/disallowedThingDefs</xpath>
+						<value>
+							<li>soylentgreen</li>
+							<li>soylentblue</li>
+							<li>soylentpurple</li>
+							<li>soylentred</li>
+							<li>soylentyellow</li>
+						</value>			   
+					</li>	
+					<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[defName="makesoylentgreenmeat" or 
+											   defName="makesoylentblue" or 
+											   defName="makesoylentgreen20meat" or 
+											   defName="makesoylentblue20times"]/fixedIngredientFilter/disallowedThingDefs</xpath>
+						<value>
+							<li>MedTimes_MealJerkedMeats</li>
+						</value>			   
+					</li>	
+				</operations>
+			</li>
+		</operations>
+	</match>
+  </Operation>
+    
+</Patch>

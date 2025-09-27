@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!-- Start of thingDefs -->
+<!-- ================== Footgear Classes ================ --> 
+<!-- Footgear Base Class -->
+  <ThingDef Name="MedTimes_Footgear" Abstract="True">
+    <thingClass>Apparel</thingClass>
+    <category>Item</category>
+    <selectable>True</selectable>
+    <pathCost>10</pathCost>
+    <useHitPoints>True</useHitPoints>
+    <drawGUIOverlay>true</drawGUIOverlay>
+    <altitudeLayer>Item</altitudeLayer>
+    <alwaysHaulable>True</alwaysHaulable>
+    <tickerType>Never</tickerType>	
+    <graphicData>
+      <onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(0.8,0.8)</drawSize>	  
+    </graphicData>	
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+      <DeteriorationRate>2</DeteriorationRate>
+      <SellPriceFactor>0.5</SellPriceFactor>
+      <Insulation_Cold>3</Insulation_Cold>
+		<EquipDelay>2</EquipDelay>	  
+		<Beauty>-3</Beauty>
+		<Mass>0.5</Mass>	  
+    </statBases>
+    <apparel>	
+			<countsAsClothingForNudity>false</countsAsClothingForNudity>
+            <careIfWornByCorpse>false</careIfWornByCorpse>
+      <bodyPartGroups><li>Feet</li></bodyPartGroups>
+      <defaultOutfitTags><li>Worker</li></defaultOutfitTags>
+    </apparel>	
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li><compClass>CompQuality</compClass></li>
+    </comps>
+    <thingCategories><li>Footgear</li></thingCategories>	
+    <tradeTags><li>MedTimes_Gear</li></tradeTags>		
+  </ThingDef>
+  
+ <!-- (Colorable) Footgear Base Class -->
+  <ThingDef Name="MedTimes_Footgear_Colors" ParentName="MedTimes_Footgear" Abstract="True">
+    <stuffCategories>
+      <li>Leathery</li>
+      <li>Fabric</li>	  
+    </stuffCategories>
+  <comps>
+      <li><compClass>CompColorable</compClass></li>
+    </comps>	
+    <colorGenerator Class="ColorGenerator_StandardApparel" />		
+  </ThingDef>  
+  
+  
+<!-- ========== Non-Makeable Footgear Classes ========== -->
+  <!-- Apparel Craftable Tribal Base -->
+  <ThingDef Name="MedTimes_Footgear_Tier0" ParentName="MedTimes_Footgear_Colors" Abstract="True">
+    <costStuffCount>20</costStuffCount>
+    <statBases>
+      <MarketValue>5</MarketValue>	
+      <WorkToMake>1000</WorkToMake>
+      <StuffEffectMultiplierArmor>0.2</StuffEffectMultiplierArmor>
+      <Insulation_Cold>0.8</Insulation_Cold>
+      <Insulation_Heat>0.8</Insulation_Heat>	  
+    </statBases>
+    <equippedStatOffsets>
+		<MoveSpeed>0.06</MoveSpeed>
+    </equippedStatOffsets>	
+    <apparel>
+      <layers>
+		<li>Middle</li>
+	  </layers>
+    </apparel>	
+  </ThingDef>
+
+<!-- Apparel Medieval Base -->  
+  <ThingDef Name="MedTimes_Footgear_Tier1" ParentName="MedTimes_Footgear_Colors" Abstract="True">
+    <costStuffCount>25</costStuffCount>	
+    <statBases>
+      <MarketValue>8</MarketValue>	
+      <WorkToMake>2500</WorkToMake> 	
+      <StuffEffectMultiplierArmor>0.3</StuffEffectMultiplierArmor>
+      <Insulation_Cold>0.75</Insulation_Cold>
+      <Insulation_Heat>0.75</Insulation_Heat>	
+    </statBases>
+    <equippedStatOffsets>
+		<MoveSpeed>0.08</MoveSpeed>
+    </equippedStatOffsets>	
+    <apparel>
+      <layers>
+		<li>Middle</li>
+	  </layers>
+    </apparel>	
+  </ThingDef>
+    
+ 
+<!-- ========== Makeable Foot Apparel Classes ========== -->
+<!-- Apparel Medieval Socks Base -->  
+  <ThingDef Name="MedTimes_Footgear_Socks" ParentName="MedTimes_Footgear_Colors" Abstract="True">
+    <costStuffCount>15</costStuffCount>	
+    <statBases>
+      <MarketValue>1</MarketValue>	
+      <WorkToMake>1500</WorkToMake> 	
+      <StuffEffectMultiplierArmor>0.1</StuffEffectMultiplierArmor>
+      <Insulation_Cold>1</Insulation_Cold>
+      <Insulation_Heat>1</Insulation_Heat>	  
+    </statBases>
+    <equippedStatOffsets>
+		<MoveSpeed>0.02</MoveSpeed>
+    </equippedStatOffsets>	
+    <apparel>
+      <layers><li>OnSkin</li></layers>
+    </apparel>	
+    <recipeMaker>
+	  <researchPrerequisite>MedTimes_MedievalTailoring</researchPrerequisite>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Tailor</effectWorking>
+      <soundWorking>Recipe_Tailor</soundWorking>
+      <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>	  
+      <recipeUsers>
+        <li>MedTimes_TailoringStation</li>
+        <li>HandTailoringBench</li>
+        <li>ElectricTailoringBench</li>
+      </recipeUsers>
+    </recipeMaker>	
+  </ThingDef>    
+  
+<!-- Foot Apparel Craftable Base Class -->  
+  <ThingDef Name="MedTimes_Craft_Footgear_Tier0" ParentName="MedTimes_Footgear_Tier0" Abstract="True">
+    <recipeMaker>
+	  <researchPrerequisite>TS_PrimitiveClothing</researchPrerequisite>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Tailor</effectWorking>
+      <soundWorking>Recipe_Tailor</soundWorking>
+      <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>	  
+      <recipeUsers>
+		<li>CraftingSpot</li>
+		<li>MedTimes_CraftingStation</li>
+        <li>MedTimes_TailoringStation</li>	
+        <li>HandTailoringBench</li>
+      </recipeUsers>
+    </recipeMaker>	
+  </ThingDef>
+  
+<!-- Tailored Foot Apparel Medieval Base Class -->  
+  <ThingDef Name="MedTimes_Tail_Footgear_Tier1" ParentName="MedTimes_Footgear_Tier1" Abstract="True">
+    <recipeMaker>
+	  <researchPrerequisite>MedTimes_MedievalTailoring</researchPrerequisite>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Tailor</effectWorking>
+      <soundWorking>Recipe_Tailor</soundWorking>
+      <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>	  
+      <recipeUsers>
+		<li>MedTimes_CraftingStation</li>
+        <li>MedTimes_TailoringStation</li>
+        <li>HandTailoringBench</li>
+        <li>ElectricTailoringBench</li>
+      </recipeUsers>
+    </recipeMaker>
+  </ThingDef>
+  
+  
+<!-- =========================== Foot Accessories =========================== --> 
+<!-- ==================== Socks ================= -->
+<!-- Tailored Socks -->
+  <ThingDef ParentName="MedTimes_Footgear_Socks">
+    <defName>MedTimes_Socks_Tailored</defName>
+    <label>Tailored Socks</label>
+    <description>Socks custom tailored to fit your stinky feet, helps prevent uncomfortable boot chaffing!</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Socks_Tailored</texPath>
+    </graphicData>
+  </ThingDef>  
+
+  
+<!-- ==================== Boots ================= -->  
+<!-- Tribal Boots -->
+  <ThingDef ParentName="MedTimes_Craft_Footgear_Tier0">
+    <defName>MedTimes_Boots_Tribal</defName>
+    <label>Tribal Boots</label>
+    <description>Older style tribal boots made from animal hides. Super warm, and fury around the edges!</description>	
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Boots_Tribal</texPath>
+    </graphicData>
+  </ThingDef>
+  
+<!-- Tailored Boots -->
+  <ThingDef ParentName="MedTimes_Tail_Footgear_Tier1">
+    <defName>MedTimes_Boots_Tailored</defName>
+    <label>Tailored Boots</label>
+    <description>Boots custom tailored to fit your feet! Having your feet covered always helps with moving through terrain.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Boots_Tailored</texPath>
+    </graphicData>
+  </ThingDef>
+
+<!-- Winter Boots -->
+  <ThingDef ParentName="MedTimes_Tail_Footgear_Tier1">
+    <defName>MedTimes_Boots_Winter</defName>
+    <label>Winter Boots</label>
+    <description>Winter Boots custom tailored to fit your feet. These ones are expecially thick and water resistant, meaning their perfect for cold weather.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Boots_Winter</texPath>
+    </graphicData>
+    <statBases>
+      <Insulation_Cold>10</Insulation_Cold>
+      <Insulation_Heat>-2</Insulation_Heat>
+    </statBases>	
+  </ThingDef>  
+<!-- End of thingDefs -->
+</Defs>

@@ -1,0 +1,845 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!-- Treated Bricks -->
+    <RecipeDef>
+        <defName>MedTimes_MakeBricks</defName>
+        <label>Make Bricks</label>
+        <description>Use clay and heat to make shurdy dried up bricks</description>
+        <jobString>Making Bricks.</jobString>
+        <effectWorking>Cook</effectWorking>
+        <soundWorking>Recipe_Cremate</soundWorking>
+        <recipeUsers>
+            <li>Campfire</li>
+            <li>MedTimes_Firepit</li>
+            <li>MedTimes_StoneHearth</li>
+        </recipeUsers>
+        <targetCountAdjustment>20</targetCountAdjustment>
+        <workAmount>3000</workAmount>
+        <researchPrerequisite>MedTimes_Bricks</researchPrerequisite>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>MedTimes_Resource_DryClayBricks</li>
+                    </thingDefs>
+                </filter>
+                <count>30</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>MedTimes_Resource_DryClayBricks</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <MedTimes_Resource_Bricks>20</MedTimes_Resource_Bricks>
+        </products>
+    </RecipeDef>
+	
+	<RecipeDef>
+        <defName>MedTimes_MakeBricksLoseless</defName>
+        <label>Make Bricks</label>
+        <description>Use clay and heat to make shurdy dried up bricks</description>
+        <jobString>Making Bricks.</jobString>
+        <effectWorking>Cook</effectWorking>
+        <soundWorking>Recipe_Cremate</soundWorking>
+        <recipeUsers>
+            <li>MedTimes_FueledSmelter</li>
+        </recipeUsers>
+        <targetCountAdjustment>30</targetCountAdjustment>
+        <workAmount>1800</workAmount>
+        <researchPrerequisite>MedTimes_Bricks</researchPrerequisite>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>MedTimes_Resource_DryClayBricks</li>
+                    </thingDefs>
+                </filter>
+                <count>30</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>MedTimes_Resource_DryClayBricks</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <MedTimes_Resource_Bricks>30</MedTimes_Resource_Bricks>
+        </products>
+    </RecipeDef>
+	
+	<RecipeDef>
+        <defName>MedTimes_MakeBricksLoseless_Industrial</defName>
+        <label>Make Bricks</label>
+        <description>Use clay and metal as heat source from electrofield to make shurdy dried up bricks</description>
+        <jobString>Making Bricks.</jobString>
+        <effectWorking>Cook</effectWorking>
+        <soundWorking>Recipe_Cremate</soundWorking>
+        <recipeUsers>
+            <li>ElectricSmelter</li>
+        </recipeUsers>
+        <targetCountAdjustment>40</targetCountAdjustment>
+        <workAmount>2000</workAmount>
+        <researchPrerequisite>MedTimes_Bricks</researchPrerequisite>
+        <workerCounterClass>EarlyTimes.RecipeWorkerCounter_LargestProductCount</workerCounterClass>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>MedTimes_Resource_DryClayBricks</li>
+                    </thingDefs>
+                </filter>
+                <count>40</count>
+            </li>
+			<li>
+                <filter>
+                    <thingDefs>
+                        <li>Steel</li>
+                    </thingDefs>
+                </filter>
+                <count>20</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>MedTimes_Resource_DryClayBricks</li>
+                <li>Steel</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <MedTimes_Resource_Bricks>40</MedTimes_Resource_Bricks>
+            <Steel>20</Steel>
+        </products>
+    </RecipeDef>
+	
+    <!-- Paperwork -->
+    <RecipeDef>
+        <defName>MedTimes_MakeLeatherPaper_Recipe</defName>
+        <description>Make some paper from leather material.</description>
+        <effectWorking>Cook</effectWorking>
+        <soundWorking>Recipe_Tailor</soundWorking>
+        <workAmount>12500</workAmount>
+        <label>Make paper.</label>
+        <jobString>Making some paper.</jobString>
+        <researchPrerequisite>MedTimes_Paperwork</researchPrerequisite>
+        <unfinishedThingDef>MedTimes_UnfinishedPapers</unfinishedThingDef>
+        <targetCountAdjustment>20</targetCountAdjustment>
+        <allowMixingIngredients>true</allowMixingIngredients>
+        <recipeUsers>
+            <li>MedTimes_CraftingStation</li>
+        </recipeUsers>
+        <ingredients>
+            <li>
+                <filter>
+                    <categories>
+                        <li>Leathers</li>
+                    </categories>
+                    <disallowedThingDefs>
+                        <li>Leather_Thrumbo</li>
+                        <li>Leather_Human</li>
+                    </disallowedThingDefs>
+                </filter>
+                <count>60</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <categories>
+                <li>Leathers</li>
+            </categories>
+            <disallowedThingDefs>
+                <li>Leather_Patch</li>
+            </disallowedThingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <MedTimes_Resource_PaperSheets>20</MedTimes_Resource_PaperSheets>
+        </products>
+    </RecipeDef>
+    <RecipeDef>
+        <defName>MedTimes_MakePaper_Recipe</defName>
+        <description>Make some paper from wood and plant matter.</description>
+        <effectWorking>Cook</effectWorking>
+        <soundWorking>Recipe_Tailor</soundWorking>
+        <workAmount>7500</workAmount>
+        <label>Make paper.</label>
+        <jobString>Making some paper.</jobString>
+        <researchPrerequisite>MedTimes_BookWork</researchPrerequisite>
+        <unfinishedThingDef>MedTimes_UnfinishedPapers</unfinishedThingDef>
+        <targetCountAdjustment>20</targetCountAdjustment>
+        <recipeUsers>
+            <li>FueledStove</li>
+            <li>ElectricStove</li>
+        </recipeUsers>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>WoodLog</li>
+                    </thingDefs>
+                </filter>
+                <count>5</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>PsychoidLeaves</li>
+                        <li>Cloth</li>
+                    </thingDefs>
+                </filter>
+                <count>20</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>WoodLog</li>
+                <li>PsychoidLeaves</li>
+                <li>Cloth</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <MedTimes_Resource_PaperSheets>20</MedTimes_Resource_PaperSheets>
+        </products>
+    </RecipeDef>
+    <RecipeDef>
+        <defName>MedTimes_MakePaperBulk_Recipe</defName>
+        <description>Make some paper from wood and plant matter.</description>
+        <effectWorking>Cook</effectWorking>
+        <soundWorking>Recipe_Tailor</soundWorking>
+        <workAmount>3500</workAmount>
+        <label>Make paper(bulk).</label>
+        <jobString>Making paper.</jobString>
+        <researchPrerequisite>MedTimes_BookWork</researchPrerequisite>
+        <unfinishedThingDef>MedTimes_UnfinishedPapers</unfinishedThingDef>
+        <targetCountAdjustment>20</targetCountAdjustment>
+        <recipeUsers>
+            <li>BiofuelRefinery</li>
+        </recipeUsers>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>WoodLog</li>
+                    </thingDefs>
+                </filter>
+                <count>30</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>PsychoidLeaves</li>
+                        <li>Cloth</li>
+                    </thingDefs>
+                </filter>
+                <count>60</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>WoodLog</li>
+                <li>PsychoidLeaves</li>
+                <li>Cloth</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <MedTimes_Resource_PaperSheets>340</MedTimes_Resource_PaperSheets>
+        </products>
+    </RecipeDef>
+    
+    <!-- Stones -->
+	<RecipeDef ParentName="MakeStoneBlocksBase">
+        <defName>Make_Stones</defName>
+        <label>make stone</label>
+        <description>Crush and mix rocks into common stones.</description>
+        <jobString>Crushing stone blocks into stones.</jobString>
+        <workAmount>800</workAmount>
+        <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+        <effectWorking>CutStone</effectWorking>
+        <soundWorking>Recipe_MakeStoneBlocks</soundWorking>
+        <targetCountAdjustment>20</targetCountAdjustment>
+        <recipeUsers>
+            <li>TableStonecutter</li>
+        </recipeUsers>
+        <ingredients>
+            <li>
+                <filter>
+                    <categories>
+                        <li>StoneBlocks</li>
+                    </categories>
+                </filter>
+                <count>20</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <categories>
+                <li>StoneBlocks</li>
+            </categories>
+            <disallowedThingDefs>
+                <li>Crushed_Stones</li>
+            </disallowedThingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <Crushed_Stones>20</Crushed_Stones>
+        </products>
+    </RecipeDef>
+    
+    <!-- Sand -->
+	<RecipeDef ParentName="MakeStoneBlocksBase">
+        <defName>Make_Sand</defName>
+        <label>make sand</label>
+        <description>Crush sandstone into sand.</description>
+        <jobString>Crushing sandstone blocks into sand.</jobString>
+        <workAmount>2300</workAmount>
+        <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+        <effectWorking>CutStone</effectWorking>
+        <soundWorking>Recipe_MakeStoneBlocks</soundWorking>
+        <targetCountAdjustment>20</targetCountAdjustment>
+        <researchPrerequisite>TS_Crafting</researchPrerequisite>
+        <recipeUsers>
+            <li>TableStonecutter</li>
+            <li>TS_StonecuttingSpot</li>
+        </recipeUsers>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BlocksSandstone</li>
+                    </thingDefs>
+                </filter>
+                <count>20</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>BlocksSandstone</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <Resource_Sand>20</Resource_Sand>
+        </products>
+    </RecipeDef>
+	<!-- Produce glass -->
+    <RecipeDef>
+        <defName>MedTimes_MeltGlass</defName>
+        <label>Melt glass from sand</label>
+        <description>Heat up and melt sand into some glass. Quite inefficient process.</description>
+        <jobString>Melting glass.</jobString>
+        <effectWorking>Cook</effectWorking>
+        <workAmount>5000</workAmount>
+        <researchPrerequisite>MedTimes_Glasswork</researchPrerequisite>
+		<recipeUsers>
+            <li>MedTimes_Firepit</li>
+        </recipeUsers>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>Resource_Sand</li>
+                    </thingDefs>
+                </filter>
+                <count>30</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>Resource_Sand</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <MedTimes_Resource_Glass>15</MedTimes_Resource_Glass>
+        </products>
+    </RecipeDef>
+	
+	<RecipeDef>
+        <defName>MedTimes_MeltGlass_Medieval</defName>
+        <label>Melt glass from sand</label>
+        <description>Heat up and melt sand into some glass.</description>
+        <jobString>Melting glass.</jobString>
+        <effectWorking>Cook</effectWorking>
+        <workAmount>2500</workAmount>
+        <researchPrerequisite>MedTimes_Glasswork</researchPrerequisite>
+        <workerCounterClass>EarlyTimes.RecipeWorkerCounter_LargestProductCount</workerCounterClass>
+		<recipeUsers>
+            <li>MedTimes_FueledSmelter</li>
+        </recipeUsers>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>Resource_Sand</li>
+                    </thingDefs>
+                </filter>
+                <count>30</count>
+            </li>            
+			<li>
+                <filter>
+                    <thingDefs>
+                        <li>Steel</li>
+                    </thingDefs>
+                </filter>
+                <count>20</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>Resource_Sand</li>
+                <li>Steel</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <MedTimes_Resource_Glass>30</MedTimes_Resource_Glass>
+            <Steel>20</Steel>
+        </products>
+    </RecipeDef>	
+	
+	<RecipeDef>
+        <defName>MedTimes_MeltGlass_Industrial</defName>
+        <label>Melt glass from sand</label>
+        <description>Heat up and melt sand into some glass.</description>
+        <jobString>Melting glass.</jobString>
+        <effectWorking>Cook</effectWorking>
+        <workAmount>2500</workAmount>
+        <researchPrerequisite>MedTimes_Glasswork</researchPrerequisite>
+        <workerCounterClass>EarlyTimes.RecipeWorkerCounter_LargestProductCount</workerCounterClass>
+		<recipeUsers>
+            <li>ElectricSmelter</li>
+        </recipeUsers>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>Resource_Sand</li>
+                    </thingDefs>
+                </filter>
+                <count>30</count>
+            </li>            
+			<li>
+                <filter>
+                    <thingDefs>
+                        <li>Steel</li>
+                    </thingDefs>
+                </filter>
+                <count>30</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>Resource_Sand</li>
+                <li>Steel</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <MedTimes_Resource_Glass>60</MedTimes_Resource_Glass>
+            <Steel>30</Steel>
+        </products>
+    </RecipeDef>
+    <!-- ==================== mostly Industrial stuff ====================== -->
+    <!-- Neutroamine -->
+    <RecipeDef>
+        <defName>MedTimes_MakeNeutroamine</defName>
+        <label>Make Neutroamine</label>
+        <description>Use various chemical reactions and distilling methods to produse chemical x component.</description>
+        <jobString>Making Neutroamine.</jobString>
+        <effectWorking>Cook</effectWorking>
+        <soundWorking>Recipe_Cremate</soundWorking>
+        <recipeUsers>
+            <li>DrugLab</li>
+        </recipeUsers>
+        <workAmount>3000</workAmount>
+        <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+        <researchPrerequisite>MedTimes_ChemicalX</researchPrerequisite>
+        <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>RawFungus</li>
+                    </thingDefs>
+                </filter>
+                <count>0.5</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>PsychoidLeaves</li>
+                    </thingDefs>
+                </filter>
+                <count>0.1</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>SmokeleafLeaves</li>
+                    </thingDefs>
+                </filter>
+                <count>0.1</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>RawFungus</li>
+                <li>PsychoidLeaves</li>
+                <li>SmokeleafLeaves</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <Neutroamine>1</Neutroamine>
+        </products>
+    </RecipeDef>
+    <RecipeDef>
+        <defName>MedTimes_MakeNeutroamine_Bulk</defName>
+        <label>Make Neutroamine x10</label>
+        <description>Use various chemical reactions and distilling methods to produse chemical x component. x10</description>
+        <jobString>Making Neutroamine.</jobString>
+        <effectWorking>Cook</effectWorking>
+        <soundWorking>Recipe_Cremate</soundWorking>
+        <recipeUsers>
+            <li>BiofuelRefinery</li>
+        </recipeUsers>
+        <workAmount>16000</workAmount>
+        <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+        <researchPrerequisite>MedTimes_ChemicalX</researchPrerequisite>
+        <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>RawFungus</li>
+                    </thingDefs>
+                </filter>
+                <count>5.0</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>PsychoidLeaves</li>
+                    </thingDefs>
+                </filter>
+                <count>1.0</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>SmokeleafLeaves</li>
+                    </thingDefs>
+                </filter>
+                <count>1.0</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>RawFungus</li>
+                <li>PsychoidLeaves</li>
+                <li>SmokeleafLeaves</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <Neutroamine>10</Neutroamine>
+        </products>
+    </RecipeDef>
+    <!-- Cement -->
+	<RecipeDef>
+        <defName>MedTimes_Cement_Neolitic</defName>
+        <label>Make cement</label>
+        <description>Calcinate limestone and mix it with different materials to produce cement.</description>
+        <jobString>Making cement.</jobString>
+        <effectWorking>Cook</effectWorking>
+        <workAmount>4500</workAmount>
+        <researchPrerequisite>MedTimes_Calcination</researchPrerequisite>
+		<recipeUsers>
+            <li>Campfire</li>
+            <li>MedTimes_Firepit</li>
+            <li>MedTimes_StoneHearth</li>
+        </recipeUsers>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BlocksLimestone</li>
+                    </thingDefs>
+                </filter>
+                <count>3</count>
+            </li>            
+			<li>
+                <filter>
+                    <thingDefs>
+                        <li>BlocksSlate</li>
+                    </thingDefs>
+                </filter>
+                <count>1</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>BlocksLimestone</li>
+                <li>BlocksSlate</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <MedTimes_Resource_Cement>60</MedTimes_Resource_Cement>
+        </products>
+    </RecipeDef>
+	
+	<RecipeDef>
+        <defName>MedTimes_Cement_Medieval</defName>
+        <label>Make cement</label>
+        <description>Calcinate limestone and mix it with different materials to produce cement.</description>
+        <jobString>Making cement.</jobString>
+        <effectWorking>Cook</effectWorking>
+        <workAmount>3500</workAmount>
+        <researchPrerequisite>MedTimes_Calcination</researchPrerequisite>
+		<recipeUsers>
+            <li>MedTimes_FueledSmelter</li>
+        </recipeUsers>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BlocksLimestone</li>
+                    </thingDefs>
+                </filter>
+                <count>3</count>
+            </li>            
+			<li>
+                <filter>
+                    <thingDefs>
+                        <li>BlocksSlate</li>
+                    </thingDefs>
+                </filter>
+                <count>1</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>BlocksLimestone</li>
+                <li>BlocksSlate</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <MedTimes_Resource_Cement>80</MedTimes_Resource_Cement>
+        </products>
+    </RecipeDef>
+	
+	<RecipeDef>
+        <defName>MedTimes_Cement_Medieval_Bulk</defName>
+        <label>Make cement (bulk)</label>
+        <description>Calcinate limestone and mix it with different materials to produce cement.</description>
+        <jobString>Making cement.</jobString>
+        <effectWorking>Cook</effectWorking>
+        <workAmount>9560</workAmount>
+        <researchPrerequisite>MedTimes_Calcination</researchPrerequisite>
+		<recipeUsers>
+            <li>MedTimes_FueledSmelter</li>
+        </recipeUsers>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BlocksLimestone</li>
+                    </thingDefs>
+                </filter>
+                <count>15</count>
+            </li>            
+			<li>
+                <filter>
+                    <thingDefs>
+                        <li>BlocksSlate</li>
+                    </thingDefs>
+                </filter>
+                <count>5</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>BlocksLimestone</li>
+                <li>BlocksSlate</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <MedTimes_Resource_Cement>400</MedTimes_Resource_Cement>
+        </products>
+    </RecipeDef>
+	
+	<RecipeDef>
+        <defName>MedTimes_Cement_Industrial</defName>
+        <label>Make cement</label>
+        <description>Calcinate limestone and mix it with different materials to produce cement.</description>
+        <jobString>Making cement.</jobString>
+        <effectWorking>Cook</effectWorking>
+        <workAmount>2400</workAmount>
+        <researchPrerequisite>MedTimes_Calcination</researchPrerequisite>
+		<recipeUsers>
+		   <li>ElectricSmelter</li>
+        </recipeUsers>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BlocksLimestone</li>
+                    </thingDefs>
+                </filter>
+                <count>3</count>
+            </li>            
+			<li>
+                <filter>
+                    <thingDefs>
+                        <li>Steel</li>
+                    </thingDefs>
+                </filter>
+                <count>1</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>BlocksLimestone</li>
+                <li>Steel</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <MedTimes_Resource_Cement>8</MedTimes_Resource_Cement>
+        </products>
+    </RecipeDef>
+	
+	<RecipeDef>
+        <defName>MedTimes_Cement_Industrial_Bulk</defName>
+        <label>Make cement (bulk)</label>
+        <description>Calcinate limestone and mix it with different materials to produce cement.</description>
+        <jobString>Making cement.</jobString>
+        <effectWorking>Cook</effectWorking>
+        <workAmount>8210</workAmount>
+        <researchPrerequisite>MedTimes_Calcination</researchPrerequisite>
+		<recipeUsers>
+		   <li>ElectricSmelter</li>
+        </recipeUsers>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BlocksLimestone</li>
+                    </thingDefs>
+                </filter>
+                <count>15</count>
+            </li>            
+			<li>
+                <filter>
+                    <thingDefs>
+                        <li>Steel</li>
+                    </thingDefs>
+                </filter>
+                <count>5</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>BlocksLimestone</li>
+                <li>Steel</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <MedTimes_Resource_Cement>40</MedTimes_Resource_Cement>
+        </products>
+    </RecipeDef>           
+
+    <!-- wax -->
+    <RecipeDef>
+        <defName>MedTimes_MakeWax</defName>
+        <label>Make wax(tallow)</label>
+        <description>Boil animal fats to extract waxen material(tallow).</description>
+        <jobString>Making wax.</jobString>
+        <effectWorking>Cook</effectWorking>
+        <soundWorking>Recipe_CookMeal</soundWorking>
+        <recipeUsers>
+            <li>Campfire</li>
+            <li>MedTimes_FoodPrepStation</li>
+            <li>ElectricStove</li>
+            <li>FueledStove</li>
+        </recipeUsers>
+        <workAmount>2500</workAmount>
+        <researchPrerequisite>MedTimes_WaxUsage</researchPrerequisite>
+        <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+        <ingredients>
+            <li>
+                <filter>
+                    <categories>
+                        <li>MeatRaw</li>
+                    </categories>
+                </filter>
+                <count>0.8</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <categories>
+                <li>MeatRaw</li>
+            </categories>
+        </fixedIngredientFilter>
+        <products>
+            <MedTimes_Wax>10</MedTimes_Wax>
+        </products>
+    </RecipeDef>
+    <RecipeDef>
+        <defName>MedTimes_MakeWax_Biofuel</defName>
+        <label>Make wax(parafin)</label>
+        <description>Refine chemfuel to extract waxen material(parafin).</description>
+        <jobString>Making wax.</jobString>
+        <effectWorking>Cook</effectWorking>
+        <soundWorking>Recipe_CookMeal</soundWorking>
+        <recipeUsers>
+            <li>BiofuelRefinery</li>
+        </recipeUsers>
+        <workAmount>3250</workAmount>
+        <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+        <researchPrerequisite>MedTimes_WaxUsage</researchPrerequisite>
+        <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>Chemfuel</li>
+                    </thingDefs>
+                </filter>
+                <count>30</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>Chemfuel</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <MedTimes_Wax>45</MedTimes_Wax>
+        </products>
+    </RecipeDef>
+    <RecipeDef>
+        <defName>MedTimes_MakeWax_Biofuel_Bulk</defName>
+        <label>Make wax(parafin) x10</label>
+        <description>Refine chemfuel to extract waxen material(parafin).</description>
+        <jobString>Making wax.</jobString>
+        <effectWorking>Cook</effectWorking>
+        <soundWorking>Recipe_CookMeal</soundWorking>
+        <recipeUsers>
+            <li>BiofuelRefinery</li>
+        </recipeUsers>
+        <workAmount>22625</workAmount>
+        <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+        <researchPrerequisite>MedTimes_WaxUsage</researchPrerequisite>
+        <ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>Chemfuel</li>
+                    </thingDefs>
+                </filter>
+                <count>300</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>Chemfuel</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <MedTimes_Wax>450</MedTimes_Wax>
+        </products>
+    </RecipeDef>
+	
+</Defs>
