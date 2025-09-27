@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!-- Start of thingDefs -->
+<!-- ================== Handgear Classes ================ --> 
+<!-- Handgear Base Class -->
+  <ThingDef Name="MedTimes_Handgear" Abstract="True">
+    <thingClass>Apparel</thingClass>
+	<drawerType>MapMeshOnly</drawerType>
+    <category>Item</category>
+    <selectable>True</selectable>
+    <pathCost>10</pathCost>
+    <useHitPoints>True</useHitPoints>
+    <drawGUIOverlay>true</drawGUIOverlay>
+    <altitudeLayer>Item</altitudeLayer>
+    <alwaysHaulable>True</alwaysHaulable>
+    <tickerType>Never</tickerType>	
+    <graphicData>
+      <onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(0.8,0.8)</drawSize>	  
+    </graphicData>	
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+      <DeteriorationRate>2</DeteriorationRate>
+      <SellPriceFactor>0.9</SellPriceFactor>
+      <Insulation_Cold>3</Insulation_Cold>
+		<EquipDelay>2</EquipDelay>	  
+		<Beauty>-3</Beauty>
+		<Mass>1</Mass>		
+    </statBases>
+    <apparel>	
+      <bodyPartGroups><li>Hands</li></bodyPartGroups>
+      <layers><li>Middle</li></layers>	
+      <defaultOutfitTags><li>Worker</li></defaultOutfitTags>
+    </apparel>	
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li><compClass>CompQuality</compClass></li>
+    </comps>
+    <thingCategories><li>Handgear</li></thingCategories>	
+    <tradeTags><li>MedTimes_Gear</li></tradeTags>		
+  </ThingDef>
+  
+ <!-- (Colorable) Handgear Base Class -->
+  <ThingDef Name="MedTimes_Handgear_Colors" ParentName="MedTimes_Handgear" Abstract="True">
+    <stuffCategories>
+      <li>Leathery</li>
+      <li>Fabric</li>	  
+    </stuffCategories>
+  <comps>
+      <li><compClass>CompColorable</compClass></li>
+    </comps>	
+    <colorGenerator Class="ColorGenerator_StandardApparel" />		
+  </ThingDef>  
+  
+  
+<!-- ========== Non-Makeable Handgear Classes ========== -->
+  <!-- Apparel Craftable Tribal Base -->
+  <ThingDef Name="MedTimes_Handgear_Tier0" ParentName="MedTimes_Handgear_Colors" Abstract="True">
+    <costStuffCount>20</costStuffCount>
+    <statBases>
+      <MarketValue>5</MarketValue>	
+      <WorkToMake>1500</WorkToMake>
+      <StuffEffectMultiplierArmor>0.2</StuffEffectMultiplierArmor>
+    </statBases>
+  </ThingDef>
+
+<!-- Apparel Medieval Base -->  
+  <ThingDef Name="MedTimes_Handgear_Tier1" ParentName="MedTimes_Handgear_Colors" Abstract="True">
+    <costStuffCount>25</costStuffCount>	
+    <statBases>
+      <MarketValue>8</MarketValue>	
+      <WorkToMake>2000</WorkToMake> 	
+      <StuffEffectMultiplierArmor>0.2</StuffEffectMultiplierArmor>
+    </statBases>		
+  </ThingDef>
+  
+ 
+<!-- ========== Makeable Apparel Classes ========== -->
+<!-- Apparel Craftable Base Class -->  
+  <ThingDef Name="MedTimes_Craft_Handgear_Tier0" ParentName="MedTimes_Handgear_Tier0" Abstract="True">
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Tailor</effectWorking>
+      <soundWorking>Recipe_Tailor</soundWorking>
+      <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>	  
+      <recipeUsers>
+        <li>CraftingSpot</li>
+      </recipeUsers>
+    </recipeMaker>	
+  </ThingDef>
+  
+<!-- Tailored Apparel Medieval Base Class -->  
+  <ThingDef Name="MedTimes_Tail_Handgear_Tier1" ParentName="MedTimes_Handgear_Tier1" Abstract="True">
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Tailor</effectWorking>
+      <soundWorking>Recipe_Tailor</soundWorking>
+      <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>	  
+      <recipeUsers>
+        <li>MedTimes_TailoringStation</li>
+      </recipeUsers>
+    </recipeMaker>
+  </ThingDef>
+  
+
+
+<!-- =========================== Handgear =========================== -->  
+<!-- Tailored Gloves -->
+  <ThingDef ParentName="MedTimes_Tail_Handgear_Tier1">
+    <defName>MedTimes_Gloves_Tailored</defName>
+    <label>Tailored Gloves</label>
+    <description>[Workspeed: +5%] Gloves custom tailored to fit your hands. Wearing these gloves helps to prevent many of the common workplace injuries that can occur. This means you can work faster!</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Handwear/MedTimes_Gloves_Tailored</texPath>
+    </graphicData>	
+    <equippedStatOffsets>
+      <WorkSpeedGlobal>0.05</WorkSpeedGlobal>  	  
+    </equippedStatOffsets>
+  </ThingDef>
+  
+<!-- Winter Gloves: Cold Layer -->
+  <ThingDef ParentName="MedTimes_Tail_Handgear_Tier1">
+    <defName>MedTimes_Gloves_Winter</defName>
+    <label>Winter Gloves</label>
+    <description>[Workspeed: +5%] Winter gloves custom tailored to fit your hands!</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Handwear/MedTimes_Gloves_Winter</texPath>
+    </graphicData>
+    <statBases>
+      <Insulation_Cold>10</Insulation_Cold>
+      <Insulation_Heat>-2</Insulation_Heat>
+    </statBases>
+    <equippedStatOffsets>
+      <WorkSpeedGlobal>0.05</WorkSpeedGlobal>  	  
+    </equippedStatOffsets>	
+  </ThingDef>
+ 
+<!-- Tribal Wraps -->
+  <ThingDef ParentName="MedTimes_Craft_Handgear_Tier0">
+    <defName>MedTimes_Gloves_Tribal</defName>
+    <label>Tribal Wraps</label>
+    <description>[Workspeed: +5%] Bands of leather which can be wrapped around and tied to the hands. Helps to prevent many of the common workplace injuries that can occur.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Handwear/MedTimes_Gloves_Tribal</texPath>
+    </graphicData>
+    <equippedStatOffsets>
+      <WorkSpeedGlobal>0.05</WorkSpeedGlobal>  	  
+    </equippedStatOffsets>	
+  </ThingDef> 
+
+<!-- End of thingDefs -->
+</Defs>

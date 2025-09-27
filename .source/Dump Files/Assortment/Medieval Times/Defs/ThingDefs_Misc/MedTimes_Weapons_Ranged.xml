@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!-- Start of thingDefs -->
+
+<!-- ========================== Projectile Base Class ============================== -->
+  <ThingDef Name="MedTimes_ProjectileBase" Abstract="True">
+    <category>Projectile</category>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>Projectile</altitudeLayer>
+    <thingClass>Bullet</thingClass>	
+    <useHitPoints>False</useHitPoints>
+    <neverMultiSelect>True</neverMultiSelect>
+    <projectile>
+      <flyOverhead>false</flyOverhead>
+    </projectile>	
+  </ThingDef>
+  
+<!-- Arrow Base Class -->
+  <ThingDef Name="MedTimes_ArrowBase" ParentName="MedTimes_ProjectileBase" Abstract="True">
+    <graphicData>
+      <texPath>Things/Projectile/Arrow_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>		
+      <shaderType>Transparent</shaderType>
+    </graphicData>
+    <projectile>
+      <damageDef>Arrow</damageDef>
+    </projectile>	
+  </ThingDef>  
+  
+<!-- Bullet Base Class -->
+  <ThingDef Name="MedTimes_BulletBase" ParentName="MedTimes_ProjectileBase" Abstract="True">
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>		
+      <shaderType>Transparent</shaderType>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+    </projectile>	
+  </ThingDef>    
+
+<!-- ================== Ranged Weapon Classes ================ --> 
+<!-- Ranged Weapon Base Class --> 
+  <ThingDef Name="MedTimes_Ranged" Abstract="True">
+    <category>Item</category>
+    <thingClass>ThingWithComps</thingClass>
+    <techLevel>Medieval</techLevel>
+	  <drawerType>MapMeshOnly</drawerType>		
+    <equipmentType>Primary</equipmentType>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass> 	
+      <onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+      <shaderType>Transparent</shaderType>	  
+    </graphicData>
+    <statBases>
+      <SellPriceFactor>0.9</SellPriceFactor>
+      <Mass>2</Mass>	  
+	  <Beauty>-5</Beauty>	  
+    </statBases>	
+    <pathCost>35</pathCost>
+    <selectable>True</selectable>
+    <alwaysHaulable>True</alwaysHaulable>
+    <drawGUIOverlay>true</drawGUIOverlay>
+    <altitudeLayer>Item</altitudeLayer>
+    <tickerType>Never</tickerType>
+    <soundInteract>Bow_Recurve</soundInteract>		
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li><compClass>CompEquippable</compClass></li>
+    </comps>
+	<rotateInShelves>false</rotateInShelves>
+  </ThingDef>
+
+<!-- (Non-Nanite Base Class) Makeable -->
+<ThingDef Name="MedTimes_RangedNN" ParentName="MedTimes_Ranged" Abstract="True"> 
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+      <DeteriorationRate>1</DeteriorationRate>	  
+    </statBases>
+    <inspectorTabs><li>ITab_Art</li></inspectorTabs>	
+     <comps>	  
+      <li><compClass>CompQuality</compClass></li>
+      <li Class="CompProperties_Art">
+        <nameMaker>NamerArtWeaponMelee</nameMaker>
+        <descriptionMaker>ArtDescription_WeaponMelee</descriptionMaker>
+        <minQualityForArtistic>Excellent</minQualityForArtistic>
+      </li>
+    </comps>
+    <tools>
+      <li>
+        <label>limb</label>
+        <capacities>
+          <li>Blunt</li>
+          <li>Poke</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>	
+    <tradeTags><li>MedTimes_Gear</li></tradeTags>
+    <thingCategories><li>WeaponsRanged</li></thingCategories>		
+  </ThingDef>   
+  
+<!-- Makeable Ranged Weapon Base Class -->
+<ThingDef Name="MedTimes_MakeableRanged" ParentName="MedTimes_RangedNN" Abstract="True">
+    <statBases>
+	  <WorkToMake>8000</WorkToMake>  
+    </statBases>
+	
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <recipeUsers>
+        <li>MedTimes_CraftingStation</li>	  
+      </recipeUsers>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+    </recipeMaker>	
+  </ThingDef>
+  
+  
+  
+<!-- ======= Non Tier Bows ====== -->
+<!-- Composite Bow & Ammo -->
+  <ThingDef ParentName="MedTimes_ArrowBase">
+    <defName>Medieval_Arrow_Composite</defName>
+    <label>Composite Bow Arrow</label>
+    <projectile>
+      <damageAmountBase>12</damageAmountBase>
+      <speed>62</speed>
+      <stoppingPower>1</stoppingPower>
+      <armorPenetrationBase>0.15</armorPenetrationBase>	  
+    </projectile>
+  </ThingDef>
+  
+  <ThingDef ParentName="MedTimes_MakeableRanged">
+    <defName>MedTimes_Ranged_Composite</defName>
+    <label>Composite Bow</label>
+    <description>A compact but powerful recurve bow made from multiple materials. Made by gluing and binding several layers of wood and animal bone together.</description>	
+
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/MedTimes_Bow_Composite</texPath>	  
+    </graphicData>
+	
+    <costList>
+      <WoodLog>45</WoodLog>
+      <MedTimes_WoodPitchGlue>1</MedTimes_WoodPitchGlue>	  
+    </costList>
+
+	<statBases>
+      <AccuracyTouch>0.75</AccuracyTouch>
+      <AccuracyShort>0.70</AccuracyShort>
+      <AccuracyMedium>0.60</AccuracyMedium>
+      <AccuracyLong>0.55</AccuracyLong>
+      <RangedWeapon_Cooldown>1.66</RangedWeapon_Cooldown>	  
+    </statBases>
+	
+    <equippedAngleOffset>-45</equippedAngleOffset>
+	
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>1.35</warmupTime>
+        <soundCast>Bow_Recurve</soundCast>	  
+        <defaultProjectile>Medieval_Arrow_Composite</defaultProjectile>
+        <range>16</range>
+      </li>
+    </verbs>
+	
+    <recipeMaker>
+      <recipeUsers><li>CraftingSpot</li></recipeUsers>
+		<skillRequirements>
+				<Crafting>4</Crafting>
+		</skillRequirements>	  
+    </recipeMaker>	
+		
+    <weaponTags>
+      <li>MedTimes_Weapon_Peasant</li> 	
+      <li>NeolithicRanged</li>
+    </weaponTags>
+	
+  </ThingDef>
+
+
+  
+<!-- ======= Crafting Tier Bows ====== -->  
+<!-- Longbow & Ammo -->  
+  <ThingDef ParentName="MedTimes_ArrowBase">
+    <defName>Medieval_Arrow_Longbow</defName>
+    <label>Longbow Arrow</label>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/Ammo/MedTimes_BodkinArrow</texPath>
+    </graphicData>	
+    <projectile>
+      <damageAmountBase>16</damageAmountBase>
+      <speed>52</speed>
+      <stoppingPower>1</stoppingPower>
+      <armorPenetrationBase>0.10</armorPenetrationBase>	  	  
+    </projectile>
+  </ThingDef>
+  
+  <ThingDef ParentName="MedTimes_MakeableRanged">
+    <defName>MedTimes_Ranged_Longbow</defName>
+    <label>Longbow</label>
+    <description>A longbow in the English tradition with great range. uses the infamous Bodkin Arrow.</description>
+	
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/MedTimes_Longbow</texPath> 
+    </graphicData>
+
+    <costList>
+      <WoodLog>60</WoodLog>
+      <MedTimes_WoodPitchGlue>1</MedTimes_WoodPitchGlue>	  
+    </costList>
+	
+	<statBases>
+      <AccuracyTouch>0.75</AccuracyTouch>
+      <AccuracyShort>0.70</AccuracyShort>
+      <AccuracyMedium>0.60</AccuracyMedium>
+      <AccuracyLong>0.45</AccuracyLong>
+      <RangedWeapon_Cooldown>1.66</RangedWeapon_Cooldown>	  
+    </statBases>
+	
+    <equippedAngleOffset>-45</equippedAngleOffset>	
+
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>1.8</warmupTime>
+        <soundCast>Bow_Large</soundCast>	  
+        <defaultProjectile>Medieval_Arrow_Longbow</defaultProjectile>
+        <range>24</range>
+      </li>
+    </verbs>
+    <recipeMaker>
+		<skillRequirements>
+				<Crafting>10</Crafting>
+		</skillRequirements>	 	  
+    </recipeMaker>	
+    <weaponTags>
+      <li>MedTimes_Weapon_Ranged</li>
+    </weaponTags>	
+	
+  </ThingDef>
+
+  
+  
+<!-- ======= Tier 1 Bows ====== -->   
+<!-- Crossbow & Ammo -->  
+<ThingDef ParentName="MedTimes_ArrowBase">
+    <defName>Medieval_Bolt_Crossbow</defName>
+    <label>Crossbow Bolt</label>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/Ammo/MedTimes_Bolt</texPath>
+    </graphicData>	
+    <projectile>
+      <damageAmountBase>16</damageAmountBase>
+      <speed>62</speed>
+      <stoppingPower>1</stoppingPower>
+      <armorPenetrationBase>0.15</armorPenetrationBase>
+    </projectile>
+  </ThingDef>  
+  
+  <ThingDef ParentName="MedTimes_MakeableRanged">
+    <defName>MedTimes_Ranged_Crossbow</defName>
+    <label>Crossbow</label>
+    <description>A crossbow, easier to use than a regular bow, much more accurate, but slower to reload.</description>
+	
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/MedTimes_Crossbow</texPath>		  
+    </graphicData>
+
+    <costList>
+	  <MedTimes_SteelBow>1</MedTimes_SteelBow>	
+      <WoodLog>50</WoodLog>
+      <MedTimes_WoodPitchGlue>1</MedTimes_WoodPitchGlue>	  
+    </costList>
+	
+	<statBases>
+      <AccuracyTouch>0.85</AccuracyTouch>
+      <AccuracyShort>0.80</AccuracyShort>
+      <AccuracyMedium>0.50</AccuracyMedium>
+      <AccuracyLong>0.35</AccuracyLong>
+      <RangedWeapon_Cooldown>2.0</RangedWeapon_Cooldown>  
+    </statBases>	
+	
+	    <equippedAngleOffset>45</equippedAngleOffset>
+
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>1.35</warmupTime>
+        <soundCast>Bow_Large</soundCast>	  
+        <defaultProjectile>Medieval_Bolt_Crossbow</defaultProjectile>
+        <range>18</range>
+      </li>
+    </verbs>
+    <recipeMaker>
+		<skillRequirements>
+				<Crafting>6</Crafting>
+		</skillRequirements>	 	  
+    </recipeMaker>		
+    <weaponTags>
+      <li>MedTimes_Weapon_Ranged</li>
+    </weaponTags>		
+  </ThingDef>
+
+
+  <ThingDef ParentName="MedTimes_MakeableRanged">
+    <defName>MedTimes_Ranged_HandCrossbow</defName>
+    <label>One-Handed Crossbow</label>
+    <description>A small one-handed crossbow, easier to use than a regular bow, much more accurate, but shorter range.</description>
+	
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/MedTimes_HandCrossbow</texPath>		  
+    </graphicData>
+
+    <costList>
+	  <MedTimes_SteelBow>1</MedTimes_SteelBow>	
+      <MedTimes_AdvancedTriggerMechanism>1</MedTimes_AdvancedTriggerMechanism>	    
+      <WoodLog>35</WoodLog>
+      <MedTimes_WoodPitchGlue>1</MedTimes_WoodPitchGlue>	  
+    </costList>
+	
+	<statBases>
+      <AccuracyTouch>0.80</AccuracyTouch>
+      <AccuracyShort>0.75</AccuracyShort>
+      <AccuracyMedium>0.70</AccuracyMedium>
+      <AccuracyLong>0.65</AccuracyLong>
+      <RangedWeapon_Cooldown>1.5</RangedWeapon_Cooldown>  
+    </statBases>	
+	
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>1.35</warmupTime>
+        <soundCast>Bow_Small</soundCast>	  
+        <defaultProjectile>Medieval_Bolt_Crossbow</defaultProjectile>
+        <range>12</range>
+      </li>
+    </verbs>
+    <recipeMaker>
+		<skillRequirements>
+				<Crafting>10</Crafting>
+		</skillRequirements> 	  
+    </recipeMaker>		
+    <weaponTags>
+      <li>MedTimes_Weapon_Ranged_Elite</li>
+    </weaponTags>	
+  </ThingDef>  
+  
+<!-- ======= Tier 2 Bows ====== -->  
+<!-- Arbalest & Ammo -->  
+<ThingDef ParentName="MedTimes_ArrowBase">
+    <defName>Medieval_Bolt_Arbalest</defName>
+    <label>Arbalest Bolt</label>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/Ammo/MedTimes_Bolt</texPath>
+    </graphicData>		
+    <projectile>
+      <damageAmountBase>18</damageAmountBase>
+      <speed>66</speed>
+      <stoppingPower>1.25</stoppingPower>
+      <armorPenetrationBase>0.15</armorPenetrationBase>	  
+    </projectile>
+  </ThingDef>
+  
+  <ThingDef ParentName="MedTimes_MakeableRanged">
+    <defName>MedTimes_Ranged_Arbalest</defName>
+    <label>Arbalest</label>
+    <description>A massive crossbow made with advanced techniques and tempered steel.</description>
+	
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/MedTimes_Arbalest</texPath>		  
+    </graphicData>
+
+    <costList>
+      <MedTimes_SteelBow>1</MedTimes_SteelBow>
+      <MedTimes_AdvancedTriggerMechanism>1</MedTimes_AdvancedTriggerMechanism>	  
+	  <WoodLog>60</WoodLog>
+      <MedTimes_WoodPitchGlue>1</MedTimes_WoodPitchGlue>	  
+    </costList>
+	
+	<statBases>
+      <AccuracyTouch>0.85</AccuracyTouch>
+      <AccuracyShort>0.80</AccuracyShort>
+      <AccuracyMedium>0.50</AccuracyMedium>
+      <AccuracyLong>0.35</AccuracyLong>
+      <RangedWeapon_Cooldown>2.0</RangedWeapon_Cooldown>  
+    </statBases>
+	
+    <equippedAngleOffset>45</equippedAngleOffset>	
+
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>1.35</warmupTime>
+        <soundCast>Bow_Large</soundCast>	  
+        <defaultProjectile>Medieval_Bolt_Arbalest</defaultProjectile>
+        <range>21</range>
+      </li>
+    </verbs>
+    <recipeMaker>
+		<skillRequirements>
+				<Crafting>8</Crafting>
+		</skillRequirements> 	  
+    </recipeMaker>		
+    <weaponTags>
+      <li>MedTimes_Weapon_Ranged_Elite</li>
+    </weaponTags>
+  </ThingDef>
+  
+  
+  
+<!-- ======= Guns ====== -->  
+<!-- Smoothbore Musket & Ammo -->  
+<ThingDef ParentName="MedTimes_BulletBase">
+    <defName>MedTimes_Ball_Musket</defName>
+    <label>Musket Ball</label>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/Ammo/MedTimes_LeadShot</texPath>
+    </graphicData>		
+    <projectile>
+      <damageAmountBase>20</damageAmountBase>
+      <speed>68</speed>
+      <stoppingPower>1.25</stoppingPower>	  
+    </projectile>
+  </ThingDef>
+  
+  <ThingDef ParentName="MedTimes_RangedNN">
+    <defName>MedTimes_Ranged_Musket</defName>
+    <label>Smoothbore Musket</label>
+    <description>A simple smoothbore musket made of cast steel, uses loose smoked powder which makes reloading a pain, but does massive amounts of damage and is accurate when compared to the crossbow.</description>
+	
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/MedTimes_Musket</texPath>		  
+    </graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+    <costList>
+	  <Steel>70</Steel>
+	  <WoodLog>35</WoodLog>
+    </costList>
+	
+	<statBases>
+	  <WorkToMake>10000</WorkToMake> 	
+      <AccuracyTouch>0.65</AccuracyTouch>
+      <AccuracyShort>0.70</AccuracyShort>
+      <AccuracyMedium>0.65</AccuracyMedium>
+      <AccuracyLong>0.35</AccuracyLong>
+      <RangedWeapon_Cooldown>2.25</RangedWeapon_Cooldown>  
+    </statBases>
+	
+    <equippedAngleOffset>45</equippedAngleOffset>	
+
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>1.5</warmupTime>
+				<soundCast>MedTimes_Sound_MusketFire</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+        <defaultProjectile>MedTimes_Ball_Musket</defaultProjectile>
+        <range>25</range>
+      </li>
+    </verbs>	
+	
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <recipeUsers>
+        <li>FueledSmithy</li>	  
+        <li>ElectricSmithy</li>	  
+      </recipeUsers>
+		<skillRequirements>
+				<Crafting>8</Crafting>
+		</skillRequirements>		  	  
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+    </recipeMaker>	
+    <weaponTags><li>Gun</li></weaponTags>
+  </ThingDef>  
+  
+<!-- End of thingDefs -->
+</Defs>

@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+<!-- Start of Thingdefs -->
+
+  
+<!-- ================ Specific Structure Classes ================ -->
+<!-- Wall Base Class -->  
+<ThingDef Name="MedTimes_WallBase" ParentName="MedTimes_BuildingBase" Abstract="True">
+    <description>Base Class for Walls</description>
+    <graphicData>
+      <texPath>Things/Building/Linked/Wall</texPath>
+      <graphicClass>Graphic_Appearances</graphicClass>
+      <linkType>CornerFiller</linkType>
+      <linkFlags>
+        <li>Wall</li>
+        <li>Rock</li>
+      </linkFlags>
+    </graphicData>
+
+    <uiIconPath>Things/Building/Linked/WallSmooth_MenuIcon</uiIconPath>
+    <statBases>
+      <MaxHitPoints>350</MaxHitPoints>
+      <WorkToBuild>150</WorkToBuild>
+      <Flammability>1.0</Flammability>
+    </statBases>
+
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <altitudeLayer>Building</altitudeLayer>
+    <castEdgeShadows>true</castEdgeShadows>
+    <coversFloor>true</coversFloor>
+    <drawStyleCategory>Walls</drawStyleCategory>
+    <rotatable>false</rotatable>
+    <neverMultiSelect>true</neverMultiSelect>
+    <staticSunShadowHeight>1.0</staticSunShadowHeight>
+
+    <building>
+    <blueprintGraphicData>
+      <texPath>Things/Building/Linked/Wall_Blueprint_Atlas</texPath>
+    </blueprintGraphicData>	
+      <isInert>true</isInert>
+    </building>
+	
+    <damageMultipliers>
+      <li>
+        <damageDef>Bomb</damageDef>
+        <multiplier>2</multiplier>
+      </li>
+    </damageMultipliers>
+	
+    <designationCategory>Structure</designationCategory>	
+  </ThingDef>
+
+<!-- Sandbag Base Class -->  
+<ThingDef Name="MedTimes_SandbagBase" ParentName="MedTimes_BuildingBase" Abstract="True">
+    <graphicData>
+      <linkType>Basic</linkType>
+      <linkFlags><li>Sandbags</li></linkFlags>
+    </graphicData>
+
+    <statBases>
+      <MaxHitPoints>320</MaxHitPoints>
+      <WorkToBuild>150</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>2</Beauty>	  
+    </statBases>
+
+    <pathCost>200</pathCost>	
+	<passability>PassThroughOnly</passability>
+    <pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
+
+    <altitudeLayer>Building</altitudeLayer>
+    <castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.6</staticSunShadowHeight>	
+    <blockLight>false</blockLight>
+    <blockWind>false</blockWind>
+	
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <coversFloor>false</coversFloor>
+    <drawStyleCategory>Walls</drawStyleCategory>
+    <rotatable>false</rotatable>
+    <neverMultiSelect>true</neverMultiSelect>
+    <holdsRoof>false</holdsRoof>
+	
+    <building>
+      <isInert>true</isInert>
+    </building>
+	
+    <damageMultipliers>
+      <li>
+        <damageDef>Bomb</damageDef>
+        <multiplier>2</multiplier>
+      </li>
+    </damageMultipliers>
+	
+    <designationCategory>Structure</designationCategory>	
+  </ThingDef>
+  
+<!-- Door Base Class -->  
+<ThingDef Name="MedTimes_DoorBase" ParentName="MedTimes_BuildingBase" Abstract="True">
+    <thingClass>Building_Door</thingClass>
+    <category>Building</category>
+    <altitudeLayer>DoorMoveable</altitudeLayer>
+    <fillPercent>1</fillPercent>
+    <useHitPoints>true</useHitPoints>
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+    </statBases>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <tickerType>Normal</tickerType>
+    <rotatable>false</rotatable>
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>Structure</designationCategory>
+    <holdsRoof>true</holdsRoof>
+    <staticSunShadowHeight>1.0</staticSunShadowHeight>
+    <blockLight>true</blockLight>
+    <building>
+		<blueprintClass>Blueprint_Door</blueprintClass>	
+      <soundDoorOpenPowered>Door_OpenPowered</soundDoorOpenPowered>
+      <soundDoorClosePowered>Door_ClosePowered</soundDoorClosePowered>
+      <soundDoorOpenManual>Door_OpenManual</soundDoorOpenManual>
+      <soundDoorCloseManual>Door_CloseManual</soundDoorCloseManual>
+      <canPlaceOverWall>true</canPlaceOverWall>
+    </building>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+    </comps>
+  </ThingDef> 
+  
+
+
+
+<!-- ================================ Actual Buildings ================================ --> 
+  
+<!-- ================ Defensive Walls ================ -->  
+<!-- Embrasure Wall -->
+  <ThingDef ParentName="MedTimes_WallBase">
+    <defName>MedTimes_Wall_Embrasure</defName>
+    <label>Embrasure</label>
+    <description>A solid wall with a narrow vertical slit from which a marksman can fire. (Not your traditional embrasure, can be scaled by attackers)</description>
+ 
+	<graphicData>
+      <texPath>Things/Building/Linked/Embrasure/EmbrasureWall_Atlas</texPath>
+      <graphicClass>Graphic_Single</graphicClass>  
+    </graphicData>
+	
+
+    <uiIconPath>Things/Building/Linked/Embrasure/EmbrasureWall_MenuIcon</uiIconPath>
+
+    <statBases>
+      <MaxHitPoints>320</MaxHitPoints>
+    </statBases>
+
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>	  
+    </stuffCategories>
+    <costStuffCount>5</costStuffCount>
+	
+    <pathCostIgnoreRepeat>false</pathCostIgnoreRepeat>	
+    <passability>PassThroughOnly</passability>
+	<pathCost>9000</pathCost>
+    <fillPercent>0.8</fillPercent>
+	
+    <tickerType>Never</tickerType>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <holdsRoof>true</holdsRoof>
+    <blockLight>false</blockLight>
+    <blockWind>true</blockWind>	
+	
+    <building>
+    <blueprintGraphicData>
+      <texPath>Things/Building/Linked/Embrasure/EmbrasureWall_Blueprint_Atlas</texPath>
+    </blueprintGraphicData>
+    </building>	
+	
+    <researchPrerequisites>
+      <li>MedTimes_ImprovedMedievalDefenses</li>
+    </researchPrerequisites>	
+  </ThingDef>
+  
+<!-- Parapet -->  
+  <ThingDef ParentName="MedTimes_SandbagBase">
+    <defName>MedTimes_Wall_Parapet</defName>
+    <label>Crenelated Parapet</label>
+    <description>A reinforced wall designed and built to be used as a defence from projectiles. This design is slightly above waist height and contains crenelations. It operates in a simular fashion to sandbags, except can be made from various materials.</description>
+	
+    <graphicData>
+      <texPath>Things/Building/Linked/Parapet/ParapetWall_Atlas</texPath>
+      <graphicClass>Graphic_Single</graphicClass>	  
+    </graphicData>
+	
+    <uiIconPath>Things/Building/Linked/Parapet/ParapetWall_MenuIcon</uiIconPath>
+	
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>3</costStuffCount>
+	
+    <pathCostIgnoreRepeat>false</pathCostIgnoreRepeat>	
+    <fillPercent>0.65</fillPercent>
+    <tickerType>Never</tickerType>
+	
+    <building>
+    <blueprintGraphicData>
+      <texPath>Things/Building/Linked/Parapet/ParapetWall_Blueprint_Atlas</texPath>
+    </blueprintGraphicData>
+    </building>	
+	
+    <researchPrerequisites>
+      <li>MedTimes_MedievalDefenses</li>
+    </researchPrerequisites>	
+	
+  </ThingDef>  
+  
+  
+  
+<!-- ================ Ice Wall Stuff ================ --> 
+<!-- Ice Wall -->
+    <ThingDef ParentName="MedTimes_WallBase">
+    <defName>MedTimes_Wall_Ice</defName>
+    <label>Ice Wall</label>
+    <description>(Will deteriorate in temps above freezing) A wall made ice blocks. Medieval era technology which requires lots of effort and few resources. It is composed primarily of compacted ice.</description>
+
+    <graphicData>
+      <texPath>Things/Building/Linked/IceWall/IceWall_Atlas</texPath>
+      <graphicClass>Graphic_Single</graphicClass>	
+      <color>(180,210,230)</color>
+    </graphicData>
+
+    <uiIconPath>Things/Building/Linked/IceWall/IceWall_MenuIcon</uiIconPath>
+    <statBases>
+      <MaxHitPoints>600</MaxHitPoints>
+      <WorkToBuild>250</WorkToBuild>
+      <Flammability>0</Flammability>
+      <Beauty>2</Beauty>	  
+    </statBases>
+
+    <costList>
+	  <MedTimes_Resource_IceBlocks>5</MedTimes_Resource_IceBlocks>
+    </costList>		
+
+    <tickerType>Rare</tickerType>
+    <neverMultiSelect>false</neverMultiSelect>	
+    <passability>Impassable</passability>
+    <fillPercent>1</fillPercent>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <holdsRoof>true</holdsRoof>	
+    <blockLight>true</blockLight>
+    <blockWind>true</blockWind>
+	
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+	  <li><compClass>CompMelter</compClass></li>
+    </comps>
+	
+    <building>
+    <blueprintGraphicData>
+      <texPath>Things/Building/Linked/IceWall/IceWall_Blueprint_Atlas</texPath>
+    </blueprintGraphicData>
+    </building>	
+	
+    <designationCategory>Structure</designationCategory>	
+    <researchPrerequisites><li>MedTimes_IceSculpting</li></researchPrerequisites>	
+</ThingDef>
+   
+<!-- Ice Wall Embrasure Wall -->
+  <ThingDef ParentName="MedTimes_WallBase">
+    <defName>MedTimes_Wall_IceEmbrasure</defName>
+    <label>Ice Wall Embrasure</label>
+    <description>(Will deteriorate in temps above freezing) A solid wall built of ice blocks with a narrow vertical slit from which a marksman can fire. (Not your traditional embrasure, can be scaled by attackers)</description>
+ 
+	<graphicData>
+      <texPath>Things/Building/Linked/Embrasure/EmbrasureWall_Atlas</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <color>(180,210,230)</color>	  
+    </graphicData>
+	
+    <uiIconPath>Things/Building/Linked/Embrasure/EmbrasureWall_MenuIcon</uiIconPath>
+
+    <statBases>
+      <MaxHitPoints>560</MaxHitPoints>
+      <WorkToBuild>250</WorkToBuild>
+      <Flammability>0</Flammability>
+      <Beauty>2</Beauty>	  
+    </statBases>
+
+    <costList>
+	  <MedTimes_Resource_IceBlocks>5</MedTimes_Resource_IceBlocks>
+    </costList>	
+	
+    <pathCostIgnoreRepeat>false</pathCostIgnoreRepeat>	
+    <passability>PassThroughOnly</passability>
+	<pathCost>9000</pathCost>
+    <fillPercent>0.8</fillPercent>
+    <neverMultiSelect>false</neverMultiSelect>		
+    <tickerType>Rare</tickerType>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <holdsRoof>true</holdsRoof>
+    <blockLight>false</blockLight>
+    <blockWind>true</blockWind>	
+
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+	  <li><compClass>CompMelter</compClass></li>
+    </comps>
+	
+    <building>
+    <blueprintGraphicData>
+      <texPath>Things/Building/Linked/Embrasure/EmbrasureWall_Blueprint_Atlas</texPath>
+    </blueprintGraphicData>
+    </building>	
+	
+    <researchPrerequisites>
+      <li>MedTimes_IceSculpting</li>	
+      <li>MedTimes_ImprovedMedievalDefenses</li>
+    </researchPrerequisites>	
+  </ThingDef>
+  
+  <!-- Ice Wall Parapet -->  
+  <ThingDef ParentName="MedTimes_SandbagBase">
+    <defName>MedTimes_Wall_IceParapet</defName>
+    <label>Crenelated Ice Wall Parapet</label>
+    <description>(Will deteriorate in temps above freezing) A reinforced wall made of ice blocks designed and built to be used as a defence from projectiles. This design is slightly above waist height and contains crenelations. It operates in a simular fashion to sandbags, except can be made from various materials.</description>
+	
+    <graphicData>
+      <texPath>Things/Building/Linked/Parapet/ParapetWall_Atlas</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <color>(180,210,230)</color>	  
+    </graphicData>
+	
+
+    <uiIconPath>Things/Building/Linked/Parapet/ParapetWall_MenuIcon</uiIconPath>
+ 
+    <statBases>
+      <MaxHitPoints>540</MaxHitPoints>
+      <WorkToBuild>250</WorkToBuild>
+      <Flammability>0</Flammability>	  
+    </statBases>
+	
+    <costList>
+	  <MedTimes_Resource_IceBlocks>3</MedTimes_Resource_IceBlocks>
+    </costList>	
+    <neverMultiSelect>false</neverMultiSelect>		
+    <fillPercent>0.65</fillPercent>
+    <tickerType>Rare</tickerType>
+    <pathCostIgnoreRepeat>false</pathCostIgnoreRepeat>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+	  <li><compClass>CompMelter</compClass></li>
+    </comps>
+	
+    <building>
+    <blueprintGraphicData>
+      <texPath>Things/Building/Linked/Parapet/ParapetWall_Blueprint_Atlas</texPath>
+    </blueprintGraphicData>
+    </building>	
+	
+    <researchPrerequisites>
+      <li>MedTimes_IceSculpting</li>	
+      <li>MedTimes_MedievalDefenses</li>
+    </researchPrerequisites>	
+	
+  </ThingDef>
+
+  
+  
+<!-- ================ Instant Gets ================ -->
+<!-- Wooden Gate --> 
+  <ThingDef ParentName="MedTimes_DoorBase">
+    <defName>MedTimes_Gate_Wooden</defName>
+    <label>Wooden Gate</label>
+    <description>A simple wooden gate to go with your wooden fencing. Must be manually opened and closed, which slows people down.</description>
+	
+    <graphicData>
+      <texPath>Things/Building/Door/WoodenGate/MedTimes_WoodenGate_Mover</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <damageData>
+        <enabled>false</enabled>
+      </damageData>	  
+    </graphicData>
+    <uiIconPath>Things/Building/Door/WoodenGate/MedTimes_WoodenGate_MenuIcon</uiIconPath>	
+	
+    <statBases>
+      <MaxHitPoints>80</MaxHitPoints>	
+      <WorkToBuild>250</WorkToBuild>  
+    </statBases>
+	
+    <costList><WoodLog>10</WoodLog></costList>	
+    <drawerType>RealtimeOnly</drawerType>	
+
+    <staticSunShadowHeight>0</staticSunShadowHeight>	
+    <castEdgeShadows>false</castEdgeShadows>	
+    <holdsRoof>false</holdsRoof>
+
+    <building>
+    <blueprintGraphicData>
+	<texPath>Things/Building/Door/WoodenGate/MedTimes_WoodenGate_Blueprint</texPath>
+	</blueprintGraphicData>
+    </building>
+	
+  </ThingDef>
+
+<!-- Wooden Fencing -->
+  <ThingDef ParentName="MedTimes_SandbagBase">
+    <defName>MedTimes_Fencing_Wooden</defName>
+    <label>Wooden Fencing</label>
+    <description>Simple fencing designed to keep wild animals out of your crop fields, cheap to make, fairly useless against attackers.</description>
+ 
+	<graphicData>
+      <texPath>Things/Building/Linked/Fencing/MedTimes_Fencing_Atlas</texPath>
+      <graphicClass>Graphic_Single</graphicClass> 	  
+    </graphicData>
+	
+    <uiIconPath>Things/Building/Linked/Fencing/MedTimes_Fencing_MenuIcon</uiIconPath>
+
+    <statBases><MaxHitPoints>75</MaxHitPoints></statBases>
+    <costList><WoodLog>2</WoodLog></costList>	
+
+    <passability>Impassable</passability>
+    <fillPercent>1</fillPercent>	
+    <tickerType>Never</tickerType>
+	
+    <staticSunShadowHeight>0</staticSunShadowHeight>	
+    <castEdgeShadows>false</castEdgeShadows>	
+    <holdsRoof>false</holdsRoof>
+	
+    <building>
+    <blueprintGraphicData>
+      <texPath>Things/Building/Linked/Fencing/MedTimes_Fencing_Blueprint_Atlas</texPath>
+    </blueprintGraphicData>
+    </building>	
+	
+  </ThingDef> 
+
+  
+<!-- End of Thingdefs -->  
+</Defs>
