@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- ========== Model 1881 Gatling Gun ========== -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="TurretGun_M1881Gatling"]/thingClass</xpath>
+    <value>
+      <thingClass>CombatExtended.Building_TurretGunCE</thingClass>
+    </value>
+  </Operation>
+  <Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+    <defName>Gun_M1881Gatling</defName>
+    <statBases>
+      <MarketValue>2000</MarketValue>
+      <SightsEfficiency>1</SightsEfficiency>
+      <ShotSpread>0.02</ShotSpread>
+      <SwayFactor>1.52</SwayFactor>
+      <RangedWeapon_Cooldown>0.35</RangedWeapon_Cooldown>
+    </statBases>
+    <Properties>
+      <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+      <recoilAmount>0.53</recoilAmount>
+      <hasStandardCommand>true</hasStandardCommand>
+      <defaultProjectile>Bullet_45-70Government_BP</defaultProjectile>
+      <warmupTime>1.1</warmupTime>
+      <range>32</range>
+      <ticksBetweenBurstShots>12</ticksBetweenBurstShots>
+      <burstShotCount>30</burstShotCount>
+      <soundCast>Shot_Minigun</soundCast>
+      <soundCastTail>GunTail_Heavy</soundCastTail>
+      <muzzleFlashScale>16</muzzleFlashScale>
+      <recoilPattern>Mounted</recoilPattern>
+    </Properties>
+    <AmmoUser>
+      <magazineSize>30</magazineSize>
+      <reloadTime>4.9</reloadTime>
+      <ammoSet>AmmoSet_45-70Government_BP</ammoSet>
+    </AmmoUser>
+    <FireModes>
+      <aimedBurstShotCount>5</aimedBurstShotCount>
+      <aiAimMode>SuppressFire</aiAimMode>
+    </FireModes>
+  </Operation>
+</Patch>

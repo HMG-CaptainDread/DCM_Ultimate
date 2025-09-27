@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- ==================== RWP Town Base Class ================= -->
+  <FactionDef Name="RWP_TownFactionBase" Abstract="True" ParentName="FactionBase">
+    <defName>RWP_Faction_Town_Core</defName>
+    <pawnsPlural>townsmen</pawnsPlural>
+    <techLevel>Industrial</techLevel>
+    <backstoryCategories>
+      <li>Outlander</li>
+    </backstoryCategories>
+    <canMakeRandomly>true</canMakeRandomly>
+    <maxConfigurableAtWorldCreation>9999</maxConfigurableAtWorldCreation>
+    <rescueesCanJoin>true</rescueesCanJoin>
+    <canStageAttacks>true</canStageAttacks>
+    <canSiege>true</canSiege>
+    <maxPawnCostPerTotalPointsCurve>
+      <points>
+        <li>(0,35)</li>
+        <li>(70, 50)</li>
+        <li>(700, 100)</li>
+        <li>(1300, 150)</li>
+        <li>(100000, 10000)</li>
+      </points>
+    </maxPawnCostPerTotalPointsCurve>
+    <raidCommonalityFromPointsCurve>
+      <points>
+        <li>(0, 1)</li>
+        <!--Constant 1 at all points levels-->
+      </points>
+    </raidCommonalityFromPointsCurve>
+    <earliestRaidDays>30</earliestRaidDays>
+    <allowedCultures>
+      <li>Rustican</li>
+    </allowedCultures>
+    <!-- RIMWORLD FRONTIERSMEN -->
+    <!-- TURTLESHROOM PRODUCTIONS -->
+    <requiredMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Rancher</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Individualist</li>
+    </requiredMemes>
+    <disallowedMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudism</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Blindsight</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">FemaleSupremacy</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Cannibal</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Raider</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Supremacist</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">HighLife</li>
+      <!-- Prohibited if you have the Mod -->
+      <li MayRequire="qux.factionhippie">PeaceLove</li>
+      <li MayRequire="VanillaExpanded.VMemesE">VME_Structure_Corporate</li>
+      <li MayRequire="VanillaExpanded.VMemesE">VME_Pacifist</li>
+      <li MayRequire="VanillaExpanded.VMemesE">VME_Vegan</li>
+    </disallowedMemes>
+    <disallowedPrecepts>
+      <!-- Obvious -->
+      <li MayRequire="Ludeon.RimWorld.Ideology">Cannibalism_Preferred</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Cannibalism_RequiredStrong</li>
+      <!-- Vegetarianism? In MY cowboys? -->
+      <li MayRequire="Ludeon.RimWorld.Ideology">MeatEating_Abhorrent</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">MeatEating_Horrible</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">MeatEating_Disapproved</li>
+      <!-- Take all the rope in Texas, find the tallest tree... -->
+      <li MayRequire="Ludeon.RimWorld.Ideology">Execution_Abhorrent</li>
+      <!-- This ain't no Ram Ranch! -->
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Male_Mandatory</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Female_Mandatory</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Male_CoveringAnythingButGroinDisapproved</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Female_CoveringAnythingButGroinDisapproved</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Male_NoRules</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Female_NoRules</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Female_UncoveredGroinDisapproved</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Female_UncoveredGroinChestHairOrFaceDisapproved</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Male_UncoveredGroinChestHairOrFaceDisapproved</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Lovin_Prohibited</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Lovin_Horrible</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Lovin_SpouseOnly_Mild</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Lovin_SpouseOnly_Moderate</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Lovin_FreeApproved</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Lovin_Free</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">IdeoDiversity_Abhorrent</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">IdeoDiversity_Horrible</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">IdeoDiversity_Disapproved</li>
+      <!-- The following Precepts are only forbidden if you have the Mod -->
+      <li MayRequire="martinbaste.ideo.xenoprecept">XenoDiversity_Abhorrent</li>
+      <li MayRequire="martinbaste.ideo.xenoprecept">XenoDiversity_Horrible</li>
+      <li MayRequire="martinbaste.ideo.xenoprecept">XenoDiversity_Disapproved</li>
+    </disallowedPrecepts>
+    <caravanTraderKinds>
+      <li>RWP_Caravan_BulkGoods</li>
+      <li>RWP_Caravan_Combat</li>
+      <li>TSP_RWP_Caravan_PatentMedicine</li>
+    </caravanTraderKinds>
+    <visitorTraderKinds>
+      <li>Visitor_Outlander_Standard</li>
+    </visitorTraderKinds>
+    <baseTraderKinds>
+      <li>RWP_Base_Town_Standard</li>
+    </baseTraderKinds>
+    <allowedArrivalTemperatureRange>
+      <min>-999</min>
+      <max>999</max>
+    </allowedArrivalTemperatureRange>
+    <leaderForceGenerateNewPawn>true</leaderForceGenerateNewPawn>
+    <fixedLeaderKinds>
+      <li>RWP_Town_Boss</li>
+    </fixedLeaderKinds>
+    <settlementNameMaker>NamerFactionOutlander</settlementNameMaker>
+    <settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
+  </FactionDef>
+  <!-- ==================== RWP Town Faction ================= -->
+  <FactionDef ParentName="RWP_TownFactionBase">
+    <defName>RWP_Faction_Town</defName>
+    <label>Frontier town</label>
+    <description>Frontier towns are settlements on the edge of civilization, and are under constant threat from bandit gangs and hostile native tribes. Law and order in these areas are upheld by each individual town's sheriff, though a ceremonial Planetary Chief Sheriff is elected from the lawmen to represent their commercial interests throughout the Rim. Frontier towns are mostly made up of good, honest folk who are just trying to carve out a new life in a new land.</description>
+    <pawnsPlural>frontiersmen</pawnsPlural>
+    <requiredCountAtGameStart>1</requiredCountAtGameStart>
+    <settlementGenerationWeight>1.05</settlementGenerationWeight>
+    <mustStartOneEnemy>false</mustStartOneEnemy>
+    <factionNameMaker>NamerFactionOutlander</factionNameMaker>
+    <leaderTitle>Planetary Chief Sheriff</leaderTitle>
+    <!-- ====== Faction Groups ====== -->
+    <pawnGroupMakers>
+      <li>
+        <kindDef>Peaceful</kindDef>
+        <options>
+          <RWP_Town_Townsperson>6</RWP_Town_Townsperson>
+          <RWP_Town_Socialite>2</RWP_Town_Socialite>
+          <RWP_Town_Sniper>2</RWP_Town_Sniper>
+          <RWP_Town_Rifleman>4</RWP_Town_Rifleman>
+          <RWP_Town_Gunslinger>4</RWP_Town_Gunslinger>
+        </options>
+      </li>
+      <!-- Trading Group -->
+      <li>
+        <kindDef>Trader</kindDef>
+        <traders>
+          <RWP_Town_Trader>1</RWP_Town_Trader>
+        </traders>
+        <carriers>
+          <Bison>10</Bison>
+          <Horse>2</Horse>
+        </carriers>
+        <guards>
+          <RWP_Town_Guard>4</RWP_Town_Guard>
+          <RWP_Town_Gunslinger>1</RWP_Town_Gunslinger>
+        </guards>
+      </li>
+      <!-- Small Scale Tier 1 Attack -->
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>100</commonality>
+        <disallowedStrategies>
+          <li>StageThenAttack</li>
+          <li>ImmediateAttackSappers</li>
+          <li>Siege</li>
+        </disallowedStrategies>
+        <options>
+          <RWP_Town_Townsperson>4</RWP_Town_Townsperson>
+          <RWP_Town_Rifleman>1</RWP_Town_Rifleman>
+          <RWP_Town_Gunslinger>1</RWP_Town_Gunslinger>
+        </options>
+      </li>
+      <!-- Small Scale Tier 2 Attack -->
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>50</commonality>
+        <disallowedStrategies>
+          <li>ImmediateAttack</li>
+          <li>ImmediateAttackSappers</li>
+          <li>Siege</li>
+        </disallowedStrategies>
+        <options>
+          <RWP_Town_Sniper>1</RWP_Town_Sniper>
+          <RWP_Town_Townsperson>4</RWP_Town_Townsperson>
+          <RWP_Town_Socialite>1</RWP_Town_Socialite>
+          <RWP_Town_Rifleman>3</RWP_Town_Rifleman>
+          <RWP_Town_Gunslinger>3</RWP_Town_Gunslinger>
+        </options>
+      </li>
+      <!-- Large Scale Attack -->
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>25</commonality>
+        <disallowedStrategies>
+          <li>ImmediateAttack</li>
+          <li>Siege</li>
+        </disallowedStrategies>
+        <options>
+          <RWP_Town_Townsperson>6</RWP_Town_Townsperson>
+          <RWP_Town_Socialite>2</RWP_Town_Socialite>
+          <RWP_Town_Sniper>2</RWP_Town_Sniper>
+          <RWP_Town_Rifleman>4</RWP_Town_Rifleman>
+          <RWP_Town_Gunslinger>4</RWP_Town_Gunslinger>
+        </options>
+      </li>
+      <!-- Siege Scale Attack -->
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>15</commonality>
+        <disallowedStrategies>
+          <li>ImmediateAttackSmart</li>
+          <li>ImmediateAttack</li>
+          <li>ImmediateAttackSappers</li>
+          <li>StageThenAttack</li>
+        </disallowedStrategies>
+        <options>
+          <RWP_Town_Boss>1</RWP_Town_Boss>
+          <RWP_Town_Townsperson>4</RWP_Town_Townsperson>
+          <RWP_Town_Socialite>2</RWP_Town_Socialite>
+          <RWP_Town_Sniper>2</RWP_Town_Sniper>
+          <RWP_Town_Rifleman>5</RWP_Town_Rifleman>
+          <RWP_Town_Gunslinger>6</RWP_Town_Gunslinger>
+        </options>
+      </li>
+      <!-- Faction Base -->
+      <li>
+        <kindDef>Settlement</kindDef>
+        <options>
+          <RWP_Town_Townsperson>6</RWP_Town_Townsperson>
+          <RWP_Town_Socialite>2</RWP_Town_Socialite>
+          <RWP_Town_Boss>1</RWP_Town_Boss>
+          <RWP_Town_Sniper>1</RWP_Town_Sniper>
+          <RWP_Town_Rifleman>4</RWP_Town_Rifleman>
+          <RWP_Town_Gunslinger>4</RWP_Town_Gunslinger>
+        </options>
+      </li>
+    </pawnGroupMakers>
+    <factionIconPath>World/WorldObjects/Factions/RWP_Town</factionIconPath>
+    <colorSpectrum>
+      <li>(0.4, 1, 0)</li>
+      <li>(0.3, 0.75, 0)</li>
+      <li>(0.2, 0.5, 0)</li>
+    </colorSpectrum>
+    <leaderForceGenerateNewPawn>true</leaderForceGenerateNewPawn>
+    <fixedLeaderKinds>
+      <li>RWP_Town_Boss</li>
+    </fixedLeaderKinds>
+  </FactionDef>
+</Defs>
