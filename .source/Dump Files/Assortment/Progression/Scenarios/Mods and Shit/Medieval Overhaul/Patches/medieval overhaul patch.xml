@@ -1,0 +1,1168 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>    
+
+
+
+
+
+<!-- Raw wood in True Start -->
+
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Factions Expanded - Tribals</li>
+		</mods>
+		<match Class="PatchOperationReplace">
+            <xpath>Defs/ScenarioDef[defName="Ferny_LoneTribal"]/scenario/parts</xpath>
+                <value>
+                    <parts>
+                        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns"> 
+                            <def>ConfigPage_ConfigureStartingPawns</def>
+                            <pawnChoiceCount>5</pawnChoiceCount>
+                            <pawnCount>1</pawnCount>
+                        </li>
+                        <li Class="ScenPart_PlayerPawnsArriveMethod">
+                            <def>PlayerPawnsArriveMethod</def>
+                        </li>
+                        <li Class="ScenPart_ForcedHediff">
+                            <def>ForcedHediff</def>
+                            <chance>0.5</chance>
+                            <context>PlayerStarter</context>
+                            <hediff>Malnutrition</hediff>
+                            <severityRange>0~0.495</severityRange>
+                        </li>
+                        <li Class="ScenPart_SetNeedLevel">
+                            <def>SetNeedLevel</def>
+                            <chance>1</chance>
+                            <context>PlayerStarter</context>
+                            <need>Food</need>
+                            <levelRange>0~0.1481481</levelRange>
+                        </li>
+                        <li Class="ScenPart_StartingThing_Defined">
+                            <def>StartingThing_Defined</def>
+                            <thingDef>VFET_Stake</thingDef>
+                            <quality>Good</quality>
+                        </li>
+                        <li Class="ScenPart_ScatterThingsNearPlayerStart">
+                            <def>ScatterThingsNearPlayerStart</def>
+                            <thingDef>DankPyon_RawWood</thingDef>
+                            <count>220</count>
+                            <allowRoofed>True</allowRoofed>
+                        </li>
+                        <li Class="ScenPart_GameStartDialog">
+                            <def>GameStartDialog</def>
+                            <text>You have been alone on this anarchal planet for as long as you can remember. The only flicker of hope being the small burst of flame you had just managed to create. A burst of warmth, power, and most importantly hope. Will you have the strength to take that flicker far enough to exit these horrible conditions?</text>
+                            <closeSound>VFET_GameStartSting_WildMen</closeSound>
+                        </li>
+                        <li Class="ScenPart_CreateIncident">
+                            <def>CreateIncident</def>
+                            <incident>WildManWandersIn</incident>
+                            <intervalDays>16.6</intervalDays>
+                        </li>
+                    </parts>
+                </value>
+		</match>
+	</Operation>
+
+
+
+
+
+
+
+<!-- Scenarios -->
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ScenarioDef[defName="DankPyon_LoneWolfStart"]/scenario/summary</xpath>
+                    <value>
+                        <summary>A solo colonist experience.</summary>
+                    </value>
+                </Operation>
+
+
+
+
+<!-- Tech starts -->
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Steel"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Steel"]/tags</xpath>
+                                <value>
+                                    <li>ClassicStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Steel"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>ClassicStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_BasicPolearms"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_BasicPolearms"]/tags</xpath>
+                                <value>
+                                    <li>ClassicStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_BasicPolearms"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>ClassicStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_MilitaryPolearms"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_MilitaryPolearms"]/tags</xpath>
+                                <value>
+                                    <li>ClassicStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_MilitaryPolearms"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>ClassicStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_NoblePolearms"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_NoblePolearms"]/tags</xpath>
+                                <value>
+                                    <li>ClassicStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_NoblePolearms"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>ClassicStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_BasicMaces"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_BasicMaces"]/tags</xpath>
+                                <value>
+                                    <li>ClassicStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_BasicMaces"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>ClassicStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_MilitaryMaces"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_MilitaryMaces"]/tags</xpath>
+                                <value>
+                                    <li>ClassicStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_MilitaryMaces"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>ClassicStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_NobleMaces"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_NobleMaces"]/tags</xpath>
+                                <value>
+                                    <li>ClassicStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_NobleMaces"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>ClassicStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_BasicBlades"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_BasicBlades"]/tags</xpath>
+                                <value>
+                                    <li>ClassicStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_BasicBlades"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>ClassicStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_MilitaryBlades"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_MilitaryBlades"]/tags</xpath>
+                                <value>
+                                    <li>ClassicStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_MilitaryBlades"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>ClassicStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_CarrierBirds"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_CarrierBirds"]/tags</xpath>
+                                <value>
+                                    <li>ClassicStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_CarrierBirds"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>ClassicStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+
+
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Exploration"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Exploration"]/tags</xpath>
+                                <value>
+                                    <li>ClassicStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Exploration"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>ClassicStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Engineering"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Engineering"]/tags</xpath>
+                                <value>
+                                    <li>ClassicStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Engineering"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>ClassicStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Tailoring"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Tailoring"]/tags</xpath>
+                                <value>
+                                    <li>ClassicStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Tailoring"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>ClassicStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_AdornedArmor"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_AdornedArmor"]/tags</xpath>
+                                <value>
+                                    <li>ClassicStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_AdornedArmor"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>ClassicStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_BasicAgriculture"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_BasicAgriculture"]/tags</xpath>
+                                <value>
+                                    <li>ClassicStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_BasicAgriculture"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>ClassicStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_LeatherTanning"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_LeatherTanning"]/tags</xpath>
+                                <value>
+                                    <li>ClassicStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_LeatherTanning"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>ClassicStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_BasicCooking"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_BasicCooking"]/tags</xpath>
+                                <value>
+                                    <li>ClassicStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_BasicCooking"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>ClassicStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_HuntingBow"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_HuntingBow"]/tags</xpath>
+                                <value>
+                                    <li>ClassicStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_HuntingBow"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>ClassicStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_WarBow"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_WarBow"]/tags</xpath>
+                                <value>
+                                    <li>ClassicStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_WarBow"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>ClassicStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_HeavyCrossbow"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_HeavyCrossbow"]/tags</xpath>
+                                <value>
+                                    <li>ClassicStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_HeavyCrossbow"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>ClassicStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_HeavyCrossbow"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_HeavyCrossbow"]/tags</xpath>
+                                <value>
+                                    <li>ClassicStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_HeavyCrossbow"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>ClassicStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Gunpowder"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Gunpowder"]/tags</xpath>
+                                <value>
+                                    <li>ClassicStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Gunpowder"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>ClassicStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Tar"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Tar"]/tags</xpath>
+                                <value>
+                                    <li>ClassicStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Tar"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>ClassicStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+
+
+
+
+<!-- Okay now spacer shit -->
+
+
+
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_CandleMaking"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_CandleMaking"]/tags</xpath>
+                                <value>
+                                    <li>FernySpacerStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_CandleMaking"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>FernySpacerStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Silk"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Silk"]/tags</xpath>
+                                <value>
+                                    <li>FernySpacerStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Silk"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>FernySpacerStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Presser"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Presser"]/tags</xpath>
+                                <value>
+                                    <li>FernySpacerStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Presser"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>FernySpacerStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Smoker"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Smoker"]/tags</xpath>
+                                <value>
+                                    <li>FernySpacerStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Smoker"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>FernySpacerStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Oven"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Oven"]/tags</xpath>
+                                <value>
+                                    <li>FernySpacerStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Oven"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>FernySpacerStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_StewPot"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_StewPot"]/tags</xpath>
+                                <value>
+                                    <li>FernySpacerStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_StewPot"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>FernySpacerStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_ProtectiveClothing"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_ProtectiveClothing"]/tags</xpath>
+                                <value>
+                                    <li>FernySpacerStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_ProtectiveClothing"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>FernySpacerStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_ChainArmor"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_ChainArmor"]/tags</xpath>
+                                <value>
+                                    <li>FernySpacerStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_ChainArmor"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>FernySpacerStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Ballista"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Ballista"]/tags</xpath>
+                                <value>
+                                    <li>FernySpacerStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Ballista"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>FernySpacerStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Ballista"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Ballista"]/tags</xpath>
+                                <value>
+                                    <li>FernySpacerStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Ballista"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>FernySpacerStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_RepeaterBallista"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_RepeaterBallista"]/tags</xpath>
+                                <value>
+                                    <li>FernySpacerStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_RepeaterBallista"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>FernySpacerStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Trebuchet"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Trebuchet"]/tags</xpath>
+                                <value>
+                                    <li>FernySpacerStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Trebuchet"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>FernySpacerStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Windmill"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Windmill"]/tags</xpath>
+                                <value>
+                                    <li>FernySpacerStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_Windmill"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>FernySpacerStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_IntermediateCooking"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_IntermediateCooking"]/tags</xpath>
+                                <value>
+                                    <li>FernySpacerStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_IntermediateCooking"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>FernySpacerStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DankPyon_AdvancedCooking"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_AdvancedCooking"]/tags</xpath>
+                                <value>
+                                    <li>FernySpacerStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DankPyon_AdvancedCooking"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>FernySpacerStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+
+
+<!-- Prog Production shit -->
+
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Progression: Production</li>
+		</mods>
+		<match Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="Ferny_LootCleaning"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="Ferny_LootCleaning"]/tags</xpath>
+                                <value>
+                                    <li>FernySpacerStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="Ferny_LootCleaning"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>FernySpacerStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+		</match>
+	</Operation>
+</Patch>

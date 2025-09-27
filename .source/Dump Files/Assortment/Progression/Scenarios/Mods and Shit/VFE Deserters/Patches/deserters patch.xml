@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>    
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ScenarioDef[defName="VFED_NewSafehaven"]/scenario/summary</xpath>
+                    <value>
+                        <summary>A desertion party on high alert. Lay low while the Empire attempts to extinguish your cell.</summary>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <xpath>Defs/ScenarioDef[defName="VFED_NewSafehaven"]/label</xpath>
+                    <value>
+                        <label>Desertion Cell</label>
+                    </value>
+                </Operation>
+
+
+
+
+
+
+
+
+
+
+<!-- Spacer -->
+
+
+
+
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="VFED_RemoteDemolition"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="VFED_RemoteDemolition"]/tags</xpath>
+                                <value>
+                                    <li>FernySpacerStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="VFED_RemoteDemolition"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>FernySpacerStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+</Patch>
