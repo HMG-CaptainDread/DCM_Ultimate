@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<!-- ========================= Resource Items/Buildings ==========================-->
+  <ThingDef ParentName="MedTimes_BenchBaseTag">
+    <defName>EarlyTimes_StoneQuarry</defName>
+    <thingClass>Building_WorkTable</thingClass>
+    <label>Stone Quarry</label>
+    <description>A Stone Quarry equipped with various tools used for the production of various types of stone chunks.</description>
+    <size>(5,4)</size>
+    <graphicData>
+      <texPath>Things/Building/Production/Quarry/MedTimes_StoneQuarry</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(5,4)</drawSize>	  
+    </graphicData>
+    <uiIconPath>Things/Building/Production/Quarry/MedTimes_StoneQuarry_IconB</uiIconPath>		
+    <costList>
+      <MedTimes_CraftingTools>1</MedTimes_CraftingTools>		  
+    </costList>
+    <constructEffect>ConstructDirt</constructEffect>
+    <altitudeLayer>FloorEmplacement</altitudeLayer>
+    <fillPercent>0.0</fillPercent>
+    <statBases>
+		<WorkToBuild>54000</WorkToBuild>
+		<MaxHitPoints>500</MaxHitPoints>
+		<Flammability>0</Flammability>
+		<Mass>0</Mass>	  
+    </statBases>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(1,0,0)</interactionCellOffset>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <comps>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>ToolCabinet</li>
+        </linkableFacilities>
+      </li>
+	  <!-- this comp takes care of most quarry stuff -->
+	  <li Class="EarlyTimes.CompProperties_QuarryWorker"></li> 
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+	  <li>EarlyTimes.PlaceWorker_OnNaturalStone</li>	  
+	  <li>EarlyTimes.PlaceWorker_NotOnThing</li>
+    </placeWorkers>
+	<researchPrerequisites>
+		<li>MedTimes_Quarry</li>
+	</researchPrerequisites>
+  </ThingDef>
+  
+  <ThingDef ParentName="MedTimes_BenchBaseTag">
+    <defName>MedTimes_ClayPit</defName>
+    <thingClass>Building_WorkTable</thingClass>
+    <label>Clay pit</label>
+    <description>A dug up pit used to extract clay from ground.</description>
+    <size>(3,3)</size>
+    <graphicData>
+      <texPath>Things/Building/Production/ClayPit/MedTimes_ClayPit</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3,3)</drawSize>	  
+    </graphicData>
+    <uiIconPath>Things/Building/Production/ClayPit/MedTimes_ClayPit_Icon</uiIconPath>		
+    <constructEffect>ConstructDirt</constructEffect>
+    <altitudeLayer>FloorEmplacement</altitudeLayer>
+    <terrainAffordanceNeeded>Diggable</terrainAffordanceNeeded>
+    <fillPercent>0.0</fillPercent>
+    <statBases>
+		<WorkToBuild>15000</WorkToBuild>
+		<MaxHitPoints>950</MaxHitPoints>
+		<Flammability>0</Flammability>
+		<Mass>0</Mass>	  
+    </statBases>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,0)</interactionCellOffset>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <comps>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>ToolCabinet</li>
+        </linkableFacilities>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+	  <li>EarlyTimes.PlaceWorker_NearbyWater</li>
+	  <li>EarlyTimes.PlaceWorker_NotOnStone</li>	  
+	  <li>EarlyTimes.PlaceWorker_NotOnThing</li>
+    </placeWorkers>
+	<researchPrerequisites>
+		<li>MedTimes_AdobeBricks</li>
+	</researchPrerequisites>
+  </ThingDef>
+  
+<!-- ========================= Ice Resource Items/Buildings ==========================-->
+  <ThingDef ParentName="MedTimes_BenchBaseTag">
+    <defName>MedTimes_IceCreationStation</defName>
+    <label>Ice Creation Station</label>
+	<passability>Standable</passability>
+	<drawerType>MapMeshAndRealTime</drawerType>
+    <description>Originally developed by the ancient Greeks, co-opted by the Romans, and used throughout the Medieval and modern era. Various methods exist that use endothermic principals to create Ice from the evaporation of water. Although it is simpler to just import the ice, This "Creation Station" will allow you to create small amounts of ice even in the desert.</description>
+    <size>(1,1)</size>
+    <graphicData>
+      <texPath>Things/Building/Production/IceCreation/MedTimes_IceCreation</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.2,1.2)</drawSize>	  
+    </graphicData>
+	<uiIconPath>Things/Building/Production/IceCreation/MedTimes_IceCreation</uiIconPath>		
+	<costList>
+	  <MedTimes_Resource_DryClayBricks>10</MedTimes_Resource_DryClayBricks> 
+	  <Hay>50</Hay>
+    </costList>
+	<tickerType>Normal</tickerType>
+    <constructEffect>ConstructWood</constructEffect>
+    <fillPercent>0.1</fillPercent>
+    <statBases>
+		<MaxHitPoints>50</MaxHitPoints>
+		<Mass>3</Mass>
+    </statBases>
+	<comps>
+		<li Class="CompProperties_Forbiddable"/>
+		<li Class="EarlyTimes.CompProperties_FueledSpawner">
+			<requiresPower>true</requiresPower>
+			<thingToSpawn>MedTimes_Resource_IceBlocks</thingToSpawn>
+			<spawnCount>1</spawnCount>
+			<spawnIntervalRange>
+			  <min>2300</min>
+			  <max>2335</max>
+			</spawnIntervalRange>
+		</li> 
+		<li Class="CompProperties_Refuelable">
+			<fuelConsumptionRate>25.0</fuelConsumptionRate>
+			<fuelCapacity>50.0</fuelCapacity>
+			<fuelGizmoLabel>Hay</fuelGizmoLabel>
+			<fuelFilter><thingDefs><li>Hay</li></thingDefs></fuelFilter>
+			<initialConfigurableTargetFuelLevel>25</initialConfigurableTargetFuelLevel>
+			<targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+			<showFuelGizmo>true</showFuelGizmo>
+			<consumeFuelOnlyWhenUsed>false</consumeFuelOnlyWhenUsed>
+			<fuelIconPath>ResourceIcons/Hay_b</fuelIconPath>	
+			<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>		
+		</li>
+	</comps>
+	<researchPrerequisites>
+		<li>MedTimes_IceProduction</li>
+	</researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="MedTimes_BuildingBaseTag">
+    <defName>MedTimes_IceGatheringStation</defName>
+    <label>Ice Gathering Station</label>
+    <thingClass>Building_WorkTable</thingClass>
+    <description>Ice is a really valuable resource, right? So if your in the middle of the Antarctic it only makes sense to gather some up and sell it to a passing trader. It's not like they can just grab it themselves, turning snow into ice can be an exhaustive process. Not to mention that it's on your land, and therefore your property.</description>
+    <size>(1,1)</size>
+    <graphicData>
+		<texPath>Things/Building/Misc/PartySpot</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		<shaderType>CutoutComplex</shaderType>  
+		<drawSize>(1.2,1.2)</drawSize>	  
+    </graphicData>
+		<uiIconPath>Things/Building/Misc/PartySpot</uiIconPath>		
+    <statBases>
+      <WorkToBuild>0</WorkToBuild>
+      <MaxHitPoints>1</MaxHitPoints>
+      <Flammability>0</Flammability>
+    </statBases>
+    <useHitPoints>True</useHitPoints>	
+    <altitudeLayer>FloorEmplacement</altitudeLayer>	
+    <passability>Standable</passability>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,0)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <tickerType>Rare</tickerType>	
+    <designationCategory>Production</designationCategory>
+    <recipes>
+      <li>MedTimes_GatherIceBlocks</li>
+    </recipes>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <comps>
+      <li><compClass>CompMelter</compClass></li>
+    </comps>
+    <placeWorkers>
+	  <li>EarlyTimes.PlaceWorker_NearbyWater</li>
+    </placeWorkers>
+	<researchPrerequisites>
+		<li>MedTimes_IceUsage</li>
+	</researchPrerequisites>
+  </ThingDef>
+  
+</Defs>

@@ -1,0 +1,881 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+	<!-- 105MM SHELL -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_105mm_MainTurret</defName>
+		<label>high-explosive shell</label>
+		<thingClass>Projectile_Explosive</thingClass>
+		
+		<graphicData>
+			<texPath>Projectiles/M105mm_Shot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(4, 4)</drawSize>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		
+		<projectile>
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>54</damageAmountBase>
+			<speed>162</speed>
+			<explosionRadius>5.9</explosionRadius>
+			<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+			<soundExplode>MortarBomb_Explode</soundExplode>
+			<soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+			<soundAmbient>MortarRound_Ambient</soundAmbient>
+		</projectile>
+	</ThingDef>
+
+	<!-- 7.62MM BULLET -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>HE_762mm_Bullet</defName>
+		<label>7.62mm</label>
+		
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		
+		<projectile>
+  		    <damageDef>Bullet</damageDef>
+ 		     <damageAmountBase>32</damageAmountBase>
+ 		     <stoppingPower>3</stoppingPower>
+  		    <speed>90</speed>
+		</projectile>
+	</ThingDef>
+
+	<!-- VVE SECONDARY WEAPONS -->
+		<!-- .50BMG -->
+		<ThingDef ParentName="BaseBullet">
+		<defName>TGBM_Bullet_HMG</defName>
+		<label>heavy machine gun bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>32</damageAmountBase>
+			<stoppingPower>3</stoppingPower>
+			<speed>90</speed>
+		</projectile>
+	</ThingDef>
+		<!-- 40x53MM HE -->
+		<ThingDef ParentName="BaseBullet">
+		<defName>TGBM_Bullet_ExplosiveLauncherRound</defName>
+		<label>grenade launcher high-explosive shell</label>
+		<graphicData>
+			<texPath>Things/Projectile/LauncherShot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<color>(248, 202, 116)</color>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<speed>40</speed>
+			<damageDef>Bomb</damageDef>
+			<stoppingPower>2</stoppingPower>
+			<explosionRadius>1.9</explosionRadius>
+			<arcHeightFactor>0.2</arcHeightFactor>
+			<shadowSize>0.6</shadowSize>
+		</projectile>
+	</ThingDef>
+		<!-- 84x246MM R HE -->
+		<ThingDef ParentName="BaseBullet">
+		<defName>TGBM_Bullet_RecoillessLauncherRound</defName>
+		<label>recoilless launcher high-explosive shell</label>
+		<graphicData>
+			<texPath>Things/Projectile/Rocket_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<speed>50</speed>
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>80</damageAmountBase>
+			<explosionRadius>4.9</explosionRadius>
+			<armorPenetrationBase>1.0</armorPenetrationBase>
+		</projectile>
+	</ThingDef>
+		<!-- 25x137MM HE -->
+		<ThingDef ParentName="BaseBullet">
+		<defName>TGBM_Bullet_ExplosiveIFVRound</defName>
+		<label>autocannon high explosive shell</label>
+		
+		<thingClass>Projectile_Explosive</thingClass>
+		
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		
+		<projectile>
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>22</damageAmountBase>
+			<armorPenetrationBase>0</armorPenetrationBase>
+			<speed>96</speed>
+			<explosionRadius>1.9</explosionRadius>
+			<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+			<soundExplode>Explosion_Rocket</soundExplode>
+			<soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+			<soundAmbient>MortarRound_Ambient</soundAmbient>
+		</projectile>
+	</ThingDef>
+		<!-- 90MM FLAK HE -->
+		<ThingDef ParentName="BaseBullet">
+		<defName>TGBM_Bullet_ExplosiveFlakRound</defName>
+		<label>flak shell</label>
+		
+		<thingClass>Projectile_Explosive</thingClass>
+		
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		
+		<projectile>
+			<damageDef>Bomb</damageDef>
+			<speed>100</speed>
+			<explosionRadius>2.9</explosionRadius>
+			<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+			<soundExplode>MortarBomb_Explode</soundExplode>
+			<soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+			<soundAmbient>MortarRound_Ambient</soundAmbient>
+		</projectile>
+	</ThingDef>
+		<!-- 105x617MM R HE -->
+		<ThingDef ParentName="BaseBullet">
+		<defName>TGBM_Bullet_ExplosiveMBTRound</defName>
+		<label>high-explosive shell</label>
+		<thingClass>Projectile_Explosive</thingClass>
+		
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(4, 4)</drawSize>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		
+		<projectile>
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>54</damageAmountBase>
+			<speed>162</speed>
+			<explosionRadius>5.9</explosionRadius>
+			<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+			<soundExplode>MortarBomb_Explode</soundExplode>
+			<soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+			<soundAmbient>MortarRound_Ambient</soundAmbient>
+		</projectile>
+	</ThingDef>
+	<!-- CART TACHANKA BULLET -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>Tachanka_MG_Bullet</defName>
+		<label>Bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+      		<damageAmountBase>22</damageAmountBase>
+      		<armorPenetrationBase>0.35</armorPenetrationBase>
+     		<speed>120</speed>
+		</projectile>
+	</ThingDef>
+	<!-- FIREWALL BULLET -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>FireWall_MG_Bullet</defName>
+		<label>Bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+      		<damageAmountBase>15</damageAmountBase>
+      		<armorPenetrationBase>0.35</armorPenetrationBase>
+     		<speed>120</speed>
+		</projectile>
+	</ThingDef>
+	<!-- BATTERING RAM SHELL -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>BatteringRam_Bullet_HEShell</defName>
+		<label>high-explosive shell</label>
+		  <thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+		  <texPath>Projectile/Ball</texPath>
+		  <graphicClass>Graphic_Single</graphicClass>
+		  <drawSize>2</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>50</damageAmountBase>
+			<armorPenetrationBase>0.75</armorPenetrationBase>
+			<speed>70</speed>
+			<explosionRadius>5.9</explosionRadius>
+			<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+			<soundExplode>Explosion_GiantBomb</soundExplode>
+			<soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+			<soundAmbient>MortarRound_Ambient</soundAmbient>
+		</projectile>
+	</ThingDef>
+	<!-- ROCKET -->
+	<ThingDef ParentName="BaseBullet">
+    	<defName>PipeOrgan_Rocket_Bullet</defName>
+    	<label>Rocket</label>
+    	<graphicData>
+      		<texPath>Things/Projectile/Rocket_Swarm</texPath>
+      		<graphicClass>Graphic_Single</graphicClass>
+      		<shaderType>TransparentPostLight</shaderType>
+    	</graphicData>
+    	<thingClass>Projectile_Explosive</thingClass>
+    	<projectile>
+      		<damageDef>Bomb</damageDef>
+			<damageAmountBase>35</damageAmountBase>
+      		<speed>100</speed>
+      		<explosionRadius>2</explosionRadius>
+      		<flyOverhead>true</flyOverhead>
+      		<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+      		<soundExplode>MortarBomb_Explode</soundExplode>
+      		<soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+      		<soundAmbient>MortarRound_Ambient</soundAmbient>
+    	</projectile>
+  	</ThingDef>
+	<!-- HEAT SHELL -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>Crusher_Bullet_HEATShell</defName>
+		<label>HEAT shell</label>
+		  <thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+		  <texPath>Projectile/Tow</texPath>
+		  <graphicClass>Graphic_Single</graphicClass>
+		  <drawSize>2</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>HEAT_Bomb</damageDef>
+			<damageAmountBase>30</damageAmountBase>
+			<armorPenetrationBase>0.75</armorPenetrationBase>
+			<speed>70</speed>
+			<explosionRadius>3.9</explosionRadius>
+			<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+			<soundExplode>Explosion_GiantBomb</soundExplode>
+			<soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+			<soundAmbient>MortarRound_Ambient</soundAmbient>
+		</projectile>
+	</ThingDef>
+	<!-- CRUSHER BULLET -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>Crusher_MG_Bullet</defName>
+		<label>Bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+      		<damageAmountBase>12</damageAmountBase>
+      		<armorPenetrationBase>0.15</armorPenetrationBase>
+     		<speed>120</speed>
+		</projectile>
+	</ThingDef>
+	<!-- VASILEK SHELL -->
+	<ThingDef ParentName="BaseBullet">
+    	<defName>Vasilek_Shell_HighExplosive</defName>
+    	<label>Shell</label>
+    	<graphicData>
+      		<texPath>Things/Projectile/ShellHighExplosive</texPath>
+      		<graphicClass>Graphic_Single</graphicClass>
+      		<shaderType>TransparentPostLight</shaderType>
+    	</graphicData>
+    	<thingClass>Projectile_Explosive</thingClass>
+    	<projectile>
+      		<damageDef>Bomb</damageDef>
+			<damageAmountBase>50</damageAmountBase>
+      		<speed>70</speed>
+      		<explosionRadius>2.9</explosionRadius>
+      		<flyOverhead>true</flyOverhead>
+      		<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+      		<soundExplode>MortarBomb_Explode</soundExplode>
+      		<soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+      		<soundAmbient>MortarRound_Ambient</soundAmbient>
+    	</projectile>
+  	</ThingDef>
+	<!-- KATYUSHA ROCKET -->
+	<ThingDef ParentName="BaseBullet">
+    	<defName>Katyusha_Rocket_Bullet</defName>
+    	<label>Rocket</label>
+    	<graphicData>
+      		<texPath>Things/Projectile/Rocket_Swarm</texPath>
+      		<graphicClass>Graphic_Single</graphicClass>
+      		<shaderType>TransparentPostLight</shaderType>
+    	</graphicData>
+    	<thingClass>Projectile_Explosive</thingClass>
+    	<projectile>
+      		<damageDef>Bomb</damageDef>
+			<damageAmountBase>25</damageAmountBase>
+      		<speed>100</speed>
+      		<explosionRadius>2</explosionRadius>
+      		<flyOverhead>true</flyOverhead>
+      		<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+      		<soundExplode>MortarBomb_Explode</soundExplode>
+      		<soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+      		<soundAmbient>MortarRound_Ambient</soundAmbient>
+    	</projectile>
+  	</ThingDef>
+	<!-- FELLOWTOWN BULLET -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>Fellowtown_AA_Bullet</defName>
+		<label>Bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+      		<damageAmountBase>27</damageAmountBase>
+      		<armorPenetrationBase>0.45</armorPenetrationBase>
+     		<speed>120</speed>
+		</projectile>
+	</ThingDef>
+	<!-- 0.9CM BALLISTIC SHOT -->
+	<ThingDef ParentName="Z277MGBase">
+		<defName>Z277_MGAmmo</defName>
+		<label>0.9cm Ballistic Shot</label>
+		<description>A Prototype caseless ammunition for the Z277</description>
+		<graphicData>
+			<texPath>Synthetik/Ammo/Ballistic/0.9cmSplitShot</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<projectileWhenLoaded>Bullet_Z277Cannon</projectileWhenLoaded>
+		<costList>
+			<Steel>20</Steel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+			<Chemfuel>30</Chemfuel>
+		</costList>
+	</ThingDef>
+	<!-- 0.9CM BULLET -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_Z277Cannon</defName>
+		<label>0.9cm bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Needle</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>13</damageAmountBase>
+			<armorPenetrationBase>0.5</armorPenetrationBase>
+			<stoppingPower>3</stoppingPower>
+			<speed>60</speed>
+		</projectile>
+	</ThingDef>
+	<!-- ENERGY CELL -->
+	<ThingDef ParentName="Sat7LaserBase">
+		<defName>Sat7_Laser</defName>
+		<label>energy cell</label>
+		<description>A canister holding energy for an energy weapon. Can explode when damaged.</description>
+		<graphicData>
+			<texPath>Synthetik/Ammo/Laser/LaserCell</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>1.5</explosiveRadius>
+				<explosiveDamageType>Bomb</explosiveDamageType>
+				<startWickHitPointsPercent>0.3</startWickHitPointsPercent>
+				<wickTicks>30~60</wickTicks>
+			</li>
+		</comps>
+		<projectileWhenLoaded>Bullet_Sat7Laser</projectileWhenLoaded>
+		<costList>
+			<Uranium>4</Uranium>
+			<Plasteel>2</Plasteel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+		</costList>
+	</ThingDef>
+	<!-- ENERGY BOLT -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_Sat7Laser</defName>
+		<label>energy bolt</label>
+		<graphicData>
+			<texPath>Synthetik/Projectile/Laser_Projectile</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,2)</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>Burn</damageDef>
+			<damageAmountBase>13</damageAmountBase>
+			<armorPenetrationBase>1.2</armorPenetrationBase>
+			<stoppingPower>0</stoppingPower>
+			<speed>77</speed>
+		</projectile>
+	</ThingDef>
+	<!-- ENERGY CELL OVERDRIVE -->
+	<ThingDef ParentName="Sat7LaserBase">
+		<defName>Sat7_LaserAP</defName>
+		<label>energy cell (overdrive)</label>
+		<description>A canister holding energy for an energy weapon. This canister fires less powerful, but more penetrating energy bolts. Can explode when damaged.</description>
+		<graphicData>
+			<texPath>Synthetik/Ammo/Laser/Overdrive</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>1.5</explosiveRadius>
+				<explosiveDamageType>Bomb</explosiveDamageType>
+				<startWickHitPointsPercent>0.3</startWickHitPointsPercent>
+				<wickTicks>30~60</wickTicks>
+			</li>
+		</comps>
+		<projectileWhenLoaded>Bullet_Sat7LaserAP</projectileWhenLoaded>
+		<costList>
+			<Uranium>4</Uranium>
+			<Plasteel>2</Plasteel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+		</costList>
+	</ThingDef>
+	<!-- ENERGY BOLT AP -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_Sat7LaserAP</defName>
+		<label>energy bolt</label>
+		<graphicData>
+			<texPath>Synthetik/Projectile/Overdrive_Projectile</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,2)</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>Burn</damageDef>
+			<damageAmountBase>9</damageAmountBase>
+			<armorPenetrationBase>1.5</armorPenetrationBase>
+			<stoppingPower>3</stoppingPower>
+			<speed>77</speed>
+		</projectile>
+	</ThingDef>
+	<!-- ENERGY CELL LITHIUM -->
+	<ThingDef ParentName="Sat7LaserBase">
+		<defName>Sat7_LaserIncendiary</defName>
+		<label>energy cell (lithium)</label>
+		<description>A canister holding energy for an energy weapon. Can ignite targets on fire. Can explode when damaged.</description>
+		<graphicData>
+			<texPath>Synthetik/Ammo/Laser/LithiumCell</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>1.5</explosiveRadius>
+				<explosiveDamageType>Bomb</explosiveDamageType>
+				<startWickHitPointsPercent>0.3</startWickHitPointsPercent>
+				<wickTicks>30~60</wickTicks>
+			</li>
+		</comps>
+		<projectileWhenLoaded>Bullet_Sat7LaserIncendiary</projectileWhenLoaded>
+		<costList>
+			<Uranium>4</Uranium>
+			<Plasteel>2</Plasteel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+		</costList>
+	</ThingDef>
+	<!-- ENERGY BOLT INCENDIARY -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_Sat7LaserIncendiary</defName>
+		<label>energy bolt</label>
+		<graphicData>
+			<texPath>Synthetik/Projectile/Lithium_Projectile</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,2)</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>Burn</damageDef>
+			<damageAmountBase>13</damageAmountBase>
+			<armorPenetrationBase>1.0</armorPenetrationBase>
+			<stoppingPower>3</stoppingPower>
+			<bulletChanceToStartFire>0.55</bulletChanceToStartFire>
+			<speed>77</speed>
+		</projectile>
+	</ThingDef>
+	<!-- SYNTHETIK AMMO BASE -->
+	<ThingDef ParentName="ResourceBase" Name="SynthetikAmmoBase" Abstract="True">
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<tickerType>Normal</tickerType>
+		<stackLimit>25</stackLimit>
+		<techLevel>Spacer</techLevel>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Mass>1.25</Mass>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>1.5</DeteriorationRate>
+		</statBases>
+		<tradeTags>
+			<li>MortarShell</li>
+		</tradeTags>
+		<recipeMaker>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<effectWorking>Cook</effectWorking>
+			<soundWorking>Recipe_Machining</soundWorking>
+			<workAmount>1600</workAmount>
+			<targetCountAdjustment>25</targetCountAdjustment>
+			<workSkill>Crafting</workSkill>
+			<researchPrerequisite>AdvancedFabrication</researchPrerequisite>
+			<recipeUsers>
+				<li>TableMachining</li>
+			</recipeUsers>
+			<skillRequirements>
+				<Crafting>8</Crafting>
+			</skillRequirements>
+			<displayPriority>109</displayPriority>
+		</recipeMaker>
+	</ThingDef>
+	<!-- SATURN 7 CANNON BASE -->
+	<ThingDef ParentName="SynthetikAmmoBase" Name="Sat7CannonBase" Abstract="True">
+		<thingCategories>
+			<li>SynthetikCannon</li>
+		</thingCategories>
+		<recipeMaker>
+			<workAmount>15200</workAmount>
+		</recipeMaker>
+	</ThingDef>
+	<!-- SATURN 7 LASER BASE -->
+	<ThingDef ParentName="SynthetikAmmoBase" Name="Sat7LaserBase" Abstract="True">
+		<stackLimit>2000</stackLimit>
+		<statBases>
+			<Mass>0.005</Mass>
+			<MarketValue>0.7</MarketValue>
+		</statBases>
+		<thingCategories>
+			<li>SynthetikLaser</li>
+		</thingCategories>
+		<recipeMaker>
+			<productCount>400</productCount>
+			<workAmount>3600</workAmount>
+			<displayPriority>108</displayPriority>
+		</recipeMaker>
+	</ThingDef>
+	<!-- Z277 MG BASE -->
+	<ThingDef ParentName="SynthetikAmmoBase" Name="Z277MGBase" Abstract="True">
+		<stackLimit>2000</stackLimit>
+		<statBases>
+			<Mass>0.042</Mass>
+			<MarketValue>0.28</MarketValue>
+		</statBases>
+		<thingCategories>
+			<li>SynthetikZ277Machinegun</li>
+		</thingCategories>
+		<recipeMaker>
+			<productCount>200</productCount>
+			<workAmount>1800</workAmount>
+			<displayPriority>108</displayPriority>
+		</recipeMaker>
+	</ThingDef>
+	<!-- Z277 ROCKET BASE -->
+	<ThingDef ParentName="SynthetikAmmoBase" Name="Z277RocketBase" Abstract="True">
+		<statBases>
+			<Mass>9.048</Mass>
+		</statBases>
+		<thingCategories>
+			<li>SynthetikRocket</li>
+		</thingCategories>
+		<recipeMaker>
+			<workAmount>7200</workAmount>
+		</recipeMaker>
+	</ThingDef>
+	<!-- 100MM THERMAL SHELL -->
+	<ThingDef ParentName="Sat7CannonBase">
+		<defName>Sat7_HEShell</defName>
+		<label>100mm Thermal shell</label>
+		<description>A shell that acts like high explosive. Explodes violently when damaged.</description>
+		<graphicData>
+			<texPath>Synthetik/Ammo/100mmEnergyCanister/Radiation</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>7.5</explosiveRadius>
+				<damageAmountBase>302</damageAmountBase>
+				<explosiveDamageType>BombSuper</explosiveDamageType>
+				<explosiveExpandPerStackcount>0.4</explosiveExpandPerStackcount>
+				<startWickHitPointsPercent>0.7</startWickHitPointsPercent>
+				<wickTicks>30~60</wickTicks>
+			</li>
+		</comps>
+		<projectileWhenLoaded>Bullet_Sat7HE</projectileWhenLoaded>
+		<costList>
+			<Steel>2</Steel>
+			<Plasteel>17</Plasteel>
+			<ComponentIndustrial>5</ComponentIndustrial>
+			<Chemfuel>14</Chemfuel>
+		</costList>
+	</ThingDef>
+	<!-- THERMAL SHELL -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_Sat7HE</defName>
+		<label>Thermal Shell</label>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+			<texPath>Synthetik/Projectile/Radiation_Projectile</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,4)</drawSize>
+		</graphicData>
+		<projectile>
+			<damageAmountBase>302</damageAmountBase>
+			<damageDef>BombSuper</damageDef>
+			<speed>426</speed>
+			<explosionRadius>7.5</explosionRadius>
+			<explosionDamageFalloff>true</explosionDamageFalloff>
+			<explosionEffect>GiantExplosion</explosionEffect>
+			<soundExplode>Synthetik_HE_Explode</soundExplode>
+		</projectile>
+	</ThingDef>
+	<!-- 100MM ION FUSION SHELL -->
+	<ThingDef ParentName="Sat7CannonBase">
+		<defName>Sat7_IonShell</defName>
+		<label>100mm Ion Fusion Shell</label>
+		<description>A shell filled with Ion-Fusion charge thats effective against mechanoids and shields. Explodes violently when damaged.</description>
+		<graphicData>
+			<texPath>Synthetik/Ammo/100mmEnergyCanister/Ion</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>7.5</explosiveRadius>
+				<damageAmountBase>151</damageAmountBase>
+				<explosiveDamageType>BombSuper</explosiveDamageType>
+				<explosiveExpandPerStackcount>0.4</explosiveExpandPerStackcount>
+				<startWickHitPointsPercent>0.7</startWickHitPointsPercent>
+				<wickTicks>30~60</wickTicks>
+			</li>
+		</comps>
+		<projectileWhenLoaded>Bullet_Sat7Ion</projectileWhenLoaded>
+		<costList>
+			<Steel>2</Steel>
+			<Plasteel>17</Plasteel>
+			<ComponentIndustrial>5</ComponentIndustrial>
+			<ComponentSpacer>2</ComponentSpacer>
+		</costList>
+	</ThingDef>
+	<!-- ION FUSION CHARGE SHOT -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_Sat7Ion</defName>
+		<label>Ion fusion charge shot</label>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+			<texPath>Synthetik/Projectile/Ion_Projectile</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,4)</drawSize>
+		</graphicData>
+		<projectile>
+			<damageAmountBase>302</damageAmountBase>
+			<damageDef>EMP</damageDef>
+			<speed>426</speed>
+			<explosionRadius>7.5</explosionRadius>
+			<stoppingPower>150</stoppingPower>
+			<explosionDamageFalloff>true</explosionDamageFalloff>
+			<explosionEffect>IonExplosion</explosionEffect>
+			<soundExplode>Synthetik_Ion_Explode</soundExplode>
+		</projectile>
+	</ThingDef>
+	<!-- 100MM PLASMA SHELL -->
+	<ThingDef ParentName="Sat7CannonBase">
+		<defName>Sat7_PlasmaShell</defName>
+		<label>100mm Plasma shell</label>
+		<description>A shell filled with Uranium plasma. Explodes violently when damaged.</description>
+		<graphicData>
+			<texPath>Synthetik/Ammo/100mmEnergyCanister/Plasma</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>7.5</explosiveRadius>
+				<damageAmountBase>302</damageAmountBase>
+				<explosiveDamageType>BombSuper</explosiveDamageType>
+				<explosiveExpandPerStackcount>0.4</explosiveExpandPerStackcount>
+				<startWickHitPointsPercent>0.7</startWickHitPointsPercent>
+				<wickTicks>30~60</wickTicks>
+			</li>
+		</comps>
+		<projectileWhenLoaded>Bullet_Sat7Plasma</projectileWhenLoaded>
+		<costList>
+			<Steel>2</Steel>
+			<Plasteel>17</Plasteel>
+			<ComponentIndustrial>5</ComponentIndustrial>
+			<Uranium>14</Uranium>
+		</costList>
+	</ThingDef>
+	<!-- PLASMA SHELL -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_Sat7Plasma</defName>
+		<label>Plasma Shell</label>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+			<texPath>Synthetik/Projectile/Plasma_Projectile</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,4)</drawSize>
+		</graphicData>
+		<projectile>
+			<armorPenetrationBase>1.5</armorPenetrationBase>
+			<damageAmountBase>302</damageAmountBase>
+			<damageDef>Burn</damageDef>
+			<speed>426</speed>
+			<explosionRadius>7.5</explosionRadius>
+			<explosionDamageFalloff>false</explosionDamageFalloff>
+			<explosionEffect>PlasmaExplosion</explosionEffect>
+			<soundExplode>Synthetik_Plasma_Explode</soundExplode>
+		</projectile>
+	</ThingDef>
+	<!-- 76MM DUMBFIRE ROCKET TUBE -->
+	<ThingDef ParentName="Z277RocketBase">
+		<defName>Z277_RocketTube</defName>
+		<label>76mm Dumbfire Rocket Tube</label>
+		<description>A 76mm Rocket tube</description>
+		<graphicData>
+			<texPath>Synthetik/Ammo/Rocket/76mmDumbfire</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>3.9</explosiveRadius>
+				<damageAmountBase>330</damageAmountBase>
+				<explosiveDamageType>BombSuper</explosiveDamageType>
+				<explosiveExpandPerStackcount>0.4</explosiveExpandPerStackcount>
+				<startWickHitPointsPercent>0.7</startWickHitPointsPercent>
+				<wickTicks>30~60</wickTicks>
+			</li>
+		</comps>
+		<projectileWhenLoaded>Bullet_Z277Rocket</projectileWhenLoaded>
+		<costList>
+			<Steel>20</Steel>
+			<ComponentIndustrial>4</ComponentIndustrial>
+			<Chemfuel>30</Chemfuel>
+		</costList>
+		<statBases>
+			<MarketValue>351.44</MarketValue>
+			<Mass>42</Mass>
+		</statBases>
+	</ThingDef>
+	<!-- Z277 ROCKET -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_Z277Rocket</defName>
+		<label>Rocket</label>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+			<texPath>Synthetik/Projectile/Rocket_Projectile</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageAmountBase>330</damageAmountBase>
+			<damageDef>BombSuper</damageDef>
+			<speed>30</speed>
+			<explosionRadius>3.9</explosionRadius>
+			<explosionDamageFalloff>true</explosionDamageFalloff>
+			<explosionEffect>GiantExplosion</explosionEffect>
+			<soundExplode>Synthetik_HE_Explode</soundExplode>
+		</projectile>
+	</ThingDef>
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+</Defs>

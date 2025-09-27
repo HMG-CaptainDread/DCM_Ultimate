@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+<Operation MayRequire="Ludeon.RimWorld.Royalty" Class="PatchOperationConditional">
+	<success>Normal</success>
+	<xpath>*/ThingDef[defName="MechCapsule"]/building/alwaysDeconstructible</xpath>
+	<nomatch Class="PatchOperationAdd">
+		<!-- mech capsule, mech birther, mech drop beacon add alwaysDeconstructible -->
+		<xpath>*/ThingDef[defName="MechCapsule" or defName="MechAssembler" or defName="MechDropBeacon"]/building</xpath>
+		<value>
+			<alwaysDeconstructible>true</alwaysDeconstructible>
+		</value>
+	</nomatch>
+	<match Class="PatchOperationTest">
+		<xpath>*/ThingDef[defName = "MealSurvivalPack"]</xpath>
+		<success>Always</success>
+	</match>
+</Operation>
+
+</Patch>

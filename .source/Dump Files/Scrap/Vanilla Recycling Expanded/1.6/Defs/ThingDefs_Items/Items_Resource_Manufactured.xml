@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>  
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>VRecyclingE_ReclaimedBiopack</defName>
+    <label>reclaimed biopack</label>
+    <description>A repurposed package of nutrient-rich bio-material, recovered from toxic waste through advanced recycling processes. The surface is heat-sealed for safe transport. Reclaimed Biopacks improve soil fertility if they deteriorate on standard soil. If damaged or burned, they emit a small amount of disgusting rot stink.</description>
+    <possessionCount>5</possessionCount>
+    <graphicData>
+      <texPath>Things/Item/Resource/ReclaimedBiopack</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <soundInteract>Metal_Drop</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop>
+    <statBases>
+	  <MaxHitPoints>100</MaxHitPoints>
+      <Beauty>-40</Beauty>
+      <MarketValue>3</MarketValue>
+      <Mass>3</Mass>
+      <Flammability>1</Flammability>
+      <DeteriorationRate>5</DeteriorationRate>
+    </statBases>
+	<stackLimit>5</stackLimit>
+    <thingCategories>
+      <li>VRecyclingE_SpecializedPacks</li>
+    </thingCategories>
+    <comps>
+      <li Class="CompProperties_GasOnDamage">
+        <type>RotStink</type>
+        <damageFactor>6</damageFactor>
+        <useStackCountAsFactor>true</useStackCountAsFactor>
+      </li>
+       <li Class="VanillaRecyclingExpanded.CompProperties_BiopackDissolution">
+        <dissolutionAfterDays>8</dissolutionAfterDays>
+        <dissolutinFactorIndoors>0.5</dissolutinFactorIndoors>
+        <dissolutionFactorRain>2</dissolutionFactorRain>
+      </li>
+	   <li Class="VanillaRecyclingExpanded.CompProperties_DissolutionEffectChangeTerrain">
+        
+      </li>
+	   <li>
+        <compClass>CompDissolutionEffect_Goodwill</compClass>
+      </li>
+
+    </comps> 
+    <tickerType>Normal</tickerType>
+  </ThingDef>
+  
+  <ThingDef ParentName="ResourceBase">
+    <defName>VRecyclingE_ReactiveChempack</defName>
+    <label>reactive chempack</label>
+    <description>A volatile package of highly reactive chemicals, generated as a byproduct of recycling toxic waste. The surface is heat-sealed for safe transport. Reactive Chempacks are extremely dangerous and can cause devastating explosions if not handled carefully. If damaged or burned, they may explode in a big fireball.</description>
+    <possessionCount>5</possessionCount>
+    <graphicData>
+      <texPath>Things/Item/Resource/ReactiveChempack</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <soundInteract>Metal_Drop</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop>
+    <statBases>
+	  <MaxHitPoints>50</MaxHitPoints>
+      <Beauty>-40</Beauty>
+      <MarketValue>0</MarketValue>
+      <Mass>3</Mass>
+      <Flammability>1</Flammability>
+      <DeteriorationRate>2</DeteriorationRate>
+    </statBases>
+	<stackLimit>5</stackLimit>
+    <thingCategories>
+      <li>VRecyclingE_SpecializedPacks</li>
+    </thingCategories>
+    <comps>
+      <li Class="CompProperties_GasOnDamage">
+        <type>RotStink</type>
+        <damageFactor>6</damageFactor>
+        <useStackCountAsFactor>true</useStackCountAsFactor>
+      </li>
+      <li Class="CompProperties_Dissolution">
+        <dissolutionAfterDays>16</dissolutionAfterDays>
+        <dissolutinFactorIndoors>0.5</dissolutinFactorIndoors>
+        <dissolutionFactorRain>2</dissolutionFactorRain>
+      </li>
+      <li Class="CompProperties_DissolutionEffectPollution">
+        <cellsToPollutePerDissolution>3</cellsToPollutePerDissolution>
+        <tilePollutionPerDissolution>0.0005</tilePollutionPerDissolution>
+        <waterTilePollutionFactor>8</waterTilePollutionFactor>
+      </li>
+      <li>
+        <compClass>CompDissolutionEffect_Goodwill</compClass>
+      </li>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>2</explosiveRadius>
+        <explosiveDamageType>Flame</explosiveDamageType>
+        <explosiveExpandPerStackcount>2</explosiveExpandPerStackcount>
+        <startWickOnDamageTaken>
+          <li>Flame</li>
+        </startWickOnDamageTaken>
+        <startWickHitPointsPercent>0.333</startWickHitPointsPercent>
+        <preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+        <preExplosionSpawnChance>1</preExplosionSpawnChance>
+        <wickTicks>100~200</wickTicks>
+      </li>
+    </comps>
+    <tickerType>Normal</tickerType>
+  </ThingDef>
+  
+  <ThingDef ParentName="ResourceBase">
+    <defName>VRecyclingE_StabilizedAlloypack</defName>
+    <label>stabilized alloypack</label>
+    <description>An amalgamation of strong and lightweight alloys, synthesized from toxic waste through complex chemical reactions. The surface is heat-sealed for safe transport. Stabilized Alloypacks contain high-quality material for crafting advanced weapons, armor, and components. If damaged or burned, they release a small puff of non-toxic smoke.</description>
+    <possessionCount>5</possessionCount>
+    <graphicData>
+      <texPath>Things/Item/Resource/StabilizedAlloypack</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <soundInteract>Metal_Drop</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop>
+    <statBases>
+	  <MaxHitPoints>100</MaxHitPoints>
+      <Beauty>-40</Beauty>
+      <MarketValue>20</MarketValue>
+      <Mass>3</Mass>
+      <Flammability>1</Flammability>
+      <DeteriorationRate>1</DeteriorationRate>
+    </statBases>
+	<stackLimit>5</stackLimit>
+    <thingCategories>
+      <li>VRecyclingE_SpecializedPacks</li>
+    </thingCategories>
+    <comps>
+      <li Class="CompProperties_GasOnDamage">
+        <type>BlindSmoke</type>
+        <damageFactor>6</damageFactor>
+        <useStackCountAsFactor>true</useStackCountAsFactor>
+      </li>
+    
+    </comps>
+    <tickerType>Normal</tickerType>
+  </ThingDef>
+  
+  <ThingDef ParentName="ResourceBase">
+    <defName>VRecyclingE_VolatileToxpack</defName>
+    <label>volatile toxpack</label>
+    <description>An unstable package of highly concentrated toxic waste, created as a byproduct in more complex recycling projects. The surface is heat-sealed for safe transport. Volatile toxpacks are extremely dangerous due to their instability and propensity to emit large amounts of tox gas and pollution. If burned or damaged, they release a massive cloud of deadly tox gas.</description>
+    <possessionCount>5</possessionCount>
+    <graphicData>
+      <texPath>Things/Item/Resource/VolatileToxpack</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <soundInteract>Metal_Drop</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop>
+    <stackLimit>5</stackLimit>
+    <statBases>
+	  <MaxHitPoints>50</MaxHitPoints>
+      <Beauty>-40</Beauty>
+      <MarketValue>0</MarketValue>
+      <Mass>4</Mass>
+      <Flammability>1</Flammability>
+      <DeteriorationRate>8</DeteriorationRate>
+    </statBases>
+    <thingCategories>
+      <li>VRecyclingE_SpecializedPacks</li>
+    </thingCategories>
+    <comps>
+      <li Class="CompProperties_GasOnDamage">
+        <type>ToxGas</type>
+        <damageFactor>12</damageFactor>
+        <useStackCountAsFactor>true</useStackCountAsFactor>
+      </li>
+      <li Class="CompProperties_Dissolution">
+        <dissolutionAfterDays>8</dissolutionAfterDays>
+        <dissolutinFactorIndoors>0.5</dissolutinFactorIndoors>
+        <dissolutionFactorRain>2</dissolutionFactorRain>
+      </li>
+      <li Class="CompProperties_DissolutionEffectPollution">
+        <cellsToPollutePerDissolution>10</cellsToPollutePerDissolution>
+        <tilePollutionPerDissolution>0.0005</tilePollutionPerDissolution>
+        <waterTilePollutionFactor>8</waterTilePollutionFactor>
+      </li>
+      <li>
+        <compClass>CompDissolutionEffect_Goodwill</compClass>
+      </li>
+    </comps>
+    <tickerType>Normal</tickerType>
+  </ThingDef>
+  
+  <ThingDef ParentName="ResourceBase">
+    <defName>VRecyclingE_RadioactiveIsotopack</defName>
+    <label>radioactive isotopack</label>
+    <description>A hazardous package of radioactive isotopes, resulting from the recycling of toxic waste. The surface is heat-sealed for safe transport. Radioactive Isotopacks emit high levels of radiation, posing a serious threat to the health of colonists and animals. If damaged or burned, they release a burst of dangerous radiation.</description>
+    <possessionCount>5</possessionCount>
+    <graphicData>
+      <texPath>Things/Item/Resource/RadioactiveIsotopack</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <soundInteract>Metal_Drop</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop>
+    <stackLimit>5</stackLimit>
+    <statBases>
+	  <MaxHitPoints>100</MaxHitPoints>
+      <Beauty>-40</Beauty>
+      <MarketValue>0</MarketValue>
+      <Mass>3</Mass>
+      <Flammability>1</Flammability>
+      <DeteriorationRate>4</DeteriorationRate>
+    </statBases>
+    <thingCategories>
+      <li>VRecyclingE_SpecializedPacks</li>
+    </thingCategories>
+    <comps>
+      <li Class="VanillaRecyclingExpanded.CompProperties_RadiationOnDamage">
+        <baseRadius>3</baseRadius>
+       
+      </li>
+	  <li Class="CompProperties_GasOnDamage">
+        <type>ToxGas</type>
+        <damageFactor>6</damageFactor>
+        <useStackCountAsFactor>true</useStackCountAsFactor>
+      </li>
+      <li Class="CompProperties_Dissolution">
+        <dissolutionAfterDays>12</dissolutionAfterDays>
+        <dissolutinFactorIndoors>0.5</dissolutinFactorIndoors>
+        <dissolutionFactorRain>2</dissolutionFactorRain>
+      </li>
+      <li Class="CompProperties_DissolutionEffectPollution">
+        <cellsToPollutePerDissolution>3</cellsToPollutePerDissolution>
+        <tilePollutionPerDissolution>0.0005</tilePollutionPerDissolution>
+        <waterTilePollutionFactor>8</waterTilePollutionFactor>
+      </li>
+      <li>
+        <compClass>CompDissolutionEffect_Goodwill</compClass>
+      </li>
+    </comps>
+    <tickerType>Normal</tickerType>
+  </ThingDef>
+  
+  <ThingDef ParentName="ResourceBase">
+    <defName>VRecyclingE_Trash</defName>
+    <label>trash</label>
+    <description>A package of non-toxic rubbish, carefully sorted and compacted for efficient storage. The surface is heat-sealed for safe transport. Trash poses no risk of pollution or deterioration, making it safe for long-term storage. However, if burned, trash will release a moderate amount of tox gas as a byproduct of combustion.</description>
+    <possessionCount>5</possessionCount>
+    <graphicData>
+      <texPath>Things/Item/Resource/Trash</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <soundInteract>Metal_Drop</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop>
+    <statBases>
+	  <MaxHitPoints>100</MaxHitPoints>
+      <Beauty>-40</Beauty>
+      <MarketValue>3</MarketValue>
+      <Mass>3</Mass>
+      <Flammability>1</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
+	<stackLimit>5</stackLimit>
+    <thingCategories>
+      <li>VRecyclingE_SpecializedPacks</li>
+    </thingCategories>
+    <comps>
+      <li Class="CompProperties_GasOnDamage">
+        <type>ToxGas</type>
+        <damageFactor>3</damageFactor>
+        <useStackCountAsFactor>true</useStackCountAsFactor>
+      </li>
+	  <li Class="VanillaRecyclingExpanded.CompProperties_ToxGasOnDestroyed">
+        
+      </li>
+	   <li Class="CompProperties_Dissolution">
+        <dissolutionAfterDays>1200</dissolutionAfterDays>
+        <dissolutinFactorIndoors>1</dissolutinFactorIndoors>
+        <dissolutionFactorRain>1</dissolutionFactorRain>
+      </li>
+	  <li>
+        <compClass>CompDissolutionEffect_Goodwill</compClass>
+      </li>
+    </comps>
+    <tickerType>Normal</tickerType>
+  </ThingDef>
+
+</Defs>

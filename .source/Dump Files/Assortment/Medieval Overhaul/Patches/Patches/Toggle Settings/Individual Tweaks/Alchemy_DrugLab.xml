@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<Operation Class="MO_Patches.PatchOperation_ToggleSettings">
+		<settings>
+			<li>alchemical_drug</li>
+		</settings>
+		<active Class="PatchOperationSequence">
+			<operations>
+
+				<li Class="PatchOperationAddModExtension">
+					<xpath>Defs/ThingDef[defName="DankPyon_AlchemyBench"]</xpath>
+					<value>
+						<li Class="RecipeInheritance.ThingDefExtension">
+							<inheritRecipesFrom>
+								<li>DrugLab</li>
+							</inheritRecipesFrom>
+						</li>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/WorkGiverDef[defName="DoBillsProduceDrugs"]/fixedBillGiverDefs</xpath>
+					<value>
+						<li>DankPyon_AlchemyBench</li>
+					</value>
+				</li>
+
+			</operations>
+		</active>
+	</Operation>
+	
+	<Operation Class="MO_Patches.PatchOperation_ToggleSettings">
+		<settings>
+			<li>medieval_drug</li>
+		</settings>
+		<active Class="PatchOperationSequence">
+			<operations>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ResearchProjectDef[defName="DrugProduction"]/techLevel</xpath>
+					<value>
+						<techLevel>Medieval</techLevel>
+					</value>
+				</li>
+				
+				
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ResearchProjectDef[defName="PsychiteRefining"]/techLevel</xpath>
+					<value>
+						<techLevel>Medieval</techLevel>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ResearchProjectDef[defName="WakeUpProduction"]/techLevel</xpath>
+					<value>
+						<techLevel>Medieval</techLevel>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ResearchProjectDef[defName="GoJuiceProduction"]/techLevel</xpath>
+					<value>
+						<techLevel>Medieval</techLevel>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ResearchProjectDef[defName="PenoxycylineProduction"]/techLevel</xpath>
+					<value>
+						<techLevel>Medieval</techLevel>
+					</value>
+				</li>
+				
+
+			</operations>
+		</active>
+	</Operation>
+	
+	
+
+</Patch>

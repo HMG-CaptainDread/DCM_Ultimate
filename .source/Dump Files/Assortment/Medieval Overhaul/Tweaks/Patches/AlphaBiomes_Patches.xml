@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="XmlExtensions.FindMod">
+    <mods>
+      <li>Alpha Biomes</li>
+      <li>Medieval Overhaul</li>
+    </mods>
+    <logic>and</logic>
+    <caseTrue>
+      <li Class="XmlExtensions.OptionalPatch">
+        <modId>zenlor.MOTweaks</modId>
+        <key>mot-integration-alphabiomes</key>
+        <defaultValue>True</defaultValue>
+        <caseTrue>
+
+          <li Class="PatchOperationAdd">
+            <xpath>Defs/TerrainDef[(
+            defName="AB_GrassyFlowerySoil" or
+            defName="AB_FertileGrassyFlowerySoil"
+              )]/affordances</xpath>
+            <value>
+              <li>GrowSoil</li>
+              <li>Diggable</li>
+              <li>Light</li>
+              <li>DankPyon_GrowSoilVine</li>
+            </value>
+          </li>
+
+        </caseTrue>
+      </li>
+    </caseTrue>
+  </Operation>
+</Patch>
+

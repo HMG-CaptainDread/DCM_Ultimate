@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[@Name="ESCP_TrollElixirBase"]/recipeMaker/recipeUsers/li[.="DankPyon_AlchemyBench"]</xpath>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>Defs/ThingDef[@Name="ESCP_TrollElixirBase"]/recipeMaker/recipeUsers</xpath>
+			<value>
+				<li>DankPyon_AlchemyBench</li>
+			</value>
+		</nomatch>
+	</Operation>
+				
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[@Name="ESCP_TrollElixirBase"]/recipeMaker/researchPrerequisite</xpath>
+		<value>
+			<researchPrerequisite>DankPyon_Alchemy</researchPrerequisite>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ResearchProjectDef[defName="MorrowRim_PrimitiveElixirs"]</xpath>
+		<match Class="PatchOperationRemove">
+			<xpath>Defs/ResearchProjectDef[defName="MorrowRim_PrimitiveElixirs"]</xpath>
+		</match>
+	</Operation>
+	
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ResearchProjectDef/tab[.="MorrowRim_Tab"]</xpath>
+		<nomatch Class="PatchOperationRemove">
+			<xpath>/Defs/ResearchTabDef[defName="MorrowRim_Tab"]</xpath>
+		</nomatch>
+	</Operation>
+
+</Patch>

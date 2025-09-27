@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+<!-- Check Gravship_Mini_Parts for GravshipSmallShieldGenerator if editing -->
+
+<!-- Craftable GravshipShieldGenerator -->
+		<Operation Class="PatchOperationFindMod">
+		<mods>
+		<li>Odyssey</li>
+		</mods>
+		<match Class="PatchOperationReplace">
+			<xpath>Defs/ThingDef[defName = "GravshipShieldGenerator"]/costList</xpath>
+			<value>
+				<costList>
+					<Steel>200</Steel>
+					<GravlitePanel>80</GravlitePanel>
+					<ComponentSpacer>8</ComponentSpacer>
+					<Gravcore>2</Gravcore>
+				</costList>
+			</value>
+		</match>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+<xpath>Defs/ThingDef[defName="GravshipShieldGenerator"]</xpath>
+<value>
+    <designationCategory>Odyssey</designationCategory>
+	<designatorDropdown>Gravship_Shields</designatorDropdown>
+    <researchPrerequisites>
+      <li>AdvancedGravtech</li>
+      <li>OrbitalTech</li>
+    </researchPrerequisites>
+</value>
+</Operation>
+
+	<Operation Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName = "Gravcore"]</xpath>
+        <value>
+			<tradeability>All</tradeability>
+		<tradeTags>
+			<li>GravshipUpgrade</li>
+		</tradeTags>
+		</value>
+	</Operation>
+
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TraderKindDef[defName="Caravan_Outlander_Exotic"]/stockGenerators</xpath>
+        <value>
+            <li Class="StockGenerator_Tag">
+                <tradeTag>GravshipUpgrade</tradeTag>
+                <thingDefCountRange>0~1</thingDefCountRange>
+                <countRange>0~1</countRange>
+        <excludedThingDefs>
+          <li>GravlitePanel</li>
+          <li>GravshipShieldGenerator</li>
+          <li>Gravcore</li>
+          <li>GravshipFuelControlUnit</li>
+        </excludedThingDefs>
+            </li>
+        </value>
+    </Operation>
+    
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TraderKindDef[defName="Caravan_Outlander_Exotic"]/stockGenerators</xpath>
+        <value>
+		<li Class="StockGenerator_SingleDef" MayRequire="Ludeon.RimWorld.Odyssey">
+			<thingDef>Gravcore</thingDef>
+			<countRange>0~1</countRange>
+		</li>
+        </value>
+    </Operation>
+	
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TraderKindDef[defName="Orbital_Exotic"]/stockGenerators</xpath>
+        <value>
+            <li Class="StockGenerator_Tag">
+                <tradeTag>GravshipUpgrade</tradeTag>
+                <thingDefCountRange>0~1</thingDefCountRange>
+                <countRange>0~1</countRange>
+        <excludedThingDefs>
+          <li>GravlitePanel</li>
+          <li>GravshipShieldGenerator</li>
+          <li>Gravcore</li>
+          <li>GravshipFuelControlUnit</li>
+        </excludedThingDefs>
+            </li>
+        </value>
+    </Operation>
+    
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TraderKindDef[defName="Orbital_Exotic"]/stockGenerators</xpath>
+        <value>
+		<li Class="StockGenerator_SingleDef" MayRequire="Ludeon.RimWorld.Odyssey">
+			<thingDef>Gravcore</thingDef>
+			<countRange>0~1</countRange>
+		</li>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TraderKindDef[defName="Base_Empire_Standard"]/stockGenerators</xpath>
+        <value>
+		<li Class="StockGenerator_SingleDef" MayRequire="Ludeon.RimWorld.Odyssey">
+			<thingDef>GravlitePanel</thingDef>
+			<countRange>0~10</countRange>
+		</li>
+        </value>
+    </Operation>
+	
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TraderKindDef[defName="Base_Empire_Standard"]/stockGenerators</xpath>
+        <value>
+            <li Class="StockGenerator_Tag">
+                <tradeTag>GravshipUpgrade</tradeTag>
+                <thingDefCountRange>0~1</thingDefCountRange>
+                <countRange>0~1</countRange>
+        <excludedThingDefs>
+          <li>GravlitePanel</li>
+          <li>GravshipShieldGenerator</li>
+          <li>Gravcore</li>
+          <li>GravshipFuelControlUnit</li>
+        </excludedThingDefs>
+            </li>
+        </value>
+    </Operation>
+    
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TraderKindDef[defName="Base_Empire_Standard"]/stockGenerators</xpath>
+        <value>
+		<li Class="StockGenerator_SingleDef" MayRequire="Ludeon.RimWorld.Odyssey">
+			<thingDef>Gravcore</thingDef>
+			<countRange>1~1</countRange>
+		</li>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TraderKindDef[defName="Base_Empire_Standard"]/stockGenerators</xpath>
+        <value>
+		<li Class="StockGenerator_SingleDef" MayRequire="Ludeon.RimWorld.Odyssey">
+			<thingDef>ShuttleEngine</thingDef>
+			<countRange>0~1</countRange>
+		</li>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TraderKindDef[defName="Base_Empire_Standard"]/stockGenerators</xpath>
+        <value>
+		<li Class="StockGenerator_SingleDef" MayRequire="Ludeon.RimWorld.Odyssey">
+			<thingDef>GravlitePanel</thingDef>
+			<countRange>0~30</countRange>
+		</li>
+        </value>
+    </Operation>
+	
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TraderKindDef[defName="Empire_Caravan_TraderGeneral"]/stockGenerators</xpath>
+        <value>
+            <li Class="StockGenerator_Tag">
+                <tradeTag>GravshipUpgrade</tradeTag>
+                <thingDefCountRange>0~1</thingDefCountRange>
+                <countRange>0~1</countRange>
+        <excludedThingDefs>
+          <li>GravlitePanel</li>
+          <li>GravshipShieldGenerator</li>
+          <li>Gravcore</li>
+          <li>GravshipFuelControlUnit</li>
+        </excludedThingDefs>
+            </li>
+        </value>
+    </Operation>
+    
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TraderKindDef[defName="Empire_Caravan_TraderGeneral"]/stockGenerators</xpath>
+        <value>
+		<li Class="StockGenerator_SingleDef" MayRequire="Ludeon.RimWorld.Odyssey">
+			<thingDef>Gravcore</thingDef>
+			<countRange>1~1</countRange>
+		</li>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TraderKindDef[defName="Empire_Caravan_TraderGeneral"]/stockGenerators</xpath>
+        <value>
+		<li Class="StockGenerator_SingleDef" MayRequire="Ludeon.RimWorld.Odyssey">
+			<thingDef>ShuttleEngine</thingDef>
+			<countRange>0~1</countRange>
+		</li>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TraderKindDef[defName="Empire_Caravan_TraderGeneral"]/stockGenerators</xpath>
+        <value>
+		<li Class="StockGenerator_SingleDef" MayRequire="Ludeon.RimWorld.Odyssey">
+			<thingDef>GravlitePanel</thingDef>
+			<countRange>0~30</countRange>
+		</li>
+        </value>
+    </Operation>
+	
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TraderKindDef[defName="Orbital_Empire"]/stockGenerators</xpath>
+        <value>
+            <li Class="StockGenerator_Tag">
+                <tradeTag>GravshipUpgrade</tradeTag>
+                <thingDefCountRange>0~1</thingDefCountRange>
+                <countRange>0~1</countRange>
+        <excludedThingDefs>
+          <li>GravlitePanel</li>
+          <li>GravshipShieldGenerator</li>
+          <li>Gravcore</li>
+          <li>GravshipFuelControlUnit</li>
+        </excludedThingDefs>
+            </li>
+        </value>
+    </Operation>
+    
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TraderKindDef[defName="Orbital_Empire"]/stockGenerators</xpath>
+        <value>
+		<li Class="StockGenerator_SingleDef" MayRequire="Ludeon.RimWorld.Odyssey">
+			<thingDef>Gravcore</thingDef>
+			<countRange>1~1</countRange>
+		</li>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TraderKindDef[defName="Orbital_Empire"]/stockGenerators</xpath>
+        <value>
+		<li Class="StockGenerator_SingleDef" MayRequire="Ludeon.RimWorld.Odyssey">
+			<thingDef>ShuttleEngine</thingDef>
+			<countRange>0~1</countRange>
+		</li>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationAdd">
+        <xpath>Defs/TraderKindDef[defName="Orbital_Empire"]/stockGenerators</xpath>
+        <value>
+		<li Class="StockGenerator_SingleDef" MayRequire="Ludeon.RimWorld.Odyssey">
+			<thingDef>GravlitePanel</thingDef>
+			<countRange>0~30</countRange>
+		</li>
+        </value>
+    </Operation>
+	
+	
+	
+	
+	
+</Patch>

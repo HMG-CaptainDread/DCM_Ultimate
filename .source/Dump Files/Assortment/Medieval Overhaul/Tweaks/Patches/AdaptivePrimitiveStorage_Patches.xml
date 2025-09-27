@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+  <Operation Class="XmlExtensions.FindMod">
+    <mods>
+      <li>Adaptive Primitive Storage</li>
+      <li>Medieval Overhaul</li>
+    </mods>
+    <logic>and</logic>
+    <caseTrue>
+
+      <li Class="XmlExtensions.OptionalPatch">
+        <modId>zenlor.MOTweaks</modId>
+        <key>mot-integration-adaptive-primitive-storage</key>
+        <defaultValue>True</defaultValue>
+        <caseTrue>
+
+          <!-- wood -->
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[
+              defName="ASF_StoragePit" or
+              defName="ASF_SmallLogPile" or
+              defName="ASF_LargeLogPile"
+            ]/stuffCategories</xpath>
+            <value>
+              <stuffCategories>
+                <li>DankPyon_RawWood</li>
+              </stuffCategories>
+            </value>
+          </li>
+
+
+          <!-- NOTE: Already includes RawWood now -->
+          <!-- storage settings for wood piles -->
+          <!--
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[
+              defName="ASF_SmallLogPile" or
+              defName="ASF_LargeLogPile"
+            ]/building/defaultStorageSettings/filter/thingsDefs</xpath>
+            <value>
+              <thingDefs><li>DankPyon_RawWood</li></thingDefs>
+            </value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[
+              defName="ASF_SmallLogPile" or
+              defName="ASF_LargeLogPile"
+            ]/building/fixedStorageSettings/filter/thingsDefs</xpath>
+            <value>
+              <thingDefs><li>DankPyon_RawWood</li></thingDefs>
+            </value>
+          </li>
+          -->
+
+
+          <!-- fuel -->
+          <li Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="ASF_StoragePit"]/comps/li[@Class="CompProperties_Refuelable"]/fuelFilter/thingDefs</xpath>
+            <value>
+              <li>DankPyon_RawWood</li>
+              <li>DankPyon_Coal</li>
+            </value>
+          </li>
+
+          </caseTrue>
+        </li>
+
+        <li Class="XmlExtensions.OptionalPatch">
+          <modId>zenlor.MOTweaks</modId>
+          <key>mot-integration-adaptive-primitive-storage-vfetribal</key>
+          <defaultValue>True</defaultValue>
+          <caseTrue>
+
+
+          <!-- research -->
+          <li Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="ASF_MeatRack"]</xpath>
+            <value>
+              <researchPrerequisites>
+                <li MayRequire="OskarPotocki.VFE.Tribals">VFET_Hunting</li>
+              </researchPrerequisites>
+            </value>
+          </li>
+
+          <!-- <li Class="XmlExtensions.PatchOperationAddOrReplace"> -->
+            <!-- <xpath>Defs/ThingDef[defName="ASF_MeatRack"]/researchPrerequisites</xpath> -->
+            <!-- <value> -->
+                <!-- <li MayRequire="OskarPotocki.VFE.Tribals">VFET_Hunting</li> -->
+            <!-- </value> -->
+          <!-- </li> -->
+
+          <li Class="XmlExtensions.PatchOperationAddOrReplace">
+            <xpath>Defs/ThingDef[
+              defName="ASF_WovenBasket" or
+              defName="ASF_WovenBasketDouble" or
+              defName="ASF_WovenBasketTriple"
+            ]/researchPrerequisites</xpath>
+            <value>
+              <li MayRequire="OskarPotocki.VFE.Tribals">VFET_Agriculture</li>
+            </value>
+          </li>
+
+          <li Class="XmlExtensions.PatchOperationAddOrReplace">
+            <xpath>Defs/ThingDef[defName="ASF_Granary"]/researchPrerequisites</xpath>
+            <value>
+              <li MayRequire="OskarPotocki.VFE.Tribals">VFET_Construction</li>
+              <li MayRequire="OskarPotocki.VFE.Tribals">VFET_Agriculture</li>
+            </value>
+          </li>
+
+          <li Class="XmlExtensions.PatchOperationAddOrReplace">
+            <xpath>Defs/ThingDef[
+              defName="ASF_WeaponRack" or
+              defName="ASF_ClayPotCovered" or
+              defName="ASF_ClayPotUncovered" or
+              defName="ASF_CellarStone"
+            ]/researchPrerequisites</xpath>
+            <value>
+              <li MayRequire="OskarPotocki.VFE.Tribals">VFET_Culture</li>
+            </value>
+          </li>
+
+        </caseTrue>
+      </li>
+
+    </caseTrue>
+  </Operation>
+</Patch>

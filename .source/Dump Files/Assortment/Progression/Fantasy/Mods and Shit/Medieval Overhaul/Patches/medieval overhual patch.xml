@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+
+                <Operation Class="PatchOperationReplace">
+                  <success>Always</success>
+                  <xpath>Defs/ThingDef[defName="DankPyon_Griffon"]/description</xpath>
+                  <value>
+                        <description>The Griffin is a creature with the body, tail, and back legs of a lion; the head and wings of an eagle; and an eagle's talons as its front feet. Griffins are especially powerful and majestic creatures, known for guarding treasure and priceless possessions, and valued as trusted steeds.\n\nGriffins aren't naturally occurring creatures, and were created as part of the Hecate Project, a bio-engineering program that applied mechanite replicators to already existing animals to mutate them into "magical" creatures.</description>
+                  </value>
+                </Operation>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Alpha Mythology</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationRemove">
+					<success>Always</success>
+					<xpath>/Defs/ThingDef[defName="MM_Griffin"]</xpath>
+				</li>
+				<li Class="PatchOperationRemove">
+					<success>Always</success>
+					<xpath>/Defs/PawnKindDef[defName="MM_Griffin"]</xpath>
+				</li>
+				<li Class="PatchOperationFindMod">
+					<mods>
+						<li>Roo's Satyr and Faun Xenotypes Expanded</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<operations>
+							<li Class="PatchOperationReplace">
+								<success>Always</success>
+								<xpath>/Defs/FactionDef[defName="RBSFE_TribeFae"]/pawnGroupMakers/li[kindDef="Combat"]/options/MM_Griffin</xpath>
+								<value>
+									<DankPyon_Griffon>0.5</DankPyon_Griffon>
+								</value>
+							</li>
+							<li Class="PatchOperationFindMod">
+								<mods>
+									<li>Giddy-Up 2</li>
+								</mods>
+								<match Class="PatchOperationSequence">
+									<operations>
+										<li Class="PatchOperationReplace">
+											<success>Always</success>
+											<xpath>Defs/PawnKindDef[defName="RBSF_Jack-of-All-Trades"]/modExtensions/li[1]/possibleMounts/li[key="MM_Griffin"]</xpath>
+											<value>
+												<li MayRequire="dankpyon.medieval.overhaul">
+													<key>DankPyon_Griffon</key>
+													<value>5</value>
+												</li>
+											</value>
+										</li>
+										<li Class="PatchOperationReplace">
+											<success>Always</success>
+											<xpath>Defs/PawnKindDef[defName="RBSF_FaeGuardian"]/modExtensions/li[1]/possibleMounts/li[key="MM_Griffin"]</xpath>
+											<value>
+												<li MayRequire="dankpyon.medieval.overhaul">
+													<key>DankPyon_Griffon</key>
+													<value>10</value>
+												</li>
+											</value>
+										</li>
+									</operations>
+								</match>
+							</li>
+						</operations>
+					</match>
+				</li>
+			</operations>
+		</match>
+	</Operation>
+</Patch>

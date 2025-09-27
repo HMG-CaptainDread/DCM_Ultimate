@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- =========================**** Workbenches ****==========================-->
+	<!-- ===================== Crafting Tech ======================-->
+	<!-- crafting station -->
+	<ThingDef ParentName="MedTimes_BenchBaseTag">
+		<defName>MedTimes_CraftingStation</defName>
+		<label>Crafting Station</label>
+		<thingClass>Building_WorkTable</thingClass>
+		<description>A crafting station equipped with various tools for the production of various necessities and trade goods.</description>
+		<size>(3,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Production/CraftingStation/MedTimes_CraftingStation</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(3,1)</drawSize>
+		</graphicData>
+		<uiIconPath>Things/Building/Production/CraftingStation/MedTimes_CraftingStation_Icon</uiIconPath>
+		<stuffCategories>
+			<li>Woody</li>
+			<li>Metallic</li>
+		</stuffCategories>
+		<costStuffCount>40</costStuffCount>
+		<costList>
+			<Steel>20</Steel>
+			<MedTimes_CraftingTools>1</MedTimes_CraftingTools>
+		</costList>
+		<fillPercent>0.5</fillPercent>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>ToolCabinet</li>
+					<li>MedTimes_BlacksmithForge</li>
+					<li>MedTimes_ElectricBlacksmithForge</li>
+					<li>MedTimes_BlacksmithForgeTierTwo</li>
+					<li>MedTimes_ElectricBlacksmithForgeTierTwo</li>
+					<li>FueledSmithy</li>
+					<li>ElectricSmithy</li>
+				</linkableFacilities>
+			</li>
+			<li Class="CompProperties_Facility">
+				<statOffsets>
+					<WorkTableWorkSpeedFactor>0.09</WorkTableWorkSpeedFactor>
+				</statOffsets>
+				<maxSimultaneous>1</maxSimultaneous>
+				<maxDistance>4</maxDistance>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>MedTimes_Toolworking</li>
+		</researchPrerequisites>
+	</ThingDef>
+	<!-- (Medieval) Artisan Station -->
+	<ThingDef ParentName="MedTimes_BenchBaseTag">
+		<defName>MedTimes_ArtisanStation</defName>
+		<label>Artisan Station</label>
+		<thingClass>Building_WorkTable</thingClass>
+		<description>An Artisan station equipped with various tools for the production of various sculptures and decorative goods.</description>
+		<size>(3,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Production/ArtisanStation/MedievalTimes_ArtisanStation</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(3.2,1.04)</drawSize>
+		</graphicData>
+		<uiIconPath>Things/Building/Production/ArtisanStation/MedievalTimes_ArtisanStation_Icon</uiIconPath>
+		<stuffCategories>
+			<li>Woody</li>
+			<li>Metallic</li>
+		</stuffCategories>
+		<costStuffCount>50</costStuffCount>
+		<costList>
+			<MedTimes_CraftingTools>1</MedTimes_CraftingTools>
+		</costList>
+		<fillPercent>0.5</fillPercent>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>ToolCabinet</li>
+				</linkableFacilities>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+		</placeWorkers>
+		<researchPrerequisites>
+			<li>MedTimes_BasicArt</li>
+		</researchPrerequisites>
+	</ThingDef>
+	<!-- (Medieval) Tailoring Station -->
+	<ThingDef ParentName="MedTimes_BenchBaseTag">
+		<defName>MedTimes_TailoringStation</defName>
+		<label>Tailoring Station</label>
+		<thingClass>Building_WorkTable</thingClass>
+		<description>A Tailoring station equipped with various tools for the production and disassembly of various medieval clothings.</description>
+		<size>(3,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Production/TailoringStation/MedTimes_TailoringStation</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(3,1)</drawSize>
+		</graphicData>
+		<uiIconPath>Things/Building/Production/TailoringStation/MedTimes_TailoringStation_Icon</uiIconPath>
+		<costList>
+			<MedTimes_CraftingTools>1</MedTimes_CraftingTools>
+		</costList>
+		<stuffCategories>
+			<li>Woody</li>
+			<li>Metallic</li>
+		</stuffCategories>
+		<statBases>
+			<WorkTableWorkSpeedFactor>0.5</WorkTableWorkSpeedFactor>
+		</statBases>
+		<costStuffCount>50</costStuffCount>
+		<fillPercent>0.5</fillPercent>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>ToolCabinet</li>
+				</linkableFacilities>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+		</placeWorkers>
+		<researchPrerequisites>
+			<li>MedTimes_MedievalTailoring</li>
+		</researchPrerequisites>
+	</ThingDef>
+	<!-- ===================== Smithing Techs ======================-->
+	<!-- (Medieval) Simple Smithing Station -->
+	<ThingDef ParentName="MedTimes_BlacksmithsForgeRefuelable">
+		<defName>MedTimes_BlacksmithForge</defName>
+		<label>Simple Forge</label>
+		<description>A wood-fueled station equipped for smithing simple weapons, armour and tools.</description>
+		<size>(2,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Production/Forge/MedTimes_Forge_Tier1</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(2,1)</drawSize>
+		</graphicData>
+		<uiIconPath>Things/Building/Production/Forge/MedTimes_Forge_Tier1_Icon</uiIconPath>
+		<stuffCategories>
+			<li>Stony</li>
+			<li>Metallic</li>
+		</stuffCategories>
+		<statBases>
+			<Mass>35</Mass>
+		</statBases>
+		<costStuffCount>35</costStuffCount>
+		<costList>
+			<Steel>35</Steel>
+			<MedTimes_CraftingTools>1</MedTimes_CraftingTools>
+		</costList>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<comps>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>ToolCabinet</li>
+					<li>MedTimes_CraftingStation</li>
+					<li>MedTimes_BlacksmithForgeTierTwo</li>
+					<li>MedTimes_ElectricBlacksmithForgeTierTwo</li>
+				</linkableFacilities>
+			</li>
+			<li Class="CompProperties_Facility">
+				<statOffsets>
+					<WorkTableWorkSpeedFactor>0.11</WorkTableWorkSpeedFactor>
+				</statOffsets>
+				<maxSimultaneous>1</maxSimultaneous>
+				<maxDistance>4</maxDistance>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>MedTimes_MedievalCrafting</li>
+		</researchPrerequisites>
+	</ThingDef>
+	<!-- (Industrial) Simple Smithing Station, Electric -->
+	<ThingDef ParentName="MedTimes_BlacksmithsForgeElectric">
+		<defName>MedTimes_ElectricBlacksmithForge</defName>
+		<label>Mechanized Simple Forge</label>
+		<description>A mechanized station equipped for smithing simple weapons, armour and tools.</description>
+		<size>(2,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Production/ForgeElectric/MedTimes_Forge_Tier1_Electric</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(2,1)</drawSize>
+		</graphicData>
+		<uiIconPath>Things/Building/Production/ForgeElectric/MedTimes_Forge_Tier1_Electric_Icon</uiIconPath>
+		<stuffCategories>
+			<li>Metallic</li>
+		</stuffCategories>
+		<statBases>
+			<Mass>35</Mass>
+		</statBases>
+		<costStuffCount>25</costStuffCount>
+		<costList>
+			<Steel>35</Steel>
+			<MedTimes_Resource_Glass>5</MedTimes_Resource_Glass>
+			<MedTimes_CraftingTools>1</MedTimes_CraftingTools>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<interactionCellOffset>(1,0,-1)</interactionCellOffset>
+		<comps>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>ToolCabinet</li>
+					<li>MedTimes_CraftingStation</li>
+					<li>MedTimes_BlacksmithForgeTierTwo</li>
+					<li>MedTimes_ElectricBlacksmithForgeTierTwo</li>
+				</linkableFacilities>
+			</li>
+			<li Class="CompProperties_Facility">
+				<statOffsets>
+					<WorkTableWorkSpeedFactor>0.11</WorkTableWorkSpeedFactor>
+				</statOffsets>
+				<maxSimultaneous>1</maxSimultaneous>
+				<maxDistance>4</maxDistance>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>MedTimes_MedievalCrafting</li>
+			<li>MedTimes_Mechanization</li>
+		</researchPrerequisites>
+	</ThingDef>
+	<!-- (Medieval) Improved Smithing Station -->
+	<ThingDef ParentName="MedTimes_BlacksmithsForgeRefuelable">
+		<defName>MedTimes_BlacksmithForgeTierTwo</defName>
+		<label>Improved Forge</label>
+		<description>A wood-fueled station equipped for smithing medieval era weapons, armour and tools.</description>
+		<size>(3,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Production/Forge/MedTimes_Forge_Tier2</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(3,1)</drawSize>
+		</graphicData>
+		<uiIconPath>Things/Building/Production/Forge/MedTimes_Forge_Tier2_Icon</uiIconPath>
+		<costStuffCount>90</costStuffCount>
+		<stuffCategories>
+			<li>Stony</li>
+			<li>Metallic</li>
+		</stuffCategories>
+		<costList>
+			<MedTimes_CraftingTools>2</MedTimes_CraftingTools>
+			<Steel>80</Steel>
+		</costList>
+		<statBases>
+			<Mass>75</Mass>
+		</statBases>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<comps>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>ToolCabinet</li>
+					<li>MedTimes_BlacksmithForge</li>
+					<li>MedTimes_ElectricBlacksmithForge</li>
+					<li>MedTimes_CraftingStation</li>
+				</linkableFacilities>
+			</li>
+			<li Class="CompProperties_Facility">
+				<statOffsets>
+					<WorkTableWorkSpeedFactor>0.15</WorkTableWorkSpeedFactor>
+				</statOffsets>
+				<maxSimultaneous>1</maxSimultaneous>
+				<maxDistance>4</maxDistance>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>MedTimes_AdvancedMedievalSmithing</li>
+		</researchPrerequisites>
+	</ThingDef>
+	<!-- (Industrial) Improved Smithing Station, Electric -->
+	<ThingDef ParentName="MedTimes_BlacksmithsForgeElectric">
+		<defName>MedTimes_ElectricBlacksmithForgeTierTwo</defName>
+		<label>Mechanized Improved Forge</label>
+		<description>A mechanized station equipped for smithing medieval era weapons, armour and tools.</description>
+		<size>(3,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Production/ForgeElectric/MedTimes_Forge_Tier2_Electric</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(3,1)</drawSize>
+		</graphicData>
+		<uiIconPath>Things/Building/Production/ForgeElectric/MedTimes_Forge_Tier2_Electric_Icon</uiIconPath>
+		<stuffCategories>
+			<li>Metallic</li>
+		</stuffCategories>
+		<costStuffCount>90</costStuffCount>
+		<costList>
+			<MedTimes_CraftingTools>2</MedTimes_CraftingTools>
+			<Steel>80</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<Mass>75</Mass>
+		</statBases>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<comps>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>ToolCabinet</li>
+					<li>MedTimes_BlacksmithForge</li>
+					<li>MedTimes_ElectricBlacksmithForge</li>
+					<li>MedTimes_CraftingStation</li>
+				</linkableFacilities>
+			</li>
+			<li Class="CompProperties_Facility">
+				<statOffsets>
+					<WorkTableWorkSpeedFactor>0.15</WorkTableWorkSpeedFactor>
+				</statOffsets>
+				<maxSimultaneous>1</maxSimultaneous>
+				<maxDistance>4</maxDistance>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>MedTimes_AdvancedMedievalSmithing</li>
+			<li>MedTimes_Mechanization</li>
+		</researchPrerequisites>
+	</ThingDef>
+	<!-- (Medieval) Fueled smelter -->
+	<ThingDef ParentName="MedTimes_BenchBaseTag">
+		<defName>MedTimes_FueledSmelter</defName>
+		<label>Smelter</label>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<thingClass>Building_WorkTable</thingClass>
+		<description>Heats materials placed inside to melt it or to incite different termal chemical reactions. Consumes a lot of combutable resource.</description>
+		<size>(3,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Production/Smelter/MedTimes_Smelter</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(3,1)</drawSize>
+		</graphicData>
+		<uiIconPath>Things/Building/Production/Smelter/MedTimes_Smelter_Icon</uiIconPath>
+		<stuffCategories>
+			<li>Stony</li>
+			<li>Metallic</li>
+		</stuffCategories>
+		<costStuffCount>60</costStuffCount>
+		<costList>
+			<Steel>15</Steel>
+		</costList>
+		<statBases>
+			<WorkToBuild>1500</WorkToBuild>
+			<MaxHitPoints>180</MaxHitPoints>
+			<Mass>200</Mass>
+			<WorkTableWorkSpeedFactor>1.2</WorkTableWorkSpeedFactor>
+		</statBases>
+		<fillPercent>0.5</fillPercent>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<recipes>
+			<li>ExtractMetalFromSlag</li>
+			<li>SmeltWeapon</li>
+			<li>SmeltApparel</li>
+			<li>SmeltCannonItems</li>
+		</recipes>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_Refuelable">
+				<fuelConsumptionRate>100.0</fuelConsumptionRate>
+				<fuelCapacity>75.0</fuelCapacity>
+				<fuelFilter>
+					<thingDefs>
+						<li>Resource_Coal</li>
+					</thingDefs>
+				</fuelFilter>
+				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>ToolCabinet</li>
+				</linkableFacilities>
+			</li>
+		</comps>
+		<building>
+			<heatPerTickWhileWorking>0.5</heatPerTickWhileWorking>
+		</building>
+		<researchPrerequisites>
+			<li>MedTimes_BasicSmelting</li>
+		</researchPrerequisites>
+	</ThingDef>
+</Defs>

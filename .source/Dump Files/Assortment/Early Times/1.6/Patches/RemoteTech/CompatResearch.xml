@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>Remote Tech</li>
+		  <li>Remote Tech (Continued)</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<operations>
+			<li Class="PatchOperationConditional">
+				<xpath>/Defs/ResearchProjectDef[defName="rxMakeshiftExplosives"]/prerequisites</xpath>
+				<match Class="PatchOperationAdd">
+					<xpath>/Defs/ResearchProjectDef[defName="rxMakeshiftExplosives"]/prerequisites</xpath>
+					<value>
+						<li>MedTimes_Explosives</li>
+					</value>
+				</match>
+				<nomatch Class="PatchOperationAdd">
+					<xpath>/Defs/ResearchProjectDef[defName="rxMakeshiftExplosives"]</xpath>
+					<value>
+						<prerequisites>
+							<li>MedTimes_Explosives</li>
+						</prerequisites>
+					</value>
+				</nomatch>				
+			</li>
+		</operations>
+	</match>
+  </Operation>
+</Patch>

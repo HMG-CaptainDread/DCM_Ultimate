@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="VPE_EltexGear"]/prerequisites</xpath>
+		<value>
+			<prerequisites>
+				<li>VPE_CasterGear</li>
+			</prerequisites>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="VPE_EltexGear"]/techLevel</xpath>
+		<value>
+			<techLevel>Medieval</techLevel>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="VPE_CasterGear" or defName="VPE_EltexGear"]/tab</xpath>
+		<value>
+			<tab>DankPyon_MedievalResearchTab</tab>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="VPE_CasterGear"]/researchViewX</xpath>
+		<value>
+			 <researchViewX>8.00</researchViewX>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="VPE_CasterGear"]/researchViewY</xpath>
+		<value>
+			<researchViewY>1.20</researchViewY>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="VPE_EltexGear"]/researchViewX</xpath>
+		<value>
+			<researchViewX>9.00</researchViewX>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="VPE_EltexGear"]/researchViewY</xpath>
+		<value>
+			<researchViewY>0.70</researchViewY>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ResearchProjectDef[defName="VPE_EltexGear"]/requiredResearchBuilding</xpath>
+		<match Class="PatchOperationReplace">
+			<xpath>Defs/ResearchProjectDef[defName="VPE_EltexGear"]/requiredResearchBuilding</xpath>
+			<value>
+				<requiredResearchBuilding>DankPyon_AdvancedResearchBench</requiredResearchBuilding>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>Defs/ResearchProjectDef[defName="VPE_EltexGear"]</xpath>
+			<value>
+				<requiredResearchBuilding>DankPyon_AdvancedResearchBench</requiredResearchBuilding>
+			</value>
+		</nomatch>
+	</Operation>
+				
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ResearchProjectDef[defName="VPE_EltexGear"]/requiredResearchFacilities</xpath>
+		<match Class="PatchOperationRemove">
+			<xpath>Defs/ResearchProjectDef[defName="VPE_EltexGear"]/requiredResearchFacilities</xpath>
+		</match>
+	</Operation>
+	
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ResearchProjectDef/tab[.="VanillaExpanded"]</xpath>
+		<nomatch Class="PatchOperationRemove">
+			<xpath>/Defs/ResearchTabDef[defName="VanillaExpanded"]</xpath>
+		</nomatch>
+	</Operation>
+
+</Patch>

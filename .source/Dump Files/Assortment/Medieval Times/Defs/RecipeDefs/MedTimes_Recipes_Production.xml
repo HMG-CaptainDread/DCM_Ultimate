@@ -1,0 +1,772 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!-- ==================== Raw Production ====================== -->    
+<!-- Adobe Bricks -->
+  <RecipeDef>
+    <defName>MedTimes_MakeAdobeBricks</defName>
+    <label>Make Adobe Bricks</label>
+    <description>(Bulk x20) Craft adobe bricks which can be used in construction.</description>
+    <jobString>Making Adobe Bricks.</jobString>
+    <workSkill>Crafting</workSkill>	
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <effectWorking>CutStone</effectWorking>
+    <soundWorking>Recipe_MakeStoneBlocks</soundWorking>
+      <recipeUsers>
+        <li>MedTimes_CraftingStation</li>	  
+        <li>CraftingSpot</li>
+      </recipeUsers>
+	<targetCountAdjustment>10</targetCountAdjustment>	
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <workAmount>1200</workAmount>
+    <ingredients>
+      <li>
+	  <filter>
+          <thingDefs><li>Hay</li></thingDefs>
+      </filter>
+        <count>15</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Hay</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <MedTimes_Resource_AdobeBricks>20</MedTimes_Resource_AdobeBricks>
+    </products>
+  </RecipeDef>
+
+
+<!-- Make Ice Blocks -->  
+  <RecipeDef>
+    <defName>MedTimes_MakeIceBlocks</defName>
+    <label>Make Ice Blocks</label>
+    <description>(Bulk x5) Craft Ice Blocks from hay using endo-thermic principals.</description>
+    <jobString>Making Ice Blocks.</jobString>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <workAmount>2000</workAmount>
+		<targetCountAdjustment>10</targetCountAdjustment>	
+    <products>
+      <MedTimes_Resource_IceBlocks>5</MedTimes_Resource_IceBlocks>
+    </products>
+  </RecipeDef>
+ 
+
+<!-- Gather Ice Blocks --> 
+  <RecipeDef>
+    <defName>MedTimes_GatherIceBlocks</defName>
+    <label>Gather Ice Blocks</label>
+    <description>(Bulk x10) Literally just watching water freeze into Ice Blocks.</description>
+    <jobString>Gathering Ice Blocks.</jobString>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <workAmount>500</workAmount>
+		<targetCountAdjustment>10</targetCountAdjustment>	
+    <products>
+      <MedTimes_Resource_IceBlocks>10</MedTimes_Resource_IceBlocks>
+    </products>
+  </RecipeDef> 
+  
+
+ <!-- Coal to Chemfuel -->  
+	<RecipeDef>
+		<defName>MedTimes_MakeChemfuelCoal</defName>
+		<label>make chemfuel from coal</label>
+		<description>Make a batch of chemfuel using coal by hydrogenation.</description>
+		<jobString>Refining chemfuel from coal.</jobString>
+		<effectWorking>Cremate</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<workAmount>2500</workAmount>
+		<workSkill>Intellectual</workSkill>
+			<recipeUsers>
+				<li>BiofuelRefinery</li>	  
+			</recipeUsers>		
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>MedTimes_Resource_Coal</li>
+					</thingDefs>
+				</filter>
+				<count>50</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>MedTimes_Resource_Coal</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Chemfuel>35</Chemfuel>
+		</products>
+	</RecipeDef>  
+	
+<!-- Wood to Coal -->  
+	<RecipeDef>
+		<defName>MedTimes_MakeCoalFromWood</defName>
+		<label>make coal chunks from wood</label>
+		<description>Make a batch of coal chunks by burning wood.</description>
+		<jobString>Refining coal from wood.</jobString>
+		<effectWorking>Cremate</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<workAmount>1200</workAmount>
+		<workSkill>Crafting</workSkill>
+			<recipeUsers>
+        <li>MedTimes_CraftingStation</li>
+        <li>CraftingSpot</li>				
+			</recipeUsers>		
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>50</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<MedTimes_Resource_Coal>35</MedTimes_Resource_Coal>
+		</products>
+	</RecipeDef>  	
+
+<!-- ==================== Book Creation ====================== --> 
+<!-- Written Trade Goods Base Class -->  
+	<RecipeDef Name="MedTimes_BookCreationBase" Abstract="True">
+		<workSkillLearnFactor>0.25</workSkillLearnFactor>
+		<effectWorking>Tailor</effectWorking>
+		<soundWorking>Recipe_Tailor</soundWorking>
+		<unfinishedThingDef>MedTimes_UnfinishedPapers</unfinishedThingDef>	  		
+		<recipeUsers>
+			<li>MedTimes_Desk</li>	  
+		</recipeUsers>		  
+	</RecipeDef>
+  
+ <!-- Books: Graphic Novel --> 
+ 	<RecipeDef ParentName="MedTimes_BookCreationBase">
+		<defName>MedTimes_BookCreation_GraphicNovel</defName>
+		<description>Compose a graphic novel.</description>
+		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+		<workSkill>Artistic</workSkill>
+		<workAmount>3500</workAmount>		
+		<label>Compose a graphic novel.</label>
+		<jobString>Composing a graphic novel.</jobString>
+    <ingredients>
+      <li>
+	  <filter>
+          <thingDefs><li>WoodLog</li></thingDefs>
+      </filter>
+        <count>5</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>WoodLog</li>
+      </thingDefs>
+    </fixedIngredientFilter>		
+		
+		<products>
+			<MedTimes_GraphicNovel>1</MedTimes_GraphicNovel>
+		</products>		
+  </RecipeDef>   
+  
+<!-- ==================== Stone Quarry ====================== -->    
+<!-- Coal Chunks -->
+	<RecipeDef>
+		<defName>MedTimes_MakeStoneChunks_Coal</defName>
+		<description>(Bulk x25) Mine from underground Coal Seams to create usable Coal Chunks.</description>		
+		<workAmount>2000</workAmount>		
+		<label>Gather Coal Chunks</label>
+		<jobString>Mining for Coal Chunks.</jobString>
+		<workSpeedStat>MiningSpeed</workSpeedStat>
+		<workSkill>Mining</workSkill>
+		<workSkillLearnFactor>0.25</workSkillLearnFactor>
+		<effectWorking>CutStone</effectWorking>
+		<soundWorking>Recipe_MakeStoneBlocks</soundWorking>
+		<targetCountAdjustment>25</targetCountAdjustment>		
+      <recipeUsers>
+        <li>MedTimes_StoneQuarry</li>	  
+      </recipeUsers>		  
+		<products><MedTimes_Resource_Coal>25</MedTimes_Resource_Coal></products>	
+	</RecipeDef>
+
+ <!-- Stone Chunks Base Class --> 
+	<RecipeDef Name="MedTimes_StoneQuarryBase" Abstract="True">
+		<description>Cuts rock chunks into usable stone blocks.</description>
+		<workSpeedStat>MiningSpeed</workSpeedStat>
+		<workSkill>Mining</workSkill>
+		<workSkillLearnFactor>0.25</workSkillLearnFactor>
+		<effectWorking>CutStone</effectWorking>
+		<soundWorking>Recipe_MakeStoneBlocks</soundWorking>
+			<recipeUsers>
+				<li>MedTimes_StoneQuarry</li>	  
+			</recipeUsers>	
+	</RecipeDef>
+  
+  
+ <!-- Stone Chunks: Sandstone --> 
+ 	<RecipeDef ParentName="MedTimes_StoneQuarryBase">
+		<defName>MedTimes_MakeStoneChunks_Sandstone</defName>
+		<workAmount>2250</workAmount>		
+		<label>Gather Sandstone Chunks</label>
+		<jobString>Mining for Sandstone Chunk.</jobString>
+    <products>
+      <ChunkSandstone>1</ChunkSandstone>
+    </products>		
+  </RecipeDef> 
+
+ <!-- Stone Chunks: Granite --> 
+ 	<RecipeDef ParentName="MedTimes_StoneQuarryBase">
+		<defName>MedTimes_MakeStoneChunks_Granite</defName>
+		<workAmount>2975</workAmount>		
+		<label>Gather Granite Chunks</label>
+		<jobString>Mining for Granite Chunk.</jobString>
+    <products>
+      <ChunkGranite>1</ChunkGranite>
+    </products>		
+  </RecipeDef> 
+
+  <!-- Stone Chunks: Limestone --> 
+ 	<RecipeDef ParentName="MedTimes_StoneQuarryBase">
+		<defName>MedTimes_MakeStoneChunks_Limestone</defName>
+		<workAmount>2700</workAmount>		
+		<label>Gather Limestone Chunks</label>
+		<jobString>Mining for Limestone Chunk.</jobString>
+    <products>
+      <ChunkLimestone>1</ChunkLimestone>
+    </products>		
+  </RecipeDef> 
+
+   <!-- Stone Chunks: Slate --> 
+ 	<RecipeDef ParentName="MedTimes_StoneQuarryBase">
+		<defName>MedTimes_MakeStoneChunks_Slate</defName>
+		<workAmount>2275</workAmount>		
+		<label>Gather Slate Chunks</label>
+		<jobString>Mining for Slate Chunk.</jobString>
+    <products>
+      <ChunkSlate>1</ChunkSlate>
+    </products>		
+  </RecipeDef>   
+  
+   <!-- Stone Chunks: Marble --> 
+ 	<RecipeDef ParentName="MedTimes_StoneQuarryBase">
+		<defName>MedTimes_MakeStoneChunks_Marble</defName>
+		<workAmount>2100</workAmount>		
+		<label>Gather Marble Chunks</label>
+		<jobString>Mining for Marble Chunk.</jobString>
+    <products>
+      <ChunkMarble>1</ChunkMarble>
+    </products>		
+  </RecipeDef>  
+  
+  <!--Mining: Silver-->
+  <RecipeDef>
+    <defName>MedTimes_MakeStoneChunks_Silver</defName>
+    <description>(Bulk x25) Mine from underground Silver ore Seams to create usable Silver.</description>
+    <workAmount>2500</workAmount>
+    <label>Gather Silver</label>
+    <jobString>Mining for Silver.</jobString>
+    <workSpeedStat>MiningSpeed</workSpeedStat>
+    <workSkill>Mining</workSkill>
+    <workSkillLearnFactor>0.25</workSkillLearnFactor>
+    <effectWorking>CutStone</effectWorking>
+    <soundWorking>Recipe_MakeStoneBlocks</soundWorking>
+    <researchPrerequisite>MedTimes_AdvancedMining</researchPrerequisite>
+    <targetCountAdjustment>25</targetCountAdjustment>
+    <recipeUsers>
+      <li>MedTimes_StoneQuarry</li>
+    </recipeUsers>
+    <products>
+      <Silver>25</Silver>
+    </products>
+  </RecipeDef>
+<!--Mining: Steel-->
+  <RecipeDef>
+    <defName>MedTimes_MakeStoneChunks_Steel</defName>
+    <description>(Bulk x25) Mine from underground Compacted steel Seams to create usable steel.</description>
+    <workAmount>2500</workAmount>
+    <label>Gather Steel</label>
+    <jobString>Mining for Compacted steel.</jobString>
+    <workSpeedStat>MiningSpeed</workSpeedStat>
+    <workSkill>Mining</workSkill>
+    <workSkillLearnFactor>0.25</workSkillLearnFactor>
+    <effectWorking>CutStone</effectWorking>
+    <soundWorking>Recipe_MakeStoneBlocks</soundWorking>
+    <researchPrerequisite>MedTimes_AdvancedMining</researchPrerequisite>
+    <targetCountAdjustment>20</targetCountAdjustment>
+    <recipeUsers>
+      <li>MedTimes_StoneQuarry</li>
+    </recipeUsers>
+    <products>
+      <Steel>25</Steel>
+    </products>
+  </RecipeDef>
+<!-- ==================== Explosives ====================== -->  
+<!-- WoodPitchWicked -->
+  <RecipeDef>
+    <defName>MedTimes_MakeQuicklimePitch</defName>
+    <label>Make Quicklime Pitch</label>
+    <description>(Bulk x5) Craft a Quicklime Pitch to be used as ammo for your various murder holes.</description>
+    <jobString>Making Quicklime Pitch.</jobString>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <workAmount>800</workAmount>
+      <recipeUsers>
+        <li>MedTimes_CraftingStation</li>	  
+      </recipeUsers>	
+    <ingredients>
+	  <li>
+        <filter>
+          <thingDefs>
+            <li>MedTimes_WoodPitchGlue</li>			
+          </thingDefs>
+        </filter>
+        <count>3</count>
+      </li>
+
+	  <li>
+        <filter>
+          <thingDefs>
+            <li>ChunkLimestone</li>			
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>  
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>MedTimes_WoodPitchGlue</li>
+        <li>ChunkLimestone</li>						
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <MedTimes_Resource_Quicklime>5</MedTimes_Resource_Quicklime>
+    </products>
+    <workSkill>Crafting</workSkill>
+  </RecipeDef>
+  <!--Storage Pots-->
+  <RecipeDef>
+    <defName>MedTimes_MakeStoragePots</defName>
+    <label>Make Storage Pots</label>
+    <description>Create a Storage Pot from adobe</description>
+    <jobString>Making a Storage Pot.</jobString>
+    <workSkill>Crafting</workSkill>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <effectWorking>CutStone</effectWorking>
+    <soundWorking>Recipe_MakeStoneBlocks</soundWorking>
+    <recipeUsers>
+      <li>MedTimes_CraftingStation</li>
+      <li>CraftingSpot</li>
+    </recipeUsers>
+    <targetCountAdjustment>10</targetCountAdjustment>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <workAmount>400</workAmount>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Hay</li>
+          </thingDefs>
+        </filter>
+        <count>4</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Hay</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <MedTimes_StoragePot>1</MedTimes_StoragePot>
+    </products>
+  </RecipeDef>
+
+
+
+  <!-- Explosive Pots -->
+  <RecipeDef>
+    <defName>MedTimes_MakeExplosivePots</defName>
+    <label>Make Explosive Pots</label>
+    <description>(Bulk x3) Craft Explosive Pots which are used for catapults.</description>
+    <jobString>Making explosive Pots.</jobString>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <effectWorking>Cook</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <allowMixingIngredients>true</allowMixingIngredients>
+    <workAmount>800</workAmount>
+      <recipeUsers>
+        <li>MedTimes_CraftingStation</li>	  
+      </recipeUsers>	
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>			
+          </thingDefs>
+        </filter>
+        <count>6</count>
+      </li>
+	  <li>
+        <filter>
+          <thingDefs>
+            <li>MedTimes_Resource_Quicklime</li>			
+          </thingDefs>
+        </filter>
+        <count>3</count>
+      </li>
+	  <li>
+        <filter>
+          <thingDefs>
+            <li>MedTimes_StoragePot</li>			
+          </thingDefs>
+        </filter>
+        <count>3</count>
+      </li>	  
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+        <li>MedTimes_Resource_Quicklime</li>
+        <li>MedTimes_StoragePot</li>			
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <MedTimes_Resource_ExplosivePot>3</MedTimes_Resource_ExplosivePot>
+    </products>
+    <workSkill>Crafting</workSkill>
+  </RecipeDef>
+
+
+  
+<!-- ==================== Disassembly ====================== -->   
+<!-- Disassemble Apparel -->  
+   <RecipeDef>
+    <defName>MedTimes_DisassembleApparel</defName>
+    <label>Disassemble Apparel.</label>
+    <description>Disassemble various medieval clothing and apparels to re-gather usable materials.</description>
+    <jobString>Disassembling Apparel.</jobString>
+    <workAmount>1000</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+			<recipeUsers>
+				<li>MedTimes_TailoringStation</li>	  
+			</recipeUsers>		
+    <ingredients>
+      <li>
+        <filter>
+			<thingDefs>
+				<li>Apparel_CowboyHat</li>				
+				<li>Apparel_BowlerHat</li>				
+				<li>Apparel_Tuque</li>
+				
+				<li>Apparel_TribalA</li>				
+				<li>Apparel_Parka</li>				
+				<li>Apparel_Pants</li>
+				<li>Apparel_BasicShirt</li>				
+				<li>Apparel_CollarShirt</li>				
+				<li>Apparel_Duster</li>
+				<li>Apparel_Jacket</li>
+				
+				<li>MedTimes_Headgear_ArmingCap</li>				
+				<li>MedTimes_Headgear_WinterHat</li>
+				
+				<li>MedTimes_Gloves_Tailored</li>				
+				<li>MedTimes_Gloves_Winter</li>				
+				<li>MedTimes_Gloves_Tribal</li>
+				
+				<li>MedTimes_Socks_Tailored</li>
+				
+				<li>MedTimes_Boots_Tailored</li>				
+				<li>MedTimes_Boots_Winter</li>
+				<li>MedTimes_Boots_Tribal</li>
+				
+				<li>MedTimes_AppBody_Trousers</li>
+				<li>MedTimes_AppBody_TrousersStriped</li>				
+				<li>MedTimes_AppBody_Tunic</li>
+				<li>MedTimes_ArmBody_Gambison</li>
+				<li>MedTimes_ArmBody_PaddedJacket</li>
+				
+				<li>MedTimes_ShellBody_TabardFreelancer</li>				
+				<li>MedTimes_ShellBody_TabardBlue</li>
+				<li>MedTimes_ShellBody_TabardGreen</li>	
+				<li>MedTimes_ShellBody_TabardOrange</li>
+				<li>MedTimes_ShellBody_Cloak</li>
+				<li>MedTimes_ShellBody_Cape</li>
+
+				<li>MedTimes_Acc_Toolbelt</li>				
+				<!--<li>MedTimes_Acc_ToolbeltSmokepop</li>-->
+				<li>MedTimes_WarbourneShield</li>					
+				
+				<li>MedTimes_Helm_Wooden</li>
+				<li>MedTimes_WoodenPlates</li>
+				<li>MedTimes_Boots_Wooden</li>
+				<li>MedTimes_Bracers_Wooden</li>					
+			</thingDefs>			  
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <specialProducts>
+      <li>Smelted</li>
+    </specialProducts>
+    <fixedIngredientFilter>	
+			<thingDefs>
+				<li>Apparel_CowboyHat</li>				
+				<li>Apparel_BowlerHat</li>				
+				<li>Apparel_Tuque</li>
+				
+				<li>Apparel_TribalA</li>				
+				<li>Apparel_Parka</li>				
+				<li>Apparel_Pants</li>
+				<li>Apparel_BasicShirt</li>				
+				<li>Apparel_CollarShirt</li>				
+				<li>Apparel_Duster</li>
+				<li>Apparel_Jacket</li>
+				
+				<li>MedTimes_Headgear_ArmingCap</li>				
+				<li>MedTimes_Headgear_WinterHat</li>
+				
+				<li>MedTimes_Gloves_Tailored</li>				
+				<li>MedTimes_Gloves_Winter</li>				
+				<li>MedTimes_Gloves_Tribal</li>
+				
+				<li>MedTimes_Socks_Tailored</li>
+				
+				<li>MedTimes_Boots_Tailored</li>				
+				<li>MedTimes_Boots_Winter</li>
+				<li>MedTimes_Boots_Tribal</li>
+				
+				<li>MedTimes_AppBody_Trousers</li>
+				<li>MedTimes_AppBody_TrousersStriped</li>				
+				<li>MedTimes_AppBody_Tunic</li>
+				<li>MedTimes_ArmBody_Gambison</li>
+				<li>MedTimes_ArmBody_PaddedJacket</li>
+				
+				<li>MedTimes_ShellBody_TabardFreelancer</li>				
+				<li>MedTimes_ShellBody_TabardBlue</li>
+				<li>MedTimes_ShellBody_TabardGreen</li>	
+				<li>MedTimes_ShellBody_TabardOrange</li>
+				<li>MedTimes_ShellBody_Cloak</li>
+				<li>MedTimes_ShellBody_Cape</li>
+				
+				<li>MedTimes_Acc_Toolbelt</li>				
+				<!--<li>MedTimes_Acc_ToolbeltSmokepop</li>-->
+				<li>MedTimes_WarbourneShield</li>				
+				
+				<li>MedTimes_Helm_Wooden</li>
+				<li>MedTimes_WoodenPlates</li>
+				<li>MedTimes_Boots_Wooden</li>
+				<li>MedTimes_Bracers_Wooden</li>					
+			</thingDefs>
+      <specialFiltersToAllow>
+			<li>AllowNonDeadmansApparel</li>
+      </specialFiltersToAllow>				
+    </fixedIngredientFilter>
+  </RecipeDef>
+
+<!-- Disassemble Weapons -->  
+   <RecipeDef>
+    <defName>MedTimes_DisassembleWeapon</defName>
+    <label>Disassemble Weapon.</label>
+    <description>Disassemble various medieval weapons to re-gather usable materials.</description>
+    <jobString>Disassembling Weapon.</jobString>
+    <workAmount>1000</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+      <recipeUsers>
+        <li>MedTimes_TailoringStation</li>	  
+      </recipeUsers>	
+    <ingredients>
+      <li>
+        <filter>
+      <thingDefs>
+        <li>Pila</li>	  
+        <li>Bow_Short</li>	
+        <li>Bow_Great</li>
+        <li>MeleeWeapon_Club</li>
+        <li>MeleeWeapon_Spear</li>		
+	
+        <li>MedTimes_Melee_PrimativeSpear</li>		
+        <li>MedTimes_Ranged_Composite</li>
+        <li>MedTimes_Ranged_Longbow</li>
+        <li>MedTimes_Ranged_Crossbow</li>
+        <li>MedTimes_Ranged_HandCrossbow</li>		
+        <li>MedTimes_Ranged_Arbalest</li>		
+      </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <specialProducts>
+      <li>Smelted</li>
+    </specialProducts>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Pila</li>	  
+        <li>Bow_Short</li>	
+        <li>Bow_Great</li>
+        <li>MeleeWeapon_Club</li>
+        <li>MeleeWeapon_Spear</li>		
+	
+        <li>MedTimes_Melee_PrimativeSpear</li>		
+        <li>MedTimes_Ranged_Composite</li>
+        <li>MedTimes_Ranged_Longbow</li>
+        <li>MedTimes_Ranged_Crossbow</li>
+        <li>MedTimes_Ranged_HandCrossbow</li>		
+        <li>MedTimes_Ranged_Arbalest</li>		
+      </thingDefs>
+    </fixedIngredientFilter>
+  </RecipeDef>  
+  
+  
+  
+<!-- ==================== Smelting ====================== -->   
+ <!-- Smelt Armour -->  
+   <RecipeDef>
+    <defName>MedTimes_SmeltArmor</defName>
+    <label>Smelt metal from armour.</label>
+    <description>Use extreme heat to re-melt striped armour pieces into to separate useful metal chunks.</description>
+    <jobString>Smelting metal from armour.</jobString>
+    <workAmount>1000</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <effectWorking>Smelt</effectWorking>
+    <soundWorking>Recipe_Smelt</soundWorking>
+      <recipeUsers>
+        <li>ElectricSmelter</li>	  
+      </recipeUsers>		
+	
+    <ingredients>
+      <li>
+        <filter>
+			<thingDefs>
+				<li>MedTimes_Helm_Headwrap</li>	  
+				<li>MedTimes_Helm_Domed</li>	
+				<li>MedTimes_Helm_Sallet</li>
+				<li>MedTimes_Helm_Nasal</li>
+				<li>MedTimes_Helm_FullPlated</li>
+				<li>MedTimes_Helm_Warbourne</li>					
+				<li>MedTimes_Helm_Bascinet</li>
+				<li>MedTimes_Helm_ConicalBascinet</li>
+				<li>MedTimes_Helm_RoyalMask</li>
+				<li>MedTimes_Helm_DeathMask</li>	
+	
+				<li>MedTimes_PlateJack</li>	
+				<li>MedTimes_Hauberk</li>
+				<li>MedTimes_Brigandine</li>
+				<li>MedTimes_Warbourne</li>				
+				<li>MedTimes_EncasedSteel</li>
+				
+				<li>MedTimes_RoyalPlated</li>
+				<li>MedTimes_RoyalPlated_Death</li>		
+				<li>MedTimes_RoyalPlated_CapedBlue</li>		
+				<li>MedTimes_RoyalPlated_CapedGreen</li>
+				<li>MedTimes_RoyalPlated_CapedOrange</li>
+				
+				<li>MedTimes_Boots_Plated</li>
+				<li>MedTimes_Boots_Scaled</li>
+				<li>MedTimes_Boots_FullPlated</li>
+				<li>MedTimes_Boots_Warbourne</li>				
+				<li>MedTimes_Boots_EncasedSteel</li>
+				<li>MedTimes_Boots_RoyalPlated</li>
+				
+				<li>MedTimes_Gloves_Plated</li>
+				<li>MedTimes_Gloves_Scaled</li>
+				<li>MedTimes_Gauntlets_Plated</li>
+				<li>MedTimes_Gauntlets_Warbourne</li>				
+				<li>MedTimes_Bracer_Archer</li>		
+				<li>MedTimes_Gauntlets_EncasedSteel</li>
+				<li>MedTimes_Gauntlets_RoyalPlated</li>	
+
+				<li>Apparel_SimpleHelmet</li>
+				<li>Apparel_AdvancedHelmet</li>
+				<li>Apparel_PowerArmorHelmet</li>	
+				
+				<li>Apparel_PlateArmor</li>
+				<li>Apparel_FlakVest</li>
+				<li>Apparel_FlakJacket</li>				
+				<li>Apparel_PowerArmor</li>
+						
+				<li>Apparel_FlakPants</li>
+				
+				<li>Apparel_ShieldBelt</li>
+				<li>Apparel_SmokepopBelt</li>				
+			</thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <specialProducts>
+      <li>Smelted</li>
+    </specialProducts>
+    <fixedIngredientFilter>	
+			<thingDefs>
+				<li>MedTimes_Helm_Headwrap</li>	  
+				<li>MedTimes_Helm_Domed</li>	
+				<li>MedTimes_Helm_Sallet</li>			
+				<li>MedTimes_Helm_Nasal</li>
+				<li>MedTimes_Helm_FullPlated</li>
+				<li>MedTimes_Helm_Warbourne</li>					
+				<li>MedTimes_Helm_Bascinet</li>
+				<li>MedTimes_Helm_ConicalBascinet</li>
+				<li>MedTimes_Helm_RoyalMask</li>
+				<li>MedTimes_Helm_DeathMask</li>				
+	
+				<li>MedTimes_PlateJack</li>				
+				<li>MedTimes_Hauberk</li>				
+				<li>MedTimes_Brigandine</li>
+				<li>MedTimes_Warbourne</li>
+				<li>MedTimes_Berserker</li>				
+				<li>MedTimes_EncasedSteel</li>
+
+				<li>MedTimes_RoyalPlated</li>
+				<li>MedTimes_RoyalPlated_Death</li>				
+				<li>MedTimes_RoyalPlated_CapedBlue</li>		
+				<li>MedTimes_RoyalPlated_CapedGreen</li>
+				<li>MedTimes_RoyalPlated_CapedOrange</li>
+				
+				<li>MedTimes_Boots_Plated</li>
+				<li>MedTimes_Boots_Scaled</li>
+				<li>MedTimes_Boots_FullPlated</li>
+				<li>MedTimes_Boots_Warbourne</li>				
+				<li>MedTimes_Boots_EncasedSteel</li>
+				<li>MedTimes_Boots_RoyalPlated</li>
+				
+				<li>MedTimes_Gloves_Plated</li>
+				<li>MedTimes_Gloves_Scaled</li>
+				<li>MedTimes_Gauntlets_Plated</li>
+				<li>MedTimes_Gauntlets_Warbourne</li>				
+				<li>MedTimes_Bracer_Archer</li>		
+				<li>MedTimes_Gauntlets_EncasedSteel</li>
+				<li>MedTimes_Gauntlets_RoyalPlated</li>	
+
+				<li>Apparel_SimpleHelmet</li>
+				<li>Apparel_AdvancedHelmet</li>
+				<li>Apparel_PowerArmorHelmet</li>				
+
+				<li>Apparel_PlateArmor</li>
+				<li>Apparel_FlakVest</li>
+				<li>Apparel_FlakJacket</li>				
+				<li>Apparel_PowerArmor</li>
+				
+				<li>Apparel_FlakPants</li>				
+				
+				<li>Apparel_ShieldBelt</li>
+				<li>Apparel_SmokepopBelt</li>				
+			</thingDefs>
+      <specialFiltersToAllow>
+			<li>AllowNonDeadmansApparel</li>
+      </specialFiltersToAllow>				
+    </fixedIngredientFilter>
+  </RecipeDef> 
+  
+</Defs>

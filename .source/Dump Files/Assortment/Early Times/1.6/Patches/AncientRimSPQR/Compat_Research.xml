@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Ancient Rim - SPQRim</li>
+            <li>Ancient Rim - SPQRim (Continued)</li>
+        </mods>		
+        <match Class="PatchOperationSequence">
+            <operations>
+				<li Class="PatchOperationRemove">
+					<xpath>/Defs/ResearchProjectDef[defName="AR_Project_Mediterranean_Culture"]</xpath>
+				</li>	
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ResearchProjectDef[defName="AR_Project_Hypocaustum"]/prerequisites</xpath>
+					<value>			
+						<prerequisites>
+							<li>MedTimes_ContainedFire</li>
+						</prerequisites>
+					</value>
+				</li>	
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ResearchProjectDef[defName="AR_Project_Mechanical_Weapons"]/prerequisites</xpath>
+					<value>		
+						<prerequisites>
+						  <li>RecurveBow</li>
+						  <li>MedTimes_MedievalCrafting</li>
+						</prerequisites>	
+					</value>
+				</li>	
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ResearchProjectDef[defName="MedTimes_Crossbow"]/prerequisites</xpath>
+					<value>		
+						<prerequisites>
+							<li>Greatbow</li>
+							<li>AR_Project_Mechanical_Weapons</li>
+						</prerequisites>	
+					</value>
+				</li>	
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ResearchProjectDef[defName="MedTimes_Ballista"]/prerequisites</xpath>
+					<value>			
+						<prerequisites>
+							<li>AR_Project_Ballistae</li>
+							<li>MedTimes_Crossbow</li>
+						</prerequisites>
+					</value>
+				</li>		
+			</operations>
+		</match>
+    </Operation>
+	
+</Patch>				

@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- ========================= Trade Good Classes ==========================-->
+	<!-- Trade Goods Base Class -->
+	<ThingDef Name="EarlyTimes_TradeGoodBase" Abstract="True">
+		<thingClass>ThingWithComps</thingClass>
+		<category>Item</category>
+		<resourceReadoutPriority>Middle</resourceReadoutPriority>
+		<useHitPoints>true</useHitPoints>
+		<selectable>true</selectable>
+		<altitudeLayer>Item</altitudeLayer>
+		<stackLimit>100</stackLimit>
+		<alwaysHaulable>true</alwaysHaulable>
+		<drawGUIOverlay>true</drawGUIOverlay>
+		<rotatable>false</rotatable>
+		<pathCost>15</pathCost>
+		<intricate>true</intricate>
+		<tickerType>Never</tickerType>
+		<soundInteract>Standard_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<tradeability>All</tradeability>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>2</DeteriorationRate>
+			<SellPriceFactor>1.2</SellPriceFactor>
+			<Mass>0.25</Mass>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+		</comps>
+		<thingCategories>
+			<li>TradeGoods</li>
+		</thingCategories>
+	</ThingDef>
+	<!-- Easy Crafted Trade Goods Class -->
+	<ThingDef Name="MedTimes_Craft_TradeGood_T0" ParentName="EarlyTimes_TradeGoodBase" Abstract="True">
+		<recipeMaker>
+			<workSpeedStat>SmeltingSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smelt</effectWorking>
+			<soundWorking>Recipe_Smelt</soundWorking>
+			<unfinishedThingDef>UnfinishedSculpture</unfinishedThingDef>
+			<recipeUsers>
+				<li>MedTimes_CraftingStation</li>
+				<li>CraftingSpot</li>
+			</recipeUsers>
+		</recipeMaker>
+	</ThingDef>
+	<!-- ========================= Tools ==========================-->
+	<ThingDef ParentName="EarlyTimes_TradeGoodBase">
+		<defName>EarlyTimes_NeoliticTools</defName>
+		<description>A hammer or an axe or a small crude knife or needles or some other tools suited for crafting and most likely to break after extensive or combat use.</description>
+		<label>Primitive tools</label>
+		<graphicData>
+			<texPath>Things/Item/TradeGoods/Tools/NeoliticTools</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<stackLimit>40</stackLimit>
+		<statBases>
+			<Flammability>0.5</Flammability>
+		</statBases>
+		<tradeTags>
+			<li>NeoliticTimes_TradeGoods</li>
+		</tradeTags>
+	</ThingDef>
+	<ThingDef ParentName="EarlyTimes_TradeGoodBase">
+		<defName>MedTimes_CraftingTools</defName>
+		<label>Hand Tools</label>
+		<description>Tools used by a craftsman in the production of various goods.</description>
+		<graphicData>
+			<texPath>Things/Item/TradeGoods/Tools/CraftingTools</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<stackLimit>40</stackLimit>
+		<statBases>
+			<MarketValue>80</MarketValue>
+		</statBases>
+		<tradeTags>
+			<li>MedTimes_TradeGoods</li>
+		</tradeTags>
+	</ThingDef>
+	<ThingDef ParentName="EarlyTimes_TradeGoodBase">
+		<defName>MedTimes_CookingTools</defName>
+		<label>Cooking Tools</label>
+		<description>Tools used by a cook to process foods easier.</description>
+		<graphicData>
+			<texPath>Things/Item/TradeGoods/Tools/CookingTools</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<stackLimit>40</stackLimit>
+		<statBases>
+			<MarketValue>110</MarketValue>
+		</statBases>
+		<tradeTags>
+			<li>MedTimes_TradeGoods</li>
+		</tradeTags>
+	</ThingDef>
+	<ThingDef ParentName="EarlyTimes_TradeGoodBase">
+		<defName>MedTimes_MedicalTools</defName>
+		<label>Medical Tools</label>
+		<description>Tools used by a doctor to treat patients better or to cut fleshy organic material.</description>
+		<graphicData>
+			<texPath>Things/Item/TradeGoods/Tools/MedicineTools</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<stackLimit>40</stackLimit>
+		<statBases>
+			<MarketValue>200</MarketValue>
+		</statBases>
+		<tradeTags>
+			<li>Industrial_TradeGoods</li>
+		</tradeTags>
+	</ThingDef>
+	<!-- ========================= Tier 0 Trade Goods ==========================-->
+	<!--(Tradegood) Wood Pitch Glue-->
+	<ThingDef ParentName="EarlyTimes_TradeGoodBase">
+		<defName>MedTimes_PitchGlue</defName>
+		<label>Pitch Glue</label>
+		<description>Although generally made from pine tree sap, Wood Tar can be extracted from just about any wood using a process known as "Dry Distilling" and than used with a combination of charcoal to create an extremely flammable and sticky substance that is generally referred to as pitch glue. Same goes for animal fat - when treated properly and mixed with charcoal it can be made into pitch glue. Adhensive has vast usages.</description>
+		<graphicData>
+			<texPath>Things/Item/TradeGoods/WoodPitch/MedTimes_WoodPitchGlue</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(0.6,0.6)</drawSize>
+		</graphicData>
+		<statBases>
+			<MarketValue>15</MarketValue>
+			<WorkToMake>1500</WorkToMake>
+			<Flammability>5.0</Flammability>
+			<Mass>0.12</Mass>
+		</statBases>
+		<tradeTags>
+			<li>MedTimes_TradeGoods</li>
+		</tradeTags>
+	</ThingDef>
+	<!-- ============= End of Document  =================-->
+</Defs>

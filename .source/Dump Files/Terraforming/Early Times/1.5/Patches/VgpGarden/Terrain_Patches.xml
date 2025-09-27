@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>VGP Garden Tools</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/TerrainDef[defName="VG_PlaceSoil"]</xpath>		
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/TerrainDef[defName="VG_ReclaimSoil"]</xpath>		
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/TerrainDef[defName="VG_ReclaimMud"]</xpath>		
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/TerrainDef[defName="VG_ReclaimWater"]</xpath>		
+			</li>
+			
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/TerrainDef[defName="VG_PlowSoil"]/researchPrerequisites</xpath>	
+				<value>
+					<researchPrerequisites>
+					  <li>MedTimes_Fertilization</li>
+					</researchPrerequisites>
+				</value>	
+			</li>
+		
+			
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/TerrainDef[defName="VG_GardenSoil"]/researchPrerequisites</xpath>	
+				<value>
+					<researchPrerequisites>
+					  <li>MedTimes_Fertilization</li>
+					</researchPrerequisites>
+				</value>	
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/TerrainDef[defName="VG_GardenSoil"]/statBases/WorkToBuild</xpath>	
+				<value>
+					<WorkToBuild>10050</WorkToBuild>
+				</value>	
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/TerrainDef[defName="VG_GardenSoil"]/costList</xpath>	
+				<value>
+					<costList>
+					  <RawFertilizer>40</RawFertilizer>
+					</costList>
+				</value>	
+			</li>
+			
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/TerrainDef[defName="VG_PlowSoil"]/researchPrerequisites</xpath>	
+				<value>
+					<researchPrerequisites>
+					  <li>MedTimes_Fertilization</li>
+					</researchPrerequisites>
+				</value>	
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/TerrainDef[defName="VG_PlowSoil"]/statBases/WorkToBuild</xpath>	
+				<value>
+					<WorkToBuild>17050</WorkToBuild>
+				</value>	
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/TerrainDef[defName="VG_PlowSoil"]/terrainAffordanceNeeded</xpath>	
+				<value>
+					<terrainAffordanceNeeded>FertileSoil</terrainAffordanceNeeded>
+				</value>	
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/TerrainDef[defName="VG_PlowSoil"]/costList</xpath>	
+				<value>
+					<costList>
+					  <RawFertilizer>100</RawFertilizer>
+					</costList>
+				</value>	
+			</li>
+			
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/TerraformTech.TerrainTerraformRuleSet[defName="Terraform_SoilFertilize"]/rules/li[patchTag="RischSoilFromNormalSoil"]/costList</xpath>
+				<value>
+					<costList>
+					  <RawFertilizer>400</RawFertilizer>
+					</costList>
+				</value>
+			</li>
+			
+		</operations>
+	</match>
+  </Operation>
+    
+</Patch>

@@ -1,0 +1,410 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo276Enfield</defName>
+		<label>.276 Enfield</label>
+		<parent>AmmoRifles</parent>
+    <iconPath>UI/Icons/ThingCategories/CaliberRifle</iconPath>
+	</ThingCategoryDef>
+	
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef MayRequire="cgf1.gunsgalore.supportersuggestions">
+		<defName>AmmoSet_276Enfield</defName>
+		<label>.276 Enfield</label>
+		<ammoTypes>
+			<Ammo_276Enfield_FMJ>Bullet_276Enfield_FMJ</Ammo_276Enfield_FMJ>
+			<Ammo_276Enfield_AP>Bullet_276Enfield_AP</Ammo_276Enfield_AP>
+			<Ammo_276Enfield_HP>Bullet_276Enfield_HP</Ammo_276Enfield_HP>
+			<Ammo_276Enfield_Incendiary>Bullet_276Enfield_Incendiary</Ammo_276Enfield_Incendiary>
+			<Ammo_276Enfield_HE>Bullet_276Enfield_HE</Ammo_276Enfield_HE>
+			<Ammo_276Enfield_Sabot>Bullet_276Enfield_Sabot</Ammo_276Enfield_Sabot>				
+		</ammoTypes>
+		<similarTo>AmmoSet_Rifle</similarTo>
+	</CombatExtended.AmmoSetDef>
+	
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="276EnfieldBase" ParentName="SmallAmmoBase" Abstract="True" MayRequire="cgf1.gunsgalore.supportersuggestions">
+		<description>A versatile centerfire rifle cartridge optimized for hunting medium-sized game.</description>
+		<statBases>
+		<Mass>0.026</Mass>
+		<Bulk>0.04</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo276Enfield</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="276EnfieldBase" MayRequire="cgf1.gunsgalore.supportersuggestions">
+		<defName>Ammo_276Enfield_FMJ</defName>
+		<label>.276 Enfield cartridge (FMJ)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Rifle/FMJ</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.12</MarketValue>
+		</statBases>
+		<ammoClass>FullMetalJacket</ammoClass>
+		<cookOffProjectile>Bullet_276Enfield_FMJ</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="276EnfieldBase" MayRequire="cgf1.gunsgalore.supportersuggestions">
+		<defName>Ammo_276Enfield_AP</defName>
+		<label>.276 Enfield cartridge (AP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Rifle/AP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.12</MarketValue>
+		</statBases>
+		<ammoClass>ArmorPiercing</ammoClass>
+		<cookOffProjectile>Bullet_276Enfield_AP</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="276EnfieldBase" MayRequire="cgf1.gunsgalore.supportersuggestions">
+		<defName>Ammo_276Enfield_HP</defName>
+		<label>.276 Enfield cartridge (HP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Rifle/HP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.12</MarketValue>
+		</statBases>
+		<ammoClass>HollowPoint</ammoClass>
+		<cookOffProjectile>Bullet_276Enfield_HP</cookOffProjectile>
+	</ThingDef>
+	
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="276EnfieldBase" MayRequire="cgf1.gunsgalore.supportersuggestions">
+    <defName>Ammo_276Enfield_Incendiary</defName>
+    <label>.276 Enfield cartridge (AP-I)</label>
+    <graphicData>
+      <texPath>Things/Ammo/Rifle/Incendiary</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>0.15</MarketValue>
+    </statBases>
+    <ammoClass>IncendiaryAP</ammoClass>
+    <cookOffProjectile>Bullet_276Enfield_Incendiary</cookOffProjectile>
+  </ThingDef>
+
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="276EnfieldBase" MayRequire="cgf1.gunsgalore.supportersuggestions">
+    <defName>Ammo_276Enfield_HE</defName>
+    <label>.276 Enfield cartridge (AP-HE)</label>
+    <graphicData>
+      <texPath>Things/Ammo/Rifle/HE</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>0.26</MarketValue>
+    </statBases>
+    <ammoClass>ExplosiveAP</ammoClass>
+    <cookOffProjectile>Bullet_276Enfield_HE</cookOffProjectile>
+  </ThingDef>
+ 
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="276EnfieldBase" MayRequire="cgf1.gunsgalore.supportersuggestions">
+    <defName>Ammo_276Enfield_Sabot</defName>
+    <label>.276 Enfield cartridge (Sabot)</label>
+    <graphicData>
+      <texPath>Things/Ammo/Rifle/Sabot</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>0.14</MarketValue>
+	  <Mass>0.022</Mass>
+    </statBases>
+    <ammoClass>Sabot</ammoClass>
+    <cookOffProjectile>Bullet_276Enfield_Sabot</cookOffProjectile>
+  </ThingDef>
+  
+	<!-- ================== Projectiles ================== -->
+	
+	<ThingDef Name="Base276EnfieldBullet" ParentName="BaseBulletCE" Abstract="true" MayRequire="cgf1.gunsgalore.supportersuggestions">
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>170</speed>
+			<dropsCasings>true</dropsCasings>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base276EnfieldBullet" MayRequire="cgf1.gunsgalore.supportersuggestions">
+		<defName>Bullet_276Enfield_FMJ</defName>
+		<label>.276 Enfield bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>20</damageAmountBase>
+			<armorPenetrationSharp>6.5</armorPenetrationSharp>
+			<armorPenetrationBlunt>79.28</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base276EnfieldBullet" MayRequire="cgf1.gunsgalore.supportersuggestions">
+		<defName>Bullet_276Enfield_AP</defName>
+		<label>.276 Enfield bullet (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>13</damageAmountBase>
+			<armorPenetrationSharp>13</armorPenetrationSharp>
+			<armorPenetrationBlunt>79.28</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base276EnfieldBullet" MayRequire="cgf1.gunsgalore.supportersuggestions">
+		<defName>Bullet_276Enfield_HP</defName>
+		<label>.276 Enfield bullet (HP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>26</damageAmountBase>
+			<armorPenetrationSharp>4</armorPenetrationSharp>
+			<armorPenetrationBlunt>79.28</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	  <ThingDef ParentName="Base276EnfieldBullet" MayRequire="cgf1.gunsgalore.supportersuggestions">
+		<defName>Bullet_276Enfield_Incendiary</defName>
+		<label>.276 Enfield bullet (AP-I)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+		  <damageAmountBase>13</damageAmountBase>
+		  <armorPenetrationSharp>13</armorPenetrationSharp>
+		  <armorPenetrationBlunt>79.28</armorPenetrationBlunt>
+		  <secondaryDamage>
+				<li>
+			  	<def>Flame_Secondary</def>
+			  	<amount>8</amount>
+				</li>
+		  </secondaryDamage>
+		</projectile>
+	  </ThingDef>
+	  
+	  <ThingDef ParentName="Base276EnfieldBullet" MayRequire="cgf1.gunsgalore.supportersuggestions">
+		<defName>Bullet_276Enfield_HE</defName>
+		<label>.276 Enfield bullet (AP-HE)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+		  <damageAmountBase>20</damageAmountBase>
+		  <armorPenetrationSharp>6.5</armorPenetrationSharp>
+		  <armorPenetrationBlunt>79.28</armorPenetrationBlunt>
+		  <secondaryDamage>
+				<li>
+			  	<def>Bomb_Secondary</def>
+			  	<amount>12</amount>
+				</li>
+		  </secondaryDamage>
+		</projectile>
+	  </ThingDef>
+
+	  <ThingDef ParentName="Base276EnfieldBullet" MayRequire="cgf1.gunsgalore.supportersuggestions">
+		<defName>Bullet_276Enfield_Sabot</defName>
+		<label>.276 Enfield bullet (Sabot)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+		  <damageAmountBase>11</damageAmountBase>
+		  <armorPenetrationSharp>23</armorPenetrationSharp>
+		  <armorPenetrationBlunt>103.56</armorPenetrationBlunt>
+		  <speed>255</speed>
+		</projectile>
+	  </ThingDef>
+	  
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.supportersuggestions">
+		<defName>MakeAmmo_276Enfield_FMJ</defName>
+		<label>make .276 Enfield (FMJ) cartridge x500</label>
+		<description>Craft 500 .276 Enfield (FMJ) cartridges.</description>
+		<jobString>Making .276 Enfield (FMJ) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>28</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_276Enfield_FMJ>500</Ammo_276Enfield_FMJ>
+		</products>
+    	<workAmount>2800</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.supportersuggestions">
+		<defName>MakeAmmo_276Enfield_AP</defName>
+		<label>make .276 Enfield (AP) cartridge x500</label>
+		<description>Craft 500 .276 Enfield (AP) cartridges.</description>
+		<jobString>Making .276 Enfield (AP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>28</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_276Enfield_AP>500</Ammo_276Enfield_AP>
+		</products>
+	<workAmount>3360</workAmount>		
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.supportersuggestions">
+		<defName>MakeAmmo_276Enfield_HP</defName>
+		<label>make .276 Enfield (HP) cartridge x500</label>
+		<description>Craft 500 .276 Enfield (HP) cartridges.</description>
+		<jobString>Making .276 Enfield (HP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>28</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_276Enfield_HP>500</Ammo_276Enfield_HP>
+		</products>
+	<workAmount>2800</workAmount>		
+	</RecipeDef>
+
+  <RecipeDef ParentName="AdvancedAmmoRecipeBase" MayRequire="cgf1.gunsgalore.supportersuggestions">
+    <defName>MakeAmmo_276Enfield_Incendiary</defName>
+    <label>make .276 Enfield (AP-I) cartridge x500</label>
+    <description>Craft 500 .276 Enfield (AP-I) cartridges.</description>
+    <jobString>Making .276 Enfield (AP-I) cartridges.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>28</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Prometheum</li>
+          </thingDefs>
+        </filter>
+        <count>3</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+        <li>Prometheum</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_276Enfield_Incendiary>500</Ammo_276Enfield_Incendiary>
+    </products>
+    <workAmount>4000</workAmount>
+  </RecipeDef>
+  
+  <RecipeDef ParentName="AdvancedAmmoRecipeBase" MayRequire="cgf1.gunsgalore.supportersuggestions">
+    <defName>MakeAmmo_276Enfield_HE</defName>
+    <label>make .276 Enfield (AP-HE) cartridge x500</label>
+    <description>Craft 500 .276 Enfield (AP-HE) cartridges.</description>
+    <jobString>Making .276 Enfield (AP-HE) cartridges.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>28</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>FSX</li>
+          </thingDefs>
+        </filter>
+        <count>7</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+        <li>FSX</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_276Enfield_HE>500</Ammo_276Enfield_HE>
+    </products>
+    <workAmount>5600</workAmount>
+  </RecipeDef>
+  
+  <RecipeDef ParentName="AdvancedAmmoRecipeBase" MayRequire="cgf1.gunsgalore.supportersuggestions">
+    <defName>MakeAmmo_276Enfield_Sabot</defName>
+    <label>make .276 Enfield (Sabot) cartridge x500</label>
+    <description>Craft 500 .276 Enfield (Sabot) cartridges.</description>
+    <jobString>Making .276 Enfield (Sabot) cartridges.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>16</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Uranium</li>
+          </thingDefs>
+        </filter>
+        <count>4</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </filter>
+        <count>4</count>
+      </li>		  
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+        <li>Uranium</li>
+        <li>Chemfuel</li>		
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_276Enfield_Sabot>500</Ammo_276Enfield_Sabot>
+    </products>
+    <workAmount>4000</workAmount>
+  </RecipeDef>
+	
+</Defs>

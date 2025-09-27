@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>Vanilla Apparel Expanded</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName = "VAE_Apparel_PeltCoat" 
+									or defName = "VAE_Apparel_TribalKilt"
+									or defName = "VAE_Headgear_Hood"
+									or defName = "VAE_Apparel_TribalPoncho"]/recipeMaker</xpath>		
+				<value>		
+					<recipeMaker>
+						<researchPrerequisite>TS_PrimitiveClothing</researchPrerequisite>
+						<recipeUsers>
+							<li>CraftingSpot</li>
+							<li>MedTimes_CraftingStation</li>
+							<li>MedTimes_TailoringStation</li>	
+							<li>HandTailoringBench</li>
+						</recipeUsers>
+					</recipeMaker>
+				</value>
+			</li>
+					
+			<li Class="PatchOperationAttributeSet">
+				<xpath>/Defs/ThingDef[defName="VAE_Handwear_Gloves"]</xpath>
+				<attribute>ParentName</attribute>
+				<value>MedTimes_Tail_Handgear_Tier1</value>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/ThingDef[defName="VAE_Handwear_Gloves"]/recipeMaker</xpath>	
+			</li>
+			
+			<li Class="PatchOperationAttributeSet">
+				<xpath>/Defs/ThingDef[defName="VAE_Footwear_Boots" 
+									or defName = "VAE_Footwear_Shoes"]</xpath>
+				<attribute>ParentName</attribute>
+				<value>MedTimes_Footgear_Tier1</value>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/ThingDef[defName="VAE_Footwear_Boots" 
+									or defName = "VAE_Footwear_Shoes"]/recipeMaker</xpath>	
+			</li>
+	
+			<li Class="PatchOperationAttributeSet">
+				<xpath>/Defs/ThingDef[defName="VAE_Headgear_TrapperHat" 
+									or defName = "VAE_Headgear_SummerHat"]</xpath>
+				<attribute>ParentName</attribute>
+				<value>MedTimes_Tail_Headgear_Colors</value>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/ThingDef[defName="VAE_Headgear_TrapperHat" 
+									or defName = "VAE_Headgear_SummerHat"]/recipeMaker/researchPrerequisite</xpath>	
+			</li>
+	
+			<li Class="PatchOperationAttributeSet">
+				<xpath>/Defs/ThingDef[defName="VAE_Apparel_Tunic" 
+									or defName = "VAE_Apparel_Blouse"
+									or defName = "VAE_Apparel_Apron"
+									or defName = "VAE_Apparel_Cape"]</xpath>
+				<attribute>ParentName</attribute>
+				<value>MedTimes_Tail_Apparel_Tier1</value>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/ThingDef[defName="VAE_Apparel_Tunic" 
+									or defName = "VAE_Apparel_Blouse"
+									or defName = "VAE_Apparel_Apron"
+									or defName = "VAE_Apparel_Cape"]/recipeMaker/researchPrerequisite</xpath>	
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/ThingDef[defName="VAE_Apparel_Tunic" 
+									or defName = "VAE_Apparel_Blouse"
+									or defName = "VAE_Apparel_Apron"
+									or defName = "VAE_Apparel_Cape"]/recipeMaker/recipeUsers</xpath>	
+			</li>
+			
+			
+			
+			
+			<!--li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName = "VAE_Handwear_Gloves"]/recipeMaker</xpath>		
+				<value>		
+					<recipeMaker>
+						<researchPrerequisite>MedTimes_MedievalTailoring</researchPrerequisite>
+						<recipeUsers>
+							<li>MedTimes_CraftingStation</li>
+							<li>MedTimes_TailoringStation</li>
+							<li>HandTailoringBench</li>
+							<li>ElectricTailoringBench</li>
+						</recipeUsers>
+					</recipeMaker>
+				</value>
+			</li-->
+			
+		</operations>
+	</match>
+  </Operation>
+  
+</Patch>
+
+
+
+

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="XmlExtensions.FindMod">
+    <mods>
+      <li>Medieval Overhaul</li>
+      <li>[SYR] Trait Value</li>
+    </mods>
+    <logic>and</logic>
+    <caseTrue>
+
+      <li Class="XmlExtensions.OptionalPatch">
+        <modId>zenlor.MOTweaks</modId>
+        <key>mot-integration-straitvalue</key>
+        <defaultValue>True</defaultValue>
+        <caseTrue>
+
+          <li Class="PatchOperationAddModExtension">
+            <xpath>*/TraitDef[defName = "DankPyon_Fighter"]</xpath>
+            <value>
+              <li Class="SyrTraitValue.TraitValueExtension">
+                <traitValues>
+                  <li>+10</li>
+                </traitValues>
+              </li>
+            </value>
+          </li>
+
+          <li Class="PatchOperationAddModExtension">
+            <xpath>*/TraitDef[defName = "DankPyon_Veteran"]</xpath>
+            <value>
+              <li Class="SyrTraitValue.TraitValueExtension">
+                <traitValues>
+                  <li>+20</li>
+                </traitValues>
+              </li>
+            </value>
+          </li>
+
+        </caseTrue>
+      </li>
+    </caseTrue>
+  </Operation>
+</Patch>

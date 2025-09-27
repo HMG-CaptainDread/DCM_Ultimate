@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="ResourceBase" MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>VanillaBooksExpandedExpanded_IdeoligionBook</defName>
+    <label>ideoligion book</label>
+    <description>A book with a hard cover. It serves as a joy source and can be read to learn about an ideoligion, but can also be quite persuasive.</description>
+    <graphicData>
+      <texPath>Things/Item/VanillaBooksExpandedExpanded_BookIdeoligion</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>1</drawSize>
+      <shaderType>CutoutComplex</shaderType>
+    </graphicData>
+    <uiIconPath>Things/Item/VBEE_BookIdeoligion_MenuIcon</uiIconPath>
+    <costStuffCount>20</costStuffCount>
+    <stuffCategories>
+      <li>Leathery</li>
+    </stuffCategories>
+    <thingClass>VanillaBooksExpandedExpanded.IdeoligionBook</thingClass>
+    <soundInteract>Standard_Drop</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop>
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <tradeNeverStack>true</tradeNeverStack>
+    <statBases>
+      <MaxHitPoints>30</MaxHitPoints>
+      <WorkToMake>334000</WorkToMake>
+      <Mass>0.5</Mass>
+      <Beauty>3</Beauty>
+      <Flammability>1.0</Flammability>
+    </statBases>
+    <stackLimit>1</stackLimit>
+    <thingCategories>
+      <li>VBE_Books</li>
+    </thingCategories>
+    <inspectorTabs>
+      <li>VanillaBooksExpanded.ITab_Book</li>
+    </inspectorTabs>
+    <tradeTags>
+      <li>Book</li>
+    </tradeTags>
+    <costList>
+      <Cloth>75</Cloth>
+    </costList>
+    <comps>
+      <li Class="VanillaBooksExpanded.CompProperties_Book">
+        <nameMaker>VanillaBooksExpandedExpanded_ArtDescription_BookIdeoligionName</nameMaker>
+        <descriptionMaker>VanillaBooksExpandedExpanded_ArtDescription_BookIdeoligionDesc</descriptionMaker>
+        <readingEffecter>VanillaBooksExpandedExpanded_ReadingIdeoligionBookEffecter</readingEffecter>
+        <readingTicks>3500</readingTicks>
+        <joyAmountPerTick>0.0001</joyAmountPerTick>
+      </li>
+      <li>
+        <compClass>CompQuality</compClass>
+      </li>
+      <li>
+        <compClass>VanillaBooksExpandedExpanded.CompCopiedBook</compClass>
+      </li>
+    </comps>
+    <recipeMaker>
+      <workSpeedStat>ResearchSpeed</workSpeedStat>
+      <workSkill>Social</workSkill>
+      <unfinishedThingDef>VBE_UnfinishedBook</unfinishedThingDef>
+      <effectWorking>Sculpt</effectWorking>
+      <soundWorking>Recipe_Write</soundWorking>
+      <recipeUsers>
+        <li>VBE_WritersTable</li>
+        <li>VBE_TypewritersTable</li>
+      </recipeUsers>
+    </recipeMaker>
+  </ThingDef>
+  <JobDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>VanillaBooksExpandedExpanded_ReadIdeoBook</defName>
+    <driverClass>VanillaBooksExpandedExpanded.JobDriver_ReadIdeoBook</driverClass>
+    <reportString>reading.</reportString>
+    <joyDuration>4000</joyDuration>
+    <joyKind>VBE_Reading</joyKind>
+  </JobDef>
+  <JoyGiverDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>VanillaBooksExpandedExpanded_ReadIdeoBook</defName>
+    <giverClass>VanillaBooksExpandedExpanded.JoyGiver_ReadIdeoBook</giverClass>
+    <baseChance>1</baseChance>
+    <jobDef>VanillaBooksExpandedExpanded_ReadIdeoBook</jobDef>
+    <joyKind>VBE_Reading</joyKind>
+    <requiredCapacities>
+      <li>Sight</li>
+    </requiredCapacities>
+    <thingDefs>
+      <li>VanillaBooksExpandedExpanded_IdeoligionBook</li>
+    </thingDefs>
+  </JoyGiverDef>
+  <ThingDef ParentName="MoteBase" MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>VanillaBooksExpandedExpanded_ReadingIdeoligionBook</defName>
+    <thingClass>VanillaBooksExpanded.MoteDualAttachedForBook</thingClass>
+    <altitudeLayer>MetaOverlays</altitudeLayer>
+    <mote>
+      <solidTime>600</solidTime>
+      <rotateTowardsTarget>true</rotateTowardsTarget>
+    </mote>
+    <graphicData>
+      <texPath>Things/Motes/VanillaBooksExpandedExpanded_BookIdeoligion_Reading</texPath>
+      <drawSize>0.8</drawSize>
+    </graphicData>
+  </ThingDef>
+  <EffecterDef MayRequire="Ludeon.RimWorld.Ideology">
+    <defName>VanillaBooksExpandedExpanded_ReadingIdeoligionBookEffecter</defName>
+    <children>
+      <li>
+        <subEffecterClass>VanillaBooksExpanded.SubEffecter_BookSymbol</subEffecterClass>
+        <moteDef>VanillaBooksExpandedExpanded_ReadingIdeoligionBook</moteDef>
+      </li>
+    </children>
+  </EffecterDef>
+</Defs>

@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo10x28mmCaseless</defName>
+		<label>10x28mm Caseless</label>
+		<parent>AmmoRifles</parent>
+		<iconPath>Things/Ammo/PulseRifle/FMJ/FMJ_b</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_10x28mmCaseless</defName>
+		<label>10x28mm Caseless</label>
+		<ammoTypes>
+			<Ammo_10x28mmCaseless_FMJ>Bullet_10x28mmCaseless_FMJ</Ammo_10x28mmCaseless_FMJ>
+			<Ammo_10x28mmCaseless_Incendiary>Bullet_10x28mmCaseless_Incendiary</Ammo_10x28mmCaseless_Incendiary>
+			<Ammo_10x28mmCaseless_HE>Bullet_10x28mmCaseless_HE</Ammo_10x28mmCaseless_HE>
+		</ammoTypes>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="10x28mmCaselessBase" ParentName="SmallAmmoBase" Abstract="True">
+		<description>Small, high-velocity caseless rifle bullet used in the USCM M41A Pulse Rifle.</description>
+		<statBases>
+			<Mass>0.013</Mass>
+			<Bulk>0.02</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo10x28mmCaseless</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="10x28mmCaselessBase">
+		<defName>Ammo_10x28mmCaseless_FMJ</defName>
+		<label>10x28mm Caseless cartridge (FMJ)</label>
+		<graphicData>
+			<texPath>Things/Ammo/PulseRifle/FMJ</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.06</MarketValue>
+		</statBases>
+		<ammoClass>FullMetalJacket</ammoClass>
+		<cookOffProjectile>Bullet_10x28mmCaseless_FMJ</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="10x28mmCaselessBase">
+		<defName>Ammo_10x28mmCaseless_Incendiary</defName>
+		<label>10x28mm Caseless cartridge (AP-I)</label>
+		<graphicData>
+			<texPath>Things/Ammo/PulseRifle/Incendiary</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.14</MarketValue>
+		</statBases>
+		<ammoClass>IncendiaryAP</ammoClass>
+		<cookOffProjectile>Bullet_10x28mmCaseless_Incendiary</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="10x28mmCaselessBase">
+		<defName>Ammo_10x28mmCaseless_HE</defName>
+		<label>10x28mm Caseless cartridge (HE)</label>
+		<graphicData>
+			<texPath>Things/Ammo/PulseRifle/HE</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.07</MarketValue>
+		</statBases>
+		<ammoClass>ExplosiveAP</ammoClass>
+		<cookOffProjectile>Bullet_10x28mmCaseless_HE</cookOffProjectile>
+	</ThingDef>
+
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="Base10x28mmCaselessBullet" ParentName="BaseBulletCE" Abstract="true">
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>185</speed>
+			<dropsCasings>false</dropsCasings>
+		</projectile>		
+	</ThingDef>
+
+	<ThingDef ParentName="Base10x28mmCaselessBullet">
+		<defName>Bullet_10x28mmCaseless_FMJ</defName>
+		<label>10x28mm caseless bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>16</damageAmountBase>
+			<armorPenetrationSharp>12</armorPenetrationSharp>
+			<armorPenetrationBlunt>34.18</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base10x28mmCaselessBullet">
+		<defName>Bullet_10x28mmCaseless_Incendiary</defName>
+		<label>10x28mm caseless bullet (AP-I)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>11</damageAmountBase>
+			<armorPenetrationSharp>17</armorPenetrationSharp>
+			<armorPenetrationBlunt>34.18</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Flame_Secondary</def>
+					<amount>5</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base10x28mmCaselessBullet">
+		<defName>Bullet_10x28mmCaseless_HE</defName>
+		<label>10x28mm caseless bullet (HE)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>16</damageAmountBase>
+			<armorPenetrationSharp>12</armorPenetrationSharp>
+			<armorPenetrationBlunt>34.18</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>8</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="ChargeAmmoRecipeBase">
+		<defName>MakeAmmo_10x28mmCaseless_FMJ</defName>
+		<label>make 10x28mm Caseless (FMJ) cartridge x500</label>
+		<description>Craft 500 10x28mm Caseless (FMJ) cartridges.</description>
+		<jobString>Making 10x28mm Caseless (FMJ) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>14</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_10x28mmCaseless_FMJ>500</Ammo_10x28mmCaseless_FMJ>
+		</products>
+		<workAmount>1400</workAmount>
+		<researchPrerequisite>HRK_Research_GunNut_Caseless</researchPrerequisite>
+	</RecipeDef>
+
+	<RecipeDef ParentName="ChargeAmmoRecipeBase">
+		<defName>MakeAmmo_10x28mmCaseless_Incendiary</defName>
+		<label>make 10x28mm Caseless (AP-I) cartridge x500</label>
+		<description>Craft 500 10x28mm Caseless (AP-I) cartridges.</description>
+		<jobString>Making 10x28mm Caseless (AP-I) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>14</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Prometheum</li>
+					</thingDefs>
+				</filter>
+				<count>2</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>Prometheum</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_10x28mmCaseless_Incendiary>500</Ammo_10x28mmCaseless_Incendiary>
+		</products>
+		<workAmount>2200</workAmount>
+		<researchPrerequisite>HRK_Research_GunNut_Caseless</researchPrerequisite>
+	</RecipeDef>
+
+	<RecipeDef ParentName="ChargeAmmoRecipeBase">
+		<defName>MakeAmmo_10x28mmCaseless_HE</defName>
+		<label>make 10x28mm Caseless (HE) cartridge x500</label>
+		<description>Craft 500 10x28mm Caseless (HE) cartridges.</description>
+		<jobString>Making 10x28mm Caseless (HE) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>14</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>FSX</li>
+					</thingDefs>
+				</filter>
+				<count>4</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>FSX</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_10x28mmCaseless_HE>500</Ammo_10x28mmCaseless_HE>
+		</products>
+		<workAmount>3000</workAmount>
+		<researchPrerequisite>HRK_Research_GunNut_Caseless</researchPrerequisite>
+	</RecipeDef>
+
+</Defs>

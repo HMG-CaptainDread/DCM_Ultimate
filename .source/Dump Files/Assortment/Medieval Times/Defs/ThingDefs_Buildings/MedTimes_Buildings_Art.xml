@@ -1,0 +1,433 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!-- Start of ThingDefs -->
+<!--  =========== Base Classes ============ --> 
+<!-- Artwork Base Class -->
+  <ThingDef Name="MedTimes_ArtworkBase" Abstract="True">
+    <category>Building</category>
+    <thingClass>Building_Art</thingClass>
+
+    <graphicData>	
+	  <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+        <edgeTop>Damage/Edge</edgeTop>
+        <edgeBot>Damage/Edge</edgeBot>
+        <edgeLeft>Damage/Edge</edgeLeft>
+        <edgeRight>Damage/Edge</edgeRight>
+      </damageData>
+    </graphicData>	
+		
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <repairEffect>Repair</repairEffect>
+    <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+    <filthLeaving>Filth_RubbleBuilding</filthLeaving>
+    <castEdgeShadows>true</castEdgeShadows>
+    <useHitPoints>true</useHitPoints>
+	<altitudeLayer>Building</altitudeLayer>
+    <selectable>true</selectable>	
+	<passability>PassThroughOnly</passability>
+    <pathCost>70</pathCost>	
+    <fillPercent>0.5</fillPercent>
+
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Artistic</workSkill>
+      <unfinishedThingDef>UnfinishedSculpture</unfinishedThingDef>
+      <effectWorking>Sculpt</effectWorking>
+      <soundWorking>Recipe_Sculpt</soundWorking>
+      <recipeUsers>
+        <li>MedTimes_ArtisanStation</li>
+      </recipeUsers>
+    </recipeMaker>
+    <tradeTags><li>MedTimes_Furniture</li><li>Exotic</li></tradeTags>		
+  </ThingDef>
+
+ <!-- Artwork Sculpture Class -->   
+  <ThingDef Name="MedTimes_ArtworkQuality" ParentName="MedTimes_ArtworkBase" Abstract="True">
+    <rotatable>false</rotatable>  
+    <comps>
+      <li><compClass>CompQuality</compClass></li>
+    </comps>
+	
+    <thingCategories><li>BuildingsArt</li></thingCategories>	
+    <minifiedDef>MinifiedThing</minifiedDef>		
+  </ThingDef> 
+  
+ <!-- Artwork Sculpture Class -->   
+  <ThingDef Name="MedTimes_ArtworkAnyQuality" ParentName="MedTimes_ArtworkQuality" Abstract="True">
+	<rotatable>false</rotatable> 
+    <comps>
+      <li Class="CompProperties_Art">
+        <nameMaker>NamerArtSculpture</nameMaker>
+        <descriptionMaker>ArtDescription_Sculpture</descriptionMaker>
+      </li>
+    </comps>
+    <inspectorTabs><li>ITab_Art</li></inspectorTabs>	
+  </ThingDef> 
+  
+ <!-- Artwork Furniture Class -->  
+<ThingDef Name="MedTimes_ArtworkHiQuality" ParentName="MedTimes_ArtworkQuality" Abstract="True">
+    <rotatable>false</rotatable>
+    <comps>
+      <li Class="CompProperties_Art">
+        <nameMaker>NamerArtFurniture</nameMaker>
+        <descriptionMaker>ArtDescription_Furniture</descriptionMaker>
+        <minQualityForArtistic>Excellent</minQualityForArtistic>
+      </li>
+    </comps>
+    <inspectorTabs><li>ITab_Art</li></inspectorTabs>	
+  </ThingDef>
+
+  
+<!--  =========== Actual Artwork Buildings ============ -->
+<!-- ========= God Shrines ========= -->
+<!-- Random Number God Shrine -->  
+  <ThingDef ParentName="MedTimes_ArtworkQuality">
+    <defName>MedTimes_Shrine_RandomNumberGod</defName>
+    <label>Shrine to the Random Number God</label>
+    <description>"Praise be to his glory, for the Random Number God can giveth, and the Random Number God can taketh away. Oh God of the random number generator, your sovereign hand will be my guide, where chance may fail, when fear surrounds me, you alone may provide light in the darkness."</description>
+
+    <graphicData>
+      <texPath>Things/Building/Art/PantheonOfGods/MedTimes_RandomNumberGod</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3,4)</drawSize>
+      <drawRotated>false</drawRotated>
+      <allowFlip>false</allowFlip>	  
+    </graphicData>
+	
+    <uiIconPath>Things/Building/Art/PantheonOfGods/MedTimes_RandomNumberGod_Icon</uiIconPath>	
+    <size>(3,2)</size>	
+
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <Beauty>140</Beauty>
+      <WorkToMake>18000</WorkToMake>
+      <Flammability>0.5</Flammability>
+	  <JoyGainFactor>1</JoyGainFactor>
+	  <Mass>250</Mass>	  
+    </statBases>	
+	
+    <costList>
+      <WoodLog>120</WoodLog>
+	  <Steel>60</Steel>
+    </costList>
+
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <hasInteractionCell>True</hasInteractionCell>	
+    <interactionCellOffset>(0,0,-3)</interactionCellOffset>		
+  </ThingDef>
+
+  
+<!-- Shrine to the Creator -->   
+  <ThingDef ParentName="MedTimes_ArtworkQuality">
+    <defName>MedTimes_Shrine_Creator</defName>
+    <label>Shrine of the Creator</label>
+    <description>Some say our universe was created by an all powerful being, that the threads of fate itself are woven, the laws of our world decided and the truth's of our being unmasked by a single all powerful entity. In the pantheon of gods we refer to this individual as Tynan, the Creator. We have come to understand that this one being can change our world irrevocably based on a whim. As such it is only right to give him homage so that we may avoid his wrath.</description>
+
+    <graphicData>
+      <texPath>Things/Building/Art/PantheonOfGods/MedTimes_Tynan</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3,4)</drawSize>
+      <drawRotated>false</drawRotated>
+      <allowFlip>false</allowFlip>	  
+    </graphicData>
+    <uiIconPath>Things/Building/Art/PantheonOfGods/MedTimes_Tynan_Icon</uiIconPath>	
+    <size>(3,2)</size>	
+    <stuffCategories><li>Metallic</li><li>Stony</li><li>Woody</li></stuffCategories>
+    <costStuffCount>160</costStuffCount>		
+    <statBases>
+		<MaxHitPoints>250</MaxHitPoints>
+		<Beauty>140</Beauty>
+		<WorkToMake>18000</WorkToMake>
+		<Flammability>0.5</Flammability>
+		<JoyGainFactor>1</JoyGainFactor>
+		<Mass>250</Mass>  
+    </statBases>	
+    <hasInteractionCell>True</hasInteractionCell>	
+    <interactionCellOffset>(0,0,-3)</interactionCellOffset>
+    <socialPropernessMatters>true</socialPropernessMatters>
+  </ThingDef> 
+  
+  
+<!-- Shrine to Pang Li -->   
+  <ThingDef ParentName="MedTimes_ArtworkQuality">
+    <defName>MedTimes_Shrine_PangLi</defName>
+    <label>Shrine to Pang Li</label>
+    <description>Originally a wanderer amoung the southern tribes, Pang Li Joined the Tsutda Nation as a mercenary soldier. Over many years he earned a reputation as a fearless warrior and brilliant tactitian, eventually earning himself a commision as a general in the standing army. After a little over a decade of skirmishes and wars with surrounding nations and tribes, Pang Li found himself as a national hero to the Tsutda people and a source of pride to the growing Tsutda Nation. It is during this time that Pang had earned himself the nickname "Mud Tiger", for his fierce guerrilla tactics and tenacity in battle. It wasen't until The Empires southern unification war however, that Pang earned his other title, "God of Death". The small and wealthy nation of Tsutda found itself in an all out war with the growing Imperial Empire, this conflict would last over 70 years and would not end until Pang Li's death at the "Craig of White Cliffs". Before his death Pang Li had waged total war against the empire. True to his form, Pang Li spent the last 70 years of his life burning villages, harrassing supply lines and warding off the empires military campaigns in a guerrilla style hit and run warfare. Numerous books have been written about his campaigns and his tactics have even been studied off-world at major galactic institutions. Although Pang Li was never able to capitalize on his victories or take the Imperial Empires capital, it is said that he was responsible for the personal suicides of imperial emperors; Tarquis VIII, Menicasus III and Menicasus IV, along with the executions for failure of over 30 supreme commanders. By the end of the war close to half the empire lay in ruins, ashes to the waste. It is estimated that at least a third of the empires population had been culled in the war, exact estimates on Tsutda casualties remain elusive as Pang Li employed many mercenaries and bandits throughout the war. The empire never gave up and with Pang Li's death the tsutda nation was forced to surrender, being asorbed into the growing world power. Due to the losses suffered at the hands of Pang Li, the Empire would not unify the continent for another 300 years after the War of Southern Unification. After his death, Pang Li would become an object of fear for the Empire, and his campaigns a horror story to tell children for generations to come. Perhaps most suprisingly was the ancestor cult that sprung up in his wake. The people of Tsutda and many other nations began worshiping his memory and claimed his time on the planet to be Odin's journey to the mortal realm. Others suggested that he was Odin's son or a re-incartion of a warrior god. Many stories arouse including the notion that he lived to be 235 years old. Many myths and legends now surround the ancient figure as he has become a symbol of resolute defiance and the warrior mindset. His tactical series "Lectures on War" have become sacred scriptures to many who view his teachings as a guide to life. Of all the cults surrounding this figure the most prevalent and dangerous however are the "Warborne", a group of fanatics that wander the land seeking death in battle.</description>
+    <graphicData>
+      <texPath>Things/Building/Art/PantheonOfGods/MedTimes_PangLi</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3,4)</drawSize>
+      <drawRotated>false</drawRotated>
+      <allowFlip>false</allowFlip>	  
+    </graphicData>
+    <uiIconPath>Things/Building/Art/PantheonOfGods/MedTimes_PangLi_Icon</uiIconPath>	
+    <size>(3,2)</size>	
+    <stuffCategories><li>Metallic</li><li>Stony</li><li>Woody</li></stuffCategories>
+    <costStuffCount>160</costStuffCount>		
+    <statBases>
+		<MaxHitPoints>250</MaxHitPoints>
+		<Beauty>140</Beauty>
+		<WorkToMake>18000</WorkToMake>
+		<Flammability>0.5</Flammability>
+		<JoyGainFactor>1</JoyGainFactor>
+		<Mass>250</Mass>  
+    </statBases>	
+    <hasInteractionCell>True</hasInteractionCell>	
+    <interactionCellOffset>(0,0,-3)</interactionCellOffset>
+    <socialPropernessMatters>true</socialPropernessMatters>
+  </ThingDef>   
+
+ <!-- ========= Unique Sculptures ========= -->
+<!-- "The Gentleman" Statue -->   
+  <ThingDef ParentName="MedTimes_ArtworkQuality">
+    <defName>MedTimes_Gentleman</defName>
+    <label>"The Gentleman"</label>
+    <description>To the late and great, an inspiration.</description>
+    <graphicData>
+      <texPath>Things/Building/Art/Statues/MedTimes_Gentleman</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1.8)</drawSize>
+      <drawRotated>false</drawRotated>
+      <allowFlip>false</allowFlip>	  
+    </graphicData>
+    <uiIconPath>Things/Building/Art/Statues/MedTimes_Gentleman_Icon</uiIconPath>	
+    <size>(1,1)</size>	
+    <stuffCategories><li>Metallic</li><li>Stony</li><li>Woody</li></stuffCategories>
+    <costStuffCount>50</costStuffCount>		
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Beauty>20</Beauty>
+      <WorkToMake>6000</WorkToMake>
+      <Flammability>0.5</Flammability>
+	  <JoyGainFactor>1</JoyGainFactor>
+	  <Mass>50</Mass>		  
+    </statBases>	
+    <socialPropernessMatters>true</socialPropernessMatters>
+  </ThingDef>
+  
+<!-- "Revenge Cat" Statue -->   
+  <ThingDef ParentName="MedTimes_ArtworkQuality">
+    <defName>MedTimes_RevengeCat</defName>
+    <label>"Revenge Cat"</label>
+    <description>This statue is a constant reminder of the harsh nature of life on the rim. It Chronicles the life and passing of a cat named "Revenge". She wandered the wastes with her family for many years, searching for a home. Eventually they found their final resting place, among a clearing in a forest. It was a camp run by a primitive tribe. Shortly after their arrival Revenge's family and friends were all slaughtered by an invading horde of wild-men, she was left among the dead. Assuming her fate sealed, the primitives left her to die in the field, no food given, no medical care administered. Somehow, against all odds, the little cat known as "Revenge" survived, along with her good friend "Gomer". Now missing a tail, she and Gomer made their home among the tribal colony. As luck would have it, a gift from the Random Number God, another pack of wild cats came and joined the colony and they had many new friends. It is during this time that the cat known as revenge became pregnant with the child of her good friend Gomer. But life on the rim is harsh and unforgiving, happiness can often be swallowed by despair in one horrifying moment. Fearing a harsh winter and dwindling supplies, the tribsmen cast out all the cats, and left them to fend for themselves. Forced to fend for themselves the little cat known as Revenge watched as her new freinds died one by one. Some died from the cold, some died from starvation, others still from more invading wildmen. Forced to eat the corpses of the dead to survive, the little cat Revenge lasted the longest. But nothing on this cruel rim lasts forever. She passed shortly after her good freind Gomer, and she died of starvation, unborn child still in her womb.</description>
+    <graphicData>
+      <texPath>Things/Building/Art/Statues/MedTimes_RevengeCat</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1.8)</drawSize>
+      <drawRotated>false</drawRotated>
+      <allowFlip>false</allowFlip>	  
+    </graphicData>
+    <uiIconPath>Things/Building/Art/Statues/MedTimes_RevengeCat_Icon</uiIconPath>	
+    <size>(1,1)</size>	
+    <stuffCategories><li>Metallic</li><li>Stony</li><li>Woody</li></stuffCategories>
+    <costStuffCount>50</costStuffCount>		
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Beauty>20</Beauty>
+      <WorkToMake>6000</WorkToMake>
+      <Flammability>0.5</Flammability>
+	  <JoyGainFactor>1</JoyGainFactor>
+	  <Mass>40</Mass>	  
+    </statBases>	
+    <socialPropernessMatters>true</socialPropernessMatters>
+  </ThingDef>  
+ 
+<!-- ========= Furniture ========= --> 
+<!-- "Full Muffaloon" Rug -->     
+  <ThingDef ParentName="MedTimes_ArtworkQuality">
+    <defName>MedTimes_Rug_Muffalo</defName>
+    <label>"Full Muffaloon" Rug</label>
+    <description>A fancy rug embroidered from muffalo wool. It contains a mural of a muffalo as the primary subject. The scene takes place at night during a full moon, the light from the moon revealing a tragic story. The landscape is contains harsh tones and barren trees. Surrounding the muffalo is the dessicated corpses of what appears to be muffalo young-lings. The piece speaks to the harsh realities of living life on a rimworld.</description>
+    <graphicData>
+      <texPath>Things/Building/Art/Rugs/Muffalo/MedTimes_MuffaloRug</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2,2)</drawSize> 
+    </graphicData>
+    <uiIconPath>Things/Building/Art/Rugs/Muffalo/MedTimes_MuffaloRug</uiIconPath>	
+	
+	    <costList><WoolMuffalo>120</WoolMuffalo></costList>	
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Beauty>65</Beauty>
+      <WorkToMake>50000</WorkToMake>
+      <Flammability>2</Flammability>
+	  <Mass>15</Mass>	  
+    </statBases>
+    <size>(1,1)</size>		
+    <altitudeLayer>FloorEmplacement</altitudeLayer>
+    <passability>Standable</passability>
+    <rotatable>true</rotatable>	
+    <fillPercent>0</fillPercent>	
+    <pathCost>0</pathCost>	
+  </ThingDef> 
+  
+<!-- "Tribal" Rug -->     
+  <ThingDef ParentName="MedTimes_ArtworkQuality">
+    <defName>MedTimes_Rug_Tribal</defName>
+    <label>"Tribals" Rug</label>
+    <description>A fancy embroidered rug. It contains a mural of a wandering tribe as the primary subject. The scene takes place during the day. It contains two tribals and a what appears to be a white wolf all traveling in the same direction. The landscape is mostly desert with sparse life scattered amoung it's sand. The piece speaks to the natural unity of the tribe, and it's cautious momentum moving forward in a barren landscape.</description>
+    <graphicData>
+      <texPath>Things/Building/Art/Rugs/Tribal/MedTimes_TribalRug</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>	  
+      <drawSize>(2,2)</drawSize> 
+    </graphicData>
+    <uiIconPath>Things/Building/Art/Rugs/Tribal/MedTimes_TribalRug</uiIconPath>	
+	
+	<stuffCategories><li>Fabric</li></stuffCategories>
+    <costStuffCount>120</costStuffCount>	
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Beauty>65</Beauty>
+      <WorkToMake>50000</WorkToMake>
+      <Flammability>2</Flammability>
+	  <Mass>15</Mass>	  
+    </statBases>
+    <size>(1,1)</size>		
+    <altitudeLayer>FloorEmplacement</altitudeLayer>
+    <passability>Standable</passability>
+    <rotatable>true</rotatable>	
+    <fillPercent>0</fillPercent>	
+    <pathCost>0</pathCost>
+  </ThingDef>   
+
+  
+<!-- ========= Ice Sculptures ========= -->
+<!-- Small Ice Sculpture --> 
+  <ThingDef ParentName="MedTimes_ArtworkAnyQuality">
+    <defName>MedTimes_IceSculptureSmall</defName>
+    <label>Small Ice Sculpture</label>
+    <description>A torso-sized piece of material sculpted into an artistic form.</description>
+    <graphicData>
+      <graphicClass>Graphic_Random</graphicClass>
+      <texPath>Things/Building/Art/SculptureSmall</texPath>
+      <color>(180,210,230)</color>	  
+    </graphicData>
+    <tickerType>Rare</tickerType>	
+    <fillPercent>0.35</fillPercent>
+    <statBases>
+      <MaxHitPoints>90</MaxHitPoints>
+      <Mass>20</Mass>
+      <Beauty>40</Beauty>
+      <WorkToMake>8000</WorkToMake>
+    </statBases>
+    <costList>
+	  <MedTimes_Resource_IceBlocks>50</MedTimes_Resource_IceBlocks>
+    </costList>	
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+	  <li><compClass>CompMelter</compClass></li>
+    </comps>
+		
+    <researchPrerequisites><li>MedTimes_IceSculpting</li></researchPrerequisites>	
+  </ThingDef>
+
+<!-- Large Ice Sculpture -->   
+  <ThingDef ParentName="MedTimes_ArtworkAnyQuality">
+    <defName>MedTimes_IceSculptureLarge</defName>
+    <label>Large Ice Sculpture</label>
+    <description>A person-sized piece of material sculpted into an artistic form.</description>
+    <graphicData>
+      <graphicClass>Graphic_Random</graphicClass>
+      <texPath>Things/Building/Art/SculptureLarge</texPath>
+      <drawSize>(3,3)</drawSize>
+      <color>(180,210,230)</color>	  
+    </graphicData>
+    <tickerType>Rare</tickerType>	
+    <fillPercent>0.5</fillPercent>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <Mass>90</Mass>
+      <Beauty>80</Beauty>
+			<WorkToMake>10000</WorkToMake>
+	</statBases>
+    <costList>
+	  <MedTimes_Resource_IceBlocks>75</MedTimes_Resource_IceBlocks>
+    </costList>	
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+	  <li><compClass>CompMelter</compClass></li>
+    </comps>
+    <researchPrerequisites><li>MedTimes_IceSculpting</li></researchPrerequisites>	
+  </ThingDef>
+
+<!-- Grand Ice Sculpture -->   
+  <ThingDef ParentName="MedTimes_ArtworkAnyQuality">
+    <defName>MedTimes_IceSculptureGrand</defName>
+    <label>Grand Ice Sculpture</label>
+    <description>A car-sized piece of material sculpted into an artistic form.</description>
+    <graphicData>
+      <graphicClass>Graphic_Random</graphicClass>
+      <texPath>Things/Building/Art/SculptureGrand</texPath>
+      <drawSize>(4,4)</drawSize>
+      <color>(180,210,230)</color>	  
+    </graphicData>
+    <tickerType>Rare</tickerType>	
+    <fillPercent>0.5</fillPercent>
+    <size>(2,2)</size>
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <Beauty>170</Beauty>
+      <Mass>350</Mass>
+			<WorkToMake>15000</WorkToMake>
+    </statBases>
+    <costList>
+	  <MedTimes_Resource_IceBlocks>150</MedTimes_Resource_IceBlocks>
+    </costList>	
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+	  <li><compClass>CompMelter</compClass></li>
+    </comps>
+    <researchPrerequisites><li>MedTimes_IceSculpting</li></researchPrerequisites>	
+  </ThingDef>
+   
+   
+   
+
+  
+<!-- God King's Throne --> 
+<ThingDef ParentName="MedTimes_ArtworkQuality">
+    <defName>MedTimes_GodKingThrone</defName>
+    <label>God King's Throne</label>
+    <description>[Comfort x1.8](Beauty +300) The kind of grandure reserved for only the glitterati of pompus postieriers. A large soft and comfy seat, Great for relaxation and lording over others in the room.</description>	
+    <graphicData>
+      <texPath>Things/Building/Art/GodKingThrone/MedTimes_GodKingThrone</texPath>
+      <graphicClass>Graphic_Single</graphicClass>	  
+      <drawRotated>false</drawRotated>
+      <drawSize>(3,3)</drawSize>
+    </graphicData>	
+		<uiIconPath>Things/Building/Art/GodKingThrone/MedTimes_GodKingThrone_Icon</uiIconPath>	
+    <drawerType>MapMeshOnly</drawerType>
+		<rotatable>false</rotatable>	
+    <altitudeLayer>Building</altitudeLayer>
+    <statBases>
+      <MaxHitPoints>220</MaxHitPoints>
+      <WorkToMake>7500</WorkToMake>
+      <Flammability>1.0</Flammability>
+      <Beauty>300</Beauty>
+      <Comfort>1.8</Comfort>
+	  <Mass>300</Mass>	  
+    </statBases>
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <costList>
+	  <Steel>125</Steel>
+	  <Gold>50</Gold>	  
+    </costList>
+    <pathCost>30</pathCost>
+    <fillPercent>0.40</fillPercent>
+    <building>
+      <isSittable>true</isSittable>
+    </building>
+    <researchPrerequisites>
+      <li>MedTimes_AdvancedMedievalSmithing</li>
+    </researchPrerequisites>		
+  </ThingDef> 
+
+ <!-- End of ThingDefs --> 
+</Defs>

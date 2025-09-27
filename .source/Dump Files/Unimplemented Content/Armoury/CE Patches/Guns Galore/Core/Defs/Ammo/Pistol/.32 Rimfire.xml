@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo32Rimfire</defName>
+		<label>.32 Rimfire</label>
+		<parent>AmmoRifles</parent>
+		<iconPath>UI/Icons/ThingCategories/CaliberRifle</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef MayRequire="cgf1.gunsgalore.americancivilwar.i">
+		<defName>AmmoSet_32Rimfire</defName>
+		<label>.32 Rimfire</label>
+		<ammoTypes>
+			<Ammo_32Rimfire_FMJ>Bullet_32Rimfire_FMJ</Ammo_32Rimfire_FMJ>
+			<Ammo_32Rimfire_AP>Bullet_32Rimfire_AP</Ammo_32Rimfire_AP>
+			<Ammo_32Rimfire_HP>Bullet_32Rimfire_HP</Ammo_32Rimfire_HP>			
+		</ammoTypes>
+		<similarTo>AmmoSet_Pistol</similarTo>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="32RimfireBase" ParentName="SmallAmmoBase" Abstract="True" MayRequire="cgf1.gunsgalore.americancivilwar.i">
+		<description>Low caliber handgun cartridge used in revolvers.</description>
+		<statBases>
+			<Mass>0.01</Mass>
+			<Bulk>0.01</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo32Rimfire</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="32RimfireBase" MayRequire="cgf1.gunsgalore.americancivilwar.i">
+		<defName>Ammo_32Rimfire_FMJ</defName>
+		<label>.32 Rimfire cartridge (FMJ)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Rifle/FMJ</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.06</MarketValue>
+		</statBases>
+		<ammoClass>FullMetalJacket</ammoClass>
+		<cookOffProjectile>Bullet_32Rimfire_FMJ</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="32RimfireBase" MayRequire="cgf1.gunsgalore.americancivilwar.i">
+		<defName>Ammo_32Rimfire_AP</defName>
+		<label>.32 Rimfire cartridge (AP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/AP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.06</MarketValue>
+		</statBases>
+		<ammoClass>ArmorPiercing</ammoClass>
+		<cookOffProjectile>Bullet_32Rimfire_AP</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="32RimfireBase" MayRequire="cgf1.gunsgalore.americancivilwar.i">
+		<defName>Ammo_32Rimfire_HP</defName>
+		<label>.32 Rimfire cartridge (HP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/HP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.06</MarketValue>
+		</statBases>
+		<ammoClass>HollowPoint</ammoClass>
+		<cookOffProjectile>Bullet_32Rimfire_HP</cookOffProjectile>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="Base32RimfireBullet" ParentName="BaseBulletCE" Abstract="true" MayRequire="cgf1.gunsgalore.americancivilwar.i">
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>66</speed>
+			<dropsCasings>true</dropsCasings>
+			<casingMoteDefname>Fleck_PistolAmmoCasings</casingMoteDefname>
+			<casingFilthDefname>Filth_PistolAmmoCasings</casingFilthDefname>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base32RimfireBullet" MayRequire="cgf1.gunsgalore.americancivilwar.i">
+		<defName>Bullet_32Rimfire_FMJ</defName>
+		<label>.32 Rimfire bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>9</damageAmountBase>
+			<armorPenetrationSharp>3</armorPenetrationSharp>
+			<armorPenetrationBlunt>6.54</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base32RimfireBullet" MayRequire="cgf1.gunsgalore.americancivilwar.i">
+		<defName>Bullet_32Rimfire_AP</defName>
+		<label>.32 Rimfire bullet (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>6</damageAmountBase>
+			<armorPenetrationSharp>6</armorPenetrationSharp>
+			<armorPenetrationBlunt>6.54</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base32RimfireBullet" MayRequire="cgf1.gunsgalore.americancivilwar.i">
+		<defName>Bullet_32Rimfire_HP</defName>
+		<label>.32 Rimfire bullet (HP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>11</damageAmountBase>
+			<armorPenetrationSharp>1.5</armorPenetrationSharp>
+			<armorPenetrationBlunt>6.54</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.americancivilwar.i">
+		<defName>MakeAmmo_32Rimfire_FMJ</defName>
+		<label>make .32 Rimfire (FMJ) cartridge x500</label>
+		<description>Craft 500 .32 Rimfire (FMJ) cartridges.</description>
+		<jobString>Making .32 Rimfire (FMJ) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>14</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_32Rimfire_FMJ>500</Ammo_32Rimfire_FMJ>
+		</products>
+		<workAmount>1400</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.americancivilwar.i">
+		<defName>MakeAmmo_32Rimfire_AP</defName>
+		<label>make .32 Rimfire (AP) cartridge x500</label>
+		<description>Craft 500 .32 Rimfire (AP) cartridges.</description>
+		<jobString>Making .32 Rimfire (AP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>14</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_32Rimfire_AP>500</Ammo_32Rimfire_AP>
+		</products>
+		<workAmount>1680</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.americancivilwar.i">
+		<defName>MakeAmmo_32Rimfire_HP</defName>
+		<label>make .32 Rimfire (HP) cartridge x500</label>
+		<description>Craft 500 .32 Rimfire (HP) cartridges.</description>
+		<jobString>Making .32 Rimfire (HP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>14</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_32Rimfire_HP>500</Ammo_32Rimfire_HP>
+		</products>
+		<workAmount>1400</workAmount>
+	</RecipeDef>
+
+</Defs>
