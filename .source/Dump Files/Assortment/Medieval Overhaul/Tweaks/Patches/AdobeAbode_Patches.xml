@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch MayRequire="DankPyon.Medieval.Overhaul">
+
+  <Operation Class="XmlExtensions.FindMod">
+    <mods>
+      <li>Adobe Abode</li>
+      <li>Medieval Overhaul</li>
+    </mods>
+    <logic>and</logic>
+    <caseTrue>
+
+      <Operation MayRequireAll="JKN.AdobeAbode" Class="XmlExtensions.OptionalPatch">
+        <modId>zenlor.MOTweaks</modId>
+        <key>mot-integration-adobeabode</key>
+        <defaultValue>True</defaultValue>
+        <caseTrue>
+
+          <li Class="PatchOperationAdd">
+            <xpath>/Defs/ThingDef[defName="JKN_AdobeMixingTable"]/stuffCategories</xpath>
+            <value>
+              <li>DankPyon_RawWood</li>
+            </value>
+          </li>
+
+          <li Class="PatchOperationReplace">
+            <xpath>/Defs/ThingDef[defName="JKN_AdobeMixingTable"]/costList</xpath>
+            <value>
+              <costList>
+                <WoodLog>25</WoodLog>
+              </costList>
+            </value>
+          </li>
+
+          <li Class="PatchOperationReplace">
+            <xpath>/Defs/ThingDef[defName="JKN_AdobeBakingFrame"]/costList</xpath>
+            <value>
+              <costList>
+                <WoodLog>15</WoodLog>
+              </costList>
+            </value>
+          </li>
+
+        </caseTrue>
+        <caseFalse></caseFalse>
+      </Operation>
+    </caseTrue>
+  </Operation>
+</Patch>
