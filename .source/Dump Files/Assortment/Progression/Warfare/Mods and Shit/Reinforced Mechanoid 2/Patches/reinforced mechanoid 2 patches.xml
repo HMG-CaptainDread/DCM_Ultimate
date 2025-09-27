@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+<!-- REINFORCED MECHANOID 2 PATCHES -->
+    <!-- RM_Turret_AutoShardLance -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="RM_Turret_AutoShardLance"]/designationCategory</xpath>
+        <value>
+            <designationCategory>Security</designationCategory>
+        </value>
+    </Operation>
+    <!-- RM_Turret_AutoShardSwarmer -->
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="RM_Turret_AutoShardSwarmer"]/designationCategory</xpath>
+        <value>
+            <designationCategory>Security</designationCategory>
+        </value>
+    </Operation>
+
+    <!-- Patch for Reel.TurretPipeline -->
+    <Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Reel's Turret Pipeline</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+            <operations>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="RM_Turret_AutoShardLance"]/comps/li[@Class="CompProperties_Refuelable"]/fuelFilter/thingDefs/li</xpath>
+                    <value>
+                        <li>ReelTurretAmmo</li>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="RM_Turret_AutoShardLance"]/comps/li[@Class="CompProperties_Refuelable"]/fuelIconPath</xpath>
+                    <value>
+                        <fuelIconPath>UI/uiAmmoEmpty</fuelIconPath>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="RM_Turret_AutoShardSwarmer"]/comps/li[@Class="CompProperties_Refuelable"]/fuelFilter/thingDefs/li</xpath>
+                    <value>
+                        <li>ReelTurretAmmo</li>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="RM_Turret_AutoShardSwarmer"]/comps/li[@Class="CompProperties_Refuelable"]/fuelIconPath</xpath>
+                    <value>
+                        <fuelIconPath>UI/uiAmmoEmpty</fuelIconPath>
+                    </value>
+                </li>
+            </operations>
+        </match>
+    </Operation>
+</Patch>
