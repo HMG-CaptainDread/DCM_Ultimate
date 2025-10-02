@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	
+    <EarlyTimes.TerraformDef ParentName="MedTimes_TerraformResearchBase">
+        <label>Fertilize soil</label>
+        <defName>SoilTerraform_Fertilize</defName>
+        <description>Fertilize soil into standart one. Used for most types of bad soils.</description>
+        <graphicData>
+            <texPath>Terrain/Surfaces/Soil</texPath>
+        </graphicData>
+        <SourceTerrain>
+			<li>RG_DepletedMossy</li>
+			<li>RG_DepletedSoil</li>
+        </SourceTerrain>
+        <ResultTerrain>Soil</ResultTerrain>
+        <statBases>
+            <WorkToBuild>250000</WorkToBuild>
+        </statBases>
+        <costList>
+            <Kibble>60</Kibble>
+        </costList>
+        <designatorDropdown>Terraform_Soil</designatorDropdown>
+    </EarlyTimes.TerraformDef>
+	
+    <!-- Standard soils -->
+    <EarlyTimes.TerraformDef ParentName="MedTimes_TerraformResearchBase">
+        <label>Pick rubble</label>
+        <defName>SoilTerraform_PickRubble_HLX</defName>
+        <description>Remove excess rocks. [HLX]</description>
+        <graphicData>
+            <texPath>Things/Item/Resource/Stones/Stones_b</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <color>(99, 103, 107)</color>
+        </graphicData>
+        <SourceTerrain>
+			<li>RG_DepletedGravel</li>
+        </SourceTerrain>
+        <ResultTerrain>RG_DepletedSoil</ResultTerrain>
+        <statBases>
+            <WorkToBuild>10000</WorkToBuild>
+        </statBases>
+        <buildProducts>
+            <Crushed_Stones>20</Crushed_Stones>
+        </buildProducts>
+    </EarlyTimes.TerraformDef>
+	
+</Defs>

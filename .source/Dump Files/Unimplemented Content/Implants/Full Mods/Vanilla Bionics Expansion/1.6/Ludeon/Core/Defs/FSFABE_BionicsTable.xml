@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	
+	<ThingDef ParentName="BenchBase">
+		<defName>FSFBionicsTable</defName>
+		<label>bionics table</label>
+		<description>A work station for assembling and disassembling bionics.</description>
+		<thingClass>Building_WorkTable</thingClass>
+		<graphicData>
+			<texPath>Things/Building/Production/FSFBionicsTable</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(3.5,1.5)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<castEdgeShadows>true</castEdgeShadows>
+		<staticSunShadowHeight>0.20</staticSunShadowHeight>
+		<costList>
+			<Steel>150</Steel>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<altitudeLayer>Building</altitudeLayer>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<WorkToBuild>3000</WorkToBuild>
+			<MaxHitPoints>180</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<size>(3,1)</size>
+		<passability>PassThroughOnly</passability>
+		<pathCost>50</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+		<recipes>
+			<li MayRequire="Dubwise.DubsRimkit">RepairComponent</li>
+			<li>Make_ComponentIndustrial</li>
+  			<li MayRequire="twistedpacifist.ReasonableComponents">Make5Components</li>
+  			<li MayRequire="twistedpacifist.ReasonableComponents">Make10Components</li>
+  			<li MayRequire="twistedpacifist.ReasonableComponents">Make25Components</li>
+  			<li MayRequire="twistedpacifist.ReasonableComponents">Make50Components</li>
+  			<li MayRequire="twistedpacifist.ReasonableComponents">Make100Components</li>
+			<li>Make_ComponentSpacer</li>
+  			<li MayRequire="twistedpacifist.ReasonableComponents">Make5AdvComponents</li>
+  			<li MayRequire="twistedpacifist.ReasonableComponents">Make10AdvComponents</li>
+  			<li MayRequire="twistedpacifist.ReasonableComponents">Make25AdvComponents</li>
+		</recipes>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<shortCircuitInRain>true</shortCircuitInRain>
+				<basePowerConsumption>200</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Glower">
+				<glowRadius>5</glowRadius>
+				<glowColor>(73,123,138,0)</glowColor>
+			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>ToolCabinet</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_CNCMachine</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_3DPrinter</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_RobotAssistant</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_Lathe</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_Spacer_Lathe</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_Vice</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_ConveyorBelt</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_IndustrialOven</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_Centrifuge</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_LaserEngraver</li>
+					<li MayRequire="hobbes.bamba.evenmorelinkables">HobbesLink_Incinerator</li>
+				</linkableFacilities>
+			</li>
+			<li Class="CompProperties_Breakdownable"/>
+		</comps>
+		<building>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+		</building>
+		<constructEffect>ConstructMetal</constructEffect>
+		<designationHotKey>Misc7</designationHotKey>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+			<li>PlaceWorker_PreventInteractionSpotOverlap</li>
+		</placeWorkers>
+	</ThingDef>
+
+</Defs>

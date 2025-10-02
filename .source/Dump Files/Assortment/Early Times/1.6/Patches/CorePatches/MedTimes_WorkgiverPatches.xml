@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/WorkGiverDef[defName = "DoBillsStonecut"]/fixedBillGiverDefs</xpath>
+    <value>
+      <li>TS_StonecuttingSpot</li>
+    </value>
+  </Operation>
+	
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/WorkGiverDef[defName = "DoBillsUseCraftingSpot"]/fixedBillGiverDefs</xpath>
+    <value>
+      <li>MedTimes_CraftingStation</li>
+    </value>
+  </Operation>
+  
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/WorkGiverDef[defName = "DoBillsMakeApparel"]/fixedBillGiverDefs</xpath>
+    <value>
+      <li>MedTimes_TailoringStation</li>
+    </value>
+  </Operation>
+  
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/WorkGiverDef[defName = "DoBillsMakeWeapons"]/fixedBillGiverDefs</xpath>
+    <value>
+      <li>MedTimes_BlacksmithForge</li>
+      <li>MedTimes_BlacksmithForgeTierTwo</li>
+      <li>MedTimes_ElectricBlacksmithForge</li>
+      <li>MedTimes_ElectricBlacksmithForgeTierTwo</li>
+    </value>
+  </Operation>
+  
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/WorkGiverDef[defName = "DoBillsSmelter"]/fixedBillGiverDefs</xpath>
+    <value>
+      <li>MedTimes_FueledSmelter</li>
+    </value>
+  </Operation>
+  
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/WorkGiverDef[defName = "DoBillsButcherFlesh"]/fixedBillGiverDefs</xpath>
+    <value>
+      <li>MedTimes_ButcherBlock</li>
+    </value>
+  </Operation>
+  
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/WorkGiverDef[defName = "DoBillsCremate"]/fixedBillGiverDefs</xpath>
+    <value>
+      <li>MedTimes_CorpseBonfire</li>
+    </value>
+  </Operation>
+  
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/WorkGiverDef[defName = "DoBillsCook"]/fixedBillGiverDefs</xpath>
+    <value>
+      <li>MedTimes_FoodPrepStation</li>
+      <li>MedTimes_StoneHearth</li>
+      <li>MedTimes_Firepit</li>
+    </value>
+  </Operation>
+  
+  <Operation Class="PatchOperationConditional">
+	<xpath>/Defs/ThingDef[defName="MedTimes_Smokehouse" and thingClass="Building_WorkTable"]</xpath>
+	<match Class="PatchOperationAdd">
+		<xpath>/Defs/WorkGiverDef[defName = "DoBillsCook"]/fixedBillGiverDefs</xpath>
+		<value>
+			<li>MedTimes_Smokehouse</li>
+		</value>
+	</match>
+  </Operation>
+
+  
+  
+  <!-- hauling patches -->  
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/WorkGiverDef[defName = "RearmTurrets"]/workType</xpath>
+    <value>
+		<workType>BasicWorker</workType>
+    </value>
+  </Operation>
+  
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/WorkGiverDef[defName = "Strip"]/workType</xpath>
+    <value>
+		<workType>BasicWorker</workType>
+    </value>
+  </Operation>
+  
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/WorkGiverDef[defName = "Refuel"]/workType</xpath>
+    <value>
+		<workType>BasicWorker</workType>
+    </value>
+  </Operation>
+  
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/WorkGiverDef[defName = "DoBillsCremate"]/workType</xpath>
+    <value>
+		<workType>BasicWorker</workType>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/WorkGiverDef[defName = "DoBillsHaulCampfire"]/workType</xpath>
+    <value>
+		<workType>BasicWorker</workType>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/WorkGiverDef[defName = "FillFermentingBarrel"]/workType</xpath>
+    <value>
+		<workType>BasicWorker</workType>
+    </value>
+  </Operation>
+  
+</Patch>
+

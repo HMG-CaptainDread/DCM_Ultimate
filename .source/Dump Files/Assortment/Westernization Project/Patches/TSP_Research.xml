@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationConditional">
+    <!-- Does this exist? -->
+    <xpath>/Defs/ThingDef[defName="VAE_Headgear_Glasses"]</xpath>
+    <!-- If it does, insert this replacement. -->
+    <match Class="PatchOperationReplace">
+      <success>Always</success>
+      <xpath>/Defs/ThingDef[defName="VAE_Headgear_Glasses"]/recipeMaker/researchPrerequisite</xpath>
+      <value>
+        <researchPrerequisite>RWP_Optometry</researchPrerequisite>
+      </value>
+    </match>
+    <!-- If the first XPATH does not exist, the original code stands. -->
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <!-- Does this exist? -->
+    <xpath>/Defs/ThingDef[defName="VAE_Headgear_Sunglasses"]</xpath>
+    <!-- If it does, insert this replacement. -->
+    <match Class="PatchOperationReplace">
+      <success>Always</success>
+      <xpath>/Defs/ThingDef[defName="VAE_Headgear_Sunglasses"]/recipeMaker/researchPrerequisite</xpath>
+      <value>
+        <researchPrerequisite>RWP_Optometry</researchPrerequisite>
+      </value>
+    </match>
+    <!-- If the first XPATH does not exist, the original code stands. -->
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <!-- Does this exist? -->
+    <xpath>/Defs/ResearchProjectDef[defName="ROM_MERFOutfits"]</xpath>
+    <!-- If it does, add this. -->
+    <match Class="PatchOperationAdd">
+      <success>Always</success>
+      <xpath>/Defs/ResearchProjectDef[defName="ROM_MERFOutfits"]/prerequisites</xpath>
+      <value>
+        <li>RWP_LawEnforcement</li>
+      </value>
+    </match>
+    <!-- If the first XPATH does not exist, the original code stands. -->
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <!-- Does this exist? -->
+    <xpath>/Defs/ThingDef[defName="VAE_Apparel_SheriffShirt"]</xpath>
+    <!-- If it does, insert this replacement. -->
+    <match Class="PatchOperationReplace">
+      <success>Always</success>
+      <xpath>/Defs/ThingDef[defName="VAE_Apparel_SheriffShirt"]/recipeMaker/researchPrerequisite</xpath>
+      <value>
+        <researchPrerequisite>RWP_LawEnforcement</researchPrerequisite>
+      </value>
+    </match>
+    <!-- If the first XPATH does not exist, the original code stands. -->
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <!-- Does this exist? -->
+    <xpath>/Defs/ResearchProjectDef[defName="Mortars"]</xpath>
+    <!-- If it does, add this. -->
+    <match Class="PatchOperationAdd">
+      <success>Always</success>
+      <xpath>/Defs/ResearchProjectDef[defName="Mortars"]/prerequisites</xpath>
+      <value>
+        <li>RWP_Artillery</li>
+        <li>Electricity</li>
+      </value>
+    </match>
+    <!-- If the first XPATH does not exist, the original code stands. -->
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <!-- Does this exist? -->
+    <xpath>/Defs/ResearchProjectDef[defName="GasOperation"]</xpath>
+    <!-- If it does, add this. -->
+    <match Class="PatchOperationAdd">
+      <success>Always</success>
+      <xpath>/Defs/ResearchProjectDef[defName="GasOperation"]/prerequisites</xpath>
+      <value>
+        <li>RWP_GatlingGun</li>
+        <li>Electricity</li>
+      </value>
+    </match>
+    <!-- If the first XPATH does not exist, the original code stands. -->
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <!-- Does this exist? -->
+    <xpath>/Defs/ResearchProjectDef[defName="GunTurrets"]</xpath>
+    <!-- If it does, add this. -->
+    <match Class="PatchOperationAdd">
+      <success>Always</success>
+      <xpath>/Defs/ResearchProjectDef[defName="GunTurrets"]/prerequisites</xpath>
+      <value>
+        <li>RWP_GatlingGun</li>
+        <li>Electricity</li>
+      </value>
+    </match>
+    <!-- If the first XPATH does not exist, the original code stands. -->
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <!-- Does this exist? -->
+    <xpath>/Defs/ResearchProjectDef[defName="BlowbackOperation"]</xpath>
+    <!-- If it does, add this. -->
+    <match Class="PatchOperationAdd">
+      <success>Always</success>
+      <xpath>/Defs/ResearchProjectDef[defName="BlowbackOperation"]/prerequisites</xpath>
+      <value>
+        <li>Electricity</li>
+      </value>
+    </match>
+    <!-- If the first XPATH does not exist, the original code stands. -->
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <!-- Does this exist? -->
+    <xpath>/Defs/ResearchProjectDef[defName="Prosthetics"]</xpath>
+    <!-- If it does, add this. -->
+    <match Class="PatchOperationAdd">
+      <success>Always</success>
+      <xpath>/Defs/ResearchProjectDef[defName="Prosthetics"]/prerequisites</xpath>
+      <value>
+        <li>Electricity</li>
+      </value>
+    </match>
+    <!-- If the first XPATH does not exist, the original code stands. -->
+  </Operation>
+  <!-- To allow for Gunsmithing to be made without Electricity -->
+  <Operation Class="PatchOperationConditional">
+    <!-- Does this exist? -->
+    <xpath>/Defs/ResearchProjectDef[defName="Machining"]</xpath>
+    <!-- If it does, add this. -->
+    <match Class="PatchOperationReplace">
+      <success>Always</success>
+      <xpath>/Defs/ResearchProjectDef[defName="Machining"]/prerequisites</xpath>
+      <value>
+        <prerequisites Inherit="False">
+          <li>Smithing</li>
+          <li MayRequire="mlie.ancientrimcore">AR_Project_Metal_II</li>
+        </prerequisites>
+      </value>
+    </match>
+    <!-- If the first XPATH does not exist, the original code stands. -->
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <!-- Does this exist? -->
+    <xpath>/Defs/ThingDef[defName="VAE_Apparel_FleeceShirt"]</xpath>
+    <!-- If it does, do this replacement. -->
+    <match Class="PatchOperationReplace">
+      <success>Always</success>
+      <xpath>/Defs/ThingDef[defName="VAE_Apparel_FleeceShirt"]/recipeMaker/researchPrerequisite</xpath>
+      <value>
+        <researchPrerequisite>RWP_WesternApparel</researchPrerequisite>
+      </value>
+    </match>
+    <!-- If the first XPATH does not exist, the original code stands. -->
+  </Operation>
+  <!--
+	<Operation Class="PatchOperationConditional">
+	Does this exist?
+		<xpath>/Defs/ThingDef[defName="VFEP_Turret_Cannon"]</xpath>
+		If it does, add this as an Abstract Parent Name to call a Base elsewhere.
+		<match Class="PatchOperationAttributeSet">
+			<success>Always</success>
+			<xpath>/Defs/ThingDef[defName="VFEP_Turret_Cannon"]</xpath>
+			<attribute>ParentName</attribute>
+			<value>RWPArtilleryBuilding</value>
+		</match>
+		If the first XPATH does not exist, the original code stands.
+	</Operation>
+	
+	<Operation Class="PatchOperationConditional">
+	Does this exist?
+		<xpath>/Defs/ThingDef[defName="VFEP_Turret_Cannon"]</xpath>
+		If it does, add this as an Abstract Parent Name to call a Base elsewhere.
+		<match Class="PatchOperationAttributeSet">
+			<success>Always</success>
+			<xpath>/Defs/ThingDef[defName="VFEP_Turret_Cannon"]</xpath>
+			<attribute>ParentName</attribute>
+			<value>RWPArtilleryBuilding</value>
+		</match>
+		If the first XPATH does not exist, the original code stands.
+	</Operation>
+	-->
+  <Operation Class="PatchOperationConditional">
+    <!-- Does this exist? -->
+    <xpath>/Defs/ThingDef[defName="VFEP_Turret_Cannon"]</xpath>
+    <!-- If it does, add this. -->
+    <match Class="PatchOperationAdd">
+      <success>Always</success>
+      <xpath>/Defs/ThingDef[@Name="VFEP_BaseCannonBuilding"]</xpath>
+      <value>
+        <researchPrerequisites Inherit="False">
+          <li>RWP_Artillery</li>
+        </researchPrerequisites>
+      </value>
+    </match>
+    <!-- If the first XPATH does not exist, the original code stands. -->
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <!-- Does this exist? -->
+    <xpath>/Defs/ThingDef[defName="FrenchEarlyTechnology"]</xpath>
+    <!-- If it does, add this. -->
+    <match Class="PatchOperationAdd">
+      <success>Always</success>
+      <xpath>/Defs/ThingDef[defName = "FrenchEarlyTechnology" or defName = "BritishEarlyTechnology" or defName = "PrussianEarlyTechnology"]/tab</xpath>
+      <value>
+        <tab>RWP_ResearchTab</tab>
+      </value>
+    </match>
+    <!-- If the first XPATH does not exist, the original code stands. -->
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <!-- Does this exist? -->
+    <xpath>/Defs/ResearchProjectDef[defName="VFEP_Warcaskets"]</xpath>
+    <!-- If it does, add this. -->
+    <match Class="PatchOperationAdd">
+      <success>Always</success>
+      <xpath>/Defs/ResearchProjectDef[defName="VFEP_Warcaskets"]/prerequisites</xpath>
+      <value>
+        <li>Electricity</li>
+      </value>
+    </match>
+    <!-- If the first XPATH does not exist, the original code stands. -->
+  </Operation>
+</Patch>

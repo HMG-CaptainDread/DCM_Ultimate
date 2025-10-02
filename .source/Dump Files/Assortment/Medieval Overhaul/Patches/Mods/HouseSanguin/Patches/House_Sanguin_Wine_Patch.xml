@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ProcessorFramework.ProcessDef[defName="DevDesigner_BloodMustWineIntoBloodWine"]/efficiency</xpath>
+		<value>
+			<efficiency>1</efficiency>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ProcessorFramework.ProcessDef[defName="DevDesigner_BloodMustWineIntoBloodWine"]/usesQuality</xpath>
+		<value>
+			<usesQuality>true</usesQuality>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ProcessorFramework.ProcessDef[defName="DevDesigner_BloodMustWineIntoBloodWine"]/qualityDays</xpath>
+		<value>
+			<qualityDays>(1, 3, 8, 14, 20, 50, 120)</qualityDays>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="BarrelProcessor"]/comps/li[@Class="ProcessorFramework.CompProperties_Processor"]/processes/li[.="DevDesigner_VFEM_BloodWine"]</xpath>
+		<match Class="PatchOperationRemove">
+			<xpath>Defs/ThingDef[defName="BarrelProcessor"]/comps/li[@Class="ProcessorFramework.CompProperties_Processor"]/processes/li[.="DevDesigner_VFEM_BloodWine"]</xpath>
+		</match>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="DevDesigner_BloodWine"]/comps</xpath>
+		<value>
+			<li Class="VEF.Cooking.CompProperties_StackByQuality"/>
+		</value>
+	</Operation>
+
+</Patch>

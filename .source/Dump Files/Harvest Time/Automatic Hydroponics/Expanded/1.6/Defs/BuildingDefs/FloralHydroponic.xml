@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+<!--Large Floral hydroponic-->
+<ThingDef ParentName="BuildingBase">
+  <defName>FloralHydroponic</defName>
+  <label>Large Floral hydroponic</label>
+  <description>A specialized hydroponics bay designed exclusively for cultivating ornamental flowers. Unlike standard auto-hydroponics, it operates on minimal power by focusing on aesthetic rather than agricultural yield. Once flowers reach the end of their bloom cycle, the system automatically ejects withered plants and replants new seeds, ensuring a continuous cycle of blossoms. The process also yields small amounts of hay as a byproduct.</description>
+  <drawerType>MapMeshAndRealTime</drawerType>
+  <graphicData>
+    <texPath>EmptyAutoHydroponic</texPath>
+    <graphicClass>Graphic_Multi</graphicClass>
+    <drawSize>3</drawSize>
+  </graphicData>
+  <altitudeLayer>FloorCoverings</altitudeLayer>
+    <blocksAltitudes>
+      <li>FloorCoverings</li>
+    </blocksAltitudes>
+<wipesPlants>true</wipesPlants>
+  <passability>Standable</passability>
+    <size>(3,3)</size>
+  <statBases>
+    <MaxHitPoints>500</MaxHitPoints>
+    <Flammability>0.1</Flammability>
+    <Beauty>0</Beauty>
+	<WorkToBuild>36000</WorkToBuild>
+  </statBases>
+  <costList>
+    <Steel>320</Steel>
+    <ComponentIndustrial>4</ComponentIndustrial>
+  </costList>
+      <researchPrerequisites>
+        <li>Hydroponics</li>
+		<li>MicroelectronicsBasics</li>
+      </researchPrerequisites>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+  <comps>
+    <li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
+      <processes>
+        <!--Base Game-->
+        <li>FloralHydroponic_Dandelions</li>
+		<li>FloralHydroponic_Daylily</li>
+		<li>FloralHydroponic_Rose</li>
+		<!--Rimimmortal-->
+		<li>FloralHydroponic_RI_Plant_Chrysanthemum</li>
+		<li>FloralHydroponic_RI_Plant_Peony</li>
+		<li>FloralHydroponic_RI_Plant_Narcissus</li>
+		<li>FloralHydroponic_RI_Plant_Orchid</li>
+      </processes>
+      <progressBarOffset>(0,0,-0.5)</progressBarOffset>
+      <inProgressTexture>WorkingFloralHydroponic</inProgressTexture>
+      <finishedTexture>EmptyAutoHydroponic</finishedTexture>
+	  <notWorkingKey>EmptyAutoHydroponic</notWorkingKey>
+    </li>
+    <li Class="PipeSystem.CompProperties_GlowerOnProcess">
+      <glowRadius>5</glowRadius>
+      <glowColor>(245, 192, 226)</glowColor>
+	  <colorPickerEnabled>true</colorPickerEnabled>
+      <darklightToggle>true</darklightToggle>
+    </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>120</basePowerConsumption>
+		<powerUpgrades>
+          <li>
+            <researchProject>ColoredLights</researchProject>
+            <factor>0.5</factor>
+          </li>
+       </powerUpgrades>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Breakdownable"/>
+	  
+	  
+	  
+<!--	  <li Class="DynamicBeauty.CompProperties_DynamicBeauty">
+      <beautyPowered>200</beautyPowered>
+      <beautyUnpowered>0</beautyUnpowered>
+    </li>-->
+	<li Class="BeautyWhileProcessing.CompProperties_BeautyWhileProcessing">
+      <beautyWhenProcessing>120</beautyWhenProcessing>
+    </li>
+	
+	
+	
+  </comps>
+  <inspectorTabs>
+    <li>PipeSystem.ITab_Processor</li>
+  </inspectorTabs>
+  <tickerType>Rare</tickerType>
+  <designationCategory>Production</designationCategory>
+  <building>
+      <isEdifice>false</isEdifice>
+  </building>
+      <clearBuildingArea>false</clearBuildingArea>
+</ThingDef>
+
+<!--Small Floral hydroponic-->
+<ThingDef ParentName="BuildingBase">
+  <defName>SmallFloralHydroponic</defName>
+  <label>Small Floral hydroponic</label>
+  <description>A specialized hydroponics bay designed exclusively for cultivating ornamental flowers. Unlike standard auto-hydroponics, it operates on minimal power by focusing on aesthetic rather than agricultural yield. Once flowers reach the end of their bloom cycle, the system automatically ejects withered plants and replants new seeds, ensuring a continuous cycle of blossoms. The process also yields small amounts of hay as a byproduct.</description>
+  <drawerType>MapMeshAndRealTime</drawerType>
+  <graphicData>
+    <texPath>EmptyAutoHydroponicSmall</texPath>
+    <graphicClass>Graphic_Multi</graphicClass>
+    <drawSize>2</drawSize>
+  </graphicData>
+  <rotatable>false</rotatable>
+  <altitudeLayer>FloorCoverings</altitudeLayer>
+    <blocksAltitudes>
+      <li>FloorCoverings</li>
+    </blocksAltitudes>
+<wipesPlants>true</wipesPlants>
+  <passability>Standable</passability>
+    <size>(2,2)</size>
+  <statBases>
+    <MaxHitPoints>250</MaxHitPoints>
+    <Flammability>0.1</Flammability>
+    <Beauty>0</Beauty>
+	<WorkToBuild>18000</WorkToBuild>
+  </statBases>
+  <costList>
+    <Steel>160</Steel>
+    <ComponentIndustrial>2</ComponentIndustrial>
+  </costList>
+      <researchPrerequisites>
+        <li>Hydroponics</li>
+		<li>MicroelectronicsBasics</li>
+      </researchPrerequisites>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+  <comps>
+    <li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
+      <processes>
+        <!--Base Game-->
+        <li>FloralHydroponic_DandelionsSm</li>
+		<li>FloralHydroponic_DaylilySm</li>
+		<li>FloralHydroponic_RoseSm</li>
+		<!--Rimimmortal-->
+		<li>FloralHydroponic_RI_Plant_ChrysanthemumSm</li>
+		<li>FloralHydroponic_RI_Plant_PeonySm</li>
+		<li>FloralHydroponic_RI_Plant_NarcissusSm</li>
+		<li>FloralHydroponic_RI_Plant_OrchidSm</li>
+      </processes>
+      <progressBarOffset>(0,0,-0.5)</progressBarOffset>
+      <inProgressTexture>WorkingFloralHydroponicSmall</inProgressTexture>
+      <finishedTexture>EmptyAutoHydroponicSmall</finishedTexture>
+	  <notWorkingKey>EmptyAutoHydroponic</notWorkingKey>
+    </li>
+    <li Class="PipeSystem.CompProperties_GlowerOnProcess">
+      <glowRadius>5</glowRadius>
+      <glowColor>(245, 192, 226)</glowColor>
+	  <colorPickerEnabled>true</colorPickerEnabled>
+      <darklightToggle>true</darklightToggle>
+    </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>60</basePowerConsumption>
+		<powerUpgrades>
+          <li>
+            <researchProject>ColoredLights</researchProject>
+            <factor>0.5</factor>
+          </li>
+       </powerUpgrades>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Breakdownable"/>
+<!--	  <li Class="DynamicBeauty.CompProperties_DynamicBeauty">
+      <beautyPowered>100</beautyPowered>
+      <beautyUnpowered>0</beautyUnpowered>
+    </li>-->
+	<li Class="BeautyWhileProcessing.CompProperties_BeautyWhileProcessing">
+      <beautyWhenProcessing>60</beautyWhenProcessing>
+    </li>
+  </comps>
+  <inspectorTabs>
+    <li>PipeSystem.ITab_Processor</li>
+  </inspectorTabs>
+  <tickerType>Rare</tickerType>
+  <designationCategory>Production</designationCategory>
+  <building>
+	<isEdifice>false</isEdifice>
+  </building>
+  <clearBuildingArea>false</clearBuildingArea>
+</ThingDef>
+
+<!--Tiny Floral hydroponic-->
+<ThingDef ParentName="BuildingBase">
+  <defName>TinyFloralHydroponic</defName>
+  <label>Tiny Floral hydroponic</label>
+  <description>A specialized hydroponics bay designed exclusively for cultivating ornamental flowers. Unlike standard auto-hydroponics, it operates on minimal power by focusing on aesthetic rather than agricultural yield. Once flowers reach the end of their bloom cycle, the system automatically ejects withered plants and replants new seeds, ensuring a continuous cycle of blossoms. The process also yields small amounts of hay as a byproduct.</description>
+  <drawerType>MapMeshAndRealTime</drawerType>
+  <graphicData>
+    <texPath>EmptyAutoHydroponicTiny</texPath>
+    <graphicClass>Graphic_Multi</graphicClass>
+    <drawSize>1</drawSize>
+  </graphicData>
+  <rotatable>false</rotatable>
+  <altitudeLayer>FloorCoverings</altitudeLayer>
+    <blocksAltitudes>
+      <li>FloorCoverings</li>
+    </blocksAltitudes>
+<wipesPlants>true</wipesPlants>
+  <passability>Standable</passability>
+    <size>(1,1)</size>
+  <statBases>
+    <MaxHitPoints>125</MaxHitPoints>
+    <Flammability>0.1</Flammability>
+    <Beauty>0</Beauty>
+	<WorkToBuild>6000</WorkToBuild>
+  </statBases>
+  <costList>
+    <Steel>40</Steel>
+    <ComponentIndustrial>1</ComponentIndustrial>
+  </costList>
+      <researchPrerequisites>
+        <li>Hydroponics</li>
+		<li>MicroelectronicsBasics</li>
+      </researchPrerequisites>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+  <comps>
+    <li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
+      <processes>
+        <!--Base Game-->
+        <li>FloralHydroponic_DandelionsT</li>
+		<li>FloralHydroponic_DaylilyT</li>
+		<li>FloralHydroponic_RoseT</li>
+		<!--Rimimmortal-->
+		<li>FloralHydroponic_RI_Plant_ChrysanthemumT</li>
+		<li>FloralHydroponic_RI_Plant_PeonyT</li>
+		<li>FloralHydroponic_RI_Plant_NarcissusT</li>
+		<li>FloralHydroponic_RI_Plant_OrchidT</li>
+      </processes>
+      <progressBarOffset>(0,0,-0.5)</progressBarOffset>
+      <inProgressTexture>WorkingFloralHydroponicTiny</inProgressTexture>
+      <finishedTexture>EmptyAutoHydroponicTiny</finishedTexture>
+	  <notWorkingKey>EmptyAutoHydroponic</notWorkingKey>
+    </li>
+    <li Class="PipeSystem.CompProperties_GlowerOnProcess">
+      <glowRadius>4</glowRadius>
+      <glowColor>(245, 192, 226)</glowColor>
+	  <colorPickerEnabled>true</colorPickerEnabled>
+      <darklightToggle>true</darklightToggle>
+    </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>15</basePowerConsumption>
+		<powerUpgrades>
+          <li>
+            <researchProject>ColoredLights</researchProject>
+            <factor>0.5</factor>
+          </li>
+       </powerUpgrades>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Breakdownable"/>
+<!--	  <li Class="DynamicBeauty.CompProperties_DynamicBeauty">
+      <beautyPowered>25</beautyPowered>
+      <beautyUnpowered>0</beautyUnpowered>
+    </li>-->
+	<li Class="BeautyWhileProcessing.CompProperties_BeautyWhileProcessing">
+      <beautyWhenProcessing>15</beautyWhenProcessing>
+    </li>
+  </comps>
+  <inspectorTabs>
+    <li>PipeSystem.ITab_Processor</li>
+  </inspectorTabs>
+  <tickerType>Rare</tickerType>
+  <designationCategory>Production</designationCategory>
+  <building>
+	<isEdifice>false</isEdifice>
+  </building>
+  <clearBuildingArea>false</clearBuildingArea>
+</ThingDef>
+
+</Defs>

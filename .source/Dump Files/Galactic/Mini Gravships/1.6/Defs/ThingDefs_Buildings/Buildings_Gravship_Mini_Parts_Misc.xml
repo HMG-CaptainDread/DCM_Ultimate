@@ -1,0 +1,1163 @@
+<Defs>
+
+<!-- Things which have no combative or economic purpose to be stuffable -->
+<!-- Obvious extras, basically -->
+
+<!-- Buildable ancient wall light -->
+
+  <!-- Lights dropdown -->
+	<DesignatorDropdownGroupDef>
+		<defName>Gravship_Lights</defName>
+	</DesignatorDropdownGroupDef>
+
+  <ThingDef ParentName="LampBase">
+    <defName>GravshipWallLamp</defName>
+    <label>orbital wall lamp</label>
+	<designatorDropdown>Gravship_Lights</designatorDropdown>
+    <description>A sturdy wall lamp containing efficient circuitry. It is just as strong as a standing lamp.</description>
+    <rotatable>true</rotatable>
+    <graphicData>
+      <texPath>Things/Building/Ancient/EmergencyLight/AncientEmergencyLight</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawOffsetNorth>(0,0,0.9)</drawOffsetNorth>
+      <drawOffsetSouth>(0,0,-0.9)</drawOffsetSouth>
+      <drawOffsetWest>(-0.9,0,0)</drawOffsetWest>
+      <drawOffsetEast>(0.9,0,0)</drawOffsetEast>
+      <damageData>
+        <enabled>false</enabled>
+      </damageData>
+    </graphicData>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <costList>
+      <Steel>20</Steel>
+    </costList>
+    <statBases>
+      <WorkToBuild>390</WorkToBuild>
+      <MaxHitPoints>50</MaxHitPoints>
+      <Mass>3</Mass>
+    </statBases>
+    <designationCategory>Odyssey</designationCategory>
+    <uiOrder>2991</uiOrder>
+    <passability>Standable</passability>
+    <terrainAffordanceNeeded IsNull="True" />
+    <pathCost>0</pathCost>
+    <overrideMinifiedRot>North</overrideMinifiedRot>
+    <minifiedDrawOffset>(0, 0, 0.2)</minifiedDrawOffset>
+    <building>
+      <isEdifice>false</isEdifice>
+      <isAttachment>true</isAttachment>
+    </building>
+    <placeWorkers>
+      <li>Placeworker_AttachedToWall</li>
+    </placeWorkers>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>30</basePowerConsumption>
+        <powerUpgrades>
+          <li>
+            <researchProject>ColoredLights</researchProject>
+            <factor>0.5</factor>
+          </li>
+        </powerUpgrades>
+      </li>
+      <li Class="CompProperties_Styleable" />
+      <li Class="CompProperties_Glower">
+        <glowRadius>11</glowRadius>
+        <glowColor>(214,148,94,0)</glowColor>
+        <colorPickerEnabled>true</colorPickerEnabled>
+        <darklightToggle>true</darklightToggle>
+      </li>
+    </comps>
+  </ThingDef>
+
+
+
+  <!-- Gravship sensors / Orbital Scanners -->
+	<DesignatorDropdownGroupDef>
+		<defName>Gravship_SignalJammers</defName>
+	</DesignatorDropdownGroupDef>
+	
+  <ThingDef ParentName="GravshipComponentBase">
+    <defName>SignalJammerSmall</defName>
+    <label>small signal jammer</label>
+	<designatorDropdown>Gravship_SignalJammers</designatorDropdown>
+    <description>A signal emitter that disguises the electromagnetic signature of your gravship, allowing it to approach heavily-defended landing sites.</description>
+    <graphicData>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <texPath>Things/Building/SignalJammer/SignalJammer</texPath>
+      <drawSize>(1, 1)</drawSize>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>325</MaxHitPoints>
+      <Flammability>0.3</Flammability>
+      <Beauty>-10</Beauty>
+      <WorkToBuild>25000</WorkToBuild>
+      <Mass>50</Mass>
+    </statBases>
+    <size>(1, 1)</size>
+	<stealable>false</stealable>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+    <resourcesFractionWhenDeconstructed>1</resourcesFractionWhenDeconstructed>
+    <fillPercent>0.6</fillPercent>
+    <passability>PassThroughOnly</passability>
+    <pathCost>20</pathCost>
+    <canOverlapZones>false</canOverlapZones>
+    <designationCategory>Odyssey</designationCategory>
+    <costList>
+      <Gravcore>1</Gravcore>
+      <Steel>100</Steel>
+      <GravlitePanel>40</GravlitePanel>
+      <ComponentSpacer>4</ComponentSpacer>
+    </costList>
+    <researchPrerequisites>
+      <li>AdvancedGravtech</li>
+    </researchPrerequisites>
+    <terrainAffordanceNeeded>Substructure</terrainAffordanceNeeded>
+    <comps>
+      <li Class="CompProperties_GravshipFacility">
+        <requiresLOS>false</requiresLOS>
+        <componentTypeDef>SignalJammer</componentTypeDef>
+        <maxSimultaneous>9999</maxSimultaneous>
+		<showMaxSimultaneous>false</showMaxSimultaneous>
+        <maxDistance>500</maxDistance>
+      </li>
+    </comps>
+    <uiOrder>2400</uiOrder>
+  </ThingDef>
+  
+  
+  
+  <!-- Small Fuel Optimizer / Fuel Control Unit -->
+  <!-- Replaced with Fuel Control Unit for 3% which is a better balanced number, fuel optimizer to be locked behind traders since 15% is big. Un-limiting these has caused an imbalance to play around. -->
+  <ThingDef ParentName="GravshipComponentBase">
+    <defName>GravshipFuelControlUnit</defName>
+    <label>fuel control unit</label>
+    <description>A gravtech unit that allows the grav engine lift to coordinate more efficiently with traditional thrusters. It reduces the fuel needed for gravship flight.</description>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Things/Building/Gravship/Gravship_FuelControlUnit</texPath>
+      <drawSize>(2, 2)</drawSize>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Flammability>0.3</Flammability>
+      <Beauty>-10</Beauty>
+      <Mass>50</Mass>
+    </statBases>
+    <costList>
+      <Steel>50</Steel>
+      <ComponentIndustrial>2</ComponentIndustrial>
+      <ShuttleEngine>1</ShuttleEngine>
+    </costList>
+    <researchPrerequisites>
+      <li>OrbitalTech</li>
+      <li>StandardGravtech</li>
+    </researchPrerequisites>
+    <size>(1, 1)</size>
+    <fillPercent>0.4</fillPercent>
+    <passability>PassThroughOnly</passability>
+    <pathCost>20</pathCost>
+    <canOverlapZones>false</canOverlapZones>
+    <designationCategory>Odyssey</designationCategory>
+    <terrainAffordanceNeeded>Substructure</terrainAffordanceNeeded>
+    <comps>
+      <li Class="CompProperties_GravshipFacility">
+        <fuelSavingsPercent>0.03</fuelSavingsPercent>
+        <requiresLOS>false</requiresLOS>
+        <maxSimultaneous>9999</maxSimultaneous>
+		<showMaxSimultaneous>false</showMaxSimultaneous>
+        <maxDistance>500</maxDistance>
+      </li>
+    </comps>
+    <tradeTags>
+      <li>GravshipUpgrade</li>
+    </tradeTags>
+    <tradeability>All</tradeability>
+  </ThingDef>
+  
+ 
+  
+  <!-- Gravship sensors / Orbital Scanners -->
+	<DesignatorDropdownGroupDef>
+		<defName>Gravship_Scanners</defName>
+	</DesignatorDropdownGroupDef>
+  
+  <ThingDef ParentName="BuildingBase">
+    <defName>OrbitalScannerSmall</defName>
+    <label>small orbital scanner</label>
+	<designatorDropdown>Gravship_Scanners</designatorDropdown>
+    <description>A sensor unit that passively scans for irregular objects orbiting the planet. It will periodically detect locations in orbit that can be visited with transport pods, shuttles, or gravships.\n\nThe scanner won't function under a roof. Building multiple orbital scanners does not increase the chance to find new locations.</description>
+    <graphicData>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <texPath>Things/Building/OrbitalScanner/OrbitalScanner</texPath>
+      <drawSize>(1.5, 1.5)</drawSize>
+    </graphicData>
+    <size>(1,1)</size>
+    <tickerType>Normal</tickerType>
+    <castEdgeShadows>false</castEdgeShadows>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <statBases>
+      <MaxHitPoints>90</MaxHitPoints>
+      <WorkToBuild>5000</WorkToBuild>
+      <Flammability>0.3</Flammability>
+      <Beauty>-8</Beauty>
+    </statBases>
+    <costList>
+      <Steel>90</Steel>
+      <ComponentIndustrial>6</ComponentIndustrial>
+      <ComponentSpacer>2</ComponentSpacer>
+    </costList>
+    <building>
+      <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+    </building>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>500</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_Flickable"/>
+      <li>
+        <compClass>CompOrbitalScanner</compClass>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_NotUnderRoof</li>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+    </placeWorkers>
+    <altitudeLayer>Building</altitudeLayer>
+    <canBeUsedUnderRoof>false</canBeUsedUnderRoof>
+	<stealable>false</stealable>
+    <fillPercent>0.40</fillPercent>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <designationCategory>Odyssey</designationCategory>
+    <researchPrerequisites>
+      <li>OrbitalTech</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+    <uiOrder>2500</uiOrder>
+  </ThingDef>
+  
+  
+  
+  <ThingDef ParentName="BuildingBase">
+    <defName>GravshipSensors</defName>
+    <label>gravship sensors</label>
+	<designatorDropdown>Gravship_Scanners</designatorDropdown>
+    <description>A sensor unit that passively scans for irregular objects in orbit. It will periodically detect locations in orbit that can be visited with transport pods, shuttles, or gravships.\n\nThis model of scanner is designed for navigation in space, and can be used under a roof. Building multiple orbital scanners does not increase the chance to find new locations.</description>
+		<graphicData>
+			<texPath>Things/Building/Gravship/Gravship_Sensors</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+    <size>(1,1)</size>
+    <tickerType>Normal</tickerType>
+    <rotatable>false</rotatable>
+    <castEdgeShadows>false</castEdgeShadows>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <statBases>
+      <MaxHitPoints>180</MaxHitPoints>
+      <WorkToBuild>12000</WorkToBuild>
+      <Flammability>0</Flammability>
+      <Beauty>-8</Beauty>
+    </statBases>
+    <costList>
+      <Plasteel>80</Plasteel>
+      <Steel>100</Steel>
+      <ComponentIndustrial>4</ComponentIndustrial>
+      <ComponentSpacer>4</ComponentSpacer>
+    </costList>
+    <building>
+      <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+    </building>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>500</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_Flickable"/>
+      <li>
+        <compClass>CompOrbitalScanner</compClass>
+      </li>
+    </comps>
+	<stealable>false</stealable>
+    <altitudeLayer>Building</altitudeLayer>
+    <fillPercent>0.40</fillPercent>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <designationCategory>Odyssey</designationCategory>
+		<researchPrerequisites>
+			<li>OrbitalTech</li>
+			<li>StandardGravtech</li>
+		</researchPrerequisites>
+    <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+    <uiOrder>2500</uiOrder>
+  </ThingDef>
+  
+  
+  
+  
+  <ThingDef ParentName="GravshipComponentBase">
+    <defName>GravcoreReactor</defName>
+    <label>gravcore reactor</label>
+    <description>A design using tech similar to that in a grav engine, this reactor opens and destabilizes a gravcore into a self-sustaining energy field which produces grav-waves, creating large amounts of electricity. It is unlikely a gravcore will be able to be retrieved upon deconstruction or destruction of the gravcore reactor.</description>
+    <graphicData>
+      <texPath>Things/Building/Gravship/GravReactor</texPath>
+	  <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3, 3)</drawSize>
+    </graphicData>
+    <tickerType>Normal</tickerType>
+    <statBases>
+      <MaxHitPoints>800</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <Beauty>-5</Beauty>
+      <WorkToBuild>36000</WorkToBuild>
+      <Mass>135</Mass>
+    </statBases>
+    <size>(3, 3)</size>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+    <resourcesFractionWhenDeconstructed>0.5</resourcesFractionWhenDeconstructed>
+    <fillPercent>0.4</fillPercent>
+    <passability>PassThroughOnly</passability>
+    <pathCost>20</pathCost>
+    <canOverlapZones>false</canOverlapZones>
+	<stealable>false</stealable>
+    <costList>
+      <Gravcore>1</Gravcore>
+      <GravlitePanel>150</GravlitePanel>
+      <ComponentSpacer>9</ComponentSpacer>
+      <Steel>300</Steel>
+	  <Plasteel>50</Plasteel>
+    </costList>
+    <designationCategory>Odyssey</designationCategory>
+    <researchPrerequisites>
+      <li>OrbitalTech</li>
+      <li>AdvancedGravtech</li>
+    </researchPrerequisites>
+    <terrainAffordanceNeeded>Substructure</terrainAffordanceNeeded>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<killedLeavings>
+			<GravlitePanel>50</GravlitePanel>
+			<ComponentSpacer>2</ComponentSpacer>
+			<Steel>60</Steel>
+		</killedLeavings>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerPlantGravcore</compClass>
+        <basePowerConsumption>-7500</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Glower">
+        <glowRadius>6</glowRadius>
+        <glowColor>(218,218,255,0)</glowColor>
+      </li>
+    </comps>
+    <uiOrder>2300</uiOrder>
+  </ThingDef>
+  
+  
+  
+  
+  
+  <!-- Mech Pylon but for players, regular pylon-->
+  
+  <ThingDef ParentName="BuildingBase">
+    <defName>GravshipPylon</defName>
+    <label>orbital pylon</label>
+	<designatorDropdown>Gravship_Lights</designatorDropdown>
+    <description>A light node in a strong casing, durable for use in orbit.</description>
+    <size>(1,1)</size>
+    <passability>PassThroughOnly</passability>
+    <pathCost>30</pathCost>
+    <stealable>true</stealable>
+    <fillPercent>0.5</fillPercent>
+    <rotatable>false</rotatable>
+    <statBases>
+      <MaxHitPoints>60</MaxHitPoints>
+      <Mass>6</Mass>
+      <MarketValue>92</MarketValue>
+      <WorkToBuild>1000</WorkToBuild>
+    </statBases>
+    <costList>
+      <Steel>10</Steel>
+      <GravlitePanel>10</GravlitePanel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <graphicData>
+      <texPath>Things/Building/Gravship/Gravship_Plylon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <shadowData>
+        <volume>(0.6, 0.4, 0.6)</volume>
+      </shadowData>
+      <damageData>
+        <rect>(0.2, 0.2, 0.6, 0.6)</rect>
+      </damageData>
+    </graphicData>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <designationCategory>Odyssey</designationCategory>
+    <researchPrerequisites>
+      <li>BasicGravtech</li>
+    </researchPrerequisites>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>5</glowRadius>
+        <glowColor>(219,219,109,0)</glowColor>
+      </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>15</basePowerConsumption>
+      </li>
+    </comps>
+    <killedLeavings>
+      <ChunkSlagSteel>1</ChunkSlagSteel>
+    </killedLeavings>
+  </ThingDef>
+  
+  
+	<DesignatorDropdownGroupDef>
+		<defName>MiningCharges</defName>
+	</DesignatorDropdownGroupDef>
+  
+  
+ <!-- Mining charge -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>MiningCharge</defName>
+    <label>mining charge</label>
+	<designatorDropdown>MiningCharges</designatorDropdown>
+    <description>An explosive device used to quickly blast through rock. It is made from refined chemfuel. The explosive is a bit more powerful than those sometimes found on asteroids.</description>
+    <graphicData>
+      <texPath>Things/Building/Gravship/MiningCharge</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <shadowData>
+        <volume>(0.9, 0.5, 0.9)</volume>
+      </shadowData>
+    </graphicData>
+    <uiIconPath>Things/Building/Gravship/MiningCharge</uiIconPath>
+    <uiIconScale>1.0</uiIconScale>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <size>(1,1)</size>
+    <designationCategory>Odyssey</designationCategory>
+    <researchPrerequisites>
+      <li>Mortars</li>
+    </researchPrerequisites>
+	<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <fillPercent>0.5</fillPercent>
+    <rotatable>false</rotatable>
+    <passability>PassThroughOnly</passability>
+    <tickerType>Normal</tickerType>
+    <pathCost>50</pathCost>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <building>
+      <alwaysUninstallable>true</alwaysUninstallable>
+      <expandHomeArea>false</expandHomeArea>
+    </building>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <costList>
+      <Chemfuel>15</Chemfuel>
+    </costList>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>10</Mass>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <wickTicks>240</wickTicks>
+        <explosiveRadius>4.6</explosiveRadius>
+        <explosiveDamageType>MiningBomb</explosiveDamageType>
+        <explodeOnKilled>true</explodeOnKilled>
+        <startWickHitPointsPercent>0.99</startWickHitPointsPercent>
+        <extraInspectStringKey>ExplosionOnDamageWarning</extraInspectStringKey>
+        <preExplosionSpawnSingleThingDef>Filth_BlastMark</preExplosionSpawnSingleThingDef>
+      </li>
+      <li Class="CompProperties_Usable">
+        <useJob>TriggerObject</useJob>
+        <useLabel>Trigger {0_label}</useLabel>
+      </li>
+      <li Class="CompProperties_UseEffect">
+        <compClass>CompUseEffect_StartWick</compClass>
+      </li>
+    </comps>
+  </ThingDef>
+
+ <!-- Incendiary charge -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>MiningChargeFire</defName>
+    <label>incendiary charge</label>
+	<designatorDropdown>MiningCharges</designatorDropdown>
+    <description>An explosive device used to deal damage to nearby enemies and quickly cover a large area with fire. It is made from refined chemfuel. The explosion itself is a bit more powerful than those sometimes found on asteroids.</description>
+    <graphicData>
+      <texPath>Things/Building/Gravship/MiningChargeFire</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <shadowData>
+        <volume>(0.9, 0.5, 0.9)</volume>
+      </shadowData>
+    </graphicData>
+    <uiIconPath>Things/Building/Gravship/MiningChargeFire</uiIconPath>
+    <uiIconScale>1.0</uiIconScale>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <size>(1,1)</size>
+    <designationCategory>Odyssey</designationCategory>
+    <researchPrerequisites>
+      <li>Mortars</li>
+      <li>BiofuelRefining</li>
+    </researchPrerequisites>
+	<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <fillPercent>0.5</fillPercent>
+    <rotatable>false</rotatable>
+    <passability>PassThroughOnly</passability>
+    <tickerType>Normal</tickerType>
+    <pathCost>50</pathCost>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <building>
+      <alwaysUninstallable>true</alwaysUninstallable>
+      <expandHomeArea>false</expandHomeArea>
+    </building>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <costList>
+      <Chemfuel>35</Chemfuel>
+    </costList>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>10</Mass>
+	  <Flammability>0.7</Flammability>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <wickTicks>240</wickTicks>
+        <explosiveRadius>3.3</explosiveRadius>
+        <explosiveDamageType>Flame</explosiveDamageType>
+        <explodeOnKilled>true</explodeOnKilled>
+        <startWickHitPointsPercent>0.99</startWickHitPointsPercent>
+        <preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+        <preExplosionSpawnChance>0.50</preExplosionSpawnChance>
+        <postExplosionSpawnThingDef>Filth_Fuel</postExplosionSpawnThingDef>
+        <postExplosionSpawnChance>0.50</postExplosionSpawnChance>
+        <postExplosionSpawnThingCount>1</postExplosionSpawnThingCount>
+        <applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+      </li>
+      <li Class="CompProperties_Usable">
+        <useJob>TriggerObject</useJob>
+        <useLabel>Trigger {0_label}</useLabel>
+      </li>
+      <li Class="CompProperties_UseEffect">
+        <compClass>CompUseEffect_StartWick</compClass>
+      </li>
+    </comps>
+  </ThingDef>
+
+ <!-- EMP charge -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>MiningChargeEmp</defName>
+    <label>EMP charge</label>
+	<designatorDropdown>MiningCharges</designatorDropdown>
+    <description>An explosive device used to deal damage to nearby enemies and quickly cover a large area with fire. It is made from refined chemfuel. The explosion itself is a bit more powerful than those sometimes found on asteroids.</description>
+    <graphicData>
+      <texPath>Things/Building/Gravship/MiningChargeEmp</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <shadowData>
+        <volume>(0.9, 0.5, 0.9)</volume>
+      </shadowData>
+    </graphicData>
+    <uiIconPath>Things/Building/Gravship/MiningChargeEmp</uiIconPath>
+    <uiIconScale>1.0</uiIconScale>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <size>(1,1)</size>
+    <designationCategory>Odyssey</designationCategory>
+    <researchPrerequisites>
+      <li>Mortars</li>
+      <li>MicroelectronicsBasics</li>
+    </researchPrerequisites>
+	<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <fillPercent>0.5</fillPercent>
+    <rotatable>false</rotatable>
+    <passability>PassThroughOnly</passability>
+    <tickerType>Normal</tickerType>
+    <pathCost>50</pathCost>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <building>
+      <alwaysUninstallable>true</alwaysUninstallable>
+      <expandHomeArea>false</expandHomeArea>
+    </building>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <costList>
+      <Steel>20</Steel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>10</Mass>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <wickTicks>240</wickTicks>
+        <explosiveRadius>4.6</explosiveRadius>
+        <explosiveDamageType>EMP</explosiveDamageType>
+        <explodeOnKilled>true</explodeOnKilled>
+        <startWickHitPointsPercent>0.99</startWickHitPointsPercent>
+        <extraInspectStringKey>ExplosionOnDamageWarning</extraInspectStringKey>
+      </li>
+      <li Class="CompProperties_Usable">
+        <useJob>TriggerObject</useJob>
+        <useLabel>Trigger {0_label}</useLabel>
+      </li>
+      <li Class="CompProperties_UseEffect">
+        <compClass>CompUseEffect_StartWick</compClass>
+      </li>
+    </comps>
+  </ThingDef>
+
+  
+  
+  
+ <!-- Soft damage charge -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>MiningChargeHE</defName>
+    <label>high-explosive charge</label>
+	<designatorDropdown>MiningCharges</designatorDropdown>
+    <description>A high-explosive incendiary device used for defending fortifications against soft targets and vehicles. It is made from refined chemfuel. The explosive is a bit more powerful than those sometimes found on asteroids.</description>
+    <graphicData>
+      <texPath>Things/Building/Gravship/MiningChargeHE</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <shadowData>
+        <volume>(0.9, 0.5, 0.9)</volume>
+      </shadowData>
+    </graphicData>
+    <uiIconPath>Things/Building/Gravship/MiningChargeHE</uiIconPath>
+    <uiIconScale>1.0</uiIconScale>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <size>(1,1)</size>
+    <designationCategory>Odyssey</designationCategory>
+    <researchPrerequisites>
+      <li>Mortars</li>
+    </researchPrerequisites>
+	<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <fillPercent>0.5</fillPercent>
+    <rotatable>false</rotatable>
+    <passability>PassThroughOnly</passability>
+    <tickerType>Normal</tickerType>
+    <pathCost>50</pathCost>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <building>
+      <alwaysUninstallable>true</alwaysUninstallable>
+      <expandHomeArea>false</expandHomeArea>
+    </building>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <costList>
+      <Chemfuel>15</Chemfuel>
+    </costList>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>10</Mass>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <wickTicks>240</wickTicks>
+        <explosiveRadius>4.6</explosiveRadius>
+        <explosiveDamageType>MiningBombHE</explosiveDamageType>
+        <explodeOnKilled>true</explodeOnKilled>
+        <startWickHitPointsPercent>0.99</startWickHitPointsPercent>
+        <extraInspectStringKey>ExplosionOnDamageWarning</extraInspectStringKey>
+        <preExplosionSpawnSingleThingDef>Filth_BlastMark</preExplosionSpawnSingleThingDef>
+      </li>
+      <li Class="CompProperties_Usable">
+        <useJob>TriggerObject</useJob>
+        <useLabel>Trigger {0_label}</useLabel>
+      </li>
+      <li Class="CompProperties_UseEffect">
+        <compClass>CompUseEffect_StartWick</compClass>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  <!-- Regular bomb but less building damage -->
+  <DamageDef Name="MiningBombHE">
+    <defName>MiningBombHE</defName>
+    <label>bomb</label>
+    <workerClass>DamageWorker_AddInjury</workerClass>
+    <externalViolence>true</externalViolence>
+    <isExplosive>true</isExplosive>
+    <deathMessage>{0} has died in an explosion.</deathMessage>
+    <hediff>Shredded</hediff>
+    <hediffSolid>Crack</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Blunt</impactSoundType>
+    <armorCategory>Sharp</armorCategory>
+    <minDamageToFragment>15</minDamageToFragment>
+    <defaultDamage>50</defaultDamage>
+    <defaultStoppingPower>0.5</defaultStoppingPower>
+    <defaultArmorPenetration>0.10</defaultArmorPenetration>
+    <buildingDamageFactorImpassable>1.5</buildingDamageFactorImpassable>
+    <buildingDamageFactorPassable>1</buildingDamageFactorPassable>
+    <plantDamageFactor>2</plantDamageFactor>
+    <corpseDamageFactor>0.5</corpseDamageFactor>
+    <explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
+    <explosionHeatEnergyPerCell>5</explosionHeatEnergyPerCell>
+    <explosionCellFleck>BlastDry</explosionCellFleck>
+    <explosionColorCenter>(1, 0.5, 0.3)</explosionColorCenter>
+    <explosionColorEdge>(0.6, 0.5, 0.4)</explosionColorEdge>
+    <soundExplosion>Explosion_Bomb</soundExplosion>
+    <combatLogRules>Damage_Bomb</combatLogRules>
+  </DamageDef>
+  
+  
+  
+  
+ <!-- MiningChargeTox -->
+  <ThingDef ParentName="BuildingBase" MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>MiningChargeToxic</defName>
+    <label>tox charge</label>
+	<designatorDropdown>MiningCharges</designatorDropdown>
+    <description>A device used to create a large tox gas explosion. Colonists wearing vacsuits are not harmed by this explosion. It is made from refined chemfuel. The explosive is a bit more powerful than those sometimes found on asteroids.</description>
+    <graphicData>
+      <texPath>Things/Building/Gravship/MiningChargeTox</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <shadowData>
+        <volume>(0.9, 0.5, 0.9)</volume>
+      </shadowData>
+    </graphicData>
+    <uiIconPath>Things/Building/Gravship/MiningChargeTox</uiIconPath>
+    <uiIconScale>1.0</uiIconScale>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <size>(1,1)</size>
+    <designationCategory>Odyssey</designationCategory>
+    <researchPrerequisites>
+      <li>Mortars</li>
+      <li>ToxGas</li>
+    </researchPrerequisites>
+	<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <fillPercent>0.5</fillPercent>
+    <rotatable>false</rotatable>
+    <passability>PassThroughOnly</passability>
+    <tickerType>Normal</tickerType>
+    <pathCost>50</pathCost>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <building>
+      <alwaysUninstallable>true</alwaysUninstallable>
+      <expandHomeArea>false</expandHomeArea>
+    </building>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <costList>
+      <Chemfuel>15</Chemfuel>
+    </costList>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>10</Mass>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <wickTicks>240</wickTicks>
+        <explosiveRadius>2.3</explosiveRadius>
+        <explosiveDamageType>ToxGas</explosiveDamageType>
+        <postExplosionGasType>ToxGas</postExplosionGasType>
+        <explodeOnKilled>true</explodeOnKilled>
+        <startWickHitPointsPercent>0.99</startWickHitPointsPercent>
+        <extraInspectStringKey>ExplosionOnDamageWarning</extraInspectStringKey>
+      </li>
+      <li Class="CompProperties_Usable">
+        <useJob>TriggerObject</useJob>
+        <useLabel>Trigger {0_label}</useLabel>
+      </li>
+      <li Class="CompProperties_UseEffect">
+        <compClass>CompUseEffect_StartWick</compClass>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  
+ <!-- MiningChargeStun -->
+  <ThingDef ParentName="BuildingBase" MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>MiningChargeStun</defName>
+    <label>concussive charge</label>
+	<designatorDropdown>MiningCharges</designatorDropdown>
+    <description>A device used to create a powerful shockwave from a concussive explosion. It is made from a component and some steel. The explosive is a bit more powerful than those sometimes found on asteroids.</description>
+    <graphicData>
+      <texPath>Things/Building/Gravship/MiningChargeStun</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <shadowData>
+        <volume>(0.9, 0.5, 0.9)</volume>
+      </shadowData>
+    </graphicData>
+    <uiIconPath>Things/Building/Gravship/MiningChargeStun</uiIconPath>
+    <uiIconScale>1.0</uiIconScale>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <size>(1,1)</size>
+    <designationCategory>Odyssey</designationCategory>
+    <researchPrerequisites>
+      <li>Mortars</li>
+    </researchPrerequisites>
+	<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <fillPercent>0.5</fillPercent>
+    <rotatable>false</rotatable>
+    <passability>PassThroughOnly</passability>
+    <tickerType>Normal</tickerType>
+    <pathCost>50</pathCost>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <building>
+      <alwaysUninstallable>true</alwaysUninstallable>
+      <expandHomeArea>false</expandHomeArea>
+    </building>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <costList>
+      <Steel>15</Steel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>10</Mass>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <wickTicks>160</wickTicks>
+        <explosiveRadius>9.4</explosiveRadius>
+        <explosiveDamageType>Stun</explosiveDamageType>
+        <explodeOnKilled>true</explodeOnKilled>
+        <startWickHitPointsPercent>0.99</startWickHitPointsPercent>
+        <extraInspectStringKey>ExplosionOnDamageWarning</extraInspectStringKey>
+      </li>
+      <li Class="CompProperties_Usable">
+        <useJob>TriggerObject</useJob>
+        <useLabel>Trigger {0_label}</useLabel>
+      </li>
+      <li Class="CompProperties_UseEffect">
+        <compClass>CompUseEffect_StartWick</compClass>
+      </li>
+    </comps>
+  </ThingDef>
+  
+ <!-- MiningChargeBlackbox -->
+  <ThingDef ParentName="BuildingBase" MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>MiningChargeBlackbox</defName>
+    <label>doomsday charge</label>
+	<designatorDropdown>MiningCharges</designatorDropdown>
+    <description>A doomsday device used to create an extremely powerful explosion. It is made from uranium, chemfuel, steel and components. The explosive is five times more powerful than those sometimes found on asteroids. It can only be detonated by hand, and activates shortly after.</description>
+    <graphicData>
+      <texPath>Things/Building/Gravship/MiningChargeBlackbox</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <shadowData>
+        <volume>(0.9, 0.5, 0.9)</volume>
+      </shadowData>
+    </graphicData>
+    <uiIconPath>Things/Building/Gravship/MiningChargeBlackbox</uiIconPath>
+    <uiIconScale>1.0</uiIconScale>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <size>(1,1)</size>
+    <designationCategory>Odyssey</designationCategory>
+    <researchPrerequisites>
+      <li>Mortars</li>
+    </researchPrerequisites>
+	<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <fillPercent>0.5</fillPercent>
+    <rotatable>false</rotatable>
+    <passability>PassThroughOnly</passability>
+    <tickerType>Normal</tickerType>
+    <pathCost>50</pathCost>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <building>
+      <alwaysUninstallable>true</alwaysUninstallable>
+      <expandHomeArea>false</expandHomeArea>
+    </building>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <costList>
+      <Chemfuel>15</Chemfuel>
+      <Uranium>15</Uranium>
+      <Steel>15</Steel>
+      <ComponentSpacer>15</ComponentSpacer>
+    </costList>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>10</Mass>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <wickTicks>70~110</wickTicks>
+        <explosiveRadius>18.4</explosiveRadius>
+        <explosiveDamageType>MiningBombBlackbox</explosiveDamageType>
+        <explodeOnKilled>false</explodeOnKilled>
+        <startWickHitPointsPercent>-1</startWickHitPointsPercent>
+        <extraInspectStringKey>ExplosionOnDamageWarning</extraInspectStringKey>
+        <preExplosionSpawnSingleThingDef>Filth_BlastMark</preExplosionSpawnSingleThingDef>
+        <applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+      </li>
+      <li Class="CompProperties_Usable">
+        <useJob>TriggerObject</useJob>
+        <useLabel>Trigger {0_label}</useLabel>
+      </li>
+      <li Class="CompProperties_UseEffect">
+        <compClass>CompUseEffect_StartWick</compClass>
+      </li>
+    </comps>
+  </ThingDef>
+  
+    <DamageDef ParentName="Bomb">
+    <defName>MiningBombBlackbox</defName>
+    <defaultDamage>550</defaultDamage>
+    <defaultStoppingPower>2.0</defaultStoppingPower>
+    <defaultArmorPenetration>1.30</defaultArmorPenetration>
+    <buildingDamageFactorImpassable>30</buildingDamageFactorImpassable>
+    <buildingDamageFactorPassable>5</buildingDamageFactorPassable>
+    <plantDamageFactor>10</plantDamageFactor>
+    <explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
+    <explosionHeatEnergyPerCell>50</explosionHeatEnergyPerCell>
+    <explosionCellFleck>BlastDry</explosionCellFleck>
+    <explosionColorCenter>(1, 0.5, 0.3)</explosionColorCenter>
+    <explosionColorEdge>(0.6, 0.5, 0.4)</explosionColorEdge>
+  </DamageDef>
+  
+ <!-- Chembarrel -->
+  <ThingDef ParentName="AncientSmallWalkableBuildingBase">
+    <defName>GravshipMinisChembarrel</defName>
+    <label>chembarrel</label>
+    <description>A barrel that stores chemfuel. Highly explosive and flammable if full of chemfuel, but better than leaving it in loose chemfuel cans.</description>
+    <graphicData>
+      <texPath>Things/Building/Gravship/Chembarrel</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <shadowData>
+        <volume>(0.5, 0.5, 0.5)</volume>
+      </shadowData>
+    </graphicData>
+    <uiIconPath>Things/Building/Gravship/Chembarrel</uiIconPath>
+    <uiIconScale>1.0</uiIconScale>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <designationCategory>Odyssey</designationCategory>
+    <researchPrerequisites>
+      <li>BiofuelRefining</li>
+    </researchPrerequisites>
+    <size>(1, 1)</size>
+    <fillPercent>0.5</fillPercent>
+    <rotatable>false</rotatable>
+    <passability>PassThroughOnly</passability>
+    <tickerType>Normal</tickerType>
+    <pathCost>50</pathCost>
+    <resourcesFractionWhenDeconstructed>0</resourcesFractionWhenDeconstructed>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <building>
+      <alwaysUninstallable>true</alwaysUninstallable>
+      <expandHomeArea>false</expandHomeArea>
+      <paintable>true</paintable>
+    </building>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <costList>
+      <Steel>10</Steel>
+    </costList>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Flammability>0.70</Flammability>
+      <Mass>25</Mass>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <wickTicks>40~80</wickTicks>
+        <explosiveRadius>0</explosiveRadius>
+        <explosiveExpandPerFuel>0.06</explosiveExpandPerFuel>
+        <explosiveDamageType>Flame</explosiveDamageType>
+        <explodeOnKilled>true</explodeOnKilled>
+        <startWickHitPointsPercent>0.50</startWickHitPointsPercent>
+        <preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+        <preExplosionSpawnChance>0.50</preExplosionSpawnChance>
+        <postExplosionSpawnThingDef>Filth_Fuel</postExplosionSpawnThingDef>
+        <postExplosionSpawnChance>0.50</postExplosionSpawnChance>
+        <postExplosionSpawnThingCount>1</postExplosionSpawnThingCount>
+        <applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+        <startWickOnDamageTaken>
+          <li>Bullet</li>
+          <li>Flame</li>
+          <li>ArrowHighVelocity</li>
+        </startWickOnDamageTaken>
+      </li>
+      <li Class="CompProperties_Refuelable">
+        <fuelCapacity>300</fuelCapacity>
+        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>0</initialConfigurableTargetFuelLevel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </fuelFilter>
+        <fuelLabel>Chemfuel</fuelLabel>
+        <fuelGizmoLabel>Chemfuel</fuelGizmoLabel>
+        <autoRefuelPercent>0</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+        <showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+        <drawFuelGaugeInMap>false</drawFuelGaugeInMap>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+      </li>
+    </comps>
+	  <rotatable>false</rotatable>
+    <staticSunShadowHeight>0</staticSunShadowHeight>
+  </ThingDef>
+
+
+
+<!-- Ancient Transport Pod / Launch without a pod launcher!-->
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>TransportPod</defName>
+    <label>transport pod</label>
+    <description>A launchable cargo pod capable of carrying people, items, or animals. Can be used for sending gifts, transporting people or supplies, surprise attacks, or reinforcing battles.</description>
+    <graphicData>
+      <texPath>Things/Special/DropPod</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2,2)</drawSize>
+    </graphicData>
+    <size>(1,1)</size>
+    <rotatable>false</rotatable>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <castEdgeShadows>false</castEdgeShadows>
+    <designationHotKey>Misc12</designationHotKey>
+    <fillPercent>0.5</fillPercent>
+    <designationCategory>Misc</designationCategory>
+    <uiOrder>2200</uiOrder>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <WorkToBuild>1600</WorkToBuild>
+      <Flammability>0.5</Flammability>
+    </statBases>
+    <costList>
+      <Steel>60</Steel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Transporter">
+        <massCapacity>300</massCapacity>
+        <restEffectiveness>0.8</restEffectiveness>
+        <canChangeAssignedThingsAfterStarting>true</canChangeAssignedThingsAfterStarting>
+      </li>
+      <li Class="CompProperties_Launchable_TransportPod">
+        <skyfallerLeaving>DropPodLeaving</skyfallerLeaving>
+      </li>
+    </comps>
+    <inspectorTabs>
+      <li>ITab_ContentsTransporter</li>
+    </inspectorTabs>
+    <placeWorkers>
+      <li>PlaceWorker_NeedsFuelingPort</li>
+      <li>PlaceWorker_NotUnderRoof</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>TransportPod</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+    <uiIconScale>0.65</uiIconScale>
+  </ThingDef>
+  
+  
+  <ThingDef ParentName="BuildingBase">
+    <defName>OrbitalTransportPod</defName>
+    <label>orbital transport pod</label>
+    <designationCategory>Odyssey</designationCategory>
+    <description>An orbital cargo pod capable of carrying people, animals, and items. It's able to work without a pod launcher, but requires chemfuel to make.</description>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Things/Building/Gravship/OrbitalLaunchPod</texPath>
+      <drawSize>(2,2)</drawSize>
+    </graphicData>
+    <size>(1,1)</size>
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <Mass>75</Mass>
+      <MaxHitPoints>250</MaxHitPoints>
+      <WorkToBuild>1600</WorkToBuild>
+      <Flammability>0</Flammability>
+    </statBases>
+    <costList>
+      <Steel>60</Steel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+      <Chemfuel>15</Chemfuel>
+    </costList>
+    <rotatable>false</rotatable>
+    <fillPercent>0.5</fillPercent>
+    <uiIconScale>0.65</uiIconScale>
+    <tickerType>Normal</tickerType>
+    <passability>PassThroughOnly</passability>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <comps>
+      <li Class="CompProperties_Transporter">
+        <restEffectiveness>0.8</restEffectiveness>
+        <canChangeAssignedThingsAfterStarting>true</canChangeAssignedThingsAfterStarting>
+        <max1PerGroup>true</max1PerGroup>
+      </li>
+      <li Class="CompProperties_Launchable_TransportPod">
+        <skyfallerLeaving>DropPodLeavingOrbital</skyfallerLeaving>
+        <requiresFuelingPort>false</requiresFuelingPort>
+        <fixedLaunchDistanceMax>66</fixedLaunchDistanceMax>
+      </li>
+    </comps>
+    <inspectorTabs>
+      <li>ITab_ContentsTransporter</li>
+    </inspectorTabs>
+    <placeWorkers>
+      <li>PlaceWorker_NotUnderRoof</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>TransportPod</li>
+      <li>OrbitalTech</li>
+    </researchPrerequisites>
+    <dropPodActive>ActiveDropPodOrbital</dropPodActive>
+    <dropPodFaller>DropPodIncomingOrbital</dropPodFaller>
+  </ThingDef>
+  
+  <ThingDef ParentName="ActiveDropPod">
+    <defName>ActiveDropPodOrbital</defName>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Things/Building/Gravship/OrbitalLaunchPod</texPath>
+      <drawSize>(2,2)</drawSize>
+    </graphicData>
+  </ThingDef>
+  
+  
+  <ThingDef ParentName="DropPodLeaving">
+    <defName>DropPodLeavingOrbital</defName>
+    <label>orbital drop pod (leaving)</label> <!-- text_todo -->
+    <graphicData>
+      <texPath>Things/Building/Gravship/OrbitalLaunchPod</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutFlying</shaderType>
+      <drawSize>(2,2)</drawSize>
+    </graphicData>
+  </ThingDef>
+
+  <ThingDef ParentName="DropPodIncoming">
+    <defName>DropPodIncomingOrbital</defName>
+    <label>orbital drop pod (incoming)</label>
+    <graphicData>
+      <texPath>Things/Building/Gravship/OrbitalLaunchPod</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutFlying</shaderType>
+      <drawSize>(2,2)</drawSize>
+    </graphicData>
+  </ThingDef>
+  
+</Defs>

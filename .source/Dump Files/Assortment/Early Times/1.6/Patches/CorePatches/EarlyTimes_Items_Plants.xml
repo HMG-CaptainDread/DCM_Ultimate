@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName = "Plant_Grass"]/plant</xpath>
+		<value>			
+		<sowTags>
+			<li>Ground</li>
+		</sowTags>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName = "Plant_Grass"]/statBases</xpath>
+		<value>			
+			<Beauty>2</Beauty>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName = "Plant_TallGrass"]/statBases</xpath>
+		<value>			
+			<Beauty>1</Beauty>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>*/ThingDef[defName = "Plant_Strawberry"]/plant</xpath>
+		<value>
+			<harvestAfterGrowth>0.23</harvestAfterGrowth>
+		</value>
+	</Operation>
+	
+	
+	<Operation Class="PatchOperationConditional">
+		<xpath>/Defs/ThingDef[@Name = "CavePlantBase"]</xpath>
+		<match Class="PatchOperationSequence">
+		<!--<success>Always</success>-->
+			<operations>
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[@Name = "CavePlantBase"]/plant</xpath>
+					<value>
+						<sowTags>
+							<li>Ground</li>				
+						</sowTags>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName = "Glowstool"]/plant</xpath>
+					<value>
+						<sowTags>
+							<li>Hydroponic</li>			
+						</sowTags>
+					</value>
+				</li>
+			</operations>
+		</match>
+		<nomatch Class="PatchOperationSequence">
+		<!--<success>Always</success>-->
+			<operations>
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName = "Glowstool"]/plant</xpath>
+					<value>
+						<sowTags>
+							<li>Ground</li>	
+							<li>Hydroponic</li>			
+						</sowTags>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName = "Agarilux"]/plant</xpath>
+					<value>
+						<sowTags>
+							<li>Ground</li>				
+						</sowTags>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName = "Bryolux"]/plant</xpath>
+					<value>
+						<sowTags>
+							<li>Ground</li>				
+						</sowTags>
+					</value>
+				</li>
+			</operations>
+		</nomatch>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Agarilux"]/plant/visualSizeRange</xpath>
+		<value>
+			<visualSizeRange>0.15~1.5</visualSizeRange>
+		</value>
+	</Operation>
+	
+	
+</Patch>

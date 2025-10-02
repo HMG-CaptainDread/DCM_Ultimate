@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef Name="RWPShellBase" ParentName="ResourceBase" Abstract="True">
+    <soundInteract>Metal_Drop</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop>
+    <tickerType>Normal</tickerType>
+    <stackLimit>25</stackLimit>
+    <techLevel>Industrial</techLevel>
+    <statBases>
+      <MaxHitPoints>70</MaxHitPoints>
+      <MarketValue>10</MarketValue>
+      <Mass>3.5</Mass>
+      <Flammability>1.0</Flammability>
+      <DeteriorationRate>1.5</DeteriorationRate>
+    </statBases>
+    <thingCategories>
+      <li>MortarShells</li>
+    </thingCategories>
+    <tradeTags>
+      <li>Shell_HighExplosive</li>
+      <li>RWP_Cannonballs</li>
+    </tradeTags>
+  </ThingDef>
+  <ThingDef Name="RWPMakeableShellBase" ParentName="ShellBase" Abstract="True">
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <effectWorking>Cook</effectWorking>
+      <soundWorking>Recipe_Machining</soundWorking>
+      <workAmount>800</workAmount>
+      <targetCountAdjustment>5</targetCountAdjustment>
+      <workSkill>Crafting</workSkill>
+      <recipeUsers>
+        <li>TableMachining</li>
+        <li MayRequire="oskarpotocki.vfe.classical">VFEC_CraftingBench</li>
+      </recipeUsers>
+    </recipeMaker>
+  </ThingDef>
+  <!-- 12-pound Artillery Shell -->
+  <ThingDef ParentName="RWPMakeableShellBase">
+    <defName>RWP_Shell_ExplosiveShell</defName>
+    <label>twelve pound artillery shell</label>
+    <description>A shell filled with high explosives. Can be fired from the Napoleon cannon or the Coehorn mortar. Explodes when damaged.</description>
+    <graphicData>
+      <texPath>Things/Ammo/CannonBall/CannonBullet</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>2.9</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <explosiveExpandPerStackcount>0.4</explosiveExpandPerStackcount>
+        <startWickHitPointsPercent>0.333</startWickHitPointsPercent>
+        <wickTicks>
+          <min>10</min>
+          <max>30</max>
+        </wickTicks>
+      </li>
+    </comps>
+    <projectileWhenLoaded>RWP_Bullet_Shell_ExplosiveShell</projectileWhenLoaded>
+    <costList>
+      <Steel>15</Steel>
+      <Chemfuel>5</Chemfuel>
+    </costList>
+  </ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>RWP_Bullet_Shell_ExplosiveShell</defName>
+    <label>twelve pound artillery shell</label>
+    <graphicData>
+      <texPath>Things/Ammo/CannonBall/CannonBulletSmall</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+    <projectile>
+      <damageDef>Bomb</damageDef>
+      <damageAmountBase>30</damageAmountBase>
+      <speed>50</speed>
+      <explosionRadius>3.2</explosionRadius>
+      <flyOverhead>true</flyOverhead>
+      <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+      <soundExplode>MortarBomb_Explode</soundExplode>
+      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+      <soundAmbient>MortarRound_Ambient</soundAmbient>
+    </projectile>
+  </ThingDef>
+</Defs>

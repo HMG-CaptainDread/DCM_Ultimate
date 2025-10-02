@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>        
+
+
+                                        <!-- MULTIFLOOR PATCHES -->
+
+<!-- Elevator research -->
+                <Operation Class="PatchOperationAdd">
+                    <success>Always</success>
+                    <xpath>Defs/ThingDef[defName="MF_WoodenElevatorA"]</xpath>
+                    <value>
+                        <researchPrerequisites>
+                            <li>Ferny_Elevators</li>
+                        </researchPrerequisites>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationAdd">
+                    <success>Always</success>
+                    <xpath>Defs/ThingDef[defName="MF_ModernElevatorA"]/researchPrerequisites</xpath>
+                    <value>
+                            <li>Ferny_Elevators</li>
+                    </value>
+                </Operation>
+
+<!-- Other shit -->
+                <!-- <Operation Class="PatchOperationAdd">
+                    <success>Always</success>
+                    <xpath>Defs/ThingDef[defName="MF_UpStair"]</xpath>
+                    <value>
+                        <uiIconOffset>(0,0.6)</uiIconOffset>
+                    </value>
+                </Operation> -->
+
+
+
+
+
+                <Operation Class="PatchOperationReplace">
+                    <success>Always</success>
+                    <xpath>Defs/DesignationCategoryDef[defName="MultiFloors"]/label</xpath>
+                    <value>
+                        <label>Elevation</label>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <success>Always</success>
+                    <xpath>Defs/DesignationCategoryDef[defName="MultiFloors"]/order</xpath>
+                    <value>
+                        <order>460</order>
+                    </value>
+                </Operation>
+
+                <Operation Class="PatchOperationConditional">
+                    <success>Always</success>
+                    <xpath>/Defs/MainButtonDef[defName="MF_FloorSettingButton"]/iconPath</xpath>
+                    <nomatch Class="PatchOperationAdd">
+                        <xpath>/Defs/MainButtonDef[defName="MF_FloorSettingButton"]</xpath>
+                        <value>
+                            <iconPath>UI/Buttons/MainButtons/Floors</iconPath>
+                        </value>
+                    </nomatch>
+                    <match Class="PatchOperationReplace">
+                        <xpath>/Defs/MainButtonDef[defName="MF_FloorSettingButton"]/iconPath</xpath>
+                        <value>
+                            <iconPath>UI/Buttons/MainButtons/Floors</iconPath>
+                        </value>
+                    </match>
+                </Operation>
+
+</Patch>

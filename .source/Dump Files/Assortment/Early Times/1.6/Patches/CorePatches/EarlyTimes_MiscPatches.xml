@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>	
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName="TableSculpting"]/costList</xpath>
+		<value>
+			<MedTimes_CraftingTools>2</MedTimes_CraftingTools>
+		</value>
+	</Operation>
+	
+	
+	<Operation Class="PatchOperationSequence">
+	  <success>Always</success>
+	  <operations>
+		<li Class="PatchOperationTest">
+			<success>Invert</success>
+			<xpath>Defs/ThingDef[defName = "TableButcher"]/costList</xpath>
+		</li>	
+		<li Class="PatchOperationAdd">
+			<xpath>Defs/ThingDef[defName = "TableButcher"]</xpath>
+			<value>
+				<costList/>
+			</value>
+		</li>
+		</operations>
+	  </Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName="TableButcher"]/costList</xpath>
+		<value>
+			<MedTimes_CraftingTools>1</MedTimes_CraftingTools>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName="TableStonecutter"]/costList</xpath>
+		<value>
+			<MedTimes_CraftingTools>2</MedTimes_CraftingTools>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName="FueledStove"]/costList</xpath>
+		<value>
+			<MedTimes_CookingTools>2</MedTimes_CookingTools>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName="FueledSmithy"]/costList</xpath>
+		<value>
+			<MedTimes_CraftingTools>3</MedTimes_CraftingTools>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName="HandTailoringBench"]</xpath>
+		<value>
+			<costList>
+				<MedTimes_CraftingTools>2</MedTimes_CraftingTools>
+			</costList>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName="ElectricTailoringBench"]/costList</xpath>
+		<value>
+			<MedTimes_CraftingTools>1</MedTimes_CraftingTools>
+		</value>
+	</Operation>
+
+	
+	<Operation Class="PatchOperationAdd">
+		<success>Always</success>
+		<xpath>/Defs/DesignationCategoryDef[defName="Orders"]/specialDesignatorClasses</xpath>
+		<value>
+			<li>EarlyTimes.Designator_RearmTrap</li>
+		</value>
+		<order>Append</order>
+	</Operation>	
+	
+	<Operation Class="PatchOperationAdd">
+		<success>Always</success>
+		<xpath>/Defs/WorkGiverDef[defName="HunterHunt"]</xpath>
+		<value>
+			<priorityInType>100</priorityInType>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName="BionicEye"]/costList</xpath>
+		<value>
+			<MedTimes_Resource_Glass>2</MedTimes_Resource_Glass>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName="Gun_SniperRifle"]/costList</xpath>
+		<value>
+			<MedTimes_Resource_Glass>5</MedTimes_Resource_Glass>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName="Weapon_GrenadeMolotov"]/costList</xpath>
+		<value>
+			<MedTimes_Resource_Glass>15</MedTimes_Resource_Glass>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[@Name="ArtBuildingBase"]/comps/li[@Class="CompProperties_MeditationFocus"]/offsets/li[@Class = "FocusStrengthOffset_BuildingDefsWithQuality"]/defs</xpath>
+		<value>
+			<li>MedTimes_IceSculptureSmall</li>
+			<li>MedTimes_IceSculptureLarge</li>
+			<li>MedTimes_IceSculptureGrand</li>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName="Campfire"]/comps/li[@Class="CompProperties_MeditationFocus"]/offsets/li[@Class = "FocusStrengthOffset_BuildingDefsLit"]/defs</xpath>
+		<value>
+			<li>MedTimes_StoneHearth</li>
+			<li>MedTimes_Brazier</li>
+			<li>MedTimes_CorpseBonfire</li>
+			<li>MedTimes_Candle</li>
+			<li>MedTimes_Chandeller</li>
+			<li>MedTimes_StreetLamp</li>
+			<li>MedTimes_Reflector</li>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[@Name="TorchBase"]/comps/li[@Class="CompProperties_MeditationFocus"]/offsets/li[@Class = "FocusStrengthOffset_BuildingDefsLit"]/defs</xpath>
+		<value>
+			<li>MedTimes_StoneHearth</li>
+			<li>MedTimes_Brazier</li>
+			<li>MedTimes_CorpseBonfire</li>
+			<li>MedTimes_Candle</li>
+			<li>MedTimes_Chandeller</li>
+			<li>MedTimes_StreetLamp</li>
+			<li>MedTimes_Reflector</li>
+		</value>
+	</Operation>
+	
+</Patch>

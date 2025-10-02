@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- ================ Specific Structure Classes ================ -->
+	<!-- Wall Base Class -->
+	<ThingDef Name="MedTimes_WallBase" ParentName="MedTimes_BuildingBase" Abstract="True">
+		<description>Base Class for Walls</description>
+		<graphicData>
+			<texPath>Things/Building/Linked/Wall</texPath>
+			<graphicClass>Graphic_Appearances</graphicClass>
+			<linkType>CornerFiller</linkType>
+			<linkFlags>
+				<li>Wall</li>
+				<li>Rock</li>
+			</linkFlags>
+		</graphicData>
+		<uiIconPath>Things/Building/Linked/WallSmooth_MenuIcon</uiIconPath>
+		<statBases>
+			<MaxHitPoints>350</MaxHitPoints>
+			<WorkToBuild>150</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<MeditationFocusStrength>0.22</MeditationFocusStrength>
+		</statBases>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<altitudeLayer>Building</altitudeLayer>
+		<castEdgeShadows>true</castEdgeShadows>
+		<coversFloor>true</coversFloor>
+		<drawStyleCategory>Walls</drawStyleCategory>
+		<rotatable>false</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<staticSunShadowHeight>1.0</staticSunShadowHeight>
+		<building>
+			<blueprintGraphicData>
+				<texPath>Things/Building/Linked/Wall_Blueprint_Atlas</texPath>
+			</blueprintGraphicData>
+			<isInert>true</isInert>
+		</building>
+		<comps>
+			<li Class="CompProperties_MeditationFocus">
+				<statDef>MeditationFocusStrength</statDef>
+				<focusTypes>
+					<li>Minimal</li>
+				</focusTypes>
+			</li>
+		</comps>
+		<damageMultipliers>
+			<li>
+				<damageDef>Bomb</damageDef>
+				<multiplier>2</multiplier>
+			</li>
+		</damageMultipliers>
+		<designationCategory>Structure</designationCategory>
+	</ThingDef>
+	<!-- Sandbag Base Class -->
+	<ThingDef Name="MedTimes_SandbagBase" ParentName="MedTimes_BuildingBase" Abstract="True">
+		<graphicData>
+			<linkType>Basic</linkType>
+			<linkFlags>
+				<li>Wall</li>
+			</linkFlags>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>320</MaxHitPoints>
+			<WorkToBuild>150</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Beauty>2</Beauty>
+			<MeditationFocusStrength>0.22</MeditationFocusStrength>
+		</statBases>
+		<pathCost>200</pathCost>
+		<passability>PassThroughOnly</passability>
+		<pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
+		<altitudeLayer>Building</altitudeLayer>
+		<castEdgeShadows>true</castEdgeShadows>
+		<staticSunShadowHeight>0.6</staticSunShadowHeight>
+		<blockLight>false</blockLight>
+		<blockWind>false</blockWind>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<coversFloor>false</coversFloor>
+		<drawStyleCategory>Walls</drawStyleCategory>
+		<rotatable>false</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<holdsRoof>false</holdsRoof>
+		<building>
+			<isInert>true</isInert>
+		</building>
+		<comps>
+			<li Class="CompProperties_MeditationFocus">
+				<statDef>MeditationFocusStrength</statDef>
+				<focusTypes>
+					<li>Minimal</li>
+				</focusTypes>
+			</li>
+		</comps>
+		<damageMultipliers>
+			<li>
+				<damageDef>Bomb</damageDef>
+				<multiplier>2</multiplier>
+			</li>
+		</damageMultipliers>
+		<designationCategory>Structure</designationCategory>
+	</ThingDef>
+	<!-- Door Base Class -->
+	<ThingDef Name="MedTimes_DoorBase" ParentName="MedTimes_BuildingBase" Abstract="True">
+		<thingClass>Building_Door</thingClass>
+		<category>Building</category>
+		<altitudeLayer>DoorMoveable</altitudeLayer>
+		<fillPercent>1</fillPercent>
+		<useHitPoints>true</useHitPoints>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<tickerType>Normal</tickerType>
+		<rotatable>false</rotatable>
+		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<designationCategory>Structure</designationCategory>
+		<holdsRoof>true</holdsRoof>
+		<staticSunShadowHeight>1.0</staticSunShadowHeight>
+		<blockLight>true</blockLight>
+		<building>
+			<isInert>true</isInert>
+			<canPlaceOverWall>true</canPlaceOverWall>
+			<blueprintClass>Blueprint_Door</blueprintClass>
+			<soundDoorOpenPowered>Door_OpenPowered</soundDoorOpenPowered>
+			<soundDoorClosePowered>Door_ClosePowered</soundDoorClosePowered>
+			<soundDoorOpenManual>Door_OpenManual</soundDoorOpenManual>
+			<soundDoorCloseManual>Door_CloseManual</soundDoorCloseManual>
+			<blueprintGraphicData>
+				<texPath>Things/Building/Door/Door_Blueprint</texPath>
+			</blueprintGraphicData>
+		</building>
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_DoorLearnOpeningSpeed</li>
+		</placeWorkers>
+	</ThingDef>
+	<!-- airlock base class -->
+	<ThingDef Name="MedTimes_AirlockPrimitive" ParentName="MedTimes_DoorBase" Abstract="True">
+		<thingClass>EarlyTimes.Building_AirlockDoor</thingClass>
+		<description>An airlock entrance. Does not need time to open. Because of its construction specifics does not let heat through.</description>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<linkType>CornerFiller</linkType>
+			<linkFlags>
+				<li>Wall</li>
+				<li>Rock</li>
+			</linkFlags>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+				<edgeTop>Damage/Edge</edgeTop>
+				<edgeBot>Damage/Edge</edgeBot>
+				<edgeLeft>Damage/Edge</edgeLeft>
+				<edgeRight>Damage/Edge</edgeRight>
+			</damageData>
+		</graphicData>
+		<tickerType>Normal</tickerType>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<statBases>
+			<DoorOpenSpeed>45.0</DoorOpenSpeed>
+			<MeditationFocusStrength>0.22</MeditationFocusStrength>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_MeditationFocus">
+				<statDef>MeditationFocusStrength</statDef>
+				<focusTypes>
+					<li>Minimal</li>
+				</focusTypes>
+			</li>
+		</comps>
+		<pathCost>110</pathCost>
+		<fillPercent>1</fillPercent>
+		<staticSunShadowHeight>1.0</staticSunShadowHeight>
+		<castEdgeShadows>false</castEdgeShadows>
+		<holdsRoof>true</holdsRoof>
+		<blockWind>true</blockWind>
+		<blockLight>false</blockLight>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<designationCategory>Structure</designationCategory>
+		<building>
+			<ai_chillDestination>false</ai_chillDestination>
+			<blueprintClass>Blueprint_Build</blueprintClass>
+		</building>
+		<researchPrerequisites>
+			<li>TS_AirlockSimple</li>
+		</researchPrerequisites>
+	</ThingDef>
+	<!-- ================================ Actual Buildings ================================ -->
+	<!-- ============ Primitive shelter and stuff =========== -->
+	<!-- Airlock primitive-->
+	<ThingDef ParentName="MedTimes_AirlockPrimitive">
+		<defName>EarlyTimes_AirlockPrimitive</defName>
+		<label>Primitive airlock hole</label>
+		<description>A primitive airlock entrance. Does not need time to open. Because of its construction specifics does not let heat through.</description>
+		<graphicData>
+			<texPath>Things/Building/Door/HoleDoor/AirlockDoorPrimitive_Atlas</texPath>
+		</graphicData>
+		<uiIconPath>Things/Building/Door/HoleDoor/AirlockDoorPrimitive_MenuIcon</uiIconPath>
+		<statBases>
+			<MaxHitPoints>165</MaxHitPoints>
+			<WorkToBuild>90</WorkToBuild>
+			<MeditationFocusStrength>0.24</MeditationFocusStrength>
+		</statBases>
+		<building>
+			<artificialForMeditationPurposes>false</artificialForMeditationPurposes>
+			<blueprintGraphicData>
+				<texPath>Things/Building/Door/HoleDoor/AirlockDoorPrimitive_Blueprint_Atlas</texPath>
+			</blueprintGraphicData>
+		</building>
+		<stuffCategories>
+			<li>Woody</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>5</costStuffCount>
+		<researchPrerequisites>
+			<li>TS_AirlockSimple</li>
+		</researchPrerequisites>
+	</ThingDef>
+	<!-- Wooden Gate -->
+	<ThingDef ParentName="MedTimes_DoorBase">
+		<defName>MedTimes_Gate</defName>
+		<label>Gate</label>
+		<thingClass>EarlyTimes.Building_FenceGate</thingClass>
+		<description>A simple wooden gate. Must be manually opened and closed, which slows people down.</description>
+		<graphicData>
+			<texPath>Things/Building/Door/PrimitiveDoor/DoorLog_Mover</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<damageData>
+				<enabled>false</enabled>
+			</damageData>
+			<drawSize>(1.3,1.3)</drawSize>
+			<linkFlags>
+				<li>Fences</li>
+				<li>Wall</li>
+				<li>Rock</li>
+			</linkFlags>
+		</graphicData>
+		<uiIconPath>Things/Building/Door/PrimitiveDoor/DoorLog_MenuIcon</uiIconPath>
+		<statBases>
+			<MaxHitPoints>90</MaxHitPoints>
+			<WorkToBuild>135</WorkToBuild>
+		</statBases>
+		<building>
+			<relatedBuildCommands>
+				<li>PenMarker</li>
+				<li>MedTimes_Fencing</li>
+			</relatedBuildCommands>
+			<isInert>true</isInert>
+			<isFence>true</isFence>
+			<artificialForMeditationPurposes>false</artificialForMeditationPurposes>
+			<blueprintGraphicData>
+				<texPath>Things/Building/Door/PrimitiveDoor/DoorLog_Blueprint</texPath>
+			</blueprintGraphicData>
+		</building>
+		<costStuffCount>10</costStuffCount>
+		<stuffCategories>
+			<li>Woody</li>
+		</stuffCategories>
+		<drawerType>RealtimeOnly</drawerType>
+		<staticSunShadowHeight>0</staticSunShadowHeight>
+		<castEdgeShadows>false</castEdgeShadows>
+		<holdsRoof>true</holdsRoof>
+		<blockLight>false</blockLight>
+		<researchPrerequisites>
+			<li>TS_Shelter</li>
+		</researchPrerequisites>
+	</ThingDef>
+	<!-- simple Wall -->
+	<ThingDef ParentName="MedTimes_WallBase">
+		<defName>EarlyTimes_Wall</defName>
+		<label>simple wall</label>
+		<description>A log wall. Capable of holding up a roof.</description>
+		<graphicData>
+			<texPath>Things/Building/Linked/WallWood/WallLog_Atlas</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<uiIconPath>Things/Building/Linked/WallWood/WallLog_MenuIcon</uiIconPath>
+		<building>
+			<artificialForMeditationPurposes>false</artificialForMeditationPurposes>
+			<blueprintGraphicData>
+				<texPath>Things/Building/Linked/WallWood/WallLog_Blueprint_Atlas</texPath>
+			</blueprintGraphicData>
+		</building>
+		<statBases>
+			<MaxHitPoints>165</MaxHitPoints>
+			<WorkToBuild>90</WorkToBuild>
+			<MeditationFocusStrength>0.24</MeditationFocusStrength>
+		</statBases>
+		<stuffCategories>
+			<li>Woody</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>5</costStuffCount>
+		<pathCostIgnoreRepeat>false</pathCostIgnoreRepeat>
+		<passability>Impassable</passability>
+		<fillPercent>1</fillPercent>
+		<tickerType>Never</tickerType>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<holdsRoof>true</holdsRoof>
+		<blockLight>true</blockLight>
+		<blockWind>true</blockWind>
+		<researchPrerequisites>
+			<li>TS_Shelter</li>
+		</researchPrerequisites>
+	</ThingDef>
+	<!-- ================ Reinforced structures ================ -->
+	<!-- Airlock reinforced -->
+	<ThingDef ParentName="MedTimes_AirlockPrimitive">
+		<defName>EarlyTimes_AirlockReinforced</defName>
+		<label>Airlock hole</label>
+		<description>An airlock entrance. Does not need time to open. Because of its construction specifics does not let heat through.</description>
+		<graphicData>
+			<texPath>Things/Building/Door/HoleDoor/AirlockDoorBrick_Atlas</texPath>
+		</graphicData>
+		<uiIconPath>Things/Building/Door/HoleDoor/AirlockDoorBrick_MenuIcon</uiIconPath>
+		<building>
+			<blueprintGraphicData>
+				<texPath>Things/Building/Door/HoleDoor/AirlockDoorBrick_Blueprint_Atlas</texPath>
+			</blueprintGraphicData>
+		</building>
+		<statBases>
+			<MaxHitPoints>350</MaxHitPoints>
+			<WorkToBuild>135</WorkToBuild>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>12</costStuffCount>
+		<researchPrerequisites>
+			<li>TS_AirlockSimple</li>
+			<li>MedTimes_ReinforcedStructure</li>
+		</researchPrerequisites>
+	</ThingDef>
+	<!-- Embrasure Wall -->
+	<ThingDef ParentName="MedTimes_WallBase">
+		<defName>MedTimes_Wall_Embrasure</defName>
+		<label>Embrasure</label>
+		<description>A solid wall with a narrow vertical slit from which a marksman can fire. (Not your traditional embrasure, can be scaled by attackers)</description>
+		<graphicData>
+			<texPath>Things/Building/Linked/Embrasure/EmbrasureWall_Atlas</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<uiIconPath>Things/Building/Linked/Embrasure/EmbrasureWall_MenuIcon</uiIconPath>
+		<building>
+			<blueprintGraphicData>
+				<texPath>Things/Building/Linked/Embrasure/EmbrasureWall_Blueprint_Atlas</texPath>
+			</blueprintGraphicData>
+		</building>
+		<statBases>
+			<MaxHitPoints>320</MaxHitPoints>
+		</statBases>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>11</costStuffCount>
+		<pathCostIgnoreRepeat>false</pathCostIgnoreRepeat>
+		<pathCost>11000</pathCost>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.8</fillPercent>
+		<tickerType>Never</tickerType>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<holdsRoof>true</holdsRoof>
+		<blockLight>false</blockLight>
+		<blockWind>true</blockWind>
+		<researchPrerequisites>
+			<li>MedTimes_Embrasures</li>
+		</researchPrerequisites>
+	</ThingDef>
+	<!-- Parapet -->
+	<ThingDef ParentName="MedTimes_SandbagBase">
+		<defName>MedTimes_Wall_Parapet</defName>
+		<label>Crenelated Parapet</label>
+		<description>A reinforced wall designed and built to be used as a defence from projectiles. This design is slightly above waist height and contains crenelations. It operates in a simular fashion to sandbags, except can be made from various materials.</description>
+		<graphicData>
+			<texPath>Things/Building/Linked/Parapet/ParapetWall_Atlas</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<uiIconPath>Things/Building/Linked/Parapet/ParapetWall_MenuIcon</uiIconPath>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>6</costStuffCount>
+		<pathCostIgnoreRepeat>false</pathCostIgnoreRepeat>
+		<fillPercent>0.65</fillPercent>
+		<tickerType>Never</tickerType>
+		<building>
+			<blueprintGraphicData>
+				<texPath>Things/Building/Linked/Parapet/ParapetWall_Blueprint_Atlas</texPath>
+			</blueprintGraphicData>
+		</building>
+		<researchPrerequisites>
+			<li>MedTimes_Fence</li>
+			<li>MedTimes_ReinforcedStructure</li>
+		</researchPrerequisites>
+	</ThingDef>
+	<!-- ================ Ice Wall Stuff ================ -->
+	<!-- Airlock ice-->
+	<ThingDef ParentName="MedTimes_AirlockPrimitive">
+		<defName>EarlyTimes_AirlockIce</defName>
+		<label>Ice airlock hole</label>
+		<description>An airlock entrance made of ice. Does not need time to open. Because of its construction specifics does not let heat through.</description>
+		<graphicData>
+			<texPath>Things/Building/Door/HoleDoor/AirlockDoorBrick_Atlas</texPath>
+			<color>(180,210,230)</color>
+		</graphicData>
+		<uiIconPath>Things/Building/Door/HoleDoor/AirlockDoorBrick_MenuIcon</uiIconPath>
+		<building>
+			<blueprintGraphicData>
+				<texPath>Things/Building/Door/HoleDoor/AirlockDoorBrick_Blueprint_Atlas</texPath>
+			</blueprintGraphicData>
+			<repairable>false</repairable>
+		</building>
+		<statBases>
+			<MaxHitPoints>600</MaxHitPoints>
+			<WorkToBuild>250</WorkToBuild>
+			<Flammability>0</Flammability>
+			<Beauty>2</Beauty>
+		</statBases>
+		<costList>
+			<MedTimes_Resource_IceBlocks>11</MedTimes_Resource_IceBlocks>
+		</costList>
+		<tickerType>Normal</tickerType>
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="EarlyTimes.CompProperties_HitpointRefuelable">
+				<fuelConsumptionRate>1.0</fuelConsumptionRate>
+				<destroyOnNoFuel>true</destroyOnNoFuel>
+				<fuelCapacity>11.0</fuelCapacity>
+				<fuelLabel>Ice Thickness</fuelLabel>
+				<initialFuelPercent>1</initialFuelPercent>
+				<fuelFilter>
+					<thingDefs>
+						<li>MedTimes_Resource_IceBlocks</li>
+					</thingDefs>
+				</fuelFilter>
+			</li>
+			<li Class="EarlyTimes.CompProperties_HeatPusherIce">
+				<compClass>CompHeatPusher</compClass>
+				<heatPerSecond>-1</heatPerSecond>
+				<heatPushMinTemperature>1</heatPushMinTemperature>
+			</li>
+		</comps>
+		<researchPrerequisites>
+			<li>TS_AirlockSimple</li>
+			<li>MedTimes_IceUsage</li>
+		</researchPrerequisites>
+	</ThingDef>
+	<!-- Ice Wall -->
+	<ThingDef ParentName="MedTimes_WallBase">
+		<defName>MedTimes_Wall_Ice</defName>
+		<label>Ice Wall</label>
+		<description>(Will deteriorate in temps above freezing) A wall made ice blocks. Medieval era technology which requires lots of effort and few resources. It is composed primarily of compacted ice.</description>
+		<graphicData>
+			<texPath>Things/Building/Linked/IceWall/IceWall_Atlas</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<color>(180,210,230)</color>
+		</graphicData>
+		<uiIconPath>Things/Building/Linked/IceWall/IceWall_MenuIcon</uiIconPath>
+		<statBases>
+			<MaxHitPoints>600</MaxHitPoints>
+			<WorkToBuild>250</WorkToBuild>
+			<Flammability>0</Flammability>
+			<Beauty>2</Beauty>
+		</statBases>
+		<costList>
+			<MedTimes_Resource_IceBlocks>12</MedTimes_Resource_IceBlocks>
+		</costList>
+		<tickerType>Normal</tickerType>
+		<neverMultiSelect>false</neverMultiSelect>
+		<passability>Impassable</passability>
+		<fillPercent>1</fillPercent>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<holdsRoof>true</holdsRoof>
+		<blockLight>true</blockLight>
+		<blockWind>true</blockWind>
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="EarlyTimes.CompProperties_HitpointRefuelable">
+				<fuelConsumptionRate>1.0</fuelConsumptionRate>
+				<destroyOnNoFuel>true</destroyOnNoFuel>
+				<fuelCapacity>12.0</fuelCapacity>
+				<fuelLabel>Ice Thickness</fuelLabel>
+				<initialFuelPercent>1</initialFuelPercent>
+				<fuelFilter>
+					<thingDefs>
+						<li>MedTimes_Resource_IceBlocks</li>
+					</thingDefs>
+				</fuelFilter>
+			</li>
+			<li Class="EarlyTimes.CompProperties_HeatPusherIce">
+				<compClass>CompHeatPusher</compClass>
+				<heatPerSecond>-1</heatPerSecond>
+				<heatPushMinTemperature>1</heatPushMinTemperature>
+			</li>
+		</comps>
+		<building>
+			<blueprintGraphicData>
+				<texPath>Things/Building/Linked/IceWall/IceWall_Blueprint_Atlas</texPath>
+			</blueprintGraphicData>
+			<repairable>false</repairable>
+		</building>
+		<researchPrerequisites>
+			<li>MedTimes_IceUsage</li>
+		</researchPrerequisites>
+		<designationCategory>Structure</designationCategory>
+	</ThingDef>
+	<!-- Ice Wall Embrasure -->
+	<ThingDef ParentName="MedTimes_WallBase">
+		<defName>MedTimes_Wall_IceEmbrasure</defName>
+		<label>Ice Wall Embrasure</label>
+		<description>A solid wall built of ice blocks with a narrow vertical slit from which a marksman can fire. (Not your traditional embrasure, can be scaled by attackers)</description>
+		<graphicData>
+			<texPath>Things/Building/Linked/Embrasure/EmbrasureWall_Atlas</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<color>(180,210,230)</color>
+		</graphicData>
+		<uiIconPath>Things/Building/Linked/Embrasure/EmbrasureWall_MenuIcon</uiIconPath>
+		<statBases>
+			<MaxHitPoints>560</MaxHitPoints>
+			<WorkToBuild>250</WorkToBuild>
+			<Flammability>0</Flammability>
+			<Beauty>2</Beauty>
+		</statBases>
+		<costList>
+			<MedTimes_Resource_IceBlocks>5</MedTimes_Resource_IceBlocks>
+		</costList>
+		<pathCostIgnoreRepeat>false</pathCostIgnoreRepeat>
+		<pathCost>11000</pathCost>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.8</fillPercent>
+		<neverMultiSelect>false</neverMultiSelect>
+		<tickerType>Normal</tickerType>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<holdsRoof>true</holdsRoof>
+		<blockLight>false</blockLight>
+		<blockWind>true</blockWind>
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="EarlyTimes.CompProperties_HitpointRefuelable">
+				<fuelConsumptionRate>1.0</fuelConsumptionRate>
+				<destroyOnNoFuel>true</destroyOnNoFuel>
+				<fuelCapacity>5.0</fuelCapacity>
+				<fuelLabel>Ice Thickness</fuelLabel>
+				<initialFuelPercent>1</initialFuelPercent>
+				<fuelFilter>
+					<thingDefs>
+						<li>MedTimes_Resource_IceBlocks</li>
+					</thingDefs>
+				</fuelFilter>
+			</li>
+			<li Class="EarlyTimes.CompProperties_HeatPusherIce">
+				<compClass>CompHeatPusher</compClass>
+				<heatPerSecond>-1</heatPerSecond>
+				<heatPushMinTemperature>1</heatPushMinTemperature>
+			</li>
+		</comps>
+		<building>
+			<blueprintGraphicData>
+				<texPath>Things/Building/Linked/Embrasure/EmbrasureWall_Blueprint_Atlas</texPath>
+			</blueprintGraphicData>
+			<repairable>false</repairable>
+		</building>
+		<researchPrerequisites>
+			<li>MedTimes_IceUsage</li>
+			<li>MedTimes_Embrasures</li>
+		</researchPrerequisites>
+	</ThingDef>
+	<!-- Ice Wall Parapet -->
+	<ThingDef ParentName="MedTimes_SandbagBase">
+		<defName>MedTimes_Wall_IceParapet</defName>
+		<label>Crenelated Ice Wall Parapet</label>
+		<description>(Will deteriorate in temps above freezing) A reinforced wall made of ice blocks designed and built to be used as a defence from projectiles. This design is slightly above waist height and contains crenelations. It operates in a simular fashion to sandbags, except can be made from various materials.</description>
+		<graphicData>
+			<texPath>Things/Building/Linked/Parapet/ParapetWall_Atlas</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<color>(180,210,230)</color>
+		</graphicData>
+		<uiIconPath>Things/Building/Linked/Parapet/ParapetWall_MenuIcon</uiIconPath>
+		<statBases>
+			<MaxHitPoints>540</MaxHitPoints>
+			<WorkToBuild>250</WorkToBuild>
+			<Flammability>0</Flammability>
+		</statBases>
+		<costList>
+			<MedTimes_Resource_IceBlocks>3</MedTimes_Resource_IceBlocks>
+		</costList>
+		<neverMultiSelect>false</neverMultiSelect>
+		<fillPercent>0.65</fillPercent>
+		<tickerType>Normal</tickerType>
+		<pathCostIgnoreRepeat>false</pathCostIgnoreRepeat>
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="EarlyTimes.CompProperties_HitpointRefuelable">
+				<fuelConsumptionRate>1.0</fuelConsumptionRate>
+				<destroyOnNoFuel>true</destroyOnNoFuel>
+				<fuelCapacity>3.0</fuelCapacity>
+				<fuelLabel>Ice Thickness</fuelLabel>
+				<initialFuelPercent>1</initialFuelPercent>
+				<fuelFilter>
+					<thingDefs>
+						<li>MedTimes_Resource_IceBlocks</li>
+					</thingDefs>
+				</fuelFilter>
+			</li>
+			<li Class="EarlyTimes.CompProperties_HeatPusherIce">
+				<compClass>CompHeatPusher</compClass>
+				<heatPerSecond>-1</heatPerSecond>
+				<heatPushMinTemperature>1</heatPushMinTemperature>
+			</li>
+		</comps>
+		<building>
+			<blueprintGraphicData>
+				<texPath>Things/Building/Linked/Parapet/ParapetWall_Blueprint_Atlas</texPath>
+			</blueprintGraphicData>
+			<repairable>false</repairable>
+		</building>
+		<researchPrerequisites>
+			<li>MedTimes_ReinforcedStructure</li>
+			<li>MedTimes_Fence</li>
+			<li>MedTimes_IceUsage</li>
+		</researchPrerequisites>
+	</ThingDef>
+</Defs>

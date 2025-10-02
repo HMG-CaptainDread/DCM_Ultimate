@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>RimWriter - Books, Scrolls, Tablets, and Libraries</li>
+		  <li>RimWriter - Books, Scrolls, Tablets, and Libraries (Continued)</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<operations>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[defName="RimWriter_MakeBook"]</xpath>
+				<value>
+					<researchPrerequisite>MedTimes_Paperwork</researchPrerequisite>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/RecipeDef[defName="RimWriter_MakeBook"]/ingredients</xpath>
+				<value>
+					<ingredients>            
+						<li>
+							<filter>
+								<thingDefs>
+									<li>MedTimes_Resource_PaperSheets</li>
+								</thingDefs>
+							</filter>
+							<count>80</count>
+						</li>
+					</ingredients>	
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/RecipeDef[defName="RimWriter_MakeBook"]/fixedIngredientFilter</xpath>
+				<value>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>MedTimes_Resource_PaperSheets</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+				</value>
+			</li>	
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[defName="RimWriter_MakeBookAtTable"]/recipeUsers</xpath>
+				<value>
+					<li>MedTimes_Desk</li>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/RecipeDef[defName="MedTimes_MakeLeatherPaper_Recipe"]/recipeUsers</xpath>
+				<value>
+					<recipeUsers>
+						<li>RimWriter_PapermakingBenchElectric</li>
+						<li>RimWriter_PapermakingBench</li>
+					</recipeUsers>	
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/RecipeDef[defName="MedTimes_MakePaper_Recipe"]/recipeUsers</xpath>
+				<value>
+					<recipeUsers>
+						<li>RimWriter_PapermakingBenchElectric</li>
+						<li>RimWriter_PapermakingBench</li>
+					</recipeUsers>	
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/RecipeDef[defName="MedTimes_MakePaperBulk_Recipe"]/recipeUsers</xpath>
+				<value>
+					<recipeUsers>
+						<li>RimWriter_PapermakingBenchElectric</li>
+						<li>RimWriter_PapermakingBench</li>
+					</recipeUsers>	
+				</value>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/RecipeDef[defName="RimWriter_MakePageFast"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/RecipeDef[defName="RimWriter_MakePage"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/RecipeDef[defName="RimWriter_MakeParchmentFast"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/RecipeDef[defName="RimWriter_MakeParchment"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/RecipeDef[defName="RimWriter_MakeClothPaperFast"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/RecipeDef[defName="RimWriter_MakeClothPaper"]</xpath>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/RecipeDef[defName="MedTimes_MakePaper_Recipe"]/products</xpath>
+				<value>
+					<products>
+						<MedTimes_Resource_PaperSheets>50</MedTimes_Resource_PaperSheets>
+					</products>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/RecipeDef[defName="MedTimes_MakePaperBulk_Recipe"]/workAmount</xpath>
+				<value>
+					<workAmount>30750</workAmount>
+				</value>
+			</li>
+		</operations>
+	</match>
+  </Operation>
+  
+	
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>RimWriter - Books, Scrolls, Tablets, and Libraries (Continued)</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<operations>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/RecipeDef[defName="RimWriter_MakeSkillbookAtTable"]</xpath>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/RecipeDef[defName="RimWriter_MakeSkillbookAtTypewriter"]</xpath>
+			</li>
+		</operations>
+	</match>
+  </Operation>
+	
+	
+</Patch>

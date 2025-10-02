@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef Name="MedTimes_BookBase" Abstract="True">
+    <thingClass>ThingWithComps</thingClass>
+    <category>Item</category>
+    <resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <useHitPoints>true</useHitPoints>
+    <selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+    <stackLimit>1</stackLimit>
+    <alwaysHaulable>true</alwaysHaulable>
+    <drawGUIOverlay>true</drawGUIOverlay>
+    <rotatable>false</rotatable>
+    <pathCost>15</pathCost>
+    <intricate>true</intricate>	
+    <tickerType>Never</tickerType>
+    <soundInteract>Standard_Drop</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop>
+    <statBases>
+      <WorkToMake>75000</WorkToMake>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+      <DeteriorationRate>6</DeteriorationRate>
+      <SellPriceFactor>1.6</SellPriceFactor>
+      <Mass>2.3</Mass>	  
+      <BookQualityFactor>1</BookQualityFactor>
+	  <BookChairSearchRadius>15</BookChairSearchRadius>
+    </statBases>	
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li>
+		<compClass>CompQuality</compClass>
+	  </li>	  
+    </comps>	
+    <thingCategories>
+      <li>BookStuff</li>
+    </thingCategories>
+    <tradeTags>
+		<li>MedTimes_Books</li>
+	</tradeTags>	
+    <costList>
+      <MedTimes_Resource_PaperSheets>200</MedTimes_Resource_PaperSheets>
+    </costList>
+	<recipeMaker>
+	  <researchPrerequisite>MedTimes_BookWork</researchPrerequisite>
+      <recipeUsers>
+        <li>MedTimes_Desk</li>
+      </recipeUsers>
+      <workSpeedStat>WorkSpeedGlobal</workSpeedStat>
+      <workSkill>Intellectual</workSkill>
+	  <soundWorking>BookPageFlips</soundWorking>
+      <unfinishedThingDef>MedTimes_UnfinishedBook</unfinishedThingDef>
+      <effectWorking>Tailor</effectWorking>
+    </recipeMaker>
+  </ThingDef>
+  
+  <ThingDef ParentName="MedTimes_BookBase">
+	<defName>BookGraphicNovel</defName>
+    <label>Graphic novel</label>
+    <description>A graphic fiction book for enjoyment.</description>
+    <graphicData>
+      <texPath>Things/Item/TradeGoods/Books/GraphicNovels</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+      <drawSize>(1,1)</drawSize>	  
+    </graphicData>
+    <costList>
+      <NoteGraphicNovel>60</NoteGraphicNovel>
+    </costList>
+	<statBases>
+      <BookQualityFactor>2</BookQualityFactor>
+    </statBases>
+  </ThingDef>
+  
+  <ThingDef ParentName="MedTimes_BookBase">
+	<defName>BookMeleeCombat</defName>
+    <label>Combat manual</label>
+    <description>Describes different melee stances and combat strategies.</description>
+    <graphicData>
+      <texPath>Things/Item/TradeGoods/Books/SkillManuals/MedTimes_MeleeManual</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>	  
+    </graphicData>
+    <costList>
+      <NoteMeleeCombat>60</NoteMeleeCombat>
+    </costList>
+    <comps>
+        <li Class="EarlyTimes.CompProperties_Book">
+			<Skill>Melee</Skill>
+		</li>
+    </comps>
+  </ThingDef>
+  
+  <ThingDef ParentName="MedTimes_BookBase">
+	<defName>BookRangedCombat</defName>
+    <label>Shooting manual</label>
+    <description>Describes shooting, different weapons, how to behave oneself when shooting. Comes in with eye training instructions and different projectile-related charts and tables.</description>
+    <graphicData>
+      <texPath>Things/Item/TradeGoods/Books/SkillManuals/MedTimes_ShootManual</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>	  
+    </graphicData>
+    <costList>
+      <NoteRangedCombat>60</NoteRangedCombat>
+    </costList>
+    <comps>
+        <li Class="EarlyTimes.CompProperties_Book">
+			<Skill>Shooting</Skill>
+		</li>
+    </comps>
+  </ThingDef>
+  
+  <ThingDef ParentName="MedTimes_BookBase">
+	<defName>BookContruction</defName>
+    <label>Construction manual</label>
+    <description>Describes how to use building tools, different building materials, material behavior and how to proprly shape materials.</description>
+    <graphicData>
+      <texPath>Things/Item/TradeGoods/Books/SkillManuals/MedTimes_ConstructionManual</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>	  
+    </graphicData>
+    <costList>
+      <NoteContruction>60</NoteContruction>
+    </costList>
+    <comps>
+        <li Class="EarlyTimes.CompProperties_Book">
+			<Skill>Construction</Skill>
+		</li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="MedTimes_BookBase">
+	<defName>BookMining</defName>
+    <label>Mining manual</label>
+    <description>Describes how materials react to force and material properties. Also contains schematis of different mining techniques and constructions.</description>
+    <graphicData>
+      <texPath>Things/Item/TradeGoods/Books/SkillManuals/MedTimes_MiningManual</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>	  
+    </graphicData>
+    <costList>
+      <NoteMining>60</NoteMining>
+    </costList>
+    <comps>
+        <li Class="EarlyTimes.CompProperties_Book">
+			<Skill>Mining</Skill>
+		</li>
+    </comps>
+  </ThingDef>
+  
+  <ThingDef ParentName="MedTimes_BookBase">
+	<defName>BookCooking</defName>
+    <label>Cooking manual</label>
+    <description>Describes different ooking materials and ways how to cook them. Also contains various recipes for different meals.</description>
+    <graphicData>
+      <texPath>Things/Item/TradeGoods/Books/SkillManuals/MedTimes_CookBook</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>	  
+    </graphicData>
+    <costList>
+      <NoteCooking>60</NoteCooking>
+    </costList>
+    <comps>
+        <li Class="EarlyTimes.CompProperties_Book">
+			<Skill>Cooking</Skill>
+		</li>
+    </comps>
+  </ThingDef>
+  
+  <ThingDef ParentName="MedTimes_BookBase">
+	<defName>BookPlants</defName>
+    <label>Agriculture manual</label>
+    <description>Describes plants and their habitat. Describes different ways of planting and harvesting.</description>
+    <graphicData>
+      <texPath>Things/Item/TradeGoods/Books/SkillManuals/MedTimes_GrowingManual</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>	  
+    </graphicData>
+    <costList>
+      <NotePlants>60</NotePlants>
+    </costList>
+    <comps>
+        <li Class="EarlyTimes.CompProperties_Book">
+			<Skill>Plants</Skill>
+		</li>
+    </comps>
+  </ThingDef>
+  
+  <ThingDef ParentName="MedTimes_BookBase">
+	<defName>BookAnimals</defName>
+    <label>Animal husbandary manual</label>
+    <description>Describes different animals and their habitat, ways of taming animals, animal behavior, ways of grooming and training animals.</description>
+    <graphicData>
+      <texPath>Things/Item/TradeGoods/Books/SkillManuals/MedTimes_TameManual</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>	  
+    </graphicData>
+    <costList>
+      <NoteAnimals>60</NoteAnimals>
+    </costList>
+    <comps>
+        <li Class="EarlyTimes.CompProperties_Book">
+			<Skill>Animals</Skill>
+		</li>
+    </comps>
+  </ThingDef>
+  
+  <ThingDef ParentName="MedTimes_BookBase">
+	<defName>BookCrafting</defName>
+    <label>Craftsmanship manual</label>
+    <description>Describes different materials, their processing methods and properties. Describes different crafting techniques and styles.</description>
+    <graphicData>
+      <texPath>Things/Item/TradeGoods/Books/SkillManuals/MedTimes_CraftingManual</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>	  
+    </graphicData>
+    <costList>
+      <NoteCrafting>60</NoteCrafting>
+    </costList>
+    <comps>
+        <li Class="EarlyTimes.CompProperties_Book">
+			<Skill>Crafting</Skill>
+		</li>
+    </comps>
+  </ThingDef>
+  
+  <ThingDef ParentName="MedTimes_BookBase">
+	<defName>BookArtistic</defName>
+    <label>Art book</label>
+    <description>Contains shapes, forms and different techniques to shape and use different propertiess of materials to create art.</description>
+    <graphicData>
+      <texPath>Things/Item/TradeGoods/Books/SkillManuals/MedTimes_ArtisticBook</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>	  
+    </graphicData>
+    <costList>
+      <NoteArtistic>60</NoteArtistic>
+    </costList>
+    <comps>
+        <li Class="EarlyTimes.CompProperties_Book">
+			<Skill>Artistic</Skill>
+		</li>
+    </comps>
+  </ThingDef>
+  
+  <ThingDef ParentName="MedTimes_BookBase">
+	<defName>BookMedicine</defName>
+    <label>Medicinal manual</label>
+    <description>Decribes known diseases, their symptoms, treatment and influence on body. Describes anatomy of known species. Cotains schemes of processes in bodies and their interplay.</description>
+    <graphicData>
+      <texPath>Things/Item/TradeGoods/Books/SkillManuals/MedTimes_MedicalAtlas</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>	  
+    </graphicData>
+    <costList>
+      <NoteMedicine>60</NoteMedicine>
+    </costList>
+    <comps>
+        <li Class="EarlyTimes.CompProperties_Book">
+			<Skill>Medicine</Skill>
+		</li>
+    </comps>
+  </ThingDef>
+    
+  <ThingDef ParentName="MedTimes_BookBase">
+	<defName>BookSocial</defName>
+    <label>Applied psychology</label>
+    <description>Contains schemes of social interaction, different social structures, social influence techniques. Decribes known tempers, their features.</description>
+    <graphicData>
+      <texPath>Things/Item/TradeGoods/Books/SkillManuals/MedTimes_CommunicationManual</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>	  
+    </graphicData>
+    <costList>
+      <NoteSocial>60</NoteSocial>
+    </costList>
+    <comps>
+        <li Class="EarlyTimes.CompProperties_Book">
+			<Skill>Social</Skill>
+		</li>
+    </comps>
+  </ThingDef>
+  
+  <ThingDef ParentName="MedTimes_BookBase">
+	<defName>BookIntellectual</defName>
+    <label>Applied science manual</label>
+    <description>Contains known schemes of logical interactions, known laws of different fields of science. Also contains a bit of philosophy.</description>
+    <graphicData>
+      <texPath>Things/Item/TradeGoods/Books/SkillManuals/MedTimes_ScienceBook</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>	  
+    </graphicData>
+    <costList>
+      <NoteIntellectual>60</NoteIntellectual>
+    </costList>
+    <comps>
+        <li Class="EarlyTimes.CompProperties_Book">
+			<Skill>Intellectual</Skill>
+		</li>
+    </comps>
+  </ThingDef>
+</Defs>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+
+	<Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>Early Firearms mod</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<operations>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ResearchProjectDef[defName="FlakArmor"]/prerequisites</xpath>
+				<value>
+					<li>Early_Arquebuses</li>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ResearchProjectDef[defName="Early_Arquebuses"]/prerequisites</xpath>
+				<value>
+					<prerequisites>
+						<li>Smithing</li>
+					</prerequisites>
+				</value>
+			</li>	
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ResearchProjectDef[defName="Early_Arquebuses"]</xpath>
+				<value>
+					<hiddenPrerequisites>
+						<li>MedTimes_Explosives</li>
+					</hiddenPrerequisites>
+				</value>
+			</li>	
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ResearchProjectDef[defName="MedTimes_BasicFirearms"]/prerequisites</xpath>
+				<value>
+					<prerequisites>
+					  <li>late_Arquebuses</li>
+					  <li>Early_Blunderbuss</li>
+					  <li>Flintlock_Musket</li>
+					</prerequisites>
+				</value>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/ResearchProjectDef[defName="MedTimes_BasicFirearms"]/hiddenPrerequisites</xpath>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ResearchProjectDef[defName="Early_Cannons"]/prerequisites</xpath>
+				<value>
+					<li>MedTimes_Cannons</li>
+				</value>
+			</li>			
+		</operations>
+	</match>
+  </Operation>
+	
+</Patch>

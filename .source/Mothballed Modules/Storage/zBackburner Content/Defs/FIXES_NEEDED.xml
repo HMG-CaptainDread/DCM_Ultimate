@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- THING DEFS -->
+		<!-- 3_INDUSTRIAL -->
+			<!-- MEAT HOOKS --> <!-- TODO: these need to be fixed graphically -->
+				<!-- MEAT HOOK (LARGE) -->
+					<ThingDef ParentName="AdaptiveStorageBase">
+						<defName>TMM_MeatHook_Large</defName>
+						<label>meat hook</label>
+						<graphicData>
+							<texPath>Modules/Storage/Building/3_Industrial/MeatHooks/MeatHook_Large/MeatHook_Large_Empty/MeatHook_Large_Empty</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<drawSize>(2.6,2.6)</drawSize>
+							<drawRotated>false</drawRotated>
+						</graphicData>
+						<description>A specialized rack designed to hold raw meat and corpses for butchering or disposal. Items stored inside will not deteriorate over time and have no impact on the beauty of their surroundings, however you will still need to freeze them. \n\n&lt;color=#E5E54C&gt;Storage stats:&lt;/color&gt; Stack size total: 16 Stack per tile: 8 Allowed items: Raw meat, Fish, Corpses</description>
+						<fillPercent>0.20</fillPercent>
+						<uiIconPath>Modules/Storage/UI/3_Industrial/MeatHooks/MeatHook_Large/MeatHook_Large_Empty/MeatHook_Large_Empty_UI</uiIconPath>
+						<uiIconScale>1</uiIconScale>
+						<size>(2,1)</size>
+						<rotatable>true</rotatable>
+						<defaultPlacingRot>North</defaultPlacingRot>
+						<researchPrerequisites>
+							<li>TMM_St_Industrial</li>
+						</researchPrerequisites>
+						<statBases>
+							<MaxHitPoints>70</MaxHitPoints>
+							<WorkToBuild>1100</WorkToBuild>
+							<Beauty>0</Beauty>
+							<Mass>6</Mass>
+						<Flammability>1</Flammability>
+						</statBases>
+						<stuffCategories>
+							<li>Woody</li>
+							<li>Metallic</li>
+						</stuffCategories>
+						<costStuffCount>50</costStuffCount>
+						<building>
+							<preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+								<ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
+							<maxItemsInCell>8</maxItemsInCell>
+							<fixedStorageSettings>
+								<filter>
+									<specialFiltersToAllow>
+										<li MayRequire="ludeon.rimworld.ideology">AllowVegetarian</li>
+									</specialFiltersToAllow>
+									<categories>
+										<li>Corpses</li>
+										<li MayRequire="vanillaexpanded.vcooke">VCEF_RawFishCategory</li>
+										<li>MeatRaw</li>
+									</categories>
+									<disallowedCategories>
+										<li>ResourcesRaw</li>
+										<li>Manufactured</li>
+										<li>Medicine</li>
+										<li>Drugs</li>
+										<li>MortarShells</li>
+										<li>PlantMatter</li>
+									</disallowedCategories>
+								</filter>
+							</fixedStorageSettings>
+							<defaultStorageSettings>
+								<priority>Preferred</priority>
+								<filter>
+									<specialFiltersToDisallow>
+										<li>AllowRotten</li>
+									</specialFiltersToDisallow>
+									<categories>
+										<li>CorpsesAnimal</li>
+									</categories>
+								</filter>
+							</defaultStorageSettings>
+							<paintable>true</paintable>
+						</building>
+						<minifiedDef>MinifiedThing</minifiedDef>
+						<thingCategories>
+							<li>BuildingsFurniture</li>
+						</thingCategories>
+					</ThingDef>
+				<!-- MEAT HOOK (SMALL) -->
+					<ThingDef ParentName="AdaptiveStorageBase">
+						<defName>TMM_MeatHook_Small</defName>
+						<label>small meat hook</label>
+						<description>A meat hook that can hang up to 12 pieces of meat or corpses.</description>
+						<altitudeLayer>Building</altitudeLayer>
+						<passability>PassThroughOnly</passability>
+						<fillPercent>0.4</fillPercent>
+						<castEdgeShadows>true</castEdgeShadows>
+						<pathCost>50</pathCost>
+						<statBases>
+							<MaxHitPoints>200</MaxHitPoints>
+							<Mass>20</Mass>
+							<WorkToBuild>2500</WorkToBuild>
+							<Flammability>1.0</Flammability>
+							<Beauty>1</Beauty>
+						</statBases>
+						<size>(1,1)</size>
+						<surfaceType>Item</surfaceType>
+						<canOverlapZones>false</canOverlapZones>
+						<researchPrerequisites>
+							<li>TMM_St_Industrial</li>
+						</researchPrerequisites>
+						<graphicData>
+							<texPath>Modules/Storage/Building/3_Industrial/MeatHooks/MeatHook_Small/MeatHook_Small_Empty/MeatHook_Small_Empty</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<drawSize>(4,4)</drawSize>
+						</graphicData>
+						<stuffCategories>
+							<li>Metallic</li>
+						</stuffCategories>
+						<rotatable>true</rotatable>
+						<defaultPlacingRot>South</defaultPlacingRot>
+						<costStuffCount>40</costStuffCount>
+						<uiIconScale>0.9</uiIconScale>
+						<uiOrder>1150</uiOrder>
+						<staticSunShadowHeight>0.35</staticSunShadowHeight>
+						<building>
+							<preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+							<ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
+							<maxItemsInCell>6</maxItemsInCell>
+							<fixedStorageSettings>
+								<filter>
+									<disallowNotEverStorable>true</disallowNotEverStorable>
+									<categories>
+										<li>MeatRaw</li>
+										<li>Corpses</li>
+									</categories>
+								</filter>
+							</fixedStorageSettings>
+							<defaultStorageSettings>
+								<priority>Preferred</priority>
+								<filter>
+									<disallowNotEverStorable>true</disallowNotEverStorable>
+									<categories>
+									</categories>
+								</filter>
+							</defaultStorageSettings>
+							<paintable>true</paintable>
+						</building>
+						<minifiedDef>MinifiedThing</minifiedDef>
+						<thingCategories>
+							<li>TMM_Storage_CAT</li>
+						</thingCategories>
+						<uiIconOffset>(0, 0.075)</uiIconOffset>
+					</ThingDef>
+	<!-- GRAPHIC DEFS -->
+		<!-- 3_INDUSTRIAL -->
+			<!-- MEAT HOOKS --> <!-- TODO: these need to be fixed graphically -->
+				<!-- MEAT HOOK (BASE) -->
+					<AdaptiveStorage.GraphicsDef Name="TMM_MeatHookBase" Abstract="True">
+						<targetDef>ReelStorageMeatHook</targetDef>
+						<graphics>
+							<li>
+								<graphicData>
+									<texPath>Tier2/MeatHook/MeatHook</texPath>
+									<graphicClass>Graphic_Multi</graphicClass>
+									<drawSize>(2.6,2.6)</drawSize>
+									<drawRotated>false</drawRotated>
+								</graphicData>
+							</li>
+						</graphics>
+						<itemGraphics>
+							<columns>
+								<c0>
+									<rows>
+										<r0>
+											<stackBehaviour>Stack</stackBehaviour>
+											<stackOffset>(0.15,0,0)</stackOffset>
+											<drawOffset>(0.09,0,0.1)</drawOffset>
+											<drawScale>0.7</drawScale>
+											<rotation>-75</rotation>
+											<stackOffsetEast>(0,0,0.15)</stackOffsetEast>
+											<stackOffsetWest>(0,0,0.15)</stackOffsetWest>
+											<drawOffsetEast>(0.15,-3,0)</drawOffsetEast>
+											<drawOffsetWest>(-0.15,-3,0)</drawOffsetWest>
+											<drawOffsetSouth>(0.0,0.0,-0.1)</drawOffsetSouth>
+										</r0>
+									</rows>
+								</c0>
+								<c1>
+									<rows>
+										<r0>
+											<stackBehaviour>Stack</stackBehaviour>
+											<stackOffset>(0.15,0,0)</stackOffset>
+											<drawOffset>(-0.84,0.5,0.1)</drawOffset>
+											<drawScale>0.7</drawScale>
+											<rotation>-75</rotation>
+											<stackOffsetEast>(0.0,-0.3,0.12)</stackOffsetEast>
+											<stackOffsetWest>(0.0,0,0.15)</stackOffsetWest>
+											<drawOffsetEast>(0.15,-3,-0.6)</drawOffsetEast>
+											<drawOffsetWest>(-0.17,-3,-0.6)</drawOffsetWest>
+											<drawOffsetSouth>(-0.5,0.0,-0.1)</drawOffsetSouth>
+										</r0>
+									</rows>
+								</c1>
+							</columns>
+						</itemGraphics>
+						<showContainedItems>true</showContainedItems>
+					</AdaptiveStorage.GraphicsDef>
+				<!-- MEAT HOOK (LARGE) -->
+					<AdaptiveStorage.GraphicsDef ParentName="TMM_MeatHookBase">
+						<defName>TMM_MeatHook_Large_GFX</defName>
+						<targetDef>TMM_MeatHook_Large</targetDef>
+						<graphics>
+							<li>
+								<graphicData>
+									<texPath>Modules/Storage/Building/3_Industrial/MeatHooksMeatHook_Large//MeatHook_Large_Empty/MeatHook_Large_Empty</texPath>
+									<graphicClass>Graphic_Multi</graphicClass>
+									<drawSize>(2.6,2.6)</drawSize>
+									<drawRotated>false</drawRotated>
+								<!--<shaderType>CutoutComplex</shaderType> -->
+								</graphicData>
+								<minimumStackCount>1</minimumStackCount>
+							</li>
+						</graphics>
+						<showContainedItems>true</showContainedItems>
+					</AdaptiveStorage.GraphicsDef>
+				<!-- MEAT HOOK (SMALL) -->
+					<AdaptiveStorage.GraphicsDef>
+						<defName>TMM_MeatHook_Small_GFX</defName>
+						<targetDef>TMM_MeatHook_Small</targetDef>
+						<graphics>
+							<li>
+								<graphicData>
+									<texPath>Modules/Storage/Building/3_Industrial/MeatHooks/MeatHook_Small/MeatHook_Small_Empty/MeatHook_Small_Empty</texPath>
+									<graphicClass>Graphic_Multi</graphicClass>
+									<drawSize>(4,4)</drawSize>
+								</graphicData>
+								<graphicDatas>
+									<li>
+										<texPath>Things/Building/Storage/MeatHook/sbz_MeatHookLayer</texPath>
+										<graphicClass>Graphic_Multi</graphicClass>
+										<shaderType>CutoutComplex</shaderType>
+										<drawSize>(4,4)</drawSize>
+										<drawRotated>false</drawRotated>
+										<renderQueue>2950</renderQueue>
+										<altitudeLayer>ItemImportant</altitudeLayer>
+										<drawOffset>(0,1.2,0)</drawOffset>
+									</li>
+								</graphicDatas>
+							</li>
+						</graphics>
+						<showContainedItems>true</showContainedItems>
+						<itemGraphics>
+							<columns>
+								<c0>
+									<rows>
+										<r0>
+											<stackBehaviour>Circle</stackBehaviour>
+											<stackOffsetFactor>0.3</stackOffsetFactor>
+											<drawScale>1</drawScale>
+											<drawOffset>(0.15,0,0.2)</drawOffset>
+											<drawOffsetEast>(0.2,0,0.5)</drawOffsetEast>
+											<drawOffsetWest>(-0.2,0,0.5)</drawOffsetWest>
+											<drawOffsetNorth>(0.15,0,0)</drawOffsetNorth>
+											<rotation>270</rotation>
+										</r0>
+									</rows>
+								</c0>
+								<c1>
+									<rows>
+										<r0>
+											<stackBehaviour>Circle</stackBehaviour>
+											<stackOffsetFactor>0.3</stackOffsetFactor>
+											<drawScale>1</drawScale>
+											<drawOffset>(-0.15,0,0.2)</drawOffset>
+											<drawOffsetEast>(0.2,0,0)</drawOffsetEast>
+											<drawOffsetWest>(-0.2,0,0)</drawOffsetWest>
+											<drawOffsetNorth>(-0.15,0,0)</drawOffsetNorth>
+											<rotation>270</rotation>
+										</r0>
+									</rows>
+								</c1>
+							</columns>
+						</itemGraphics>
+					</AdaptiveStorage.GraphicsDef>
+	<!--  -->
+</Defs>

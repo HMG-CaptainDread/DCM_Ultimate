@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo1524x40mmRKrnka</defName>
+		<label>15.24x40mmR Krnka</label>
+		<parent>AmmoRifles</parent>
+    <iconPath>UI/Icons/ThingCategories/CaliberRifle</iconPath>
+	</ThingCategoryDef>
+	
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>AmmoSet_1524x40mmRKrnka</defName>
+		<label>15.24x40mmR Krnka</label>
+		<ammoTypes>
+			<Ammo_1524x40mmRKrnka_FMJ>Bullet_1524x40mmRKrnka_FMJ</Ammo_1524x40mmRKrnka_FMJ>		
+		</ammoTypes>
+		<similarTo>AmmoSet_Rifle</similarTo>
+	</CombatExtended.AmmoSetDef>
+	
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="1524x40mmRKrnkaBase" ParentName="SmallAmmoBase" Abstract="True" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<description>Rimfire rifle cartridge found mostly in outdated rifles.</description>
+		<statBases>
+		<Mass>0.020</Mass>
+		<Bulk>0.04</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo1524x40mmRKrnka</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="1524x40mmRKrnkaBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>Ammo_1524x40mmRKrnka_FMJ</defName>
+		<label>15.24x40mmR Krnka cartridge (FMJ)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Rifle/FMJ</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.11</MarketValue>
+		</statBases>
+		<ammoClass>FullMetalJacket</ammoClass>
+		<cookOffProjectile>Bullet_1524x40mmRKrnka_FMJ</cookOffProjectile>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+	
+	<ThingDef Name="Base1524x40mmRKrnkaBullet" ParentName="BaseBulletCE" Abstract="true" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>55</speed>
+			<dropsCasings>true</dropsCasings>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base1524x40mmRKrnkaBullet" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>Bullet_1524x40mmRKrnka_FMJ</defName>
+		<label>15.24x40mmR Krnka bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>15</damageAmountBase>
+			<armorPenetrationSharp>5.5</armorPenetrationSharp>
+			<armorPenetrationBlunt>30.32</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>MakeAmmo_1524x40mmRKrnka_FMJ</defName>
+		<label>make 15.24x40mmR Krnka (FMJ) cartridge x500</label>
+		<description>Craft 500 15.24x40mmR Krnka (FMJ) cartridges.</description>
+		<jobString>Making 15.24x40mmR Krnka (FMJ) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>28</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_1524x40mmRKrnka_FMJ>500</Ammo_1524x40mmRKrnka_FMJ>
+		</products>
+    	<workAmount>2800</workAmount>
+	</RecipeDef>
+
+</Defs>

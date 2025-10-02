@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>         
+<Operation Class="PatchOperationReplace">
+                    <xpath>Defs/QuestScriptDef[defName="AG_OpportunitySite_AbandonedBiotechLab"]/questNameRules/rulesStrings</xpath>
+                    <value>
+                        <rulesStrings>
+                            <li>questName(priority=1)->[biotechlab] [discovered]</li>
+                            <li>biotechlab->Xenogenetics lab</li>
+                            <li>biotechlab->Human genetics lab</li>
+                            <li>biotechlab->Xenogenetic experimentation lab</li>
+                            <li>biotechlab->Human genetic experimentation lab</li>
+                                
+                            <li>discovered->discovered</li>
+                            <li>discovered->found</li>
+                            <li>discovered->located</li>
+                            <li>discovered->brought to light</li>
+                            <li>discovered->tracked down</li>
+                            <li>discovered->unearthed</li>
+
+                        </rulesStrings>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace" MayRequire="sarg.alphagenes">
+                    <xpath>Defs/QuestScriptDef[defName="AG_OpportunitySite_AbandonedBiotechLab"]/questDescriptionRules/rulesStrings</xpath>
+                    <value>
+                        <rulesStrings>
+                            <li>questDescription(askerIsNull==true)->A derelict radio beacon seems to be emitting faint radio signals with a location tracker. By decrypting these signals we have discovered that they seem to be leading to an ancient xenogenetics lab not far from [map_definite]. The site may have some salvageable human genetic technology, so it could be a good idea to investigate it.\n\nWe should be well prepared, as the radio beacon may attract a hostile presence to the lab's location..</li>
+                        </rulesStrings>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace" MayRequire="sarg.alphagenes">
+                    <xpath>Defs/SitePartDef[defName="AG_AbandonedBiotechLab"]/label</xpath>
+                    <value>
+                        <label>abandoned xenogenetics lab</label>
+                    </value>
+</Operation>
+</Patch>

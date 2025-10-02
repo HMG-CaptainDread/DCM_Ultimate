@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>Vanilla Furniture Expanded - Architect</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/TerrainDef[@Name = "StoneBridgeBase"]/researchPrerequisites</xpath>		
+				<value> 
+					<researchPrerequisites>
+					  <li>MedTimes_ReinforcedStructure</li>
+					  <li>TS_Bridges</li>
+					</researchPrerequisites>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/TerrainDef[@Name = "SteelBridgeBase"]</xpath>		
+				<value> 
+					<researchPrerequisites>
+					  <li>MedTimes_Mechanization</li>
+					  <li>MedTimes_ReinforcedStructure</li>
+					  <li>TS_Bridges</li>
+					</researchPrerequisites>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/TerrainDef[defName = "VFEArch_ConcreteFoundation"]/researchPrerequisites</xpath>		
+				<value> 
+					<researchPrerequisites>
+					  <li>MedTimes_Calcination</li>
+					  <li>MedTimes_ReinforcedStructure</li>
+					</researchPrerequisites>
+				</value>
+			</li>
+			
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/TerrainDef[@Name = "VFEArch_WoodenParquetBase"]</xpath>		
+				<value> 
+					<researchPrerequisites>
+						<li>TS_IndoorFlooring</li>
+					</researchPrerequisites>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/TerrainDef[defName = "VFEArch_WoodPlankFloorWalnut" or 
+									  defName = "VFEArch_WoodPlankFloorBirch" or 
+									  defName = "VFEArch_WoodPlankFloorMahogany"]</xpath>		
+				<value> 
+					<researchPrerequisites>
+						<li>TS_IndoorFlooring</li>
+					</researchPrerequisites>
+				</value>
+			</li>
+			
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/TerrainDef[@Name = "CobblestoneBase"]</xpath>		
+				<value> 
+					<researchPrerequisites>
+						<li>TS_Shelter</li>
+						<li>TS_IndoorFlooring</li>
+					</researchPrerequisites>
+				</value>
+			</li>
+			
+			<!-- HERECY! ghet the fwuck out dammit -->	
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/TerrainDef[defName = "VFEArch_Grass" or defName = "VFEArch_LawnPlot"]</xpath>		
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/TerrainDef[defName = "VFEArch_PlayerPackedDirt" or defName = "VFEArch_PlayerBrokenAsphalt"]</xpath>		
+			</li>
+			
+		</operations>
+	</match>
+  </Operation>
+  
+</Patch>
+
+
+
+

@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+   
+  <ThingDef Name="Core_BuildingBase" Abstract="True">
+    <category>Building</category>
+    <thingClass>Building</thingClass>
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <selectable>true</selectable>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <repairEffect>Repair</repairEffect>
+    <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+    <filthLeaving>Filth_RubbleBuilding</filthLeaving>
+    <statBases>
+      <SellPriceFactor>0.70</SellPriceFactor>
+    </statBases>
+  </ThingDef>
+  
+    <!-- ======================== Lighting ======================= -->
+
+  <ThingDef Abstract="True" Name="Core_LampBase" ParentName="Core_BuildingBase">
+    <thingClass>Building</thingClass>
+    <category>Building</category>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <passability>Standable</passability>
+	<clearBuildingArea>false</clearBuildingArea>
+    <selectable>true</selectable>
+    <tickerType>Rare</tickerType>
+	<fillPercent>0</fillPercent>
+    <pathCost>14</pathCost>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <designationCategory>Furniture</designationCategory>
+    <rotatable>false</rotatable>
+    <uiIconOffset>(0, 0.03)</uiIconOffset>
+    <thingCategories>
+      <li>BuildingsFurniture</li>
+    </thingCategories>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shadowData>
+        <volume>(0.3, 0.6, 0.3)</volume>
+        <offset>(0,0,-0.1)</offset>
+      </shadowData>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+    </graphicData>
+    <comps>
+      <li Class="CompProperties_Flickable"/>
+    </comps>
+    <statBases>
+      <MaxHitPoints>50</MaxHitPoints>
+      <WorkToBuild>300</WorkToBuild>
+      <Flammability>1.0</Flammability>
+    </statBases>
+    <researchPrerequisites>
+      <li>Electricity</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef Abstract="True" Name="Core_HangingLampBase" ParentName="Core_LampBase">
+    <graphicData>
+      <texPath>Things/Building/Furniture/HangingLamp</texPath>
+    </graphicData>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <costList>
+		<Steel>10</Steel>
+		<MedTimes_Resource_Glass>5</MedTimes_Resource_Glass>
+    </costList>
+    <statBases>
+      <Mass>4</Mass>
+    </statBases>
+    <comps>
+	  <li Class="EarlyTimes.CompProperties_CeilingHanger"/>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>30</basePowerConsumption>
+      </li>
+    </comps>
+	<placeWorkers>
+		<li>EarlyTimes.PlaceWorker_UnderRoof</li>	  
+	</placeWorkers>
+  </ThingDef>
+  
+  <ThingDef ParentName="Core_HangingLampBase" >
+    <defName>HangingLamp</defName>
+    <label>hanging lamp</label>
+    <description>An electrical hanging lamp that lights an area. People need light to move and work at full speed.</description>
+    <designationHotKey>Misc11</designationHotKey>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>18</glowRadius>
+        <glowColor>(217,217,208,0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="Core_HangingLampBase">
+    <defName>HangingLamp_Red</defName>
+    <label>hanging lamp (red)</label>
+    <description>A hanging lamp that lights an area in red.</description>
+    <designatorDropdown>StandingLampColored</designatorDropdown>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>18</glowRadius>
+        <glowColor>(217,80,80,0)</glowColor>
+      </li>
+    </comps>
+    <researchPrerequisites Inherit="False">
+      <li>ColoredLights</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="Core_HangingLampBase">
+    <defName>HangingLamp_Green</defName>
+    <label>hanging lamp (green)</label>
+    <description>A hanging lamp that lights an area in green.</description>
+    <designatorDropdown>StandingLampColored</designatorDropdown>
+    <comps>   
+      <li Class="CompProperties_Glower">
+        <glowRadius>18</glowRadius>
+        <glowColor>(80,217,80,0)</glowColor>
+      </li>
+    </comps>
+    <researchPrerequisites Inherit="False">
+      <li>ColoredLights</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="Core_HangingLampBase">
+    <defName>HangingLamp_Blue</defName>
+    <label>hanging lamp (blue)</label>
+    <description>A hanging lamp that lights an area in blue.</description>
+    <designatorDropdown>StandingLampColored</designatorDropdown>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <glowRadius>18</glowRadius>
+        <glowColor>(80,80,217,0)</glowColor>
+      </li>
+    </comps>
+    <researchPrerequisites Inherit="False">
+      <li>ColoredLights</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="Core_LampBase">
+    <defName>HangingSunLamp</defName>
+    <label>hanging sun lamp</label>
+    <description>An industrial lamp which lights an area brightly enough to grow crops, but consumes a huge amount of power. Automatically turns itself off at night.</description>
+    <thingClass>Building_SunLamp</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Furniture/HangingLampSun</texPath>
+    </graphicData>
+    <blockWind>true</blockWind>
+    <tickerType>Rare</tickerType>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <statBases>
+      <WorkToBuild>330</WorkToBuild>
+      <Mass>4.5</Mass>
+    </statBases>
+    <costList>
+		<Steel>20</Steel>
+		<MedTimes_Resource_Glass>10</MedTimes_Resource_Glass>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <overlightRadius>7.0</overlightRadius>
+        <glowRadius>21</glowRadius>
+        <glowColor>(370,370,370,0)</glowColor>
+      </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <shortCircuitInRain>true</shortCircuitInRain>
+        <basePowerConsumption>2900</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Schedule">
+        <!-- Match plant growing times -->
+        <startTime>0.25</startTime>
+        <endTime>0.8</endTime>
+        <offMessage>Off for plant resting period</offMessage>
+      </li>
+      <li Class="CompProperties_HeatPusher">
+        <compClass>CompHeatPusherPowered</compClass>
+        <heatPerSecond>3</heatPerSecond>
+      </li>
+    </comps>
+    <!-- Determined by trial and error
+    This value isn't perfect because these radii use different algorithms
+    but it matches in this case-->
+    <specialDisplayRadius>5.8</specialDisplayRadius>
+	<placeWorkers>
+		<li>EarlyTimes.PlaceWorker_UnderRoof</li>	  
+	</placeWorkers>
+  </ThingDef>
+
+</Defs>
