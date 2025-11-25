@@ -1,0 +1,2214 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- CORE -->
+		<!-- MECHANOID LOOT -->
+			<!-- CENTIPEDE -->
+				<Operation Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[@Name="MechCentipede"]/butcherProducts</xpath>
+					<value>
+						<butcherProducts>
+							<Steel>50</Steel>
+							<Plasteel>20</Plasteel>
+							<Gold>15</Gold>
+							<ComponentIndustrial>1</ComponentIndustrial>
+						</butcherProducts>
+					</value>
+				</Operation>
+			<!-- LANCER & SCYTHER -->
+				<Operation Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[@Name="BaseMechanoidWalker"]/butcherProducts</xpath>
+					<value>
+						<butcherProducts>
+							<Steel>25</Steel>
+							<Plasteel>10</Plasteel>
+							<Gold>5</Gold>
+						</butcherProducts>
+					</value>
+				</Operation>
+			<!-- TERMITE -->
+				<Operation Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[defName="Mech_Termite"]/butcherProducts</xpath>
+					<value>
+						<butcherProducts>
+							<Steel>50</Steel>
+							<Plasteel>20</Plasteel>
+							<Gold>15</Gold>
+						</butcherProducts>
+					</value>
+				</Operation>
+			<!-- LIGHT MECHANOID -->
+				<Operation Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[@Name="LightMechanoid"]/butcherProducts</xpath>
+					<value>
+						<butcherProducts>
+							<Steel>15</Steel>
+						</butcherProducts>
+					</value>
+				</Operation>
+			<!-- HEAVY MECHANOID -->
+				<Operation Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[@Name="HeavyMechanoid"]/butcherProducts</xpath>
+					<value>
+						<butcherProducts>
+							<Steel>50</Steel>
+							<Plasteel>20</Plasteel>
+							<Gold>15</Gold>
+							<ComponentIndustrial>1</ComponentIndustrial>
+						</butcherProducts>
+					</value>
+				</Operation>
+			<!-- SUPER HEAVY MECHANOID -->
+				<Operation Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[@Name="SuperHeavyMechanoid"]/butcherProducts</xpath>
+					<value>
+						<butcherProducts>
+							<Steel>100</Steel>
+							<Plasteel>40</Plasteel>
+							<Gold>25</Gold>
+							<ComponentIndustrial>5</ComponentIndustrial>
+						</butcherProducts>
+					</value>
+				</Operation>
+		<!-- DECONSTRUCTIBLE JUNK -->
+			<Operation Class="PatchOperationSequence">
+				<success>Normal</success>
+				<operations>
+					<!-- ANCIENT AIR CONDITIONER -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientAirConditioner"]</xpath>
+							<value>
+								<costList>
+									<Steel>3</Steel>
+									<ComponentIndustrial>1</ComponentIndustrial>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT ATM -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientATM"]</xpath>
+							<value>
+								<costList>
+									<Steel>2</Steel>
+									<Silver>10</Silver>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT BARREL -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientBarrel"]</xpath>
+							<value>
+								<costList>
+									<Chemfuel>3</Chemfuel>
+									<Steel>5</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT BASIC RECHARGER -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientBasicRecharger"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>2</ChunkSlagSteel>
+									<Steel>15</Steel>
+									<ComponentIndustrial>1</ComponentIndustrial>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT BED -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientBed"]</xpath>
+							<value>
+								<costList>
+									<Steel>2</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT CAR -->
+						<li Class="PatchOperationFindMod">
+							<mods>
+								<li>Vanilla Vehicles Expanded</li>
+							</mods>
+							<match Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="AncientRustedCar"]</xpath>
+								<value>
+									<costList>
+										<VVE_EngineBlock>1</VVE_EngineBlock>
+										<VVE_CarAlternator>1</VVE_CarAlternator>
+										<VVE_CarExhaust>1</VVE_CarExhaust>
+										<VVE_CarWheel>2</VVE_CarWheel>
+										<VVE_CarRadiator>1</VVE_CarRadiator>
+										<VVE_CarSuspension>2</VVE_CarSuspension>
+										<ChunkSlagSteel>9</ChunkSlagSteel>
+										<Steel>10</Steel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</match>
+							<nomatch Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="AncientRustedCar"]</xpath>
+								<value>
+									<costList>
+										<ChunkSlagSteel>9</ChunkSlagSteel>
+										<Steel>10</Steel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</nomatch>
+						</li>
+					<!-- ANCIENT CAR FRAME -->
+						<li Class="PatchOperationFindMod">
+							<mods>
+								<li>Vanilla Vehicles Expanded</li>
+							</mods>
+							<match Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="AncientRustedCarFrame"]</xpath>
+								<value>
+									<costList>
+										<VVE_CarWheel>1</VVE_CarWheel>
+										<ChunkSlagSteel>3</ChunkSlagSteel>
+										<ComponentIndustrial>1</ComponentIndustrial>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</match>
+							<nomatch Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="AncientRustedCarFrame"]</xpath>
+								<value>
+									<costList>
+										<ChunkSlagSteel>3</ChunkSlagSteel>
+										<ComponentIndustrial>1</ComponentIndustrial>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</nomatch>
+						</li>
+					<!-- ANCIENT CONCRETE BARRIER TODO: -->
+						<!-- <li Class="PatchOperationAdd">
+							AncientConcreteBarrier
+						</li> -->
+					<!-- ANCIENT CONTAINER -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientLargeContainer"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>8</ChunkSlagSteel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								<building>
+									<deconstructible>true</deconstructible>
+									<claimable>true</claimable>
+								</building>
+							</value>
+						</li>
+					<!-- ANCIENT CRATE -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientCrate"]</xpath>
+							<value>
+								<costList>
+									<Steel>7</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT CRYPTOSLEEP POD -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientCryptosleepPod"]</xpath>
+							<value>
+								<costList>
+									<Steel>3</Steel>
+									<ComponentIndustrial>1</ComponentIndustrial>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								<building>
+									<deconstructible>true</deconstructible>
+									<claimable>true</claimable>
+								</building>
+							</value>
+						</li>
+					<!-- ANCIENT DISPLAY BANK -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientDisplayBank"]</xpath>
+							<value>
+								<costList>
+								<Steel>3</Steel>
+									<ComponentIndustrial>1</ComponentIndustrial>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT DROPSHIP -->
+						<li Class="PatchOperationFindMod">
+							<mods>
+								<li>Vanilla Vehicles Expanded</li>
+							</mods>
+							<match Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="AncientRustedDropship"]</xpath>
+								<value>
+									<costList>
+										<VVE_CarRadiator>1</VVE_CarRadiator>
+										<VVE_CarWiring>1</VVE_CarWiring>
+										<VVE_CarBattery>1</VVE_CarBattery>
+										<VVE_CarTransmission>1</VVE_CarTransmission>
+										<VVE_CarSuspension>1</VVE_CarSuspension>
+										<ComponentIndustrial>1</ComponentIndustrial>
+										<ChunkSlagSteel>10</ChunkSlagSteel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</match>
+							<nomatch Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="AncientRustedDropship"]</xpath>
+								<value>
+									<costList>
+										<ComponentIndustrial>1</ComponentIndustrial>
+										<ChunkSlagSteel>10</ChunkSlagSteel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</nomatch>
+						</li>
+					<!-- ANCIENT DROPSHIP ENGINE -->
+						<li Class="PatchOperationFindMod">
+							<mods>
+								<li>Vanilla Vehicles Expanded</li>
+							</mods>
+							<match Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="AncientDropshipEngine"]</xpath>
+								<value>
+									<costList>
+										<VVE_EngineBlock>1</VVE_EngineBlock>
+										<ChunkSlagSteel>3</ChunkSlagSteel>
+										<ComponentIndustrial>1</ComponentIndustrial>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</match>
+							<nomatch Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="AncientDropshipEngine"]</xpath>
+								<value>
+									<costList>
+										<ChunkSlagSteel>3</ChunkSlagSteel>
+										<ComponentIndustrial>1</ComponentIndustrial>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</nomatch>
+						</li>
+					<!-- ANCIENT EQUIPMENT BLOCKS -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientEquipmentBlocks"]</xpath>
+							<value>
+								<costList>
+									<Steel>4</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								<building>
+									<deconstructible>true</deconstructible>
+									<claimable>true</claimable>
+								</building>
+							</value>
+						</li>
+					<!-- ANCIENT ENGINE BLOCK -->
+						<li Class="PatchOperationFindMod">
+							<mods>
+								<li>Vanilla Vehicles Expanded</li>
+							</mods>
+							<match Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="AncientRustedEngineBlock"]</xpath>
+								<value>
+									<costList>
+										<VVE_EngineBlock>1</VVE_EngineBlock>
+										<Steel>4</Steel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								</value>
+							</match>
+							<nomatch Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="AncientRustedEngineBlock"]</xpath>
+								<value>
+									<costList>
+										<Steel>4</Steel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								</value>
+							</nomatch>
+						</li>
+					<!-- ANCIENT FENCE -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientFence"]</xpath>
+							<value>
+								<costList>
+									<Steel>3</Steel>
+								</costList>
+							</value>
+						</li>
+					<!-- ANCIENT GENERATOR -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientGenerator"]</xpath>
+							<value>
+								<costList>
+									<ComponentIndustrial>1</ComponentIndustrial>
+									<Chemfuel>20</Chemfuel>
+									<Steel>30</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT GIANT WHEEL -->
+						<li Class="PatchOperationFindMod">
+							<mods>
+								<li>Vanilla Vehicles Expanded</li>
+							</mods>
+							<match Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="AncientGiantWheel"]</xpath>
+								<value>
+									<costList>
+										<VVE_CarWheel>1</VVE_CarWheel>
+										<Steel>15</Steel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								</value>
+							</match>
+							<nomatch Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="AncientGiantWheel"]</xpath>
+								<value>
+									<costList>
+										<Steel>15</Steel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								</value>
+							</nomatch>
+						</li>
+					<!-- ANCIENT HYDRANT -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientHydrant"]</xpath>
+							<value>
+								<costList>
+									<Steel>1</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT JET ENGINE -->
+						<li Class="PatchOperationFindMod">
+							<mods>
+								<li>Vanilla Vehicles Expanded</li>
+							</mods>
+							<match Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="AncientJetEngine"]/killedLeavings</xpath>
+								<value>
+									<costList>
+										<VVE_CarWheel>1</VVE_CarWheel>
+										<ChunkSlagSteel>6</ChunkSlagSteel>
+										<ComponentIndustrial>2</ComponentIndustrial>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</match>
+							<nomatch Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="AncientJetEngine"]/killedLeavings</xpath>
+								<value>
+									<costList>
+										<ChunkSlagSteel>6</ChunkSlagSteel>
+										<ComponentIndustrial>2</ComponentIndustrial>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</nomatch>
+						</li>
+					<!-- ANCIENT KITCHEN SINK -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientKitchenSink"]</xpath>
+							<value>
+								<costList>
+									<Steel>1</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT LAMP -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientLamp"]</xpath>
+							<value>
+								<costList>
+									<Steel>1</Steel>
+								</costList>
+							</value>
+						</li>
+					<!-- ANCIENT LAMPPOST TODO: -->
+						<!-- CURRENTLY HAS DECONSTRUCTION RESOURCES -->
+						<!-- <li Class="PatchOperationReplace">
+						</li> -->
+					<!-- ANCIENT LARGE CRATE -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientLargeCrate"]</xpath>
+							<value>
+								<costList>
+									<Steel>3</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT LARGE MECH GESTATOR -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientLargeMechGestator"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>2</ChunkSlagSteel>
+									<Steel>30</Steel>
+									<ComponentIndustrial>1</ComponentIndustrial>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								<building>
+									<deconstructible>true</deconstructible>
+									<claimable>true</claimable>
+								</building>
+							</value>
+						</li>
+					<!-- ANCIENT LOCKER BANK -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientLockerBank"]</xpath>
+							<value>
+								<costList>
+									<Steel>4</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT LONG CRATE -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientLongCrate"]</xpath>
+							<value>
+								<costList>
+									<Steel>2</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT MACHINE -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientMachine"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>1</ChunkSlagSteel>
+									<Steel>25</Steel>
+									<ComponentIndustrial>1</ComponentIndustrial>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								<building>
+									<deconstructible>true</deconstructible>
+									<claimable>true</claimable>
+								</building>
+							</value>
+						</li>
+					<!-- ANCIENT MACRO-ENGINE -->
+						<li Class="PatchOperationFindMod">
+							<mods>
+								<li>Vanilla Vehicles Expanded</li>
+							</mods>
+							<match Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="AncientLargeRustedEngineBlock"]</xpath>
+								<value>
+									<costList>
+										<VVE_EngineBlock>1</VVE_EngineBlock>
+										<ChunkSlagSteel>1</ChunkSlagSteel>
+										<ComponentIndustrial>1</ComponentIndustrial>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								</value>
+							</match>
+							<nomatch Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="AncientLargeRustedEngineBlock"]</xpath>
+								<value>
+									<costList>
+										<ChunkSlagSteel>1</ChunkSlagSteel>
+										<ComponentIndustrial>1</ComponentIndustrial>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								</value>
+							</nomatch>
+						</li>
+					<!-- ANCIENT MECH DROP BEACON -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientMechDropBeacon"]</xpath>
+							<value>
+								<costList>
+									<ComponentIndustrial>1</ComponentIndustrial>
+									<Steel>20</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT MECH GESTATOR -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientMechGestator"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>2</ChunkSlagSteel>
+									<Steel>30</Steel>
+									<ComponentIndustrial>1</ComponentIndustrial>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								<building>
+									<deconstructible>true</deconstructible>
+									<claimable>true</claimable>
+								</building>
+							</value>
+						</li>
+					<!-- ANCIENT MECH VAT TODO: -->
+						<!-- <li Class="PatchOperationAdd">
+							AncientMechGestatorTank
+						</li> -->
+					<!-- ANCIENT MEGA-CANNON BARREL -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientMegaCannonBarrel"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>5</ChunkSlagSteel>
+									<Steel>20</Steel>
+								</costList>
+							</value>
+						</li>
+					<!-- ANCIENT MEGA-CANNON PLATFORM -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientMegaCannonTripod"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>5</ChunkSlagSteel>
+									<Steel>10</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								<building>
+									<deconstructible>true</deconstructible>
+									<claimable>true</claimable>
+								</building>
+							</value>
+						</li>
+					<!-- ANCIENT MICROWAVE -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientMicrowave"]</xpath>
+							<value>
+								<costList>
+									<Steel>1</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT MILITARY CRATE -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientMilitaryCrate"]</xpath>
+							<value>
+								<costList>
+									<Steel>2</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT NAV BEACON -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientShipBeacon"]</xpath>
+							<value>
+								<costList>
+									<ComponentIndustrial>1</ComponentIndustrial>
+									<Steel>7</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT OPERATING TABLE -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientOperatingTable"]</xpath>
+							<value>
+								<costList>
+									<Steel>2</Steel>
+									<Silver>1</Silver>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT OVEN -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientOven"]</xpath>
+							<value>
+								<costList>
+									<Steel>2</Steel>
+									<ComponentIndustrial>1</ComponentIndustrial>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT PIPELINE SECTION -->
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/ThingDef[defName="AncientPipelineSection"]/killedLeavings</xpath>
+							<value>
+								<killedLeavings>
+									<ChunkSlagSteel>5</ChunkSlagSteel>
+									<Chemfuel>37</Chemfuel>
+									<Steel>5</Steel>
+								</killedLeavings>
+							</value>
+						</li>
+					<!-- ANCIENT POD CAR -->
+						<li Class="PatchOperationFindMod">
+							<mods>
+								<li>Vanilla Vehicles Expanded</li>
+							</mods>
+							<match Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="AncientPodCar"]/killedLeavings</xpath>
+								<value>
+									<costList>
+										<VVE_CarWiring>1</VVE_CarWiring>
+										<VVE_CarAlternator>1</VVE_CarAlternator>
+										<VVE_CarExhaust>1</VVE_CarExhaust>
+										<VVE_CarSuspension>2</VVE_CarSuspension>
+										<ChunkSlagSteel>6</ChunkSlagSteel>
+										<ComponentIndustrial>1</ComponentIndustrial>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</match>
+							<nomatch Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="AncientPodCar"]/killedLeavings</xpath>
+								<value>
+									<costList>
+										<ChunkSlagSteel>6</ChunkSlagSteel>
+										<ComponentIndustrial>1</ComponentIndustrial>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</nomatch>
+						</li>
+					<!-- ANCIENT POSTBOX -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientPostbox"]</xpath>
+							<value>
+								<costList>
+									<Steel>1</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT PIPES -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientPipes"]</xpath>
+							<value>
+								<costList>
+									<Steel>5</Steel>
+									<Chemfuel>5</Chemfuel>
+								</costList>
+							</value>
+						</li>
+					<!-- ANCIENT RAZOR WIRE -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientRazorWire"]</xpath>
+							<value>
+								<costList>
+									<Steel>2</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT REFRIGERATOR -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientRefrigerator"]</xpath>
+							<value>
+								<costList>
+									<Steel>3</Steel>
+									<ComponentIndustrial>1</ComponentIndustrial>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT RUINED APC -->
+						<li Class="PatchOperationFindMod">
+							<mods>
+								<li>Vanilla Vehicles Expanded</li>
+							</mods>
+							<match Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="AncientAPC"]/killedLeavings</xpath>
+								<value>
+									<costList>
+										<VVE_EngineBlock>1</VVE_EngineBlock>
+										<VVE_CarAlternator>1</VVE_CarAlternator>
+										<VVE_CarExhaust>1</VVE_CarExhaust>
+										<VVE_CarFuelTank>1</VVE_CarFuelTank>
+										<VVE_CarTransmission>1</VVE_CarTransmission>
+										<VVE_CarWheel>3</VVE_CarWheel>
+										<VVE_CarRadiator>1</VVE_CarRadiator>
+										<VVE_CarSuspension>6</VVE_CarSuspension>
+										<VVE_CarWiring>1</VVE_CarWiring>
+										<ComponentIndustrial>2</ComponentIndustrial>
+										<ChunkSlagSteel>12</ChunkSlagSteel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</match>
+							<nomatch Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="AncientAPC"]/killedLeavings</xpath>
+								<value>
+									<costList>
+										<ComponentIndustrial>2</ComponentIndustrial>
+										<ChunkSlagSteel>12</ChunkSlagSteel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</nomatch>
+						</li>
+					<!-- ANCIENT RUINED TANK -->
+						<li Class="PatchOperationFindMod">
+							<mods>
+								<li>Vanilla Vehicles Expanded</li>
+							</mods>
+							<match Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="AncientTank"]/killedLeavings</xpath>
+								<value>
+									<costList>
+										<VVE_EngineBlock>1</VVE_EngineBlock>
+										<VVE_CarAlternator>1</VVE_CarAlternator>
+										<VVE_CarExhaust>1</VVE_CarExhaust>
+										<VVE_CarFuelTank>1</VVE_CarFuelTank>
+										<VVE_CarTransmission>1</VVE_CarTransmission>
+										<VVE_CarWheel>6</VVE_CarWheel>
+										<VVE_CarRadiator>1</VVE_CarRadiator>
+										<VVE_CarSuspension>8</VVE_CarSuspension>
+										<VVE_CarWiring>1</VVE_CarWiring>
+										<VVE_CarBattery>1</VVE_CarBattery>
+										<ComponentIndustrial>2</ComponentIndustrial>
+										<ChunkSlagSteel>15</ChunkSlagSteel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</match>
+							<nomatch Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="AncientTank"]/killedLeavings</xpath>
+								<value>
+									<costList>
+										<ComponentIndustrial>2</ComponentIndustrial>
+										<ChunkSlagSteel>15</ChunkSlagSteel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</nomatch>
+						</li>
+					<!-- ANCIENT SECURITY TURRET -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientSecurityTurret"]</xpath>
+							<value>
+								<costList>
+									<ComponentIndustrial>1</ComponentIndustrial>
+									<Steel>10</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT SHOPPING CART -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientShoppingCart"]</xpath>
+							<value>
+								<costList>
+									<Steel>1</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT SMALL CRATE -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientSmallCrate"]</xpath>
+							<value>
+								<costList>
+									<Steel>1</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT SPACER CRATE -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientSpacerCrate"]</xpath>
+							<value>
+								<costList>
+									<Plasteel>2</Plasteel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT STANDARD RECHARGER -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientStandardRecharger"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>2</ChunkSlagSteel>
+									<Steel>20</Steel>
+									<ComponentIndustrial>1</ComponentIndustrial>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT STORAGE CYLINDER -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientStorageCylinder"]</xpath>
+							<value>
+								<costList>
+									<Steel>25</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT STOVE -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientStove"]</xpath>
+							<value>
+								<costList>
+									<Steel>2</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT SYSTEM RACK -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientSystemRack"]</xpath>
+							<value>
+								<costList>
+									<Steel>4</Steel>
+									<ComponentIndustrial>1</ComponentIndustrial>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT TANK TRAP -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientTankTrap"]</xpath>
+							<value>
+								<costList>
+									<Steel>7</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								<building>
+									<deconstructible>true</deconstructible>
+									<claimable>true</claimable>
+								</building>
+							</value>
+						</li>
+					<!-- ANCIENT TERMINAL -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientTerminal"]</xpath>
+							<value>
+								<costList>
+									<Steel>3</Steel>
+									<ComponentIndustrial>1</ComponentIndustrial>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT TOILET -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientToilet"]</xpath>
+							<value>
+								<costList>
+									<Steel>1</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT TROOP CARRIER -->
+						<li Class="PatchOperationFindMod">
+							<mods>
+								<li>Vanilla Vehicles Expanded</li>
+							</mods>
+							<match Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="AncientRustedJeep"]</xpath>
+								<value>
+									<costList>
+										<VVE_EngineBlock>1</VVE_EngineBlock>
+										<VVE_CarAlternator>1</VVE_CarAlternator>
+										<VVE_CarExhaust>1</VVE_CarExhaust>
+										<VVE_CarFuelTank>1</VVE_CarFuelTank>
+										<VVE_CarTransmission>1</VVE_CarTransmission>
+										<VVE_CarWheel>2</VVE_CarWheel>
+										<VVE_CarRadiator>1</VVE_CarRadiator>
+										<VVE_CarSuspension>5</VVE_CarSuspension>
+										<ComponentIndustrial>2</ComponentIndustrial>
+										<ChunkSlagSteel>10</ChunkSlagSteel>
+										<Steel>10</Steel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</match>
+							<nomatch Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="AncientRustedJeep"]</xpath>
+								<value>
+									<costList>
+										<ComponentIndustrial>2</ComponentIndustrial>
+										<ChunkSlagSteel>10</ChunkSlagSteel>
+										<Steel>10</Steel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</nomatch>
+						</li>
+					<!-- ANCIENT TRUCK -->
+						<li Class="PatchOperationFindMod">
+							<mods>
+								<li>Vanilla Vehicles Expanded</li>
+							</mods>
+							<match Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="AncientRustedTruck"]</xpath>
+								<value>
+									<costList>
+										<VVE_EngineBlock>1</VVE_EngineBlock>
+										<VVE_CarAlternator>1</VVE_CarAlternator>
+										<VVE_CarExhaust>1</VVE_CarExhaust>
+										<VVE_CarFuelTank>1</VVE_CarFuelTank>
+										<VVE_CarTransmission>1</VVE_CarTransmission>
+										<VVE_CarWheel>3</VVE_CarWheel>
+										<VVE_CarRadiator>1</VVE_CarRadiator>
+										<VVE_CarSuspension>4</VVE_CarSuspension>
+										<ChunkSlagSteel>9</ChunkSlagSteel>
+										<ComponentIndustrial>2</ComponentIndustrial>
+										<Steel>10</Steel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</match>
+							<nomatch Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="AncientRustedTruck"]</xpath>
+								<value>
+									<costList>
+										<ChunkSlagSteel>9</ChunkSlagSteel>
+										<ComponentIndustrial>2</ComponentIndustrial>
+										<Steel>10</Steel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</nomatch>
+						</li>
+					<!-- ANCIENT UNSTABLE FUEL NODE -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientFuelNode"]</xpath>
+							<value>
+								<costList>
+									<Steel>10</Steel>
+									<Chemfuel>50</Chemfuel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT VENDING MACHINE -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientVendingMachine"]</xpath>
+							<value>
+								<costList>
+									<Steel>2</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT WARSPIDER REMAINS -->
+						<li Class="PatchOperationFindMod">
+							<mods>
+								<li>Vanilla Vehicles Expanded</li>
+							</mods>
+							<match Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="AncientWarspiderRemains"]/killedLeavings</xpath>
+								<value>
+									<costList>
+										<VVE_CarRadiator>1</VVE_CarRadiator>
+										<VVE_CarWiring>1</VVE_CarWiring>
+										<VVE_CarBattery>1</VVE_CarBattery>
+										<VVE_CarSuspension>1</VVE_CarSuspension>
+										<VVE_CarTransmission>1</VVE_CarTransmission>
+										<ComponentIndustrial>1</ComponentIndustrial>
+										<ChunkSlagSteel>10</ChunkSlagSteel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</match>
+							<nomatch Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="AncientWarspiderRemains"]/killedLeavings</xpath>
+								<value>
+									<costList>
+										<ComponentIndustrial>1</ComponentIndustrial>
+										<ChunkSlagSteel>10</ChunkSlagSteel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</nomatch>
+						</li>
+					<!-- ANCIENT WARSPRINTER REMAINS -->
+						<li Class="PatchOperationFindMod">
+							<mods>
+								<li>Vanilla Vehicles Expanded</li>
+							</mods>
+							<match Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="AncientMiniWarwalkerRemains"]/killedLeavings</xpath>
+								<value>
+									<costList>
+										<VVE_CarRadiator>1</VVE_CarRadiator>
+										<VVE_CarWiring>1</VVE_CarWiring>
+										<VVE_CarBattery>1</VVE_CarBattery>
+										<VVE_CarSuspension>1</VVE_CarSuspension>
+										<VVE_CarTransmission>1</VVE_CarTransmission>
+										<ComponentIndustrial>1</ComponentIndustrial>
+										<ChunkSlagSteel>10</ChunkSlagSteel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</match>
+							<nomatch Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="AncientMiniWarwalkerRemains"]/killedLeavings</xpath>
+								<value>
+									<costList>
+										<ComponentIndustrial>1</ComponentIndustrial>
+										<ChunkSlagSteel>10</ChunkSlagSteel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</nomatch>
+						</li>
+					<!-- ANCIENT WARWALKER CLAW -->
+						<li Class="PatchOperationFindMod">
+							<mods>
+								<li>Vanilla Vehicles Expanded</li>
+							</mods>
+							<match Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="AncientWarwalkerClaw"]/killedLeavings</xpath>
+								<value>
+									<costList>
+										<VVE_CarWiring>1</VVE_CarWiring>
+										<VVE_CarSuspension>1</VVE_CarSuspension>
+										<ComponentIndustrial>1</ComponentIndustrial>
+										<ChunkSlagSteel>3</ChunkSlagSteel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</match>
+							<nomatch Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="AncientWarwalkerClaw"]/killedLeavings</xpath>
+								<value>
+									<costList>
+										<ComponentIndustrial>1</ComponentIndustrial>
+										<ChunkSlagSteel>3</ChunkSlagSteel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</nomatch>
+						</li>
+					<!-- ANCIENT WARWALKER FOOT -->
+						<li Class="PatchOperationFindMod">
+							<mods>
+								<li>Vanilla Vehicles Expanded</li>
+							</mods>
+							<match Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="AncientWarwalkerFoot"]/killedLeavings</xpath>
+								<value>
+									<costList>
+										<VVE_CarWiring>1</VVE_CarWiring>
+										<VVE_CarSuspension>1</VVE_CarSuspension>
+										<ChunkSlagSteel>4</ChunkSlagSteel>
+										<ComponentIndustrial>1</ComponentIndustrial>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</match>
+							<nomatch Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="AncientWarwalkerFoot"]/killedLeavings</xpath>
+								<value>
+									<costList>
+										<ChunkSlagSteel>4</ChunkSlagSteel>
+										<ComponentIndustrial>1</ComponentIndustrial>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</nomatch>
+						</li>
+					<!-- ANCIENT WARWALKER LEG -->
+						<li Class="PatchOperationFindMod">
+							<mods>
+								<li>Vanilla Vehicles Expanded</li>
+							</mods>
+							<match Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="AncientWarwalkerLeg"]/killedLeavings</xpath>
+								<value>
+									<costList>
+										<VVE_CarWiring>1</VVE_CarWiring>
+										<VVE_CarTransmission>1</VVE_CarTransmission>
+										<VVE_CarSuspension>1</VVE_CarSuspension>
+										<ComponentIndustrial>1</ComponentIndustrial>
+										<ChunkSlagSteel>6</ChunkSlagSteel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</match>
+							<nomatch Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="AncientWarwalkerLeg"]/killedLeavings</xpath>
+								<value>
+									<costList>
+										<ComponentIndustrial>1</ComponentIndustrial>
+										<ChunkSlagSteel>6</ChunkSlagSteel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</nomatch>
+						</li>
+					<!-- ANCIENT WARWALKER SHELL -->
+						<li Class="PatchOperationFindMod">
+							<mods>
+								<li>Vanilla Vehicles Expanded</li>
+							</mods>
+							<match Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="AncientWarwalkerShell"]/killedLeavings</xpath>
+								<value>
+									<costList>
+										<VVE_CarWiring>1</VVE_CarWiring>
+										<VVE_CarSuspension>3</VVE_CarSuspension>
+										<ComponentIndustrial>1</ComponentIndustrial>
+										<ChunkSlagSteel>8</ChunkSlagSteel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</match>
+							<nomatch Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="AncientWarwalkerShell"]/killedLeavings</xpath>
+								<value>
+									<costList>
+										<ComponentIndustrial>1</ComponentIndustrial>
+										<ChunkSlagSteel>8</ChunkSlagSteel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</nomatch>
+						</li>
+					<!-- ANCIENT WARWALKER TORSO -->
+						<li Class="PatchOperationFindMod">
+							<mods>
+								<li>Vanilla Vehicles Expanded</li>
+							</mods>
+							<match Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="AncientWarwalkerTorso"]/killedLeavings</xpath>
+								<value>
+									<costList>
+										<VVE_CarRadiator>1</VVE_CarRadiator>
+										<VVE_CarWiring>1</VVE_CarWiring>
+										<VVE_CarBattery>1</VVE_CarBattery>
+										<VVE_CarTransmission>1</VVE_CarTransmission>
+										<VVE_CarSuspension>1</VVE_CarSuspension>
+										<ComponentIndustrial>1</ComponentIndustrial>
+										<ChunkSlagSteel>10</ChunkSlagSteel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</match>
+							<nomatch Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="AncientWarwalkerTorso"]/killedLeavings</xpath>
+								<value>
+									<costList>
+										<ComponentIndustrial>1</ComponentIndustrial>
+										<ChunkSlagSteel>10</ChunkSlagSteel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</nomatch>
+						</li>
+					<!-- ANCIENT WASHING MACHINE -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientWashingMachine"]</xpath>
+							<value>
+								<costList>
+									<Steel>3</Steel>
+									<ComponentIndustrial>1</ComponentIndustrial>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT WHEEL -->
+						<li Class="PatchOperationFindMod">
+							<mods>
+								<li>Vanilla Vehicles Expanded</li>
+							</mods>
+							<match Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="AncientWheel"]</xpath>
+								<value>
+									<costList>
+										<VVE_CarWheel>1</VVE_CarWheel>
+										<Steel>10</Steel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								</value>
+							</match>
+							<nomatch Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="AncientWheel"]</xpath>
+								<value>
+									<costList>
+										<Steel>10</Steel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								</value>
+							</nomatch>
+						</li>
+					<!-- HERMETIC CRATE -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientHermeticCrate"]</xpath>
+							<value>
+								<costList>
+									<Steel>5</Steel>
+									<ComponentIndustrial>1</ComponentIndustrial>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- CRASHED SHUTTLE TODO: -->
+						<!-- <li Class="PatchOperationAdd">
+							ShuttleCrashed
+						</li> -->
+					<!-- SHIP CHUNK TODO: -->
+						<!-- <li Class="PatchOperationAdd">
+							ShipChunk
+						</li> -->
+				</operations>
+			</Operation>
+	<!-- DLC -->
+		<!-- BIOTECH -->
+			<Operation MayRequire="Ludeon.RimWorld.Biotech" Class="PatchOperationSequence">
+				<success>Normal</success>
+				<operations>
+					<!-- ANCIENT BAND NODE -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientBandNode"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>2</ChunkSlagSteel>
+									<ComponentIndustrial>1</ComponentIndustrial>
+									<Steel>20</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT EXOSTRIDER CANNON -->
+						<li Class="PatchOperationFindMod">
+							<mods>
+								<li>Vanilla Vehicles Expanded</li>
+							</mods>
+							<match Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="AncientExostriderCannon"]</xpath>
+								<value>
+									<costList>
+										<VVE_CarWiring>1</VVE_CarWiring>
+										<VVE_CarBattery>1</VVE_CarBattery>
+										<VVE_CarSuspension>1</VVE_CarSuspension>
+										<VVE_CarTransmission>1</VVE_CarTransmission>
+										<Gun_ChargeLance>1</Gun_ChargeLance>
+										<Steel>3</Steel>
+										<ComponentIndustrial>1</ComponentIndustrial>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</match>
+							<nomatch Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="AncientExostriderCannon"]</xpath>
+								<value>
+									<costList>
+										<Gun_ChargeLance>1</Gun_ChargeLance>
+										<Steel>3</Steel>
+										<ComponentIndustrial>1</ComponentIndustrial>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</nomatch>
+						</li>
+					<!-- ANCIENT EXOSTRIDER HEAD -->
+						<li Class="PatchOperationFindMod">
+							<mods>
+								<li>Vanilla Vehicles Expanded</li>
+							</mods>
+							<match Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="AncientExostriderHead"]</xpath>
+								<value>
+									<costList>
+										<VVE_CarWiring>1</VVE_CarWiring>
+										<VVE_CarAlternator>1</VVE_CarAlternator>
+										<VVE_CarExhaust>1</VVE_CarExhaust>
+										<VVE_CarSuspension>2</VVE_CarSuspension>
+										<ChunkSlagSteel>2</ChunkSlagSteel>
+										<ComponentIndustrial>1</ComponentIndustrial>
+										<Steel>20</Steel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</match>
+							<nomatch Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="AncientExostriderHead"]</xpath>
+								<value>
+									<costList>
+										<ChunkSlagSteel>2</ChunkSlagSteel>
+										<ComponentIndustrial>1</ComponentIndustrial>
+										<Steel>20</Steel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</nomatch>
+						</li>
+					<!-- ANCIENT EXOSTRIDER LEG -->
+						<li Class="PatchOperationFindMod">
+							<mods>
+								<li>Vanilla Vehicles Expanded</li>
+							</mods>
+							<match Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="AncientExostriderLeg"]</xpath>
+								<value>
+									<costList>
+										<VVE_CarWiring>1</VVE_CarWiring>
+										<VVE_CarSuspension>1</VVE_CarSuspension>
+										<ChunkSlagSteel>2</ChunkSlagSteel>
+										<ComponentIndustrial>1</ComponentIndustrial>
+										<Steel>40</Steel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</match>
+							<nomatch Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="AncientExostriderLeg"]</xpath>
+								<value>
+									<costList>
+										<ChunkSlagSteel>2</ChunkSlagSteel>
+										<ComponentIndustrial>1</ComponentIndustrial>
+										<Steel>40</Steel>
+									</costList>
+									<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+									<building>
+										<deconstructible>true</deconstructible>
+										<claimable>true</claimable>
+									</building>
+								</value>
+							</nomatch>
+						</li>
+					<!-- ANCIENT EXOSTRIDER MIDSECTION -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientExostriderRemains"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>4</ChunkSlagSteel>
+									<ComponentIndustrial>2</ComponentIndustrial>
+									<Steel>40</Steel>
+									<MechanoidTransponder>1</MechanoidTransponder>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								<building>
+									<deconstructible>true</deconstructible>
+									<claimable>true</claimable>
+								</building>
+							</value>
+						</li>
+					<!-- ANCIENT TOXIFIER GENERATOR -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientToxifierGenerator"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>2</ChunkSlagSteel>
+									<ComponentIndustrial>1</ComponentIndustrial>
+									<Steel>12</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+				</operations>
+			</Operation>
+		<!-- IDEOLOGY TODO: -->
+			<Operation MayRequire="Ludeon.RimWorld.Ideology" Class="PatchOperationSequence">
+				<success>Normal</success>
+				<operations>
+					<!-- ANCIENT COMMS CONSOLE -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientCommsConsole"]</xpath>
+							<value>
+								<costList>
+									<Steel>4</Steel>
+									<Silver>1</Silver>
+									<ComponentIndustrial>2</ComponentIndustrial>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								<building>
+									<deconstructible>true</deconstructible>
+									<claimable>true</claimable>
+								</building>
+							</value>
+						</li>
+					<!-- ANCIENT ENEMY TERMINAL -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientEnemyTerminal"]</xpath>
+							<value>
+								<costList>
+									<Steel>3</Steel>
+									<ComponentIndustrial>1</ComponentIndustrial>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT MECHANOID SHELL TODO: -->
+						<!-- <li Class="PatchOperationAdd">
+							can't seem to find this defname anywhere
+						</li> -->
+					<!-- SECURITY CRATE -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientSecurityCrate"]</xpath>
+							<value>
+								<costList>
+									<Steel>3</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+				</operations>
+			</Operation>
+		<!-- ODYSSEY TODO: -->
+			<Operation MayRequire="Ludeon.RimWorld.Odyssey" Class="PatchOperationSequence">
+				<success>Normal</success>
+				<operations>
+					<!-- ADVANCED COMPONENT BOX TODO: -->
+						<!-- <li Class="PatchOperationAdd">
+						</li> -->
+					<!-- ANCIENT AMMO BOX -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientAmmoStack"]</xpath>
+							<value>
+								<costList>
+									<Steel>5</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT ANTENNA -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientAntenna"]</xpath>
+							<value>
+								<costList>
+									<Steel>5</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT ARMCHAIR -->
+						<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="AncientArmchair"]</xpath>
+							<value>
+								<costList>
+									<WoodLog>2</WoodLog>
+									<Cloth>2</Cloth>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT BATHTUB -->
+						<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="AncientBathtub"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>2</ChunkSlagSteel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT BREWERY TODO: -->
+						<!-- <li Class="PatchOperationAdd">
+						</li> -->
+					<!-- ANCIENT BUTCHER TABLE TODO: -->
+						<!-- <li Class="PatchOperationAdd">
+						</li> -->
+					<!-- ANCIENT CHEMBARREL -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientChembarrel"]</xpath>
+							<value>
+								<costList>
+									<Steel>5</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT CHEMBARREL PALLET -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientChembarrelPallet"]</xpath>
+							<value>
+								<costList>
+									<Steel>10</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT CHEMTRUCK -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientChemtruck"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>2</ChunkSlagSteel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								<building>
+									<deconstructible>true</deconstructible>
+									<claimable>true</claimable>
+								</building>
+							</value>
+						</li>
+					<!-- ANCIENT COLD STORAGE -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientColdStorage"]</xpath>
+							<value>
+								<costList>
+									<Steel>5</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT CONTAINER (MEDIUM) -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientMediumContainer"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>4</ChunkSlagSteel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								<building>
+									<deconstructible>true</deconstructible>
+									<claimable>true</claimable>
+								</building>
+							</value>
+						</li>
+					<!-- ANCIENT CONTAINER (SMALL) -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientSmallContainer"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>2</ChunkSlagSteel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								<building>
+									<deconstructible>true</deconstructible>
+									<claimable>true</claimable>
+								</building>
+							</value>
+						</li>
+					<!-- ANCIENT CRATE PALLET -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientCratePallet"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>2</ChunkSlagSteel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT DESTROYED CONSOLE (LARGE) -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientDestroyedConsoleLarge"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>3</ChunkSlagSteel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT DESTROYED CONSOLE (SMALL) -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientDestroyedConsole"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>2</ChunkSlagSteel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT DRILL RIG -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientDrillPlatform"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>3</ChunkSlagSteel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								<building>
+									<deconstructible>true</deconstructible>
+									<claimable>true</claimable>
+								</building>
+							</value>
+						</li>
+					<!-- ANCIENT DRUG LAB TODO: -->
+						<!-- <li Class="PatchOperationAdd">
+						</li> -->
+					<!-- ANCIENT EXCAVATOR -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientExcavator"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>4</ChunkSlagSteel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								<building>
+									<deconstructible>true</deconstructible>
+									<claimable>true</claimable>
+								</building>
+							</value>
+						</li>
+					<!-- ANCIENT FUELED SMITHY TODO: -->
+						<!-- <li Class="PatchOperationAdd">
+						</li> -->
+					<!-- ANCIENT FUELED STOVE TODO: -->
+						<!-- <li Class="PatchOperationAdd">
+						</li> -->
+					<!-- ANCIENT ELECTRIC SMITHY TODO: -->
+						<!-- <li Class="PatchOperationAdd">
+						</li> -->
+					<!-- ANCIENT ELECTRIC STOVE TODO: -->
+						<!-- <li Class="PatchOperationAdd">
+						</li> -->
+					<!-- ANCIENT ELECTRIC TAILOR BENCH TODO: -->
+						<!-- <li Class="PatchOperationAdd">
+						</li> -->
+					<!-- ANCIENT HAND TAILOR BENCH TODO: -->
+						<!-- <li Class="PatchOperationAdd">
+						</li> -->
+					<!-- ANCIENT INDUSTRIAL SHELF -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientIndustrialShelf"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>2</ChunkSlagSteel>
+									<Steel>10</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT MACHINING TABLE TODO: -->
+						<!-- <li Class="PatchOperationAdd">
+						</li> -->
+					<!-- ANCIENT MILITARY BARRIER -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientMilitaryBarrier"]</xpath>
+							<value>
+								<costList>
+									<Steel>75</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								<building>
+									<deconstructible>true</deconstructible>
+									<claimable>true</claimable>
+								</building>
+							</value>
+						</li>
+					<!-- ANCIENT MILITARY GENERATOR -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientMilitaryGeneratorSmall"]</xpath>
+							<value>
+								<costList>
+									<Steel>5</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT PIPE -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientPipe"]</xpath>
+							<value>
+								<costList>
+									<Steel>4</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT PLANT POT -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientPlantPot"]</xpath>
+							<value>
+								<costList>
+									<Steel>4</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT RESEARCH BENCH TODO: -->
+						<!-- <li Class="PatchOperationAdd">
+						</li> -->
+					<!-- ANCIENT SHELF -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientShelf"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>2</ChunkSlagSteel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT SMALL SHELF -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientSmallShelf"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>2</ChunkSlagSteel>
+									<Steel>10</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- ANCIENT TUNNELER CLAW -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientTunnelerClaw"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>2</ChunkSlagSteel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								<building>
+									<deconstructible>true</deconstructible>
+									<claimable>true</claimable>
+								</building>
+							</value>
+						</li>
+					<!-- ANCIENT TUNNERLER HUSK -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientTunnelerHusk"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>2</ChunkSlagSteel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								<building>
+									<deconstructible>true</deconstructible>
+									<claimable>true</claimable>
+								</building>
+							</value>
+						</li>
+					<!-- ANCIENT WIND TURBINE -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientWindTurbineBody"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>2</ChunkSlagSteel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								<building>
+									<deconstructible>true</deconstructible>
+									<claimable>true</claimable>
+								</building>
+							</value>
+						</li>
+					<!-- BROKEN AUTOCANNON TURRET TODO: -->
+						<!-- <li Class="PatchOperationAdd">
+						</li> -->
+					<!-- BROKEN URANIUM SLUG TURRET TODO: -->
+						<!-- <li Class="PatchOperationAdd">
+						</li> -->
+					<!-- BUSTED MORTAR TODO: -->
+						<!-- <li Class="PatchOperationAdd">
+						</li> -->
+					<!-- BUSTED TELEVISION -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientTV"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>2</ChunkSlagSteel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- CHEMFUEL CANISTER TODO: -->
+						<!-- <li Class="PatchOperationAdd">
+						</li> -->
+					<!-- COMPONENT BOX TODO: -->
+						<!-- <li Class="PatchOperationAdd">
+						</li> -->
+					<!-- CRACKED SHOWER -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientShower"]</xpath>
+							<value>
+								<costList>
+									<Steel>5</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- LARGE CONCRETE BARRIER -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientBarrierLong"]</xpath>
+							<value>
+								<costList>
+									<Steel>50</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								<building>
+									<deconstructible>true</deconstructible>
+									<claimable>true</claimable>
+								</building>
+							</value>
+						</li>
+					<!-- MALFUNCTIONING TRANSPORT POD TODO: -->
+						<!-- <li Class="PatchOperationAdd">
+						</li> -->
+					<!-- MEDICINE PALLET TODO: -->
+						<!-- <li Class="PatchOperationAdd">
+						</li> -->
+					<!-- OLD CARDBOARD BOX -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientCardboardBox"]</xpath>
+							<value>
+								<costList>
+									<WoodLog>2</WoodLog>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- OLD WOODEN CRATE -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientWoodenCrate"]</xpath>
+							<value>
+								<costList>
+									<WoodLog>2</WoodLog>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- RUBBLE PILE TODO: -->
+						<!-- <li Class="PatchOperationAdd">
+						</li> -->
+					<!-- RUINED CRANE ARM (LARGE) -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientCraneArm"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>2</ChunkSlagSteel>
+									<Steel>10</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- RUINED CRANE ARM (SMALL) -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientCraneArmSmall"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>2</ChunkSlagSteel>
+									<Steel>5</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- RUINED CRANE BASE -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientCraneBase"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>5</ChunkSlagSteel>
+									<Steel>75</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								<building>
+									<deconstructible>true</deconstructible>
+									<claimable>true</claimable>
+								</building>
+							</value>
+						</li>
+					<!-- RUINED CRANE COLUMN -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientCraneColumn"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>2</ChunkSlagSteel>
+									<Steel>25</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								<building>
+									<deconstructible>true</deconstructible>
+									<claimable>true</claimable>
+								</building>
+							</value>
+						</li>
+					<!-- RUINED FORKLIFT -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientForklift"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>4</ChunkSlagSteel>
+									<Steel>10</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								<building>
+									<deconstructible>true</deconstructible>
+									<claimable>true</claimable>
+								</building>
+							</value>
+						</li>
+					<!-- RUSTED BED -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientSingleBed"]</xpath>
+							<value>
+								<costList>
+									<WoodLog>2</WoodLog>
+									<Steel>4</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- RUSTED DOUBLE BED -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientDoubleBed"]</xpath>
+							<value>
+								<costList>
+									<WoodLog>4</WoodLog>
+									<Steel>6</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- RUSTED FILING CABINET -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientFilingCabinet"]</xpath>
+							<value>
+								<costList>
+									<Steel>5</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- RUSTED INDUSTRIAL TRUCK -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientIndustrialTruck"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>5</ChunkSlagSteel>
+									<Steel>25</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								<building>
+									<deconstructible>true</deconstructible>
+									<claimable>true</claimable>
+								</building>
+							</value>
+						</li>
+					<!-- RUSTED LOCKERS -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientLockers"]</xpath>
+							<value>
+								<costList>
+									<Steel>5</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- RUSTED METAL CRATE -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientMetalCrate"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>2</ChunkSlagSteel>
+									<Steel>10</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- RUSTED MICROWAVE -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientRustedMicrowave"]</xpath>
+							<value>
+								<costList>
+									<Steel>5</Steel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+							</value>
+						</li>
+					<!-- RUSTED OPEN CONTAINER -->
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName="AncientOpenContainer"]</xpath>
+							<value>
+								<costList>
+									<ChunkSlagSteel>5</ChunkSlagSteel>
+								</costList>
+								<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+								<building>
+									<deconstructible>true</deconstructible>
+									<claimable>true</claimable>
+								</building>
+							</value>
+						</li>
+					<!-- RUSTED SAFE TODO: -->
+						<!-- <li Class="PatchOperationAdd">
+						</li> -->
+					<!-- SEALED CONTAINER TODO: -->
+						<!-- <li Class="PatchOperationAdd">
+						</li> -->
+					<!-- SEALED CRATE TODO: -->
+						<!-- <li Class="PatchOperationAdd">
+						</li> -->
+					<!-- STEEL SCRAP BOX TODO: -->
+						<!-- <li Class="PatchOperationAdd">
+						</li> -->
+					<!-- STEEL SCRAP PALLET TODO: -->
+						<!-- <li Class="PatchOperationAdd">
+						</li> -->
+					<!-- SURVIVAL MEAL PALLET TODO: -->
+						<!-- <li Class="PatchOperationAdd">
+						</li> -->
+				</operations>
+			</Operation>
+	<!--  -->
+</Patch>
