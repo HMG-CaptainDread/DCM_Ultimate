@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/RecipeDef[defName="DankPyon_Extract_Honey" or defName="DankPyon_Extract_HoneyBulk"]/recipeUsers</xpath>
+		<value>
+			<recipeUsers>
+				<li>RB_Beekeeping_Workbench_Building</li>
+			</recipeUsers>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="DankPyon_Honeycomb"]/thingCategories/li[.="RB_Combs"]</xpath>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>Defs/ThingDef[defName="DankPyon_Honeycomb"]/thingCategories</xpath>
+			<value>
+				<li>RB_Combs</li>
+			</value>
+		</nomatch>
+	</Operation>
+
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/RecipeDef[defName="DankPyon_Extract_Honey" or defName="DankPyon_Extract_HoneyBulk"]</xpath>
+		<match Class="PatchOperationRemove">
+			<xpath>Defs/RecipeDef[defName="DankPyon_Extract_Honey" or defName="DankPyon_Extract_HoneyBulk"]</xpath>
+		</match>
+	</Operation>
+
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/RecipeDef[defName="RB_CentrifugeAnyComb"]/recipeUsers/li[.="RB_Beekeeping_Workbench_Building"]</xpath>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>Defs/RecipeDef[defName="RB_CentrifugeAnyComb"]</xpath>
+			<value>
+				<recipeUsers>
+					<li>RB_Beekeeping_Workbench_Building</li>
+				</recipeUsers>
+			</value>
+		</nomatch>
+	</Operation>
+
+</Patch>

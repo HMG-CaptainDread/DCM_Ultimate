@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<!-- Add Cheese Processes to Press -->
+	<Operation Class="PatchOperationInsert">
+		<xpath>Defs/ThingDef[defName="DankPyon_Presser"]/comps/li[@Class="ProcessorFramework.CompProperties_Processor"]/processes/li[.="DankPyon_PressSheepCheeseProcess"]</xpath>
+		<order>Append</order>
+		<value>
+			<li>VCE_MO_NightMilkIntoCheese</li>
+			<li>VCE_MO_BlueMilkIntoCheese</li>
+			<li>VCE_MO_GowMilkIntoCheese</li>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ProcessorFramework.ProcessDef[defName="DankPyon_PressCheeseProcess"]/ingredientFilter/disallowedThingDefs</xpath>
+		<value>
+			<li>AA_NightMilk</li>
+			<li>AA_BlueMilk</li>
+			<li>AA_GowMilk</li>
+		</value>
+	</Operation>
+
+</Patch>

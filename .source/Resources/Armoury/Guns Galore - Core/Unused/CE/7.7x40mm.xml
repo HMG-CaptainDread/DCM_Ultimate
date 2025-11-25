@@ -1,0 +1,410 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo77x40mm</defName>
+		<label>7.7x40m</label>
+		<parent>AmmoRifles</parent>
+		<iconPath>UI/Icons/ThingCategories/CaliberRifle</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef MayRequire="cgf1.gunsgalore.ww2.europeanaxis.i">
+		<defName>AmmoSet_77x40mm</defName>
+		<label>7.7x40m</label>
+		<ammoTypes>
+			<Ammo_77x40mm_FMJ>Bullet_77x40mm_FMJ</Ammo_77x40mm_FMJ>
+			<Ammo_77x40mm_AP>Bullet_77x40mm_AP</Ammo_77x40mm_AP>
+			<Ammo_77x40mm_HP>Bullet_77x40mm_HP</Ammo_77x40mm_HP>
+			<Ammo_77x40mm_Incendiary>Bullet_77x40mm_Incendiary</Ammo_77x40mm_Incendiary>
+			<Ammo_77x40mm_HE>Bullet_77x40mm_HE</Ammo_77x40mm_HE>
+			<Ammo_77x40mm_Sabot>Bullet_77x40mm_Sabot</Ammo_77x40mm_Sabot>
+		</ammoTypes>
+		<similarTo>AmmoSet_RifleIntermediate</similarTo>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="77x40mmBase" ParentName="SmallAmmoBase" Abstract="True" MayRequire="cgf1.gunsgalore.ww2.europeanaxis.i">
+		<description>Experimental intermediate rifle cartridge developed for prototype weapons.</description>
+		<statBases>
+			<Mass>0.02</Mass>
+			<Bulk>0.02</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo77x40mm</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="77x40mmBase" MayRequire="cgf1.gunsgalore.ww2.europeanaxis.i">
+		<defName>Ammo_77x40mm_FMJ</defName>
+		<label>7.7x40m cartridge (FMJ)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Rifle/FMJ</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.09</MarketValue>
+		</statBases>
+		<ammoClass>FullMetalJacket</ammoClass>
+		<cookOffProjectile>Bullet_77x40mm_FMJ</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="77x40mmBase" MayRequire="cgf1.gunsgalore.ww2.europeanaxis.i">
+		<defName>Ammo_77x40mm_AP</defName>
+		<label>7.7x40m cartridge (AP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Rifle/AP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.09</MarketValue>
+		</statBases>
+		<ammoClass>ArmorPiercing</ammoClass>
+		<cookOffProjectile>Bullet_77x40mm_AP</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="77x40mmBase" MayRequire="cgf1.gunsgalore.ww2.europeanaxis.i">
+		<defName>Ammo_77x40mm_HP</defName>
+		<label>7.7x40m cartridge (HP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Rifle/HP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.09</MarketValue>
+		</statBases>
+		<ammoClass>HollowPoint</ammoClass>
+		<cookOffProjectile>Bullet_77x40mm_HP</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="77x40mmBase" MayRequire="cgf1.gunsgalore.ww2.europeanaxis.i">
+		<defName>Ammo_77x40mm_Incendiary</defName>
+		<label>7.7x40m cartridge (AP-I)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Rifle/Incendiary</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.13</MarketValue>
+		</statBases>
+		<ammoClass>IncendiaryAP</ammoClass>
+		<cookOffProjectile>Bullet_77x40mm_Incendiary</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="77x40mmBase" MayRequire="cgf1.gunsgalore.ww2.europeanaxis.i">
+		<defName>Ammo_77x40mm_HE</defName>
+		<label>7.7x40m cartridge (AP-HE)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Rifle/HE</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.2</MarketValue>
+		</statBases>
+		<ammoClass>ExplosiveAP</ammoClass>
+		<cookOffProjectile>Bullet_77x40mm_HE</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="77x40mmBase" MayRequire="cgf1.gunsgalore.ww2.europeanaxis.i">
+		<defName>Ammo_77x40mm_Sabot</defName>
+		<label>7.7x40m cartridge (Sabot)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Rifle/Sabot</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.11</MarketValue>
+			<Mass>0.016</Mass>
+		</statBases>
+		<ammoClass>Sabot</ammoClass>
+		<cookOffProjectile>Bullet_77x40mm_Sabot</cookOffProjectile>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="Base77x40mmBullet" ParentName="BaseBulletCE" Abstract="true" MayRequire="cgf1.gunsgalore.ww2.europeanaxis.i">
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>139</speed>
+			<dropsCasings>true</dropsCasings>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base77x40mmBullet" MayRequire="cgf1.gunsgalore.ww2.europeanaxis.i">
+		<defName>Bullet_77x40mm_FMJ</defName>
+		<label>7.7x40m bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>17</damageAmountBase>
+			<armorPenetrationSharp>5</armorPenetrationSharp>
+			<armorPenetrationBlunt>43.96</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base77x40mmBullet" MayRequire="cgf1.gunsgalore.ww2.europeanaxis.i">
+		<defName>Bullet_77x40mm_AP</defName>
+		<label>7.7x40m bullet (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>11</damageAmountBase>
+			<armorPenetrationSharp>10</armorPenetrationSharp>
+			<armorPenetrationBlunt>43.96</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base77x40mmBullet" MayRequire="cgf1.gunsgalore.ww2.europeanaxis.i">
+		<defName>Bullet_77x40mm_HP</defName>
+		<label>7.7x40m bullet (HP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>22</damageAmountBase>
+			<armorPenetrationSharp>3</armorPenetrationSharp>
+			<armorPenetrationBlunt>43.96</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base77x40mmBullet" MayRequire="cgf1.gunsgalore.ww2.europeanaxis.i">
+		<defName>Bullet_77x40mm_Incendiary</defName>
+		<label>7.7x40m bullet (AP-I)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>11</damageAmountBase>
+			<armorPenetrationSharp>10</armorPenetrationSharp>
+			<armorPenetrationBlunt>43.96</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Flame_Secondary</def>
+					<amount>7</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base77x40mmBullet" MayRequire="cgf1.gunsgalore.ww2.europeanaxis.i">
+		<defName>Bullet_77x40mm_HE</defName>
+		<label>7.7x40m bullet (AP-HE)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>17</damageAmountBase>
+			<armorPenetrationSharp>5</armorPenetrationSharp>
+			<armorPenetrationBlunt>43.96</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>10</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base77x40mmBullet" MayRequire="cgf1.gunsgalore.ww2.europeanaxis.i">
+		<defName>Bullet_77x40mm_Sabot</defName>
+		<label>7.7x40m bullet (Sabot)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>9</damageAmountBase>
+			<armorPenetrationSharp>17.5</armorPenetrationSharp>
+			<armorPenetrationBlunt>57.32</armorPenetrationBlunt>
+			<speed>209</speed>
+		</projectile>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.ww2.europeanaxis.i">
+		<defName>MakeAmmo_77x40mm_FMJ</defName>
+		<label>make 7.7x40m (FMJ) cartridge x500</label>
+		<description>Craft 500 7.7x40m (FMJ) cartridges.</description>
+		<jobString>Making 7.7x40m (FMJ) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>22</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_77x40mm_FMJ>500</Ammo_77x40mm_FMJ>
+		</products>
+		<workAmount>2200</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.ww2.europeanaxis.i">
+		<defName>MakeAmmo_77x40mm_AP</defName>
+		<label>make 7.7x40m (AP) cartridge x500</label>
+		<description>Craft 500 7.7x40m (AP) cartridges.</description>
+		<jobString>Making 7.7x40m (AP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>22</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_77x40mm_AP>500</Ammo_77x40mm_AP>
+		</products>
+		<workAmount>2640</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.ww2.europeanaxis.i">
+		<defName>MakeAmmo_77x40mm_HP</defName>
+		<label>make 7.7x40m (HP) cartridge x500</label>
+		<description>Craft 500 7.7x40m (HP) cartridges.</description>
+		<jobString>Making 7.7x40m (HP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>22</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_77x40mm_HP>500</Ammo_77x40mm_HP>
+		</products>
+		<workAmount>2200</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AdvancedAmmoRecipeBase" MayRequire="cgf1.gunsgalore.ww2.europeanaxis.i">
+		<defName>MakeAmmo_77x40mm_Incendiary</defName>
+		<label>make 7.7x40m (AP-I) cartridge x500</label>
+		<description>Craft 500 7.7x40m (AP-I) cartridges.</description>
+		<jobString>Making 7.7x40m (AP-I) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>22</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Prometheum</li>
+					</thingDefs>
+				</filter>
+				<count>3</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>Prometheum</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_77x40mm_Incendiary>500</Ammo_77x40mm_Incendiary>
+		</products>
+		<workAmount>3400</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AdvancedAmmoRecipeBase" MayRequire="cgf1.gunsgalore.ww2.europeanaxis.i">
+		<defName>MakeAmmo_77x40mm_HE</defName>
+		<label>make 7.7x40m (AP-HE) cartridge x500</label>
+		<description>Craft 500 7.7x40m (AP-HE) cartridges.</description>
+		<jobString>Making 7.7x40m (AP-HE) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>22</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>FSX</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>FSX</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_77x40mm_HE>500</Ammo_77x40mm_HE>
+		</products>
+		<workAmount>4200</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AdvancedAmmoRecipeBase" MayRequire="cgf1.gunsgalore.ww2.europeanaxis.i">
+		<defName>MakeAmmo_77x40mm_Sabot</defName>
+		<label>make 7.7x40m (Sabot) cartridge x500</label>
+		<description>Craft 500 7.7x40m (Sabot) cartridges.</description>
+		<jobString>Making 7.7x40m (Sabot) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>12</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Uranium</li>
+					</thingDefs>
+				</filter>
+				<count>3</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Chemfuel</li>
+					</thingDefs>
+				</filter>
+				<count>3</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>Uranium</li>
+				<li>Chemfuel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_77x40mm_Sabot>500</Ammo_77x40mm_Sabot>
+		</products>
+		<workAmount>300</workAmount>
+	</RecipeDef>
+
+</Defs>

@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!-- ========================= Trade Good Classes ==========================-->
+<!-- Trade Goods Base Class -->
+  <ThingDef Name="MedTimes_TradeGoodBase" Abstract="True">
+    <thingClass>ThingWithComps</thingClass>
+    <category>Item</category>
+    <resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <useHitPoints>true</useHitPoints>
+    <selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+    <stackLimit>1</stackLimit>
+    <alwaysHaulable>true</alwaysHaulable>
+    <drawGUIOverlay>true</drawGUIOverlay>
+    <rotatable>false</rotatable>
+    <pathCost>15</pathCost>
+    <intricate>true</intricate>	
+    <tickerType>Never</tickerType>
+    <soundInteract>Standard_Drop</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop>
+    <tradeability>Sellable</tradeability>	
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+      <DeteriorationRate>2</DeteriorationRate>
+      <SellPriceFactor>1.2</SellPriceFactor>
+      <Mass>0.25</Mass>	  
+    </statBases>	
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+    </comps>	
+    <thingCategories>
+      <li>TradeGoods</li>
+    </thingCategories>
+    <tradeTags><li>MedTimes_TradeGoods</li></tradeTags>	
+  </ThingDef>
+
+  
+<!-- Easy Crafted Trade Goods Class -->  
+<ThingDef Name="MedTimes_Craft_TradeGood_T0" ParentName="MedTimes_TradeGoodBase" Abstract="True">
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smelt</effectWorking>
+      <soundWorking>Recipe_Smelt</soundWorking>
+      <unfinishedThingDef>UnfinishedSculpture</unfinishedThingDef>	  
+      <recipeUsers>
+        <li>MedTimes_CraftingStation</li>
+        <li>CraftingSpot</li>		
+      </recipeUsers>
+    </recipeMaker>			
+</ThingDef>
+
+<!-- Crafted Trade Goods Class -->  
+<ThingDef Name="MedTimes_Craft_TradeGood_T1" ParentName="MedTimes_TradeGoodBase" Abstract="True">	
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>CutStone</effectWorking>
+      <soundWorking>Recipe_MakeStoneBlocks</soundWorking>
+      <unfinishedThingDef>UnfinishedSculpture</unfinishedThingDef>	  
+      <recipeUsers><li>MedTimes_CraftingStation</li></recipeUsers>
+    </recipeMaker>	
+    <comps>
+      <li><compClass>CompColorable</compClass></li>
+      <li><compClass>CompQuality</compClass></li>	  
+    </comps>
+	<colorGenerator Class="ColorGenerator_StandardApparel" />	
+</ThingDef>
+
+<!-- Tailored Trade Goods Class -->  
+<ThingDef Name="MedTimes_Tailor_TradeGood_T1" ParentName="MedTimes_TradeGoodBase" Abstract="True">
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Tailor</effectWorking>
+      <soundWorking>Recipe_Tailor</soundWorking>
+      <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>	  
+      <recipeUsers><li>MedTimes_CraftingStation</li></recipeUsers>
+    </recipeMaker>	
+    <comps>
+      <li><compClass>CompColorable</compClass></li>
+      <li><compClass>CompQuality</compClass></li>	  
+    </comps>
+	<colorGenerator Class="ColorGenerator_StandardApparel" />	
+</ThingDef>
+
+<!-- Smithed Trade Goods Tier 1 Class -->  
+<ThingDef Name="MedTimes_Smith_TradeGood_T1" ParentName="MedTimes_TradeGoodBase" Abstract="True">
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+      <recipeUsers>
+		<li>MedTimes_BlacksmithForge</li>
+		<li>MedTimes_BlacksmithForgeTierTwo</li>	  
+	  </recipeUsers>	  
+    </recipeMaker>	
+</ThingDef>	
+
+<!-- Smithed Trade Goods Tier 2 Class -->  
+<ThingDef Name="MedTimes_Smith_TradeGood_T2" ParentName="MedTimes_TradeGoodBase" Abstract="True">
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+      <recipeUsers>
+		<li>MedTimes_BlacksmithForgeTierTwo</li>	  
+	  </recipeUsers>	  
+    </recipeMaker>	
+</ThingDef>	
+
+
+
+
+<!-- ========================= Tier 0 Trade Goods ==========================-->
+<!--(Tradegood) Wood Pitch Glue-->
+  <ThingDef ParentName="MedTimes_Craft_TradeGood_T0">
+    <defName>MedTimes_WoodPitchGlue</defName>
+    <label>Wood Pitch Glue</label>
+    <description>Although generally made from pine tree sap, Wood Tar can be extracted from just about any wood using a process known as "Dry Distilling" and than used with a combination of charcoal to create an extremely flammable and sticky substance that is generally referred to as pitch glue.</description>
+    <graphicData>
+      <texPath>Things/Item/TradeGoods/WoodPitch/MedTimes_WoodPitchGlue</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(0.6,0.6)</drawSize>	  
+    </graphicData>
+     <costList><WoodLog>5</WoodLog></costList> 
+    <statBases>
+      <MarketValue>15</MarketValue>	
+      <WorkToMake>1500</WorkToMake>
+      <Flammability>5.0</Flammability>	  
+    </statBases>
+  </ThingDef>
+ 
+<!--(Tradegood) Storage Pot--> 
+  <ThingDef ParentName="MedTimes_Craft_TradeGood_T0">
+    <defName>MedTimes_StoragePot</defName>
+    <label>Storage Pot</label>
+    <description>A basic pot made of mud clay or heat treated adobe. Generally used by people throughout the ages when they want to store large quantities of items. Because of their wide use and relative ease of creation, they can be readily sold or bought at a cheap price.</description>
+    <graphicData>
+      <texPath>Things/Item/TradeGoods/StoragePot/MedTimes_StoragePot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(0.8,0.8)</drawSize>	  
+    </graphicData>
+    <costList>
+      <MedTimes_Resource_AdobeBricks>5</MedTimes_Resource_AdobeBricks> 
+    </costList>
+    <statBases>
+      <Mass>1</Mass>	
+      <MarketValue>10</MarketValue>	
+      <MaxHitPoints>30</MaxHitPoints>				
+      <WorkToMake>1500</WorkToMake>	  
+    </statBases>
+  </ThingDef>  
+ 
+   
+  
+<!-- ========================= Basic Trade Goods ==========================-->
+<!-- === Books === --> 
+<!--(Tradegood) Graphic Novel--> 
+  <ThingDef ParentName="MedTimes_TradeGoodBase">
+    <defName>MedTimes_GraphicNovel</defName>
+    <label>Graphic Novel</label>
+    <description>A short story written by a local artist and containing many hand crafted pictures. Most people will enjoy reading them in their spare time and gain a small joy boost. Aside from ascetics, one can also expect a small mood buff.</description>
+    <graphicData>
+      <texPath>Things/Item/TradeGoods/Books/GraphicNovels</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+      <drawSize>(0.8,0.8)</drawSize>	  
+    </graphicData>
+		<socialPropernessMatters>true</socialPropernessMatters>	
+    <statBases>	
+      <WorkToMake>4500</WorkToMake>
+      <MarketValue>15</MarketValue>		  
+    </statBases>
+    <comps>
+	    <li Class="CompProperties_Drug">
+		<compClass>CompQuality</compClass>
+        <listOrder>1000</listOrder>
+		</li>	
+	</comps>
+    <ingestible>
+      <drugCategory>Medical</drugCategory>	
+      <preferability>NeverForNutrition</preferability>
+      <foodType>Processed</foodType>	  
+      <chairSearchRadius>8</chairSearchRadius>	  
+      <joy>0.10</joy>
+      <joyKind>Telescope</joyKind>
+      <maxNumToIngestAtOnce>1</maxNumToIngestAtOnce>
+      <ingestSound>MedTimes_Sound_PageFlips</ingestSound>
+	  <tasteThought>MedTimes_GraphicNovel</tasteThought>
+      <ingestCommandString>Read {0}</ingestCommandString>
+      <ingestReportString>Reading {0}.</ingestReportString>	  
+    </ingestible>	
+  </ThingDef>
+
+<!--(Tradegood) Stuffed Doll--> 
+  <ThingDef ParentName="MedTimes_Tailor_TradeGood_T1">
+    <defName>MedTimes_StuffedDoll</defName>
+    <label>Stuffed Doll</label>
+    <description>A children's stuffed doll, useful in trade or making a child happy.</description>
+    <graphicData>
+      <texPath>Things/Item/TradeGoods/StuffedDoll</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+      <drawSize>(0.8,0.8)</drawSize>	  
+    </graphicData>
+    <stuffCategories>
+      <li>Leathery</li>
+	  <li>Fabric</li>
+    </stuffCategories>
+	<costStuffCount>10</costStuffCount>	
+    <costList><Hay>5</Hay></costList>	
+    <statBases>	
+      <WorkToMake>3500</WorkToMake>
+      <SellPriceFactor>1.35</SellPriceFactor>	  
+    </statBases>	
+  </ThingDef>
+ 
+<!--(Tradegood) Cup--> 
+  <ThingDef ParentName="MedTimes_Craft_TradeGood_T1">
+    <defName>MedTimes_DrinkingCup</defName>
+    <label>Drinking Cup</label>
+    <description>Various basic and fancy cup designs, Generally used by people when they want to drink something, or sold to people with similar drinking desires.</description>
+    <graphicData>
+      <texPath>Things/Item/TradeGoods/DrinkingCups</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+      <drawSize>(0.7,0.7)</drawSize>	  
+    </graphicData>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>	  
+    </stuffCategories>
+	<costStuffCount>10</costStuffCount>	
+    <statBases>
+      <WorkToMake>2500</WorkToMake>	
+    </statBases>	
+  </ThingDef>
+
+<!--(Tradegood) Puzzlebox--> 
+  <ThingDef ParentName="MedTimes_Craft_TradeGood_T1">
+    <defName>MedTimes_Puzzlebox</defName>
+    <label>Puzzlebox</label>
+    <description>Various basic and fancy Puzzlebox designs, Generally used by people when they want to store something valuble or used as a gift to a friend. Difficult to open without knowing it's secrets or breaking the box entirely.</description>
+    <graphicData>
+      <texPath>Things/Item/TradeGoods/Puzzleboxes</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+      <drawSize>(0.7,0.7)</drawSize>	  
+    </graphicData>
+    <stuffCategories>
+      <li>Woody</li>
+      <li>Stony</li>	  
+    </stuffCategories>
+	<costStuffCount>10</costStuffCount>	
+    <costList><Steel>5</Steel></costList>		
+    <statBases>	
+      <WorkToMake>5000</WorkToMake>
+      <SellPriceFactor>1.35</SellPriceFactor>		  
+    </statBases>	
+  </ThingDef>  
+  
+  
+  
+<!-- ========================= Smithed Trade Goods ==========================--> 
+<!--(Tradegood) Crafting Hand Tools-->
+  <ThingDef ParentName="MedTimes_Smith_TradeGood_T1">
+    <defName>MedTimes_CraftingTools</defName>
+    <label>Hand Tools</label>
+    <description>Tools used by a tradesman in the production of various goods.</description>
+    <graphicData>
+      <texPath>Things/Item/TradeGoods/BlacksmithItems/MedTimes_CraftingTools</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>	  
+    </graphicData>
+     <costList>
+      <Steel>20</Steel>	 
+      <WoodLog>15</WoodLog>
+     </costList>	 
+    <statBases>
+      <MarketValue>80</MarketValue>	
+      <WorkToMake>6000</WorkToMake>	
+    </statBases>	
+  </ThingDef>
+
+<!--(Tradegood) Steel Bow -->
+  <ThingDef ParentName="MedTimes_Smith_TradeGood_T1">
+    <defName>MedTimes_SteelBow</defName>
+    <label>Steel Bow</label>
+    <description>A bow made of steel and used in the construction of either a crossbow or an arbalest.</description>
+    <graphicData>
+      <texPath>Things/Item/TradeGoods/BlacksmithItems/MedTimes_SteelBow</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>	  
+    </graphicData>
+     <costList>
+      <Steel>20</Steel>	 
+     </costList> 
+    <statBases>
+      <MarketValue>60</MarketValue>		
+      <WorkToMake>2500</WorkToMake>	
+    </statBases>
+  </ThingDef>  
+
+<!--(Tradegood) Advanced Trigger Mechanism -->
+  <ThingDef ParentName="MedTimes_Smith_TradeGood_T2">
+    <defName>MedTimes_AdvancedTriggerMechanism</defName>
+    <label>Advanced Trigger Mechanism</label>
+    <description>An advanced trigger mechanism made of steel used in the construction of an arbalest.</description>
+    <graphicData>
+      <texPath>Things/Item/TradeGoods/BlacksmithItems/MedTimes_AdvancedTriggerMechanism</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(0.7,0.7)</drawSize>	  
+    </graphicData>
+     <costList>
+      <Steel>25</Steel>	 
+     </costList> 
+    <statBases>
+      <MarketValue>100</MarketValue>	
+      <WorkToMake>3500</WorkToMake>	
+    </statBases>
+  </ThingDef> 
+  
+  
+
+<!-- ============= End of Document  =================-->  
+</Defs>

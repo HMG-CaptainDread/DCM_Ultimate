@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Defs>
+
+	<ThingDef ParentName="RoughPlantBase">
+		<defName>DankPyon_DriedHay</defName>
+		<label>dried hay</label>
+		<description>Dried stalks of grain, used especially as fodder, harvested and compacted for storage. Straw is good animal feed, but inedible for humans.</description>
+		<stackLimit>200</stackLimit>
+		<graphicData>
+			<texPath>Things/Item/Resource/Straw</texPath>
+			<color>(0.75,1,0.75,1)</color>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.7</MarketValue>
+			<Mass>0.010</Mass>
+			<Flammability>1.8</Flammability>
+		</statBases>
+		<thingCategories>
+			<li>Feed</li>
+		</thingCategories>
+		<ingestible>
+			<optimalityOffsetFeedingAnimals>6</optimalityOffsetFeedingAnimals>
+		</ingestible>
+	</ThingDef>
+
+	<ThingDef ParentName="DankPyon_StorageBase">
+		<defName>DankPyon_HayPile</defName>
+		<label>dried hay pile</label>
+		<description>A collective pile of straw, flax, and hay fashioned to conserve space.</description>
+		<thingClass>Building_Storage</thingClass>
+		<graphicData>
+			<texPath>Things/Building/Storage/StrawPile</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2.70,2.70)</drawSize>
+			<color>(0.75,1,0.75,1)</color>
+			<drawRotated>false</drawRotated>
+		</graphicData>
+		<size>(2,1)</size>
+		<defaultPlacingRot>South</defaultPlacingRot>
+		<costList>
+			<DankPyon_DriedHay>20</DankPyon_DriedHay>
+		</costList>
+		<stuffCategories Inherit="false"/>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Mass>8</Mass>
+			<WorkToBuild>500</WorkToBuild>
+			<StyleDominance MayRequire="Ludeon.RimWorld.Ideology">2.5</StyleDominance>
+		</statBases>
+		<building>
+			<maxItemsInCell>4</maxItemsInCell>
+			<fixedStorageSettings Inherit="false">
+				<filter>
+					<thingDefs>
+						<li>DankPyon_Straw</li>
+						<li>DankPyon_RawFlax</li>
+						<li>Hay</li>
+						<li>DankPyon_DriedHay</li>
+					</thingDefs>
+				</filter>
+			</fixedStorageSettings>
+			<defaultStorageSettings Inherit="false">
+				<priority>Important</priority>
+				<filter>
+					<thingDefs>
+						<li>DankPyon_Straw</li>
+						<li>DankPyon_RawFlax</li>
+						<li>Hay</li>
+						<li>DankPyon_DriedHay</li>
+					</thingDefs>
+				</filter>
+			</defaultStorageSettings>
+		</building>
+		<designatorDropdown>DankPyon_Pile1x2c</designatorDropdown>
+	</ThingDef>
+	
+	<ThingDef ParentName="DankPyon_Bale1x2Base">
+		<defName>DankPyon_DriedHayBale1x2c</defName>
+		<label>dried hay bale</label>
+		<description>A collective pile of straw, flax, and hay fashioned to conserve space.</description>
+		<graphicData>
+			<texPath>Things/Building/Storage/Bale1x2</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4,3)</drawSize>
+			<color>(137,132,0)</color>
+		</graphicData>
+		<costList Inherit="false">
+			<DankPyon_DriedHay>20</DankPyon_DriedHay>
+		</costList>
+	</ThingDef>
+
+	<ThingDef ParentName="DankPyon_Bale2x2Base">
+		<defName>DankPyon_DriedHayBale2x2c</defName>
+		<label>dried hay bale(2x2)</label>
+		<graphicData>
+			<texPath>Things/Building/Storage/Bale2x2</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4,4)</drawSize>
+			<color>(137,132,0)</color>
+		</graphicData>
+		<costList Inherit="false">
+			<DankPyon_DriedHay>40</DankPyon_DriedHay>
+		</costList>
+	</ThingDef>
+
+</Defs>

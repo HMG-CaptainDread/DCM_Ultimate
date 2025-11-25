@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ResearchProjectDef[defName="WakeUpProduction"]/prerequisites</xpath>
+	<value>
+	  <prerequisites>
+		<li>MedTimes_ChemicalX</li>
+		<li>MedTimes_WaxUsage</li>
+	  </prerequisites>
+	</value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ResearchProjectDef[defName="GoJuiceProduction"]/prerequisites</xpath>
+	<value>
+	  <prerequisites>
+		<li>MedTimes_ChemicalX</li>
+	  </prerequisites>
+	</value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ResearchProjectDef[defName="PenoxycylineProduction"]/prerequisites</xpath>
+	<value>
+	  <prerequisites>
+		<li>MedTimes_ChemicalX</li>
+		<li>MedTimes_WaxUsage</li>
+	  </prerequisites>
+	</value>
+  </Operation>
+
+  
+  
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>Vanilla Furniture Expanded</li>
+	  </mods>
+	  <nomatch Class="PatchOperationConditional">
+		<xpath>/Defs/ResearchProjectDef[defName = "ComplexFurniture"]/prerequisites</xpath>
+		<match Class="PatchOperationAdd">
+			<xpath>/Defs/ResearchProjectDef[defName = "ComplexFurniture"]/prerequisites</xpath>
+			<value>
+			  <li>MedTimes_BasicFurniture</li>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>/Defs/ResearchProjectDef[defName = "ComplexFurniture"]</xpath>
+			<value>
+	        <prerequisites>
+	          <li>MedTimes_BasicFurniture</li>
+	        </prerequisites>
+			</value>
+		</nomatch>
+	</nomatch>
+  </Operation>
+  
+  <Operation Class="PatchOperationConditional">
+    <xpath>*/ResearchProjectDef[defName="ComplexClothing"]/prerequisites</xpath>
+    <match Class="PatchOperationReplace">
+		<xpath>*/ResearchProjectDef[defName="ComplexClothing"]/prerequisites</xpath>
+		<value>
+		  <prerequisites>
+			<li>MedTimes_MedievalTailoring</li>
+		  </prerequisites>
+		</value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+		<xpath>*/ResearchProjectDef[defName="ComplexClothing"]</xpath>
+		<value>
+		  <prerequisites>
+			<li>MedTimes_MedievalTailoring</li>
+		  </prerequisites>
+		</value>
+    </nomatch>
+  </Operation>
+  
+</Patch>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- Ballista, Resource -->
+	<ThingDef Name="BallistaArrowBase" ParentName="ResourceBase" Abstract="True">
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Wood_Drop</soundDrop>
+		<tickerType>Normal</tickerType>
+		<stackLimit>35</stackLimit>
+		<techLevel>Medieval</techLevel>
+		<statBases>
+			<MaxHitPoints>60</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>1.0</DeteriorationRate>
+		</statBases>
+		<thingCategories>
+			<li>BallistaArrows</li>
+		</thingCategories>
+	</ThingDef>
+	<!-- Ballista, log bullet -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_Ballista_Wood</defName>
+		<label>Log</label>
+		<graphicData>
+			<texPath>Bullets/BallistaLogShot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<projectile>
+			<damageDef>Blunt</damageDef>
+			<damageAmountBase>24</damageAmountBase>
+			<stoppingPower>2.3</stoppingPower>
+			<armorPenetrationBase>0.3</armorPenetrationBase>
+			<speed>40</speed>
+		</projectile>
+	</ThingDef>
+	<!-- Ballista, standart arrow -->
+	<ThingDef ParentName="BallistaArrowBase">
+		<defName>BallistaArrow_Standart</defName>
+		<label>Ballista arrow</label>
+		<description>Standart arrow for ballista or generally any large crossbow.</description>
+		<graphicData>
+			<texPath>Things/Item/Shells/BallistaArrow</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<projectileWhenLoaded>Bullet_Ballista_Standart</projectileWhenLoaded>
+		<costList>
+			<Steel>1</Steel>
+			<WoodLog>1</WoodLog>
+		</costList>
+		<statBases>
+			<Mass>1</Mass>
+		</statBases>
+		<recipeMaker>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<effectWorking>Cook</effectWorking>
+			<soundWorking>Recipe_Smelt</soundWorking>
+			<workAmount>300</workAmount>
+			<workSkill>Crafting</workSkill>
+			<recipeUsers>
+				<li>MedTimes_BlacksmithForge</li>
+			</recipeUsers>
+			<skillRequirements>
+				<Crafting>3</Crafting>
+			</skillRequirements>
+			<researchPrerequisite>MedTimes_Ballista</researchPrerequisite>
+		</recipeMaker>
+	</ThingDef>
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_Ballista_Standart</defName>
+		<label>Ballist arrow</label>
+		<graphicData>
+			<texPath>Bullets/BallistaStandartShot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<projectile>
+			<damageDef>Stab</damageDef>
+			<damageAmountBase>45</damageAmountBase>
+			<stoppingPower>1.9</stoppingPower>
+			<armorPenetrationBase>0.45</armorPenetrationBase>
+			<speed>40</speed>
+		</projectile>
+	</ThingDef>
+	<!-- Ballista, piercing arrow -->
+	<ThingDef ParentName="BallistaArrowBase">
+		<defName>BallistaArrow_ArmorPiercing</defName>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Metal_Drop</soundDrop>
+		<label>Armor-piercing ballista arrow</label>
+		<description>Armor-piercing arrow for ballista or generally any large crossbow.</description>
+		<graphicData>
+			<texPath>Things/Item/Shells/BallistaArrowPiercing</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<projectileWhenLoaded>Bullet_Ballista_ArmorPierce</projectileWhenLoaded>
+		<costList>
+			<Steel>2</Steel>
+			<Plasteel>1</Plasteel>
+		</costList>
+		<statBases>
+			<Mass>1.25</Mass>
+		</statBases>
+		<recipeMaker>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<effectWorking>Cook</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<workAmount>300</workAmount>
+			<workSkill>Crafting</workSkill>
+			<recipeUsers>
+				<li>MedTimes_BlacksmithForgeTierTwo</li>
+			</recipeUsers>
+			<skillRequirements>
+				<Crafting>5</Crafting>
+			</skillRequirements>
+			<researchPrerequisite>MedTimes_Ballista</researchPrerequisite>
+		</recipeMaker>
+	</ThingDef>
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_Ballista_ArmorPierce</defName>
+		<label>Ballist arrow</label>
+		<graphicData>
+			<texPath>Bullets/BallistaPiercingShot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<projectile>
+			<damageDef>Stab</damageDef>
+			<damageAmountBase>45</damageAmountBase>
+			<stoppingPower>1.9</stoppingPower>
+			<armorPenetrationBase>1.05</armorPenetrationBase>
+			<speed>40</speed>
+		</projectile>
+	</ThingDef>
+</Defs>

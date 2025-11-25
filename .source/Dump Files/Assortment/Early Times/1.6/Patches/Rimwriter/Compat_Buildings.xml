@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>RimWriter - Books, Scrolls, Tablets, and Libraries</li>
+		  <li>RimWriter - Books, Scrolls, Tablets, and Libraries (Continued)</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<operations>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName="RimWriter_PapermakingBenchElectric"]/statBases</xpath>
+				<value>
+					<WorkTableWorkSpeedFactor>2.5</WorkTableWorkSpeedFactor>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName="Jecrell_StoneShelf"]/researchPrerequisites</xpath>
+				<value>
+					  <li>TS_PrimitiveFurniture</li>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName="RimWriter_PapermakingBench"]/researchPrerequisites</xpath>
+				<value>
+					<researchPrerequisites>
+						<li>MedTimes_Paperwork</li>
+					</researchPrerequisites>	
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName="RimWriter_PapermakingBenchElectric"]/researchPrerequisites</xpath>
+				<value>
+					<researchPrerequisites>
+						<li>Electricity</li>
+						<li>MedTimes_Paperwork</li>
+					</researchPrerequisites>	
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName="MedTimes_BookShelf"]/researchPrerequisites</xpath>
+				<value>
+					<researchPrerequisites>
+						<li>ComplexFurniture</li>
+						<li>MedTimes_BookWork</li>
+					</researchPrerequisites>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName="RimWriter_TableWriting"]/researchPrerequisites</xpath>
+				<value>
+					<researchPrerequisites>
+						<li>MedTimes_BookWork</li>
+					</researchPrerequisites>
+				</value>
+			</li>
+		</operations>
+	</match>
+  </Operation>
+</Patch>

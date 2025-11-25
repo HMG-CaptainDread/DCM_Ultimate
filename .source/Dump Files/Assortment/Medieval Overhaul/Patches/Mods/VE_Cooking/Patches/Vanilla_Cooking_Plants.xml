@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<!--Wheat Integration -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="VCE_Wheat"]/plant/harvestedThingDef</xpath>
+		<value>
+			<harvestedThingDef>DankPyon_RawSpelt</harvestedThingDef>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="VCE_Wheat"]/label</xpath>
+		<value>
+			<label>spelt plant</label>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="VCE_Wheat"]/description</xpath>
+		<value>
+			<description>Spelt is a species of wheat that has been cultivated since approximately 5000 BC. A good source of dietary fiber, protein (which it contains more of than common wheat), and vitamins and minerals. Spelt takes almost an entire growing season to come to fruition. While fragile and time-consuming, this cereal has been genetically engineered to gently break into flour with a mere touch.</description>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Plants Expanded</li>
+		</mods>
+		<match Class="PatchOperationAddModExtension">
+			<xpath>Defs/ThingDef[defName="VCE_Wheat"]</xpath>
+			<value>
+				<li Class="VEF.Plants.DualCropExtension">
+					<secondaryOutput>DankPyon_Straw</secondaryOutput>
+					<outPutAmount>15</outPutAmount>
+				</li>
+			</value>
+		</match>
+	</Operation>
+
+	<!--Sugar Integration-->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="VCE_Sugarcane"]/plant/harvestedThingDef</xpath>
+		<value>
+			<harvestedThingDef>DankPyon_Sugarcane</harvestedThingDef>
+		</value>
+	</Operation>
+
+	<!-- All Spice Integration -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="VCE_Allspice"]/plant/harvestedThingDef</xpath>
+		<value>
+			<harvestedThingDef>DankPyon_RawHerb</harvestedThingDef>
+		</value>
+	</Operation>
+
+</Patch>

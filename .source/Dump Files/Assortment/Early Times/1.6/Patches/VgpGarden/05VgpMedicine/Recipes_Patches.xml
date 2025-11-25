@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>VGP Garden Medicine</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<!-- blk stuff, BEGONE, too many stuff to patch up -->
+			<li Class="PatchOperationSequence">
+				<success>Always</success>
+				<operations>
+					<li Class="PatchOperationRemove">
+						<xpath>/Defs/RecipeDef[defName="VG_BulkPenoxycyline" or 
+											   defName="VG_BulkGoJuice" or 
+											   defName="VG_BulkFlake" or 
+											   defName="VG_BulkYayo" or 
+											   defName="VG_BulkWakeUp" or 
+											   defName="VG_BulkSmokeleafJoint" or 
+											   defName="VG_BulkPekoe" or  
+											   defName="VG_BulkDeworm" or  
+											   defName="VG_BulkMechaGone"]</xpath>	
+											   
+					</li>					
+				</operations>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/RecipeDef[defName="VG_BulkNeutroamine"]</xpath>		
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[defName="VG_BulkNeutroamine"]</xpath>	
+				<value>
+					<researchPrerequisite>MedTimes_ChemicalX</researchPrerequisite>
+				</value>				
+			</li>
+			<li Class="PatchOperationSequence">
+				<success>Always</success>
+				<operations>
+					<li Class="PatchOperationRemove">
+						<xpath>/Defs/RecipeDef[defName="MakeUltratechMedicineBulk" or 
+											   defName="VG_BulkMedicine" or 
+											   defName="MakeBulkBandagekit" or 
+											   defName="VG_BulkYayo" or 
+											   defName="VG_BulkWakeUp" or 
+											   defName="VG_BulkSmokeleafJoint" or 
+											   defName="VG_BulkPekoe" or  
+											   defName="VG_BulkDeworm" or  
+											   defName="VG_BulkMechaGone"]</xpath>	
+											   
+					</li>					
+				</operations>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/RecipeDef[defName="VG_BulkDandelion"]</xpath>		
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/RecipeDef[defName="VG_Bulkantibiotics"]</xpath>		
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[defName="Makeantibiotics"]</xpath>	
+				<value>
+					<researchPrerequisite>DrugProduction</researchPrerequisite>
+				</value>				
+			</li>
+			
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/RecipeDef[defName="VG_BulkFluEz"]</xpath>		
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/RecipeDef[defName="VG_BulkIbuprofen"]</xpath>		
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/RecipeDef[defName="VG_BulkCigarillos"]</xpath>		
+			</li>
+			
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName="MechaGone"]/recipeMaker/recipeUsers</xpath>	
+				<value>
+					<recipeUsers>
+						<li>FabricationBench</li>
+					</recipeUsers>		
+				</value>		
+			</li>		
+		</operations>
+	</match>
+  </Operation>
+    
+</Patch>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	
+	<Operation Class="XmlExtensions.OptionalPatch">
+		<modId>FrozenSnowFox.FrozenSnowFoxVanillaBionicsExpansion</modId>
+		<key>FSFVBEDLCInteraction</key>
+		<defaultValue>false</defaultValue>
+		<caseTrue>
+			
+		<Operation Class="PatchOperationSequence">
+			<success>Normal</success>
+			<operations>
+				
+	<!-- DLC Interaction (Patch DLC items to have proper cross DLC interaction) -->
+			
+			<!-- Add Biotech DLC Stats to Royalty DLC Learning Assistant -->
+			
+			<li MayRequire="Ludeon.RimWorld.Royalty,Ludeon.RimWorld.Biotech" Class="PatchOperationAdd">
+				<xpath>/Defs/HediffDef[defName = "LearningAssistant"]/stages/li/statOffsets</xpath>
+				<value>
+					<LearningRateFactor>0.2</LearningRateFactor>
+				</value>
+			</li>
+			
+			<!-- Add Biotech DLC Stats to Ideology DLC Neural Supercharger Hediff -->
+			
+			<li MayRequire="Ludeon.RimWorld.Ideology,Ludeon.RimWorld.Biotech" Class="PatchOperationAdd">
+				<xpath>/Defs/HediffDef[defName = "NeuralSupercharge"]/stages/li/statOffsets</xpath>
+				<value>
+					<LearningRateFactor>0.25</LearningRateFactor>
+				</value>
+			</li>
+			
+			<!-- Add Ideology DLC Stats to Royalty DLC Psychic Reader -->
+			
+			<li MayRequire="Ludeon.RimWorld.Royalty,Ludeon.RimWorld.Ideology" Class="PatchOperationAdd">
+				<xpath>/Defs/HediffDef[defName = "PsychicReader"]/stages/li/statOffsets</xpath>
+				<value>
+					<ConversionPower>0.50</ConversionPower>
+					<SuppressionPower>0.50</SuppressionPower>
+				</value>
+			</li>
+				
+			<!-- Add Ideology DLC Stats to Royalty DLC Field Hand -->
+			
+			<li MayRequire="Ludeon.RimWorld.Royalty,Ludeon.RimWorld.Ideology" Class="PatchOperationAdd">
+				<xpath>/Defs/HediffDef[defName = "FieldHand"]/stages/li/statOffsets</xpath>
+				<value>
+					<PruningSpeed>0.7</PruningSpeed>
+				</value>
+			</li>
+				
+			<!-- Add Ideology DLC Stats to VBE Royalty DLC Field Arm -->
+			
+			<li MayRequire="Ludeon.RimWorld.Royalty,Ludeon.RimWorld.Ideology" Class="PatchOperationAdd">
+				<xpath>/Defs/HediffDef[defName = "FSFBionicFieldArm"]/stages/li/statOffsets</xpath>
+				<value>
+					<PruningSpeed>0.6</PruningSpeed>
+				</value>
+			</li>
+				
+			</operations>
+		</Operation>
+			
+		</caseTrue>
+	</Operation>
+
+</Patch>

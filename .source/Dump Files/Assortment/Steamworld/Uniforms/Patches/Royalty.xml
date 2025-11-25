@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Royalty</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+    <operations>
+	  
+						<!-- make champions wear cuirasses -->
+	  
+	  <li Class="PatchOperationAdd">
+        <xpath>Defs/PawnKindDef[defName="Empire_Fighter_Champion"]</xpath>
+          <value>  
+			<specificApparelRequirements>
+			  <li>
+				<bodyPartGroup>Torso</bodyPartGroup>
+				<alternateTagChoices>
+				  <li>
+					<tag>SteamworldMilitaryArmour</tag>
+					<chance>0.15</chance>
+				  </li>
+				</alternateTagChoices>
+			  </li>
+			</specificApparelRequirements>
+          </value>
+        </li>
+								<!-- make royals accept uniform parts... -->
+
+										<!--Acolyte-->
+		<li Class="PatchOperationAdd">
+        <xpath>/Defs/RoyalTitleDef[defName="Acolyte"]/requiredApparel/li[1]/allowedTags</xpath>
+          <value>
+            <li>SteamworldMilitaryNoble</li>
+          </value>
+        </li>
+		<li Class="PatchOperationAdd">
+        <xpath>/Defs/RoyalTitleDef[defName="Acolyte"]/requiredApparel/li[2]/allowedTags</xpath>
+          <value>
+            <li>SteamworldMilitaryNoble</li>
+          </value>
+        </li>
+										<!--Knight-->
+		<li Class="PatchOperationAdd">
+        <xpath>/Defs/RoyalTitleDef[defName="Knight"]/requiredApparel/li[1]/allowedTags</xpath>
+          <value>
+            <li>SteamworldMilitaryNoble</li>
+          </value>
+        </li>
+		<li Class="PatchOperationAdd">
+        <xpath>/Defs/RoyalTitleDef[defName="Knight"]/requiredApparel/li[2]/allowedTags</xpath>
+          <value>
+            <li>SteamworldMilitaryNoble</li>
+          </value>
+        </li>
+										<!--Praetor-->
+		<li Class="PatchOperationAdd">
+        <xpath>/Defs/RoyalTitleDef[defName="Praetor"]/requiredApparel/li[1]/allowedTags</xpath>
+          <value>
+            <li>SteamworldMilitaryNoble</li>
+          </value>
+        </li>
+		<li Class="PatchOperationAdd">
+        <xpath>/Defs/RoyalTitleDef[defName="Praetor"]/requiredApparel/li[2]/allowedTags</xpath>
+          <value>
+            <li>SteamworldMilitaryNoble</li>
+          </value>
+        </li>
+							<!-- ...and actually wear them -->
+		
+		<li Class="PatchOperationAdd">
+        <xpath>Defs/PawnKindDef[@Name="RoyalLowerBase"]/specificApparelRequirements</xpath>
+          <value>
+			  <li>
+				<bodyPartGroup>UpperHead</bodyPartGroup>
+				<alternateTagChoices>
+				  <li>
+					<tag>SteamworldMilitaryNoble</tag>
+					<chance>0.1</chance>
+				  </li>
+				</alternateTagChoices>
+			  </li>
+			  <li>
+				<bodyPartGroup>Torso</bodyPartGroup>
+				<alternateTagChoices>
+				  <li>
+					<tag>SteamworldMilitaryNoble</tag>
+					<chance>0.1</chance>
+				  </li>
+				</alternateTagChoices>
+			  </li>
+			  <li>
+				<bodyPartGroup>Shoulders</bodyPartGroup>
+				<color>(58, 58, 58)</color>
+				<alternateTagChoices>
+				  <li>
+					<tag>SteamworldMilitaryNoble</tag>
+					<chance>0.1</chance>
+				  </li>
+				</alternateTagChoices>
+			  </li>
+          </value>
+        </li>
+		<li Class="PatchOperationAdd">
+        <xpath>Defs/PawnKindDef[defName="Empire_Royal_Yeoman"]/specificApparelRequirements</xpath>
+          <value>
+			  <li>
+				<bodyPartGroup>UpperHead</bodyPartGroup>
+				<alternateTagChoices>
+				  <li>
+					<tag>SteamworldMilitaryNoble</tag>
+					<chance>0.1</chance>
+				  </li>
+				</alternateTagChoices>
+			  </li>
+			  <li>
+				<bodyPartGroup>Torso</bodyPartGroup>
+				<alternateTagChoices>
+				  <li>
+					<tag>SteamworldMilitaryNoble</tag>
+					<chance>0.1</chance>
+				  </li>
+				</alternateTagChoices>
+			  </li>
+			  <li>
+				<bodyPartGroup>Shoulders</bodyPartGroup>
+				<alternateTagChoices>
+				  <li>
+					<tag>SteamworldMilitaryNoble</tag>
+					<chance>0.1</chance>
+				  </li>
+				</alternateTagChoices>
+			  </li>
+          </value>
+        </li>
+		
+	  </operations>
+	</match>
+  </Operation>
+
+  
+</Patch>

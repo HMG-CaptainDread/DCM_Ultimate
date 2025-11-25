@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>Vanilla Factions Expanded - Vikings</li>
+		  <li>Vanilla Factions Expanded - Vikings (Fork)</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName = "VFE_TableFacePaints"]</xpath>		
+				<value> 
+					  <researchPrerequisites>
+						<li>MedTimes_ReinforcedStructure</li>
+						<li>MedTimes_Fence</li>
+					  </researchPrerequisites>
+				</value>
+			</li>
+			
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName = "VFEV_Hnefatafl"]/researchPrerequisites</xpath>		
+				<value> 
+					  <researchPrerequisites>
+						<li>TS_BasicGames</li>
+					  </researchPrerequisites>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName = "VFEV_TrainingDummy"]/researchPrerequisites</xpath>		
+				<value> 
+					  <researchPrerequisites>
+						<li>MedTimes_MedievalCrafting</li>
+						<li>TS_SimpleGames</li>
+					  </researchPrerequisites>
+				</value>
+			</li>
+			
+			
+			<li Class="PatchOperationConditional">
+				<xpath>/Defs/ThingDef[defName = "VFEV_FurBed"]/researchPrerequisites</xpath>
+				<match Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[defName = "VFEV_FurBed" or defName="VFEV_DoubleFurBed"]/researchPrerequisites</xpath>		
+					<value> 
+						  <researchPrerequisites>
+							<li>TS_PrimitiveClothing</li>
+							<li>TS_PrimitiveButchering</li>
+							<li>TS_Shelter</li>
+						  </researchPrerequisites>
+					</value>
+				</match>
+				<nomatch Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName = "VFEV_FurBed" or defName="VFEV_DoubleFurBed"]</xpath>		
+					<value> 
+						  <researchPrerequisites>
+							<li>TS_PrimitiveClothing</li>
+							<li>TS_PrimitiveButchering</li>
+							<li>TS_Shelter</li>
+						  </researchPrerequisites>
+					</value>
+				</nomatch>
+			</li>
+			
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName = "VFEV_RunedColumn"]</xpath>		
+				<value> 
+					<researchPrerequisites>
+					  <li>TS_Columns</li>
+					  <li>MedTimes_Art</li>
+					</researchPrerequisites>
+				</value>
+			</li>
+			
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName = "VFEV_Hearth"]/researchPrerequisites</xpath>		
+				<value> 
+					<researchPrerequisites>
+						<li>MedTimes_ContainedFire</li>
+						<li>TS_PrimitiveStonecutting</li>
+					</researchPrerequisites>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName = "VFEV_FuneralPyre"]</xpath>		
+				<value> 
+					<researchPrerequisites>
+						<li>TS_BurialRites</li>
+					</researchPrerequisites>
+				</value>
+			</li>
+			
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName = "VFEV_RuneStone"]/researchPrerequisites</xpath>		
+				<value> 
+					<researchPrerequisites>
+						<li>MedTimes_BasicArt</li>
+						<li>TS_PrimitiveStonecutting</li>
+					</researchPrerequisites>
+				</value>
+			</li>			
+			
+		</operations>
+	</match>
+  </Operation>
+  
+</Patch>
+
+
+
+

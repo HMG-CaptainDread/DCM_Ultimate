@@ -1,0 +1,3251 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- ORBITAL BOOK MERCHANT -->
+		<!-- TRADER KIND DEF -->
+			<TraderKindDef>
+				<!--SOM = Specialized Orbital Merchants, which I'm not expecting to use again, but wanted to be safe-->
+				<defName>SOM_Orbital_BookMerchant</defName>
+				<label>book merchant</label>
+				<orbital>true</orbital>
+				<commonality>0.25</commonality>
+				<stockGenerators>
+					<!-- Resources -->
+					<li Class="StockGenerator_SingleDef">
+						<thingDef>Silver</thingDef>
+						<countRange>8000~10000</countRange>
+					</li>
+					<!-- Techprints -->
+					<li Class="StockGenerator_Techprints">
+						<countChances>
+							<li>
+								<count>5</count>
+								<chance>1</chance>
+							</li>
+						</countChances>
+					</li>
+					<!-- Books -->
+					<li Class="StockGenerator_SingleDef">
+						<thingDef>TextBook</thingDef>
+						<countRange>5~10</countRange>
+					</li>
+					<li Class="StockGenerator_SingleDef">
+						<thingDef>Schematic</thingDef>
+						<countRange>5~10</countRange>
+					</li>
+					<li Class="StockGenerator_SingleDef">
+						<thingDef>Novel</thingDef>
+						<countRange>5~10</countRange>
+					</li>
+					<li MayRequire="Ludeon.RimWorld.Anomaly" Class="StockGenerator_SingleDef">
+						<thingDef>Tome</thingDef>
+						<countRange>5~10</countRange>
+					</li>
+				</stockGenerators>
+				<hideThingsNotWillingToTrade>True</hideThingsNotWillingToTrade>
+			</TraderKindDef>
+	<!-- VVE - VEHICLE WRECKS EXPANDED -->
+		<!-- BANG BUS WRECK -->
+			<ThingDef ParentName="NonDeconstructibleAncientBuildingBase" MayRequire="OskarPotocki.VanillaVehiclesExpandedTier3">
+				<defName>VVEW_BangBusWreck</defName>
+				<label>Bang Bus Wreck</label>
+				<description>An ancient, broken van. Everything that isn't rusted away was looted long ago. Given enough resources, it can be restored into a BangBus.</description>	
+				<rotatable>false</rotatable>
+				<graphicData>
+				<texPath>Things/Wrecks/BangBusWreck_east</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(5,3)</drawSize>
+				</graphicData>
+				<size>(4,2)</size>
+				<fillPercent>0.5</fillPercent>
+				<castEdgeShadows>false</castEdgeShadows>
+				<passability>PassThroughOnly</passability>
+				<pathCost>50</pathCost>
+				<building>
+				<deconstructible>false</deconstructible>
+				</building>
+				<statBases>
+				<MaxHitPoints>500</MaxHitPoints>
+				<Flammability>0</Flammability>
+				</statBases>
+				<killedLeavings>
+				<ChunkSlagSteel>2</ChunkSlagSteel>
+				</killedLeavings>
+				<comps>
+					<li Class="VanillaVehiclesExpanded.CompProperties_VehicleWreck">
+						<vehicleDef>VVE_BangBus</vehicleDef>
+						<spawnRotation>East</spawnRotation>
+					</li>
+				</comps>
+			</ThingDef>
+		<!-- BUNSEN WRECK -->
+			<ThingDef ParentName="NonDeconstructibleAncientBuildingBase" MayRequire="OskarPotocki.VanillaVehiclesExpandedTier3">
+				<defName>VVEW_BunsenWreck</defName>
+				<label>Bunsen Wreck</label>
+				<description>An ancient, broken flame tank. Everything that isn't rusted away was looted long ago. Given enough resources, it can be restored into a Bunsen.</description>	
+				<rotatable>false</rotatable>
+				<graphicData>
+				<texPath>Things/Wrecks/BunsenWreck_south</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(3,5)</drawSize>
+				</graphicData>
+				<size>(2,4)</size>
+				<fillPercent>0.5</fillPercent>
+				<castEdgeShadows>false</castEdgeShadows>
+				<passability>PassThroughOnly</passability>
+				<pathCost>50</pathCost>
+				<building>
+				<deconstructible>false</deconstructible>
+				</building>
+				<statBases>
+				<MaxHitPoints>825</MaxHitPoints>
+				<Flammability>0</Flammability>
+				</statBases>
+				<killedLeavings>
+				<ChunkSlagSteel>3</ChunkSlagSteel>
+				</killedLeavings>
+				<comps>
+					<li Class="VanillaVehiclesExpanded.CompProperties_VehicleWreck">
+						<vehicleDef>VVE_Bunsen</vehicleDef>
+						<spawnRotation>South</spawnRotation>
+					</li>
+				</comps>
+			</ThingDef>
+		<!-- DIRTBIKE WRECK -->
+			<ThingDef ParentName="NonDeconstructibleAncientBuildingBase" MayRequire="OskarPotocki.VanillaVehiclesExpandedTier3">
+				<defName>VVEW_DirtbikeWreck</defName>
+				<label>Dirtbike Wreck</label>
+				<description>An ancient, broken motorbike. Everything that isn't rusted away was looted long ago. Given enough resources, it can be restored into a Dirtbike.</description>	
+				<rotatable>false</rotatable>
+				<graphicData>
+				<texPath>Things/Wrecks/DirtbikeWreck_east</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(2,2)</drawSize>
+				<drawOffset>(0.11, 0, 0.36)</drawOffset>
+				</graphicData>
+				<size>(1,1)</size>
+				<fillPercent>0.5</fillPercent>
+				<castEdgeShadows>false</castEdgeShadows>
+				<passability>PassThroughOnly</passability>
+				<pathCost>50</pathCost>
+				<building>
+				<deconstructible>false</deconstructible>
+				</building>
+				<statBases>
+				<MaxHitPoints>100</MaxHitPoints>
+				<Flammability>0</Flammability>
+				</statBases>
+				<killedLeavings>
+				<ChunkSlagSteel>1</ChunkSlagSteel>
+				</killedLeavings>
+				<comps>
+					<li Class="VanillaVehiclesExpanded.CompProperties_VehicleWreck">
+						<vehicleDef>VVE_Dirtbike</vehicleDef>
+						<spawnRotation>East</spawnRotation>
+					</li>
+				</comps>
+			</ThingDef>
+		<!-- FROG WRECK -->
+			<ThingDef ParentName="NonDeconstructibleAncientBuildingBase" MayRequire="OskarPotocki.VanillaVehiclesExpandedTier3">
+				<defName>VVEW_FrogWreck</defName>
+				<label>Frog Wreck</label>
+				<description>An ancient, broken drop pod. Everything that isn't rusted away was looted long ago. Given enough resources, it can be restored into a Frog.</description>	
+				<rotatable>false</rotatable>
+				<graphicData>
+				<texPath>Things/Wrecks/FrogWreck</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(3,3)</drawSize>
+				</graphicData>
+				<size>(1,1)</size>
+				<fillPercent>0.5</fillPercent>
+				<castEdgeShadows>false</castEdgeShadows>
+				<passability>PassThroughOnly</passability>
+				<pathCost>50</pathCost>
+				<building>
+				<deconstructible>false</deconstructible>
+				</building>
+				<statBases>
+				<MaxHitPoints>500</MaxHitPoints>
+				<Flammability>0</Flammability>
+				</statBases>
+				<killedLeavings>
+				<ChunkSlagSteel>1</ChunkSlagSteel>
+				</killedLeavings>
+				<comps>
+					<li Class="VanillaVehiclesExpanded.CompProperties_VehicleWreck">
+						<vehicleDef>VVE_Frog</vehicleDef>
+						<spawnRotation>North</spawnRotation>
+					</li>
+				</comps>
+			</ThingDef>
+		<!-- HIGHWAYMAN WRECK -->
+			<ThingDef ParentName="NonDeconstructibleAncientBuildingBase" MayRequire="OskarPotocki.VanillaVehiclesExpandedTier3">
+				<defName>VVEW_HighwaymanWreck</defName>
+				<label>Highwayman Wreck</label>
+				<description>An ancient, broken APC. Everything that isn't rusted away was looted long ago. Given enough resources, it can be restored into a Highwayman.</description>	
+				<rotatable>false</rotatable>
+				<graphicData>
+				<texPath>Things/Wrecks/HighwaymanWreck_east</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(5,3)</drawSize>
+				</graphicData>
+				<size>(4,2)</size>
+				<fillPercent>0.5</fillPercent>
+				<castEdgeShadows>false</castEdgeShadows>
+				<passability>PassThroughOnly</passability>
+				<pathCost>50</pathCost>
+				<building>
+				<deconstructible>false</deconstructible>
+				</building>
+				<statBases>
+				<MaxHitPoints>500</MaxHitPoints>
+				<Flammability>0</Flammability>
+				</statBases>
+				<killedLeavings>
+				<ChunkSlagSteel>3</ChunkSlagSteel>
+				</killedLeavings>
+				<comps>
+					<li Class="VanillaVehiclesExpanded.CompProperties_VehicleWreck">
+						<vehicleDef>VVE_Highwayman</vehicleDef>
+						<spawnRotation>East</spawnRotation>
+					</li>
+				</comps>
+			</ThingDef>
+		<!-- MULE WRECK -->
+			<ThingDef ParentName="NonDeconstructibleAncientBuildingBase" MayRequire="OskarPotocki.VanillaVehiclesExpandedTier3">
+				<defName>VVEW_MuleWreck</defName>
+				<label>Mule Wreck</label>
+				<description>An ancient, broken truck. Everything that isn't rusted away was looted long ago. Given enough resources, it can be restored into a Mule.</description>	
+				<rotatable>false</rotatable>
+				<graphicData>
+				<texPath>Things/Wrecks/MuleWreck_south</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(3,5)</drawSize>
+				</graphicData>
+				<size>(2,4)</size>
+				<fillPercent>0.5</fillPercent>
+				<castEdgeShadows>false</castEdgeShadows>
+				<passability>PassThroughOnly</passability>
+				<pathCost>50</pathCost>
+				<building>
+				<deconstructible>false</deconstructible>
+				</building>
+				<statBases>
+				<MaxHitPoints>500</MaxHitPoints>
+				<Flammability>0</Flammability>
+				</statBases>
+				<killedLeavings>
+				<ChunkSlagSteel>2</ChunkSlagSteel>
+				</killedLeavings>
+				<comps>
+					<li Class="VanillaVehiclesExpanded.CompProperties_VehicleWreck">
+						<vehicleDef>VVE_Mule</vehicleDef>
+						<spawnRotation>South</spawnRotation>
+					</li>
+				</comps>
+			</ThingDef>
+		<!-- PROWLER WRECK -->
+			<ThingDef ParentName="NonDeconstructibleAncientBuildingBase" MayRequire="OskarPotocki.VanillaVehiclesExpandedTier3">
+				<defName>VVEW_ProwlerWreck</defName>
+				<label>Prowler Wreck</label>
+				<description>An ancient, broken buggy. Everything that isn't rusted away was looted long ago. Given enough resources, it can be restored into a Prowler.</description>	
+				<rotatable>false</rotatable>
+				<graphicData>
+				<texPath>Things/Wrecks/ProwlerWreck_east</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(4,3)</drawSize>
+				</graphicData>
+				<size>(3,2)</size>
+				<fillPercent>0.5</fillPercent>
+				<castEdgeShadows>false</castEdgeShadows>
+				<passability>PassThroughOnly</passability>
+				<pathCost>50</pathCost>
+				<building>
+				<deconstructible>false</deconstructible>
+				</building>
+				<statBases>
+				<MaxHitPoints>500</MaxHitPoints>
+				<Flammability>0</Flammability>
+				</statBases>
+				<killedLeavings>
+				<ChunkSlagSteel>1</ChunkSlagSteel>
+				</killedLeavings>
+				<comps>
+					<li Class="VanillaVehiclesExpanded.CompProperties_VehicleWreck">
+						<vehicleDef>VVE_Prowler</vehicleDef>
+						<spawnRotation>East</spawnRotation>
+					</li>
+				</comps>
+			</ThingDef>
+		<!-- ROADKILL WRECK -->
+			<ThingDef ParentName="NonDeconstructibleAncientBuildingBase" MayRequire="OskarPotocki.VanillaVehiclesExpandedTier3">
+				<defName>VVEW_RoadkillWreck</defName>
+				<label>Roadkill Wreck</label>
+				<description>An ancient, broken tank. Everything that isn't rusted away was looted long ago. Given enough resources, it can be restored into a Roadkill.</description>	
+				<rotatable>false</rotatable>
+				<graphicData>
+				<texPath>Things/Wrecks/RoadkillWreck_south</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(4,4)</drawSize>
+				</graphicData>
+				<size>(3,3)</size>
+				<fillPercent>0.5</fillPercent>
+				<castEdgeShadows>false</castEdgeShadows>
+				<passability>PassThroughOnly</passability>
+				<pathCost>50</pathCost>
+				<building>
+				<deconstructible>false</deconstructible>
+				</building>
+				<statBases>
+				<MaxHitPoints>500</MaxHitPoints>
+				<Flammability>0</Flammability>
+				</statBases>
+				<killedLeavings>
+				<ChunkSlagSteel>3</ChunkSlagSteel>
+				</killedLeavings>
+				<comps>
+					<li Class="VanillaVehiclesExpanded.CompProperties_VehicleWreck">
+						<vehicleDef>VVE_Roadkill</vehicleDef>
+						<spawnRotation>South</spawnRotation>
+					</li>
+				</comps>
+			</ThingDef>
+		<!-- SCYTHEMAN WRECK -->
+			<ThingDef ParentName="NonDeconstructibleAncientBuildingBase" MayRequire="OskarPotocki.VanillaVehiclesExpandedTier3">
+				<defName>VVEW_ScythemanWreck</defName>
+				<label>Scytheman Wreck</label>
+				<description>An ancient, broken tractor. Everything that isn't rusted away was looted long ago. Given enough resources, it can be restored into a Scytheman.</description>	
+				<rotatable>false</rotatable>
+				<graphicData>
+				<texPath>Things/Wrecks/ScythemanWreck_east</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(5,3)</drawSize>
+				</graphicData>
+				<size>(4,2)</size>
+				<fillPercent>0.5</fillPercent>
+				<castEdgeShadows>false</castEdgeShadows>
+				<passability>PassThroughOnly</passability>
+				<pathCost>50</pathCost>
+				<building>
+				<deconstructible>false</deconstructible>
+				</building>
+				<statBases>
+				<MaxHitPoints>500</MaxHitPoints>
+				<Flammability>0</Flammability>
+				</statBases>
+				<killedLeavings>
+				<ChunkSlagSteel>2</ChunkSlagSteel>
+				</killedLeavings>
+				<comps>
+					<li Class="VanillaVehiclesExpanded.CompProperties_VehicleWreck">
+						<vehicleDef>VVE_Scytheman</vehicleDef>
+						<spawnRotation>East</spawnRotation>
+					</li>
+				</comps>
+			</ThingDef>
+		<!-- TOAD WRECK -->
+			<ThingDef ParentName="NonDeconstructibleAncientBuildingBase" MayRequire="OskarPotocki.VanillaVehiclesExpandedTier3">
+				<defName>VVEW_ToadWreck</defName>
+				<label>Toad Wreck</label>
+				<description>An ancient, broken siege pod. Everything that isn't rusted away was looted long ago. Given enough resources, it can be restored into a Toad.</description>	
+				<rotatable>false</rotatable>
+				<graphicData>
+				<texPath>Things/Wrecks/ToadWreck</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(4,4)</drawSize>
+				</graphicData>
+				<size>(3,3)</size>
+				<fillPercent>0.5</fillPercent>
+				<castEdgeShadows>false</castEdgeShadows>
+				<passability>PassThroughOnly</passability>
+				<pathCost>50</pathCost>
+				<building>
+				<deconstructible>false</deconstructible>
+				</building>
+				<statBases>
+				<MaxHitPoints>500</MaxHitPoints>
+				<Flammability>0</Flammability>
+				</statBases>
+				<killedLeavings>
+				<ChunkSlagSteel>2</ChunkSlagSteel>
+				</killedLeavings>
+				<comps>
+					<li Class="VanillaVehiclesExpanded.CompProperties_VehicleWreck">
+						<vehicleDef>VVE_Toad</vehicleDef>
+						<spawnRotation>North</spawnRotation>
+					</li>
+				</comps>
+			</ThingDef>
+		<!-- TRAVELLER WRECK -->
+			<ThingDef ParentName="NonDeconstructibleAncientBuildingBase" MayRequire="OskarPotocki.VanillaVehiclesExpandedTier3">
+				<defName>VVEW_TravellerWreck</defName>
+				<label>Traveller Wreck</label>
+				<description>An ancient, broken classic car. Everything that isn't rusted away was looted long ago. Given enough resources, it can be restored into a Traveller.</description>	
+				<rotatable>false</rotatable>
+				<graphicData>
+				<texPath>Things/Wrecks/TravellerWreck_west</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(5,3)</drawSize>
+				</graphicData>
+				<size>(4,2)</size>
+				<fillPercent>0.5</fillPercent>
+				<castEdgeShadows>false</castEdgeShadows>
+				<passability>PassThroughOnly</passability>
+				<pathCost>50</pathCost>
+				<building>
+				<deconstructible>false</deconstructible>
+				</building>
+				<statBases>
+				<MaxHitPoints>600</MaxHitPoints>
+				<Flammability>0</Flammability>
+				</statBases>
+				<killedLeavings>
+				<ChunkSlagSteel>2</ChunkSlagSteel>
+				</killedLeavings>
+				<comps>
+					<li Class="VanillaVehiclesExpanded.CompProperties_VehicleWreck">
+						<vehicleDef>VVE_Traveller</vehicleDef>
+						<spawnRotation>West</spawnRotation>
+					</li>
+				</comps>
+			</ThingDef>
+		<!-- BULLDOG WRECK -->
+			<ThingDef ParentName="NonDeconstructibleAncientBuildingBase" MayRequire="OskarPotocki.VanillaVehiclesExpandedTier3">
+				<defName>VVEW_BulldogWreck</defName>
+				<label>Bulldog Wreck</label>
+				<description>An ancient, broken tank. Everything that isn't rusted away was looted long ago. Given enough resources, it can be restored into a Bulldog.</description>	
+				<rotatable>false</rotatable>
+				<graphicData>
+				<texPath>Things/Wrecks/BulldogWreck_south</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(4,6)</drawSize>
+				</graphicData>
+				<size>(3,5)</size>
+				<fillPercent>0.5</fillPercent>
+				<castEdgeShadows>false</castEdgeShadows>
+				<passability>PassThroughOnly</passability>
+				<pathCost>50</pathCost>
+				<building>
+				<deconstructible>false</deconstructible>
+				</building>
+				<statBases>
+				<MaxHitPoints>500</MaxHitPoints>
+				<Flammability>0</Flammability>
+				</statBases>
+				<killedLeavings>
+				<ChunkSlagSteel>3</ChunkSlagSteel>
+				</killedLeavings>
+				<comps>
+					<li Class="VanillaVehiclesExpanded.CompProperties_VehicleWreck">
+						<vehicleDef>VVE_Bulldog</vehicleDef>
+						<spawnRotation>South</spawnRotation>
+					</li>
+				</comps>
+			</ThingDef>
+		<!-- CHARLEY WRECK -->
+			<ThingDef ParentName="NonDeconstructibleAncientBuildingBase" MayRequire="OskarPotocki.VanillaVehiclesExpandedTier3">
+				<defName>VVEW_CharleyWreck</defName>
+				<label>Charley Wreck</label>
+				<description>An ancient, broken motorbike. Everything that isn't rusted away was looted long ago. Given enough resources, it can be restored into a Charley.</description>	
+				<rotatable>false</rotatable>
+				<graphicData>
+				<texPath>Things/Wrecks/CharleyWreck_east</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(2,2)</drawSize>
+				<drawOffset>(0, 0, 0.5)</drawOffset>
+				</graphicData>
+				<size>(1,1)</size>
+				<fillPercent>0.5</fillPercent>
+				<castEdgeShadows>false</castEdgeShadows>
+				<passability>PassThroughOnly</passability>
+				<pathCost>50</pathCost>
+				<building>
+				<deconstructible>false</deconstructible>
+				</building>
+				<statBases>
+				<MaxHitPoints>100</MaxHitPoints>
+				<Flammability>0</Flammability>
+				</statBases>
+				<killedLeavings>
+				<ChunkSlagSteel>1</ChunkSlagSteel>
+				</killedLeavings>
+				<comps>
+					<li Class="VanillaVehiclesExpanded.CompProperties_VehicleWreck">
+						<vehicleDef>VVE_Charley</vehicleDef>
+						<spawnRotation>East</spawnRotation>
+					</li>
+				</comps>
+			</ThingDef>
+		<!-- MOSQUITO WRECK -->
+			<ThingDef ParentName="NonDeconstructibleAncientBuildingBase" MayRequire="OskarPotocki.VanillaVehiclesExpandedTier3">
+				<defName>VVEW_MosquitoWreck</defName>
+				<label>Mosquito Wreck</label>
+				<description>An ancient, broken helicopter. Everything that isn't rusted away was looted long ago. Given enough resources, it can be restored into a Mosquito.</description>	
+				<rotatable>false</rotatable>
+				<graphicData>
+				<texPath>Things/Wrecks/MosquitoWreck_east</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(6,3)</drawSize>
+				</graphicData>
+				<size>(5,2)</size>
+				<fillPercent>0.5</fillPercent>
+				<castEdgeShadows>false</castEdgeShadows>
+				<passability>PassThroughOnly</passability>
+				<pathCost>50</pathCost>
+				<building>
+				<deconstructible>false</deconstructible>
+				</building>
+				<statBases>
+				<MaxHitPoints>500</MaxHitPoints>
+				<Flammability>0</Flammability>
+				</statBases>
+				<killedLeavings>
+				<ChunkSlagSteel>2</ChunkSlagSteel>
+				</killedLeavings>
+				<comps>
+					<li Class="VanillaVehiclesExpanded.CompProperties_VehicleWreck">
+						<vehicleDef>VVE_Mosquito</vehicleDef>
+						<spawnRotation>East</spawnRotation>
+					</li>
+				</comps>
+			</ThingDef>
+		<!-- ROADRUNNER WRECK -->
+			<ThingDef ParentName="NonDeconstructibleAncientBuildingBase" MayRequire="OskarPotocki.VanillaVehiclesExpandedTier3">
+				<defName>VVEW_RoadrunnerWreck</defName>
+				<label>Roadrunner Wreck</label>
+				<description>An ancient, broken truck. Everything that isn't rusted away was looted long ago. Given enough resources, it can be restored into a Roadrunner.</description>	
+				<rotatable>false</rotatable>
+				<graphicData>
+				<texPath>Things/Wrecks/RoadrunnerWreck_west</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(6,3)</drawSize>
+				</graphicData>
+				<size>(5,2)</size>
+				<fillPercent>0.5</fillPercent>
+				<castEdgeShadows>false</castEdgeShadows>
+				<passability>PassThroughOnly</passability>
+				<pathCost>50</pathCost>
+				<building>
+				<deconstructible>false</deconstructible>
+				</building>
+				<statBases>
+				<MaxHitPoints>500</MaxHitPoints>
+				<Flammability>0</Flammability>
+				</statBases>
+				<killedLeavings>
+				<ChunkSlagSteel>2</ChunkSlagSteel>
+				</killedLeavings>
+				<comps>
+					<li Class="VanillaVehiclesExpanded.CompProperties_VehicleWreck">
+						<vehicleDef>VVE_Roadrunner</vehicleDef>
+						<spawnRotation>West</spawnRotation>
+					</li>
+				</comps>
+			</ThingDef>
+		<!-- SMUGGLER WRECK -->
+			<ThingDef ParentName="NonDeconstructibleAncientBuildingBase" MayRequire="OskarPotocki.VanillaVehiclesExpandedTier3">
+				<defName>VVEW_SmugglerWreck</defName>
+				<label>Smuggler Wreck</label>
+				<description>An ancient, broken plane. Everything that isn't rusted away was looted long ago. Given enough resources, it can be restored into a Smuggler.</description>	
+				<rotatable>false</rotatable>
+				<graphicData>
+				<texPath>Things/Wrecks/SmugglerWreck_north</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(7,7)</drawSize>
+				</graphicData>
+				<size>(3,6)</size>
+				<fillPercent>0.5</fillPercent>
+				<castEdgeShadows>false</castEdgeShadows>
+				<passability>PassThroughOnly</passability>
+				<pathCost>50</pathCost>
+				<building>
+				<deconstructible>false</deconstructible>
+				</building>
+				<statBases>
+				<MaxHitPoints>500</MaxHitPoints>
+				<Flammability>0</Flammability>
+				</statBases>
+				<killedLeavings>
+				<ChunkSlagSteel>3</ChunkSlagSteel>
+				</killedLeavings>
+				<comps>
+					<li Class="VanillaVehiclesExpanded.CompProperties_VehicleWreck">
+						<vehicleDef>VVE_Smuggler</vehicleDef>
+						<spawnRotation>North</spawnRotation>
+					</li>
+				</comps>
+			</ThingDef>
+		<!-- SNATCHER WRECK -->
+			<ThingDef ParentName="NonDeconstructibleAncientBuildingBase" MayRequire="OskarPotocki.VanillaVehiclesExpandedTier3">
+				<defName>VVEW_SnatcherWreck</defName>
+				<label>Snatcher Wreck</label>
+				<description>An ancient, broken van. Everything that isn't rusted away was looted long ago. Given enough resources, it can be restored into a Snatcher.</description>	
+				<rotatable>false</rotatable>
+				<graphicData>
+				<texPath>Things/Wrecks/SnatcherWreck_west</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(6,3)</drawSize>
+				</graphicData>
+				<size>(5,2)</size>
+				<fillPercent>0.5</fillPercent>
+				<castEdgeShadows>false</castEdgeShadows>
+				<passability>PassThroughOnly</passability>
+				<pathCost>50</pathCost>
+				<building>
+				<deconstructible>false</deconstructible>
+				</building>
+				<statBases>
+				<MaxHitPoints>500</MaxHitPoints>
+				<Flammability>0</Flammability>
+				</statBases>
+				<killedLeavings>
+				<ChunkSlagSteel>2</ChunkSlagSteel>
+				</killedLeavings>
+				<comps>
+					<li Class="VanillaVehiclesExpanded.CompProperties_VehicleWreck">
+						<vehicleDef>VVE_Snatcher</vehicleDef>
+						<spawnRotation>West</spawnRotation>
+					</li>
+				</comps>
+			</ThingDef>
+		<!-- TANGO WRECK -->
+			<ThingDef ParentName="NonDeconstructibleAncientBuildingBase" MayRequire="OskarPotocki.VanillaVehiclesExpandedTier3">
+				<defName>VVEW_TangoWreck</defName>
+				<label>Tango Wreck</label>
+				<description>An ancient, broken APC. Everything that isn't rusted away was looted long ago. Given enough resources, it can be restored into a Tango.</description>	
+				<rotatable>false</rotatable>
+				<graphicData>
+				<texPath>Things/Wrecks/TangoWreck_east</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(6,4)</drawSize>
+				</graphicData>
+				<size>(5,3)</size>
+				<fillPercent>0.5</fillPercent>
+				<castEdgeShadows>false</castEdgeShadows>
+				<passability>PassThroughOnly</passability>
+				<pathCost>50</pathCost>
+				<building>
+				<deconstructible>false</deconstructible>
+				</building>
+				<statBases>
+				<MaxHitPoints>500</MaxHitPoints>
+				<Flammability>0</Flammability>
+				</statBases>
+				<killedLeavings>
+				<ChunkSlagSteel>3</ChunkSlagSteel>
+				</killedLeavings>
+				<comps>
+					<li Class="VanillaVehiclesExpanded.CompProperties_VehicleWreck">
+						<vehicleDef>VVE_Tango</vehicleDef>
+						<spawnRotation>East</spawnRotation>
+					</li>
+				</comps>
+			</ThingDef>
+		<!-- WAGON WRECK -->
+			<ThingDef ParentName="NonDeconstructibleAncientBuildingBase" MayRequire="OskarPotocki.VanillaVehiclesExpandedTier3">
+				<defName>VVEW_WagonWreck</defName>
+				<label>Wagon Wreck</label>
+				<description>An ancient, broken classic car. Everything that isn't rusted away was looted long ago. Given enough resources, it can be restored into a Wagon.</description>	
+				<rotatable>false</rotatable>
+				<graphicData>
+				<texPath>Things/Wrecks/WagonWreck_west</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(5,3)</drawSize>
+				</graphicData>
+				<size>(4,2)</size>
+				<fillPercent>0.5</fillPercent>
+				<castEdgeShadows>false</castEdgeShadows>
+				<passability>PassThroughOnly</passability>
+				<pathCost>50</pathCost>
+				<building>
+				<deconstructible>false</deconstructible>
+				</building>
+				<statBases>
+				<MaxHitPoints>500</MaxHitPoints>
+				<Flammability>0</Flammability>
+				</statBases>
+				<killedLeavings>
+				<ChunkSlagSteel>2</ChunkSlagSteel>
+				</killedLeavings>
+				<comps>
+					<li Class="VanillaVehiclesExpanded.CompProperties_VehicleWreck">
+						<vehicleDef>VVE_Wagon</vehicleDef>
+						<spawnRotation>West</spawnRotation>
+					</li>
+				</comps>
+			</ThingDef>
+		<!-- WARBIRD WRECK -->
+			<ThingDef ParentName="NonDeconstructibleAncientBuildingBase" MayRequire="OskarPotocki.VanillaVehiclesExpandedTier3">
+				<defName>VVEW_WarbirdWreck</defName>
+				<label>Warbird Wreck</label>
+				<description>An ancient, broken plane. Everything that isn't rusted away was looted long ago. Given enough resources, it can be restored into a Warbird.</description>	
+				<rotatable>false</rotatable>
+				<graphicData>
+				<texPath>Things/Wrecks/WarbirdWreck_east</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(6,6)</drawSize>
+				</graphicData>
+				<size>(5,5)</size>
+				<fillPercent>0.5</fillPercent>
+				<castEdgeShadows>false</castEdgeShadows>
+				<passability>PassThroughOnly</passability>
+				<pathCost>50</pathCost>
+				<building>
+				<deconstructible>false</deconstructible>
+				</building>
+				<statBases>
+				<MaxHitPoints>500</MaxHitPoints>
+				<Flammability>0</Flammability>
+				</statBases>
+				<killedLeavings>
+				<ChunkSlagSteel>3</ChunkSlagSteel>
+				</killedLeavings>
+				<comps>
+					<li Class="VanillaVehiclesExpanded.CompProperties_VehicleWreck">
+						<vehicleDef>VVE_Warbird</vehicleDef>
+						<spawnRotation>East</spawnRotation>
+					</li>
+				</comps>
+			</ThingDef>
+		<!-- WISENT WRECK -->
+			<ThingDef ParentName="NonDeconstructibleAncientBuildingBase" MayRequire="OskarPotocki.VanillaVehiclesExpandedTier3">
+				<defName>VVEW_WisentWreck</defName>
+				<label>Wisent Wreck</label>
+				<description>An ancient, broken military truck. Everything that isn't rusted away was looted long ago. Given enough resources, it can be restored into a Wisent.</description>	
+				<rotatable>false</rotatable>
+				<graphicData>
+				<texPath>Things/Wrecks/WisentWreck_east</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(7,4)</drawSize>
+				</graphicData>
+				<size>(6,3)</size>
+				<fillPercent>0.5</fillPercent>
+				<castEdgeShadows>false</castEdgeShadows>
+				<passability>PassThroughOnly</passability>
+				<pathCost>50</pathCost>
+				<building>
+				<deconstructible>false</deconstructible>
+				</building>
+				<statBases>
+				<MaxHitPoints>500</MaxHitPoints>
+				<Flammability>0</Flammability>
+				</statBases>
+				<killedLeavings>
+				<ChunkSlagSteel>3</ChunkSlagSteel>
+				</killedLeavings>
+				<comps>
+					<li Class="VanillaVehiclesExpanded.CompProperties_VehicleWreck">
+						<vehicleDef>VVE_Wisent</vehicleDef>
+						<spawnRotation>East</spawnRotation>
+					</li>
+				</comps>
+			</ThingDef>
+	<!-- ODYSSEY ORBITAL TRADER -->
+		<!-- TRADER KIND DEF -->
+			<TraderKindDef>
+				<defName>Orbital_Odyssey</defName>
+				<label>Odyssey orbital trader</label>
+				<orbital>true</orbital>
+				<commonality>1.6</commonality>
+				<faction MayRequire="Ludeon.RimWorld.Odyssey">TradersGuild</faction>
+				<stockGenerators>
+					<!--=============== Sale ===============-->
+					<!--Odyssey -->
+					<!--Fish-->
+						<li Class="StockGenerator_Category">
+							<categoryDef>Fish</categoryDef>
+							<thingDefCountRange>5~6</thingDefCountRange>
+							<countRange>1200~1500</countRange>
+							<price>Cheap</price>
+						</li>
+					<!--Leather-->
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>Leather_Mastodon</thingDef>
+							<countRange>800~1200</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>Leather_Sealskin</thingDef>
+							<countRange>800~1200</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>Leather_AlphaThrumbo</thingDef>
+							<countRange>800~1200</countRange>
+							<price>Expensive</price>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>Leather_Mink</thingDef>
+							<countRange>800~1200</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>Leather_Hippo</thingDef>
+							<countRange>800~1200</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>Leather_Armadillo</thingDef>
+							<countRange>800~1200</countRange>
+						</li>
+					<!--Wool-->
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>WoolMastodon</thingDef>
+							<countRange>800~1200</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>WoolMuskox</thingDef>
+							<countRange>800~1200</countRange>
+						</li>
+					<!--Exotic-->
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>MastodonTusk</thingDef>
+							<countRange>3~8</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>AlphaThrumboHorn</thingDef>
+							<countRange>3~8</countRange>
+							<price>Expensive</price>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>SentienceCatalyst</thingDef>
+							<countRange>3~8</countRange>
+							<price>Expensive</price>
+						</li>
+					<!--drug psilocap-->
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>Drug_Psilocap</thingDef>
+							<countRange>30~40</countRange>
+						</li>
+					<!--gravships Category-->
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>Gravcore</thingDef>
+							<countRange>1~2</countRange>
+							<price>Exorbitant</price>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>ShuttleEngine</thingDef>
+							<countRange>1~2</countRange>
+						</li>
+					<!--Resource-->
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>GravlitePanel</thingDef>
+							<countRange>50~80</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>Obsidian</thingDef>
+							<countRange>800~1000</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>BlocksVacstone</thingDef>
+							<countRange>800~1000</countRange>
+						</li>
+					<!--Plants Special-->
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>ArcheanSeed</thingDef>
+							<countRange>3~5</countRange>
+							<price>Expensive</price>
+						</li>
+					<!--Weapons Unique-->
+						<li Class="StockGenerator_Category">
+							<categoryDef>WeaponsUnique</categoryDef>
+							<countRange>10~15</countRange>
+							<thingDefCountRange>3~4</thingDefCountRange>
+							<price>Expensive</price>
+						</li>
+					<!--armor -->
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>Apparel_VacsuitHelmet</thingDef>
+							<countRange>1~3</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>Apparel_Vacsuit</thingDef>
+							<countRange>1~3</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef" MayRequire="Ludeon.RimWorld.Biotech">
+							<thingDef>Apparel_VacsuitChildren</thingDef>
+							<countRange>1~3</countRange>
+						</li>
+					<!--Apparel Packs -->
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>Apparel_PackHunter</thingDef>
+							<countRange>1~3</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>Apparel_CerebrexNode</thingDef>
+							<countRange>1~1</countRange>
+							<price>Exorbitant</price>
+						</li>
+						<li Class="StockGenerator_Tag">
+							<tradeTag>GravshipUpgrade</tradeTag>
+							<thingDefCountRange>10~20</thingDefCountRange>
+							<countRange>1~4</countRange>
+						</li>
+					<!--Trying always sells Archotech BodyPart-->
+						<li Class="StockGenerator_Category">
+							<categoryDef>BodyPartsArchotech</categoryDef>
+							<thingDefCountRange>0~1</thingDefCountRange>
+							<countRange>1~1</countRange>
+							<excludedThingDefs>
+							<li MayRequire="ludeon.rimworld.royalty">PsychicSensitizer</li>
+							<li MayRequire="ludeon.rimworld.royalty">PsychicHarmonizer</li>
+							<li MayRequire="ludeon.rimworld.royalty">PsychicReader</li>
+							</excludedThingDefs>
+						</li>
+						<li Class="StockGenerator_Category">
+							<categoryDef>BodyPartsArchotech</categoryDef>
+							<thingDefCountRange>1~1</thingDefCountRange>
+							<countRange>1~1</countRange>
+							<excludedThingDefs>
+							<li MayRequire="ludeon.rimworld.royalty">PsychicSensitizer</li>
+							<li MayRequire="ludeon.rimworld.royalty">PsychicHarmonizer</li>
+							<li MayRequire="ludeon.rimworld.royalty">PsychicReader</li>
+							</excludedThingDefs>
+						</li>
+					<!-- Animals -->
+						<li Class="StockGenerator_Animals">
+							<checkTemperature>false</checkTemperature>
+							<tradeTagsSell>
+							<li>AnimalCommon</li>
+							<li>AnimalUncommon</li>
+							</tradeTagsSell>
+							<tradeTagsBuy>
+							<li>AnimalExotic</li>
+							<li>AnimalUncommon</li>
+							<li>AnimalFighter</li>
+							<li>AnimalFarm</li>
+							<li>AnimalPet</li>
+							<li>AnimalCommon</li>
+							<li>AnimalInsect</li>
+							</tradeTagsBuy>
+							<createMatingPair>
+							<li>AnimalCommon</li>
+							<li>AnimalUncommon</li>
+							</createMatingPair>
+							<kindCountRange>15~15</kindCountRange>
+							<countRange>5~10</countRange>
+						</li>
+					<!-- Animals , Trying always sells Thrumbo-->
+						<li Class="StockGenerator_Animals">
+							<checkTemperature>false</checkTemperature>
+							<tradeTagsSell>
+							<li>OOTAlphaThrumbo</li>
+							</tradeTagsSell>
+							<tradeTagsBuy>
+							<li>AnimalExotic</li>
+							<li>AnimalUncommon</li>
+							<li>AnimalFighter</li>
+							<li>AnimalFarm</li>
+							<li>AnimalPet</li>
+							<li>AnimalCommon</li>
+							<li>AnimalInsect</li>
+							</tradeTagsBuy>
+							<createMatingPair>
+							<li>OOTAlphaThrumbo</li>
+							</createMatingPair>
+							<kindCountRange>15~15</kindCountRange>
+							<countRange>1~2</countRange>
+						</li>
+						<li Class="StockGenerator_Animals">
+							<checkTemperature>false</checkTemperature>
+							<tradeTagsSell>
+							<li>AnimalExotic</li>
+							</tradeTagsSell>
+							<tradeTagsBuy>
+							<li>AnimalExotic</li>
+							<li>AnimalUncommon</li>
+							<li>AnimalFighter</li>
+							<li>AnimalFarm</li>
+							<li>AnimalPet</li>
+							<li>AnimalCommon</li>
+							<li>AnimalInsect</li>
+							</tradeTagsBuy>
+							<createMatingPair>
+							<li>AnimalExotic</li>
+							</createMatingPair>
+							<kindCountRange>15~15</kindCountRange>
+							<countRange>1~2</countRange>
+						</li>
+					<!-- Animals , Trying always sells HiveQueen-->
+						<li Class="StockGenerator_Animals">
+							<checkTemperature>false</checkTemperature>
+							<tradeTagsSell>
+							<li>OOTHiveQueen</li>
+							</tradeTagsSell>
+							<tradeTagsBuy>
+							<li>AnimalExotic</li>
+							<li>AnimalUncommon</li>
+							<li>AnimalFighter</li>
+							<li>AnimalFarm</li>
+							<li>AnimalPet</li>
+							<li>AnimalCommon</li>
+							<li>AnimalInsect</li>
+							</tradeTagsBuy>
+							<createMatingPair>
+							<li>OOTHiveQueen</li>
+							</createMatingPair>
+							<kindCountRange>10~10</kindCountRange>
+							<countRange>1~2</countRange>
+						</li>
+					<!--=============================================-->
+					<!-- Resources -->
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>Silver</thingDef>
+							<countRange>30000~50000</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>ComponentIndustrial</thingDef>
+							<countRange>100~150</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>ComponentSpacer</thingDef>
+							<countRange>50~70</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>Gold</thingDef>
+							<countRange>2000~4000</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>Plasteel</thingDef>
+							<countRange>800~1100</countRange>
+						</li>
+						<li MayRequire="Ludeon.RimWorld.Anomaly" Class="StockGenerator_SingleDef">
+							<thingDef>Bioferrite</thingDef>
+							<countRange>25~150</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>MedicineUltratech</thingDef>
+							<countRange>5~30</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>Neutroamine</thingDef>
+							<countRange>100~500</countRange>
+						</li>
+						<li Class="StockGenerator_MultiDef">
+							<thingDefs>
+							<li>Chocolate</li>
+							</thingDefs>
+						</li>
+					<!-- Drugs -->
+						<li Class="StockGenerator_Category">
+							<categoryDef>Drugs</categoryDef>
+							<thingDefCountRange>3~4</thingDefCountRange>
+							<totalPriceRange>2000~3000</totalPriceRange>
+						</li>
+					<!-- Techprints -->
+						<li Class="StockGenerator_Techprints">
+							<countChances>
+							<li>
+								<count>3</count>
+								<chance>1</chance>
+							</li>
+							</countChances>
+						</li>
+					<!-- Books -->
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>TextBook</thingDef>
+							<countRange>1~2</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>Schematic</thingDef>
+							<countRange>1~1</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>Novel</thingDef>
+							<countRange>1~1</countRange>
+						</li>
+						<li MayRequire="Ludeon.RimWorld.Anomaly" Class="StockGenerator_Tomes">
+							<countRange>1~1</countRange>
+						</li>
+					<!-- Weapons -->
+					<!-- none -->
+					<!-- Apparel -->
+					<!-- none -->
+					<!-- Implants -->
+						<li Class="StockGenerator_Tag">
+							<tradeTag>TechHediff</tradeTag>
+							<thingDefCountRange>3~5</thingDefCountRange>
+							<countRange>1~1</countRange>
+						</li>
+					<!-- Buildings -->
+						<li Class="StockGenerator_Tag">
+							<tradeTag>Television</tradeTag>
+							<thingDefCountRange>1~3</thingDefCountRange>
+							<countRange>1~1</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>Telescope</thingDef>
+							<countRange>1~1</countRange>
+						</li>
+						<li Class="StockGenerator_MarketValue">
+							<tradeTag>Art</tradeTag>
+							<countRange>4~8</countRange>
+						</li>
+					<!-- Exotic -->
+						<li Class="StockGenerator_Tag">
+							<tradeTag>ExoticMisc</tradeTag>
+							<thingDefCountRange>3~5</thingDefCountRange>
+							<countRange>1~2</countRange>
+							<excludedThingDefs>
+							<li>Luciferium</li>
+							<!-- already handled by drugs -->
+							<li>MedicineUltratech</li>
+							<!-- already handled by single def -->
+							<li>ComponentSpacer</li>
+							<!-- already handled by single def -->
+							<li MayRequire="Ludeon.RimWorld.Anomaly">Apparel_DisruptorFlarePack</li>
+							<!-- no anomaly technology on basic traders -->
+							</excludedThingDefs>
+							<customCountRanges>
+							<Hyperweave>400~800</Hyperweave>
+							</customCountRanges>
+						</li>
+						<li Class="StockGenerator_Tag">
+							<tradeTag>Artifact</tradeTag>
+							<thingDefCountRange>2~4</thingDefCountRange>
+							<countRange>1~1</countRange>
+						</li>
+					<!-- Genepacks -->
+						<li MayRequire="Ludeon.RimWorld.Biotech" Class="StockGenerator_SingleDef">
+							<thingDef>Genepack</thingDef>
+							<countRange>3~5</countRange>
+						</li>
+					<!-- Archite capsules -->
+						<li MayRequire="Ludeon.RimWorld.Biotech" Class="StockGenerator_SingleDef">
+							<thingDef>ArchiteCapsule</thingDef>
+							<countRange>1~2</countRange>
+						</li>
+					<!-- Deathrest capacity serum -->
+						<li MayRequire="Ludeon.RimWorld.Biotech" Class="StockGenerator_SingleDef">
+							<thingDef>DeathrestCapacitySerum</thingDef>
+							<countRange>1</countRange>
+						</li>
+					<!-- Serums -->
+						<li MayRequire="Ludeon.RimWorld.Anomaly" Class="StockGenerator_Tag">
+							<tradeTag>Serum</tradeTag>
+							<thingDefCountRange>4~4</thingDefCountRange>
+							<countRange>-3~1</countRange>
+							<!-- 20% chance of appearing -->
+							<excludedThingDefs>
+							<li>VoidsightSerum</li>
+							</excludedThingDefs>
+						</li>
+					<!-- Plants -->
+						<li MayRequire="Ludeon.RimWorld.Biotech" Class="StockGenerator_SingleDef">
+							<thingDef>PoluxSeed</thingDef>
+							<countRange>0~1</countRange>
+						</li>
+					<!-- Slaves -->
+					<!-- none -->
+					<!-- Buying -->
+						<li Class="StockGenerator_BuyExpensiveSimple" />
+						<li Class="StockGenerator_BuyTradeTag">
+							<tag>Art</tag>
+						</li>
+						<li Class="StockGenerator_BuyTradeTag">
+							<tag>ImplantEmpireCommon</tag>
+						</li>
+						<li Class="StockGenerator_BuyTradeTag">
+							<tag>ImplantEmpireRoyal</tag>
+						</li>
+						<li Class="StockGenerator_BuyTradeTag">
+							<tag>PsylinkNeuroformer</tag>
+						</li>
+						<li Class="StockGenerator_BuyTradeTag">
+							<tag>ExoticBuilding</tag>
+						</li>
+						<li Class="StockGenerator_BuyTradeTag">
+							<tag>MusicalInstrument</tag>
+						</li>
+						<li Class="StockGenerator_BuyTradeTag">
+							<tag>UtilitySpecial</tag>
+						</li>
+						<li Class="StockGenerator_BuySingleDef" MayRequire="Ludeon.RimWorld.Anomaly">
+							<thingDef>Shell_Deadlife</thingDef>
+						</li>
+						<li Class="StockGenerator_BuySingleDef" MayRequire="Ludeon.RimWorld.Anomaly">
+							<thingDef>VoidSculpture</thingDef>
+						</li>
+						<li Class="StockGenerator_BuySingleDef" MayRequire="Ludeon.RimWorld.Anomaly">
+							<thingDef>Shard</thingDef>
+						</li>
+						<li Class="StockGenerator_BuySingleDef" MayRequire="Ludeon.RimWorld.Anomaly">
+							<thingDef>Bioferrite</thingDef>
+						</li>
+						<li Class="StockGenerator_BuySingleDef" MayRequire="Ludeon.RimWorld.Anomaly">
+							<thingDef>RevenantSpine</thingDef>
+						</li>
+						<li Class="StockGenerator_BuyTradeTag">
+							<tag>GravshipUpgrade</tag>
+						</li>
+				</stockGenerators>
+			</TraderKindDef>
+	<!-- MECHANITOR ORBITAL TRADER -->
+		<!-- TRADER KIND DEF -->
+			<TraderKindDef >
+				<defName>Orbital_Mechanitor</defName>
+				<label>Mechanitor Supplier</label>
+				<orbital>true</orbital>
+				<stockGenerators>
+					<!-- Resources -->
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>Silver</thingDef>
+							<countRange>4000~8000</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>ComponentIndustrial</thingDef>
+							<countRange>30~60</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>ComponentSpacer</thingDef>
+							<countRange>2~4</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>Steel</thingDef>
+							<countRange>1000~1600</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>Plasteel</thingDef>
+							<countRange>200~800</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>Gold</thingDef>
+							<countRange>60~120</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>SubcoreBasic</thingDef>
+							<countRange>5~10</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>SubcoreRegular</thingDef>
+							<countRange>3~5</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>SubcoreHigh</thingDef>
+							<countRange>1~2</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>SignalChip</thingDef>
+							<countRange>-5~10</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>PowerfocusChip</thingDef>
+							<countRange>-10~4</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>NanostructuringChip</thingDef>
+							<countRange>-15~2</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef" MayRequire="sarg.alphamechs">
+							<thingDef>AM_HyperLinkageChip</thingDef>
+							<countRange>-25~1</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef" MayRequire="sarg.alphamechs">
+							<thingDef>AM_StellarProcessingChip</thingDef>
+							<countRange>-30~1</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef" MayRequire="sarg.alphamechs" >
+							<thingDef>AM_QuantumMatrixChip</thingDef>
+							<countRange>-35~1</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>Mechlink</thingDef>
+							<countRange>-20~1</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef" MayRequire="Pal5k.MechanitorBalanceTweaks">
+							<thingDef>MechanoidSkillPackage_Plants</thingDef>
+							<countRange>-10~8</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef" MayRequire="Pal5k.MechanitorBalanceTweaks">
+							<thingDef>MechanoidSkillPackage_Mining</thingDef>
+							<countRange>-10~8</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef" MayRequire="Pal5k.MechanitorBalanceTweaks">
+							<thingDef>MechanoidSkillPackage_Construction</thingDef>
+							<countRange>-10~8</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef" MayRequire="Pal5k.MechanitorBalanceTweaks">
+							<thingDef>MechanoidSkillPackage_Crafting</thingDef>
+							<countRange>-10~8</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef" MayRequire="Pal5k.MechanitorBalanceTweaks">
+							<thingDef>MechanoidSkillPackage_Cooking</thingDef>
+							<countRange>-10~8</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef" MayRequire="Pal5k.MechanitorBalanceTweaks">
+							<thingDef>MechanoidSkillPackage_Medical</thingDef>
+							<countRange>-10~8</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef" MayRequire="Pal5k.MechanitorBalanceTweaks">
+							<thingDef>MechanoidSkillPackage_Intellectual</thingDef>
+							<countRange>-10~8</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef" MayRequire="Pal5k.MechanitorBalanceTweaks">
+							<thingDef>MechanoidSkillPackage_Melee</thingDef>
+							<countRange>-10~8</countRange>
+						</li>
+						<li Class="StockGenerator_SingleDef" MayRequire="Pal5k.MechanitorBalanceTweaks">
+							<thingDef>MechanoidSkillPackage_Shooting</thingDef>
+							<countRange>-10~8</countRange>
+						</li>
+				</stockGenerators>
+			</TraderKindDef>
+	<!-- HOSPITALITY VENDING MACHINE LWM PATCH -->
+		<!-- VENDING MACHINE BASE -->
+			<ThingDef Name="VendingMachineBase" ParentName="FurnitureBase" Abstract="True">
+				<thingClass>Building_Storage</thingClass>
+				<designationCategory>Misc</designationCategory>
+				<altitudeLayer>Building</altitudeLayer>
+				<passability>PassThroughOnly</passability>
+				<fillPercent>0.4</fillPercent>
+				<castEdgeShadows>true</castEdgeShadows>
+				<pathCost>50</pathCost>
+				<defaultPlacingRot>South</defaultPlacingRot>
+				<hasInteractionCell>true</hasInteractionCell>
+				<interactionCellOffset>(0,0,1)</interactionCellOffset>
+				<placeWorkers>
+					<li>PlaceWorker_PreventInteractionSpotOverlap</li>
+				</placeWorkers>
+				<statBases>
+					<Flammability>1.0</Flammability>
+					<Beauty>0.5</Beauty>
+				</statBases>
+				<building>
+					<joyKind>Shopping</joyKind>
+					<preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+					<ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
+					<maxItemsInCell>3</maxItemsInCell>
+					<storageGroupTag>Shelf</storageGroupTag>
+					<blueprintClass>Blueprint_Storage</blueprintClass>
+					<fixedStorageSettings>
+						<filter>
+							<disallowNotEverStorable>true</disallowNotEverStorable>
+							<categories>
+								<li>Root</li>
+							</categories>
+							<disallowedCategories>
+								<li>Chunks</li>
+								<li>Plants</li>
+								<li>Buildings</li>
+							</disallowedCategories>
+							<disallowedThingDefs MayRequire="Ludeon.RimWorld.Biotech">
+								<li MayRequire="Ludeon.RimWorld.Biotech">Wastepack</li>
+							</disallowedThingDefs>
+							<specialFiltersToDisallow>
+								<li>AllowLargeCorpses</li>
+							</specialFiltersToDisallow>
+						</filter>
+					</fixedStorageSettings>
+					<defaultStorageSettings>
+						<priority>Normal</priority>
+						<filter>
+							<categories>
+								<li>Foods</li>
+								<li>Manufactured</li>
+								<li>ResourcesRaw</li>
+								<li>Items</li>
+								<li>Weapons</li>
+								<li>Apparel</li>
+								<li>BodyParts</li>
+							</categories>
+						</filter>
+					</defaultStorageSettings>
+				</building>
+				<inspectorTabs>
+					<li>ITab_Storage</li>
+				</inspectorTabs>
+				<staticSunShadowHeight>0.5</staticSunShadowHeight>
+				<surfaceType>Item</surfaceType>
+				<canOverlapZones>false</canOverlapZones>
+				<researchPrerequisites>
+					<li>ComplexFurniture</li>
+				</researchPrerequisites>
+			</ThingDef>
+		<!-- VENDING MACHINE -->
+			<ThingDef ParentName="VendingMachineBase">
+				<defName>VendingMachine</defName>
+				<label>vending machine</label>
+				<description>A standard vending machine for guests.</description>
+				<graphicData>
+					<texPath>Things/Building/VendingMachine/VendingMachine</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>(3.5,3.5)</drawSize>
+				</graphicData>
+				<uiIconScale>0.6</uiIconScale>
+				<costList>
+					<Steel>30</Steel>
+					<ComponentIndustrial>1</ComponentIndustrial>
+				</costList>
+				<statBases>
+					<MaxHitPoints>70</MaxHitPoints>
+					<Mass>10</Mass>
+					<WorkToBuild>1000</WorkToBuild>
+				</statBases>
+				<size>(1,1)</size>
+				<comps>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerTrader</compClass>
+						<basePowerConsumption>10</basePowerConsumption>
+					</li>
+					<li Class="VendingMachines.CompProperties_VendingMachine">
+						<compClass>VendingMachines.CompVendingMachine</compClass>
+						<noToggle>true</noToggle>
+					</li>
+					<li Class="CompProperties_Glower">
+						<glowRadius>3</glowRadius>
+						<glowColor>(100, 100, 100)</glowColor>
+					</li>
+					<li Class="LWM.DeepStorage.Properties" >
+						<showContents>false</showContents>
+					</li>
+				</comps>
+			</ThingDef>
+		<!-- MEDIEVAL VENDING MACHINE -->
+			<ThingDef ParentName="VendingMachineBase">
+				<defName>MedievalVendingMachine</defName>
+				<label>medieval vending machine</label>
+				<description>A vending machine for guests that requires no power.</description>
+				<graphicData>
+					<texPath>Things/Building/Furniture/Shelf</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>(3,2)</drawSize>
+				</graphicData>
+				<costStuffCount>40</costStuffCount>
+				<stuffCategories>
+					<li>Metallic</li>
+					<li>Woody</li>
+					<li>Stony</li>
+				</stuffCategories>
+				<statBases>
+					<MaxHitPoints>100</MaxHitPoints>
+					<Mass>16</Mass>
+					<WorkToBuild>1000</WorkToBuild>
+					<StyleDominance MayRequire="Ludeon.RimWorld.Ideology">5</StyleDominance>
+				</statBases>
+				<size>(2,1)</size>
+				<comps>
+					<li Class="CompProperties_Styleable" />
+					<li Class="VendingMachines.CompProperties_VendingMachine">
+						<compClass>VendingMachines.CompVendingMachine</compClass>
+						<noToggle>true</noToggle>
+					</li>
+				</comps>
+			</ThingDef>
+	<!-- HOSPITALITY VENDING MACHINE ASF PATCH -->
+		<!-- VENDING MACHINE GRAPHIC DEF -->
+			<AdaptiveStorage.GraphicsDef>
+				<defName>VendingMachine</defName>
+				<targetDef>VendingMachine</targetDef>
+				<showContainedItems>false</showContainedItems>
+			</AdaptiveStorage.GraphicsDef>
+		<!-- MEDIEVAL VENDING MACHINE GRAPHIC DEF -->
+			<AdaptiveStorage.GraphicsDef>
+				<defName>MedievalVendingMachine</defName>
+				<targetDef>MedievalVendingMachine</targetDef>
+				<showContainedItems>true</showContainedItems>
+				<itemGraphics>
+					<columns>
+						<c0>
+							<rows>
+								<r0>
+									<stackRotation>0.5</stackRotation>
+									<multipleItemsDrawSizeFactor>0.9</multipleItemsDrawSizeFactor>
+									<drawScale>0.8</drawScale>
+									<stackBehaviour>Circle</stackBehaviour>
+									<stackOffsetFactor>0.3</stackOffsetFactor>
+									<drawOffsetNorth>(0.03,0.0,0.1)</drawOffsetNorth>
+									<drawOffsetEast>(0.0,0.0,0.12)</drawOffsetEast>
+									<drawOffsetSouth>(0.03,0.0,0.1)</drawOffsetSouth>
+									<drawOffsetWest>(0.0,0.0,0.12)</drawOffsetWest>
+								</r0>
+							</rows>
+						</c0>
+						<c1>
+							<rows>
+								<r0>
+									<stackRotation>0.5</stackRotation>
+									<multipleItemsDrawSizeFactor>0.9</multipleItemsDrawSizeFactor>
+									<drawScale>0.8</drawScale>
+									<stackBehaviour>Circle</stackBehaviour>
+									<stackOffsetFactor>0.3</stackOffsetFactor>
+									<drawOffsetNorth>(-0.03,0.0,0.1)</drawOffsetNorth>
+									<drawOffsetEast>(0.0,0.0,0.04)</drawOffsetEast>
+									<drawOffsetSouth>(-0.03,0.0,0.1)</drawOffsetSouth>
+									<drawOffsetWest>(0.0,0.0,0.04)</drawOffsetWest>
+								</r0>
+							</rows>
+						</c1>
+					</columns>
+				</itemGraphics>
+			</AdaptiveStorage.GraphicsDef>
+	<!-- CABLES AND PLUMBING -->
+		<!-- RECIPES -->
+			<!-- MAKE CABLES -->
+				<RecipeDef>
+					<defName>Med_Make_ElectricalCable</defName>
+					<label>make electrical cables</label>
+					<description>Crudely make a few electrical cables out of steel and cloth.</description>
+					<jobString>Making electrical cables.</jobString>
+					<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+					<effectWorking>Smith</effectWorking>
+					<soundWorking>Recipe_Machining</soundWorking>
+					<workAmount>600</workAmount>
+					<ingredients>
+					<li>
+						<filter>
+						<thingDefs>
+							<li>Steel</li>
+						</thingDefs>
+						</filter>
+						<count>5</count>
+					</li>
+					<li>
+						<filter>
+						<thingDefs>
+							<li>Cloth</li>
+						</thingDefs>
+						</filter>
+						<count>5</count>
+					</li>
+					</ingredients>
+					<fixedIngredientFilter>
+					<thingDefs>
+						<li>Steel</li>
+						<li>Cloth</li>
+					</thingDefs>
+					</fixedIngredientFilter>
+					<researchPrerequisite>Electricity</researchPrerequisite>
+					<products>
+					<Med_ElectricalCable>10</Med_ElectricalCable>
+					</products>
+					<workSkill>Crafting</workSkill>
+					<displayPriority>3</displayPriority>
+				</RecipeDef>
+			<!-- EXTRACT CABLES -->
+				<RecipeDef>
+					<defName>Med_Extract_ElectricalCable</defName>
+					<label>extract electrical cables from components</label>
+					<description>Extract whatever electrical cable you can find in a batch of components.</description>
+					<jobString>Extracting electrical cables from components.</jobString>
+					<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+					<effectWorking>Smith</effectWorking>
+					<soundWorking>Recipe_Machining</soundWorking>
+					<workAmount>900</workAmount>
+					<ingredients>
+					<li>
+						<filter>
+						<thingDefs>
+							<li>ComponentIndustrial</li>
+						</thingDefs>
+						</filter>
+						<count>3</count>
+					</li>
+					</ingredients>
+					<fixedIngredientFilter>
+					<thingDefs>
+						<li>ComponentIndustrial</li>
+					</thingDefs>
+					</fixedIngredientFilter>
+					<researchPrerequisite>Electricity</researchPrerequisite>
+					<products>
+					<Med_ElectricalCable>10</Med_ElectricalCable>
+					<ComponentIndustrial>2</ComponentIndustrial>
+					</products>
+					<workSkill>Crafting</workSkill>
+					<displayPriority>2</displayPriority>
+				</RecipeDef>
+			<!-- MANUFACTURE CABLES -->
+				<RecipeDef>
+					<defName>Med_Manufacture_ElectricalCable</defName>
+					<label>manufacture electrical cables</label>
+					<description>Manufacture a large amount of electrical cables out of steel and chemfuel.</description>
+					<jobString>Manufacturing electrical cables.</jobString>
+					<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+					<effectWorking>Smith</effectWorking>
+					<soundWorking>Recipe_Machining</soundWorking>
+					<workAmount>4500</workAmount>
+					<ingredients>
+					<li>
+						<filter>
+						<thingDefs>
+							<li>Steel</li>
+						</thingDefs>
+						</filter>
+						<count>50</count>
+					</li>
+					<li>
+						<filter>
+						<thingDefs>
+							<li>Chemfuel</li>
+						</thingDefs>
+						</filter>
+						<count>50</count>
+					</li>
+					</ingredients>
+					<fixedIngredientFilter>
+					<thingDefs>
+						<li>Steel</li>
+						<li>Chemfuel</li>
+					</thingDefs>
+					</fixedIngredientFilter>
+					<researchPrerequisite>Electricity</researchPrerequisite>
+					<products>
+					<Med_ElectricalCable>150</Med_ElectricalCable>
+					</products>
+					<skillRequirements>
+					<Crafting>3</Crafting>
+					</skillRequirements>
+					<workSkill>Crafting</workSkill>
+					<displayPriority>2</displayPriority>
+				</RecipeDef>
+			<!-- MAKE PIPES -->
+				<RecipeDef>
+					<defName>Med_Make_Pipe</defName>
+					<label>make pipes</label>
+					<description>Make a few low quality pipes out of steel.</description>
+					<jobString>Making pipes.</jobString>
+					<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+					<effectWorking>MakeWoodPlanks_Hand</effectWorking>
+					<soundWorking>Recipe_MakeWoodPlanks_Hand</soundWorking>
+					<workAmount>1200</workAmount>
+					<ingredients>
+					<li>
+						<filter>
+						<thingDefs>
+							<li>Steel</li>
+						</thingDefs>
+						</filter>
+						<count>8</count>
+					</li>
+					</ingredients>
+					<fixedIngredientFilter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+					<Med_Pipe>10</Med_Pipe>
+					</products>
+					<workSkill>Crafting</workSkill>
+					<displayPriority>4</displayPriority>
+				</RecipeDef>
+			<!-- MANUFACTURE PIPES -->
+				<RecipeDef>
+					<defName>Med_Manufacture_Pipe</defName>
+					<label>manufacture pipes</label>
+					<description>Manufacture a large amount of high quality pipes out of steel.</description>
+					<jobString>Manufacturing pipes.</jobString>
+					<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+					<effectWorking>Smith</effectWorking>
+					<soundWorking>Recipe_Machining</soundWorking>
+					<workAmount>8000</workAmount>
+					<ingredients>
+					<li>
+						<filter>
+						<thingDefs>
+							<li>Steel</li>
+						</thingDefs>
+						</filter>
+						<count>50</count>
+					</li>
+					</ingredients>
+					<fixedIngredientFilter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+					<Med_Pipe>75</Med_Pipe>
+					</products>
+					<skillRequirements>
+					<Crafting>3</Crafting>
+					</skillRequirements>
+					<workSkill>Crafting</workSkill>
+					<displayPriority>3</displayPriority>
+				</RecipeDef>
+			<!-- SMELT CABLES -->
+				<RecipeDef>
+					<defName>Med_Smelt_ElectricalCable</defName>
+					<label>smelt electrical cables</label>
+					<description>Use heat and strong electromagnets to break down electrical cables into useful metallic materials.</description>
+					<jobString>Smelting electrical cables.</jobString>
+					<workAmount>600</workAmount>
+					<workSpeedStat>SmeltingSpeed</workSpeedStat>
+					<effectWorking>Smelt</effectWorking>
+					<soundWorking>Recipe_Smelt</soundWorking>
+					<ingredients>
+					<li>
+						<filter>
+						<thingDefs>
+							<li>Med_ElectricalCable</li>
+						</thingDefs>
+						</filter>
+						<count>50</count>
+					</li>
+					</ingredients>
+					<fixedIngredientFilter>
+					<thingDefs>
+						<li>Med_ElectricalCable</li>
+					</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+					<Steel>15</Steel>
+					</products>
+					<workSkill>Crafting</workSkill>
+					<displayPriority>10</displayPriority>
+				</RecipeDef>
+			<!-- SMELT PIPES -->
+				<RecipeDef>
+					<defName>Med_Smelt_Pipe</defName>
+					<label>smelt pipes</label>
+					<description>Use heat and strong electromagnets to break down pipes into useful metallic materials.</description>
+					<jobString>Smelting pipes.</jobString>
+					<workAmount>800</workAmount>
+					<workSpeedStat>SmeltingSpeed</workSpeedStat>
+					<effectWorking>Smelt</effectWorking>
+					<soundWorking>Recipe_Smelt</soundWorking>
+					<ingredients>
+					<li>
+						<filter>
+						<thingDefs>
+							<li>Med_Pipe</li>
+						</thingDefs>
+						</filter>
+						<count>50</count>
+					</li>
+					</ingredients>
+					<fixedIngredientFilter>
+					<thingDefs>
+						<li>Med_Pipe</li>
+					</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+					<Steel>30</Steel>
+					</products>
+					<workSkill>Crafting</workSkill>
+					<displayPriority>20</displayPriority>
+				</RecipeDef>
+		<!-- THINGS -->
+			<!-- CABLE -->
+				<ThingDef ParentName="ResourceBase">
+					<defName>Med_ElectricalCable</defName>
+					<label>electrical cable</label>
+					<description>An assembly of electrical wires, bundled inside a protective sheath. Electrical cables may be used for transmission of electrical power or signals.</description>
+					<graphicData>
+					<texPath>Items/ElectricalCable</texPath>
+					<graphicClass>Graphic_StackCount</graphicClass>
+					</graphicData>
+					<allowedArchonexusCount>100</allowedArchonexusCount>
+					<soundInteract>Metal_Drop</soundInteract>
+					<soundDrop>Standard_Drop</soundDrop>
+					<stackLimit>150</stackLimit>
+					<healthAffectsPrice>false</healthAffectsPrice>
+					<statBases>
+					<MaxHitPoints>75</MaxHitPoints>
+					<MarketValue>1.6</MarketValue>
+					<Mass>0.2</Mass>
+					<Flammability>1.0</Flammability>
+					<DeteriorationRate>1.0</DeteriorationRate>
+					</statBases>
+					<thingCategories>
+					<li>Manufactured</li>
+					</thingCategories>
+				</ThingDef>
+			<!-- PIPE -->
+				<ThingDef ParentName="ResourceBase">
+					<defName>Med_Pipe</defName>
+					<label>pipe</label>
+					<description>A solid hollow cylinder meant for transporting fluids and flowing solids. Pipes are typically used in plumbing, i.e to move sewage, water and air around.</description>
+					<graphicData>
+					<texPath>Items/Pipe</texPath>
+					<graphicClass>Graphic_StackCount</graphicClass>
+					</graphicData>
+					<allowedArchonexusCount>50</allowedArchonexusCount>
+					<soundInteract>Metal_Drop</soundInteract>
+					<soundDrop>Standard_Drop</soundDrop>
+					<stackLimit>75</stackLimit>
+					<healthAffectsPrice>false</healthAffectsPrice>
+					<statBases>
+					<MaxHitPoints>75</MaxHitPoints>
+					<MarketValue>1.8</MarketValue>
+					<Mass>0.5</Mass>
+					<Flammability>0.0</Flammability>
+					<DeteriorationRate>1.0</DeteriorationRate>
+					</statBases>
+					<thingCategories>
+					<li>Manufactured</li>
+					</thingCategories>
+				</ThingDef>
+	<!-- ENGINE INDUSTRIES FOR VVE -->
+		<!-- SETTINGS MENU DEF -->
+			<XmlExtensions.SettingsMenuDef>
+				<defName>EIVVEPatch</defName>
+				<modId>BattyVanthe.EIVVEPatch</modId>
+				<label>Engine Industries for VVE</label>
+				<settings>
+					<li Class="XmlExtensions.Setting.Text">
+						<text>Engine Industries for VVE</text>
+						<font>Medium</font>
+						<anchor>Middle</anchor>
+					</li>
+					<li Class="XmlExtensions.Setting.GapLine"/>
+					<li Class="XmlExtensions.Setting.SetColor">
+						<color>(255,50,50)</color>
+					</li>
+					<li Class="XmlExtensions.Setting.Text">
+						<text>Game restart required for changes to take effect</text>
+						<anchor>Middle</anchor>
+					</li>
+					<li Class="XmlExtensions.Setting.SetColor"/>
+					<li Class="XmlExtensions.Setting.Checkbox">
+						<key>toggle</key>
+						<label>Remove VVE Engine and Wheels</label>
+						<defaultValue>false</defaultValue>
+						<tooltip>Removes VVE's engine and wheel components entirely, turn off if using other mods that need those components and aren't patched.</tooltip>
+					</li>
+					<li Class="XmlExtensions.Setting.Checkbox">
+						<key>broadpatch</key>
+						<label>Broad ReplaceLib Patch (Requires ReplaceLib)</label>
+						<defaultValue>false</defaultValue>
+						<tooltip>Enables a patch to completely replace VVE engine and wheel defs with Engine Industries' ones using Ferny's ReplaceLib, should make any mods I haven't manually patched somewhat compatible.</tooltip>
+					</li>
+					<li Class="XmlExtensions.Setting.Checkbox">
+						<key>recipemove</key>
+						<label>Original EI Recipe Locations</label>
+						<defaultValue>false</defaultValue>
+						<tooltip>Re-enables the original recipe locations for Engine Industries</tooltip>
+					</li>
+				</settings>
+			</XmlExtensions.SettingsMenuDef>
+	<!-- DRYAD PATCHES -->
+		<!-- THING DEFS -->
+			<!-- CLAWER -->
+				<ThingDef ParentName="DryadBase">
+					<defName>DVE_GreaterDryad_Clawer</defName>
+					<label>greater clawer dryad</label>
+					<description>A dryad caste with huge claws that is specialized in aggression and damage-dealing attacks. Its enhancement has improved their combat prowess and strengthened the wings, permitting them to ignore terrain movement penalties.\n\nGreater dryads are more capable than their smaller kin but most gauranlen trees lack the power to support them.</description>
+					<statBases>
+						<MoveSpeed>5</MoveSpeed>
+						<MarketValue>300</MarketValue>
+						<ComfyTemperatureMin>-50</ComfyTemperatureMin>
+						<ComfyTemperatureMax>50</ComfyTemperatureMax>
+						<FilthRate>0</FilthRate>
+						<PlantWorkSpeed>0.6</PlantWorkSpeed>
+					</statBases>
+					<comps>
+						<li Class="VEF.AnimalBehaviours.CompProperties_Floating">
+						</li>
+						<!-- <li Class="AnimalBehaviours.CompProperties_Draftable">
+							<makeNonFleeingToo>true</makeNonFleeingToo>
+						</li> -->
+						<li Class="VanillaIdeologyExpanded_Dryads.CompProperties_PawnMerge">
+							<requiredCount>3</requiredCount>
+								<podToBuild>VDE_ClawerAwakeningCocoon</podToBuild>
+								<gizmoImage>Things/Building/UpgradeClawer</gizmoImage>
+								<gizmoLabel>VDE_Awaken</gizmoLabel>
+								<gizmoDesc>VDE_AwakenDesc</gizmoDesc>
+						</li>
+					</comps>
+					<race>
+						<herdAnimal>false</herdAnimal>
+						<body>QuadrupedAnimalWithPawsAndTail</body>
+						<baseBodySize>1.4</baseBodySize>
+						<baseHealthScale>1.4</baseHealthScale>
+						<hediffGiverSets Inherit="False"/>
+						<useMeatFrom>Dryad_Basic</useMeatFrom>
+						<giveNonToolUserBeatFireVerb>true</giveNonToolUserBeatFireVerb>
+						<useLeatherFrom>Dryad_Basic</useLeatherFrom>
+						<mateMtbHours>100000</mateMtbHours>
+						<trainability>Intermediate</trainability>
+						<lifeStageAges>
+							<li>
+								<def>AnimalAdult</def>
+								<minAge>0</minAge>
+								<soundWounded>Pawn_Dryad_Clawer_Wounded</soundWounded>
+								<soundCall>Pawn_Dryad_Clawer_Call</soundCall>
+							</li>
+						</lifeStageAges>
+						<soundMeleeHitPawn>Pawn_Melee_BigBash_HitPawn</soundMeleeHitPawn>
+						<soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
+						<soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
+					</race>
+					<tools>
+						<li>
+							<label>left claw</label>
+							<capacities>
+								<li>Scratch</li>
+							</capacities>
+							<power>25</power>
+							<cooldownTime>1.5</cooldownTime>
+							<linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
+							<armorPenetration>0.8</armorPenetration>
+							<surpriseAttack>
+								<extraMeleeDamages>
+									<li>
+										<def>Stun</def>
+										<amount>16</amount>
+									</li>
+								</extraMeleeDamages>
+							</surpriseAttack>
+						</li>
+						<li>
+							<label>right claw</label>
+							<capacities>
+								<li>Scratch</li>
+							</capacities>
+							<power>25</power>
+							<cooldownTime>1.5</cooldownTime>
+							<linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
+							<armorPenetration>0.8</armorPenetration>
+							<surpriseAttack>
+								<extraMeleeDamages>
+									<li>
+										<def>Stun</def>
+										<amount>16</amount>
+									</li>
+								</extraMeleeDamages>
+							</surpriseAttack>
+						</li>
+						<li>
+							<capacities>
+								<li>Bite</li>
+							</capacities>
+							<power>13</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+							<chanceFactor>0.3</chanceFactor>
+							<surpriseAttack>
+								<extraMeleeDamages>
+									<li>
+										<def>Stun</def>
+										<amount>14</amount>
+									</li>
+								</extraMeleeDamages>
+							</surpriseAttack>
+						</li>
+						<li>
+							<label>head</label>
+							<capacities>
+								<li>Blunt</li>
+							</capacities>
+							<power>4</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+							<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+							<chanceFactor>0.1</chanceFactor>
+						</li>
+					</tools>
+				</ThingDef>
+			<!-- BARKSKIN -->
+				<ThingDef ParentName="DryadBase">
+					<defName>DVE_GreaterDryad_Barkskin</defName>
+					<label>greater barkskin dryad</label>
+					<description>A dryad caste specialized in absorbing hits during combat. Its enhancement has created multiple layers of hardened bark and deadened all pain receptors. Can act as a mobile form of cover.\n\nGreater dryads are more capable than their smaller kin but most gauranlen trees lack the power to support them.</description>
+					<statBases>
+						<MoveSpeed>3.4</MoveSpeed>
+						<MarketValue>300</MarketValue>
+						<ArmorRating_Blunt>0.55</ArmorRating_Blunt>
+						<ArmorRating_Sharp>0.90</ArmorRating_Sharp>
+						<ComfyTemperatureMin>-50</ComfyTemperatureMin>
+						<ComfyTemperatureMax>50</ComfyTemperatureMax>
+						<FilthRate>0</FilthRate>
+						<MiningSpeed>0.5</MiningSpeed>
+					</statBases>
+					<comps>
+						<li Class="VEF.AnimalBehaviours.CompProperties_InitialHediff">
+							<hediffname>VDE_NoPain</hediffname>
+							<hediffseverity>1</hediffseverity>
+						</li>
+						<!-- <li Class="AnimalBehaviours.CompProperties_Draftable">
+							<makeNonFleeingToo>true</makeNonFleeingToo>
+						</li> -->
+						<li Class="VanillaIdeologyExpanded_Dryads.CompProperties_PawnMerge">
+							<requiredCount>3</requiredCount>
+							<podToBuild>VDE_BarkskinAwakeningCocoon</podToBuild>
+							<gizmoImage>Things/Building/UpgradeBarkskin</gizmoImage>
+							<gizmoLabel>VDE_Awaken</gizmoLabel>
+							<gizmoDesc>VDE_AwakenDesc</gizmoDesc>
+						</li>
+					</comps>
+					<race>
+						<body>QuadrupedAnimalWithPawsAndTail</body>
+						<baseBodySize>1.4</baseBodySize>
+						<baseHealthScale>2.2</baseHealthScale>
+						<hediffGiverSets Inherit="False"/>
+						<useMeatFrom>Dryad_Basic</useMeatFrom>
+						<giveNonToolUserBeatFireVerb>true</giveNonToolUserBeatFireVerb>
+						<useLeatherFrom>Dryad_Basic</useLeatherFrom>
+						<mateMtbHours>100000</mateMtbHours>
+						<trainability>Intermediate</trainability>
+						<lifeStageAges>
+							<li>
+								<def>AnimalAdult</def>
+								<minAge>0</minAge>
+								<soundWounded>Pawn_Dryad_Barkskin_Wounded</soundWounded>
+								<soundCall>Pawn_Dryad_Barkskin_Call</soundCall>
+							</li>
+						</lifeStageAges>
+						<soundMeleeHitPawn>Pawn_Melee_BigBash_HitPawn</soundMeleeHitPawn>
+						<soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
+						<soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
+					</race>
+					<tools>
+						<li>
+							<label>left claw</label>
+							<capacities>
+								<li>Scratch</li>
+							</capacities>
+							<power>8</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
+							<surpriseAttack>
+								<extraMeleeDamages>
+									<li>
+										<def>Stun</def>
+										<amount>14</amount>
+									</li>
+								</extraMeleeDamages>
+							</surpriseAttack>
+						</li>
+						<li>
+							<label>right claw</label>
+							<capacities>
+								<li>Scratch</li>
+							</capacities>
+							<power>8</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
+							<surpriseAttack>
+								<extraMeleeDamages>
+									<li>
+										<def>Stun</def>
+										<amount>14</amount>
+									</li>
+								</extraMeleeDamages>
+							</surpriseAttack>
+						</li>
+						<li>
+							<capacities>
+								<li>Bite</li>
+							</capacities>
+							<power>9</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+							<chanceFactor>0.9</chanceFactor>
+							<surpriseAttack>
+								<extraMeleeDamages>
+									<li>
+										<def>Stun</def>
+										<amount>14</amount>
+									</li>
+								</extraMeleeDamages>
+							</surpriseAttack>
+						</li>
+						<li>
+							<label>head</label>
+							<capacities>
+								<li>Blunt</li>
+							</capacities>
+							<power>4</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+							<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+							<chanceFactor>0.2</chanceFactor>
+						</li>
+					</tools>
+				</ThingDef>
+			<!-- WOODMAKER -->
+				<ThingDef ParentName="DryadBase">
+					<defName>DVE_GreaterDryad_Woodmaker</defName>
+					<label>greater woodmaker dryad</label>
+					<description>A slow, bumbling caste of dryad which specializes in wood production. Its enhancement has accelerated the wood-like material production and instilled a motherly instinct to create nests made of numerous twigs.\n\nGreater dryads are more capable than their smaller kin but most gauranlen trees lack the power to support them.</description>
+					<statBases>
+						<MoveSpeed>1.5</MoveSpeed>
+						<MarketValue>300</MarketValue>
+						<ComfyTemperatureMin>-50</ComfyTemperatureMin>
+						<ComfyTemperatureMax>50</ComfyTemperatureMax>
+						<FilthRate>0</FilthRate>
+						<PlantWorkSpeed>0.5</PlantWorkSpeed>
+					</statBases>
+					<comps>
+						<li Class="CompProperties_Spawner">
+							<thingToSpawn>WoodLog</thingToSpawn>
+							<spawnCount>32</spawnCount>
+							<spawnIntervalRange>80000</spawnIntervalRange>
+							<writeTimeLeftToSpawn>true</writeTimeLeftToSpawn>
+							<showMessageIfOwned>true</showMessageIfOwned>
+						</li>
+						<li Class="VEF.AnimalBehaviours.CompProperties_BuildPeriodically">
+							<defOfBuilding>VDE_DryadNest</defOfBuilding>
+							<ticksToBuild>80000</ticksToBuild>
+							<onlyOneExistingPerPawn>true</onlyOneExistingPerPawn>
+							<checkForExistingEdifices>true</checkForExistingEdifices>
+						</li>
+						<li Class="VanillaIdeologyExpanded_Dryads.CompProperties_PawnMerge">
+							<requiredCount>3</requiredCount>
+							<podToBuild>VDE_WoodmakerAwakeningCocoon</podToBuild>
+							<gizmoImage>Things/Building/UpgradeWoodmaker</gizmoImage>
+							<gizmoLabel>VDE_Awaken</gizmoLabel>
+							<gizmoDesc>VDE_AwakenDesc</gizmoDesc>
+						</li>
+					</comps>
+					<race>
+						<body>QuadrupedAnimalWithPawsAndTail</body>
+						<baseBodySize>2.2</baseBodySize>
+						<baseHealthScale>1.4</baseHealthScale>
+						<hediffGiverSets Inherit="False"/>
+						<useMeatFrom>Dryad_Basic</useMeatFrom>
+						<giveNonToolUserBeatFireVerb>true</giveNonToolUserBeatFireVerb>
+						<useLeatherFrom>Dryad_Basic</useLeatherFrom>
+						<mateMtbHours>100000</mateMtbHours>
+						<trainability>Advanced</trainability>
+						<trainableTags>
+							<li>Basic</li>
+							<li>Work</li>
+						</trainableTags>
+						<untrainableTags>
+							<li>Help</li>
+							<li>Combat</li>
+						</untrainableTags>
+						<lifeStageAges>
+							<li>
+								<def>AnimalAdult</def>
+								<minAge>0</minAge>
+								<soundWounded>Pawn_Dryad_Barkskin_Wounded</soundWounded>
+								<soundCall>Pawn_Dryad_Barkskin_Call</soundCall>
+							</li>
+						</lifeStageAges>
+						<soundMeleeHitPawn>Pawn_Melee_BigBash_HitPawn</soundMeleeHitPawn>
+						<soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
+						<soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
+					</race>
+					<tools>
+						<li>
+							<label>left claw</label>
+							<capacities>
+								<li>Scratch</li>
+							</capacities>
+							<power>8</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
+							<surpriseAttack>
+								<extraMeleeDamages>
+									<li>
+										<def>Stun</def>
+										<amount>14</amount>
+									</li>
+								</extraMeleeDamages>
+							</surpriseAttack>
+						</li>
+						<li>
+							<label>right claw</label>
+							<capacities>
+								<li>Scratch</li>
+							</capacities>
+							<power>8</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
+							<surpriseAttack>
+								<extraMeleeDamages>
+									<li>
+										<def>Stun</def>
+										<amount>14</amount>
+									</li>
+								</extraMeleeDamages>
+							</surpriseAttack>
+						</li>
+						<li>
+							<capacities>
+								<li>Bite</li>
+							</capacities>
+							<power>9</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+							<chanceFactor>0.9</chanceFactor>
+							<surpriseAttack>
+								<extraMeleeDamages>
+									<li>
+										<def>Stun</def>
+										<amount>14</amount>
+									</li>
+								</extraMeleeDamages>
+							</surpriseAttack>
+						</li>
+						<li>
+							<label>head</label>
+							<capacities>
+								<li>Blunt</li>
+							</capacities>
+							<power>4</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+							<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+							<chanceFactor>0.2</chanceFactor>
+						</li>
+					</tools>
+				</ThingDef>
+			<!-- MEDICINEMAKER -->
+				<ThingDef ParentName="DryadBase">
+					<defName>DVE_GreaterDryad_Medicinemaker</defName>
+					<label>greater medicinemaker dryad</label>
+					<description>A dryad caste specialized in medicine production. Its enhancement has accelerated the herbal production and gives them a large nodule that slowly accumulated neutroamine, which can be milked when full.\n\nGreater dryads are more capable than their smaller kin but most gauranlen trees lack the power to support them.</description>
+					<statBases>
+						<MoveSpeed>3.2</MoveSpeed>
+						<MarketValue>300</MarketValue>
+						<ComfyTemperatureMin>-50</ComfyTemperatureMin>
+						<ComfyTemperatureMax>50</ComfyTemperatureMax>
+						<FilthRate>0</FilthRate>
+						<MedicalTendQuality>2.5</MedicalTendQuality>
+						<MedicalTendSpeed>0.4</MedicalTendSpeed>
+						<PlantWorkSpeed>0.4</PlantWorkSpeed>
+					</statBases>
+					<comps>
+						<li Class="CompProperties_Spawner">
+							<thingToSpawn>MedicineHerbal</thingToSpawn>
+							<spawnCount>4</spawnCount>
+							<spawnIntervalRange>80000</spawnIntervalRange>
+							<writeTimeLeftToSpawn>true</writeTimeLeftToSpawn>
+							<showMessageIfOwned>true</showMessageIfOwned>
+						</li>
+						<li Class="VEF.AnimalBehaviours.CompProperties_AnimalProduct">
+							<resourceDef>Neutroamine</resourceDef>
+							<gatheringIntervalDays>4</gatheringIntervalDays>
+							<resourceAmount>2</resourceAmount>
+							<customResourceString>VDE_NeutroamineDesc</customResourceString>
+						</li>
+						<li Class="VanillaIdeologyExpanded_Dryads.CompProperties_PawnMerge">
+							<requiredCount>3</requiredCount>
+							<podToBuild>VDE_MedicinemakerAwakeningCocoon</podToBuild>
+							<gizmoImage>Things/Building/UpgradeMedicinemaker</gizmoImage>
+							<gizmoLabel>VDE_Awaken</gizmoLabel>
+							<gizmoDesc>VDE_AwakenDesc</gizmoDesc>
+						</li>
+					</comps>
+					<race>
+						<body>QuadrupedAnimalWithPawsAndTail</body>
+						<baseBodySize>0.98</baseBodySize>
+						<baseHealthScale>0.8</baseHealthScale>
+						<hediffGiverSets Inherit="False"/>
+						<useMeatFrom>Dryad_Basic</useMeatFrom>
+						<giveNonToolUserBeatFireVerb>true</giveNonToolUserBeatFireVerb>
+						<useLeatherFrom>Dryad_Basic</useLeatherFrom>
+						<mateMtbHours>100000</mateMtbHours>
+						<trainability>None</trainability>
+						<lifeStageAges>
+							<li>
+								<def>AnimalAdult</def>
+								<minAge>0</minAge>
+								<soundWounded>Pawn_Dryad_Medicinemaker_Wounded</soundWounded>
+								<soundCall>Pawn_Dryad_Medicinemaker_Call</soundCall>
+							</li>
+						</lifeStageAges>
+						<soundMeleeHitPawn>Pawn_Melee_BigBash_HitPawn</soundMeleeHitPawn>
+						<soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
+						<soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
+					</race>
+					<tools>
+						<li>
+							<label>left claw</label>
+							<capacities>
+								<li>Scratch</li>
+							</capacities>
+							<power>8</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
+							<surpriseAttack>
+								<extraMeleeDamages>
+									<li>
+										<def>Stun</def>
+										<amount>14</amount>
+									</li>
+								</extraMeleeDamages>
+							</surpriseAttack>
+						</li>
+						<li>
+							<label>right claw</label>
+							<capacities>
+								<li>Scratch</li>
+							</capacities>
+							<power>8</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
+							<surpriseAttack>
+								<extraMeleeDamages>
+									<li>
+										<def>Stun</def>
+										<amount>14</amount>
+									</li>
+								</extraMeleeDamages>
+							</surpriseAttack>
+						</li>
+						<li>
+							<capacities>
+								<li>Bite</li>
+							</capacities>
+							<power>9</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+							<chanceFactor>0.9</chanceFactor>
+							<surpriseAttack>
+								<extraMeleeDamages>
+									<li>
+										<def>Stun</def>
+										<amount>14</amount>
+									</li>
+								</extraMeleeDamages>
+							</surpriseAttack>
+						</li>
+						<li>
+							<label>head</label>
+							<capacities>
+								<li>Blunt</li>
+							</capacities>
+							<power>4</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+							<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+							<chanceFactor>0.2</chanceFactor>
+						</li>
+					</tools>
+				</ThingDef>
+			<!-- BERRYMAKER -->
+				<ThingDef ParentName="DryadBase">
+					<defName>DVE_GreaterDryad_Berrymaker</defName>
+					<label>greater berrymaker dryad</label>
+					<description>A dryad caste specialized in food production. Its enhancement has accelerated the berry production and instills an instinct to bury parts of its peeling hide that are entirely similar to regular berry bushes.\n\nGreater dryads are more capable than their smaller kin but most gauranlen trees lack the power to support them.</description>
+					<statBases>
+						<MoveSpeed>3.2</MoveSpeed>
+						<MarketValue>300</MarketValue>
+						<ComfyTemperatureMin>-50</ComfyTemperatureMin>
+						<ComfyTemperatureMax>50</ComfyTemperatureMax>
+						<FilthRate>0</FilthRate>
+						<PlantWorkSpeed>0.4</PlantWorkSpeed>
+					</statBases>
+					<comps>
+						<li Class="VanillaIdeologyExpanded_Dryads.CompProperties_PawnMerge">
+							<requiredCount>3</requiredCount>
+							<podToBuild>VDE_BerrymakerAwakeningCocoon</podToBuild>
+							<gizmoImage>Things/Building/UpgradeBerrymaker</gizmoImage>
+							<gizmoLabel>VDE_Awaken</gizmoLabel>
+							<gizmoDesc>VDE_AwakenDesc</gizmoDesc>
+						</li>
+						<li Class="CompProperties_Spawner">
+							<thingToSpawn>RawBerries</thingToSpawn>
+							<spawnCount>40</spawnCount>
+							<spawnIntervalRange>80000</spawnIntervalRange>
+							<writeTimeLeftToSpawn>true</writeTimeLeftToSpawn>
+							<showMessageIfOwned>true</showMessageIfOwned>
+						</li>
+						<li Class="VEF.AnimalBehaviours.CompProperties_BuildPeriodically">
+							<defOfBuilding>Plant_Berry</defOfBuilding>
+							<ticksToBuild>80000</ticksToBuild>
+							<maxBuildingsPerMap>50</maxBuildingsPerMap>
+							<acceptedTerrains>
+								<li>Soil</li>
+								<li>MossyTerrain</li>
+								<li>MarshyTerrain</li>
+								<li>SoilRich</li>
+								<li>Gravel</li>
+								<li>AB_DenseMud</li>
+								<li>AB_DenseGrass</li>
+								<li>AB_WebbedMarshyTerrain</li>
+								<li>AB_ForsakenSand</li>
+								<li>AB_ForsakenRock</li>
+								<li>AB_CrackedMud</li>
+								<li>AB_RichCrackedMud</li>
+								<li>AB_SlimeGrass</li>
+								<li>AB_MycoticSoil</li>
+								<li>AB_MycoticSoilRich</li>
+								<li>AB_MycoticGrass</li>
+								<li>GU_AlienSand</li>
+								<li>GU_RichAlienSand</li>
+								<li>AB_SnowOverRocks</li>
+								<li>AB_HardenedGrass</li>
+								<li>AB_HardenedGrassFertile</li>
+								<li>AB_LushGrass</li>
+								<li>AB_ParchedEarth</li>
+							</acceptedTerrains>
+						</li>
+					</comps>
+					<race>
+						<body>QuadrupedAnimalWithPawsAndTail</body>
+						<baseBodySize>1.1</baseBodySize>
+						<baseHealthScale>0.8</baseHealthScale>
+						<hediffGiverSets Inherit="False"/>
+						<useMeatFrom>Dryad_Basic</useMeatFrom>
+						<giveNonToolUserBeatFireVerb>true</giveNonToolUserBeatFireVerb>
+						<useLeatherFrom>Dryad_Basic</useLeatherFrom>
+						<mateMtbHours>100000</mateMtbHours>
+						<trainability>None</trainability>
+						<lifeStageAges>
+							<li>
+								<def>AnimalAdult</def>
+								<minAge>0</minAge>
+								<soundWounded>Pawn_Dryad_Medicinemaker_Wounded</soundWounded>
+								<soundCall>Pawn_Dryad_Medicinemaker_Call</soundCall>
+							</li>
+						</lifeStageAges>
+						<soundMeleeHitPawn>Pawn_Melee_BigBash_HitPawn</soundMeleeHitPawn>
+						<soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
+						<soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
+					</race>
+					<tools>
+						<li>
+							<label>left claw</label>
+							<capacities>
+								<li>Scratch</li>
+							</capacities>
+							<power>8</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
+							<surpriseAttack>
+								<extraMeleeDamages>
+									<li>
+										<def>Stun</def>
+										<amount>14</amount>
+									</li>
+								</extraMeleeDamages>
+							</surpriseAttack>
+						</li>
+						<li>
+							<label>right claw</label>
+							<capacities>
+								<li>Scratch</li>
+							</capacities>
+							<power>8</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
+							<surpriseAttack>
+								<extraMeleeDamages>
+									<li>
+										<def>Stun</def>
+										<amount>14</amount>
+									</li>
+								</extraMeleeDamages>
+							</surpriseAttack>
+						</li>
+						<li>
+							<capacities>
+								<li>Bite</li>
+							</capacities>
+							<power>9</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+							<chanceFactor>0.9</chanceFactor>
+							<surpriseAttack>
+								<extraMeleeDamages>
+									<li>
+										<def>Stun</def>
+										<amount>14</amount>
+									</li>
+								</extraMeleeDamages>
+							</surpriseAttack>
+						</li>
+						<li>
+							<label>head</label>
+							<capacities>
+								<li>Blunt</li>
+							</capacities>
+							<power>4</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+							<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+							<chanceFactor>0.2</chanceFactor>
+						</li>
+					</tools>
+				</ThingDef>
+			<!-- STONEDIGGER -->
+				<ThingDef ParentName="DryadBase">
+					<defName>DVE_GreaterDryad_Stonedigger</defName>
+					<label>greater stonedigger dryad</label>
+					<description>An extremely easy-going caste of dryad which specializes in finding stone chunks. Its enhancement has instilled a sense of awe and strengthened pincers, drawing envy from stone ruins and carving excavated stone chunks into blocks to build a better shell.\n\nGreater dryads are more capable than their smaller kin but most gauranlen trees lack the power to support them.</description>
+					<statBases>
+						<MoveSpeed>2.6</MoveSpeed>
+						<MarketValue>300</MarketValue>
+						<ComfyTemperatureMin>-50</ComfyTemperatureMin>
+						<ComfyTemperatureMax>50</ComfyTemperatureMax>
+						<FilthRate>0</FilthRate>
+						<MiningSpeed>1</MiningSpeed>
+					</statBases>
+					<comps>
+						<li Class="VEF.AnimalBehaviours.CompProperties_DigPeriodically">
+							<customThingToDig>
+							</customThingToDig>
+							<customAmountToDig>
+							</customAmountToDig>
+							<ticksToDig>80000</ticksToDig>
+							<onlyWhenTamed>true</onlyWhenTamed>
+							<digBiomeRocks>true</digBiomeRocks>
+							<digBiomeBricks>true</digBiomeBricks>
+							<customAmountToDigIfRocksOrBricks>40</customAmountToDigIfRocksOrBricks>
+						</li>
+						<li Class="VanillaIdeologyExpanded_Dryads.CompProperties_PawnMerge">
+							<requiredCount>3</requiredCount>
+							<podToBuild>VDE_StonediggerAwakeningCocoon</podToBuild>
+							<gizmoImage>Things/Building/UpgradeStonedigger</gizmoImage>
+							<gizmoLabel>VDE_Awaken</gizmoLabel>
+							<gizmoDesc>VDE_AwakenDesc</gizmoDesc>
+						</li>
+					</comps>
+					<race>
+						<body>QuadrupedAnimalWithPawsAndTail</body>
+						<baseBodySize>2.2</baseBodySize>
+						<baseHealthScale>1.2</baseHealthScale>
+						<hediffGiverSets Inherit="False"/>
+						<useMeatFrom>Dryad_Basic</useMeatFrom>
+						<giveNonToolUserBeatFireVerb>true</giveNonToolUserBeatFireVerb>
+						<useLeatherFrom>Dryad_Basic</useLeatherFrom>
+						<mateMtbHours>100000</mateMtbHours>
+						<trainability>None</trainability>
+						<lifeStageAges>
+							<li>
+								<def>AnimalAdult</def>
+								<minAge>0</minAge>
+								<soundWounded>Pawn_Dryad_Barkskin_Wounded</soundWounded>
+								<soundCall>Pawn_Dryad_Barkskin_Call</soundCall>
+							</li>
+						</lifeStageAges>
+						<soundMeleeHitPawn>Pawn_Melee_BigBash_HitPawn</soundMeleeHitPawn>
+						<soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
+						<soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
+					</race>
+					<tools>
+						<li>
+							<label>left claw</label>
+							<capacities>
+								<li>Scratch</li>
+							</capacities>
+							<power>8</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
+							<surpriseAttack>
+								<extraMeleeDamages>
+									<li>
+										<def>Stun</def>
+										<amount>14</amount>
+									</li>
+								</extraMeleeDamages>
+							</surpriseAttack>
+						</li>
+						<li>
+							<label>right claw</label>
+							<capacities>
+								<li>Scratch</li>
+							</capacities>
+							<power>8</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
+							<surpriseAttack>
+								<extraMeleeDamages>
+									<li>
+										<def>Stun</def>
+										<amount>14</amount>
+									</li>
+								</extraMeleeDamages>
+							</surpriseAttack>
+						</li>
+						<li>
+							<capacities>
+								<li>Bite</li>
+							</capacities>
+							<power>9</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+							<chanceFactor>0.9</chanceFactor>
+							<surpriseAttack>
+								<extraMeleeDamages>
+									<li>
+										<def>Stun</def>
+										<amount>14</amount>
+									</li>
+								</extraMeleeDamages>
+							</surpriseAttack>
+						</li>
+						<li>
+							<label>head</label>
+							<capacities>
+								<li>Blunt</li>
+							</capacities>
+							<power>4</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+							<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+							<chanceFactor>0.2</chanceFactor>
+						</li>
+					</tools>
+				</ThingDef>
+			<!-- NECTARMAKER -->
+				<ThingDef ParentName="DryadBase">
+					<defName>DVE_GreaterDryad_Nectarmaker</defName>
+					<label>greater nectarmaker dryad</label>
+					<description>A curious dryad caste specialized in ambrosia production. Its enhancement has accelerated the ambrosia production.\n\nGreater dryads are more capable than their smaller kin but most gauranlen trees lack the power to support them.</description>
+					<statBases>
+						<MoveSpeed>3</MoveSpeed>
+						<MarketValue>300</MarketValue>
+						<ComfyTemperatureMin>-50</ComfyTemperatureMin>
+						<ComfyTemperatureMax>50</ComfyTemperatureMax>
+						<FilthRate>0</FilthRate>
+						<PlantWorkSpeed>0.4</PlantWorkSpeed>
+					</statBases>
+					<comps>
+						<li Class="CompProperties_Spawner">
+							<thingToSpawn>Ambrosia</thingToSpawn>
+							<spawnCount>10</spawnCount>
+							<spawnIntervalRange>120000</spawnIntervalRange>
+							<writeTimeLeftToSpawn>true</writeTimeLeftToSpawn>
+							<showMessageIfOwned>true</showMessageIfOwned>
+						</li>
+						<!-- <li Class="AnimalBehaviours.CompProperties_DieAndChangeIntoOtherDef">
+							<needsDiggableTerrain>true</needsDiggableTerrain>
+							<gizmoImage>Things/Building/AmbrosiaPalm/AmbrosiaPalmA</gizmoImage>
+							<gizmoLabel>VDE_TurnIntoPalm</gizmoLabel>
+							<gizmoDesc>VDE_TurnIntoPalmDesc</gizmoDesc>
+							<defToChangeTo>VDE_AmbrosiaPalm</defToChangeTo>
+						</li> -->
+					</comps>
+					<race>
+						<body>QuadrupedAnimalWithPawsAndTail</body>
+						<baseBodySize>1.2</baseBodySize>
+						<baseHealthScale>1.2</baseHealthScale>
+						<hediffGiverSets Inherit="False"/>
+						<useMeatFrom>Dryad_Basic</useMeatFrom>
+						<giveNonToolUserBeatFireVerb>true</giveNonToolUserBeatFireVerb>
+						<useLeatherFrom>Dryad_Basic</useLeatherFrom>
+						<mateMtbHours>100000</mateMtbHours>
+						<trainability>None</trainability>
+						<lifeStageAges>
+							<li>
+								<def>AnimalAdult</def>
+								<minAge>0</minAge>
+								<soundWounded>Pawn_Dryad_Barkskin_Wounded</soundWounded>
+								<soundCall>Pawn_Dryad_Barkskin_Call</soundCall>
+							</li>
+						</lifeStageAges>
+						<soundMeleeHitPawn>Pawn_Melee_BigBash_HitPawn</soundMeleeHitPawn>
+						<soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
+						<soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
+					</race>
+					<tools>
+						<li>
+							<label>left claw</label>
+							<capacities>
+								<li>Scratch</li>
+							</capacities>
+							<power>8</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
+							<surpriseAttack>
+								<extraMeleeDamages>
+									<li>
+										<def>Stun</def>
+										<amount>14</amount>
+									</li>
+								</extraMeleeDamages>
+							</surpriseAttack>
+						</li>
+						<li>
+							<label>right claw</label>
+							<capacities>
+								<li>Scratch</li>
+							</capacities>
+							<power>8</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
+							<surpriseAttack>
+								<extraMeleeDamages>
+									<li>
+										<def>Stun</def>
+										<amount>14</amount>
+									</li>
+								</extraMeleeDamages>
+							</surpriseAttack>
+						</li>
+						<li>
+							<capacities>
+								<li>Bite</li>
+							</capacities>
+							<power>9</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+							<chanceFactor>0.9</chanceFactor>
+							<surpriseAttack>
+								<extraMeleeDamages>
+									<li>
+										<def>Stun</def>
+										<amount>14</amount>
+									</li>
+								</extraMeleeDamages>
+							</surpriseAttack>
+						</li>
+						<li>
+							<label>head</label>
+							<capacities>
+								<li>Blunt</li>
+							</capacities>
+							<power>4</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+							<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+							<chanceFactor>0.2</chanceFactor>
+						</li>
+					</tools>
+				</ThingDef>
+			<!-- SPITTER -->
+				<ThingDef ParentName="DryadBase">
+					<defName>DVE_GreaterDryad_Spitter</defName>
+					<label>greater spitter dryad</label>
+					<description>A dryad caste specialized in territorialism and can launch ranged acid projectiles. Its enhancement has improved their range and adds large acid reservoirs that explode when the dryad dies.\n\nGreater dryads are more capable than their smaller kin but most gauranlen trees lack the power to support them.</description>
+					<statBases>
+						<MoveSpeed>4</MoveSpeed>
+						<MarketValue>300</MarketValue>
+						<ComfyTemperatureMin>-50</ComfyTemperatureMin>
+						<ComfyTemperatureMax>50</ComfyTemperatureMax>
+						<FilthRate>0</FilthRate>
+					</statBases>
+					<comps>
+						<!-- <li Class="AnimalBehaviours.CompProperties_Draftable">
+							<makeNonFleeingToo>true</makeNonFleeingToo>
+						</li> -->
+						<li Class="VanillaIdeologyExpanded_Dryads.CompProperties_PawnMerge">
+							<requiredCount>3</requiredCount>
+							<podToBuild>VDE_SpitterAwakeningCocoon</podToBuild>
+							<gizmoImage>Things/Building/UpgradeSpitter</gizmoImage>
+							<gizmoLabel>VDE_Awaken</gizmoLabel>
+							<gizmoDesc>VDE_AwakenDesc</gizmoDesc>
+						</li>
+					</comps>
+					<verbs>
+						<li>
+							<verbClass>Verb_Shoot</verbClass>
+							<accuracyTouch>1</accuracyTouch>
+							<accuracyShort>.8</accuracyShort>
+							<accuracyMedium>.75</accuracyMedium>
+							<accuracyLong>.5</accuracyLong>
+							<hasStandardCommand>true</hasStandardCommand>
+							<defaultProjectile>VDE_AcidBolt</defaultProjectile>
+							<warmupTime>2</warmupTime>
+							<burstShotCount>1</burstShotCount>
+							<minRange>2</minRange>
+							<range>24.9</range>
+							<soundCast>VDE_AcidBolt</soundCast>
+							<muzzleFlashScale>0</muzzleFlashScale>
+							<label>acidic spit</label>
+							<commonality>.8</commonality>
+						</li>
+					</verbs>
+					<race>
+						<deathAction>
+							<workerClass>VanillaIdeologyExpanded_Dryads.DeathActionWorker_AcidExplosion</workerClass>
+						</deathAction>
+						<executionRange>3</executionRange>
+						<body>QuadrupedAnimalWithPawsAndTail</body>
+						<baseBodySize>1.6</baseBodySize>
+						<baseHealthScale>1.4</baseHealthScale>
+						<hediffGiverSets Inherit="False"/>
+						<useMeatFrom>Dryad_Basic</useMeatFrom>
+						<giveNonToolUserBeatFireVerb>true</giveNonToolUserBeatFireVerb>
+						<useLeatherFrom>Dryad_Basic</useLeatherFrom>
+						<mateMtbHours>100000</mateMtbHours>
+						<trainability>Advanced</trainability>
+						<lifeStageAges>
+							<li>
+								<def>AnimalAdult</def>
+								<minAge>0</minAge>
+								<soundWounded>Pawn_Dryad_Barkskin_Wounded</soundWounded>
+								<soundCall>Pawn_Dryad_Barkskin_Call</soundCall>
+							</li>
+						</lifeStageAges>
+						<soundMeleeHitPawn>Pawn_Melee_BigBash_HitPawn</soundMeleeHitPawn>
+						<soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
+						<soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
+					</race>
+					<tools>
+						<li>
+							<label>left claw</label>
+							<capacities>
+								<li>Scratch</li>
+							</capacities>
+							<power>8</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
+							<surpriseAttack>
+								<extraMeleeDamages>
+									<li>
+										<def>Stun</def>
+										<amount>14</amount>
+									</li>
+								</extraMeleeDamages>
+							</surpriseAttack>
+						</li>
+						<li>
+							<label>right claw</label>
+							<capacities>
+								<li>Scratch</li>
+							</capacities>
+							<power>8</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
+							<surpriseAttack>
+								<extraMeleeDamages>
+									<li>
+										<def>Stun</def>
+										<amount>14</amount>
+									</li>
+								</extraMeleeDamages>
+							</surpriseAttack>
+						</li>
+						<li>
+							<capacities>
+								<li>Bite</li>
+							</capacities>
+							<power>9</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+							<chanceFactor>0.9</chanceFactor>
+							<surpriseAttack>
+								<extraMeleeDamages>
+									<li>
+										<def>Stun</def>
+										<amount>14</amount>
+									</li>
+								</extraMeleeDamages>
+							</surpriseAttack>
+						</li>
+						<li>
+							<label>head</label>
+							<capacities>
+								<li>Blunt</li>
+							</capacities>
+							<power>4</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+							<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+							<chanceFactor>0.2</chanceFactor>
+						</li>
+					</tools>
+				</ThingDef>
+			<!-- GAUBRICMAKER -->
+				<ThingDef ParentName="DryadBase">
+					<defName>DVE_GreaterDryad_Gaubricmaker</defName>
+					<label>greater gaubricmaker dryad</label>
+					<description>A caste of dryad which specializes in producing a unique shaggy, leather-like material. Its enhancement has accelerated the fabric production and lengthens the shagginess, making it quite adorable.\n\nGreater dryads are more capable than their smaller kin but most gauranlen trees lack the power to support them.</description>
+					<statBases>
+						<MoveSpeed>4</MoveSpeed>
+						<MarketValue>300</MarketValue>
+						<ComfyTemperatureMin>-50</ComfyTemperatureMin>
+						<ComfyTemperatureMax>50</ComfyTemperatureMax>
+					</statBases>
+					<comps>
+						<li Class="CompProperties_Spawner">
+							<thingToSpawn>VDE_Gaubric</thingToSpawn>
+							<spawnCount>45</spawnCount>
+							<spawnIntervalRange>300000</spawnIntervalRange>
+							<writeTimeLeftToSpawn>true</writeTimeLeftToSpawn>
+							<showMessageIfOwned>true</showMessageIfOwned>
+						</li>
+						<li Class="VanillaIdeologyExpanded_Dryads.CompProperties_PawnMerge">
+							<requiredCount>3</requiredCount>
+							<podToBuild>VDE_GaubricmakerAwakeningCocoon</podToBuild>
+							<gizmoImage>Things/Building/UpgradeGaubricmaker</gizmoImage>
+							<gizmoLabel>VDE_Awaken</gizmoLabel>
+							<gizmoDesc>VDE_AwakenDesc</gizmoDesc>
+						</li>
+					</comps>
+					<race>
+						<body>QuadrupedAnimalWithPawsAndTail</body>
+						<baseBodySize>1</baseBodySize>
+						<baseHealthScale>1</baseHealthScale>
+						<hediffGiverSets Inherit="False"/>
+						<useMeatFrom>Dryad_Basic</useMeatFrom>
+						<giveNonToolUserBeatFireVerb>true</giveNonToolUserBeatFireVerb>
+						<useLeatherFrom>Dryad_Basic</useLeatherFrom>
+						<mateMtbHours>100000</mateMtbHours>
+						<trainability>None</trainability>
+						<lifeStageAges>
+							<li>
+								<def>AnimalAdult</def>
+								<minAge>0</minAge>
+								<soundWounded>Pawn_Dryad_Barkskin_Wounded</soundWounded>
+								<soundCall>Pawn_Dryad_Barkskin_Call</soundCall>
+							</li>
+						</lifeStageAges>
+						<soundMeleeHitPawn>Pawn_Melee_BigBash_HitPawn</soundMeleeHitPawn>
+						<soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
+						<soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
+					</race>
+					<tools>
+						<li>
+							<label>left claw</label>
+							<capacities>
+								<li>Scratch</li>
+							</capacities>
+							<power>8</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
+							<surpriseAttack>
+								<extraMeleeDamages>
+									<li>
+										<def>Stun</def>
+										<amount>14</amount>
+									</li>
+								</extraMeleeDamages>
+							</surpriseAttack>
+						</li>
+						<li>
+							<label>right claw</label>
+							<capacities>
+								<li>Scratch</li>
+							</capacities>
+							<power>8</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
+							<surpriseAttack>
+								<extraMeleeDamages>
+									<li>
+										<def>Stun</def>
+										<amount>14</amount>
+									</li>
+								</extraMeleeDamages>
+							</surpriseAttack>
+						</li>
+						<li>
+							<capacities>
+								<li>Bite</li>
+							</capacities>
+							<power>9</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+							<chanceFactor>0.9</chanceFactor>
+							<surpriseAttack>
+								<extraMeleeDamages>
+									<li>
+										<def>Stun</def>
+										<amount>14</amount>
+									</li>
+								</extraMeleeDamages>
+							</surpriseAttack>
+						</li>
+						<li>
+							<label>head</label>
+							<capacities>
+								<li>Blunt</li>
+							</capacities>
+							<power>4</power>
+							<cooldownTime>2</cooldownTime>
+							<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+							<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+							<chanceFactor>0.2</chanceFactor>
+						</li>
+					</tools>
+				</ThingDef>
+		<!-- PAWNKIND DEFS -->
+			<!-- CLAWER -->
+				<PawnKindDef ParentName="AnimalKindBase">
+					<defName>DVE_GreaterDryad_Clawer</defName>
+					<label>greater clawer dryad</label>
+					<race>DVE_GreaterDryad_Clawer</race>
+					<combatPower>40</combatPower>
+					<canArriveManhunter>false</canArriveManhunter>
+					<ecoSystemWeight>1.1</ecoSystemWeight>
+					<lifeStages>
+						<li>
+							<bodyGraphicData>
+								<texPath>Things/Pawn/Animal/DryadAwakenedClawer/DryadAwakenedClawer</texPath>
+								<drawSize>3</drawSize>
+								<shadowData>
+									<volume>(0.8, 0.6, 0.6)</volume>
+									<offset>(0,0,-0.3)</offset>
+								</shadowData>
+							</bodyGraphicData>
+							<dessicatedBodyGraphicData>
+								<texPath>Things/Pawn/Animal/DryadAwakenedClawer/Dessicated_DryadAwakenedClawer</texPath>
+								<drawSize>3</drawSize>
+							</dessicatedBodyGraphicData>
+						</li>
+					</lifeStages>
+				</PawnKindDef>
+			<!-- BARKSKIN -->
+				<PawnKindDef ParentName="AnimalKindBase">
+					<defName>DVE_GreaterDryad_Barkskin</defName>
+					<label>greater barkskin dryad</label>
+					<race>DVE_GreaterDryad_Barkskin</race>
+					<canArriveManhunter>false</canArriveManhunter>
+					<combatPower>40</combatPower>
+					<ecoSystemWeight>1.1</ecoSystemWeight>
+					<lifeStages>
+						<li>
+							<bodyGraphicData>
+								<texPath>Things/Pawn/Animal/DryadAwakenedBarkskin/DryadAwakenedBarkskin</texPath>
+								<drawSize>3</drawSize>
+								<shadowData>
+									<volume>(0.8, 0.6, 0.6)</volume>
+									<offset>(0,0,-0.3)</offset>
+								</shadowData>
+							</bodyGraphicData>
+							<dessicatedBodyGraphicData>
+								<texPath>Things/Pawn/Animal/DryadAwakenedBarkskin/Dessicated_DryadAwakenedBarkskin</texPath>
+								<drawSize>3</drawSize>
+							</dessicatedBodyGraphicData>
+						</li>
+					</lifeStages>
+				</PawnKindDef>
+			<!-- WOODMAKER -->
+				<PawnKindDef ParentName="AnimalKindBase">
+					<defName>DVE_GreaterDryad_Woodmaker</defName>
+					<label>greater woodmaker dryad</label>
+					<race>DVE_GreaterDryad_Woodmaker</race>
+					<canArriveManhunter>false</canArriveManhunter>
+					<combatPower>40</combatPower>
+					<ecoSystemWeight>1.1</ecoSystemWeight>
+					<lifeStages>
+						<li>
+							<bodyGraphicData>
+								<texPath>Things/Pawn/Animal/DryadAwakenedWoodmaker/DryadAwakenedWoodmaker</texPath>
+								<drawSize>4</drawSize>
+								<shadowData>
+									<volume>(0.8, 0.6, 0.6)</volume>
+									<offset>(0,0,-0.3)</offset>
+								</shadowData>
+							</bodyGraphicData>
+							<dessicatedBodyGraphicData>
+								<texPath>Things/Pawn/Animal/DryadAwakenedWoodmaker/Dessicated_DryadAwakenedWoodmaker</texPath>
+								<drawSize>4</drawSize>
+							</dessicatedBodyGraphicData>
+						</li>
+					</lifeStages>
+				</PawnKindDef>
+			<!-- MEDICINEMAKER -->
+				<PawnKindDef ParentName="AnimalKindBase">
+					<defName>DVE_GreaterDryad_Medicinemaker</defName>
+					<label>greater medicinemaker dryad</label>
+					<race>DVE_GreaterDryad_Medicinemaker</race>
+					<canArriveManhunter>false</canArriveManhunter>
+					<combatPower>40</combatPower>
+					<ecoSystemWeight>1.1</ecoSystemWeight>
+					<lifeStages>
+						<li>
+							<bodyGraphicData>
+								<texPath>Things/Pawn/Animal/DryadAwakenedMedicinemaker/DryadAwakenedMedicinemaker</texPath>
+								<drawSize>2</drawSize>
+								<shadowData>
+									<volume>(0.8, 0.6, 0.6)</volume>
+									<offset>(0,0,-0.3)</offset>
+								</shadowData>
+							</bodyGraphicData>
+							<dessicatedBodyGraphicData>
+								<texPath>Things/Pawn/Animal/DryadAwakenedMedicinemaker/Dessicated_DryadAwakenedMedicinemaker</texPath>
+								<drawSize>2</drawSize>
+							</dessicatedBodyGraphicData>
+						</li>
+					</lifeStages>
+				</PawnKindDef>
+			<!-- BERRYMAKER -->
+				<PawnKindDef ParentName="AnimalKindBase">
+					<defName>DVE_GreaterDryad_Berrymaker</defName>
+					<label>greater berrymaker dryad</label>
+					<race>DVE_GreaterDryad_Berrymaker</race>
+					<canArriveManhunter>false</canArriveManhunter>
+					<combatPower>40</combatPower>
+					<ecoSystemWeight>1.1</ecoSystemWeight>
+					<lifeStages>
+						<li>
+							<bodyGraphicData>
+								<texPath>Things/Pawn/Animal/DryadAwakenedBerrymaker/DryadAwakenedBerrymaker</texPath>
+								<drawSize>2.5</drawSize>
+								<shadowData>
+									<volume>(0.8, 0.6, 0.6)</volume>
+									<offset>(0,0,-0.3)</offset>
+								</shadowData>
+							</bodyGraphicData>
+							<dessicatedBodyGraphicData>
+								<texPath>Things/Pawn/Animal/DryadAwakenedBerrymaker/Dessicated_DryadAwakenedBerrymaker</texPath>
+								<drawSize>2.5</drawSize>
+							</dessicatedBodyGraphicData>
+						</li>
+					</lifeStages>
+				</PawnKindDef>
+			<!-- STONEDIGGER -->
+				<PawnKindDef ParentName="AnimalKindBase">
+					<defName>DVE_GreaterDryad_Stonedigger</defName>
+					<label>greater stonedigger dryad</label>
+					<race>DVE_GreaterDryad_Stonedigger</race>
+					<canArriveManhunter>false</canArriveManhunter>
+					<combatPower>40</combatPower>
+					<ecoSystemWeight>1.1</ecoSystemWeight>
+					<lifeStages>
+						<li>
+							<bodyGraphicData>
+								<texPath>Things/Pawn/Animal/DryadAwakenedStonedigger/DryadAwakenedStonedigger</texPath>
+								<drawSize>3</drawSize>
+								<shadowData>
+									<volume>(0.8, 0.6, 0.6)</volume>
+									<offset>(0,0,-0.3)</offset>
+								</shadowData>
+							</bodyGraphicData>
+							<dessicatedBodyGraphicData>
+								<texPath>Things/Pawn/Animal/DryadAwakenedStonedigger/Dessicated_DryadAwakenedStonedigger</texPath>
+								<drawSize>3</drawSize>
+							</dessicatedBodyGraphicData>
+						</li>
+					</lifeStages>
+				</PawnKindDef>
+			<!-- NECTARMAKER -->
+				<PawnKindDef ParentName="AnimalKindBase">
+					<defName>DVE_GreaterDryad_Nectarmaker</defName>
+					<label>greater nectarmaker dryad</label>
+					<race>DVE_GreaterDryad_Nectarmaker</race>
+					<combatPower>40</combatPower>
+					<canArriveManhunter>false</canArriveManhunter>
+					<ecoSystemWeight>1.1</ecoSystemWeight>
+					<lifeStages>
+						<li>
+							<bodyGraphicData>
+								<texPath>Things/Pawn/Animal/DryadAwakenedNectarmaker/DryadAwakenedNectarmaker</texPath>
+								<drawSize>2.3</drawSize>
+								<shadowData>
+									<volume>(0.8, 0.6, 0.6)</volume>
+									<offset>(0,0,-0.3)</offset>
+								</shadowData>
+							</bodyGraphicData>
+							<dessicatedBodyGraphicData>
+								<texPath>Things/Pawn/Animal/DryadAwakenedNectarmaker/Dessicated_DryadAwakenedNectarmaker</texPath>
+								<drawSize>2.3</drawSize>
+							</dessicatedBodyGraphicData>
+						</li>
+					</lifeStages>
+				</PawnKindDef>
+			<!-- SPITTER -->
+				<PawnKindDef ParentName="AnimalKindBase">
+					<defName>DVE_GreaterDryad_Spitter</defName>
+					<label>greater spitter dryad</label>
+					<race>DVE_GreaterDryad_Spitter</race>
+					<combatPower>40</combatPower>
+					<canArriveManhunter>false</canArriveManhunter>
+					<ecoSystemWeight>1.1</ecoSystemWeight>
+					<lifeStages>
+						<li>
+							<bodyGraphicData>
+								<texPath>Things/Pawn/Animal/DryadAwakenedSpitter/DryadAwakenedSpitter</texPath>
+								<drawSize>2.2</drawSize>
+								<shadowData>
+									<volume>(0.8, 0.6, 0.6)</volume>
+									<offset>(0,0,-0.3)</offset>
+								</shadowData>
+							</bodyGraphicData>
+							<dessicatedBodyGraphicData>
+								<texPath>Things/Pawn/Animal/DryadAwakenedSpitter/Dessicated_DryadAwakenedSpitter</texPath>
+								<drawSize>2.2</drawSize>
+							</dessicatedBodyGraphicData>
+						</li>
+					</lifeStages>
+				</PawnKindDef>
+			<!-- GAUBRICMAKER -->
+				<PawnKindDef ParentName="AnimalKindBase">
+					<defName>DVE_GreaterDryad_Gaubricmaker</defName>
+					<label>greater gaubricmaker dryad</label>
+					<race>DVE_GreaterDryad_Gaubricmaker</race>
+					<canArriveManhunter>false</canArriveManhunter>
+					<combatPower>40</combatPower>
+					<ecoSystemWeight>1.1</ecoSystemWeight>
+					<lifeStages>
+						<li>
+							<bodyGraphicData>
+								<texPath>Things/Pawn/Animal/DryadAwakenedGaubricmaker/DryadAwakenedGaubricmaker</texPath>
+								<drawSize>2</drawSize>
+								<shadowData>
+									<volume>(0.8, 0.6, 0.6)</volume>
+									<offset>(0,0,-0.3)</offset>
+								</shadowData>
+							</bodyGraphicData>
+							<dessicatedBodyGraphicData>
+								<texPath>Things/Pawn/Animal/DryadAwakenedGaubricmaker/Dessicated_DryadAwakenedGaubricmaker</texPath>
+								<drawSize>2</drawSize>
+							</dessicatedBodyGraphicData>
+						</li>
+					</lifeStages>
+				</PawnKindDef>
+		<!-- DRYAD LINK DEFS -->
+			<!-- CLAWER -->
+				<Dryad.DryadGreaterLink>
+					<defName>DVE_GreaterDryad_Clawer</defName>
+					<dryad>Dryad_Clawer</dryad>
+					<greaterDryad>DVE_GreaterDryad_Clawer</greaterDryad>
+					<cost>2</cost> <!--How many regular dryads this counts as-->
+				</Dryad.DryadGreaterLink>
+			<!-- BARKSKIN -->
+				<Dryad.DryadGreaterLink>
+					<defName>DVE_GreaterDryad_Barkskin</defName>
+					<dryad>Dryad_Barkskin</dryad>
+					<greaterDryad>DVE_GreaterDryad_Barkskin</greaterDryad>
+					<cost>2</cost>
+				</Dryad.DryadGreaterLink>
+			<!-- WOODMAKER -->
+				<Dryad.DryadGreaterLink>
+					<defName>DVE_GreaterDryad_Woodmaker</defName>
+					<dryad>Dryad_Woodmaker</dryad>
+					<greaterDryad>DVE_GreaterDryad_Woodmaker</greaterDryad>
+					<cost>2</cost>
+				</Dryad.DryadGreaterLink>
+			<!-- MEDICINEMAKER -->
+				<Dryad.DryadGreaterLink>
+					<defName>DVE_GreaterDryad_Medicinemaker</defName>
+					<dryad>Dryad_Medicinemaker</dryad>
+					<greaterDryad>DVE_GreaterDryad_Medicinemaker</greaterDryad>
+					<cost>2</cost>
+				</Dryad.DryadGreaterLink>
+			<!-- BERRYMAKER -->
+				<Dryad.DryadGreaterLink>
+					<defName>DVE_GreaterDryad_Berrymaker</defName>
+					<dryad>Dryad_Berrymaker</dryad>
+					<greaterDryad>DVE_GreaterDryad_Berrymaker</greaterDryad>
+					<cost>2</cost>
+				</Dryad.DryadGreaterLink>
+			<!-- NECTARMAKER -->
+				<Dryad.DryadGreaterLink>
+					<defName>DVE_GreaterDryad_Nectarmaker</defName>
+					<dryad>VDE_Dryad_Nectarmaker</dryad>
+					<greaterDryad>DVE_GreaterDryad_Nectarmaker</greaterDryad>
+					<cost>2</cost>
+				</Dryad.DryadGreaterLink>
+			<!-- SPITTER -->
+				<Dryad.DryadGreaterLink>
+					<defName>DVE_GreaterDryad_Spitter</defName>
+					<dryad>VDE_Dryad_Spitter</dryad>
+					<greaterDryad>DVE_GreaterDryad_Spitter</greaterDryad>
+					<cost>2</cost>
+				</Dryad.DryadGreaterLink>
+			<!-- GAUBRICMAKER -->
+				<Dryad.DryadGreaterLink>
+					<defName>DVE_GreaterDryad_Gaubricmaker</defName>
+					<dryad>VDE_Dryad_Gaubricmaker</dryad>
+					<greaterDryad>DVE_GreaterDryad_Gaubricmaker</greaterDryad>
+					<cost>2</cost>
+				</Dryad.DryadGreaterLink>
+			<!-- STONEDIGGER -->
+				<Dryad.DryadGreaterLink>
+					<defName>DVE_GreaterDryad_Stonedigger</defName>
+					<dryad>VDE_Dryad_Stonedigger</dryad>
+					<greaterDryad>DVE_GreaterDryad_Stonedigger</greaterDryad>
+					<cost>2</cost>
+				</Dryad.DryadGreaterLink>
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+</Defs>

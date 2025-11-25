@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>RimWriter - Books, Scrolls, Tablets, and Libraries</li>
+		  <li>RimWriter - Books, Scrolls, Tablets, and Libraries (Continued)</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<operations>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ResearchProjectDef[defName="RimWriter_TechPrimitiveWriting"]</xpath>
+				<value>
+					<prerequisites>
+					  <li>TS_Crafting</li>
+					</prerequisites>	
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ResearchProjectDef[defName="RimWriter_TechPrimitiveWriting"]/prerequisites</xpath>
+				<value>
+					<li>MedTimes_Toolworking</li>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ResearchProjectDef[defName="RimWriter_TechBookshelves"]/prerequisites</xpath>
+				<value>
+					<prerequisites>
+					  <li>RimWriter_TechPrimitiveWriting</li>
+					  <li>MedTimes_BasicFurniture</li>
+					</prerequisites>
+				</value>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/ResearchProjectDef[defName="RimWriter_TechHandWriting"]</xpath>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ResearchProjectDef[defName="RimWriter_TechTypewriting"]/prerequisites</xpath>
+				<value>
+					<prerequisites>
+					  <li>MedTimes_Paperwork</li>
+					  <li>MedTimes_Mechanization</li>
+					</prerequisites>
+				</value>
+			</li>
+		</operations>
+	</match>
+  </Operation>
+	
+	
+</Patch>

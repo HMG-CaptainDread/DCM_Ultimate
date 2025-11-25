@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- CRAFTABLE CATALYSTS -->
+		<!-- SENTIENCE ITEM -->
+			<Operation Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName="SentienceCatalyst"]/comps/li[@Class="CompProperties_Targetable_SingleAnimal"]</xpath>
+				<value>
+				<li Class="CompProperties_Targetable_SingleAnimal">
+					<compClass>CompTargetable_SingleAnimal</compClass>
+				</li>
+				</value>
+			</Operation>
+			<Operation Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName="SentienceCatalyst"]/comps/li[@Class="CompProperties_TargetEffectInstallImplantInOtherPawn"]</xpath>
+				<value>
+				<li Class="CompProperties_TargetEffectInstallImplantInOtherPawn">
+					<hediffDef>SentienceCatalyst</hediffDef>
+					<canUpgrade>true</canUpgrade>
+					<bodyPart>Brain</bodyPart>
+					<soundOnUsed>MechSerumUsed</soundOnUsed>
+				</li>
+				</value>
+			</Operation>
+		<!-- NO MULTIPLE -->
+			<Operation Class="PatchOperationConditional" >
+				<xpath>/Defs/ThingDef[defName="SentienceCatalyst"]/recipeMaker</xpath>
+				<success>Always</success>
+				<match Class="PatchOperationRemove">
+				<xpath>/Defs/ThingDef[defName="SentienceCatalyst"]/recipeMaker</xpath>
+				</match>
+			</Operation>
+		<!--  -->
+			<Operation Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName="SentienceCatalyst"]</xpath>
+				<value>
+				<recipeMaker>
+					<researchPrerequisite>BS_SentientAnimalsResearch</researchPrerequisite>
+					<recipeUsers>
+					<li>DrugLab</li>
+					<li>TableMachining</li>
+					</recipeUsers>
+					<soundWorking>Recipe_Drug</soundWorking>
+					<skillRequirements>
+					<Intellectual>6</Intellectual>
+					</skillRequirements>
+					<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+				</recipeMaker>
+				</value>
+			</Operation>
+		<!--  -->
+			<Operation Class="PatchOperationConditional" >
+				<xpath>/Defs/ThingDef[defName="SentienceCatalyst"]/costList</xpath>
+				<success>Always</success>
+				<match Class="PatchOperationRemove">
+				<xpath>/Defs/ThingDef[defName="SentienceCatalyst"]/costList</xpath>
+				</match>
+			</Operation>
+		<!--  -->
+			<Operation Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName="SentienceCatalyst"]</xpath>
+				<value>
+				<costList>
+					<Neutroamine>2</Neutroamine>
+					<MedicineUltratech>2</MedicineUltratech>
+					<ComponentSpacer>1</ComponentSpacer>
+				</costList>
+				</value>
+			</Operation>
+</Patch>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>VGP Garden Gourmet</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[defName = "BakeMeatPie" or defName = "Bakemuffin" or defName = "BakeCornbread" or defName = "Bakepolenta"
+									or defName = "BakeCookies" or defName = "Bakepizza" or defName = "Bakesweetroll" or defName = "BakeBread"]</xpath>		
+				<value>
+					<researchPrerequisite>MedTimes_BasicCooking</researchPrerequisite>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[defName = "DryFruit"]</xpath>		
+				<value>
+					<researchPrerequisite>MedTimes_DriedFood</researchPrerequisite>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/RecipeDef[defName = "DryFruit"]/recipeUsers</xpath>		
+				<value>      
+					<recipeUsers>
+						<li>MedTimes_StoneHearth</li>
+						<li>MedTimes_Firepit</li>			
+						<li>Campfire</li>	  
+					</recipeUsers>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[defName = "CraftFlour" or defName = "CraftBulkFlour" or defName = "CraftCornmeal" or defName = "CraftBulkCornMeal"
+									or defName = "GroundSugar" or defName = "CraftBulkSugar"]</xpath>		
+				<value>
+					<researchPrerequisite>MedTimes_BasicCooking</researchPrerequisite>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[defName = "GrillKabob" or defName = "Grillsteak" or defName = "GrillVegetables"]</xpath>		
+				<value>
+					<researchPrerequisite>TS_PrimitiveCooking</researchPrerequisite>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[defName = "GrillKabob" or defName = "Grillsteak" or defName = "GrillVegetables"]/recipeUsers</xpath>		
+				<value>
+					<li>MedTimes_FoodPrepStation</li>
+					<li>MedTimes_Firepit</li>		
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[defName = "CookGrillcheese" or defName = "GrillPolenta" or defName = "Cookgrilledsandwich"
+									or defName = "CookTacos" or defName = "CookPorridge"]</xpath>		
+				<value>
+					<researchPrerequisite>MedTimes_Cooking</researchPrerequisite>	
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[defName = "CookGrillcheese" or defName = "GrillPolenta" or defName = "Cookgrilledsandwich"
+									or defName = "CookTacos" or defName = "CookPorridge"]/recipeUsers</xpath>		
+				<value>
+					<li>MedTimes_FoodPrepStation</li>
+					<li>MedTimes_Firepit</li>		
+				</value>
+			</li>
+			
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/RecipeDef[defName = "Makesoycheese" or defName = "MakeBulksoycheese"]</xpath>		
+			</li>
+			
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[defName = "Makesoymilk" or defName = "MakesoymilkBulk" or defName = "Maketofu" or defName = "Makebulktofu"
+									or defName = "MakePolenta" or defName = "MakebulkPolenta" or defName = "PickleVegetable" or defName = "BulkPickleVegetable"]</xpath>		
+				<value>
+					<researchPrerequisite>MedTimes_Cooking</researchPrerequisite>			
+				</value>
+			</li>
+			
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[defName = "VG_VeganEgg" or defName = "VG_VeganEggBulk"]</xpath>		
+				<value>
+					<researchPrerequisite>MedTimes_Cooking</researchPrerequisite>			
+				</value>
+			</li>
+			
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[defName = "SaltMeat" or defName = "BulkSaltMeat"]</xpath>		
+				<value>
+					<researchPrerequisite>MedTimes_Cooking</researchPrerequisite>			
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[defName = "SaltMeat" or defName = "BulkSaltMeat"]/fixedIngredientFilter/disallowedThingDefs</xpath>		
+				<value>
+					<li>MedTimes_MealJerkedMeats</li>		
+				</value>
+			</li>
+			
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[@Name = "DriedMeatRecipe"]/fixedIngredientFilter/disallowedThingDefs</xpath>		
+				<value>
+					<li>SaltedMeat</li>		
+				</value>
+			</li>	
+
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[defName = "CookMakiRoll" or defName = "Make_Nigiri"]</xpath>		
+				<value>
+					<researchPrerequisite>MedTimes_Cooking</researchPrerequisite>			
+				</value>
+			</li>	
+			
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[defName = "MakeHardcandy" or defName = "MakeCaramel" or defName = "MakeTaffy"]</xpath>		
+				<value>
+					<researchPrerequisite>MedTimes_BasicCooking</researchPrerequisite>			
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[defName = "MakeIcecream" or defName = "MakeYogurt" or defName = "MakeSmoothie"]</xpath>		
+				<value>
+					<researchPrerequisite>MedTimes_Cooking</researchPrerequisite>			
+				</value>
+			</li>
+		</operations>
+	</match>
+  </Operation>
+    
+</Patch>

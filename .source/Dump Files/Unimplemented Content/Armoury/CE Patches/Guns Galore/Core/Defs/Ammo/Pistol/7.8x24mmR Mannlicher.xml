@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo78x24mmR_Mannlicher</defName>
+		<label>7.8x24mmR Mannlicher</label>
+		<parent>AmmoPistols</parent>
+		<iconPath>UI/Icons/ThingCategories/CaliberPistol</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>AmmoSet_78x24mmR_Mannlicher</defName>
+		<label>7.8x24mmR Mannlicher</label>
+		<ammoTypes>
+			<Ammo_78x24mmR_Mannlicher_FMJ>Bullet_78x24mmR_Mannlicher_FMJ</Ammo_78x24mmR_Mannlicher_FMJ>
+			<Ammo_78x24mmR_Mannlicher_AP>Bullet_78x24mmR_Mannlicher_AP</Ammo_78x24mmR_Mannlicher_AP>
+			<Ammo_78x24mmR_Mannlicher_HP>Bullet_78x24mmR_Mannlicher_HP</Ammo_78x24mmR_Mannlicher_HP>			
+		</ammoTypes>
+		<similarTo>AmmoSet_Pistol</similarTo>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="78x24mmR_MannlicherBase" ParentName="SmallAmmoBase" Abstract="True" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<description>Old experimental cartridge designed for semi-auto pistols.</description>
+		<statBases>
+			<Mass>0.012</Mass>
+			<Bulk>0.01</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo78x24mmR_Mannlicher</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="78x24mmR_MannlicherBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>Ammo_78x24mmR_Mannlicher_FMJ</defName>
+		<label>7.8x24mmR Mannlicher cartridge (FMJ)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/FMJ</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.05</MarketValue>
+		</statBases>
+		<ammoClass>FullMetalJacket</ammoClass>
+		<cookOffProjectile>Bullet_78x24mmR_Mannlicher_FMJ</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="78x24mmR_MannlicherBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>Ammo_78x24mmR_Mannlicher_AP</defName>
+		<label>7.8x24mmR Mannlicher cartridge (AP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/AP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.05</MarketValue>
+		</statBases>
+		<ammoClass>ArmorPiercing</ammoClass>
+		<cookOffProjectile>Bullet_78x24mmR_Mannlicher_AP</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="78x24mmR_MannlicherBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>Ammo_78x24mmR_Mannlicher_HP</defName>
+		<label>7.8x24mmR Mannlicher cartridge (HP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/HP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.05</MarketValue>
+		</statBases>
+		<ammoClass>HollowPoint</ammoClass>
+		<cookOffProjectile>Bullet_78x24mmR_Mannlicher_HP</cookOffProjectile>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="Base78x24mmR_MannlicherBullet" ParentName="BaseBulletCE" Abstract="true" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>49</speed>
+			<dropsCasings>true</dropsCasings>
+			<casingMoteDefname>Fleck_PistolAmmoCasings</casingMoteDefname>
+			<casingFilthDefname>Filth_PistolAmmoCasings</casingFilthDefname>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base78x24mmR_MannlicherBullet" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>Bullet_78x24mmR_Mannlicher_FMJ</defName>
+		<label>7.8x24mmR Mannlicher bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>8</damageAmountBase>
+			<armorPenetrationSharp>2</armorPenetrationSharp>
+			<armorPenetrationBlunt>4.24</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base78x24mmR_MannlicherBullet" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>Bullet_78x24mmR_Mannlicher_AP</defName>
+		<label>7.8x24mmR Mannlicher bullet (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>5</damageAmountBase>
+			<armorPenetrationSharp>4</armorPenetrationSharp>
+			<armorPenetrationBlunt>4.24</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base78x24mmR_MannlicherBullet" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>Bullet_78x24mmR_Mannlicher_HP</defName>
+		<label>7.8x24mmR Mannlicher bullet (HP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>10</damageAmountBase>
+			<armorPenetrationSharp>1</armorPenetrationSharp>
+			<armorPenetrationBlunt>4.24</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>MakeAmmo_78x24mmR_Mannlicher_FMJ</defName>
+		<label>make 7.8x24mmR Mannlicher cartridge x500</label>
+		<description>Craft 500 7.8x24mmR Mannlicher cartridges.</description>
+		<jobString>Making 7.8x24mmR Mannlicher cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>12</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_78x24mmR_Mannlicher_FMJ>500</Ammo_78x24mmR_Mannlicher_FMJ>
+		</products>
+		<workAmount>1200</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>MakeAmmo_78x24mmR_Mannlicher_AP</defName>
+		<label>make 7.8x24mmR Mannlicher (AP) cartridge x500</label>
+		<description>Craft 500 7.8x24mmR Mannlicher (AP) cartridges.</description>
+		<jobString>Making 7.8x24mmR Mannlicher (AP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>12</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_78x24mmR_Mannlicher_AP>500</Ammo_78x24mmR_Mannlicher_AP>
+		</products>
+		<workAmount>1440</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>MakeAmmo_78x24mmR_Mannlicher_HP</defName>
+		<label>make 7.8x24mmR Mannlicher (HP) cartridge x500</label>
+		<description>Craft 500 7.8x24mmR Mannlicher (HP) cartridges.</description>
+		<jobString>Making 7.8x24mmR Mannlicher (HP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>12</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_78x24mmR_Mannlicher_HP>500</Ammo_78x24mmR_Mannlicher_HP>
+		</products>
+		<workAmount>1200</workAmount>
+	</RecipeDef>
+
+</Defs>

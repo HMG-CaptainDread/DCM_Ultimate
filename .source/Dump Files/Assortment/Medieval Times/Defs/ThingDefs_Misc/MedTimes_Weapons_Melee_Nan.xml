@@ -1,0 +1,625 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+<!-- Start of thingDefs -->
+ <!-- ================== Melee Weapon Classes ================ --> 
+<!-- (Nanite Class) Makeable -->
+  <ThingDef Name="MedTimes_Melee_Nan" ParentName="MedTimes_Melee" Abstract="True">
+    <useHitPoints>False</useHitPoints>
+	<smeltable>False</smeltable>
+    <graphicData>
+      <shaderType>Transparent</shaderType>		  
+    </graphicData>	
+	<costList><MedTimes_NaniteVial>1</MedTimes_NaniteVial></costList>	
+    <statBases>	
+      <WorkToMake>1000</WorkToMake>	
+    </statBases>	
+    <equippedStatOffsets>
+      <MeleeHitChance>0.1</MeleeHitChance>  
+    </equippedStatOffsets>	
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Intellectual</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>MedTimes_UnfinishedNanite</unfinishedThingDef>	  
+      <recipeUsers>
+		<li>MedTimes_EternityForge</li>
+      </recipeUsers>
+		<skillRequirements>
+				<Intellectual>10</Intellectual>
+		</skillRequirements>	  
+	</recipeMaker>	
+    <tradeTags><li>MedTimes_NanGear</li></tradeTags>
+    <thingCategories><li>WeaponsMelee_Nan</li></thingCategories>		
+  </ThingDef>
+  
+
+<!-- ================== Handle Types ================ -->  
+<!-- Shaft Handle Class -->
+  <ThingDef Name="MedTimes_Melee_Nan_Shaft" ParentName="MedTimes_Melee_Nan" Abstract="True">
+    <tools>
+      <li>
+        <label>shaft</label>
+        <capacities>
+          <li>Blunt</li>
+          <li>Poke</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>2.1</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>  
+
+  <!-- Basic Handle Class -->
+  <ThingDef Name="MedTimes_Melee_Nan_Handle" ParentName="MedTimes_Melee_Nan" Abstract="True">
+    <tools>
+      <li>
+        <label>handle</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>10</power>
+        <cooldownTime>1.95</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>  
+ 
+
+<!-- ================== Blade Types ================ --> 
+<!-- Dagger Class -->
+  <ThingDef Name="MedTimes_Dagger_Nan" ParentName="MedTimes_Melee_Nan_Handle" Abstract="True">
+    <statBases>
+		<Mass>0.5</Mass>	
+    </statBases>
+    <tools>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>21.8</power>
+        <cooldownTime>1.6</cooldownTime>
+      </li>
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>19.4</power>
+        <cooldownTime>1.6</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+  
+<!-- Short Sword Class -->
+  <ThingDef Name="MedTimes_ShortSword_Nan" ParentName="MedTimes_Melee_Nan_Handle" Abstract="True">
+      <statBases>
+		<Mass>0.85</Mass>	
+    </statBases>
+    <tools>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>24.8</power>
+        <cooldownTime>1.95</cooldownTime>
+      </li>
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>25.5</power>
+        <cooldownTime>1.95</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+  
+<!-- One-Handed Blunt Class -->
+  <ThingDef Name="MedTimes_ShortHammer_Nan" ParentName="MedTimes_Melee_Nan_Handle" Abstract="True">
+      <statBases>
+		<Mass>1</Mass>	
+    </statBases>
+    <tools>
+      <li>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>26.4</power>
+        <cooldownTime>2.0</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+  
+<!-- Bastard Sword/Katana Class -->
+
+<!-- War Knife Class -->
+  <ThingDef Name="MedTimes_WarKnife_Nan" ParentName="MedTimes_Melee_Nan_Handle" Abstract="True">
+      <statBases>
+		<Mass>1.6</Mass>	
+    </statBases>
+    <tools>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>17.8</power>
+        <cooldownTime>2.3</cooldownTime>
+      </li>
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>35.7</power>
+        <cooldownTime>2.3</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef> 
+
+<!-- Two-Handed Sword Class -->
+  <ThingDef Name="MedTimes_LongSword_Nan" ParentName="MedTimes_Melee_Nan_Handle" Abstract="True">
+      <statBases>
+		<Mass>1.25</Mass>	
+    </statBases>
+    <tools>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>27.9</power>
+        <cooldownTime>2.5</cooldownTime>
+      </li>
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>35.7</power>
+        <cooldownTime>2.5</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef> 
+  
+<!-- Two-Handed Axe Class -->
+  <ThingDef Name="MedTimes_LongAxe_Nan" ParentName="MedTimes_Melee_Nan_Shaft" Abstract="True">
+    <statBases>
+		<Mass>2</Mass>	
+    </statBases>
+    <tools>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>24.8</power>
+        <cooldownTime>2.5</cooldownTime>
+      </li>	  
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>37.5</power>
+        <cooldownTime>2.5</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef> 
+  
+<!-- Two-Handed Hammer Class -->
+  <ThingDef Name="MedTimes_LongHammer_Nan" ParentName="MedTimes_Melee_Nan_Shaft" Abstract="True">
+      <statBases>
+		<Mass>2</Mass>	
+    </statBases>
+    <tools>
+      <li>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>38</power>
+        <cooldownTime>2.5</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+  
+<!-- Two-Handed Spear Class -->
+  <ThingDef Name="MedTimes_Spear_Nan" ParentName="MedTimes_Melee_Nan_Shaft" Abstract="True">
+    <statBases>
+		<Mass>2</Mass>		
+	</statBases>
+    <tools>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>35.6</power>
+        <cooldownTime>2.3</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+  
+ <!-- Two-Handed Spear Class -->
+  <ThingDef Name="MedTimes_Flail_Nan" ParentName="MedTimes_Melee_Nan_Handle" Abstract="True">
+    <statBases>
+		<Mass>1.5</Mass>		
+	</statBases>
+    <tools>
+      <li>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>35.6</power>
+        <cooldownTime>2.3</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef> 
+  
+<!-- Two-Handed PoleAxe Class -->
+  <ThingDef Name="MedTimes_PoleAxe_Nan" ParentName="MedTimes_Melee_Nan_Shaft" Abstract="True">
+      <statBases>
+		<Mass>2</Mass>	
+    </statBases>
+    <tools>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>30.6</power>
+        <cooldownTime>2.3</cooldownTime>
+      </li>
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>30.6</power>
+        <cooldownTime>2.3</cooldownTime>
+      </li>	  
+    </tools>
+  </ThingDef>
+
+
+
+
+ 
+<!-- =========================Tier 0 Melee Weapons ===================================== -->
+<!-- Primitive Spear -->  
+<ThingDef ParentName="MedTimes_Spear_Nan">
+    <defName>MedTimes_Melee_PrimativeSpear_Nan</defName>
+    <label>Primitive Spear (Nan)</label>
+    <description>(Nanite)(Stab)[MeleeHit: +10%] A large spear made of wood with a chiped stone head. This is as simple as it gets short of a sharpend stick.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_PrimativeSpear</texPath>	  
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_PrimativeSpear_Nan</uiIconPath>		
+    <equippedAngleOffset>-85</equippedAngleOffset>
+	<weaponTags>
+		<li MayRequire="Ludeon.RimWorld.Royalty">MedievalMeleeDecent</li>
+		<li>MedievalShields_ValidSidearm</li>
+	</weaponTags>
+	<costList><MedTimes_Melee_PrimativeSpear>1</MedTimes_Melee_PrimativeSpear></costList>
+</ThingDef>  
+
+ 
+<!-- =========================Tier 1 Melee Weapons ===================================== -->
+<!-- Forester's Axe -->
+<ThingDef ParentName="MedTimes_LongAxe_Nan">
+    <defName>MedTimes_Melee_AxeForester_Nan</defName>
+    <label>Forester's Axe (Nan)</label>
+    <description>(Nanite)(Cut)[MeleeHit: +10%] A standard axe used for forestry work. The blade is quite sharp, as such it is also useful in melee combat.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_ForesterAxe</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_ForesterAxe_Nan</uiIconPath>		
+    <equippedAngleOffset>-45</equippedAngleOffset>
+	<weaponTags>
+		<li MayRequire="Ludeon.RimWorld.Royalty">MedievalMeleeDecent</li>
+		<li>MedievalShields_ValidSidearm</li>
+	</weaponTags>
+	<costList><MedTimes_Melee_AxeForester>1</MedTimes_Melee_AxeForester></costList>
+</ThingDef>
+
+<!-- (Medieval) Boar Spear -->  
+<ThingDef ParentName="MedTimes_Spear_Nan">
+    <defName>MedTimes_Melee_BoarSpear_Nan</defName>
+    <label>Boar Spear (Nan)</label>
+    <description>(Nanite)(Stab)[MeleeHit: +10%] A Medieval Style Boar Spear tipped with a sharp metal point for stabbing opponents in melee combat and wings to prevent over-penetration. Not as powerful as a Gisarme, but easier to use for the layman.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_BoarSpear</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_BoarSpear_Nan</uiIconPath>		
+    <equippedAngleOffset>-45</equippedAngleOffset>
+	<weaponTags>
+		<li MayRequire="Ludeon.RimWorld.Royalty">MedievalMeleeDecent</li>
+		<li>MedievalShields_ValidSidearm</li>
+	</weaponTags>
+	<costList><MedTimes_Melee_BoarSpear>1</MedTimes_Melee_BoarSpear></costList>
+</ThingDef>
+  
+<!-- (Medieval) Gisarme -->
+<ThingDef ParentName="MedTimes_Spear_Nan">
+    <defName>MedTimes_Melee_Gisarme_Nan</defName>
+    <label>Gisarme (Nan)</label>
+    <description>(Nanite)(Stab)[MeleeHit: +10%] A combat focused pole-arm which can stab, slice or hook the opponent. The Gisarme came in a wide variety of shapes and sizes and traditionally wore many names. However, the general concept remains the same, A long pole-arm with a hook to grab an opponent from horseback and a long spike with which to stab him.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_Gisarme</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_Gisarme_Nan</uiIconPath>		
+    <equippedAngleOffset>-45</equippedAngleOffset>
+	<weaponTags>
+		<li MayRequire="Ludeon.RimWorld.Royalty">MedievalMeleeDecent</li>
+		<li>MedievalShields_ValidSidearm</li>
+	</weaponTags>
+	<costList><MedTimes_Melee_Gisarme>1</MedTimes_Melee_Gisarme></costList>	
+</ThingDef>
+  
+<!-- (Medieval) Short-Sword -->
+  <ThingDef ParentName="MedTimes_ShortSword_Nan">
+    <defName>MedTimes_Melee_ShortSword_Nan</defName>
+    <label>Short Sword (Nan)</label>
+    <description>(Nanite)(Cut)[MeleeHit: +10%] A one-handed short sword in traditional Medieval fittings, although it's construction techniques are crude, it's materials are of decent quality and effort went into it's construction.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_ShortSword</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_ShortSword_Nan</uiIconPath>		
+    <equippedAngleOffset>-60</equippedAngleOffset>
+	  <weaponTags>
+		  <li MayRequire="Ludeon.RimWorld.Royalty">MedievalMeleeDecent</li>
+		  <li>MedievalShields_ValidSidearm</li>
+	  </weaponTags>
+	<costList><MedTimes_Melee_ShortSword>1</MedTimes_Melee_ShortSword></costList>	
+</ThingDef>  
+  
+  <!-- (Medieval) One-Handed Mace -->
+  <ThingDef ParentName="MedTimes_ShortHammer_Nan">
+    <defName>MedTimes_Melee_MaceHand_Nan</defName>
+    <label>One-Handed Mace (Nan)</label>
+    <description>(Nanite)(Blunt)[MeleeHit: +10%] A one-handed medieval style Mace, although it's construction techniques are crude, it's materials are high quality and massive amounts of effort went into it's construction.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_HandMace</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_HandMace_Nan</uiIconPath>		
+    <equippedAngleOffset>-60</equippedAngleOffset>
+	  <weaponTags>
+		  <li MayRequire="Ludeon.RimWorld.Royalty">MedievalMeleeDecent</li>
+		  <li>MedievalShields_ValidSidearm</li>
+	  </weaponTags>
+	<costList><MedTimes_Melee_MaceHand>1</MedTimes_Melee_MaceHand></costList>	
+  </ThingDef> 
+  
+<!-- (Medieval) Bandit Hammer -->
+<ThingDef ParentName="MedTimes_LongHammer_Nan">
+    <defName>MedTimes_Melee_HammerBandit_Nan</defName>
+    <label>Bandit's Hammer (Nan)</label>
+    <description>(Nanite)(Blunt)[MeleeHit: +10%] A combat focused Hammer made of wood. It's cheap construction, ease of use, and effectiveness against heavily armoured opponents make it a favorite for bandits.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_BanditHammer</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_BanditHammer_Nan</uiIconPath>		
+    <equippedAngleOffset>-45</equippedAngleOffset>
+	<weaponTags>
+		<li MayRequire="Ludeon.RimWorld.Royalty">MedievalMeleeDecent</li>
+		<li>MedievalShields_ValidSidearm</li>
+	</weaponTags>
+	<costList><MedTimes_Melee_HammerBandit>1</MedTimes_Melee_HammerBandit></costList>	
+  </ThingDef>
+    
+<!-- (Medieval) War Knife -->
+  <ThingDef ParentName="MedTimes_WarKnife_Nan">
+    <defName>MedTimes_Melee_WarKnife_Nan</defName>
+    <label>Rusty War Knife (Nan)</label>
+    <description>(Nanite)(Cut)[MeleeHit: +10%] Their are times when one is forced to question not just the skill of the blacksmith or the quality of the materials but the candor with which a particular weapon was first made. The "War Knife" is a long-standing tradition on this world and when looking at the blade one can only wonder if something has been lost in translation over the years. This style of blade is mass produced from cheap materials and has remained a classic among the peasantry and soldiers alike. As a result the style has garnered many interesting and unique nicknames amoung locals, however, "War-Knife" remains the most previlant. The blade is of crude construction and materials, It is a large hand and a half Sword, primarily used for slashing against unarmored oppenents such as the local tribals. In this manner such a weapon could prove highly effective, yet against heavily armoured knights it seems ill advised.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_WarKnife</texPath> 
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_WarKnife_Nan</uiIconPath>		
+    <equippedAngleOffset>-40</equippedAngleOffset>
+	  <weaponTags>
+		  <li MayRequire="Ludeon.RimWorld.Royalty">MedievalMeleeDecent</li>
+		  <li>MedievalShields_ValidSidearm</li>
+	  </weaponTags>
+	<costList><MedTimes_Melee_WarKnife>1</MedTimes_Melee_WarKnife></costList>	
+  </ThingDef>  
+  
+  
+<!-- =========================Tier 2 Melee Weapons ===================================== --> 
+<!-- (Medieval) Knight's Dagger -->
+  <ThingDef ParentName="MedTimes_Dagger_Nan">
+    <defName>MedTimes_Melee_DaggerKnight_Nan</defName>
+    <label>Knight's Dagger (Nan)</label>
+    <description>(Nanite)(Stab)[MeleeHit: +10%] A one-handed medieval style dagger used by knights to finish off a downed oppenent.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_DaggerKnight</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_DaggerKnight_Nan</uiIconPath>		
+    <equippedAngleOffset>-60</equippedAngleOffset>
+	  <weaponTags>
+		  <li MayRequire="Ludeon.RimWorld.Royalty">MedievalMeleeDecent</li>
+		  <li>MedievalShields_ValidSidearm</li>
+	  </weaponTags>
+	<costList><MedTimes_Melee_DaggerKnight>1</MedTimes_Melee_DaggerKnight></costList>		
+  </ThingDef>
+  
+  
+<!-- (Medieval) Arming-Sword -->
+  <ThingDef ParentName="MedTimes_ShortSword_Nan">
+    <defName>MedTimes_Melee_SwordArming_Nan</defName>
+    <label>Arming Sword (Nan)</label>
+    <description>(Nanite)(Cut)[MeleeHit: +10%] A one-handed medieval style "Arming" Sword, although it's construction techniques are crude, it's materials are high quality and massive amounts of effort went into it's construction.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_ArmingSword</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_ArmingSword_Nan</uiIconPath>		
+    <equippedAngleOffset>-60</equippedAngleOffset>
+	  <weaponTags>
+		  <li MayRequire="Ludeon.RimWorld.Royalty">MedievalMeleeDecent</li>
+		  <li>MedievalShields_ValidSidearm</li>
+	  </weaponTags>
+	<costList><MedTimes_Melee_SwordArming>1</MedTimes_Melee_SwordArming></costList>			
+</ThingDef>
+
+<!-- (Medieval) One-Handed Mace -->
+  <ThingDef ParentName="MedTimes_ShortHammer_Nan">
+    <defName>MedTimes_Melee_MaceFlanged_Nan</defName>
+    <label>One-Handed Flanged Mace (Nan)</label>
+    <description>(Nanite)(Blunt)[MeleeHit: +10%] A one-handed medieval style Flanged Mace, it's construction techniques are sophisticated and it's materials are high quality. As a result the weapon is both light and powerful without sacrificing adaptability in combat.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_FlangedMace</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_FlangedMace_Nan</uiIconPath>		
+    <equippedAngleOffset>-60</equippedAngleOffset>
+	  <weaponTags>
+		  <li MayRequire="Ludeon.RimWorld.Royalty">MedievalMeleeDecent</li>
+		  <li>MedievalShields_ValidSidearm</li>
+	  </weaponTags>
+	<costList><MedTimes_Melee_MaceFlanged>1</MedTimes_Melee_MaceFlanged></costList>			
+</ThingDef>  
+
+<!-- (Medieval) Morning Star -->
+  <ThingDef ParentName="MedTimes_Flail_Nan">
+    <defName>MedTimes_Melee_MorningStar_Nan</defName>
+    <label>Morning Star (Nan)</label>
+    <description>(Nanite)(Blunt)[MeleeHit: +10%]  A one-handed medieval style spiked ball on a chain. The handle has a hand-guard to help protect the user. It's construction techniques are sophisticated and it's materials are high quality. As a result the weapon is both light and powerful without sacrificing adaptability in combat.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_MorningStar</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_MorningStar_Nan</uiIconPath>		
+    <equippedAngleOffset>-60</equippedAngleOffset>
+	  <weaponTags>
+		  <li MayRequire="Ludeon.RimWorld.Royalty">MedievalMeleeDecent</li>
+		  <li>MedievalShields_ValidSidearm</li>
+	  </weaponTags>
+	<costList><MedTimes_Melee_MorningStar>1</MedTimes_Melee_MorningStar></costList>			
+</ThingDef> 
+  
+<!-- (Medieval) Long-Sword -->
+  <ThingDef ParentName="MedTimes_LongSword_Nan">
+    <defName>MedTimes_Melee_SwordLong_Nan</defName>
+    <label>Medieval Long Sword (Nan)</label>
+    <description>(Nanite)(Cut)[MeleeHit: +10%] A large two-handed medieval style "Long" Sword, although it's construction techniques are crude, it's materials are high quality and massive amounts of effort went into it's construction. As a result this sword is simply better than your average steel sword.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_LongSword</texPath> 
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_LongSword_Nan</uiIconPath>		
+    <equippedAngleOffset>-40</equippedAngleOffset>
+	  <weaponTags>
+		  <li MayRequire="Ludeon.RimWorld.Royalty">MedievalMeleeDecent</li>
+		  <li>MedievalShields_ValidSidearm</li>
+	  </weaponTags>
+	<costList><MedTimes_Melee_SwordLong>1</MedTimes_Melee_SwordLong></costList>			
+ </ThingDef> 
+  
+<!-- (Medieval) War Knife -->
+  <ThingDef ParentName="MedTimes_WarKnife_Nan">
+    <defName>MedTimes_Melee_WarKnifeHiQ_Nan</defName>
+    <label>War Knife (Nan)</label>
+    <description>(Nanite)(Cut)[MeleeHit: +10%] Their are times when one is forced to question not just the skill of the blacksmith or the quality of the materials but the candor with which a particular weapon was first made. The "War Knife" is a long-standing tradition on this world and when looking at the blade one can only wonder if something has been lost in translation over the years. This style of blade is mass produced from cheap materials and has remained a classic among the peasantry and soldiers alike. As a result the style has garnered many interesting and unique nicknames amoung locals, however, "War-Knife" remains the most previlant. This blade is of solid construction and quality materials, It is a large hand and a half Sword, primarily used for slashing against unarmored oppenents such as the local tribals. In this manner such a weapon could prove highly effective, yet against heavily armoured knights it seems ill advised.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_WarKnifeHiQ</texPath> 
+    </graphicData>	
+		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_WarKnifeHiQ_Nan</uiIconPath>		
+    <equippedAngleOffset>-40</equippedAngleOffset>
+	  <weaponTags>
+		  <li MayRequire="Ludeon.RimWorld.Royalty">MedievalMeleeDecent</li>
+		  <li>MedievalShields_ValidSidearm</li>
+	  </weaponTags> 
+	<costList><MedTimes_Melee_WarKnifeHiQ>1</MedTimes_Melee_WarKnifeHiQ></costList>
+  </ThingDef>  
+  
+<!-- (Medieval) Halberd -->
+<ThingDef ParentName="MedTimes_PoleAxe_Nan">
+    <defName>MedTimes_Melee_Halberd_Nan</defName>
+    <label>Halberd (Nan)</label>
+    <description>(Nanite)(Stab)[MeleeHit: +10%] A combat focused pole-arm which can stab, chop or hook the opponent. The Halberd is a variation of the poleaxe, an axe head on a long haft. Because of it's reach, the halberd is often used in a different manner than traditional axes.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_Halberd</texPath>
+    </graphicData>
+ 		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_Halberd_Nan</uiIconPath>		
+    <equippedAngleOffset>-45</equippedAngleOffset>
+	<weaponTags>
+		<li MayRequire="Ludeon.RimWorld.Royalty">MedievalMeleeDecent</li>
+		<li>MedievalShields_ValidSidearm</li>
+	</weaponTags>  
+	<costList><MedTimes_Melee_Halberd>1</MedTimes_Melee_Halberd></costList>
+</ThingDef>  
+
+  
+ <!-- (Medieval) Battle Axe -->
+<ThingDef ParentName="MedTimes_LongAxe_Nan">
+    <defName>MedTimes_Melee_BattleAxe_Nan</defName>
+    <label>Battle Axe (Nan)</label>
+    <description>(Nanite)(Cut)[MeleeHit: +10%] A combat focused Axe which can stab, slice, smash or hook the opponent, commonly referred to as a Battle Axe. The blade is quite sharp, as such it is very useful in melee combat.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_Battleaxe</texPath>
+    </graphicData>
+ 		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_Battleaxe_Nan</uiIconPath>		
+    <equippedAngleOffset>-45</equippedAngleOffset>
+	<weaponTags>
+		<li MayRequire="Ludeon.RimWorld.Royalty">MedievalMeleeDecent</li>
+		<li>MedievalShields_ValidSidearm</li>
+	</weaponTags>  
+	<costList><MedTimes_Melee_BattleAxe>1</MedTimes_Melee_BattleAxe></costList>
+</ThingDef>   
+
+  
+<!-- (Medieval) Bearded Battle Axe -->
+<ThingDef ParentName="MedTimes_LongAxe_Nan">
+    <defName>MedTimes_Melee_AxeBearded_Nan</defName>
+    <label>Bearded Battle Axe (Nan)</label>
+    <description>(Nanite)(Cut)[MeleeHit: +10%] A combat focused Axe which can stab, slice, smash or hook the opponent, commonly referred to as a Battle Axe. This one is of the bearded variety meaning it has an accentuated and elongated curve to it's main cutting edge. The blade is quite sharp, as such it is very useful in melee combat.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_BeardedBattleAxe</texPath>
+    </graphicData>
+ 		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_BeardedBattleAxe_Nan</uiIconPath>		
+    <equippedAngleOffset>-45</equippedAngleOffset>
+	<weaponTags>
+		<li MayRequire="Ludeon.RimWorld.Royalty">MedievalMeleeDecent</li>
+		<li>MedievalShields_ValidSidearm</li>
+	</weaponTags>
+	<costList><MedTimes_Melee_AxeBearded>1</MedTimes_Melee_AxeBearded></costList>
+</ThingDef>
+
+  
+<!-- (Medieval) Claymore -->
+<ThingDef ParentName="MedTimes_LongSword_Nan">
+    <defName>MedTimes_Melee_Claymore_Nan</defName>
+    <label>Claymore (Nan)</label>
+    <description>(Nanite)(Cut)[MeleeHit: +10%] The two handed Highland claymore originated in a small nation called scotland on the planet earth sometime during the planets first dark ages. since than it's been cannonized and become a part of the common folklore. This claymore has a traditional design and is made of very high quality materials. The techniques and craftsmanship in it's construction are first rate.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_Claymore</texPath>
+    </graphicData>
+  		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_Claymore_Nan</uiIconPath>		
+    <equippedAngleOffset>-45</equippedAngleOffset>
+	<weaponTags>
+		<li MayRequire="Ludeon.RimWorld.Royalty">MedievalMeleeDecent</li>
+		<li>MedievalShields_ValidSidearm</li>
+	</weaponTags>
+	<costList><MedTimes_Melee_Claymore>1</MedTimes_Melee_Claymore></costList>
+</ThingDef>   
+
+
+<!-- (Medieval) Warhammer -->
+<ThingDef ParentName="MedTimes_LongHammer_Nan">
+    <defName>MedTimes_Melee_WarHammer_Nan</defName>
+    <label>Warhammer (Nan)</label>
+    <description>(Nanite)(Blunt)[MeleeHit: +10%] A combat focused two handed hammer which can hook the opponent, drag them down, than crush their bones with relative ease. War-hammer's were originally designed to be used against heavy plate armour that traditional swords or axes would have a hard time penetrating.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/MedTimes_WarHammer</texPath>
+    </graphicData>
+  		<uiIconPath>Things/Item/Equipment/WeaponMelee/MedTimes_WarHammer_Nan</uiIconPath>		
+    <equippedAngleOffset>-45</equippedAngleOffset>
+	<weaponTags>
+		<li MayRequire="Ludeon.RimWorld.Royalty">MedievalMeleeDecent</li>
+		<li>MedievalShields_ValidSidearm</li>
+	</weaponTags>
+	<costList><MedTimes_Melee_WarHammer>1</MedTimes_Melee_WarHammer></costList>	
+  </ThingDef> 
+  
+<!-- End of thingDefs -->   
+</Defs>

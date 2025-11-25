@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>VGP Three Sisters Plants</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+		
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ResearchProjectDef[defName="Companion_Farming"]/techLevel</xpath>
+				<value>
+					<techLevel>Medieval</techLevel>
+				</value>				
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/ResearchProjectDef[defName="Companion_Farming"]/tags</xpath>		
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ResearchProjectDef[defName="Companion_Farming"]</xpath>
+				<value>
+					<prerequisites>
+					  <li>TS_MethodicalResearch</li>
+					  <li>TS_Agriculture</li>
+					</prerequisites>
+				</value>				
+			</li>
+			
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ResearchProjectDef[defName="Plant_Grafting"]</xpath>
+				<value>
+					<prerequisites>
+					  <li>TS_MethodicalResearch</li>
+					  <li>MedTimes_ChemicalX</li>
+					  <li>TS_Agriculture</li>
+					</prerequisites>
+				</value>				
+			</li>
+			
+		</operations>
+	</match>
+  </Operation>
+    
+</Patch>

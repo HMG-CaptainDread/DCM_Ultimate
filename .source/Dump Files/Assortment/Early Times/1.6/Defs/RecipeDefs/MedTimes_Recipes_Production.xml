@@ -1,0 +1,449 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!-- ==================== Raw Production ====================== -->
+    <!-- Adobe Bricks -->
+    <RecipeDef>
+        <defName>MedTimes_MakeAdobeBricks</defName>
+        <label>Make Clay Bricks</label>
+        <description>Dig up clay and dry a bit into adobe bricks which can be used in construction.</description>
+        <jobString>Making Clay Bricks.</jobString>
+        <effectWorking>CutStone</effectWorking>
+        <soundWorking>Recipe_MakeStoneBlocks</soundWorking>
+        <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+        <recipeUsers>
+            <li>MedTimes_ClayPit</li>
+        </recipeUsers>
+        <targetCountAdjustment>10</targetCountAdjustment>
+        <workAmount>450</workAmount>
+        <researchPrerequisite>MedTimes_AdobeBricks</researchPrerequisite>
+        <products>
+            <MedTimes_Resource_ClayBricks>10</MedTimes_Resource_ClayBricks>
+        </products>
+    </RecipeDef>
+    <!-- Gather Ice Blocks -->
+    <RecipeDef>
+        <defName>MedTimes_GatherIceBlocks</defName>
+        <label>Gather Ice Blocks</label>
+        <description>Literally just watching water freeze into Ice Blocks.</description>
+        <jobString>Gathering Ice Blocks.</jobString>
+        <effectWorking>Cook</effectWorking>
+        <workAmount>500</workAmount>
+        <targetCountAdjustment>10</targetCountAdjustment>
+        <products>
+            <MedTimes_Resource_IceBlocks>10</MedTimes_Resource_IceBlocks>
+        </products>
+    </RecipeDef>
+    <!-- Coal to Chemfuel -->
+    <RecipeDef>
+        <defName>EarlyTimes_MakeChemfuelCoal</defName>
+        <label>make chemfuel from coal</label>
+        <description>Make a batch of chemfuel using coal by hydrogenation.</description>
+        <jobString>Refining chemfuel from coal.</jobString>
+        <effectWorking>Cremate</effectWorking>
+        <soundWorking>Recipe_Cremate</soundWorking>
+        <workAmount>2500</workAmount>
+        <workSkill>Intellectual</workSkill>
+        <recipeUsers>
+            <li>BiofuelRefinery</li>
+        </recipeUsers>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>Resource_Coal</li>
+                    </thingDefs>
+                </filter>
+                <count>50</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>Resource_Coal</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <Chemfuel>35</Chemfuel>
+        </products>
+    </RecipeDef>
+    <!-- Wood to Coal -->
+    <RecipeDef>
+        <defName>EarlyTimes_MakeCoalFromWood</defName>
+        <label>make coal chunks from wood</label>
+        <description>Make a batch of coal chunks by burning wood.</description>
+        <jobString>Refining coal from wood.</jobString>
+        <effectWorking>Cremate</effectWorking>
+        <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+        <soundWorking>Recipe_Cremate</soundWorking>
+        <workAmount>1800</workAmount>
+        <researchPrerequisite>MedTimes_CoalProduction</researchPrerequisite>
+        <recipeUsers>
+            <li>MedTimes_FueledSmelter</li>
+            <li>MedTimes_Firepit</li>
+        </recipeUsers>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>WoodLog</li>
+                    </thingDefs>
+                </filter>
+                <count>50</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>WoodLog</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <Resource_Coal>75</Resource_Coal>
+        </products>
+    </RecipeDef>
+    <!-- Pitch glue -->
+    <RecipeDef>
+        <defName>MedTimes_MakePitchGlue</defName>
+        <label>Make Pitch Glue</label>
+        <description>Craft some glue by applying pyrolitic reactions to material.</description>
+        <jobString>Making Pitch Glue.</jobString>
+        <workSpeedStat>CookSpeed</workSpeedStat>
+        <effectWorking>Cook</effectWorking>
+        <soundWorking>Recipe_CookMeal</soundWorking>
+        <workSkill>Cooking</workSkill>
+        <allowMixingIngredients>true</allowMixingIngredients>
+        <workAmount>800</workAmount>
+        <recipeUsers>
+            <li>Campfire</li>
+            <li>MedTimes_Firepit</li>
+            <li>MedTimes_StoneHearth</li>
+            <li>MedTimes_Smokehouse</li>
+            <li>ElectricStove</li>
+            <li>FueledStove</li>
+        </recipeUsers>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>Resource_Coal</li>
+                        <li>WoodLog</li>
+                    </thingDefs>
+                    <categories>
+                        <li>MeatRaw</li>
+                        <li>AnimalProductRaw</li>
+                    </categories>
+                </filter>
+                <count>5</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>Resource_Coal</li>
+                <li>WoodLog</li>
+            </thingDefs>
+            <categories>
+                <li>FoodRaw</li>
+            </categories>
+        </fixedIngredientFilter>
+        <defaultIngredientFilter>
+            <thingDefs>
+                <li>Resource_Coal</li>
+                <li>WoodLog</li>
+            </thingDefs>
+            <categories>
+                <li>MeatRaw</li>
+                <li>AnimalProductRaw</li>
+            </categories>
+            <disallowedCategories>
+                <li>EggsFertilized</li>
+            </disallowedCategories>
+            <disallowedThingDefs>
+                <li>InsectJelly</li>
+            </disallowedThingDefs>
+        </defaultIngredientFilter>
+        <products>
+            <MedTimes_PitchGlue>1</MedTimes_PitchGlue>
+        </products>
+        <researchPrerequisite>ET_Pyrolysis</researchPrerequisite>
+    </RecipeDef>
+    <!-- ==================== Explosives ====================== -->
+    <!-- Pitch Wicked -->
+    <RecipeDef>
+        <defName>MedTimes_MakeQuicklimePitch</defName>
+        <label>Make Quicklime Pitch</label>
+        <description>Craft a Quicklime Pitch to be used as ammo for your various murder holes.</description>
+        <jobString>Making Quicklime Pitch.</jobString>
+        <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+        <effectWorking>Cook</effectWorking>
+        <soundWorking>Recipe_Tailor</soundWorking>
+        <workSkill>Crafting</workSkill>
+        <allowMixingIngredients>true</allowMixingIngredients>
+        <workAmount>800</workAmount>
+        <recipeUsers>
+            <li>CraftingSpot</li>
+            <li>MedTimes_CraftingStation</li>
+        </recipeUsers>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>MedTimes_PitchGlue</li>
+                    </thingDefs>
+                </filter>
+                <count>5</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>BlocksLimestone</li>
+                    </thingDefs>
+                </filter>
+                <count>1</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>MedTimes_PitchGlue</li>
+                <li>BlocksLimestone</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <MedTimes_Resource_Quicklime>5</MedTimes_Resource_Quicklime>
+        </products>
+        <researchPrerequisite>MedTimes_Explosives</researchPrerequisite>
+    </RecipeDef>
+    <!-- Explosive Pots -->
+    <RecipeDef>
+        <defName>MedTimes_MakeExplosivePots</defName>
+        <label>Make Explosive Pots</label>
+        <description>Craft Explosive Pots which are used for catapults.</description>
+        <jobString>Making explosive Pots.</jobString>
+        <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+        <effectWorking>Cook</effectWorking>
+        <workSkill>Crafting</workSkill>
+        <soundWorking>Recipe_Tailor</soundWorking>
+        <allowMixingIngredients>true</allowMixingIngredients>
+        <workAmount>800</workAmount>
+        <researchPrerequisite>MedTimes_Explosives</researchPrerequisite>
+        <recipeUsers>
+            <li>CraftingSpot</li>
+            <li>MedTimes_CraftingStation</li>
+        </recipeUsers>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>Steel</li>
+                    </thingDefs>
+                </filter>
+                <count>6</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>MedTimes_Resource_Quicklime</li>
+                    </thingDefs>
+                </filter>
+                <count>3</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>MedTimes_Resource_DryClayBricks</li>
+                    </thingDefs>
+                </filter>
+                <count>15</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>Steel</li>
+                <li>MedTimes_Resource_Quicklime</li>
+                <li>MedTimes_Resource_DryClayBricks</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <MedTimes_Resource_ExplosivePot>3</MedTimes_Resource_ExplosivePot>
+        </products>
+    </RecipeDef>
+    
+    <!-- ==================== mostly Industrial stuff ====================== -->
+    <!-- Component -->
+    <RecipeDef>
+        <defName>MedievalTimes_ComponentIndustrial</defName>
+        <label>make component</label>
+        <description>Make a component.</description>
+        <jobString>Making component.</jobString>
+        <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+        <workSkill>Crafting</workSkill>
+        <effectWorking>Smith</effectWorking>
+        <soundWorking>Recipe_Smith</soundWorking>
+        <workAmount>10500</workAmount>
+        <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+        <researchPrerequisite>MedTimes_AdvancedMedievalSmithing</researchPrerequisite>
+        <recipeUsers>
+            <li>ElectricSmithy</li>
+            <li>FueledSmithy</li>
+            <li>MedTimes_ElectricBlacksmithForgeTierTwo</li>
+            <li>MedTimes_BlacksmithForgeTierTwo</li>
+        </recipeUsers>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>Steel</li>
+                    </thingDefs>
+                </filter>
+                <count>28</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>Steel</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <ComponentIndustrial>1</ComponentIndustrial>
+        </products>
+        <skillRequirements>
+            <Crafting>8</Crafting>
+        </skillRequirements>
+    </RecipeDef>
+    
+    <!-- Mine at quarry -->
+    <RecipeDef>
+        <defName>MedTimes_MineAtQuarry</defName>
+        <description>Mines stuff in quarry to get resources.</description>
+        <label>Gather resource</label>
+        <jobString>Mining for resources.</jobString>
+        <workSpeedStat>MiningSpeed</workSpeedStat>
+        <workSkill>Mining</workSkill>
+        <workAmount>8000</workAmount>
+        <workSkillLearnFactor>0.25</workSkillLearnFactor>
+        <effectWorking>CutStone</effectWorking>
+        <soundWorking>Recipe_MakeStoneBlocks</soundWorking>
+        <workerCounterClass>EarlyTimes.RecipeWorkerCounter_QuarryResources</workerCounterClass>
+        <recipeUsers>
+            <li>EarlyTimes_StoneQuarry</li>
+        </recipeUsers>
+        <ingredients>
+            <li>
+                <filter>
+					<categories>
+						<li>ResourcesRaw</li>
+						<li>StoneChunks</li>
+					</categories>
+                </filter>
+                <count>1</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <categories>
+                <li>ResourcesRaw</li>
+                <li>StoneChunks</li>
+            </categories>
+            <disallowedCategories>
+                <li>PlantMatter</li>
+                <li>StoneBlocks</li>
+            </disallowedCategories>
+            <disallowedThingDefs>
+                <li>WoodLog</li>
+            </disallowedThingDefs>
+            <specialFiltersToDisallow>
+                <li>AllowRotten</li>
+                <li>AllowFresh</li>
+            </specialFiltersToDisallow>
+        </fixedIngredientFilter>
+        <defaultIngredientFilter>
+            <categories>
+                <li>ResourcesRaw</li>
+                <li>StoneChunks</li>
+            </categories>
+            <disallowedCategories>
+                <li>PlantMatter</li>
+                <li>StoneBlocks</li>
+            </disallowedCategories>
+            <disallowedThingDefs>
+                <li>WoodLog</li>
+            </disallowedThingDefs>
+            <specialFiltersToDisallow>
+                <li>AllowRotten</li>
+                <li>AllowFresh</li>
+            </specialFiltersToDisallow>
+        </defaultIngredientFilter>
+    </RecipeDef>
+    <!-- Advanced Component -->
+    <RecipeDef>
+        <defName>IndustrialTimes_ComponentAdvanced</defName>
+        <label>make advanced component</label>
+        <description>Making an advanced component.</description>
+        <jobString>Making advanced component.</jobString>
+        <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+        <workSkill>Crafting</workSkill>
+        <effectWorking>Cook</effectWorking>
+        <soundWorking>Recipe_Machining</soundWorking>
+        <workAmount>67060</workAmount>
+        <unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+        <researchPrerequisite>Fabrication</researchPrerequisite>
+        <recipeUsers>
+            <li>TableMachining</li>
+        </recipeUsers>
+        <ingredients>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>ComponentIndustrial</li>
+                    </thingDefs>
+                </filter>
+                <count>6</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>Plasteel</li>
+                    </thingDefs>
+                </filter>
+                <count>2</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>Steel</li>
+                    </thingDefs>
+                </filter>
+                <count>80</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>Silver</li>
+                    </thingDefs>
+                </filter>
+                <count>6.5</count>
+            </li>
+            <li>
+                <filter>
+                    <thingDefs>
+                        <li>Gold</li>
+                    </thingDefs>
+                </filter>
+                <count>1.2</count>
+            </li>
+        </ingredients>
+        <fixedIngredientFilter>
+            <thingDefs>
+                <li>ComponentIndustrial</li>
+                <li>Plasteel</li>
+                <li>Silver</li>
+                <li>Steel</li>
+                <li>Gold</li>
+            </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+            <ComponentSpacer>1</ComponentSpacer>
+        </products>
+        <skillRequirements>
+            <Crafting>10</Crafting>
+        </skillRequirements>
+    </RecipeDef>
+
+	
+</Defs>

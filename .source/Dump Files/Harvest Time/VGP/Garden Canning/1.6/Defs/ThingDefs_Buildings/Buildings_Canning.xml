@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+
+  <ThingDef ParentName="BenchBase">
+    <defName>CanningFactory</defName>
+    <label>canning table</label>
+    <thingClass>Building_WorkTable</thingClass>
+    <description>The canning table needs to be loaded with steel. Then you make canned meat, vegetables, and meals.</description>
+    <graphicData>
+      <texPath>Things/Building/CanningTable</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(2.33,1.5)</drawSize>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <costList>
+      <Steel>150</Steel>
+    </costList>
+    <constructEffect>ConstructWood</constructEffect>
+    <altitudeLayer>Building</altitudeLayer>
+    <fillPercent>0.5</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <WorkToBuild>2000</WorkToBuild>
+      <MaxHitPoints>180</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+      <Cleanliness>-3</Cleanliness>
+    </statBases>
+    <size>(2,1)</size>
+    <passability>PassThroughOnly</passability>
+    <pathCost>70</pathCost>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <building>
+ 	  <isMealSource>true</isMealSource>
+     <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+    </building>
+    <comps>
+      <li Class="CompProperties_Refuelable">
+        <fuelConsumptionRate>25</fuelConsumptionRate>
+        <fuelCapacity>25.0</fuelCapacity>
+        <fuelFilter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+		<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+      </li>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>ToolCabinet</li>
+        </linkableFacilities>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+    </placeWorkers>
+     	<researchPrerequisites>
+		<li>VG_CanningTable</li>
+	</researchPrerequisites>
+    <designationCategory>Production</designationCategory>
+  </ThingDef>
+
+    <ThingDef ParentName="BuildingBase">
+        <defName>VG_CanningFactory</defName>
+        <label>Canning Factory (old)</label>
+    <description>Place Holder for older coded building. Check the steam page for updates. Please disassemble and use the new table.</description>
+    <graphicData>
+      <texPath>Things/Building/CanningFactory</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(3,2)</drawSize>
+    </graphicData>
+    <costList>
+      <Steel>350</Steel>
+    </costList>
+    <constructEffect>ConstructWood</constructEffect>
+    <altitudeLayer>Building</altitudeLayer>
+    <fillPercent>0.5</fillPercent>
+    <useHitPoints>True</useHitPoints>
+ 	<size>(3,2)</size>
+    	<passability>PassThroughOnly</passability>
+    	<pathCost>70</pathCost>
+	<rotatable>true</rotatable>
+	<tickerType>Rare</tickerType>
+   <statBases>
+      	<WorkToBuild>2000</WorkToBuild>
+      	<MaxHitPoints>180</MaxHitPoints>
+      	<Flammability>1.0</Flammability>
+      	<Cleanliness>-15</Cleanliness>
+		<Mass>10</Mass>
+    </statBases>
+   </ThingDef>
+
+</Defs>
