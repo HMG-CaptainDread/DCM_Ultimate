@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- DANDELION TEA -->
+		<ThingDef ParentName="MakeableDrugBase">
+			<defName>VG_DandelionTea</defName>
+			<label>dandelion tea</label>
+			<description>A fragrant tea infused with leaves of the dandelion plant. Drinking it induces a mild boosted immunity effect. This tea is easy to produce at cooking facilities.\n\nMany tribes use dandelion tea as part of social and religious rituals.</description>
+			<descriptionHyperlinks>
+			<HediffDef>dandelionTeaHigh</HediffDef>
+			</descriptionHyperlinks>
+			<graphicData>
+			<texPath>Things/Item/Drug/DandelionTea</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+			<drawSize>0.88</drawSize>
+			</graphicData>
+			<rotatable>false</rotatable>
+			<statBases>
+			<WorkToMake>400</WorkToMake>
+			<MarketValue>10</MarketValue>
+			<Mass>0.05</Mass>
+			<DeteriorationRate>6</DeteriorationRate>
+			</statBases>
+			<techLevel>Neolithic</techLevel>
+			<ingestible>
+			<maxNumToIngestAtOnce>1</maxNumToIngestAtOnce>
+			<defaultNumToIngestAtOnce>1</defaultNumToIngestAtOnce>
+			<chairSearchRadius>8</chairSearchRadius>
+			<foodType>Fluid, Processed</foodType>
+			<baseIngestTicks>210</baseIngestTicks>
+			<nurseable>true</nurseable>
+			<drugCategory>Medical</drugCategory>
+			<preferability>NeverForNutrition</preferability>	  
+			<ingestSound>Ingest_Drink</ingestSound>
+			<ingestHoldOffsetStanding>
+				<northDefault>
+				<offset>(0.18,0,0)</offset>
+				</northDefault>
+			</ingestHoldOffsetStanding>
+			<ingestHoldUsesTable>false</ingestHoldUsesTable>
+			<ingestCommandString>Drink {0}</ingestCommandString>
+			<ingestReportString>Drinking {0}.</ingestReportString>
+			<outcomeDoers>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+				<hediffDef>dandelionTeaHigh</hediffDef>
+				<severity>1.0</severity>
+				</li>
+			</outcomeDoers>
+			</ingestible>
+			<recipeMaker>
+			<recipeUsers>
+				<li>Campfire</li>
+				<li>ElectricStove</li>
+				<li>FueledStove</li>
+			</recipeUsers>
+			<workSpeedStat>DrugCookingSpeed</workSpeedStat>
+			<workSkill>Cooking</workSkill>
+			<skillRequirements>
+				<Cooking>2</Cooking>
+			</skillRequirements>
+			<requiredGiverWorkType>Cooking</requiredGiverWorkType>
+			</recipeMaker>
+			<costList>
+			<VG_DandelionCuttings>5</VG_DandelionCuttings>
+			</costList>
+			<comps>
+			<li Class="CompProperties_Drug">
+				<listOrder>110</listOrder>
+			</li>
+			</comps>
+		</ThingDef>
+	<!-- ANTIBIOTICS -->
+		<ThingDef ParentName="ResourceBase">
+			<defName>VG_antibiotics</defName>
+			<label>antibiotics</label>
+			<description>A drink made from fruit and medicine to aid in recovery from sickness. Lasts for 4 days.</description>
+			<descriptionHyperlinks><HediffDef>Antibiotics</HediffDef></descriptionHyperlinks>
+			<thingClass>Medicine</thingClass>
+			<graphicData>
+			<texPath>Things/Item/antibiotics</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			</graphicData>
+			<soundInteract>Standard_Drop</soundInteract>
+			<soundDrop>Standard_Drop</soundDrop>
+			<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<MarketValue>18</MarketValue>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>5</DeteriorationRate>
+			<Mass>0.04</Mass>
+			</statBases>
+			<stackLimit>75</stackLimit>
+			<thingCategories>
+			<li>Drugs</li>
+			</thingCategories>
+			<tickerType>Rare</tickerType>  
+			<ingestible>
+			<foodType>Fluid, Processed</foodType>
+			<maxNumToIngestAtOnce>1</maxNumToIngestAtOnce>
+			<defaultNumToIngestAtOnce>1</defaultNumToIngestAtOnce>
+			<chairSearchRadius>8</chairSearchRadius>
+			<drugCategory>Medical</drugCategory>
+			<preferability>NeverForNutrition</preferability>
+			<ingestSound>Ingest_Beer</ingestSound>
+			<outcomeDoers>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+				<hediffDef>Antibiotics</hediffDef>
+				<severity>1.0</severity>
+				</li>
+			</outcomeDoers>
+			</ingestible>
+			<comps>
+			<li Class="CompProperties_Drug">
+				<listOrder>1000</listOrder>
+				<overdoseSeverityOffset>0.08~0.14</overdoseSeverityOffset>
+			</li>
+			</comps>
+			<orderedTakeGroup>Drug</orderedTakeGroup>
+		</ThingDef>
+	<!-- DE-WORM -->
+		<ThingDef ParentName="MakeableDrugPillBase">
+			<defName>Deworm</defName>
+			<label>De-Worm</label>
+			<description>A drug for preventing parasites and worms before they take hold. Blocks gut worms and muscle parasites. Must be taken every five days to remain effective.\n\nThis drug only prevents new parasites. It does not cure existing parasites - even those that are not yet discovered.</description>
+			<descriptionHyperlinks><HediffDef>DewormHigh</HediffDef></descriptionHyperlinks>
+			<graphicData>
+			<texPath>Things/Item/Drug/De_worm</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+			</graphicData>
+			<socialPropernessMatters>false</socialPropernessMatters>
+			<rotatable>false</rotatable>
+			<statBases>
+			<WorkToMake>600</WorkToMake>
+			<MarketValue>22</MarketValue>
+			<Mass>0.005</Mass>
+			<Flammability>0.7</Flammability>
+			</statBases>
+			<techLevel>Industrial</techLevel>
+			<ingestible>
+			<drugCategory>Medical</drugCategory>
+			<outcomeDoers>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+				<hediffDef>DewormHigh</hediffDef>
+				<severity>1.0</severity>
+				</li>
+			</outcomeDoers>
+			</ingestible>
+			<recipeMaker>
+			<researchPrerequisite>DewormProduction</researchPrerequisite>
+			<recipeUsers>
+				<li>DrugLab</li>
+			</recipeUsers>
+			</recipeMaker>
+			<costList>
+			<Neutroamine>3</Neutroamine>
+			</costList>
+			<comps>
+			<li Class="CompProperties_Drug">
+				<listOrder>1000</listOrder>
+				<overdoseSeverityOffset>0.08~0.14</overdoseSeverityOffset>
+			</li>
+			</comps>
+		</ThingDef>
+	<!-- FLU EZ -->
+		<ThingDef ParentName="MakeableDrugPillBase">
+			<defName>VG_FluEz</defName>
+			<label>Flu Ez</label>
+			<description>A drug for blocking flu. Works on animals. Take every five days. \n\nMakes 2.</description>
+			<descriptionHyperlinks><HediffDef>FluEzHigh</HediffDef></descriptionHyperlinks>
+			<graphicData>
+			<texPath>Things/Item/Drug/FluEz</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+			</graphicData>
+			<rotatable>false</rotatable>
+			<statBases>
+			<WorkToMake>500</WorkToMake>
+			<MarketValue>22</MarketValue>
+			<Mass>0.005</Mass>
+			</statBases>
+			<techLevel>Industrial</techLevel>
+			<ingestible>
+			<drugCategory>Medical</drugCategory>
+			<outcomeDoers>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+				<hediffDef>FluEzHigh</hediffDef>
+				<severity>1.0</severity>
+				</li>
+			</outcomeDoers>
+			</ingestible>
+			<recipeMaker>
+			<researchPrerequisite>DrugProduction</researchPrerequisite>
+			<recipeUsers>
+				<li>DrugLab</li>
+			</recipeUsers>
+			</recipeMaker>
+			<costList>
+			<Neutroamine>2</Neutroamine>
+			</costList>
+			<comps>
+			<li Class="CompProperties_Drug">
+				<listOrder>1000</listOrder>
+				<overdoseSeverityOffset>
+				<min>0.08</min>
+				<max>0.14</max>
+				</overdoseSeverityOffset>
+			</li>
+			</comps>
+		</ThingDef>
+	<!-- IBUPROFEN -->
+		<ThingDef ParentName="MakeableDrugPillBase">
+			<defName>VG_Ibuprofen</defName>
+			<label>Ibuprofen</label>
+			<description>A drug for blocking pain. Take every day.</description>
+			<descriptionHyperlinks><HediffDef>IbuprofenHigh</HediffDef></descriptionHyperlinks>	
+			<graphicData>
+			<texPath>Things/Item/Drug/Ibuprofen</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+			</graphicData>
+			<rotatable>false</rotatable>
+			<statBases>
+			<WorkToMake>200</WorkToMake>
+			<MarketValue>11</MarketValue>
+			<Mass>0.005</Mass>
+			</statBases>
+			<techLevel>Industrial</techLevel>
+			<ingestible>
+			<drugCategory>Medical</drugCategory>
+			<outcomeDoers>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+				<hediffDef>IbuprofenHigh</hediffDef>
+				<severity>1.0</severity>
+				</li>
+			</outcomeDoers>
+			</ingestible>
+			<recipeMaker>
+			<researchPrerequisite>DrugProduction</researchPrerequisite>
+			<recipeUsers>
+				<li>DrugLab</li>
+			</recipeUsers>
+			</recipeMaker>
+			<costList>
+			<Neutroamine>1</Neutroamine>
+			</costList>
+			<comps>
+			<li Class="CompProperties_Drug">
+				<listOrder>1000</listOrder>
+				<overdoseSeverityOffset>
+				<min>0.08</min>
+				<max>0.14</max>
+				</overdoseSeverityOffset>
+			</li>
+			</comps>
+		</ThingDef>
+	<!-- MECHA-GONE -->
+		<ThingDef ParentName="MakeableDrugPillBase">
+			<defName>MechaGone</defName>
+			<label>Mecha-Gone</label>
+			<description>A drug for preventing mechanites before they take hold. Blocks fibrous and sensory mechanites. Must be taken every 5 days to remain effective.\n\nThis drug only prevents new infections. It does not cure existing infections - even those that are not yet discovered.</description>
+			<descriptionHyperlinks><HediffDef>MechaGoneHigh</HediffDef></descriptionHyperlinks>
+			<graphicData>
+			<texPath>Things/Item/Drug/Mecha</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+			</graphicData>
+			<socialPropernessMatters>false</socialPropernessMatters>
+			<rotatable>false</rotatable>
+			<statBases>
+			<WorkToMake>600</WorkToMake>
+			<MarketValue>25</MarketValue>
+			<Mass>0.005</Mass>
+			<Flammability>0.7</Flammability>
+			</statBases>
+			<techLevel>Industrial</techLevel>
+			<ingestible>
+			<drugCategory>Medical</drugCategory>
+			<outcomeDoers>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+				<hediffDef>MechaGoneHigh</hediffDef>
+				<severity>1.0</severity>
+				</li>
+			</outcomeDoers>
+			</ingestible>
+			<recipeMaker>
+			<researchPrerequisite>MechaGoneProduction</researchPrerequisite>
+			<recipeUsers>
+				<li>DrugLab</li>
+			</recipeUsers>
+			</recipeMaker>
+			<costList>
+			<Neutroamine>4</Neutroamine>
+			</costList>
+			<comps>
+			<li Class="CompProperties_Drug">
+				<listOrder>1000</listOrder>
+				<overdoseSeverityOffset>0.08~0.14</overdoseSeverityOffset>
+			</li>
+			</comps>
+		</ThingDef>
+	<!-- TOBACCO -->
+		<ThingDef ParentName="VG_RawDrugsBase">
+			<defName>RawTobacco</defName>
+			<label>tobacco</label>
+			<description>Raw tobacco. Not recommended for eating, but makes for a nice smoke</description>
+			<graphicData>
+			<texPath>Things/Item/RawTobacco</texPath>
+			</graphicData>
+			<statBases>
+			<MarketValue>1.5</MarketValue>
+			<Mass>0.005</Mass>
+			</statBases>
+			<comps>
+			<li Class="CompProperties_Rottable">
+				<daysToRotStart>25</daysToRotStart>
+				<rotDestroys>true</rotDestroys>
+			</li>
+			</comps>
+		</ThingDef>
+	<!-- CIGARILLOS -->
+		<ThingDef ParentName="MakeableDrugBase">
+			<defName>Cigarillos</defName>
+			<label>Cigarillos</label>
+			<description>A pack of cigarillos</description>
+			<descriptionHyperlinks><HediffDef>Tobacco</HediffDef></descriptionHyperlinks>
+			<graphicData>
+			<texPath>Things/Item/Cigarillos</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+			</graphicData>
+			<stackLimit>75</stackLimit>
+			<statBases>
+			<WorkToMake>200</WorkToMake>
+			<MarketValue>10</MarketValue>
+			<Mass>0.005</Mass>
+			</statBases>
+			<techLevel>Neolithic</techLevel>
+			<ingestible>
+			<foodType>Plant, Processed</foodType>
+			<joy>0.60</joy>
+			<joyKind>Chemical</joyKind>
+			<baseIngestTicks>720</baseIngestTicks>
+			<nurseable>true</nurseable>
+			<drugCategory>Social</drugCategory>
+			<ingestSound>Ingest_Smoke</ingestSound>
+			<ingestEffect>Smoke_Joint</ingestEffect>
+			<ingestEffectEat>EatVegetarian</ingestEffectEat>
+			<ingestHoldOffsetStanding>
+				<northDefault>
+				<offset>(0.27,0,0.08)</offset>
+				<behind>true</behind>
+				</northDefault>
+				<east>
+				<offset>(0.45,0,0.08)</offset>
+				</east>
+				<south>
+				<offset>(0.27,0,0.08)</offset>
+				</south>
+				<west>
+				<offset>(-0.50,0,0.08)</offset>
+				<flip>true</flip>
+				</west>
+			</ingestHoldOffsetStanding>
+			<ingestHoldUsesTable>false</ingestHoldUsesTable>
+			<ingestCommandString>Smoke {0}</ingestCommandString>
+			<ingestReportString>Smoking {0}.</ingestReportString>
+			<ingestReportStringEat>Consuming {0}.</ingestReportStringEat>
+			<useEatingSpeedStat>false</useEatingSpeedStat>
+			<outcomeDoers>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+				<hediffDef>Tobacco</hediffDef>
+				<severity>0.15</severity>
+				<toleranceChemical>Tobacco</toleranceChemical>
+				</li>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+				<hediffDef>TobaccoTolerance</hediffDef>
+				<severity>0.032</severity>
+				</li>
+			</outcomeDoers>
+			</ingestible>
+			<recipeMaker>
+			<recipeUsers>
+				<li>CraftingSpot</li>
+				<li>DrugLab</li>
+			</recipeUsers>
+			<workSpeedStat></workSpeedStat>
+			<workSkill></workSkill>
+			</recipeMaker>
+			<costList>
+			<RawTobacco>5</RawTobacco>
+			</costList>
+			<comps>
+			<li Class="CompProperties_Drug">
+				<chemical>Tobacco</chemical>
+				<addictiveness>0.006</addictiveness>
+				<minToleranceToAddict>0.25</minToleranceToAddict>
+				<existingAddictionSeverityOffset>0.06</existingAddictionSeverityOffset>
+				<needLevelOffset>1</needLevelOffset>
+				<listOrder>1300</listOrder>
+			</li>
+			</comps>
+		</ThingDef>
+	<!-- GLITTERWORLD INNOCULATION -->
+		<ThingDef ParentName="MakeableDrugPillBase">
+			<defName>GW_Inoculation</defName>
+			<label>glitterworld inoculation</label>
+			<description>A power glitterworld drug for preventing most infections before they take hold. \n\nBlocks malaria, sleeping sickness, plague, infections, gut worms, muscle parasites, flu, fibrous and sensory mechanites. Must be taken every 15 days to remain effective.\n\nThis drug only prevents new infections. It does not cure existing infections - even those that are not yet discovered.</description>
+			<possessionCount>3</possessionCount>
+			<descriptionHyperlinks><HediffDef>gw_InoculationHigh</HediffDef></descriptionHyperlinks>
+			<graphicData>
+			<texPath>Things/Item/inoculation</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+			</graphicData>
+			<socialPropernessMatters>false</socialPropernessMatters>
+			<rotatable>false</rotatable>
+			<statBases>
+			<WorkToMake>600</WorkToMake>
+			<MarketValue>18</MarketValue>
+			<Mass>0.005</Mass>
+			<Flammability>0.7</Flammability>
+			</statBases>
+			<techLevel>Spacer</techLevel>
+			<ingestible>
+			<drugCategory>Medical</drugCategory>
+			<outcomeDoers>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+				<hediffDef>gw_InoculationHigh</hediffDef>
+				<severity>15.0</severity>
+				</li>
+			</outcomeDoers>
+			</ingestible>
+			<recipeMaker>
+			<researchPrerequisite>VG_GlitterMeds</researchPrerequisite>
+			<recipeUsers>
+				<li>DrugLab</li>
+			</recipeUsers>
+			</recipeMaker>
+			<costList>
+			<Glitterworld_Neutroamine>1</Glitterworld_Neutroamine>
+			</costList>
+			<comps>
+			<li Class="CompProperties_Drug">
+				<listOrder>1000</listOrder>
+				<overdoseSeverityOffset>0.08~0.14</overdoseSeverityOffset>
+			</li>
+			</comps>
+		</ThingDef>
+	<!-- DRUG BASE -->
+		<ThingDef Abstract="True" ParentName="ResourceBase" Name="VG_RawDrugsBase">
+			<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			</graphicData>
+			<socialPropernessMatters>true</socialPropernessMatters>
+			<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>5</DeteriorationRate>
+			<Mass>0.03</Mass>
+			</statBases>
+			<ingestible>
+			<foodType>Plant</foodType>
+			<preferability>NeverForNutrition</preferability>
+			</ingestible>
+			<tickerType>Rare</tickerType>
+			<thingCategories>
+				<li>PlantMatter</li>
+			</thingCategories>
+		</ThingDef>
+	<!-- NEUTRO PETALS -->
+		<ThingDef ParentName="VG_RawDrugsBase">
+			<defName>NeutroPetals</defName>
+			<label>Neutro Flower Petals</label>
+			<description>Beautiful Yellow-Orange Petals from the Neutro Flower. Used to make Neutroamine, a medicine base.</description>
+			<graphicData>
+			<texPath>Things/Item/NeutroPetals</texPath>
+			</graphicData>
+			<statBases>
+			<MarketValue>1.0</MarketValue>
+			</statBases>
+			<comps>
+			<li Class="CompProperties_Rottable">
+				<daysToRotStart>10</daysToRotStart>
+				<rotDestroys>true</rotDestroys>
+			</li>
+			</comps>
+		</ThingDef>
+	<!-- ALYSSUM TRIMMINGS -->
+		<ThingDef ParentName="VG_RawDrugsBase">
+			<defName>AlyssumTrimings</defName>
+			<label>alyssum trimings</label>
+			<description>Beautiful Alyssum trimings from the Alyssum Flower. Used to make Glitterworld neutroamine, a drug and medicine base.</description>
+			<graphicData>
+			<texPath>Things/Item/AlyssumTrimings</texPath>
+			</graphicData>
+			<statBases>
+			<MarketValue>5.0</MarketValue>
+			</statBases>
+			<comps>
+			<li Class="CompProperties_Rottable">
+				<daysToRotStart>10</daysToRotStart>
+				<rotDestroys>true</rotDestroys>
+			</li>
+			</comps>
+		</ThingDef>
+	<!-- GLITTERWORLD NEUTROAMINE -->
+		<ThingDef ParentName="ResourceBase">
+			<defName>Glitterworld_Neutroamine</defName>
+			<label>glitterworld neutroamine</label>
+			<description>A synthetic precursor chemical. While it is useless on its own, many drugs require glitterworld neutroamine as an ingredient.</description>
+			<possessionCount>0</possessionCount>
+			<graphicData>
+			<texPath>Things/Item/Gneutroamine</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+			<drawSize>0.90</drawSize>
+			</graphicData>
+			<stackLimit>150</stackLimit>
+			<healthAffectsPrice>false</healthAffectsPrice>
+			<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<MarketValue>12</MarketValue>
+			<Mass>0.02</Mass>
+			<Flammability>0.7</Flammability>
+			<DeteriorationRate>1.0</DeteriorationRate>
+			</statBases>
+			<thingCategories>
+			<li>Manufactured</li>
+			</thingCategories>
+		</ThingDef>
+	<!-- BANDAGE KIT -->
+		<ThingDef ParentName="ResourceBase">
+			<defName>Bandagekit</defName>
+			<label>Bandage Kit</label>
+			<description>A pack of bandages made from cloth. Less potent than medical kits.</description>
+			<thingClass>Medicine</thingClass>
+			<graphicData>
+			<texPath>Things/Item/Bandagekit</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			</graphicData>
+			<soundInteract>Standard_Drop</soundInteract>
+			<soundDrop>Standard_Drop</soundDrop>
+			<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<MarketValue>6</MarketValue>
+			<Flammability>1.0</Flammability>
+			<MedicalPotency>0.35</MedicalPotency>
+			<DeteriorationRate>2</DeteriorationRate>
+			<Mass>0.02</Mass>
+			</statBases>
+			<thingCategories>
+			<li>Medicine</li>
+			</thingCategories>
+			<tickerType>Rare</tickerType>
+		</ThingDef>
+	<!-- DANDELION CUTTINGS -->
+		<ThingDef ParentName="VG_RawDrugsBase">
+			<defName>VG_DandelionCuttings</defName>
+			<label>dandelion cuttings</label>
+			<description>The cuttings from the dandelion flower. Can be used in cooking or made into a healthy medicinal tea.</description>
+			<graphicData>
+			<texPath>Things/Item/Dandelion</texPath>
+			</graphicData>
+			<statBases>
+			<MarketValue>1.5</MarketValue>
+					<Nutrition>0.025</Nutrition>
+			</statBases>
+			<comps>
+			<li Class="CompProperties_Rottable">
+				<daysToRotStart>5</daysToRotStart>
+				<rotDestroys>true</rotDestroys>
+			</li>
+			</comps>
+		</ThingDef>
+</Defs>

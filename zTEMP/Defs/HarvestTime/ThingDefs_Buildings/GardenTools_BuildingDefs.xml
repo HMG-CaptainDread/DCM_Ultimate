@@ -1,0 +1,1536 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- SUN LAMPS -->
+		<!-- ABSTRACT -->
+			<ThingDef Abstract="True" Name="VG_LampBase" ParentName="LampBase">
+				<designationCategory>GardenTools</designationCategory>
+			</ThingDef>
+		<!-- HEATED SUN LAMPS -->
+			<!-- MINI -->
+				<ThingDef ParentName="VG_LampBase">
+					<defName>HeatedMiniSunLamp</defName>
+					<label>mini heated sun lamp</label>
+					<thingClass>VGTools.Building_SunLampHeatController</thingClass>
+					<tickerType>Rare</tickerType>
+					<graphicData>
+						<texPath>Things/Building/HeatedSunMini</texPath>
+						<drawSize>(1,1)</drawSize>
+					</graphicData>
+					<designatorDropdown>SunlampsNormal</designatorDropdown>
+						<statBases>
+							<Mass>2.5</Mass>
+						</statBases>
+						<selectable>true</selectable>
+					<description>An industrial lamp which lights an area brightly enough to grow crops, but consumes a huge amount of power. Also is a large heater that will keep your room warm.</description>
+						<size>(1,1)</size>
+						<costList>
+							<Steel>100</Steel>
+							<ComponentIndustrial>1</ComponentIndustrial>
+						</costList>
+					<comps>
+						<li Class="CompProperties_Glower">
+							<overlightRadius>7.0</overlightRadius>
+							<glowRadius>4.5</glowRadius>
+							<glowColor>(370,370,370,0)</glowColor>
+						</li>
+						<li Class="CompProperties_Power">
+							<compClass>CompPowerTrader</compClass>
+							<shortCircuitInRain>true</shortCircuitInRain>
+							<basePowerConsumption>725</basePowerConsumption>
+						</li>
+						<li Class="CompProperties_Breakdownable"/>
+						<li Class="CompProperties_TempControl">
+							<energyPerSecond>20</energyPerSecond>
+						</li>
+					</comps>
+					<!-- Determined by trial and error
+					This value isn't perfect because these radii use different algorithms
+					but it matches in this case-->
+					<specialDisplayRadius>3.2</specialDisplayRadius>
+					<researchPrerequisites>
+						<li>HeatedSunlamps</li>
+					</researchPrerequisites>
+				</ThingDef>
+			<!-- REGULAR -->
+				<ThingDef ParentName="VG_LampBase">
+					<defName>HeatedSunLamp</defName>
+					<label>heated sun lamp</label>
+						<thingClass>VGTools.Building_SunLampHeatController</thingClass>
+					<tickerType>Rare</tickerType>
+					<category>Building</category>
+					<graphicData>
+						<texPath>Things/Building/HeatedSunLamp</texPath>
+					</graphicData>
+					<designatorDropdown>SunlampsNormal</designatorDropdown>
+					<statBases>
+						<Mass>4.5</Mass>
+					</statBases>
+					<description>An industrial lamp which lights an area brightly enough to grow crops, but consumes a huge amount of power. Also is a large heater that will keep your room warm.</description>
+					<costList>
+						<Steel>130</Steel>
+						<ComponentIndustrial>1</ComponentIndustrial>
+					</costList>
+					<comps>
+						<li Class="CompProperties_Glower">
+							<overlightRadius>7.0</overlightRadius>
+							<glowRadius>14</glowRadius>
+							<glowColor>(370,370,370,0)</glowColor>
+						</li>
+						<li Class="CompProperties_Power">
+							<compClass>CompPowerTrader</compClass>
+							<shortCircuitInRain>true</shortCircuitInRain>
+							<basePowerConsumption>1300</basePowerConsumption>
+						</li>
+						<li Class="CompProperties_Breakdownable"/>
+						<li Class="CompProperties_TempControl">
+							<energyPerSecond>40</energyPerSecond>
+						</li>
+					</comps>
+					<!-- Determined by trial and error
+					This value isn't perfect because these radii use different algorithms
+					but it matches in this case-->
+					<specialDisplayRadius>5.8</specialDisplayRadius>
+					<researchPrerequisites>
+						<li>HeatedSunlamps</li>
+					</researchPrerequisites>
+				</ThingDef>
+			<!-- SMALL -->
+				<ThingDef ParentName="VG_LampBase">
+					<defName>HeatedSmallSunLamp</defName>
+					<label>small heated sun lamp</label>
+					<thingClass>VGTools.Building_SunLampHeatController</thingClass>
+					<tickerType>Rare</tickerType>
+					<graphicData>
+						<texPath>Things/Building/HeatedSunSmall</texPath>
+						<drawSize>(1,1)</drawSize>
+					</graphicData>
+					<designatorDropdown>SunlampsNormal</designatorDropdown>
+					<statBases>
+							<Mass>2.5</Mass>
+					</statBases>
+					<description>An industrial lamp which lights an area brightly enough to grow crops, but consumes a huge amount of power. Also is a large heater that will keep your room warm.</description>
+					<size>(1,1)</size>
+					<costList>
+						<Steel>120</Steel>
+						<ComponentIndustrial>1</ComponentIndustrial>
+					</costList>
+					<comps>
+						<li Class="CompProperties_Glower">
+							<overlightRadius>7.0</overlightRadius>
+							<glowRadius>5.5</glowRadius>
+							<glowColor>(370,370,370,0)</glowColor>
+						</li>
+						<li Class="CompProperties_Power">
+							<compClass>CompPowerTrader</compClass>
+							<shortCircuitInRain>true</shortCircuitInRain>
+							<basePowerConsumption>1050</basePowerConsumption>
+						</li>
+						<li Class="CompProperties_Flickable"/>
+						<li Class="CompProperties_Breakdownable"/>
+						<li Class="CompProperties_TempControl">
+							<energyPerSecond>30</energyPerSecond>
+						</li>
+					</comps>
+					<!-- Determined by trial and error
+					This value isn't perfect because these radii use different algorithms
+					but it matches in this case-->
+					<specialDisplayRadius>4.2</specialDisplayRadius>
+					<researchPrerequisites>
+						<li>HeatedSunlamps</li>
+					</researchPrerequisites>
+				</ThingDef>
+		<!-- CEILING SUN LAMPS -->
+			<!-- MINI -->
+				<ThingDef ParentName="VG_LampBase">
+					<defName>MiniCeilingSunLamp</defName>
+					<label>mini ceiling sun lamp</label>
+					<thingClass>Building_SunLamp</thingClass>
+					<graphicData>
+						<texPath>Things/Building/CeilingSunLamp</texPath>
+					</graphicData>
+					<blockWind>false</blockWind>
+					<tickerType>Rare</tickerType>
+					<designatorDropdown>CeilingSunlampsNormal</designatorDropdown>
+					<building>
+						<isEdifice>false</isEdifice>
+					</building>
+					<statBases>
+						<WorkToBuild>200</WorkToBuild>
+						<Mass>1.5</Mass>
+					</statBases>
+					<description>An very small ceiling mounted sun lamp which lights an area brightly enough to grow crops, but consumes a large amount of power. Automatically turns itself off at night.</description>
+					<costList>
+						<Steel>15</Steel>
+					</costList>
+					<comps>
+						<li Class="CompProperties_Glower">
+							<overlightRadius>3.5</overlightRadius>
+							<glowRadius>6</glowRadius>
+							<glowColor>(370,370,370,0)</glowColor>
+						</li>
+						<li Class="CompProperties_Power">
+							<compClass>CompPowerTrader</compClass>
+							<shortCircuitInRain>true</shortCircuitInRain>
+							<basePowerConsumption>750</basePowerConsumption>
+						</li>
+						<li Class="CompProperties_Schedule">
+							<!-- Match plant growing times -->
+							<startTime>0.25</startTime>
+							<endTime>0.8</endTime>
+							<offMessage>Off for plant resting period</offMessage>
+						</li>
+					</comps>
+					<!-- Determined by trial and error
+					This value isn't perfect because these radii use different algorithms
+					but it matches in this case-->
+					<specialDisplayRadius>2.8</specialDisplayRadius>
+				</ThingDef>
+			<!-- REGULAR -->
+				<ThingDef ParentName="VG_LampBase">
+					<defName>CeilingSunLamp</defName>
+					<label>ceiling sun lamp</label>
+					<description>A ceilng mounted sun lamp which lights an area brightly enough to grow crops, but consumes a huge amount of power. Automatically turns itself off at night.</description>
+					<thingClass>Building_SunLamp</thingClass>
+					<graphicData>
+						<texPath>Things/Building/CeilingSunLamp</texPath>
+					</graphicData>
+					<blockWind>true</blockWind>
+					<tickerType>Rare</tickerType>
+					<designatorDropdown>CeilingSunlampsNormal</designatorDropdown>
+					<building>
+						<isEdifice>false</isEdifice>
+					</building>
+					<statBases>
+						<Mass>4.5</Mass>
+					</statBases>
+					<costList>
+					<Steel>40</Steel>
+					</costList>
+					<comps>
+						<li Class="CompProperties_Glower">
+							<overlightRadius>7.0</overlightRadius>
+							<glowRadius>14</glowRadius>
+							<glowColor>(370,370,370,0)</glowColor>
+						</li>
+						<li Class="CompProperties_Power">
+							<compClass>CompPowerTrader</compClass>
+							<shortCircuitInRain>true</shortCircuitInRain>
+							<basePowerConsumption>1500</basePowerConsumption>
+						</li>
+						<li Class="CompProperties_Schedule">
+							<!-- Match plant growing times -->
+							<startTime>0.25</startTime>
+							<endTime>0.8</endTime>
+							<offMessage>Off for plant resting period</offMessage>
+						</li>
+						<li Class="CompProperties_HeatPusher">
+							<compClass>CompHeatPusherPowered</compClass>
+							<heatPerSecond>3</heatPerSecond>
+						</li>
+					</comps>
+					<!-- Determined by trial and error
+					This value isn't perfect because these radii use different algorithms
+					but it matches in this case-->
+					<specialDisplayRadius>5.8</specialDisplayRadius>
+				</ThingDef>
+			<!-- SMALL -->
+				<ThingDef ParentName="VG_LampBase">
+					<defName>SmallCeilingSunLamp</defName>
+					<label>small ceiling sun lamp</label>
+					<thingClass>Building_SunLamp</thingClass>
+					<category>Building</category>
+					<graphicData>
+						<texPath>Things/Building/CeilingSunLamp</texPath>
+					</graphicData>
+					<blockWind>false</blockWind>
+					<tickerType>Rare</tickerType>
+					<passability>PassThroughOnly</passability>
+					<fillPercent>0.15</fillPercent>
+					<designatorDropdown>CeilingSunlampsNormal</designatorDropdown>
+					<building>
+						<isEdifice>false</isEdifice>
+					</building>
+					<statBases>
+						<Mass>2.5</Mass>
+					</statBases>
+					<selectable>true</selectable>
+					<description>An small ceiling mounted sun lamp which lights an area brightly enough to grow crops, but consumes a large amount of power. Automatically turns itself off at night.</description>
+					<costList>
+						<Steel>25</Steel>
+					</costList>
+					<comps>
+						<li Class="CompProperties_Glower">
+							<overlightRadius>5</overlightRadius>
+							<glowRadius>7.5</glowRadius>
+							<glowColor>(370,370,370,0)</glowColor>
+						</li>
+						<li Class="CompProperties_Power">
+							<compClass>CompPowerTrader</compClass>
+							<shortCircuitInRain>true</shortCircuitInRain>
+							<basePowerConsumption>1125</basePowerConsumption>
+						</li>
+						<li Class="CompProperties_Schedule">
+							<!-- Match plant growing times -->
+							<startTime>0.25</startTime>
+							<endTime>0.8</endTime>
+							<offMessage>Off for plant resting period</offMessage>
+						</li>
+					</comps>
+					<!-- Determined by trial and error
+					This value isn't perfect because these radii use different algorithms
+					but it matches in this case-->
+					<specialDisplayRadius>3.8</specialDisplayRadius>
+				</ThingDef>
+		<!-- ALWAYS ON CEILING SUN LAMPS -->
+			<!-- MINI -->
+				<ThingDef ParentName="VG_LampBase">
+					<defName>AO_MiniCeilSunLamp</defName>
+					<label>AO mini ceiling sun lamp</label>
+					<thingClass>Building_SunLamp</thingClass>
+					<graphicData>
+					<texPath>Things/Building/CeilingSunLamp</texPath>
+					</graphicData>
+					<blockWind>false</blockWind>
+					<tickerType>Rare</tickerType>
+					<designatorDropdown>CeilingSunlampsNormal</designatorDropdown>
+					<building>
+					<isEdifice>false</isEdifice>
+					</building>	<statBases>
+					<WorkToBuild>200</WorkToBuild>
+					<Mass>1.5</Mass>
+					</statBases>
+					<description>An very small ceilng mounted lamp which lights an area brightly enough to grow crops, but consumes a large amount of power. Stays on at night.</description>
+					<costList>
+					<Steel>15</Steel>
+					</costList>
+					<comps>
+					<li Class="CompProperties_Glower">
+						<overlightRadius>3.5</overlightRadius>
+						<glowRadius>6</glowRadius>
+						<glowColor>(370,370,370,0)</glowColor>
+					</li>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerTrader</compClass>
+						<shortCircuitInRain>true</shortCircuitInRain>
+						<basePowerConsumption>750</basePowerConsumption>
+					</li>
+					</comps>
+					<!-- Determined by trial and error
+					This value isn't perfect because these radii use different algorithms
+					but it matches in this case-->
+					<specialDisplayRadius>2.8</specialDisplayRadius>
+				</ThingDef>
+			<!-- REGULAR -->
+				<ThingDef ParentName="VG_LampBase">
+					<defName>AO_CeilSunLamp</defName>
+					<label>AO ceiling sun lamp</label>
+					<description>A ceilng mounted lamp which lights an area brightly enough to grow crops, but consumes a huge amount of power. Stays on at night.</description>
+					<thingClass>Building_SunLamp</thingClass>
+					<graphicData>
+					<texPath>Things/Building/CeilingSunLamp</texPath>
+					</graphicData>
+					<blockWind>true</blockWind>
+					<tickerType>Rare</tickerType>
+					<designatorDropdown>CeilingSunlampsNormal</designatorDropdown>
+					<building>
+					<isEdifice>false</isEdifice>
+					</building>	<statBases>
+					<WorkToBuild>330</WorkToBuild>
+					<Mass>4.5</Mass>
+					</statBases>
+					<costList>
+					<Steel>40</Steel>
+					</costList>
+					<comps>
+					<li Class="CompProperties_Glower">
+						<overlightRadius>7.0</overlightRadius>
+						<glowRadius>14</glowRadius>
+						<glowColor>(370,370,370,0)</glowColor>
+					</li>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerTrader</compClass>
+						<shortCircuitInRain>true</shortCircuitInRain>
+						<basePowerConsumption>1500</basePowerConsumption>
+					</li>
+					<li Class="CompProperties_HeatPusher">
+						<compClass>CompHeatPusherPowered</compClass>
+						<heatPerSecond>3</heatPerSecond>
+					</li>
+					</comps>
+					<!-- Determined by trial and error
+					This value isn't perfect because these radii use different algorithms
+					but it matches in this case-->
+					<specialDisplayRadius>5.8</specialDisplayRadius>
+				</ThingDef>
+			<!-- SMALL -->
+				<ThingDef ParentName="VG_LampBase">
+					<defName>AO_SmallCeilSunLamp</defName>
+					<label>AO small ceiling sun lamp</label>
+					<thingClass>Building_SunLamp</thingClass>
+					<category>Building</category>
+					<graphicData>
+					<texPath>Things/Building/CeilingSunLamp</texPath>
+					</graphicData>
+					<blockWind>false</blockWind>
+					<tickerType>Rare</tickerType>
+					<passability>PassThroughOnly</passability>
+					<fillPercent>0.15</fillPercent>
+					<designatorDropdown>CeilingSunlampsNormal</designatorDropdown>
+					<building>
+					<isEdifice>false</isEdifice>
+					</building>	<statBases>
+					<Mass>2.5</Mass>
+					</statBases>
+					<selectable>true</selectable>
+					<description>A small ceilng mounted lamp which lights an area brightly enough to grow crops, but consumes a large amount of power. Stays on at night.</description>
+					<costList>
+					<Steel>25</Steel>
+					</costList>
+					<comps>
+					<li Class="CompProperties_Glower">
+						<overlightRadius>5</overlightRadius>
+						<glowRadius>7.5</glowRadius>
+						<glowColor>(370,370,370,0)</glowColor>
+					</li>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerTrader</compClass>
+						<shortCircuitInRain>true</shortCircuitInRain>
+						<basePowerConsumption>1125</basePowerConsumption>
+					</li>
+					</comps>
+					<!-- Determined by trial and error
+					This value isn't perfect because these radii use different algorithms
+					but it matches in this case-->
+					<specialDisplayRadius>3.8</specialDisplayRadius>
+				</ThingDef>
+		<!-- HEATED CEILING SUN LAMPS -->
+			<!-- MINI -->
+				<ThingDef ParentName="VG_LampBase">
+					<defName>HeatedMiniceilngSunLamp</defName>
+					<label>mini ceilng heated sun lamp</label>
+					<thingClass>VGTools.Building_SunLampHeatController</thingClass>
+					<tickerType>Rare</tickerType>
+					<graphicData>
+					<texPath>Things/Building/CeilingSunLamp</texPath>
+					<drawSize>(1,1)</drawSize>
+					</graphicData>
+					<designatorDropdown>CeilingSunlampsNormal</designatorDropdown>
+						<statBases>
+							<Mass>2.5</Mass>
+						</statBases>
+						<selectable>true</selectable>
+					<description>A mini ceilng mounted sun lamp which lights an area brightly enough to grow crops, but consumes a huge amount of power. Also is a large heater that will keep your room warm.</description>
+						<size>(1,1)</size>
+						<costList>
+							<Steel>100</Steel>
+							<ComponentIndustrial>1</ComponentIndustrial>
+						</costList>
+					<comps>
+					<li Class="CompProperties_Glower">
+						<overlightRadius>7.0</overlightRadius>
+						<glowRadius>4.5</glowRadius>
+						<glowColor>(370,370,370,0)</glowColor>
+					</li>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerTrader</compClass>
+						<shortCircuitInRain>true</shortCircuitInRain>
+						<basePowerConsumption>725</basePowerConsumption>
+					</li>
+					<li Class="CompProperties_Breakdownable"/>
+					<li Class="CompProperties_TempControl">
+						<energyPerSecond>20</energyPerSecond>
+					</li>
+					</comps>
+						<!-- Determined by trial and error
+						This value isn't perfect because these radii use different algorithms
+						but it matches in this case-->
+						<specialDisplayRadius>3.2</specialDisplayRadius>
+					<researchPrerequisites>
+						<li>HeatedSunlamps</li>
+					</researchPrerequisites>
+				</ThingDef>
+			<!-- REGULAR -->
+				<ThingDef ParentName="VG_LampBase">
+					<defName>HeatedceilngSunLamp</defName>
+					<label>heated ceilng sun lamp</label>
+						<thingClass>VGTools.Building_SunLampHeatController</thingClass>
+					<tickerType>Rare</tickerType>
+					<category>Building</category>
+					<graphicData>
+					<texPath>Things/Building/CeilingSunLamp</texPath>
+					</graphicData>
+					<designatorDropdown>CeilingSunlampsNormal</designatorDropdown>
+					<statBases>
+					<Mass>4.5</Mass>
+					</statBases>
+					<description>A ceilng mounted lamp which lights an area brightly enough to grow crops, but consumes a huge amount of power. Also is a large heater that will keep your room warm.</description>
+					<costList>
+					<Steel>130</Steel>
+					<ComponentIndustrial>1</ComponentIndustrial>
+					</costList>
+					<comps>
+					<li Class="CompProperties_Glower">
+						<overlightRadius>7.0</overlightRadius>
+						<glowRadius>14</glowRadius>
+						<glowColor>(370,370,370,0)</glowColor>
+					</li>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerTrader</compClass>
+						<shortCircuitInRain>true</shortCircuitInRain>
+						<basePowerConsumption>1300</basePowerConsumption>
+					</li>
+					<li Class="CompProperties_Breakdownable"/>
+					<li Class="CompProperties_TempControl">
+					<energyPerSecond>40</energyPerSecond>
+					</li>
+					</comps>
+					<!-- Determined by trial and error
+					This value isn't perfect because these radii use different algorithms
+					but it matches in this case-->
+					<specialDisplayRadius>5.8</specialDisplayRadius>
+					<researchPrerequisites>
+						<li>HeatedSunlamps</li>
+					</researchPrerequisites>
+				</ThingDef>
+			<!-- SMALL -->
+				<ThingDef ParentName="VG_LampBase">
+					<defName>HeatedceilngSmallSunLamp</defName>
+					<label>small ceilng heated sun lamp</label>
+					<thingClass>VGTools.Building_SunLampHeatController</thingClass>
+					<tickerType>Rare</tickerType>
+					<graphicData>
+					<texPath>Things/Building/CeilingSunLamp</texPath>
+					<drawSize>(1,1)</drawSize>
+					</graphicData>
+					<designatorDropdown>CeilingSunlampsNormal</designatorDropdown>
+						<statBases>
+								<Mass>2.5</Mass>
+						</statBases>
+					<description>A small ceilng mounted sun lamp which lights an area brightly enough to grow crops, but consumes a huge amount of power. Also is a large heater that will keep your room warm.</description>
+						<size>(1,1)</size>
+						<costList>
+							<Steel>120</Steel>
+							<ComponentIndustrial>1</ComponentIndustrial>
+						</costList>
+					<comps>
+					<li Class="CompProperties_Glower">
+						<overlightRadius>7.0</overlightRadius>
+						<glowRadius>5.5</glowRadius>
+						<glowColor>(370,370,370,0)</glowColor>
+					</li>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerTrader</compClass>
+						<shortCircuitInRain>true</shortCircuitInRain>
+						<basePowerConsumption>1050</basePowerConsumption>
+					</li>
+					<li Class="CompProperties_Flickable"/>
+					<li Class="CompProperties_Breakdownable"/>
+					<li Class="CompProperties_TempControl">
+						<energyPerSecond>30</energyPerSecond>
+					</li>
+					</comps>
+						<!-- Determined by trial and error
+						This value isn't perfect because these radii use different algorithms
+						but it matches in this case-->
+						<specialDisplayRadius>4.2</specialDisplayRadius>
+					<researchPrerequisites>
+						<li>HeatedSunlamps</li>
+					</researchPrerequisites>
+				</ThingDef>
+		<!-- SUN LAMP COLUMNS -->
+			<!-- REGULAR -->
+				<ThingDef ParentName="VG_LampBase">
+					<defName>SunlampColumn</defName>
+					<label>sun lamp column</label>
+					<description>An industrial lamp which lights an area brightly enough to grow crops, but consumes a huge amount of power. Automatically turns itself off at night. Hold up the roof.</description>
+					<thingClass>Building_SunLamp</thingClass>
+					<graphicData>
+					<texPath>Things/Building/SunlampColumn/SunlampColumn</texPath>
+					<shaderType>CutoutComplex</shaderType>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>(1,1.25)</drawSize>
+					<drawOffset>(0,0,0.2)</drawOffset>
+					<shadowData>
+					<volume>(0.3, 0.5, 0.3)</volume>
+						<offset>(0,0,-0.23)</offset>
+					</shadowData>
+					<damageData>
+						<rect>(0.2,0.2,0.6,0.6)</rect>
+					</damageData>
+					</graphicData>
+					<blockWind>true</blockWind>
+					<holdsRoof>true</holdsRoof>
+					<tickerType>Rare</tickerType>
+					<statBases>
+					<Mass>4.5</Mass>
+					</statBases>
+					<stuffCategories>
+					<li>Metallic</li>
+					<li>Woody</li>
+					<li>Stony</li>
+					</stuffCategories>
+					<costStuffCount>20</costStuffCount>
+					<costList>
+					<Steel>40</Steel>
+					</costList>
+					<comps>
+					<li Class="CompProperties_Glower">
+						<overlightRadius>7.0</overlightRadius>
+						<glowRadius>14</glowRadius>
+						<glowColor>(370,370,370,0)</glowColor>
+					</li>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerTrader</compClass>
+						<shortCircuitInRain>true</shortCircuitInRain>
+						<basePowerConsumption>1500</basePowerConsumption>
+					</li>
+					<li Class="CompProperties_Schedule">
+						<!-- Match plant growing times -->
+						<startTime>0.25</startTime>
+						<endTime>0.8</endTime>
+						<offMessage>Off for plant resting period</offMessage>
+					</li>
+					<li Class="CompProperties_HeatPusher">
+						<compClass>CompHeatPusherPowered</compClass>
+						<heatPerSecond>3</heatPerSecond>
+					</li>
+					</comps>
+					<!-- Determined by trial and error
+					This value isn't perfect because these radii use different algorithms
+					but it matches in this case-->
+					<specialDisplayRadius>5.8</specialDisplayRadius>
+				</ThingDef>
+			<!-- ALWAYS ON -->
+				<ThingDef ParentName="VG_LampBase">
+					<defName>SunlampColumnAO</defName>
+					<label>sun lamp column AO</label>
+					<description>An industrial lamp which lights an area brightly enough to grow crops, but consumes a huge amount of power. Does not turn itself off at night. Hold up the roof.</description>
+					<thingClass>Building_SunLamp</thingClass>
+					<graphicData>
+					<texPath>Things/Building/SunlampColumn/SunlampColumn</texPath>
+					<shaderType>CutoutComplex</shaderType>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>(1,1.25)</drawSize>
+					<drawOffset>(0,0,0.2)</drawOffset>
+					<shadowData>
+					<volume>(0.3, 0.5, 0.3)</volume>
+						<offset>(0,0,-0.23)</offset>
+					</shadowData>
+					<damageData>
+						<rect>(0.2,0.2,0.6,0.6)</rect>
+					</damageData>
+					</graphicData>
+					<blockWind>true</blockWind>
+					<holdsRoof>true</holdsRoof>
+					<tickerType>Rare</tickerType>
+					<statBases>
+					<Mass>4.5</Mass>
+					</statBases>
+					<stuffCategories>
+					<li>Metallic</li>
+					<li>Woody</li>
+					<li>Stony</li>
+					</stuffCategories>
+					<costStuffCount>20</costStuffCount>
+					<costList>
+					<Steel>40</Steel>
+					</costList>
+					<comps>
+					<li Class="CompProperties_Glower">
+						<overlightRadius>7.0</overlightRadius>
+						<glowRadius>14</glowRadius>
+						<glowColor>(370,370,370,0)</glowColor>
+					</li>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerTrader</compClass>
+						<shortCircuitInRain>true</shortCircuitInRain>
+						<basePowerConsumption>1500</basePowerConsumption>
+					</li>
+					<li Class="CompProperties_HeatPusher">
+						<compClass>CompHeatPusherPowered</compClass>
+						<heatPerSecond>3</heatPerSecond>
+					</li>
+					</comps>
+					<!-- Determined by trial and error
+					This value isn't perfect because these radii use different algorithms
+					but it matches in this case-->
+					<specialDisplayRadius>5.8</specialDisplayRadius>
+				</ThingDef>
+			<!-- HEATED -->
+				<ThingDef ParentName="VG_LampBase">
+					<defName>HeatedSunlampColumn</defName>
+					<label>heated sun lamp column</label>
+					<description>An industrial lamp which lights an area brightly enough to grow crops, but consumes a huge amount of power. Automatically turns itself off at night. Hold up the roof.</description>
+					<thingClass>VGTools.Building_SunLampHeatController</thingClass>
+					<graphicData>
+					<texPath>Things/Building/SunlampColumn/SunlampColumn</texPath>
+					<shaderType>CutoutComplex</shaderType>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>(1,1.25)</drawSize>
+					<drawOffset>(0,0,0.2)</drawOffset>
+					<shadowData>
+					<volume>(0.3, 0.5, 0.3)</volume>
+						<offset>(0,0,-0.23)</offset>
+					</shadowData>
+					<damageData>
+						<rect>(0.2,0.2,0.6,0.6)</rect>
+					</damageData>
+					</graphicData>
+					<blockWind>true</blockWind>
+					<holdsRoof>true</holdsRoof>
+					<tickerType>Rare</tickerType>
+					<statBases>
+					<Mass>4.5</Mass>
+					</statBases>
+					<stuffCategories>
+					<li>Metallic</li>
+					<li>Woody</li>
+					<li>Stony</li>
+					</stuffCategories>
+					<costStuffCount>20</costStuffCount>
+					<costList>
+					<Steel>40</Steel>
+					<ComponentIndustrial>1</ComponentIndustrial>
+					</costList>
+					<comps>
+					<li Class="CompProperties_Glower">
+						<overlightRadius>7.0</overlightRadius>
+						<glowRadius>14</glowRadius>
+						<glowColor>(370,370,370,0)</glowColor>
+					</li>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerTrader</compClass>
+						<shortCircuitInRain>true</shortCircuitInRain>
+						<basePowerConsumption>1300</basePowerConsumption>
+					</li>
+					<li Class="CompProperties_Breakdownable"/>
+					<li Class="CompProperties_TempControl">
+					<energyPerSecond>40</energyPerSecond>
+					</li>
+					</comps>
+					<!-- Determined by trial and error
+					This value isn't perfect because these radii use different algorithms
+					but it matches in this case-->
+					<specialDisplayRadius>5.8</specialDisplayRadius>
+					<researchPrerequisites>
+						<li>HeatedSunlamps</li>
+					</researchPrerequisites>
+				</ThingDef>
+		<!-- ALWAYS ON -->
+			<!-- MINI -->
+				<ThingDef ParentName="VG_LampBase">
+					<defName>AO_MiniSunLamp</defName>
+					<label>AO mini sun lamp</label>
+					<thingClass>Building_SunLamp</thingClass>
+					<graphicData>
+					<texPath>Things/Building/LampSunMini</texPath>
+					</graphicData>
+					<blockWind>false</blockWind>
+					<tickerType>Rare</tickerType>
+					<designatorDropdown>SunlampsNormal</designatorDropdown>
+					<statBases>
+					<WorkToBuild>200</WorkToBuild>
+					<Mass>1.5</Mass>
+					</statBases>
+					<description>An very small lamp which lights an area brightly enough to grow crops, but consumes a large amount of power. Stays on at night.</description>
+					<costList>
+					<Steel>15</Steel>
+					</costList>
+					<comps>
+					<li Class="CompProperties_Glower">
+						<overlightRadius>3.5</overlightRadius>
+						<glowRadius>6</glowRadius>
+						<glowColor>(370,370,370,0)</glowColor>
+					</li>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerTrader</compClass>
+						<shortCircuitInRain>true</shortCircuitInRain>
+						<basePowerConsumption>750</basePowerConsumption>
+					</li>
+					</comps>
+					<!-- Determined by trial and error
+					This value isn't perfect because these radii use different algorithms
+					but it matches in this case-->
+					<specialDisplayRadius>2.8</specialDisplayRadius>
+				</ThingDef>
+			<!-- REGULAR -->
+				<ThingDef ParentName="VG_LampBase">
+					<defName>AO_SunLamp</defName>
+					<label>AO sun lamp</label>
+					<description>An industrial lamp which lights an area brightly enough to grow crops, but consumes a huge amount of power. Stays on at night.</description>
+					<thingClass>Building_SunLamp</thingClass>
+					<graphicData>
+					<texPath>Things/Building/SunLampd</texPath>
+					</graphicData>
+					<blockWind>true</blockWind>
+					<tickerType>Rare</tickerType>
+					<designatorDropdown>SunlampsNormal</designatorDropdown>
+					<statBases>
+					<WorkToBuild>330</WorkToBuild>
+					<Mass>4.5</Mass>
+					</statBases>
+					<costList>
+					<Steel>40</Steel>
+					</costList>
+					<comps>
+					<li Class="CompProperties_Glower">
+						<overlightRadius>7.0</overlightRadius>
+						<glowRadius>14</glowRadius>
+						<glowColor>(370,370,370,0)</glowColor>
+					</li>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerTrader</compClass>
+						<shortCircuitInRain>true</shortCircuitInRain>
+						<basePowerConsumption>1500</basePowerConsumption>
+					</li>
+					<li Class="CompProperties_HeatPusher">
+						<compClass>CompHeatPusherPowered</compClass>
+						<heatPerSecond>3</heatPerSecond>
+					</li>
+					</comps>
+					<!-- Determined by trial and error
+					This value isn't perfect because these radii use different algorithms
+					but it matches in this case-->
+					<specialDisplayRadius>5.8</specialDisplayRadius>
+				</ThingDef>
+			<!-- SMALL -->
+				<ThingDef ParentName="VG_LampBase">
+					<defName>AO_SmallSunLamp</defName>
+					<label>AO small sun lamp</label>
+					<thingClass>Building_SunLamp</thingClass>
+					<category>Building</category>
+					<graphicData>
+					<texPath>Things/Building/LampSunSmall</texPath>
+					</graphicData>
+					<blockWind>false</blockWind>
+					<tickerType>Rare</tickerType>
+					<passability>PassThroughOnly</passability>
+					<fillPercent>0.15</fillPercent>
+					<designatorDropdown>SunlampsNormal</designatorDropdown>
+					<statBases>
+					<Mass>2.5</Mass>
+					</statBases>
+					<selectable>true</selectable>
+					<description>A small lamp which lights an area brightly enough to grow crops, but consumes a large amount of power. Stays on at night.</description>
+					<costList>
+					<Steel>25</Steel>
+					</costList>
+					<comps>
+					<li Class="CompProperties_Glower">
+						<overlightRadius>5</overlightRadius>
+						<glowRadius>7.5</glowRadius>
+						<glowColor>(370,370,370,0)</glowColor>
+					</li>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerTrader</compClass>
+						<shortCircuitInRain>true</shortCircuitInRain>
+						<basePowerConsumption>1125</basePowerConsumption>
+					</li>
+					</comps>
+					<!-- Determined by trial and error
+					This value isn't perfect because these radii use different algorithms
+					but it matches in this case-->
+					<specialDisplayRadius>3.8</specialDisplayRadius>
+				</ThingDef>
+		<!-- REGULAR -->
+			<!-- MINI -->
+				<ThingDef ParentName="VG_LampBase">
+					<defName>MiniSunLamp</defName>
+					<label>mini sun lamp</label>
+					<thingClass>Building_SunLamp</thingClass>
+					<graphicData>
+					<texPath>Things/Building/LampSunMini</texPath>
+					</graphicData>
+					<blockWind>false</blockWind>
+					<tickerType>Rare</tickerType>
+					<designatorDropdown>SunlampsNormal</designatorDropdown>
+					<statBases>
+					<WorkToBuild>200</WorkToBuild>
+					<Mass>1.5</Mass>
+					</statBases>
+					<description>An very small lamp which lights an area brightly enough to grow crops, but consumes a large amount of power. Automatically turns itself off at night.</description>
+					<costList>
+					<Steel>15</Steel>
+					</costList>
+					<comps>
+					<li Class="CompProperties_Glower">
+						<overlightRadius>3.5</overlightRadius>
+						<glowRadius>6</glowRadius>
+						<glowColor>(370,370,370,0)</glowColor>
+					</li>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerTrader</compClass>
+						<shortCircuitInRain>true</shortCircuitInRain>
+						<basePowerConsumption>750</basePowerConsumption>
+					</li>
+					<li Class="CompProperties_Schedule">
+						<!-- Match plant growing times -->
+						<startTime>0.25</startTime>
+						<endTime>0.8</endTime>
+						<offMessage>Off for plant resting period</offMessage>
+					</li>
+					</comps>
+					<!-- Determined by trial and error
+					This value isn't perfect because these radii use different algorithms
+					but it matches in this case-->
+					<specialDisplayRadius>2.8</specialDisplayRadius>
+				</ThingDef>
+			<!-- REGULAR -->
+				<ThingDef ParentName="VG_LampBase">
+					<defName>SunLamp</defName>
+					<label>sun lamp</label>
+					<description>An industrial lamp which lights an area brightly enough to grow crops, but consumes a huge amount of power. Automatically turns itself off at night.</description>
+					<thingClass>Building_SunLamp</thingClass>
+					<graphicData>
+					<texPath>Things/Building/SunLampd</texPath>
+					</graphicData>
+					<blockWind>true</blockWind>
+					<tickerType>Rare</tickerType>
+					<designatorDropdown>SunlampsNormal</designatorDropdown>  	<statBases>
+					<Mass>4.5</Mass>
+					</statBases>
+					<costList>
+					<Steel>40</Steel>
+					</costList>
+					<comps>
+					<li Class="CompProperties_Glower">
+						<overlightRadius>7.0</overlightRadius>
+						<glowRadius>14</glowRadius>
+						<glowColor>(370,370,370,0)</glowColor>
+					</li>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerTrader</compClass>
+						<shortCircuitInRain>true</shortCircuitInRain>
+						<basePowerConsumption>1500</basePowerConsumption>
+					</li>
+					<li Class="CompProperties_Schedule">
+						<!-- Match plant growing times -->
+						<startTime>0.25</startTime>
+						<endTime>0.8</endTime>
+						<offMessage>Off for plant resting period</offMessage>
+					</li>
+					<li Class="CompProperties_HeatPusher">
+						<compClass>CompHeatPusherPowered</compClass>
+						<heatPerSecond>3</heatPerSecond>
+					</li>
+					</comps>
+					<!-- Determined by trial and error
+					This value isn't perfect because these radii use different algorithms
+					but it matches in this case-->
+					<specialDisplayRadius>5.8</specialDisplayRadius>
+				</ThingDef>
+			<!-- SMALL -->
+				<ThingDef ParentName="VG_LampBase">
+					<defName>SmallSunLamp</defName>
+					<label>small sun lamp</label>
+					<thingClass>Building_SunLamp</thingClass>
+					<category>Building</category>
+					<graphicData>
+					<texPath>Things/Building/LampSunSmall</texPath>
+					</graphicData>
+					<blockWind>false</blockWind>
+					<tickerType>Rare</tickerType>
+					<passability>PassThroughOnly</passability>
+					<fillPercent>0.15</fillPercent>
+					<designatorDropdown>SunlampsNormal</designatorDropdown>
+					<statBases>
+					<Mass>2.5</Mass>
+					</statBases>
+					<selectable>true</selectable>
+					<description>An small lamp which lights an area brightly enough to grow crops, but consumes a large amount of power. Automatically turns itself off at night.</description>
+					<costList>
+					<Steel>25</Steel>
+					</costList>
+					<comps>
+					<li Class="CompProperties_Glower">
+						<overlightRadius>5</overlightRadius>
+						<glowRadius>7.5</glowRadius>
+						<glowColor>(370,370,370,0)</glowColor>
+					</li>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerTrader</compClass>
+						<shortCircuitInRain>true</shortCircuitInRain>
+						<basePowerConsumption>1125</basePowerConsumption>
+					</li>
+					<li Class="CompProperties_Schedule">
+						<!-- Match plant growing times -->
+						<startTime>0.25</startTime>
+						<endTime>0.8</endTime>
+						<offMessage>Off for plant resting period</offMessage>
+					</li>
+					</comps>
+					<!-- Determined by trial and error
+					This value isn't perfect because these radii use different algorithms
+					but it matches in this case-->
+					<specialDisplayRadius>3.8</specialDisplayRadius>
+				</ThingDef>
+	<!-- PLANTER BOXES -->
+		<!-- REGULAR -->
+			<ThingDef ParentName="BuildingBase">
+				<defName>Planterbox</defName>
+				<label>Planter Box</label>
+				<description>Crude box filled with soil, that allows you to grow anywhere. fertility is reduced to 70%. Does not require power.</description>
+				<thingClass>Building_PlantGrower</thingClass>
+				<graphicData>
+				<texPath>Things/Building/Planterbox</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(4,1)</drawSize>
+				<damageData>
+					<cornerTL>Damage/Corner</cornerTL>
+					<cornerTR>Damage/Corner</cornerTR>
+					<cornerBL>Damage/Corner</cornerBL>
+					<cornerBR>Damage/Corner</cornerBR>
+				</damageData>
+				</graphicData>
+				<altitudeLayer>FloorEmplacement</altitudeLayer>
+				<passability>PassThroughOnly</passability>
+				<pathCost>60</pathCost>
+				<castEdgeShadows>true</castEdgeShadows>
+				<fillPercent>0.30</fillPercent>
+				<canOverlapZones>false</canOverlapZones>
+				<statBases>
+				<WorkToBuild>2800</WorkToBuild>
+				<MaxHitPoints>180</MaxHitPoints>
+				<Flammability>1.0</Flammability>
+				<Cleanliness>-3</Cleanliness>
+				</statBases>
+				<size>(4,1)</size>
+				<costList>
+				<VG_PileofDirt>12</VG_PileofDirt>
+				</costList>
+				<stuffCategories>
+				<li>Metallic</li>
+				<li>Woody</li>
+				<li>Stony</li>
+				</stuffCategories>
+				<costStuffCount>20</costStuffCount>
+				<fertility>0.70</fertility>
+				<building>
+				<defaultPlantToGrow>Plant_Rice</defaultPlantToGrow>
+				<sowTag>Hydroponic</sowTag>
+				</building>
+					<comps>
+				<li Class="CompProperties_Forbiddable"/>
+				<li Class="CompProperties_Power">
+					<compClass>CompPowerTransmitter</compClass>
+					<transmitsPower>false</transmitsPower>
+				</li>
+					</comps>
+				<tickerType>Rare</tickerType>
+				<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+				<designationCategory>GardenTools</designationCategory>
+			</ThingDef>
+		<!-- MODULAR -->
+			<ThingDef ParentName="BuildingBase">
+				<defName>ModularPlanterbox</defName>
+				<label>Modular Planter Box</label>
+				<description>Crude box filled with soil, that allows you to grow anywhere. fertility is reduced to 70%. Does not require power. Modular allows you to make 1x1 connected boxes of any size.</description>
+				<thingClass>Building_PlantGrower</thingClass>
+				<graphicData>
+				<texPath>Things/Building/PlanterModular_Atlas</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<linkType>Basic</linkType>
+				<linkFlags>
+					<li>Sandbags</li>
+				</linkFlags>
+				<damageData>
+					<rect>(0.2,0.2,0.6,0.6)</rect>
+				</damageData>
+				</graphicData>
+				<uiIconPath>Things/Building/PlanterIcon</uiIconPath>
+				<pathCost>40</pathCost>
+				<pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
+				<altitudeLayer>FloorEmplacement</altitudeLayer>
+				<passability>PassThroughOnly</passability>
+				<castEdgeShadows>true</castEdgeShadows>
+				<fillPercent>0.30</fillPercent>
+				<canOverlapZones>false</canOverlapZones>
+				<statBases>
+				<WorkToBuild>650</WorkToBuild>
+				<MaxHitPoints>180</MaxHitPoints>
+				<Flammability>1.0</Flammability>
+				<Cleanliness>-3</Cleanliness>
+				</statBases>
+				<costList>
+				<VG_PileofDirt>4</VG_PileofDirt>
+				</costList>
+				<stuffCategories>
+				<li>Metallic</li>
+				<li>Woody</li>
+				<li>Stony</li>
+				</stuffCategories>
+				<costStuffCount>4</costStuffCount>
+				<fertility>0.70</fertility>
+				<building>
+				<blueprintGraphicData>
+				<texPath>Things/Building/PlanterModular_Atlas</texPath>
+				</blueprintGraphicData>
+				<defaultPlantToGrow>Plant_Rice</defaultPlantToGrow>
+				<sowTag>Hydroponic</sowTag>
+				</building>
+					<comps>
+				<li Class="CompProperties_Forbiddable"/>
+				<li Class="CompProperties_Power">
+					<compClass>CompPowerTransmitter</compClass>
+					<transmitsPower>false</transmitsPower>
+				</li>
+					</comps>
+				<tickerType>Rare</tickerType>
+
+				<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+				<designationCategory>GardenTools</designationCategory>
+			</ThingDef>
+		<!-- ADVANCED MODULAR -->
+			<ThingDef ParentName="BuildingBase">
+				<defName>ADV_ModularPlanterbox</defName>
+				<label>ADV Modular Planter Box</label>
+				<description>Upgraded planter box filled with soil and fertilizer, that allows you to grow anywhere. Fertility is 120%. Does not require power. Modular allows you to make 1x1 connected boxes of any size. But is not movable.</description>
+				<thingClass>Building_PlantGrower</thingClass>
+				<graphicData>
+				<texPath>Things/Building/PlanterModular_Atlas</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<linkType>Basic</linkType>
+				<linkFlags>
+					<li>Sandbags</li>
+				</linkFlags>
+				<damageData>
+					<rect>(0.2,0.2,0.6,0.6)</rect>
+				</damageData>
+				</graphicData>
+				<uiIconPath>Things/Building/PlanterIcon</uiIconPath>
+				<pathCost>40</pathCost>
+				<pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
+				<altitudeLayer>FloorEmplacement</altitudeLayer>
+				<passability>PassThroughOnly</passability>
+				<castEdgeShadows>true</castEdgeShadows>
+				<fillPercent>0.30</fillPercent>
+				<canOverlapZones>false</canOverlapZones>
+				<statBases>
+				<WorkToBuild>650</WorkToBuild>
+				<MaxHitPoints>180</MaxHitPoints>
+				<Flammability>1.0</Flammability>
+				<Cleanliness>-3</Cleanliness>
+				</statBases>
+				<costList>
+				<VG_PileofDirt>4</VG_PileofDirt>
+				<RawFertilizer>4</RawFertilizer>
+				</costList>
+				<stuffCategories>
+				<li>Metallic</li>
+				<li>Woody</li>
+				<li>Stony</li>
+				</stuffCategories>
+				<costStuffCount>4</costStuffCount>
+				<fertility>1.20</fertility>
+				<building>
+				<blueprintGraphicData>
+				<texPath>Things/Building/PlanterModular_Atlas</texPath>
+				</blueprintGraphicData>
+				<defaultPlantToGrow>Plant_Rice</defaultPlantToGrow>
+				<sowTag>Hydroponic</sowTag>
+				</building>
+					<comps>
+				<li Class="CompProperties_Forbiddable"/>
+				<li Class="CompProperties_Power">
+					<compClass>CompPowerTransmitter</compClass>
+					<transmitsPower>false</transmitsPower>
+				</li>
+					</comps>
+				<tickerType>Rare</tickerType>
+				<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+				<designationCategory>GardenTools</designationCategory>
+					<researchPrerequisites>
+					<li>AdvancedPlanterBox</li>
+				</researchPrerequisites>
+			</ThingDef>
+		<!-- MODULAR FLOWERBOX -->
+			<ThingDef ParentName="BuildingBase">
+				<defName>ModularFlowerbox</defName>
+				<label>Modular Flower Box</label>
+				<description>Flower box filled with soil. Modular allows you to make 1x1 connected boxes of any size.</description>
+				<thingClass>Building_PlantGrower</thingClass>
+				<graphicData>
+				<texPath>Things/Building/PlanterModular_Atlas</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<linkType>Basic</linkType>
+				<linkFlags>
+					<li>Sandbags</li>
+				</linkFlags>
+				<damageData>
+					<rect>(0.2,0.2,0.6,0.6)</rect>
+				</damageData>
+				</graphicData>
+				<uiIconPath>Things/Building/PlanterIcon</uiIconPath>
+				<pathCost>40</pathCost>
+				<pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
+				<altitudeLayer>FloorEmplacement</altitudeLayer>
+				<passability>PassThroughOnly</passability>
+				<castEdgeShadows>true</castEdgeShadows>
+				<fillPercent>0.30</fillPercent>
+				<canOverlapZones>false</canOverlapZones>
+				<statBases>
+				<WorkToBuild>650</WorkToBuild>
+				<MaxHitPoints>180</MaxHitPoints>
+				<Flammability>1.0</Flammability>
+				<Cleanliness>-3</Cleanliness>
+				</statBases>
+				<stuffCategories>
+				<li>Metallic</li>
+				<li>Woody</li>
+				<li>Stony</li>
+				</stuffCategories>
+				<costStuffCount>8</costStuffCount>
+				<fertility>1.0</fertility>
+				<building>
+				<blueprintGraphicData>
+				<texPath>Things/Building/PlanterModular_Atlas</texPath>
+				</blueprintGraphicData>
+				<defaultPlantToGrow>Plant_Rose</defaultPlantToGrow>
+				<sowTag>Decorative</sowTag>
+				</building>
+					<comps>
+				<li Class="CompProperties_Forbiddable"/>
+				<li Class="CompProperties_Power">
+					<compClass>CompPowerTransmitter</compClass>
+					<transmitsPower>false</transmitsPower>
+				</li>
+					</comps>
+				<tickerType>Rare</tickerType>
+				<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+				<designationCategory>GardenTools</designationCategory>
+			</ThingDef>
+		<!-- OLD COMPOSTER BOX -->
+			<ThingDef ParentName="BuildingBase">
+				<defName>VG_Composterbox</defName>
+				<label>Old Composter Box</label>
+				<description>Please de-construct this. Will return some wood and fertilizer.</description>
+				<graphicData>
+				<texPath>Things/Building/Planterbox</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(1,1)</drawSize>
+						<damageData>
+							<rect>(0.05,0.1,0.9,0.9)</rect>
+						</damageData>
+				</graphicData>
+					<altitudeLayer>Building</altitudeLayer>
+					<passability>PassThroughOnly</passability>
+					<canOverlapZones>false</canOverlapZones>
+					<fillPercent>0.45</fillPercent>
+					<pathCost>60</pathCost>
+					<rotatable>true</rotatable>
+						<size>(1,1)</size>
+				<costList>
+				<RawFertilizer>40</RawFertilizer>
+				</costList>
+				<stuffCategories>
+						<li>Metallic</li>
+						<li>Woody</li>
+						<li>Stony</li>
+				</stuffCategories>
+				<costStuffCount>50</costStuffCount>
+					<useHitPoints>true</useHitPoints>
+				<statBases>
+					<Cleanliness>-15</Cleanliness>
+					<WorkToBuild>0</WorkToBuild>
+					<Mass>10</Mass>
+					<MaxHitPoints>100</MaxHitPoints>
+					<Flammability>1.0</Flammability>
+				</statBases>
+			</ThingDef>
+	<!-- HYDROPONICS BASINS -->
+		<!-- REGULAR -->
+			<ThingDef ParentName="BuildingBase">
+				<defName>HydroponicsBasin</defName>
+				<label>hydroponics basin</label>
+				<description>Grows plants quickly in an artificial nutrient bath. Requires power to work; plants will die if power is cut. fertility is 280%.</description>
+				<thingClass>Building_PlantGrower</thingClass>
+				<graphicData>
+				<texPath>Things/Building/Production/HydroponicsBasin</texPath>
+				<graphicClass>Graphic_Multi</graphicClass>
+				<drawSize>(1,4)</drawSize>
+				<damageData>
+					<cornerTL>Damage/Corner</cornerTL>
+					<cornerTR>Damage/Corner</cornerTR>
+					<cornerBL>Damage/Corner</cornerBL>
+					<cornerBR>Damage/Corner</cornerBR>
+				</damageData>
+				</graphicData>
+				<altitudeLayer>FloorEmplacement</altitudeLayer>
+				<passability>PassThroughOnly</passability>
+				<pathCost>60</pathCost>
+				<castEdgeShadows>true</castEdgeShadows>
+				<constructEffect>ConstructMetal</constructEffect>
+				<fillPercent>0.30</fillPercent>
+				<statBases>
+				<WorkToBuild>2800</WorkToBuild>
+				<MaxHitPoints>180</MaxHitPoints>
+				<Flammability>1.0</Flammability>
+				<Cleanliness>-3</Cleanliness>
+				</statBases>
+				<size>(1,4)</size>
+				<costList>
+				<Steel>100</Steel>
+				<ComponentIndustrial>1</ComponentIndustrial>
+				</costList>
+				<fertility>2.8</fertility>
+				<building>
+				<defaultPlantToGrow>Plant_Rice</defaultPlantToGrow>
+				<sowTag>Hydroponic</sowTag>
+				</building>
+				<tickerType>Rare</tickerType>
+				<comps>
+				<li Class="CompProperties_Forbiddable"/>
+				<li Class="CompProperties_Power">
+					<compClass>CompPowerTrader</compClass>
+					<basePowerConsumption>70</basePowerConsumption>
+				</li>
+				<li Class="CompProperties_Flickable"/>
+				<li Class="CompProperties_Breakdownable"/>
+				</comps>
+				<researchPrerequisites><li>Hydroponics</li></researchPrerequisites>
+				<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+				<designationCategory>GardenTools</designationCategory>
+			</ThingDef>
+		<!-- MODULAR -->
+			<ThingDef ParentName="BuildingBase">
+				<defName>ModularHydroponicsBasin</defName>
+				<label>Modular Hydroponics Basin</label>
+				<description>Grows plants quickly in an artificial nutrient bath. Requires power to work; plants will die if power is cut. fertility is 280%.</description>
+				<thingClass>Building_PlantGrower</thingClass>
+				<graphicData>
+				<texPath>Things/Building/HydroModular_Atlas</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<linkType>Basic</linkType>
+				<linkFlags>
+					<li>Sandbags</li>
+				</linkFlags>
+				<damageData>
+					<rect>(0.2,0.2,0.6,0.6)</rect>
+				</damageData>
+				</graphicData>
+				<uiIconPath>Things/Building/HydroIcon</uiIconPath>
+				<pathCost>40</pathCost>
+				<pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
+				<altitudeLayer>FloorEmplacement</altitudeLayer>
+				<passability>PassThroughOnly</passability>
+				<castEdgeShadows>true</castEdgeShadows>
+				<constructEffect>ConstructMetal</constructEffect>
+				<fillPercent>0.30</fillPercent>
+				<statBases>
+				<WorkToBuild>700</WorkToBuild>
+				<MaxHitPoints>180</MaxHitPoints>
+				<Flammability>1.0</Flammability>
+				<Cleanliness>-3</Cleanliness>
+				</statBases>
+				<costList>
+				<Steel>50</Steel>
+				</costList>
+				<fertility>2.8</fertility>
+				<building>
+				<blueprintGraphicData>
+				<texPath>Things/Building/HydroModular_Atlas</texPath>
+				</blueprintGraphicData>
+				<defaultPlantToGrow>Plant_Rice</defaultPlantToGrow>
+				<sowTag>Hydroponic</sowTag>
+				</building>
+				<tickerType>Rare</tickerType>
+				<comps>
+				<li Class="CompProperties_Forbiddable"/>
+				<li Class="CompProperties_Power">
+					<compClass>CompPowerTrader</compClass>
+					<basePowerConsumption>18</basePowerConsumption>
+				</li>
+				<li Class="CompProperties_Flickable"/>
+				</comps>
+				<researchPrerequisites><li>Hydroponics</li></researchPrerequisites>
+				<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+				<designationCategory>GardenTools</designationCategory>
+			</ThingDef>
+		<!-- ADVANCED -->
+			<ThingDef ParentName="BuildingBase">
+				<defName>ADVHydroponicsBasin</defName>
+				<label>Advanced hydroponics basin</label>
+				<description>Grows plants more quickly in an artificial nutrient bath. Requires more power to work then basic basin; plants will die if power is cut. Provides it's own light. fertility  is 310%.</description>
+				<thingClass>Building_PlantGrower</thingClass>
+				<graphicData>
+				<texPath>Things/Building/Production/HydroponicsBasin</texPath>
+				<graphicClass>Graphic_Multi</graphicClass>
+				<drawSize>(1,4)</drawSize>
+				<damageData>
+					<cornerTL>Damage/Corner</cornerTL>
+					<cornerTR>Damage/Corner</cornerTR>
+					<cornerBL>Damage/Corner</cornerBL>
+					<cornerBR>Damage/Corner</cornerBR>
+				</damageData>
+				</graphicData>
+				<altitudeLayer>FloorEmplacement</altitudeLayer>
+				<passability>PassThroughOnly</passability>
+				<pathCost>60</pathCost>
+				<castEdgeShadows>true</castEdgeShadows>
+				<constructEffect>ConstructMetal</constructEffect>
+				<fillPercent>0.30</fillPercent>
+				<statBases>
+				<WorkToBuild>2800</WorkToBuild>
+				<MaxHitPoints>180</MaxHitPoints>
+				<Flammability>1.0</Flammability>
+				<Cleanliness>-3</Cleanliness>
+				</statBases>
+				<size>(1,4)</size>
+				<costList>
+				<Steel>200</Steel>
+				<ComponentIndustrial>4</ComponentIndustrial>
+				</costList>
+				<fertility>3.1</fertility>
+				<building>
+				<defaultPlantToGrow>Plant_Rice</defaultPlantToGrow>
+				<sowTag>Hydroponic</sowTag>
+				</building>
+				<tickerType>Rare</tickerType>
+				<comps>
+				<li Class="CompProperties_Forbiddable"/>
+				<li Class="CompProperties_Power">
+					<compClass>CompPowerTrader</compClass>
+					<basePowerConsumption>200</basePowerConsumption>
+				</li>
+				<li Class="CompProperties_Flickable"/>
+				<li Class="CompProperties_Breakdownable"/>
+				<li Class="CompProperties_Glower">
+					<overlightRadius>3.5</overlightRadius>
+					<glowRadius>3.0</glowRadius>
+					<glowColor>(370,370,370,0)</glowColor>
+				</li>
+				</comps>
+				<researchPrerequisites><li>AdvancedHydroponics</li></researchPrerequisites>
+				<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+				<designationCategory>GardenTools</designationCategory>
+			</ThingDef>
+		<!-- ADVANCED MODULAR -->
+			<ThingDef ParentName="BuildingBase">
+				<defName>ADVModularHydroponicsBasin</defName>
+				<label> Adv. Modular hydroponics basin</label>
+				<description>Grows plants more quickly in an artificial nutrient bath. Requires more power to work then basic basin; plants will die if power is cut. Provides it's own light. fertility is 310%.</description>
+				<thingClass>Building_PlantGrower</thingClass>
+				<graphicData>
+				<texPath>Things/Building/HydroModular_Atlas</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<linkType>Basic</linkType>
+				<linkFlags>
+					<li>Sandbags</li>
+				</linkFlags>
+				<damageData>
+					<rect>(0.2,0.2,0.6,0.6)</rect>
+				</damageData>
+				</graphicData>
+				<uiIconPath>Things/Building/HydroIcon</uiIconPath>
+				<pathCost>40</pathCost>
+				<altitudeLayer>FloorEmplacement</altitudeLayer>
+				<passability>PassThroughOnly</passability>
+				<castEdgeShadows>true</castEdgeShadows>
+				<constructEffect>ConstructMetal</constructEffect>
+				<fillPercent>0.30</fillPercent>
+				<statBases>
+				<WorkToBuild>700</WorkToBuild>
+				<MaxHitPoints>180</MaxHitPoints>
+				<Flammability>1.0</Flammability>
+				<Cleanliness>-3</Cleanliness>
+				</statBases>
+				<costList>
+				<Steel>50</Steel>
+				<ComponentIndustrial>1</ComponentIndustrial>
+				</costList>
+				<fertility>3.1</fertility>
+				<building>
+				<blueprintGraphicData>
+				<texPath>Things/Building/HydroModular_Atlas</texPath>
+				</blueprintGraphicData>
+				<defaultPlantToGrow>Plant_Rice</defaultPlantToGrow>
+				<sowTag>Hydroponic</sowTag>
+				</building>
+				<tickerType>Rare</tickerType>
+				<comps>
+				<li Class="CompProperties_Forbiddable"/>
+				<li Class="CompProperties_Power">
+					<compClass>CompPowerTrader</compClass>
+					<basePowerConsumption>50</basePowerConsumption>
+				</li>
+				<li Class="CompProperties_Flickable"/>
+				<li Class="CompProperties_Glower">
+					<overlightRadius>1.25</overlightRadius>
+					<glowRadius>1</glowRadius>
+					<glowColor>(370,370,370,0)</glowColor>
+				</li>
+				</comps>
+				<researchPrerequisites><li>AdvancedHydroponics</li></researchPrerequisites>
+				<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+				<designationCategory>GardenTools</designationCategory>
+			</ThingDef>
+	<!-- DIGGING SPOT -->
+		<ThingDef ParentName="BuildingBase">
+			<defName>VG_DiggingSpot</defName>
+			<label>digging spot</label>
+			<description>Place on diggable non rocky soil tiles to digging up piles of soil.</description>
+			<thingClass>Building_WorkTable</thingClass>
+			<graphicData>
+			<texPath>Things/Building/Production/CraftingSpot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+			</graphicData>
+			<altitudeLayer>FloorEmplacement</altitudeLayer>
+			<statBases>
+			<WorkToBuild>0</WorkToBuild>
+			</statBases>
+				<scatterableOnMapGen>false</scatterableOnMapGen>
+				<useHitPoints>False</useHitPoints>
+			<size>(1,1)</size>
+			<designationCategory>GardenTools</designationCategory>
+			<terrainAffordanceNeeded>VG_DigSpot</terrainAffordanceNeeded>
+			<passability>Standable</passability>
+			<hasInteractionCell>True</hasInteractionCell>
+			<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+			<surfaceType>Item</surfaceType>
+			<inspectorTabs>
+			<li>ITab_Bills</li>
+			</inspectorTabs>
+			<building>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+			<canPlaceOverImpassablePlant>false</canPlaceOverImpassablePlant>
+			</building>
+		</ThingDef>
+	<!-- SALT MINE -->
+		<ThingDef ParentName="BuildingBase">
+			<defName>VG_SaltMine</defName>
+			<label>salt mine</label>
+			<description>Place on rough stone for digging up salt.</description>
+			<thingClass>Building_WorkTable</thingClass>
+			<graphicData>
+			<texPath>Things/Building/Production/CraftingSpot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+			</graphicData>
+			<altitudeLayer>FloorEmplacement</altitudeLayer>
+			<statBases>
+			<WorkToBuild>0</WorkToBuild>
+			</statBases>
+				<scatterableOnMapGen>false</scatterableOnMapGen>
+				<useHitPoints>False</useHitPoints>
+			<size>(1,1)</size>
+			<designationCategory>Misc</designationCategory>
+			<terrainAffordanceNeeded>SmoothableStone</terrainAffordanceNeeded>
+			<passability>Standable</passability>
+			<hasInteractionCell>True</hasInteractionCell>
+			<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+			<surfaceType>Item</surfaceType>
+			<inspectorTabs>
+			<li>ITab_Bills</li>
+			</inspectorTabs>
+			<building>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+			<canPlaceOverImpassablePlant>false</canPlaceOverImpassablePlant>
+			</building>
+		</ThingDef>
+</Defs>

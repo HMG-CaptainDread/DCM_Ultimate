@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- MAKE COMPOST STARTER -->
+		<RecipeDef>
+			<defName>MakeCompostStarter</defName>
+			<label>make compost starter</label>
+			<description>Make compost starter from a wood source and a food source. \n\nMakes 15.</description>
+			<jobString>Making fertilizer.</jobString>
+			<workSpeedStat>CookSpeed</workSpeedStat>
+			<workSkillLearnFactor>0.5</workSkillLearnFactor>
+			<effectWorking>Cook</effectWorking>
+			<soundWorking>Recipe_CookMeal</soundWorking>
+			<allowMixingIngredients>true</allowMixingIngredients>
+			<workAmount>800</workAmount>
+			<ingredients>
+				<li>
+					<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+						</thingDefs>
+					</filter>
+				<count>10</count>
+				</li>
+				<li>
+					<filter>
+						<categories>
+						<li>FoodRaw</li>
+					</categories>
+					</filter>
+					<count>10</count>
+				</li>
+			</ingredients>
+			<fixedIngredientFilter>
+				<thingDefs>
+					<li>WoodLog</li>
+				</thingDefs>
+				<categories>
+						<li>FoodRaw</li>
+				</categories>
+			<specialFiltersToDisallow>
+					<li>AllowNonSmeltableWeapons</li>
+			</specialFiltersToDisallow>
+			</fixedIngredientFilter>
+			<products>
+				<VG_Compost>15</VG_Compost>
+			</products>
+			<workSkill>Crafting</workSkill>
+			<recipeUsers>
+				<li>TableButcher</li>
+			</recipeUsers>
+		</RecipeDef>
+	<!-- MAKE COMPOST STARTER (BULK) -->
+		<RecipeDef>
+			<defName>MakeBulkCompostStarter</defName>
+			<label>make compost starter x4</label>
+			<description>Make bulk compost starter from a wood source and a food source. \n\nMakes 60.</description>
+			<jobString>Making fertilizer.</jobString>
+			<workSpeedStat>CookSpeed</workSpeedStat>
+			<workSkillLearnFactor>0.5</workSkillLearnFactor>
+			<effectWorking>Cook</effectWorking>
+			<soundWorking>Recipe_CookMeal</soundWorking>
+			<allowMixingIngredients>true</allowMixingIngredients>
+			<workAmount>2400</workAmount>
+			<ingredients>
+				<li>
+					<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+						</thingDefs>
+					</filter>
+				<count>40</count>
+				</li>
+				<li>
+					<filter>
+						<categories>
+						<li>FoodRaw</li>
+					</categories>
+					</filter>
+					<count>40</count>
+				</li>
+			</ingredients>
+			<fixedIngredientFilter>
+				<thingDefs>
+					<li>WoodLog</li>
+				</thingDefs>
+				<categories>
+						<li>FoodRaw</li>
+				</categories>
+			<specialFiltersToDisallow>
+					<li>AllowNonSmeltableWeapons</li>
+			</specialFiltersToDisallow>
+			</fixedIngredientFilter>
+			<products>
+				<VG_Compost>60</VG_Compost>
+			</products>
+			<workSkill>Crafting</workSkill>
+			<recipeUsers>
+				<li>TableButcher</li>
+			</recipeUsers>
+		</RecipeDef>
+	<!-- MAKE FERTILISER FROM COMPOST STARTER -->
+		<RecipeDef>
+			<defName>MakeFertilizer</defName>
+			<label>make fertilizer from compost starter</label>
+			<description>Make fertilizer from compost starter and soil. \n\nMakes 10.</description>
+			<jobString>Making fertilizer.</jobString>
+			<workSpeedStat>CookSpeed</workSpeedStat>
+			<workSkillLearnFactor>0.25</workSkillLearnFactor>
+			<effectWorking>Cook</effectWorking>
+			<soundWorking>Recipe_CookMeal</soundWorking>
+			<allowMixingIngredients>true</allowMixingIngredients>
+			<workAmount>1500</workAmount>
+			<ingredients>
+				<li>
+					<filter>
+					<thingDefs>
+						<li>VG_Compost</li>
+						</thingDefs>
+					</filter>
+					<count>10</count>
+				</li>
+				<li>
+					<filter>
+					<thingDefs>
+						<li>VG_PileofDirt</li>
+						</thingDefs>
+					</filter>
+					<count>10</count>
+				</li>
+			</ingredients>
+			<fixedIngredientFilter>
+				<thingDefs>
+				<li>VG_Compost</li>
+					<li>VG_PileofDirt</li>
+				</thingDefs>
+			<specialFiltersToDisallow>
+					<li>AllowNonSmeltableWeapons</li>
+			</specialFiltersToDisallow>
+			</fixedIngredientFilter>
+			<products>
+				<RawFertilizer>10</RawFertilizer>
+			</products>
+			<workSkill>Crafting</workSkill>
+			<recipeUsers>
+				<li>TableButcher</li>
+			</recipeUsers>
+		</RecipeDef>
+	<!-- DIG SOIL -->
+		<RecipeDef>
+			<defName>VG_DigSoil</defName>
+			<label>dig soil</label>
+			<description>Dig up pile of soil. Used in making fertilizer. \n\nMakes 10.</description>
+			<jobString>Digging Soil.</jobString>
+			<workSpeedStat>MiningSpeed</workSpeedStat>
+			<effectWorking>CutStone</effectWorking>
+			<workSkillLearnFactor>0.25</workSkillLearnFactor>
+			<soundWorking>Interact_ConstructDirt</soundWorking>
+			<workAmount>1000</workAmount>
+			<products>
+				<VG_PileofDirt>10</VG_PileofDirt>
+			</products>
+			<workSkill>Mining</workSkill>
+			<recipeUsers>
+				<li>VG_DiggingSpot</li>
+			</recipeUsers>
+		</RecipeDef>
+	<!-- DIG SOIL (BULK) -->
+		<RecipeDef>
+			<defName>VG_DigSoil_Bulk</defName>
+			<label>dig soil x4</label>
+			<description>Spend a lot of time digging up pile of soil. Used in making fertilizer. \n\nMakes 40.</description>
+			<jobString>Digging Soil.</jobString>
+			<workSpeedStat>MiningSpeed</workSpeedStat>
+			<effectWorking>CutStone</effectWorking>
+			<workSkillLearnFactor>0.25</workSkillLearnFactor>
+			<soundWorking>Interact_ConstructDirt</soundWorking>
+			<workAmount>3000</workAmount>
+			<products>
+				<VG_PileofDirt>40</VG_PileofDirt>
+			</products>
+			<workSkill>Mining</workSkill>
+			<recipeUsers>
+				<li>VG_DiggingSpot</li>
+			</recipeUsers>
+		</RecipeDef>
+	<!-- CREMATE INTO FERTILISER -->
+		<RecipeDef>
+			<defName>FertilizerCorpse</defName>
+			<label>cremate into fertilizer</label>
+			<description>Cremate a corpse into fertilizer. By default everything is set to off. \n\nMakes 25.</description>
+			<jobString>Cremating.</jobString>
+			<workAmount>300</workAmount>
+			<effectWorking>Cremate</effectWorking>
+			<soundWorking>Recipe_Cremate</soundWorking>
+			<autoStripCorpses>true</autoStripCorpses>
+			<ingredients>
+				<li>
+					<filter>
+						<categories>
+							<li>Corpses</li>
+						</categories>
+					</filter>
+					<count>1</count>
+				</li>
+			</ingredients>
+			<products>
+				<RawFertilizer>25</RawFertilizer>
+			</products>
+			<fixedIngredientFilter>
+				<categories>
+					<li>Corpses</li>
+				</categories>
+				<disallowedCategories>
+					<li>CorpsesMechanoid</li>
+				</disallowedCategories>
+			</fixedIngredientFilter>
+			<defaultIngredientFilter>
+			<specialFiltersToAllow>
+				<li>AllowCorpsesColonist</li>
+				<li>AllowCorpsesStranger</li>
+			</specialFiltersToAllow>
+			</defaultIngredientFilter>
+			<recipeUsers>
+				<li>ElectricCrematorium</li>
+			</recipeUsers>
+		</RecipeDef>
+	<!-- CREMATE INTO FERTILISER (CAMPFIRE) -->
+		<RecipeDef>
+			<defName>FertilizerCorpseCampfire</defName>
+			<label>cremate into fertilizer</label>
+			<description>Cremate a corpse into fertilizer at a campfire. Much less effective then the Crematorium. And less efficient. By default everything is set to off. \n\nMakes 12.</description>
+			<jobString>Cremating.</jobString>
+			<workAmount>900</workAmount>
+			<effectWorking>Cremate</effectWorking>
+			<soundWorking>Recipe_Cremate</soundWorking>
+			<autoStripCorpses>true</autoStripCorpses>
+			<ingredients>
+				<li>
+					<filter>
+						<categories>
+							<li>Corpses</li>
+						</categories>
+					</filter>
+					<count>1</count>
+				</li>
+			</ingredients>
+			<products>
+				<RawFertilizer>12</RawFertilizer>
+			</products>
+			<fixedIngredientFilter>
+				<categories>
+					<li>Corpses</li>
+				</categories>
+				<disallowedCategories>
+					<li>CorpsesMechanoid</li>
+				</disallowedCategories>
+			</fixedIngredientFilter>
+			<defaultIngredientFilter>
+				<specialFiltersToAllow>
+					<li>AllowCorpsesColonist</li>
+					<li>AllowCorpsesStranger</li>
+				</specialFiltersToAllow>
+			</defaultIngredientFilter>
+			<recipeUsers>
+				<li>Campfire</li>
+			</recipeUsers>
+		</RecipeDef>
+</Defs>

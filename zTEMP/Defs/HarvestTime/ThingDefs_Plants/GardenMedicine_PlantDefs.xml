@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- PLANT BASE -->
+		<ThingDef ParentName="PlantBase" Name="VG_PlantDef" Abstract="True">
+			<statBases>
+			<MaxHitPoints>85</MaxHitPoints>
+			<Beauty>1</Beauty>
+			<Nutrition>0.20</Nutrition>
+			</statBases>
+			<selectable>true</selectable>
+			<pathCost>30</pathCost>
+			<ingestible/>
+			<plant>
+			<dieIfLeafless>true</dieIfLeafless>
+			<harvestTag>Standard</harvestTag>
+			<sowTags>
+				<li>Ground</li>
+				<li>Hydroponic</li>
+			</sowTags>
+			<fertilityMin>0.50</fertilityMin>
+			<wildOrder>2</wildOrder>
+			</plant>
+		</ThingDef>
+	<!-- NEUTRO FLOWER -->
+		<ThingDef ParentName="VG_PlantDef">
+			<defName>PlantNeutroFlower</defName>
+			<label>Neutro Flower</label>
+			<description>A beautiful yellow-orange flower. Used to make Neutroamine, a medicine base.</description>
+			<graphicData>
+			<texPath>Things/Plants/NeutroFlower</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			</graphicData>
+			<statBases>
+			<MaxHitPoints>85</MaxHitPoints>
+			<Beauty>10</Beauty>
+			</statBases>
+			<plant>
+			<harvestedThingDef>NeutroPetals</harvestedThingDef>
+			<harvestYield>5</harvestYield>
+			<sowMinSkill>7</sowMinSkill>
+			<growDays>10</growDays>
+			<fertilitySensitivity>1</fertilitySensitivity>
+			<sowResearchPrerequisites>
+				<li>DrugProduction</li>
+			</sowResearchPrerequisites>
+			</plant>
+		</ThingDef>
+	<!-- GLITTERWORLD ALYSSUM -->
+		<ThingDef ParentName="VG_PlantDef">
+			<defName>PlantGwAlyssum</defName>
+			<label>glitterworld alyssum</label>
+			<description>A beautiful red flower. Used to make Glitterworld neutroamine, a drug and medicine base.</description>
+			<graphicData>
+			<texPath>Things/Plants/Alyssum</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			</graphicData>
+			<statBases>
+			<MaxHitPoints>85</MaxHitPoints>
+			<Beauty>10</Beauty>
+			</statBases>
+			<plant>
+			<harvestedThingDef>AlyssumTrimings</harvestedThingDef>
+			<harvestYield>2</harvestYield>
+			<sowMinSkill>10</sowMinSkill>
+			<growDays>15</growDays>
+			<fertilitySensitivity>1</fertilitySensitivity>
+			<visualSizeRange>0.65~1</visualSizeRange>
+			<neverBlightable>true</neverBlightable>
+			<pollution>Any</pollution>
+			<sowResearchPrerequisites>
+				<li>VG_GlitterMeds</li>
+			</sowResearchPrerequisites>
+			</plant>
+		</ThingDef>
+	<!-- NEUTRO DECO FLOWER -->
+		<ThingDef ParentName="VG_PlantDef">
+			<defName>Plant_DecoNeutroFlower</defName>
+			<label>Neutro Deco Flower</label>
+			<description>A beautiful yellow-orange flower. Smaller in size only used for decoration. Does not produce Neutroamine.</description>
+			<graphicData>
+			<texPath>Things/Plants/NeutroFlower</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			</graphicData>
+			<altitudeLayer>Item</altitudeLayer>
+			<statBases>
+			<MaxHitPoints>85</MaxHitPoints>
+			<Beauty>10</Beauty>
+			</statBases>
+			<plant>
+			<dieIfLeafless>true</dieIfLeafless>
+			<harvestTag>Standard</harvestTag>
+			<sowWork>600</sowWork>
+			<growMinGlow>0.3</growMinGlow>
+			<topWindExposure>0.1</topWindExposure>
+			<growDays>1.5</growDays>
+			<lifespanDaysPerGrowDays>4</lifespanDaysPerGrowDays>
+			<fertilitySensitivity>1</fertilitySensitivity>
+			<visualSizeRange>0.2~0.5</visualSizeRange>
+			<sowTags>
+				<li>Decorative</li>
+				<li>Ground</li>
+			</sowTags>
+			<purpose>Beauty</purpose>
+			</plant>
+		</ThingDef>
+	<!-- TOBACCO -->
+		<ThingDef ParentName="PlantBase">
+			<defName>PlantTobacco</defName>
+			<label>tobacco plant</label>
+			<description>A green, leafy plant. Use in making cigarillos.</description>
+			<statBases>
+			<MaxHitPoints>85</MaxHitPoints>
+			<Beauty>1</Beauty>
+			<Nutrition>0.05</Nutrition>
+			</statBases>
+			<graphicData>
+			<texPath>Things/Plants/TobaccoPlant</texPath><graphicClass>Graphic_Single</graphicClass>
+			</graphicData>
+			<selectable>true</selectable>
+			<pathCost>12</pathCost>
+			<ingestible>
+			<foodType>Plant</foodType>
+			<preferability>NeverForNutrition</preferability>
+			</ingestible>
+			<plant>
+			<dieIfLeafless>true</dieIfLeafless>
+			<harvestTag>Standard</harvestTag>
+			<harvestedThingDef>RawTobacco</harvestedThingDef>
+			<harvestYield>10</harvestYield>
+			<sowTags>
+				<li>Ground</li>
+				<li>Hydroponic</li>
+			</sowTags>
+			<topWindExposure>0.15</topWindExposure>
+			<growDays>10</growDays>
+			<fertilitySensitivity>1</fertilitySensitivity>
+			<visualSizeRange>0.3~1.0</visualSizeRange>
+			</plant>
+		</ThingDef>
+	<!-- DANDELION -->
+		<ThingDef ParentName="VG_PlantDef">
+			<defName>PlantDandelionPatch</defName>
+			<label>dandelion patch</label>
+			<description>Through agriculture techniques, the wild dandelion can now be grown in larger patches, that can be harvested for it medical properties. It is a yellow flower which grows in large clusters. Though it is often considered a weed, dandelions in bloom are quite beautiful.</description>
+			<graphicData>
+			<texPath>Things/Plants/DandelionPlant</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			</graphicData>
+			<hideAtSnowOrSandDepth>0.5</hideAtSnowOrSandDepth>
+			<statBases>
+			<MaxHitPoints>85</MaxHitPoints>
+			<Beauty>10</Beauty>
+			</statBases>
+			<plant>
+			<harvestedThingDef>VG_DandelionCuttings</harvestedThingDef>
+			<harvestYield>5</harvestYield>
+			<sowMinSkill>3</sowMinSkill>
+			<growDays>4.5</growDays>
+			<fertilitySensitivity>1</fertilitySensitivity>
+			<maxMeshCount>4</maxMeshCount>
+			<visualSizeRange>0.4~0.7</visualSizeRange>
+			<sowTags>
+				<li>Ground</li>
+			</sowTags>
+			</plant>
+		</ThingDef>
+	<!-- AMBROSIA BUSH -->
+		<ThingDef ParentName="PlantBase">
+			<defName>VG_PlantAmbrosia</defName>
+			<label>ambrosia bush</label>
+			<description>A bush which yields the ambrosia fruit. Ambrosia is pleasurable to eat and produces a slightly addictive chemical warmth effect. Grown in a Hydroponics basin. Does not destroy when harvested.</description>
+			<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Nutrition>0.35</Nutrition>
+			</statBases>
+			<graphicData>
+			<texPath>Things/Plant/Ambrosia</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<shadowData>
+				<volume>(0.1, 0.2, 0.1)</volume>
+			</shadowData>
+			</graphicData>
+			<selectable>true</selectable>
+			<pathCost>10</pathCost>
+			<plant>
+			<fertilityMin>0.3</fertilityMin>
+			<fertilitySensitivity>0.15</fertilitySensitivity>
+			<growDays>6</growDays>
+			<leaflessGraphicPath>Things/Plant/Ambrosia_Leafless</leaflessGraphicPath>
+			<immatureGraphicPath>Things/Plant/Ambrosia_Immature</immatureGraphicPath>
+			<harvestYield>4</harvestYield>
+			<harvestTag>Standard</harvestTag>
+			<harvestAfterGrowth>0.3</harvestAfterGrowth>
+			<harvestedThingDef>Ambrosia</harvestedThingDef>
+			<sowMinSkill>10</sowMinSkill>
+			<visualSizeRange>0.5~1.1</visualSizeRange>
+			<topWindExposure>0.1</topWindExposure>
+			<sowTags>
+				<li>Hydroponic</li>
+			</sowTags>
+			<sowResearchPrerequisites>
+				<li>VG_Ambrosia</li>
+			</sowResearchPrerequisites>
+			</plant>
+		</ThingDef>
+</Defs>
