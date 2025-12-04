@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<ThingDef Name="GS_NeolithicBionicBase" ParentName="BodyPartBase" Abstract="True">
+		<techLevel>Neolithic</techLevel>
+		<thingCategories>
+			<li>GS_BodyPartsBionicTribal</li>
+		</thingCategories>
+		<graphicData>
+			<texPath>Things/Item/Health/HealthItem</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.80</drawSize>
+			<color>(120,100,90)</color>
+		</graphicData>
+		<statBases>
+			<WorkToMake>2000</WorkToMake>
+		</statBases>
+		<recipeMaker>
+			<displayPriority>600</displayPriority>
+		</recipeMaker>
+	</ThingDef>
+	
+	<ThingDef Name="GS_NeolithicBionicMakeableBase" ParentName="GS_NeolithicBionicBase" Abstract="True">
+		<recipeMaker>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>	
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<recipeUsers>
+				<li>CraftingSpot</li>
+			</recipeUsers>
+			<skillRequirements>
+				<Crafting>2</Crafting>
+			</skillRequirements>
+			<unfinishedThingDef>UnfinishedHealthItemProsthetic</unfinishedThingDef>
+			<researchPrerequisite>GS_Research_NeolithicBionics</researchPrerequisite>
+		</recipeMaker>
+	</ThingDef>
+	
+	<RecipeDef Name="GS_SurgeryInstallNeolithicBionicBase" ParentName="SurgeryInstallBodyPartArtificialBase" Abstract="True">
+		<skillRequirements>
+			<Medicine>3</Medicine>
+		</skillRequirements>
+	</RecipeDef>
+	
+	<RecipeDef Name="GS_SurgeryInstallBrand" ParentName="SurgeryInstallImplantBase" Abstract="True">
+		<workAmount>300</workAmount>
+		<skillRequirements>
+			<Medicine>4</Medicine>
+		</skillRequirements>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>Steel</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<researchPrerequisite>GS_Research_NeolithicBionics</researchPrerequisite>
+	</RecipeDef>
+
+<!-- 
+		*** Clubfist ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_Hediff_Clubfist</defName>
+		<label>clubfist</label>
+		<labelNoun>a clubfist</labelNoun>
+		<defaultLabelColor>(0.7, 0.4, 0.3)</defaultLabelColor>
+		<description>An installed clubfist, a heavy blunt weapon attached to a wooden shaft, strapped to the wielder's arm stump by strands of linen of cloth. It is heavy and cumbersome, and not at all a good replacement for a hand, but still a deadly weapon in the right hands.</description>
+		<descriptionHyperlinks><ThingDef>GS_Clubfist</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Moving</capacity>
+				<offset>-0.1</offset>
+				</li>
+			</capMods>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+			<tools>
+				<li>
+				<label>club</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>16</power>
+				<cooldownTime>2</cooldownTime>
+				<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+				</li>
+			</tools>
+			</li>
+		</comps>
+		<spawnThingOnRemoved>GS_Clubfist</spawnThingOnRemoved>
+		<addedPartProps>
+			<isGoodWeapon>true</isGoodWeapon>
+			<solid>true</solid>
+			<partEfficiency>0.3</partEfficiency>
+			<betterThanNatural>false</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_NeolithicBionicMakeableBase">
+		<defName>GS_Clubfist</defName>
+		<label>clubfist</label>
+		<description>A combat-oriented hand replacement consisting of a heavy metal lump strapped to a wooden sheathe that attaches to the stump of a severed arm. It is heavy and cumbersome, and not at all a good replacement for a hand, but still a deadly weapon in the right hands.</description>
+		<descriptionHyperlinks><RecipeDef>GS_InstallClubfist</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<WoodLog>40</WoodLog>
+			<Steel>4</Steel>
+		</costList>
+		<statBases>
+			<Mass>8</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallNeolithicBionicBase">
+		<defName>GS_InstallClubfist</defName>
+		<label>install clubfist</label>
+		<description>Install a clubfist.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_Clubfist</ThingDef>
+			<HediffDef>GS_Hediff_Clubfist</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing clubfist.</jobString>
+		<workAmount>700</workAmount>
+		<surgerySuccessChanceFactor>5</surgerySuccessChanceFactor>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_Clubfist</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_Clubfist</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Hand</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_Clubfist</addsHediff>
+	</RecipeDef>
+
+<!-- 
+		*** Ikwafist ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_Hediff_Ikwafist</defName>
+		<label>Ikwafist</label>
+		<labelNoun>an ikwafist</labelNoun>
+		<defaultLabelColor>(0.7, 0.4, 0.3)</defaultLabelColor>
+		<description>An installed ikwafist, a sharp stabbing weapon attached to a wooden shaft, strapped to the wielder's arm stump by strands of linen of cloth. It is awkward, and not at all a good replacement for a hand, but still a deadly weapon.</description>
+		<descriptionHyperlinks><ThingDef>GS_Ikwafist</ThingDef></descriptionHyperlinks>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+			<tools>
+				<li>
+				<label>point</label>
+				<capacities>
+					<li>Stab</li>
+				</capacities>
+				<power>16</power>
+				<cooldownTime>2</cooldownTime>
+				<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+				</li>
+			</tools>
+			</li>
+		</comps>
+		<spawnThingOnRemoved>GS_Ikwafist</spawnThingOnRemoved>
+		<addedPartProps>
+			<isGoodWeapon>true</isGoodWeapon>
+			<solid>true</solid>
+			<partEfficiency>0.3</partEfficiency>
+			<betterThanNatural>false</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_NeolithicBionicMakeableBase">
+		<defName>GS_Ikwafist</defName>
+		<label>Ikwafist</label>
+		<description>A combat-oriented hand replacement consisting of a sharpened ikwa-head strapped to a wooden sheathe that attaches to the stump of a severed arm. It is an awkward addon, and not at all a good replacement for a hand, but still a deadly weapon.</description>
+		<descriptionHyperlinks><RecipeDef>GS_InstallIkwafist</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<WoodLog>40</WoodLog>
+			<Steel>4</Steel>
+		</costList>
+		<statBases>
+			<Mass>8</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallNeolithicBionicBase">
+		<defName>GS_InstallIkwafist</defName>
+		<label>install ikwafist</label>
+		<description>Install an ikwafist.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_Ikwafist</ThingDef>
+			<HediffDef>GS_Hediff_Ikwafist</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Ikwafist.</jobString>
+		<workAmount>700</workAmount>
+		<surgerySuccessChanceFactor>5</surgerySuccessChanceFactor>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_Ikwafist</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_Ikwafist</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Hand</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_Ikwafist</addsHediff>
+	</RecipeDef>
+	
+<!-- 
+		*** spikecrown ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_spikecrown</defName>
+		<label>Spike Crown</label>
+		<labelNoun>Spike Crown implant</labelNoun>
+		<defaultLabelColor>(0.7, 0.4, 0.3)</defaultLabelColor>
+		<description>A primitive and painful implantation of sharpened spikes embedded into the skull of brave warriors to prove their fervor and dedication.</description>
+		<descriptionHyperlinks><ThingDef>GS_spikecrown</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_spikecrown</spawnThingOnRemoved>
+		<stages>
+			<li>
+			<painOffset>0.05</painOffset>
+			<statOffsets>
+				<PainShockThreshold>10</PainShockThreshold>
+				<StaggerDurationFactor>0.85</StaggerDurationFactor>
+			</statOffsets>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+			<tools>
+				<li>
+				<label>spikecrown</label>
+				<capacities>
+					<li>Stab</li>
+				</capacities>
+				<power>15</power>
+				<cooldownTime>2</cooldownTime>
+				<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+				</li>
+			</tools>
+			</li>
+		</comps>
+		<addedPartProps>
+			<isGoodWeapon>true</isGoodWeapon>
+		</addedPartProps>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_NeolithicBionicMakeableBase">
+		<defName>GS_spikecrown</defName>
+		<label>Spike Crown</label>
+		<description>A primitive and painful implantation of sharpened spikes embedded into the skull of brave warriors to prove their fervor and dedication.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installspikecrown</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Steel>1</Steel>
+		</costList>
+		<statBases>
+			<Mass>1.5</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="SurgeryInstallImplantBase">
+		<defName>GS_Installspikecrown</defName>
+		<label>install Spike Crown</label>
+		<description>Install a spikecrown.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_spikecrown</ThingDef>
+			<HediffDef>GS_Hediff_spikecrown</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Spike Crown.</jobString>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_spikecrown</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_spikecrown</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Skull</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_spikecrown</addsHediff>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removespikecrown</defName>
+		<label>remove spikecrown</label>
+		<description>Remove spikecrown.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_spikecrown</ThingDef>
+		<HediffDef>GS_Hediff_spikecrown</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing spikecrown.</jobString>
+		<removesHediff>GS_Hediff_spikecrown</removesHediff>
+	</RecipeDef>
+	
+<!-- 
+		*** Warrior's Brand ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_brand_warrior</defName>
+		<label>Warrior's Brand</label>
+		<labelNoun>Warrior's Brand</labelNoun>
+		<defaultLabelColor>(0.7, 0.4, 0.3)</defaultLabelColor>
+		<description>A painful brand that enhances a warrior's focus, fearlessness, and resistance to pain. It serves as a constant reminder to the warrior of their dedication and what they are fighting for.</description>
+		<stages>
+			<li>
+			<painOffset>0.1</painOffset>
+			<statOffsets>
+				<MoveSpeed>0.2</MoveSpeed>
+				<MentalBreakThreshold>-0.05</MentalBreakThreshold>
+			</statOffsets>
+			<painFactor>0.85</painFactor>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallBrand">
+		<defName>GS_Installbrand_warrior</defName>
+		<label>install Warrior's Brand</label>
+		<description>Install a Warrior's Brand</description>
+		<descriptionHyperlinks>
+			<ThingDef>Steel</ThingDef>
+			<HediffDef>GS_Hediff_brand_warrior</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Warrior's Brand.</jobString>
+		<appliedOnFixedBodyParts>
+			<li>Torso</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_brand_warrior</addsHediff>
+		<uiIconThing>Steel</uiIconThing>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removebrand_warrior</defName>
+		<label>remove Warrior's Brand</label>
+		<description>Remove Warrior's Brand.</description>
+		<descriptionHyperlinks>
+		<HediffDef>GS_Hediff_brand_warrior</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing Warrior's Brand.</jobString>
+		<removesHediff>GS_Hediff_brand_warrior</removesHediff>
+	</RecipeDef>
+	
+<!-- 
+		*** Shaman's Brand ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_brand_shaman</defName>
+		<label>Shaman's Brand</label>
+		<labelNoun>Shaman's Brand</labelNoun>
+		<defaultLabelColor>(0.7, 0.4, 0.3)</defaultLabelColor>
+		<description>A painful brand that enhances a shaman's focus and hones their psychic sensitivity. It serves as a constant reminder to the shaman of their dedication and helps them keep their center.</description>
+		<stages>
+			<li>
+			<painOffset>0.1</painOffset>
+			<statOffsets>
+				<PsychicSensitivity>0.25</PsychicSensitivity>
+				<MentalBreakThreshold>-0.05</MentalBreakThreshold>
+				<PsychicEntropyRecoveryRate>0.05</PsychicEntropyRecoveryRate>
+				<PsychicEntropyMax>5</PsychicEntropyMax>
+			</statOffsets>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallBrand">
+		<defName>GS_Installbrand_shaman</defName>
+		<label>install Shaman's Brand</label>
+		<description>Install a Shaman's Brand</description>
+		<descriptionHyperlinks>
+			<ThingDef>Steel</ThingDef>
+			<HediffDef>GS_Hediff_brand_shaman</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Shaman's Brand.</jobString>
+		<appliedOnFixedBodyParts>
+			<li>Torso</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_brand_shaman</addsHediff>
+		<uiIconThing>Steel</uiIconThing>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removebrand_shaman</defName>
+		<label>remove Shaman's Brand</label>
+		<description>Remove Shaman's Brand.</description>
+		<descriptionHyperlinks>
+		<HediffDef>GS_Hediff_brand_shaman</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing Shaman's Brand.</jobString>
+		<removesHediff>GS_Hediff_brand_shaman</removesHediff>
+	</RecipeDef>
+	
+<!-- 
+		*** Slave's Brand ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_brand_slave</defName>
+		<label>Slave's Brand</label>
+		<labelNoun>Slave's Brand</labelNoun>
+		<defaultLabelColor>(0.7, 0.4, 0.3)</defaultLabelColor>
+		<description>An intentionally painful brand that marks a slave as property, and make them easier to control.</description>
+		<stages>
+			<li>
+			<painOffset>0.25</painOffset>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallBrand">
+		<defName>GS_Installbrand_slave</defName>
+		<label>install Slave's Brand</label>
+		<description>Install a Slave's Brand</description>
+		<descriptionHyperlinks>
+			<ThingDef>Steel</ThingDef>
+			<HediffDef>GS_Hediff_brand_slave</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Slave's Brand.</jobString>
+		<appliedOnFixedBodyParts>
+			<li>Torso</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_brand_slave</addsHediff>
+		<uiIconThing>Steel</uiIconThing>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removebrand_slave</defName>
+		<label>remove Slave's Brand</label>
+		<description>Remove Slave's Brand.</description>
+		<descriptionHyperlinks>
+		<HediffDef>GS_Hediff_brand_slave</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing Slave's Brand.</jobString>
+		<removesHediff>GS_Hediff_brand_slave</removesHediff>
+	</RecipeDef>
+
+</Defs>

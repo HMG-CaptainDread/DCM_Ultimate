@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+		<Operation Class="PatchOperationSequence">
+			<operations>
+			
+				<li Class="PatchOperationReplace">
+					<xpath>
+						/Defs/ThingDef[
+							defName = "CGF1_MWP_Arbalest_" or
+							defName = "CGF1_MWP_Composite_Crossbow_" or
+							defName = "CGF1_MWP_Steel_Crossbow_" or
+							defName = "CGF1_MWP_Wood_Crossbow_"
+						]/tools
+					</xpath>
+					<value>
+						<tools>
+							<li Class="CombatExtended.ToolCE">
+								<label>stock</label>
+								<capacities>
+									<li>Blunt</li>
+								</capacities>
+								<power>8</power>
+								<cooldownTime>1.55</cooldownTime>
+								<chanceFactor>1.5</chanceFactor>
+								<armorPenetrationBlunt>2.755</armorPenetrationBlunt>
+								<linkedBodyPartsGroup>Stock</linkedBodyPartsGroup>
+							</li>
+						</tools>
+					</value>
+				</li>
+				
+				<!-- Bows -->
+				
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>CGF1_MWP_Wood_Crossbow_</defName>
+					<statBases>
+                        <SightsEfficiency>1.0</SightsEfficiency>
+                        <ShotSpread>0.65</ShotSpread>
+                        <SwayFactor>1.35</SwayFactor>
+                        <Bulk>5.5</Bulk>
+						<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+					</statBases>
+					<Properties>
+						<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<defaultProjectile>Projectile_CrossbowBolt_Steel</defaultProjectile>
+						<warmupTime>1</warmupTime>
+						<range>20</range>
+						<soundCast>CGF1_MWP_SFX_Crossbow1</soundCast>
+                    </Properties>
+					<AmmoUser>
+						<magazineSize>1</magazineSize>
+						<reloadTime>7</reloadTime>
+						<ammoSet>AmmoSet_CrossbowBolt</ammoSet>
+					</AmmoUser>
+					<FireModes>
+						<aiAimMode>AimedShot</aiAimMode>
+					</FireModes>
+					<weaponTags>
+						<li>CE_Bow</li>
+					</weaponTags>
+				</li>
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>CGF1_MWP_Composite_Crossbow_</defName>
+					<statBases>
+                        <SightsEfficiency>1.0</SightsEfficiency>
+                        <ShotSpread>0.5</ShotSpread>
+                        <SwayFactor>1.2</SwayFactor>
+                        <Bulk>6</Bulk>
+						<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+					</statBases>
+					<Properties>
+						<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<defaultProjectile>Projectile_CrossbowBolt_Steel</defaultProjectile>
+						<warmupTime>1</warmupTime>
+						<range>24</range>
+						<soundCast>CGF1_MWP_SFX_Crossbow1</soundCast>
+                    </Properties>
+					<AmmoUser>
+						<magazineSize>1</magazineSize>
+						<reloadTime>7</reloadTime>
+						<ammoSet>AmmoSet_CrossbowBolt</ammoSet>
+					</AmmoUser>
+					<FireModes>
+						<aiAimMode>AimedShot</aiAimMode>
+					</FireModes>
+					<weaponTags>
+						<li>CE_Bow</li>
+					</weaponTags>
+				</li>
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>CGF1_MWP_Steel_Crossbow_</defName>
+					<statBases>
+                        <SightsEfficiency>1.0</SightsEfficiency>
+                        <ShotSpread>0.5</ShotSpread>
+                        <SwayFactor>1.3</SwayFactor>
+                        <Bulk>6.25</Bulk>
+						<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+					</statBases>
+					<Properties>
+						<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<defaultProjectile>Projectile_CrossbowBolt_Steel</defaultProjectile>
+						<warmupTime>1</warmupTime>
+						<range>27</range>
+						<soundCast>CGF1_MWP_SFX_Crossbow1</soundCast>
+                    </Properties>
+					<AmmoUser>
+						<magazineSize>1</magazineSize>
+						<reloadTime>7</reloadTime>
+						<ammoSet>AmmoSet_CrossbowBolt</ammoSet>
+					</AmmoUser>
+					<FireModes>
+						<aiAimMode>AimedShot</aiAimMode>
+					</FireModes>
+					<weaponTags>
+						<li>CE_Bow</li>
+					</weaponTags>
+				</li>
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>CGF1_MWP_Arbalest_</defName>
+					<statBases>
+                        <SightsEfficiency>1.0</SightsEfficiency>
+                        <ShotSpread>0.45</ShotSpread>
+                        <SwayFactor>1.45</SwayFactor>
+                        <Bulk>7.5</Bulk>
+						<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+					</statBases>
+					<Properties>
+						<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<defaultProjectile>Projectile_ArbalestBolt_Steel</defaultProjectile>
+						<warmupTime>1.1</warmupTime>
+						<range>34</range>
+						<soundCast>CGF1_MWP_SFX_Crossbow1</soundCast>
+                    </Properties>
+					<AmmoUser>
+						<magazineSize>1</magazineSize>
+						<reloadTime>8</reloadTime> <!-- heaviest draw = longer reload time -->
+						<ammoSet>AmmoSet_ArbalestBolt</ammoSet>
+					</AmmoUser>
+					<FireModes>
+						<aiAimMode>AimedShot</aiAimMode>
+					</FireModes>
+					<weaponTags>
+						<li>CE_Bow</li>
+					</weaponTags>
+				</li>
+
+			</operations>
+	</Operation>
+
+</Patch>

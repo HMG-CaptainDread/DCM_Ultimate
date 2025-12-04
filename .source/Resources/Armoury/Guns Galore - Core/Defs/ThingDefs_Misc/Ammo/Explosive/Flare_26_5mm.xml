@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!--
+
+	<ThingDef ParentName="BaseBullet">
+		<defName>CGF1_MWP_Bullet_265mm_Flare</defName>
+		<label>26.5mm Flare (Smoke)</label>
+		<graphicData>
+			<texPath>CGF1/Projectile/30x29mm</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>Smoke</damageDef>
+			<explosionRadius>2.4</explosionRadius>
+			<postExplosionGasType>BlindSmoke</postExplosionGasType>
+			<ai_IsIncendiary>true</ai_IsIncendiary>
+			<speed>50</speed>
+			<arcHeightFactor>0.7</arcHeightFactor>
+			<shadowSize>0.6</shadowSize>
+			<screenShakeFactor>0.5</screenShakeFactor>
+		</projectile>
+	</ThingDef>
+	
+	-->
+	
+	<ThingDef ParentName="BaseBullet">
+		<defName>CGF1_MWP_Bullet_265mm_Flare</defName>
+		<label>26.5mm Flare</label>
+		<graphicData>
+			<texPath>CGF1/Projectile/265mm_Flare</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>0.7</drawSize>
+		</graphicData>
+		<thingClass>Projectile_SpawnsThing</thingClass>
+		<projectile>
+			<ai_IsIncendiary>true</ai_IsIncendiary>
+			<spinRate>3</spinRate>
+			<speed>50</speed>
+			<explosionRadius>7.9</explosionRadius>
+			<arcHeightFactor>0.7</arcHeightFactor>
+			<shadowSize>0.6</shadowSize>
+			<screenShakeFactor>0.5</screenShakeFactor>
+			<landedEffecter MayRequire="Ludeon.RimWorld.Anomaly">DisruptorFlareLanded</landedEffecter>
+			<spawnsThingDef>CGF1_265mm_Flare</spawnsThingDef>
+		</projectile>
+		
+	</ThingDef>
+	  <ThingDef>
+		<defName>CGF1_265mm_Flare</defName>
+		<label>26.5mm Flare</label>
+		<graphicData>
+		  <graphicClass>Graphic_Single</graphicClass>
+		  <texPath>CGF1/Projectile/265mm_Flare</texPath>
+		  <shaderType>Transparent</shaderType>
+		  <onGroundRandomRotateAngle>360</onGroundRandomRotateAngle>
+		  <drawSize>0.7</drawSize>
+		</graphicData>
+		<selectable>false</selectable>
+		<tickerType>Normal</tickerType>
+		<thingClass>ThingWithComps</thingClass>
+		<useHitPoints>false</useHitPoints>
+		<rotatable>false</rotatable>
+		<comps>
+		  <li MayRequire="Ludeon.RimWorld.Anomaly" Class="CompProperties_DisruptorFlare">
+			<radius>7.9</radius>
+			<effecterDef>DisruptorFlareAttached</effecterDef>
+			<destroyWarningEffecterDef>DisruptorDestroyWarning</destroyWarningEffecterDef>
+		  </li>
+		  <li Class="CompProperties_DestroyAfterDelay">
+			<delayTicks>14400</delayTicks>
+			<displayCountdownOnLabel>true</displayCountdownOnLabel>
+		  </li>
+		  <li Class="CompProperties_Glower">
+			<glowRadius>5</glowRadius>
+			<glowColor>(255,117,108,0)</glowColor>
+		  </li>
+		</comps>
+	  </ThingDef>
+</Defs>

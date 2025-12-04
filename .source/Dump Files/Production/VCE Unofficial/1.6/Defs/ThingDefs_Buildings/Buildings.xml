@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>VCEUE_Autoclave</defName>
+		<label>autoclave</label>
+		<description>An electric-powered pressure chamber that uses extreme heat and pressure to cure Raw Plasteel into usable Plasteel. This process takes a significant amount of time and energy, but the end result is a durable and versatile material suitable for a wide variety of uses. The autoclave is not affected by rain, but it can short-circuit if exposed to excess moisture or wet conditions. It is important to keep the autoclave indoors or under a roof to prevent damage.\n\nThis building requires a significant amount of power to operate and can produce a lot of heat. Make sure to have enough power and appropriate cooling measures in place before constructing it.</description>
+		<drawerType>MapMeshAndRealTime</drawerType>
+
+		<building>
+			<relatedBuildCommands>
+				<li>VCEUE_RawPlasteelRefinery</li>
+				<li>PS_DeepchemRefinery</li>
+				<li>VCHE_DeepchemPipe</li>
+				<li>VCHE_UndergroundDeepchemPipe</li>
+				<li>VCHE_DeepchemValve</li>
+				<li>PS_DeepchemTank</li>
+				<li>VCHE_DeepchemTap</li>
+				<li>VCHE_DeepchemDrain</li>
+			</relatedBuildCommands>
+		</building>
+		<graphicData>
+			<texPath>Things/Building/Production/Autoclave/Autoclave_Off</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(2.5,2.5)</drawSize>
+			<shaderType>CutoutComplex</shaderType>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<costList>
+			<Steel>150</Steel>
+			<ComponentIndustrial>3</ComponentIndustrial>
+		</costList>
+		<altitudeLayer>Building</altitudeLayer>
+		<rotatable>true</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<uiIconScale>0.8</uiIconScale>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<WorkToBuild>1000</WorkToBuild>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<size>(2,2)</size>
+		<designationCategory>Production</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,2)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<researchPrerequisites>
+			<li>VCEUE_RawPlasteelRefining</li>
+		</researchPrerequisites>
+		<comps>
+			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
+				<showBufferInfo>false</showBufferInfo>
+				<notWorkingKey>VCEUE_CantRefinePlasteel</notWorkingKey>
+				<progressBarOffset>(0, 0, -0.65)</progressBarOffset>
+				<showResultItem>true</showResultItem>
+				<processes>
+					<li>VCEUE_RawPlasteelI</li>
+					<li>VCEUE_RawPlasteelII</li>
+					<li>VCEUE_RawPlasteelIII</li>
+				</processes>
+				<!-- <soundAmbient>VCHE_RefineryAmbient</soundAmbient> -->
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>1000</basePowerConsumption>
+				<shortCircuitInRain>true</shortCircuitInRain>
+			</li>
+
+			<li Class="CompProperties_HeatPusher">
+				<compClass>CompHeatPusherPowered</compClass>
+				<heatPerSecond>12</heatPerSecond>
+				<heatPushMaxTemperature>36</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>3</glowRadius>
+				<glowColor>(244, 112, 42,0)</glowColor>
+			</li>
+		</comps>
+		<inspectorTabs>
+			<li>PipeSystem.ITab_Processor</li>
+		</inspectorTabs>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>VCEUE_Autoweave</defName>
+		<label>autoweave</label>
+		<building>
+			<relatedBuildCommands>
+				<li>VCEUE_AdvancedAutoWeavery</li>
+				<li>PS_DeepchemRefinery</li>
+				<li>VCHE_DeepchemPipe</li>
+				<li>VCHE_UndergroundDeepchemPipe</li>
+				<li>VCHE_DeepchemValve</li>
+				<li>PS_DeepchemTank</li>
+				<li>VCHE_DeepchemTap</li>
+				<li>VCHE_DeepchemDrain</li>
+			</relatedBuildCommands>
+		</building>
+		<description>An electric-powered machine that automates the weaving process for various threads. This process allows for faster and more efficient production of textiles. The autoweave requires a significant amount of power to operate and produces a moderate amount of heat. It is important to have adequate power and cooling measures in place before constructing it. The autoweave is not affected by rain or moisture, but it should be kept indoors or under a roof to prevent damage.</description>
+		<drawerType>MapMeshAndRealTime</drawerType>
+
+		<graphicData>
+			<texPath>Things/Building/Production/Autoweave/Autoweave_Off</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(3.75,2.75)</drawSize>
+			<drawOffsetEast>(-0.15,2,0.25)</drawOffsetEast>
+			<drawOffsetWest>(0.15,2,0.25)</drawOffsetWest>
+			<drawOffsetNorth>(0,2,-0.05)</drawOffsetNorth>
+			<drawOffsetSouth>(0,2,-0.05)</drawOffsetSouth>
+			<shaderType>CutoutComplex</shaderType>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<costList>
+			<Steel>150</Steel>
+			<ComponentIndustrial>3</ComponentIndustrial>
+		</costList>
+		<altitudeLayer>Building</altitudeLayer>
+		<rotatable>true</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<uiIconScale>0.8</uiIconScale>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<WorkToBuild>1000</WorkToBuild>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<size>(3,2)</size>
+		<designationCategory>Production</designationCategory>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,2)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<researchPrerequisites>
+			<li>VCEUE_SynthreadRefining</li>
+		</researchPrerequisites>
+		<comps>
+			<li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
+				<showBufferInfo>false</showBufferInfo>
+				<notWorkingKey>VCEUE_CantRefineThread</notWorkingKey>
+				<progressBarOffset>(0, 0, -0.65)</progressBarOffset>
+				<showResultItem>true</showResultItem>
+				<processes>
+					<li>VCEUE_RawDevilstrandI</li>
+					<li>VCEUE_RawSynthreadI</li>
+					<li>VCEUE_RawHyperweaveI</li>
+					<li>VCEUE_RawDevilstrandII</li>
+					<li>VCEUE_RawSynthreadII</li>
+					<li>VCEUE_RawHyperweaveII</li>
+					<li>VCEUE_RawDevilstrandIII</li>
+					<li>VCEUE_RawSynthreadIII</li>
+					<li>VCEUE_RawHyperweaveIII</li>
+				</processes>
+				<!-- <soundAmbient>VCHE_RefineryAmbient</soundAmbient> -->
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>1000</basePowerConsumption>
+				<shortCircuitInRain>true</shortCircuitInRain>
+			</li>
+
+			<li Class="CompProperties_HeatPusher">
+				<compClass>CompHeatPusherPowered</compClass>
+				<heatPerSecond>12</heatPerSecond>
+				<heatPushMaxTemperature>36</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>3</glowRadius>
+				<glowColor>(244, 112, 42,0)</glowColor>
+			</li>
+		</comps>
+		<inspectorTabs>
+			<li>PipeSystem.ITab_Processor</li>
+		</inspectorTabs>
+	</ThingDef>
+
+
+</Defs>

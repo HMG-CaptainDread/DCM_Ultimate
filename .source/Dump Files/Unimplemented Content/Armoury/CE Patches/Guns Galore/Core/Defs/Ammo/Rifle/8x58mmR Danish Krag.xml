@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo8x58mmRDanishKrag</defName>
+		<label>8x58mmR Danish Krag</label>
+		<parent>AmmoRifles</parent>
+		<iconPath>UI/Icons/ThingCategories/CaliberRifle</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>AmmoSet_8x58mmRDanishKrag</defName>
+		<label>8x58mmR Danish Krag</label>
+		<ammoTypes>
+			<Ammo_8x58mmRDanishKrag_FMJ>Bullet_8x58mmRDanishKrag_FMJ</Ammo_8x58mmRDanishKrag_FMJ>
+			<Ammo_8x58mmRDanishKrag_AP>Bullet_8x58mmRDanishKrag_AP</Ammo_8x58mmRDanishKrag_AP>
+			<Ammo_8x58mmRDanishKrag_HP>Bullet_8x58mmRDanishKrag_HP</Ammo_8x58mmRDanishKrag_HP>
+			<Ammo_8x58mmRDanishKrag_Incendiary>Bullet_8x58mmRDanishKrag_Incendiary</Ammo_8x58mmRDanishKrag_Incendiary>
+			<Ammo_8x58mmRDanishKrag_HE>Bullet_8x58mmRDanishKrag_HE</Ammo_8x58mmRDanishKrag_HE>
+			<Ammo_8x58mmRDanishKrag_Sabot>Bullet_8x58mmRDanishKrag_Sabot</Ammo_8x58mmRDanishKrag_Sabot>			
+		</ammoTypes>
+		<similarTo>AmmoSet_Rifle</similarTo>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="8x58mmRDanishKragBase" ParentName="SmallAmmoBase" Abstract="True" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<description>Large rifle cartridge used in machine guns and battle rifles.</description>
+		<statBases>
+			<Mass>0.031</Mass>
+			<Bulk>0.04</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo8x58mmRDanishKrag</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="8x58mmRDanishKragBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>Ammo_8x58mmRDanishKrag_FMJ</defName>
+		<label>8x58mmR Danish Krag cartridge (FMJ)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Rifle/FMJ</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.13</MarketValue>
+		</statBases>
+		<ammoClass>FullMetalJacket</ammoClass>
+		<cookOffProjectile>Bullet_8x58mmRDanishKrag_FMJ</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="8x58mmRDanishKragBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>Ammo_8x58mmRDanishKrag_AP</defName>
+		<label>8x58mmR Danish Krag cartridge (AP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Rifle/AP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.13</MarketValue>
+		</statBases>
+		<ammoClass>ArmorPiercing</ammoClass>
+		<cookOffProjectile>Bullet_8x58mmRDanishKrag_AP</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="8x58mmRDanishKragBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>Ammo_8x58mmRDanishKrag_HP</defName>
+		<label>8x58mmR Danish Krag cartridge (HP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Rifle/HP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.13</MarketValue>
+		</statBases>
+		<ammoClass>HollowPoint</ammoClass>
+		<cookOffProjectile>Bullet_8x58mmRDanishKrag_HP</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="8x58mmRDanishKragBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>Ammo_8x58mmRDanishKrag_Incendiary</defName>
+		<label>8x58mmR Danish Krag cartridge (AP-I)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Rifle/Incendiary</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.18</MarketValue>
+		</statBases>
+		<ammoClass>IncendiaryAP</ammoClass>
+		<cookOffProjectile>Bullet_8x58mmRDanishKrag_Incendiary</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="8x58mmRDanishKragBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>Ammo_8x58mmRDanishKrag_HE</defName>
+		<label>8x58mmR Danish Krag cartridge (AP-HE)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Rifle/HE</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.28</MarketValue>
+		</statBases>
+		<ammoClass>ExplosiveAP</ammoClass>
+		<cookOffProjectile>Bullet_8x58mmRDanishKrag_HE</cookOffProjectile>
+	</ThingDef>
+	
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="8x58mmRDanishKragBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>Ammo_8x58mmRDanishKrag_Sabot</defName>
+		<label>8x58mmR Danish Krag cartridge (Sabot)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Rifle/Sabot</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.15</MarketValue>
+			<Mass>0.026</Mass>
+		</statBases>
+		<ammoClass>Sabot</ammoClass>
+		<cookOffProjectile>Bullet_8x58mmRDanishKrag_Sabot</cookOffProjectile>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="Base8x58mmRDanishKragBullet" ParentName="BaseBulletCE" Abstract="true" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>154</speed>
+			<dropsCasings>true</dropsCasings>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base8x58mmRDanishKragBullet" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>Bullet_8x58mmRDanishKrag_FMJ</defName>
+		<label>8x58mmR Danish Krag cartridge (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>21</damageAmountBase>
+			<armorPenetrationSharp>7</armorPenetrationSharp>
+			<armorPenetrationBlunt>77.08</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base8x58mmRDanishKragBullet" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>Bullet_8x58mmRDanishKrag_AP</defName>
+		<label>8x58mmR Danish Krag cartridge (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>13</damageAmountBase>
+			<armorPenetrationSharp>14</armorPenetrationSharp>
+			<armorPenetrationBlunt>77.08</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base8x58mmRDanishKragBullet" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>Bullet_8x58mmRDanishKrag_HP</defName>
+		<label>8x58mmR Danish Krag cartridge (HP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>27</damageAmountBase>
+			<armorPenetrationSharp>4</armorPenetrationSharp>
+			<armorPenetrationBlunt>77.08</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	  <ThingDef ParentName="Base8x58mmRDanishKragBullet" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>Bullet_8x58mmRDanishKrag_Incendiary</defName>
+		<label>8x58mmR Danish Krag bullet (AP-I)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+		  <damageAmountBase>13</damageAmountBase>
+		  <armorPenetrationSharp>14</armorPenetrationSharp>
+		  <armorPenetrationBlunt>77.08</armorPenetrationBlunt>
+		  <secondaryDamage>
+				<li>
+			  	<def>Flame_Secondary</def>
+			  	<amount>8</amount>
+				</li>
+		  </secondaryDamage>
+		</projectile>
+	  </ThingDef>
+	  
+	  <ThingDef ParentName="Base8x58mmRDanishKragBullet" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>Bullet_8x58mmRDanishKrag_HE</defName>
+		<label>8x58mmR Danish Krag bullet (AP-HE)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+		  <damageAmountBase>21</damageAmountBase>
+		  <armorPenetrationSharp>7</armorPenetrationSharp>
+		  <armorPenetrationBlunt>77.08</armorPenetrationBlunt>
+		  <secondaryDamage>
+				<li>
+			  	<def>Bomb_Secondary</def>
+			  	<amount>13</amount>
+				</li>
+		  </secondaryDamage>
+		</projectile>
+	  </ThingDef>
+
+	  <ThingDef ParentName="Base8x58mmRDanishKragBullet" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>Bullet_8x58mmRDanishKrag_Sabot</defName>
+		<label>8x58mmR Danish Krag bullet (Sabot)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+		  <damageAmountBase>11</damageAmountBase>
+		  <armorPenetrationSharp>24</armorPenetrationSharp>
+		  <armorPenetrationBlunt>100.58</armorPenetrationBlunt>
+		  <speed>231</speed>
+		</projectile>
+	  </ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>MakeAmmo_8x58mmRDanishKrag_FMJ</defName>
+		<label>make 8x58mmR Danish Krag Cartridge (FMJ) cartridge x500</label>
+		<description>Craft 500 8x58mmR Danish Krag Cartridge (FMJ) cartridges.</description>
+		<jobString>Making 8x58mmR Danish Krag Cartridge (FMJ) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>32</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_8x58mmRDanishKrag_FMJ>500</Ammo_8x58mmRDanishKrag_FMJ>
+		</products>
+    <workAmount>3200</workAmount>		
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>MakeAmmo_8x58mmRDanishKrag_AP</defName>
+		<label>make 8x58mmR Danish Krag Cartridge (AP) cartridge x500</label>
+		<description>Craft 500 8x58mmR Danish Krag Cartridge (AP) cartridges.</description>
+		<jobString>Making 8x58mmR Danish Krag Cartridge (AP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>32</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_8x58mmRDanishKrag_AP>500</Ammo_8x58mmRDanishKrag_AP>		
+		</products>
+		<workAmount>3840</workAmount>			
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>MakeAmmo_8x58mmRDanishKrag_HP</defName>
+		<label>make 8x58mmR Danish Krag Cartridge (HP) cartridge x500</label>
+		<description>Craft 500 8x58mmR Danish Krag Cartridge (HP) cartridges.</description>
+		<jobString>Making 8x58mmR Danish Krag Cartridge (HP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>32</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_8x58mmRDanishKrag_HP>500</Ammo_8x58mmRDanishKrag_HP>
+		</products>
+		<workAmount>3200</workAmount>		
+	</RecipeDef>
+
+  <RecipeDef ParentName="AdvancedAmmoRecipeBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+    <defName>MakeAmmo_8x58mmRDanishKrag_Incendiary</defName>
+    <label>make 8x58mmR Danish Krag (AP-I) cartridge x500</label>
+    <description>Craft 500 8x58mmR Danish Krag (AP-I) cartridges.</description>
+    <jobString>Making 8x58mmR Danish Krag (AP-I) cartridges.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>32</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Prometheum</li>
+          </thingDefs>
+        </filter>
+        <count>4</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+        <li>Prometheum</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_8x58mmRDanishKrag_Incendiary>500</Ammo_8x58mmRDanishKrag_Incendiary>
+    </products>
+    <workAmount>4800</workAmount>
+  </RecipeDef>
+  
+  <RecipeDef ParentName="AdvancedAmmoRecipeBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+    <defName>MakeAmmo_8x58mmRDanishKrag_HE</defName>
+    <label>make 8x58mmR Danish Krag (AP-HE) cartridge x500</label>
+    <description>Craft 500 8x58mmR Danish Krag (AP-HE) cartridges.</description>
+    <jobString>Making 8x58mmR Danish Krag (AP-HE) cartridges.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>32</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>FSX</li>
+          </thingDefs>
+        </filter>
+        <count>7</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+        <li>FSX</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_8x58mmRDanishKrag_HE>500</Ammo_8x58mmRDanishKrag_HE>
+    </products>
+    <workAmount>6000</workAmount>
+  </RecipeDef>
+  
+  <RecipeDef ParentName="AdvancedAmmoRecipeBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+    <defName>MakeAmmo_8x58mmRDanishKrag_Sabot</defName>
+    <label>make 8x58mmR Danish Krag (Sabot) cartridge x500</label>
+    <description>Craft 500 8x58mmR Danish Krag (Sabot) cartridges.</description>
+    <jobString>Making 8x58mmR Danish Krag (Sabot) cartridges.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>18</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Uranium</li>
+          </thingDefs>
+        </filter>
+        <count>4</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </filter>
+        <count>4</count>
+      </li>		  
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+        <li>Uranium</li>
+        <li>Chemfuel</li>		
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_8x58mmRDanishKrag_Sabot>500</Ammo_8x58mmRDanishKrag_Sabot>
+    </products>
+    <workAmount>4200</workAmount>
+  </RecipeDef>
+
+</Defs>

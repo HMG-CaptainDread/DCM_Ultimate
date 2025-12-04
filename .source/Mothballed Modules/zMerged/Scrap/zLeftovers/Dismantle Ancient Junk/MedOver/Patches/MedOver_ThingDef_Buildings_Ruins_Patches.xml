@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<!-- Medieval Overhaul patch -->
+
+<Operation Class="PatchOperationFindMod">
+	<success>Always</success>
+	<mods>
+		<!-- Check Mod name or workshop ID written in PublishedFileId.txt (Confirm existence of other Mod from this Mod) -->
+		<li>Medieval Overhaul</li>
+		<li>2553700067</li>
+		<li>3219596926</li>
+	</mods>
+	<match Class="PatchOperationAdd">
+		<xpath>*/ThingDef[@Name = "DankPyon_RuinedBuildingBase"]/building</xpath>
+		<value>
+			<alwaysDeconstructible>true</alwaysDeconstructible>
+		</value>
+	</match>
+	<nomatch Class="PatchOperationTest">
+		<xpath>*/ThingDef[defName = "MealSurvivalPack"]</xpath>
+		<success>Always</success>
+	</nomatch>
+</Operation>
+
+<Operation Class="PatchOperationFindMod">
+	<success>Always</success>
+	<mods>
+		<!-- Check Mod name or workshop ID written in PublishedFileId.txt (Confirm existence of other Mod from this Mod) -->
+		<li>Medieval Overhaul</li>
+		<li>2553700067</li>
+		<li>3219596926</li>
+	</mods>
+	<match Class="PatchOperationAdd">
+		<xpath>*/ThingDef[@Name = "DankPyon_RuinedBuildingBase"]</xpath>
+		<value>
+			<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		</value>
+	</match>
+	<nomatch Class="PatchOperationTest">
+		<xpath>*/ThingDef[defName = "MealSurvivalPack"]</xpath>
+		<success>Always</success>
+	</nomatch>
+</Operation>
+
+</Patch>

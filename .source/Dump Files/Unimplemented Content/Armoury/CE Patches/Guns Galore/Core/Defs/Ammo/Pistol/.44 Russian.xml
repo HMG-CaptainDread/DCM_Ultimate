@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingCategoryDef>
+    <defName>Ammo44Russian</defName>
+    <label>.44 Russian</label>
+    <parent>AmmoPistols</parent>
+    <iconPath>UI/Icons/ThingCategories/CaliberPistol</iconPath>
+  </ThingCategoryDef>
+
+  <!-- ==================== AmmoSet ========================== -->
+
+  <CombatExtended.AmmoSetDef MayRequire="cgf1.gunsgalore.industrialage.i">
+    <defName>AmmoSet_44Russian</defName>
+    <label>.44 Russian</label>
+    <ammoTypes>
+      <Ammo_44Russian_FMJ>Bullet_44Russian_FMJ</Ammo_44Russian_FMJ>
+      <Ammo_44Russian_AP>Bullet_44Russian_AP</Ammo_44Russian_AP>
+      <Ammo_44Russian_HP>Bullet_44Russian_HP</Ammo_44Russian_HP>
+    </ammoTypes>
+		<similarTo>AmmoSet_Pistol</similarTo>
+  </CombatExtended.AmmoSetDef>
+
+  <!-- ==================== Ammo ========================== -->
+
+  <ThingDef Class="CombatExtended.AmmoDef" Name="44RussianBase" ParentName="SmallAmmoBase" Abstract="True" MayRequire="cgf1.gunsgalore.industrialage.i">
+    <description>Revolver cartridge designed for the frontier.</description>
+    <statBases>
+      <Mass>0.021</Mass>
+      <Bulk>0.02</Bulk>
+    </statBases>
+    <tradeTags>
+      <li>CE_AutoEnableTrade</li>
+      <li>CE_AutoEnableCrafting</li>
+    </tradeTags>
+    <thingCategories>
+      <li>Ammo44Russian</li>
+    </thingCategories>
+  </ThingDef>
+
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="44RussianBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+    <defName>Ammo_44Russian_FMJ</defName>
+    <label>.44 Russian cartridge (FMJ)</label>
+    <graphicData>
+      <texPath>Things/Ammo/Pistol/FMJ</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>0.09</MarketValue>
+    </statBases>
+    <ammoClass>FullMetalJacket</ammoClass>
+    <cookOffProjectile>Bullet_44Russian_FMJ</cookOffProjectile>
+  </ThingDef>
+
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="44RussianBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+    <defName>Ammo_44Russian_AP</defName>
+    <label>.44 Russian cartridge (AP)</label>
+    <graphicData>
+      <texPath>Things/Ammo/Pistol/AP</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>0.09</MarketValue>
+    </statBases>
+    <ammoClass>ArmorPiercing</ammoClass>
+    <cookOffProjectile>Bullet_44Russian_AP</cookOffProjectile>
+  </ThingDef>
+
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="44RussianBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+    <defName>Ammo_44Russian_HP</defName>
+    <label>.44 Russian cartridge (HP)</label>
+    <graphicData>
+      <texPath>Things/Ammo/Pistol/HP</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>0.09</MarketValue>
+    </statBases>
+    <ammoClass>HollowPoint</ammoClass>
+    <cookOffProjectile>Bullet_44Russian_HP</cookOffProjectile>
+  </ThingDef>
+
+  <!-- ================== Projectiles ================== -->
+
+  <ThingDef Name="Base44RussianBullet" ParentName="BaseBulletCE" Abstract="true" MayRequire="cgf1.gunsgalore.industrialage.i">
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <damageDef>Bullet</damageDef>
+      <speed>46</speed>
+      <dropsCasings>true</dropsCasings>
+	  <casingMoteDefname>Fleck_PistolAmmoCasings</casingMoteDefname>
+	  <casingFilthDefname>Filth_PistolAmmoCasings</casingFilthDefname>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="Base44RussianBullet" MayRequire="cgf1.gunsgalore.industrialage.i">
+    <defName>Bullet_44Russian_FMJ</defName>
+    <label>.44 Russian bullet (FMJ)</label>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <damageAmountBase>11</damageAmountBase>
+      <armorPenetrationSharp>3</armorPenetrationSharp>
+      <armorPenetrationBlunt>8.46</armorPenetrationBlunt>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="Base44RussianBullet" MayRequire="cgf1.gunsgalore.industrialage.i">
+    <defName>Bullet_44Russian_AP</defName>
+    <label>.44 Russian bullet (AP)</label>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <damageAmountBase>7</damageAmountBase>
+      <armorPenetrationSharp>6</armorPenetrationSharp>
+      <armorPenetrationBlunt>8.46</armorPenetrationBlunt>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="Base44RussianBullet" MayRequire="cgf1.gunsgalore.industrialage.i">
+    <defName>Bullet_44Russian_HP</defName>
+    <label>.44 Russian bullet (HP)</label>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <damageAmountBase>14</damageAmountBase>
+      <armorPenetrationSharp>2</armorPenetrationSharp>
+      <armorPenetrationBlunt>8.46</armorPenetrationBlunt>
+    </projectile>
+  </ThingDef>
+
+  <!-- ==================== Recipes ========================== -->
+
+  <!-- Standard manufacture -->
+  <RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+    <defName>MakeAmmo_44Russian_FMJ</defName>
+    <label>make .44 Russian (FMJ) cartridge x500</label>
+    <description>Craft 500 .44 Russian (FMJ) cartridges.</description>
+    <jobString>Making .44 Russian (FMJ) cartridges.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>22</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_44Russian_FMJ>500</Ammo_44Russian_FMJ>
+    </products>
+    <workAmount>2200</workAmount>
+  </RecipeDef>
+
+  <RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+    <defName>MakeAmmo_44Russian_AP</defName>
+    <label>make .44 Russian (AP) cartridge x500</label>
+    <description>Craft 500 .44 Russian (AP) cartridges.</description>
+    <jobString>Making .44 Russian (AP) cartridges.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>22</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_44Russian_AP>500</Ammo_44Russian_AP>
+    </products>
+    <workAmount>2640</workAmount>
+  </RecipeDef>
+
+  <RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+    <defName>MakeAmmo_44Russian_HP</defName>
+    <label>make .44 Russian (HP) cartridge x500</label>
+    <description>Craft 500 .44 Russian (HP) cartridges.</description>
+    <jobString>Making .44 Russian (HP) cartridges.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>22</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_44Russian_HP>500</Ammo_44Russian_HP>
+    </products>
+    <workAmount>2200</workAmount>
+  </RecipeDef>
+
+</Defs>

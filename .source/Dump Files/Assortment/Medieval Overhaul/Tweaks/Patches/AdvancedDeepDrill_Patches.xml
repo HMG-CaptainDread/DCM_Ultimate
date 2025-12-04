@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="XmlExtensions.FindMod">
+    <mods>
+      <li>GarlicSauce's Advanced Deep Drill (Continued)</li>
+      <li>Medieval Overhaul</li>
+    </mods>
+    <logic>and</logic>
+    <caseTrue>
+
+      <li Class="XmlExtensions.OptionalPatch">
+        <modId>zenlor.MOTweaks</modId>
+        <key>mot-integration-advdeepdrill-gems</key>
+        <defaultValue>True</defaultValue>
+        <caseTrue>
+
+          <li Class="XmlExtensions.DefDatabaseOperationAddDef">
+            <value>
+              <RecipeDef ParentName="TRAHS_DrillBase">
+                <defName>MOT_TRAHS_DrillCoal</defName>
+                <label>drill for coal</label>
+                <description>Drill for coal.</description>
+                <jobString>Drilling for coal.</jobString>
+                <workAmount>400</workAmount>
+                <skillRequirements>
+                  <Mining>5</Mining>
+                </skillRequirements>
+                <products>
+                  <DankPyon_Coal>25</DankPyon_Coal>
+                </products>
+              </RecipeDef>
+
+              <RecipeDef ParentName="TRAHS_DrillBase">
+                <defName>MOT_TRAHS_DrillSalt</defName>
+                <label>drill for salt</label>
+                <description>Drill for salt.</description>
+                <jobString>Drilling for salt.</jobString>
+                <workAmount>200</workAmount>
+                <skillRequirements>
+                  <Mining>10</Mining>
+                </skillRequirements>
+                <products>
+                  <DankPyon_Coal>25</DankPyon_Coal>
+                </products>
+              </RecipeDef>
+
+              <!-- Gemstones -->
+              <RecipeDef ParentName="TRAHS_DrillBase">
+                <defName>MOT_TRAHS_DrillCitrine</defName>
+                <label>drill for citrine</label>
+                <description>Drill for Citrine.</description>
+                <jobString>Drilling for Citrine.</jobString>
+                <workAmount>5000</workAmount>
+                <skillRequirements>
+                  <Mining>10</Mining>
+                </skillRequirements>
+                <products>
+                  <DankPyon_Citrine>20</DankPyon_Citrine>
+                </products>
+              </RecipeDef>
+              <RecipeDef ParentName="TRAHS_DrillBase">
+                <defName>MOT_TRAHS_DrillAmber</defName>
+                <label>drill for amber</label>
+                <description>Drill for Amber.</description>
+                <jobString>Drilling for Amber.</jobString>
+                <workAmount>5000</workAmount>
+                <skillRequirements>
+                  <Mining>10</Mining>
+                </skillRequirements>
+                <products>
+                  <DankPyon_Amber>20</DankPyon_Amber>
+                </products>
+              </RecipeDef>
+              <RecipeDef ParentName="TRAHS_DrillBase">
+                <defName>MOT_TRAHS_DrillOnyx</defName>
+                <label>drill for onyx</label>
+                <description>Drill for Onyx.</description>
+                <jobString>Drilling for Onyx.</jobString>
+                <workAmount>5000</workAmount>
+                <skillRequirements>
+                  <Mining>10</Mining>
+                </skillRequirements>
+                <products>
+                  <DankPyon_Onyx>20</DankPyon_Onyx>
+                </products>
+              </RecipeDef>
+              <RecipeDef ParentName="TRAHS_DrillBase">
+                <defName>MOT_TRAHS_DrillEmerald</defName>
+                <label>drill for emerald</label>
+                <description>Drill for Emerald.</description>
+                <jobString>Drilling for Emerald.</jobString>
+                <workAmount>5000</workAmount>
+                <skillRequirements>
+                  <Mining>10</Mining>
+                </skillRequirements>
+                <products>
+                  <DankPyon_Emerald>20</DankPyon_Emerald>
+                </products>
+              </RecipeDef>
+              <RecipeDef ParentName="TRAHS_DrillBase">
+                <defName>MOT_TRAHS_DrillSapphire</defName>
+                <label>drill for sapphire</label>
+                <description>Drill for Sapphire.</description>
+                <jobString>Drilling for Sapphire.</jobString>
+                <workAmount>5000</workAmount>
+                <skillRequirements>
+                  <Mining>10</Mining>
+                </skillRequirements>
+                <products>
+                  <DankPyon_Sapphire>20</DankPyon_Sapphire>
+                </products>
+              </RecipeDef>
+              <RecipeDef ParentName="TRAHS_DrillBase">
+                <defName>MOT_TRAHS_DrillRuby</defName>
+                <label>drill for ruby</label>
+                <description>Drill for Ruby.</description>
+                <jobString>Drilling for Ruby.</jobString>
+                <workAmount>5000</workAmount>
+                <skillRequirements>
+                  <Mining>10</Mining>
+                </skillRequirements>
+                <products>
+                  <DankPyon_Ruby>20</DankPyon_Ruby>
+                </products>
+              </RecipeDef>
+
+            </value>
+          </li>
+
+        </caseTrue>
+      </li>
+
+      <li Class="XmlExtensions.OptionalPatch">
+        <modId>zenlor.MOTweaks</modId>
+        <key>mot-integration-advdeepdrill-ore</key>
+        <defaultValue>True</defaultValue>
+        <caseTrue>
+
+          <li Class="PatchOperationReplace">
+            <xpath>/Defs/RecipeDef[defName="TRAHS_DrillSteel"]/description</xpath>
+            <value><description>Drill for Iron ore.</description></value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>/Defs/RecipeDef[defName="TRAHS_DrillSteel"]/jobString</xpath>
+            <value><jobString>Drilling for Iron ore.</jobString></value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>/Defs/RecipeDef[defName="TRAHS_DrillSteel"]/products</xpath>
+            <value>
+              <products><DankPyon_IronOre>50</DankPyon_IronOre></products>
+            </value>
+          </li>
+
+          <!-- GoldOre -->
+          <li Class="PatchOperationReplace">
+            <xpath>/Defs/RecipeDef[defName="TRAHS_DrillGold"]/description</xpath>
+            <value><description>Drill for Gold ore.</description></value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>/Defs/RecipeDef[defName="TRAHS_DrillGold"]/jobString</xpath>
+            <value><jobString>Drilling for Gold ore.</jobString></value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>/Defs/RecipeDef[defName="TRAHS_DrillGold"]/products</xpath>
+            <value>
+              <products>
+                <DankPyon_GoldOre>20</DankPyon_GoldOre>
+              </products>
+            </value>
+          </li>
+
+          <!-- SilverOre -->
+          <li Class="PatchOperationReplace">
+            <xpath>/Defs/RecipeDef[defName="TRAHS_DrillSilver"]/description</xpath>
+            <value><description>Drill for Silver ore.</description></value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>/Defs/RecipeDef[defName="TRAHS_DrillSilver"]/jobString</xpath>
+            <value><jobString>Drilling for Silver ore.</jobString></value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>/Defs/RecipeDef[defName="TRAHS_DrillSilver"]/products</xpath>
+            <value>
+              <products><DankPyon_SilverOre>50</DankPyon_SilverOre></products>
+            </value>
+          </li>
+
+        </caseTrue>
+      </li>
+
+    </caseTrue>
+  </Operation>
+</Patch>

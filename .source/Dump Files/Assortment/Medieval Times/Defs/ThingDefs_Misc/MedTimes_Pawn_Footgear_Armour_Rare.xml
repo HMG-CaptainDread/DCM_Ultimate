@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!-- Start of thingDefs -->
+<!-- =========================== Accessory Base Class =========================== -->
+<!-- FootArmour Base Class -->
+  <ThingDef Name="MedTimes_FootArmour_Rare" Abstract="True">
+    <thingClass>Apparel</thingClass>
+    <category>Item</category>
+    <selectable>True</selectable>
+    <pathCost>10</pathCost>
+    <altitudeLayer>Item</altitudeLayer>
+    <alwaysHaulable>True</alwaysHaulable>
+    <tickerType>Never</tickerType>	
+    <drawGUIOverlay>true</drawGUIOverlay>		
+    <graphicData>
+      <onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Transparent</shaderType>		  
+	</graphicData>
+    <statBases>
+      <SellPriceFactor>0.8</SellPriceFactor>
+		<EquipDelay>2</EquipDelay>	  
+		<Beauty>-3</Beauty>
+		<Mass>1</Mass>	  
+    </statBases>
+    <apparel>
+		<careIfWornByCorpse>false</careIfWornByCorpse>		
+		<defaultOutfitTags><li>Soldier</li></defaultOutfitTags>		
+		<bodyPartGroups><li>Feet</li></bodyPartGroups>
+		<tags>
+			<li MayRequire="Ludeon.RimWorld.Royalty">PrestigeCombatGear</li>
+		</tags>
+	</apparel>		
+    <comps>
+      <li Class="CompProperties_Forbiddable"/> 
+    </comps>	
+  </ThingDef>
+
+  
+  <!-- (Artifact) FootArmour Class -->
+  <ThingDef Name="MedTimes_FootArmour_Art" ParentName="MedTimes_FootArmour_Rare" Abstract="True">
+      <useHitPoints>True</useHitPoints>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <ArmorRating_Blunt>0.5</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.95</ArmorRating_Sharp>		  
+      <Flammability>1.0</Flammability>	
+      <Insulation_Cold>3</Insulation_Cold>	  
+      <DeteriorationRate>1</DeteriorationRate>  
+    </statBases>
+	<comps>
+      <li><compClass>CompQuality</compClass></li>
+    </comps>	
+    <thingCategories><li>FootArmour_Art</li></thingCategories>	
+    <tradeTags><li>MedTimes_Artifact</li></tradeTags>			
+  </ThingDef>  
+  
+  
+   <!-- (Legendary) FootArmour Class -->
+  <ThingDef Name="MedTimes_FootArmour_Leg" ParentName="MedTimes_FootArmour_Rare" Abstract="True">
+    <useHitPoints>False</useHitPoints>
+	<costList><MedTimes_NaniteVial>1</MedTimes_NaniteVial></costList>
+    <statBases>
+      <ArmorRating_Blunt>0.92</ArmorRating_Blunt>
+      <ArmorRating_Sharp>1.75</ArmorRating_Sharp>
+      <Insulation_Cold>7</Insulation_Cold>	
+    </statBases>	
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Intellectual</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>MedTimes_UnfinishedNanite</unfinishedThingDef>	  
+      <recipeUsers>
+		<li>MedTimes_EternityForge</li>
+      </recipeUsers>
+		<skillRequirements>
+				<Intellectual>10</Intellectual>
+		</skillRequirements>		  
+	</recipeMaker>			
+    <thingCategories><li>FootArmour_Leg</li></thingCategories>	
+    <tradeTags><li>MedTimes_Legendary</li></tradeTags>
+    <thingSetMakerTags>
+		<li>PeaceTalksGift</li>
+		<li>ItemStashQuest</li>
+		<li>BanditCampQuestRewards</li>
+		<li>AncientTempleContents</li>
+		<li>AncientPodContents</li>
+    </thingSetMakerTags>		
+  </ThingDef>  
+
+
+
+<!-- =========================== (Artifact) Foot Accessories =========================== --> 
+<!-- ====== Socks ====== -->
+<!-- Techno Socks -->
+  <ThingDef ParentName="MedTimes_FootArmour_Art">
+    <defName>MedTimes_Socks_Techno_Art</defName>
+    <label>Techno Socks (Art)</label>
+    <description>(Artifact)[Movespeed: +4%] Technological socks designed by Roubok industries. These socks are used by famous celebrities and sports athletes on several planets. Primarily made of hyper-weave, they have both thermal heating and cooling capabilities. The socks also come with hyper-foam and hyper-gel padding to ensure ease of comfort during long term use. Because of this, these socks are also a favorite of military personnel on various glitter-worlds.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Socks_Techno</texPath>
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Socks_Techno_Art</uiIconPath>								
+    <statBases>
+      <MarketValue>800</MarketValue>
+      <ArmorRating_Blunt>0.05</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.05</ArmorRating_Sharp>
+      <Insulation_Heat>3</Insulation_Heat>
+    </statBases>
+    <equippedStatOffsets>
+		<MoveSpeed>0.04</MoveSpeed>
+    </equippedStatOffsets>	
+    <apparel>
+      <layers><li>OnSkin</li></layers>
+    </apparel>
+  </ThingDef>
+  
+ 
+<!-- ====== Boots ====== -->
+<!-- Godking Boots -->
+<ThingDef ParentName="MedTimes_FootArmour_Art">
+    <defName>MedTimes_Boots_Godking_Art</defName>
+    <label>Godking's Boots (Art)</label>
+    <description>(Artifact) [Movespeed: +10%][SocialImpact: +3%] Gold plated plasteel on Lamellar boots. These boots scream pampered posh for the god king's royal clompers. Hyper-weave lacing, Thrumbo horn filigree, Daxian furs. Hell, even the boots soles are made from a rare and exotic rubber. These boots are basically royalty personified, every squeaky step will let everyone know exactly who is in the room.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Boots_Godking</texPath>
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Boots_Godking_Art</uiIconPath>	
+    <statBases>
+      <MarketValue>3100</MarketValue> 	  
+    </statBases>	
+    <equippedStatOffsets>
+		<MoveSpeed>0.1</MoveSpeed>
+		<SocialImpact>0.03</SocialImpact>		
+    </equippedStatOffsets>  
+    <apparel>
+		<layers><li>Middle</li></layers>	
+    </apparel>	
+  </ThingDef>
+
+ <!-- Warlord Boots -->
+<ThingDef ParentName="MedTimes_FootArmour_Art">
+    <defName>MedTimes_Boots_Warlord_Art</defName>
+    <label>Warlord's Boots (Art)</label>
+    <description>(Artifact) [Movespeed: +10%][SocialImpact: +3%] Darkened plasteel cuffs around a no nonsense plated frame. High quality, high demand ingredients. from the superior hyper-rubber soles to the Thrumbo leather inner boot, this piece of armour screams both power and utility. The toe is even bladed so kicking your oppenent when he is down is twice as effective.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Boots_Warlord</texPath>
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Boots_Warlord_Art</uiIconPath>	
+    <statBases>
+      <MarketValue>3100</MarketValue> 	  
+    </statBases>	
+    <equippedStatOffsets>
+		<MoveSpeed>0.1</MoveSpeed>
+		<SocialImpact>0.03</SocialImpact>		
+    </equippedStatOffsets>  
+    <apparel>
+		<layers><li>Middle</li></layers>	
+    </apparel>	
+  </ThingDef>   
+
+<!-- Combat Boots -->
+<ThingDef ParentName="MedTimes_FootArmour_Art">
+    <defName>MedTimes_Boots_Combat_Art</defName>
+    <label>Combat Boots (Art)</label>
+    <description>(Artifact) [Movespeed: +10%] Mass produced Combat Boots made of Hyper-Weave and plasteel. Adjustments in the design straps, Hyper-Gel insoles and contouring Hyper-Foam ensure a comfortable fit for any foot type.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Boots_Combat</texPath>
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Boots_Combat_Art</uiIconPath>	
+    <statBases>
+      <MarketValue>3500</MarketValue>
+	  <ArmorRating_Heat>0.1</ArmorRating_Heat>
+      <Insulation_Cold>5</Insulation_Cold>	  	  
+    </statBases>	
+    <equippedStatOffsets>
+		<MoveSpeed>0.1</MoveSpeed>
+    </equippedStatOffsets>  
+    <apparel>
+		<layers><li>Middle</li></layers>		
+	</apparel>		
+  </ThingDef>  
+    
+	
+<!-- Techno Boots -->
+<ThingDef ParentName="MedTimes_FootArmour_Art">
+    <defName>MedTimes_Boots_Techno_Art</defName>
+    <label>Techno Boots (Art)</label>
+    <description>(Artifact) [Movespeed: +15%] Custom made by Rocket Industries, these little marvels of modern engineering are made primarily of nanite recursive plasteel plating and Nano-stretch materials. It also includes Omega-weave electric stranding, gravity assist hydraulics, thermo-dynamic assist functions and nano-tactile receivers. Even with all that they still somehow found room for the Hyper-Gel insoles and contouring Hyper-Foam to provide a heavenly fit for any foot. not that such luxuries are needed with its nanite recursive fibers.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Boots_Techno</texPath>
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Boots_Techno_Art</uiIconPath>
+    <statBases>
+      <MarketValue>4500</MarketValue>
+	  <ArmorRating_Heat>0.12</ArmorRating_Heat>
+      <Insulation_Cold>5</Insulation_Cold>
+      <Insulation_Heat>5</Insulation_Heat>
+    </statBases>	
+    <equippedStatOffsets>
+		<MoveSpeed>0.15</MoveSpeed>
+    </equippedStatOffsets>
+    <apparel>
+		<layers><li>Middle</li></layers>		
+	</apparel>		
+  </ThingDef>
+
+  
+  
+<!-- =========================== (Legendary) Foot Accessories =========================== --> 
+<!-- ====== Socks ====== -->
+<!-- Techno Socks -->
+  <ThingDef ParentName="MedTimes_FootArmour_Leg">
+    <defName>MedTimes_Socks_Techno_Leg</defName>
+    <label>Techno Socks (Leg)</label>
+    <description>(Legendary)[Movespeed: +5%] Technological socks designed by Swish industries. These socks are used by famous celebrities and sports athletes on several planets. Primarily made of hyper-weave, they have both thermal heating and cooling capabilities. The socks also come with hyper-foam and hyper-gel padding to ensure ease of comfort during long term use. Because of this, these socks are also a favourite of military personnel on various glitter-worlds.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Socks_Techno</texPath>
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Socks_Techno_Leg</uiIconPath>	
+	<costList><MedTimes_Socks_Techno_Art>1</MedTimes_Socks_Techno_Art></costList>
+	
+    <statBases>
+      <ArmorRating_Blunt>0.07</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.07</ArmorRating_Sharp>
+      <Insulation_Heat>7</Insulation_Heat>
+    </statBases>
+    <equippedStatOffsets>
+		<MoveSpeed>0.05</MoveSpeed>
+    </equippedStatOffsets>	
+    <apparel>
+      <layers><li>OnSkin</li></layers>
+    </apparel>
+  </ThingDef>
+
+  
+<!-- ====== Boots ====== -->
+<!-- Godking Boots -->
+<ThingDef ParentName="MedTimes_FootArmour_Leg">
+    <defName>MedTimes_Boots_Godking_Leg</defName>
+    <label>Godking's Boots (Leg)</label>
+    <description>(Legendary) [Movespeed: +12%][SocialImpact: +5%] Gold plated plasteel on Lamellar boots. These boots scream pampered posh for the god king's royal clompers. Hyper-weave lacing, Thrumbo horn filigree, Daxian furs. Hell, even the boots soles are made from a rare and exotic rubber. These boots are basically royalty personified, every squeaky step will let everyone know exactly who is in the room.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Boots_Godking</texPath>
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Boots_Godking_Leg</uiIconPath>	
+	<costList><MedTimes_Boots_Godking_Art>1</MedTimes_Boots_Godking_Art></costList>
+	
+    <equippedStatOffsets>
+		<MoveSpeed>0.12</MoveSpeed>
+		<SocialImpact>0.05</SocialImpact>		
+    </equippedStatOffsets> 
+    <apparel>
+		<layers><li>Middle</li></layers>	
+    </apparel>	
+  </ThingDef> 
+  
+ <!-- Warlord Boots -->
+<ThingDef ParentName="MedTimes_FootArmour_Leg">
+    <defName>MedTimes_Boots_Warlord_Leg</defName>
+    <label>Warlord's Boots (Leg)</label>
+    <description>(Legendary) [Movespeed: +12%][SocialImpact: +5%] Darkened plasteel cuffs around a no nonsense plated frame. High quality, high demand ingredients. from the superior hyper-rubber soles to the Thrumbo leather inner boot, this piece of armour screams both power and utility. The toe is even bladed so kicking your oppenent when he is down is twice as effective.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Boots_Warlord</texPath>
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Boots_Warlord_Leg</uiIconPath>	
+	<costList><MedTimes_Boots_Warlord_Art>1</MedTimes_Boots_Warlord_Art></costList>	
+    <equippedStatOffsets>
+		<MoveSpeed>0.12</MoveSpeed>
+		<SocialImpact>0.05</SocialImpact>		
+    </equippedStatOffsets>  
+    <apparel>
+		<layers><li>Middle</li></layers>	
+    </apparel>
+  </ThingDef>    
+  
+<!-- Combat Boots -->
+<ThingDef ParentName="MedTimes_FootArmour_Leg">
+    <defName>MedTimes_Boots_Combat_Leg</defName>
+    <label>Combat Boots (Leg)</label>
+    <description>(Legendary) [Movespeed: +12%] Mass produced Combat Boots made of Hyper-Weave and plasteel. Adjustments in the design straps, Hyper-Gel insoles and contouring Hyper-Foam ensure a comfortable fit for any foot type.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Boots_Combat</texPath>
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Boots_Combat_Leg</uiIconPath>
+	<costList><MedTimes_Boots_Combat_Art>1</MedTimes_Boots_Combat_Art></costList>
+		
+    <statBases>
+	  <ArmorRating_Heat>0.21</ArmorRating_Heat>
+      <Insulation_Cold>12</Insulation_Cold>	  	  
+    </statBases>	
+    <equippedStatOffsets>
+		<MoveSpeed>0.12</MoveSpeed>
+    </equippedStatOffsets>  
+    <apparel>
+		<layers><li>Middle</li></layers>			 
+    </apparel>
+
+  </ThingDef>  
+    
+<!-- Techno Boots -->
+<ThingDef ParentName="MedTimes_FootArmour_Leg">
+    <defName>MedTimes_Boots_Techno_Leg</defName>
+    <label>Techno Boots (Leg)</label>
+    <description>(Legendary) [Movespeed: +18%] Custom made by Rocket Industries, these little marvels of modern engineering are made primarily of nanite recursive plasteel plating and Nano-stretch materials. It also includes Omega-weave electric stranding, gravity assist hydraulics, thermo-dynamic assist functions and nano-tactile receivers. Even with all that they still somehow found room for the Hyper-Gel insoles and contouring Hyper-Foam to provide a heavenly fit for any foot. not that such luxuries are needed with its nanite recursive fibers.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Boots_Techno</texPath>
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Boots_Techno_Leg</uiIconPath>		
+	<costList><MedTimes_Boots_Techno_Art>1</MedTimes_Boots_Techno_Art></costList>
+
+    <statBases>
+	  <ArmorRating_Heat>0.25</ArmorRating_Heat>
+      <Insulation_Cold>12</Insulation_Cold>
+      <Insulation_Heat>12</Insulation_Heat>
+    </statBases>	
+    <equippedStatOffsets>
+		<MoveSpeed>0.18</MoveSpeed>
+    </equippedStatOffsets>
+    <apparel>
+		<layers><li>Middle</li></layers>		
+	</apparel>		
+  </ThingDef> 
+
+  
+  
+
+<!-- End of thingDefs -->
+</Defs>

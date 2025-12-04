@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<!-- Apple Tree Integration -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="VCE_AppleTree"]/graphicData/texPath</xpath>
+		<value>
+			<texPath>Things/Plants/FullGrown/TreeApple</texPath>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="VCE_AppleTree"]/plant/harvestedThingDef</xpath>
+		<value>
+			<harvestedThingDef>DankPyon_RawApples</harvestedThingDef>
+		</value>
+	</Operation>
+
+	<!-- Fruit Tree Integration -->
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[
+		defName="VCE_PeachTree" or
+		defName="VCE_CherryTree" or
+		defName="VCE_PlumTree" or
+		defName="VCE_PearTree" or
+		defName="VCE_Opuntia" or
+		defName="VCE_BananaTree" or
+		defName="VCE_OrangeTree"]/plant
+		</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>Cocoa</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+
+</Patch>

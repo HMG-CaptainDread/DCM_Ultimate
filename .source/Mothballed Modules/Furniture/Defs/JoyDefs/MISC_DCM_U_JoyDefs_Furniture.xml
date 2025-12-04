@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+	<!-- WORKING OUT -->
+	<JoyKindDef>
+		<defName>Gaming_WorkingOut</defName>
+		<label>working out</label>
+	</JoyKindDef>
+	<!-- VIDEO GAMING -->
+		<JoyKindDef>
+			<defName>Gaming_Video</defName>
+			<label>video gaming</label>
+		</JoyKindDef>
+	<!-- ROCK 'EM SOCK 'EM -->
+		<!-- JOY GIVER DEF -->
+			<JoyGiverDef>
+				<defName>PlayRockemSockem</defName>
+				<giverClass>JoyGiver_InteractBuildingSitAdjacent</giverClass>
+				<baseChance>1.5</baseChance>
+				<thingDefs>
+				<li>RockemSockemTable</li>
+				</thingDefs>
+				<jobDef>PlayRockemSockem</jobDef>
+				<joyKind>Gaming_Dexterity</joyKind>
+				<requiredCapacities>
+				<li>Sight</li>
+				<li>Manipulation</li>
+				</requiredCapacities>
+			</JoyGiverDef>
+		<!-- JOBDEF -->
+			<JobDef>
+				<defName>PlayRockemSockem</defName>
+				<driverClass>JobDriver_SitFacingBuilding</driverClass>
+				<reportString>playing Rock 'em Sock 'em.</reportString>
+				<joyDuration>4000</joyDuration>
+				<joyMaxParticipants>2</joyMaxParticipants> 
+				<joyGainRate>1.1</joyGainRate>
+				<joySkill>Melee</joySkill> <!-- was Intellectual -->
+				<joyXpPerTick>0.002</joyXpPerTick>
+				<joyKind>Gaming_Dexterity</joyKind>
+				<taleOnCompletion>PlayedGame</taleOnCompletion>
+			</JobDef>
+	<!-- DUNGEONS AND RANDIES -->
+		<!-- JOY GIVER DEF -->
+			<JoyGiverDef>
+				<defName>PlayDNRandies</defName>
+				<giverClass>JoyGiver_InteractBuildingSitAdjacent</giverClass>
+				<baseChance>1.5</baseChance>
+				<thingDefs>
+				<li>DNRandiesTable</li>
+				</thingDefs>
+				<jobDef>PlayDNRandies</jobDef>
+				<joyKind>Gaming_Cerebral</joyKind>
+				<requiredCapacities>
+				<li>Sight</li>
+				<li>Manipulation</li>
+				</requiredCapacities>
+			</JoyGiverDef>
+		<!-- JOB DEF -->
+			<JobDef>
+				<defName>PlayDNRandies</defName>
+				<driverClass>JobDriver_PlayPoker</driverClass>
+				<reportString>playing Dungeons and Randies.</reportString>
+				<joyDuration>4000</joyDuration>
+				<joyMaxParticipants>8</joyMaxParticipants>
+				<joyGainRate>1.3</joyGainRate>
+				<joySkill>Intellectual</joySkill>
+				<joyXpPerTick>0.004</joyXpPerTick>
+				<joyKind>Gaming_Cerebral</joyKind>
+				<taleOnCompletion>PlayedGame</taleOnCompletion>
+			</JobDef>
+	<!-- RIMTENDO -->
+		<!-- JOY GIVER DEF -->
+			<JoyGiverDef>
+				<defName>PlayRimtendoES</defName>
+				<giverClass>JoyGiver_WatchBuilding</giverClass>
+				<baseChance>2</baseChance>
+				<canDoWhileInBed>true</canDoWhileInBed>
+				<thingDefs>
+				<li>RimtendoESConsole</li>
+				</thingDefs>
+				<jobDef>PlayRimtendoES</jobDef>
+				<joyKind>Gaming_Video</joyKind>
+				<requiredCapacities>
+				<li>Sight</li>
+				<li>Manipulation</li>
+				</requiredCapacities>
+			</JoyGiverDef>
+		<!-- JOB DEF -->
+			<JobDef>
+				<defName>PlayRimtendoES</defName>
+				<driverClass>JobDriver_WatchTelevision</driverClass>
+				<reportString>playing on Rimtendo Console.</reportString>
+				<joyDuration>4000</joyDuration>
+				<joyMaxParticipants>8</joyMaxParticipants>
+				<joyGainRate>1.35</joyGainRate> <!-- was 1.5 -->
+				<joyKind>Gaming_Video</joyKind>
+				<taleOnCompletion>PlayedGame</taleOnCompletion>
+			</JobDef>
+	<!-- MELEE TRAINING JOY GIVER -->
+	<JoyGiverDef>
+		<defName>DoTrainingMelee</defName>
+		<giverClass>TrainingFacility.JoyGiver_PracticeMartialArts</giverClass>
+		<baseChance>4</baseChance>
+		<thingDefs>
+			<li>WeightBench</li>
+			<li>BalanceBeam</li>
+			<li>Barbell</li>
+			<li>Dumbbells</li>
+			<li>HandGrip</li>
+			<li>JumpRope</li>
+			<li>Kettlebell</li>
+			<li>Treadmill</li>
+			<li>YogaBall</li>
+			<li>Rack</li>
+			<li>PullupBars</li>
+			<li>ExerciseBike</li>
+		</thingDefs>
+		<desireSit>false</desireSit>
+		<jobDef>UseGymEquipmentMelee</jobDef>
+		<joyKind>Gaming_WorkingOut</joyKind>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</JoyGiverDef>
+	<!-- GYM TRAINING JOB DEF -->
+	<JobDef Name="UseGymEquipmentBase_Gym">
+		<defName>UseGymEquipmentMelee</defName>
+		<driverClass>TrainingFacility.JobDriver_MartialArtsTarget</driverClass>
+		<reportString>Working out.</reportString>
+		<joyDuration>4000</joyDuration>
+		<joyMaxParticipants>1</joyMaxParticipants>
+		<joyGainRate>1</joyGainRate>
+		<joySkill>Melee</joySkill>
+		<joyXpPerTick>0.027</joyXpPerTick>
+		<joyKind>Gaming_WorkingOut</joyKind>
+	</JobDef>
+	<!-- LISTEN TO GRAMOPHONE -->
+	<JoyGiverDef>
+    <defName>Estate_ListenToGramophoneJG</defName>
+    <giverClass>IndustrialAge.Objects.JoyGiver_ListenToBuilding</giverClass>
+    <baseChance>2</baseChance>
+    <canDoWhileInBed>true</canDoWhileInBed>
+    <thingDefs>
+      <li>Estate_Gramophone</li>
+      <li>Estate_Radio</li>
+    </thingDefs>
+    <jobDef>ListenToGramophone</jobDef>
+    <joyKind>Meditative</joyKind>
+    <requiredCapacities>
+      <li>Hearing</li>
+    </requiredCapacities>
+  </JoyGiverDef>
+	<!-- PLAY AND LISTEN TO GRAMOPHONE -->
+	<JoyGiverDef>
+    <defName>Estate_PlayAndListenToGramophoneJG</defName>
+    <giverClass>IndustrialAge.Objects.JoyGiver_ListenToBuilding</giverClass>
+    <baseChance>2</baseChance>
+    <canDoWhileInBed>true</canDoWhileInBed>
+    <thingDefs>
+      <li>Estate_Gramophone</li>
+      <li>Estate_Radio</li>
+    </thingDefs>
+    <jobDef>PlayAndListenToGramophone</jobDef>
+    <joyKind>Meditative</joyKind>
+    <requiredCapacities>
+      <li>Hearing</li>
+    </requiredCapacities>
+  </JoyGiverDef>
+	<!-- PLAY GRAMOPHONE -->
+	<JobDef>
+    <defName>PlayGramophone</defName>
+    <driverClass>IndustrialAge.Objects.JobDriver_PlayGramophone</driverClass>
+    <reportString>Winding up gramophone.</reportString>
+  </JobDef>
+	<!-- LISTEN TO GRAMOPHONE -->
+	<JobDef>
+    <defName>ListenToGramophone</defName>
+    <driverClass>IndustrialAge.Objects.JobDriver_ListenToGramophone</driverClass>
+    <reportString>listening to gramophone.</reportString>
+    <joyDuration>8000</joyDuration>
+    <joyMaxParticipants>8</joyMaxParticipants>
+    <joyGainRate>1.2</joyGainRate>
+    <joyKind>Meditative</joyKind>
+  </JobDef>
+	<!-- PLAY AND LISTEN TO GRAMOPHONE -->
+	<JobDef>
+    <defName>PlayAndListenToGramophone</defName>
+    <driverClass>IndustrialAge.Objects.JobDriver_AutoPlayListenGramophone</driverClass>
+    <reportString>listening to gramophone.</reportString>
+    <joyDuration>8000</joyDuration>
+    <joyMaxParticipants>8</joyMaxParticipants>
+    <joyGainRate>1.2</joyGainRate>
+    <joyKind>Meditative</joyKind>
+  </JobDef>
+	<!-- TURN OFF GRAMOPHONE -->
+	<JobDef>
+    <defName>TurnOffGramophone</defName>
+    <driverClass>IndustrialAge.Objects.JobDriver_TurnOffGramophone</driverClass>
+    <reportString>turning off gramophone.</reportString>
+  </JobDef>
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+</Defs>

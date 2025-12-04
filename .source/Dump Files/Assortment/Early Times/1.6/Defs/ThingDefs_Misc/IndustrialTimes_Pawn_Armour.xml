@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!-- Start of thingDefs -->
+    <!-- ================== General Armour Classes ================ -->
+    <!-- Machinable Armour Base Class -->
+	<ThingDef Name="Industrial_ArmorMachineableBase" Abstract="True">
+		<thingClass>Apparel</thingClass>
+        <recipeMaker>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Crafting</workSkill>
+            <effectWorking>Smith</effectWorking>
+            <soundWorking>Recipe_Machining</soundWorking>
+            <recipeUsers>
+                <li>TableMachining</li>
+            </recipeUsers>
+            <researchPrerequisite>MedTimes_CombatArmor</researchPrerequisite>
+            <unfinishedThingDef>UnfinishedArmor</unfinishedThingDef>
+            <defaultIngredientFilter>
+                <categories>
+                    <li>Root</li>
+                </categories>
+                <disallowedThingDefs>
+                    <li>Gold</li>
+                    <li>Silver</li>
+                    <li>Plasteel</li>
+                    <li>Jade</li>
+                    <li>Uranium</li>
+                </disallowedThingDefs>
+            </defaultIngredientFilter>
+        </recipeMaker>
+        <apparel>
+            <careIfWornByCorpse>false</careIfWornByCorpse>
+            <defaultOutfitTags>
+                <li>Soldier</li>
+            </defaultOutfitTags>
+            <tags>
+                <li>IndustrialMilitaryBasic</li>
+            </tags>
+        </apparel>
+    </ThingDef>
+	
+	<!-- Armour base classes -->
+    <ThingDef Name="IndustrialTimes_ArmourBase" ParentName="Industrial_ArmorMachineableBase" Abstract="True">
+        <thingClass>Apparel</thingClass>
+        <category>Item</category>
+        <techLevel>Medieval</techLevel>
+        <selectable>True</selectable>
+        <pathCost>10</pathCost>
+		<useHitPoints>True</useHitPoints>
+        <graphicData>
+            <onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+        </graphicData>
+        <drawGUIOverlay>true</drawGUIOverlay>
+        <statBases>
+            <MaxHitPoints>120</MaxHitPoints>
+            <Flammability>1.0</Flammability>
+            <DeteriorationRate>2</DeteriorationRate>
+            <SellPriceFactor>0.6</SellPriceFactor>
+            <Insulation_Cold>3</Insulation_Cold>
+            <EquipDelay>5</EquipDelay>
+            <Beauty>-5</Beauty>
+            <Mass>10</Mass>
+        </statBases>
+        <altitudeLayer>Item</altitudeLayer>
+        <alwaysHaulable>True</alwaysHaulable>
+        <tickerType>Never</tickerType>
+        <thingCategories>
+            <li>BodyArmour</li>
+        </thingCategories>
+        <apparel>
+            <layers>
+                <li>Middle</li>
+            </layers>
+            <bodyPartGroups>
+				<li>Neck</li>
+                <li>Shoulders</li>
+                <li>Torso</li>
+                <li>Arms</li>
+                <li>Legs</li>
+            </bodyPartGroups>
+        </apparel>
+    </ThingDef>
+    
+	<ThingDef Name="IndustrialTimes_FootArmour" ParentName="Industrial_ArmorMachineableBase" Abstract="True">
+        <thingClass>Apparel</thingClass>
+        <category>Item</category>
+        <selectable>True</selectable>
+        <pathCost>10</pathCost>
+        <altitudeLayer>Item</altitudeLayer>
+        <alwaysHaulable>True</alwaysHaulable>
+        <tickerType>Never</tickerType>
+        <drawGUIOverlay>true</drawGUIOverlay>
+		<useHitPoints>True</useHitPoints>
+        <graphicData>
+            <onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(0.8,0.8)</drawSize>
+        </graphicData>
+        <statBases>
+            <MaxHitPoints>60</MaxHitPoints>
+            <Flammability>1.0</Flammability>
+            <DeteriorationRate>2</DeteriorationRate>
+            <SellPriceFactor>0.6</SellPriceFactor>
+            <Insulation_Cold>3</Insulation_Cold>
+            <EquipDelay>2</EquipDelay>
+            <Beauty>-3</Beauty>
+            <Mass>1</Mass>
+        </statBases>
+        <thingCategories>
+            <li>FootArmour</li>
+        </thingCategories>
+        <apparel>
+            <bodyPartGroups>
+                <li>Feet</li>
+            </bodyPartGroups>
+            <layers>
+                <li>Middle</li>
+            </layers>
+        </apparel>
+    </ThingDef>
+	
+	<ThingDef Name="IndustrialTimes_HandArmour" ParentName="Industrial_ArmorMachineableBase" Abstract="True">
+        <thingClass>Apparel</thingClass>
+        <category>Item</category>
+        <selectable>True</selectable>
+        <pathCost>10</pathCost>
+        <altitudeLayer>Item</altitudeLayer>
+        <alwaysHaulable>True</alwaysHaulable>
+        <tickerType>Never</tickerType>
+        <drawGUIOverlay>true</drawGUIOverlay>
+		<useHitPoints>True</useHitPoints>
+        <thingCategories>
+            <li>HandArmour</li>
+        </thingCategories>
+        <graphicData>
+            <onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(0.8,0.8)</drawSize>
+        </graphicData>
+        <statBases>
+            <MaxHitPoints>60</MaxHitPoints>
+            <Flammability>1.0</Flammability>
+            <DeteriorationRate>2</DeteriorationRate>
+            <SellPriceFactor>0.6</SellPriceFactor>
+            <Insulation_Cold>3</Insulation_Cold>
+            <EquipDelay>2</EquipDelay>
+            <Beauty>-3</Beauty>
+            <Mass>1</Mass>
+        </statBases>
+        <apparel>
+            <bodyPartGroups>
+                <li>Hands</li>
+            </bodyPartGroups>
+            <layers>
+                <li>Middle</li>
+            </layers>
+        </apparel>
+    </ThingDef>
+	
+	<ThingDef Name="IndustrialTimes_Helmet" ParentName="Industrial_ArmorMachineableBase" Abstract="True">
+        <thingClass>Apparel</thingClass>
+        <category>Item</category>
+        <selectable>True</selectable>
+        <pathCost>10</pathCost>
+		<useHitPoints>True</useHitPoints>
+        <altitudeLayer>Item</altitudeLayer>
+        <alwaysHaulable>True</alwaysHaulable>
+        <tickerType>Never</tickerType>
+        <graphicData>
+            <onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(0.8,0.8)</drawSize>
+        </graphicData>
+        <drawGUIOverlay>true</drawGUIOverlay>
+        <thingCategories>
+            <li>HeadArmour</li>
+        </thingCategories>
+        <statBases>
+            <MaxHitPoints>100</MaxHitPoints>
+            <Flammability>1.0</Flammability>
+            <DeteriorationRate>2</DeteriorationRate>
+            <SellPriceFactor>0.6</SellPriceFactor>
+            <Insulation_Cold>3</Insulation_Cold>
+            <EquipDelay>2</EquipDelay>
+            <Beauty>-3</Beauty>
+            <Mass>2</Mass>
+        </statBases>
+        <apparel>
+            <layers>
+                <li>Overhead</li>
+            </layers>
+        </apparel>
+        <comps>
+            <li>
+                <compClass>CompQuality</compClass>
+            </li>
+            <li Class="CompProperties_Forbiddable" />
+        </comps>
+    </ThingDef>
+	
+	<!-- Armour defs -->
+    <ThingDef ParentName="IndustrialTimes_Helmet">
+        <defName>IndustrialTimes_Helm_CombatArmour</defName>
+        <label>Combat Armour Helmet</label>
+        <description>An advanced combat helmet that is comfortable, light and protective and does not block vision. Also its fairly easy to produce on right equipment.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/Headwear/Combat/MedTimes_Combat</texPath>
+        </graphicData>
+        <apparel>
+			<bodyPartGroups>
+				<li>FullHead</li>
+			</bodyPartGroups>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Headwear/Combat/MedTimes_Combat</wornGraphicPath>
+        </apparel>
+        <stuffCategories>
+            <li>Metallic</li>
+            <li>Ceramic</li>
+        </stuffCategories>        
+		<costStuffCount>30</costStuffCount>
+        <equippedStatOffsets>
+            <MoveSpeed>-0.04</MoveSpeed>
+        </equippedStatOffsets>
+		<statBases>
+            <Mass>1.8</Mass>
+			<WorkToMake>6000</WorkToMake>
+			<MaxHitPoints>90</MaxHitPoints>
+			<StuffEffectMultiplierArmor>0.65</StuffEffectMultiplierArmor>
+            <ArmorRating_Blunt>0.39</ArmorRating_Blunt>
+            <ArmorRating_Sharp>0.0</ArmorRating_Sharp>
+			<StuffEffectMultiplierInsulation_Cold>0.15</StuffEffectMultiplierInsulation_Cold>
+			<StuffEffectMultiplierInsulation_Heat>0</StuffEffectMultiplierInsulation_Heat>
+			<EquipDelay>2.5</EquipDelay>
+        </statBases>
+		<costList>
+			<ComponentIndustrial>1</ComponentIndustrial>
+            <Cloth>30</Cloth>
+		</costList>
+        <comps>
+            <li>
+                <compClass>CompQuality</compClass>
+            </li>
+            <li Class="CompProperties_Forbiddable" />
+        </comps>
+    </ThingDef>
+	
+	<ThingDef ParentName="IndustrialTimes_ArmourBase">
+        <defName>IndustrialTimes_Body_CombatArmour</defName>
+        <label>Combat Body Armour</label>
+        <description>A shurdy armor made from treated cloth and properly formed material. Maximizes protection for hand-to-hand combat</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/Combat/MedTimes_Combat</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <apparel>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/Combat/MedTimes_Combat</wornGraphicPath>
+        </apparel>
+		<costStuffCount>50</costStuffCount>
+        <equippedStatOffsets>
+            <MoveSpeed>-0.06</MoveSpeed>
+        </equippedStatOffsets>
+        <stuffCategories>
+            <li>Metallic</li>
+            <li>Ceramic</li>
+        </stuffCategories>
+        <statBases>		
+            <Mass>3.5</Mass>
+			<WorkToMake>6000</WorkToMake>
+			<MaxHitPoints>140</MaxHitPoints>
+			<StuffEffectMultiplierArmor>0.65</StuffEffectMultiplierArmor>
+            <ArmorRating_Blunt>0.39</ArmorRating_Blunt>
+            <ArmorRating_Sharp>0.0</ArmorRating_Sharp>
+			<StuffEffectMultiplierInsulation_Cold>0.15</StuffEffectMultiplierInsulation_Cold>
+			<StuffEffectMultiplierInsulation_Heat>0</StuffEffectMultiplierInsulation_Heat>
+            <EquipDelay>5</EquipDelay>	
+        </statBases>
+		<costList>
+			<ComponentIndustrial>1</ComponentIndustrial>
+            <Cloth>50</Cloth>
+		</costList>
+        <comps>
+            <li>
+                <compClass>CompQuality</compClass>
+            </li>
+            <li Class="CompProperties_Forbiddable" />
+        </comps>
+    </ThingDef>
+	
+    <ThingDef ParentName="IndustrialTimes_HandArmour">
+        <defName>IndustrialTimes_Gloves_CombatArmour</defName>
+        <label>Combat Gloves</label>
+        <description>Gloves fitted to protect hands from injuries during combat encounters. Shurdy, simple and ftted.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/Handwear/MedTimes_Gloves_Combat</texPath>
+            <drawSize>(0.7,0.7)</drawSize>
+        </graphicData>
+        <stuffCategories>
+            <li>Metallic</li>
+            <li>Ceramic</li>
+        </stuffCategories>
+		<costStuffCount>20</costStuffCount>
+        <equippedStatOffsets>
+            <MeleeHitChance>0.1</MeleeHitChance>
+        </equippedStatOffsets>
+		<costList>
+            <Cloth>30</Cloth>
+		</costList>
+        <statBases>
+            <Mass>1.2</Mass>
+			<WorkToMake>6000</WorkToMake>
+			<MaxHitPoints>90</MaxHitPoints>
+			<StuffEffectMultiplierArmor>0.65</StuffEffectMultiplierArmor>
+            <ArmorRating_Blunt>0.39</ArmorRating_Blunt>
+            <ArmorRating_Sharp>0.0</ArmorRating_Sharp>
+			<StuffEffectMultiplierInsulation_Cold>0.15</StuffEffectMultiplierInsulation_Cold>
+			<StuffEffectMultiplierInsulation_Heat>0</StuffEffectMultiplierInsulation_Heat>
+            <EquipDelay>1.5</EquipDelay>
+        </statBases>
+    </ThingDef>
+	
+    <ThingDef ParentName="IndustrialTimes_FootArmour">
+        <defName>IndustrialTimes_Boots_CombatArmour</defName>
+        <label>Combat Boots</label>
+        <description>A pair of boots from treated cloth and metal. Comes fitted with leather inside, so its adjustable to any foot during usage.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/Footwear/MedTimes_Boots_Combat</texPath>
+        </graphicData>
+        <stuffCategories>
+            <li>Metallic</li>
+            <li>Ceramic</li>
+        </stuffCategories>
+		<costStuffCount>25</costStuffCount>
+		<costList>
+            <Cloth>30</Cloth>
+            <Leather_Patch>5</Leather_Patch>
+		</costList>
+        <equippedStatOffsets>
+            <MoveSpeed>-0.02</MoveSpeed>
+        </equippedStatOffsets>
+        <statBases>
+            <Mass>2.4</Mass>
+			<WorkToMake>6000</WorkToMake>
+			<MaxHitPoints>90</MaxHitPoints>
+			<StuffEffectMultiplierArmor>0.65</StuffEffectMultiplierArmor>
+            <ArmorRating_Blunt>0.39</ArmorRating_Blunt>
+            <ArmorRating_Sharp>0.0</ArmorRating_Sharp>
+			<StuffEffectMultiplierInsulation_Cold>0.15</StuffEffectMultiplierInsulation_Cold>
+			<StuffEffectMultiplierInsulation_Heat>0</StuffEffectMultiplierInsulation_Heat>
+            <EquipDelay>2.5</EquipDelay>	
+        </statBases>
+        <comps>
+            <li>
+                <compClass>CompQuality</compClass>
+            </li>
+            <li Class="CompProperties_Forbiddable" />
+        </comps>
+    </ThingDef>
+	
+</Defs>

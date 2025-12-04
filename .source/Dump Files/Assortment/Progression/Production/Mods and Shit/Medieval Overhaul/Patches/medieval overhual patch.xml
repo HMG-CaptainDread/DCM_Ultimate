@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+
+
+
+<!-- INDUSTRIAL SMITHING -->
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="FueledSmithy"]/researchPrerequisites</xpath>
+		<value>
+			<researchPrerequisites>
+				<li>Ferny_IndustrialSmithing</li>
+			</researchPrerequisites>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="ElectricSmithy"]/researchPrerequisites</xpath>
+		<value>
+			<researchPrerequisites>
+				<li>Ferny_IndustrialSmithing</li>
+			</researchPrerequisites>
+		</value>
+	</Operation>
+
+
+<!-- NEW RESEARCH PROJECTS -->
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="DankPyon_AdvancedResearchBench"]/researchPrerequisites</xpath>
+		<value>
+			<researchPrerequisites>
+				<li>Ferny_AdvancedResearchBench</li>
+			</researchPrerequisites>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="DankPyon_Workbench"]/researchPrerequisites</xpath>
+		<value>
+			<researchPrerequisites>
+				<li>Ferny_Workbench</li>
+			</researchPrerequisites>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="DankPyon_IceChest"]/researchPrerequisites</xpath>
+		<value>
+			<researchPrerequisites>
+				<li>Ferny_Ice</li>
+			</researchPrerequisites>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="DankPyon_IceBlock_Maker"]/researchPrerequisites</xpath>
+		<value>
+			<researchPrerequisites>
+				<li>Ferny_Ice</li>
+			</researchPrerequisites>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="DankPyon_MendingBench"]/researchPrerequisites</xpath>
+		<value>
+			<researchPrerequisites>
+				<li>Ferny_Mending</li>
+			</researchPrerequisites>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="DankPyon_CleaningBench"]</xpath>
+		<value>
+			<researchPrerequisites>
+				<li>Ferny_LootCleaning</li>
+			</researchPrerequisites>
+		</value>
+	</Operation>
+
+
+
+
+<!-- PAPER/WRITING SYSTEM CHANGE -->
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="DankPyon_Book_ScribeTable"]</xpath>
+		<value>
+			<researchPrerequisites>
+				<li>Ferny_Writing</li>
+			</researchPrerequisites>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ResearchProjectDef[defName="Ferny_ResearchBench"]</xpath>
+		<value>
+			<prerequisites>
+				<li>Ferny_Writing</li>
+			</prerequisites>
+		</value>
+	</Operation>
+
+
+
+
+
+<!-- ANVIL CHANGES -->
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="DankPyon_Anvil"]/statBases</xpath>
+		<value>
+			<WorkTableWorkSpeedFactor>0.65</WorkTableWorkSpeedFactor>
+		</value>
+	</Operation>
+
+
+<!-- ADJUSTMENTS -->
+
+	<!-- Stonecutting -->
+	<Operation Class="PatchOperationRemove">
+		<xpath>Defs/ResearchProjectDef[defName="Stonecutting"]/prerequisites</xpath>
+	</Operation>
+
+	<!--Trestle, wicker beds-->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="DankPyon_Lumber"]/techLevel</xpath>
+		<value>
+			<techLevel>Neolithic</techLevel>
+		</value>
+	</Operation>
+
+	<!-- Textiles in Neolithic era -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="DankPyon_TextileSpinning"]/techLevel</xpath>
+		<value>
+			<techLevel>Neolithic</techLevel>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationRemove">
+		<xpath>Defs/ResearchProjectDef[defName="DankPyon_TextileSpinning"]/prerequisites</xpath>
+	</Operation>
+  <Operation Class="PatchOperationConditional">
+  <success>Always</success>
+      <xpath>/Defs/ResearchProjectDef[defName="Brewing"]/prerequisites</xpath>
+      <match Class="PatchOperationSequence">
+          <operations>
+              <li Class="PatchOperationReplace">
+                  <xpath>/Defs/ResearchProjectDef[defName="Brewing"]/prerequisites</xpath>
+                  <value>
+                      <prerequisites></prerequisites>
+                  </value>
+              </li>
+          </operations>
+      </match>
+      <nomatch Class="PatchOperationSequence">
+          <operations>
+              <li Class="PatchOperationAdd">
+                  <xpath>/Defs/ResearchProjectDef[defName="Brewing"]</xpath>
+                  <value>
+                      <prerequisites></prerequisites>
+                  </value>
+              </li>
+          </operations>
+      </nomatch>
+  </Operation>
+
+<!-- VFE Classical -->
+
+          <Operation Class="PatchOperationFindMod">
+            <mods>
+              <li>Vanilla Factions Expanded - Classical</li>
+            </mods>
+            <match Class="PatchOperationSequence">
+              <operations>
+                  <li Class="PatchOperationRemove">
+                      <xpath>Defs/ThingDef[defName="VFEC_CraftingBench"]/researchPrerequisites</xpath>
+                  </li>
+                  <li Class="PatchOperationReplace">
+                      <xpath>Defs/ThingDef[defName="VFEC_CraftingBench"]/designationCategory</xpath>
+                      <value>
+                      <designationCategory></designationCategory>
+                      </value>
+                  </li>
+                  <li Class="PatchOperationReplace">
+                      <xpath>Defs/ResearchProjectDef[defName="VFEC_CraftingBench"]/label</xpath>
+                      <value>
+                        <label>republic written language</label>
+                      </value>
+                  </li>
+                  <li Class="PatchOperationReplace">
+                      <xpath>Defs/ThingDef[defName="DankPyon_Book_ScribeTable"]/researchPrerequisites</xpath>
+                      <value>
+                        <researchPrerequisites>
+                          <li>VFEC_CraftingBench</li>
+                        </researchPrerequisites>
+                      </value>
+                  </li>
+                  <li Class="PatchOperationReplace">
+                      <xpath>Defs/ThingDef[defName="DankPyon_Press_Paper"]/researchPrerequisites</xpath>
+                      <value>
+                        <researchPrerequisites>
+                          <li>VFEC_CraftingBench</li>
+                        </researchPrerequisites>
+                      </value>
+                  </li>
+                  <li Class="PatchOperationReplace">
+                      <xpath>Defs/ResearchProjectDef[defName="VFEC_CraftingBench"]/description</xpath>
+                      <value>
+                        <description>Learn written language and the process of printing it.</description>
+                      </value>
+                  </li>
+                  <li Class="PatchOperationReplace">
+                      <xpath>Defs/ResearchProjectDef[defName="Ferny_ResearchBench"]/prerequisites</xpath>
+                      <value>
+						<prerequisites>
+							<li>VFEC_CraftingBench</li>
+						</prerequisites>
+                      </value>
+                  </li>
+                  <li Class="PatchOperationRemove">
+                      <xpath>Defs/ResearchProjectDef[defName="Ferny_Writing"]</xpath>
+                  </li>
+              </operations>
+            </match>
+          </Operation>
+
+
+
+
+
+<!-- VFE Medieval 2 -->
+
+          <Operation Class="PatchOperationFindMod">
+            <mods>
+              <li>Vanilla Factions Expanded - Medieval 2</li>
+            </mods>
+            <match Class="PatchOperationSequence">
+              <operations>
+                  <li Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="VFEM2_SmithingAnvil"]</xpath>
+                      <value>
+                      <designationCategory></designationCategory>
+                      </value>
+                  </li>
+					<!-- Make alchemy a prereq for draught research -->
+                    <li Class="PatchOperationReplace">
+                      <xpath>Defs/ThingDef[defName="VFEM2_AlchemicalWorkbench_Electric"]/designationCategory</xpath>
+                      <value>
+                        <designationCategory></designationCategory>
+                      </value>
+                    </li>
+
+                    <!-- add draught lab recipes to MO Alchemy Table -->
+                    <li Class="PatchOperationReplace">
+                      <xpath>Defs/ThingDef[@Name="VFEM2_DraughtBase"]/recipeMaker/recipeUsers</xpath>
+                      <value>
+                        <recipeUsers>
+                            <li>DankPyon_AlchemyBench</li>
+                        </recipeUsers>
+                      </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                      <xpath>Defs/RecipeDef[defName="VFEM2_MakeHerbalMedicine"]/recipeUsers</xpath>
+                      <value>
+                        <recipeUsers>
+                            <li>DankPyon_AlchemyBench</li>
+                        </recipeUsers>
+                      </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                      <xpath>Defs/RecipeDef[defName="VFEM2_Make_ChemfuelFromWood"]/recipeUsers</xpath>
+                      <value>
+                        <recipeUsers>
+                            <li>DankPyon_AlchemyBench</li>
+                        </recipeUsers>
+                      </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                      <xpath>Defs/RecipeDef[defName="VFEM2_Make_ChemfuelFromOrganics"]/recipeUsers</xpath>
+                      <value>
+                        <recipeUsers>
+                            <li>DankPyon_AlchemyBench</li>
+                        </recipeUsers>
+                      </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/WorkGiverDef[defName="VFEM2_DoBillsAlchemyTable"]/fixedBillGiverDefs</xpath>
+                        <value>
+                            <fixedBillGiverDefs>
+                                <li>DankPyon_AlchemyBench</li>
+                            </fixedBillGiverDefs>
+                        </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                        <xpath>Defs/WorkGiverDef[defName="VFEM2_DoBillsAlchemyTable_Electric"]/fixedBillGiverDefs</xpath>
+                        <value>
+                            <fixedBillGiverDefs>
+                                <li>DankPyon_AlchemyBench</li>
+                            </fixedBillGiverDefs>
+                        </value>
+                    </li>
+
+                    <!-- hide draught tables -->
+                    <li Class="PatchOperationReplace">
+                      <xpath>Defs/ThingDef[defName="VFEM2_AlchemicalWorkbench"]/designationCategory</xpath>
+                      <value>
+                        <designationCategory></designationCategory>
+                      </value>
+                    </li>
+
+                    <li Class="PatchOperationReplace">
+                      <xpath>Defs/ThingDef[defName="VFEM2_AlchemicalWorkbench_Electric"]/designationCategory</xpath>
+                      <value>
+                        <designationCategory></designationCategory>
+                      </value>
+                    </li>
+
+
+              </operations>
+            </match>
+          </Operation>
+
+<!-- VFE PRODUCTION -->
+
+          <Operation Class="PatchOperationFindMod">
+            <mods>
+              <li>Vanilla Furniture Expanded - Production</li>
+            </mods>
+            <match Class="PatchOperationSequence">
+              <operations>
+                  <li Class="PatchOperationReplace">
+                      <xpath>Defs/ThingDef[defName="VFE_SmithyCabinet"]/researchPrerequisites</xpath>
+                      <value>
+						<researchPrerequisites>
+							<li>Ferny_IndustrialSmithing</li>
+						</researchPrerequisites>
+                      </value>
+                  </li>
+				<li Class="PatchOperationFindMod">
+					<mods>
+					<li>Appliances Expanded</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+					<operations>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/ThingDef[defName="CE_FueledSmithyLarge"]/researchPrerequisites</xpath>
+							<value>
+								<researchPrerequisites>
+									<li>Ferny_IndustrialSmithing</li>
+									<li>VFE_Manufacturing</li>
+								</researchPrerequisites>
+							</value>
+						</li>
+					</operations>
+					</match>
+				</li>
+              </operations>
+            </match>
+          </Operation>
+
+<!-- VE GAS EXPANDED -->
+
+          <Operation Class="PatchOperationFindMod">
+            <mods>
+              <li>Vanilla Helixien Gas Expanded</li>
+            </mods>
+            <match Class="PatchOperationSequence">
+              <operations>
+                  <li Class="PatchOperationReplace">
+                      <xpath>Defs/ThingDef[defName="VHGE_GasPoweredSmithy"]/researchPrerequisites</xpath>
+                      <value>
+						<researchPrerequisites>
+							<li>VHGE_GasExtraction</li>
+							<li>Ferny_IndustrialSmithing</li>
+						</researchPrerequisites>
+                      </value>
+                  </li>
+					<li Class="PatchOperationFindMod">
+						<mods>
+						<li>Helixien Gas Production</li>
+						</mods>
+						<match Class="PatchOperationSequence">
+						<operations>
+							<li Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="VFE_TableSmithyLargeGas"]/researchPrerequisites</xpath>
+								<value>
+									<researchPrerequisites>
+									<li>VHGE_GasExtraction</li>
+									<li>VFE_Manufacturing</li>
+									<li>Ferny_IndustrialSmithing</li>
+									</researchPrerequisites>
+								</value>
+							</li>
+						</operations>
+						</match>
+					</li>
+              </operations>
+            </match>
+          </Operation>
+
+<!-- APPLIANCES EXPANDED -->
+
+          <Operation Class="PatchOperationFindMod">
+            <mods>
+              <li>Appliances Expanded</li>
+            </mods>
+            <match Class="PatchOperationSequence">
+              <operations>
+                  <li Class="PatchOperationReplace">
+                      <xpath>Defs/ThingDef[defName="CA_ChemfuelSmithy"]/researchPrerequisites</xpath>
+                      <value>
+						<researchPrerequisites>
+							<li>Ferny_IndustrialSmithing</li>
+						</researchPrerequisites>
+                      </value>
+                  </li>
+              </operations>
+            </match>
+          </Operation>
+
+
+</Patch>
+
+
+

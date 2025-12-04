@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- STUMP BASE -->
+		<ThingDef Name="TMM_StumpBase" Abstract="True">
+			<category>Plant</category>
+			<thingClass>DeadPlant</thingClass>
+			<altitudeLayer>Building</altitudeLayer>
+			<useHitPoints>True</useHitPoints>
+			<minifiedDef IsNull="True" />
+			<statBases>
+				<MaxHitPoints>100</MaxHitPoints>
+				<DeteriorationRate>4</DeteriorationRate>
+			</statBases>
+			<graphicData>
+				<graphicClass>Graphic_Random</graphicClass>
+			</graphicData>
+			<tickerType>Long</tickerType>
+			<selectable>true</selectable>
+			<fillPercent>0.20</fillPercent>
+			<drawerType>MapMeshOnly</drawerType>
+			<pathCostIgnoreRepeat>false</pathCostIgnoreRepeat>
+			<startingHpRange>
+				<min>0.5</min>
+				<max>1</max>
+			</startingHpRange>
+			<passability>PassThroughOnly</passability>
+			<pathCost>14</pathCost>
+			<messageOnDeteriorateInStorage>false</messageOnDeteriorateInStorage>
+			<plant>
+				<harvestWork>180</harvestWork>
+				<harvestMinGrowth>0</harvestMinGrowth> <!-- Always show "chop" designator -->
+				<harvestYield>4</harvestYield>
+				<fertilityMin>0.01</fertilityMin>
+				<fertilitySensitivity>0</fertilitySensitivity>
+				<soundHarvesting>Harvest_Tree</soundHarvesting>
+				<soundHarvestFinish>Harvest_Tree_Finish</soundHarvestFinish>
+				<topWindExposure>0.05</topWindExposure>
+				<blockAdjacentSow>true</blockAdjacentSow>
+				<harvestedThingDef>WoodLog</harvestedThingDef>
+				<harvestFailable>false</harvestFailable>
+				<harvestTag>Wood</harvestTag>
+				<growDays>30</growDays>
+				<growMinGlow>0</growMinGlow>
+				<lifespanDaysPerGrowDays>0</lifespanDaysPerGrowDays>
+				<visualSizeRange>1.2~1.9</visualSizeRange>
+				<treeLoversCareIfChopped>false</treeLoversCareIfChopped>
+				<canDeteriorate>true</canDeteriorate>
+				<isStump>true</isStump>
+				<neverBlightable>true</neverBlightable>
+			</plant>
+			<thingCategories>
+				<li>Stumps</li>
+			</thingCategories>
+		</ThingDef>
+	<!-- IRONWOOD STUMPS -->
+		<!-- CHOPPED IRONWOOD STUMP -->
+			<ThingDef ParentName="TMM_StumpBase">
+				<defName>TMM_ChoppedIronStump</defName>
+				<label>Chopped Ironwood Stump</label>
+				<description>A stump left behind after a ironwood tree has been felled. The stump can be extracted but yields very little usable ironwood. Left outdoors, the stump will deteriorate in time.</description>
+				<statBases>
+					<Beauty>0</Beauty>
+					<DeteriorationRate>20</DeteriorationRate>
+				</statBases>
+				<graphicData>
+					<texPath>Things/Plant/Stumps/Chopped</texPath>
+					<shaderType>CutoutPlant</shaderType>
+					<shadowData>
+						<volume>(0.15, 0.1, 0.15)</volume>
+						<offset>(0,0,-0.2)</offset>
+					</shadowData>
+				</graphicData>
+				<plant>
+					<harvestedThingDef>TMM_RawIronWood</harvestedThingDef>
+					<harvestWork>90</harvestWork>
+				</plant>
+			</ThingDef>
+		<!-- SMASHED IRONWOOD STUMP -->
+			<ThingDef ParentName="TMM_StumpBase">
+				<defName>TMM_SmashedIronStump</defName>
+				<label>Smashed Ironwood Stump</label>
+				<description>The remnants of a ironwood tree destroyed in some way, it's pretty ugly. The stump can be extracted, though it yields very little usable ironwood. Left outdoors, the stump will deteriorate in time.</description>
+				<statBases>
+					<Beauty>-8</Beauty>
+				</statBases>
+				<graphicData>
+					<texPath>Things/Plant/Stumps/Smashed</texPath>
+					<shaderType>CutoutPlant</shaderType>
+					<shadowData>
+						<volume>(0.15, 0.15, 0.15)</volume>
+						<offset>(0,0,-0.2)</offset>
+					</shadowData>
+				</graphicData>
+				<plant>
+					<harvestedThingDef>TMM_RawIronWood</harvestedThingDef>
+				</plant>
+			</ThingDef>
+</Defs>

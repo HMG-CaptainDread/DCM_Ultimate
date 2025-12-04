@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- SUN LAMP BASES -->
+		<!-- MAIN SUN LAMP BASE -->
+			<ThingDef ParentName="LampBase" Name="TMM_SunLampBase" Abstract="True">
+				<thingClass>Building_SunLamp</thingClass>
+				<tickerType>Rare</tickerType>
+				<selectable>true</selectable>
+				<designationCategory>TMM_HarvestTimeDesignator</designationCategory>
+			</ThingDef>
+		<!-- MINI SUN LAMP BASE -->
+			<ThingDef ParentName="TMM_SunLampBase" Name="TMM_MiniSunLampBase" Abstract="True">
+				<designatorDropdown>TMM_MiniSunLampGroup</designatorDropdown>
+				<blockWind>false</blockWind>
+				<statBases>
+					<WorkToBuild>200</WorkToBuild>
+					<Mass>1.5</Mass>
+				</statBases>
+				<costList>
+					<Steel>15</Steel>
+				</costList>
+				<comps>
+					<li Class="CompProperties_Glower">
+						<overlightRadius>3.5</overlightRadius>
+						<glowRadius>6</glowRadius>
+						<glowColor>(370,370,370,0)</glowColor>
+					</li>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerTrader</compClass>
+						<shortCircuitInRain>true</shortCircuitInRain>
+						<basePowerConsumption>750</basePowerConsumption>
+					</li>
+				</comps>
+				<specialDisplayRadius>2.8</specialDisplayRadius>
+			</ThingDef>
+		<!-- REGULAR SUN LAMP BASE -->
+			<ThingDef ParentName="TMM_SunLampBase" Name="TMM_RegularSunLampBase" Abstract="True">
+				<designatorDropdown>TMM_SunLampGroup</designatorDropdown>
+				<blockWind>true</blockWind>
+				<statBases>
+					<Mass>4.5</Mass>
+				</statBases>
+				<costList>
+					<Steel>40</Steel>
+				</costList>
+				<comps>
+					<li Class="CompProperties_Glower">
+						<overlightRadius>7.0</overlightRadius>
+						<glowRadius>14</glowRadius>
+						<glowColor>(370,370,370,0)</glowColor>
+					</li>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerTrader</compClass>
+						<shortCircuitInRain>true</shortCircuitInRain>
+						<basePowerConsumption>1500</basePowerConsumption>
+					</li>
+					<li Class="CompProperties_HeatPusher">
+						<compClass>CompHeatPusherPowered</compClass>
+						<heatPerSecond>3</heatPerSecond>
+					</li>
+				</comps>
+				<specialDisplayRadius>5.8</specialDisplayRadius>
+			</ThingDef>
+		<!-- SMALL SUN LAMP BASE -->
+			<ThingDef ParentName="TMM_SunLampBase" Name="TMM_SmallSunLampBase" Abstract="True">
+				<designatorDropdown>TMM_SmallSunLampGroup</designatorDropdown>
+				<blockWind>false</blockWind>
+				<passability>PassThroughOnly</passability>
+				<fillPercent>0.15</fillPercent>
+				<statBases>
+					<Mass>2.5</Mass>
+				</statBases>
+				<costList>
+					<Steel>25</Steel>
+				</costList>
+				<comps>
+					<li Class="CompProperties_Glower">
+						<overlightRadius>5</overlightRadius>
+						<glowRadius>7.5</glowRadius>
+						<glowColor>(370,370,370,0)</glowColor>
+					</li>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerTrader</compClass>
+						<shortCircuitInRain>true</shortCircuitInRain>
+						<basePowerConsumption>1125</basePowerConsumption>
+					</li>
+				</comps>
+				<specialDisplayRadius>3.8</specialDisplayRadius>
+			</ThingDef>
+		<!-- SUN COLUMN BASE -->
+			<ThingDef ParentName="TMM_SunLampBase" Name="TMM_SunColumnBase" Abstract="True">
+				<designatorDropdown>TMM_SunColumnGroup</designatorDropdown>
+				<graphicData>
+					<shaderType>CutoutComplex</shaderType>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>(1,1.25)</drawSize>
+					<drawOffset>(0,0,0.2)</drawOffset>
+					<shadowData>
+						<volume>(0.3, 0.5, 0.3)</volume>
+						<offset>(0,0,-0.23)</offset>
+					</shadowData>
+					<damageData>
+						<rect>(0.2,0.2,0.6,0.6)</rect>
+					</damageData>
+				</graphicData>
+				<blockWind>true</blockWind>
+				<holdsRoof>true</holdsRoof>
+				<statBases>
+					<Mass>4.5</Mass>
+				</statBases>
+				<stuffCategories>
+					<li>Metallic</li>
+					<li>Woody</li>
+					<li>Stony</li>
+				</stuffCategories>
+				<costStuffCount>20</costStuffCount>
+				<costList>
+					<Steel>40</Steel>
+				</costList>
+				<comps>
+					<li Class="CompProperties_Glower">
+						<overlightRadius>7.0</overlightRadius>
+						<glowRadius>14</glowRadius>
+						<glowColor>(370,370,370,0)</glowColor>
+					</li>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerTrader</compClass>
+						<shortCircuitInRain>true</shortCircuitInRain>
+						<basePowerConsumption>1500</basePowerConsumption>
+					</li>
+					<li Class="CompProperties_HeatPusher">
+						<compClass>CompHeatPusherPowered</compClass>
+						<heatPerSecond>3</heatPerSecond>
+					</li>
+				</comps>
+				<specialDisplayRadius>5.8</specialDisplayRadius>
+			</ThingDef>
+	<!-- CEILING LAMPS -->
+		<!-- MINI -->
+			<ThingDef ParentName="TMM_MiniSunLampBase">
+				<defName>TMM_MiniCeilingSunLamp</defName>
+				<label>Mini Ceiling Sun Lamp</label>
+				<description>A very small ceiling mounted sun lamp which lights an area brightly enough to grow crops, but consumes a large amount of power. Automatically turns itself off at night.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Buildings/SunLamps/Ceiling/SunLampCeiling</texPath>
+				</graphicData>
+				<building>
+					<isEdifice>false</isEdifice>
+				</building>
+				<comps>
+					<li Class="CompProperties_Schedule">
+						<!-- Match plant growing times -->
+						<startTime>0.25</startTime>
+						<endTime>0.8</endTime>
+						<offMessage>Off for plant resting period</offMessage>
+					</li>
+				</comps>
+			</ThingDef>
+		<!-- REGULAR -->
+			<ThingDef ParentName="TMM_RegularSunLampBase">
+				<defName>TMM_CeilingSunLamp</defName>
+				<label>Ceiling Sun Lamp</label>
+				<description>A ceiling mounted sun lamp which lights an area brightly enough to grow crops, but consumes a huge amount of power. Automatically turns itself off at night.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Buildings/SunLamps/Ceiling/SunLampCeiling</texPath>
+				</graphicData>
+				<building>
+					<isEdifice>false</isEdifice>
+				</building>
+				<comps>
+					<li Class="CompProperties_Schedule">
+						<!-- Match plant growing times -->
+						<startTime>0.25</startTime>
+						<endTime>0.8</endTime>
+						<offMessage>Off for plant resting period</offMessage>
+					</li>
+				</comps>
+			</ThingDef>
+		<!-- SMALL -->
+			<ThingDef ParentName="TMM_SmallSunLampBase">
+				<defName>TMM_SmallCeilingSunLamp</defName>
+				<label>Small Ceiling Sun Lamp</label>
+				<description>A small ceiling mounted sun lamp which lights an area brightly enough to grow crops, but consumes a large amount of power. Automatically turns itself off at night.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Buildings/SunLamps/Ceiling/SunLampCeiling</texPath>
+				</graphicData>
+				<building>
+					<isEdifice>false</isEdifice>
+				</building>
+				<comps>
+					<li Class="CompProperties_Schedule">
+						<!-- Match plant growing times -->
+						<startTime>0.25</startTime>
+						<endTime>0.8</endTime>
+						<offMessage>Off for plant resting period</offMessage>
+					</li>
+				</comps>
+			</ThingDef>
+	<!-- ALWAYS ON CEILING SUN LAMPS -->
+		<!-- MINI -->
+			<ThingDef ParentName="TMM_MiniSunLampBase">
+				<defName>TMM_MiniCeilingSunLampAlwaysOn</defName>
+				<label>Mini Ceiling Sun Lamp (Always On)</label>
+				<description>A very small ceiling mounted lamp which lights an area brightly enough to grow crops, but consumes a large amount of power. Stays on at night.</description>
+				<thingClass>Building_SunLamp</thingClass>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Buildings/SunLamps/Ceiling/SunLampCeiling</texPath>
+				</graphicData>
+				<building>
+					<isEdifice>false</isEdifice>
+				</building>
+			</ThingDef>
+		<!-- REGULAR -->
+			<ThingDef ParentName="TMM_RegularSunLampBase">
+				<defName>TMM_CeilingSunLampAlwaysOn</defName>
+				<label>Ceiling Sun Lamp (Always On)</label>
+				<description>A ceiling mounted lamp which lights an area brightly enough to grow crops, but consumes a huge amount of power. Stays on at night.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Buildings/SunLamps/Ceiling/SunLampCeiling</texPath>
+				</graphicData>
+				<building>
+					<isEdifice>false</isEdifice>
+				</building>
+				<statBases>
+					<WorkToBuild>330</WorkToBuild>
+				</statBases>
+			</ThingDef>
+		<!-- SMALL -->
+			<ThingDef ParentName="TMM_SmallSunLampBase">
+				<defName>TMM_SmallCeilingSunLampAlwaysOn</defName>
+				<label>Small Ceiling Sun Lamp (Always On)</label>
+				<description>A small ceiling mounted lamp which lights an area brightly enough to grow crops, but consumes a large amount of power. Stays on at night.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Buildings/SunLamps/Ceiling/SunLampCeiling</texPath>
+				</graphicData>
+				<building>
+					<isEdifice>false</isEdifice>
+				</building>
+			</ThingDef>
+	<!-- SUN LAMP COLUMNS -->
+		<!-- REGULAR -->
+			<ThingDef ParentName="TMM_SunColumnBase">
+				<defName>TMM_SunlampColumn</defName>
+				<label>Sun Lamp Column</label>
+				<description>An industrial lamp which lights an area brightly enough to grow crops, but consumes a huge amount of power. Automatically turns itself off at night. Hold up the roof.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Buildings/SunLamps/Column/SunLampColumn</texPath>
+				</graphicData>
+				<comps>
+					<li Class="CompProperties_Schedule">
+						<!-- Match plant growing times -->
+						<startTime>0.25</startTime>
+						<endTime>0.8</endTime>
+						<offMessage>Off for plant resting period</offMessage>
+					</li>
+				</comps>
+			</ThingDef>
+		<!-- ALWAYS ON -->
+			<ThingDef ParentName="TMM_SunColumnBase">
+				<defName>TMM_SunlampColumnAlwaysOn</defName>
+				<label>Sun Lamp Column (Always On)</label>
+				<description>An industrial lamp which lights an area brightly enough to grow crops, but consumes a huge amount of power. Does not turn itself off at night. Hold up the roof.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Buildings/SunLamps/Column/SunLampColumn</texPath>
+				</graphicData>
+			</ThingDef>
+	<!-- ALWAYS ON -->
+		<!-- MINI -->
+			<ThingDef ParentName="TMM_MiniSunLampBase">
+				<defName>TMM_MiniSunLampAlwaysOn</defName>
+				<label>Mini Sun Lamp (Always On)</label>
+				<description>A very small lamp which lights an area brightly enough to grow crops, but consumes a large amount of power. Stays on at night.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Buildings/SunLamps/Mini/SunLampMini</texPath>
+				</graphicData>
+			</ThingDef>
+		<!-- REGULAR -->
+			<ThingDef ParentName="TMM_RegularSunLampBase">
+				<defName>TMM_SunLampAlwaysOn</defName>
+				<label>Sun Lamp (Always On)</label>
+				<description>An industrial lamp which lights an area brightly enough to grow crops, but consumes a huge amount of power. Stays on at night.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Buildings/SunLamps/Regular/SunLampRegular</texPath>
+				</graphicData>
+				<statBases>
+					<WorkToBuild>330</WorkToBuild>
+					<Mass>4.5</Mass>
+				</statBases>
+			</ThingDef>
+		<!-- SMALL -->
+			<ThingDef ParentName="TMM_SmallSunLampBase">
+				<defName>TMM_SmallSunLampAlwaysOn</defName>
+				<label>Small Sun Lamp (Always On)</label>
+				<description>A small lamp which lights an area brightly enough to grow crops, but consumes a large amount of power. Stays on at night.</description>
+				<thingClass>Building_SunLamp</thingClass>
+				<category>Building</category>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Buildings/SunLamps/Small/SunLampSmall</texPath>
+				</graphicData>
+			</ThingDef>
+	<!-- REGULAR -->
+		<!-- MINI -->
+			<ThingDef ParentName="TMM_MiniSunLampBase">
+				<defName>TMM_MiniSunLamp</defName>
+				<label>Mini Sun Lamp</label>
+				<description>A very small lamp which lights an area brightly enough to grow crops, but consumes a large amount of power. Automatically turns itself off at night.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Buildings/SunLamps/Mini/SunLampMini</texPath>
+				</graphicData>
+				<comps>
+					<li Class="CompProperties_Schedule">
+						<!-- Match plant growing times -->
+						<startTime>0.25</startTime>
+						<endTime>0.8</endTime>
+						<offMessage>Off for plant resting period</offMessage>
+					</li>
+				</comps>
+			</ThingDef>
+		<!-- REGULAR -->
+			<ThingDef ParentName="TMM_RegularSunLampBase">
+				<defName>TMM_SunLamp</defName>
+				<label>Sun Lamp</label>
+				<description>An industrial lamp which lights an area brightly enough to grow crops, but consumes a huge amount of power. Automatically turns itself off at night.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Buildings/SunLamps/Regular/SunLampRegular</texPath>
+				</graphicData>
+				<comps>
+					<li Class="CompProperties_Schedule">
+						<!-- Match plant growing times -->
+						<startTime>0.25</startTime>
+						<endTime>0.8</endTime>
+						<offMessage>Off for plant resting period</offMessage>
+					</li>
+				</comps>
+			</ThingDef>
+		<!-- SMALL -->
+			<ThingDef ParentName="TMM_SmallSunLampBase">
+				<defName>TMM_SmallSunLamp</defName>
+				<label>Small Sun Lamp</label>
+				<description>A small lamp which lights an area brightly enough to grow crops, but consumes a large amount of power. Automatically turns itself off at night.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Buildings/SunLamps/Small/SunLampSmall</texPath>
+				</graphicData>
+				<comps>
+					<li Class="CompProperties_Schedule">
+						<!-- Match plant growing times -->
+						<startTime>0.25</startTime>
+						<endTime>0.8</endTime>
+						<offMessage>Off for plant resting period</offMessage>
+					</li>
+				</comps>
+			</ThingDef>
+</Defs>

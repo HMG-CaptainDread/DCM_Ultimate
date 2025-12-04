@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo40x180mm</defName>
+		<label>40x180mm</label>
+		<parent>AmmoHighCaliber</parent>
+		<iconPath>UI/Icons/ThingCategories/CaliberHighCaliber</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_40x180mm</defName>
+		<label>40x180mm</label>
+		<ammoTypes>
+			<Ammo_40x180mm_AP>Bullet_40x180mm_AP</Ammo_40x180mm_AP>
+			<Ammo_40x180mm_Incendiary>Bullet_40x180mm_Incendiary</Ammo_40x180mm_Incendiary>
+			<Ammo_40x180mm_HE>Bullet_40x180mm_HE</Ammo_40x180mm_HE>
+			<Ammo_40x180mm_Sabot>Bullet_40x180mm_Sabot</Ammo_40x180mm_Sabot>
+		</ammoTypes>
+		<similarTo>AmmoSet_Autocannon</similarTo>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="Ammo40x180mmBase" ParentName="MediumAmmoBase" Abstract="True">
+		<description>Large caliber cartridge used by autocannons.</description>
+		<statBases>
+			<Mass>0.875</Mass>
+			<Bulk>1.22</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo40x180mm</li>
+		</thingCategories>
+		<stackLimit>150</stackLimit>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="Ammo40x180mmBase">
+		<defName>Ammo_40x180mm_AP</defName>
+		<label>40x180mm (AP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/HighCaliber/AP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>3.52</MarketValue>
+		</statBases>
+		<ammoClass>ArmorPiercing</ammoClass>
+		<cookOffProjectile>Bullet_40x180mm_AP</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="Ammo40x180mmBase">
+		<defName>Ammo_40x180mm_Incendiary</defName>
+		<label>40x180mm (AP-I)</label>
+		<graphicData>
+			<texPath>Things/Ammo/HighCaliber/Incendiary</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>4.76</MarketValue>
+		</statBases>
+		<ammoClass>IncendiaryAP</ammoClass>
+		<cookOffProjectile>Bullet_40x180mm_Incendiary</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="Ammo40x180mmBase">
+		<defName>Ammo_40x180mm_HE</defName>
+		<label>40x180mm (AP-HE)</label>
+		<graphicData>
+			<texPath>Things/Ammo/HighCaliber/HE</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>7.32</MarketValue>
+		</statBases>
+		<ammoClass>ExplosiveAP</ammoClass>
+		<cookOffProjectile>Bullet_40x180mm_HE</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="Ammo40x180mmBase">
+		<defName>Ammo_40x180mm_Sabot</defName>
+		<label>40x180mm (Sabot)</label>
+		<graphicData>
+			<texPath>Things/Ammo/HighCaliber/Sabot</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<Mass>0.707</Mass>
+			<MarketValue>4.02</MarketValue>
+		</statBases>
+		<ammoClass>Sabot</ammoClass>
+		<cookOffProjectile>Bullet_40x180mm_Sabot</cookOffProjectile>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="Base40x180mmBullet" ParentName="BaseBulletCE" Abstract="true">
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>198</speed>
+			<dropsCasings>true</dropsCasings>
+			<casingMoteDefname>Fleck_RifleAmmoCasings_HighCal</casingMoteDefname>
+			<casingFilthDefname>Filth_RifleAmmoCasings_HighCal</casingFilthDefname>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base40x180mmBullet">
+		<defName>Bullet_40x180mm_AP</defName>
+		<label>40x180mm bullet (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>89</damageAmountBase>
+			<armorPenetrationSharp>80</armorPenetrationSharp>
+			<armorPenetrationBlunt>3920.40</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base40x180mmBullet">
+		<defName>Bullet_40x180mm_Incendiary</defName>
+		<label>40x180mm bullet (AP-I)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>89</damageAmountBase>
+			<armorPenetrationSharp>80</armorPenetrationSharp>
+			<armorPenetrationBlunt>3920.40</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Flame_Secondary</def>
+					<amount>55</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base40x180mmBullet">
+		<defName>Bullet_40x180mm_HE</defName>
+		<label>40x180mm bullet (AP-HE)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>141</damageAmountBase>
+			<armorPenetrationSharp>40</armorPenetrationSharp>
+			<armorPenetrationBlunt>3920.40</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>84</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base40x180mmBullet">
+		<defName>Bullet_40x180mm_Sabot</defName>
+		<label>40x180mm bullet (Sabot)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>75</damageAmountBase>
+			<armorPenetrationSharp>140</armorPenetrationSharp>
+			<armorPenetrationBlunt>5116.12</armorPenetrationBlunt>
+			<speed>297</speed>
+		</projectile>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase">
+		<defName>MakeAmmo_40x180mm_AP</defName>
+		<label>make 40x180mm (AP) cartridge x200</label>
+		<description>Craft 200 40x180mm (AP) cartridges.</description>
+		<jobString>Making 40x180mm (AP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>176</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_40x180mm_AP>200</Ammo_40x180mm_AP>
+		</products>
+		<workAmount>21120</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+		<defName>MakeAmmo_40x180mm_Incendiary</defName>
+		<label>make 40x180mm (AP-I) cartridge x200</label>
+		<description>Craft 200 .40x180mm (AP-I) cartridges.</description>
+		<jobString>Making .40x180mm (AP-I) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>176</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Prometheum</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>Prometheum</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_40x180mm_Incendiary>200</Ammo_40x180mm_Incendiary>
+		</products>
+		<workAmount>25600</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+		<defName>MakeAmmo_40x180mm_HE</defName>
+		<label>make 40x180mm (AP-HE) cartridge x200</label>
+		<description>Craft 200 .40x180mm (AP-HE) cartridges.</description>
+		<jobString>Making .40x180mm (AP-HE) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>176</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>FSX</li>
+					</thingDefs>
+				</filter>
+				<count>37</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>FSX</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_40x180mm_HE>200</Ammo_40x180mm_HE>
+		</products>
+		<workAmount>32400</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+		<defName>MakeAmmo_40x180mm_Sabot</defName>
+		<label>make 40x180mm (Sabot) cartridge x200</label>
+		<description>Craft 200 .40x180mm (Sabot) cartridges.</description>
+		<jobString>Making .40x180mm (Sabot) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>96</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Uranium</li>
+					</thingDefs>
+				</filter>
+				<count>24</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Chemfuel</li>
+					</thingDefs>
+				</filter>
+				<count>24</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>Uranium</li>
+				<li>Chemfuel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_40x180mm_Sabot>200</Ammo_40x180mm_Sabot>
+		</products>
+		<workAmount>24000</workAmount>
+	</RecipeDef>
+
+</Defs>

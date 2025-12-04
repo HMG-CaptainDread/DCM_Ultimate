@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <RecipeDef Class="AVSR.RecycleRecipeDef">
+    <defName>NeolithicRecycleApparel</defName>
+    <label>recycle primitive apparel</label>
+    <description>Recycle primitive apparel into raw materials.</description>
+    <jobString>Recycling apparel.</jobString>
+    <workAmount>2000</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <uiIconThing>Leather_Plain</uiIconThing>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>Apparel</li>
+            <li>Textiles</li>
+          </categories>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <!-- Filled with C#. Includes all defs with `thingClass = Apparel` and `techLevel = Neolithic` -->
+      </thingDefs>
+      <specialFiltersToDisallow>
+        <li>AllowSmeltableApparel</li>
+      </specialFiltersToDisallow>
+      <disallowedCategories>
+        <li>ApparelArmor</li>
+        <li>ArmorHeadgear</li>
+      </disallowedCategories>
+    </fixedIngredientFilter>
+    <forceHiddenSpecialFilters>
+      <li>AllowNonSmeltableApparel</li>
+    </forceHiddenSpecialFilters>
+    <recipeUsers>
+      <li>CraftingSpot</li>
+    </recipeUsers>
+    <skillRequirements>
+      <Crafting>1</Crafting>
+    </skillRequirements>
+  </RecipeDef>
+
+  <RecipeDef>
+    <defName>SimpleRecycleApparel</defName>
+    <label>recycle apparel</label>
+    <description>Recycle apparel into raw materials.</description>
+    <descriptionHyperlinks>
+      <ResearchProjectDef>ApparelRecycling</ResearchProjectDef>
+    </descriptionHyperlinks>
+    <jobString>Recycling apparel.</jobString>
+    <workAmount>1300</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <effectWorking>Tailor</effectWorking>
+    <soundWorking>Recipe_Tailor</soundWorking>
+    <uiIconThing>Cloth</uiIconThing>
+    <specialProducts>
+      <li>Smelted</li>
+    </specialProducts>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>Apparel</li>
+            <li>Textiles</li>
+          </categories>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <categories>
+        <li>Apparel</li>
+      </categories>
+      <!-- <disallowedCategories>
+        <li>ApparelUtility</li>
+      </disallowedCategories> -->
+      <specialFiltersToDisallow>
+        <li>AllowSmeltableApparel</li>
+      </specialFiltersToDisallow>
+    </fixedIngredientFilter>
+    <forceHiddenSpecialFilters>
+      <li>AllowNonSmeltableApparel</li>
+    </forceHiddenSpecialFilters>
+    <recipeUsers>
+      <li>HandTailoringBench</li>
+      <li>ElectricTailoringBench</li>
+    </recipeUsers>
+    <researchPrerequisite>ApparelRecycling</researchPrerequisite>
+    <skillRequirements>
+      <Crafting>6</Crafting>
+    </skillRequirements>
+  </RecipeDef>
+
+</Defs>

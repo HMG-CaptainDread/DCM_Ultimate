@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!-- Start of thingDefs -->
+<!-- ========================== Ranged Weapon Class ============================== -->
+<!-- (Nanite Class) Makeable -->
+  <ThingDef Name="MedTimes_Ranged_Nan" ParentName="MedTimes_Ranged" Abstract="True">
+    <useHitPoints>False</useHitPoints>
+	<smeltable>False</smeltable>	
+    <graphicData>
+      <shaderType>Transparent</shaderType>		  
+    </graphicData>	
+	<costList><MedTimes_NaniteVial>1</MedTimes_NaniteVial></costList>	
+    <statBases>	
+      <WorkToMake>1000</WorkToMake>	
+    </statBases>
+	  <weaponTags>
+		  <li MayRequire="Ludeon.RimWorld.Royalty">MedievalMeleeDecent</li>
+	  </weaponTags>
+    <tools>
+      <li>
+        <label>limb</label>
+        <capacities>
+          <li>Blunt</li>
+          <li>Poke</li>
+        </capacities>
+        <power>11</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>	
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Intellectual</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>MedTimes_UnfinishedNanite</unfinishedThingDef>	  
+      <recipeUsers>
+		<li>MedTimes_EternityForge</li>
+      </recipeUsers>
+		<skillRequirements>
+				<Intellectual>10</Intellectual>
+		</skillRequirements>	  
+	</recipeMaker>	
+    <tradeTags><li>MedTimes_NanGear</li></tradeTags>
+    <thingCategories><li>WeaponsRanged_Nan</li></thingCategories>		
+  </ThingDef>
+  
+  
+  
+<!-- ======= Non Tier Bows ====== -->
+<!-- Composite Bow --> 
+  <ThingDef ParentName="MedTimes_Ranged_Nan">
+    <defName>MedTimes_Ranged_Composite_Nan</defName>
+    <label>Composite Bow (Nan)</label>
+    <description>(Nanite) A compact but powerful recurve bow made from multiple materials. Made by gluing and binding several layers of wood and animal bone together.</description>	
+
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/MedTimes_Bow_Composite</texPath>	  
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponRanged/MedTimes_Bow_Composite_Nan</uiIconPath>			
+	<costList><MedTimes_Ranged_Composite>1</MedTimes_Ranged_Composite></costList>	
+	
+	<statBases>
+      <AccuracyTouch>1.13</AccuracyTouch>
+      <AccuracyShort>1.05</AccuracyShort>
+      <AccuracyMedium>0.90</AccuracyMedium>
+      <AccuracyLong>0.83</AccuracyLong>
+      <RangedWeapon_Cooldown>1.56</RangedWeapon_Cooldown>	  
+    </statBases>
+	
+    <equippedAngleOffset>-45</equippedAngleOffset>
+	
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>1.3</warmupTime>
+        <soundCast>Bow_Recurve</soundCast>	  
+        <defaultProjectile>Medieval_Arrow_Composite</defaultProjectile>
+        <range>17</range>
+      </li>
+    </verbs>
+
+  </ThingDef>
+
+
+  
+<!-- ======= Crafting Tier Bows ====== -->  
+<!-- Longbow -->  
+  <ThingDef ParentName="MedTimes_Ranged_Nan">
+    <defName>MedTimes_Ranged_Longbow_Nan</defName>
+    <label>Longbow (Nan)</label>
+    <description>(Nanite) A longbow in the English tradition with great range. uses the infamous Bodkin Arrow.</description>
+	
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/MedTimes_Longbow</texPath> 
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponRanged/MedTimes_Longbow_Nan</uiIconPath>		
+	<costList><MedTimes_Ranged_Longbow>1</MedTimes_Ranged_Longbow></costList>	
+
+	<statBases>
+      <AccuracyTouch>1.13</AccuracyTouch>
+      <AccuracyShort>1.05</AccuracyShort>
+      <AccuracyMedium>0.90</AccuracyMedium>
+      <AccuracyLong>0.68</AccuracyLong>
+      <RangedWeapon_Cooldown>1.56</RangedWeapon_Cooldown>	  
+    </statBases>
+	
+    <equippedAngleOffset>-45</equippedAngleOffset>	
+
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>1.75</warmupTime>
+        <soundCast>Bow_Large</soundCast>	  
+        <defaultProjectile>Medieval_Arrow_Longbow</defaultProjectile>
+        <range>25</range>
+      </li>
+    </verbs>
+
+  </ThingDef>
+
+  
+  
+<!-- ======= Tier 1 Bows ====== -->   
+<!-- Crossbow -->  
+  <ThingDef ParentName="MedTimes_Ranged_Nan">
+    <defName>MedTimes_Ranged_Crossbow_Nan</defName>
+    <label>Crossbow (Nan)</label>
+    <description>(Nanite) A crossbow, easier to use than a regular bow, much more accurate, but slower to reload.</description>
+	
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/MedTimes_Crossbow</texPath>		  
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponRanged/MedTimes_Crossbow_Nan</uiIconPath>		
+	<costList><MedTimes_Ranged_Crossbow>1</MedTimes_Ranged_Crossbow></costList>	
+
+	<statBases>
+      <AccuracyTouch>1.28</AccuracyTouch>
+      <AccuracyShort>1.20</AccuracyShort>
+      <AccuracyMedium>0.75</AccuracyMedium>
+      <AccuracyLong>0.53</AccuracyLong>
+      <RangedWeapon_Cooldown>1.9</RangedWeapon_Cooldown>  
+    </statBases>	
+	
+	    <equippedAngleOffset>45</equippedAngleOffset>
+
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>1.3</warmupTime>
+        <soundCast>Bow_Large</soundCast>	  
+        <defaultProjectile>Medieval_Bolt_Crossbow</defaultProjectile>
+        <range>19</range>
+      </li>
+    </verbs>		
+  </ThingDef>
+
+<!-- Hand Crossbow -->
+  <ThingDef ParentName="MedTimes_Ranged_Nan">
+    <defName>MedTimes_Ranged_HandCrossbow_Nan</defName>
+    <label>One-Handed Crossbow (Nan)</label>
+    <description>(Nanite) A small one-handed crossbow, easier to use than a regular bow, much more accurate, but shorter range.</description>
+	
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/MedTimes_HandCrossbow</texPath>		  
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponRanged/MedTimes_HandCrossbow_Nan</uiIconPath>		
+	<costList><MedTimes_Ranged_HandCrossbow>1</MedTimes_Ranged_HandCrossbow></costList>	
+	
+	<statBases>
+      <AccuracyTouch>1.13</AccuracyTouch>
+      <AccuracyShort>1.05</AccuracyShort>
+      <AccuracyMedium>0.90</AccuracyMedium>
+      <AccuracyLong>0.83</AccuracyLong>
+      <RangedWeapon_Cooldown>1.4</RangedWeapon_Cooldown>  
+    </statBases>	
+	
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>1.3</warmupTime>
+        <soundCast>Bow_Small</soundCast>	  
+        <defaultProjectile>Medieval_Bolt_Crossbow</defaultProjectile>
+        <range>13</range>
+      </li>
+    </verbs>
+
+  </ThingDef>  
+  
+<!-- ======= Tier 2 Bows ====== -->  
+<!-- Arbalest -->  
+  <ThingDef ParentName="MedTimes_Ranged_Nan">
+    <defName>MedTimes_Ranged_Arbalest_Nan</defName>
+    <label>Arbalest (Nan)</label>
+    <description>(Nanite) A massive crossbow made with advanced techniques and tempered steel.</description>
+	
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/MedTimes_Arbalest</texPath>		  
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponRanged/MedTimes_Arbalest_Nan</uiIconPath>		
+	<costList><MedTimes_Ranged_Arbalest>1</MedTimes_Ranged_Arbalest></costList>	
+	
+	<statBases>
+      <AccuracyTouch>1.28</AccuracyTouch>
+      <AccuracyShort>1.20</AccuracyShort>
+      <AccuracyMedium>0.75</AccuracyMedium>
+      <AccuracyLong>0.53</AccuracyLong>
+      <RangedWeapon_Cooldown>1.9</RangedWeapon_Cooldown>  
+    </statBases>
+	
+    <equippedAngleOffset>45</equippedAngleOffset>	
+
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>1.3</warmupTime>
+        <soundCast>Bow_Large</soundCast>	  
+        <defaultProjectile>Medieval_Bolt_Arbalest</defaultProjectile>
+        <range>22</range>
+      </li>
+    </verbs>
+  </ThingDef>
+  
+  
+  
+<!-- ======= Guns ====== -->  
+<!-- Smoothbore Musket -->  
+  <ThingDef ParentName="MedTimes_Ranged_Nan">
+    <defName>MedTimes_Ranged_Musket_Nan</defName>
+    <label>Smoothbore Musket (Nan)</label>
+    <description>(Nanite) A simple smoothbore musket made of cast steel, uses loose smoked powder which makes reloading a pain, but does massive amounts of damage and is accurate when compared to the crossbow.</description>
+	
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/MedTimes_Musket</texPath>		  
+    </graphicData>
+    <soundInteract>Interact_Rifle</soundInteract>
+		<uiIconPath>Things/Item/Equipment/WeaponRanged/MedTimes_Musket_Nan</uiIconPath>		
+	<costList><MedTimes_Ranged_Musket>1</MedTimes_Ranged_Musket></costList>	
+	
+	<statBases>
+	  <WorkToMake>10000</WorkToMake> 	
+      <AccuracyTouch>0.98</AccuracyTouch>
+      <AccuracyShort>1.05</AccuracyShort>
+      <AccuracyMedium>0.975</AccuracyMedium>
+      <AccuracyLong>0.53</AccuracyLong>
+      <RangedWeapon_Cooldown>2.15</RangedWeapon_Cooldown>  
+    </statBases>
+	
+    <equippedAngleOffset>45</equippedAngleOffset>	
+
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>1.45</warmupTime>
+				<soundCast>MedTimes_Sound_MusketFire</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+        <defaultProjectile>MedTimes_Ball_Musket</defaultProjectile>
+        <range>26</range>
+      </li>
+    </verbs>		
+  </ThingDef>  
+  
+<!-- End of thingDefs -->
+</Defs>

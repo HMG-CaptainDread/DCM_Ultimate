@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <TerrainDef Name="MedTimes_FloorBase" Abstract="True">
+    <layerable>true</layerable>
+    <affordances>
+      <li>Light</li>
+      <li>Medium</li>
+      <li>Heavy</li>
+    </affordances>
+    <tags>
+      <li>Floor</li>
+    </tags>
+    <designationCategory>Floors</designationCategory>
+    <fertility>0</fertility>
+    <constructEffect>ConstructDirt</constructEffect>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+  </TerrainDef>
+
+  <TerrainDef Abstract="True" ParentName="MedTimes_FloorBase" Name="MedTimes_FlagstoneBase">
+    <renderPrecedence>220</renderPrecedence>
+    <description>Roughly-cut stone tiles. These are not beautiful, but they make good surfaces for roads and outdoor walkways. Deconstructing flagstone yields no resources.</description>
+    <texturePath>Terrain/Surfaces/Flagstone</texturePath>
+    <statBases>
+      <WorkToBuild>500</WorkToBuild>
+      <Beauty>0</Beauty>
+    </statBases>
+    <designatorDropdown>Floor_Flagstone</designatorDropdown>
+    <tags>
+      <li>Road</li>
+    </tags>
+      <researchPrerequisites>
+        <li>TS_Roads</li>
+      </researchPrerequisites>
+  </TerrainDef>
+
+  <TerrainDef ParentName="MedTimes_FlagstoneBase">
+    <defName>FlagstoneStone</defName>
+    <label>stone flagstone</label>
+    <color>(99, 103, 107)</color>
+    <costList>
+      <Crushed_Stones>4</Crushed_Stones>
+    </costList>
+  </TerrainDef>
+  
+</Defs>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="XmlExtensions.FindMod">
+    <mods>
+      <li>Cash Register</li>
+      <li>Medieval Overhaul</li>
+    </mods>
+    <logic>and</logic>
+    <caseTrue>
+
+      <li Class="XmlExtensions.OptionalPatch">
+        <modId>zenlor.MOTweaks</modId>
+        <key>mot-integration-cashregister</key>
+        <defaultValue>True</defaultValue>
+        <caseTrue>
+
+          <li Class="PatchOperationReplace">
+            <xpath>/Defs/ThingDef[defName="CashRegister_CashRegister"]/costList</xpath>
+            <value>
+              <costList>
+                <DankPyon_ComponentBasic>1</DankPyon_ComponentBasic>
+              </costList>
+            </value>
+          </li>
+
+        </caseTrue>
+      </li>
+
+    </caseTrue>
+  </Operation>
+
+</Patch>
