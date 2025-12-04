@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+	<!-- PLANTERS BASES -->
+		<!-- PLANTER BASE -->
+			<ThingDef ParentName="BuildingBase" Name="TMM_PlanterBase" Abstract="True">
+				<thingClass>Building_PlantGrower</thingClass>
+				<designatorDropdown>TMM_PlanterBoxGroup</designatorDropdown>
+				<pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
+				<altitudeLayer>FloorEmplacement</altitudeLayer>
+				<passability>PassThroughOnly</passability>
+				<castEdgeShadows>true</castEdgeShadows>
+				<fillPercent>0.30</fillPercent>
+				<canOverlapZones>false</canOverlapZones>
+				<statBases>
+					<MaxHitPoints>180</MaxHitPoints>
+					<Flammability>1</Flammability>
+					<Cleanliness>-3</Cleanliness>
+				</statBases>
+				<stuffCategories>
+					<li>Metallic</li>
+					<li>Woody</li>
+					<li>Stony</li>
+				</stuffCategories>
+				<fertility>0.70</fertility>
+				<building>
+					<defaultPlantToGrow>Plant_Rice</defaultPlantToGrow>
+					<sowTag>Hydroponic</sowTag>
+				</building>
+				<comps>
+					<li Class="CompProperties_Forbiddable"/>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerTransmitter</compClass>
+						<transmitsPower>false</transmitsPower>
+					</li>
+				</comps>
+				<tickerType>Rare</tickerType>
+				<designationCategory>TMM_HarvestTimeDesignator</designationCategory>
+			</ThingDef>
+		<!-- PLANTER BOX BASE -->
+			<ThingDef ParentName="TMM_PlanterBase" Name="TMM_PlanterBoxBase" Abstract="True">
+				<graphicData>
+					<graphicClass>Graphic_Single</graphicClass>
+					<damageData>
+						<cornerTL>Damage/Corner</cornerTL>
+						<cornerTR>Damage/Corner</cornerTR>
+						<cornerBL>Damage/Corner</cornerBL>
+						<cornerBR>Damage/Corner</cornerBR>
+					</damageData>
+				</graphicData>
+				<pathCost>60</pathCost>
+				<statBases>
+					<WorkToBuild>2800</WorkToBuild>
+				</statBases>
+				<costStuffCount>20</costStuffCount>
+				<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+			</ThingDef>
+		<!-- PLANTER MODULAR BASE -->
+			<ThingDef ParentName="TMM_PlanterBase" Name="TMM_ModularPlanterBase" Abstract="True">
+				<graphicData>
+					<graphicClass>Graphic_Single</graphicClass>
+					<linkType>Basic</linkType>
+					<linkFlags>
+						<li>Sandbags</li>
+					</linkFlags>
+					<damageData>
+						<rect>(0.2,0.2,0.6,0.6)</rect>
+					</damageData>
+				</graphicData>
+				<pathCost>40</pathCost>
+				<statBases>
+					<WorkToBuild>650</WorkToBuild>
+				</statBases>
+				<costStuffCount>4</costStuffCount>
+				<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+			</ThingDef>
+	<!-- HYDROPONICS BASES -->
+		<!-- HYDROPONICS BASE -->
+			<ThingDef ParentName="BuildingBase" Name="TMM_HydroponicsBase" Abstract="True">
+				<thingClass>Building_PlantGrower</thingClass>
+				<designatorDropdown>TMM_HydroponicsGroup</designatorDropdown>
+				<pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
+				<altitudeLayer>FloorEmplacement</altitudeLayer>
+				<passability>PassThroughOnly</passability>
+				<castEdgeShadows>true</castEdgeShadows>
+				<fillPercent>0.30</fillPercent>
+				<canOverlapZones>false</canOverlapZones>
+				<constructEffect>ConstructMetal</constructEffect>
+				<statBases>
+					<MaxHitPoints>180</MaxHitPoints>
+					<Flammability>1</Flammability>
+					<Cleanliness>-3</Cleanliness>
+				</statBases>
+				<fertility>2.8</fertility>
+				<building>
+					<defaultPlantToGrow>Plant_Rice</defaultPlantToGrow>
+					<sowTag>Hydroponic</sowTag>
+				</building>
+				<comps>
+					<li Class="CompProperties_Forbiddable"/>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerTrader</compClass>
+						<basePowerConsumption>70</basePowerConsumption>
+					</li>
+					<li Class="CompProperties_Flickable"/>
+					<li Class="CompProperties_Breakdownable"/>
+				</comps>
+				<researchPrerequisites>
+					<li>Hydroponics</li>
+				</researchPrerequisites>
+				<tickerType>Rare</tickerType>
+				<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+				<designationCategory>TMM_HarvestTimeDesignator</designationCategory>
+			</ThingDef>
+		<!-- HYDROPONICS BASIN BASE -->
+			<ThingDef ParentName="TMM_HydroponicsBase" Name="TMM_HydroponicsBasinBase" Abstract="True">
+				<graphicData>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>(1,4)</drawSize>
+					<damageData>
+						<cornerTL>Damage/Corner</cornerTL>
+						<cornerTR>Damage/Corner</cornerTR>
+						<cornerBL>Damage/Corner</cornerBL>
+						<cornerBR>Damage/Corner</cornerBR>
+					</damageData>
+				</graphicData>
+				<pathCost>60</pathCost>
+				<statBases>
+					<WorkToBuild>2800</WorkToBuild>
+				</statBases>
+				<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+			</ThingDef>
+		<!-- MODULAR HYDROPONICS BASIN BASE -->
+			<ThingDef ParentName="TMM_HydroponicsBase" Name="TMM_ModularHydroponicsBasinBase" Abstract="True">
+				<graphicData>
+					<graphicClass>Graphic_Single</graphicClass>
+					<linkType>Basic</linkType>
+					<linkFlags>
+						<li>Sandbags</li>
+					</linkFlags>
+					<damageData>
+						<rect>(0.2,0.2,0.6,0.6)</rect>
+					</damageData>
+				</graphicData>
+				<pathCost>40</pathCost>
+				<statBases>
+					<WorkToBuild>700</WorkToBuild>
+				</statBases>
+				<building>
+					<blueprintGraphicData>
+						<texPath>Things/Building/PlanterModular_Atlas</texPath>
+					</blueprintGraphicData>
+				</building>
+				<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+			</ThingDef>
+		<!-- ADVANCED HYDROPONICS BASIN BASE -->
+			<ThingDef ParentName="TMM_HydroponicsBasinBase" Name="TMM_AdvancedHydroponicsBasinBase" Abstract="True">
+				<researchPrerequisites>
+					<li>TMM_HT_HydroponicsII</li>
+				</researchPrerequisites>
+			</ThingDef>
+		<!-- ADVANCED MODULAR HYDROPONICS BASIN BASE -->
+			<ThingDef ParentName="TMM_ModularHydroponicsBasinBase" Name="TMM_AdvancedModularHydroponicsBasinBase" Abstract="True">
+				<researchPrerequisites>
+					<li>TMM_HT_HydroponicsII</li>
+				</researchPrerequisites>
+			</ThingDef>
+	<!-- PLANTER BOXES -->
+		<!-- REGULAR -->
+			<ThingDef ParentName="TMM_PlanterBoxBase">
+				<defName>TMM_PlanterBox</defName>
+				<label>Planter Box</label>
+				<description>Crude box filled with soil, that allows you to grow anywhere. fertility is reduced to 70%. Does not require power.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Buildings/PlanterBoxes/PlanterBox</texPath>
+					<drawSize>(4,1)</drawSize>
+				</graphicData>
+				<size>(4,1)</size>
+				<costList>
+					<TMM_DirtPile>12</TMM_DirtPile>
+				</costList>
+				<researchPrerequisites>
+					<li>TMM_HT_PlanterBoxI</li>
+				</researchPrerequisites>
+			</ThingDef>
+		<!-- MODULAR -->
+			<ThingDef ParentName="TMM_ModularPlanterBase">
+				<defName>TMM_ModularPlanterBox</defName>
+				<label>Modular Planter Box</label>
+				<description>Crude box filled with soil, that allows you to grow anywhere. fertility is reduced to 70%. Does not require power. Modular allows you to make 1x1 connected boxes of any size.</description>
+				<thingClass>Building_PlantGrower</thingClass>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Buildings/PlanterBoxes/PlanterModular_Atlas</texPath>
+				</graphicData>
+				<uiIconPath>Modules/HarvestTime/Icons/PlanterBoxes/PlanterIcon</uiIconPath>
+				<costList>
+					<TMM_DirtPile>4</TMM_DirtPile>
+				</costList>
+				<building>
+					<blueprintGraphicData>
+						<texPath>Modules/HarvestTime/Buildings/PlanterBoxes/PlanterModular_Atlas</texPath>
+					</blueprintGraphicData>
+				</building>
+				<researchPrerequisites>
+					<li>TMM_HT_PlanterBoxI</li>
+				</researchPrerequisites>
+			</ThingDef>
+		<!-- ADVANCED MODULAR -->
+			<ThingDef ParentName="TMM_ModularPlanterBase">
+				<defName>TMM_AdvancedModularPlanterBox</defName>
+				<label>Advanced Modular Planter Box</label>
+				<description>Upgraded planter box filled with soil and fertilizer, that allows you to grow anywhere. Fertility is 120%. Does not require power. Modular allows you to make 1x1 connected boxes of any size. But is not movable.</description>
+				<thingClass>Building_PlantGrower</thingClass>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Buildings/PlanterBoxes/PlanterModular_Atlas</texPath>
+				</graphicData>
+				<uiIconPath>Modules/HarvestTime/Icons/PlanterBoxes/PlanterIcon</uiIconPath>
+				<costList>
+					<TMM_DirtPile>4</TMM_DirtPile>
+					<TMM_RawFertiliser>4</TMM_RawFertiliser>
+				</costList>
+				<fertility>1.20</fertility>
+				<building>
+					<blueprintGraphicData>
+						<texPath>Modules/HarvestTime/Buildings/PlanterBoxes/PlanterModular_Atlas</texPath>
+					</blueprintGraphicData>
+				</building>
+				<researchPrerequisites>
+					<li>TMM_HT_PlanterBoxII</li>
+				</researchPrerequisites>
+			</ThingDef>
+		<!-- MODULAR FLOWER BOX -->
+			<ThingDef ParentName="TMM_ModularPlanterBase">
+				<defName>TMM_ModularFlowerBox</defName>
+				<label>Modular Flower Box</label>
+				<description>Flower box filled with soil. Modular allows you to make 1x1 connected boxes of any size.</description>
+				<thingClass>Building_PlantGrower</thingClass>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Buildings/PlanterBoxes/PlanterModular_Atlas</texPath>
+				</graphicData>
+				<uiIconPath>Modules/HarvestTime/Icons/PlanterBoxes/PlanterIcon</uiIconPath>
+				<costStuffCount>8</costStuffCount>
+				<fertility>1</fertility>
+				<building>
+					<blueprintGraphicData>
+						<texPath>Modules/HarvestTime/Buildings/PlanterBoxes/PlanterModular_Atlas</texPath>
+					</blueprintGraphicData>
+					<defaultPlantToGrow>Plant_Rose</defaultPlantToGrow>
+					<sowTag>Decorative</sowTag>
+				</building>
+				<researchPrerequisites>
+					<li>TMM_FlowerFarming</li>
+					<li>TMM_HT_PlanterBoxI</li>
+				</researchPrerequisites>
+			</ThingDef>
+	<!-- HYDROPONICS BASINS -->
+		<!-- REGULAR -->
+			<!-- <ThingDef ParentName="TMM_HydroponicsBasinBase">
+				<defName>TMM_HydroponicsBasin</defName>
+				<label>Hydroponics Basin</label>
+				<description>Grows plants quickly in an artificial nutrient bath. Requires power to work; plants will die if power is cut. fertility is 280%.</description>
+				<graphicData>
+					<texPath>Things/Building/Production/HydroponicsBasin</texPath>
+				</graphicData>
+				<size>(1,4)</size>
+				<costList>
+					<Steel>100</Steel>
+					<ComponentIndustrial>1</ComponentIndustrial>
+				</costList>
+			</ThingDef> -->
+		<!-- MODULAR -->
+			<ThingDef ParentName="TMM_ModularHydroponicsBasinBase">
+				<defName>TMM_ModularHydroponicsBasin</defName>
+				<label>Modular Hydroponics Basin</label>
+				<description>Grows plants quickly in an artificial nutrient bath. Requires power to work; plants will die if power is cut. fertility is 280%.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Buildings/Hydroponics/HydroModular_Atlas</texPath>
+				</graphicData>
+				<uiIconPath>Modules/HarvestTime/Icons/Hydroponics/HydroIcon</uiIconPath>
+				<costList>
+					<Steel>50</Steel>
+				</costList>
+				<building>
+					<blueprintGraphicData>
+						<texPath>Modules/HarvestTime/Buildings/Hydroponics/HydroModular_Atlas</texPath>
+					</blueprintGraphicData>
+				</building>
+			</ThingDef>
+		<!-- ADVANCED -->
+			<ThingDef ParentName="TMM_AdvancedHydroponicsBasinBase">
+				<defName>TMM_AdvancedHydroponicsBasin</defName>
+				<label>Advanced Hydroponics Basin</label>
+				<description>Grows plants more quickly in an artificial nutrient bath. Requires more power to work then basic basin; plants will die if power is cut. Provides it's own light. fertility  is 310%.</description>
+				<graphicData>
+					<texPath>Things/Building/Production/HydroponicsBasin</texPath>
+				</graphicData>
+				<statBases>
+					<WorkToBuild>2800</WorkToBuild>
+				</statBases>
+				<size>(1,4)</size>
+				<costList>
+					<Steel>200</Steel>
+					<ComponentIndustrial>4</ComponentIndustrial>
+				</costList>
+				<fertility>3.1</fertility>
+				<comps>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerTrader</compClass>
+						<basePowerConsumption>200</basePowerConsumption>
+					</li>
+					<li Class="CompProperties_Glower">
+						<overlightRadius>3.5</overlightRadius>
+						<glowRadius>3.0</glowRadius>
+						<glowColor>(370,370,370,0)</glowColor>
+					</li>
+				</comps>
+			</ThingDef>
+		<!-- ADVANCED MODULAR -->
+			<ThingDef ParentName="TMM_AdvancedModularHydroponicsBasinBase">
+				<defName>TMM_AdvancedModularHydroponicsBasin</defName>
+				<label>Advanced Modular Hydroponics Basin</label>
+				<description>Grows plants more quickly in an artificial nutrient bath. Requires more power to work then basic basin; plants will die if power is cut. Provides it's own light. fertility is 310%.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Buildings/Hydroponics/HydroModular_Atlas</texPath>
+				</graphicData>
+				<uiIconPath>Modules/HarvestTime/Icons/Hydroponics/HydroIcon</uiIconPath>
+				<statBases>
+					<WorkToBuild>700</WorkToBuild>
+				</statBases>
+				<costList>
+					<Steel>50</Steel>
+					<ComponentIndustrial>1</ComponentIndustrial>
+				</costList>
+				<fertility>3.1</fertility>
+				<building>
+					<blueprintGraphicData>
+						<texPath>Modules/HarvestTime/Buildings/Hydroponics/HydroModular_Atlas</texPath>
+					</blueprintGraphicData>
+				</building>
+				<comps>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerTrader</compClass>
+						<basePowerConsumption>50</basePowerConsumption>
+					</li>
+					<li Class="CompProperties_Glower">
+						<overlightRadius>1.25</overlightRadius>
+						<glowRadius>1</glowRadius>
+						<glowColor>(370,370,370,0)</glowColor>
+					</li>
+				</comps>
+			</ThingDef>
+</Defs>
