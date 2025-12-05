@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+	<!-- BASES -->
+		<!-- PLANT BASE -->
+			<ThingDef ParentName="PlantBase" Name="TMM_PlantBase" Abstract="True">
+				<graphicData>
+					<graphicClass>Graphic_Random</graphicClass>
+				</graphicData>
+				<statBases>
+					<MaxHitPoints>85</MaxHitPoints>
+					<Beauty>1</Beauty>
+					<Nutrition>0.20</Nutrition>
+				</statBases>
+				<selectable>true</selectable>
+				<pathCost>30</pathCost>
+				<plant>
+					<dieIfLeafless>true</dieIfLeafless>
+					<harvestTag>Standard</harvestTag>
+					<sowTags>
+						<li>Ground</li>
+						<li>Hydroponic</li>
+					</sowTags>
+				</plant>
+			</ThingDef>
+		<!-- WILD PLANT -->
+			<ThingDef ParentName="TMM_PlantBase" Name="TMM_WildPlantBase" Abstract="True">
+				<neverMultiSelect>false</neverMultiSelect>
+				<pathCost>10</pathCost>
+			</ThingDef>
+	<!-- FARMABLE -->
+		<!-- BAMBOO -->
+			<ThingDef ParentName="TMM_PlantBase">
+				<defName>TMM_BambooTree</defName>
+				<label>Bamboo Plant</label>
+				<description>A fast-growing tree-like species that grows in clusters. Bamboo can be harvested for a somewhat sturdy wood-like material, whilst the plant itself is not beautiful, the resulting constructions can often be quite ornate.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Plants/Mature/NewPlants/Bamboo</texPath>
+					<shadowData>
+						<volume>(0.38, 0.3, 0.15)</volume>
+						<offset>(0,0,-0.47)</offset>
+					</shadowData>
+				</graphicData>
+				<plant>
+					<harvestedThingDef>TMM_RawBamboo</harvestedThingDef>
+					<harvestTag>Wood</harvestTag>
+					<harvestYield>14</harvestYield>
+					<sowMinSkill>4</sowMinSkill>
+					<growDays>10</growDays>
+					<fertilitySensitivity>0.75</fertilitySensitivity>
+					<wildClusterRadius>5</wildClusterRadius>
+					<wildClusterWeight>15</wildClusterWeight>
+					<immatureGraphicPath>Modules/HarvestTime/Plants/Immature/NewPlants/Bamboo</immatureGraphicPath>
+					<treeLoversCareIfChopped>false</treeLoversCareIfChopped>
+					<wildOrder>2</wildOrder>
+				</plant>
+			</ThingDef>
+		<!-- BARLEY -->
+			<ThingDef ParentName="TMM_PlantBase">
+				<defName>TMM_Barley</defName>
+				<label>Barley</label>
+				<description>A hearty cereal that is immune to blight, often used in both cooking and ale making.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Plants/Mature/NewPlants/Barley</texPath>
+				</graphicData>
+				<plant>
+					<neverBlightable>true</neverBlightable>
+					<harvestedThingDef>TMM_RawBarley</harvestedThingDef>
+					<harvestYield>13</harvestYield>
+					<topWindExposure>0.35</topWindExposure>
+					<growDays>7</growDays>
+					<fertilitySensitivity>0.6</fertilitySensitivity>
+					<immatureGraphicPath>Modules/HarvestTime/Plants/Immature/NewPlants/Barley</immatureGraphicPath>
+					<wildOrder>2</wildOrder>
+					<purpose>Food</purpose>
+				</plant>
+			</ThingDef>
+		<!-- BLUEBERRY -->
+			<ThingDef ParentName="TMM_PlantBase">
+				<defName>TMM_Blueberry</defName>
+				<label>Blueberry Bush</label>
+				<description>A deep blue coloured berry that grows in bushes, tart and tasty!</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Plants/Mature/NewPlants/Blueberry</texPath>
+				</graphicData>
+				<plant>
+					<harvestedThingDef>TMM_RawBlueberry</harvestedThingDef>
+					<harvestYield>8</harvestYield>
+					<sowMinSkill>6</sowMinSkill>
+					<growDays>6.5</growDays>
+					<fertilitySensitivity>0.6</fertilitySensitivity>
+					<sowResearchPrerequisites>
+						<li>TMM_HT_AgricultureII</li>
+					</sowResearchPrerequisites>
+					<immatureGraphicPath>Modules/HarvestTime/Plants/Immature/NewPlants/Blueberry</immatureGraphicPath>
+					<wildOrder>2</wildOrder>
+					<purpose>Food</purpose>
+				</plant>
+			</ThingDef>
+		<!-- CLOUDBERRY -->
+			<ThingDef ParentName="TMM_PlantBase">
+				<defName>TMM_Cloudberry</defName>
+				<label>Cloudberry Bush</label>
+				<description>A berry bush that grows well in cold climates.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Plants/Mature/NewPlants/Cloudberry</texPath>
+				</graphicData>
+				<plant>
+					<dieIfLeafless>false</dieIfLeafless>
+					<harvestedThingDef>TMM_RawCloudberry</harvestedThingDef>
+					<harvestYield>7</harvestYield>
+					<sowMinSkill>6</sowMinSkill>
+					<growDays>6</growDays>
+					<fertilitySensitivity>0.6</fertilitySensitivity>
+					<immatureGraphicPath>Modules/HarvestTime/Plants/Immature/NewPlants/Cloudberry</immatureGraphicPath>
+					<sowResearchPrerequisites>
+						<li>TMM_HT_AgricultureIV</li>
+					</sowResearchPrerequisites>
+					<wildOrder>2</wildOrder>
+					<purpose>Food</purpose>
+				</plant>
+			</ThingDef>
+		<!-- COCOA BUSH -->
+			<ThingDef ParentName="TMM_PlantBase">
+				<defName>TMM_CacaoBush</defName>
+				<label>Cacao Bush</label>
+				<description>A tropical bush that produces chocolate, genetically engineered to sweeten its own product, and survive in slightly less-warm climates, the bushy variant produces a lot less than their arboreal counterpart.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Plants/Mature/NewPlants/Cacao</texPath>
+				</graphicData>
+				<plant>
+					<harvestedThingDef>Chocolate</harvestedThingDef>
+					<harvestYield>2</harvestYield>
+					<sowMinSkill>5</sowMinSkill>
+					<growDays>6</growDays>
+					<fertilitySensitivity>0.6</fertilitySensitivity>
+					<immatureGraphicPath>Modules/HarvestTime/Plants/Immature/NewPlants/Cacao</immatureGraphicPath>
+					<sowResearchPrerequisites>
+						<li>Cocoa</li>
+					</sowResearchPrerequisites>
+				</plant>
+			</ThingDef>
+		<!-- FLAX -->
+			<ThingDef ParentName="TMM_PlantBase">
+				<defName>TMM_Flax</defName>
+				<label>flax flower</label>
+				<description>A flower which, when spun, create fibers that can be used to make cloth.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Plants/Mature/NewPlants/FlaxFlower</texPath>
+				</graphicData>
+				<plant>
+					<harvestedThingDef>TMM_RawFlax</harvestedThingDef>
+					<harvestYield>9</harvestYield>
+					<sowMinSkill>4</sowMinSkill>
+					<growDays>16.1</growDays>
+					<fertilitySensitivity>1.0</fertilitySensitivity>
+					<immatureGraphicPath>Modules/HarvestTime/Plants/Immature/NewPlants/FlaxFlower</immatureGraphicPath>
+				</plant>
+			</ThingDef>
+		<!-- GOOSEBERRY -->
+			<ThingDef ParentName="TMM_PlantBase">
+				<defName>TMM_Gooseberry</defName>
+				<label>Gooseberry Bush</label>
+				<description>A berry bush that grows well in cold climates.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Plants/Mature/NewPlants/Gooseberry</texPath>
+				</graphicData>
+				<plant>
+					<dieIfLeafless>false</dieIfLeafless>
+					<harvestedThingDef>TMM_RawGooseberry</harvestedThingDef>
+					<harvestYield>7</harvestYield>
+					<sowMinSkill>6</sowMinSkill>
+					<growDays>6.25</growDays>
+					<fertilitySensitivity>0.6</fertilitySensitivity>
+					<immatureGraphicPath>Modules/HarvestTime/Plants/Immature/NewPlants/Gooseberry</immatureGraphicPath>
+					<sowResearchPrerequisites>
+						<li>TMM_HT_AgricultureIV</li>
+					</sowResearchPrerequisites>
+					<wildOrder>2</wildOrder>
+					<purpose>Food</purpose>
+				</plant>
+			</ThingDef>
+		<!-- GLITTERWORLD ALYSSUM -->
+			<ThingDef ParentName="TMM_PlantBase">
+				<defName>TMM_Alyssum</defName>
+				<label>Alyssum</label>
+				<description>A beautiful red flower, genetically engineered by Glitterworld scientists for an eco-friendly method to make Glitterworld Neutroamine, a higher tier drug and medicine base.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Plants/Mature/NewPlants/Alyssum</texPath>
+				</graphicData>
+				<statBases>
+					<MaxHitPoints>85</MaxHitPoints>
+					<Beauty>10</Beauty>
+				</statBases>
+				<plant>
+					<harvestedThingDef>TMM_AlyssumTrimmings</harvestedThingDef>
+					<harvestYield>2</harvestYield>
+					<sowMinSkill>10</sowMinSkill>
+					<growDays>15</growDays>
+					<fertilitySensitivity>1</fertilitySensitivity>
+					<visualSizeRange>0.65~1</visualSizeRange>
+					<neverBlightable>true</neverBlightable>
+					<pollution>Any</pollution>
+					<sowResearchPrerequisites>
+						<li>TMM_HT_AgricultureVI</li>
+					</sowResearchPrerequisites>
+				</plant>
+			</ThingDef>
+		<!-- KIWI -->
+			<ThingDef ParentName="TMM_PlantBase">
+				<defName>TMM_Kiwi</defName>
+				<label>Kiwi Plant</label>
+				<description>An edible berry that is roughly ovoid in shape and about the size of a large hen's egg. It has a fibrous, dull greenish-brown skin and bright green or golden flesh with rows of tiny, black, edible seeds. The fruit has a soft texture with a sweet and unique flavour.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Plants/Mature/NewPlants/Kiwi</texPath>
+				</graphicData>
+				<plant>
+					<harvestedThingDef>TMM_RawKiwi</harvestedThingDef>
+					<harvestYield>6</harvestYield>
+					<sowMinSkill>4</sowMinSkill>
+					<growDays>3.25</growDays>
+					<fertilitySensitivity>0.6</fertilitySensitivity>
+					<immatureGraphicPath>Modules/HarvestTime/Plants/Immature/NewPlants/Kiwi</immatureGraphicPath>
+					<purpose>Food</purpose>
+				</plant>
+			</ThingDef>
+		<!-- MUSHROOM -->
+			<ThingDef ParentName="TMM_PlantBase">
+				<defName>TMM_Mushroom</defName>
+				<label>Mushroom</label>
+				<description>This robust mushroom has been genetically engineered and cultivated to produce a filling meat substitute. Found in the wild and grown in hydroponics.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Plants/Mature/NewPlants/Mushroom</texPath>
+				</graphicData>
+				<plant>
+					<harvestedThingDef>RawFungus</harvestedThingDef>
+					<harvestYield>12</harvestYield>
+					<sowMinSkill>4</sowMinSkill>
+					<topWindExposure>0.3</topWindExposure>
+					<growDays>4.75</growDays>
+					<fertilitySensitivity>0.6</fertilitySensitivity>
+					<neverBlightable>true</neverBlightable>
+					<growMinGlow>0</growMinGlow>
+					<growOptimalGlow>0</growOptimalGlow>
+				</plant>
+			</ThingDef>
+		<!-- NEUTRO FLOWER -->
+			<ThingDef ParentName="TMM_PlantBase">
+				<defName>TMM_NeutroFlower</defName>
+				<label>Neutro Flower</label>
+				<description>A beautiful yellow-orange flower, genetically engineered by Glitterworld scientists for an eco-friendly method to make Neutroamine, a medicine base.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Plants/Mature/NewPlants/NeutroFlower</texPath>
+				</graphicData>
+				<statBases>
+					<MaxHitPoints>85</MaxHitPoints>
+					<Beauty>10</Beauty>
+				</statBases>
+				<plant>
+					<harvestedThingDef>TMM_NeutroPetals</harvestedThingDef>
+					<harvestYield>5</harvestYield>
+					<sowMinSkill>7</sowMinSkill>
+					<growDays>10</growDays>
+					<fertilitySensitivity>1</fertilitySensitivity>
+					<sowResearchPrerequisites>
+						<li>TMM_HT_AgricultureV</li>
+					</sowResearchPrerequisites>
+				</plant>
+			</ThingDef>
+		<!-- PINCUSHION CACTUS -->
+			<ThingDef ParentName="PlantBase">
+				<defName>TMM_PincushionCactus</defName>
+				<label>pincushion cactus</label>
+				<description>A short cactus. It is so named because it resembles a pincushion.</description>
+				<statBases>
+					<MaxHitPoints>150</MaxHitPoints>
+					<Nutrition>0.25</Nutrition>
+				</statBases>
+				<graphicData>
+					<texPath>Things/Plant/PincushionCactus</texPath>
+				</graphicData>
+				<plant>
+					<fertilityMin>0.05</fertilityMin>
+					<fertilitySensitivity>0</fertilitySensitivity>
+					<growDays>2.5</growDays>
+					<visualSizeRange>0.40~0.65</visualSizeRange>
+					<topWindExposure>0.0</topWindExposure>
+					<wildClusterRadius>4</wildClusterRadius>
+					<wildClusterWeight>4</wildClusterWeight>
+					<maxMeshCount>4</maxMeshCount>
+					<dieIfLeafless>true</dieIfLeafless>
+					<harvestTag>Standard</harvestTag>
+					<harvestedThingDef>TMM_RawCactusFruit</harvestedThingDef>
+					<treeLoversCareIfChopped>false</treeLoversCareIfChopped>
+					<harvestYield>3</harvestYield>
+					<purpose>Food</purpose>
+					<wildOrder>2</wildOrder>
+				</plant>
+			</ThingDef>
+		<!-- RED LENTIL PLANT -->
+			<ThingDef ParentName="TMM_PlantBase">
+				<defName>TMM_RedLentil</defName>
+				<label>Red Lentil</label>
+				<description>A reddish variety of the lentil plant. One of the oldest know domesticated plants.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Plants/Mature/NewPlants/RedLentil</texPath>
+				</graphicData>
+				<plant>
+					<harvestedThingDef>TMM_RawRedLentil</harvestedThingDef>
+					<harvestYield>6</harvestYield>
+					<sowMinSkill>6</sowMinSkill>
+					<growDays>3.75</growDays>
+					<fertilitySensitivity>0.6</fertilitySensitivity>
+					<sowResearchPrerequisites>
+						<li>TMM_HT_AgricultureI</li>
+					</sowResearchPrerequisites>
+					<immatureGraphicPath>Modules/HarvestTime/Plants/Immature/NewPlants/RedLentil</immatureGraphicPath>
+					<wildOrder>2</wildOrder>
+					<purpose>Food</purpose>
+				</plant>
+			</ThingDef>
+		<!-- SNOW BEET -->
+			<ThingDef ParentName="TMM_PlantBase">
+				<defName>TMM_SnowBeet</defName>
+				<label>Snow Beet</label>
+				<description>A simple but highly nutritious plant. Grows well even in somewhat poor soil and harvests quickly. Both strong and versatile, the crop does not die in cold weather.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Plants/Mature/NewPlants/SnowBeet</texPath>
+				</graphicData>
+				<plant>
+					<dieIfLeafless>false</dieIfLeafless>
+					<harvestedThingDef>TMM_RawSnowBeet</harvestedThingDef>
+					<harvestYield>11</harvestYield>
+					<sowMinSkill>6</sowMinSkill>
+					<growDays>6</growDays>
+					<fertilitySensitivity>0.4</fertilitySensitivity>
+					<sowResearchPrerequisites>
+						<li>TMM_HT_AgricultureI</li>
+					</sowResearchPrerequisites>
+					<immatureGraphicPath>Modules/HarvestTime/Plants/Immature/NewPlants/SnowBeet</immatureGraphicPath>
+					<wildOrder>2</wildOrder>
+					<purpose>Food</purpose>
+				</plant>
+			</ThingDef>
+	<!-- WILD PLANTS -->
+		<!-- CLOUDBERRY -->
+			<ThingDef ParentName="TMM_WildPlantBase">
+				<defName>TMM_WildCloudberry</defName>
+				<label>Cloudberry Bush</label>
+				<description>A berry bush that grows well in cold climates.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Plants/Mature/NewPlants/Cloudberry</texPath>
+				</graphicData>
+				<plant>
+					<dieIfLeafless>false</dieIfLeafless>
+					<harvestedThingDef>TMM_RawCloudberry</harvestedThingDef>
+					<harvestYield>7</harvestYield>
+					<sowMinSkill>6</sowMinSkill>
+					<growDays>6.25</growDays>
+					<fertilitySensitivity>0.6</fertilitySensitivity>
+					<immatureGraphicPath>Modules/HarvestTime/Plants/Immature/NewPlants/Cloudberry</immatureGraphicPath>
+				</plant>
+			</ThingDef>
+		<!-- GOOSEBERRY -->
+			<ThingDef ParentName="TMM_WildPlantBase">
+				<defName>TMM_WildGooseberry</defName>
+				<label>Gooseberry Bush</label>
+				<description>A berry bush that grows well in cold climates.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Plants/Mature/NewPlants/Gooseberry</texPath>
+				</graphicData>
+				<plant>
+					<dieIfLeafless>false</dieIfLeafless>
+					<harvestedThingDef>TMM_RawGooseberry</harvestedThingDef>
+					<harvestYield>7</harvestYield>
+					<sowMinSkill>6</sowMinSkill>
+					<growDays>6.25</growDays>
+					<fertilitySensitivity>0.6</fertilitySensitivity>
+				</plant>
+			</ThingDef>
+</Defs>
