@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="DraconicDrugProduction" or defName="DraconicIncubation" or defName="DraconicApparelAndWeapons"]/tab</xpath>
+		<value>
+			<tab>
+				<li>DankPyon_MedievalResearchTab</li>
+			</tab>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="DraconicAdvancedIncubation"]/tab</xpath>
+		<value>
+			<tab>
+				<li>Main</li>
+			</tab>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="DraconicIncubation"]/baseCost</xpath>
+		<value>
+			<baseCost>1100</baseCost>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ResearchProjectDef[defName="DraconicApparelAndWeapons" or defName="DraconicIncubation"]/prerequisites/li[.="Smithing"]</xpath>
+		<match Class="PatchOperationRemove">
+			<xpath>Defs/ResearchProjectDef[defName="DraconicApparelAndWeapons" or defName="DraconicIncubation"]/prerequisites/li[.="Smithing"]</xpath>
+		</match>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="DraconicDrugProduction"]/researchViewX</xpath>
+		<value>
+			<researchViewX>15.00</researchViewX>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="DraconicDrugProduction"]/researchViewY</xpath>
+		<value>
+			<researchViewY>6.40</researchViewY>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="DraconicIncubation"]/researchViewX</xpath>
+		<value>
+			<researchViewX>5.00</researchViewX>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="DraconicIncubation"]/researchViewY</xpath>
+		<value>
+			<researchViewY>6.50</researchViewY>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="DraconicApparelAndWeapons"]/researchViewX</xpath>
+		<value>
+			<researchViewX>12.00</researchViewX>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="DraconicApparelAndWeapons"]/researchViewY</xpath>
+		<value>
+			<researchViewY>0.05</researchViewY>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>[RWY]Dragon's Descent: Void Dwellers</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ResearchProjectDef[defName="RWY_AncientFurniture"]/tab</xpath>
+					<value>
+						<tab>
+							<li>DankPyon_MedievalResearchTab</li>
+						</tab>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ResearchProjectDef[defName="RWY_AncientFurniture"]/researchViewX</xpath>
+					<value>
+						<researchViewX>4.00</researchViewX>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ResearchProjectDef[defName="RWY_AncientFurniture"]/researchViewY</xpath>
+					<value>
+						<researchViewY>5.10</researchViewY>
+					</value>
+				</li>
+				
+			</operations>
+		</match>
+	</Operation>
+	
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ResearchProjectDef/tab[.="DragonsDescent"]</xpath>
+		<nomatch Class="PatchOperationRemove">
+			<xpath>Defs/ResearchTabDef[defName="DragonsDescent"]</xpath>
+		</nomatch>
+	</Operation>
+
+</Patch>

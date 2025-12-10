@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Tastier Armory - Medieval European Armors</li>
+		</mods>
+		
+		<match Class="PatchOperationSequence">
+			<operations>
+
+				<!-- Padded Armor -->
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[
+					defName="TC_GambesonCoat" or
+					defName="TC_ArmingDoublet" or
+					defName="TC_Surcoat" or
+					defName="TC_CoifPadded"]/recipeMaker/researchPrerequisite					</xpath>
+					<value>
+						<researchPrerequisite>DankPyon_ProtectiveClothing</researchPrerequisite>
+					</value>
+				</li>
+
+				<li Class="PatchOperationFindMod">
+					<mods>
+						<li>Combat Extended</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<operations>
+
+							<li Class="PatchOperationReplace">
+							<xpath>Defs/ThingDef[defName="TC_Jupon"]/recipeMaker/researchPrerequisite</xpath>
+								<value>
+									<researchPrerequisite>DankPyon_ProtectiveClothing</researchPrerequisite>
+								</value>
+							</li>
+							
+							<li Class="PatchOperationConditional">
+								<xpath>Defs/ThingDef[defName="TC_Jupon"]/statBases/StuffEffectMultiplierArmor</xpath>
+								<match Class="PatchOperationReplace">
+									<xpath>Defs/ThingDef[defName="TC_Jupon"]/statBases/StuffEffectMultiplierArmor</xpath>
+									<value>
+									<StuffEffectMultiplierArmor>3</StuffEffectMultiplierArmor>
+									</value>
+								</match>
+							</li>
+
+						</operations>
+					</match>
+				</li>
+				
+				<!-- Chain Armor -->
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[
+					defName="TC_CoatOfPlates" or
+					defName="TC_Hauberk" or
+					defName="TC_ReinforcedGambeson"]/recipeMaker/researchPrerequisite					</xpath>
+					<value>
+						<researchPrerequisite>DankPyon_ChainArmor</researchPrerequisite>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[
+					defName="TC_CoifWithSecret" or
+					defName="TC_KettleHat" or
+					defName="TC_Nasal" or
+					defName="TC_NasalCoif"]/recipeMaker/researchPrerequisite					</xpath>
+					<value>
+						<researchPrerequisite>DankPyon_ChainArmor</researchPrerequisite>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[
+					defName="TC_MailleHoses" or
+					defName="TC_MailleMittens"]/recipeMaker/researchPrerequisite					</xpath>
+					<value>
+						<researchPrerequisite>DankPyon_ChainArmor</researchPrerequisite>
+					</value>
+				</li>
+				
+				
+				<!-- Plate Armor -->
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[
+					defName="TC_BrigandinePlate" or
+					defName="TC_PlateArmor" or
+					defName="TC_PlateArmor" or
+					defName="TC_ReinforcedGambeson"]/recipeMaker/researchPrerequisite					</xpath>
+					<value>
+						<researchPrerequisite>DankPyon_ChainArmor</researchPrerequisite>
+					</value>
+				</li>
+				
+			</operations>
+		</match>
+		
+	</Operation>
+	
+</Patch>

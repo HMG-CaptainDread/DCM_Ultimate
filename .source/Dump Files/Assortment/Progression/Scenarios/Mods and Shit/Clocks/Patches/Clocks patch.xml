@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>    
+
+<!-- Prog aesthetics shit -->
+
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Progression: Aesthetics</li>
+		</mods>
+		<match Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="Ferny_Clocks"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="Ferny_Clocks"]/tags</xpath>
+                                <value>
+                                    <li>FernySpacerStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="Ferny_Clocks"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>FernySpacerStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+		</match>
+	</Operation>
+
+
+
+
+</Patch>

@@ -1,0 +1,5315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<!-- <></> -->
+
+
+	<!-- NOMAD BULLET -->
+		<ThingDef ParentName="BaseBullet">
+			<defName>NS_Bullet_NomadRifle</defName>
+			<label>charge shot</label>
+			<graphicData>
+				<texPath>Things/Projectile/Charge_Small</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+			</graphicData>
+			<projectile>
+				<damageDef>Bullet</damageDef>
+				<damageAmountBase>13</damageAmountBase>
+				<armorPenetrationBase>0.35</armorPenetrationBase>
+				<stoppingPower>0.5</stoppingPower>
+				<speed>70</speed>
+			</projectile>
+		</ThingDef>
+
+	<!-- TRIBAL WARRIOR ARROW -->
+		<ThingDef ParentName="BaseProjectileNeolithic">
+			<defName>Arrow_WarBow</defName>
+			<label>warbow arrow</label>
+			<graphicData>
+			<texPath>Things/Projectile/Arrow_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			</graphicData>
+			<projectile>
+			<damageDef>Arrow</damageDef>
+			<damageAmountBase>18</damageAmountBase>
+			<stoppingPower>1.5</stoppingPower>
+			<armorPenetrationBase>0.20</armorPenetrationBase>
+			<speed>60</speed>
+			</projectile>
+		</ThingDef>
+
+	<!-- WARCASKETS EXPANDED -->
+		<!-- EMP LAUNCHER SHELL -->
+		<ThingDef ParentName="BaseBullet">
+		<defName>WC_Bullet_EMPLauncher</defName>
+		<label>EMP launcher shell</label>
+		<graphicData>
+			<texPath>Things/None</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<color>(68,150,215)</color>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<speed>50</speed>
+			<damageDef>EMP</damageDef>
+			<explosionRadius>5.1</explosionRadius>
+			<ai_IsIncendiary>true</ai_IsIncendiary>
+			<arcHeightFactor>0</arcHeightFactor>
+			<shadowSize>0</shadowSize>
+		</projectile>
+	</ThingDef>
+	<!-- SMOKE LAUNCHER SHELL -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>WC_Bullet_SmokeLauncher</defName>
+		<label>smoke launcher shell</label>
+		<graphicData>
+			<texPath>Things/Projectile/LauncherShot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<color>(140,135,156)</color>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<speed>15</speed>
+			<damageDef>Smoke</damageDef>
+			<!-- Use default damage from explosion def -->
+			<explosionRadius>2.4</explosionRadius>
+			<postExplosionGasType>BlindSmoke</postExplosionGasType>
+			<preExplosionSpawnChance>1</preExplosionSpawnChance>
+			<ai_IsIncendiary>true</ai_IsIncendiary>
+			<arcHeightFactor>0.5</arcHeightFactor>
+			<shadowSize>0.6</shadowSize>
+		</projectile>
+	</ThingDef>
+
+	<!-- VANILLA WEAPONS EXPANDED -->
+		<!-- COILGUNS -->
+			<!-- GAUSS RIFLE -->
+			<VEF.Weapons.ExpandableProjectileDef ParentName="BaseBullet">
+		<defName>VWE_Bullet_GaussRifle</defName>
+		<label>gauss rifle sabot</label>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>12</damageAmountBase>
+			<armorPenetrationBase>0.50</armorPenetrationBase>
+			<stoppingPower>1</stoppingPower>
+			<speed>150</speed>
+		</projectile>
+		<thingClass>VEF.Weapons.GaussProjectile</thingClass>
+		<graphicData>
+			<texPath>Projectiles/Proj_CoilgunFadeIn</texPath>
+			<texPathFadeOut>Projectiles/Proj_CoilgunFadeOut</texPathFadeOut>
+		</graphicData>
+		<reachMaxRangeAlways>true</reachMaxRangeAlways>
+		<minDistanceToAffect>1.9</minDistanceToAffect>
+		<drawOffscreen>true</drawOffscreen>
+		<lifeTimeDuration>50</lifeTimeDuration>
+		<widthScaleFactor>0.10</widthScaleFactor>
+		<heightScaleFactor>1</heightScaleFactor>
+		<startingPositionOffset>(0,0,-1)</startingPositionOffset>
+		<totalSizeScale>0.8</totalSizeScale>
+		<tickFrameRate>2</tickFrameRate>
+		<finalTickFrameRate>2</finalTickFrameRate>
+		<tickDamageRate>5</tickDamageRate>
+		<dealsDamageOnce>true</dealsDamageOnce>
+		<disableVanillaDamageMethod>true</disableVanillaDamageMethod>
+		<stopWhenHit>false</stopWhenHit>
+		<stopWhenHitAt>
+			<li>CollapsedRocks</li>
+			<li>MineableSteel</li>
+			<li>MineableSilver</li>
+			<li>MineableGold</li>
+			<li>MineableUranium</li>
+			<li>MineablePlasteel</li>
+			<li>MineableJade</li>
+			<li>MineableComponentsIndustrial</li>
+			<li>RaisedRocks</li>
+			<li>Sandstone</li>
+			<li>SmoothedSandstone</li>
+			<li>Granite</li>
+			<li>SmoothedGranite</li>
+			<li>Limestone</li>
+			<li>SmoothedLimestone</li>
+			<li>Slate</li>
+			<li>SmoothedSlate</li>
+			<li>Marble</li>
+			<li>SmoothedMarble</li>
+		</stopWhenHitAt>
+	</VEF.Weapons.ExpandableProjectileDef>
+			<!-- GAUSS MAGNUM -->
+			<VEF.Weapons.ExpandableProjectileDef ParentName="BaseBullet">
+		<defName>VWE_Bullet_GaussMagnum</defName>
+		<label>gauss magnum sabot</label>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>14</damageAmountBase>
+			<armorPenetrationBase>0.50</armorPenetrationBase>
+			<stoppingPower>1</stoppingPower>
+			<speed>150</speed>
+		</projectile>
+		<thingClass>VEF.Weapons.GaussProjectile</thingClass>
+		<graphicData>
+			<texPath>Projectiles/Proj_CoilgunFadeIn</texPath>
+			<texPathFadeOut>Projectiles/Proj_CoilgunFadeOut</texPathFadeOut>
+		</graphicData>
+		<reachMaxRangeAlways>true</reachMaxRangeAlways>
+		<drawOffscreen>true</drawOffscreen>
+		<lifeTimeDuration>50</lifeTimeDuration>
+		<minDistanceToAffect>1.9</minDistanceToAffect>
+		<widthScaleFactor>0.10</widthScaleFactor>
+		<heightScaleFactor>1</heightScaleFactor>
+		<startingPositionOffset>(0,0,-1)</startingPositionOffset>
+		<totalSizeScale>0.8</totalSizeScale>
+		<tickFrameRate>2</tickFrameRate>
+		<finalTickFrameRate>2</finalTickFrameRate>
+		<tickDamageRate>5</tickDamageRate>
+		<dealsDamageOnce>true</dealsDamageOnce>
+		<disableVanillaDamageMethod>true</disableVanillaDamageMethod>
+		<stopWhenHit>false</stopWhenHit>
+		<stopWhenHitAt>
+			<li>MineableSteel</li>
+			<li>CollapsedRocks</li>
+			<li>MineableSilver</li>
+			<li>MineableGold</li>
+			<li>MineableUranium</li>
+			<li>MineablePlasteel</li>
+			<li>MineableJade</li>
+			<li>MineableComponentsIndustrial</li>
+			<li>RaisedRocks</li>
+			<li>Sandstone</li>
+			<li>SmoothedSandstone</li>
+			<li>Granite</li>
+			<li>SmoothedGranite</li>
+			<li>Limestone</li>
+			<li>SmoothedLimestone</li>
+			<li>Slate</li>
+			<li>SmoothedSlate</li>
+			<li>Marble</li>
+			<li>SmoothedMarble</li>
+		</stopWhenHitAt>
+	</VEF.Weapons.ExpandableProjectileDef>
+			<!-- GAUSS LANCE -->
+			<VEF.Weapons.ExpandableProjectileDef ParentName="BaseBullet">
+		<defName>VWE_Bullet_GaussLance</defName>
+		<label>gauss lance sabot</label>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>40</damageAmountBase>
+			<armorPenetrationBase>0.70</armorPenetrationBase>
+			<stoppingPower>1.5</stoppingPower>
+			<speed>150</speed>
+		</projectile>
+		<thingClass>VEF.Weapons.GaussProjectile</thingClass>
+		<graphicData>
+			<texPath>Projectiles/Proj_CoilgunFadeIn</texPath>
+			<texPathFadeOut>Projectiles/Proj_CoilgunFadeOut</texPathFadeOut>
+		</graphicData>
+		<reachMaxRangeAlways>true</reachMaxRangeAlways>
+		<drawOffscreen>true</drawOffscreen>
+		<lifeTimeDuration>50</lifeTimeDuration>
+		<minDistanceToAffect>1.9</minDistanceToAffect>
+		<widthScaleFactor>0.10</widthScaleFactor>
+		<heightScaleFactor>1</heightScaleFactor>
+		<startingPositionOffset>(0,0,-1)</startingPositionOffset>
+		<totalSizeScale>0.8</totalSizeScale>
+		<tickFrameRate>2</tickFrameRate>
+		<finalTickFrameRate>2</finalTickFrameRate>
+		<tickDamageRate>5</tickDamageRate>
+		<disableVanillaDamageMethod>true</disableVanillaDamageMethod>
+		<dealsDamageOnce>true</dealsDamageOnce>
+		<stopWhenHit>false</stopWhenHit>
+		<stopWhenHitAt>
+			<li>MineableSteel</li>
+			<li>CollapsedRocks</li>
+			<li>MineableSilver</li>
+			<li>MineableGold</li>
+			<li>MineableUranium</li>
+			<li>MineablePlasteel</li>
+			<li>MineableJade</li>
+			<li>MineableComponentsIndustrial</li>
+			<li>RaisedRocks</li>
+			<li>Sandstone</li>
+			<li>SmoothedSandstone</li>
+			<li>Granite</li>
+			<li>SmoothedGranite</li>
+			<li>Limestone</li>
+			<li>SmoothedLimestone</li>
+			<li>Slate</li>
+			<li>SmoothedSlate</li>
+			<li>Marble</li>
+			<li>SmoothedMarble</li>
+		</stopWhenHitAt>
+	</VEF.Weapons.ExpandableProjectileDef>
+
+	<!-- VWE-FRONTIER -->
+		<!-- HANDHELD GATLING GIN BULLET -->
+		<ThingDef ParentName="BaseBullet">
+		<defName>VWEFT_Bullet_HandheldGatlingGun</defName>
+		<label>handheld gatling gun bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>7</damageAmountBase>
+			<speed>70</speed>
+			<extraDamages>
+				<li>
+					<def>Bullet</def>
+					<amount>7</amount>
+					<chance>0.1</chance>
+				</li>
+			</extraDamages>
+		</projectile>
+	</ThingDef>
+		<!-- UNSTABLE LASER REVOLVER SHOT -->
+		<ThingDef ParentName="BaseBullet">
+      <defName>VWEFT_Bullet_SalvagedLaserRevolver</defName>
+      <label>unstable laser revolver shot</label>
+      <graphicData>
+         <texPath>Things/Projectile/Shot_SalvagedLaserPistol</texPath>
+         <graphicClass>Graphic_Single</graphicClass>
+      </graphicData>
+      <projectile>
+         <damageDef>Burn</damageDef>
+         <damageAmountBase>16</damageAmountBase>
+         <armorPenetrationBase>0.60</armorPenetrationBase>
+         <stoppingPower>0.5</stoppingPower>
+         <speed>110</speed>
+         <extraDamages>
+            <li>
+               <def>Burn</def>
+               <amount>16</amount>
+               <chance>0.1</chance>
+            </li>
+         </extraDamages>
+      </projectile>
+   </ThingDef>
+		<!-- UNSTABLE PRECISE LASER SHOT -->
+		<ThingDef ParentName="VWEL_Bullet_LaserGeneric" Class="VEF.Weapons.LaserBeamDef">
+      <defName>VWEFT_Bullet_SalvagedLaserHuntingRifle</defName>
+      <label>unstable precise laser shot</label>
+      <description>An unstable long range laser beam.</description>
+      <textures>
+         <li>Things/Projectile/Shot_SalvagedLaserSniperRifle</li>
+      </textures>
+      <seam>0.1</seam>
+      <causefireChance>0.2</causefireChance>
+      <beamWidth>1.5</beamWidth>
+      <lifetime>120</lifetime>
+      <projectile>
+         <damageDef>Burn</damageDef>
+         <damageAmountBase>30</damageAmountBase>
+         <armorPenetrationBase>1</armorPenetrationBase>
+         <stoppingPower>3</stoppingPower>
+         <extraDamages>
+            <li>
+               <def>Burn</def>
+               <amount>30</amount>
+               <chance>0.1</chance>
+            </li>
+         </extraDamages>
+      </projectile>
+   </ThingDef>
+		<!-- UNSTABLE LASER SHOT -->
+		<ThingDef ParentName="BaseBullet">
+      <defName>VWEFT_Bullet_SalvagedLaserRepeater</defName>
+      <label>unstable laser shot</label>
+      <graphicData>
+         <texPath>Things/Projectile/Shot_SalvagedLaserPistol</texPath>
+         <graphicClass>Graphic_Single</graphicClass>
+      </graphicData>
+      <projectile>
+         <damageDef>Burn</damageDef>
+         <damageAmountBase>12</damageAmountBase>
+         <armorPenetrationBase>0.60</armorPenetrationBase>
+         <stoppingPower>0.5</stoppingPower>
+         <speed>85</speed>
+         <extraDamages>
+            <li>
+               <def>Burn</def>
+               <amount>12</amount>
+               <chance>0.1</chance>
+            </li>
+         </extraDamages>
+      </projectile>
+   </ThingDef>
+		<!-- SHOTGUN BLAST -->
+		<ThingDef ParentName="BaseBullet">
+      <defName>VWEFT_Bullet_LeverActionShotgun</defName>
+      <label>shotgun blast</label>
+      <graphicData>
+         <texPath>Things/Projectile/Bullet_Shotgun</texPath>
+         <graphicClass>Graphic_Single</graphicClass>
+      </graphicData>
+      <projectile>
+         <damageDef>Bullet</damageDef>
+         <damageAmountBase>16</damageAmountBase>
+         <stoppingPower>3.2</stoppingPower>
+         <armorPenetrationBase>0.16</armorPenetrationBase>
+         <speed>55</speed>
+         <extraDamages>
+            <li>
+               <def>Bullet</def>
+               <amount>16</amount>
+               <chance>0.1</chance>
+            </li>
+         </extraDamages>
+      </projectile>
+   </ThingDef>
+		<!-- DERRINGER BULLET -->
+		<ThingDef ParentName="BaseBullet">
+      <defName>VWEFT_Bullet_Derringer</defName>
+      <label>derringer bullet</label>
+      <graphicData>
+         <texPath>Things/Projectile/Bullet_Small</texPath>
+         <graphicClass>Graphic_Single</graphicClass>
+      </graphicData>
+      <projectile>
+         <damageDef>Bullet</damageDef>
+         <damageAmountBase>10</damageAmountBase>
+         <stoppingPower>1</stoppingPower>
+         <speed>55</speed>
+         <extraDamages>
+            <li>
+               <def>Bullet</def>
+               <amount>10</amount>
+               <chance>0.1</chance>
+            </li>
+         </extraDamages>
+      </projectile>
+   </ThingDef>
+		<!-- GAUSS REPEATER SHOT -->
+		<VEF.Weapons.ExpandableProjectileDef ParentName="BaseBullet">
+		<defName>VWEFT_Bullet_GaussRepeater</defName>
+		<label>gauss repeater sabot</label>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>14</damageAmountBase>
+			<armorPenetrationBase>0.50</armorPenetrationBase>
+			<stoppingPower>1</stoppingPower>
+			<speed>150</speed>
+          <extraDamages>
+       <li>
+         <def>Bullet</def>
+         <amount>14</amount>
+         <chance>0.1</chance>
+       </li>
+          </extraDamages>
+		</projectile>
+		<thingClass>VEF.Weapons.GaussProjectile</thingClass>
+		<graphicData>
+			<texPath>Projectiles/Proj_CoilgunFadeIn</texPath>
+			<texPathFadeOut>Projectiles/Proj_CoilgunFadeOut</texPathFadeOut>
+		</graphicData>
+		<reachMaxRangeAlways>true</reachMaxRangeAlways>
+		<minDistanceToAffect>1.9</minDistanceToAffect>
+		<drawOffscreen>true</drawOffscreen>
+		<lifeTimeDuration>50</lifeTimeDuration>
+		<widthScaleFactor>0.10</widthScaleFactor>
+		<heightScaleFactor>1</heightScaleFactor>
+		<startingPositionOffset>(0,0,-1)</startingPositionOffset>
+		<totalSizeScale>0.8</totalSizeScale>
+		<tickFrameRate>2</tickFrameRate>
+		<finalTickFrameRate>2</finalTickFrameRate>
+		<tickDamageRate>5</tickDamageRate>
+		<dealsDamageOnce>true</dealsDamageOnce>
+		<stopWhenHit>false</stopWhenHit>
+		<stopWhenHitAt>
+			<li>MineableSteel</li>
+			<li>CollapsedRocks</li>
+			<li>MineableSilver</li>
+			<li>MineableGold</li>
+			<li>MineableUranium</li>
+			<li>MineablePlasteel</li>
+			<li>MineableJade</li>
+			<li>MineableComponentsIndustrial</li>
+			<li>RaisedRocks</li>
+			<li>Sandstone</li>
+			<li>SmoothedSandstone</li>
+			<li>Granite</li>
+			<li>SmoothedGranite</li>
+			<li>Limestone</li>
+			<li>SmoothedLimestone</li>
+			<li>Slate</li>
+			<li>SmoothedSlate</li>
+			<li>Marble</li>
+			<li>SmoothedMarble</li>
+		</stopWhenHitAt>
+	</VEF.Weapons.ExpandableProjectileDef>
+		<!-- GAUSS REVOLVER SABOT -->
+		<VEF.Weapons.ExpandableProjectileDef ParentName="BaseBullet">
+		<defName>VWEFT_Bullet_GaussRevolver</defName>
+		<label>gauss revolver sabot</label>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>16</damageAmountBase>
+			<armorPenetrationBase>0.50</armorPenetrationBase>
+			<stoppingPower>1</stoppingPower>
+			<speed>150</speed>
+          <extraDamages>
+       <li>
+         <def>Bullet</def>
+         <amount>16</amount>
+         <chance>0.1</chance>
+       </li>
+          </extraDamages>
+		</projectile>
+		<thingClass>VEF.Weapons.GaussProjectile</thingClass>
+		<graphicData>
+			<texPath>Projectiles/Proj_CoilgunFadeIn</texPath>
+			<texPathFadeOut>Projectiles/Proj_CoilgunFadeOut</texPathFadeOut>
+		</graphicData>
+		<reachMaxRangeAlways>true</reachMaxRangeAlways>
+		<drawOffscreen>true</drawOffscreen>
+		<lifeTimeDuration>50</lifeTimeDuration>
+		<minDistanceToAffect>1.9</minDistanceToAffect>
+		<widthScaleFactor>0.10</widthScaleFactor>
+		<heightScaleFactor>1</heightScaleFactor>
+		<startingPositionOffset>(0,0,-1)</startingPositionOffset>
+		<totalSizeScale>0.8</totalSizeScale>
+		<tickFrameRate>2</tickFrameRate>
+		<finalTickFrameRate>2</finalTickFrameRate>
+		<tickDamageRate>5</tickDamageRate>
+		<dealsDamageOnce>true</dealsDamageOnce>
+		<stopWhenHit>false</stopWhenHit>
+		<stopWhenHitAt>
+			<li>MineableSteel</li>
+			<li>CollapsedRocks</li>
+			<li>MineableSilver</li>
+			<li>MineableGold</li>
+			<li>MineableUranium</li>
+			<li>MineablePlasteel</li>
+			<li>MineableJade</li>
+			<li>MineableComponentsIndustrial</li>
+			<li>RaisedRocks</li>
+			<li>Sandstone</li>
+			<li>SmoothedSandstone</li>
+			<li>Granite</li>
+			<li>SmoothedGranite</li>
+			<li>Limestone</li>
+			<li>SmoothedLimestone</li>
+			<li>Slate</li>
+			<li>SmoothedSlate</li>
+			<li>Marble</li>
+			<li>SmoothedMarble</li>
+		</stopWhenHitAt>
+	</VEF.Weapons.ExpandableProjectileDef>
+		<!-- HEAVY REVOLVER BULLET -->
+		<ThingDef ParentName="BaseBullet">
+    <defName>VWEFT_Bullet_HeavyRevolver</defName>
+    <label>heavy revolver bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+	  <drawSize>1.2</drawSize>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>17</damageAmountBase>
+      <stoppingPower>1</stoppingPower>
+      <speed>55</speed>
+      <extraDamages>
+       <li>
+         <def>Bullet</def>
+         <amount>17</amount>
+         <chance>0.1</chance>
+       </li>
+       </extraDamages>
+    </projectile>
+  </ThingDef>
+		<!-- VOLCANIC PISTOL BULLET -->
+		<ThingDef ParentName="BaseBullet">
+    <defName>VWEFT_Bullet_VolcanicPistol</defName>
+    <label>volcanic pistol bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>10</damageAmountBase>
+      <speed>55</speed>
+      <extraDamages>
+       <li>
+         <def>Bullet</def>
+         <amount>10</amount>
+         <chance>0.1</chance>
+       </li>
+       </extraDamages>
+    </projectile>
+  </ThingDef>
+		<!-- FRONTIER PISTOL BULLET -->
+		<ThingDef ParentName="BaseBullet">
+    <defName>VWEFT_Bullet_FrontierPistol</defName>
+    <label>frontier pistol bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>8</damageAmountBase>
+      <speed>55</speed>
+      <extraDamages>
+       <li>
+         <def>Bullet</def>
+         <amount>8</amount>
+         <chance>0.1</chance>
+       </li>
+       </extraDamages>
+    </projectile>
+  </ThingDef>
+		<!-- ROLLING BLOCK RIFLE BULLET -->
+		<ThingDef ParentName="BaseBullet">
+    <defName>VWEFT_Bullet_RollingBlockRifle</defName>
+    <label>rolling block rifle bullet</label>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>21</damageAmountBase>
+      <stoppingPower>1.5</stoppingPower>
+      <speed>60</speed>
+      <extraDamages>
+       <li>
+         <def>Bullet</def>
+         <amount>21</amount>
+         <chance>0.1</chance>
+       </li>
+       </extraDamages>
+    </projectile>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_big</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+  </ThingDef>
+		<!-- SHOTGUN BLAST -->
+		<ThingDef ParentName="BaseBullet">
+    <defName>VWEFT_Bullet_RepeatingShotgun</defName>
+    <label>shotgun blast</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Shotgun</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>20</damageAmountBase>
+      <stoppingPower>3.2</stoppingPower>
+      <armorPenetrationBase>0.16</armorPenetrationBase>
+      <speed>55</speed>
+      <extraDamages>
+       <li>
+         <def>Bullet</def>
+         <amount>20</amount>
+         <chance>0.1</chance>
+       </li>
+       </extraDamages>
+    </projectile>
+  </ThingDef>
+	<!-- VWE-TRIBAL -->
+		<!-- SLING ROCK -->
+		<ThingDef ParentName="BaseProjectileNeolithic">
+    <defName>VWE_SlingRock</defName>
+    <label>sling rock</label>
+    <graphicData>
+      <texPath>Things/Projectile/SlingRockThrown</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Blunt</damageDef>
+      <damageAmountBase>8</damageAmountBase>
+      <speed>44</speed>
+    </projectile>
+  </ThingDef>
+		<!-- SHARD -->
+		<ThingDef ParentName="BaseProjectileNeolithic">
+    <defName>VWE_FlyingShard</defName>
+    <label>shard</label>
+    <graphicData>
+      <texPath>Things/Projectile/ShardThrown</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <flyOverhead>false</flyOverhead>
+      <damageDef>RangedStab</damageDef>
+      <damageAmountBase>10</damageAmountBase>
+      <speed>20</speed>
+    </projectile>
+  </ThingDef>
+		<!-- FIRE BOMB -->
+		<ThingDef ParentName="BaseIncendiaryProjectile">
+    <defName>VWE_Proj_FireBomb</defName>
+    <label>fire bomb</label>
+    <graphicData>
+      <texPath>Things/Projectile/FireBombThrown</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <explosionRadius>1.9</explosionRadius>
+      <damageDef>Flame</damageDef>
+      <!-- Use default damage from explosion def -->
+      <preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+      <ai_IsIncendiary>true</ai_IsIncendiary>
+      <shadowSize>0.7</shadowSize>
+    </projectile>
+  </ThingDef>
+	<!-- SHIV -->
+	<ThingDef ParentName="BaseMeleeWeapon_Sharp">
+    <defName>VWE_MeleeWeapon_Shiv</defName>
+    <label>shiv</label>
+    <techLevel>Neolithic</techLevel>
+    <description>One of mankind's oldest manufactured objects. A shiv is a short but sharp piece of rock or metal with a small handle.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/TribalShiv</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <uiIconScale>1.4</uiIconScale>
+    <weaponTags>
+      <li>NeolithicMeleeBasic</li>
+    </weaponTags>
+    <weaponClasses>
+      <li>Neolithic</li>
+    </weaponClasses>
+    <costStuffCount>20</costStuffCount>
+    <statBases>
+      <WorkToMake>900</WorkToMake>
+      <Mass>0.5</Mass>
+    </statBases>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Stony</li>
+      <li>Woody</li>
+    </stuffCategories>
+    <burnableByRecipe>false</burnableByRecipe>
+    <tools>
+      <li>
+        <label>blade</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>8</power>
+        <cooldownTime>1</cooldownTime>
+      </li>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>8</power>
+        <cooldownTime>1.5</cooldownTime>
+      </li>
+    </tools>
+    <recipeMaker>
+      <recipeUsers>
+        <li>CraftingSpot</li>
+      </recipeUsers>
+    </recipeMaker>
+  </ThingDef>
+	<!-- TRIBAL AXE -->
+	<ThingDef ParentName="BaseMeleeWeapon_Sharp">
+    <defName>VWE_MeleeWeapon_TribalAxe</defName>
+    <label>tribal axe</label>
+    <description>A sharp piece of rock mounted on a sturdy piece of wood. Often used as a tool, it has been recorded that tribal axes also served as a great weapon due to their small size and ability to inflict deep wounds.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/TribalAxe</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <uiIconScale>1.2</uiIconScale>
+    <techLevel>Neolithic</techLevel>
+    <costStuffCount>50</costStuffCount>
+    <weaponTags>
+      <li>NeolithicMeleeBasic</li>
+    </weaponTags>
+    <weaponClasses>
+      <li>Neolithic</li>
+    </weaponClasses>
+    <statBases>
+      <WorkToMake>1600</WorkToMake>
+      <Mass>0.85</Mass>
+    </statBases>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+    <stuffCategories>
+      <li>Stony</li>
+      <li>Woody</li>
+    </stuffCategories>
+    <tools>
+      <li>
+        <label>handle</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+    <recipeMaker>
+	  <recipeUsers>
+        <li>CraftingSpot</li>
+      </recipeUsers>
+      <skillRequirements>
+        <Crafting>3</Crafting>
+      </skillRequirements>
+    </recipeMaker>
+  </ThingDef>
+	<!-- LIGHT CLUB -->
+	<ThingDef ParentName="BaseMeleeWeapon_Blunt">
+    <defName>VWE_MeleeWeapon_LightClub</defName>
+    <label>light club</label>
+    <description>A small, one handed club. Whilst it's fast to swing, it is not going to cause tremendous damage due to its low weight and short length.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/LightClub</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <uiIconScale>1.1</uiIconScale>
+    <techLevel>Neolithic</techLevel>
+    <weaponTags>
+      <li>NeolithicMeleeBasic</li>
+    </weaponTags>
+    <weaponClasses>
+      <li>Neolithic</li>
+    </weaponClasses>
+    <costStuffCount>25</costStuffCount>
+    <statBases>
+      <WorkToMake>900</WorkToMake>
+      <Mass>1</Mass>
+    </statBases>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <recipeMaker>
+      <recipeUsers>
+        <li>CraftingSpot</li>
+      </recipeUsers>
+    </recipeMaker>
+    <tools>
+      <li>
+        <label>handle</label>
+        <capacities>
+          <li>Poke</li>
+        </capacities>
+        <power>6</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+      <li>
+        <label>head</label>
+        <labelUsedInLogging>false</labelUsedInLogging>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+	<!-- HEAVY CLUB -->
+	<ThingDef ParentName="BaseMeleeWeapon_Blunt">
+    <defName>VWE_MeleeWeapon_HeavyClub</defName>
+    <label>heavy club</label>
+    <description>A large, two handed, shaped stick for bashing enemies. Extreme weight at the end of this tool allows user to crush flesh and bones alike, leaving enemies maimed, paralysed and often dead.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/HeavyClub</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <uiIconScale>1.1</uiIconScale>
+    <techLevel>Neolithic</techLevel>
+    <weaponTags>
+      <li>NeolithicMeleeAdvanced</li>
+    </weaponTags>
+    <weaponClasses>
+      <li>Neolithic</li>
+    </weaponClasses>
+    <costStuffCount>70</costStuffCount>
+    <statBases>
+      <WorkToMake>1800</WorkToMake>
+      <Mass>8</Mass>
+    </statBases>
+    <equippedAngleOffset>0</equippedAngleOffset>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <recipeMaker>
+      <recipeUsers>
+        <li>CraftingSpot</li>
+      </recipeUsers>
+    </recipeMaker>
+    <tools>
+      <li>
+        <label>handle</label>
+        <capacities>
+          <li>Poke</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+      <li>
+        <label>head</label>
+        <labelUsedInLogging>false</labelUsedInLogging>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>23</power>
+        <cooldownTime>2.6</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+	<!-- VWE-QUICKDRAW -->
+		<!-- BULLPUP DMR BULLET -->
+		<ThingDef ParentName="BaseBullet">
+    <defName>Bullet_BullpupDMR</defName>
+    <label>bullpup DMR bullet</label>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>16</damageAmountBase>
+      <stoppingPower>1.5</stoppingPower>
+      <speed>80</speed>
+    </projectile>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_big</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+  </ThingDef>
+	<!-- VWE-MAKESHIFT -->
+		<!-- MAKESHIFT PISTOL BULLET -->
+		<ThingDef ParentName="BaseBullet">
+    <defName>VWE_Bullet_MakeshiftPistol</defName>
+    <label>makeshift pistol bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>8</damageAmountBase>
+      <speed>55</speed>
+    </projectile>
+  </ThingDef>
+		<!-- MAKESHIFT SMG BULLET -->
+		<ThingDef ParentName="BaseBullet">
+    <defName>VWE_Bullet_MakeshiftSMG</defName>
+    <label>makeshift SMG bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>6</damageAmountBase>
+      <speed>55</speed>
+    </projectile>
+  </ThingDef>
+		<!-- MAKESHIFT RIFLE BULLET -->
+		<ThingDef ParentName="BaseBullet">
+    <defName>VWE_Bullet_MakeshiftRifle</defName>
+    <label>makeshift rifle bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>10</damageAmountBase>
+      <speed>70</speed>
+    </projectile>
+  </ThingDef>
+		<!-- MAKESHIFT SHOTGUN PELLET -->
+		<ThingDef ParentName="BaseBullet">
+    <defName>VWE_Bullet_MakeshiftShotgun</defName>
+    <label>makeshift shotgun pellet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>4</damageAmountBase>
+      <stoppingPower>3</stoppingPower>
+      <armorPenetrationBase>0.14</armorPenetrationBase>
+      <speed>55</speed>
+    </projectile>
+  </ThingDef>
+		<!-- MAKESHIFT LMG BULLET -->
+		<ThingDef ParentName="BaseBullet">
+    <defName>VWE_Bullet_MakeshiftLMG</defName>
+    <label>makeshift LMG bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>9</damageAmountBase>
+      <stoppingPower>1</stoppingPower>
+      <speed>46</speed>
+    </projectile>
+  </ThingDef>
+	<!-- VWE-LASERS -->
+		<!-- UNSTABLE PRECISE LASER SHOT -->
+		<ThingDef ParentName="VWEL_Bullet_LaserGeneric" Class="VEF.Weapons.LaserBeamDef">
+		<defName>VWEL_Bullet_SalvagedLaserSniperRifle</defName>
+		<label>unstable precise laser shot</label>
+		<description>An unstable long range laser beam.</description>
+		<textures>
+			<li>Things/Projectile/Shot_SalvagedLaserSniperRifle</li>
+		</textures>
+		<seam>0.1</seam>
+		<causefireChance>0.2</causefireChance>
+		<beamWidth>1.5</beamWidth>
+		<lifetime>120</lifetime>
+		<projectile>
+			<damageDef>Burn</damageDef>
+			<damageAmountBase>39</damageAmountBase>
+			<armorPenetrationBase>1</armorPenetrationBase>
+			<stoppingPower>3</stoppingPower>
+		</projectile>
+	</ThingDef>
+		<!-- UNSTABLE LASER SCATTER SHOT -->
+		<ThingDef ParentName="VWEL_Bullet_LaserGeneric" Class="VEF.Weapons.LaserBeamDef">
+		<defName>VWEL_Bullet_SalvagedLaserShotgun</defName>
+		<label>unstable laser scatter shot</label>
+		<description>Am unstable, broken down laser beam.</description>
+		<textures>
+			<li>Things/Projectile/Shot_SalvagedLaserShotgun</li>
+		</textures>
+		<seam>0</seam>
+		<causefireChance>0</causefireChance>
+		<beamWidth>1.3</beamWidth>
+		<lifetime>60</lifetime>
+		<projectile>
+			<damageDef>Burn</damageDef>
+			<damageAmountBase>7</damageAmountBase>
+			<armorPenetrationBase>0.56</armorPenetrationBase>
+			<stoppingPower>2</stoppingPower>
+		</projectile>
+	</ThingDef>
+		<!-- UNSTABLE LASER SHOT -->
+		<ThingDef ParentName="VWEL_Bullet_LaserGeneric" Class="VEF.Weapons.LaserBeamDef">
+		<defName>VWEL_Bullet_SalvagedLaserRifle</defName>
+		<label>unstable laser shot</label>
+		<description>An unstable laser beam.</description>
+		<textures>
+			<li>Things/Projectile/Shot_SalvagedLaserRifle</li>
+		</textures>
+		<seam>0</seam>
+		<causefireChance>0.15</causefireChance>
+		<projectile>
+			<damageDef>Burn</damageDef>
+			<damageAmountBase>13</damageAmountBase>
+			<armorPenetrationBase>0.56</armorPenetrationBase>
+			<stoppingPower>1.5</stoppingPower>
+		</projectile>
+	</ThingDef>
+		<!-- UNSTABLE LASER PISTOL SHOT -->
+		<ThingDef ParentName="BaseBullet">
+		<defName>VWEL_Bullet_SalvagedLaserPistol</defName>
+		<label>unstable laser pistol shot</label>
+		<graphicData>
+			<texPath>Things/Projectile/Shot_SalvagedLaserPistol</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Burn</damageDef>
+			<damageAmountBase>12</damageAmountBase>
+			<armorPenetrationBase>0.60</armorPenetrationBase>
+			<stoppingPower>0.5</stoppingPower>
+			<speed>85</speed>
+		</projectile>
+	</ThingDef>
+		<!-- TESLA SHOT -->
+		<ThingDef ParentName="VWEL_Bullet_LaserGeneric" Class="VEF.Weapons.LaserBeamDef">
+		<defName>VWEL_Bullet_TeslaGun</defName>
+		<label>tesla shot</label>
+		<description>A lightning bolt emitted by a Tesla device.</description>
+		<graphicData>
+			<graphicClass>Graphic_Flicker</graphicClass>
+			<texPath>Things/Projectile/Shot_TeslaGun</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>1.5</drawSize>
+		</graphicData>
+		<textures>
+			<li>Things/Projectile/Shot_TeslaGun</li>
+		</textures>
+		<seam>0</seam>
+		<flickerFrameTime>5</flickerFrameTime>
+		<causefireChance>0.05</causefireChance>
+		<beamWidth>4</beamWidth>
+		<lifetime>120</lifetime>
+		<projectile>
+			<damageDef>EMP</damageDef>
+			<damageAmountBase>15</damageAmountBase>
+			<armorPenetrationBase>0.45</armorPenetrationBase>
+			<stoppingPower>1</stoppingPower>
+		</projectile>
+	</ThingDef>
+		<!-- LASER MINIGUN SHOT -->
+		<ThingDef ParentName="VWEL_Bullet_LaserGeneric" Class="VEF.Weapons.LaserBeamDef">
+		<defName>VWEL_Bullet_LaserMinigun</defName>
+		<label>laser minigun shot</label>
+		<description>A narrow, focused laser beam from a multibarrel weapon.</description>
+		<textures>
+			<li>Things/Projectile/Shot_LaserMinigun</li>
+		</textures>
+		<seam>0</seam>
+		<causefireChance>0</causefireChance>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>10</damageAmountBase>
+			<armorPenetrationBase>0.32</armorPenetrationBase>
+			<stoppingPower>1</stoppingPower>
+		</projectile>
+	</ThingDef>
+		<!-- PRECISE LASER SHOT -->
+		<ThingDef ParentName="VWEL_Bullet_LaserGeneric" Class="VEF.Weapons.LaserBeamDef">
+		<defName>VWEL_Bullet_LaserSniperRifle</defName>
+		<label>precise laser shot</label>
+		<description>A focused, long range laser beam.</description>
+		<textures>
+			<li>Things/Projectile/Shot_LaserSniperRifle</li>
+		</textures>
+		<seam>0.1</seam>
+		<causefireChance>0.2</causefireChance>
+		<beamWidth>1.5</beamWidth>
+		<lifetime>120</lifetime>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>48</damageAmountBase>
+			<armorPenetrationBase>1</armorPenetrationBase>
+			<stoppingPower>3</stoppingPower>
+		</projectile>
+	</ThingDef>
+		<!-- LASER SCATTER SHOT -->
+		<ThingDef ParentName="VWEL_Bullet_LaserGeneric" Class="VEF.Weapons.LaserBeamDef">
+		<defName>VWEL_Bullet_LaserShotgun</defName>
+		<label>laser scatter shot</label>
+		<description>A broken down laser beam.</description>
+		<textures>
+			<li>Things/Projectile/Shot_LaserShotgun</li>
+		</textures>
+		<seam>0</seam>
+		<causefireChance>0</causefireChance>
+		<beamWidth>1.3</beamWidth>
+		<lifetime>60</lifetime>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>11</damageAmountBase>
+			<armorPenetrationBase>0.56</armorPenetrationBase>
+			<stoppingPower>2</stoppingPower>
+		</projectile>
+	</ThingDef>
+		<!-- LASER SHOT -->
+		<ThingDef ParentName="VWEL_Bullet_LaserGeneric" Class="VEF.Weapons.LaserBeamDef">
+		<defName>VWEL_Bullet_LaserRifle</defName>
+		<label>laser shot</label>
+		<description>A focused laser beam.</description>
+		<textures>
+			<li>Things/Projectile/Shot_LaserRifle</li>
+		</textures>
+		<seam>0</seam>
+		<causefireChance>0.1</causefireChance>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>12</damageAmountBase>
+			<armorPenetrationBase>0.60</armorPenetrationBase>
+			<stoppingPower>1.5</stoppingPower>
+		</projectile>
+	</ThingDef>
+		<!-- LASER PISTOL SHOT -->
+		<ThingDef ParentName="BaseBullet">
+		<defName>VWEL_Bullet_LaserPistol</defName>
+		<label>laser pistol shot</label>
+		<graphicData>
+			<texPath>Things/Projectile/Shot_LaserPistol</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>13</damageAmountBase>
+			<armorPenetrationBase>0.66</armorPenetrationBase>
+			<stoppingPower>0.5</stoppingPower>
+			<speed>85</speed>
+		</projectile>
+	</ThingDef>
+	<!-- VWE-HEAVY WEAPONS -->
+		<!-- HEAVY FLAMER SHOT -->
+		<VEF.Weapons.ExpandableProjectileDef ParentName="BaseBullet">
+		<defName>VWE_Bullet_HeavyFlamer</defName>
+		<label>heavy flamer shot</label>
+		<thingClass>VEF.Weapons.FlamethrowProjectile</thingClass>
+		<graphicData>
+			<texPath>Things/Projectile/Proj_HeavyFlamer</texPath>
+			<texPathFadeOut>Things/Projectile/Proj_HeavyFlamerFadeOut</texPathFadeOut>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<projectile>
+			<damageDef>Flame</damageDef>
+			<speed>45</speed>
+			<damageAmountBase>12</damageAmountBase>
+		</projectile>
+
+		<drawOffscreen>true</drawOffscreen>
+		<lifeTimeDuration>50</lifeTimeDuration>
+		<widthScaleFactor>0.85</widthScaleFactor>
+		<heightScaleFactor>1</heightScaleFactor>
+		<startingPositionOffset>(0, 0, -1)</startingPositionOffset>
+		<totalSizeScale>1.15</totalSizeScale>
+		<tickFrameRate>2</tickFrameRate>
+		<finalTickFrameRate>5</finalTickFrameRate>
+		<tickDamageRate>20</tickDamageRate>
+		<dealsDamageOnce>true</dealsDamageOnce>
+		<minDistanceToAffect>2</minDistanceToAffect>
+	</VEF.Weapons.ExpandableProjectileDef>
+		<!-- SWARM ROCKET -->
+		<ThingDef ParentName="BaseBullet">
+		<defName>VWE_Bullet_SwarmRocket</defName>
+		<label>swarm rocket</label>
+		<graphicData>
+			<texPath>Things/Projectile/RocketSwarm</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>12</damageAmountBase>
+			<explosionRadius>2.9</explosionRadius>
+			<speed>50</speed>
+		</projectile>
+		<comps>
+			<li Class="VEF.Weapons.CompProperties_GuidedProjectile">
+				<hitChance>1</hitChance>
+				<selectDifferentTargets>true</selectDifferentTargets>
+			</li>
+		</comps>
+	</ThingDef>
+	<!-- RIMSENAL SECURITY PACK -->
+	<!-- SENTRY SHARD -->
+	<ThingDef ParentName="BaseBullet" MayRequire="rimsenal.core">
+    <defName>Bullet_ShardSentry</defName>
+    <label>sentry shard</label>
+    <graphicData>
+      <texPath>Things/Projectile/Shard</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Shredder</damageDef>
+      <damageAmountBase>7</damageAmountBase>
+	  <armorPenetrationBase>0.35</armorPenetrationBase>
+	  <stoppingPower>0.05</stoppingPower>
+      <speed>80</speed>
+    </projectile>
+  </ThingDef>
+	<!-- MICROWAVE -->
+	<ThingDef ParentName="BaseBullet" MayRequire="rimsenal.core">
+    <defName>Bullet_WaveEmitter</defName>
+    <label>microwave</label>
+    <graphicData>
+      <texPath>Things/Projectile/Microwave</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+    <projectile>
+      <speed>80</speed>
+      <damageDef>Microwave</damageDef>
+      <damageAmountBase>1</damageAmountBase>
+      <explosionRadius>2</explosionRadius>
+    </projectile>
+  </ThingDef>
+	<!-- HMG BULLET -->
+	<ThingDef ParentName="BaseBullet" MayRequire="rimsenal.core">
+    <defName>Bullet_NestHMG</defName>
+    <label>HMG bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/GbulletBig</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <flyOverhead>false</flyOverhead>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>18</damageAmountBase>
+      <speed>70</speed>
+    </projectile>
+  </ThingDef>
+	<!-- GRENADE -->
+	<ThingDef ParentName="BaseBullet" MayRequire="rimsenal.core">
+    <defName>Bullet_NestAGS</defName>
+    <label>Grenade</label>
+    <graphicData>
+      <texPath>Things/Projectile/GShell</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+    <projectile>
+      <damageDef>Bomb</damageDef>
+      <damageAmountBase>20</damageAmountBase>
+      <speed>25</speed>
+      <explosionRadius>1.9</explosionRadius>
+    </projectile>
+  </ThingDef>
+	<!-- RECOILLESS RIFLE AMMUNITION -->
+	<ThingDef ParentName="BaseBullet" MayRequire="rimsenal.core">
+    <defName>Bullet_NestRR</defName>
+    <label>recoilless rifle ammunition</label>
+    <graphicData>
+      <texPath>Things/Projectile/RRA</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+    <projectile>
+      <damageDef>Bomb</damageDef>
+      <speed>55</speed>
+      <explosionRadius>3</explosionRadius>
+    </projectile>
+  </ThingDef>
+	<!-- MACHINE GUN BULLET -->
+	<ThingDef ParentName="BaseBullet" MayRequire="rimsenal.core">
+    <defName>Bullet_GreydaleMMG</defName>
+    <label>machine gun bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/GbulletBig</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <flyOverhead>false</flyOverhead>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>14</damageAmountBase>
+      <speed>75</speed>
+    </projectile>
+  </ThingDef>
+	<!-- AMR BULLET -->
+	<ThingDef ParentName="BaseBullet" MayRequire="rimsenal.core">
+    <defName>Bullet_GreydaleAMR</defName>
+    <label>AMR bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/GbulletBig</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <flyOverhead>false</flyOverhead>
+      <damageDef>Bullet</damageDef>
+      <stoppingPower>4</stoppingPower>
+      <damageAmountBase>45</damageAmountBase>
+      <speed>100</speed>
+    </projectile>
+  </ThingDef>
+	<!-- LIGHT MORTAR SHELL -->
+	<ThingDef ParentName="BaseBullet" MayRequire="rimsenal.core">
+    <defName>Bullet_GreydaleLightMortar</defName>
+    <label>light mortar shell</label>
+    <graphicData>
+      <texPath>Things/Projectile/LightMortarShell</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+    <projectile>
+      <damageDef>Bomb</damageDef>
+      <speed>41</speed>
+      <explosionRadius>1.9</explosionRadius>
+      <flyOverhead>true</flyOverhead>
+      <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+      <soundExplode>MortarBomb_Explode</soundExplode>
+      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+      <soundAmbient>MortarRound_Ambient</soundAmbient>
+      <preExplosionSpawnSingleThingDef>Filth_BlastMark</preExplosionSpawnSingleThingDef>
+    </projectile>
+  </ThingDef>
+	<!-- IMPACT SHELL -->
+	<ThingDef ParentName="BaseBullet" MayRequire="rimsenal.core">
+    <defName>Bullet_SuvTurret</defName>
+    <label>impact shell</label>
+    <graphicData>
+      <texPath>Things/Projectile/ImpactL</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Crush</damageDef>
+      <damageAmountBase>20</damageAmountBase>
+      <speed>80</speed>
+    </projectile>
+  </ThingDef>
+	<!-- SINGULARITY SPHERE -->
+	<ThingDef ParentName="BaseBullet" MayRequire="rimsenal.core">
+    <defName>Bullet_SupTurret</defName>
+    <label>singularity sphere</label>
+    <graphicData>
+      <texPath>Things/Projectile/ImpactC</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+    <projectile>
+	<flyOverhead>False</flyOverhead>
+	<damageDef>KineticImpact</damageDef>
+	<damageAmountBase>10</damageAmountBase>
+	<explosionRadius>3</explosionRadius>
+	<speed>35</speed>
+    </projectile>
+  </ThingDef>
+	<!-- BLANK BULLET -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>Bullet_FakeRifle</defName>
+    <label>blank bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Fakebullet</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>0</damageAmountBase>
+      <speed>65</speed>
+    </projectile>
+  </ThingDef>
+	<!-- ULM SHELL -->
+	<ThingDef ParentName="BaseBullet" MayRequire="rimsenal.core">
+    <defName>Bullet_RocketTurret</defName>
+    <label>ULM Shell</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_ULMBC</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+    <projectile>
+      <damageDef>Bomb</damageDef>
+      <damageAmountBase>18</damageAmountBase>
+      <speed>35</speed>
+      <explosionRadius>1.5</explosionRadius>
+    </projectile>
+  </ThingDef>
+	<!-- HE PROJECTILE -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>Bullet_Smartmine</defName>
+    <label>high-explosive projectile</label>
+    <graphicData>
+      <texPath>Things/Projectile/ShellHighExplosive</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+    <projectile>
+      <damageDef>Bomb</damageDef>
+      <speed>25</speed>
+      <explosionRadius>2.5</explosionRadius>
+      <soundExplode>MortarBomb_Explode</soundExplode>
+      <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+      <soundAmbient>MortarRound_Ambient</soundAmbient>
+    </projectile>
+  </ThingDef>
+	<!-- INCENDIARY GRENADE -->
+	<ThingDef ParentName="BaseIncendiaryProjectile">
+    <defName>Proj_GrenadeIncendiary</defName>
+    <label>incendiary grenade</label>
+    <graphicData>
+      <texPath>Things/Projectile/GrenadeIncendiary</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+  </ThingDef>
+	<!-- GUNS GALORE -->
+		<!-- CENTRAL POWERS -->
+			<!-- GRENADES -->
+				<!-- TYPE N -->
+				<ThingDef>
+		<defName>CGF1_MWP_Projectile_Handnebelbombe_TypeN</defName>
+		<label>Handnebelbombe Type N</label>
+		<category>Projectile</category>
+		<altitudeLayer>Projectile</altitudeLayer>
+		<tickerType>Normal</tickerType>
+		<useHitPoints>False</useHitPoints>
+		<neverMultiSelect>True</neverMultiSelect>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+		  <texPath>CGF1/Projectile/Handnebelbombe_TypeN</texPath>
+		  <graphicClass>Graphic_Single</graphicClass>
+		  <shaderType>Transparent</shaderType>
+		  <drawSize>0.7</drawSize>
+		</graphicData>
+		<projectile>
+		  <explosionRadius>2.4</explosionRadius>
+		  <damageDef>Smoke</damageDef>
+		  <explosionDelay>100</explosionDelay>
+		  <postExplosionGasType>BlindSmoke</postExplosionGasType>
+		  <speed>12</speed>
+		  <arcHeightFactor>2</arcHeightFactor>
+		  <shadowSize>0.4</shadowSize>
+		</projectile>
+  </ThingDef>
+				<!-- ROHR -->
+				<ThingDef>
+		<defName>CGF1_MWP_Projectile_Rohrhandgranate_Neu</defName>
+		<label>Rohrhandgranate Neu</label>
+		<category>Projectile</category>
+		<altitudeLayer>Projectile</altitudeLayer>
+		<tickerType>Normal</tickerType>
+		<useHitPoints>False</useHitPoints>
+		<neverMultiSelect>True</neverMultiSelect>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+		  <texPath>CGF1/Projectile/Rohrhandgranate_Neu</texPath>
+		  <graphicClass>Graphic_Single</graphicClass>
+		  <shaderType>Transparent</shaderType>
+		  <drawSize>0.55</drawSize>
+		</graphicData>
+		<projectile>
+		  <explosionRadius>1.9</explosionRadius>
+		  <damageDef>Bomb</damageDef>
+		  <explosionDelay>100</explosionDelay>
+		  <speed>11</speed>
+		  <arcHeightFactor>2</arcHeightFactor>
+		  <shadowSize>0.4</shadowSize>
+		</projectile>
+  </ThingDef>
+				<!-- ROHR OLD -->
+				<ThingDef>
+		<defName>CGF1_MWP_Projectile_Rohrhandgranate_Alt</defName>
+		<label>Rohrhandgranate Alt</label>
+		<category>Projectile</category>
+		<altitudeLayer>Projectile</altitudeLayer>
+		<tickerType>Normal</tickerType>
+		<useHitPoints>False</useHitPoints>
+		<neverMultiSelect>True</neverMultiSelect>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+		  <texPath>CGF1/Projectile/Rohrhandgranate_Alt</texPath>
+		  <graphicClass>Graphic_Single</graphicClass>
+		  <shaderType>Transparent</shaderType>
+		  <drawSize>0.55</drawSize>
+		</graphicData>
+		<projectile>
+		  <explosionRadius>1.9</explosionRadius>
+		  <damageDef>Bomb</damageDef>
+		  <explosionDelay>100</explosionDelay>
+		  <speed>11</speed>
+		  <arcHeightFactor>2</arcHeightFactor>
+		  <shadowSize>0.4</shadowSize>
+		</projectile>
+  </ThingDef>
+				<!-- M17 STICK -->
+				<ThingDef>
+		<defName>CGF1_MWP_Projectile_M17_Stielhandgranate</defName>
+		<label>M17 Stielhandgranate</label>
+		<category>Projectile</category>
+		<altitudeLayer>Projectile</altitudeLayer>
+		<tickerType>Normal</tickerType>
+		<useHitPoints>False</useHitPoints>
+		<neverMultiSelect>True</neverMultiSelect>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+		  <texPath>CGF1/Projectile/M17_Stielhandgranate</texPath>
+		  <graphicClass>Graphic_Single</graphicClass>
+		  <shaderType>Transparent</shaderType>
+		  <drawSize>0.5</drawSize>
+		</graphicData>
+		<projectile>
+		  <explosionRadius>1.9</explosionRadius>
+		  <damageDef>Bomb</damageDef>
+		  <explosionDelay>100</explosionDelay>
+		  <speed>11</speed>
+		  <arcHeightFactor>2</arcHeightFactor>
+		  <shadowSize>0.4</shadowSize>
+		</projectile>
+  </ThingDef>
+				<!-- M17 BALL -->
+				<ThingDef>
+		<defName>CGF1_MWP_Projectile_M17_Eierhandgranate</defName>
+		<label>M17 Eierhandgranate</label>
+		<category>Projectile</category>
+		<altitudeLayer>Projectile</altitudeLayer>
+		<tickerType>Normal</tickerType>
+		<useHitPoints>False</useHitPoints>
+		<neverMultiSelect>True</neverMultiSelect>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+		  <texPath>CGF1/Projectile/M17_Eierhandgranate</texPath>
+		  <graphicClass>Graphic_Single</graphicClass>
+		  <shaderType>Transparent</shaderType>
+		  <drawSize>0.5</drawSize>
+		</graphicData>
+		<projectile>
+		  <explosionRadius>1.9</explosionRadius>
+		  <damageDef>Bomb</damageDef>
+		  <explosionDelay>100</explosionDelay>
+		  <speed>12</speed>
+		  <arcHeightFactor>2</arcHeightFactor>
+		  <shadowSize>0.4</shadowSize>
+		</projectile>
+  </ThingDef>
+				<!-- M16 STICK -->
+				<ThingDef>
+		<defName>CGF1_MWP_Projectile_M16_Stielhandgranate</defName>
+		<label>M16 Stielhandgranate</label>
+		<category>Projectile</category>
+		<altitudeLayer>Projectile</altitudeLayer>
+		<tickerType>Normal</tickerType>
+		<useHitPoints>False</useHitPoints>
+		<neverMultiSelect>True</neverMultiSelect>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+		  <texPath>CGF1/Projectile/M16_Stielhandgranate</texPath>
+		  <graphicClass>Graphic_Single</graphicClass>
+		  <shaderType>Transparent</shaderType>
+		  <drawSize>0.5</drawSize>
+		</graphicData>
+		<projectile>
+		  <explosionRadius>1.9</explosionRadius>
+		  <damageDef>Bomb</damageDef>
+		  <explosionDelay>100</explosionDelay>
+		  <speed>11</speed>
+		  <arcHeightFactor>2</arcHeightFactor>
+		  <shadowSize>0.4</shadowSize>
+		</projectile>
+  </ThingDef>
+				<!-- M15 STICK -->
+				<ThingDef>
+		<defName>CGF1_MWP_Projectile_M15_Stielhandgranate</defName>
+		<label>M15 Stielhandgranate</label>
+		<category>Projectile</category>
+		<altitudeLayer>Projectile</altitudeLayer>
+		<tickerType>Normal</tickerType>
+		<useHitPoints>False</useHitPoints>
+		<neverMultiSelect>True</neverMultiSelect>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+		  <texPath>CGF1/Projectile/M15_Stielhandgranate</texPath>
+		  <graphicClass>Graphic_Single</graphicClass>
+		  <shaderType>Transparent</shaderType>
+		  <drawSize>0.5</drawSize>
+		</graphicData>
+		<projectile>
+		  <explosionRadius>1.9</explosionRadius>
+		  <damageDef>Bomb</damageDef>
+		  <explosionDelay>100</explosionDelay>
+		  <speed>11</speed>
+		  <arcHeightFactor>2</arcHeightFactor>
+		  <shadowSize>0.4</shadowSize>
+		</projectile>
+  </ThingDef>
+				<!-- M15 KUGEL -->
+				<ThingDef>
+		<defName>CGF1_MWP_Projectile_M15_Kugelhandgranate</defName>
+		<label>M15 Kugelhandgranate</label>
+		<category>Projectile</category>
+		<altitudeLayer>Projectile</altitudeLayer>
+		<tickerType>Normal</tickerType>
+		<useHitPoints>False</useHitPoints>
+		<neverMultiSelect>True</neverMultiSelect>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+		  <texPath>CGF1/Projectile/M15_Kugelhandgranate</texPath>
+		  <graphicClass>Graphic_Single</graphicClass>
+		  <shaderType>Transparent</shaderType>
+		  <drawSize>0.5</drawSize>
+		</graphicData>
+		<projectile>
+		  <explosionRadius>1.9</explosionRadius>
+		  <damageDef>Bomb</damageDef>
+		  <explosionDelay>100</explosionDelay>
+		  <speed>12</speed>
+		  <arcHeightFactor>2</arcHeightFactor>
+		  <shadowSize>0.4</shadowSize>
+		</projectile>
+  </ThingDef>
+				<!-- M15 DISKUS -->
+				<ThingDef>
+		<defName>CGF1_MWP_Projectile_M15_Diskushandgranate</defName>
+		<label>M15 Diskushandgranate</label>
+		<category>Projectile</category>
+		<altitudeLayer>Projectile</altitudeLayer>
+		<tickerType>Normal</tickerType>
+		<useHitPoints>False</useHitPoints>
+		<neverMultiSelect>True</neverMultiSelect>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+		  <texPath>CGF1/Projectile/M15_Diskushandgranate</texPath>
+		  <graphicClass>Graphic_Single</graphicClass>
+		  <shaderType>Transparent</shaderType>
+		  <drawSize>0.6</drawSize>
+		</graphicData>
+		<projectile>
+		  <explosionRadius>2.1</explosionRadius>
+		  <damageDef>Bomb</damageDef>
+		  <explosionDelay>38</explosionDelay>
+		  <speed>11</speed>
+		  <arcHeightFactor>2</arcHeightFactor>
+		  <shadowSize>0.4</shadowSize>
+		</projectile>
+  </ThingDef>
+		<!-- MODERN -->
+			<!-- USA -->
+				<!-- ANM14 INCENDIARY -->
+				<ThingDef ParentName="BaseGrenadeProjectile">
+		<defName>CGF1_MWP_Projectile_ANM14_Incendiary</defName>
+		<label>AN/M14 Incendiary</label>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+		  <texPath>CGF1/Projectile/ANM14_Incendiary</texPath>
+		  <graphicClass>Graphic_Single</graphicClass>
+		  <shaderType>Transparent</shaderType>
+		  <drawSize>0.63</drawSize>
+		</graphicData>
+		<projectile>
+			<explosionRadius>3.66</explosionRadius>
+			<damageDef>Flame</damageDef>
+			<preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+			<ai_IsIncendiary>true</ai_IsIncendiary>
+			<explosionDelay>150</explosionDelay>
+			<speed>12</speed>
+			<arcHeightFactor>2</arcHeightFactor>
+			<shadowSize>0.4</shadowSize>
+			<screenShakeFactor>0.5</screenShakeFactor>
+		</projectile>
+  </ThingDef>
+				<!-- M7A3 CS -->
+				<ThingDef MayRequire="VanillaExpanded.VWENL">
+		<defName>CGF1_MWP_Projectile_M7A3_CS</defName>
+		<label>M7A3 CS Grenade</label>
+		<category>Projectile</category>
+		<altitudeLayer>Projectile</altitudeLayer>
+		<tickerType>Normal</tickerType>
+		<useHitPoints>False</useHitPoints>
+		<neverMultiSelect>True</neverMultiSelect>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+		  <texPath>CGF1/Projectile/M7A3_CS</texPath>
+		  <graphicClass>Graphic_Single</graphicClass>
+		  <shaderType>Transparent</shaderType>
+		  <drawSize>0.63</drawSize>
+		</graphicData>
+		<projectile>
+		  <damageDef>Smoke</damageDef>
+		  <explosionDelay>100</explosionDelay>
+		  <postExplosionSpawnThingDef>CGF1_MWP_CSGasCloud</postExplosionSpawnThingDef>
+		  <postExplosionSpawnChance>1</postExplosionSpawnChance>
+      	  <postExplosionSpawnThingCount>1</postExplosionSpawnThingCount>
+		  <speed>12</speed>
+		  <explosionRadius>3.9</explosionRadius>
+		  <arcHeightFactor>2</arcHeightFactor>
+		  <shadowSize>0.4</shadowSize>
+		  <applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+		</projectile>
+  </ThingDef>
+				<!-- M34 SMOKE -->
+				<ThingDef>
+		<defName>CGF1_MWP_Projectile_M34_Smoke</defName>
+		<label>M34 Smoke Grenade</label>
+		<category>Projectile</category>
+		<altitudeLayer>Projectile</altitudeLayer>
+		<tickerType>Normal</tickerType>
+		<useHitPoints>False</useHitPoints>
+		<neverMultiSelect>True</neverMultiSelect>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+		  <texPath>CGF1/Projectile/M34_Smoke</texPath>
+		  <graphicClass>Graphic_Single</graphicClass>
+		  <shaderType>Transparent</shaderType>
+		  <drawSize>0.63</drawSize>
+		</graphicData>
+		<projectile>
+		  <explosionRadius>2.4</explosionRadius>
+		  <damageDef>Smoke</damageDef>
+		  <explosionDelay>100</explosionDelay>
+		  <postExplosionGasType>BlindSmoke</postExplosionGasType>
+		  <speed>12</speed>
+		  <arcHeightFactor>2</arcHeightFactor>
+		  <shadowSize>0.4</shadowSize>
+		</projectile>
+  </ThingDef>
+				<!-- M67 FRAG -->
+				<ThingDef>
+		<defName>CGF1_MWP_Projectile_M67_Frag</defName>
+		<label>M67 Frag Grenade</label>
+		<category>Projectile</category>
+		<altitudeLayer>Projectile</altitudeLayer>
+		<tickerType>Normal</tickerType>
+		<useHitPoints>False</useHitPoints>
+		<neverMultiSelect>True</neverMultiSelect>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+		  <texPath>CGF1/Projectile/M67_Frag</texPath>
+		  <graphicClass>Graphic_Single</graphicClass>
+		  <shaderType>Transparent</shaderType>
+		  <drawSize>0.6</drawSize>
+		</graphicData>
+		<projectile>
+		  <explosionRadius>1.9</explosionRadius>
+		  <damageDef>Bomb</damageDef>
+		  <explosionDelay>90</explosionDelay>
+		  <speed>12</speed>
+		  <arcHeightFactor>2</arcHeightFactor>
+		  <shadowSize>0.4</shadowSize>
+		</projectile>
+  </ThingDef>
+				<!-- M69 PRACTICE -->
+				<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>CGF1_MWP_Projectile_M69_Practice</defName>
+		<label>M69 Practice Grenade</label>
+		<graphicData>
+		  <texPath>CGF1/Projectile/M69_Practice</texPath>
+		  <graphicClass>Graphic_Single</graphicClass>
+		  <drawSize>0.6</drawSize>
+		</graphicData>
+		<projectile>
+			<flyOverhead>false</flyOverhead>
+			<damageDef>CGF1_MWP_DamageDef_BluntProjectile</damageDef>
+			<damageAmountBase>2</damageAmountBase>
+			<spinRate>0.8</spinRate>
+			<speed>12</speed>
+			<armorPenetrationBase>0.0</armorPenetrationBase>
+		    <arcHeightFactor>2</arcHeightFactor>
+			<shadowSize>0.4</shadowSize>
+		</projectile>
+  </ThingDef>
+				<!-- M83 SMOKE -->
+				<ThingDef>
+		<defName>CGF1_MWP_Projectile_M83_Smoke</defName>
+		<label>M83 Smoke Grenade</label>
+		<category>Projectile</category>
+		<altitudeLayer>Projectile</altitudeLayer>
+		<tickerType>Normal</tickerType>
+		<useHitPoints>False</useHitPoints>
+		<neverMultiSelect>True</neverMultiSelect>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+		  <texPath>CGF1/Projectile/M83_Smoke</texPath>
+		  <graphicClass>Graphic_Single</graphicClass>
+		  <shaderType>Transparent</shaderType>
+		  <drawSize>0.63</drawSize>
+		</graphicData>
+		<projectile>
+		  <explosionRadius>2.4</explosionRadius>
+		  <damageDef>Smoke</damageDef>
+		  <explosionDelay>100</explosionDelay>
+		  <postExplosionGasType>BlindSmoke</postExplosionGasType>
+		  <speed>12</speed>
+		  <arcHeightFactor>2</arcHeightFactor>
+		  <shadowSize>0.4</shadowSize>
+		</projectile>
+  </ThingDef>
+				<!-- M84 STUN -->
+				<ThingDef ParentName="BaseGrenadeProjectile">
+		<defName>CGF1_MWP_Projectile_M84_Stun</defName>
+		<label>Mk.3 A2 Concussion</label>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+		  <texPath>CGF1/Projectile/M84_Stun</texPath>
+		  <graphicClass>Graphic_Single</graphicClass>
+		  <shaderType>Transparent</shaderType>
+		  <drawSize>0.63</drawSize>
+		</graphicData>
+		<projectile>
+			<explosionRadius>2.00</explosionRadius>
+			<damageDef>Stun</damageDef>
+			<damageAmountBase>2</damageAmountBase>
+			<explosionDelay>30</explosionDelay>
+			<speed>15</speed>
+			<arcHeightFactor>2</arcHeightFactor>
+			<shadowSize>0.4</shadowSize>
+		</projectile>
+  </ThingDef>
+				<!-- MK3A2 CONCUSSION -->
+				<ThingDef ParentName="BaseGrenadeProjectile">
+		<defName>CGF1_MWP_Projectile_Mk3A2_Concussion</defName>
+		<label>Mk.3 A2 Concussion</label>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+		  <texPath>CGF1/Projectile/Mk3A2_Concussion</texPath>
+		  <graphicClass>Graphic_Single</graphicClass>
+		  <shaderType>Transparent</shaderType>
+		  <drawSize>0.63</drawSize>
+		</graphicData>
+		<projectile>
+			<explosionRadius>1.99</explosionRadius>
+			<damageDef>Stun</damageDef>
+			<damageAmountBase>5</damageAmountBase>
+			<explosionDelay>100</explosionDelay>
+			<speed>12</speed>
+			<arcHeightFactor>2</arcHeightFactor>
+			<shadowSize>0.4</shadowSize>
+		</projectile>
+  </ThingDef>
+		<!-- AMERICAN CIVIL WAR -->
+			<!-- KETCHUM GRENADE -->
+			<ThingDef>
+				<defName>CGF1_MWP_Projectile_Ketchum_Grenade</defName>
+				<label>Ketchum Grenade</label>
+				<category>Projectile</category>
+				<altitudeLayer>Projectile</altitudeLayer>
+				<tickerType>Normal</tickerType>
+				<useHitPoints>False</useHitPoints>
+				<neverMultiSelect>True</neverMultiSelect>
+				<thingClass>Projectile_Explosive</thingClass>
+				<graphicData>
+				<texPath>CGF1/Projectile/Ketchum_Grenade</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<shaderType>Transparent</shaderType>
+				<drawSize>0.8</drawSize>
+				</graphicData>
+				<projectile>
+				<explosionRadius>0.9</explosionRadius>
+				<damageDef>Bomb</damageDef>
+				<explosionDelay>0</explosionDelay>
+				<speed>13</speed>
+				<arcHeightFactor>2</arcHeightFactor>
+				<shadowSize>0.4</shadowSize>
+				</projectile>
+			</ThingDef>
+		<!-- SUPPORTER SUGGESTIONS -->
+			<!-- VODKA BOTTLE -->
+			<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>CGF1_MWP_Projectile_VodkaBottle</defName>
+		<label>vodka bottle</label>
+		<graphicData>
+			<texPath>CGF1/Ranged/VodkaBottle</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.96</drawSize>
+		</graphicData>
+		<projectile>
+			<flyOverhead>false</flyOverhead>
+			<damageDef>CGF1_MWP_DamageDef_BluntProjectile</damageDef>
+			<damageAmountBase>6</damageAmountBase>
+			<spinRate>0.8</spinRate>
+			<speed>26</speed>
+			<armorPenetrationBase>0.0</armorPenetrationBase>
+		</projectile>
+	</ThingDef>
+			<!-- TENNIS BALL -->
+			<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>CGF1_MWP_Projectile_TennisBall</defName>
+		<label>tennis ball</label>
+		<graphicData>
+			<texPath>CGF1/Ranged/TennisBall</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.00</drawSize>
+		</graphicData>
+		<projectile>
+			<flyOverhead>false</flyOverhead>
+			<damageDef>CGF1_MWP_DamageDef_BluntProjectile</damageDef>
+			<damageAmountBase>1</damageAmountBase>
+			<spinRate>0.8</spinRate>
+			<speed>29</speed>
+			<armorPenetrationBase>0.0</armorPenetrationBase>
+		</projectile>
+	</ThingDef>
+			<!-- SODA BOTTLE -->
+			<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>CGF1_MWP_Projectile_SodaBottle</defName>
+		<label>soda bottle</label>
+		<graphicData>
+			<texPath>CGF1/Ranged/SodaBottle</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.98</drawSize>
+		</graphicData>
+		<projectile>
+			<flyOverhead>false</flyOverhead>
+			<damageDef>CGF1_MWP_DamageDef_BluntProjectile</damageDef>
+			<damageAmountBase>6</damageAmountBase>
+			<spinRate>0.8</spinRate>
+			<speed>26</speed>
+			<armorPenetrationBase>0.0</armorPenetrationBase>
+		</projectile>
+	</ThingDef>
+			<!-- SODA BOTTLE LIME -->
+			<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>CGF1_MWP_Projectile_SodaBottle_Lime</defName>
+		<label>soda bottle</label>
+		<graphicData>
+			<texPath>CGF1/Ranged/SodaBottle_Lime</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.98</drawSize>
+		</graphicData>
+		<projectile>
+			<flyOverhead>false</flyOverhead>
+			<damageDef>CGF1_MWP_DamageDef_BluntProjectile</damageDef>
+			<damageAmountBase>6</damageAmountBase>
+			<spinRate>0.8</spinRate>
+			<speed>26</speed>
+			<armorPenetrationBase>0.0</armorPenetrationBase>
+		</projectile>
+	</ThingDef>
+			<!-- SODA BOTTLE DIET -->
+			<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>CGF1_MWP_Projectile_SodaBottle_Diet</defName>
+		<label>soda bottle</label>
+		<graphicData>
+			<texPath>CGF1/Ranged/SodaBottle_Diet</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.98</drawSize>
+		</graphicData>
+		<projectile>
+			<flyOverhead>false</flyOverhead>
+			<damageDef>CGF1_MWP_DamageDef_BluntProjectile</damageDef>
+			<damageAmountBase>6</damageAmountBase>
+			<spinRate>0.8</spinRate>
+			<speed>26</speed>
+			<armorPenetrationBase>0.0</armorPenetrationBase>
+		</projectile>
+	</ThingDef>
+			<!-- SOCCER BALL -->
+			<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>CGF1_MWP_Projectile_SoccerBall</defName>
+		<label>soccer ball</label>
+		<graphicData>
+			<texPath>CGF1/Ranged/SoccerBall</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.98</drawSize>
+		</graphicData>
+		<projectile>
+			<flyOverhead>false</flyOverhead>
+			<damageDef>CGF1_MWP_DamageDef_BluntProjectile</damageDef>
+			<damageAmountBase>3</damageAmountBase>
+			<spinRate>0.8</spinRate>
+			<speed>35</speed>
+			<armorPenetrationBase>0.0</armorPenetrationBase>
+		</projectile>
+	</ThingDef>
+			<!-- BEER BOTTLE -->
+			<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>CGF1_MWP_Projectile_BeerBottle</defName>
+		<label>beer bottle</label>
+		<graphicData>
+			<texPath>CGF1/Ranged/BeerBottle</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.96</drawSize>
+		</graphicData>
+		<projectile>
+			<flyOverhead>false</flyOverhead>
+			<damageDef>CGF1_MWP_DamageDef_BluntProjectile</damageDef>
+			<damageAmountBase>6</damageAmountBase>
+			<spinRate>0.8</spinRate>
+			<speed>26</speed>
+			<armorPenetrationBase>0.0</armorPenetrationBase>
+		</projectile>
+	</ThingDef>
+			<!-- BEER BOTTLE BROWN -->
+			<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>CGF1_MWP_Projectile_BeerBottle_Brown</defName>
+		<label>beer bottle</label>
+		<graphicData>
+			<texPath>CGF1/Ranged/BeerBottle_Brown</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.96</drawSize>
+		</graphicData>
+		<projectile>
+			<flyOverhead>false</flyOverhead>
+			<damageDef>CGF1_MWP_DamageDef_BluntProjectile</damageDef>
+			<damageAmountBase>6</damageAmountBase>
+			<spinRate>0.8</spinRate>
+			<speed>26</speed>
+			<armorPenetrationBase>0.0</armorPenetrationBase>
+		</projectile>
+	</ThingDef>
+			<!-- BASEBALL -->
+			<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>CGF1_MWP_Projectile_Baseball</defName>
+		<label>baseball</label>
+		<graphicData>
+			<texPath>CGF1/Ranged/Baseball</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.00</drawSize>
+		</graphicData>
+		<projectile>
+			<flyOverhead>false</flyOverhead>
+			<damageDef>CGF1_MWP_DamageDef_BluntProjectile</damageDef>
+			<damageAmountBase>6</damageAmountBase>
+			<spinRate>0.8</spinRate>
+			<speed>30</speed>
+			<armorPenetrationBase>0.0</armorPenetrationBase>
+		</projectile>
+	</ThingDef>
+			<!-- ARCHOHRUIKEN -->
+			<ThingDef MayRequire="vanillaracesexpanded.archon" ParentName="BaseProjectileNeolithic">
+		<defName>CGF1_MWP_Projectile_Archoshuriken</defName>
+		<label>archoshuriken</label>
+		<graphicData>
+			<texPath>CGF1/Ranged/Archoshuriken</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.00</drawSize>
+		</graphicData>
+		<projectile>
+			<flyOverhead>false</flyOverhead>
+			<damageDef>VREA_Sear</damageDef>
+			<damageAmountBase>14</damageAmountBase>
+			<spinRate>2</spinRate>
+			<speed>35</speed>
+			<armorPenetrationBase>2.0</armorPenetrationBase>
+		</projectile>
+	</ThingDef>
+			<!-- ARCHOGLAIVE -->
+			<ThingDef MayRequire="vanillaracesexpanded.archon" ParentName="BaseProjectileNeolithic">
+		<defName>CGF1_MWP_Projectile_Archoglaive</defName>
+		<label>archoglaive</label>
+		<graphicData>
+			<texPath>CGF1/Ranged/Archoglaive</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.98</drawSize>
+		</graphicData>
+		<projectile>
+			<flyOverhead>false</flyOverhead>
+			<damageDef>VREA_Sear</damageDef>
+			<damageAmountBase>25</damageAmountBase>
+			<spinRate>2</spinRate>
+			<speed>35</speed>
+			<armorPenetrationBase>2.0</armorPenetrationBase>
+		</projectile>
+	</ThingDef>
+	<!-- 40MM GRENADE -->
+	<ThingDef ParentName="BaseBullet">
+        <defName>HRK_Bullet_40x53mmGrenade</defName>
+        <label>40x53mm grenade</label>
+        <graphicData>
+            <texPath>Things/Projectile/Bullet_Big</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <thingClass>Projectile_Explosive</thingClass>
+        <projectile>            
+            <damageDef>Bomb</damageDef>
+            <explosionRadius>1.9</explosionRadius>
+            <preExplosionSpawnThingDef>Filth_RubbleRock</preExplosionSpawnThingDef>
+            <preExplosionSpawnChance>0.3</preExplosionSpawnChance>
+            <ai_IsIncendiary>false</ai_IsIncendiary>
+            <explosionDelay>1</explosionDelay>
+            <speed>40</speed>
+        </projectile>
+    </ThingDef>
+	<!-- ========== 12.7x108mm Soviet ========== -->
+    <ThingDef ParentName="BaseBullet">
+        <defName>HRK_Bullet_127x108mmSoviet</defName>
+        <label>12.7x108mm Soviet bullet</label>
+        <graphicData>
+            <texPath>Things/Projectile/Bullet_VeryBig</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>58</damageAmountBase>
+            <stoppingPower>3</stoppingPower>
+            <armorPenetrationBase>0.9</armorPenetrationBase>
+            <speed>70</speed>
+        </projectile>
+    </ThingDef>
+    <!-- ========== 14.5x114mm Soviet ========== -->
+    <ThingDef ParentName="BaseBullet">
+        <defName>HRK_Bullet_145x114mmSoviet</defName>
+        <label>14.5x114mm Soviet bullet</label>
+        <graphicData>
+            <texPath>Things/Projectile/Bullet_VeryBig</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>60</damageAmountBase>
+            <stoppingPower>2.8</stoppingPower>
+            <armorPenetrationBase>0.75</armorPenetrationBase>
+            <speed>70</speed>
+        </projectile>
+    </ThingDef>
+    <!-- ========== .338 Lapua Magnum ========== -->
+    <ThingDef ParentName="BaseBullet">
+        <defName>HRK_Bullet_338LapuaMagnum</defName>
+        <label>.338 Lapua Magnum bullet</label>
+        <graphicData>
+            <texPath>Things/Projectile/Bullet_VeryBig</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>49</damageAmountBase>
+            <stoppingPower>2.5</stoppingPower>
+            <armorPenetrationBase>0.8</armorPenetrationBase>
+            <speed>75</speed>
+        </projectile>
+    </ThingDef>
+	<!-- ========== 9x18mm Makarov ========== -->
+    <ThingDef ParentName="BaseBullet">
+        <defName>HRK_Bullet_9x18mmMakarov</defName>
+        <label>9x18mm Makarov bullet</label>
+        <graphicData>
+            <texPath>Things/Projectile/Bullet_Small</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>            
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>9</damageAmountBase>
+            <!--<stoppingPower>0.1</stoppingPower>-->
+            <!--<armorPenetrationBase>0.1</armorPenetrationBase>-->
+            <speed>60</speed>
+        </projectile>
+    </ThingDef>
+    <!-- ========== 9x19mm Parabellum ========== -->
+    <ThingDef ParentName="BaseBullet">
+        <defName>HRK_Bullet_9x19mmPara</defName>
+        <label>9x19mm Parabellum bullet</label>
+        <graphicData>
+            <texPath>Things/Projectile/Bullet_Small</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>            
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>9</damageAmountBase>
+            <!--<stoppingPower>0.1</stoppingPower>-->
+            <!--<armorPenetrationBase>0.1</armorPenetrationBase>-->
+            <speed>60</speed>
+        </projectile>
+    </ThingDef>
+    <!-- ========== 10mm Auto ========== -->
+    <ThingDef ParentName="BaseBullet">
+        <defName>HRK_Bullet_10mmAuto</defName>
+        <label>10mm Auto bullet</label>
+        <graphicData>
+            <texPath>Things/Projectile/Bullet_Small</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>            
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>10</damageAmountBase>
+            <stoppingPower>0.1</stoppingPower>
+            <armorPenetrationBase>0.1</armorPenetrationBase>
+            <speed>60</speed>
+        </projectile>
+    </ThingDef>
+	<!-- ========== 5.45x39mm Soviet ========== -->
+    <ThingDef ParentName="BaseBullet">
+        <defName>HRK_Bullet_545x39mmSoviet</defName>
+        <label>5.45x39mm Soviet bullet</label>
+        <graphicData>
+            <texPath>Things/Projectile/Bullet_Small</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>11</damageAmountBase>
+            <!--<stoppingPower>0.1</stoppingPower>-->
+            <!--<armorPenetrationBase>0.1</armorPenetrationBase>-->
+            <speed>70</speed>
+        </projectile>
+    </ThingDef>
+    <!-- ========== 7.62x39mm Soviet ========== -->
+    <ThingDef ParentName="BaseBullet">
+        <defName>HRK_Bullet_762x39mmSoviet</defName>
+        <label>7.62x39mm Soviet bullet</label>
+        <graphicData>
+            <texPath>Things/Projectile/Bullet_Small</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>12</damageAmountBase>
+            <!--<stoppingPower>0.1</stoppingPower>-->
+            <armorPenetrationBase>0.2</armorPenetrationBase>
+            <speed>60</speed>
+        </projectile>
+    </ThingDef>
+    <!-- ========== 5.56x45mm NATO ========== -->
+    <ThingDef ParentName="BaseBullet">
+        <defName>HRK_Bullet_556x45mmNATO</defName>
+        <label>5.56x45mm NATO bullet</label>
+        <graphicData>
+            <texPath>Things/Projectile/Bullet_Small</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>11</damageAmountBase>
+            <!--<stoppingPower>0.1</stoppingPower>-->
+            <!--<armorPenetrationBase>0.1</armorPenetrationBase>-->
+            <speed>70</speed>
+        </projectile>
+    </ThingDef>
+    <!-- ========== 7.62x51mm NATO ========== -->
+    <ThingDef ParentName="BaseBullet">
+        <defName>HRK_Bullet_762x51mmNATO</defName>
+        <label>7.62x51mm NATO bullet</label>
+        <graphicData>
+            <texPath>Things/Projectile/Bullet_Small</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>12</damageAmountBase>
+            <!--<stoppingPower>0.1</stoppingPower>-->
+            <armorPenetrationBase>0.2</armorPenetrationBase>
+            <speed>60</speed>
+        </projectile>
+    </ThingDef>
+    <!--===== .300 AAC Blackout =====-->
+    <ThingDef ParentName="BaseBullet">
+        <defName>HRK_Bullet_300AACBlackout</defName>
+        <label>.300 AAC Blackout bullet</label>
+        <graphicData>
+            <texPath>Things/Projectile/Bullet_Small</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>11</damageAmountBase>
+            <speed>70</speed>
+            <armorPenetrationBase>0.2</armorPenetrationBase>
+        </projectile>
+    </ThingDef>
+	<!--===== AK-103 SHOT =====-->
+  <ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_AKOneOThree</defName>
+    <label>Magpul AKM bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>10</damageAmountBase>
+      <speed>70</speed>
+    </projectile>
+  </ThingDef>
+  <!--===== SA-58 SHOT =====-->
+  <ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_SAFiftyEight</defName>
+    <label>SA-58 L bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>12</damageAmountBase>
+      <speed>60</speed>
+    </projectile>
+  </ThingDef>
+  <!--===== R700 SHOT =====-->
+  <ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_RSevenHundred</defName>
+    <label>AB Arms MOD X bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Big</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>27</damageAmountBase>
+      <stoppingPower>1.7</stoppingPower>
+      <speed>110</speed>
+    </projectile>
+  </ThingDef>
+  <!--===== M4A1 SHOT =====-->
+  <ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_MFourAOne</defName>
+    <label>M4 CQR bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>11</damageAmountBase>
+      <speed>70</speed>
+    </projectile>
+  </ThingDef>
+  <!--===== AK-105 SHOT =====-->
+  <ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_AKOneOFive</defName>
+    <label>Zenitco AK-105 bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>11</damageAmountBase>
+      <speed>70</speed>
+    </projectile>
+  </ThingDef>
+  <!--===== MP7A1 SHOT =====-->
+  <ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_MPSevenAOne</defName>
+    <label>MP7A1 SD bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>13</damageAmountBase>
+      <speed>50</speed>
+    </projectile>
+  </ThingDef>
+  <!--===== M1A SHOT =====-->
+  <ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_MOneA</defName>
+    <label>Archangel M1A bullet</label>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>15</damageAmountBase>
+      <stoppingPower>1.5</stoppingPower>
+      <speed>80</speed>
+    </projectile>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_big</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+  </ThingDef>
+  <!--===== Saiga 12K SHOT =====-->
+  <ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_SaigaTwelveK</defName>
+    <label>PowerMag Saiga 12K blast</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Shotgun</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>18</damageAmountBase>
+      <stoppingPower>3</stoppingPower>
+      <armorPenetrationBase>0.14</armorPenetrationBase>
+      <speed>55</speed>
+    </projectile>
+  </ThingDef>
+  <!--===== Bullpup PKP SHOT =====-->
+  <ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_BullpupPKP</defName>
+    <label>Bullpup PKP bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_big</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>14</damageAmountBase>
+      <armorPenetrationBase>0.5</armorPenetrationBase>
+      <stoppingPower>3</stoppingPower>
+      <speed>40</speed>
+    </projectile>
+  </ThingDef>
+  <!--===== Glock 17 SHOT =====-->
+  <ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_GlockSeventeen</defName>
+    <label>ZevTech Glock 17 bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>9</damageAmountBase>
+      <speed>55</speed>
+    </projectile>
+  </ThingDef>
+  <!--===== ASh-12 =====-->
+  <ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_AShTwelve</defName>
+    <label>ASh-12 bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Big</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>16</damageAmountBase>
+      <speed>50</speed>
+      <stoppingPower>3</stoppingPower>
+    </projectile>
+  </ThingDef>
+  <!--===== AS VAL =====-->
+  <ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_ASVAL</defName>
+    <label>AS VAL bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>15</damageAmountBase>
+      <speed>50</speed>
+    </projectile>
+  </ThingDef>
+  <!--===== GM6 =====-->
+  <ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_GMSix</defName>
+    <label>GM6 Lynx bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Big</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>56</damageAmountBase>
+      <stoppingPower>3</stoppingPower>
+      <armorPenetrationBase>1</armorPenetrationBase>
+      <speed>65</speed>
+    </projectile>
+  </ThingDef>
+  <!--===== G36 =====-->
+  <ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_GThirtySix</defName>
+    <label>G36C bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>11</damageAmountBase>
+      <speed>70</speed>
+    </projectile>
+  </ThingDef>
+  <!--===== M320 =====-->
+  <ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_HKGL</defName>
+    <label>M320 GL grenade</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Big</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+    <projectile>
+      <speed>40</speed>
+      <damageDef>Bomb</damageDef>
+      <explosionRadius>1.9</explosionRadius>
+      <preExplosionSpawnThingDef>Filth_RubbleRock</preExplosionSpawnThingDef>
+      <preExplosionSpawnChance>0.3</preExplosionSpawnChance>
+      <ai_IsIncendiary>false</ai_IsIncendiary>
+      <explosionDelay>1</explosionDelay>
+    </projectile>
+  </ThingDef>
+  <!--===== SKS =====-->
+  <ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_SKS</defName>
+    <label>Tapco SKS bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>15</damageAmountBase>
+      <stoppingPower>1.5</stoppingPower>
+      <speed>60</speed>
+    </projectile>
+  </ThingDef>
+  <!--===== Negev =====-->
+  <ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_NGFive</defName>
+    <label>NG5 Negev bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>10</damageAmountBase>
+      <speed>46</speed>
+    </projectile>
+  </ThingDef>
+  <!--===== M3E1 "Carl Gustaf" =====-->
+  <ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_MThreeEOne</defName>
+    <label>M3E1 rocket blast</label>
+    <graphicData>
+      <texPath>Ammo/M3E1/HEAT_Bullet</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+    <projectile>
+      <damageDef>Bomb</damageDef>
+      <explosionRadius>1.5</explosionRadius>
+      <speed>51</speed>
+      <damageAmountBase>200</damageAmountBase>
+      <stoppingPower>5</stoppingPower>
+      <armorPenetrationBase>3</armorPenetrationBase>
+    </projectile>
+  </ThingDef>
+  <!--===== Neopup PAW =====-->
+  <ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_Neopup</defName>
+    <label>Neopup explosive bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Big</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+    <projectile>
+      <speed>62</speed>
+      <damageDef>Bomb</damageDef>
+      <explosionRadius>1</explosionRadius>
+      <preExplosionSpawnThingDef>Filth_RubbleRock</preExplosionSpawnThingDef>
+      <preExplosionSpawnChance>0.3</preExplosionSpawnChance>
+      <ai_IsIncendiary>false</ai_IsIncendiary>
+      <explosionDelay>1</explosionDelay>
+      <damageAmountBase>32</damageAmountBase>
+    </projectile>
+  </ThingDef>
+  <!--===== P90 =====-->
+  <ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_PNinety</defName>
+    <label>P90 SD Bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>13</damageAmountBase>
+      <speed>50</speed>
+    </projectile>
+  </ThingDef>
+	<!-- RIMMU-NATION -->
+	<!-- GRENADE BASE -->
+	<ThingDef Name="RNBaseGrenadeProjectile" Abstract="True">
+    <category>Projectile</category>
+    <altitudeLayer>Projectile</altitudeLayer>
+    <thingClass>Projectile_Explosive</thingClass>
+    <label>projectile</label>
+    <tickerType>Normal</tickerType>
+    <useHitPoints>False</useHitPoints>
+    <neverMultiSelect>True</neverMultiSelect>
+    <graphicData>
+      <shaderType>Transparent</shaderType>
+    </graphicData>
+    <projectile>
+      <speed>12</speed>
+      <flyOverhead>false</flyOverhead>
+    </projectile>
+  </ThingDef>
+	<!-- .40 SW -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_40SW_Pistol</defName>
+		<label>.40 SW bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>11</damageAmountBase>
+			<armorPenetrationBase>0.18</armorPenetrationBase>
+			<speed>60</speed>
+		</projectile>
+	</ThingDef>
+	<!-- .45 ACP -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_45ACP_Pistol</defName>
+		<label>.45 ACP bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>10</damageAmountBase>
+			<stoppingPower>0.75</stoppingPower>
+			<speed>55</speed>
+		</projectile>
+	</ThingDef>
+	<!-- .45 ACP (AP) -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_45ACPAP_Pistol</defName>
+		<label>.45 ACP bullet (AP)</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>8</damageAmountBase>
+			<armorPenetrationBase>0.3</armorPenetrationBase>
+			<speed>55</speed>
+		</projectile>
+	</ThingDef>
+	<!-- 9X19MM PARABELLUM -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_9MM_Pistol</defName>
+		<label>9x19mm Parabellum bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>9</damageAmountBase>
+			<armorPenetrationBase>0.15</armorPenetrationBase>
+			<speed>65</speed>
+		</projectile>
+	</ThingDef>
+	<!-- 9X18MM MAKAROV -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_9MMMakarov_Pistol</defName>
+		<label>9x18mm Makarov bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>8</damageAmountBase>
+			<armorPenetrationBase>0.14</armorPenetrationBase>
+			<speed>60</speed>
+		</projectile>
+	</ThingDef>
+	<!-- 9X19MM PARABELLUM (AP) -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_9MMAP_Pistol</defName>
+		<label>9x19mm Parabellum bullet (AP)</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>7</damageAmountBase>
+			<armorPenetrationBase>0.3</armorPenetrationBase>
+			<speed>65</speed>
+		</projectile>
+	</ThingDef>
+	<!-- 4.6X30MM -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_46x30_Pistol</defName>
+		<label>4.6x30mm bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>7</damageAmountBase>
+			<stoppingPower>0.4</stoppingPower>
+			<armorPenetrationBase>0.16</armorPenetrationBase>
+			<speed>70</speed>
+		</projectile>
+	</ThingDef>
+	<!-- 5.7X28MM -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_57_Pistol</defName>
+		<label>5.7x28mm bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>8</damageAmountBase>
+			<stoppingPower>0.45</stoppingPower>
+			<armorPenetrationBase>0.18</armorPenetrationBase>
+			<speed>70</speed>
+		</projectile>
+	</ThingDef>
+	<!-- .50 AE -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_50_Pistol</defName>
+		<label>.50 AE bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>15</damageAmountBase>
+			<stoppingPower>1.5</stoppingPower>
+			<speed>60</speed>
+		</projectile>
+	</ThingDef>
+	<!-- 7.62X25 TOKAREV -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_762Tokarev_Pistol</defName>
+		<label>7.62x25mm Tokarev bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>10</damageAmountBase>
+			<armorPenetrationBase>0.2</armorPenetrationBase>
+			<speed>65</speed>
+		</projectile>
+	</ThingDef>
+	<!-- 7.62X38MMR -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_762_Revolver</defName>
+		<label>7.62x38mmR bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<flyOverhead>false</flyOverhead>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>8</damageAmountBase>
+			<speed>55</speed>
+		</projectile>
+	</ThingDef>
+	<!-- .454 CASULL -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_454_Revolver</defName>
+		<label>.454 Casull bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>14</damageAmountBase>
+			<stoppingPower>1.25</stoppingPower>
+			<speed>55</speed>
+		</projectile>
+	</ThingDef>
+	<!-- .44 MAGNUM -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_44Magnum_Pistol</defName>
+		<label>.44 Magnum bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>12</damageAmountBase>
+			<stoppingPower>1.0</stoppingPower>
+			<speed>55</speed>
+		</projectile>
+	</ThingDef>
+	<!-- .45 COLT -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_45Colt_Pistol</defName>
+		<label>.45 Colt bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>10</damageAmountBase>
+			<stoppingPower>0.75</stoppingPower>
+			<speed>55</speed>
+		</projectile>
+	</ThingDef>
+	<!-- .38 SPECIAL -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_38Special_Pistol</defName>
+		<label>.38 Special bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>8</damageAmountBase>
+			<speed>50</speed>
+		</projectile>
+	</ThingDef>
+	<!-- .357 MAGNUM -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_357_Revolver</defName>
+		<label>.357 Magnum bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>11</damageAmountBase>
+			<stoppingPower>1.0</stoppingPower>
+			<speed>60</speed>
+		</projectile>
+	</ThingDef>
+	<!-- 5.45X39MM -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_545x39_Rifle</defName>
+		<label>5.45x39mm bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>10</damageAmountBase>
+			<speed>65</speed>
+		</projectile>
+	</ThingDef>
+	<!-- .300 AAC BLACKOUT -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_AACBlackout_PDW</defName>
+		<label>.300 AAC Blackout bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>12</damageAmountBase>
+			<stoppingPower>1</stoppingPower>
+			<speed>65</speed>
+		</projectile>
+	</ThingDef>
+	<!-- .380 -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_380_SMG</defName>
+		<label>.380 bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>8</damageAmountBase>
+			<speed>50</speed>
+		</projectile>
+	</ThingDef>
+	<!-- .32 ACP -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_32ACP_Pistol</defName>
+		<label>.32 ACP bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>6</damageAmountBase>
+			<stoppingPower>0.3</stoppingPower>
+			<speed>55</speed>
+		</projectile>
+	</ThingDef>
+	<!-- 12 GAUGE -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_12Gauge_Shotgun</defName>
+		<label>12 Gauge shotgun blast</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Shotgun</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>18</damageAmountBase>
+			<stoppingPower>3.0</stoppingPower>
+			<armorPenetrationBase>0.14</armorPenetrationBase>
+			<speed>55</speed>
+		</projectile>
+	</ThingDef>
+	<!-- 23X75MMR -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_23x75mmR_Shotgun</defName>
+		<label>23x75mmR blast</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Shotgun</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>26</damageAmountBase>
+			<stoppingPower>3.5</stoppingPower>
+			<armorPenetrationBase>0.22</armorPenetrationBase>
+			<speed>55</speed>
+		</projectile>
+	</ThingDef>
+	<!-- 7.62X54MMR -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_762x54_LMG</defName>
+		<label>7.62x54mmR bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>14</damageAmountBase>
+			<stoppingPower>1.0</stoppingPower>
+			<speed>65</speed>
+		</projectile>
+	</ThingDef>
+	<!-- 7.62X51MM NATO -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_762x51mm_LMG</defName>
+		<label>7.62x51mm NATO bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>14</damageAmountBase>
+			<stoppingPower>1.0</stoppingPower>
+			<speed>65</speed>
+		</projectile>
+	</ThingDef>
+	<!-- 7.62X39R -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_762x39_Rifle</defName>
+		<label>7.62x39R bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<flyOverhead>false</flyOverhead>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>12</damageAmountBase>
+			<stoppingPower>0.75</stoppingPower>
+			<speed>60</speed>
+		</projectile>
+	</ThingDef>
+	<!-- .223 REMINGTON -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_223Remington_Rifle</defName>
+		<label>.223 Remington bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>11</damageAmountBase>
+			<speed>68</speed>
+		</projectile>
+	</ThingDef>
+	<!-- 5.56X45MMR -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_556x45_Rifle</defName>
+		<label>5.56x45mm bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>11</damageAmountBase>
+			<speed>70</speed>
+		</projectile>
+	</ThingDef>
+	<!-- .303 BRITISH -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_303British_Rifle</defName>
+		<label>.303 British bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>13</damageAmountBase>
+			<stoppingPower>1.0</stoppingPower>
+			<speed>70</speed>
+		</projectile>
+	</ThingDef>
+	<!-- 7.62X54MMR -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_762x54_Rifle</defName>
+		<label>7.62x54mmR bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>14</damageAmountBase>
+			<stoppingPower>1.0</stoppingPower>
+			<speed>70</speed>
+		</projectile>
+	</ThingDef>
+	<!-- 8MM MAUSER -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_792x57Mauser_Rifle</defName>
+		<label>8mm Mauser bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>15</damageAmountBase>
+			<stoppingPower>1.0</stoppingPower>
+			<speed>70</speed>
+		</projectile>
+	</ThingDef>
+	<!-- 7X64MM -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_7x64mmBrenneke_Rifle</defName><!-- Same stats as Mauser, more for combat log use -->
+		<label>7x64mm bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>15</damageAmountBase>
+			<stoppingPower>1.0</stoppingPower>
+			<speed>70</speed>
+		</projectile>
+	</ThingDef>
+	<!-- 9X39MM SP-6 -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_9x39mmSP6_DMR</defName>
+		<label>9x39mm SP-6 bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>11</damageAmountBase>
+			<armorPenetrationBase>0.14</armorPenetrationBase>
+			<speed>55</speed>
+		</projectile>
+	</ThingDef>
+	<!-- 5.8X42MM -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_58x42mm_DMR</defName>
+		<label>5.8x42mm bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>11</damageAmountBase>
+			<speed>70</speed>
+		</projectile>
+	</ThingDef>
+	<!-- 7.62X39R -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_762x39_DMR</defName>
+		<label>7.62x39R bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>15</damageAmountBase>
+			<stoppingPower>0.75</stoppingPower>
+			<speed>65</speed>
+		</projectile>
+	</ThingDef>
+	<!-- 7.62 NATO -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_762x51mm_DMR</defName>
+		<label>7.62 NATO bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>19</damageAmountBase>
+			<stoppingPower>1.0</stoppingPower>
+			<speed>70</speed>
+		</projectile>
+	</ThingDef>
+	<!-- 7.62X54MMR -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_762x54_DMR</defName>
+		<label>7.62x54mmR bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>19</damageAmountBase>
+			<stoppingPower>1.0</stoppingPower>
+			<speed>70</speed>
+		</projectile>
+	</ThingDef>
+	<!-- 8MM MAUSER -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_792x57Mauser_DMR</defName>
+		<label>8mm Mauser bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>20</damageAmountBase>
+			<stoppingPower>1.0</stoppingPower>
+			<speed>70</speed>
+		</projectile>
+	</ThingDef>
+	<!-- .308 WINCHESTER -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_308Winchester_DMR</defName>
+		<label>.308 Winchester bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>20</damageAmountBase>
+			<stoppingPower>1.0</stoppingPower>
+			<speed>70</speed>
+		</projectile>
+	</ThingDef>
+	<!-- 7.62 NATO -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_762x51mm_Sniper</defName>
+		<label>7.62 NATO bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>24</damageAmountBase>
+			<armorPenetrationBase>0.4</armorPenetrationBase>
+			<stoppingPower>1.5</stoppingPower>
+			<speed>75</speed>
+		</projectile>
+	</ThingDef>
+	<!-- .308 WINCHESTER -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_308Winchester_Sniper</defName>
+		<label>.308 Winchester bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>25</damageAmountBase>
+			<armorPenetrationBase>0.45</armorPenetrationBase>
+			<stoppingPower>1.5</stoppingPower>
+			<speed>75</speed>
+		</projectile>
+	</ThingDef>
+	<!-- .338 LAPUA MAGNUM -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_338Lapua_Sniper</defName>
+		<label>.338 Lapua Magnum bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>30</damageAmountBase>
+			<armorPenetrationBase>0.6</armorPenetrationBase>
+			<stoppingPower>2.0</stoppingPower>
+			<speed>100</speed>
+		</projectile>
+	</ThingDef>
+	<!-- 7.62X54MMR -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_762x54_Sniper</defName>
+		<label>7.62x54mmR bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>24</damageAmountBase>
+			<armorPenetrationBase>0.4</armorPenetrationBase>
+			<stoppingPower>1.5</stoppingPower>
+			<speed>75</speed>
+		</projectile>
+	</ThingDef>
+	<!-- .408 CHEYENNE TACTICAL -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_408Cheyenne_Sniper</defName>
+		<label>.408 Cheyenne Tactical bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>35</damageAmountBase>
+			<armorPenetrationBase>0.7</armorPenetrationBase>
+			<stoppingPower>2.5</stoppingPower>
+			<speed>100</speed>
+		</projectile>
+	</ThingDef>
+	<!-- .50 BMG -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_50BMG_Sniper</defName>
+		<label>.50 BMG bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>40</damageAmountBase>
+			<armorPenetrationBase>0.8</armorPenetrationBase>
+			<stoppingPower>3.0</stoppingPower>
+			<speed>95</speed>
+		</projectile>
+	</ThingDef>
+	<!-- 12.7X108MM -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_127x108_Sniper</defName>
+		<label>12.7x108mm bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>39</damageAmountBase>
+			<armorPenetrationBase>0.75</armorPenetrationBase>
+			<stoppingPower>3.0</stoppingPower>
+			<speed>90</speed>
+		</projectile>
+	</ThingDef>
+	<!-- LONGBOW BEAM -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>RNBullet_LongbowBeam</defName>
+    <label>Longbow beam</label>
+    <graphicData>
+      <texPath>Things/Projectile/Proj_LongbowCharge</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>RNBullet_Charge</damageDef>
+      <damageAmountBase>200</damageAmountBase>
+	  <stoppingPower>10</stoppingPower>
+	  <armorPenetrationBase>1</armorPenetrationBase>
+      <speed>80</speed>
+    </projectile>
+  </ThingDef>
+	<!-- RAZOR CHARGE -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>RNBullet_BlueDeath</defName>
+    <label>Razor charge</label>
+    <graphicData>
+      <texPath>Things/Projectile/Proj_Razor</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>RNBullet_Charge</damageDef>
+      <damageAmountBase>15</damageAmountBase>
+	  <!--<stoppingPower>1</stoppingPower>-->
+	  <armorPenetrationBase>0.20</armorPenetrationBase>
+      <speed>70</speed>
+    </projectile>
+  </ThingDef>
+	<!-- TRANSIENT RADIATION CHARGE -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>RNBullet_AugerMkII</defName>
+    <label>Transient Radiation charge</label>
+    <graphicData>
+      <texPath>Things/Projectile/Proj_AugerMkII</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>RNBullet_Charge</damageDef>
+      <damageAmountBase>25</damageAmountBase>
+	  <stoppingPower>3</stoppingPower>
+	  <armorPenetrationBase>2.5</armorPenetrationBase>
+      <speed>70</speed>
+    </projectile>
+		<modExtensions>
+	  <li Class="CPWeaponExt.ProjectileExtension">
+	    <passesWalls>true</passesWalls>
+	  </li>
+	  </modExtensions>
+  </ThingDef>
+	<!-- 40X46MM GRENADE -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_40mm_Grenade</defName>
+		<label>40x46mm grenade round</label>
+		<graphicData>
+			<texPath>Things/Projectile/LauncherShot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<color>(248, 202, 116)</color>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>RN2FragBomb</damageDef>
+			<!-- Use default damage from explosion def -->
+			<explosionRadius>1.9</explosionRadius>
+			<speed>40</speed>
+			<flyOverhead>true</flyOverhead>
+			<stoppingPower>2</stoppingPower>
+		</projectile>
+	</ThingDef>
+	<!-- RPG-7 ROCKET -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_RPG7_Rocket</defName>
+		<label>RPG-7 rocket</label>
+		<graphicData>
+			<texPath>Things/Projectile/RPG7_Rocket</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>RN2Bomb</damageDef>
+			<explosionRadius>2.5</explosionRadius>
+			<speed>60</speed>
+			<damageAmountBase>90</damageAmountBase>
+			<stoppingPower>4</stoppingPower>
+			<armorPenetrationBase>1</armorPenetrationBase>
+		</projectile>
+	</ThingDef>
+	<!-- 66MM HEAT -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_M72HEAT_Rocket</defName>
+		<label>66mm HEAT rocket</label>
+		<graphicData>
+			<texPath>Things/Projectile/66mm_M72_HEAT</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>RN2Bomb</damageDef>
+			<explosionRadius>2.5</explosionRadius>
+			<speed>60</speed>
+			<damageAmountBase>70</damageAmountBase>
+			<stoppingPower>4</stoppingPower>
+			<armorPenetrationBase>0.8</armorPenetrationBase>
+		</projectile>
+	</ThingDef>
+	<!-- HEAT WARHEAD -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_NLAW_Warhead</defName>
+		<label>HEAT warhead</label>
+		<graphicData>
+			<texPath>Things/Projectile/NLAW_Rocket</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>RN2Bomb</damageDef>
+			<explosionRadius>2.9</explosionRadius>
+			<speed>60</speed>
+			<damageAmountBase>120</damageAmountBase>
+			<stoppingPower>7</stoppingPower>
+			<armorPenetrationBase>2</armorPenetrationBase>
+		</projectile>
+	</ThingDef>
+	<!-- TANDEM-CHARGE HEAT WARHEAD -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_Javelin_Warhead</defName>
+		<label>Tandem-charge HEAT warhead</label>
+		<graphicData>
+			<texPath>Things/Projectile/Javelin_Rocket</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<damageDef>RN2Bomb</damageDef>
+			<explosionRadius>3.9</explosionRadius>
+			<speed>55</speed>
+			<flyOverhead>true</flyOverhead>
+			<damageAmountBase>300</damageAmountBase>
+			<stoppingPower>6</stoppingPower>
+			<armorPenetrationBase>4</armorPenetrationBase>
+		</projectile>
+	</ThingDef>
+	<!-- RGD-5 GRENADE -->
+	<ThingDef ParentName="BaseGrenadeProjectile">
+		<defName>RNProj_RGHEGrenade</defName>
+		<label>RGD-5 grenade</label>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+			<texPath>Things/Projectile/RGD5_Thrown</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.1</drawSize>
+		</graphicData>
+		<projectile>
+			<explosionRadius >2.8</explosionRadius >
+			<damageDef>RN2FragBomb</damageDef>
+      <!-- Use default damage from explosion def -->
+			<explosionDelay>100</explosionDelay>
+			<stoppingPower>2</stoppingPower>
+		</projectile>
+	</ThingDef>
+	<!-- M84 STUN GRENADE -->
+	<ThingDef ParentName="BaseGrenadeProjectile">
+		<defName>RNProjectile_M84Stun_Grenade</defName>
+		<label>M84 stun grenade</label>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+			<texPath>Things/Projectile/M84Stun_Thrown</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.0</drawSize>
+		</graphicData>
+		<projectile>
+			<explosionRadius>3.5</explosionRadius>
+			<damageDef>Stun</damageDef>
+			<damageAmountBase>15</damageAmountBase>
+			<explosionDelay>75</explosionDelay>
+		</projectile>
+	</ThingDef>
+	<!-- ARMS GALORE -->
+	<!-- ARBALEST BOLT -->
+	<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>CGF1_MWP_Bolt_Arbalest</defName>
+		<label>arbalest bolt</label>
+		<graphicData>
+			<texPath>CGF1/Projectile/Arrow_Bolt</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Arrow</damageDef>
+			<damageAmountBase>32</damageAmountBase>
+			<stoppingPower>1.5</stoppingPower>
+			<speed>63</speed>
+		</projectile>
+	</ThingDef>
+	<!-- WURFKREUZ -->
+	<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>CGF1_MWP_Projectile_Wurfkreuz</defName>
+		<label>wurfkreuz</label>
+		<graphicData>
+			<texPath>CGF1/Projectile/Wurfkreuz</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<projectile>
+			<flyOverhead>false</flyOverhead>
+			<damageDef>RangedStab</damageDef>
+			<damageAmountBase>14</damageAmountBase>
+			<spinRate>0.6</spinRate>
+			<speed>30</speed>
+		</projectile>
+	</ThingDef>
+	<!-- WOOD CROSSBOW BOLT -->
+	<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>CGF1_MWP_Bolt_Wood_Crossbow</defName>
+		<label>wood crossbow bolt</label>
+		<graphicData>
+			<texPath>CGF1/Projectile/Arrow_Bolt</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Arrow</damageDef>
+			<damageAmountBase>20</damageAmountBase>
+			<stoppingPower>1</stoppingPower>
+			<speed>58</speed>
+		</projectile>
+	</ThingDef>
+	<!-- STEEL CROSSBOW BOLT -->
+	<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>CGF1_MWP_Bolt_Steel_Crossbow</defName>
+		<label>steel crossbow bolt</label>
+		<graphicData>
+			<texPath>CGF1/Projectile/Arrow_Bolt</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Arrow</damageDef>
+			<damageAmountBase>26</damageAmountBase>
+			<stoppingPower>1.5</stoppingPower>
+			<speed>60</speed>
+		</projectile>
+	</ThingDef>
+	<!-- STAFF SLING ROCK -->
+	<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>CGF1_MWP_Rock_StaffSling</defName>
+		<label>staff sling rock</label>
+		<graphicData>
+			<texPath>CGF1/Projectile/Rock</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.85</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>Blunt</damageDef>
+			<damageAmountBase>12</damageAmountBase>
+			<speed>45</speed>
+		</projectile>
+	</ThingDef>
+	<!-- STAFF SLING ROCK VOLLEY -->
+	<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>CGF1_MWP_Rock_StaffSling_Volley</defName>
+		<label>staff sling rock</label>
+		<graphicData>
+			<texPath>CGF1/Projectile/Rock</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.85</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>Blunt</damageDef>
+			<damageAmountBase>12</damageAmountBase>
+			<arcHeightFactor>2.00</arcHeightFactor>
+			<speed>25</speed>
+			<flyOverhead>true</flyOverhead>
+		</projectile>
+	</ThingDef>
+	<!-- PLUMBATA -->
+	<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>CGF1_MWP_Projectile_Plumbata</defName>
+		<label>plumbata</label>
+		<graphicData>
+			<texPath>CGF1/Projectile/Plumbata</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>RangedStab</damageDef>
+			<damageAmountBase>14</damageAmountBase>
+			<arcHeightFactor>0.2</arcHeightFactor>
+			<speed>42</speed>
+		</projectile>
+	</ThingDef>
+	<!-- HEAVY THROWING AXE -->
+	<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>CGF1_MWP_Projectile_Heavy_ThrowingAxe</defName>
+		<label>heavy throwing axe</label>
+		<graphicData>
+			<texPath>CGF1/Projectile/Heavy_ThrowingAxe</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<projectile>
+			<flyOverhead>false</flyOverhead>
+			<damageDef>RangedStab</damageDef>
+			<damageAmountBase>18</damageAmountBase>
+			<spinRate>0.4</spinRate>
+			<stoppingPower>2</stoppingPower>
+			<armorPenetrationBase>0.25</armorPenetrationBase>
+			<speed>40</speed>
+		</projectile>
+	</ThingDef>
+	<!-- HEAVY RECURVE -->
+	<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>CGF1_MWP_Arrow_HeavyRecurve</defName>
+		<label>recurve bow arrow</label>
+		<graphicData>
+			<texPath>Things/Projectile/Arrow_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>ArrowHighVelocity</damageDef>
+			<damageAmountBase>16</damageAmountBase>
+			<stoppingPower>1</stoppingPower>
+			<speed>60</speed>
+		</projectile>
+	</ThingDef>
+	<!-- HEAVY RECURVE VOLLEY -->
+	<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>CGF1_MWP_Arrow_HeavyRecurve_Volley</defName>
+		<label>recurve bow arrow</label>
+		<graphicData>
+			<texPath>Things/Projectile/Arrow_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>ArrowHighVelocity</damageDef>
+			<damageAmountBase>16</damageAmountBase>
+			<stoppingPower>1</stoppingPower>
+			<arcHeightFactor>2.00</arcHeightFactor>
+			<speed>30</speed>
+			<flyOverhead>true</flyOverhead>
+		</projectile>
+	</ThingDef>
+	<!-- FRANCISCA -->
+	<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>CGF1_MWP_Projectile_Francisca</defName>
+		<label>francisca</label>
+		<graphicData>
+			<texPath>CGF1/Projectile/Francisca</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<projectile>
+			<flyOverhead>false</flyOverhead>
+			<damageDef>RangedStab</damageDef>
+			<damageAmountBase>15</damageAmountBase>
+			<spinRate>0.4</spinRate>
+			<stoppingPower>1.5</stoppingPower>
+			<armorPenetrationBase>0.2</armorPenetrationBase>
+			<speed>45</speed>
+		</projectile>
+	</ThingDef>
+	<!-- FLETCHED JAVELIN -->
+	<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>CGF1_MWP_Projectile_Fletched_Javelin</defName>
+		<label>fletched javelin</label>
+		<graphicData>
+			<texPath>CGF1/Projectile/Fletched_Javelin</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.25</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>RangedStab</damageDef>
+			<damageAmountBase>22</damageAmountBase>
+			<stoppingPower>2</stoppingPower>
+			<armorPenetrationBase>0.35</armorPenetrationBase>
+			<arcHeightFactor>0.2</arcHeightFactor>
+			<speed>40</speed>
+		</projectile>
+	</ThingDef>
+	<!-- ENGLISH LONGBOW -->
+	<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>CGF1_MWP_Arrow_English_Longbow</defName>
+		<label>English longbow arrow</label>
+		<graphicData>
+			<texPath>CGF1/Projectile/Arrow_Large</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Arrow</damageDef>
+			<damageAmountBase>22</damageAmountBase>
+			<stoppingPower>1.5</stoppingPower>
+			<arcHeightFactor>0.70</arcHeightFactor>
+			<speed>50</speed>
+		</projectile>
+	</ThingDef>
+	<!-- ENGLISH LONGBOW VOLLEY -->
+	<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>CGF1_MWP_Arrow_English_Longbow_Volley</defName>
+		<label>English longbow arrow</label>
+		<graphicData>
+			<texPath>CGF1/Projectile/Arrow_Large</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Arrow</damageDef>
+			<damageAmountBase>22</damageAmountBase>
+			<stoppingPower>1.5</stoppingPower>
+			<arcHeightFactor>2.00</arcHeightFactor>
+			<speed>25</speed>
+			<flyOverhead>true</flyOverhead>
+		</projectile>
+	</ThingDef>
+	<!-- CONTINENTAL WAR BOW -->
+	<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>CGF1_MWP_Arrow_Continental_Warbow</defName>
+		<label>continental warbow arrow</label>
+		<graphicData>
+			<texPath>CGF1/Projectile/Arrow_Large</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Arrow</damageDef>
+			<damageAmountBase>19</damageAmountBase>
+			<stoppingPower>1.5</stoppingPower>
+			<arcHeightFactor>0.70</arcHeightFactor>
+			<speed>44</speed>
+		</projectile>
+	</ThingDef>
+	<!-- CONTINENTAL WAR BOW VOLLEY -->
+	<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>CGF1_MWP_Arrow_Continental_Warbow_Volley</defName>
+		<label>continental warbow arrow</label>
+		<graphicData>
+			<texPath>CGF1/Projectile/Arrow_Large</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Arrow</damageDef>
+			<damageAmountBase>19</damageAmountBase>
+			<stoppingPower>1.5</stoppingPower>
+			<arcHeightFactor>2.00</arcHeightFactor>
+			<speed>23</speed>
+			<flyOverhead>true</flyOverhead>
+		</projectile>
+	</ThingDef>
+	<!-- COMPOSITE CROSSBOW BOLT -->
+	<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>CGF1_MWP_Bolt_Composite_Crossbow</defName>
+		<label>composite crossbow bolt</label>
+		<graphicData>
+			<texPath>CGF1/Projectile/Arrow_Bolt</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Arrow</damageDef>
+			<damageAmountBase>21</damageAmountBase>
+			<stoppingPower>1</stoppingPower>
+			<speed>58</speed>
+		</projectile>
+	</ThingDef>
+	<!-- COMPOSITE BOW -->
+	<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>CGF1_MWP_Arrow_Composite</defName>
+		<label>composite bow arrow</label>
+		<graphicData>
+			<texPath>Things/Projectile/Arrow_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Arrow</damageDef>
+			<damageAmountBase>12</damageAmountBase>
+			<stoppingPower>1</stoppingPower>
+			<speed>50</speed>
+		</projectile>
+	</ThingDef>
+	<!-- COMPOSITE BOW VOLLEY -->
+	<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>CGF1_MWP_Arrow_Composite_Volley</defName>
+		<label>composite bow arrow</label>
+		<graphicData>
+			<texPath>Things/Projectile/Arrow_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Arrow</damageDef>
+			<damageAmountBase>12</damageAmountBase>
+			<stoppingPower>1</stoppingPower>
+			<arcHeightFactor>2.00</arcHeightFactor>
+			<speed>25</speed>
+			<flyOverhead>true</flyOverhead>
+		</projectile>
+	</ThingDef>
+	<!-- ANM8 SMOKE -->
+		<ThingDef>
+			<defName>CGF1_MWP_Projectile_ANM8_Smoke</defName>
+			<label>AN/M8 Smoke Grenade</label>
+			<category>Projectile</category>
+			<altitudeLayer>Projectile</altitudeLayer>
+			<tickerType>Normal</tickerType>
+			<useHitPoints>False</useHitPoints>
+			<neverMultiSelect>True</neverMultiSelect>
+			<thingClass>Projectile_Explosive</thingClass>
+			<graphicData>
+			<texPath>CGF1/Projectile/ANM8_Smoke</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>0.63</drawSize>
+			</graphicData>
+			<projectile>
+			<explosionRadius>2.4</explosionRadius>
+			<damageDef>Smoke</damageDef>
+			<explosionDelay>100</explosionDelay>
+			<postExplosionGasType>BlindSmoke</postExplosionGasType>
+			<speed>12</speed>
+			<arcHeightFactor>2</arcHeightFactor>
+			<shadowSize>0.4</shadowSize>
+			</projectile>
+		</ThingDef>
+	<!-- M6A1 CNDM -->
+		<ThingDef MayRequire="VanillaExpanded.VWENL">
+			<defName>CGF1_MWP_Projectile_M6A1_CNDM</defName>
+			<label>M6A1 CN-DM Grenade</label>
+			<category>Projectile</category>
+			<altitudeLayer>Projectile</altitudeLayer>
+			<tickerType>Normal</tickerType>
+			<useHitPoints>False</useHitPoints>
+			<neverMultiSelect>True</neverMultiSelect>
+			<thingClass>Projectile_Explosive</thingClass>
+			<graphicData>
+			<texPath>CGF1/Projectile/M6A1_CNDM</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>0.63</drawSize>
+			</graphicData>
+			<projectile>
+			<damageDef>Smoke</damageDef>
+			<explosionDelay>100</explosionDelay>
+			<postExplosionSpawnThingDef>CGF1_MWP_CSGasCloud</postExplosionSpawnThingDef>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+			<postExplosionSpawnThingCount>1</postExplosionSpawnThingCount>
+			<speed>12</speed>
+			<explosionRadius>3.9</explosionRadius>
+			<arcHeightFactor>2</arcHeightFactor>
+			<shadowSize>0.4</shadowSize>
+			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+			</projectile>
+		</ThingDef>
+	<!-- M7A1 CN -->
+		<ThingDef MayRequire="VanillaExpanded.VWENL">
+			<defName>CGF1_MWP_Projectile_M7A1_CN</defName>
+			<label>M7A1 CN Grenade</label>
+			<category>Projectile</category>
+			<altitudeLayer>Projectile</altitudeLayer>
+			<tickerType>Normal</tickerType>
+			<useHitPoints>False</useHitPoints>
+			<neverMultiSelect>True</neverMultiSelect>
+			<thingClass>Projectile_Explosive</thingClass>
+			<graphicData>
+			<texPath>CGF1/Projectile/M7A1_CN</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>0.63</drawSize>
+			</graphicData>
+			<projectile>
+			<damageDef>Smoke</damageDef>
+			<explosionDelay>100</explosionDelay>
+			<postExplosionSpawnThingDef>CGF1_MWP_CSGasCloud</postExplosionSpawnThingDef>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+			<postExplosionSpawnThingCount>1</postExplosionSpawnThingCount>
+			<speed>12</speed>
+			<explosionRadius>3.9</explosionRadius>
+			<arcHeightFactor>2</arcHeightFactor>
+			<shadowSize>0.4</shadowSize>
+			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+			</projectile>
+		</ThingDef>
+	<!-- M7A2 CS -->
+		<ThingDef MayRequire="VanillaExpanded.VWENL">
+			<defName>CGF1_MWP_Projectile_M7A2_CS</defName>
+			<label>M7A2 CS Grenade</label>
+			<category>Projectile</category>
+			<altitudeLayer>Projectile</altitudeLayer>
+			<tickerType>Normal</tickerType>
+			<useHitPoints>False</useHitPoints>
+			<neverMultiSelect>True</neverMultiSelect>
+			<thingClass>Projectile_Explosive</thingClass>
+			<graphicData>
+			<texPath>CGF1/Projectile/M7A2_CS</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>0.63</drawSize>
+			</graphicData>
+			<projectile>
+			<damageDef>Smoke</damageDef>
+			<explosionDelay>100</explosionDelay>
+			<postExplosionSpawnThingDef>CGF1_MWP_CSGasCloud</postExplosionSpawnThingDef>
+			<postExplosionSpawnChance>1</postExplosionSpawnChance>
+			<postExplosionSpawnThingCount>1</postExplosionSpawnThingCount>
+			<speed>12</speed>
+			<explosionRadius>3.9</explosionRadius>
+			<arcHeightFactor>2</arcHeightFactor>
+			<shadowSize>0.4</shadowSize>
+			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+			</projectile>
+		</ThingDef>
+	<!-- M61 FRAG -->
+		<ThingDef>
+			<defName>CGF1_MWP_Projectile_M61_Frag</defName>
+			<label>M61 Frag Grenade</label>
+			<category>Projectile</category>
+			<altitudeLayer>Projectile</altitudeLayer>
+			<tickerType>Normal</tickerType>
+			<useHitPoints>False</useHitPoints>
+			<neverMultiSelect>True</neverMultiSelect>
+			<thingClass>Projectile_Explosive</thingClass>
+			<graphicData>
+			<texPath>CGF1/Projectile/M61_Frag</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>0.6</drawSize>
+			</graphicData>
+			<projectile>
+			<explosionRadius>1.9</explosionRadius>
+			<damageDef>Bomb</damageDef>
+			<explosionDelay>100</explosionDelay>
+			<speed>12</speed>
+			<arcHeightFactor>2</arcHeightFactor>
+			<shadowSize>0.4</shadowSize>
+			</projectile>
+		</ThingDef>
+	<!-- M26 FRAG -->
+		<ThingDef>
+			<defName>CGF1_MWP_Projectile_M26_Frag</defName>
+			<label>M26 Frag Grenade</label>
+			<category>Projectile</category>
+			<altitudeLayer>Projectile</altitudeLayer>
+			<tickerType>Normal</tickerType>
+			<useHitPoints>False</useHitPoints>
+			<neverMultiSelect>True</neverMultiSelect>
+			<thingClass>Projectile_Explosive</thingClass>
+			<graphicData>
+			<texPath>CGF1/Projectile/M26_Frag</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>0.6</drawSize>
+			</graphicData>
+			<projectile>
+			<explosionRadius>1.9</explosionRadius>
+			<damageDef>Bomb</damageDef>
+			<explosionDelay>100</explosionDelay>
+			<speed>12</speed>
+			<arcHeightFactor>2</arcHeightFactor>
+			<shadowSize>0.4</shadowSize>
+			</projectile>
+		</ThingDef>
+	<!-- M18 SMOKE YELLOW -->
+		<ThingDef>
+			<defName>CGF1_MWP_Projectile_M18_Smoke_Yellow</defName>
+			<label>M18 Smoke Grenade (Yellow)</label>
+			<category>Projectile</category>
+			<altitudeLayer>Projectile</altitudeLayer>
+			<tickerType>Normal</tickerType>
+			<useHitPoints>False</useHitPoints>
+			<neverMultiSelect>True</neverMultiSelect>
+			<thingClass>Projectile_Explosive</thingClass>
+			<graphicData>
+			<texPath>CGF1/Projectile/M18_Smoke_Yellow</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>0.63</drawSize>
+			</graphicData>
+			<projectile>
+			<explosionRadius>2.4</explosionRadius>
+			<damageDef>Smoke</damageDef>
+			<explosionDelay>100</explosionDelay>
+			<preExplosionSpawnThingDef>CGF1_MWP_SmokeCloud_Yellow</preExplosionSpawnThingDef>
+			<speed>12</speed>
+			<arcHeightFactor>2</arcHeightFactor>
+			<shadowSize>0.4</shadowSize>
+			</projectile>
+		</ThingDef>
+	<!-- M18 SMOKE VIOLET -->
+		<ThingDef>
+			<defName>CGF1_MWP_Projectile_M18_Smoke_Violet</defName>
+			<label>M18 Smoke Grenade (Violet)</label>
+			<category>Projectile</category>
+			<altitudeLayer>Projectile</altitudeLayer>
+			<tickerType>Normal</tickerType>
+			<useHitPoints>False</useHitPoints>
+			<neverMultiSelect>True</neverMultiSelect>
+			<thingClass>Projectile_Explosive</thingClass>
+			<graphicData>
+			<texPath>CGF1/Projectile/M18_Smoke_Violet</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>0.63</drawSize>
+			</graphicData>
+			<projectile>
+			<explosionRadius>2.4</explosionRadius>
+			<damageDef>Smoke</damageDef>
+			<explosionDelay>100</explosionDelay>
+			<preExplosionSpawnThingDef>CGF1_MWP_SmokeCloud_Violet</preExplosionSpawnThingDef>
+			<speed>12</speed>
+			<arcHeightFactor>2</arcHeightFactor>
+			<shadowSize>0.4</shadowSize>
+			</projectile>
+		</ThingDef>
+	<!-- M18 SMOKE RED -->
+		<ThingDef>
+			<defName>CGF1_MWP_Projectile_M18_Smoke_Red</defName>
+			<label>M18 Smoke Grenade (Red)</label>
+			<category>Projectile</category>
+			<altitudeLayer>Projectile</altitudeLayer>
+			<tickerType>Normal</tickerType>
+			<useHitPoints>False</useHitPoints>
+			<neverMultiSelect>True</neverMultiSelect>
+			<thingClass>Projectile_Explosive</thingClass>
+			<graphicData>
+			<texPath>CGF1/Projectile/M18_Smoke_Red</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>0.63</drawSize>
+			</graphicData>
+			<projectile>
+			<explosionRadius>2.4</explosionRadius>
+			<damageDef>Smoke</damageDef>
+			<explosionDelay>100</explosionDelay>
+			<preExplosionSpawnThingDef>CGF1_MWP_SmokeCloud_Red</preExplosionSpawnThingDef>
+			<speed>12</speed>
+			<arcHeightFactor>2</arcHeightFactor>
+			<shadowSize>0.4</shadowSize>
+			</projectile>
+		</ThingDef>
+	<!-- M18 SMOKE GREEN -->
+		<ThingDef>
+			<defName>CGF1_MWP_Projectile_M18_Smoke_Green</defName>
+			<label>M18 Smoke Grenade (Green)</label>
+			<category>Projectile</category>
+			<altitudeLayer>Projectile</altitudeLayer>
+			<tickerType>Normal</tickerType>
+			<useHitPoints>False</useHitPoints>
+			<neverMultiSelect>True</neverMultiSelect>
+			<thingClass>Projectile_Explosive</thingClass>
+			<graphicData>
+			<texPath>CGF1/Projectile/M18_Smoke_Green</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>Transparent</shaderType>
+			<drawSize>0.63</drawSize>
+			</graphicData>
+			<projectile>
+			<explosionRadius>2.4</explosionRadius>
+			<damageDef>Smoke</damageDef>
+			<explosionDelay>100</explosionDelay>
+			<preExplosionSpawnThingDef>CGF1_MWP_SmokeCloud_Green</preExplosionSpawnThingDef>
+			<speed>12</speed>
+			<arcHeightFactor>2</arcHeightFactor>
+			<shadowSize>0.4</shadowSize>
+			</projectile>
+		</ThingDef>
+	<!-- M56 SMART GUN CASELESS -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_M56SG</defName>
+    <label>M56 Smart Gun caseless bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>14</damageAmountBase>
+      <speed>80</speed>
+    </projectile>
+  </ThingDef>
+	<!-- M41A PULSE RIFLE CASELESS -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_PulseRifle</defName>
+    <label>M41A Pulse Rifle caseless bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>11</damageAmountBase>
+      <speed>70</speed>
+    </projectile>
+  </ThingDef>
+	<!-- M240B -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_M240B</defName>
+    <label>M240B bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_big</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>12</damageAmountBase>
+      <armorPenetrationBase>0.5</armorPenetrationBase>
+      <stoppingPower>3</stoppingPower>
+      <speed>40</speed>
+    </projectile>
+  </ThingDef>
+	<!-- M4 CARBINE -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_M4US</defName>
+    <label>M4 Carbine bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>11</damageAmountBase>
+      <speed>70</speed>
+    </projectile>
+  </ThingDef>
+	<!-- M202 INCENDIARY ROCKET -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_M202F</defName>
+    <label>M202 incendiary rocket blast</label>
+    <graphicData>
+      <texPath>Things/Projectile/LauncherShot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+      <color>(254,189,58)</color>
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+    <projectile>
+      <speed>40</speed>
+      <damageDef>Flame</damageDef>
+      <!-- Use default damage from explosion def -->
+      <explosionRadius>1.5</explosionRadius>
+      <preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+      <preExplosionSpawnChance>0.6</preExplosionSpawnChance>
+      <ai_IsIncendiary>true</ai_IsIncendiary>
+      <arcHeightFactor>0.2</arcHeightFactor>
+      <shadowSize>0.6</shadowSize>
+    </projectile>
+  </ThingDef>
+	<!-- AA-12 BLAST -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_AATwelve</defName>
+    <label>AA-12 blast</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Shotgun</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>18</damageAmountBase>
+      <stoppingPower>3</stoppingPower>
+      <armorPenetrationBase>0.14</armorPenetrationBase>
+      <speed>55</speed>
+    </projectile>
+  </ThingDef>
+	<!-- GREYHAWK 55 -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_GreyHawk</defName>
+    <label>GreyHawk 55 bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>17</damageAmountBase>
+      <stoppingPower>1.2</stoppingPower>
+      <speed>55</speed>
+    </projectile>
+  </ThingDef>
+	<!-- HANDHELD M2HB -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_M2HB</defName>
+    <label>Hand-held M2HB bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Big</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>35</damageAmountBase>
+      <stoppingPower>2.0</stoppingPower>
+      <speed>70</speed>
+    </projectile>
+  </ThingDef>
+	<!-- M16A4 -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_M16AFour</defName>
+    <label>M16A4 (custom) bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>11</damageAmountBase>
+      <speed>70</speed>
+    </projectile>
+  </ThingDef>
+	<!-- G-98 CHARGE -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_GlockFLUX</defName>
+    <label>G-98 charge shot</label>
+    <graphicData>
+      <texPath>Things/Projectile/Charge_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>10</damageAmountBase>
+      <armorPenetrationBase>0.35</armorPenetrationBase>
+      <speed>70</speed>
+    </projectile>
+  </ThingDef>
+	<!-- MG3 -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_MGThree</defName>
+    <label>MG3 bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>12</damageAmountBase>
+      <speed>60</speed>
+    </projectile>
+  </ThingDef>
+	<!-- GALIL ACE -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_GalilACE</defName>
+    <label>Galil ACE bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>12</damageAmountBase>
+      <speed>60</speed>
+    </projectile>
+  </ThingDef>
+	<!-- KAC M110 -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_SRTwentyFive</defName>
+    <label>KAC M110 bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>18</damageAmountBase>
+      <stoppingPower>1.5</stoppingPower>
+      <speed>100</speed>
+    </projectile>
+  </ThingDef>
+	<!-- L2A1 FRAG -->
+	<ThingDef>
+		<defName>CGF1_MWP_Projectile_L2A1_Frag</defName>
+		<label>L2A1 Frag Grenade</label>
+		<category>Projectile</category>
+		<altitudeLayer>Projectile</altitudeLayer>
+		<tickerType>Normal</tickerType>
+		<useHitPoints>False</useHitPoints>
+		<neverMultiSelect>True</neverMultiSelect>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+		  <texPath>CGF1/Projectile/L2A1_Frag</texPath>
+		  <graphicClass>Graphic_Single</graphicClass>
+		  <shaderType>Transparent</shaderType>
+		  <drawSize>0.6</drawSize>
+		</graphicData>
+		<projectile>
+		  <explosionRadius>1.9</explosionRadius>
+		  <damageDef>Bomb</damageDef>
+		  <explosionDelay>100</explosionDelay>
+		  <speed>12</speed>
+		  <arcHeightFactor>2</arcHeightFactor>
+		  <shadowSize>0.4</shadowSize>
+		</projectile>
+  </ThingDef>
+	<!-- L2A2 FRAG -->
+	<ThingDef>
+		<defName>CGF1_MWP_Projectile_L2A2_Frag</defName>
+		<label>L2A2 Frag Grenade</label>
+		<category>Projectile</category>
+		<altitudeLayer>Projectile</altitudeLayer>
+		<tickerType>Normal</tickerType>
+		<useHitPoints>False</useHitPoints>
+		<neverMultiSelect>True</neverMultiSelect>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+		  <texPath>CGF1/Projectile/L2A2_Frag</texPath>
+		  <graphicClass>Graphic_Single</graphicClass>
+		  <shaderType>Transparent</shaderType>
+		  <drawSize>0.6</drawSize>
+		</graphicData>
+		<projectile>
+		  <explosionRadius>1.9</explosionRadius>
+		  <damageDef>Bomb</damageDef>
+		  <explosionDelay>100</explosionDelay>
+		  <speed>12</speed>
+		  <arcHeightFactor>2</arcHeightFactor>
+		  <shadowSize>0.4</shadowSize>
+		</projectile>
+  </ThingDef>
+	<!-- SIG M5 SPEAR -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_SIGM5SPEAR</defName>
+    <label>SIG M5 SPEAR bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>11</damageAmountBase>
+      <speed>65</speed>
+      <armorPenetrationBase>0.20</armorPenetrationBase>
+      <stoppingPower>1</stoppingPower>
+    </projectile>
+  </ThingDef>
+	<!-- SIG M250 -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_SIGM250SAW</defName>
+    <label>SIG M250 bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>10</damageAmountBase>
+      <speed>50</speed>
+      <armorPenetrationBase>0.20</armorPenetrationBase>
+      <stoppingPower>1</stoppingPower>
+    </projectile>
+  </ThingDef>
+	<!-- SIG M338 -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_SIG338MG</defName>
+    <label>SIG MG 338 bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Big</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>14</damageAmountBase>
+      <speed>50</speed>
+      <armorPenetrationBase>0.5</armorPenetrationBase>
+      <stoppingPower>1.5</stoppingPower>
+    </projectile>
+  </ThingDef>
+	<!-- KS23 BLAST -->
+	<ThingDef ParentName="BaseBullet">
+        <defName>HRK_Bullet_KS23M</defName>
+        <label>KS-23 blast</label>
+        <graphicData>
+            <texPath>Things/Projectile/Bullet_Shotgun</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <projectile>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>22</damageAmountBase>
+            <stoppingPower>4</stoppingPower>
+            <armorPenetrationBase>0.18</armorPenetrationBase>
+            <speed>55</speed>
+        </projectile>
+    </ThingDef>
+	<!-- KS23 ION -->
+	<ThingDef ParentName="BaseBullet">
+        <defName>HRK_Bullet_KS23ChargedIon</defName>
+        <label>charge KS-23 ion</label>
+        <graphicData>
+            <texPath>Things/Projectile/Bullet_Charge_Shotgun</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>TransparentPostLight</shaderType>
+            <drawSize>1.2</drawSize>
+        </graphicData>
+        <projectile>
+            <damageDef>EMP</damageDef>
+            <damageAmountBase>11</damageAmountBase>
+            <stoppingPower>1</stoppingPower>
+            <speed>60</speed>
+        </projectile>
+    </ThingDef>
+	<!-- KS23 BLAST -->
+	<ThingDef ParentName="BaseBullet">
+        <defName>HRK_Bullet_KS23Charged</defName>
+        <label>charge KS-23 blast</label>
+        <graphicData>
+            <texPath>Things/Projectile/Bullet_Charge_Shotgun</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>TransparentPostLight</shaderType>
+            <drawSize>1.2</drawSize>
+        </graphicData>
+        <projectile>
+            <damageDef>Bullet</damageDef>
+            <damageAmountBase>22</damageAmountBase>
+            <armorPenetrationBase>0.45</armorPenetrationBase>
+            <stoppingPower>4</stoppingPower>
+            <speed>60</speed>
+        </projectile>
+    </ThingDef>
+	<!-- KRISS VECTOR GEN I -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_KRISSVector</defName>
+    <label>KRISS Vector bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>4</damageAmountBase>
+      <speed>55</speed>
+    </projectile>
+  </ThingDef>
+	<!-- KRISS VECTOR ACP -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_KRISSVectorACP</defName>
+    <label>KRISS Vector ACP bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>12</damageAmountBase>
+      <armorPenetrationBase>0.18</armorPenetrationBase>
+      <speed>48</speed>
+    </projectile>
+  </ThingDef>
+	<!-- KRISS VECTOR CHARGED -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_KRISSVectorCharged</defName>
+    <label>KRISS Vector charge shot</label>
+    <graphicData>
+      <texPath>Things/Projectile/Charge_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>14</damageAmountBase>
+      <armorPenetrationBase>0.35</armorPenetrationBase>
+      <speed>70</speed>
+    </projectile>
+  </ThingDef>
+	<!-- SCAR-L -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_SCARL</defName>
+    <label>FN SCAR-L rifle bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>11</damageAmountBase>
+      <speed>70</speed>
+    </projectile>
+  </ThingDef>
+	<!-- UBGL FRAG GRENADE -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_SCARGL</defName>
+    <label>UBGL frag grenade</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Big</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+    <projectile>
+      <speed>40</speed>
+      <damageDef>Bomb</damageDef>
+      <!-- Use default damage from explosion def -->
+      <explosionRadius>1.1</explosionRadius>
+      <preExplosionSpawnThingDef>Filth_RubbleRock</preExplosionSpawnThingDef>
+      <preExplosionSpawnChance>0.3</preExplosionSpawnChance>
+      <ai_IsIncendiary>false</ai_IsIncendiary>
+      <arcHeightFactor>0.55</arcHeightFactor>
+      <shadowSize>0.6</shadowSize>
+      <explosionDelay>0</explosionDelay>
+    </projectile>
+  </ThingDef>
+	<!-- SCAR-H -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_SCARH</defName>
+    <label>FN SCAR-H bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>12</damageAmountBase>
+      <armorPenetrationBase>0.18</armorPenetrationBase>
+      <stoppingPower>1.0</stoppingPower>
+      <speed>60</speed>
+    </projectile>
+  </ThingDef>
+	<!-- FN SSR -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_SSR</defName>
+    <label>FN SSR bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>15</damageAmountBase>
+      <armorPenetrationBase>0.26</armorPenetrationBase>
+      <speed>80</speed>
+    </projectile>
+  </ThingDef>
+	<!-- CHARGED SCAR -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_Charged_SCAR</defName>
+    <label>FN SCAR charged bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Charge_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>16</damageAmountBase>
+      <armorPenetrationBase>0.38</armorPenetrationBase>
+      <speed>70</speed>
+    </projectile>
+  </ThingDef>
+	<!-- KELTEC CP33 -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_KelTecCP33P</defName>
+    <label>Kel-Tec CP33 bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>10</damageAmountBase>
+      <stoppingPower>0.24</stoppingPower>
+      <armorPenetrationBase>0.05</armorPenetrationBase>
+      <speed>55</speed>
+    </projectile>
+  </ThingDef>
+	<!-- KELTEC KSG -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_KelTecKSG</defName>
+    <label>Kel-Tec KSG shotgun blast</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Shotgun</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>18</damageAmountBase>
+      <stoppingPower>3</stoppingPower>
+      <armorPenetrationBase>0.14</armorPenetrationBase>
+      <speed>55</speed>
+    </projectile>
+  </ThingDef>
+	<!-- KELTEC P50 -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_KelTecP50P</defName>
+    <label>Kel-Tec P50 bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>12</damageAmountBase>
+      <stoppingPower>0.5</stoppingPower>
+      <armorPenetrationBase>0.18</armorPenetrationBase>
+      <speed>60</speed>
+    </projectile>
+  </ThingDef>
+	<!-- KELTEC RDB -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_KelTecRDB_C</defName>
+    <label>Kel-Tec RDB bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>15</damageAmountBase>
+      <stoppingPower>1.5</stoppingPower>
+      <speed>60</speed>
+    </projectile>
+  </ThingDef>
+	<!-- KELTEC RFB -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_KelTecRFB</defName>
+    <label>Kel-Tec RFB bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>16</damageAmountBase>
+      <stoppingPower>2</stoppingPower>
+      <armorPenetrationBase>0.18</armorPenetrationBase>
+      <speed>65</speed>
+    </projectile>
+  </ThingDef>
+	<!-- DM41 FRAG -->
+	<ThingDef>
+		<defName>CGF1_MWP_Projectile_DM41_Frag</defName>
+		<label>DM41 frag grenade</label>
+		<category>Projectile</category>
+		<altitudeLayer>Projectile</altitudeLayer>
+		<tickerType>Normal</tickerType>
+		<useHitPoints>False</useHitPoints>
+		<neverMultiSelect>True</neverMultiSelect>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+		  <texPath>CGF1/Projectile/DM41_Frag</texPath>
+		  <graphicClass>Graphic_Single</graphicClass>
+		  <shaderType>Transparent</shaderType>
+		  <drawSize>0.6</drawSize>
+		</graphicData>
+		<projectile>
+		  <explosionRadius>1.9</explosionRadius>
+		  <damageDef>Bomb</damageDef>
+		  <explosionDelay>100</explosionDelay>
+		  <speed>12</speed>
+		  <arcHeightFactor>2</arcHeightFactor>
+		  <shadowSize>0.4</shadowSize>
+		</projectile>
+  </ThingDef>
+	<!-- TYPE 67 FRAG -->
+	<ThingDef>
+		<defName>CGF1_MWP_Projectile_Type67_Frag</defName>
+		<label>Type 67 frag grenade</label>
+		<category>Projectile</category>
+		<altitudeLayer>Projectile</altitudeLayer>
+		<tickerType>Normal</tickerType>
+		<useHitPoints>False</useHitPoints>
+		<neverMultiSelect>True</neverMultiSelect>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+		  <texPath>CGF1/Projectile/Type67_Grenade</texPath>
+		  <graphicClass>Graphic_Single</graphicClass>
+		  <shaderType>Transparent</shaderType>
+		  <drawSize>0.5</drawSize>
+		</graphicData>
+		<projectile>
+		  <explosionRadius>1.9</explosionRadius>
+		  <damageDef>Bomb</damageDef>
+		  <explosionDelay>100</explosionDelay>
+		  <speed>11</speed>
+		  <arcHeightFactor>2</arcHeightFactor>
+		  <shadowSize>0.42</shadowSize>
+		</projectile>
+  </ThingDef>
+	<!-- TYPE 73 FRAG -->
+	<ThingDef>
+		<defName>CGF1_MWP_Projectile_Type73_Frag</defName>
+		<label>Type 73 frag grenade</label>
+		<category>Projectile</category>
+		<altitudeLayer>Projectile</altitudeLayer>
+		<tickerType>Normal</tickerType>
+		<useHitPoints>False</useHitPoints>
+		<neverMultiSelect>True</neverMultiSelect>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+		  <texPath>CGF1/Projectile/Type73_Grenade</texPath>
+		  <graphicClass>Graphic_Single</graphicClass>
+		  <shaderType>Transparent</shaderType>
+		  <drawSize>0.5</drawSize>
+		</graphicData>
+		<projectile>
+		  <explosionRadius>1.9</explosionRadius>
+		  <damageDef>Bomb</damageDef>
+		  <explosionDelay>100</explosionDelay>
+		  <speed>12</speed>
+		  <arcHeightFactor>2</arcHeightFactor>
+		  <shadowSize>0.4</shadowSize>
+		</projectile>
+  </ThingDef>
+	<!-- TYPE 77 FRAG -->
+	<ThingDef>
+		<defName>CGF1_MWP_Projectile_Type77_Frag</defName>
+		<label>Type 77 frag grenade</label>
+		<category>Projectile</category>
+		<altitudeLayer>Projectile</altitudeLayer>
+		<tickerType>Normal</tickerType>
+		<useHitPoints>False</useHitPoints>
+		<neverMultiSelect>True</neverMultiSelect>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+		  <texPath>CGF1/Projectile/Type73_Grenade</texPath>
+		  <graphicClass>Graphic_Single</graphicClass>
+		  <shaderType>Transparent</shaderType>
+		  <drawSize>0.5</drawSize>
+		</graphicData>
+		<projectile>
+		  <explosionRadius>1.9</explosionRadius>
+		  <damageDef>Bomb</damageDef>
+		  <explosionDelay>100</explosionDelay>
+		  <speed>13</speed>
+		  <arcHeightFactor>2</arcHeightFactor>
+		  <shadowSize>0.4</shadowSize>
+		</projectile>
+  </ThingDef>
+	<!-- DT MICRON -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_DTMicron</defName>
+    <label>DT MICRON bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>12</damageAmountBase>
+      <armorPenetrationBase>0.18</armorPenetrationBase>
+      <speed>48</speed>
+    </projectile>
+  </ThingDef>
+	<!-- DT MDRX -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_DTMDRX</defName>
+    <label>DT MDRX bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>11</damageAmountBase>
+      <stoppingPower>1</stoppingPower>
+      <speed>70</speed>
+    </projectile>
+  </ThingDef>
+	<!-- DT MDRX 308 -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_DT308MDRX</defName>
+    <label>DT MDRX .308 bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>12</damageAmountBase>
+      <armorPenetrationBase>0.18</armorPenetrationBase>
+      <stoppingPower>1</stoppingPower>
+      <speed>60</speed>
+    </projectile>
+  </ThingDef>
+	<!-- DT SRS -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_DTSRS</defName>
+    <label>DT SRS sniper bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>25</damageAmountBase>
+      <armorPenetrationBase>0.38</armorPenetrationBase>
+      <stoppingPower>1.5</stoppingPower>
+      <speed>100</speed>
+    </projectile>
+  </ThingDef>
+	<!-- DT HTI -->
+	<ThingDef ParentName="BaseBullet">
+    <defName>HRK_Bullet_DTHTI</defName>
+    <label>DT HTI AM bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>56</damageAmountBase>
+      <armorPenetrationBase>0.9</armorPenetrationBase>
+      <stoppingPower>3</stoppingPower>
+      <speed>70</speed>
+    </projectile>
+  </ThingDef>
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+</Defs>

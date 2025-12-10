@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- MORE BRIDGES -->
+		<!-- MORE BRIDGES BASE -->
+			<TerrainDef Name="MoreBridgeBase" Abstract="True">
+				<edgeType>Hard</edgeType>
+				<renderPrecedence>400</renderPrecedence>
+				<layerable>true</layerable>
+				<affordances>
+				<li>Light</li>
+				<li>Medium</li>
+				<li>Heavy</li>
+				</affordances>
+				<designationCategory>Structure</designationCategory>
+				<fertility>0</fertility>
+				<constructEffect>ConstructMetal</constructEffect>
+				<destroyBuildingsOnDestroyed>true</destroyBuildingsOnDestroyed>
+				<destroyEffect>Bridge_Collapse</destroyEffect>
+				<destroyEffectWater>Bridge_CollapseWater</destroyEffectWater>
+			</TerrainDef>
+		<!-- DEEP WATER BRIDGE BASE -->
+			<TerrainDef Name="DeepWaterBridgeBase" ParentName="MoreBridgeBase" Abstract="True">
+				<description>A flat surface of the chosen material on supportive beams which can be built over water. You can even build heavy structures on these bridges, but be careful, they are still fragile. If a bridge falls, buildings on top of it fall as well.</description>
+				<uiIconPath>Terrain/Surfaces/DeepWaterBridge_MenuIcon</uiIconPath>
+				<terrainAffordanceNeeded>BridgeableDeep</terrainAffordanceNeeded>
+				<resourcesFractionWhenDeconstructed>0</resourcesFractionWhenDeconstructed>
+				<statBases>
+				<WorkToBuild>3200</WorkToBuild>
+				</statBases>
+				<destroyOnBombDamageThreshold>40</destroyOnBombDamageThreshold>
+				<designatorDropdown>Bridge_DeepWater</designatorDropdown>
+				<researchPrerequisites>
+				<li>DeepWaterBridges</li>
+				</researchPrerequisites>
+			</TerrainDef>
+		<!-- DEEP WATER BRIDGE METAL BASE -->
+			<TerrainDef Name="DeepWaterBridgeMetalBase" ParentName="DeepWaterBridgeBase" Abstract="True">
+				<texturePath>Terrain/Surfaces/DeepWaterBridgeMetal</texturePath>
+				<researchPrerequisites>
+				<li>Smithing</li>
+				</researchPrerequisites>
+			</TerrainDef>
+		<!-- DEEP WATER BRIDGE STONE BASE -->
+			<TerrainDef Name="DeepWaterBridgeStoneBase" ParentName="DeepWaterBridgeBase" Abstract="True">
+				<texturePath>Terrain/Surfaces/DeepWaterBridgeStone</texturePath>
+				<researchPrerequisites>
+				<li>Stonecutting</li>
+				</researchPrerequisites>
+			</TerrainDef>
+		<!-- HEAVY BRIDGE BASE -->
+			<TerrainDef Name="HeavyBridgeBase" ParentName="MoreBridgeBase" Abstract="True">
+				<description>A flat surface of the chosen material on supportive beams which can be built over water. You can even build heavy structures on these bridges, but be careful, they are still fragile. If a bridge falls, buildings on top of it fall as well.</description>
+				<uiIconPath>Terrain/Surfaces/HeavyBridge_MenuIcon</uiIconPath>
+				<terrainAffordanceNeeded>Bridgeable</terrainAffordanceNeeded>
+				<statBases>
+				<WorkToBuild>2200</WorkToBuild>
+				<Flammability>0</Flammability>
+				</statBases>
+				<destroyOnBombDamageThreshold>45</destroyOnBombDamageThreshold>
+				<designatorDropdown>Bridge_Heavy</designatorDropdown>
+				<researchPrerequisites>
+				<li>HeavyBridges</li>
+				</researchPrerequisites>
+			</TerrainDef>
+		<!-- HEAVY BRIDGE METAL BASE -->
+			<TerrainDef Name="HeavyBridgeMetalBase" ParentName="HeavyBridgeBase" Abstract="True">
+				<texturePath>Terrain/Surfaces/HeavyBridgeMetal</texturePath>
+				<researchPrerequisites>
+				<li>Smithing</li>
+				</researchPrerequisites>
+			</TerrainDef>
+		<!-- HEAVY BRIDGE STONE BASE -->
+			<TerrainDef Name="HeavyBridgeStoneBase" ParentName="HeavyBridgeBase" Abstract="True">
+				<texturePath>Terrain/Surfaces/HeavyBridgeStone</texturePath>
+				<researchPrerequisites>
+				<li>Stonecutting</li>
+				</researchPrerequisites>
+			</TerrainDef>
+	<!--  -->
+	<!--  -->
+	<!--  -->
+</Defs>

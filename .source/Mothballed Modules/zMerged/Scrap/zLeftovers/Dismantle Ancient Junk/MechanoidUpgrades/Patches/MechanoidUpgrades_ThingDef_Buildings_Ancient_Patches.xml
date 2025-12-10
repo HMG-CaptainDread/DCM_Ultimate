@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+<!-- Mechanoid Upgrades Ancient Building patch -->
+
+<Operation Class="PatchOperationConditional">
+	<success>Normal</success>
+	<!-- MU_AncientMechUpgrader deconstructible check -->
+	<xpath>*/ThingDef[defName="MU_AncientMechUpgrader"]/building/deconstructible</xpath>
+	<!-- deconstructible false -->
+	<match Class="PatchOperationReplace">
+		<xpath>*/ThingDef[defName="MU_AncientMechUpgrader"]/building[deconstructible="false"][deconstructible != "true"]</xpath>
+		<!-- <xpath>*/ThingDef[defName="MU_AncientMechUpgrader" or defName="MU_AncientBasicUpgradesAssembler" or defName="MU_AncientAdvancedUpgradesAssembler"]/building[deconstructible="false"][deconstructible != "true"]</xpath> -->
+		<value>
+			<building>
+				<deconstructible>true</deconstructible>
+				<alwaysDeconstructible>true</alwaysDeconstructible>
+			</building>
+		</value>
+	</match>
+	<!-- deconstructible add -->
+	<nomatch Class="PatchOperationAdd">
+		<xpath>*/ThingDef[defName="MU_AncientMechUpgrader"]/building</xpath>
+		<!-- <xpath>*/ThingDef[defName="MU_AncientMechUpgrader" or defName="MU_AncientBasicUpgradesAssembler" or defName="MU_AncientAdvancedUpgradesAssembler" or defName="MU_AncientUpgradesStorage" or defName="MU_AncientLargeUpgradesStorage"]/building</xpath> -->
+		<value>
+			<deconstructible>true</deconstructible>
+		</value>
+	</nomatch>
+</Operation>
+
+<Operation Class="PatchOperationConditional">
+	<success>Normal</success>
+	<!-- MU_AncientMechUpgrader deconstructible check -->
+	<xpath>*/ThingDef[defName="MU_AncientMechUpgrader"]/building/alwaysDeconstructible</xpath>
+	<!-- alwaysDeconstructible add -->
+	<nomatch Class="PatchOperationAdd">
+		<xpath>*/ThingDef[defName="MU_AncientMechUpgrader"]/building</xpath>
+		<value>
+			<alwaysDeconstructible>true</alwaysDeconstructible>
+		</value>
+	</nomatch>
+	<!-- alwaysDeconstructible false -->
+	<match Class="PatchOperationTest">
+		<xpath>*/ThingDef[defName = "MealSurvivalPack"]</xpath>
+		<success>Always</success>
+	</match>
+</Operation>
+
+<Operation Class="PatchOperationConditional">
+	<success>Normal</success>
+	<!-- MU_AncientMechUpgrader deconstructible check -->
+	<xpath>*/ThingDef[defName="MU_AncientMechUpgrader"]/building/deconstructible</xpath>
+	<!-- deconstructible false -->
+	<match Class="PatchOperationReplace">
+		<xpath>*/ThingDef[defName="MU_AncientUpgradesStorage" or defName="MU_AncientLargeUpgradesStorage"]/building[deconstructible="false"][deconstructible != "true"]</xpath>
+		<value>
+			<building>
+				<deconstructible>true</deconstructible>
+				<alwaysDeconstructible>true</alwaysDeconstructible>
+				<openingStartedSound>Building_Deconstructed</openingStartedSound>
+			</building>
+		</value>
+	</match>
+	<!-- deconstructible add -->
+	<nomatch Class="PatchOperationSequence">
+		<operations>
+			<li Class="PatchOperationAdd">
+				<xpath>*/ThingDef[defName="MU_AncientUpgradesStorage" or defName="MU_AncientLargeUpgradesStorage"]/building</xpath>
+				<value>
+					<deconstructible>true</deconstructible>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>*/ThingDef[defName="MU_AncientUpgradesStorage" or defName="MU_AncientLargeUpgradesStorage"]/building</xpath>
+				<value>
+					<alwaysDeconstructible>true</alwaysDeconstructible>
+				</value>
+			</li>
+		</operations>
+	</nomatch>
+</Operation>
+
+<!-- WorkToBuild and costList patch -->
+
+<!-- Ancient Mech Upgrader -->
+
+<Operation Class="PatchOperationConditional">
+	<success>Normal</success>
+	<!-- Ancient Mech Upgrader check -->
+	<xpath>*/ThingDef[defName="MU_AncientMechUpgrader"]/statBases</xpath>
+	<!-- Add WorkToBuild and costList -->
+	<match Class="PatchOperationSequence">
+		<operations>
+			<li Class="PatchOperationAdd">
+				<xpath>*/ThingDef[defName="MU_AncientMechUpgrader"]/statBases</xpath>
+				<value>
+					<WorkToBuild>16000</WorkToBuild>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>*/ThingDef[defName="MU_AncientMechUpgrader"]</xpath>
+				<value>
+					<costList>
+						<Steel>140</Steel>
+						<Plasteel>60</Plasteel>
+						<ComponentIndustrial>8</ComponentIndustrial>
+						<ComponentSpacer>1</ComponentSpacer>
+					</costList>
+				</value>
+			</li>
+		</operations>
+	</match>
+	<nomatch/>
+</Operation>
+
+<!-- Ancient Basic Upgrades Assembler -->
+
+<Operation Class="PatchOperationConditional">
+	<success>Normal</success>
+	<!-- Ancient Basic Upgrades Assembler check -->
+	<xpath>*/ThingDef[defName="MU_AncientBasicUpgradesAssembler"]/statBases</xpath>
+	<!-- Add WorkToBuild and costList -->
+	<match Class="PatchOperationSequence">
+		<operations>
+			<li Class="PatchOperationAdd">
+				<xpath>*/ThingDef[defName="MU_AncientBasicUpgradesAssembler"]/statBases</xpath>
+				<value>
+					<WorkToBuild>8000</WorkToBuild>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>*/ThingDef[defName="MU_AncientBasicUpgradesAssembler"]</xpath>
+				<value>
+					<costList>
+						<Steel>100</Steel>
+						<Plasteel>30</Plasteel>
+						<ComponentIndustrial>4</ComponentIndustrial>
+					</costList>
+				</value>
+			</li>
+		</operations>
+	</match>
+	<nomatch/>
+</Operation>
+
+<!-- Ancient Advanced Upgrades Assembler -->
+
+<Operation Class="PatchOperationConditional">
+	<success>Normal</success>
+	<!-- Ancient Advanced Upgrades Assembler check -->
+	<xpath>*/ThingDef[defName="MU_AncientAdvancedUpgradesAssembler"]/statBases</xpath>
+	<!-- Add WorkToBuild and costList -->
+	<match Class="PatchOperationSequence">
+		<operations>
+			<li Class="PatchOperationAdd">
+				<xpath>*/ThingDef[defName="MU_AncientAdvancedUpgradesAssembler"]/statBases</xpath>
+				<value>
+					<WorkToBuild>12000</WorkToBuild>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>*/ThingDef[defName="MU_AncientAdvancedUpgradesAssembler"]</xpath>
+				<value>
+					<costList>
+						<Steel>130</Steel>
+						<Plasteel>50</Plasteel>
+						<ComponentIndustrial>2</ComponentIndustrial>
+						<ComponentSpacer>1</ComponentSpacer>
+					</costList>
+				</value>
+			</li>
+		</operations>
+	</match>
+	<nomatch/>
+</Operation>
+
+<!-- Ancient Upgrades Storage -->
+
+<Operation Class="PatchOperationConditional">
+	<success>Normal</success>
+	<!-- Ancient Upgrades Storage check -->
+	<xpath>*/ThingDef[defName="MU_AncientUpgradesStorage"]/statBases</xpath>
+	<!-- Add WorkToBuild and costList -->
+	<match Class="PatchOperationSequence">
+		<operations>
+			<li Class="PatchOperationAdd">
+				<xpath>*/ThingDef[defName="MU_AncientUpgradesStorage"]/statBases</xpath>
+				<value>
+					<WorkToBuild>5000</WorkToBuild>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>*/ThingDef[defName="MU_AncientUpgradesStorage"]</xpath>
+				<value>
+					<costList>
+						<Steel>30</Steel>
+						<Plasteel>10</Plasteel>
+						<ComponentIndustrial>1</ComponentIndustrial>
+					</costList>
+				</value>
+			</li>
+		</operations>
+	</match>
+	<nomatch/>
+</Operation>
+
+<!-- Ancient Large Upgrades Storage -->
+
+<Operation Class="PatchOperationConditional">
+	<success>Normal</success>
+	<!-- Ancient Large Upgrades Storage check -->
+	<xpath>*/ThingDef[defName="MU_AncientLargeUpgradesStorage"]/statBases</xpath>
+	<!-- Add WorkToBuild and costList -->
+	<match Class="PatchOperationSequence">
+		<operations>
+			<li Class="PatchOperationAdd">
+				<xpath>*/ThingDef[defName="MU_AncientLargeUpgradesStorage"]/statBases</xpath>
+				<value>
+					<WorkToBuild>9000</WorkToBuild>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>*/ThingDef[defName="MU_AncientLargeUpgradesStorage"]</xpath>
+				<value>
+					<costList>
+						<Steel>100</Steel>
+						<Plasteel>35</Plasteel>
+						<ComponentIndustrial>3</ComponentIndustrial>
+					</costList>
+				</value>
+			</li>
+		</operations>
+	</match>
+	<nomatch/>
+</Operation>
+
+<!-- Ancient Emergency Light -->
+
+<Operation Class="PatchOperationConditional">
+	<success>Normal</success>
+	<!-- Ancient Emergency Light check -->
+	<xpath>*/ThingDef[defName="MU_AncientEmergencyLight"]/statBases</xpath>
+	<!-- Add Deconstructible and WorkToBuild and costList -->
+	<match Class="PatchOperationSequence">
+		<operations>
+			<li Class="PatchOperationAdd">
+				<xpath>*/ThingDef[defName="MU_AncientEmergencyLight"]/building</xpath>
+				<value>
+					<deconstructible>true</deconstructible>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>*/ThingDef[defName="MU_AncientEmergencyLight"]/statBases</xpath>
+				<value>
+					<WorkToBuild>330</WorkToBuild>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>*/ThingDef[defName="MU_AncientEmergencyLight"]</xpath>
+				<value>
+					<costList>
+						<Steel>15</Steel>
+					</costList>
+				</value>
+			</li>
+		</operations>
+	</match>
+	<nomatch/>
+</Operation>
+
+
+</Patch>

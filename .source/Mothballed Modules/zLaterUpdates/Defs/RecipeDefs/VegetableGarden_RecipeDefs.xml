@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+
+	<!-- MAKE SILAGE -->
+		<RecipeDef>
+			<defName>MakeSilage</defName>
+			<label>make silage</label>
+			<description>Make silage from hay and raw grains. \n\nMakes 50.</description>
+			<jobString>Making silage.</jobString>
+			<workSpeedStat>CookSpeed</workSpeedStat>
+			<effectWorking>Cook</effectWorking>
+			<soundWorking>Recipe_CookMeal</soundWorking>
+			<allowMixingIngredients>true</allowMixingIngredients>
+			<workAmount>900</workAmount>
+			<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>		
+			<ingredients>
+				<li>
+					<filter>
+						<thingDefs>
+						<li>RawCorn</li>
+						<li>RawRice</li>
+						<li>RawBarley</li>
+						<li>Rawbean</li>
+						</thingDefs>
+					</filter>
+					<count>1</count>
+				</li>
+				<li>
+					<filter>
+						<thingDefs>
+							<li>Hay</li>
+						</thingDefs>
+					</filter>
+					<count>1</count>
+				</li>
+			</ingredients>
+			<fixedIngredientFilter>
+				<thingDefs>
+					<li>RawCorn</li>
+					<li>RawRice</li>
+					<li>RawBarley</li>
+					<li>Rawbean</li>
+					<li>Hay</li>
+				</thingDefs>
+			</fixedIngredientFilter>
+			<products>
+				<Silage>50</Silage>
+			</products>
+			<workSkill>Cooking</workSkill>
+			<recipeUsers>
+				<li>TableButcher</li>
+			</recipeUsers>
+		</RecipeDef>
+	<!-- MAKE SILAGE (BULK) -->
+		<RecipeDef>
+			<defName>MakebulkSilage</defName>
+			<label>make silage x4</label>
+			<description>Make large amounts silage from hay and raw grains. \n\nMakes 200.</description>
+			<jobString>Making bulk silage.</jobString>
+			<workSpeedStat>CookSpeed</workSpeedStat>
+			<effectWorking>Cook</effectWorking>
+			<soundWorking>Recipe_CookMeal</soundWorking>
+			<allowMixingIngredients>true</allowMixingIngredients>
+			<workAmount>2000</workAmount>
+			<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>			
+			<ingredients>
+				<li>
+					<filter>
+						<thingDefs>
+						<li>RawCorn</li>
+						<li>RawRice</li>
+						<li>RawBarley</li>
+							<li>Rawbean</li>
+						</thingDefs>
+					</filter>
+				<count>4</count>
+				</li>
+				<li>
+					<filter>
+						<thingDefs>
+							<li>Hay</li>
+						</thingDefs>
+					</filter>
+					<count>4</count>
+				</li>
+			</ingredients>
+			<fixedIngredientFilter>
+				<thingDefs>
+					<li>RawCorn</li>
+					<li>RawRice</li>
+					<li>RawBarley</li>
+					<li>Rawbean</li>
+					<li>Hay</li>
+				</thingDefs>
+			</fixedIngredientFilter>
+			<products>
+				<Silage>200</Silage>
+			</products>
+			<workSkill>Cooking</workSkill>
+			<recipeUsers>
+				<li>TableButcher</li>
+			</recipeUsers>
+		</RecipeDef>
+	<!-- MAKE KIBBLE (BULK) -->
+		<RecipeDef>
+			<defName>VG_MakebulkKibble</defName>
+			<label>make kibble x4</label>
+			<description>Make animal kibble by combining raw meat and plants in bulk. \n\nMakes 200.</description>
+			<jobString>Making bulk kibble.</jobString>
+			<workAmount>1200</workAmount>
+			<workSpeedStat>CookSpeed</workSpeedStat>
+			<effectWorking>Cook</effectWorking>
+			<soundWorking>Recipe_CookMeal</soundWorking>
+			<allowMixingIngredients>true</allowMixingIngredients>
+			<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+			<ingredients>
+			<li>
+				<filter>
+				<categories>
+					<li>MeatRaw</li>
+					<li>AnimalProductRaw</li>
+				</categories>
+				</filter>
+				<count>4</count>
+			</li>
+			<li>
+				<filter>
+					<categories>
+						<li>PlantFoodRaw</li>
+					</categories>
+					<thingDefs>
+						<li>Hay</li>
+						<li>Silage</li>
+					</thingDefs>
+				</filter>
+				<count>4</count>
+			</li>
+			</ingredients>
+			<products>
+			<Kibble>200</Kibble>
+			</products>
+			<fixedIngredientFilter>
+			<categories>
+				<li>FoodRaw</li>
+			</categories>
+			<thingDefs>
+				<li>Hay</li>
+				<li>Silage</li>
+			</thingDefs>
+			</fixedIngredientFilter>
+			<defaultIngredientFilter>
+			<categories>
+				<li>Foods</li>
+			</categories>
+			<disallowedCategories>
+				<li>EggsFertilized</li>
+			</disallowedCategories>
+			<disallowedThingDefs>
+				<li>InsectJelly</li>
+			</disallowedThingDefs>
+			</defaultIngredientFilter>
+			<workSkill>Cooking</workSkill>
+			<recipeUsers>
+				<li>TableButcher</li>
+			</recipeUsers>
+		</RecipeDef>
+	<!-- MAKE CHEMFUEL FROM BAMOO -->
+		<RecipeDef>
+			<defName>MakeChemfuelFromBamboo</defName>
+			<label>make chemfuel from bamboo</label>
+			<description>Make a batch of chemfuel by gasifying bamboo. \n\nMakes 35.</description>
+			<jobString>Refining chemfuel from wood.</jobString>
+			<effectWorking>Cremate</effectWorking>
+			<soundWorking>Recipe_Cremate</soundWorking>
+			<workAmount>2000</workAmount>
+			<ingredients>
+				<li>
+					<filter>
+						<thingDefs>
+							<li>Bamboo</li>
+						</thingDefs>
+					</filter>
+					<count>70</count>
+				</li>
+			</ingredients>
+			<fixedIngredientFilter>
+				<thingDefs>
+					<li>Bamboo</li>
+				</thingDefs>
+			</fixedIngredientFilter>
+			<products>
+				<Chemfuel>35</Chemfuel>
+			</products>
+			<workSkill>Crafting</workSkill>
+			<recipeUsers>
+				<li>BiofuelRefinery</li>
+			</recipeUsers>
+		</RecipeDef>
+	<!-- MAKE BIOFUEL FROM GRAINS -->
+		<RecipeDef>
+			<defName>VG_MakeBiofuel</defName>
+			<label>make biofuel from grains</label>
+			<description>Make a batch of biofuel by extracting biofuel from barley, corn, or beans. \n\nMakes 35.</description>
+			<jobString>Refining biofuel from organics.</jobString>
+			<effectWorking>Cremate</effectWorking>
+			<soundWorking>Recipe_Cremate</soundWorking>
+			<workAmount>2500</workAmount>
+			<workSkill>Intellectual</workSkill>
+			<allowMixingIngredients>true</allowMixingIngredients>
+			<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+			<ingredients>
+			<li>
+				<filter>
+				<thingDefs>
+					<li>RawCorn</li>
+					<li>Rawbean</li>
+					<li>RawBarley</li>
+				</thingDefs>
+				</filter>
+				<count>3.5</count>
+			</li>
+			</ingredients>
+			<fixedIngredientFilter>
+				<thingDefs>
+					<li>RawCorn</li>
+					<li>Rawbean</li>
+					<li>RawBarley</li>
+				</thingDefs>
+				<specialFiltersToDisallow>
+					<li>AllowRotten</li>
+				</specialFiltersToDisallow>
+			</fixedIngredientFilter>
+			<products>
+				<VG_Biofuel>35</VG_Biofuel>
+			</products>
+			<recipeUsers>
+				<li>BiofuelRefinery</li>
+			</recipeUsers>
+		</RecipeDef>
+	<!-- MAKE CHOCOMILK -->
+		<RecipeDef>
+			<defName>MakeChocolatemilk</defName>
+			<label>make chocomilk x4</label>
+			<description>Blend chocolate and milk. \n\nMakes 4.</description>
+			<jobString>Mixing milk.</jobString>
+			<workSpeedStat>CookSpeed</workSpeedStat>
+			<effectWorking>Cook</effectWorking>
+			<workAmount>800</workAmount>
+			<soundWorking>Recipe_CookMeal</soundWorking>
+			<allowMixingIngredients>true</allowMixingIngredients>
+			<ingredients>
+			<li>
+				<filter>
+				<thingDefs>
+					<li>Chocolate</li>
+				</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+			<li>
+				<filter>
+				<thingDefs>
+				<li>Milk</li>
+				</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+			</ingredients>
+			<fixedIngredientFilter>
+			<thingDefs>
+				<li>Chocolate</li>
+				<li>Milk</li>
+			</thingDefs>
+			<specialFiltersToDisallow>
+				<li>AllowRotten</li>
+			</specialFiltersToDisallow>
+			</fixedIngredientFilter>
+			<products>
+			<Chocomilk>4</Chocomilk>
+			</products>
+			<recipeUsers>
+				<li>ElectricStove</li>
+				<li>FueledStove</li>
+				<li>Campfire</li>
+				<li>VG_Campfire</li>
+				<li>Brewery</li>
+			</recipeUsers>
+			<workSkill>Cooking</workSkill>
+		</RecipeDef>
+	<!-- MAKE FRUIT DRINKS -->
+		<RecipeDef>
+			<defName>Fruitdrink</defName>
+			<label>make fruit drinks x4</label>
+			<description>Press fruit into a juicy drink.</description>
+			<jobString>Pressing fruit.</jobString>
+			<workSpeedStat>CookSpeed</workSpeedStat>
+				<effectWorking>Cook</effectWorking>
+			<soundWorking>Recipe_CookMeal</soundWorking>
+			<allowMixingIngredients>true</allowMixingIngredients>
+			<recipeUsers>
+					<li>ElectricStove</li>
+					<li>FueledStove</li>
+					<li>Brewery</li>
+			</recipeUsers>
+			<ingredients>
+			<li>
+				<filter>
+					<categories>
+							<li>FruitFoodRaw</li>
+					</categories>
+				</filter>
+				<count>20</count>
+			</li>
+			</ingredients>
+			<fixedIngredientFilter>
+				<categories>
+					<li>FruitFoodRaw</li>
+				</categories>
+			<specialFiltersToDisallow>
+				<li>AllowRotten</li>
+			</specialFiltersToDisallow>
+			</fixedIngredientFilter>
+			<products>
+			<Fruitdrink>4</Fruitdrink>
+			</products>
+			<workSkill>Cooking</workSkill>
+		</RecipeDef>
+	<!-- BREW BARLEY TEAS -->
+		<RecipeDef>
+			<defName>BrewBarleyTea</defName>
+			<label>brew barley teas x2</label>
+			<description>Prepare barley and brew it into cups of tea.</description>
+			<jobString>Brewing tea.</jobString>
+			<workSpeedStat>DrugCookingSpeed</workSpeedStat>
+			<effectWorking>Cook</effectWorking>
+			<soundWorking>Recipe_Brewing</soundWorking>
+			<workAmount>400</workAmount>
+			<allowMixingIngredients>true</allowMixingIngredients>
+			<recipeUsers>
+				<li>ElectricStove</li>
+				<li>FueledStove</li>
+				<li>Campfire</li>
+				<li>VG_Campfire</li>
+			</recipeUsers>
+			<ingredients>
+			<li>
+				<filter>
+				<thingDefs>
+					<li>RawBarley</li>
+				</thingDefs>
+				</filter>
+				<count>8</count>
+			</li>
+			</ingredients>
+			<fixedIngredientFilter>
+			<thingDefs>
+				<li>RawBarley</li>
+			</thingDefs>
+			<specialFiltersToDisallow>
+				<li>AllowRotten</li>
+			</specialFiltersToDisallow>
+			</fixedIngredientFilter>
+			<products>
+			<VG_BarleyTea>2</VG_BarleyTea>
+			</products>
+			<workSkill>Cooking</workSkill>
+		</RecipeDef>
+	<!-- BREW BARLEY TEAS (BULK) -->
+		<RecipeDef>
+			<defName>BulkBrewBarleyTea</defName>
+			<label>brew barley tea x5</label>
+			<description>Prepare bulk amounts of barley and brew it into cups of tea.</description>
+			<jobString>Brewing tea.</jobString>
+			<workSpeedStat>DrugCookingSpeed</workSpeedStat>
+			<effectWorking>Cook</effectWorking>
+			<soundWorking>Recipe_Brewing</soundWorking>
+			<workAmount>900</workAmount>
+			<allowMixingIngredients>true</allowMixingIngredients>
+			<recipeUsers>
+				<li>ElectricStove</li>
+				<li>FueledStove</li>
+				<li>Brewery</li>
+			</recipeUsers>
+			<ingredients>
+			<li>
+				<filter>
+				<thingDefs>
+					<li>RawBarley</li>
+				</thingDefs>
+				</filter>
+				<count>45</count>
+			</li>
+			</ingredients>
+			<fixedIngredientFilter>
+			<thingDefs>
+				<li>RawBarley</li>
+			</thingDefs>
+			<specialFiltersToDisallow>
+				<li>AllowRotten</li>
+			</specialFiltersToDisallow>
+			</fixedIngredientFilter>
+			<products>
+			<VG_BarleyTea>10</VG_BarleyTea>
+			</products>
+			<workSkill>Cooking</workSkill>
+		</RecipeDef>
+	<!-- MAKE HARDTACK -->
+		<RecipeDef>
+			<defName>Make_Hardtack</defName>
+			<label>make hardtack</label>
+			<description>Make hardtack, a simple type of biscuit. Tastes bland, but not offensive. Made from grains and but lasts a long time without refrigeration.</description>
+			<jobString>Making hardtack.</jobString>
+			<workSpeedStat>CookSpeed</workSpeedStat>
+			<requiredGiverWorkType>Cooking</requiredGiverWorkType>
+			<effectWorking>Cook</effectWorking>
+			<soundWorking>Recipe_CookMeal</soundWorking>
+			<allowMixingIngredients>true</allowMixingIngredients>
+			<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+			<ingredients>
+			<li>
+				<filter>
+				<thingDefs>
+					<li>RawCorn</li>
+					<li>RawRice</li>
+					<li>RawBarley</li>
+				</thingDefs>
+				</filter>
+				<count>0.5</count>
+			</li>
+			</ingredients>
+			<products>
+			<VG_Hardtack>14</VG_Hardtack>
+			</products>
+			<fixedIngredientFilter>
+				<thingDefs>
+					<li>RawCorn</li>
+					<li>RawRice</li>
+					<li>RawBarley</li>
+				</thingDefs>
+			</fixedIngredientFilter>
+			<workSkill>Cooking</workSkill>
+			<recipeUsers>
+				<li>ElectricStove</li>
+				<li>FueledStove</li>
+				<li>Campfire</li>
+				<li>VG_Campfire</li>
+			</recipeUsers>
+		</RecipeDef>
+	<!-- MAKE HARDTACK (BULK) -->
+		<RecipeDef>
+			<defName>Make_HardtackBulk</defName>
+			<label>make hardtack x4</label>
+			<description>Make bulk hardtack, a simple type of biscuit. Tastes bland, but not offensive. Made from grains and lasts a long time without refrigeration.</description>
+			<jobString>Making bulk hardtack.</jobString>
+			<workAmount>1200</workAmount>
+			<workSpeedStat>CookSpeed</workSpeedStat>
+			<requiredGiverWorkType>Cooking</requiredGiverWorkType>
+			<effectWorking>Cook</effectWorking>
+			<soundWorking>Recipe_CookMeal</soundWorking>
+			<allowMixingIngredients>true</allowMixingIngredients>
+			<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+			<ingredients>
+			<li>
+				<filter>
+				<thingDefs>
+					<li>RawCorn</li>
+					<li>RawRice</li>
+					<li>RawBarley</li>
+				</thingDefs>
+				</filter>
+				<count>2.0</count>
+			</li>
+			</ingredients>
+			<products>
+			<VG_Hardtack>56</VG_Hardtack>
+			</products>
+			<fixedIngredientFilter>
+				<thingDefs>
+					<li>RawCorn</li>
+					<li>RawRice</li>
+					<li>RawBarley</li>
+				</thingDefs>
+			</fixedIngredientFilter>
+			<workSkill>Cooking</workSkill>
+			<recipeUsers>
+				<li>ElectricStove</li>
+				<li>FueledStove</li>
+				<li>Campfire</li>
+				<li>VG_Campfire</li>
+			</recipeUsers>
+		</RecipeDef>
+</Defs>

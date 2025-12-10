@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Alpha Bees</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[defName="RB_BroodChamber"]/costList/RB_Beeswax</xpath>
+					<value>
+						<MedTimes_Wax>5</MedTimes_Wax>
+					</value>
+				</li>	
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[defName="RB_HybridizationChamber"]/costList/RB_Beeswax</xpath>
+					<value>
+						<MedTimes_Wax>5</MedTimes_Wax>
+					</value>
+				</li>	
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[defName="RB_WaxCandle"]/comps/li[@Class="CompProperties_Refuelable"]/fuelFilter</xpath>
+					<value>        
+						<fuelFilter>
+						  <thingDefs>
+							<li>MedTimes_Wax</li>
+						  </thingDefs>
+						</fuelFilter>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName="RB_Honey_Centrifuge"]/statBases</xpath>
+					<value>
+						<WorkTableWorkSpeedFactor>1.8</WorkTableWorkSpeedFactor>
+					</value>
+				</li>	
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName="RB_Advanced_Honey_Centrifuge"]/statBases</xpath>
+					<value>
+						<WorkTableWorkSpeedFactor>1.5</WorkTableWorkSpeedFactor>
+					</value>
+				</li>	
+				
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName="RB_Beekeeping_Workbench_Building"]/researchPrerequisites</xpath>
+					<value>
+						<li>TS_PrimitiveFurniture</li>
+					</value>
+				</li>	
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName="RB_BeeResearchTable"]/researchPrerequisites</xpath>
+					<value>
+						<li>TS_MethodicalResearch</li>
+					</value>
+				</li>	
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName="RB_Honey_Centrifuge"]/researchPrerequisites</xpath>
+					<value>
+						<li>MedTimes_Mechanization</li>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName="RB_Beehouse"]/researchPrerequisites</xpath>
+					<value>
+						<li>TS_PrimitiveFurniture</li>
+					</value>
+				</li>	
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName="RB_ClimatizedBeehouse"]/researchPrerequisites</xpath>
+					<value>
+						<li>MedTimes_BasicFurniture</li>
+						<li>MedTimes_Mechanization</li>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[defName="MedTimes_Candle"]/researchPrerequisites</xpath>
+					<value>
+						<researchPrerequisites>
+							<li>RB_BeeswaxLighting</li>
+							<li>MedTimes_WaxUsage</li>
+						</researchPrerequisites>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[defName="MedTimes_Chandeller"]/researchPrerequisites</xpath>
+					<value>
+					<researchPrerequisites>
+						<li>MedTimes_BasicFurniture</li>
+						<li>RB_BeeswaxLighting</li>
+						<li>MedTimes_WaxUsage</li>
+					</researchPrerequisites>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[defName="RB_WaxCandle"]/researchPrerequisites</xpath>
+					<value>
+						<researchPrerequisites>
+							<li>RB_BeeswaxLighting</li>
+							<li>MedTimes_WaxUsage</li>
+						</researchPrerequisites>
+					</value>
+				</li>
+			</operations>
+		</match>
+	</Operation>
+	
+
+</Patch>

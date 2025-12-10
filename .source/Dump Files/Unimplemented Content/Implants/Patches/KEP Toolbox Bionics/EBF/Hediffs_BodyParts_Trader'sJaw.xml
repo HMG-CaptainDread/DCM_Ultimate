@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <HediffDef ParentName="KEPHediffBase">
+    <defName>KEP_TradersJaw</defName>
+    <label>trader's jaw</label>
+    <labelNoun>a trader's jaw</labelNoun>
+    <description>An installed trader's jaw</description>
+    <descriptionHyperlinks><ThingDef>KEP_TradersJaw</ThingDef></descriptionHyperlinks>
+    <spawnThingOnRemoved>KEP_TradersJaw</spawnThingOnRemoved>
+    <addedPartProps>
+      <solid>true</solid>
+    </addedPartProps>
+    <stages>
+      <li>
+        <statOffsets>
+          <TradePriceImprovement>0.15</TradePriceImprovement>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+	<ThingDef Name="KEP_BASETradersJaw" ParentName="KEPBodyPartModBase" Abstract="True">
+	    <techLevel>Spacer</techLevel>
+		<tradeTags>
+			<li>Bionic</li>
+		</tradeTags>
+		<thingCategories>
+			<li>BodyPartsBionic</li>
+		</thingCategories>
+		<statBases>
+			<DeteriorationRate>2.0</DeteriorationRate>
+		</statBases>
+	</ThingDef>
+
+  <ThingDef ParentName="KEP_BASETradersJaw">
+    <defName>KEP_TradersJaw</defName>
+    <label>trader's jaw</label>
+    <description>A jaw replacement with a built-in computer under the tongue. The computer sends information to the brain about how the person in front of you might react to certain questions. Has a built-in pun collection to choose from.</description>
+	<graphicData>
+			<texPath>Things/Item/BodyPart/Trader's_jaw</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+    <descriptionHyperlinks><RecipeDef>KEP_InstallTradersJaw</RecipeDef></descriptionHyperlinks>
+    <costList>
+      <Plasteel>25</Plasteel>
+      <ComponentSpacer>1</ComponentSpacer>
+	  <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <thingSetMakerTags><li>RewardStandardMidFreq</li></thingSetMakerTags>
+    <statBases>
+      <Mass>0.3</Mass>
+	        <MarketValue>1400</MarketValue>
+    </statBases>
+	    <techHediffsTags>
+      <li>Advanced</li>
+	<li>KEP</li>
+    </techHediffsTags>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+    <defName>KEP_InstallTradersJaw</defName>
+    <label>install trader's jaw</label>
+    <description>Install a trader's jaw.</description>
+    <descriptionHyperlinks>
+      <ThingDef>KEP_TradersJaw</ThingDef>
+      <HediffDef>KEP_TradersJaw</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing trader's jaw.</jobString>
+		<workAmount>4000</workAmount>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>Medicine</li>
+					</categories>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>KEP_TradersJaw</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<categories>
+				<li>Medicine</li>
+			</categories>
+			<thingDefs>
+				<li>KEP_TradersJaw</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Jaw</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>KEP_TradersJaw</addsHediff>
+	</RecipeDef>
+</Defs>

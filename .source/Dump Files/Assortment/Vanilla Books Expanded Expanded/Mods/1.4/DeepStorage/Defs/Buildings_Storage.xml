@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="LWM_DeepStorage">
+    <defName>VanillaBooksExpandedExpanded_Bookshelf</defName>
+    <label>bookshelf</label>
+    <description>A bookshelf for the storage of readable material. Items stored in this will not deteriorate, even if outside.</description>
+    <graphicData>
+      <texPath>Things/Building/FurnitureProps/Bookshelf/Bookshelf_v1</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(3.55,3.45)</drawSize>
+      <shadowData>
+        <volume>(0.30, 0.30, 0.40)</volume>
+      </shadowData>
+    </graphicData>
+    <defaultPlacingRot>South</defaultPlacingRot>
+    <castEdgeShadows>False</castEdgeShadows>
+    <size>(2,1)</size>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <WorkToBuild>600</WorkToBuild>
+      <Mass>6</Mass>
+    </statBases>
+    <stuffCategories>
+      <li>Woody</li>
+      <li>Metallic</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>75</costStuffCount>
+    <building>
+      <preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+      <ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
+      <fixedStorageSettings>
+        <priority>Important</priority>
+        <filter>
+          <thingDefs>
+            <li>VBE_UnfinishedBook</li>
+          </thingDefs>
+          <categories>
+            <li>VBE_Books</li>
+          </categories>
+        </filter>
+      </fixedStorageSettings>
+      <defaultStorageSettings>
+        <priority>Important</priority>
+        <filter>
+          <allowWithComp>VanillaBooksExpandedExpanded.CompCopiedBook</allowWithComp>
+        </filter>
+      </defaultStorageSettings>
+    </building>
+    <comps>
+      <li Class="LWM.DeepStorage.Properties">
+        <minNumberStacks>4</minNumberStacks>
+        <maxNumberStacks>15</maxNumberStacks>
+        <maxTotalMass>30</maxTotalMass>
+        <maxMassOfStoredItem>10</maxMassOfStoredItem>
+        <timeStoringTakes>100</timeStoringTakes>
+        <showContents>false</showContents>
+        <overlayType>CountOfAllStacks</overlayType>
+      </li>
+      <li>
+        <compClass>CompQuality</compClass>
+      </li>
+    </comps>
+    <researchPrerequisites>
+      <li>ComplexFurniture</li>
+    </researchPrerequisites>
+  </ThingDef>
+</Defs>

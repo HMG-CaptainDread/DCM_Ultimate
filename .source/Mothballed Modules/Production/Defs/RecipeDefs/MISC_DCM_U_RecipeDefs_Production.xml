@@ -1,0 +1,1468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- PRIMITIVE PRODUCTIONS -->
+		<!-- SMASHING ROCKS BASE -->
+			<RecipeDef Name="SmashStoneBlocksBase" Abstract="True">
+				<jobString>smashing rocks.</jobString>	
+				<workSpeedStat>GeneralLaborSpeed</workSpeedStat>  <!--Patch in stonecutting  -->
+				<effectWorking>CutStone</effectWorking>
+				<soundWorking>Recipe_MakeStoneBlocks</soundWorking>
+				<workAmount>1800</workAmount>
+				<descriptionHyperlinks>
+				<ThingDef>VBY_PrimitiveFlint</ThingDef>
+				</descriptionHyperlinks>
+				<recipeUsers>                                <!-- patch in other Stone Spots  -->
+				<li>VBY_PrimitiveStoneCuttingSpot</li>
+				<li MayRequire="PrimitiveProduction.velcroboy333">VBY_PrimitiveStoneCuttingTable</li>
+				<li>TableStonecutter</li>
+				</recipeUsers>
+			</RecipeDef>
+		<!-- CUTTING STONE BASE -->
+			<RecipeDef Name="MakeStoneBlocksPlusFlintBase" Abstract="True">
+				<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+				<effectWorking>CutStone</effectWorking>
+				<soundWorking>Recipe_MakeStoneBlocks</soundWorking>
+				<workAmount>1300</workAmount>
+					<descriptionHyperlinks>
+					<ThingDef>VBY_PrimitiveFlint</ThingDef>
+					</descriptionHyperlinks>
+					<recipeUsers>                                <!-- patch in other Stone Spots  -->
+					<li>VBY_PrimitiveStoneCuttingSpot</li>
+					<li MayRequire="PrimitiveProduction.velcroboy333">VBY_PrimitiveStoneCuttingTable</li>
+					<li>TableStonecutter</li>
+					</recipeUsers>
+				</RecipeDef>
+		<!-- SMASH LIMESTONE ROCKS -->
+			<RecipeDef ParentName="SmashStoneBlocksBase">
+				<defName>VBY_SmashRocks</defName>
+				<label>smash limestone rocks</label>
+				<description>Smash two limestone rocks together to break into smaller fragments of flint.</description>
+				<ingredients>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>ChunkLimestone</li>
+							</thingDefs>
+						</filter>
+						<count>2</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+						<li>ChunkLimestone</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<VBY_PrimitiveFlint>20</VBY_PrimitiveFlint>
+				</products>
+				<workSkill>Crafting</workSkill>
+			</RecipeDef>
+		<!-- LIMESTONE BLOCKS WITH FLINT -->
+			<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase">
+			<defName>VBY_MakeLimestoneBlocksPlusFlint</defName>
+			<label>make limestone blocks w/ flint byproduct</label>
+			<description>A less careful way of cutting limestone blocks that results in both blocks and a flint by-product.</description>
+			<ingredients>
+				<li>
+				<filter>
+					<thingDefs>
+					<li>ChunkLimestone</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+				</li>
+			</ingredients>
+			<fixedIngredientFilter>
+				<thingDefs>
+				<li>ChunkLimestone</li>
+				</thingDefs>
+			</fixedIngredientFilter>
+			<products>
+				<BlocksLimestone>10</BlocksLimestone>
+				<VBY_PrimitiveFlint>5</VBY_PrimitiveFlint> <!-- ??  -->
+			</products>
+			</RecipeDef>
+		<!-- EXTRA ROCKS -->
+			<!-- SMASH OBSIDIAN ROCKS -->
+				<RecipeDef ParentName="SmashStoneBlocksBase" MayRequire="Kura.ExtraStone">
+					<defName>VBY_SmashRocksObsidian</defName>
+					<label>smash obsidian rocks</label>
+					<description>Smash two obsidian rocks together to break into smaller fragments of flint.</description>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>ChunkObsidian</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>ChunkObsidian</li>
+							</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<VBY_PrimitiveFlint>20</VBY_PrimitiveFlint>
+					</products>
+				</RecipeDef>
+			<!-- MAKE OBSIDIAN BLOCKS WITH FLINT -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="Kura.ExtraStone">
+				<defName>VBY_MakeObsidianBlocksPlusFlint</defName>
+				<label>make obsidian blocks w/ flint byproduct</label>
+				<description>A less careful way of cutting obsidian blocks that results in both blocks and a flint by-product.</description>
+				<ingredients>
+					<li>
+					<filter>
+						<thingDefs>
+						<li>ChunkObsidian</li>
+						</thingDefs>
+					</filter>
+					<count>1</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+					<li>ChunkObsidian</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<BlocksObsidian>10</BlocksObsidian>
+					<VBY_PrimitiveFlint>5</VBY_PrimitiveFlint> <!-- ??  -->
+				</products>
+				</RecipeDef>
+			<!-- SMASH CHALK -->
+				<RecipeDef ParentName="SmashStoneBlocksBase" MayRequire="Kura.ExtraStone">
+					<defName>VBY_SmashRocksChalk</defName>
+					<label>smash chalk rocks</label>
+					<description>Smash two chalk rocks together to break into smaller fragments of flint.</description>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>ChunkChalk</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>ChunkChalk</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<VBY_PrimitiveFlint>25</VBY_PrimitiveFlint>
+					</products>
+				</RecipeDef>
+			<!-- MAKE CHALK BLOCKS WITH FLINT -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="Kura.ExtraStone">
+				<defName>VBY_MakeChalkBlocksPlusFlint</defName>
+				<label>make chalk blocks w/ flint byproduct</label>
+				<description>A less careful way of cutting chalk blocks that results in both blocks and a flint by-product.</description>
+				<ingredients>
+					<li>
+					<filter>
+						<thingDefs>
+						<li>ChunkChalk</li>
+						</thingDefs>
+					</filter>
+					<count>1</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+					<li>ChunkChalk</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<BlocksChalk>10</BlocksChalk>
+					<VBY_PrimitiveFlint>5</VBY_PrimitiveFlint> <!-- ??  -->
+				</products>
+				</RecipeDef>
+			<!-- SMASH OBSIDIAN  -->
+				<RecipeDef ParentName="SmashStoneBlocksBase" MayRequire="Kura.ExtraStoneCupro">
+					<defName>VBY_SmashRocksObsidian</defName>
+					<label>smash obsidian rocks</label>
+					<description>Smash two obsidian rocks together to break into smaller fragments of flint.</description>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>ChunkObsidian</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>ChunkObsidian</li>
+							</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<VBY_PrimitiveFlint>20</VBY_PrimitiveFlint>
+					</products>	
+				</RecipeDef>
+			<!-- MAKE OBSIDIAN BLOCKS WITH FLINT -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="Kura.ExtraStoneCupro">
+				<defName>VBY_MakeObsidianBlocksPlusFlint</defName>
+				<label>make obsidian blocks w/ flint byproduct</label>
+				<description>A less careful way of cutting obsidian blocks that results in both blocks and a flint by-product.</description>
+				<ingredients>
+					<li>
+					<filter>
+						<thingDefs>
+						<li>ChunkObsidian</li>
+						</thingDefs>
+					</filter>
+					<count>1</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+					<li>ChunkObsidian</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<BlocksObsidian>10</BlocksObsidian>
+					<VBY_PrimitiveFlint>5</VBY_PrimitiveFlint> <!-- ??  -->
+				</products>
+				</RecipeDef>
+			<!-- SMASH CHALK -->
+				<RecipeDef ParentName="SmashStoneBlocksBase" MayRequire="Kura.ExtraStoneCupro">
+					<defName>VBY_SmashRocksChalk</defName>
+					<label>smash chalk rocks</label>
+					<description>Smash two chalk rocks together to break into smaller fragments of flint.</description>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>ChunkChalk</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>ChunkChalk</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<VBY_PrimitiveFlint>20</VBY_PrimitiveFlint>
+					</products>	
+				</RecipeDef>
+			<!-- MAKE CHALK BLOCKS WITH FLINT -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="Kura.ExtraStoneCupro">
+				<defName>VBY_MakeChalkBlocksPlusFlint</defName>
+				<label>make chalk blocks w/ flint byproduct</label>
+				<description>A less careful way of cutting chalk blocks that results in both blocks and a flint by-product.</description>
+				<ingredients>
+					<li>
+					<filter>
+						<thingDefs>
+						<li>ChunkChalk</li>
+						</thingDefs>
+					</filter>
+					<count>1</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+					<li>ChunkChalk</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<BlocksChalk>10</BlocksChalk>
+					<VBY_PrimitiveFlint>5</VBY_PrimitiveFlint> <!-- ??  -->
+				</products>
+				</RecipeDef>
+		<!-- ALPHA BIOMES -->
+			<!-- SMASH OBSIDIAN -->
+				<RecipeDef ParentName="SmashStoneBlocksBase" MayRequire="sarg.alphabiomes">
+					<defName>VBY_SmashRocksObsidianAlpha</defName>
+					<label>smash obsidian rocks</label>
+					<description>Smash two obsidian rocks together to break into smaller fragments of flint.</description>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>AB_ChunkObsidian</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>AB_ChunkObsidian</li>
+							</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<VBY_PrimitiveFlint>20</VBY_PrimitiveFlint>
+					</products>	
+				</RecipeDef>
+			<!-- MAKE OBSIDIAN BLOCKS WITH FLINT -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="sarg.alphabiomes">
+				<defName>VBY_MakeObsidianBlocksPlusFlintAlpha</defName>
+				<label>make obsidian blocks w/ flint byproduct</label>
+				<description>A less careful way of cutting obsidian blocks that results in both blocks and a flint by-product.</description>
+				<ingredients>
+					<li>
+					<filter>
+						<thingDefs>
+						<li>AB_ChunkObsidian</li>
+						</thingDefs>
+					</filter>
+					<count>1</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+					<li>AB_ChunkObsidian</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<AB_BlocksObsidian>10</AB_BlocksObsidian>
+					<VBY_PrimitiveFlint>5</VBY_PrimitiveFlint> <!-- ??  -->
+				</products>
+				</RecipeDef>
+			<!-- SMASH ROSE QUARTZ -->
+				<RecipeDef ParentName="SmashStoneBlocksBase" MayRequire="sarg.alphabiomes">
+					<defName>VBY_SmashRocksQuartz</defName>
+					<label>smash rose quartz rocks</label>
+					<description>Smash two rose quartz rocks together to break into smaller fragments of flint.</description>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>GU_ChunkRoseQuartz</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>GU_ChunkRoseQuartz</li>
+							</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<VBY_PrimitiveFlint>20</VBY_PrimitiveFlint>
+					</products>
+				</RecipeDef>
+			<!-- MAKE ROSE QUARTZ BLOCKS WITH FLINT -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="sarg.alphabiomes">
+				<defName>VBY_MakeRoseQuartzBlocksPlusFlintAlpha</defName>
+				<label>make rose quartz blocks w/ flint byproduct</label>
+				<description>A less careful way of cutting rose quartz blocks that results in both blocks and a flint by-product.</description>
+				<ingredients>
+					<li>
+					<filter>
+						<thingDefs>
+						<li>GU_ChunkRoseQuartz</li>
+						</thingDefs>
+					</filter>
+					<count>1</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+					<li>GU_ChunkRoseQuartz</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<GU_BlocksRoseQuartz>10</GU_BlocksRoseQuartz>
+					<VBY_PrimitiveFlint>5</VBY_PrimitiveFlint> <!-- ??  -->
+				</products>
+				</RecipeDef>
+		<!-- STONES AND TERRAINS -->
+			<!-- SMASH OBSIDIAN -->
+				<RecipeDef ParentName="SmashStoneBlocksBase" MayRequire="void.szstonesandterrains">
+					<defName>VBY_SmashRocksObsidianSZ</defName>
+					<label>smash obsidian rocks</label>
+					<description>Smash two obsidian rocks together to break into smaller fragments of flint.</description>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>ChunkObsidian</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>ChunkObsidian</li>
+							</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<VBY_PrimitiveFlint>20</VBY_PrimitiveFlint>
+					</products>
+				</RecipeDef>
+			<!-- MAKE OBSIDIAN BLOCKS WITH FLINT -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="void.szstonesandterrains">
+				<defName>VBY_MakeObsidianBlocksPlusFlintSZ</defName>
+				<label>make obsidian blocks w/ flint byproduct</label>
+				<description>A less careful way of cutting obsidian blocks that results in both blocks and a flint by-product.</description>
+				<ingredients>
+					<li>
+					<filter>
+						<thingDefs>
+						<li>ChunkObsidian</li>
+						</thingDefs>
+					</filter>
+					<count>1</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+					<li>ChunkObsidian</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<BlocksObsidian>10</BlocksObsidian>
+					<VBY_PrimitiveFlint>5</VBY_PrimitiveFlint> <!-- ??  -->
+				</products>
+				</RecipeDef>
+			<!-- SMASH WHITE LIMESTONE -->
+				<RecipeDef ParentName="SmashStoneBlocksBase" MayRequire="void.szstonesandterrains">
+					<defName>VBY_SmashRocksLimestoneSZ</defName>
+					<label>smash white limestone rocks</label>
+					<description>Smash two white limestone rocks together to break into smaller fragments of flint.</description>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>ChunkWhiteLimestone</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>ChunkWhiteLimestone</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<VBY_PrimitiveFlint>20</VBY_PrimitiveFlint>
+					</products>		
+				</RecipeDef>
+			<!-- MAKE WHITE LIMESTONE BLOCKS WITH FLINT -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="void.szstonesandterrains">
+				<defName>VBY_MakeWhiteLimestoneBlocksPlusFlintSZ</defName>
+				<label>make white limestone blocks w/ flint byproduct</label>
+				<description>A less careful way of cutting white limestone blocks that results in both blocks and a flint by-product.</description>
+				<ingredients>
+					<li>
+					<filter>
+						<thingDefs>
+						<li>ChunkWhiteLimestone</li>
+						</thingDefs>
+					</filter>
+					<count>1</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+					<li>ChunkWhiteLimestone</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<BlocksWhiteLimestone>10</BlocksWhiteLimestone>
+					<VBY_PrimitiveFlint>5</VBY_PrimitiveFlint> <!-- ??  -->
+				</products>
+				</RecipeDef>
+		<!-- OBSIDIA EXPANSION -->
+			<!-- SMASH OBSIDIAN -->
+				<RecipeDef ParentName="SmashStoneBlocksBase" MayRequire="ObsidiaExpansion.Core">
+					<defName>VBY_SmashRocksObsidianOE</defName>
+					<label>smash obsidian rocks</label>
+					<description>Smash two obsidian rocks together to break into smaller fragments of flint.</description>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>OE_Obsidian</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>OE_Obsidian</li>
+							</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<VBY_PrimitiveFlint>20</VBY_PrimitiveFlint>
+					</products>	
+				</RecipeDef>
+		<!-- BULK STONE CUTTING -->
+			<!-- MAKE LIMESTONE BLOCKS WITH FLINT BULK -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="Jexa.bulkstonecutting">
+				<defName>VBY_MakeLimestoneBlocksPlusFlintBulk</defName>
+				<label>make limestone blocks w/ flint byproduct in bulk</label>
+				<description>A less careful way of cutting limestone blocks that results in both blocks and a flint by-product.</description>
+				<workAmount>3305</workAmount>
+				<ingredients>
+					<li>
+					<filter>
+						<thingDefs>
+						<li>ChunkLimestone</li>
+						</thingDefs>
+					</filter>
+					<count>3</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+					<li>ChunkLimestone</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<BlocksLimestone>30</BlocksLimestone>
+					<VBY_PrimitiveFlint>15</VBY_PrimitiveFlint> <!-- ??  -->
+				</products>
+				</RecipeDef>
+			<!--  -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="Scherub.bulkstonecutting">
+				<defName>VBY_MakeLimestoneBlocksPlusFlintBulk</defName>
+				<label>make limestone blocks w/ flint byproduct in bulk</label>
+				<description>A less careful way of cutting limestone blocks that results in both blocks and a flint by-product.</description>
+				<workAmount>3305</workAmount>
+				<ingredients>
+					<li>
+					<filter>
+						<thingDefs>
+						<li>ChunkLimestone</li>
+						</thingDefs>
+					</filter>
+					<count>3</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+					<li>ChunkLimestone</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<BlocksLimestone>30</BlocksLimestone>
+					<VBY_PrimitiveFlint>15</VBY_PrimitiveFlint> <!-- ??  -->
+				</products>
+				</RecipeDef>
+			<!--  -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="Scherub.StonecuttingExtended">
+				<defName>VBY_MakeLimestoneBlocksPlusFlintBulk</defName>
+				<label>make limestone blocks w/ flint byproduct in bulk</label>
+				<description>A less careful way of cutting limestone blocks that results in both blocks and a flint by-product.</description>
+				<workAmount>3900</workAmount>
+				<ingredients>
+					<li>
+					<filter>
+						<thingDefs>
+						<li>ChunkLimestone</li>
+						</thingDefs>
+					</filter>
+					<count>3</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+					<li>ChunkLimestone</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<BlocksLimestone>30</BlocksLimestone>
+					<VBY_PrimitiveFlint>15</VBY_PrimitiveFlint> <!-- ??  -->
+				</products>
+				</RecipeDef>
+			<!--  -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="Scherub.StonecuttingExtended,Sarg.alphabiomes">
+				<defName>VBY_MakeObsidianBlocksPlusFlintBulk</defName>
+				<label>make obsidian blocks w/ flint byproduct in bulk</label>
+				<description>A less careful way of cutting obsidian blocks that results in both blocks and a flint by-product.</description>
+				<workAmount>3900</workAmount>
+				<ingredients>
+					<li>
+					<filter>
+						<thingDefs>
+						<li>AB_ChunkObsidian</li>
+						</thingDefs>
+					</filter>
+					<count>3</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+					<li>AB_ChunkObsidian</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<AB_BlocksObsidian>30</AB_BlocksObsidian>
+					<VBY_PrimitiveFlint>15</VBY_PrimitiveFlint> <!-- ??  -->
+				</products>
+				</RecipeDef>
+			<!--  -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="Scherub.StonecuttingExtended,Sarg.alphabiomes">
+				<defName>VBY_MakeRoseQuartzBlocksPlusFlintBulk</defName>
+				<label>make rose quartz blocks w/ flint byproduct in bulk</label>
+				<description>A less careful way of cutting rose quartz blocks that results in both blocks and a flint by-product.</description>
+				<workAmount>3900</workAmount>
+				<ingredients>
+					<li>
+					<filter>
+						<thingDefs>
+						<li>GU_ChunkRoseQuartz</li>
+						</thingDefs>
+					</filter>
+					<count>3</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+					<li>GU_ChunkRoseQuartz</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<GU_BlocksRoseQuartz>30</GU_BlocksRoseQuartz>
+					<VBY_PrimitiveFlint>15</VBY_PrimitiveFlint> <!-- ??  -->
+				</products>
+				</RecipeDef>
+			<!--  -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="Scherub.StonecuttingExtended,Kura.ExtraStone">
+				<defName>VBY_MakeObsidianBlocksPlusFlintBulkES</defName>
+				<label>make obsidian blocks w/ flint byproduct in bulk</label>
+				<description>A less careful way of cutting obsidian blocks that results in both blocks and a flint by-product.</description>
+				<workAmount>3900</workAmount>
+				<ingredients>
+					<li>
+					<filter>
+						<thingDefs>
+						<li>ChunkObsidian</li>
+						</thingDefs>
+					</filter>
+					<count>3</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+					<li>ChunkObsidian</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<BlocksObsidian>30</BlocksObsidian>
+					<VBY_PrimitiveFlint>15</VBY_PrimitiveFlint> <!-- ??  -->
+				</products>
+				</RecipeDef>
+			<!--  -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="Scherub.StonecuttingExtended,Kura.ExtraStoneCupro">
+				<defName>VBY_MakeObsidianBlocksPlusFlintBulkES</defName>
+				<label>make obsidian blocks w/ flint byproduct in bulk</label>
+				<description>A less careful way of cutting obsidian blocks that results in both blocks and a flint by-product.</description>
+				<workAmount>3900</workAmount>
+				<ingredients>
+					<li>
+					<filter>
+						<thingDefs>
+						<li>ChunkObsidian</li>
+						</thingDefs>
+					</filter>
+					<count>3</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+					<li>ChunkObsidian</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<BlocksObsidian>30</BlocksObsidian>
+					<VBY_PrimitiveFlint>15</VBY_PrimitiveFlint> <!-- ??  -->
+				</products>
+				</RecipeDef>
+			<!--  -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="Scherub.StonecuttingExtended,Kura.ExtraStone">
+				<defName>VBY_MakeChalkBlocksPlusFlintBulkES</defName>
+				<label>make chalk blocks w/ flint byproduct in bulk</label>
+				<description>A less careful way of cutting chalk blocks that results in both blocks and a flint by-product.</description>
+				<workAmount>3900</workAmount>
+				<ingredients>
+					<li>
+					<filter>
+						<thingDefs>
+						<li>ChunkChalk</li>
+						</thingDefs>
+					</filter>
+					<count>3</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+					<li>ChunkChalk</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<BlocksChalk>30</BlocksChalk>
+					<VBY_PrimitiveFlint>15</VBY_PrimitiveFlint> <!-- ??  -->
+				</products>
+				</RecipeDef>
+			<!--  -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="Scherub.StonecuttingExtended,Kura.ExtraStoneCupro">
+				<defName>VBY_MakeChalkBlocksPlusFlintBulkES</defName>
+				<label>make chalk blocks w/ flint byproduct in bulk</label>
+				<description>A less careful way of cutting chalk blocks that results in both blocks and a flint by-product.</description>
+				<workAmount>3900</workAmount>
+				<ingredients>
+					<li>
+					<filter>
+						<thingDefs>
+						<li>ChunkChalk</li>
+						</thingDefs>
+					</filter>
+					<count>3</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+					<li>ChunkChalk</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<BlocksChalk>30</BlocksChalk>
+					<VBY_PrimitiveFlint>15</VBY_PrimitiveFlint> <!-- ??  -->
+				</products>
+				</RecipeDef>
+			<!--  -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="Hol.BSC">
+				<defName>VBY_MakeLimestoneBlocksPlusFlintBulkF</defName>
+				<label>make limestone blocks w/ flint byproduct (x3)</label>
+				<description>A less careful way of cutting limestone blocks that results in both blocks and a flint by-product.</description>
+				<workAmount>2925</workAmount>
+				<ingredients>
+					<li>
+					<filter>
+						<thingDefs>
+						<li>ChunkLimestone</li>
+						</thingDefs>
+					</filter>
+					<count>3</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+					<li>ChunkLimestone</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<BlocksLimestone>30</BlocksLimestone>
+					<VBY_PrimitiveFlint>15</VBY_PrimitiveFlint> <!-- ??  -->
+				</products>
+				</RecipeDef>
+			<!--  -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="Hol.BSC">
+				<defName>VBY_MakeLimestoneBlocksPlusFlintBulkFive</defName>
+				<label>make limestone blocks w/ flint byproduct (x5)</label>
+				<description>A less careful way of cutting limestone blocks that results in both blocks and a flint by-product.</description>
+				<workAmount>4875</workAmount>
+				<ingredients>
+					<li>
+					<filter>
+						<thingDefs>
+						<li>ChunkLimestone</li>
+						</thingDefs>
+					</filter>
+					<count>5</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+					<li>ChunkLimestone</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<BlocksLimestone>50</BlocksLimestone>
+					<VBY_PrimitiveFlint>25</VBY_PrimitiveFlint> <!-- ??  -->
+				</products>
+				</RecipeDef>
+			<!--  -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="Hol.BSC">
+				<defName>VBY_MakeLimestoneBlocksPlusFlintBulkTen</defName>
+				<label>make limestone blocks w/ flint byproduct (x10)</label>
+				<description>A less careful way of cutting limestone blocks that results in both blocks and a flint by-product.</description>
+				<workAmount>9750</workAmount>
+				<ingredients>
+					<li>
+					<filter>
+						<thingDefs>
+						<li>ChunkLimestone</li>
+						</thingDefs>
+					</filter>
+					<count>10</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+					<li>ChunkLimestone</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<BlocksLimestone>100</BlocksLimestone>
+					<VBY_PrimitiveFlint>50</VBY_PrimitiveFlint> <!-- ??  -->
+				</products>
+				</RecipeDef>
+			<!--  -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="Hol.BSC,Kura.ExtraStone">
+				<defName>VBY_MakeChalkBlocksPlusFlintBulkF</defName>
+				<label>make chalk blocks w/ flint byproduct (x3)</label>
+				<description>A less careful way of cutting chalk blocks that results in both blocks and a flint by-product.</description>
+				<workAmount>2925</workAmount>
+				<ingredients>
+					<li>
+					<filter>
+						<thingDefs>
+						<li>ChunkChalk</li>
+						</thingDefs>
+					</filter>
+					<count>3</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+					<li>ChunkChalk</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<BlocksChalk>30</BlocksChalk>
+					<VBY_PrimitiveFlint>15</VBY_PrimitiveFlint> <!-- ??  -->
+				</products>
+				</RecipeDef>
+			<!--  -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="Hol.BSC,Kura.ExtraStone">
+				<defName>VBY_MakeChalkBlocksPlusFlintBulkFive</defName>
+				<label>make chalk blocks w/ flint byproduct (x5)</label>
+				<description>A less careful way of cutting chalk blocks that results in both blocks and a flint by-product.</description>
+				<workAmount>4875</workAmount>
+				<ingredients>
+					<li>
+					<filter>
+						<thingDefs>
+						<li>ChunkChalk</li>
+						</thingDefs>
+					</filter>
+					<count>5</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+					<li>ChunkChalk</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<BlocksChalk>50</BlocksChalk>
+					<VBY_PrimitiveFlint>25</VBY_PrimitiveFlint> <!-- ??  -->
+				</products>
+				</RecipeDef>
+			<!--  -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="Hol.BSC,Kura.ExtraStone">
+				<defName>VBY_MakeChalkBlocksPlusFlintBulkTen</defName>
+				<label>make chalk blocks w/ flint byproduct (x10)</label>
+				<description>A less careful way of cutting chalk blocks that results in both blocks and a flint by-product.</description>
+				<workAmount>9750</workAmount>
+				<ingredients>
+					<li>
+					<filter>
+						<thingDefs>
+						<li>ChunkChalk</li>
+						</thingDefs>
+					</filter>
+					<count>10</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+					<li>ChunkChalk</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<BlocksChalk>100</BlocksChalk>
+					<VBY_PrimitiveFlint>50</VBY_PrimitiveFlint> <!-- ??  -->
+				</products>
+				</RecipeDef>
+			<!--  -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="Hol.BSC,Kura.ExtraStone">
+				<defName>VBY_MakeChalkBlocksPlusObsidianBulkF</defName>
+				<label>make obsidian blocks w/ flint byproduct (x3)</label>
+				<description>A less careful way of cutting obsidian blocks that results in both blocks and a flint by-product.</description>
+				<workAmount>2925</workAmount>
+				<ingredients>
+					<li>
+					<filter>
+						<thingDefs>
+						<li>ChunkObsidian</li>
+						</thingDefs>
+					</filter>
+					<count>3</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+					<li>ChunkObsidian</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<BlocksObsidian>30</BlocksObsidian>
+					<VBY_PrimitiveFlint>15</VBY_PrimitiveFlint> <!-- ??  -->
+				</products>
+				</RecipeDef>
+			<!--  -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="Hol.BSC,Kura.ExtraStone">
+				<defName>VBY_MakeChalkBlocksPlusObsidianBulkFive</defName>
+				<label>make obsidian blocks w/ flint byproduct (x5)</label>
+				<description>A less careful way of cutting obsidian blocks that results in both blocks and a flint by-product.</description>
+				<workAmount>4875</workAmount>
+				<ingredients>
+					<li>
+					<filter>
+						<thingDefs>
+						<li>ChunkObsidian</li>
+						</thingDefs>
+					</filter>
+					<count>5</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+					<li>ChunkObsidian</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<BlocksObsidian>50</BlocksObsidian>
+					<VBY_PrimitiveFlint>25</VBY_PrimitiveFlint> <!-- ??  -->
+				</products>
+				</RecipeDef>
+			<!--  -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="Hol.BSC,Kura.ExtraStone">
+				<defName>VBY_MakeChalkBlocksPlusObsidianBulkTen</defName>
+				<label>make obsidian blocks w/ flint byproduct (x10)</label>
+				<description>A less careful way of cutting obsidian blocks that results in both blocks and a flint by-product.</description>
+				<workAmount>9750</workAmount>
+				<ingredients>
+					<li>
+					<filter>
+						<thingDefs>
+						<li>ChunkObsidian</li>
+						</thingDefs>
+					</filter>
+					<count>10</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+					<li>ChunkObsidian</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<BlocksObsidian>100</BlocksObsidian>
+					<VBY_PrimitiveFlint>50</VBY_PrimitiveFlint> <!-- ??  -->
+				</products>
+				</RecipeDef>
+			<!--  -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="Hol.BSC,sarg.alphabiomes">
+				<defName>VBY_MakeChalkBlocksPlusObsidianBulkFAA</defName>
+				<label>make obsidian blocks w/ flint byproduct (x3)</label>
+				<description>A less careful way of cutting obsidian blocks that results in both blocks and a flint by-product.</description>
+				<workAmount>2925</workAmount>
+				<ingredients>
+					<li>
+					<filter>
+						<thingDefs>
+						<li>AB_ChunkObsidian</li>
+						</thingDefs>
+					</filter>
+					<count>3</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+					<li>AB_ChunkObsidian</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<AB_BlocksObsidian>30</AB_BlocksObsidian>
+					<VBY_PrimitiveFlint>15</VBY_PrimitiveFlint> <!-- ??  -->
+				</products>
+				</RecipeDef>
+			<!--  -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="Hol.BSC,sarg.alphabiomes">
+				<defName>VBY_MakeChalkBlocksPlusObsidianBulkFiveAA</defName>
+				<label>make obsidian blocks w/ flint byproduct (x5)</label>
+				<description>A less careful way of cutting obsidian blocks that results in both blocks and a flint by-product.</description>
+				<workAmount>4875</workAmount>
+				<ingredients>
+					<li>
+					<filter>
+						<thingDefs>
+						<li>AB_ChunkObsidian</li>
+						</thingDefs>
+					</filter>
+					<count>5</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+					<li>AB_ChunkObsidian</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<AB_BlocksObsidian>50</AB_BlocksObsidian>
+					<VBY_PrimitiveFlint>25</VBY_PrimitiveFlint> <!-- ??  -->
+				</products>
+				</RecipeDef>
+			<!--  -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="Hol.BSC,sarg.alphabiomes">
+					<defName>VBY_MakeChalkBlocksPlusObsidianBulkTenAA</defName>
+					<label>make obsidian blocks w/ flint byproduct (x10)</label>
+					<description>A less careful way of cutting obsidian blocks that results in both blocks and a flint by-product.</description>
+					<workAmount>9750</workAmount>
+					<ingredients>
+						<li>
+						<filter>
+							<thingDefs>
+							<li>AB_ChunkObsidian</li>
+							</thingDefs>
+						</filter>
+						<count>10</count>
+						</li>
+					</ingredients>
+					<fixedIngredientFilter>
+						<thingDefs>
+						<li>AB_ChunkObsidian</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<products>
+						<AB_BlocksObsidian>100</AB_BlocksObsidian>
+						<VBY_PrimitiveFlint>50</VBY_PrimitiveFlint> <!-- ??  -->
+					</products>
+				</RecipeDef>
+			<!--  -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="Hol.BSC,sarg.alphabiomes">
+				<defName>VBY_MakeRoseQuartzBlocksPlusObsidianBulkFAA</defName>
+				<label>make rose quartz blocks w/ flint byproduct (x3)</label>
+				<description>A less careful way of cutting rose quartz blocks that results in both blocks and a flint by-product.</description>
+				<workAmount>2925</workAmount>
+				<ingredients>
+					<li>
+					<filter>
+						<thingDefs>
+						<li>GU_ChunkRoseQuartz</li>
+						</thingDefs>
+					</filter>
+					<count>3</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+					<li>GU_ChunkRoseQuartz</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<GU_BlocksRoseQuartz>30</GU_BlocksRoseQuartz>
+					<VBY_PrimitiveFlint>15</VBY_PrimitiveFlint> <!-- ??  -->
+				</products>
+				</RecipeDef>
+			<!--  -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="Hol.BSC,sarg.alphabiomes">
+				<defName>VBY_MakeRoseQuartzBlocksPlusObsidianBulkFiveAA</defName>
+				<label>make rose quartz blocks w/ flint byproduct (x5)</label>
+				<description>A less careful way of cutting rose quartz blocks that results in both blocks and a flint by-product.</description>
+				<workAmount>4875</workAmount>
+				<ingredients>
+					<li>
+					<filter>
+						<thingDefs>
+						<li>GU_ChunkRoseQuartz</li>
+						</thingDefs>
+					</filter>
+					<count>5</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+					<li>GU_ChunkRoseQuartz</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<GU_BlocksRoseQuartz>50</GU_BlocksRoseQuartz>
+					<VBY_PrimitiveFlint>25</VBY_PrimitiveFlint> <!-- ??  -->
+				</products>
+				</RecipeDef>
+			<!--  -->
+				<RecipeDef ParentName="MakeStoneBlocksPlusFlintBase" MayRequire="Hol.BSC,sarg.alphabiomes">
+				<defName>VBY_MakeRoseQuartzBlocksPlusObsidianBulkTenAA</defName>
+				<label>make rose quartz blocks w/ flint byproduct (x10)</label>
+				<description>A less careful way of cutting rose quartz blocks that results in both blocks and a flint by-product.</description>
+				<workAmount>9750</workAmount>
+				<ingredients>
+					<li>
+					<filter>
+						<thingDefs>
+						<li>GU_ChunkRoseQuartz</li>
+						</thingDefs>
+					</filter>
+					<count>10</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+					<li>GU_ChunkRoseQuartz</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<GU_BlocksRoseQuartz>100</GU_BlocksRoseQuartz>
+					<VBY_PrimitiveFlint>50</VBY_PrimitiveFlint> <!-- ??  -->
+				</products>
+				</RecipeDef>
+		<!-- MAKE BAMBOO FIBER -->
+			<RecipeDef MayRequire="dismarzero.VGP.VGPVegetableGarden">
+				<defName>VBY_BambooFiberRecipe</defName>
+				<label>Process bamboo fibers</label>
+				<description>Process bamboo fibers from bamboo. \n\nMakes 5 bamboo fibers.</description>
+				<jobString>weaving bamboo fibers.</jobString>
+				<workAmount>850</workAmount>
+				<workSpeedStat>GeneralLaborSpeed</workSpeedStat>		
+				<allowMixingIngredients>true</allowMixingIngredients>
+				<effectWorking>Tailor</effectWorking>
+				<soundWorking>Recipe_Tailor</soundWorking>
+				<descriptionHyperlinks>
+					<ThingDef>VBY_BambooFiber</ThingDef>
+					<ThingDef>Bamboo</ThingDef>
+				</descriptionHyperlinks>
+				<ingredients>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>Bamboo</li>
+							</thingDefs>
+						</filter>
+						<count>10</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+						<li>Bamboo</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<VBY_BambooFiber>5</VBY_BambooFiber>
+				</products>
+				<workSkill>Crafting</workSkill>
+				<recipeUsers>
+					<li>CraftingSpot</li>
+					<li>VBY_PrimitiveCraftingTable</li>
+					<li>VBY_PrimitiveTailoringTable</li>
+					<li>HandTailoringBench</li>
+					<li>ElectricTailoringBench</li>
+				</recipeUsers>
+			</RecipeDef>
+		<!-- MAKE BAMBOO FIBER BULK -->
+			<RecipeDef MayRequire="dismarzero.VGP.VGPVegetableGarden">
+				<defName>VBY_BambooFiberRecipeBulk</defName>
+				<label>Process twenty bamboo fibers</label>
+				<description>Process bamboo fibers from bamboo. \n\nMakes 20 bamboo fibers.</description>
+				<jobString>weaving bamboo fibers.</jobString>
+				<workAmount>2890</workAmount>
+				<workSpeedStat>GeneralLaborSpeed</workSpeedStat>		
+				<allowMixingIngredients>true</allowMixingIngredients>
+				<effectWorking>Tailor</effectWorking>
+				<soundWorking>Recipe_Tailor</soundWorking>
+				<descriptionHyperlinks>
+					<ThingDef>VBY_BambooFiber</ThingDef>
+					<ThingDef>Bamboo</ThingDef>
+				</descriptionHyperlinks>
+				<ingredients>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>Bamboo</li>
+							</thingDefs>
+						</filter>
+						<count>40</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+						<li>Bamboo</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<VBY_BambooFiber>20</VBY_BambooFiber>
+				</products>
+				<workSkill>Crafting</workSkill>
+				<recipeUsers>
+					<li>CraftingSpot</li>
+					<li>VBY_PrimitiveCraftingTable</li>
+					<li>VBY_PrimitiveTailoringTable</li>
+					<li>HandTailoringBench</li>
+					<li>ElectricTailoringBench</li>
+				</recipeUsers>
+			</RecipeDef>
+		<!-- MAKE THROWING ROCKS -->
+			<RecipeDef>
+				<defName>VBY_Make_ThrowingRocks</defName>
+				<label>make throwing rocks</label>
+				<description>Filter through chunks of rock for proper sized throwing rocks.</description>
+				<jobString>Collecting throwing rocks.</jobString>
+				<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+				<effectWorking>CutStone</effectWorking>
+				<soundWorking>Recipe_MakeStoneBlocks</soundWorking>
+				<workAmount>500</workAmount>
+				<allowMixingIngredients>true</allowMixingIngredients>
+				<descriptionHyperlinks>
+					<ThingDef>VBY_ThrowingRocks</ThingDef>
+				</descriptionHyperlinks>
+				<recipeUsers>
+				<li>VBY_PrimitiveRangedWeaponTable</li>
+					<li>VBY_PrimitiveCraftingTable</li>
+					<li>CraftingSpot</li>
+				</recipeUsers>
+				<ingredients>
+				<li>
+					<filter>
+					<categories>
+						<li>StoneChunks</li>
+					</categories>
+					</filter>
+					<count>3</count>
+				</li>
+				</ingredients>
+				<fixedIngredientFilter>
+				<categories>
+					<li>StoneChunks</li>
+				</categories>
+				</fixedIngredientFilter>
+				<products>
+				<VBY_ThrowingRocks>1</VBY_ThrowingRocks>
+				</products>
+				<workSkill>Crafting</workSkill>
+			</RecipeDef>
+		<!-- WEAVE FIVE HAYCLOTH -->
+			<RecipeDef>
+				<defName>VBY_HayclothRecipe</defName>
+				<label>weave five haycloths</label>
+				<description>weave haycloth from hay. \n\nMakes 5 haycloth.</description>
+				<jobString>weaving fabric.</jobString>
+				<workAmount>700</workAmount>
+				<workSpeedStat>GeneralLaborSpeed</workSpeedStat>		
+				<allowMixingIngredients>true</allowMixingIngredients>
+				<effectWorking>Tailor</effectWorking>
+				<soundWorking>Recipe_Tailor</soundWorking>
+				<descriptionHyperlinks>
+					<ThingDef>VBY_Haycloth</ThingDef>
+					<ThingDef>Hay</ThingDef>
+				</descriptionHyperlinks>
+				<ingredients>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>Hay</li>
+								<li MayRequire="tosenbo.Ricecultivatingcivilization">Straw</li>
+							</thingDefs>
+						</filter>
+						<count>10</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+						<li>Hay</li>
+						<li MayRequire="tosenbo.Ricecultivatingcivilization">Straw</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<VBY_Haycloth>5</VBY_Haycloth>
+				</products>
+				<workSkill>Crafting</workSkill>
+				<recipeUsers>
+				<li>CraftingSpot</li>
+				<li>VBY_PrimitiveCraftingTable</li>
+				<li>VBY_PrimitiveTailoringTable</li>
+				<li>HandTailoringBench</li>
+				<li>ElectricTailoringBench</li>
+				</recipeUsers>
+			</RecipeDef>
+		<!-- WEAVE TWENTY HAYCLOTH -->
+			<RecipeDef>
+				<defName>VBY_HayclothRecipeBulk</defName>
+				<label>weave twenty haycloths</label>
+				<description>weave haycloth from hay. \n\nMakes 20 haycloth.</description>
+				<jobString>weaving fabric.</jobString>
+				<workAmount>2380</workAmount>
+				<workSpeedStat>GeneralLaborSpeed</workSpeedStat>		
+				<allowMixingIngredients>true</allowMixingIngredients>
+				<effectWorking>Tailor</effectWorking>
+				<soundWorking>Recipe_Tailor</soundWorking>
+				<descriptionHyperlinks>
+					<ThingDef>VBY_Haycloth</ThingDef>
+					<ThingDef>Hay</ThingDef>
+				</descriptionHyperlinks>
+				<ingredients>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>Hay</li>
+								<li MayRequire="tosenbo.Ricecultivatingcivilization">Straw</li>
+							</thingDefs>
+						</filter>
+						<count>40</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+						<li>Hay</li>
+						<li MayRequire="tosenbo.Ricecultivatingcivilization">Straw</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<VBY_Haycloth>20</VBY_Haycloth>
+				</products>
+				<workSkill>Crafting</workSkill>
+				<recipeUsers>
+					<li>CraftingSpot</li>
+					<li>VBY_PrimitiveCraftingTable</li>
+					<li>VBY_PrimitiveTailoringTable</li>
+					<li>HandTailoringBench</li>
+					<li>ElectricTailoringBench</li>
+				</recipeUsers>		
+			</RecipeDef>
+		<!-- MAKE FIRED ADOBE BLOCKS -->
+			<RecipeDef ParentName="MakeStoneBlocksBase">
+				<defName>VBYMake_FiredAdobe</defName>          
+				<label>make fired adobe blocks</label>
+				<description>Fires wet clay paste into usable adobe blocks.\n\nMakes 20 bricks.</description>
+				<workAmount>900</workAmount>
+				<allowMixingIngredients>true</allowMixingIngredients>
+				<targetCountAdjustment>20</targetCountAdjustment>
+				<soundWorking>Recipe_Cremate</soundWorking>
+				<descriptionHyperlinks>
+					<ThingDef>VBY_BlocksAdobe</ThingDef>
+					<ThingDef>VBY_ClayPaste</ThingDef>
+				</descriptionHyperlinks>
+				<ingredients>
+				<li>
+					<filter>
+					<thingDefs>
+						<li>VBY_ClayPaste</li>
+						<li MayRequire="Argon.ExpandedMaterials.Stones">EM_ClayBricks_Fresh</li>
+					</thingDefs>
+					</filter>
+					<count>20</count>
+				</li>
+				</ingredients>
+				<fixedIngredientFilter>
+				<thingDefs>
+					<li>VBY_ClayPaste</li>
+					<li MayRequire="Argon.ExpandedMaterials.Stones">EM_ClayBricks_Fresh</li>
+				</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+				<VBY_BlocksAdobe>20</VBY_BlocksAdobe>
+				</products>
+				<recipeUsers Inherit="False">
+					<li>VBY_PrimitiveKiln</li>
+					<li MayRequire="Neronix17.Outland.Core">Outland_Forge</li>
+				</recipeUsers>
+			</RecipeDef>
+		<!-- MAKE WET CLAY CLUMPS -->
+			<RecipeDef>  <!-- Will need nomatch to "Replace" with more hay if clay not found, or add clay -->
+				<defName>VBY_MakeClumpsFromClay_Base</defName>
+				<label>make wet clay clumps</label>
+				<description>Make wet clay clumps from mud and haygrass.\n\nMakes 20 clumps of wet clay.</description>
+				<jobString>Making wet clay clumps.</jobString>
+				<effectWorking>Sculpt</effectWorking>
+				<soundWorking>Recipe_Sculpt</soundWorking>
+				<workAmount>200</workAmount>
+				<allowMixingIngredients>true</allowMixingIngredients>
+				<descriptionHyperlinks>
+				<ThingDef>VBY_ClayPaste</ThingDef>
+				</descriptionHyperlinks>
+				<ingredients>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>Hay</li>
+								<li MayRequire="jamaicancastle.RF.fertilefields">PlantScraps</li>
+							</thingDefs>
+						</filter>
+						<count>40</count>
+					</li>
+					<li>
+						<filter>
+							<thingDefs>
+								<li MayRequire="Barsimmon.OriginalByVagabond.FantasyGoblins">GoblinMud</li>
+								<li MayRequire="Atlas.MaterialsPlus.AT.Updated">AM_RawMud</li>
+								<li MayRequire="Atlas.MaterialsPlus.AT.Updated">AM_RawClay</li>
+								<li MayRequire="Argon.ExpandedMaterials.Stones">EM_Clay</li>
+								<li MayRequire="jamaicancastle.RF.fertilefields">RFFClay</li>
+								<li MayRequire="n7huntsman.ceramics.vef">N7_RawClay</li>
+								<li MayRequire="n7huntsman.ceramics.craft">N7_RawClay</li>
+								<li MayRequire="Neronix17.Outland.Core">Outland_Clay</li>
+							</thingDefs>
+						</filter>
+						<count>60</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+						<li>Hay</li>
+						<li MayRequire="Barsimmon.OriginalByVagabond.FantasyGoblins">GoblinMud</li>
+						<li MayRequire="Atlas.MaterialsPlus.AT.Updated">AM_RawMud</li>
+						<li MayRequire="Atlas.MaterialsPlus.AT.Updated">AM_RawClay</li>
+						<li MayRequire="n7huntsman.ceramics.vef">N7_RawClay</li>
+						<li MayRequire="n7huntsman.ceramics.craft">N7_RawClay</li>
+						<li MayRequire="Argon.ExpandedMaterials.Stones">EM_Clay</li>
+						<li MayRequire="jamaicancastle.RF.fertilefields">RFFClay</li>
+						<li MayRequire="jamaicancastle.RF.fertilefields">PlantScraps</li>
+						<li MayRequire="Neronix17.Outland.Core">Outland_Clay</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<products>
+					<VBY_ClayPaste>20</VBY_ClayPaste>
+				</products>
+				<!--<workSkill>Crafting</workSkill>-->
+				<recipeUsers>
+					<li>CraftingSpot</li>
+					<li>VBY_PrimitiveCraftingTable</li>
+					<li>VBY_PrimitiveKiln</li>
+					<li MayRequire="Neronix17.Outland.Core">Outland_FormingWorkbench</li>
+				</recipeUsers>
+			</RecipeDef>
+		<!--  -->
+		<!--  -->
+		<!--  -->
+		<!--  -->
+		<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+</Defs>

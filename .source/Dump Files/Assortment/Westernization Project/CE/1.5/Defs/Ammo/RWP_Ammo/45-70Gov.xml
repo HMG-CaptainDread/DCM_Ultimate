@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingCategoryDef>
+    <defName>Ammo45-70Government</defName>
+    <label>.45-70 Government</label>
+    <parent>AmmoRifles</parent>
+    <iconPath>UI/Icons/ThingCategories/CaliberRifle</iconPath>
+  </ThingCategoryDef>
+  <!-- ==================== AmmoSet ========================== -->
+  <CombatExtended.AmmoSetDef>
+    <defName>AmmoSet_45-70Government_BP</defName>
+    <label>.45-70 Government (BP)</label>
+    <ammoTypes>
+      <Ammo_45-70Government_BP>Bullet_45-70Government_BP</Ammo_45-70Government_BP>
+    </ammoTypes>
+  </CombatExtended.AmmoSetDef>
+  <!-- ==================== Ammo ========================== -->
+  <ThingDef Class="CombatExtended.AmmoDef" Name="45-70GovernmentBase" ParentName="SmallAmmoBase" Abstract="True">
+    <description>Ancient mid-late 19th century bullet traditionally loaded with 40 grains of blackpowder, typically used in repeating arms.</description>
+    <statBases>
+      <Mass>0.01</Mass>
+      <Bulk>0.02</Bulk>
+    </statBases>
+    <tradeTags>
+      <li>CE_AutoEnableTrade</li>
+      <li>CE_AutoEnableCrafting</li>
+    </tradeTags>
+    <thingCategories>
+      <li>Ammo45-70Government</li>
+    </thingCategories>
+  </ThingDef>
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="45-70GovernmentBase">
+    <defName>Ammo_45-70Government_BP</defName>
+    <label>.45-70 Government (BP)</label>
+    <graphicData>
+      <texPath>Things/Ammo/45-70Government</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>0.05</MarketValue>
+    </statBases>
+    <ammoClass>BlackPowder</ammoClass>
+    <cookOffProjectile>Bullet_45-70Government_BP</cookOffProjectile>
+  </ThingDef>
+  <!-- ================== Projectiles ================== -->
+  <ThingDef Class="CombatExtended.AmmoDef" Name="Base45-70GovernmentBullet" ParentName="BaseBulletCE" Abstract="true">
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <damageDef>Bullet</damageDef>
+      <speed>106</speed>
+      <dropsCasings>true</dropsCasings>
+    </projectile>
+  </ThingDef>
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="Base45-70GovernmentBullet">
+    <defName>Bullet_45-70Government_BP</defName>
+    <label>.45-70 Government (BP)</label>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <damageAmountBase>24</damageAmountBase>
+      <armorPenetrationSharp>3</armorPenetrationSharp>
+      <armorPenetrationBlunt>9.440</armorPenetrationBlunt>
+    </projectile>
+  </ThingDef>
+  <!-- ==================== Recipes ========================== -->
+  <RecipeDef ParentName="AmmoRecipeBase">
+    <defName>MakeAmmo_45-70Government_BP</defName>
+    <label>make .45-70 Government (BP) cartridge x500</label>
+    <description>Craft 500 .45-70 Government (BP) cartridges.</description>
+    <jobString>Making .45-70 Government (BP) cartridges.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>18</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_45-70Government_BP>500</Ammo_45-70Government_BP>
+    </products>
+    <workAmount>4250</workAmount>
+  </RecipeDef>
+</Defs>

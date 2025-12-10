@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<Operation Class="XmlExtensions.UseSetting">
+		<modId>Seti.Victor.AnimaBodies</modId>
+		<key>BrainImplant_Setting</key>
+		<defaultValue>0</defaultValue>
+		<apply>
+			<Operation Class="XmlExtensions.PatchByCase">
+				<value>{BrainImplant_Setting}</value>
+				<cases>
+					<li>
+						<value>0</value>
+						<apply>
+							<Operation Class="PatchOperationAdd">
+								<xpath>Defs/HediffDef[defName="PsychicDryad"]/stages/li/statOffsets</xpath>
+									<value>
+										<MeleeDodgeChance>-15</MeleeDodgeChance>
+									</value>
+							</Operation>
+							<Operation Class="PatchOperationAdd">
+								<xpath>Defs/HediffDef[defName="MindDryad"]/stages/li/capMods/li</xpath>
+									<value>
+										<setMax>1.30</setMax>
+									</value>
+							</Operation>
+						</apply>
+					</li>
+					<li>
+						<value>1</value>
+						<apply>
+							
+						</apply>
+					</li>
+				</cases>
+			</Operation>
+		</apply>   
+	</Operation>
+
+</Patch>

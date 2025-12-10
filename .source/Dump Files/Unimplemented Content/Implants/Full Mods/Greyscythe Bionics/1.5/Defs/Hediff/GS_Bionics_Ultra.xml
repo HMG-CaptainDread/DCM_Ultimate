@@ -1,0 +1,2736 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<ThingDef Name="GS_UltraBionicBase" ParentName="BodyPartBase" Abstract="True">
+		<techLevel>Ultra</techLevel>
+		<thingCategories>
+			<li>GS_BodyPartsBionicUltra</li>
+		</thingCategories>
+		<graphicData>
+			<texPath>Things/Item/Health/HealthItem</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.80</drawSize>
+			<color>(220,110,200)</color>
+		</graphicData>
+		<statBases>
+			<WorkToMake>60000</WorkToMake>
+		</statBases>
+		<recipeMaker>
+			<displayPriority>600</displayPriority>
+		</recipeMaker>
+	</ThingDef>
+	
+	<ThingDef Name="GS_UltraBionicMakeableBase" ParentName="GS_UltraBionicBase" Abstract="True">
+		<recipeMaker>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>	
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<recipeUsers>
+				<li>GS_RealspaceManifold</li>
+			</recipeUsers>
+			<skillRequirements>
+				<Crafting>13</Crafting>
+			</skillRequirements>
+			<unfinishedThingDef>UnfinishedHealthItemProsthetic</unfinishedThingDef>
+			<researchPrerequisite>GS_Research_UltraBionics</researchPrerequisite>
+		</recipeMaker>
+	</ThingDef>
+	
+	<ThingDef Name="GS_UltraImplantMakeableBase" ParentName="GS_UltraBionicBase" Abstract="True">
+		<recipeMaker>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>	
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<recipeUsers>
+				<li>GS_RealspaceManifold</li>
+			</recipeUsers>
+			<skillRequirements>
+				<Crafting>14</Crafting>
+			</skillRequirements>
+			<unfinishedThingDef>UnfinishedHealthItemProsthetic</unfinishedThingDef>
+			<researchPrerequisite>GS_Research_UltraBionics</researchPrerequisite>
+		</recipeMaker>
+	</ThingDef>
+	
+	<RecipeDef Name="GS_SurgeryInstallUltraBionicBase" ParentName="SurgeryInstallBodyPartArtificialBase" Abstract="True">
+		<skillRequirements>
+			<Medicine>12</Medicine>
+		</skillRequirements>
+	</RecipeDef>
+
+<!-- 
+		*** Hexa Eye ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_hexaeye</defName>
+		<label>Hexa Eye</label>
+		<labelNoun>an installed Hexa Eye</labelNoun>
+		<defaultLabelColor>(1.0, 0.4, 0.9)</defaultLabelColor>
+		<description>A highly sophisticated eye implant that splits the neural nerves into a set of three pairs, with each set isolating and analyzing a seperate set of data, thus ensuring that not even the smallest detail is lost.</description>
+		<descriptionHyperlinks><ThingDef>GS_hexaeye</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Sight</capacity>
+				<offset>0.25</offset>
+				</li>
+				<li>
+				<capacity>Consciousness</capacity>
+				<offset>0.05</offset>
+				</li>
+			</capMods>
+			<statOffsets>
+				<GS_Evade_EvadeProjectileChance>4.5</GS_Evade_EvadeProjectileChance>
+				<GS_Evade_EvadeMeleeChance>4.5</GS_Evade_EvadeMeleeChance>
+				<ShootingAccuracyPawn>7.5</ShootingAccuracyPawn>
+				<MeleeHitChance>7.5</MeleeHitChance>
+			</statOffsets>
+			<statFactors>
+				<MortarMissRadiusFactor>0.85</MortarMissRadiusFactor>
+				<AimingDelayFactor>0.85</AimingDelayFactor>
+				<MeleeArmorPenetration>1.2</MeleeArmorPenetration>
+				<VEF_VerbRangeFactor>1.1</VEF_VerbRangeFactor>
+			</statFactors>
+			</li>
+		</stages>
+		<spawnThingOnRemoved>GS_hexaeye</spawnThingOnRemoved>
+		<addedPartProps>
+			<betterThanNatural>true</betterThanNatural>
+			<solid>true</solid>
+			<partEfficiency>1.5</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+
+	<ThingDef ParentName="GS_UltraBionicMakeableBase">
+		<defName>GS_hexaeye</defName>
+		<label>Hexa Eye</label>
+		<description>A highly sophisticated eye implant that splits the neural nerves into a set of three pairs, with each set isolating and analyzing a seperate set of data, thus ensuring that not even the smallest detail is lost.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installhexaeye</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<Gold>2</Gold>
+		<Plasteel>30</Plasteel>
+		<ComponentSpacer>12</ComponentSpacer>
+		</costList>
+		<statBases>
+		<Mass>0.5</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallUltraBionicBase">
+		<defName>GS_Installhexaeye</defName>
+		<label>install Hexa Eye</label>
+		<description>Install a Hexa Eye.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_hexaeye</ThingDef>
+		<HediffDef>GS_hediff_hexaeye</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Hexa Eye.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_hexaeye</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_hexaeye</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Eye</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_hexaeye</addsHediff>
+	</RecipeDef>
+
+<!-- 
+		*** eyetracer ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_eyetracer</defName>
+		<label>Optic Tracer</label>
+		<labelNoun>Optic Tracer implant</labelNoun>
+		<defaultLabelColor>(1.0, 0.4, 0.9)</defaultLabelColor>
+		<description>A miniature data processing center embedded into the eye socket, that filters important data and processes vital information before it is sent to the brain. This results in an improvement in reaction and decision making speed for trained users. Due to limited space, only one Greyscythe module will fit within the eye socket. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the part it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><ThingDef>GS_eyetracer</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_eyetracer</spawnThingOnRemoved>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Sight</capacity>
+				<offset>0.05</offset>
+				</li>
+			</capMods>
+			<statOffsets>
+				<GS_Evade_EvadeProjectileChance>2.7</GS_Evade_EvadeProjectileChance>
+				<GS_Evade_EvadeMeleeChance>2.7</GS_Evade_EvadeMeleeChance>
+			</statOffsets>
+			<statFactors>
+				<MedicalTendSpeed>1.1</MedicalTendSpeed>
+				<MedicalOperationSpeed>1.1</MedicalOperationSpeed>
+			</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_UltraImplantMakeableBase">
+		<defName>GS_eyetracer</defName>
+		<label>Optic Tracer implant</label>
+		<description>A miniature data processing center embedded into the eye socket, that filters important data and processes vital information before it is sent to the brain. This results in an improvement in reaction and decision making speed for trained users. Due to limited space, only one Greyscythe module will fit within the eye socket. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the part it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installeyetracer</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Gold>1</Gold>
+			<Hyperweave>25</Hyperweave>
+			<ComponentSpacer>6</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>2</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallImplantBase">
+		<defName>GS_Installeyetracer</defName>
+		<label>install Optic Tracer</label>
+		<description>Install an Optic Tracer.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_eyetracer</ThingDef>
+			<HediffDef>GS_Hediff_eyetracer</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Optic Tracer.</jobString>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_eyetracer</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_eyetracer</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Eye</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_eyetracer</addsHediff>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removeeyetracer</defName>
+		<label>remove Optic Tracer</label>
+		<description>Remove Optic Tracer.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_eyetracer</ThingDef>
+		<HediffDef>GS_Hediff_eyetracer</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing eyetracer.</jobString>
+		<removesHediff>GS_Hediff_eyetracer</removesHediff>
+	</RecipeDef>
+
+<!-- 
+		*** eyepredictor ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_eyepredictor</defName>
+		<label>Predictor</label>
+		<labelNoun>Predictor implant</labelNoun>
+		<defaultLabelColor>(1.0, 0.4, 0.9)</defaultLabelColor>
+		<description>A miniature data processing center embedded into the eye socket, that collates active data and makes rapid predictions of future data, sending this info in easily processed packets into the users brain. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the part it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><ThingDef>GS_eyepredictor</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_eyepredictor</spawnThingOnRemoved>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Sight</capacity>
+				<offset>0.05</offset>
+				</li>
+			</capMods>
+			<statOffsets>
+				<MeleeHitChance>3</MeleeHitChance>
+				<ShootingAccuracyPawn>3</ShootingAccuracyPawn>
+			</statOffsets>
+			<statFactors>
+				<MortarMissRadiusFactor>0.85</MortarMissRadiusFactor>
+				<AimingDelayFactor>0.9</AimingDelayFactor>
+			</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_UltraImplantMakeableBase">
+		<defName>GS_eyepredictor</defName>
+		<label>Predictor implant</label>
+		<description>A miniature data processing center embedded into the eye socket, that collates active data and makes rapid predictions of future data, sending this info in easily processed packets into the users brain. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the part it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installeyepredictor</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Gold>1</Gold>
+			<Hyperweave>25</Hyperweave>
+			<ComponentSpacer>6</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>2</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallImplantBase">
+		<defName>GS_Installeyepredictor</defName>
+		<label>install Predictor</label>
+		<description>Install a Predictor implant.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_eyepredictor</ThingDef>
+			<HediffDef>GS_Hediff_eyepredictor</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Predictor.</jobString>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_eyepredictor</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_eyepredictor</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Eye</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_eyepredictor</addsHediff>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removeeyepredictor</defName>
+		<label>remove Predictor implant</label>
+		<description>Remove Predictor implant.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_eyepredictor</ThingDef>
+		<HediffDef>GS_Hediff_eyepredictor</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing eyepredictor.</jobString>
+		<removesHediff>GS_Hediff_eyepredictor</removesHediff>
+	</RecipeDef>
+
+<!-- 
+		*** Toxfilter Nose ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_toxfilternose</defName>
+		<label>Toxfilter Nose</label>
+		<labelNoun>an installed Toxfilter Nose</labelNoun>
+		<defaultLabelColor>(1.0, 0.4, 0.9)</defaultLabelColor>
+		<description>A bionic nose replacement which filters out all waste and toxins from the air, greatly increasing their resistance to all airborne toxins and pathogens.</description>
+		<descriptionHyperlinks><ThingDef>GS_toxfilternose</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Breathing</capacity>
+				<offset>0.15</offset>
+				</li>
+				<li>
+				<capacity>BloodFiltration</capacity>
+				<offset>0.15</offset>
+				</li>
+			</capMods>
+			<statOffsets>
+				<ToxicEnvironmentResistance>0.95</ToxicEnvironmentResistance>
+				<ToxicResistance>0.95</ToxicResistance>
+			</statOffsets>
+			</li>
+		</stages>
+		<spawnThingOnRemoved>GS_toxfilternose</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>1.5</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+
+	<ThingDef ParentName="GS_UltraBionicMakeableBase">
+		<defName>GS_toxfilternose</defName>
+		<label>Toxfilter Nose</label>
+		<description>A bionic nose replacement which filters out all waste and toxins from the air, greatly increasing their resistance to all airborne toxins and pathogens.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installtoxfilternose</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<Hyperweave>20</Hyperweave>
+		<Plasteel>25</Plasteel>
+		<ComponentSpacer>8</ComponentSpacer>
+		</costList>
+		<statBases>
+		<Mass>0.5</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallUltraBionicBase">
+		<defName>GS_Installtoxfilternose</defName>
+		<label>install Toxfilter Nose</label>
+		<description>Install a Toxfilter Nose.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_toxfilternose</ThingDef>
+		<HediffDef>GS_hediff_toxfilternose</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Toxfilter Nose.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_toxfilternose</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_toxfilternose</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Nose</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_toxfilternose</addsHediff>
+	</RecipeDef>
+
+<!-- 
+		*** Ripper Jaw ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_ripjaw</defName>
+		<label>Ripper Jaw</label>
+		<labelNoun>an installed Ripper Jaw</labelNoun>
+		<defaultLabelColor>(1.0, 0.4, 0.9)</defaultLabelColor>
+		<description>An advanced bionic jaw replacement that features a full set of self-sharpening, retractable, self-sharpening razor teeth, designed to tear through armor, flesh and bone, while also increasing the intimidation factor of whoever they are attached to.</description>
+		<descriptionHyperlinks><ThingDef>GS_ripjaw</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Breathing</capacity>
+				<offset>0.10</offset>
+				</li>
+				<li>
+				<capacity>Eating</capacity>
+				<offset>0.40</offset>
+				</li>
+			</capMods>
+			<statOffsets>
+				<SuppressionPower>2</SuppressionPower>
+			</statOffsets>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+			<tools>
+				<li>
+				<label>ripjaw</label>
+				<capacities>
+					<li>Bite</li>
+				</capacities>
+				<power>28</power>
+				<armorPenetration>0.5</armorPenetration>
+				<cooldownTime>2</cooldownTime>
+				<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+				</li>
+			</tools>
+			</li>
+		</comps>
+		<spawnThingOnRemoved>GS_ripjaw</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>1.5</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+			<isGoodWeapon>true</isGoodWeapon>
+		</addedPartProps>
+	</HediffDef>
+
+	<ThingDef ParentName="GS_UltraBionicMakeableBase">
+		<defName>GS_ripjaw</defName>
+		<label>Ripper Jaw</label>
+		<description>An advanced bionic jaw replacement that features a full set of self-sharpening, retractable, self-sharpening razor teeth, designed to tear through armor, flesh and bone, while also increasing the intimidation factor of whoever they are attached to.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installripjaw</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<Uranium>5</Uranium>
+		<Plasteel>45</Plasteel>
+		<ComponentSpacer>8</ComponentSpacer>
+		</costList>
+		<statBases>
+		<Mass>0.5</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallUltraBionicBase">
+		<defName>GS_Installripjaw</defName>
+		<label>install Ripper Jaw</label>
+		<description>Install a Ripper Jaw.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_ripjaw</ThingDef>
+		<HediffDef>GS_hediff_ripjaw</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Ripper Jaw.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_ripjaw</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_ripjaw</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Jaw</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_ripjaw</addsHediff>
+		</RecipeDef>
+
+<!-- 
+		*** nutrientgrinder ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_nutrientgrinder</defName>
+		<label>Nutrient Grinder</label>
+		<labelNoun>Nutrient Grinder implant</labelNoun>
+		<defaultLabelColor>(1.0, 0.4, 0.9)</defaultLabelColor>
+		<description>A powerful all-purpose grinder, planted within the back of the throat. Any material passed through this horrifying machine is effectively annihilated, allowing the user to extract all viable nutrients from it with near-perfect effeciency. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the part it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><ThingDef>GS_nutrientgrinder</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_nutrientgrinder</spawnThingOnRemoved>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Eating</capacity>
+				<offset>0.40</offset>
+				</li>
+			</capMods>
+			<statOffsets>
+				<ForagedNutritionPerDay>0.4</ForagedNutritionPerDay>
+			</statOffsets>
+			<hungerRateFactor>0.75</hungerRateFactor>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_UltraImplantMakeableBase">
+		<defName>GS_nutrientgrinder</defName>
+		<label>Nutrient Grinder implant</label>
+		<description>A powerful all-purpose grinder, planted within the back of the throat. Any material passed through this horrifying machine is effectively annihilated, allowing the user to extract all viable nutrients from it with near-perfect effeciency.  \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the part it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installnutrientgrinder</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Steel>15</Steel>
+			<Plasteel>35</Plasteel>
+			<ComponentSpacer>8</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>2</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallImplantBase">
+		<defName>GS_Installnutrientgrinder</defName>
+		<label>install Nutrient Grinder</label>
+		<description>Install a nutrientgrinder.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_nutrientgrinder</ThingDef>
+			<HediffDef>GS_Hediff_nutrientgrinder</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Nutrient Grinder.</jobString>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_nutrientgrinder</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_nutrientgrinder</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Jaw</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_nutrientgrinder</addsHediff>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removenutrientgrinder</defName>
+		<label>remove nutrientgrinder</label>
+		<description>Remove nutrientgrinder.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_nutrientgrinder</ThingDef>
+		<HediffDef>GS_Hediff_nutrientgrinder</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing nutrientgrinder.</jobString>
+		<removesHediff>GS_Hediff_nutrientgrinder</removesHediff>
+	</RecipeDef>
+
+<!-- 
+		*** Attenuation Ear ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_attenuationear</defName>
+		<label>Attenuation Ear</label>
+		<labelNoun>an installed Attenuation Ear</labelNoun>
+		<defaultLabelColor>(1.0, 0.4, 0.9)</defaultLabelColor>
+		<description>An advanced bionic ear that also acts as a sonar, radar, early warning system and sound isolator. Someone with this ear will be able to detect danger before even seeing it, and know where its coming from and how fast.</description>
+		<descriptionHyperlinks><ThingDef>GS_attenuationear</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Hearing</capacity>
+				<offset>0.25</offset>
+				</li>
+				<li>
+				<capacity>Consciousness</capacity>
+				<offset>0.075</offset>
+				</li>
+			</capMods>
+			<statOffsets>
+				<GS_Evade_EvadeProjectileChance>6</GS_Evade_EvadeProjectileChance>
+				<GS_Evade_EvadeMeleeChance>6</GS_Evade_EvadeMeleeChance>
+				<MeleeDodgeChance>6</MeleeDodgeChance>
+			</statOffsets>
+			</li>
+		</stages>
+		<spawnThingOnRemoved>GS_attenuationear</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>1.5</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+
+	<ThingDef ParentName="GS_UltraBionicMakeableBase">
+		<defName>GS_attenuationear</defName>
+		<label>Attenuation Ear</label>
+		<description>An advanced bionic ear that also acts as a sonar, radar, early warning system and sound isolator. Someone with this ear will be able to detect danger before even seeing it, and know where its coming from and how fast.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installattenuationear</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<Gold>1</Gold>
+		<Plasteel>35</Plasteel>
+		<ComponentSpacer>8</ComponentSpacer>
+		</costList>
+		<statBases>
+		<Mass>0.5</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallUltraBionicBase">
+		<defName>GS_Installattenuationear</defName>
+		<label>install Attenuation Ear</label>
+		<description>Install a Attenuation Ear.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_attenuationear</ThingDef>
+		<HediffDef>GS_hediff_attenuationear</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Attenuation Ear.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_attenuationear</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_attenuationear</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Ear</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_attenuationear</addsHediff>
+		</RecipeDef>
+
+<!-- 
+		*** rangefinder ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_rangefinder</defName>
+		<label>Rangefinder</label>
+		<labelNoun>Rangefinder implant</labelNoun>
+		<defaultLabelColor>(1.0, 0.4, 0.9)</defaultLabelColor>
+		<description>An advanced automatic data processing microcomputer attached to the ear that takes the collected sonic data and attaches 98% accurate range estimates to each of them, allowing them to be turned into highly reliable rangefinding data. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the part it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><ThingDef>GS_rangefinder</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_rangefinder</spawnThingOnRemoved>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Hearing</capacity>
+				<offset>0.1</offset>
+				</li>
+			</capMods>
+			<statFactors>
+				<ShootingAccuracyPawn>1.15</ShootingAccuracyPawn>
+				<VEF_RangeAttackDamageFactor>1.1</VEF_RangeAttackDamageFactor>
+				<MortarMissRadiusFactor>0.85</MortarMissRadiusFactor>
+			</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_UltraImplantMakeableBase">
+		<defName>GS_rangefinder</defName>
+		<label>Rangefinder implant</label>
+		<description>An advanced automatic data processing microcomputer attached to the ear that takes the collected sonic data and attaches 98% accurate range estimates to each of them, allowing them to be turned into highly reliable rangefinding data. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the part it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installrangefinder</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Gold>1</Gold>
+			<Hyperweave>35</Hyperweave>
+			<ComponentSpacer>6</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>0.5</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallImplantBase">
+		<defName>GS_Installrangefinder</defName>
+		<label>install Rangefinder</label>
+		<description>Install a rangefinder.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_rangefinder</ThingDef>
+			<HediffDef>GS_Hediff_rangefinder</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Rangefinder.</jobString>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_rangefinder</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_rangefinder</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Ear</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_rangefinder</addsHediff>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removerangefinder</defName>
+		<label>remove rangefinder</label>
+		<description>Remove rangefinder.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_rangefinder</ThingDef>
+		<HediffDef>GS_Hediff_rangefinder</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing rangefinder.</jobString>
+		<removesHediff>GS_Hediff_rangefinder</removesHediff>
+	</RecipeDef>
+
+<!-- 
+		*** hurricane ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_hurricane</defName>
+		<label>Hurricane Defense System</label>
+		<labelNoun>Hurricane Defense integration</labelNoun>
+		<defaultLabelColor>(1.0, 0.4, 0.9)</defaultLabelColor>
+		<description>A highly advanced integrated network of smart-mine launchers that can be manually triggered by the user to launch and detonate a fine cloud of dust-like microepxlosives, stunning and damaging all around them, while simultaneously disuading approach by lesser foes. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove whatever it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_hurricane</ThingDef>
+			<AbilityDef>GS_Bionics_Hurricane</AbilityDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_hurricane</spawnThingOnRemoved>
+		<abilities>
+			<li>GS_Bionics_Hurricane</li>
+		</abilities>
+	</HediffDef>
+	
+	<AbilityDef ParentName="GS_SelfTargetAbilities">
+		<defName>GS_Bionics_Hurricane</defName>
+		<label>Hurricane Defense System</label>
+		<cooldownTicksRange>12000</cooldownTicksRange>
+		<description>Trigger the Hurricane defense system, launching and detonating a dense cloud of micorexplosives implanted withing the torso's dermal layer, causing massive damage to all targets around the user.</description>
+		<iconPath>UI/Icons/Abilities/Hurricane</iconPath>
+		<aiCanUse>true</aiCanUse>
+		<ai_SearchAOEForTargets>true</ai_SearchAOEForTargets>
+		<verbProperties>
+			<verbClass>Verb_CastAbility</verbClass>
+			<warmupTime>1</warmupTime>
+			<requireLineOfSight>false</requireLineOfSight>
+			<range>2.9</range>
+			<drawAimPie>false</drawAimPie>      
+		</verbProperties>
+		<comps>
+			<li Class="GS_Core.CompProperties_AbilitySelfBomb">
+				<radius>2.9</radius>
+				<damageType>Bomb</damageType>
+				<damageAmount>55</damageAmount>
+				<damagePenetration>10</damagePenetration>
+				<thingCreated>Filth_Ash</thingCreated>
+				<thingCreatedChance>40</thingCreatedChance>
+				<chanceToStartFire>12.5</chanceToStartFire>
+				<damageSelf>false</damageSelf>
+			</li>
+		</comps>
+	</AbilityDef>
+	
+	<ThingDef ParentName="GS_UltraImplantMakeableBase">
+		<defName>GS_hurricane</defName>
+		<label>Hurricane Defense System</label>
+		<description>A highly advanced integrated network of smart-mine launchers that can be manually triggered by the user to launch and detonate a fine cloud of dust-like microepxlosives, stunning and damaging all around them, while simultaneously disuading approach by lesser foes. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove whatever it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installhurricane</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Chemfuel>25</Chemfuel>
+			<Uranium>12</Uranium>
+			<Plasteel>50</Plasteel>
+			<ComponentSpacer>8</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>8</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallImplantBase">
+		<defName>GS_Installhurricane</defName>
+		<label>install Hurricane Defense System</label>
+		<description>Install a hurricane.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_hurricane</ThingDef>
+			<HediffDef>GS_Hediff_hurricane</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Hurricane Defense System.</jobString>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_hurricane</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_hurricane</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Torso</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_hurricane</addsHediff>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removehurricane</defName>
+		<label>remove hurricane</label>
+		<description>Remove hurricane.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_hurricane</ThingDef>
+		<HediffDef>GS_Hediff_hurricane</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing hurricane.</jobString>
+		<removesHediff>GS_Hediff_hurricane</removesHediff>
+	</RecipeDef>
+
+<!-- 
+		*** overshield ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_overshield</defName>
+		<label>Overshield System</label>
+		<labelNoun>Overshield integration</labelNoun>
+		<defaultLabelColor>(1.0, 0.4, 0.9)</defaultLabelColor>
+		<description>A sophisticated manufacturing system that deploys a dense swarm of shield-generating mechanites to protect a localized area. The generated shield protects a small localised area, designed to give the user time to deal with the enemies around themselves without being interference from more distant foes. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove whatever it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_overshield</ThingDef>
+			<AbilityDef>GS_Bionics_overshield</AbilityDef>
+		</descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_overshield</spawnThingOnRemoved>
+		<abilities>
+			<li>GS_Bionics_overshield</li>
+		</abilities>
+	</HediffDef>
+	
+	<AbilityDef ParentName="GS_SelfTargetAbilities">
+		<defName>GS_Bionics_overshield</defName>
+		<label>Overshield System</label>
+		<cooldownTicksRange>6000</cooldownTicksRange>
+		<description>Deploy a dense swarm of shield-generating mechanites to protect a small localised area for a short duration.</description>
+		<iconPath>UI/Icons/Abilities/Overshield</iconPath>
+		<aiCanUse>true</aiCanUse>
+		<ai_SearchAOEForTargets>false</ai_SearchAOEForTargets>
+		<verbProperties>
+			<verbClass>Verb_CastAbility</verbClass>
+			<warmupTime>1</warmupTime>
+			<requireLineOfSight>false</requireLineOfSight>
+			<range>2.9</range>
+			<drawAimPie>false</drawAimPie>      
+		</verbProperties>
+		<comps>
+			<li Class="GS_Core.CompProperties_AbilityShield">
+				<radius>0.9</radius>
+			</li>
+		</comps>
+	</AbilityDef>
+	
+	<ThingDef ParentName="GS_UltraImplantMakeableBase">
+		<defName>GS_overshield</defName>
+		<label>Overshield System</label>
+		<description>A sophisticated manufacturing system that deploys a dense swarm of shield-generating mechanites to protect a localized area. The generated shield protects a small localised area, designed to give the user time to deal with the enemies around themselves without being interference from more distant foes. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove whatever it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installovershield</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Chemfuel>25</Chemfuel>
+			<Uranium>12</Uranium>
+			<Plasteel>50</Plasteel>
+			<ComponentSpacer>8</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>8</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallImplantBase">
+		<defName>GS_Installovershield</defName>
+		<label>install Overshield</label>
+		<description>Install a overshield.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_overshield</ThingDef>
+			<HediffDef>GS_Hediff_overshield</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Overshield System.</jobString>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_overshield</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_overshield</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Torso</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_overshield</addsHediff>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removeovershield</defName>
+		<label>remove overshield</label>
+		<description>Remove overshield.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_overshield</ThingDef>
+		<HediffDef>GS_Hediff_overshield</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing overshield.</jobString>
+		<removesHediff>GS_Hediff_overshield</removesHediff>
+	</RecipeDef>
+
+<!-- 
+		*** calfthruster ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_calfthruster</defName>
+		<label>Calf Thrusters</label>
+		<labelNoun>Calf Thruster implant</labelNoun>
+		<defaultLabelColor>(1.0, 0.4, 0.9)</defaultLabelColor>
+		<description>Powerful compact thrusters that extend from the back of the calf, providing microthrusts to boost the user's speed and ability to self-correct. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the leg it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><ThingDef>GS_calfthruster</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_calfthruster</spawnThingOnRemoved>
+		<stages>
+			<li>
+			<statOffsets>
+				<GS_Evade_EvadeProjectileChance>2.5</GS_Evade_EvadeProjectileChance>
+				<GS_Evade_EvadeMeleeChance>2.5</GS_Evade_EvadeMeleeChance>
+				<MoveSpeed>0.8</MoveSpeed>
+			</statOffsets>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_UltraImplantMakeableBase">
+		<defName>GS_calfthruster</defName>
+		<label>Calf Thrusters</label>
+		<description>Powerful compact thrusters that extend from the back of the calf, providing microthrusts to boost the user's speed and ability to self-correct. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the leg it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installcalfthruster</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Uranium>12</Uranium>
+			<Plasteel>50</Plasteel>
+			<ComponentSpacer>8</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>3</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallImplantBase">
+		<defName>GS_Installcalfthruster</defName>
+		<label>install Calf Thruster</label>
+		<description>Install a calfthruster.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_calfthruster</ThingDef>
+			<HediffDef>GS_Hediff_calfthruster</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Calf Thruster.</jobString>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_calfthruster</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_calfthruster</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Leg</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_calfthruster</addsHediff>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removecalfthruster</defName>
+		<label>remove calfthruster</label>
+		<description>Remove calfthruster.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_calfthruster</ThingDef>
+		<HediffDef>GS_Hediff_calfthruster</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing calfthruster.</jobString>
+		<removesHediff>GS_Hediff_calfthruster</removesHediff>
+	</RecipeDef>
+
+<!-- 
+		*** shoulderthruster ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_shoulderthruster</defName>
+		<label>Shoulder Thrusters</label>
+		<labelNoun>Shoulder Thruster implant</labelNoun>
+		<defaultLabelColor>(1.0, 0.4, 0.9)</defaultLabelColor>
+		<description>Powerful compact thrusters that fold into the shoulders, providing microthrusts to boost the user's striking speed and ability to self-correct. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the arm it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><ThingDef>GS_shoulderthruster</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_shoulderthruster</spawnThingOnRemoved>
+		<stages>
+			<li>
+			<statOffsets>
+				<GS_Evade_EvadeProjectileChance>2.5</GS_Evade_EvadeProjectileChance>
+				<GS_Evade_EvadeMeleeChance>2.5</GS_Evade_EvadeMeleeChance>
+				<MoveSpeed>0.4</MoveSpeed>
+			</statOffsets>
+			<statFactors>
+				<MeleeDamageFactor>1.1</MeleeDamageFactor>
+				<MeleeCooldownFactor>0.9</MeleeCooldownFactor>
+			</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_UltraImplantMakeableBase">
+		<defName>GS_shoulderthruster</defName>
+		<label>Shoulder Thrusters</label>
+		<description>Powerful compact thrusters that fold into the shoulders, providing microthrusts to boost the user's striking speed and ability to self-correct. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the arm it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installshoulderthruster</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Uranium>12</Uranium>
+			<Plasteel>50</Plasteel>
+			<ComponentSpacer>8</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>3</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallImplantBase">
+		<defName>GS_Installshoulderthruster</defName>
+		<label>install Shoulder Thruster</label>
+		<description>Install a shoulderthruster.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_shoulderthruster</ThingDef>
+			<HediffDef>GS_Hediff_shoulderthruster</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Shoulder Thruster.</jobString>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_shoulderthruster</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_shoulderthruster</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_shoulderthruster</addsHediff>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removeshoulderthruster</defName>
+		<label>remove shoulderthruster</label>
+		<description>Remove shoulderthruster.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_shoulderthruster</ThingDef>
+		<HediffDef>GS_Hediff_shoulderthruster</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing shoulderthruster.</jobString>
+		<removesHediff>GS_Hediff_shoulderthruster</removesHediff>
+	</RecipeDef>
+
+<!-- 
+		*** recoildampener ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_recoildampener</defName>
+		<label>Recoil Dampeners</label>
+		<labelNoun>Recoil Dampener implant</labelNoun>
+		<defaultLabelColor>(1.0, 0.4, 0.9)</defaultLabelColor>
+		<description>Gyro-stabilized angle-correcting micropneumatics, with delicate sensors that detect kickback and work to neutralize it, reducing recoil and loss of balance, decreasing the time between consecutive attacks. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the arm it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><ThingDef>GS_recoildampener</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_recoildampener</spawnThingOnRemoved>
+		<stages>
+			<li>
+			<statFactors>
+				<MeleeCooldownFactor>0.9</MeleeCooldownFactor>
+				<RangedCooldownFactor>0.85</RangedCooldownFactor>
+				<AimingDelayFactor>0.85</AimingDelayFactor>
+			</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_UltraImplantMakeableBase">
+		<defName>GS_recoildampener</defName>
+		<label>Recoil Dampeners</label>
+		<description>Gyro-stabilized angle-correcting micropneumatics, with delicate sensors that detect kickback and work to neutralize it, reducing recoil and loss of balance, decreasing the time between consecutive attacks. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the arm it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installrecoildampener</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Gold>1</Gold>
+			<Plasteel>35</Plasteel>
+			<ComponentSpacer>6</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>3</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallImplantBase">
+		<defName>GS_Installrecoildampener</defName>
+		<label>install Recoil Dampener</label>
+		<description>Install a recoildampener.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_recoildampener</ThingDef>
+			<HediffDef>GS_Hediff_recoildampener</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Recoil Dampener.</jobString>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_recoildampener</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_recoildampener</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_recoildampener</addsHediff>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removerecoildampener</defName>
+		<label>remove recoildampener</label>
+		<description>Remove recoildampener.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_recoildampener</ThingDef>
+		<HediffDef>GS_Hediff_recoildampener</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing recoildampener.</jobString>
+		<removesHediff>GS_Hediff_recoildampener</removesHediff>
+	</RecipeDef>
+
+<!-- 
+		*** flameblock ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_flameblock</defName>
+		<label>Flameblock</label>
+		<labelNoun>Flameblock implant</labelNoun>
+		<defaultLabelColor>(1.0, 0.4, 0.9)</defaultLabelColor>
+		<description>A dermal replacement that insulates the user and makes them completely immune to being set on fire. These implants are highly valued by firefighters and pyromaniacs alike. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove whatever it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><ThingDef>GS_flameblock</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_flameblock</spawnThingOnRemoved>
+		<stages>
+			<li>
+			<statOffsets>
+				<ArmorRating_Heat>1</ArmorRating_Heat>
+			</statOffsets>
+			<statFactors>
+				<Flammability>0</Flammability>
+			</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_UltraImplantMakeableBase">
+		<defName>GS_flameblock</defName>
+		<label>Flameblock</label>
+		<description>A dermal replacement that insulates the user and makes them completely immune to being set on fire. These implants are highly valued by firefighters and pyromaniacs alike. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove whatever it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installflameblock</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Uranium>12</Uranium>
+			<Gold>2</Gold>
+			<Plasteel>50</Plasteel>
+			<ComponentSpacer>8</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>3</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallImplantBase">
+		<defName>GS_Installflameblock</defName>
+		<label>install Flameblock</label>
+		<description>Install a flameblock.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_flameblock</ThingDef>
+			<HediffDef>GS_Hediff_flameblock</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Flameblock.</jobString>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_flameblock</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_flameblock</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Torso</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_flameblock</addsHediff>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removeflameblock</defName>
+		<label>remove flameblock</label>
+		<description>Remove flameblock.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_flameblock</ThingDef>
+		<HediffDef>GS_Hediff_flameblock</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing flameblock.</jobString>
+		<removesHediff>GS_Hediff_flameblock</removesHediff>
+	</RecipeDef>
+
+<!-- 
+		*** exoshield ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_exoshield</defName>
+		<label>Exoshield</label>
+		<labelNoun>Exoshield implant</labelNoun>
+		<defaultLabelColor>(1.0, 0.4, 0.9)</defaultLabelColor>
+		<description>A powerful hi-tech internal shield generator, which controls a highly sophisticated network of self-hardening and regenerating defensive nanites. These nanites produce a nanometer-thin non-neutonic shield around all the pawn's organs, cushioning them from damage. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove whatever it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><ThingDef>GS_exoshield</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_exoshield</spawnThingOnRemoved>
+		<stages>
+			<li>
+			<statOffsets>
+				<ArmorRating_Sharp>0.25</ArmorRating_Sharp>
+				<ArmorRating_Blunt>0.45</ArmorRating_Blunt>
+				<ArmorRating_Heat>0.3</ArmorRating_Heat>
+			</statOffsets>
+			<statFactors>
+				<IncomingDamageFactor>0.75</IncomingDamageFactor>
+			</statFactors>
+			<damageFactors>
+				<Cut>0.75</Cut>
+				<Scratch>0.75</Scratch>
+				<ScratchToxic>0.75</ScratchToxic>
+				<Bite>0.75</Bite>
+				<ToxicBite>0.75</ToxicBite>
+			</damageFactors>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_UltraImplantMakeableBase">
+		<defName>GS_exoshield</defName>
+		<label>Exoshield</label>
+		<description>A powerful hi-tech internal shield generator, which controls a highly sophisticated network of self-hardening and regenerating defensive nanites. These nanites produce a nanometer-thin non-neutonic shield around all the pawn's organs, cushioning them from damage. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove whatever it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installexoshield</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Uranium>12</Uranium>
+			<Gold>2</Gold>
+			<Plasteel>50</Plasteel>
+			<ComponentSpacer>8</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>3</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallImplantBase">
+		<defName>GS_Installexoshield</defName>
+		<label>install Exoshield</label>
+		<description>Install a exoshield.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_exoshield</ThingDef>
+			<HediffDef>GS_Hediff_exoshield</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Exoshield.</jobString>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_exoshield</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_exoshield</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Torso</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_exoshield</addsHediff>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removeexoshield</defName>
+		<label>remove exoshield</label>
+		<description>Remove exoshield.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_exoshield</ThingDef>
+		<HediffDef>GS_Hediff_exoshield</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing exoshield.</jobString>
+		<removesHediff>GS_Hediff_exoshield</removesHediff>
+	</RecipeDef>
+
+<!-- 
+		*** jointstabilizer ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_jointstabilizer</defName>
+		<label>Joint Stabilizer</label>
+		<labelNoun>Joint Stabilizer implant</labelNoun>
+		<defaultLabelColor>(1.0, 0.4, 0.9)</defaultLabelColor>
+		<description>Powerful gyroscope-stabilized pneumatic micro-rotors attached to reinforced bionic joints, made to replace standard joints. These allow the user to maintain perfect balance almost effortlessly, with the affected limb performing microcorrections to ensure maintained stability. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the limb it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><ThingDef>GS_jointstabilizer</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_jointstabilizer</spawnThingOnRemoved>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Manipulation</capacity>
+				<offset>0.1</offset>
+				</li>
+				<li>
+				<capacity>Moving</capacity>
+				<offset>0.1</offset>
+				</li>
+			</capMods>
+			<statOffsets>
+				<GS_Evade_EvadeProjectileChance>2.5</GS_Evade_EvadeProjectileChance>
+				<GS_Evade_EvadeMeleeChance>2.5</GS_Evade_EvadeMeleeChance>
+				<MeleeHitChance>5</MeleeHitChance>
+				<ShootingAccuracyPawn>5</ShootingAccuracyPawn>
+			</statOffsets>
+			<statFactors>
+				<MeleeDamageFactor>1.05</MeleeDamageFactor>
+				<MeleeCooldownFactor>0.95</MeleeCooldownFactor>
+				<PawnTrapSpringChance>0.9</PawnTrapSpringChance>
+			</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_UltraImplantMakeableBase">
+		<defName>GS_jointstabilizer</defName>
+		<label>Joint Stabilizer</label>
+		<description>Powerful gyroscope-stabilized pneumatic micro-rotors attached to reinforced bionic joints, made to replace standard joints. These allow the user to maintain perfect balance almost effortlessly, with the affected limb performing microcorrections to ensure maintained stability. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the limb it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installjointstabilizer</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Gold>1</Gold>
+			<Plasteel>50</Plasteel>
+			<ComponentSpacer>8</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>2</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallImplantBase">
+		<defName>GS_Installjointstabilizer</defName>
+		<label>install Joint Stabilizer</label>
+		<description>Install a jointstabilizer.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_jointstabilizer</ThingDef>
+			<HediffDef>GS_Hediff_jointstabilizer</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Joint Stabilizer.</jobString>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_jointstabilizer</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_jointstabilizer</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Shoulder</li>
+			<li>Leg</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_jointstabilizer</addsHediff>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removejointstabilizer</defName>
+		<label>remove jointstabilizer</label>
+		<description>Remove jointstabilizer.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_jointstabilizer</ThingDef>
+		<HediffDef>GS_Hediff_jointstabilizer</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing jointstabilizer.</jobString>
+		<removesHediff>GS_Hediff_jointstabilizer</removesHediff>
+	</RecipeDef>
+
+<!-- 
+		*** reactionaccel ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_reactionaccel</defName>
+		<label>Reaction Accelerator</label>
+		<labelNoun>Reaction Accelerator implant</labelNoun>
+		<defaultLabelColor>(1.0, 0.4, 0.9)</defaultLabelColor>
+		<description>A mechanite control network embedded into the spine that accelerates the transmission of neural signals, increasing reaction speed significantly. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the part it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><ThingDef>GS_reactionaccel</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_reactionaccel</spawnThingOnRemoved>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Manipulation</capacity>
+				<offset>0.3</offset>
+				</li>
+				<li>
+				<capacity>Moving</capacity>
+				<offset>0.3</offset>
+				</li>
+				<li>
+				<capacity>BloodPumping</capacity>
+				<offset>0.2</offset>
+				</li>
+				<li>
+				<capacity>Consciousness</capacity>
+				<offset>0.2</offset>
+				</li>
+			</capMods>
+			<statOffsets>
+				<GS_Evade_EvadeProjectileChance>8</GS_Evade_EvadeProjectileChance>
+				<GS_Evade_EvadeMeleeChance>8</GS_Evade_EvadeMeleeChance>
+			</statOffsets>
+			<statFactors>
+				<RangedCooldownFactor>0.9</RangedCooldownFactor>
+				<MeleeCooldownFactor>0.9</MeleeCooldownFactor>
+			</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_UltraImplantMakeableBase">
+		<defName>GS_reactionaccel</defName>
+		<label>Reaction Accelerator</label>
+		<description>A mechanite control network embedded into the spine that accelerates the transmission of neural signals, increasing reaction speed significantly. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the part it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installreactionaccel</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Gold>5</Gold>
+			<Plasteel>50</Plasteel>
+			<ComponentSpacer>8</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>2</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallImplantBase">
+		<defName>GS_Installreactionaccel</defName>
+		<label>install Reaction Accelerator</label>
+		<description>Install a reactionaccel.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_reactionaccel</ThingDef>
+			<HediffDef>GS_Hediff_reactionaccel</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Reaction Accelerator.</jobString>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_reactionaccel</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_reactionaccel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Spine</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_reactionaccel</addsHediff>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removereactionaccel</defName>
+		<label>remove reactionaccel</label>
+		<description>Remove reactionaccel.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_reactionaccel</ThingDef>
+		<HediffDef>GS_Hediff_reactionaccel</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing reactionaccel.</jobString>
+		<removesHediff>GS_Hediff_reactionaccel</removesHediff>
+	</RecipeDef>
+	
+<!-- 
+		*** neuralboost ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_neuralboost</defName>
+		<label>Neural Booster</label>
+		<labelNoun>Neural Booster implant</labelNoun>
+		<defaultLabelColor>(1.0, 0.4, 0.9)</defaultLabelColor>
+		<description>A microscopic supercomputer that is integrated into the user's brain via a sophisticated web network of mechanite tendrils, boosting the thinking and processing speed without overriding any independent thought processes. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the part it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><ThingDef>GS_neuralboost</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_neuralboost</spawnThingOnRemoved>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Consciousness</capacity>
+				<offset>0.5</offset>
+				</li>
+				<li>
+				<capacity>Sight</capacity>
+				<offset>0.2</offset>
+				</li>
+				<li>
+				<capacity>Hearing</capacity>
+				<offset>0.2</offset>
+				</li>
+			</capMods>
+			<statOffsets>
+				<ResearchSpeed>0.1</ResearchSpeed>
+				<GlobalLearningFactor>0.25</GlobalLearningFactor>
+				<GS_Evade_EvadeProjectileChance>8</GS_Evade_EvadeProjectileChance>
+				<GS_Evade_EvadeMeleeChance>8</GS_Evade_EvadeMeleeChance>
+			</statOffsets>
+			<statFactors>
+				<RestFallRateFactor>0.85</RestFallRateFactor>
+				<NegotiationAbility>1.2</NegotiationAbility>
+				<TrainAnimalChance>1.2</TrainAnimalChance>
+			</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_UltraImplantMakeableBase">
+		<defName>GS_neuralboost</defName>
+		<label>Neural Booster</label>
+		<description>A microscopic supercomputer that is integrated into the user's brain via a sophisticated web network of mechanite tendrils, boosting the thinking and processing speed without overriding any independent thought processes. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the limb it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installneuralboost</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Gold>5</Gold>
+			<Plasteel>50</Plasteel>
+			<ComponentSpacer>12</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>2</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallImplantBase">
+		<defName>GS_Installneuralboost</defName>
+		<label>install Neural Booster</label>
+		<description>Install a neuralboost.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_neuralboost</ThingDef>
+			<HediffDef>GS_Hediff_neuralboost</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Neural Booster.</jobString>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_neuralboost</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_neuralboost</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Brain</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_neuralboost</addsHediff>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removeneuralboost</defName>
+		<label>remove neuralboost</label>
+		<description>Remove neuralboost.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_neuralboost</ThingDef>
+		<HediffDef>GS_Hediff_neuralboost</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing neuralboost.</jobString>
+		<removesHediff>GS_Hediff_neuralboost</removesHediff>
+	</RecipeDef>
+
+<!-- 
+		*** selfrepair ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_selfrepair</defName>
+		<label>Personal Autodoc</label>
+		<labelNoun>Personal Autodoc implant</labelNoun>
+		<defaultLabelColor>(1.0, 0.4, 0.9)</defaultLabelColor>
+		<description>An advanced autodoc, compressed into a tiny computer about the size of a fingernail, embedded into a slot above the liver to interface with the body's natural immune and healing systems, accelerating it significantly at the cost of the body's nutrition. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the part it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><ThingDef>GS_selfrepair</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_selfrepair</spawnThingOnRemoved>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>BloodPumping</capacity>
+				<offset>0.15</offset>
+				</li>
+				<li>
+				<capacity>BloodFiltration</capacity>
+				<offset>0.4</offset>
+				</li>
+			</capMods>
+			<statOffsets>
+				<ImmunityGainSpeed>0.15</ImmunityGainSpeed>
+				<InjuryHealingFactor>0.85</InjuryHealingFactor>
+			</statOffsets>
+			<totalBleedFactor>0.5</totalBleedFactor>
+			<hungerRateFactor>1.2</hungerRateFactor>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_UltraImplantMakeableBase">
+		<defName>GS_selfrepair</defName>
+		<label>Personal Autodoc implant</label>
+		<description>An advanced autodoc, compressed into a tiny computer about the size of a fingernail, embedded into a slot above the liver to interface with the body's natural immune and healing systems, accelerating it significantly at the cost of the body's nutrition.. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the part it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installselfrepair</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Silver>30</Silver>
+			<Plasteel>50</Plasteel>
+			<ComponentSpacer>8</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>2</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallImplantBase">
+		<defName>GS_Installselfrepair</defName>
+		<label>install Personal Autodoc</label>
+		<description>Install a selfrepair.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_selfrepair</ThingDef>
+			<HediffDef>GS_Hediff_selfrepair</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Personal Autodoc.</jobString>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_selfrepair</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_selfrepair</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Liver</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_selfrepair</addsHediff>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removeselfrepair</defName>
+		<label>remove selfrepair</label>
+		<description>Remove selfrepair.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_selfrepair</ThingDef>
+		<HediffDef>GS_Hediff_selfrepair</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing selfrepair.</jobString>
+		<removesHediff>GS_Hediff_selfrepair</removesHediff>
+	</RecipeDef>
+
+<!-- 
+		*** ultraprocessor ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_ultraprocessor</defName>
+		<label>Food Ultraprocessor</label>
+		<labelNoun>Food Ultraprocessor implant</labelNoun>
+		<defaultLabelColor>(1.0, 0.4, 0.9)</defaultLabelColor>
+		<description>A powerful toxicity detector and atomizer that ensures that only non-toxic nutrients are passed into the user's digestive system. This makes the user immune to food poisoning, and allows them to safely consume almost anything. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the part it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><ThingDef>GS_ultraprocessor</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_ultraprocessor</spawnThingOnRemoved>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Eating</capacity>
+				<offset>0.15</offset>
+				</li>
+				<li>
+				<capacity>Metabolism</capacity>
+				<offset>0.25</offset>
+				</li>
+				<li>
+				<capacity>BloodFiltration</capacity>
+				<offset>0.25</offset>
+				</li>
+			</capMods>
+			<statOffsets>
+				<ForagedNutritionPerDay>0.4</ForagedNutritionPerDay>
+			</statOffsets>
+			<statFactors>
+				<ImmunityGainSpeed>1.1</ImmunityGainSpeed>
+			</statFactors>
+			<makeImmuneTo>
+				<li>GutWorms</li>
+			</makeImmuneTo>
+			<foodPoisoningChanceFactor>0</foodPoisoningChanceFactor>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_UltraImplantMakeableBase">
+		<defName>GS_ultraprocessor</defName>
+		<label>Food Ultraprocessor implant</label>
+		<description>A powerful toxicity detector and atomizer that ensures that only non-toxic nutrients are passed into the user's digestive system. This makes the user immune to food poisoning, and allows them to safely consume almost anything.  \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the part it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installultraprocessor</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Plasteel>25</Plasteel>
+			<Hyperweave>75</Hyperweave>
+			<ComponentSpacer>10</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>2.5</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallImplantBase">
+		<defName>GS_Installultraprocessor</defName>
+		<label>install Food Ultraprocessor</label>
+		<description>Install a ultraprocessor.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_ultraprocessor</ThingDef>
+			<HediffDef>GS_Hediff_ultraprocessor</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Food Ultraprocessor.</jobString>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_ultraprocessor</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_ultraprocessor</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Stomach</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_ultraprocessor</addsHediff>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removeultraprocessor</defName>
+		<label>remove ultraprocessor</label>
+		<description>Remove ultraprocessor.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_ultraprocessor</ThingDef>
+		<HediffDef>GS_Hediff_ultraprocessor</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing ultraprocessor.</jobString>
+		<removesHediff>GS_Hediff_ultraprocessor</removesHediff>
+	</RecipeDef>
+
+<!-- 
+		*** Gyro-Stabilizer ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_gyrostabilizer</defName>
+		<label>Gyro-Stabilizer</label>
+		<labelNoun>an installed Gyro-Stabilizer</labelNoun>
+		<defaultLabelColor>(1.0, 0.4, 0.9)</defaultLabelColor>
+		<description>A highly advanced pelvis replacement that is reinforced with plasteel shielding and anchored to a advanced self-regulating central-axis gyroscopic modulator, making the user highly stable and capable of making extreme movements without being thrown off-balance.</description>
+		<descriptionHyperlinks><ThingDef>GS_gyrostabilizer</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Manipulation</capacity>
+				<offset>0.4</offset>
+				</li>
+				<li>
+				<capacity>Moving</capacity>
+				<offset>0.3</offset>
+				</li>
+			</capMods>
+			<statOffsets>
+				<GS_Evade_EvadeProjectileChance>8</GS_Evade_EvadeProjectileChance>
+				<GS_Evade_EvadeMeleeChance>8</GS_Evade_EvadeMeleeChance>
+				<MeleeDodgeChance>6</MeleeDodgeChance>
+			</statOffsets>
+			<statFactors>
+				<MeleeHitChance>1.15</MeleeHitChance>
+				<ShootingAccuracyPawn>1.1</ShootingAccuracyPawn>
+				<MeleeCooldownFactor>0.85</MeleeCooldownFactor>
+				<RangedCooldownFactor>0.85</RangedCooldownFactor>
+			</statFactors>
+			</li>
+		</stages>
+		<spawnThingOnRemoved>GS_gyrostabilizer</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>1.5</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+
+	<ThingDef ParentName="GS_UltraBionicMakeableBase">
+		<defName>GS_gyrostabilizer</defName>
+		<label>Gyro-Stabilizer</label>
+		<description>A highly advanced pelvis replacement that is reinforced with plasteel shielding and anchored to a advanced self-regulating central-axis gyroscopic modulator, making the user highly stable and capable of making extreme movements without being thrown off-balance.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installgyrostabilizer</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<Gold>1</Gold>
+		<Plasteel>75</Plasteel>
+		<ComponentSpacer>10</ComponentSpacer>
+		</costList>
+		<statBases>
+		<Mass>0.5</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallUltraBionicBase">
+		<defName>GS_Installgyrostabilizer</defName>
+		<label>install Gyro-Stabilizer</label>
+		<description>Install a Gyro-Stabilizer.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_gyrostabilizer</ThingDef>
+		<HediffDef>GS_hediff_gyrostabilizer</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Gyro-Stabilizer.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_gyrostabilizer</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_gyrostabilizer</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Pelvis</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_gyrostabilizer</addsHediff>
+		</RecipeDef>
+
+<!-- 
+		*** Oxygen Compressor ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_oxygencompress</defName>
+		<label>Oxygen Compressor</label>
+		<labelNoun>an installed Oxygen Compressor</labelNoun>
+		<defaultLabelColor>(1.0, 0.4, 0.9)</defaultLabelColor>
+		<description>A highly advanced lung replacement that extracts oxygen from air with nearly 100% effeciency, storing excess into compression tanks to be distributed upon need.</description>
+		<descriptionHyperlinks><ThingDef>GS_oxygencompress</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Breathing</capacity>
+				<offset>0.4</offset>
+				</li>
+				<li>
+				<capacity>BloodPumping</capacity>
+				<offset>0.15</offset>
+				</li>
+				<li>
+				<capacity>Consciousness</capacity>
+				<offset>0.15</offset>
+				</li>
+				<li>
+				<capacity>Moving</capacity>
+				<offset>0.2</offset>
+				</li>
+			</capMods>
+			<statOffsets>
+				<MoveSpeed>1.2</MoveSpeed>
+			</statOffsets>
+			<statFactors>
+				<VEF_MeleeAttackSpeedFactor>1.15</VEF_MeleeAttackSpeedFactor>
+				<VEF_RangeAttackSpeedFactor>1.15</VEF_RangeAttackSpeedFactor>
+			</statFactors>
+			</li>
+		</stages>
+		<spawnThingOnRemoved>GS_oxygencompress</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>1.5</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+
+	<ThingDef ParentName="GS_UltraBionicMakeableBase">
+		<defName>GS_oxygencompress</defName>
+		<label>Oxygen Compressor</label>
+		<description>A highly advanced lung replacement that extracts oxygen from air with nearly 100% effeciency, storing excess into compression tanks to be distributed upon need.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installoxygencompress</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<Gold>1</Gold>
+		<Plasteel>35</Plasteel>
+		<Hyperweave>120</Hyperweave>
+		<ComponentSpacer>8</ComponentSpacer>
+		</costList>
+		<statBases>
+		<Mass>3.5</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallUltraBionicBase">
+		<defName>GS_Installoxygencompress</defName>
+		<label>install Oxygen Compressor</label>
+		<description>Install a Oxygen Compressor.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_oxygencompress</ThingDef>
+		<HediffDef>GS_hediff_oxygencompress</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Oxygen Compressor.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_oxygencompress</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_oxygencompress</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Lung</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_oxygencompress</addsHediff>
+		</RecipeDef>
+
+<!-- 
+		*** enhancedtrach ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_enhancedtrach</defName>
+		<label>Superior Trachea</label>
+		<labelNoun>Superior Trachea implant</labelNoun>
+		<defaultLabelColor>(1.0, 0.4, 0.9)</defaultLabelColor>
+		<description>An armored bionic trachea that protect the user's neck while also acting as an upgrade to the nerve connection bundles between the spine and the brain. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the part it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><ThingDef>GS_enhancedtrach</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_enhancedtrach</spawnThingOnRemoved>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Breathing</capacity>
+				<offset>0.15</offset>
+				</li>
+				<li>
+				<capacity>Consciousness</capacity>
+				<offset>0.3</offset>
+				</li>
+				<li>
+				<capacity>BloodFiltration</capacity>
+				<offset>0.15</offset>
+				</li>
+			</capMods>
+			<statOffsets>
+				<ArmorRating_Sharp>0.3</ArmorRating_Sharp>
+				<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+			</statOffsets>
+			<statFactors>
+				<IncomingDamageFactor>0.9</IncomingDamageFactor>
+			</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_UltraImplantMakeableBase">
+		<defName>GS_enhancedtrach</defName>
+		<label>Superior Trachea implant</label>
+		<description>An armored bionic trachea that protect the user's neck while also acting as an upgrade to the nerve connection bundles between the spine and the brain.  \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the part it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installenhancedtrach</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Plasteel>35</Plasteel>
+			<Hyperweave>35</Hyperweave>
+			<ComponentSpacer>8</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>1.5</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallImplantBase">
+		<defName>GS_Installenhancedtrach</defName>
+		<label>install Superior Trachea</label>
+		<description>Install a enhancedtrach.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_enhancedtrach</ThingDef>
+			<HediffDef>GS_Hediff_enhancedtrach</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Superior Trachea.</jobString>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_enhancedtrach</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_enhancedtrach</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Neck</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_enhancedtrach</addsHediff>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removeenhancedtrach</defName>
+		<label>remove enhancedtrach</label>
+		<description>Remove enhancedtrach.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_enhancedtrach</ThingDef>
+		<HediffDef>GS_Hediff_enhancedtrach</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing enhancedtrach.</jobString>
+		<removesHediff>GS_Hediff_enhancedtrach</removesHediff>
+	</RecipeDef>
+
+<!-- 
+		*** Reinforced Central Shield ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_centralshield</defName>
+		<label>Reinforced Central Shield</label>
+		<labelNoun>an installed Reinforced Central Shield</labelNoun>
+		<defaultLabelColor>(1.0, 0.4, 0.9)</defaultLabelColor>
+		<description>A hi-tech shield heavily armored compact shield generator that replcaes the sternum, reinforcing the ribcage and protecting the soft tissue within, particularly from bullets and sharp attacks.</description>
+		<descriptionHyperlinks><ThingDef>GS_centralshield</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Breathing</capacity>
+				<offset>0.25</offset>
+				</li>
+				<li>
+				<capacity>BloodPumping</capacity>
+				<offset>0.15</offset>
+				</li>
+				<li>
+				<capacity>BloodFiltration</capacity>
+				<offset>0.1</offset>
+				</li>
+			</capMods>
+			<statOffsets>
+				<ArmorRating_Sharp>0.6</ArmorRating_Sharp>
+				<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+				<ArmorRating_Heat>0.3</ArmorRating_Heat>
+			</statOffsets>
+			<damageFactors>
+				<Bullet>0.6</Bullet>
+				<Arrow>0.6</Arrow>
+				<Stab>0.7</Stab>
+			</damageFactors>
+			</li>
+		</stages>
+		<spawnThingOnRemoved>GS_centralshield</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>1.5</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+
+	<ThingDef ParentName="GS_UltraBionicMakeableBase">
+		<defName>GS_centralshield</defName>
+		<label>Reinforced Central Shield</label>
+		<description>A hi-tech shield heavily armored compact shield generator that replcaes the sternum, reinforcing the ribcage and protecting the soft tissue within. It also monitors biometric data and redistributes resources in case any damage is detected.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installcentralshield</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<Gold>1</Gold>
+		<Uranium>18</Uranium>
+		<Plasteel>55</Plasteel>
+		<ComponentSpacer>12</ComponentSpacer>
+		</costList>
+		<statBases>
+		<Mass>2</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallUltraBionicBase">
+		<defName>GS_Installcentralshield</defName>
+		<label>install Reinforced Central Shield</label>
+		<description>Install a Reinforced Central Shield.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_centralshield</ThingDef>
+		<HediffDef>GS_hediff_centralshield</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Reinforced Central Shield.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_centralshield</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_centralshield</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Sternum</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_centralshield</addsHediff>
+		</RecipeDef>
+		
+<!-- 
+		*** Organ Exo-Shell ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_organexoshield</defName>
+		<label>Organ Exo-Shell</label>
+		<labelNoun>an installed Organ Exo-Shell</labelNoun>
+		<defaultLabelColor>(1.0, 0.4, 0.9)</defaultLabelColor>
+		<description>A heavily reinforced yet highly flexible ribcage replacement that protects the internal organs from blasts and blunt force trauma, while also injecting powerful repair nanites and painkillers when damage is detected.</description>
+		<descriptionHyperlinks><ThingDef>GS_organexoshield</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Breathing</capacity>
+				<offset>0.25</offset>
+				</li>
+				<li>
+				<capacity>BloodPumping</capacity>
+				<offset>0.25</offset>
+				</li>
+				<li>
+				<capacity>BloodFiltration</capacity>
+				<offset>0.1</offset>
+				</li>
+			</capMods>
+			<statOffsets>
+				<ArmorRating_Sharp>0.15</ArmorRating_Sharp>
+				<ArmorRating_Blunt>0.7</ArmorRating_Blunt>
+				<ArmorRating_Heat>0.35</ArmorRating_Heat>
+				<InjuryHealingFactor>0.5</InjuryHealingFactor>
+			</statOffsets>
+			<painFactor>0.5</painFactor>
+			<damageFactors>
+				<Crush>0.75</Crush>
+				<Blunt>0.75</Blunt>
+				<Poke>0.75</Poke>
+				<Thump>0.75</Thump>
+				<Bomb>0.75</Bomb>
+				<BombSuper>0.75</BombSuper>
+				<Stun>0.75</Stun>
+			</damageFactors>
+			</li>
+		</stages>
+		<spawnThingOnRemoved>GS_organexoshield</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>1.5</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+
+	<ThingDef ParentName="GS_UltraBionicMakeableBase">
+		<defName>GS_organexoshield</defName>
+		<label>Organ Exo-Shell</label>
+		<description>A heavily reinforced yet highly flexible ribcage replacement that protects the internal organs from blasts and blunt force trauma, while also injecting powerful repair nanites and painkillers when damage is detected.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installorganexoshield</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<Silver>45</Silver>
+		<Plasteel>90</Plasteel>
+		<ComponentSpacer>10</ComponentSpacer>
+		</costList>
+		<statBases>
+		<Mass>4.5</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallUltraBionicBase">
+		<defName>GS_Installorganexoshield</defName>
+		<label>install Organ Exo-Shell</label>
+		<description>Install a Organ Exo-Shell.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_organexoshield</ThingDef>
+		<HediffDef>GS_hediff_organexoshield</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Organ Exo-Shell.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_organexoshield</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_organexoshield</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Ribcage</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_organexoshield</addsHediff>
+		</RecipeDef>	
+
+<!-- 
+		*** Hyper Refinery ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_hyperefinery</defName>
+		<label>Hyper Refinery</label>
+		<labelNoun>an installed Hyper Refinery</labelNoun>
+		<defaultLabelColor>(1.0, 0.4, 0.9)</defaultLabelColor>
+		<description>An extremely powerful nutrient refinery that replaces the stomach and its functionality, breaking down all received food into super effecient processed fuels that are then sent via mechanite superhighway to the areas they are most needed. Ironically, this makes the user hungrier faster, due to the food being used almost too effeciently.</description>
+		<descriptionHyperlinks><ThingDef>GS_hyperefinery</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>BloodPumping</capacity>
+				<offset>0.2</offset>
+				</li>
+				<li>
+				<capacity>BloodFiltration</capacity>
+				<offset>0.2</offset>
+				</li>
+				<li>
+				<capacity>Metabolism</capacity>
+				<offset>0.35</offset>
+				</li>
+				<li>
+				<capacity>Manipulation</capacity>
+				<offset>0.15</offset>
+				</li>
+				<li>
+				<capacity>Moving</capacity>
+				<offset>0.15</offset>
+				</li>
+			</capMods>
+			<statOffsets>
+				<RestRateMultiplier>0.2</RestRateMultiplier>
+				<InjuryHealingFactor>0.2</InjuryHealingFactor>
+				<ImmunityGainSpeed>0.2</ImmunityGainSpeed>
+				<MaxNutrition>0.5</MaxNutrition>
+			</statOffsets>
+			<hungerRateFactor>1.15</hungerRateFactor>
+			</li>
+		</stages>
+		<spawnThingOnRemoved>GS_hyperefinery</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>1.5</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+
+	<ThingDef ParentName="GS_UltraBionicMakeableBase">
+		<defName>GS_hyperefinery</defName>
+		<label>Hyper Refinery</label>
+		<description>An extremely powerful nutrient refinery that replaces the stomach and its functionality, breaking down all received food into super effecient processed fuels that are then sent via mechanite superhighway to the areas they are most needed. Ironically, this makes the user hungrier faster, due to the food being used almost too effeciently.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installhyperefinery</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<Gold>1</Gold>
+		<Hyperweave>150</Hyperweave>
+		<ComponentSpacer>14</ComponentSpacer>
+		</costList>
+		<statBases>
+		<Mass>4.5</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallUltraBionicBase">
+		<defName>GS_Installhyperefinery</defName>
+		<label>install Hyper Refinery</label>
+		<description>Install a Hyper Refinery.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_hyperefinery</ThingDef>
+		<HediffDef>GS_hediff_hyperefinery</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing Hyper Refinery.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_hyperefinery</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_hyperefinery</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Stomach</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_hyperefinery</addsHediff>
+		</RecipeDef>
+
+<!-- 
+		*** shouldergun ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_shouldergun_ultra</defName>
+		<label>shoulder-mounted assault turret</label>
+		<labelNoun>a shoulder-mounted assault turret</labelNoun>
+		<defaultLabelColor>(1.0, 0.4, 0.9)</defaultLabelColor>
+		<description>A tiny shoulder mounted automatic gun. It can swivel freely and select its own targets, acting like a support gunner in direct assistance to the person it is mounted on. Its advanced gyroscope and smart-targeting AI stop it from shooting the person its mounted on. This variant is designed with burst fire capabilities, increasing its overall damage output. Each pawn can only have 1 shoulder gun mounter per shoulder. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the arm it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><ThingDef>GS_shouldergun_ultra</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_shouldergun_ultra</spawnThingOnRemoved>
+		<addedPartProps>
+			<isGoodWeapon>true</isGoodWeapon>
+			<solid>true</solid>
+			<betterThanNatural>false</betterThanNatural>
+		</addedPartProps>		
+		<comps>
+			<li Class="MVCF.Comps.HediffCompProperties_ExtendedVerbGiver">
+				<verbs>
+					<li>
+						<verbClass>Verb_Shoot</verbClass>
+						<label>Shouldergun</label>
+						<defaultProjectile>GS_Bioturret_Bullet</defaultProjectile>
+						<warmupTime>2</warmupTime>
+						<range>28.9</range>
+						<hasStandardCommand>true</hasStandardCommand>
+						<ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+						<burstShotCount>3</burstShotCount>
+						<soundCast>GunShotA</soundCast>
+						<soundCastTail>GunTail_Light</soundCastTail>
+						<muzzleFlashScale>9</muzzleFlashScale>
+						<accuracyTouch>0.70</accuracyTouch>
+						<accuracyShort>0.64</accuracyShort>
+						<accuracyMedium>0.41</accuracyMedium>
+						<accuracyLong>0.22</accuracyLong>
+					</li>
+				</verbs>
+				<verbProps>
+					<li>
+						<label>Shouldergun</label>
+						<visualLabel>shoulder-mounted assault turret</visualLabel>
+						<description>A tiny automatic gun made to be mounted on a hip.</description>
+						<canBeToggled>true</canBeToggled>
+						<comps>
+							<li Class="MVCF.VerbComps.VerbCompProperties_Turret">
+								<compClass>MVCF.VerbComps.VerbComp_Turret</compClass>
+								<humanAsDefault>true</humanAsDefault>
+								<invisible>true</invisible>
+							</li>
+						</comps>
+					</li>
+				</verbProps>
+			</li>
+		</comps>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_UltraImplantMakeableBase">
+		<defName>GS_shouldergun_ultra</defName>
+		<label>shoulder-mounted assault turret</label>
+		<description>A tiny automatic gun designed to be mounted onto a bionic notch on the shoulder. It can swivel freely and select its own targets, acting like a support gunner in direct assistance to the person it is mounted on. Its advanced gyroscope and smart-targeting AI stop it from shooting the person its mounted on. This variant is designed with burst fire capabilities, increasing its overall damage output. Each pawn can only have 1 shoulder gun mounter per shoulder. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the arm it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installshouldergun_ultra</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Plasteel>45</Plasteel>
+			<ComponentSpacer>8</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>3</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallImplantBase">
+		<defName>GS_Installshouldergun_ultra</defName>
+		<label>install shoulder-mounted assault turret</label>
+		<description>Install a shoulder-mounted assault turret.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_shouldergun_ultra</ThingDef>
+			<HediffDef>GS_Hediff_shouldergun_ultra</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing shoulder-mounted assault turret.</jobString>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_shouldergun_ultra</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_shouldergun_ultra</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_shouldergun_ultra</addsHediff>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removeshouldergun_ultra</defName>
+		<label>remove shoulder-mounted assault turret</label>
+		<description>Remove shoulder-mounted assault turret.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_shouldergun_ultra</ThingDef>
+		<HediffDef>GS_Hediff_shouldergun_ultra</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing shoulder-mounted assault turret.</jobString>
+		<removesHediff>GS_Hediff_shouldergun_ultra</removesHediff>
+	</RecipeDef>
+
+<!-- 
+		*** hipgun_ultra ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_hipgun_ultra</defName>
+		<label>hip-mounted assault turret</label>
+		<labelNoun>a hip-mounted assault turret</labelNoun>
+		<defaultLabelColor>(1.0, 0.4, 0.9)</defaultLabelColor>
+		<description>A tiny hip mounted assault gun. It can swivel freely and select its own targets, acting like a support gunner in direct assistance to the person it is mounted on. Its advanced gyroscope and smart-targeting AI stop it from shooting the person its mounted on. This variant is designed with burst fire capabilities, increasing its overall damage output. Each pawn can only have 1 hip gun mounted per leg. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the arm it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><ThingDef>GS_hipgun_ultra</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_hipgun_ultra</spawnThingOnRemoved>	
+		<comps>
+			<li Class="MVCF.Comps.HediffCompProperties_ExtendedVerbGiver">
+				<verbs>
+					<li>
+						<verbClass>Verb_Shoot</verbClass>
+						<label>Hipgun</label>
+						<defaultProjectile>GS_Bioturret_Bullet</defaultProjectile>
+						<warmupTime>2</warmupTime>
+						<range>28.9</range>
+						<hasStandardCommand>true</hasStandardCommand>
+						<ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+						<burstShotCount>3</burstShotCount>
+						<soundCast>GunShotA</soundCast>
+						<soundCastTail>GunTail_Light</soundCastTail>
+						<muzzleFlashScale>9</muzzleFlashScale>
+						<accuracyTouch>0.70</accuracyTouch>
+						<accuracyShort>0.64</accuracyShort>
+						<accuracyMedium>0.41</accuracyMedium>
+						<accuracyLong>0.22</accuracyLong>
+					</li>
+				</verbs>
+				<verbProps>
+					<li>
+						<label>Hipgun</label>
+						<visualLabel>hip-mounted assault turret</visualLabel>
+						<description>A tiny automatic gun made to be mounted on a hip.</description>
+						<canBeToggled>true</canBeToggled>
+						<comps>
+							<li Class="MVCF.VerbComps.VerbCompProperties_Turret">
+								<compClass>MVCF.VerbComps.VerbComp_Turret</compClass>
+								<humanAsDefault>true</humanAsDefault>
+								<invisible>true</invisible>
+							</li>
+						</comps>
+					</li>
+				</verbProps>
+			</li>
+		</comps>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_UltraImplantMakeableBase">
+		<defName>GS_hipgun_ultra</defName>
+		<label>hip-mounted assault turret</label>
+		<description>A tiny automatic gun designed to be mounted onto a bionic notch on the hip. It can swivel freely and select its own targets, acting like a support gunner in direct assistance to the person it is mounted on. Its advanced gyroscope and smart-targeting AI stop it from shooting the person its mounted on. This variant is designed with burst fire capabilities, increasing its overall damage output. Each pawn can only have 1 hip gun mounter per leg. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the arm it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installhipgun_ultra</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Plasteel>45</Plasteel>
+			<ComponentSpacer>8</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>3</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallImplantBase">
+		<defName>GS_Installhipgun_ultra</defName>
+		<label>install hip-mounted assault turret</label>
+		<description>Install a hip-mounted assault turret.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_hipgun_ultra</ThingDef>
+			<HediffDef>GS_Hediff_hipgun_ultra</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing hip-mounted assault turret.</jobString>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_hipgun_ultra</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_hipgun_ultra</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Leg</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_hipgun_ultra</addsHediff>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removehipgun_ultra</defName>
+		<label>remove hip-mounted assault turret</label>
+		<description>Remove hip-mounted assault turret.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_hipgun_ultra</ThingDef>
+		<HediffDef>GS_Hediff_hipgun_ultra</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing hip-mounted assault turret.</jobString>
+		<removesHediff>GS_Hediff_hipgun_ultra</removesHediff>
+	</RecipeDef>
+
+	<ThingDef ParentName="BaseBullet">
+		<defName>GS_Bioturret_Bullet</defName>
+		<label>bionic turret bullet</label>
+		<graphicData>
+		<texPath>Things/Projectile/Charge_Small</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+		<damageDef>Bullet</damageDef>
+		<damageAmountBase>11</damageAmountBase>
+		<armorPenetrationBase>0.07</armorPenetrationBase>
+		<speed>70</speed>
+		</projectile>
+	</ThingDef>
+
+</Defs>

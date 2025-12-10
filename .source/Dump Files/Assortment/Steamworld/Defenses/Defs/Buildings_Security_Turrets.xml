@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+   <!--=============== Base ===============-->
+
+  <ThingDef ParentName="BuildingBase" Name="StWoDe_Turret_Base"  Abstract="True">
+	<thingClass>Building_TurretGun</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Building/Turrets/Base</texPath>
+      <drawSize>(3,3)</drawSize>
+      <damageData>
+        <rect>(0.2,0.8,1.6,0.8)</rect>
+      </damageData>
+      <shadowData>
+        <offset>(-0.13,-0.87,-0.1)</offset>
+        <volume>(0.5,0.4,1.05)</volume>
+      </shadowData>
+    </graphicData>
+	<uiIconScale>0.90</uiIconScale>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <altitudeLayer>Building</altitudeLayer>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+	<size>(2,2)</size>
+    <stealable>false</stealable>
+    <thingCategories>
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>175</MaxHitPoints>
+      <Flammability>0.7</Flammability>
+      <WorkToBuild>1800</WorkToBuild>
+      <Mass>20</Mass>
+      <Beauty>-20</Beauty>
+      <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <wickTicks>240</wickTicks>
+        <explosiveRadius>3.9</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <chanceNeverExplodeFromDamage>0.5</chanceNeverExplodeFromDamage>
+      </li>
+	  <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Mannable">
+        <manWorkType>Violent</manWorkType>
+      </li>
+	</comps>
+	<passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.4</fillPercent>
+    <hasTooltip>true</hasTooltip>
+    <stuffCategories>
+      <li>Metallic</li>
+    </stuffCategories>
+    <costStuffCount>75</costStuffCount>
+    <costList>
+      <Steel>75</Steel>
+	  <WoodLog>50</WoodLog>
+      <ComponentIndustrial>6</ComponentIndustrial>
+    </costList>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+	<placeWorkers>
+	  <li>PlaceWorker_TurretTop</li>
+	  <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+	  <!--li>PlaceWorker_ShowTurretRadius</li-->
+    </placeWorkers>
+	<building>
+      <buildingTags>
+        <li>Artillery</li>
+      </buildingTags>
+    </building>
+  </ThingDef>
+
+  <!--=============== Mitrailleuse ===============-->
+
+  <ThingDef ParentName="StWoDe_Turret_Base">
+    <defName>StWoDe_Mitrailleuse</defName>
+    <label>mitrailleuse</label>
+    <description>A crank operated proto machine gun that consist of multiple barrels bored into a metallic cylinder. The cartridges are inserted via a quick to reload magazine plate at the guns breech.
+	Because of its pretty high range and caliber this weapon is classified into the artillery branch.</description>
+    <uiIconPath>Building/Turrets/Mitrailleuse_Icon</uiIconPath>
+	<comps>
+      <li Class="CompProperties_Refuelable">
+        <fuelLabel>Shots until barrel change</fuelLabel>
+        <fuelGizmoLabel>Barrel durability</fuelGizmoLabel>
+        <outOfFuelMessage>Needs new barrel</outOfFuelMessage>
+        <fuelFilter><thingDefs><li>Steel</li></thingDefs></fuelFilter>
+        <fuelCapacity>90</fuelCapacity>
+        <fuelMultiplier>1.2</fuelMultiplier>
+        <initialFuelPercent>1</initialFuelPercent>
+        <autoRefuelPercent>0</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <minimumFueledThreshold>1</minimumFueledThreshold>
+        <factorByDifficulty>true</factorByDifficulty>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+      </li>
+	</comps>
+    <building>
+      <!--ai_combatDangerous>true</ai_combatDangerous-->
+      <turretGunDef>StWoDe_Mitrailleuse_Gun</turretGunDef>
+      <turretBurstCooldownTime>10</turretBurstCooldownTime>
+	  <turretTopOffset>(0, 0.25)</turretTopOffset>
+    </building>
+    <researchPrerequisites>
+      <li>SteamworldResearch_Mitrailleuse</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>StWoDe_Mitrailleuse_Bullet</defName>
+    <label>mitrailleuse bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_big</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>12</damageAmountBase>
+      <speed>70</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>StWoDe_Mitrailleuse_Gun</defName>
+    <label>mitrailleuse gun</label>
+    <description>...</description>
+    <graphicData>
+      <texPath>Building/Turrets/Mitrailleuse_Gun</texPath>
+    </graphicData>
+    <statBases>
+      <AccuracyTouch>0.78</AccuracyTouch>
+      <AccuracyShort>0.81</AccuracyShort>
+      <AccuracyMedium>0.84</AccuracyMedium>
+      <AccuracyLong>0.87</AccuracyLong>
+      <RangedWeapon_Cooldown>3.5</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>20</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li Class="VEF.Weapons.VerbProps_ShootCone">
+        <verbClass>VEF.Weapons.Verb_ShootCone</verbClass>
+        <coneAngle>90</coneAngle>
+		<forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+        <defaultProjectile>StWoDe_Mitrailleuse_Bullet</defaultProjectile>		
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>0</warmupTime>
+        <range>55</range>
+        <ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+		<burstShotCount>9</burstShotCount>
+        <soundCast>GunShotA</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+        <consumeFuelPerShot>1</consumeFuelPerShot>
+      </li>
+    </verbs>
+  </ThingDef>
+  
+  <!--=============== Gardner Gun ===============-->
+
+  <ThingDef ParentName="StWoDe_Turret_Base">
+    <defName>StWoDe_Gardner_Gun</defName>
+    <label>repeating gun</label>
+    <description>A crank operated and double barreled proto machine gun. Its bullets are filled into a hopper on top of the gun so when one shot is fired the next bullet slides into position.
+	Both barrels are alternately fired to prevent overheating. The whole construction is fitted in a sheet metal casing.</description>
+    <uiIconPath>Building/Turrets/Gardner_Icon</uiIconPath>
+	<comps>
+      <li Class="CompProperties_Refuelable">
+        <fuelLabel>Shots until barrel change</fuelLabel>
+        <fuelGizmoLabel>Barrel durability</fuelGizmoLabel>
+        <outOfFuelMessage>Needs new barrel</outOfFuelMessage>
+        <fuelFilter><thingDefs><li>Steel</li></thingDefs></fuelFilter>
+        <fuelCapacity>80</fuelCapacity>
+        <fuelMultiplier>1.066666666666667</fuelMultiplier>
+        <initialFuelPercent>1</initialFuelPercent>
+        <autoRefuelPercent>0</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <minimumFueledThreshold>1</minimumFueledThreshold>
+        <factorByDifficulty>true</factorByDifficulty>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+      </li>
+	  
+	</comps>
+    <building>
+      <!--ai_combatDangerous>true</ai_combatDangerous-->
+      <turretGunDef>StWoDe_Gardner_Gun_Gun</turretGunDef>
+      <turretBurstCooldownTime>0.7</turretBurstCooldownTime>
+	  <turretTopOffset>(0, 0.25)</turretTopOffset>
+    </building>
+    <researchPrerequisites>
+      <li>SteamworldResearch_Gardner_Gun</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>StWoDe_Gardner_Gun_Bullet</defName>
+    <label>repeating gun bullet</label>
+    <graphicData>
+      <texPath>Projectile/Bullet_Double</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>16</damageAmountBase>
+      <speed>70</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>StWoDe_Gardner_Gun_Gun</defName>
+    <label>repeating gun</label>
+    <description>...</description>
+    <graphicData>
+      <texPath>Building/Turrets/Gardner_Gun</texPath>
+    </graphicData>
+    <statBases>
+      <AccuracyTouch>0.77</AccuracyTouch>
+      <AccuracyShort>0.83</AccuracyShort>
+      <AccuracyMedium>0.89</AccuracyMedium>
+      <AccuracyLong>0.77</AccuracyLong>
+      <RangedWeapon_Cooldown>0.1</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>18</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li Class="VEF.Weapons.VerbProps_ShootCone">
+        <verbClass>VEF.Weapons.Verb_ShootCone</verbClass>
+        <coneAngle>90</coneAngle>
+		<forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+        <defaultProjectile>StWoDe_Gardner_Gun_Bullet</defaultProjectile>		
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>0</warmupTime>
+        <range>47</range>
+        <ticksBetweenBurstShots>0</ticksBetweenBurstShots>
+		<burstShotCount>1</burstShotCount>
+        <soundCast>GunShotA</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+        <consumeFuelPerShot>1</consumeFuelPerShot>
+      </li>
+    </verbs>
+  </ThingDef>
+
+  <!--=============== Nordenfelt Gun ===============-->
+
+  <ThingDef ParentName="StWoDe_Turret_Base">
+    <defName>StWoDe_Nordenfelt_Gun</defName>
+    <label>salvo gun</label>
+    <description>A lever operated proto machine gun consisting of multiple barrels arrangen in a row. Its bullets are filled into a hopper on top of the gun so when one shot is fired the next bullet slides into position.
+	Its barrels are alternately fired to prevent overheating. The whole construction is fitted on a metal frame.</description>
+    <uiIconPath>Building/Turrets/Salvo_Icon</uiIconPath>
+	<comps>
+      <li Class="CompProperties_Refuelable">
+        <fuelLabel>Shots until barrel change</fuelLabel>
+        <fuelGizmoLabel>Barrel durability</fuelGizmoLabel>
+        <outOfFuelMessage>Needs new barrel</outOfFuelMessage>
+        <fuelFilter><thingDefs><li>Steel</li></thingDefs></fuelFilter>
+        <fuelCapacity>75</fuelCapacity>
+        <fuelMultiplier>1</fuelMultiplier>
+        <initialFuelPercent>1</initialFuelPercent>
+        <autoRefuelPercent>0</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <minimumFueledThreshold>1</minimumFueledThreshold>
+        <factorByDifficulty>true</factorByDifficulty>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+      </li>
+	</comps>
+    <building>
+      <!--ai_combatDangerous>true</ai_combatDangerous-->
+      <turretGunDef>StWoDe_Nordenfelt_Gun_Gun</turretGunDef>
+      <turretBurstCooldownTime>0.7</turretBurstCooldownTime>
+    </building>
+    <researchPrerequisites>
+      <li>SteamworldResearch_Nordenfelt_Gun</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>StWoDe_Nordenfelt_Gun_Bullet</defName>
+    <label>crank gun bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Shotgun</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>22</damageAmountBase>
+      <speed>55</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>StWoDe_Nordenfelt_Gun_Gun</defName>
+    <label>crank gun</label>
+    <description>...</description>
+    <graphicData>
+      <texPath>Building/Turrets/Salvo_Gun</texPath>
+    </graphicData>
+    <statBases>
+      <AccuracyTouch>0.77</AccuracyTouch>
+      <AccuracyShort>0.74</AccuracyShort>
+      <AccuracyMedium>0.71</AccuracyMedium>
+      <AccuracyLong>0.68</AccuracyLong>
+      <RangedWeapon_Cooldown>0.5</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>18</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+     <li Class="VEF.Weapons.VerbProps_ShootCone">
+        <verbClass>VEF.Weapons.Verb_ShootCone</verbClass>
+        <coneAngle>90</coneAngle>
+		<forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+        <defaultProjectile>StWoDe_Nordenfelt_Gun_Bullet</defaultProjectile>		
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>0</warmupTime>
+        <range>39</range>
+        <ticksBetweenBurstShots>16</ticksBetweenBurstShots>
+		<burstShotCount>5</burstShotCount>
+        <soundCast>Shot_Shotgun</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+        <consumeFuelPerShot>1</consumeFuelPerShot>
+      </li>
+    </verbs>
+  </ThingDef>
+  
+  <!--=============== Light Field Gun ===============-->
+  
+  <ThingDef ParentName="StWoDe_Turret_Base">
+    <defName>StWoDe_Light_Field_Gun</defName>
+    <label>light field cannon</label>
+    <description>A breech loaded cannon with a rifled barrel and relatively low caliber. While not as powerful as mortars, these cannons can deliver fast and accurate shots.</description>
+    <uiIconPath>Building/Turrets/Field_Icon</uiIconPath>
+	<!--comps>
+      <li Class="CompProperties_Refuelable">
+        <fuelLabel>Shots until barrel change</fuelLabel>
+        <fuelGizmoLabel>Barrel durability</fuelGizmoLabel>
+        <outOfFuelMessage>Needs new barrel</outOfFuelMessage>
+        <fuelFilter><thingDefs><li>Steel</li></thingDefs></fuelFilter>
+        <fuelCapacity>90</fuelCapacity>
+        <fuelMultiplier>1.2</fuelMultiplier>
+        <initialFuelPercent>1</initialFuelPercent>
+        <autoRefuelPercent>0</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <minimumFueledThreshold>1</minimumFueledThreshold>
+        <factorByDifficulty>true</factorByDifficulty>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <fuelIconPath>UI/Overlays/Barrel</fuelIconPath>
+      </li>
+	</comps-->
+    <building>
+      <!--ai_combatDangerous>true</ai_combatDangerous-->
+      <turretGunDef>StWoDe_Light_Field_Gun_Gun</turretGunDef>
+      <turretBurstWarmupTime>4.0</turretBurstWarmupTime>
+	  <turretBurstCooldownTime>11</turretBurstCooldownTime>	
+	  <turretTopDrawSize>2.0</turretTopDrawSize>
+	  <turretTopOffset>(0, 0.33)</turretTopOffset>	  
+	  <buildingTags>
+        <li>Artillery</li>
+      </buildingTags>
+    </building>
+    <researchPrerequisites>
+      <li>SteamworldResearch_Field_Guns</li>
+    </researchPrerequisites>
+	<inspectorTabs>
+      <li>ITab_Shells</li>
+    </inspectorTabs>
+  </ThingDef>
+  
+  <ThingDef ParentName="BaseArtilleryWeapon">
+    <defName>StWoDe_Light_Field_Gun_Gun</defName>
+    <label>light field gun</label>
+    <description>...</description>
+    <recoilPower>5</recoilPower>
+    <graphicData>
+      <texPath>Building/Turrets/Field_Gun</texPath>
+    </graphicData>
+    <weaponTags>
+      <li>Artillery_BaseDestroyer</li>
+    </weaponTags>
+    <verbs>
+      <li Class="VEF.Weapons.VerbProps_ShootCone">
+        <verbClass>VEF.Weapons.Verb_ShootCone</verbClass>
+        <coneAngle>75</coneAngle>
+        <forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+        <warmupTime>4.0</warmupTime>
+        <forcedMissRadius>2</forcedMissRadius>
+        <isMortar>true</isMortar>
+        <requireLineOfSight>true</requireLineOfSight>
+        <minRange>5</minRange>
+        <range>150</range>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>Mortar_LaunchA</soundCast>
+        <muzzleFlashScale>16</muzzleFlashScale>
+        <consumeFuelPerShot>1</consumeFuelPerShot>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+      </li>
+    </verbs>
+    <comps>
+      <li Class="CompProperties_ChangeableProjectile" />
+    </comps>
+    <building>
+      <fixedStorageSettings>
+        <filter>
+          <thingDefs>
+            <li>StWoDe_SmallShell</li>
+          </thingDefs>
+        </filter>
+      </fixedStorageSettings>
+    </building>
+  </ThingDef>
+
+    <!--=============== Heavy Field Gun ===============-->
+	
+  <ThingDef ParentName="BuildingBase">
+	<thingClass>Building_TurretGun</thingClass>
+	<defName>StWoDe_Heavy_Field_Gun</defName>
+    <label>heavy field cannon</label>
+    <description>A breech loaded cannon with a rifled barrel and and of average. It can deliver fast and somewhat accurate shots.</description>
+    <uiIconPath>Building/Turrets/HeavyField_Icon</uiIconPath>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Building/Turrets/Base2</texPath>
+      <drawSize>(3.5,3.5)</drawSize>
+      <damageData>
+        <rect>(0.2,0.8,2.4,1.8)</rect>
+      </damageData>
+      <shadowData>
+        <offset>(-0.13,-0.87,-0.1)</offset>
+        <volume>(0.5,0.4,1.05)</volume>
+      </shadowData>
+    </graphicData>
+	<uiIconScale>1.10</uiIconScale>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <altitudeLayer>Building</altitudeLayer>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-2)</interactionCellOffset>
+	<size>(3,3)</size>
+    <stealable>false</stealable>
+    <thingCategories>
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>175</MaxHitPoints>
+      <Flammability>0.7</Flammability>
+      <WorkToBuild>1800</WorkToBuild>
+      <Mass>40</Mass>
+      <Beauty>-20</Beauty>
+      <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <wickTicks>240</wickTicks>
+        <explosiveRadius>3.9</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <chanceNeverExplodeFromDamage>0.5</chanceNeverExplodeFromDamage>
+      </li>
+	  <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Mannable">
+        <manWorkType>Violent</manWorkType>
+      </li>
+	</comps>
+	<passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.4</fillPercent>
+    <hasTooltip>true</hasTooltip>
+    <stuffCategories>
+      <li>Metallic</li>
+    </stuffCategories>
+    <costStuffCount>100</costStuffCount>
+    <costList>
+      <Steel>100</Steel>
+	  <WoodLog>75</WoodLog>
+      <ComponentIndustrial>8</ComponentIndustrial>
+    </costList>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+	<placeWorkers>
+	  <li>PlaceWorker_TurretTop</li>
+	  <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+	  <!--li>PlaceWorker_ShowTurretRadius</li-->
+    </placeWorkers>
+	<building>
+      <buildingTags>
+        <li>Artillery</li>
+      </buildingTags>
+	   <!--ai_combatDangerous>true</ai_combatDangerous-->
+      <turretGunDef>StWoDe_Heavy_Field_Gun_Gun</turretGunDef>
+      <turretBurstWarmupTime>4.0</turretBurstWarmupTime>
+	  <turretBurstCooldownTime>11</turretBurstCooldownTime>	
+	  <turretTopDrawSize>2.75</turretTopDrawSize>
+	  <turretTopOffset>(0, 0.33)</turretTopOffset>
+    </building>
+	 <researchPrerequisites>
+      <li>SteamworldResearch_Field_Guns</li>
+	  <li>Mortars</li>
+    </researchPrerequisites>
+	<inspectorTabs>
+      <li>ITab_Shells</li>
+    </inspectorTabs>
+  </ThingDef>
+  
+    <ThingDef ParentName="BaseArtilleryWeapon">
+    <defName>StWoDe_Heavy_Field_Gun_Gun</defName>
+    <label>heavy field gun</label>
+    <description>...</description>
+    <recoilPower>5</recoilPower>
+    <graphicData>
+      <texPath>Building/Turrets/HeavyField_Gun</texPath>
+    </graphicData>
+    <weaponTags>
+      <li>Artillery_BaseDestroyer</li>
+    </weaponTags>
+    <verbs>
+      <li Class="VEF.Weapons.VerbProps_ShootCone">
+        <verbClass>VEF.Weapons.Verb_ShootCone</verbClass>
+        <coneAngle>75</coneAngle>
+        <forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+        <warmupTime>4.0</warmupTime>
+        <forcedMissRadius>2</forcedMissRadius>
+        <isMortar>true</isMortar>
+        <requireLineOfSight>true</requireLineOfSight>
+        <minRange>5</minRange>
+        <range>150</range>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>Mortar_LaunchA</soundCast>
+        <muzzleFlashScale>16</muzzleFlashScale>
+        <consumeFuelPerShot>1</consumeFuelPerShot>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+      </li>
+    </verbs>
+    <comps>
+      <li Class="CompProperties_ChangeableProjectile" />
+    </comps>
+    <building>
+      <fixedStorageSettings>
+        <filter>
+          <thingDefs>
+            <li>StWoDe_Shell</li>
+          </thingDefs>
+        </filter>
+      </fixedStorageSettings>
+    </building>
+  </ThingDef>
+  
+  
+</Defs>

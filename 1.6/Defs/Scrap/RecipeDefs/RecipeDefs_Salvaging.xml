@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- SALVAGE APPAREL -->
+		<RecipeDef ParentName="TMM_WeaveRecipeBase">
+			<defName>TMM_SalvageApparel</defName>
+			<label>salvage apparel</label>
+			<description>Salvage unwanted apparel into their raw materials.</description>
+			<jobString>salvaging apparel.</jobString>
+			<workAmount>1000</workAmount>
+			<ingredients>
+				<li>
+					<filter>
+						<categories>
+							<li>Apparel</li>
+						</categories>
+					</filter>
+					<count>1</count>
+				</li>
+			</ingredients>
+			<specialProducts>
+				<li>Smelted</li>
+			</specialProducts>
+			<fixedIngredientFilter>
+				<categories>
+					<li>Apparel</li>
+				</categories>
+			</fixedIngredientFilter>
+			<recipeUsers>
+				<li>HandTailoringBench</li>
+				<li>ElectricTailoringBench</li>
+			</recipeUsers>
+		</RecipeDef>
+	<!-- DISASSEMBLE WOODEN WEAPON -->
+		<RecipeDef>
+			<defName>DisassembleWoodenWeapon</defName>
+			<label>disassemble simple wooden weapons</label>
+			<description>Disassemble simple wooden weapons into useful resources.</description>
+			<jobString>Disassemble weapon.</jobString>
+			<workAmount>500</workAmount>
+			<workSpeedStat>SmeltingSpeed</workSpeedStat>
+			<effectWorking>Smelt</effectWorking>
+			<soundWorking>Recipe_Smelt</soundWorking>
+			<ingredients>
+				<li>
+					<filter>
+						<categories>
+							<li>Weapons</li>
+						</categories>
+					</filter>
+					<count>1</count>
+				</li>
+			</ingredients>
+			<specialProducts>
+				<li>Smelted</li>
+			</specialProducts>
+			<fixedIngredientFilter>
+				<categories>
+					<li>Weapons</li>
+				</categories>
+				<specialFiltersToDisallow>
+					<li>AllowNonBurnableWeapons</li>
+				</specialFiltersToDisallow>
+				<disallowedCategories>
+					<li>WeaponsMeleeBladelink</li>
+				</disallowedCategories>
+				<disallowedThingDefs>
+					<li>MeleeWeapon_MonoSword</li>
+					<li>MeleeWeapon_Zeushammer</li>
+					<li>MeleeWeapon_PlasmaSword</li>
+					<li>MeleeWeapon_PsyfocusStaff</li>
+				</disallowedThingDefs>
+			</fixedIngredientFilter>
+			<forceHiddenSpecialFilters>
+				<li>AllowBurnableWeapons</li>
+				<li>AllowSmeltable</li>
+				<li>AllowNonSmeltableWeapons</li>
+			</forceHiddenSpecialFilters>
+			<defaultIngredientFilter>
+				<categories>
+					<li>Weapons</li>
+				</categories>
+			</defaultIngredientFilter>
+			<recipeUsers>
+				<li>CraftingSpot</li>
+				<li>FueledSmithy</li>
+				<li>ElectricSmithy</li>
+			</recipeUsers>
+		</RecipeDef>
+</Defs>

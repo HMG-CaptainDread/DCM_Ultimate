@@ -1,0 +1,973 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+		<Operation Class="PatchOperationSequence">
+			<operations>
+			
+				<!-- Frags -->
+			
+				<li Class="PatchOperationAttributeSet">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_M67_Frag_" or defName="CGF1_MWP_M69_Practice_" or defName="CGF1_MWP_M83_Smoke_" or defName="CGF1_MWP_M34_Smoke_" or defName="CGF1_MWP_M7A3_CS_" or defName="CGF1_MWP_Mk3A2_Concussion_" or defName="CGF1_MWP_M84_Stun_" or defName="CGF1_MWP_ANM14_Incendiary_"]</xpath>
+					<attribute>ParentName</attribute>
+					<value>BaseWeapon</value>
+				</li>
+			
+				<li Class="PatchOperationRemove">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_M67_Frag_" or defName="CGF1_MWP_M69_Practice_" or defName="CGF1_MWP_M83_Smoke_" or defName="CGF1_MWP_M34_Smoke_" or defName="CGF1_MWP_M7A3_CS_" or defName="CGF1_MWP_Mk3A2_Concussion_" or defName="CGF1_MWP_M84_Stun_" or defName="CGF1_MWP_ANM14_Incendiary_"]/recipeMaker</xpath>
+				</li>
+				
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_M67_Frag_" or defName="CGF1_MWP_M69_Practice_" or defName="CGF1_MWP_M83_Smoke_" or defName="CGF1_MWP_M34_Smoke_" or defName="CGF1_MWP_M7A3_CS_" or defName="CGF1_MWP_Mk3A2_Concussion_" or defName="CGF1_MWP_M84_Stun_" or defName="CGF1_MWP_ANM14_Incendiary_"]</xpath>
+					<value>
+						<tools>
+						  <li Class="CombatExtended.ToolCE">
+							<label>Body</label>
+							<capacities>
+							  <li>Blunt</li>
+							</capacities>
+							<power>2</power>
+							<cooldownTime>1.75</cooldownTime>
+							<armorPenetrationBlunt>1.0</armorPenetrationBlunt>
+							<linkedBodyPartsGroup>Base</linkedBodyPartsGroup>
+						  </li>
+						</tools>
+						<allowedArchonexusCount>5</allowedArchonexusCount>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_M67_Frag_" or defName="CGF1_MWP_M69_Practice_" or defName="CGF1_MWP_M83_Smoke_" or defName="CGF1_MWP_M34_Smoke_" or defName="CGF1_MWP_M7A3_CS_" or defName="CGF1_MWP_Mk3A2_Concussion_" or defName="CGF1_MWP_M84_Stun_" or defName="CGF1_MWP_ANM14_Incendiary_"]</xpath>
+					<value>
+						<thingClass>CombatExtended.AmmoThing</thingClass>
+						<stackLimit>75</stackLimit>
+						<resourceReadoutPriority>First</resourceReadoutPriority>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAttributeSet">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_M67_Frag_" or defName="CGF1_MWP_M69_Practice_" or defName="CGF1_MWP_M83_Smoke_" or defName="CGF1_MWP_M34_Smoke_" or defName="CGF1_MWP_M7A3_CS_" or defName="CGF1_MWP_Mk3A2_Concussion_" or defName="CGF1_MWP_M84_Stun_" or defName="CGF1_MWP_ANM14_Incendiary_"]</xpath>
+					<attribute>Class</attribute>
+					<value>CombatExtended.AmmoDef</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_M67_Frag_"]/comps</xpath>
+					<value>
+						<comps>
+						  <li Class="CombatExtended.CompProperties_ExplosiveCE">
+							<damageAmountBase>60</damageAmountBase>
+							<explosiveDamageType>Bomb</explosiveDamageType>
+							<explosiveRadius>1.9</explosiveRadius>
+						  </li>
+						</comps>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_M84_Stun_" or defName="CGF1_MWP_Mk3A2_Concussion_"]/comps</xpath>
+					<value>
+						<comps>
+						  <li Class="CombatExtended.CompProperties_ExplosiveCE">
+							<damageAmountBase>1</damageAmountBase>
+							<explosiveDamageType>Flashbang</explosiveDamageType>
+							<explosiveRadius>4</explosiveRadius>
+							<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+						  </li>
+						</comps>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_ANM14_Incendiary_"]/comps</xpath>
+					<value>
+						<comps>
+						  <li Class="CombatExtended.CompProperties_ExplosiveCE">
+							<damageAmountBase>1</damageAmountBase>
+							<explosiveDamageType>Flame</explosiveDamageType>
+							<explosiveRadius>4.00</explosiveRadius>
+							<preExplosionSpawnThingDef>FilthPrometheum</preExplosionSpawnThingDef>
+							<preExplosionSpawnChance>0.8</preExplosionSpawnChance>
+						  </li>
+						</comps>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_M67_Frag_"]/comps</xpath>
+					<value>
+					  <li Class="CombatExtended.CompProperties_Fragments">
+						<fragments>
+							<Fragment_Small>45</Fragment_Small>
+						</fragments>
+					  </li>
+					</value>
+				</li>
+				
+				<!-- Specific -->
+				
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_M67_Frag_"]/graphicData</xpath>
+					<value>
+						<graphicData>
+							<texPath>CGF1/Ammo/M67_Frag</texPath>
+							<graphicClass>Graphic_StackCount</graphicClass>
+							<onGroundRandomRotateAngle>0</onGroundRandomRotateAngle>
+							<drawSize>0.70</drawSize>
+						</graphicData>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_M83_Smoke_"]/graphicData</xpath>
+					<value>
+						<graphicData>
+							<texPath>CGF1/Ammo/M83_Smoke</texPath>
+							<graphicClass>Graphic_StackCount</graphicClass>
+							<onGroundRandomRotateAngle>0</onGroundRandomRotateAngle>
+							<drawSize>0.75</drawSize>
+						</graphicData>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_M34_Smoke_"]/graphicData</xpath>
+					<value>
+						<graphicData>
+							<texPath>CGF1/Ammo/M34_Smoke</texPath>
+							<graphicClass>Graphic_StackCount</graphicClass>
+							<onGroundRandomRotateAngle>0</onGroundRandomRotateAngle>
+							<drawSize>0.75</drawSize>
+						</graphicData>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_M7A3_CS_"]/graphicData</xpath>
+					<value>
+						<graphicData>
+							<texPath>CGF1/Ammo/M7A3_CS</texPath>
+							<graphicClass>Graphic_StackCount</graphicClass>
+							<onGroundRandomRotateAngle>0</onGroundRandomRotateAngle>
+							<drawSize>0.75</drawSize>
+						</graphicData>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Mk3A2_Concussion_"]/graphicData</xpath>
+					<value>
+						<graphicData>
+							<texPath>CGF1/Ammo/Mk3A2_Concussion</texPath>
+							<graphicClass>Graphic_StackCount</graphicClass>
+							<onGroundRandomRotateAngle>0</onGroundRandomRotateAngle>
+							<drawSize>0.75</drawSize>
+						</graphicData>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_M84_Stun_"]/graphicData</xpath>
+					<value>
+						<graphicData>
+							<texPath>CGF1/Ammo/M84_Stun</texPath>
+							<graphicClass>Graphic_StackCount</graphicClass>
+							<onGroundRandomRotateAngle>0</onGroundRandomRotateAngle>
+							<drawSize>0.75</drawSize>
+						</graphicData>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_ANM14_Incendiary_"]/graphicData</xpath>
+					<value>
+						<graphicData>
+							<texPath>CGF1/Ammo/ANM14_Incendiary</texPath>
+							<graphicClass>Graphic_StackCount</graphicClass>
+							<onGroundRandomRotateAngle>0</onGroundRandomRotateAngle>
+							<drawSize>0.75</drawSize>
+						</graphicData>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_M69_Practice_"]/graphicData</xpath>
+					<value>
+						<graphicData>
+							<texPath>CGF1/Ammo/M69_Practice</texPath>
+							<graphicClass>Graphic_StackCount</graphicClass>
+							<onGroundRandomRotateAngle>0</onGroundRandomRotateAngle>
+							<drawSize>0.70</drawSize>
+						</graphicData>
+					</value>
+				</li>
+				
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>CGF1_MWP_M67_Frag_</defName>
+					<statBases>
+						<Mass>0.4</Mass>
+						<Bulk>0.9</Bulk>
+						<MarketValue>12.45</MarketValue>
+						<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+						<SightsEfficiency>0.65</SightsEfficiency>
+					</statBases>
+					<Properties>
+						<label>throw frag grenade</label>
+						<verbClass>CombatExtended.Verb_ShootCEOneUse</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<range>12.0</range>
+						<minRange>4</minRange>
+						<warmupTime>0.8</warmupTime>
+						<noiseRadius>4</noiseRadius>
+						<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+						<soundCast>CGF1_MWP_SFX_Grenade_Throw</soundCast>
+						<targetParams>
+							<canTargetLocations>true</canTargetLocations>
+						</targetParams>
+						<defaultProjectile>CGF1_MWP_Projectile_M67_Frag</defaultProjectile>
+						<onlyManualCast>true</onlyManualCast>
+						<ignorePartialLoSBlocker>true</ignorePartialLoSBlocker>
+						<ai_AvoidFriendlyFireRadius>7</ai_AvoidFriendlyFireRadius>
+					</Properties>
+					<weaponTags>
+						<li>CE_AI_Grenade</li>
+						<li>CE_AI_AOE</li>
+						<li>CE_OneHandedWeapon</li>
+					</weaponTags>
+				</li>
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>CGF1_MWP_M83_Smoke_</defName>
+					<statBases>
+						<Mass>0.4</Mass>
+						<Bulk>0.87</Bulk>
+						<MarketValue>2.25</MarketValue>
+						<SightsEfficiency>0.65</SightsEfficiency>
+						<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+					</statBases>
+					<Properties>
+						<label>throw smoke grenade</label>
+						<verbClass>CombatExtended.Verb_ShootCEOneUse</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<range>10</range>
+						<warmupTime>0.8</warmupTime>
+						<noiseRadius>4</noiseRadius>
+						<soundCast>CGF1_MWP_SFX_Grenade_Throw</soundCast>
+						<targetParams>
+							<canTargetLocations>true</canTargetLocations>
+						</targetParams>
+						<ai_IsBuildingDestroyer>false</ai_IsBuildingDestroyer>
+						<defaultProjectile>CGF1_MWP_Projectile_M83_Smoke</defaultProjectile>
+						<onlyManualCast>true</onlyManualCast>
+						<ignorePartialLoSBlocker>true</ignorePartialLoSBlocker>
+						<ai_AvoidFriendlyFireRadius>7</ai_AvoidFriendlyFireRadius>
+					</Properties>
+					<weaponTags>
+						<li>CE_AI_SMOKE</li>
+						<li>CE_OneHandedWeapon</li>
+					</weaponTags>
+				</li>
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>CGF1_MWP_M34_Smoke_</defName>
+					<statBases>
+						<Mass>0.4</Mass>
+						<Bulk>0.87</Bulk>
+						<MarketValue>2.25</MarketValue>
+						<SightsEfficiency>0.65</SightsEfficiency>
+						<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+					</statBases>
+					<Properties>
+						<label>throw smoke grenade</label>
+						<verbClass>CombatExtended.Verb_ShootCEOneUse</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<range>10</range>
+						<warmupTime>0.8</warmupTime>
+						<noiseRadius>4</noiseRadius>
+						<soundCast>CGF1_MWP_SFX_Grenade_Throw</soundCast>
+						<targetParams>
+							<canTargetLocations>true</canTargetLocations>
+						</targetParams>
+						<ai_IsBuildingDestroyer>false</ai_IsBuildingDestroyer>
+						<defaultProjectile>CGF1_MWP_Projectile_M34_Smoke</defaultProjectile>
+						<onlyManualCast>true</onlyManualCast>
+						<ignorePartialLoSBlocker>true</ignorePartialLoSBlocker>
+						<ai_AvoidFriendlyFireRadius>7</ai_AvoidFriendlyFireRadius>
+					</Properties>
+					<weaponTags>
+						<li>CE_AI_SMOKE</li>
+						<li>CE_OneHandedWeapon</li>
+					</weaponTags>
+				</li>
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>CGF1_MWP_M7A3_CS_</defName>
+					<statBases>
+						<Mass>0.4</Mass>
+						<Bulk>0.87</Bulk>
+						<MarketValue>2.25</MarketValue>
+						<SightsEfficiency>0.65</SightsEfficiency>
+						<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+					</statBases>
+					<Properties>
+						<label>throw gas grenade</label>
+						<verbClass>CombatExtended.Verb_ShootCEOneUse</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<range>10</range>
+						<warmupTime>0.8</warmupTime>
+						<noiseRadius>4</noiseRadius>
+						<soundCast>CGF1_MWP_SFX_Grenade_Throw</soundCast>
+						<targetParams>
+							<canTargetLocations>true</canTargetLocations>
+						</targetParams>
+						<ai_IsBuildingDestroyer>false</ai_IsBuildingDestroyer>
+						<defaultProjectile>CGF1_MWP_Projectile_M7A3_CS</defaultProjectile>
+						<onlyManualCast>true</onlyManualCast>
+						<ignorePartialLoSBlocker>true</ignorePartialLoSBlocker>
+						<ai_AvoidFriendlyFireRadius>7</ai_AvoidFriendlyFireRadius>
+					</Properties>
+					<weaponTags>
+						<li>CE_AI_Grenade</li>
+						<li>CE_AI_AOE</li>
+						<li>CE_OneHandedWeapon</li>
+					</weaponTags>
+				</li>
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>CGF1_MWP_Mk3A2_Concussion_</defName>
+					<statBases>
+						<Mass>0.4</Mass>
+						<Bulk>0.9</Bulk>
+						<MarketValue>8.33</MarketValue>
+						<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+						<SightsEfficiency>0.65</SightsEfficiency>
+					</statBases>
+					<Properties>
+						<label>throw concussion grenade</label>
+						<verbClass>CombatExtended.Verb_ShootCEOneUse</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<range>10.0</range>
+						<minRange>2.9</minRange>
+						<warmupTime>0.8</warmupTime>
+						<noiseRadius>4</noiseRadius>
+						<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+						<soundCast>CGF1_MWP_SFX_Grenade_Throw</soundCast>
+						<targetParams>
+							<canTargetLocations>true</canTargetLocations>
+						</targetParams>
+						<defaultProjectile>CGF1_MWP_Projectile_Mk3A2_Concussion</defaultProjectile>
+						<onlyManualCast>true</onlyManualCast>
+						<ignorePartialLoSBlocker>true</ignorePartialLoSBlocker>
+						<ai_AvoidFriendlyFireRadius>6</ai_AvoidFriendlyFireRadius>
+					</Properties>
+					<weaponTags>
+						<li>CE_AI_AOE</li>
+						<li>CE_OneHandedWeapon</li>
+					</weaponTags>
+				</li>
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>CGF1_MWP_M84_Stun_</defName>
+					<statBases>
+						<Mass>0.3</Mass>
+						<Bulk>0.8</Bulk>
+						<MarketValue>8.33</MarketValue>
+						<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+						<SightsEfficiency>0.65</SightsEfficiency>
+					</statBases>
+					<Properties>
+						<label>throw stun grenade</label>
+						<verbClass>CombatExtended.Verb_ShootCEOneUse</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<range>10.0</range>
+						<minRange>2.9</minRange>
+						<warmupTime>0.8</warmupTime>
+						<noiseRadius>4</noiseRadius>
+						<ai_IsBuildingDestroyer>false</ai_IsBuildingDestroyer>
+						<soundCast>CGF1_MWP_SFX_Grenade_Throw</soundCast>
+						<targetParams>
+							<canTargetLocations>true</canTargetLocations>
+						</targetParams>
+						<defaultProjectile>CGF1_MWP_Projectile_M84_Stun</defaultProjectile>
+						<onlyManualCast>true</onlyManualCast>
+						<ignorePartialLoSBlocker>true</ignorePartialLoSBlocker>
+						<ai_AvoidFriendlyFireRadius>5</ai_AvoidFriendlyFireRadius>
+					</Properties>
+					<weaponTags>
+						<li>CE_AI_AOE</li>
+						<li>CE_GrenadeFlashbang</li>
+						<li>CE_OneHandedWeapon</li>
+					</weaponTags>
+				</li>
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>CGF1_MWP_ANM14_Incendiary_</defName>
+					<statBases>
+						<Mass>0.4</Mass>
+						<Bulk>0.9</Bulk>
+						<MarketValue>12.45</MarketValue>
+						<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+						<SightsEfficiency>0.65</SightsEfficiency>
+					</statBases>
+					<Properties>
+						<label>throw incendiary grenade</label>
+						<verbClass>CombatExtended.Verb_ShootCEOneUse</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<range>12.0</range>
+						<minRange>4</minRange>
+						<warmupTime>0.8</warmupTime>
+						<noiseRadius>4</noiseRadius>
+						<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+						<soundCast>CGF1_MWP_SFX_Grenade_Throw</soundCast>
+						<targetParams>
+							<canTargetLocations>true</canTargetLocations>
+						</targetParams>
+						<defaultProjectile>CGF1_MWP_Projectile_ANM14_Incendiary</defaultProjectile>
+						<onlyManualCast>true</onlyManualCast>
+						<ignorePartialLoSBlocker>true</ignorePartialLoSBlocker>
+						<ai_AvoidFriendlyFireRadius>4</ai_AvoidFriendlyFireRadius>
+					</Properties>
+					<weaponTags>
+						<li>CE_AI_Grenade</li>
+						<li>CE_AI_AOE</li>
+						<li>CE_OneHandedWeapon</li>
+					</weaponTags>
+				</li>
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>CGF1_MWP_M69_Practice_</defName>
+					<statBases>
+						<Mass>0.4</Mass>
+						<Bulk>0.9</Bulk>
+						<MarketValue>5</MarketValue>
+						<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+						<SightsEfficiency>0.65</SightsEfficiency>
+					</statBases>
+					<Properties>
+						<label>throw practice grenade</label>
+						<verbClass>CombatExtended.Verb_ShootCEOneUse</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<range>12.0</range>
+						<warmupTime>0.8</warmupTime>
+						<noiseRadius>4</noiseRadius>
+						<soundCast>CGF1_MWP_SFX_Grenade_Throw</soundCast>
+						<defaultProjectile>CGF1_MWP_Projectile_M69_Practice</defaultProjectile>
+					</Properties>
+					<weaponTags>
+						<li>CE_OneHandedWeapon</li>
+					</weaponTags>
+				</li>
+				
+				<!-- Projectile -->
+				
+
+				
+				<li Class="PatchOperationRemove">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Projectile_M67_Frag" or defName="CGF1_MWP_Projectile_M83_Smoke" or defName="CGF1_MWP_Projectile_M34_Smoke" or defName="CGF1_MWP_Projectile_M7A3_CS" or defName="CGF1_MWP_Projectile_Mk3A2_Concussion" or defName="CGF1_MWP_Projectile_M84_Stun" or defName="CGF1_MWP_Projectile_ANM14_Incendiary"]/projectile</xpath>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Projectile_M67_Frag" or defName="CGF1_MWP_Projectile_M83_Smoke" or defName="CGF1_MWP_Projectile_M34_Smoke" or defName="CGF1_MWP_Projectile_M7A3_CS" or defName="CGF1_MWP_Projectile_Mk3A2_Concussion" or defName="CGF1_MWP_Projectile_M84_Stun" or defName="CGF1_MWP_Projectile_ANM14_Incendiary"]/thingClass</xpath>
+					<value>
+						<thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Projectile_M67_Frag"]</xpath>
+					<value>
+						<projectile Class="CombatExtended.ProjectilePropertiesCE">
+							<explosionRadius>1.9</explosionRadius>
+							<damageDef>Bomb</damageDef>
+							<damageAmountBase>60</damageAmountBase>
+							<explosionDelay>60</explosionDelay>
+							<dropsCasings>true</dropsCasings>
+							<casingMoteDefname>Fleck_GrenadePin</casingMoteDefname>
+							<casingFilthDefname>Filth_GrenadeAmmoCasings</casingFilthDefname>
+							<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+							<speed>12</speed>
+							<suppressionFactor>3.0</suppressionFactor>
+							<dangerFactor>2.0</dangerFactor>
+							<airborneSuppressionFactor>0.25</airborneSuppressionFactor>
+							<explosionDamageFalloff>true</explosionDamageFalloff>
+						</projectile>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Projectile_M83_Smoke" or defName="CGF1_MWP_Projectile_M34_Smoke"]</xpath>
+					<value>
+						<projectile Class="CombatExtended.ProjectilePropertiesCE">
+							<damageDef>Smoke</damageDef>
+							<explosionRadius>4</explosionRadius>
+							<damageAmountBase>1</damageAmountBase>
+							<explosionDelay>100</explosionDelay>
+							<dropsCasings>true</dropsCasings>
+							<speed>12</speed>
+							<suppressionFactor>0.0</suppressionFactor>
+							<dangerFactor>0.0</dangerFactor>
+							<postExplosionGasType>BlindSmoke</postExplosionGasType>
+							<preExplosionSpawnChance>1</preExplosionSpawnChance>
+							<casingMoteDefname>Fleck_GrenadePin</casingMoteDefname>
+							<casingFilthDefname>Filth_GrenadeAmmoCasings</casingFilthDefname>
+						</projectile>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Projectile_M7A3_CS"]</xpath>
+					<value>
+						<projectile Class="CombatExtended.ProjectilePropertiesCE">
+							<damageDef>Smoke</damageDef>
+							<explosionRadius>3.9</explosionRadius>
+							<damageAmountBase>1</damageAmountBase>
+							<explosionDelay>100</explosionDelay>
+							<dropsCasings>true</dropsCasings>
+							<speed>12</speed>
+							<suppressionFactor>3.0</suppressionFactor>
+							<dangerFactor>2.0</dangerFactor>
+							<airborneSuppressionFactor>0.25</airborneSuppressionFactor>
+							<postExplosionSpawnThingDef>CGF1_MWP_CSGasCloud</postExplosionSpawnThingDef>
+							<postExplosionSpawnChance>1</postExplosionSpawnChance>
+							<postExplosionSpawnThingCount>1</postExplosionSpawnThingCount>
+							<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+							<casingMoteDefname>Fleck_GrenadePin</casingMoteDefname>
+							<casingFilthDefname>Filth_GrenadeAmmoCasings</casingFilthDefname>
+						</projectile>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Projectile_Mk3A2_Concussion"]</xpath>
+					<value>
+						<projectile Class="CombatExtended.ProjectilePropertiesCE">
+							<explosionRadius>2.0</explosionRadius>
+							<damageDef>Bomb</damageDef>
+							<damageAmountBase>80</damageAmountBase>
+							<explosionDelay>150</explosionDelay>
+							<dropsCasings>true</dropsCasings>
+							<casingMoteDefname>Fleck_GrenadePin</casingMoteDefname>
+							<casingFilthDefname>Filth_GrenadeAmmoCasings</casingFilthDefname>
+							<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+							<speed>12</speed>
+							<screenShakeFactor>0.5</screenShakeFactor>
+							<suppressionFactor>3.0</suppressionFactor>
+							<dangerFactor>2.0</dangerFactor>
+							<airborneSuppressionFactor>0.25</airborneSuppressionFactor>
+							<explosionDamageFalloff>true</explosionDamageFalloff>
+						</projectile>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Projectile_M84_Stun"]</xpath>
+					<value>
+						<projectile Class="CombatExtended.ProjectilePropertiesCE">
+							<explosionRadius>4.0</explosionRadius>
+							<damageDef>Stun</damageDef>
+							<damageAmountBase>10</damageAmountBase>
+							<explosionDelay>30</explosionDelay>
+							<dropsCasings>true</dropsCasings>
+							<soundExplode>Explosion_Stun</soundExplode>
+							<casingMoteDefname>Fleck_GrenadePin</casingMoteDefname>
+							<casingFilthDefname>Filth_GrenadeAmmoCasings</casingFilthDefname>
+							<speed>12</speed>
+							<screenShakeFactor>0.5</screenShakeFactor>
+							<suppressionFactor>2.0</suppressionFactor>
+							<dangerFactor>1.5</dangerFactor>
+							<airborneSuppressionFactor>0.25</airborneSuppressionFactor>
+						</projectile>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Projectile_ANM14_Incendiary"]</xpath>
+					<value>
+						<projectile Class="CombatExtended.ProjectilePropertiesCE">
+							<explosionRadius>3.66</explosionRadius>
+							<damageDef>PrometheumFlame</damageDef>
+							<damageAmountBase>11</damageAmountBase>
+							<explosionDelay>60</explosionDelay>
+							<dropsCasings>true</dropsCasings>
+							<preExplosionSpawnChance>1.00</preExplosionSpawnChance>
+							<preExplosionSpawnThingDef>FilthPrometheum</preExplosionSpawnThingDef>
+							<casingMoteDefname>Fleck_GrenadePin</casingMoteDefname>
+							<casingFilthDefname>Filth_GrenadeAmmoCasings</casingFilthDefname>
+							<speed>12</speed>
+							<screenShakeFactor>0.0</screenShakeFactor>
+							<suppressionFactor>3.0</suppressionFactor>
+							<dangerFactor>2.0</dangerFactor>
+							<airborneSuppressionFactor>0.25</airborneSuppressionFactor>
+						</projectile>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Projectile_M69_Practice"]/projectile</xpath>
+					<value>
+						<projectile Class="CombatExtended.ProjectilePropertiesCE">
+							<damageDef>CGF1_MWP_DamageDef_BluntProjectile</damageDef>
+							<damageAmountBase>2</damageAmountBase>
+							<flyOverhead>false</flyOverhead>
+							<speed>12</speed>
+							<armorPenetrationBlunt>0.0</armorPenetrationBlunt>
+							<armorPenetrationSharp>0.0</armorPenetrationSharp>
+							<preExplosionSpawnChance>1.00</preExplosionSpawnChance>
+							<preExplosionSpawnThingDef>CGF1_MWP_M69_Practice_</preExplosionSpawnThingDef>
+						</projectile>
+					</value>
+				</li>
+
+				
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Projectile_M67_Frag" or defName="CGF1_MWP_Projectile_Mk3A2_Concussion" or defName="CGF1_MWP_Projectile_M84_Stun"]/comps</xpath>
+					<nomatch Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="CGF1_MWP_Projectile_M67_Frag" or defName="CGF1_MWP_Projectile_Mk3A2_Concussion" or defName="CGF1_MWP_Projectile_M84_Stun"]</xpath>
+						<value>
+							<comps />
+						</value>
+					</nomatch>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Projectile_M67_Frag"]/comps</xpath>
+					<value>
+						<li Class="CombatExtended.CompProperties_Fragments">
+							<fragments>
+								<Fragment_Small>45</Fragment_Small>
+							</fragments>
+						</li>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Projectile_Mk3A2_Concussion"]/comps</xpath>
+					<value>
+						<li Class="CombatExtended.CompProperties_Fragments">
+							<fragments>
+								<Fragment_Small>6</Fragment_Small>
+							</fragments>
+						</li>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Projectile_M84_Stun"]/comps</xpath>
+					<value>
+						<li Class="CombatExtended.CompProperties_Fragments">
+							<fragments>
+								<Fragment_Small>2</Fragment_Small>
+							</fragments>
+						</li>
+					</value>
+				</li>
+				
+				<!--Recipe Defs -->
+				
+				<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+						<RecipeDef ParentName="GrenadeRecipeBase">
+							<defName>CGF1_MakeM67FragGrenade</defName>
+							<label>make M67 frag grenades x10</label>
+							<description>Craft 10 M67 frag grenades.</description>
+							<jobString>Making M67 frag grenades.</jobString>
+							<researchPrerequisite>CGF1_MWP_Research_T9_SpaceAgeFirearms</researchPrerequisite>
+							<workAmount>4200</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>Steel</li>
+										</thingDefs>
+									</filter>
+									<count>10</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>FSX</li>
+										</thingDefs>
+									</filter>
+									<count>4</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>ComponentIndustrial</li>
+										</thingDefs>
+									</filter>
+									<count>2</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>Steel</li>
+									<li>FSX</li>
+									<li>ComponentIndustrial</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<CGF1_MWP_M67_Frag_>10</CGF1_MWP_M67_Frag_>
+							</products>
+						</RecipeDef>
+						<RecipeDef ParentName="GrenadeRecipeBase">
+							<defName>CGF1_MakeM83SmokeGrenade</defName>
+							<label>make M83 smoke grenades x10</label>
+							<description>Craft 10 M83 smoke grenades.</description>
+							<jobString>Making M83 smoke grenades.</jobString>
+							<researchPrerequisite>CGF1_MWP_Research_T10_ModernFirearms</researchPrerequisite>
+							<workAmount>3200</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>Steel</li>
+										</thingDefs>
+									</filter>
+									<count>12</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>Prometheum</li>
+										</thingDefs>
+									</filter>
+									<count>2</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>ComponentIndustrial</li>
+										</thingDefs>
+									</filter>
+									<count>2</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>Steel</li>
+									<li>Prometheum</li>
+									<li>ComponentIndustrial</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<CGF1_MWP_M83_Smoke_>10</CGF1_MWP_M83_Smoke_>
+							</products>
+						</RecipeDef>
+						<RecipeDef ParentName="GrenadeRecipeBase">
+							<defName>CGF1_MakeM34SmokeGrenade</defName>
+							<label>make M34 smoke grenades x10</label>
+							<description>Craft 10 M34 smoke grenades.</description>
+							<jobString>Making M34 smoke grenades.</jobString>
+							<researchPrerequisite>CGF1_MWP_Research_T8_AtomicAgeFirearms</researchPrerequisite>
+							<workAmount>3200</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>Steel</li>
+										</thingDefs>
+									</filter>
+									<count>12</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>Prometheum</li>
+										</thingDefs>
+									</filter>
+									<count>2</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>ComponentIndustrial</li>
+										</thingDefs>
+									</filter>
+									<count>2</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>Steel</li>
+									<li>Prometheum</li>
+									<li>ComponentIndustrial</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<CGF1_MWP_M34_Smoke_>10</CGF1_MWP_M34_Smoke_>
+							</products>
+						</RecipeDef>
+						<RecipeDef ParentName="GrenadeRecipeBase">
+							<defName>CGF1_MakeMk3A2ConcussionGrenade</defName>
+							<label>make Mk.3 A2 concussion grenades x10</label>
+							<description>Craft 10 Mk.3 A2 concussion grenades.</description>
+							<jobString>Making Mk.3 A2 concussion grenades.</jobString>
+							<researchPrerequisite>CGF1_MWP_Research_T8_AtomicAgeFirearms</researchPrerequisite>
+							<workAmount>2400</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>Steel</li>
+										</thingDefs>
+									</filter>
+									<count>6</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>Prometheum</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>ComponentIndustrial</li>
+										</thingDefs>
+									</filter>
+									<count>2</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>Steel</li>
+									<li>Prometheum</li>
+									<li>ComponentIndustrial</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<CGF1_MWP_Mk3A2_Concussion_>10</CGF1_MWP_Mk3A2_Concussion_>
+							</products>
+						</RecipeDef>
+						<RecipeDef ParentName="GrenadeRecipeBase">
+							<defName>CGF1_MakeM84StunGrenade</defName>
+							<label>make M84 stun grenades x10</label>
+							<description>Craft 10 M84 stun grenades.</description>
+							<jobString>Making M84 stun grenades.</jobString>
+							<researchPrerequisite>CGF1_MWP_Research_T10_ModernFirearms</researchPrerequisite>
+							<workAmount>2400</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>Steel</li>
+										</thingDefs>
+									</filter>
+									<count>6</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>Prometheum</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>ComponentIndustrial</li>
+										</thingDefs>
+									</filter>
+									<count>2</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>Steel</li>
+									<li>Prometheum</li>
+									<li>ComponentIndustrial</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<CGF1_MWP_M84_Stun_>10</CGF1_MWP_M84_Stun_>
+							</products>
+						</RecipeDef>
+						<RecipeDef ParentName="GrenadeRecipeBase">
+							<defName>CGF1_MakeM7A3CSGrenade</defName>
+							<label>make M7A3 CS grenades x10</label>
+							<description>Craft 10 M7A3 CS grenades.</description>
+							<jobString>Making M7A3 CS grenades.</jobString>
+							<researchPrerequisite>CGF1_MWP_Research_T10_ModernFirearms</researchPrerequisite>
+							<workAmount>3600</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>Steel</li>
+										</thingDefs>
+									</filter>
+									<count>10</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>Neutroamine</li>
+										</thingDefs>
+									</filter>
+									<count>10</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>Steel</li>
+									<li>Neutroamine</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<CGF1_MWP_M7A3_CS_>10</CGF1_MWP_M7A3_CS_>
+							</products>
+						</RecipeDef>
+						<RecipeDef ParentName="GrenadeRecipeBase">
+							<defName>CGF1_MakeANM14IncendiaryGrenade</defName>
+							<label>make AN/M14 incendiary grenades x10</label>
+							<description>Craft 10 AN/M14 incendiary grenades.</description>
+							<jobString>Making AN/M14 incendiary grenades.</jobString>
+							<researchPrerequisite>CGF1_MWP_Research_T9_SpaceAgeFirearms</researchPrerequisite>
+							<workAmount>4000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>Steel</li>
+										</thingDefs>
+									</filter>
+									<count>12</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>Prometheum</li>
+										</thingDefs>
+									</filter>
+									<count>10</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>ComponentIndustrial</li>
+										</thingDefs>
+									</filter>
+									<count>2</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>Steel</li>
+									<li>Prometheum</li>
+									<li>ComponentIndustrial</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<CGF1_MWP_ANM14_Incendiary_>10</CGF1_MWP_ANM14_Incendiary_>
+							</products>
+						</RecipeDef>
+						<RecipeDef ParentName="GrenadeRecipeBase">
+							<defName>CGF1_MakeM69PracticeGrenade</defName>
+							<label>make M69 practice grenades x10</label>
+							<description>Craft 10 M69 practice grenades.</description>
+							<jobString>Making M69 practice grenades.</jobString>
+							<researchPrerequisite>CGF1_MWP_Research_T9_SpaceAgeFirearms</researchPrerequisite>
+							<workAmount>2000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>Steel</li>
+										</thingDefs>
+									</filter>
+									<count>12</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>Steel</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<CGF1_MWP_M69_Practice_>10</CGF1_MWP_M69_Practice_>
+							</products>
+						</RecipeDef>
+					</value>
+				</li>
+			</operations>
+	</Operation>
+
+</Patch>

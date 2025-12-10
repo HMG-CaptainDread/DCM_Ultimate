@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef Name="BuildingBase" Abstract="True">
+    <category>Building</category>
+    <thingClass>Building</thingClass>
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <selectable>true</selectable>
+    <drawerType>MapMeshOnly</drawerType>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <repairEffect>Repair</repairEffect>
+    <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+    <filthLeaving>Filth_RubbleBuilding</filthLeaving>
+    <statBases>
+      <SellPriceFactor>0.70</SellPriceFactor>
+    </statBases>
+  </ThingDef>
+  
+	<ThingDef ParentName="BuildingBase" Name="TerraformBuildingBase" Abstract="True"> 
+		<graphicData>
+            <graphicClass>Graphic_Terrain</graphicClass>
+            <texPath>Terrain/Surfaces/Soil</texPath>
+            <shaderType>EdgeDetect</shaderType>
+        </graphicData>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<designationCategory>Floors</designationCategory>
+        <altitudeLayer>Floor</altitudeLayer>
+        <castEdgeShadows>true</castEdgeShadows>
+        <coversFloor>true</coversFloor>
+        <clearBuildingArea>false</clearBuildingArea>
+        <placingDraggableDimensions>2</placingDraggableDimensions>
+        <staticSunShadowHeight>0.0</staticSunShadowHeight>
+        <rotatable>false</rotatable>
+        <useHitPoints>false</useHitPoints>
+        <statBases>
+            <WorkToBuild>0</WorkToBuild>
+            <Flammability>0</Flammability>
+            <Mass>0</Mass>
+        </statBases>
+        <alwaysHaulable>false</alwaysHaulable>
+        <designateHaulable>false</designateHaulable>
+	</ThingDef>
+     
+	<TerraformTech.TerrainTerraformRuleSet ParentName="TerraformBuildingBase" Name="TerraformTech_TerraformRuleBase" Abstract="True"> 
+        <thingClass>TerraformTech.Building_TerraformTerrain</thingClass>
+		<defaultRuleActionClass>TerraformTech.TerrainReplaceAction</defaultRuleActionClass>
+        <placeWorkers>
+            <li>TerraformTech.PlaceWorker_Terraforming</li>
+        </placeWorkers>
+	</TerraformTech.TerrainTerraformRuleSet>
+	
+    <DesignatorDropdownGroupDef>
+        <defName>Terraform_RemoveTerrain</defName>
+        <label>Remove terrain</label>
+    </DesignatorDropdownGroupDef>
+    
+	<DesignatorDropdownGroupDef>
+        <defName>Terraform_AddTerrain</defName>
+        <label>Add terrain</label>
+    </DesignatorDropdownGroupDef>
+    <DesignatorDropdownGroupDef>
+        <defName>Terraform_Road</defName>
+        <label>Place road</label>
+    </DesignatorDropdownGroupDef>
+    <DesignatorDropdownGroupDef>
+        <defName>Terraform_PickMaterial</defName>
+        <label>Pick material</label>
+    </DesignatorDropdownGroupDef>
+    <DesignatorDropdownGroupDef>
+        <defName>Terraform_Water</defName>
+        <label>Water removal</label>
+    </DesignatorDropdownGroupDef>
+	
+    <TerraformTech.TerrainTerraformRuleSet Name="TerraformTech_TerraformRuleInitial" ParentName="TerraformTech_TerraformRuleBase" Abstract="True">
+        <researchPrerequisites>
+            <li>MedTimes_Terraforming</li>
+        </researchPrerequisites>
+    </TerraformTech.TerrainTerraformRuleSet>
+	
+    <TerraformTech.TerrainTerraformRuleSet ParentName="TerraformTech_TerraformRuleInitial">
+        <defName>Terraform_BasicSoilRemoval</defName>
+		<label>Soil removal</label>
+        <description>Remove soil upper layer. One layer after another. Dig out stones, remove weeds, dig out sand and dirt.. etc.</description>
+		<graphicData>
+            <texPath>Things/Building/Terraform/RemoveTerrain</texPath>
+        </graphicData>
+		<defaultRuleActionClass>TerraformTech.TerrainRemoveAction</defaultRuleActionClass>
+		<designatorDropdown>Terraform_RemoveTerrain</designatorDropdown>
+		<rules>
+			<li>
+				<patchTag>SoilFromMoss</patchTag>
+				<resultDef>Soil</resultDef>
+				<WorkToBuild>1800</WorkToBuild>
+				<sourceDefs>
+					<li>MossyTerrain</li>
+				</sourceDefs>
+				<costList />
+				<resultList>
+					<RawFungus>6</RawFungus>
+				</resultList>
+			</li>
+			<li>
+				<patchTag>SoilFromEtcSoil</patchTag>
+				<resultDef>Soil</resultDef>
+				<WorkToBuild>8000</WorkToBuild>
+				<sourceDefs>
+					<li>MarshyTerrain</li>
+					<li>PackedDirt</li>
+					<li>SoilRich</li>
+				</sourceDefs>
+				<costList />
+				<resultList />
+			</li>
+			<li>
+				<patchTag>MarshyTerrainFromMarsh</patchTag>
+				<resultDef>MarshyTerrain</resultDef>
+				<sourceDefs>
+					<li>Marsh</li>
+				</sourceDefs>
+				<WorkToBuild>15000</WorkToBuild>
+				<costList>
+					<Cloth>30</Cloth>
+				</costList>
+				<resultList>
+					<Cloth>25</Cloth>
+				</resultList>
+			</li>
+			<li>
+				<patchTag>SoilFromGravel</patchTag>
+				<resultDef>Soil</resultDef>
+				<sourceDefs>
+					<li>Gravel</li>
+				</sourceDefs>
+				<WorkToBuild>6000</WorkToBuild>
+				<costList>
+					<WoodLog>1</WoodLog>
+				</costList>
+				<resultList>
+					<WoodLog>1</WoodLog>
+				</resultList>
+			</li>
+			<li>
+				<patchTag>SoftSandFromSand</patchTag>
+				<resultDef>SoftSand</resultDef>
+				<sourceDefs>
+					<li>Sand</li>
+				</sourceDefs>
+				<WorkToBuild>40000</WorkToBuild>
+				<costList>
+					<WoodLog>1</WoodLog>
+				</costList>
+				<resultList>
+					<WoodLog>1</WoodLog>
+				</resultList>
+			</li>
+			<li>
+				<patchTag>SoilFromSoftSand</patchTag>
+				<resultDef>Soil</resultDef>
+				<sourceDefs>
+					<li>SoftSand</li>
+				</sourceDefs>
+				<WorkToBuild>20000</WorkToBuild>
+				<costList>
+					<WoodLog>1</WoodLog>
+					<Cloth>15</Cloth>
+				</costList>
+				<resultList>
+					<Cloth>10</Cloth>
+					<WoodLog>1</WoodLog>
+				</resultList>
+			</li>
+			<li>
+				<patchTag>SoilFromMud</patchTag>
+				<resultDef>SoilRich</resultDef>
+				<sourceDefs>
+					<li>Mud</li>
+				</sourceDefs>
+				<WorkToBuild>5000</WorkToBuild>
+				<costList>
+					<Cloth>30</Cloth>
+				</costList>
+				<resultList>
+					<Cloth>20</Cloth>
+				</resultList>
+			</li>
+		</rules>
+    </TerraformTech.TerrainTerraformRuleSet>
+	
+	<TerraformTech.TerrainTerraformRuleSet ParentName="TerraformTech_TerraformRuleInitial">
+        <defName>Terraform_BasicAddTerrain</defName>
+		<label>Soil placing</label>
+        <description>Terraform upper soil layer. Add out stones, put weeds, drop more sand and dirt.. etc.</description>
+		<graphicData>
+            <texPath>Things/Building/Terraform/AddTerrain</texPath>
+        </graphicData>
+		<designatorDropdown>Terraform_AddTerrain</designatorDropdown>
+		<rules>
+			<li>
+				<patchTag>MossyTerrainFromSoil</patchTag>
+				<resultDef>MossyTerrain</resultDef>
+				<sourceDefs>
+					<li>Soil</li>
+				</sourceDefs>
+				<WorkToBuild>12000</WorkToBuild>
+				<costList>
+					<RawFungus>6</RawFungus>
+				</costList>
+				<resultList />
+			</li>
+			<li>
+				<patchTag>StonyTerrainFromSoil</patchTag>
+				<resultDef>Gravel</resultDef>
+				<sourceDefs>
+					<li>Soil</li>
+					<li>PackedDirt</li>
+					<li>SoilRich</li>
+				</sourceDefs>
+				<WorkToBuild>3000</WorkToBuild>
+				<costList/>
+				<resultList />
+			</li>
+			<li>
+				<patchTag>SandFromSoftSand</patchTag>
+				<resultDef>Sand</resultDef>
+				<sourceDefs>
+					<li>SoftSand</li>
+				</sourceDefs>
+				<WorkToBuild>8000</WorkToBuild>
+				<costList />
+				<resultList />
+			</li>
+			<li>
+				<patchTag>SoftSandFromSoil</patchTag>
+				<resultDef>SoftSand</resultDef>
+				<sourceDefs>
+					<li>Soil</li>
+					<li>PackedDirt</li>
+					<li>SoilRich</li>
+				</sourceDefs>
+				<WorkToBuild>5000</WorkToBuild>
+				<costList />
+				<resultList />
+			</li>
+			<li>
+				<patchTag>SandFromGravel</patchTag>
+				<resultDef>Sand</resultDef>
+				<sourceDefs>
+					<li>Gravel</li>
+				</sourceDefs>
+				<WorkToBuild>5000</WorkToBuild>
+				<costList />
+				<resultList />
+			</li>
+		</rules>
+    </TerraformTech.TerrainTerraformRuleSet>
+	
+    <TerraformTech.TerrainTerraformRuleSet ParentName="TerraformTech_TerraformRuleBase">
+        <defName>Terraform_PlaceRoad</defName>
+		<label>Road placing</label>
+        <description>Terraform ground to road.</description>
+		<graphicData>
+            <texPath>Things/Building/Terraform/AddRoad</texPath>
+        </graphicData>
+		<designatorDropdown>Terraform_Road</designatorDropdown>  
+		<researchPrerequisites/> 
+		<rules>
+			<li>
+				<patchTag>PackedDirtFromSoil</patchTag>
+				<resultDef>PackedDirt</resultDef>
+				<sourceDefs>
+					<li>Soil</li>
+					<li>SoilRich</li>
+					<li>MossyTerrain</li>
+				</sourceDefs>
+				<WorkToBuild>15000</WorkToBuild>
+				<costList>
+					<WoodLog>1</WoodLog>
+				</costList>
+				<resultList />
+			</li>
+		</rules>
+    </TerraformTech.TerrainTerraformRuleSet>
+	
+    <TerraformTech.TerrainTerraformRuleSet ParentName="TerraformTech_TerraformRuleBase">
+        <defName>Terraform_SoilFertilize</defName>
+		<label>Soil fertilization</label>
+        <description>Fertilize soil.</description>
+		<graphicData>
+            <texPath>Terrain/Surfaces/Soil</texPath>
+        </graphicData>
+        <researchPrerequisites>
+            <li>MedTimes_Fertilization</li>
+        </researchPrerequisites>
+		<designatorDropdown>Terraform_AddTerrain</designatorDropdown>
+		<rules>
+			<li>
+				<patchTag>RischSoilFromNormalSoil</patchTag>
+				<resultDef>SoilRich</resultDef>
+				<sourceDefs>
+					<li>Soil</li>
+					<li>MossyTerrain</li>
+				</sourceDefs>
+				<WorkToBuild>30000</WorkToBuild>
+				<costList>
+					<Kibble>200</Kibble>
+				</costList>
+				<resultList />
+			</li>
+		</rules>
+    </TerraformTech.TerrainTerraformRuleSet>
+	
+    <TerraformTech.TerrainTerraformRuleSet Name="TerraformTech_TerraformRuleWater" ParentName="TerraformTech_TerraformRuleBase" Abstract="True">
+        <researchPrerequisites>
+            <li>MedTimes_WaterTerraforming</li>
+        </researchPrerequisites>
+    </TerraformTech.TerrainTerraformRuleSet>
+	
+    <TerraformTech.TerrainTerraformRuleSet ParentName="TerraformTech_TerraformRuleWater">
+        <defName>Terraform_BasicWaterRemoval</defName>
+		<label>Water removal</label>
+        <description>Decrease water layer by means of drying.</description>
+		<graphicData>
+            <texPath>Things/Building/Terraform/RemoveWater</texPath>
+        </graphicData>
+		<defaultRuleActionClass>TerraformTech.TerrainRemoveAction</defaultRuleActionClass>
+		<designatorDropdown>Terraform_Water</designatorDropdown>
+		<terrainAffordanceNeeded>Water</terrainAffordanceNeeded>
+		<rules>
+			<li>
+				<patchTag>MudFromShallowWater</patchTag>
+				<resultDef>Mud</resultDef>
+				<sourceDefs>
+					<li>WaterShallow</li>
+				</sourceDefs>
+				<WorkToBuild>15000</WorkToBuild>
+				<costList>
+					<Cloth>20</Cloth>
+					<WoodLog>20</WoodLog>
+				</costList>
+				<resultList/>
+			</li>
+			<li>
+				<patchTag>SandFromWaterOceanShallow</patchTag>
+				<resultDef>Sand</resultDef>
+				<sourceDefs>
+					<li>WaterOceanShallow</li>
+				</sourceDefs>
+				<WorkToBuild>15000</WorkToBuild>
+				<costList>
+					<Cloth>20</Cloth>
+					<WoodLog>20</WoodLog>
+				</costList>
+				<resultList/>
+			</li>
+			<li>
+				<patchTag>WaterShallowFromWaterDeep</patchTag>
+				<resultDef>WaterShallow</resultDef>
+				<sourceDefs>
+					<li>WaterDeep</li>
+				</sourceDefs>
+				<WorkToBuild>15000</WorkToBuild>
+				<costList>
+					<Cloth>20</Cloth>
+					<WoodLog>20</WoodLog>
+				</costList>
+				<resultList/>
+			</li>
+			<li>
+				<patchTag>WaterOceanShallowFromWaterOceanDeep</patchTag>
+				<WorkToBuild>15000</WorkToBuild>
+				<sourceDefs>
+					<li>WaterOceanDeep</li>
+				</sourceDefs>
+				<resultDef>WaterOceanShallow</resultDef>
+				<costList>
+					<Cloth>20</Cloth>
+					<WoodLog>20</WoodLog>
+				</costList>
+				<resultList/>
+			</li>
+		</rules>
+    </TerraformTech.TerrainTerraformRuleSet>
+	
+    <TerraformTech.TerrainTerraformRuleSet ParentName="TerraformTech_TerraformRuleWater">
+        <defName>Terraform_BasicWaterPlace</defName>
+		<label>Water placing</label>
+        <description>Use a bunch of workload to make water stay in certain place.</description>
+		<graphicData>
+            <texPath>Things/Building/Terraform/AddWater</texPath>
+        </graphicData>
+		<designatorDropdown>Terraform_Water</designatorDropdown>
+		<rules>
+			<li>
+				<patchTag>MudFromNormalSoil</patchTag>
+				<resultDef>Mud</resultDef>
+				<sourceDefs>
+					<li>Soil</li>
+					<li>PackedDirt</li>
+					<li>SoilRich</li>
+					<li>MossyTerrain</li>
+					<li>MarshyTerrain</li>
+				</sourceDefs>
+				<WorkToBuild>25000</WorkToBuild>
+				<costList>
+					<WoodLog>10</WoodLog>
+				</costList>
+				<resultList/>
+			</li>
+			<li>
+				<patchTag>ShallowWaterFromMud</patchTag>
+				<resultDef>WaterShallow</resultDef>
+				<sourceDefs>
+					<li>Mud</li>
+				</sourceDefs>
+				<WorkToBuild>25000</WorkToBuild>
+				<costList>
+					<WoodLog>10</WoodLog>
+				</costList>
+				<resultList/>
+			</li>
+			<li>
+				<patchTag>WaterOceanShallowFromSand</patchTag>
+				<resultDef>WaterOceanShallow</resultDef>
+				<sourceDefs>
+					<li>Sand</li>
+				</sourceDefs>
+				<WorkToBuild>25000</WorkToBuild>
+				<costList/>
+				<resultList/>
+			</li>
+			<li>
+				<patchTag>WaterDeepFromWaterShallow</patchTag>
+				<resultDef>WaterDeep</resultDef>
+				<sourceDefs>
+					<li>WaterShallow</li>
+				</sourceDefs>
+				<WorkToBuild>25000</WorkToBuild>
+				<costList>
+					<WoodLog>10</WoodLog>
+				</costList>
+				<resultList/>
+			</li>
+			<li>
+				<patchTag>WaterOceanDeepFromWaterOceanShallow</patchTag>
+				<resultDef>WaterOceanDeep</resultDef>
+				<sourceDefs>
+					<li>WaterOceanShallow</li>
+				</sourceDefs>
+				<WorkToBuild>25000</WorkToBuild>
+				<costList>
+					<WoodLog>10</WoodLog>
+				</costList>
+				<resultList/>
+			</li>
+		</rules>
+    </TerraformTech.TerrainTerraformRuleSet>
+</Defs>

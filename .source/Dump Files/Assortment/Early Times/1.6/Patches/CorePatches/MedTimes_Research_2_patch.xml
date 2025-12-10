@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	
+	<Operation Class="PatchOperationSequence">
+		<operations>
+		  <li Class="PatchOperationConditional">
+			<xpath>/Defs/ResearchProjectDef[defName="Stonecutting"]/prerequisites</xpath>
+			<match Class="PatchOperationReplace">
+				<xpath>/Defs/ResearchProjectDef[defName="Stonecutting"]/prerequisites</xpath>
+				<value>
+					<prerequisites>
+						<li>MedTimes_Toolworking</li>
+						<li>TS_PrimitiveStonecutting</li>
+					</prerequisites>
+				</value>
+			</match>
+			<nomatch Class="PatchOperationAdd">
+				<xpath>/Defs/ResearchProjectDef[defName="Stonecutting"]</xpath>
+				<value>
+					<prerequisites>
+						<li>MedTimes_Toolworking</li>
+						<li>TS_PrimitiveStonecutting</li>
+					</prerequisites>
+				</value>
+			</nomatch>
+		  </li>
+		  <li Class="PatchOperationReplace">
+			<xpath>*/ResearchProjectDef[defName="Stonecutting"]/description</xpath>
+			<value>
+			  <description>Refine stones further to build better roads.
+	"Roads are long; make them short with a good company!"
+	- Mehmet Murat ildan</description>
+			</value>
+		  </li>
+		</operations>
+	</Operation>
+  
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[@Name="SculptureBase"]/recipeMaker</xpath>
+		<value>
+			<researchPrerequisites>
+				<li>MedTimes_Art</li>
+			</researchPrerequisites>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName="SculptureSmall"]</xpath>
+        <value>
+			<recipeMaker>
+				<researchPrerequisites>
+					<li>MedTimes_BasicArt</li>
+				</researchPrerequisites>
+				<recipeUsers>
+					<li>MedTimes_ArtisanStation</li>
+					<li>TableSculpting</li>
+				</recipeUsers>
+			</recipeMaker>
+        </value>
+	</Operation>  
+
+	
+	<Operation Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName="Column"]</xpath>
+        <value>
+			<researchPrerequisites>
+			  <li>TS_Columns</li>
+			</researchPrerequisites>
+        </value>
+	</Operation>  
+</Patch>
