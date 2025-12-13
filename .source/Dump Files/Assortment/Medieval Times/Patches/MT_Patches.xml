@@ -1,0 +1,1894 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+<!-- Template 
+
+<Operation Class="PatchOperationConditional">
+  <xpath>Defs/WorldObjectDef[defName="Caravan"]/comps</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>Defs/WorldObjectDef[defName="Caravan"]</xpath>
+    <value>
+      <comps>
+        <li>
+          <compClass>MoreFactionInteraction.WorldObjectComp_CaravanComp</compClass>
+        </li>
+      </comps>
+    </value>
+  </nomatch>
+  <match Class="PatchOperationAdd">
+    <xpath>Defs/WorldObjectDef[defName="Caravan"]/comps</xpath>
+    <value>
+      <li>
+        <compClass>MoreFactionInteraction.WorldObjectComp_CaravanComp</compClass>
+      </li>
+    </value>
+  </match>
+</Operation>-->
+
+<!-- ========== Tech Tree Patches ========== -->
+<!-- Advanced Smithing Required for Electricity -->
+
+<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ResearchProjectDef[defName = "Electricity"]</xpath>
+		<value>
+			<prerequisites>
+				<li>MedTimes_AdvancedMedievalSmithing</li>  
+			</prerequisites>				
+		</value>
+	</Operation>
+
+<!-- ========== Stone Chunks as ammo ========== -->
+<!-- Making stone chunks into an ammo -->
+
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[@Name = "ChunkRockBase"]/projectileWhenLoaded</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[@Name = "ChunkRockBase"]</xpath>
+    <value>
+      <projectileWhenLoaded />
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[@Name = "ChunkRockBase"]/projectileWhenLoaded</xpath>
+		<value>
+			<projectileWhenLoaded>MedTimes_Round_RockChunk</projectileWhenLoaded>	
+		</value>
+	</Operation>	
+	
+	<Operation Class="PatchOperationAdd">
+	    <xpath>/Defs/ThingDef[defName = "Artillery_Mortar"]/building/defaultStorageSettings/filter/disallowedThingDefs</xpath>
+	    <value>	
+            <li>ChunkSandstone</li>
+            <li>ChunkGranite</li>
+            <li>ChunkLimestone</li>
+            <li>ChunkSlate</li>
+            <li>ChunkMarble</li>
+	    </value>
+	</Operation>
+
+<!-- ========== Coal Intergration ========== -->		
+<!-- Coal to Fueled Smithy -->	
+	<Operation Class="PatchOperationAdd">
+	    <xpath>/Defs/ThingDef[defName = "FueledSmithy"]/comps/li[@Class = "CompProperties_Refuelable"]/fuelFilter/thingDefs</xpath>
+	    <value>
+             <li>MedTimes_Resource_Coal</li>
+	    </value>
+	</Operation>	
+
+<!-- Coal to Fueled Stove -->	
+	<Operation Class="PatchOperationAdd">
+	    <xpath>/Defs/ThingDef[defName = "FueledStove"]/comps/li[@Class = "CompProperties_Refuelable"]/fuelFilter/thingDefs</xpath>
+	    <value>
+             <li>MedTimes_Resource_Coal</li>
+	    </value>
+	</Operation>	
+	
+	
+<!-- ========== Super Muffalo ========== -->	
+<!-- Set Muffalo Milk to a usable rating -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Cow"]/comps/li[@Class = "CompProperties_Milkable"]/milkIntervalDays</xpath>
+		<value>
+        <milkIntervalDays>1</milkIntervalDays>	
+		</value>
+	</Operation>
+
+<!-- ========== Minifiable Objects ========== -->
+<!-- Sculpting Table -->
+
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "TableSculpting"]/minifiedDef</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "TableSculpting"]</xpath>
+    <value>
+      <minifiedDef>MinifiedThing</minifiedDef>
+    </value>
+  </nomatch>  
+</Operation>
+
+<!-- Butcher Table -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "TableButcher"]/minifiedDef</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "TableButcher"]</xpath>
+    <value>
+      <minifiedDef>MinifiedThing</minifiedDef>
+    </value>
+  </nomatch>  
+</Operation>
+
+<!-- Hand Tailoring Bench -->	
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "HandTailoringBench"]/minifiedDef</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "HandTailoringBench"]</xpath>
+    <value>
+      <minifiedDef>MinifiedThing</minifiedDef>
+    </value>
+  </nomatch>  
+</Operation>
+
+<!-- Electric Tailoring Bench -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "ElectricTailoringBench"]/minifiedDef</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "ElectricTailoringBench"]</xpath>
+    <value>
+      <minifiedDef>MinifiedThing</minifiedDef>
+    </value>
+  </nomatch>  
+</Operation>
+
+<!-- Wood Fueled Generator -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "WoodFiredGenerator"]/thingCategories</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "WoodFiredGenerator"]</xpath>
+    <value>
+      <thingCategories><li>BuildingsMisc</li></thingCategories>
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "WoodFiredGenerator"]/statBases/Mass</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "WoodFiredGenerator"]/statBases</xpath>
+    <value>
+      <Mass>100</Mass>
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "WoodFiredGenerator"]/minifiedDef</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "WoodFiredGenerator"]</xpath>
+    <value>
+      <minifiedDef>MinifiedThing</minifiedDef>
+    </value>
+  </nomatch>  
+</Operation>
+
+<!-- Chem Fueled Generator -->	
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "ChemfuelPoweredGenerator"]/thingCategories</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "ChemfuelPoweredGenerator"]</xpath>
+    <value>
+      <thingCategories><li>BuildingsMisc</li></thingCategories>
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "ChemfuelPoweredGenerator"]/statBases/Mass</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "ChemfuelPoweredGenerator"]/statBases</xpath>
+    <value>
+      <Mass>100</Mass>
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "ChemfuelPoweredGenerator"]/minifiedDef</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "ChemfuelPoweredGenerator"]</xpath>
+    <value>
+      <minifiedDef>MinifiedThing</minifiedDef>
+    </value>
+  </nomatch>  
+</Operation>
+
+<!-- Wood-fueled Smithy -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "FueledSmithy"]/minifiedDef</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "FueledSmithy"]</xpath>
+    <value>
+      <minifiedDef>MinifiedThing</minifiedDef>
+    </value>
+  </nomatch>  
+</Operation>
+
+<!-- Electric Smithy -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "ElectricSmithy"]/minifiedDef</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "ElectricSmithy"]</xpath>
+    <value>
+      <minifiedDef>MinifiedThing</minifiedDef>
+    </value>
+  </nomatch>  
+</Operation>
+
+<!-- Machining Table -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "TableMachining"]/minifiedDef</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "TableMachining"]</xpath>
+    <value>
+      <minifiedDef>MinifiedThing</minifiedDef>
+    </value>
+  </nomatch>  
+</Operation>
+
+<!-- Electric Stove -->	
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "ElectricStove"]/minifiedDef</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "ElectricStove"]</xpath>
+    <value>
+      <minifiedDef>MinifiedThing</minifiedDef>
+    </value>
+  </nomatch>  
+</Operation>
+
+<!-- Fueled Stove -->	
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "FueledStove"]/minifiedDef</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "FueledStove"]</xpath>
+    <value>
+      <minifiedDef>MinifiedThing</minifiedDef>
+    </value>
+  </nomatch>  
+</Operation>
+
+<!-- Stonecutter's Table -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "TableStonecutter"]/minifiedDef</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "TableStonecutter"]</xpath>
+    <value>
+      <minifiedDef>MinifiedThing</minifiedDef>
+    </value>
+  </nomatch>  
+</Operation>
+
+<!-- Brewery -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "Brewery"]/minifiedDef</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "Brewery"]</xpath>
+    <value>
+      <minifiedDef>MinifiedThing</minifiedDef>
+    </value>
+  </nomatch>  
+</Operation>
+
+<!-- Drug Lab -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "DrugLab"]/minifiedDef</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "DrugLab"]</xpath>
+    <value>
+      <minifiedDef>MinifiedThing</minifiedDef>
+    </value>
+  </nomatch>  
+</Operation>
+
+<!-- Electric Smelter -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "ElectricSmelter"]/minifiedDef</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "ElectricSmelter"]</xpath>
+    <value>
+      <minifiedDef>MinifiedThing</minifiedDef>
+    </value>
+  </nomatch>  
+</Operation>
+
+<!-- Biofuel Refinery -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "BiofuelRefinery"]/minifiedDef</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "BiofuelRefinery"]</xpath>
+    <value>
+      <minifiedDef>MinifiedThing</minifiedDef>
+    </value>
+  </nomatch>  
+</Operation>
+
+<!-- Fabrication Bench -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "FabricationBench"]/minifiedDef</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "FabricationBench"]</xpath>
+    <value>
+      <minifiedDef>MinifiedThing</minifiedDef>
+    </value>
+  </nomatch>  
+</Operation>
+
+
+<!-- Simple Research Bench -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "SimpleResearchBench"]/minifiedDef</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "SimpleResearchBench"]</xpath>
+    <value>
+      <minifiedDef>MinifiedThing</minifiedDef>
+    </value>
+  </nomatch>  
+</Operation>
+
+<!-- HiTech Research Bench -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "HiTechResearchBench"]/minifiedDef</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "HiTechResearchBench"]</xpath>
+    <value>
+      <minifiedDef>MinifiedThing</minifiedDef>
+    </value>
+  </nomatch>  
+</Operation>
+
+<!-- Electric Crematorium -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "ElectricCrematorium"]/thingCategories</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "ElectricCrematorium"]</xpath>
+    <value>
+      <thingCategories><li>BuildingsMisc</li></thingCategories>
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "ElectricCrematorium"]/statBases/Mass</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "ElectricCrematorium"]/statBases</xpath>
+    <value>
+      <Mass>300</Mass>
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "ElectricCrematorium"]/minifiedDef</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "ElectricCrematorium"]</xpath>
+    <value>
+      <minifiedDef>MinifiedThing</minifiedDef>
+    </value>
+  </nomatch>  
+</Operation>
+
+<!-- Hydroponics Basin -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "HydroponicsBasin"]/thingCategories</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "HydroponicsBasin"]</xpath>
+    <value>
+      <thingCategories><li>BuildingsMisc</li></thingCategories>
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "HydroponicsBasin"]/statBases/Mass</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "HydroponicsBasin"]/statBases</xpath>
+    <value>
+      <Mass>100</Mass>
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "HydroponicsBasin"]/minifiedDef</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "HydroponicsBasin"]</xpath>
+    <value>
+      <minifiedDef>MinifiedThing</minifiedDef>
+    </value>
+  </nomatch>  
+</Operation>
+
+<!-- Deep Drill -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "DeepDrill"]/minifiedDef</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "DeepDrill"]</xpath>
+    <value>
+      <minifiedDef>MinifiedThing</minifiedDef>
+    </value>
+  </nomatch>  
+</Operation>
+
+<!-- Nutrient Paste Dispenser -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "NutrientPasteDispenser"]/thingCategories</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "NutrientPasteDispenser"]</xpath>
+    <value>
+      <thingCategories><li>BuildingsMisc</li></thingCategories>
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "NutrientPasteDispenser"]/statBases/Mass</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "NutrientPasteDispenser"]/statBases</xpath>
+    <value>
+      <Mass>200</Mass>
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "NutrientPasteDispenser"]/minifiedDef</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "NutrientPasteDispenser"]</xpath>
+    <value>
+      <minifiedDef>MinifiedThing</minifiedDef>
+    </value>
+  </nomatch>  
+</Operation>
+
+<!-- Hopper -->	
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "Hopper"]/thingCategories</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "Hopper"]</xpath>
+    <value>
+      <thingCategories><li>BuildingsMisc</li></thingCategories>
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "Hopper"]/statBases/Mass</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "Hopper"]/statBases</xpath>
+    <value>
+      <Mass>35</Mass>
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "Hopper"]/minifiedDef</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "Hopper"]</xpath>
+    <value>
+      <minifiedDef>MinifiedThing</minifiedDef>
+    </value>
+  </nomatch>  
+</Operation>
+
+<!-- Passive Cooler -->	
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "PassiveCooler"]/thingCategories</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "PassiveCooler"]</xpath>
+    <value>
+      <thingCategories><li>BuildingsMisc</li></thingCategories>
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "PassiveCooler"]/statBases/Mass</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "PassiveCooler"]/statBases</xpath>
+    <value>
+      <Mass>45</Mass>
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "PassiveCooler"]/minifiedDef</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "PassiveCooler"]</xpath>
+    <value>
+      <minifiedDef>MinifiedThing</minifiedDef>
+    </value>
+  </nomatch>  
+</Operation>
+
+<!-- Cooler -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "Cooler"]/thingCategories</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "Cooler"]</xpath>
+    <value>
+      <thingCategories><li>BuildingsMisc</li></thingCategories>
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "Cooler"]/statBases/Mass</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "Cooler"]/statBases</xpath>
+    <value>
+      <Mass>150</Mass>
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "Cooler"]/minifiedDef</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "Cooler"]</xpath>
+    <value>
+      <minifiedDef>MinifiedThing</minifiedDef>
+    </value>
+  </nomatch>  
+</Operation>
+
+<!-- Vent -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "Vent"]/thingCategories</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "Vent"]</xpath>
+    <value>
+      <thingCategories><li>BuildingsMisc</li></thingCategories>
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "Vent"]/statBases/Mass</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "Vent"]/statBases</xpath>
+    <value>
+      <Mass>50</Mass>
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "Vent"]/minifiedDef</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "Vent"]</xpath>
+    <value>
+      <minifiedDef>MinifiedThing</minifiedDef>
+    </value>
+  </nomatch>  
+</Operation>
+
+<!-- Spike Trap -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "TrapSpike"]/minifiedDef</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "TrapSpike"]</xpath>
+    <value>
+      <minifiedDef>MinifiedThing</minifiedDef>
+    </value>
+  </nomatch>  
+</Operation>
+
+<!-- ========== Core Objects Balances ========== -->
+<!-- Light-bulb Power Consumption -->	
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "StandingLamp"]/comps/li[@Class = "CompProperties_Power"]/basePowerConsumption</xpath>
+		<value>
+        <basePowerConsumption>35</basePowerConsumption>
+		</value>
+	</Operation>
+	
+<!-- Sunlamp Power Consumption -->	
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "SunLamp"]/comps/li[@Class = "CompProperties_Power"]/basePowerConsumption</xpath>
+		<value>
+        <basePowerConsumption>1000</basePowerConsumption>
+		</value>
+	</Operation>
+
+<!-- ========== Core Armor Balances ========== -->
+<!-- Buff Plate Armor Movement Speed -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_PlateArmor"]/equippedStatOffsets/MoveSpeed</xpath>
+		<value>
+			<MoveSpeed>-0.2</MoveSpeed>
+		</value>
+	</Operation>	
+
+<!-- Buff Power Helmet Blunt Defense -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[@Name = "ApparelArmorHelmetPowerBase"]/statBases/ArmorRating_Blunt</xpath>
+		<value>
+			<ArmorRating_Blunt>0.52</ArmorRating_Blunt>
+		</value>
+	</Operation>
+	
+<!-- Nerf Power Armor Sharp Defense -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[@Name = "ApparelArmorPowerBase"]/statBases/ArmorRating_Sharp</xpath>
+		<value>
+			<ArmorRating_Sharp>1.0</ArmorRating_Sharp>
+		</value>
+	</Operation>
+	
+<!-- Buff Power Armor Blunt Defense -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[@Name = "ApparelArmorPowerBase"]/statBases/ArmorRating_Blunt</xpath>
+		<value>
+			<ArmorRating_Blunt>0.52</ArmorRating_Blunt>
+		</value>
+	</Operation>	
+
+<!-- ========== Core Neolithic Weapon Ranges ========== -->
+<!-- Change Short Bow Range -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Bow_Short"]/verbs/li/range</xpath>
+		<value>
+			<range>15</range>	
+		</value>
+	</Operation>
+
+<!-- Change Pila Range -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Pila"]/verbs/li/range</xpath>
+		<value>
+			<range>6</range>	
+		</value>
+	</Operation>
+
+<!-- Change Great Bow Range -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Bow_Recurve"]/verbs/li/range</xpath>
+		<value>
+			<range>16</range>	
+		</value>
+	</Operation>		
+	
+<!-- Change Great Bow Range -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Bow_Great"]/verbs/li/range</xpath>
+		<value>
+			<range>20</range>	
+		</value>
+	</Operation>	
+	
+	
+<!-- ========== Core Item Materials Balance ========== -->
+<!-- Steel -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Steel"]/stuffProps/statFactors/MaxHitPoints</xpath>
+		<value>
+        <MaxHitPoints>2</MaxHitPoints>	
+		</value>
+	</Operation>
+
+	
+<!-- ========== Core Item Graphics ========== -->
+<!-- Change Basic Shirt Icon -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_BasicShirt"]/graphicData/texPath</xpath>
+		<value>
+			<texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Clothing/TeeShirt/TeeShirt</texPath>	
+		</value>
+	</Operation>
+
+<!-- Change Basic Shirt Worn Graphic -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_BasicShirt"]/apparel/wornGraphicPath</xpath>
+		<value>
+			<wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Clothing/TeeShirt/TeeShirt</wornGraphicPath>
+		</value>
+	</Operation>
+
+<!-- Change Basic Pants Worn Graphic -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "Apparel_Pants"]/apparel/wornGraphicPath</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "Apparel_Pants"]/apparel</xpath>
+    <value>
+      <wornGraphicPath />
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_Pants"]/apparel/wornGraphicPath</xpath>
+		<value>
+			<wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Clothing/Pants/Pants</wornGraphicPath>
+		</value>
+	</Operation>
+
+<!-- Change Flak Pants Worn Graphic -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "Apparel_FlakPants"]/apparel/wornGraphicPath</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "Apparel_FlakPants"]/apparel</xpath>
+    <value>
+      <wornGraphicPath />
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_FlakPants"]/apparel/wornGraphicPath</xpath>
+		<value>
+			<wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Clothing/Pants/Pants</wornGraphicPath>
+		</value>
+	</Operation>
+
+<!-- ========== Core Item Category Changes ========== -->
+<!-- Change Sheild Belt Categories -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_ShieldBelt"]/thingCategories</xpath>
+		<value>
+			<thingCategories>
+				<li>Accessories</li>
+			</thingCategories>
+		</value>
+	</Operation>
+	
+<!-- Change Smokepop Belt Categories -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_SmokepopBelt"]/thingCategories</xpath>
+		<value>
+			<thingCategories>
+				<li>Accessories</li>
+			</thingCategories>
+		</value>
+	</Operation>	
+	
+<!-- Change Simple Helmet Categories -->
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName = "Apparel_SimpleHelmet"]</xpath>
+		<value>
+			<thingCategories>
+				<li>HeadArmour</li>
+			</thingCategories>
+		</value>
+	</Operation>
+
+<!-- Change Advanced Helmet Categories -->
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName = "Apparel_AdvancedHelmet"]</xpath>
+		<value>
+			<thingCategories>
+				<li>HeadArmour</li>
+			</thingCategories>
+		</value>
+	</Operation>
+
+<!-- Change Advanced Helmet Categories -->
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName = "Apparel_PowerArmorHelmet"]</xpath>
+		<value>
+			<thingCategories>
+				<li>HeadArmour</li>
+			</thingCategories>
+		</value>
+	</Operation>	
+	
+<!-- Change Tribalwear Categories -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_TribalA"]/thingCategories</xpath>
+		<value>
+			<thingCategories>
+				<li>Bodygear</li>
+			</thingCategories>
+		</value>
+	</Operation>	
+	
+<!-- Change Parka Categories -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_Parka"]/thingCategories</xpath>
+		<value>
+			<thingCategories>
+				<li>Outergear</li>
+			</thingCategories>
+		</value>
+	</Operation>		
+	
+<!-- Change Pants Categories -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_Pants"]/thingCategories</xpath>
+		<value>
+			<thingCategories>
+				<li>Bodygear</li>
+			</thingCategories>
+		</value>
+	</Operation>	
+
+<!-- Change T-shirt Categories -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_BasicShirt"]/thingCategories</xpath>
+		<value>
+			<thingCategories>
+				<li>Bodygear</li>
+			</thingCategories>
+		</value>
+	</Operation>
+
+<!-- Change button-down shirt Categories -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_CollarShirt"]/thingCategories</xpath>
+		<value>
+			<thingCategories>
+				<li>Bodygear</li>
+			</thingCategories>
+		</value>
+	</Operation>	
+	
+<!-- Change duster Categories -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_Duster"]/thingCategories</xpath>
+		<value>
+			<thingCategories>
+				<li>Outergear</li>
+			</thingCategories>
+		</value>
+	</Operation>	
+	
+<!-- Change jacket Categories -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_Jacket"]/thingCategories</xpath>
+		<value>
+			<thingCategories>
+				<li>Outergear</li>
+			</thingCategories>
+		</value>
+	</Operation>
+
+<!-- Change plate armor Categories -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_PlateArmor"]/thingCategories</xpath>
+		<value>
+			<thingCategories>
+				<li>BodyArmour</li>
+			</thingCategories>
+		</value>
+	</Operation>
+	
+<!-- Change Flak Vest armor Categories -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_FlakVest"]/thingCategories</xpath>
+		<value>
+			<thingCategories>
+				<li>BodyArmour</li>
+			</thingCategories>
+		</value>
+	</Operation>
+	
+<!-- Change Flak Jacket armor Categories -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_FlakJacket"]/thingCategories</xpath>
+		<value>
+			<thingCategories>
+				<li>BodyArmour</li>
+			</thingCategories>
+		</value>
+	</Operation>	
+	
+<!-- Change Flak Pants armor Categories -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_FlakPants"]/thingCategories</xpath>
+		<value>
+			<thingCategories>
+				<li>BodyArmour</li>
+			</thingCategories>
+		</value>
+	</Operation>		
+
+<!-- Change power armor Categories -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[@Name = "ApparelArmorPowerBase"]/thingCategories</xpath>
+		<value>
+			<thingCategories>
+				<li>BodyArmour</li>
+			</thingCategories>
+		</value>
+	</Operation>	
+
+<!-- ========== Core Armour to Non-Deadmans ========== -->
+<!-- Change Plate Armor to Non-Deadmans -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "Apparel_PlateArmor"]/apparel/careIfWornByCorpse</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "Apparel_PlateArmor"]/apparel</xpath>
+    <value>
+      <careIfWornByCorpse />
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_PlateArmor"]/apparel/careIfWornByCorpse</xpath>
+		<value>
+			<careIfWornByCorpse>false</careIfWornByCorpse>	
+		</value>
+	</Operation>
+
+<!-- Change Flak Vest to Non-Deadmans -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "Apparel_FlakVest"]/apparel/careIfWornByCorpse</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "Apparel_FlakVest"]/apparel</xpath>
+    <value>
+      <careIfWornByCorpse />
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_FlakVest"]/apparel/careIfWornByCorpse</xpath>
+		<value>
+			<careIfWornByCorpse>false</careIfWornByCorpse>	
+		</value>
+	</Operation>
+
+<!-- Change Flak Jacket to Non-Deadmans -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "Apparel_FlakJacket"]/apparel/careIfWornByCorpse</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "Apparel_FlakJacket"]/apparel</xpath>
+    <value>
+      <careIfWornByCorpse />
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_FlakJacket"]/apparel/careIfWornByCorpse</xpath>
+		<value>
+			<careIfWornByCorpse>false</careIfWornByCorpse>	
+		</value>
+	</Operation>
+
+<!-- Change Flak Pants to Non-Deadmans -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "Apparel_FlakPants"]/apparel/careIfWornByCorpse</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "Apparel_FlakPants"]/apparel</xpath>
+    <value>
+      <careIfWornByCorpse />
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_FlakPants"]/apparel/careIfWornByCorpse</xpath>
+		<value>
+			<careIfWornByCorpse>false</careIfWornByCorpse>	
+		</value>
+	</Operation>
+
+<!-- Change Power Armor to Non-Deadmans -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[@Name = "ApparelArmorPowerBase"]/apparel/careIfWornByCorpse</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[@Name = "ApparelArmorPowerBase"]/apparel</xpath>
+    <value>
+      <careIfWornByCorpse />
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[@Name = "ApparelArmorPowerBase"]/apparel/careIfWornByCorpse</xpath>
+		<value>
+			<careIfWornByCorpse>false</careIfWornByCorpse>	
+		</value>
+	</Operation>
+
+<!-- Change Simple Helmet to Non-Deadmans -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "Apparel_SimpleHelmet"]/apparel/careIfWornByCorpse</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "Apparel_SimpleHelmet"]/apparel</xpath>
+    <value>
+      <careIfWornByCorpse />
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_SimpleHelmet"]/apparel/careIfWornByCorpse</xpath>
+		<value>
+			<careIfWornByCorpse>false</careIfWornByCorpse>	
+		</value>
+	</Operation>
+
+<!-- Change Advanced Helmet to Non-Deadmans -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[defName = "Apparel_AdvancedHelmet"]/apparel/careIfWornByCorpse</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "Apparel_AdvancedHelmet"]/apparel</xpath>
+    <value>
+      <careIfWornByCorpse />
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Apparel_AdvancedHelmet"]/apparel/careIfWornByCorpse</xpath>
+		<value>
+			<careIfWornByCorpse>false</careIfWornByCorpse>	
+		</value>
+	</Operation>
+
+<!-- Change Power Armor Helmet to Non-Deadmans -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/ThingDef[@Name = "ApparelArmorHelmetPowerBase"]/apparel/careIfWornByCorpse</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[@Name = "ApparelArmorHelmetPowerBase"]/apparel</xpath>
+    <value>
+      <careIfWornByCorpse />
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[@Name = "ApparelArmorHelmetPowerBase"]/apparel/careIfWornByCorpse</xpath>
+		<value>
+			<careIfWornByCorpse>false</careIfWornByCorpse>	
+		</value>
+	</Operation>
+
+<!-- ========== Core Pawns add Hand/Foot Gear ========== -->
+<!-- === Neolithic Tribals === -->
+<!-- Add Hand/Foot to Tribals -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/PawnKindDef[@Name = "TribalBase"]/apparelRequired</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/PawnKindDef[@Name = "TribalBase"]</xpath>
+    <value>
+      <apparelRequired />
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/PawnKindDef[@Name = "TribalBase"]/apparelRequired</xpath>
+		<value>
+			<li>MedTimes_Gloves_Tribal</li>	
+			<li>MedTimes_Boots_Tribal</li>
+		</value>
+	</Operation>
+
+<!-- === Pirates === -->
+<!-- Add Hand/Foot to Pirates -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/PawnKindDef[@Name = "PirateBase"]/apparelRequired</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/PawnKindDef[@Name = "PirateBase"]</xpath>
+    <value>
+      <apparelRequired />
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/PawnKindDef[@Name = "PirateBase"]/apparelRequired</xpath>
+		<value>
+			<li>MedTimes_Gloves_Tailored</li>	
+			<li>MedTimes_Boots_Tailored</li>
+			<li>MedTimes_Socks_Tailored</li>
+		</value>
+	</Operation>
+
+<!-- === Mercenaries === -->
+<!-- Add Hand/Foot to Mercenaries -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/PawnKindDef[@Name = "MercenaryBase"]/apparelRequired</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/PawnKindDef[@Name = "MercenaryBase"]</xpath>
+    <value>
+      <apparelRequired />
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/PawnKindDef[@Name = "MercenaryBase"]/apparelRequired</xpath>
+		<value>
+			<li>MedTimes_Gloves_Tailored</li>	
+			<li>MedTimes_Boots_Tailored</li>
+			<li>MedTimes_Socks_Tailored</li>
+		</value>
+	</Operation>
+
+<!-- === Outlanders === -->
+<!-- Add Hand/Foot to Outlanders -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/PawnKindDef[defName = "Villager" or defName = "Town_Guard" or defName = "Town_Trader" or defName = "Town_Councilman"]/apparelRequired</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/PawnKindDef[defName = "Villager" or defName = "Town_Guard" or defName = "Town_Trader" or defName = "Town_Councilman"]</xpath>
+    <value>
+      <apparelRequired />
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/PawnKindDef[defName = "Villager" or defName = "Town_Guard" or defName = "Town_Trader" or defName = "Town_Councilman"]/apparelRequired</xpath>
+		<value>
+			<li>MedTimes_Gloves_Tailored</li>	
+			<li>MedTimes_Boots_Tailored</li>
+			<li>MedTimes_Socks_Tailored</li>
+		</value>
+	</Operation>
+
+<!-- === Spacer === -->
+<!-- Add Hand/Foot to Space Refugee -->	
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/PawnKindDef[defName = "SpaceRefugee"]/apparelRequired</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/PawnKindDef[defName = "SpaceRefugee"]</xpath>
+    <value>
+      <apparelRequired />
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/PawnKindDef[defName = "SpaceRefugee"]/apparelRequired</xpath>
+		<value>
+			<li>MedTimes_Gloves_Tailored</li>	
+			<li>MedTimes_Boots_Tailored</li>
+			<li>MedTimes_Socks_Tailored</li>
+		</value>
+	</Operation>
+
+<!-- Add Gear to Space Soldier -->
+<Operation Class="PatchOperationConditional">
+  <xpath>/Defs/PawnKindDef[defName = "AncientSoldier"]/apparelRequired</xpath>
+  <nomatch Class="PatchOperationAdd">
+    <xpath>/Defs/PawnKindDef[defName = "AncientSoldier"]</xpath>
+    <value>
+      <apparelRequired />
+    </value>
+  </nomatch>  
+</Operation>
+
+<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/PawnKindDef[defName = "AncientSoldier"]/apparelRequired</xpath>
+		<value>
+			<li>MedTimes_Helm_Combat_Art</li>	
+			<li>MedTimes_BodyArmour_Combat_Art</li>	
+			<li>MedTimes_Gloves_Combat_Art</li>
+			<li>MedTimes_Boots_Combat_Art</li>			
+			<li>MedTimes_Socks_Techno_Art</li>
+		</value>
+	</Operation>
+
+<!-- ========== Core Trader Kind Additions ========== -->
+<!-- === Neolithic === -->
+<!-- Adding Goods to Neolithic Base -->
+	<Operation Class="PatchOperationAdd">
+	    <xpath>/Defs/TraderKindDef[defName = "Base_Neolithic_Standard"]/stockGenerators</xpath>
+	    <value>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>MedTimes_Resource_IceBlocks</thingDef>
+				<price>Expensive</price>
+			</li>		
+			<li Class="StockGenerator_Category">
+				<categoryDef>TradeGoods</categoryDef>
+				<price>Expensive</price>									
+			</li>				
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Gear</tradeTag>
+				<price>Expensive</price>					
+			</li>
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_NanGear</tradeTag>
+				<price>Expensive</price>
+				<thingDefCountRange>
+					<min>3</min>
+					<max>5</max>
+				</thingDefCountRange>	
+				<countRange>
+					<min>1</min>
+					<max>1</max>
+				</countRange>				
+			</li>			
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Artifact</tradeTag>
+				<price>Expensive</price>				
+					<thingDefCountRange>
+						<min>1</min>
+						<max>3</max>
+					</thingDefCountRange>
+				<countRange>
+					<min>1</min>
+					<max>1</max>
+				</countRange>						
+			</li>	
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Legendary</tradeTag>
+				<price>Expensive</price>				
+				<countRange>
+					<min>1</min>
+					<max>1</max>
+				</countRange>					
+			</li>			
+	    </value>
+	</Operation>
+
+<!-- Adding Goods to Neolithic Bulk Goods Caravan -->
+	<Operation Class="PatchOperationAdd">
+	    <xpath>/Defs/TraderKindDef[defName = "Caravan_Neolithic_BulkGoods"]/stockGenerators</xpath>
+	    <value>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>MedTimes_Resource_IceBlocks</thingDef>
+				<price>Expensive</price>
+					<countRange>
+						<min>50</min>
+						<max>100</max>
+					</countRange>
+			</li>			
+			<li Class="StockGenerator_Category">
+				<categoryDef>TradeGoods</categoryDef>
+				<price>Expensive</price>								
+			</li>			
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Gear</tradeTag>
+				<price>Expensive</price>				
+			</li>	
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_NanGear</tradeTag>
+				<price>Expensive</price>			
+			</li>			
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Artifact</tradeTag>
+				<price>Expensive</price>				
+			</li>	
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Legendary</tradeTag>
+				<price>Expensive</price>				
+			</li>			
+	    </value>
+	</Operation>	
+
+<!-- Adding Goods to Neolithic Combat Supplier Caravan -->
+	<Operation Class="PatchOperationAdd">
+	    <xpath>/Defs/TraderKindDef[defName = "Caravan_Neolithic_WarMerchant"]/stockGenerators</xpath>
+	    <value>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>MedTimes_Resource_IceBlocks</thingDef>
+				<price>Expensive</price>
+			</li>		
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_TradeGoods</tradeTag>
+				<price>Expensive</price>				
+			</li>					
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Gear</tradeTag>
+				<price>Expensive</price>
+				<thingDefCountRange>
+					<min>1</min>
+					<max>3</max>
+				</thingDefCountRange>
+				<countRange>
+					<min>1</min>
+					<max>1</max>
+				</countRange>					
+			</li>	
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_NanGear</tradeTag>
+				<price>Expensive</price>
+					<thingDefCountRange>
+						<min>1</min>
+						<max>1</max>
+					</thingDefCountRange>					
+			</li>				
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Artifact</tradeTag>
+				<price>Expensive</price>				
+			</li>	
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Legendary</tradeTag>
+				<price>Expensive</price>				
+			</li>		
+	    </value>
+	</Operation>	
+	
+<!-- Adding Goods to Neolithic Slave Trader Caravan -->
+	<Operation Class="PatchOperationAdd">
+	    <xpath>/Defs/TraderKindDef[defName = "Caravan_Neolithic_Slaver"]/stockGenerators</xpath>
+	    <value>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>MedTimes_Resource_IceBlocks</thingDef>
+				<price>Expensive</price>
+			</li>		
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_TradeGoods</tradeTag>
+				<price>Expensive</price>				
+			</li>				
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Gear</tradeTag>
+				<price>Expensive</price>				
+			</li>
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_NanGear</tradeTag>
+				<price>Expensive</price>				
+			</li>				
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Artifact</tradeTag>
+				<price>Expensive</price>				
+			</li>	
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Legendary</tradeTag>
+				<price>Expensive</price>				
+			</li>			
+	    </value>
+	</Operation>
+
+<!-- Adding Goods to Neolithic Shaman Caravan -->
+	<Operation Class="PatchOperationAdd">
+	    <xpath>/Defs/TraderKindDef[defName = "Caravan_Neolithic_ShamanMerchant"]/stockGenerators</xpath>
+	    <value>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>MedTimes_Resource_IceBlocks</thingDef>
+				<price>Normal</price>
+			</li>		
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_TradeGoods</tradeTag>
+				<price>Expensive</price>				
+			</li>					
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Gear</tradeTag>
+				<price>Expensive</price>				
+			</li>
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_NanGear</tradeTag>
+				<price>Expensive</price>				
+					<thingDefCountRange>
+						<min>1</min>
+						<max>3</max>
+					</thingDefCountRange>
+				<countRange>
+					<min>1</min>
+					<max>1</max>
+				</countRange>				
+			</li>				
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Artifact</tradeTag>
+				<price>Expensive</price>				
+					<thingDefCountRange>
+						<min>1</min>
+						<max>1</max>
+					</thingDefCountRange>
+				<countRange>
+					<min>1</min>
+					<max>1</max>
+				</countRange>						
+			</li>	
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Legendary</tradeTag>
+				<price>Expensive</price>				
+			</li>			
+	    </value>
+	</Operation>	
+	
+<!-- Adding Goods to Neolithic Visitor -->
+	<Operation Class="PatchOperationAdd">
+	    <xpath>/Defs/TraderKindDef[defName = "Visitor_Neolithic_Standard"]/stockGenerators</xpath>
+	    <value>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>MedTimes_Resource_IceBlocks</thingDef>
+				<price>Expensive</price>
+			</li>		
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_TradeGoods</tradeTag>
+				<price>Expensive</price>				
+			</li>				
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Gear</tradeTag>
+				<price>Expensive</price>				
+			</li>	
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_NanGear</tradeTag>
+				<price>Expensive</price>				
+			</li>				
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Artifact</tradeTag>
+				<price>Expensive</price>				
+			</li>	
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Legendary</tradeTag>
+				<price>Expensive</price>				
+			</li>			
+	    </value>
+	</Operation>	
+
+	
+<!-- === Outlander === -->	
+<!-- Adding Goods to Outlander Base -->
+	<Operation Class="PatchOperationAdd">
+	    <xpath>/Defs/TraderKindDef[defName = "Base_Outlander_Standard"]/stockGenerators</xpath>
+	    <value>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>MedTimes_Resource_Coal</thingDef>
+					<countRange>
+						<min>150</min>
+						<max>400</max>
+					</countRange>
+			</li>	
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>MedTimes_Resource_IceBlocks</thingDef>
+				<price>Cheap</price>
+					<countRange>
+						<min>50</min>
+						<max>100</max>
+					</countRange>
+			</li>		
+			<li Class="StockGenerator_Category">
+				<categoryDef>TradeGoods</categoryDef>
+				<price>Expensive</price>									
+			</li>				
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Gear</tradeTag>					
+			</li>		
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_NanGear</tradeTag>
+					<thingDefCountRange>
+						<min>5</min>
+						<max>12</max>
+					</thingDefCountRange>
+				<countRange>
+					<min>1</min>
+					<max>1</max>
+				</countRange>					
+			</li>			
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Artifact</tradeTag>
+					<thingDefCountRange>
+						<min>1</min>
+						<max>3</max>
+					</thingDefCountRange>
+				<countRange>
+					<min>1</min>
+					<max>1</max>
+				</countRange>						
+			</li>	
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Legendary</tradeTag>
+					<thingDefCountRange>
+						<min>1</min>
+						<max>2</max>
+					</thingDefCountRange>
+				<countRange>
+					<min>1</min>
+					<max>1</max>
+				</countRange>						
+			</li>	
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>MedTimes_NaniteVial</thingDef>
+				<countRange>
+					<min>3</min>
+					<max>5</max>
+				</countRange>					
+			</li>			
+	    </value>
+	</Operation>	
+
+<!-- Adding Goods to Outlander Bulk Goods Caravan -->
+	<Operation Class="PatchOperationAdd">
+	    <xpath>/Defs/TraderKindDef[defName = "Caravan_Outlander_BulkGoods"]/stockGenerators</xpath>
+	    <value>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>MedTimes_Resource_Coal</thingDef>
+					<countRange>
+						<min>150</min>
+						<max>400</max>
+					</countRange>
+			</li>	
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>MedTimes_Resource_IceBlocks</thingDef>
+					<countRange>
+						<min>50</min>
+						<max>100</max>
+					</countRange>
+			</li>		
+			<li Class="StockGenerator_Category">
+				<categoryDef>TradeGoods</categoryDef>
+				<price>Expensive</price>				
+			</li>			
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Gear</tradeTag>				
+			</li>	
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_NanGear</tradeTag>				
+			</li>			
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Artifact</tradeTag>
+			</li>	
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Legendary</tradeTag>
+			</li>			
+	    </value>
+	</Operation>
+	
+<!-- Adding Goods to Outlander Combat Supplier Caravan -->
+	<Operation Class="PatchOperationAdd">
+	    <xpath>/Defs/TraderKindDef[defName = "Caravan_Outlander_CombatSupplier"]/stockGenerators</xpath>
+	    <value>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>MedTimes_Resource_Coal</thingDef>
+			</li>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>MedTimes_Resource_IceBlocks</thingDef>
+			</li>			
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_TradeGoods</tradeTag>
+				<price>Expensive</price>				
+			</li>				
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Gear</tradeTag>
+					<thingDefCountRange>
+						<min>4</min>
+						<max>8</max>
+					</thingDefCountRange>	
+				<countRange>
+					<min>1</min>
+					<max>1</max>
+				</countRange>						
+			</li>
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_NanGear</tradeTag>
+					<thingDefCountRange>
+						<min>3</min>
+						<max>5</max>
+					</thingDefCountRange>
+				<countRange>
+					<min>1</min>
+					<max>1</max>
+				</countRange>					
+			</li>			
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Artifact</tradeTag>
+					<thingDefCountRange>
+						<min>1</min>
+						<max>3</max>
+					</thingDefCountRange>
+				<countRange>
+					<min>1</min>
+					<max>1</max>
+				</countRange>						
+			</li>	
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Legendary</tradeTag>
+					<thingDefCountRange>
+						<min>1</min>
+						<max>1</max>
+					</thingDefCountRange>	
+				<countRange>
+					<min>1</min>
+					<max>1</max>
+				</countRange>						
+			</li>					
+	    </value>
+	</Operation>	
+
+<!-- Adding Goods to Outlander Exotic Goods Caravan -->
+	<Operation Class="PatchOperationAdd">
+	    <xpath>/Defs/TraderKindDef[defName = "Caravan_Outlander_Exotic"]/stockGenerators</xpath>
+	    <value>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>MedTimes_Resource_Coal</thingDef>
+			</li>			
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_TradeGoods</tradeTag>
+				<price>Expensive</price>				
+			</li>					
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Gear</tradeTag>			
+			</li>	
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_NanGear</tradeTag>
+					<thingDefCountRange>
+						<min>3</min>
+						<max>5</max>
+					</thingDefCountRange>
+				<countRange>
+					<min>1</min>
+					<max>1</max>
+				</countRange>					
+			</li>			
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Artifact</tradeTag>
+					<thingDefCountRange>
+						<min>1</min>
+						<max>3</max>
+					</thingDefCountRange>
+				<countRange>
+					<min>1</min>
+					<max>1</max>
+				</countRange>						
+			</li>	
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Legendary</tradeTag>
+					<thingDefCountRange>
+						<min>1</min>
+						<max>1</max>
+					</thingDefCountRange>	
+				<countRange>
+					<min>1</min>
+					<max>1</max>
+				</countRange>						
+			</li>	
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>MedTimes_NaniteVial</thingDef>
+				<countRange>
+					<min>1</min>
+					<max>3</max>
+				</countRange>					
+			</li>						
+	    </value>
+	</Operation>	
+
+<!-- Adding Goods to Outlander Visitor -->
+	<Operation Class="PatchOperationAdd">
+	    <xpath>/Defs/TraderKindDef[defName = "Visitor_Outlander_Standard"]/stockGenerators</xpath>
+	    <value>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>MedTimes_Resource_Coal</thingDef>
+			</li>			
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_TradeGoods</tradeTag>
+				<price>Expensive</price>				
+			</li>					
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Gear</tradeTag>			
+			</li>	
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_NanGear</tradeTag>		
+			</li>				
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Artifact</tradeTag>		
+			</li>						
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Legendary</tradeTag>
+			</li>			
+	    </value>
+	</Operation>	
+	
+	
+<!-- === Orbital === -->	
+<!-- Adding Goods to Orbital Bulk Goods -->
+	<Operation Class="PatchOperationAdd">
+	    <xpath>/Defs/TraderKindDef[defName = "Orbital_BulkGoods"]/stockGenerators</xpath>
+	    <value>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>MedTimes_Resource_Coal</thingDef>
+				<price>Cheap</price>
+					<countRange>
+						<min>500</min>
+						<max>1000</max>
+					</countRange>
+			</li>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>MedTimes_Resource_IceBlocks</thingDef>
+				<price>Cheap</price>
+					<countRange>
+						<min>500</min>
+						<max>1000</max>
+					</countRange>
+			</li>			
+			<li Class="StockGenerator_Category">
+				<categoryDef>TradeGoods</categoryDef>
+				<price>Normal</price>										
+			</li>			
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Gear</tradeTag>
+				<price>Cheap</price>				
+			</li>
+				<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_NanGear</tradeTag>
+				<price>Normal</price>				
+			</li>			
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Artifact</tradeTag>
+			</li>	
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Legendary</tradeTag>
+			</li>
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>MedTimes_EternityForge</thingDef>
+				<countRange>
+					<min>1</min>
+					<max>1</max>
+				</countRange>					
+			</li>			
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>MedTimes_NaniteVial</thingDef>
+				<countRange>
+					<min>3</min>
+					<max>5</max>
+				</countRange>					
+			</li>				
+	    </value>
+	</Operation>
+
+<!-- Adding Goods to Orbital Combat Supplier -->
+	<Operation Class="PatchOperationAdd">
+	    <xpath>/Defs/TraderKindDef[defName = "Orbital_CombatSupplier"]/stockGenerators</xpath>
+	    <value>
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_TradeGoods</tradeTag>
+				<price>Normal</price>				
+			</li>					
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Gear</tradeTag>
+				<price>Normal</price>				
+			</li>
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_NanGear</tradeTag>
+				<price>Normal</price>				
+			</li>				
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Artifact</tradeTag>
+					<thingDefCountRange>
+						<min>2</min>
+						<max>4</max>
+					</thingDefCountRange>
+				<countRange>
+					<min>1</min>
+					<max>1</max>
+				</countRange>						
+			</li>	
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Legendary</tradeTag>
+					<thingDefCountRange>
+						<min>1</min>
+						<max>2</max>
+					</thingDefCountRange>	
+				<countRange>
+					<min>1</min>
+					<max>1</max>
+				</countRange>						
+			</li>	
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>MedTimes_EternityForge</thingDef>
+				<countRange>
+					<min>1</min>
+					<max>1</max>
+				</countRange>									
+			</li>			
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>MedTimes_NaniteVial</thingDef>
+				<countRange>
+					<min>3</min>
+					<max>5</max>
+				</countRange>					
+			</li>			
+	    </value>
+	</Operation>
+
+<!-- Adding Goods to Orbital Exotic Goods -->
+	<Operation Class="PatchOperationAdd">
+	    <xpath>/Defs/TraderKindDef[defName = "Orbital_Exotic"]/stockGenerators</xpath>
+	    <value>
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_TradeGoods</tradeTag>
+				<price>Cheap</price>				
+			</li>				
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Gear</tradeTag>
+				<price>Cheap</price>				
+			</li>
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_NanGear</tradeTag>
+				<price>Normal</price>				
+			</li>				
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Artifact</tradeTag>
+					<thingDefCountRange>
+						<min>2</min>
+						<max>4</max>
+					</thingDefCountRange>
+				<countRange>
+					<min>1</min>
+					<max>1</max>
+				</countRange>						
+			</li>	
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Legendary</tradeTag>
+					<thingDefCountRange>
+						<min>1</min>
+						<max>2</max>
+					</thingDefCountRange>
+				<countRange>
+					<min>1</min>
+					<max>1</max>
+				</countRange>						
+			</li>	
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>MedTimes_EternityForge</thingDef>
+				<countRange>
+					<min>1</min>
+					<max>1</max>
+				</countRange>						
+			</li>			
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>MedTimes_NaniteVial</thingDef>
+				<countRange>
+					<min>3</min>
+					<max>5</max>
+				</countRange>					
+			</li>				
+	    </value>
+	</Operation>	
+	
+<!-- Adding Goods to Orbital Pirate Merchant -->
+	<Operation Class="PatchOperationAdd">
+	    <xpath>/Defs/TraderKindDef[defName = "Orbital_PirateMerchant"]/stockGenerators</xpath>
+	    <value>
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_TradeGoods</tradeTag>
+				<price>Cheap</price>				
+			</li>				
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Gear</tradeTag>
+				<price>Cheap</price>				
+			</li>
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_NanGear</tradeTag>
+				<price>Normal</price>				
+			</li>			
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Artifact</tradeTag>
+					<thingDefCountRange>
+						<min>1</min>
+						<max>3</max>
+					</thingDefCountRange>
+				<countRange>
+					<min>1</min>
+					<max>1</max>
+				</countRange>						
+			</li>	
+			<li Class="StockGenerator_Tag">
+				<tradeTag>MedTimes_Legendary</tradeTag>
+					<thingDefCountRange>
+						<min>1</min>
+						<max>1</max>
+					</thingDefCountRange>
+				<countRange>
+					<min>1</min>
+					<max>1</max>
+				</countRange>						
+			</li>	
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>MedTimes_EternityForge</thingDef>
+				<countRange>
+					<min>1</min>
+					<max>1</max>
+				</countRange>					
+			</li>			
+			<li Class="StockGenerator_SingleDef">
+				<thingDef>MedTimes_NaniteVial</thingDef>
+				<countRange>
+					<min>3</min>
+					<max>5</max>
+				</countRange>					
+			</li>				
+	    </value>
+	</Operation>
+<!-- End of Patches -->
+
+</Patch>

@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- BASES -->
+		<!-- SUBCORE BASE -->
+			<RecipeDef Name="TMM_SubcoreRecipeBase" Abstract="True">
+				<jobString>Making a subcore.</jobString>
+				<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+				<effectWorking>Smith</effectWorking>
+				<soundWorking>Recipe_Machining</soundWorking>
+				<workAmount>3000</workAmount>
+				<workSkill>Crafting</workSkill>
+				<unfinishedThingDef>UnfinishedSubcore</unfinishedThingDef>
+				<mechanitorOnlyRecipe>true</mechanitorOnlyRecipe>
+				<recipeUsers>
+					<li>SubcoreEncoder</li>
+				</recipeUsers>
+			</RecipeDef>
+		<!-- CHIP BASE -->
+			<RecipeDef Name="TMM_ChipRecipeBase" Abstract="True">
+				<jobString>Making a chip.</jobString>
+				<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+				<effectWorking>Smith</effectWorking>
+				<soundWorking>Recipe_Machining</soundWorking>
+				<workAmount>3000</workAmount>
+				<workSkill>Crafting</workSkill>
+				<unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+				<mechanitorOnlyRecipe>true</mechanitorOnlyRecipe>
+				<recipeUsers>
+					<li>SubcoreEncoder</li>
+				</recipeUsers>
+			</RecipeDef>
+		<!-- MISCELLANEOUS BASE -->
+			<RecipeDef Name="TMM_MiscellaneousMechRecipeBase" Abstract="True">
+				<jobString>Making something.</jobString>
+				<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+				<effectWorking>Smith</effectWorking>
+				<soundWorking>Recipe_Machining</soundWorking>
+				<workAmount>3000</workAmount>
+				<workSkill>Crafting</workSkill>
+				<unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+				<mechanitorOnlyRecipe>true</mechanitorOnlyRecipe>
+				<recipeUsers>
+					<li>SubcoreEncoder</li>
+				</recipeUsers>
+			</RecipeDef>
+	<!-- SUBCORES -->
+		<!-- STANDARD SUBCORE -->
+			<RecipeDef ParentName="TMM_SubcoreRecipeBase">
+				<defName>TMM_CraftRegularSubcore</defName>
+				<label>make standard subcore</label>
+				<description>Make a standard-tier mechanoid brain, this is a psychodynamic substrate unit supporting a thinking subpersona.</description>
+				<jobString>Making a standard subcore.</jobString>
+				<researchPrerequisite>StandardMechtech</researchPrerequisite>
+				<displayPriority>1</displayPriority>
+				<ingredients>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>SubcoreBasic</li>
+							</thingDefs>
+						</filter>
+						<count>1</count>
+					</li>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>Steel</li>
+							</thingDefs>
+						</filter>
+						<count>50</count>
+					</li>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>ComponentIndustrial</li>
+							</thingDefs>
+						</filter>
+						<count>4</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+						<li>SubcoreBasic</li>
+						<li>Steel</li>
+						<li>ComponentIndustrial</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<defaultIngredientFilter>
+					<thingDefs>
+						<li>SubcoreBasic</li>
+						<li>Steel</li>
+						<li>ComponentIndustrial</li>
+					</thingDefs>
+				</defaultIngredientFilter>
+				<products>
+					<SubcoreRegular>1</SubcoreRegular>
+				</products>
+			</RecipeDef>
+		<!-- HIGH SUBCORE -->
+			<RecipeDef ParentName="TMM_SubcoreRecipeBase">
+				<defName>TMM_CraftHighSubcore</defName>
+				<label>make high subcore</label>
+				<description>Make a high-tier mechanoid brain, this is a psychodynamic substrate unit which supports a sophisticated subpersona.</description>
+				<jobString>Making a high subcore.</jobString>
+				<researchPrerequisite>HighMechtech</researchPrerequisite>
+				<displayPriority>2</displayPriority>
+				<ingredients>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>SubcoreRegular</li>
+							</thingDefs>
+						</filter>
+						<count>1</count>
+					</li>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>Steel</li>
+							</thingDefs>
+						</filter>
+						<count>50</count>
+					</li>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>ComponentIndustrial</li>
+							</thingDefs>
+						</filter>
+						<count>4</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+						<li>SubcoreRegular</li>
+						<li>Steel</li>
+						<li>ComponentIndustrial</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<defaultIngredientFilter>
+					<thingDefs>
+						<li>SubcoreRegular</li>
+						<li>Steel</li>
+						<li>ComponentIndustrial</li>
+					</thingDefs>
+				</defaultIngredientFilter>
+				<products>
+					<SubcoreHigh>1</SubcoreHigh>
+				</products>
+			</RecipeDef>
+	<!-- CHIPS -->
+		<!-- SIGNAL CHIP -->
+			<RecipeDef ParentName="TMM_ChipRecipeBase">
+				<defName>TMM_CraftSignalChip</defName>
+				<label>make signal chip</label>
+				<description>Make a mechanoid-band synchronization micro-organ, or signal chip. It is necessary to produce certain advanced types of mechanoids and equipment.</description>
+				<jobString>Making a signal chip.</jobString>
+				<researchPrerequisite>StandardMechtech</researchPrerequisite>
+				<displayPriority>10</displayPriority>
+				<ingredients>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>SubcoreBasic</li>
+							</thingDefs>
+						</filter>
+						<count>1</count>
+					</li>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>Plasteel</li>
+							</thingDefs>
+						</filter>
+						<count>25</count>
+					</li>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>Uranium</li>
+							</thingDefs>
+						</filter>
+						<count>5</count>
+					</li>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>ComponentIndustrial</li>
+							</thingDefs>
+						</filter>
+						<count>2</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+						<li>SubcoreBasic</li>
+						<li>Plasteel</li>
+						<li>Uranium</li>
+						<li>ComponentIndustrial</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<defaultIngredientFilter>
+					<thingDefs>
+						<li>SubcoreBasic</li>
+						<li>Plasteel</li>
+						<li>Uranium</li>
+						<li>ComponentIndustrial</li>
+					</thingDefs>
+				</defaultIngredientFilter>
+				<products>
+					<SignalChip>1</SignalChip>
+				</products>
+			</RecipeDef>
+		<!-- POWERFOCUS CHIP -->
+			<RecipeDef ParentName="TMM_ChipRecipeBase">
+				<defName>TMM_CraftPowerfocusChip</defName>
+				<label>make powerfocus chip</label>
+				<description>Make an energy-focusing mechanoid micro-organ, or powerfocus chip. It is necessary to produce certain advanced types of mechanoids and equipment.</description>
+				<jobString>Making a powerfocus chip.</jobString>
+				<researchPrerequisite>HighMechtech</researchPrerequisite>
+				<displayPriority>11</displayPriority>
+				<ingredients>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>SignalChip</li>
+							</thingDefs>
+						</filter>
+						<count>1</count>
+					</li>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>Plasteel</li>
+							</thingDefs>
+						</filter>
+						<count>25</count>
+					</li>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>Uranium</li>
+							</thingDefs>
+						</filter>
+						<count>5</count>
+					</li>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>ComponentIndustrial</li>
+							</thingDefs>
+						</filter>
+						<count>3</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+						<li>SignalChip</li>
+						<li>Plasteel</li>
+						<li>Uranium</li>
+						<li>ComponentIndustrial</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<defaultIngredientFilter>
+					<thingDefs>
+						<li>SignalChip</li>
+						<li>Plasteel</li>
+						<li>Uranium</li>
+						<li>ComponentIndustrial</li>
+					</thingDefs>
+				</defaultIngredientFilter>
+				<products>
+					<PowerfocusChip>1</PowerfocusChip>
+				</products>
+			</RecipeDef>
+		<!-- NANOSTRUCTURING CHIP -->
+			<RecipeDef ParentName="TMM_ChipRecipeBase">
+				<defName>TMM_CraftNanostructuringChip</defName>
+				<label>make nano structuring chip</label>
+				<description>Make a molecular-restructing mechanoid micro-organ, or nano structuring chip. It is necessary to produce certain advanced mechanoids and equipment.</description>
+				<jobString>Making a nano structuring chip.</jobString>
+				<researchPrerequisite>UltraMechtech</researchPrerequisite>
+				<displayPriority>12</displayPriority>
+				<ingredients>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>PowerfocusChip</li>
+							</thingDefs>
+						</filter>
+						<count>1</count>
+					</li>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>Plasteel</li>
+							</thingDefs>
+						</filter>
+						<count>50</count>
+					</li>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>Uranium</li>
+							</thingDefs>
+						</filter>
+						<count>15</count>
+					</li>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>ComponentSpacer</li>
+							</thingDefs>
+						</filter>
+						<count>2</count>
+					</li>
+				</ingredients>
+				
+				<fixedIngredientFilter>
+					<thingDefs>
+						<li>PowerfocusChip</li>
+						<li>Plasteel</li>
+						<li>Uranium</li>
+						<li>ComponentSpacer</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				
+				<defaultIngredientFilter>
+					<thingDefs>
+						<li>PowerfocusChip</li>
+						<li>Plasteel</li>
+						<li>Uranium</li>
+						<li>ComponentSpacer</li>
+					</thingDefs>
+				</defaultIngredientFilter>
+
+				<products>
+					<NanostructuringChip>1</NanostructuringChip>
+				</products>
+			</RecipeDef>
+	<!-- MISCELLANEOUS -->
+		<!-- MECHLINK -->
+			<RecipeDef ParentName="TMM_MiscellaneousMechRecipeBase">
+				<defName>TMM_CraftMechlink</defName>
+				<label>make mechlink</label>
+				<description>Make a bionic implant that allows direct control of mechanoids. Mechlinks are used by soldiers to control war mechs, and by workers to control labor mechs. A person with a mechlink is known as a mechanitor.</description>
+				<jobString>Making a mechlink.</jobString>
+				<unfinishedThingDef>UnfinishedHealthItemProsthetic</unfinishedThingDef>
+				<researchPrerequisite>UltraMechtech</researchPrerequisite>
+				<displayPriority>100</displayPriority>
+				<ingredients>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>NanostructuringChip</li>
+							</thingDefs>
+						</filter>
+						<count>2</count>
+					</li>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>ComponentSpacer</li>
+							</thingDefs>
+						</filter>
+						<count>10</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+						<li>NanostructuringChip</li>
+						<li>ComponentSpacer</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<defaultIngredientFilter>
+					<thingDefs>
+						<li>NanostructuringChip</li>
+						<li>ComponentSpacer</li>
+					</thingDefs>
+				</defaultIngredientFilter>
+				<products>
+					<Mechlink>1</Mechlink>
+				</products>
+			</RecipeDef>
+		<!-- AI PERSONA CORE -->
+			<RecipeDef ParentName="TMM_ChipRecipeBase">
+				<defName>TMM_CraftAIPersonaCore</defName>
+				<label>make AI Persona Core</label>
+				<description>A hyper-advanced computer core that houses a peak-human-equivalent machine persona. In its isolated state, the core is dormant. Installed in a proper support structure, however, it can become a mind of great power.</description>
+				<jobString>Making an AI Persona Core.</jobString>
+				<researchPrerequisite>UltraMechtech</researchPrerequisite>
+				<displayPriority>4</displayPriority>
+				<ingredients>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>NanostructuringChip</li>
+							</thingDefs>
+						</filter>
+						<count>1</count>
+					</li>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>SubcoreHigh</li>
+							</thingDefs>
+						</filter>
+						<count>1</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+						<li>NanostructuringChip</li>
+						<li>SubcoreHigh</li>
+					</thingDefs>
+				</fixedIngredientFilter>
+				<defaultIngredientFilter>
+					<thingDefs>
+						<li>NanostructuringChip</li>
+						<li>SubcoreHigh</li>
+					</thingDefs>
+				</defaultIngredientFilter>
+				<products>
+					<AIPersonaCore>1</AIPersonaCore>
+				</products>
+			</RecipeDef>
+</Defs>

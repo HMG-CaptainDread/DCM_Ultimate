@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<ThingDef ParentName="BuildingBase">
+    <defName>MechanitorShuttle</defName>
+    <label>mechanitor ship</label>
+    <description>A heavy-duty chemfuel-powered shuttle designed for mechanitor operations. It features enhanced systems for controlling mechs and increased cargo capacity, but at the cost of fuel efficiency.</description>
+    <thingClass>Building_PassengerShuttle</thingClass>
+    <preventDroppingThingsOn>true</preventDroppingThingsOn>
+    <altitudeLayer>Building</altitudeLayer>
+    <pathCost>50</pathCost>
+    <blockWind>true</blockWind>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.9</fillPercent>
+    <size>(3,5)</size>
+    <drawHighlight>true</drawHighlight>
+    <highlightColor>(0.8, 0.3, 0.8)</highlightColor>
+    <uiIconScale>1</uiIconScale>
+    <graphicData>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <texPath>MechanitorShip</texPath>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(3.3,5.3)</drawSize>
+      <shadowData>
+        <volume>(1.2, 1.0, 3.5)</volume>
+        <offset>(0, 0, 0)</offset>
+      </shadowData>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>700</MaxHitPoints>
+      <Flammability>0.4</Flammability>
+      <WorkToBuild>44000</WorkToBuild>
+      <Mass>160</Mass>
+      <Comfort>0.65</Comfort>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <designationCategory>Odyssey</designationCategory>
+    <constructionSkillPrerequisite>7</constructionSkillPrerequisite>
+    <costList>
+      <Steel>300</Steel>
+      <Plasteel>200</Plasteel>
+      <ComponentIndustrial>10</ComponentIndustrial>
+      <SubcoreBasic>4</SubcoreBasic>
+      <ShuttleEngine>1</ShuttleEngine>
+    </costList>
+    <canOverlapZones>true</canOverlapZones>
+    <killedLeavings>
+      <Steel>60</Steel>
+      <Plasteel>80</Plasteel>
+      <ChunkSlagSteel>5</ChunkSlagSteel>
+      <ComponentIndustrial>5</ComponentIndustrial>
+    </killedLeavings>
+    <rotatable>true</rotatable>
+    <hasInteractionCell>true</hasInteractionCell>
+    <interactionCellOffset>(2, 0, 0)</interactionCellOffset>
+    <defaultPlacingRot>East</defaultPlacingRot>
+    <selectable>true</selectable>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <preventSkyfallersLandingOn>true</preventSkyfallersLandingOn>
+    <drawerType>RealtimeOnly</drawerType>
+    <repairEffect>ConstructMetal</repairEffect>
+    <forceDebugSpawnable>true</forceDebugSpawnable>
+    <building>
+      <claimable>false</claimable>
+      <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+      <paintable>true</paintable>
+      <isInert>true</isInert>
+      <forcedCostLeavings>
+        <li MayRequire="Ludeon.RimWorld.Odyssey">ShuttleEngine</li>
+      </forcedCostLeavings>
+    </building>
+    <inspectorTabs>
+      <li>ITab_ContentsTransporter</li>
+    </inspectorTabs>
+    <researchPrerequisites>
+      <li>MechanitorShuttles</li>
+    </researchPrerequisites>
+    <comps>
+      <li Class="CompProperties_Shuttle">
+        <shipDef>Ship_MechanitorShuttle</shipDef>
+      </li>
+      <li Class="CompProperties_Launchable">
+        <fuelPerTile>3.3</fuelPerTile>
+        <minFuelCost>55</minFuelCost>
+        <skyfallerLeaving>MechanitorShuttleLeaving</skyfallerLeaving>
+        <worldObjectDef>MechanitorShuttle</worldObjectDef>
+        <cooldownTicks>3375</cooldownTicks>
+        <fixedLaunchDistanceMax>77</fixedLaunchDistanceMax>
+        <cooldownEndedMessage>{0} is ready to launch again.</cooldownEndedMessage>
+      </li>
+      <li Class="CompProperties_Transporter">
+        <massCapacity>1000</massCapacity>
+        <max1PerGroup>true</max1PerGroup>
+        <canChangeAssignedThingsAfterStarting>true</canChangeAssignedThingsAfterStarting>
+        <pawnLoadedSound>Shuttle_PawnLoaded</pawnLoadedSound>
+        <pawnExitSound>Shuttle_PawnExit</pawnExitSound>
+        <showMassInInspectString>true</showMassInInspectString>
+      </li>
+      <li Class="CompProperties_Refuelable">
+        <fuelCapacity>600</fuelCapacity>
+        <targetFuelLevelConfigurable>true</targetFuelLevelConfigurable>
+        <initialConfigurableTargetFuelLevel>600</initialConfigurableTargetFuelLevel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </fuelFilter>
+        <fuelLabel>Chemfuel</fuelLabel>
+        <fuelGizmoLabel>Chemfuel</fuelGizmoLabel>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <autoRefuelPercent>1</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <drawOutOfFuelOverlay>false</drawOutOfFuelOverlay>
+        <showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+        <canEjectFuel>true</canEjectFuel>
+      </li>
+      <li Class="CompProperties_AmbientSound">
+        <sound>ShuttleIdle_Ambience</sound>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_NotUnderRoof</li>
+    </placeWorkers>
+    <uiOrder>2602</uiOrder>
+  </ThingDef>
+  
+    <TransportShipDef>
+    <defName>Ship_MechanitorShuttle</defName>
+    <label>mechanitor ship</label>
+    <shipThing>MechanitorShuttle</shipThing>
+    <arrivingSkyfaller>MechanitorShuttleIncoming</arrivingSkyfaller>
+    <leavingSkyfaller>MechanitorShuttleLeaving</leavingSkyfaller>
+    <worldObject>MechanitorShuttle</worldObject>
+    <playerShuttle>true</playerShuttle>
+  </TransportShipDef>
+  </Defs>

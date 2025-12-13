@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingCategoryDef>
+    <defName>Ammo45Colt</defName>
+    <label>.45 Colt</label>
+    <parent>AmmoPistols</parent>
+    <iconPath>UI/Icons/ThingCategories/CaliberPistol</iconPath>
+  </ThingCategoryDef>
+  <!-- ==================== AmmoSet ========================== -->
+  <CombatExtended.AmmoSetDef>
+    <defName>AmmoSet_45ColtBP_Revolver</defName>
+    <label>.45 Colt (BP)</label>
+    <ammoTypes>
+      <Ammo_45Colt_BP>Bullet_45Colt_Revolver</Ammo_45Colt_BP>
+    </ammoTypes>
+  </CombatExtended.AmmoSetDef>
+  <CombatExtended.AmmoSetDef>
+    <defName>AmmoSet_45ColtBP_Rifle</defName>
+    <label>.45 Colt (BP)</label>
+    <ammoTypes>
+      <Ammo_45Colt_BP>Bullet_45Colt_Rifle</Ammo_45Colt_BP>
+    </ammoTypes>
+  </CombatExtended.AmmoSetDef>
+  <!-- ==================== Ammo ========================== -->
+  <ThingDef Class="CombatExtended.AmmoDef" Name="45LongColtBase" ParentName="SmallAmmoBase" Abstract="True">
+    <description>Ancient pistol cartridge originally designed for revolvers.</description>
+    <statBases>
+      <Mass>0.02</Mass>
+      <Bulk>0.03</Bulk>
+    </statBases>
+    <tradeTags>
+      <li>CE_AutoEnableTrade</li>
+      <li>CE_AutoEnableCrafting</li>
+    </tradeTags>
+    <thingCategories>
+      <li>Ammo45Colt</li>
+    </thingCategories>
+  </ThingDef>
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="45LongColtBase">
+    <defName>Ammo_45Colt_BP</defName>
+    <label>.45 Colt cartridge (BP)</label>
+    <graphicData>
+      <texPath>Things/Ammo/45Colt</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>0.07</MarketValue>
+    </statBases>
+    <ammoClass>BlackPowder</ammoClass>
+    <cookOffProjectile>Bullet_45Colt_Revolver</cookOffProjectile>
+  </ThingDef>
+  <!-- ================== Projectiles ================== -->
+  <ThingDef Class="CombatExtended.AmmoDef" Name="Base45LongColtBullet" ParentName="BaseBullet" Abstract="true">
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <damageDef>Bullet</damageDef>
+    </projectile>
+  </ThingDef>
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="Base45LongColtBullet">
+    <defName>Bullet_45Colt_Revolver</defName>
+    <label>.45 Colt bullet (BP)</label>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <speed>70</speed>
+      <damageAmountBase>15</damageAmountBase>
+      <armorPenetrationSharp>2</armorPenetrationSharp>
+      <armorPenetrationBlunt>11.440</armorPenetrationBlunt>
+    </projectile>
+  </ThingDef>
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="Base45LongColtBullet">
+    <defName>Bullet_45Colt_Rifle</defName>
+    <label>.45 Colt bullet (BP)</label>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <speed>85</speed>
+      <damageAmountBase>18</damageAmountBase>
+      <armorPenetrationSharp>4</armorPenetrationSharp>
+      <armorPenetrationBlunt>11.440</armorPenetrationBlunt>
+    </projectile>
+  </ThingDef>
+  <!-- ==================== Recipes ========================== -->
+  <RecipeDef ParentName="AmmoRecipeBase">
+    <defName>MakeAmmo_45Colt_BP</defName>
+    <label>make .45 Colt (BP) cartridge x500</label>
+    <description>Craft 500 .45 Colt (BP) cartridges.</description>
+    <jobString>Making .45 Colt (BP) cartridges.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>14</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_45Colt_BP>500</Ammo_45Colt_BP>
+    </products>
+    <workAmount>2250</workAmount>
+  </RecipeDef>
+</Defs>

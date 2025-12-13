@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<Operation Class="PatchOperationSequence">
+		<operations>
+			<li Class="PatchOperationConditional" MayRequire="DankPyon.Medieval.Overhaul,reel.expanded.storage">
+				<xpath>Defs/ThingDef[defName="ReelStorageLargeWoodChest"]</xpath>
+				<nomatch Class="PatchOperationConditional">
+					<xpath>Defs/AdaptiveStorage.GraphicsDef[@Name="ReelStorageLargeWoodChestBase"]</xpath>
+					<match Class="PatchOperationRemove">
+						<xpath>Defs/AdaptiveStorage.GraphicsDef[@*="ReelStorageLargeWoodChestBase"]</xpath>
+					</match>
+				</nomatch>
+			</li>
+			<li Class="PatchOperationConditional" MayRequire="DankPyon.Medieval.Overhaul,reel.expanded.storage">
+				<xpath>Defs/ResearchProjectDef[defName="ReelMedievalStorage"]</xpath>
+				<nomatch Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef/researchPrerequisites[li="ReelMedievalStorage"]</xpath>
+					<match Class="PatchOperationRemove">
+						<xpath>Defs/ThingDef/researchPrerequisites/li[text()="ReelMedievalStorage"]</xpath>
+					</match>
+				</nomatch>
+			</li>
+		</operations>
+	</Operation>
+</Patch>

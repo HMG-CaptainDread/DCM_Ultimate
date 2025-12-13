@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Defs>
+
+  <TerrainDef ParentName="FloorBase">
+    <defName>TransparentFoundation_Substructure</defName>
+    <label>transparent substructure</label>
+    <description>A lightweight truss structure with flooring on top that forms the deck of a gravship. Only things on top of this substructure can be lifted by the grav engine's levitation field. This floor must be constructed within range of a grav engine.\n\nThis substructure is constructed out of transparent composites that allows for an unobstructed view. Not recommended for those with a fear of heights.</description>
+    <uiIconPath>Aelanna/TransparentSubstructure/Icon</uiIconPath>
+    <dontRender>true</dontRender>
+    <fertility>0</fertility>
+    <edgeType>Hard</edgeType>
+    <renderPrecedence>398</renderPrecedence>
+    <constructEffect>ConstructMetal</constructEffect>
+    <isPaintable>false</isPaintable>
+    <designationCategory>Odyssey</designationCategory>
+    <isFoundation>true</isFoundation>
+    <preventCraters>true</preventCraters>
+    <statBases>
+      <WorkToBuild>600</WorkToBuild>
+      <Flammability>0</Flammability>
+      <CleaningTimeFactor>0.9</CleaningTimeFactor>
+    </statBases>
+    <costList>
+      <GravlitePanel>1</GravlitePanel>
+      <Steel>4</Steel>
+    </costList>
+    <uiOrder>1001</uiOrder>
+    <requireInspectedGravEngine>true</requireInspectedGravEngine>
+    <terrainAffordanceNeeded>Walkable</terrainAffordanceNeeded>
+    <resourcesFractionWhenDeconstructed>1</resourcesFractionWhenDeconstructed>
+    <affordances>
+      <li>Substructure</li>
+    </affordances>
+    <tags>
+      <li>Substructure</li>
+    </tags>
+    <placeWorkers>
+      <li>PlaceWorker_InSubstructureFootprint</li>
+      <li>PlaceWorker_BuildingsValidOverSubstructure</li>
+    </placeWorkers>
+  </TerrainDef>
+
+  <!--
+  <ThingDef ParentName="Wall">
+    <defName>TransparentWall_GravshipHull</defName>
+    <label>transparent gravship hull</label>
+    <description>A strong airtight wall that prevents oxygen leaks in the vacuum of space. The wall connects directly into the underlying substructure, meaning it can only be built on a gravship.\n\n This hull is constructed out of transparent composites that allows for an unobstructed view.</description>
+    <designationCategory>Odyssey</designationCategory>
+    <uiOrder>1801</uiOrder>
+    <uiIconPath>Things/Building/Linked/GravshipHull/GravshipHull_MenuIcon</uiIconPath>
+    <graphicData>
+      <texPath>Things/Building/Linked/GravshipHull/GravshipHull_Atlas</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <color>(105,105,105,0.8)</color>
+    </graphicData>
+    <blockLight>false</blockLight>
+    <researchPrerequisites>
+      <li>BasicGravtech</li>
+    </researchPrerequisites>
+    <statBases>
+      <MaxHitPoints>420</MaxHitPoints>
+      <WorkToBuild>300</WorkToBuild>
+      <Flammability>0</Flammability>
+    </statBases>
+    <building>
+      <isAirtight>true</isAirtight>
+    </building>
+    <stuffCategories Inherit="False" />
+    <costStuffCount IsNull="True" />
+    <costList>
+      <Steel>7</Steel>
+    </costList>
+    <useStuffTerrainAffordance>false</useStuffTerrainAffordance>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <comps Inherit="False"/>
+    <placeWorkers>
+      <li>PlaceWorker_OnSubstructure</li>
+    </placeWorkers>
+  </ThingDef>
+  -->
+
+  <TransparentSubstructure.BridgeTerrainDef ParentName="BridgeBase">
+    <defName>TransparentFoundation_HeavyBridge</defName>
+    <label>transparent heavy bridge</label>
+    <description>A stronger version of the basic bridge which supports heavy structures on top. You can build a whole colony on water with this.\n\nThis bridge is constructed out of transparent composites that allows for an unobstructed view.</description>
+    <bridgePropsPath>Terrain/Misc/HeavyBridgeProps</bridgePropsPath>
+    <spaceBridgePropsPath>Terrain/Misc/HeavyBridgeSpaceProps</spaceBridgePropsPath>
+    <uiIconPath>Aelanna/TransparentSubstructure/BridgeIcon</uiIconPath>
+    <dontRender>true</dontRender>
+    <affordances>
+      <li>Light</li>
+      <li>Medium</li>
+      <li>Heavy</li>
+      <li>Walkable</li>
+    </affordances>
+    <constructEffect>ConstructMetal</constructEffect>
+    <statBases>
+      <WorkToBuild>2500</WorkToBuild>
+    </statBases>
+    <costList>
+      <Steel>14</Steel>
+    </costList>
+    <researchPrerequisites>
+      <li>HeavyBridges</li>
+    </researchPrerequisites>
+    <destroyOnBombDamageThreshold>45</destroyOnBombDamageThreshold>
+  </TransparentSubstructure.BridgeTerrainDef>
+
+</Defs>

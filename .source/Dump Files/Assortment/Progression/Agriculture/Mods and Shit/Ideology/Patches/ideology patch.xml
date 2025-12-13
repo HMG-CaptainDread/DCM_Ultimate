@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+
+
+                <Operation Class="PatchOperationRemove">
+                    <xpath>Defs/MemeDef[defName="TreeConnection"]/startingResearchProjects</xpath>
+                </Operation>
+
+
+
+
+                        <!-- VFE TRIBALS BONSAI POT -->
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Factions Expanded - Tribals</li>
+		</mods>
+            <match Class="PatchOperationSequence">
+                <operations>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="PlantPot_Bonsai"]/researchPrerequisites</xpath>
+                    <value>
+                        <researchPrerequisites>
+                        <li>VFET_Agriculture</li>
+                        </researchPrerequisites>
+                    </value>
+                </li>
+                </operations>
+		</match>
+        <nomatch Class="PatchOperationSequence">
+        <operations>
+        <li Class="PatchOperationRemove">
+        <xpath>Defs/ThingDef[defName="PlantPot_Bonsai"]/researchPrerequisites</xpath>
+        </li>
+        </operations>
+        </nomatch>
+	</Operation>
+
+
+</Patch>

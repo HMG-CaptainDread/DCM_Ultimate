@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>Gimmicks</li>
+		  <li>Gimmicks (Continued)</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+		<li Class="PatchOperationRemove">
+			<xpath>/Defs/ThingDef[@Name="BaseTools_Forged"]/recipeMaker/recipeUsers/li[text()="ElectricSmithy"]</xpath>
+		</li>
+		<li Class="PatchOperationRemove">
+			<xpath>/Defs/ThingDef[@Name="BaseTools_Forged"]/recipeMaker/recipeUsers/li[text()="FueledSmithy"]</xpath>
+		</li>
+		<li Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[@Name="BaseTools_Forged"]/recipeMaker/recipeUsers</xpath>
+			<value>
+				<li>MedTimes_BlacksmithForge</li>
+				<li>MedTimes_ElectricBlacksmithForge</li>
+			</value>
+		</li>
+		
+		<li Class="PatchOperationRemove">
+			<xpath>/Defs/ThingDef[@Name="BaseTools_Machined"]/recipeMaker/recipeUsers/li[text()="Gimmicks_TableCrafting"]</xpath>
+		</li>
+		<li Class="PatchOperationRemove">
+			<xpath>/Defs/ThingDef[@Name="BaseTools_Tailored"]/recipeMaker/recipeUsers/li[text()="Gimmicks_TableCrafting"]</xpath>
+		</li>
+		<li Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[@Name="BaseTools_Tailored"]/recipeMaker/recipeUsers</xpath>
+			<value>
+				<li>MedTimes_TailoringStation</li>
+			</value>
+		</li>
+		<li Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[@Name="BaseTools_Crafted"]/recipeMaker/recipeUsers</xpath>
+			<value>
+				<li>MedTimes_CraftingStation</li>
+			</value>
+		</li>
+		</operations>
+	</match>
+  </Operation>
+
+</Patch>
+
+
+
+

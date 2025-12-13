@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ResearchProjectDef[defName="SterileMaterials"]/prerequisites</xpath>
+		<value>
+			<prerequisites>
+				<li>MedTimes_Mechanization</li>
+			</prerequisites>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationConditional">
+		<xpath>/Defs/ResearchProjectDef[defName="MicroelectronicsBasics"]/hiddenPrerequisites</xpath>
+		<match Class="PatchOperationReplace">
+			<xpath>/Defs/ResearchProjectDef[defName="MicroelectronicsBasics"]/hiddenPrerequisites</xpath>
+			<value>
+				<hiddenPrerequisites>
+					<li>IndTimes_PrecisionComputing</li>
+				</hiddenPrerequisites>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>/Defs/ResearchProjectDef[defName="MicroelectronicsBasics"]</xpath>
+			<value>
+				<hiddenPrerequisites>
+					<li>IndTimes_PrecisionComputing</li>
+				</hiddenPrerequisites>
+			</value>
+		</nomatch>
+	</Operation>
+
+	<Operation Class="PatchOperationConditional">
+		<xpath>/Defs/ResearchProjectDef[defName="MoisturePump"]/prerequisites</xpath>
+		<match Class="PatchOperationReplace">
+			<xpath>/Defs/ResearchProjectDef[defName="MoisturePump"]/prerequisites</xpath>
+			<value>
+				<prerequisites>
+					<li>IndTimes_PrecisionComputing</li>
+				</prerequisites>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>/Defs/ResearchProjectDef[defName="MoisturePump"]</xpath>
+			<value>
+				<prerequisites>
+					<li>IndTimes_PrecisionComputing</li>
+				</prerequisites>
+			</value>
+		</nomatch>
+	</Operation>
+	
+	
+	<Operation Class="PatchOperationConditional">
+		<xpath>/Defs/ResearchProjectDef[defName="HospitalBed"]/prerequisites</xpath>
+		<match Class="PatchOperationReplace">
+			<xpath>/Defs/ResearchProjectDef[defName="HospitalBed"]/prerequisites</xpath>
+			<value>
+				<prerequisites>
+					<li>IndTimes_PrecisionComputing</li>
+				</prerequisites>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>/Defs/ResearchProjectDef[defName="HospitalBed"]</xpath>
+			<value>
+				<prerequisites>
+					<li>IndTimes_PrecisionComputing</li>
+				</prerequisites>
+			</value>
+		</nomatch>
+	</Operation>
+    
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ResearchProjectDef[defName="DeepDrilling"]/prerequisites</xpath>
+		<value>
+			<prerequisites>
+				<li>MedTimes_Mechanization</li>
+			</prerequisites>
+		</value>
+	</Operation>	
+	
+	<Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Simple Mining Extension</li>
+        </mods>		
+        <nomatch Class="PatchOperationConditional">
+			<xpath>/Defs/ResearchProjectDef[defName="DeepDrilling"]/hiddenPrerequisites</xpath>
+			<match Class="PatchOperationReplace">
+				<xpath>/Defs/ResearchProjectDef[defName="DeepDrilling"]/hiddenPrerequisites</xpath>
+				<value>
+					<hiddenPrerequisites>
+						<li>MedTimes_Quarry</li>
+					</hiddenPrerequisites>
+				</value>
+			</match>
+			<nomatch Class="PatchOperationAdd">
+				<xpath>/Defs/ResearchProjectDef[defName="DeepDrilling"]</xpath>
+				<value>
+					<hiddenPrerequisites>
+						<li>MedTimes_Quarry</li>
+					</hiddenPrerequisites>
+				</value>
+			</nomatch>
+		</nomatch>
+    </Operation>
+		
+	<Operation Class="PatchOperationConditional">
+		<xpath>/Defs/ResearchProjectDef[defName="GroundPenetratingScanner"]/hiddenPrerequisites</xpath>
+		<match Class="PatchOperationReplace">
+			<xpath>/Defs/ResearchProjectDef[defName="GroundPenetratingScanner"]/hiddenPrerequisites</xpath>
+			<value>
+				<hiddenPrerequisites>
+					<li>MicroelectronicsBasics</li>
+				</hiddenPrerequisites>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>/Defs/ResearchProjectDef[defName="GroundPenetratingScanner"]</xpath>
+			<value>
+				<hiddenPrerequisites>
+					<li>MicroelectronicsBasics</li>
+				</hiddenPrerequisites>
+			</value>
+		</nomatch>
+	</Operation>				
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ResearchProjectDef[defName="TransportPod"]/prerequisites</xpath>
+		<value>
+			<prerequisites>
+				<li>IndTimes_PrecisionComputing</li>
+			</prerequisites>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ResearchProjectDef[defName="MedicineProduction"]/prerequisites</xpath>
+		<value>
+			<prerequisites>
+				<li>IndTimes_PrecisionComputing</li>
+				<li>DrugProduction</li>
+			</prerequisites>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Combat Extended</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ResearchProjectDef[defName="CE_ChargeTurret"]/prerequisites</xpath>
+					<value>
+						<li>IndTimes_PrecisionComputing</li>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ResearchProjectDef[defName="CE_HeavyTurret"]/prerequisites</xpath>
+					<value>
+						<li>IndTimes_PrecisionComputing</li>
+					</value>
+				</li>
+			</operations>
+		</match>
+		<nomatch Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ResearchProjectDef[defName="PrecisionRifling"]/prerequisites</xpath>
+					<value>
+						<prerequisites>
+							<li>IndTimes_PrecisionComputing</li>
+							<li>GasOperation</li>
+						</prerequisites>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ResearchProjectDef[defName="HeavyTurrets"]/prerequisites</xpath>
+					<value>
+						<prerequisites>
+							<li>IndTimes_PrecisionComputing</li>
+							<li>GunTurrets</li>
+							<li>GasOperation</li>
+						</prerequisites>
+					</value>
+				</li>
+			</operations>
+		</nomatch>
+	</Operation>
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Combat Extended</li>
+		</mods>
+		<nomatch Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ResearchProjectDef[defName="MultibarrelWeapons"]/prerequisites</xpath>
+					<value>
+						<prerequisites>
+							<li>IndTimes_PrecisionComputing</li>
+							<li>GasOperation</li>
+						</prerequisites>
+					</value>
+				</li>
+			</operations>
+		</nomatch>
+	</Operation>
+		
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ResearchProjectDef[defName="ChargedShot"]/hiddenPrerequisites</xpath>
+		<value>
+			<li>MicroelectronicsBasics</li>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ResearchProjectDef[defName="MultiAnalyzer"]/prerequisites</xpath>
+		<value>
+			<prerequisites>
+				<li>IndTimes_PrecisionComputing</li>
+			</prerequisites>
+		</value>
+	</Operation>	
+	
+	<Operation Class="PatchOperationConditional">
+		<xpath>/Defs/ResearchProjectDef[defName="VitalsMonitor"]/hiddenPrerequisites</xpath>
+		<match Class="PatchOperationReplace">
+			<xpath>/Defs/ResearchProjectDef[defName="VitalsMonitor"]/hiddenPrerequisites</xpath>
+			<value>
+				<hiddenPrerequisites>
+					<li>IndTimes_PrecisionComputing</li>
+				</hiddenPrerequisites>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>/Defs/ResearchProjectDef[defName="VitalsMonitor"]</xpath>
+			<value>
+				<hiddenPrerequisites>
+					<li>IndTimes_PrecisionComputing</li>
+				</hiddenPrerequisites>
+			</value>
+		</nomatch>
+	</Operation>
+	
+	<Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>Not Only just a cannon</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<li Class="PatchOperationConditional">
+				<xpath>/Defs/ResearchProjectDef[defName="Mortars"]/prerequisites</xpath>
+				<match Class="PatchOperationAdd">
+					<xpath>/Defs/ResearchProjectDef[defName="Mortars"]/prerequisites</xpath>
+					<value>
+						<li>ArcedBallistic</li>
+					</value>
+				</match>
+				<nomatch Class="PatchOperationAdd">
+					<xpath>/Defs/ResearchProjectDef[defName="Mortars"]</xpath>
+					<value>
+						<prerequisites>
+							<li>ArcedBallistic</li>
+						</prerequisites>
+					</value>
+				</nomatch>
+			</li>
+		</operations>
+	</match>
+	  <nomatch Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<li Class="PatchOperationConditional">
+				<xpath>/Defs/ResearchProjectDef[defName="Mortars"]/prerequisites</xpath>
+				<match Class="PatchOperationAdd">
+					<xpath>/Defs/ResearchProjectDef[defName="Mortars"]/prerequisites</xpath>
+					<value>
+						<li>MedTimes_Cannons</li>
+					</value>
+				</match>
+				<nomatch Class="PatchOperationAdd">
+					<xpath>/Defs/ResearchProjectDef[defName="Mortars"]</xpath>
+					<value>
+						<prerequisites>
+							<li>MedTimes_Cannons</li>
+						</prerequisites>
+					</value>
+				</nomatch>
+			</li>
+		</operations>
+	</nomatch>
+  </Operation>
+	
+	
+	
+</Patch>

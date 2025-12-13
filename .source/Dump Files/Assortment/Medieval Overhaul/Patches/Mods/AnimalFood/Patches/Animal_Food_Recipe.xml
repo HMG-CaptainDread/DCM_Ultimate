@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/RecipeDef[defName="CookFeedstockGrazing" or defName="CookFeedstockGrazingBulk"]/ingredients/li[1]/filter/thingDefs</xpath>
+		<value>
+			<li>DankPyon_DriedHay</li>
+			<li>DankPyon_Straw</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/RecipeDef[defName="CookFeedstockGrazing" or defName="CookFeedstockGrazingBulk"]/ingredients/li[1]/filter</xpath>
+		<value>
+			<categories>
+				<li>DankPyon_Cereal</li>
+			</categories>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/RecipeDef[defName="CookFeedstockGrazing" or defName="CookFeedstockGrazingBulk"]/fixedIngredientFilter</xpath>
+		<value>
+			<categories>
+				<li>DankPyon_Cereal</li>
+				<li>PlantFoodRaw</li>
+			</categories>
+			<thingDefs>
+				<li>Hay</li>
+				<li>DankPyon_DriedHay</li>
+				<li>DankPyon_Straw</li>
+			</thingDefs>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/RecipeDef[
+			defName="CookFeedstockGrazing" or
+			defName="CookFeedstockGrazingBulk" or
+			defName="CookRenderedMeat" or
+			defName="CookRenderedMeatBulk"]/researchPrerequisite
+		</xpath>
+		<value>
+			<researchPrerequisite>DankPyon_BasicCooking</researchPrerequisite>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Plants Expanded - More Plants</li>
+		</mods>
+		<match Class="PatchOperationReplace">
+			<xpath>Defs/RecipeDef[defName="CookFeedstockGrazingMoss" or defName="CookFeedstockGrazingMossBulk"]/researchPrerequisite</xpath>
+			<value>
+				<researchPrerequisite>DankPyon_BasicCooking</researchPrerequisite>
+			</value>
+		</match>
+	</Operation>
+
+</Patch>
