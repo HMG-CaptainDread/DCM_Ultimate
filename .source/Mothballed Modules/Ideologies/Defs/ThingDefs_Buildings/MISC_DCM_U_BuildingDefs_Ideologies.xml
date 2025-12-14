@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+	<!-- PLANNED ADDITIONS -->
+
+
+
+	<!-- SIMPLE PROPAGANDA -->
+	<ThingDef Abstract="True" Name="IdeoBuildingBase" ParentName="BuildingBase">
+<altitudeLayer>Building</altitudeLayer>
+<forceDebugSpawnable>true</forceDebugSpawnable>
+<canGenerateDefaultDesignator>false</canGenerateDefaultDesignator>
+<!--  We handle ideo buildings as a special case in DesignationCategoryDef  -->
+<ideoBuilding>true</ideoBuilding>
+<designationCategory>Ideology</designationCategory>
+<uiOrder>2010</uiOrder>
+<comps>
+<li Class="CompProperties_Styleable"/>
+</comps>
+<ritualFocus>
+<spectateDistance>2</spectateDistance>
+<allowedSpectateSides>Down</allowedSpectateSides>
+</ritualFocus>
+<placeWorkers>
+<li>PlaceWorker_RitualFocus</li>
+</placeWorkers>
+<drawPlaceWorkersWhileSelected>True</drawPlaceWorkersWhileSelected>
+</ThingDef>
+
+<ThingDef ParentName="BuildingBase">
+<defName>SP_Broadcaster</defName>
+<label>propaganda broadcasting console</label>
+<description>A console required to send broadcasts through hjiacked radio waves and hacked satelites. Requires power and at least one loudspeaker. It has an internal mechanism for sending signals but should be boosted with extra antennas.</description>
+<minifiedDef>MinifiedThing</minifiedDef>
+<drawerType>MapMeshAndRealTime</drawerType>
+<hasInteractionCell>True</hasInteractionCell>
+<interactionCellOffset>(0,0, -1)</interactionCellOffset>
+<graphicData>
+<graphicClass>Graphic_Single</graphicClass>
+<texPath>SPBuildings/PropBroadBench/PropBroadBench</texPath>
+<drawSize>(3,1)</drawSize>
+<shadowData>
+<volume>(0.5, 1, 0.5)</volume>
+</shadowData>
+</graphicData>
+<thingCategories>
+<li>BuildingsMisc</li>
+</thingCategories>
+<designationCategory>Ideology</designationCategory>
+<rotatable>true</rotatable>
+<receivesSignals>true</receivesSignals>
+<fillPercent>0.35</fillPercent>
+<selectable>true</selectable>
+<useHitPoints>true</useHitPoints>
+<tickerType>Normal</tickerType>
+<altitudeLayer>Building</altitudeLayer>
+<passability>PassThroughOnly</passability>
+<size>(3,1)</size>
+<statBases>
+<MaxHitPoints>100</MaxHitPoints>
+<WorkToBuild>1000</WorkToBuild>
+<Mass>5</Mass>
+</statBases>
+<researchPrerequisites>
+<li>Electricity</li>
+</researchPrerequisites>
+<costList>
+<Steel>30</Steel>
+<ComponentIndustrial>1</ComponentIndustrial>
+</costList>
+<building>
+<destroySound>BuildingDestroyed_Metal_Big</destroySound>
+<relatedBuildCommands>
+<li>Loudspeaker</li>
+<li>SP_Antenna</li>
+</relatedBuildCommands>
+</building>
+<comps>
+<li Class="CompProperties_Glower">
+<glowRadius>10</glowRadius>
+<glowColor>(460, 220, 205, 0)</glowColor>
+</li>
+<li Class="CompProperties_Power">
+<compClass>CompPowerTrader</compClass>
+<basePowerConsumption>300</basePowerConsumption>
+</li>
+<li Class="CompProperties_Flickable"/>
+<li Class="CompProperties_AmbientSound">
+<sound>SP_Prop_Ambience</sound>
+<disabledOnUnpowered>true</disabledOnUnpowered>
+</li>
+</comps>
+<placeWorkers>
+<li>PlaceWorker_ShowSpeakerConnections</li>
+</placeWorkers>
+</ThingDef>
+
+
+<ThingDef ParentName="BuildingBase">
+<defName>SP_Antenna</defName>
+<label>Broadcasting Antenna</label>
+<description>A simple antenna meant to boost the broadcast strength and accuracy of the broadcasting console. Must be placed in the same room as the console. Can also be placed anywhere to lower the rate at which slaves lose their supression level while in proximity.</description>
+<graphicData>
+<graphicClass>Graphic_Single</graphicClass>
+<texPath>SPBuildings/Antenna/Antenna</texPath>
+<drawSize>(1,2)</drawSize>
+<drawOffset>(0, 0, 0.5)</drawOffset>
+<shadowData>
+<volume>(0.8, 1, 0.8)</volume>
+</shadowData>
+</graphicData>
+<minifiedDef>MinifiedThing</minifiedDef>
+<designationCategory>Ideology</designationCategory>
+<rotatable>false</rotatable>
+<uiOrder>2020</uiOrder>
+<fillPercent>0.35</fillPercent>
+<selectable>true</selectable>
+<useHitPoints>true</useHitPoints>
+<size>(1,1)</size>
+<thingCategories>
+<li>BuildingsMisc</li>
+</thingCategories>
+<stuffCategories>
+<li>Metallic</li>
+</stuffCategories>
+<costList>
+<Steel>30</Steel>
+<ComponentIndustrial>1</ComponentIndustrial>
+</costList>
+<building>
+<destroySound>BuildingDestroyed_Metal_Big</destroySound>
+</building>
+<comps>
+<li Class="CompProperties_AmbientSound">
+<sound>SP_Prop_Ambience</sound>
+<disabledOnUnpowered>true</disabledOnUnpowered>
+</li>
+</comps>
+<statBases>
+<MaxHitPoints>100</MaxHitPoints>
+<WorkToBuild>5000</WorkToBuild>
+<Beauty>10</Beauty>
+<Flammability>1.0</Flammability>
+<Mass>25</Mass>
+<TerrorSource MayRequire="Ludeon.RimWorld.Ideology">20</TerrorSource>
+</statBases>
+<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+</ThingDef>
+
+</Defs>

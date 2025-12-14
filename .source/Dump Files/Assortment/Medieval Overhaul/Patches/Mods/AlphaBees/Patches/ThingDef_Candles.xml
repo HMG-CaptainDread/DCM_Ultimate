@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<!-- Change Alpha Bee candle to MO candle research -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RB_WaxCandle"]/researchPrerequisites</xpath>
+		<value>
+			<researchPrerequisites>
+				<li>DankPyon_CandleMaking</li>
+				<li>DankPyon_RusticFurniture</li>
+			</researchPrerequisites>
+		</value>
+	</Operation>
+				
+	<!-- Alpha Bee Starting Fuel -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="RB_WaxCandle"]/comps/li[@Class="CompProperties_Refuelable"]/initialFuelPercent</xpath>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>Defs/ThingDef[defName="RB_WaxCandle"]/comps/li[@Class="CompProperties_Refuelable"]</xpath>
+			<value>
+				<initialFuelPercent>1</initialFuelPercent>
+			</value>
+		</nomatch>
+	</Operation>
+				
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="RB_WaxCandle"]/comps/li[@Class="CompProperties_Refuelable"]/showAllowAutoRefuelToggle</xpath>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>Defs/ThingDef[defName="RB_WaxCandle"]/comps/li[@Class="CompProperties_Refuelable"]</xpath>
+			<value>
+				<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+			</value>
+		</nomatch>
+	</Operation>
+				
+	<!-- Standardize Glow -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RB_WaxCandle"]/comps/li[@Class="CompProperties_Glower"]/glowRadius</xpath>
+		<value>
+			<glowRadius>5</glowRadius>
+		</value>
+	</Operation>
+				
+	<!-- Add Fuels to Candles -->
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="RB_WaxCandle"]/comps/li[@Class="CompProperties_Refuelable"]/fuelFilter/thingDefs</xpath>
+		<value>
+			<li>RB_Brittlewax</li>
+			<li>RB_RedBeeswax</li>
+			<li>RB_HeavyWax</li>
+			<li>RB_WhiteBeeswax</li>
+			<li>RB_BlueBeeswax</li>
+			<li>RB_Steelwax</li>
+			<li>RB_BlackBeeswax</li>
+			<li>DankPyon_Wax</li>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="DankPyon_Candles_Beeswax" or defName="DankPyon_CandleStand_Beeswax"]/comps/li[@Class="CompProperties_Refuelable"]/fuelFilter/thingDefs</xpath>
+		<value>
+			<li>RB_Beeswax</li>
+			<li>RB_Brittlewax</li>
+			<li>RB_RedBeeswax</li>
+			<li>RB_HeavyWax</li>
+			<li>RB_WhiteBeeswax</li>
+			<li>RB_BlueBeeswax</li>
+			<li>RB_Steelwax</li>
+			<li>RB_BlackBeeswax</li>
+		</value>
+	</Operation>
+				
+	<!-- Change MO Honey thing category -->
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="DankPyon_Wax"]/thingCategories</xpath>
+		<value>
+			<li>RB_BeeswaxCategory</li>
+		</value>
+	</Operation>
+
+</Patch>

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+		<Operation Class="PatchOperationSequence">
+			<operations>
+			
+				<li Class="PatchOperationAttributeSet">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_DM41_Frag_"]</xpath>
+					<attribute>ParentName</attribute>
+					<value>BaseWeapon</value>
+				</li>
+			
+				<li Class="PatchOperationRemove">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_DM41_Frag_"]/recipeMaker</xpath>
+				</li>
+				
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_DM41_Frag_"]</xpath>
+					<value>
+						<tools>
+						  <li Class="CombatExtended.ToolCE">
+							<label>Body</label>
+							<capacities>
+							  <li>Blunt</li>
+							</capacities>
+							<power>2</power>
+							<cooldownTime>1.75</cooldownTime>
+							<armorPenetrationBlunt>1.0</armorPenetrationBlunt>
+							<linkedBodyPartsGroup>Base</linkedBodyPartsGroup>
+						  </li>
+						</tools>
+						<allowedArchonexusCount>5</allowedArchonexusCount>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_DM41_Frag_"]</xpath>
+					<value>
+						<thingClass>CombatExtended.AmmoThing</thingClass>
+						<stackLimit>75</stackLimit>
+						<resourceReadoutPriority>First</resourceReadoutPriority>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAttributeSet">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_DM41_Frag_"]</xpath>
+					<attribute>Class</attribute>
+					<value>CombatExtended.AmmoDef</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_DM41_Frag_"]/comps</xpath>
+					<value>
+						<comps>
+						  <li Class="CombatExtended.CompProperties_ExplosiveCE">
+							<damageAmountBase>56</damageAmountBase>
+							<explosiveDamageType>Bomb</explosiveDamageType>
+							<explosiveRadius>1.5</explosiveRadius>
+						  </li>
+						</comps>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_DM41_Frag_"]/comps</xpath>
+					<value>
+					  <li Class="CombatExtended.CompProperties_Fragments">
+						<fragments>
+							<Fragment_Small>40</Fragment_Small>
+						</fragments>
+					  </li>
+					</value>
+				</li>
+				
+				<!-- Specific -->
+				
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_DM41_Frag_"]/graphicData</xpath>
+					<value>
+						<graphicData>
+							<texPath>CGF1/Ammo/DM41_Frag</texPath>
+							<graphicClass>Graphic_StackCount</graphicClass>
+							<onGroundRandomRotateAngle>0</onGroundRandomRotateAngle>
+						</graphicData>
+					</value>
+				</li>
+				
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>CGF1_MWP_DM41_Frag_</defName>
+					<statBases>
+						<Mass>0.4</Mass>
+						<Bulk>0.87</Bulk>
+						<MarketValue>12.22</MarketValue>
+						<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+						<SightsEfficiency>0.65</SightsEfficiency>
+					</statBases>
+					<Properties>
+						<label>throw frag grenade</label>
+						<verbClass>CombatExtended.Verb_ShootCEOneUse</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<range>10.0</range>
+						<minRange>4</minRange>
+						<warmupTime>0.8</warmupTime>
+						<noiseRadius>4</noiseRadius>
+						<ai_IsBuildingDestroyer>true</ai_IsBuildingDestroyer>
+						<soundCast>CGF1_MWP_SFX_Grenade_Throw</soundCast>
+						<targetParams>
+							<canTargetLocations>true</canTargetLocations>
+						</targetParams>
+						<defaultProjectile>CGF1_MWP_Projectile_DM41_Frag</defaultProjectile>
+						<onlyManualCast>true</onlyManualCast>
+						<ignorePartialLoSBlocker>true</ignorePartialLoSBlocker>
+						<ai_AvoidFriendlyFireRadius>7</ai_AvoidFriendlyFireRadius>
+					</Properties>
+					<weaponTags>
+						<li>CE_AI_Grenade</li>
+						<li>CE_AI_AOE</li>
+						<li>CE_OneHandedWeapon</li>
+					</weaponTags>
+				</li>
+				
+				<!-- Projectile -->
+				
+				<li Class="PatchOperationRemove">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Projectile_DM41_Frag"]/projectile</xpath>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Projectile_DM41_Frag"]/thingClass</xpath>
+					<value>
+						<thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Projectile_DM41_Frag"]</xpath>
+					<value>
+						<projectile Class="CombatExtended.ProjectilePropertiesCE">
+							<explosionRadius>1.5</explosionRadius>
+							<damageDef>Bomb</damageDef>
+							<damageAmountBase>56</damageAmountBase>
+							<explosionDelay>60</explosionDelay>
+							<dropsCasings>true</dropsCasings>
+							<casingMoteDefname>Fleck_GrenadePin</casingMoteDefname>
+							<casingFilthDefname>Filth_GrenadeAmmoCasings</casingFilthDefname>
+							<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+							<speed>12</speed>
+							<suppressionFactor>3.0</suppressionFactor>
+							<dangerFactor>2.0</dangerFactor>
+							<airborneSuppressionFactor>0.25</airborneSuppressionFactor>
+							<explosionDamageFalloff>true</explosionDamageFalloff>
+						</projectile>
+					</value>
+				</li>
+
+				
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Projectile_DM41_Frag"]/comps</xpath>
+					<nomatch Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="CGF1_MWP_Projectile_DM41_Frag"]</xpath>
+						<value>
+							<comps />
+						</value>
+					</nomatch>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Projectile_DM41_Frag"]/comps</xpath>
+					<value>
+						<li Class="CombatExtended.CompProperties_Fragments">
+							<fragments>
+								<Fragment_Small>40</Fragment_Small>
+							</fragments>
+						</li>
+					</value>
+				</li>
+				
+				<!--Recipe Defs -->
+				
+				<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+						<RecipeDef ParentName="GrenadeRecipeBase">
+							<defName>CGF1_MakeDM41FragGrenade</defName>
+							<label>make DM41 frag grenades x10</label>
+							<description>Craft 10 DM41 frag grenades.</description>
+							<jobString>Making DM41 frag grenades.</jobString>
+							<researchPrerequisite>CGF1_MWP_Research_T8_AtomicAgeFirearms</researchPrerequisite>
+							<workAmount>3600</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>Steel</li>
+										</thingDefs>
+									</filter>
+									<count>8</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>FSX</li>
+										</thingDefs>
+									</filter>
+									<count>4</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>ComponentIndustrial</li>
+										</thingDefs>
+									</filter>
+									<count>2</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>Steel</li>
+									<li>FSX</li>
+									<li>ComponentIndustrial</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<CGF1_MWP_DM41_Frag_>10</CGF1_MWP_DM41_Frag_>
+							</products>
+						</RecipeDef>
+					</value>
+				</li>
+
+			</operations>
+	</Operation>
+
+</Patch>

@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	
+	<Operation Class="XmlExtensions.OptionalPatch">
+		<modId>FrozenSnowFox.FrozenSnowFoxVanillaBionicsExpansion</modId>
+		<key>FSFVBEBionicsTableOn</key>
+		<defaultValue>false</defaultValue>
+		<caseTrue>
+			
+			
+			
+		<Operation Class="XmlExtensions.OptionalPatch">
+			<modId>FrozenSnowFox.FrozenSnowFoxVanillaBionicsExpansion</modId>
+			<key>FSFVBEBionicsWorktype</key>
+			<defaultValue>false</defaultValue>
+			<caseTrue>
+				
+				<!-- If True do normal patch -->
+				
+			<Operation Class="PatchOperationSequence">
+				<success>Normal</success>
+				<operations>
+					
+					<!-- Add Worktype -->
+			
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs</xpath>
+					<value>
+						
+	<WorkTypeDef>
+		<defName>FSFBionics</defName>
+		<labelShort>bionics</labelShort>
+		<pawnLabel>Bionics</pawnLabel>
+		<gerundLabel>bionics</gerundLabel>
+		<description>Assemble and disassemble bionics at a bionics table.</description>
+		<verb>Work at</verb>
+		<naturalPriority>460</naturalPriority>
+		<relevantSkills>
+			<li>Crafting</li>
+		</relevantSkills>
+		<workTags>
+			<li>Crafting</li>
+			<li>ManualSkilled</li>
+			<li>Commoner</li>
+			<li>AllWork</li>
+		</workTags>
+	</WorkTypeDef>
+						
+					</value>
+				</li>
+					
+					<!-- Add Workgiver with Bionics Worktype -->
+					
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs</xpath>
+					<value>
+	
+	<WorkGiverDef>
+		<defName>FSFDoBillsBionicsTable</defName>
+		<label>make things at bionics table</label>
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<workType>FSFBionics</workType>
+		<priorityInType>75</priorityInType>
+		<verb>work</verb>
+		<gerund>working at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<prioritizeSustains>true</prioritizeSustains>
+		<fixedBillGiverDefs>
+			<li>FSFBionicsTable</li>
+		</fixedBillGiverDefs>
+	</WorkGiverDef>
+					
+					</value>
+				</li>
+					
+			<!-- Biotech Mechanoids Patch -->
+			
+			<li Class="PatchOperationConditional">		
+				<xpath>/Defs/ThingDef/race/mechEnabledWorkTypes [li [text()="Smithing"] ]</xpath>
+				<match Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef/race/mechEnabledWorkTypes [li [text()="Smithing"] ]</xpath>
+					<value>
+						<li>FSFBionics</li>
+					</value>
+				</match>
+			</li>
+					
+			<!-- Asimov Automation Patch -->
+			
+			<li MayRequire="Neronix17.Asimov" Class="PatchOperationConditional">		
+				<xpath>/Defs/ThingDef/comps/li[@Class = "Asimov.CompProperties_Automaton"]/enabledWorkTypes [li [text()="Smithing"] ]</xpath>
+				<match Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef/comps/li[@Class = "Asimov.CompProperties_Automaton"]/enabledWorkTypes [li [text()="Smithing"] ]</xpath>
+					<value>
+						<li>FSFBionics</li>
+					</value>
+				</match>
+			</li>
+					
+			<!-- Biotech DLC Patch Children Worktypes -->
+			
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName = "Human"]/race/lifeStageWorkSettings</xpath>
+				<value>
+					<FSFBionics>13</FSFBionics> <!-- Default Smithing 13 -->
+				</value>
+			</li>
+			
+			<!-- Vanilla Races Expanded - Archon -->
+			
+			<li MayRequire="vanillaracesexpanded.archon" Class="PatchOperationAdd">
+				<xpath>/Defs/GeneDef[defName = "VRE_EarlyMaturity"]/modExtensions/li[@Class = "VREArchon.LifeStageWorkSettingsExtension"]/lifeStageWorkSettings</xpath>
+				<value>
+					<FSFBionics>10</FSFBionics> <!-- VRE_EarlyMaturity Smithing 10 -->
+				</value>
+			</li>
+				
+				</operations>
+			</Operation>
+			
+			</caseTrue>
+			<caseFalse>
+				
+				<!-- If False do alternative patch -->
+				
+			<Operation Class="PatchOperationSequence">
+				<success>Normal</success>
+				<operations>
+				
+					<!-- Add Workgiver with Smithing Worktype -->
+					
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs</xpath>
+					<value>
+	
+	<WorkGiverDef>
+		<defName>FSFDoBillsBionicsTable</defName>
+		<label>make things at bionics table</label>
+		<giverClass>WorkGiver_DoBill</giverClass>
+		<workType>Smithing</workType>
+		<priorityInType>49</priorityInType>
+		<verb>work</verb>
+		<gerund>working at</gerund>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+		<prioritizeSustains>true</prioritizeSustains>
+		<fixedBillGiverDefs>
+			<li>FSFBionicsTable</li>
+		</fixedBillGiverDefs>
+	</WorkGiverDef>
+					
+					</value>
+				</li>
+				
+				</operations>
+			</Operation>
+				
+			</caseFalse>
+		</Operation>
+			
+		</caseTrue>
+	</Operation>
+
+</Patch>

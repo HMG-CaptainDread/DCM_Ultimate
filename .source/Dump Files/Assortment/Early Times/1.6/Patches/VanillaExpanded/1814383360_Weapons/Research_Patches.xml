@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>Vanilla Weapons Expanded</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/ResearchProjectDef[defName = "VWE_Crossbow"]</xpath>	
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ResearchProjectDef[defName = "VWE_Longbow"]/prerequisites</xpath>	
+				<value>
+					<prerequisites>
+					  <li>RecurveBow</li>
+					  <li>MedTimes_MedievalCrafting</li>
+					</prerequisites>	
+				</value>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/ResearchProjectDef[defName = "VWE_Tools"]</xpath>	
+			</li>
+			
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ResearchProjectDef[defName = "VWE_Gunpowder"]</xpath>	
+				<value>
+					<prerequisites>
+						<li>MedTimes_Explosives</li>
+					</prerequisites>	
+				</value>
+			</li>	
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ResearchProjectDef[defName = "MedTimes_BasicFirearms"]/hiddenPrerequisites</xpath>	
+				<value>
+					<hiddenPrerequisites>
+					  <li>VWE_Gunpowder</li>
+					</hiddenPrerequisites>	
+				</value>
+			</li>	
+			
+		</operations>
+	</match>
+  </Operation>
+  
+</Patch>
+
+
+
+

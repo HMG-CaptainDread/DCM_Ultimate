@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingCategoryDef>
+    <defName>Ammo12PndCannonShells</defName>
+    <label>12-pound cannon shell</label>
+    <parent>AmmoShells</parent>
+    <iconPath>UI/Icons/ThingCategories/CaliberCannon</iconPath>
+  </ThingCategoryDef>
+  <!-- ==================== AmmoSet ========================== -->
+  <CombatExtended.AmmoSetDef>
+    <defName>AmmoSet_12PndCannonShell</defName>
+    <label>12-pound cannon shells</label>
+    <ammoTypes>
+      <Ammo_12PndCannonShell_Solid>Bullet_12PndCannonShell_Solid</Ammo_12PndCannonShell_Solid>
+      <Ammo_12PndCannonShell_ES>Bullet_12PndCannonShell_ES</Ammo_12PndCannonShell_ES>
+      <Ammo_12PndCannonShell_CS>Bullet_12PndCannonShell_CS</Ammo_12PndCannonShell_CS>
+    </ammoTypes>
+  </CombatExtended.AmmoSetDef>
+  <!-- ==================== Ammo ========================== -->
+  <ThingDef Class="CombatExtended.AmmoDef" Name="12PndCannonShellBase" ParentName="AmmoBase" Abstract="True">
+    <description>Artillery ammo intended to be fired from a 12-pounder Napoleon cannon.</description>
+    <thingCategories>
+      <li>Ammo12PndCannonShells</li>
+    </thingCategories>
+    <stackLimit>25</stackLimit>
+    <tradeTags>
+      <li>CE_AutoEnableTrade</li>
+    </tradeTags>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <Mass>10</Mass>
+      <Bulk>14</Bulk>
+    </statBases>
+  </ThingDef>
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="12PndCannonShellBase">
+    <defName>Ammo_12PndCannonShell_Solid</defName>
+    <label>12-pound cannon solid shot</label>
+    <graphicData>
+      <texPath>Things/Ammo/CannonBall/CannonBullet</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>27.83</MarketValue>
+    </statBases>
+    <ammoClass>SolidShot</ammoClass>
+  </ThingDef>
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="12PndCannonShellBase">
+    <defName>Ammo_12PndCannonShell_ES</defName>
+    <label>12-pound cannon explosive shell</label>
+    <graphicData>
+      <texPath>Things/Ammo/CannonBall/CannonBullet</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <cookOffFlashScale>30</cookOffFlashScale>
+    <cookOffSound>MortarBomb_Explode</cookOffSound>
+    <statBases>
+      <MarketValue>28.98</MarketValue>
+    </statBases>
+    <ammoClass>GrenadeHE</ammoClass>
+    <comps>
+      <li Class="CombatExtended.CompProperties_ExplosiveCE">
+        <damageAmountBase>60</damageAmountBase>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <explosiveRadius>4</explosiveRadius>
+      </li>
+      <li Class="CombatExtended.CompProperties_Fragments">
+        <fragments>
+          <Fragment_Shell>300</Fragment_Shell>
+        </fragments>
+      </li>
+    </comps>
+  </ThingDef>
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="12PndCannonShellBase">
+    <defName>Ammo_12PndCannonShell_CS</defName>
+    <label>12-pound cannon canister shot</label>
+    <graphicData>
+      <texPath>Things/Ammo/CanisterShot/CanisterShot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>34.73</MarketValue>
+    </statBases>
+    <ammoClass>CanisterShot</ammoClass>
+  </ThingDef>
+  <!-- ================== Projectiles ================== -->
+  <ThingDef Class="CombatExtended.AmmoDef" Name="Base12PndCannonShell" ParentName="BaseBullet" Abstract="true">
+    <graphicData>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <speed>110</speed>
+      <flyOverhead>false</flyOverhead>
+      <dropsCasings>false</dropsCasings>
+    </projectile>
+  </ThingDef>
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="Base12PndCannonShell">
+    <defName>Bullet_12PndCannonShell_Solid</defName>
+    <label>12-pound cannon solid shot</label>
+    <graphicData>
+      <texPath>Things/Ammo/CannonBall/CannonBulletSmall</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>650</damageAmountBase>
+      <soundExplode>MortarBomb_Explode</soundExplode>
+      <armorPenetrationSharp>50</armorPenetrationSharp>
+      <armorPenetrationBlunt>80</armorPenetrationBlunt>
+    </projectile>
+    <comps>
+      <li Class="CombatExtended.CompProperties_ExplosiveCE">
+        <damageAmountBase>25</damageAmountBase>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <explosiveRadius>1</explosiveRadius>
+      </li>
+      <li Class="CombatExtended.CompProperties_Fragments">
+        <fragments>
+          <Fragment_Shell>10</Fragment_Shell>
+        </fragments>
+      </li>
+    </comps>
+  </ThingDef>
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="Base12PndCannonShell">
+    <defName>Bullet_12PndCannonShell_ES</defName>
+    <label>12-pound cannon explosive shell</label>
+    <thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+    <graphicData>
+      <texPath>Things/Ammo/CannonBall/CannonBulletSmall</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <damageDef>Bomb</damageDef>
+      <damageAmountBase>100</damageAmountBase>
+      <soundExplode>MortarBomb_Explode</soundExplode>
+    </projectile>
+    <comps>
+      <li Class="CombatExtended.CompProperties_ExplosiveCE">
+        <damageAmountBase>75</damageAmountBase>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <explosiveRadius>2.5</explosiveRadius>
+      </li>
+      <li Class="CombatExtended.CompProperties_Fragments">
+        <fragments>
+          <Fragment_Shell>300</Fragment_Shell>
+        </fragments>
+      </li>
+    </comps>
+  </ThingDef>
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="Base12PndCannonShell">
+    <defName>Bullet_12PndCannonShell_CS</defName>
+    <label>12-pound cannon canister shot</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_big</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>39</damageAmountBase>
+      <pelletCount>27</pelletCount>
+      <spreadMult>71.6</spreadMult>
+      <armorPenetrationSharp>3.5</armorPenetrationSharp>
+      <armorPenetrationBlunt>20</armorPenetrationBlunt>
+    </projectile>
+  </ThingDef>
+  <!-- ==================== Recipes ========================== -->
+  <RecipeDef ParentName="GrenadeRecipeBase">
+    <defName>MakeAmmo_12PndCannonShell_Solid</defName>
+    <label>make 12-pound cannon solid shot x5</label>
+    <description>Craft 5 12-pound cannon solid shot</description>
+    <jobString>Making 12-pound cannon solid shot.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>25</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_12PndCannonShell_Solid>5</Ammo_12PndCannonShell_Solid>
+    </products>
+    <recipeUsers>
+      <li>FueledSmithy</li>
+      <li>ElectricSmithy</li>
+    </recipeUsers>
+  </RecipeDef>
+  <RecipeDef ParentName="GrenadeRecipeBase">
+    <defName>MakeAmmo_12PndCannonShell_ES</defName>
+    <label>make 12-pound cannon explosive shells x5</label>
+    <description>Craft 5 12-pound cannon explosive shells.</description>
+    <jobString>Making 12-pound cannon explosive shells.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>20</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </filter>
+        <count>5</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+        <li>Chemfuel</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_12PndCannonShell_ES>5</Ammo_12PndCannonShell_ES>
+    </products>
+    <recipeUsers>
+      <li>FueledSmithy</li>
+      <li>ElectricSmithy</li>
+    </recipeUsers>
+  </RecipeDef>
+  <RecipeDef ParentName="GrenadeRecipeBase">
+    <defName>MakeAmmo_12PndCannonShell_CS</defName>
+    <label>make 12-pound cannon canister shot x5</label>
+    <description>Craft 5 12-pound cannon canister shot.</description>
+    <jobString>Making 12-pound cannon canister shot.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>5</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Ammo_MusketBall</li>
+          </thingDefs>
+        </filter>
+        <count>13.5</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+        <li>Ammo_MusketBall</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_12PndCannonShell_CS>5</Ammo_12PndCannonShell_CS>
+    </products>
+    <recipeUsers>
+      <li>FueledSmithy</li>
+      <li>ElectricSmithy</li>
+    </recipeUsers>
+  </RecipeDef>
+</Defs>

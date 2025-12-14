@@ -1,0 +1,983 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<!-- Wheat -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantWheat"]/plant/harvestedThingDef</xpath>
+		<value>
+			<harvestedThingDef>DankPyon_RawWheat</harvestedThingDef>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantWheat"]/plant/harvestYield</xpath>
+		<value>
+			<harvestYield>18</harvestYield>
+		</value>
+	</Operation>
+
+	<!-- Oats -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantOats"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>DankPyon_BasicAgriculture</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Plants Expanded - More Plants</li>
+		</mods>
+		<nomatch Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+					
+						<!-- Oat Flour -->
+						<ProcessorFramework.ProcessDef>
+							<defName>DankPyon_MillOatProcess</defName>
+							<thingDef>DankPyon_Flour</thingDef>
+							<ingredientFilter>
+								<thingDefs>
+									<li>RC2_RawOats</li>
+								</thingDefs>
+							</ingredientFilter>
+							<processDays>0.2</processDays><!-- in days, a day is 60,000 ticks -->
+							<capacityFactor>1.0</capacityFactor>
+							<efficiency>1.0</efficiency>
+							<usesTemperature>false</usesTemperature>
+							<temperatureSafe>-1.0~99.0</temperatureSafe>
+							<temperatureIdeal>21.0~99.0</temperatureIdeal>
+							<ruinedPerDegreePerHour>2.5</ruinedPerDegreePerHour><!-- percent per degree per hour -->
+							<speedBelowSafe>0.1</speedBelowSafe>
+							<speedAboveSafe>1.0</speedAboveSafe>
+							<sunFactor>1.0~1.0</sunFactor>
+							<rainFactor>1.0~1.0</rainFactor>
+							<snowFactor>1.0~1.0</snowFactor>
+							<windFactor>0.0~3.0</windFactor>
+							<unpoweredFactor>0.0</unpoweredFactor>
+							<unfueledFactor>0.0</unfueledFactor>
+							<powerUseFactor>1.0</powerUseFactor>
+							<fuelUseFactor>1.0</fuelUseFactor>
+							<filledGraphicSuffix/>
+							<usesQuality>false</usesQuality>
+							<qualityDays>(1, 2, 3, 4, 5, 6, 7)</qualityDays>
+							<color>(255, 255, 255)</color><!-- 0-255 or 0.0-1.0 -->
+							<customLabel/>
+							<destroyChance>0.0</destroyChance>
+						</ProcessorFramework.ProcessDef>
+
+						<RecipeDef>
+							<defName>DankPyon_CraftOatFlour</defName>
+							<label>grind oats into flour</label>
+							<description>Grind oat into flour.</description>
+							<jobString>Grinding oat into flour.</jobString>
+							<workSpeedStat>CookSpeed</workSpeedStat>
+							<effectWorking>Cook</effectWorking>
+							<workAmount>100</workAmount>
+							<soundWorking>Recipe_CookMeal</soundWorking>
+							<allowMixingIngredients>true</allowMixingIngredients>
+							<ingredients>
+
+								<li>
+									<filter>
+										<thingDefs>
+											<li>RC2_RawOats</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>RC2_RawOats</li>
+								</thingDefs>
+								<specialFiltersToDisallow>
+									<li>AllowRotten</li>
+								</specialFiltersToDisallow>
+							</fixedIngredientFilter>
+							<products>
+								<DankPyon_Flour>1</DankPyon_Flour>
+							</products>
+							<workSkill>Cooking</workSkill>
+							<recipeUsers>
+								<li>DankPyon_Millstone</li>
+							</recipeUsers>
+						</RecipeDef>
+
+						<RecipeDef>
+							<defName>DankPyon_CraftOatFlourBulk</defName>
+							<label>grind oat into flour x10</label>
+							<description>Grind oat into flour.</description>
+							<jobString>Grinding oat into 10 flour.</jobString>
+							<workSpeedStat>CookSpeed</workSpeedStat>
+							<effectWorking>Cook</effectWorking>
+							<workAmount>800</workAmount>
+							<soundWorking>Recipe_CookMeal</soundWorking>
+							<allowMixingIngredients>true</allowMixingIngredients>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>RC2_RawOats</li>
+										</thingDefs>
+									</filter>
+									<count>10</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>RC2_RawOats</li>
+								</thingDefs>
+								<specialFiltersToDisallow>
+									<li>AllowRotten</li>
+								</specialFiltersToDisallow>
+							</fixedIngredientFilter>
+							<products>
+								<DankPyon_Flour>10</DankPyon_Flour>
+							</products>
+							<workSkill>Cooking</workSkill>
+							<recipeUsers>
+								<li>DankPyon_Millstone</li>
+							</recipeUsers>
+						</RecipeDef>
+
+					</value>
+				</li>
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="DankPyon_WindMill"]/comps/li[@Class="ProcessorFramework.CompProperties_Processor"]/processes</xpath>
+					<value>
+						<li>DankPyon_MillOatProcess</li>
+					</value>
+				</li>
+			</operations>
+		</nomatch>
+		<match Class="PatchOperationFindMod">
+			<mods>
+				<li>Vanilla Cooking Expanded</li>
+			</mods>
+			<nomatch Class="PatchOperationSequence">
+				<operations>
+					<li Class="PatchOperationAdd">
+						<xpath>Defs</xpath>
+						<value>
+
+							<!-- Oat Flour -->
+							<ProcessorFramework.ProcessDef>
+								<defName>DankPyon_MillOatProcess</defName>
+								<thingDef>DankPyon_Flour</thingDef>
+								<ingredientFilter>
+									<thingDefs>
+										<li>RC2_RawOats</li>
+									</thingDefs>
+								</ingredientFilter>
+								<processDays>0.2</processDays><!-- in days, a day is 60,000 ticks -->
+								<capacityFactor>1.0</capacityFactor>
+								<efficiency>1.0</efficiency>
+								<usesTemperature>false</usesTemperature>
+								<temperatureSafe>-1.0~99.0</temperatureSafe>
+								<temperatureIdeal>21.0~99.0</temperatureIdeal>
+								<ruinedPerDegreePerHour>2.5</ruinedPerDegreePerHour><!-- percent per degree per hour -->
+								<speedBelowSafe>0.1</speedBelowSafe>
+								<speedAboveSafe>1.0</speedAboveSafe>
+								<sunFactor>1.0~1.0</sunFactor>
+								<rainFactor>1.0~1.0</rainFactor>
+								<snowFactor>1.0~1.0</snowFactor>
+								<windFactor>0.0~3.0</windFactor>
+								<unpoweredFactor>0.0</unpoweredFactor>
+								<unfueledFactor>0.0</unfueledFactor>
+								<powerUseFactor>1.0</powerUseFactor>
+								<fuelUseFactor>1.0</fuelUseFactor>
+								<filledGraphicSuffix/>
+								<usesQuality>false</usesQuality>
+								<qualityDays>(1, 2, 3, 4, 5, 6, 7)</qualityDays>
+								<color>(255, 255, 255)</color><!-- 0-255 or 0.0-1.0 -->
+								<customLabel/>
+								<destroyChance>0.0</destroyChance>
+							</ProcessorFramework.ProcessDef>
+
+							<RecipeDef>
+								<defName>DankPyon_CraftOatFlour</defName>
+								<label>grind oats into flour</label>
+								<description>Grind oat into flour.</description>
+								<jobString>Grinding oat into flour.</jobString>
+								<workSpeedStat>CookSpeed</workSpeedStat>
+								<effectWorking>Cook</effectWorking>
+								<workAmount>100</workAmount>
+								<soundWorking>Recipe_CookMeal</soundWorking>
+								<allowMixingIngredients>true</allowMixingIngredients>
+								<ingredients>
+									<li>
+										<filter>
+											<thingDefs>
+												<li>RC2_RawOats</li>
+											</thingDefs>
+										</filter>
+										<count>1</count>
+									</li>
+								</ingredients>
+								<fixedIngredientFilter>
+									<thingDefs>
+										<li>RC2_RawOats</li>
+									</thingDefs>
+									<specialFiltersToDisallow>
+										<li>AllowRotten</li>
+									</specialFiltersToDisallow>
+								</fixedIngredientFilter>
+								<products>
+									<DankPyon_Flour>1</DankPyon_Flour>
+								</products>
+								<workSkill>Cooking</workSkill>
+								<recipeUsers>
+									<li>DankPyon_Millstone</li>
+								</recipeUsers>
+							</RecipeDef>
+
+							<RecipeDef>
+								<defName>DankPyon_CraftOatFlourBulk</defName>
+								<label>grind oat into flour x10</label>
+								<description>Grind oat into flour.</description>
+								<jobString>Grinding oat into 10 flour.</jobString>
+								<workSpeedStat>CookSpeed</workSpeedStat>
+								<effectWorking>Cook</effectWorking>
+								<workAmount>800</workAmount>
+								<soundWorking>Recipe_CookMeal</soundWorking>
+								<allowMixingIngredients>true</allowMixingIngredients>
+								<ingredients>
+									<li>
+										<filter>
+											<thingDefs>
+												<li>RC2_RawOats</li>
+											</thingDefs>
+										</filter>
+										<count>10</count>
+									</li>
+								</ingredients>
+								<fixedIngredientFilter>
+									<thingDefs>
+										<li>RC2_RawOats</li>
+									</thingDefs>
+									<specialFiltersToDisallow>
+										<li>AllowRotten</li>
+									</specialFiltersToDisallow>
+								</fixedIngredientFilter>
+								<products>
+									<DankPyon_Flour>10</DankPyon_Flour>
+								</products>
+								<workSkill>Cooking</workSkill>
+								<recipeUsers>
+									<li>DankPyon_Millstone</li>
+								</recipeUsers>
+							</RecipeDef>
+									
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="DankPyon_WindMill"]/comps/li[@Class="ProcessorFramework.CompProperties_Processor"]/processes</xpath>
+						<value>
+							<li>DankPyon_MillOatProcess</li>
+						</value>
+					</li>
+
+				</operations>
+			</nomatch>
+			<match Class="PatchOperationSequence">
+				<operations>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ProcessorFramework.ProcessDef[defName="DankPyon_MillOatProcess"]/ingredientFilter/thingDefs</xpath>
+						<value>
+							<li>RC2_RawOats</li>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/RecipeDef[defName="DankPyon_CraftOatFlour" or defName="DankPyon_CraftOatFlourBulk"]/ingredients/li/filter/thingDefs</xpath>
+						<value>
+							<li>RC2_RawOats</li>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/RecipeDef[defName="DankPyon_CraftOatFlour" or defName="DankPyon_CraftOatFlourBulk"]/fixedIngredientFilter/thingDefs</xpath>
+						<value>
+							<li>RC2_RawOats</li>
+						</value>
+					</li>
+
+				</operations>
+			</match>
+		</match>
+	</Operation>
+
+	<!-- Barley -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantBarley"]/plant/harvestedThingDef</xpath>
+		<value>
+			<harvestedThingDef>DankPyon_RawBarley</harvestedThingDef>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantBarley"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>DankPyon_BasicAgriculture</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+
+	<!-- Barley -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantSorghum"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>DankPyon_BasicAgriculture</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+
+	<!-- Cabbage Patch -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[@Name="RC2_CabbageBase"]/label</xpath>
+		<value>
+			<label>lettuce plant</label>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="RC2_PlantCabbages"]/plant/sowTags</xpath>
+		<value>
+			<li>Hydroponic</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantCabbagesHydro"]/plant/sowTags</xpath>
+		<value>
+			<sowTags/>
+		</value>
+	</Operation>
+
+	<!-- Beetroot -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[@Name="RC2_BeetBase"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>DankPyon_BasicAgriculture</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="RC2_PlantBeet"]/plant/sowTags</xpath>
+		<value>
+			<li>Hydroponic</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantBeetHydro"]/plant/sowTags</xpath>
+		<value>
+			<sowTags/>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="RC2_PlantBeetHydro"]/plant</xpath>
+		<value>
+			<sowResearchPrerequisites Inherit="False"/>
+		</value>
+	</Operation>
+
+	<!-- SnapPeas -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[@Name="RC2_SnapPeaBase"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>DankPyon_BasicAgriculture</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="RC2_PlantSnapPeas"]/plant/sowTags</xpath>
+		<value>
+			<li>Hydroponic</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantSnapPeasHydro"]/plant/sowTags</xpath>
+		<value>
+			<sowTags/>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="RC2_PlantSnapPeasHydro"]/plant</xpath>
+		<value>
+			<sowResearchPrerequisites Inherit="False"/>
+		</value>
+	</Operation>
+
+	<!-- Cucumber -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[@Name="RC2_CucumberBase"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>DankPyon_BasicAgriculture</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="RC2_PlantCucumber"]/plant/sowTags</xpath>
+		<value>
+			<li>Hydroponic</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantCucumberHydro"]/plant/sowTags</xpath>
+		<value>
+			<sowTags/>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="RC2_PlantCucumberHydro"]/plant</xpath>
+		<value>
+			<sowResearchPrerequisites Inherit="False"/>
+		</value>
+	</Operation>
+
+	<!-- Sugarbeets -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[@Name="RC2_SugarBeetBase"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>DankPyon_BasicAgriculture</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="RC2_PlantSugarBeet"]/plant/sowTags</xpath>
+		<value>
+			<li>Hydroponic</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantSugarBeetHydro"]/plant/sowTags</xpath>
+		<value>
+			<sowTags/>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="RC2_PlantSugarBeetHydro"]/plant</xpath>
+		<value>
+			<sowResearchPrerequisites Inherit="False"/>
+		</value>
+	</Operation>
+
+	<!-- Coffee -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[@Name="RC2_PlantCoffeeBase"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>DankPyon_BasicAgriculture</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="RC2_PlantCoffee"]/plant/sowTags</xpath>
+		<value>
+			<li>Hydroponic</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantCoffeeHydro"]/plant/sowTags</xpath>
+		<value>
+			<sowTags/>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="RC2_PlantCoffeeHydro"]/plant</xpath>
+		<value>
+			<sowResearchPrerequisites Inherit="False"/>
+		</value>
+	</Operation>
+
+	<!-- Tea -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[@Name="RC2_PlantTeaBase"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>DankPyon_BasicAgriculture</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="RC2_PlantTea"]/plant/sowTags</xpath>
+		<value>
+			<li>Hydroponic</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantTeaHydro"]/plant/sowTags</xpath>
+		<value>
+			<sowTags/>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="RC2_PlantTeaHydro"]/plant</xpath>
+		<value>
+			<sowResearchPrerequisites Inherit="False"/>
+		</value>
+	</Operation>
+
+	<!-- Melon -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantMelon"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>DankPyon_BasicAgriculture</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+
+	<!-- Strawberry -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="Plant_Strawberry"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>DankPyon_BasicAgriculture</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+
+	<!-- Intermediate RC2 Plants -->
+	<!-- Sorghum -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantSorghum"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>DankPyon_BasicAgriculture</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="RC2_PlantSorghum"]/plant/harvestedThingDef</xpath>
+		<match Class="PatchOperationReplace">
+			<xpath>Defs/ThingDef[defName="RC2_PlantSorghum"]/plant/harvestedThingDef</xpath>
+			<value>
+				<harvestedThingDef>DankPyon_RawSorghum</harvestedThingDef>
+			</value>
+		</match>
+	</Operation>
+				
+	<!-- Yam -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[@Name="RC2_YamBase"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>DankPyon_BasicAgriculture</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="RC2_PlantYam"]/plant/sowTags</xpath>
+		<value>
+			<li>Hydroponic</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantYamHydro"]/plant/sowTags</xpath>
+		<value>
+			<sowTags/>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="RC2_PlantYamHydro"]/plant</xpath>
+		<value>
+			<sowResearchPrerequisites Inherit="False"/>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/RecipeDef[defName="DankPyon_CookMealMashedPotatoes" or defName="DankPyon_CookMealMashedPotatoesBulk"]/ingredients/li[1]/filter/thingDefs</xpath>
+		<value>
+			<li>RC2_RawYams</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/RecipeDef[defName="DankPyon_CookMealMashedPotatoes" or defName="DankPyon_CookMealMashedPotatoesBulk"]/fixedIngredientFilter/thingDefs</xpath>
+		<value>
+			<li>RC2_RawYams</li>
+		</value>
+	</Operation>
+				
+	<!-- Asparagus -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[@Name="RC2_AsparagusBase"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>DankPyon_IntermediateAgriculture</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="RC2_PlantAsparagus"]/plant/sowTags</xpath>
+		<value>
+			<li>Hydroponic</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_AsparagusBaseHydro"]/plant/sowTags</xpath>
+		<value>
+			<sowTags/>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="RC2_AsparagusBaseHydro"]/plant</xpath>
+		<value>
+			<sowResearchPrerequisites Inherit="False"/>
+		</value>
+	</Operation>
+				
+	<!-- Mushroom -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[@Name="RC2_MushroomBase"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>DankPyon_IntermediateAgriculture</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="RC2_PlantMushroom"]/plant/sowTags</xpath>
+		<value>
+			<li>Hydroponic</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantMushroomHydro"]/plant/sowTags</xpath>
+		<value>
+			<sowTags/>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="RC2_PlantMushroomHydro"]/plant</xpath>
+		<value>
+			<sowResearchPrerequisites Inherit="False"/>
+		</value>
+	</Operation>
+				
+	<!-- Eggplant -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantEggPlant"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>DankPyon_IntermediateAgriculture</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+
+	<!-- Agave -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantAgave"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>DankPyon_IntermediateAgriculture</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+				
+	<!-- RC2 Advanced Plants -->
+	<!-- Quinoa -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantQuinoa"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>DankPyon_AdvancedAgriculture</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+
+	<!-- Soybean -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[@Name="RC2_SoybeanBase"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>DankPyon_AdvancedAgriculture</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="RC2_PlantSoybean"]/plant/sowTags</xpath>
+		<value>
+			<li>Hydroponic</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantSoybeanHydro"]/plant/sowTags</xpath>
+		<value>
+			<sowTags/>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="RC2_PlantSoybeanHydro"]/plant</xpath>
+		<value>
+			<sowResearchPrerequisites Inherit="False"/>
+		</value>
+	</Operation>
+				
+	<!-- Pepper -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[@Name="RC2_PepperBase"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>DankPyon_AdvancedAgriculture</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="RC2_PlantPepper"]/plant/sowTags</xpath>
+		<value>
+			<li>Hydroponic</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantPepperHydro"]/plant/sowTags</xpath>
+		<value>
+			<sowTags/>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="RC2_PlantPepperHydro"]/plant</xpath>
+		<value>
+			<sowResearchPrerequisites Inherit="False"/>
+		</value>
+	</Operation>
+
+	<!-- Cactus Fruit -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantCactusFruit"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>DankPyon_AdvancedAgriculture</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+				
+	<!-- Juniper Bush -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantJuniper"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>DankPyon_AdvancedAgriculture</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+				
+	<!-- Pineapple -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[@Name="RC2_PineappleBase"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>DankPyon_AdvancedAgriculture</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="RC2_PlantPineapple"]/plant/sowTags</xpath>
+		<value>
+			<li>Hydroponic</li>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantPineappleHydro"]/plant/sowTags</xpath>
+		<value>
+			<sowTags/>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="RC2_PlantPineappleHydro"]/plant</xpath>
+		<value>
+			<sowResearchPrerequisites Inherit="False"/>
+		</value>
+	</Operation>
+
+	<!-- Trees -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantOrangeTree"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>Cocoa</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantAppletree"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>Cocoa</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantPlumTree"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>Cocoa</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantFigTree"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>Cocoa</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantPomegranateTree"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>Cocoa</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantBananaTree"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>Cocoa</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantCoconutTree"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>Cocoa</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantBreadfruitTree"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>Cocoa</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="RC2_PlantPecanTree"]/plant/sowResearchPrerequisites</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>Cocoa</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+
+	<!-- Change Post Research -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="DankPyon_Post"]/researchPrerequisites</xpath>
+		<value>
+			<researchPrerequisites>
+				<li>DankPyon_BasicAgriculture</li>
+			</researchPrerequisites>
+		</value>
+	</Operation>
+				
+	<!-- Remove Agriculture Research -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ResearchProjectDef[defName="RC2_BasicAgriculture"]</xpath>
+		<match Class="PatchOperationRemove">
+			<xpath>Defs/ResearchProjectDef[defName="RC2_BasicAgriculture"]</xpath>
+		</match>
+	</Operation>
+				
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ResearchProjectDef[defName="RC2_AdvancedAgriculture"]</xpath>
+		<match Class="PatchOperationRemove">
+			<xpath>Defs/ResearchProjectDef[defName="RC2_AdvancedAgriculture"]</xpath>
+		</match>
+	</Operation>
+				
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ResearchProjectDef[defName="RC2_IntermediateAgriculture"]</xpath>
+		<match Class="PatchOperationRemove">
+			<xpath>Defs/ResearchProjectDef[defName="RC2_IntermediateAgriculture"]</xpath>
+		</match>
+	</Operation>
+
+	<Operation Class="PatchOperationRemove">
+		<xpath>Defs/ResearchProjectDef[defName="TreeSowing"]/prerequisites</xpath>
+	</Operation>
+				
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ResearchProjectDef[defName="RC2_IntermediateForestry"]</xpath>
+		<match Class="PatchOperationRemove">
+			<xpath>Defs/ResearchProjectDef[defName="RC2_IntermediateForestry"]</xpath>
+		</match>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="Cocoa"]/techLevel</xpath>
+		<value>
+			<techLevel>Medieval</techLevel>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="Cocoa"]/prerequisites</xpath>
+		<value>
+			<prerequisites>
+				<li>TreeSowing</li>
+			</prerequisites>
+		</value>
+	</Operation>
+
+</Patch>

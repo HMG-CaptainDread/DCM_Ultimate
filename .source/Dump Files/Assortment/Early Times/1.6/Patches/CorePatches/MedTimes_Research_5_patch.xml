@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+  <Operation Class="PatchOperationConditional">
+    <xpath>*/ResearchProjectDef[defName="Smithing"]/prerequisites</xpath>
+    <match Class="PatchOperationAdd">
+		<xpath>*/ResearchProjectDef[defName="Smithing"]/prerequisites</xpath>
+		<value>
+			<li>MedTimes_AdvancedMedievalSmithing</li>
+		</value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+		<xpath>*/ResearchProjectDef[defName="Smithing"]</xpath>
+		<value>
+		  <prerequisites>
+			<li>MedTimes_AdvancedMedievalSmithing</li>
+		  </prerequisites>
+		</value>
+    </nomatch>
+  </Operation>
+  
+</Patch>

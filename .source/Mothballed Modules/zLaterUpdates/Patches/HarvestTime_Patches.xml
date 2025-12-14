@@ -1,0 +1,3856 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- XTRA TREES AND FLOWERS -->
+		<!-- ADD XTRA TO WILD POOL -->
+			<Operation Class="PatchOperationSequence">
+				<operations>
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/BiomeDef[@Name = "TemperateForest"]/wildPlants</xpath>
+						<value>
+							<PlantTreeCamellia>0.1</PlantTreeCamellia>
+							<PlantTreeRedMaple>0.1</PlantTreeRedMaple>
+							<PlantAnthurium>0.1</PlantAnthurium>
+							<PlantNymphHair>0.1</PlantNymphHair>
+							<PlantPlumeria>0.1</PlantPlumeria>
+							<PlantSunflower>0.1</PlantSunflower>
+						</value>
+					</li>
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/BiomeDef[defName = "BorealForest"]/wildPlants</xpath>
+						<value>
+							<PlantTreeRedMaple>0.1</PlantTreeRedMaple>
+							<PlantNymphHair>0.1</PlantNymphHair>
+							<PlantAnthurium>0.1</PlantAnthurium>
+							<PlantPlumeria>0.1</PlantPlumeria>
+							<PlantSunflower>0.1</PlantSunflower>
+						</value>
+					</li>
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/BiomeDef[defName = "TropicalRainforest"]/wildPlants</xpath>
+						<value>
+							<PlantTreeCamellia>0.1</PlantTreeCamellia>
+							<PlantAnthurium>0.1</PlantAnthurium>
+							<PlantNymphHair>0.1</PlantNymphHair>
+							<PlantPlumeria>0.1</PlantPlumeria>
+							<PlantSunflower>0.1</PlantSunflower>
+						</value>
+					</li>
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/BiomeDef[defName = "AridShrubland"]/wildPlants</xpath>
+						<value>
+							<PlantTreeAcacia>0.1</PlantTreeAcacia>
+							<PlantNymphHair>0.1</PlantNymphHair>
+							<PlantPlumeria>0.1</PlantPlumeria>
+						</value>
+					</li>
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/BiomeDef[defName = "Desert"]/wildPlants</xpath>
+						<value>
+							<PlantTreeAcacia>0.1</PlantTreeAcacia>
+						</value>
+					</li>
+				</operations>
+			</Operation>
+		<!-- VEGETABLE GARDEN -->
+			<!-- VFE - FARMING -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>Vanilla Furniture Expanded - Farming</li>	
+					</mods>
+					<match Class="PatchOperationSequence">
+					<success>Always</success>
+						<operations>
+						<li Class="PatchOperationReplace">	
+							<xpath>Defs/ThingDef[defName = "VFE_Ecosystem"]/building/sowTag		|
+							Defs/ThingDef[defName = "VFE_Ecosystem_Tilable"]/building/sowTag
+							</xpath>
+							<value>
+								<sowTag>Hydroponic</sowTag>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">	
+							<xpath>Defs/ThingDef[@Name = "VG_TreeBase"]/plant/sowTags		|
+							Defs/ThingDef[@Name = "VG_FruitTreeBase"]/plant/sowTags		|
+							Defs/ThingDef[@Name = "TreeBase"]/plant/sowTags
+							</xpath>
+							<value>
+								<li>Hydroponic</li>
+							</value>
+						</li>		
+						</operations>
+					</match>
+				</Operation>
+			<!-- BIOMES! ISLANDS -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>Biomes! Islands</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+					<success>Always</success>
+						<operations>
+								<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[@Name = "BiomesCore_FruitBase"]</xpath>
+								<value>
+									<statBases>
+										<Nutrition>0.08</Nutrition>
+									</statBases>
+								</value>
+							</li>			
+							<li Class="PatchOperationReplace">
+							<xpath>Defs/ThingDef[defName = "BiomesIslands_Coconuts"]/statBases/Nutrition</xpath>
+								<value>
+										<Nutrition>0.08</Nutrition>
+								</value>
+							</li>		
+							<li Class="PatchOperationReplace">
+							<xpath>Defs/ThingDef[defName = "BiomesIslands_CoconutPalm"]/plant/harvestYield</xpath>
+								<value>
+									<harvestYield>50</harvestYield>
+								</value>
+							</li>	
+							</operations>
+					</match>
+				</Operation>
+			<!-- ANIMAL FEED TROUGH -->
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+						<xpath>Defs/ThingDef[defName = "AnimalFeedTrough"]</xpath>
+						</li>
+						<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName = "AnimalFeedTrough"]/building/fixedStorageSettings/filter/thingDefs</xpath>
+					<value>
+							<li>Silage</li>
+					</value>
+						</li>
+					</operations>
+				</Operation>
+			<!-- CE -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>Combat Extended</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<operations>
+							<li Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="VG_IronWoodLog"]/tools</xpath>
+								<value>
+									<tools>
+										<li Class="CombatExtended.ToolCE">
+											<label>handle</label>
+											<capacities>
+											<li>Poke</li>
+											</capacities>
+											<power>5</power>
+											<cooldownTime>1.93</cooldownTime>
+											<armorPenetrationBlunt>1.375</armorPenetrationBlunt>
+											<linkedBodyPartsGroup>Handle</linkedBodyPartsGroup>
+										</li>
+										<li Class="CombatExtended.ToolCE">
+											<label>head</label>
+											<capacities>
+											<li>Blunt</li>
+											</capacities>
+											<power>14</power>
+											<cooldownTime>4.49</cooldownTime>
+											<chanceFactor>1.33</chanceFactor>
+											<armorPenetrationBlunt>5.5</armorPenetrationBlunt>
+											<linkedBodyPartsGroup>Head</linkedBodyPartsGroup>
+										</li>
+									</tools>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="VG_IronWoodLog"]/statBases</xpath>
+								<value>
+									<Bulk>6</Bulk>
+									<MeleeCounterParryBonus>0.53</MeleeCounterParryBonus>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="VG_IronWoodLog"]</xpath>
+								<value>
+									<equippedStatOffsets>
+									<MeleeCritChance>1.38</MeleeCritChance>
+									<MeleeParryChance>0.4</MeleeParryChance>
+									<MeleeDodgeChance>0.37</MeleeDodgeChance>
+									</equippedStatOffsets>
+								</value>
+							</li>
+							<li Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="Bamboo"]/tools</xpath>
+								<value>
+									<tools>
+										<li Class="CombatExtended.ToolCE">
+											<label>handle</label>
+											<capacities>
+											<li>Poke</li>
+											</capacities>
+											<power>5</power>
+											<cooldownTime>1.2</cooldownTime>
+											<armorPenetrationBlunt>1.575</armorPenetrationBlunt>
+											<linkedBodyPartsGroup>Handle</linkedBodyPartsGroup>
+										</li>
+										<li Class="CombatExtended.ToolCE">
+											<label>head</label>
+											<capacities>
+											<li>Blunt</li>
+											</capacities>
+											<power>4</power>
+											<cooldownTime>1.49</cooldownTime>
+											<chanceFactor>1.33</chanceFactor>
+											<armorPenetrationBlunt>1.5</armorPenetrationBlunt>
+											<linkedBodyPartsGroup>Head</linkedBodyPartsGroup>
+										</li>
+									</tools>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="Bamboo"]/statBases</xpath>
+								<value>
+									<Bulk>2</Bulk>
+									<MeleeCounterParryBonus>0.53</MeleeCounterParryBonus>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="Bamboo"]</xpath>
+								<value>
+									<equippedStatOffsets>
+									<MeleeCritChance>1.38</MeleeCritChance>
+									<MeleeParryChance>0.4</MeleeParryChance>
+									<MeleeDodgeChance>0.37</MeleeDodgeChance>
+									</equippedStatOffsets>
+								</value>
+							</li>
+						</operations>
+					</match>
+				</Operation>
+			<!-- TRADERS -->
+				<Operation Class="PatchOperationAdd">
+					<xpath>/Defs/TraderKindDef[defName = "Caravan_Neolithic_ShamanMerchant"]/stockGenerators</xpath>
+					<value>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>VG_IronWoodLog</thingDef>
+							<countRange>100~300</countRange>
+						</li>
+						<li Class="StockGenerator_Category">
+							<categoryDef>FineMeals</categoryDef>
+						</li>
+						<li Class="StockGenerator_Category">
+							<categoryDef>LavishMeals</categoryDef>
+						</li>
+						<li Class="StockGenerator_Category">
+							<categoryDef>GardenDrinks</categoryDef>
+						</li>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationAdd">
+					<xpath>/Defs/TraderKindDef[defName = "Caravan_Outlander_Exotic"]/stockGenerators</xpath>
+					<value>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>VG_IronWoodLog</thingDef>
+							<countRange>100~300</countRange>
+						</li>
+						<li Class="StockGenerator_Category">
+							<categoryDef>FineMeals</categoryDef>
+						</li>
+						<li Class="StockGenerator_Category">
+							<categoryDef>LavishMeals</categoryDef>
+						</li>
+						<li Class="StockGenerator_Category">
+							<categoryDef>GardenDrinks</categoryDef>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>VG_Hivepiece</thingDef>
+							<countRange>0~1</countRange>
+						</li>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationAdd">
+					<xpath>/Defs/TraderKindDef[defName = "Base_Neolithic_Standard"]/stockGenerators</xpath>
+					<value>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>VG_IronWoodLog</thingDef>
+							<countRange>200~600</countRange>
+						</li>
+						<li Class="StockGenerator_Category">
+							<categoryDef>FineMeals</categoryDef>
+						</li>
+						<li Class="StockGenerator_Category">
+							<categoryDef>LavishMeals</categoryDef>
+						</li>
+						<li Class="StockGenerator_Category">
+							<categoryDef>GardenDrinks</categoryDef>
+						</li>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationAdd">
+					<xpath>/Defs/TraderKindDef[defName = "Base_Outlander_Standard"]/stockGenerators</xpath>
+					<value>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>VG_IronWoodLog</thingDef>
+							<countRange>200~600</countRange>
+						</li>
+						<li Class="StockGenerator_Category">
+							<categoryDef>FineMeals</categoryDef>
+						</li>
+						<li Class="StockGenerator_Category">
+							<categoryDef>LavishMeals</categoryDef>
+						</li>
+						<li Class="StockGenerator_Category">
+							<categoryDef>GardenDrinks</categoryDef>
+						</li>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationAdd">
+					<xpath>/Defs/TraderKindDef[defName = "Caravan_Neolithic_BulkGoods"]/stockGenerators</xpath>
+					<value>
+						<li Class="StockGenerator_Category">
+							<categoryDef>CookingSupplies</categoryDef>
+							<thingDefCountRange>
+								<min>2</min>
+								<max>4</max>
+							</thingDefCountRange>
+							<totalPriceRange>
+								<min>200</min>
+								<max>700</max>
+							</totalPriceRange>
+						</li>
+						<li Class="StockGenerator_Category">
+							<categoryDef>LavishMeals</categoryDef>
+							<thingDefCountRange>
+								<min>0</min>
+								<max>4</max>
+							</thingDefCountRange>
+							<totalPriceRange>
+								<min>200</min>
+								<max>700</max>
+							</totalPriceRange>
+						</li>
+						<li Class="StockGenerator_Category">
+							<categoryDef>FineMeals</categoryDef>
+							<thingDefCountRange>
+								<min>0</min>
+								<max>4</max>
+							</thingDefCountRange>
+							<totalPriceRange>
+								<min>200</min>
+								<max>700</max>
+							</totalPriceRange>
+						</li>
+						<li Class="StockGenerator_Category">
+							<categoryDef>GardenDrinks</categoryDef>
+							<thingDefCountRange>
+								<min>0</min>
+								<max>4</max>
+							</thingDefCountRange>
+							<totalPriceRange>
+								<min>200</min>
+								<max>700</max>
+							</totalPriceRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>VG_IronWoodLog</thingDef>
+							<countRange>150~200</countRange>
+						</li>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationAdd">
+					<xpath>/Defs/TraderKindDef[defName = "Caravan_Outlander_BulkGoods"]/stockGenerators</xpath>
+					<value>
+						<li Class="StockGenerator_Category">
+							<categoryDef>CookingSupplies</categoryDef>
+							<thingDefCountRange>
+								<min>2</min>
+								<max>4</max>
+							</thingDefCountRange>
+							<totalPriceRange>
+								<min>200</min>
+								<max>700</max>
+							</totalPriceRange>
+						</li>
+						<li Class="StockGenerator_Category">
+							<categoryDef>LavishMeals</categoryDef>
+							<thingDefCountRange>
+								<min>0</min>
+								<max>2</max>
+							</thingDefCountRange>
+							<totalPriceRange>
+								<min>200</min>
+								<max>700</max>
+							</totalPriceRange>
+						</li>
+						<li Class="StockGenerator_Category">
+							<categoryDef>FineMeals</categoryDef>
+							<thingDefCountRange>
+								<min>0</min>
+								<max>2</max>
+							</thingDefCountRange>
+							<totalPriceRange>
+								<min>200</min>
+								<max>700</max>
+							</totalPriceRange>
+						</li>
+						<li Class="StockGenerator_Category">
+							<categoryDef>GardenDrinks</categoryDef>
+							<thingDefCountRange>
+								<min>0</min>
+								<max>2</max>
+							</thingDefCountRange>
+							<totalPriceRange>
+								<min>200</min>
+								<max>700</max>
+							</totalPriceRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>VG_IronWoodLog</thingDef>
+							<countRange>350~500</countRange>
+						</li>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationAdd">
+					<xpath>/Defs/TraderKindDef[defName = "Orbital_BulkGoods"]/stockGenerators</xpath>
+					<value>
+						<li Class="StockGenerator_Category">
+							<categoryDef>CookingSupplies</categoryDef>
+							<thingDefCountRange>
+								<min>2</min>
+								<max>4</max>
+							</thingDefCountRange>
+							<totalPriceRange>
+								<min>400</min>
+								<max>1000</max>
+							</totalPriceRange>
+						</li>
+						<li Class="StockGenerator_Category">
+							<categoryDef>LavishMeals</categoryDef>
+							<thingDefCountRange>
+								<min>0</min>
+								<max>4</max>
+							</thingDefCountRange>
+							<totalPriceRange>
+								<min>200</min>
+								<max>1000</max>
+							</totalPriceRange>
+						</li>
+						<li Class="StockGenerator_Category">
+							<categoryDef>FineMeals</categoryDef>
+							<thingDefCountRange>
+								<min>0</min>
+								<max>4</max>
+							</thingDefCountRange>
+							<totalPriceRange>
+								<min>200</min>
+								<max>1000</max>
+							</totalPriceRange>
+						</li>
+						<li Class="StockGenerator_Category">
+							<categoryDef>GardenDrinks</categoryDef>
+							<thingDefCountRange>
+								<min>0</min>
+								<max>4</max>
+							</thingDefCountRange>
+							<totalPriceRange>
+								<min>200</min>
+								<max>1000</max>
+							</totalPriceRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>VG_IronWoodLog</thingDef>
+							<countRange>500~1200</countRange>
+						</li>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationAdd">
+					<xpath>/Defs/TraderKindDef[defName = "Orbital_Exotic"]/stockGenerators</xpath>
+					<value>
+						<li Class="StockGenerator_Category">
+							<categoryDef>CookingSupplies</categoryDef>
+							<thingDefCountRange>
+								<min>2</min>
+								<max>4</max>
+							</thingDefCountRange>
+							<totalPriceRange>
+								<min>200</min>
+								<max>700</max>
+							</totalPriceRange>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>VG_IronWoodLog</thingDef>
+							<countRange>500~1200</countRange>
+						</li>
+						<li Class="StockGenerator_Category">
+							<categoryDef>FineMeals</categoryDef>
+						</li>
+						<li Class="StockGenerator_Category">
+							<categoryDef>LavishMeals</categoryDef>
+						</li>
+						<li Class="StockGenerator_Category">
+							<categoryDef>GardenDrinks</categoryDef>
+						</li>
+						<li Class="StockGenerator_SingleDef">
+							<thingDef>VG_Hivepiece</thingDef>
+							<countRange>0~4</countRange>
+						</li>
+					</value>
+				</Operation>
+			<!-- ROYAL -->
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/TerrainDef[@Name = "FineTileStoneBase"]</xpath>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>/Defs</xpath>
+							<value>
+								<TerrainDef  ParentName="VG_FloorBase">
+									<defName>FineIronwoodFloor</defName>
+									<label>fine ironwood floor</label>
+									<renderPrecedence>250</renderPrecedence>
+									<description>Fine ironwood flooring. Great care and time is put into making these fine floors. Fit for the highest Royals.</description>
+									<texturePath>Things/floor/IronwoodFloor</texturePath>
+									<statBases>
+									<WorkToBuild>4000</WorkToBuild>
+									<Beauty>3</Beauty>
+									</statBases>
+									<costList>
+									<VG_IronWoodLog>20</VG_IronWoodLog>
+									</costList>
+											<tags>
+												<li>FineFloor</li>
+											</tags>
+									<constructEffect>ConstructWood</constructEffect>
+									<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+									<resourcesFractionWhenDeconstructed>0.15</resourcesFractionWhenDeconstructed>
+								</TerrainDef>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>/Defs/ThingDef[defName = "Harp"]/stuffCategories</xpath>
+							<success>Invert</success>
+						</li>
+						<li Class="PatchOperationRemove">
+							<xpath>/Defs/ThingDef[defName = "Harp"]/costList</xpath>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>/Defs/ThingDef[defName = "Harp"]</xpath>
+							<value>
+								<stuffCategories>
+									<li>Woody</li>
+								</stuffCategories>
+								<costStuffCount>150</costStuffCount>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>/Defs/ThingDef[defName = "Harpsichord"]/stuffCategories</xpath>
+							<success>Invert</success>
+						</li>
+						<li Class="PatchOperationRemove">
+							<xpath>/Defs/ThingDef[defName = "Harpsichord"]/costList</xpath>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>/Defs/ThingDef[defName = "Harpsichord"]</xpath>
+							<value>
+								<stuffCategories>
+									<li>Woody</li>
+								</stuffCategories>
+								<costStuffCount>250</costStuffCount>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>/Defs/ThingDef[defName = "Piano"]/stuffCategories</xpath>
+							<success>Invert</success>
+						</li>
+						<li Class="PatchOperationRemove">
+							<xpath>/Defs/ThingDef[defName = "Piano"]/costList/WoodLog</xpath>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>/Defs/ThingDef[defName = "Piano"]</xpath>
+							<value>
+								<stuffCategories>
+									<li>Woody</li>
+								</stuffCategories>
+								<costStuffCount>220</costStuffCount>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>/Defs/ThingDef[defName = "MeleeWeapon_MonoSword"]</xpath>
+							<success>Invert</success>
+						</li>
+						<li Class="PatchOperationRemove">
+							<xpath>/Defs/RecipeDef[defName = "DisassembleWoodenWeapon"]/fixedIngredientFilter/disallowedThingDefs</xpath>
+						</li>
+					</operations>
+				</Operation>
+			<!-- VANILLA -->
+				<Operation Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName = "WoodLog"]</xpath>
+					<value>
+						<smeltable>true</smeltable>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef/comps/li[@Class = "CompProperties_Refuelable" and fuelFilter/thingDefs/li[text() = "WoodLog"]]/fuelFilter/thingDefs</xpath>
+							<value>
+								<li>Bamboo</li>
+								<li>VG_Biofuel</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName = "Campfire"]/comps/li[contains(@Class,'CompProperties_MeditationFocus')]/offsets/li[contains(@Class,'FocusStrengthOffset_BuildingDefsLit')]/defs | Defs/ThingDef[defName = "TorchLamp"]/comps/li[contains(@Class,'CompProperties_MeditationFocus')]/offsets/li[contains(@Class,'FocusStrengthOffset_BuildingDefsLit')]/defs</xpath>
+							<value>
+								<li>VG_Campfire</li>
+								<li>VG_TorchLamp</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/ThingDef[defName = "Brazier"]</xpath>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName = "Brazier"]/comps/li[contains(@Class,'CompProperties_MeditationFocus')]/offsets/li[contains(@Class,'FocusStrengthOffset_BuildingDefsLit')]/defs</xpath>	
+							<value>
+								<li>VG_Campfire</li>
+								<li>VG_TorchLamp</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationConditional">
+					<xpath>/Defs/ThingDef[defName = "PassiveCooler"]/stuffCategories</xpath>
+					<nomatch Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationRemove">
+								<xpath>Defs/ThingDef[defName = "PassiveCooler"]/constructEffect</xpath>
+							</li>
+							<li Class="PatchOperationRemove">
+								<xpath>Defs/ThingDef[defName = "PassiveCooler"]/costList</xpath>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName = "PassiveCooler"]</xpath>
+								<value>
+									<stuffCategories>
+										<li>Woody</li>
+									</stuffCategories>
+									<costStuffCount>50</costStuffCount>
+								</value>
+							</li>
+						</operations>
+					</nomatch>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/ThingDef[defName = "TableButcher"]/costList</xpath>
+						</li>
+						<li Class="PatchOperationRemove">
+							<xpath>Defs/ThingDef[defName = "TableButcher"]/costList</xpath>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>VGP Garden Gourmet</li>
+					</mods>
+					<nomatch Class="PatchOperationFindMod">
+						<mods>
+							<li>VGP Garden Drinks</li>
+						</mods>
+						<match Class="PatchOperationSequence">
+							<success>Always</success>
+							<operations>
+								<li Class="PatchOperationAdd">
+									<xpath>Defs/RecipeDef[@Name = "CookMealBase"]/fixedIngredientFilter</xpath>
+									<value>
+										<disallowedThingDefs>
+											<li>Rawsugarcane</li>
+										</disallowedThingDefs>
+									</value>
+								</li>
+							</operations>
+						</match>
+					</nomatch>
+				</Operation>
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>VGP Garden Drinks</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationAdd">
+								<xpath>/Defs/ThingDef[defName="VG_FoodShelf"]/building/defaultStorageSettings/filter/categories</xpath>
+								<value>
+									<li>PrecursorBase</li>
+								</value>
+							</li>
+						</operations>
+					</match>
+				</Operation>
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>Misc. Bees'n'Honey</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationReplace">
+								<xpath>/Defs/ThingDef[defName="Honey"]/graphicData/graphicClass</xpath>
+								<value>
+									<graphicClass>Graphic_Single</graphicClass>
+								</value>
+							</li>
+						</operations>
+					</match>
+				</Operation>
+				<Operation Class="PatchOperationConditional">
+					<xpath>/Defs/ThingDef[defName = "Bow_Recurve"]/stuffCategories</xpath>
+					<nomatch Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationRemove">
+								<xpath>/Defs/ThingDef[defName = "Bow_Recurve"]/costList</xpath>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>/Defs/ThingDef[defName = "Bow_Recurve"]</xpath>
+								<value>
+									<stuffCategories>
+										<li>Woody</li>
+									</stuffCategories>
+									<costStuffCount>40</costStuffCount>
+								</value>
+							</li>
+						</operations>
+					</nomatch>
+				</Operation>
+				<Operation Class="PatchOperationConditional">
+					<xpath>/Defs/ThingDef[defName = "Bow_Short"]/stuffCategories</xpath>
+					<nomatch Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationRemove">
+								<xpath>/Defs/ThingDef[defName = "Bow_Short"]/costList</xpath>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>/Defs/ThingDef[defName = "Bow_Short"]</xpath>
+								<value>
+									<stuffCategories>
+										<li>Woody</li>
+									</stuffCategories>
+									<costStuffCount>30</costStuffCount>
+								</value>
+							</li>
+						</operations>
+					</nomatch>
+				</Operation>
+				<Operation Class="PatchOperationConditional">
+					<xpath>/Defs/ThingDef[defName = "Pila"]/stuffCategories</xpath>
+					<nomatch Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationRemove">
+								<xpath>/Defs/ThingDef[defName = "Pila"]/costList</xpath>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>/Defs/ThingDef[defName = "Pila"]</xpath>
+								<value>
+									<stuffCategories>
+										<li>Woody</li>
+									</stuffCategories>
+									<costStuffCount>70</costStuffCount>
+								</value>
+							</li>
+						</operations>
+					</nomatch>
+				</Operation>
+				<Operation Class="PatchOperationConditional">
+					<xpath>/Defs/ThingDef[defName = "Bow_Great"]/stuffCategories</xpath>
+					<nomatch Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationRemove">
+								<xpath>/Defs/ThingDef[defName = "Bow_Great"]/costList</xpath>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>/Defs/ThingDef[defName = "Bow_Great"]</xpath>
+								<value>
+									<stuffCategories>
+										<li>Woody</li>
+									</stuffCategories>
+									<costStuffCount>50</costStuffCount>
+								</value>
+							</li>
+						</operations>
+					</nomatch>
+				</Operation>
+				<Operation Class="PatchOperationConditional">
+					<xpath>/Defs/ScenarioDef[defName = "LostTribe"]/scenario/parts/li[11]/stuff</xpath>
+					<nomatch Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationAdd">
+								<xpath>/Defs/ScenarioDef[defName = "LostTribe"]/scenario/parts/li[11]</xpath>
+								<value>
+									<stuff>WoodLog</stuff>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>/Defs/ScenarioDef[defName = "LostTribe"]/scenario/parts/li[12]</xpath>
+								<value>
+									<stuff>WoodLog</stuff>
+								</value>
+							</li>
+						</operations>
+					</nomatch>
+				</Operation>
+				<Operation Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName = "Hive"]/killedLeavings</xpath>
+					<value>
+						<VG_Hivepiece>1</VG_Hivepiece>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName = "InsectJelly"]/statBases/MarketValue</xpath>
+					<value>
+						<MarketValue>3.5</MarketValue>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName = "Schematic"]/comps/li[contains(@Class,'CompProperties_Book')]/doers/li[contains(@Class,'BookOutcomeProperties_GainResearch')]/tabs </xpath>
+					<value>
+						<VG />
+					</value>
+				</Operation>
+			<!-- VANILLA VEGETABLE ART -->
+				<Operation Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName = "RawRice"]/graphicData/texPath</xpath>
+					<value>
+						<texPath>Things/Veg/Rice</texPath>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName = "RawPotatoes"]/graphicData/texPath</xpath>
+					<value>
+						<texPath>Things/Veg/Potato</texPath>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName = "RawCorn"]/graphicData/texPath</xpath>
+					<value>
+						<texPath>Things/Veg/Corn</texPath>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName = "RawBerries"]/graphicData/texPath</xpath>
+					<value>
+						<texPath>Things/Fruits/Berries</texPath>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName = "RawAgave"]/graphicData/texPath</xpath>
+					<value>
+						<texPath>Things/Veg/AgaveFruit</texPath>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName = "RawHops"]/graphicData/texPath</xpath>
+					<value>
+						<texPath>Things/Veg/Hops</texPath>
+					</value>
+				</Operation>
+			<!-- VANILLA PLANTS -->
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName = "RawAgave"]/statBases</xpath>
+							<value>
+								<Nutrition>0.08</Nutrition>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[defName = "Plant_Strawberry"]/plant/sowResearchPrerequisites</xpath>
+					<nomatch Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName = "Plant_Strawberry"]/plant</xpath>
+								<value>
+									<sowResearchPrerequisites>
+										<li>agricultureII</li>
+									</sowResearchPrerequisites>
+								</value>
+							</li>
+						</operations>
+					</nomatch>
+				</Operation>
+				<Operation Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName = "Plant_Strawberry"]/plant/growDays</xpath>
+					<value>
+						<growDays>5</growDays>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName = "Plant_Strawberry"]/plant/harvestYield</xpath>
+					<value>
+						<harvestYield>6</harvestYield>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName = "RawBerries"]/statBases</xpath>
+					<value>
+						<Nutrition>0.08</Nutrition>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationReplace">
+					<xpath>Defs/ResearchProjectDef[defName = "Cocoa"]/description</xpath>
+					<value>
+						<description>Sow cocoa plants to create your own delicious chocolate. Eating chocolate fulfills the need for recreation, and it's valuable on the market too. \n\nUnlocks Trees and Bushes.</description>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/ThingDef[defName = "Plant_Devilstrand"]/plant/sowTags/li/Hydroponic</xpath>
+							<success>Invert</success>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName = "Plant_Devilstrand"]/plant/sowTags</xpath>
+							<value>
+								<li>Hydroponic</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/ThingDef[defName = "Plant_Corn"]/plant/sowTags/li/Hydroponic</xpath>
+							<success>Invert</success>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName = "Plant_Corn"]/plant/sowTags</xpath>
+							<value>
+								<li>Hydroponic</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/ThingDef[defName = "Plant_Haygrass"]/plant/sowTags/li/Hydroponic</xpath>
+							<success>Invert</success>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName = "Plant_Haygrass"]/plant/sowTags</xpath>
+							<value>
+								<li>Hydroponic</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+			<!-- HIGH DENSITY HYDROPONICS -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>High Density Hydroponics</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationRemove">
+								<xpath>Defs/ThingDef[defName = "VG_Plant_Agave"]/plant/harvestAfterGrowth</xpath>
+							</li>
+							<li Class="PatchOperationRemove">
+								<xpath>Defs/ThingDef[defName = "VG_PlantAmbrosia"]/plant/harvestAfterGrowth</xpath>
+							</li>
+						</operations>
+					</match>
+				</Operation>
+			<!-- VANILLA PLANTS ART -->
+				<Operation Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName = "Plant_Rice"]/graphicData/texPath</xpath>
+					<value>
+						<texPath>Things/Plants/RicePlant</texPath>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName = "Plant_Rice"]/plant/immatureGraphicPath</xpath>
+					<value>
+						<immatureGraphicPath>Things/Immature/RicePlant</immatureGraphicPath>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName = "Plant_Corn"]/graphicData/texPath</xpath>
+					<value>
+						<texPath>Things/Plants/CornPlant</texPath>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName = "Plant_Corn"]/plant/immatureGraphicPath</xpath>
+					<value>
+						<immatureGraphicPath>Things/Immature/CornPlant</immatureGraphicPath>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName = "Plant_Strawberry"]/graphicData/texPath</xpath>
+					<value>
+						<texPath>Things/Plants/StrawberryPlant</texPath>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName = "Plant_Strawberry"]/plant/immatureGraphicPath</xpath>
+					<value>
+						<immatureGraphicPath>Things/Immature/StrawberryPlant</immatureGraphicPath>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName = "Plant_Cotton"]/graphicData/texPath</xpath>
+					<value>
+						<texPath>Things/Plants/CottonPlant</texPath>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName = "Plant_Cotton"]/plant/immatureGraphicPath</xpath>
+					<value>
+						<immatureGraphicPath>Things/Immature/CottonPlant</immatureGraphicPath>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName = "Plant_Devilstrand"]/graphicData/texPath</xpath>
+					<value>
+						<texPath>Things/Plants/Devilstrand</texPath>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName = "Plant_Devilstrand"]/plant/immatureGraphicPath</xpath>
+					<value>
+						<immatureGraphicPath>Things/Immature/Devilstrand</immatureGraphicPath>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[@Name = "HealrootBase"]/graphicData/texPath</xpath>
+					<value>
+						<texPath>Things/Plants/Healroot</texPath>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[@Name = "HealrootBase"]/plant/immatureGraphicPath</xpath>
+					<value>
+						<immatureGraphicPath>Things/Immature/Healroot</immatureGraphicPath>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName = "Plant_Hops"]/graphicData/texPath</xpath>
+					<value>
+						<texPath>Things/Plants/HopsPlant</texPath>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName = "Plant_Berry"]/graphicData/texPath</xpath>
+					<value>
+						<texPath>Things/Plants/Raspberry</texPath>
+					</value>
+				</Operation>
+			<!-- VANILLA KIBBLE -->
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationAdd">
+							<xpath>/Defs/RecipeDef[defName = "Make_Kibble"]/ingredients/li[2]/filter/thingDefs</xpath>
+							<value>
+								<li>Silage</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>/Defs/RecipeDef[defName = "Make_Kibble"]/fixedIngredientFilter/thingDefs</xpath>
+							<value>
+								<li>Silage</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>/Defs/RecipeDef[defName = "Make_Kibble"]/fixedIngredientFilter/disallowedThingDefs|/Defs/RecipeDef[defName = "VG_MakebulkKibble"]/fixedIngredientFilter/disallowedThingDefs</xpath>
+							<success>Always</success>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>/Defs/RecipeDef[defName = "Make_Kibble"]/fixedIngredientFilter|/Defs/RecipeDef[defName = "VG_MakebulkKibble"]/fixedIngredientFilter</xpath>
+							<value>
+								<disallowedThingDefs />
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>/Defs/ThingDef[defName = "Rawsugarcane"]</xpath>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>/Defs/RecipeDef[defName = "Make_Kibble"]/fixedIngredientFilter/disallowedThingDefs|/Defs/RecipeDef[defName = "VG_MakebulkKibble"]/fixedIngredientFilter/disallowedThingDefs</xpath>
+							<value>
+								<li>Rawsugarcane</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+			<!-- VANILLA ITEM CATEGORY -->
+				<Operation Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName = "Kibble"]/thingCategories</xpath>
+					<value>
+						<thingCategories>
+							<li>AnimalFeed</li>
+						</thingCategories>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName = "Hay"]/thingCategories</xpath>
+					<value>
+						<thingCategories>
+							<li>AnimalFeed</li>
+						</thingCategories>
+					</value>
+				</Operation>
+			<!-- VANILLA WILD PLANTS -->
+				<Operation Class="PatchOperationSequence">
+					<operations>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/BiomeDef[@Name = "TemperateForest"]/wildPlants</xpath>
+							<value>
+								<PlantTreeIronwood>0.05</PlantTreeIronwood>
+								<Wild_PlantPlumeria>0.1</Wild_PlantPlumeria>
+								<VG_Plant_TreeBamboo>0.05</VG_Plant_TreeBamboo>
+								<Plant_VG_Grass>0.1</Plant_VG_Grass>
+								<Plant_bean>0.01</Plant_bean>
+								<Plant_redlentil>0.1</Plant_redlentil>
+								<Plant_Barley>0.01</Plant_Barley>
+								<WildAppletree>0.01</WildAppletree>
+								<WildPeachTree>0.01</WildPeachTree>
+								<WildPlantCherrytree>0.01</WildPlantCherrytree>
+								<Plantmushroom>0.05</Plantmushroom>
+								<ST_WildHoneyTree>0.1</ST_WildHoneyTree>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/BiomeDef[defName = "TemperateSwamp"]/wildPlants</xpath>
+							<value>
+								<PlantTreeIronwood>0.05</PlantTreeIronwood>
+								<Plantmushroom>0.1</Plantmushroom>
+								<VG_Plant_TreeBamboo>0.05</VG_Plant_TreeBamboo>
+								<Plant_bean>0.01</Plant_bean>
+								<Plant_redlentil>0.01</Plant_redlentil>
+								<ST_WildHoneyTree>0.1</ST_WildHoneyTree>
+
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/BiomeDef[defName = "BorealForest"]/wildPlants</xpath>
+							<value>
+								<PlantTreeIronwood>0.05</PlantTreeIronwood>
+								<Wild_PlantPlumeria>0.1</Wild_PlantPlumeria>
+								<VG_Plant_TreeBamboo>0.05</VG_Plant_TreeBamboo>
+								<Plant_VG_Grass>0.1</Plant_VG_Grass>
+								<Plant_redlentil>0.01</Plant_redlentil>
+								<Plant_bean>0.01</Plant_bean>
+								<WildPlantCherrytree>0.01</WildPlantCherrytree>
+								<WildPlantcloudberry>0.01</WildPlantcloudberry>
+								<WildPlantgooseberry>0.01</WildPlantgooseberry>
+								<Plantmushroom>0.1</Plantmushroom>
+								<ST_WildHoneyTree>0.1</ST_WildHoneyTree>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/BiomeDef[defName = "Tundra"]/wildPlants</xpath>
+							<value>
+								<WildPlantgooseberry>0.01</WildPlantgooseberry>
+								<WildPlantcloudberry>0.01</WildPlantcloudberry>
+								<Plant_Barley>0.01</Plant_Barley>
+								<Plant_VG_Grass>0.1</Plant_VG_Grass>
+								<Wild_PlantPlumeria>0.1</Wild_PlantPlumeria>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/BiomeDef[defName = "ColdBog"]/wildPlants</xpath>
+							<value>
+								<WildPlantgooseberry>0.01</WildPlantgooseberry>
+								<WildPlantcloudberry>0.01</WildPlantcloudberry>
+								<Plant_VG_Grass>0.1</Plant_VG_Grass>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/BiomeDef[defName = "TropicalRainforest"]/wildPlants</xpath>
+							<value>
+								<Plant_VG_Grass>0.1</Plant_VG_Grass>
+								<Wild_PlantPlumeria>0.1</Wild_PlantPlumeria>
+								<VG_Plant_TreeBamboo>0.05</VG_Plant_TreeBamboo>
+								<Plant_redlentil>0.1</Plant_redlentil>
+								<WildBananaTree>0.01</WildBananaTree>
+								<WildorangeTree>0.01</WildorangeTree>
+								<WildPeachTree>0.01</WildPeachTree>
+								<WildCoconuttree>0.01</WildCoconuttree>
+								<WildPlantpineapple>0.01</WildPlantpineapple>
+								<Plantmushroom>0.1</Plantmushroom>
+								<ST_WildHoneyTree>0.1</ST_WildHoneyTree>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/BiomeDef[defName = "TropicalSwamp"]/wildPlants</xpath>
+							<value>
+								<WildPlantpineapple>0.01</WildPlantpineapple>
+								<Wild_PlantPlumeria>0.01</Wild_PlantPlumeria>
+								<VG_Plant_TreeBamboo>0.05</VG_Plant_TreeBamboo>
+								<Plantmushroom>0.1</Plantmushroom>
+								<ST_WildHoneyTree>0.1</ST_WildHoneyTree>
+								<WildCoconuttree>0.01</WildCoconuttree>
+								<WildBananaTree>0.01</WildBananaTree>
+								<WildorangeTree>0.01</WildorangeTree>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/BiomeDef[defName = "AridShrubland"]/wildPlants</xpath>
+							<value>
+								<Plant_VG_Grass>0.1</Plant_VG_Grass>
+								<Plant_Barley>0.01</Plant_Barley>
+								<WildDateTree>0.01</WildDateTree>
+								<WildFigTree>0.01</WildFigTree>
+								<Wild_PlantPlumeria>0.1</Wild_PlantPlumeria>
+								<ST_WildHoneyTree>0.1</ST_WildHoneyTree>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/BiomeDef[defName = "Desert"]/wildPlants</xpath>
+							<value>
+								<WildDateTree>0.01</WildDateTree>
+								<WildFigTree>0.01</WildFigTree>
+								<ST_WildHoneyTree>0.1</ST_WildHoneyTree>
+								<Plant_VG_Grass>0.1</Plant_VG_Grass>
+								<Plant_Barley>0.01</Plant_Barley>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/BiomeDef[defName = "ExtremeDesert"]/wildPlants</xpath>
+							<value>
+								<WildFigTree>0.01</WildFigTree>
+								<ST_WildHoneyTree>0.1</ST_WildHoneyTree>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+			<!-- SEEDSPLEASE -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>SeedsPlease: Lite</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs</xpath>
+								<value>
+									<ThingDef ParentName="SeedBase">
+										<defName>Seed_VG_Plant_TreeBamboo</defName>
+										<label>Bamboo plant seeds</label>
+										<descriptionHyperlinks>
+											<ThingDef>VG_Plant_TreeBamboo</ThingDef>
+										</descriptionHyperlinks>
+										<modExtensions>
+											<li Class="SeedsPleaseLite.Seed">
+												<sources>
+													<li>VG_Plant_TreeBamboo</li>
+												</sources>
+												<extractable>True</extractable>
+											</li>
+										</modExtensions>
+										<graphicData>
+											<texPath>Things/Seeds/Bamboo_plant</texPath>
+										</graphicData>
+									</ThingDef>
+								</value>
+							</li>
+						</operations>
+					</match>
+				</Operation>
+		<!-- THREE SISTERS -->
+			<!-- BLUE CORN -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>VGP Garden Gourmet</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/RecipeDef[defName = "CraftFlour"]/ingredients/li/filter/thingDefs|Defs/RecipeDef[defName = "CraftBulkFlour"]/ingredients/li/filter/thingDefs</xpath>
+								<order>Append</order>
+								<value>
+									<li>RawBlueCorn</li>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/RecipeDef[defName = "CraftFlour"]/fixedIngredientFilter/thingDefs|Defs/RecipeDef[defName = "CraftBulkFlour"]/fixedIngredientFilter/thingDefs</xpath>
+								<order>Append</order>
+								<value>
+									<li>RawBlueCorn</li>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/RecipeDef[defName = "CraftCornmeal"]/ingredients/li/filter/thingDefs|Defs/RecipeDef[defName = "CraftBulkCornMeal"]/ingredients/li/filter/thingDefs</xpath>
+								<order>Append</order>
+								<value>
+									<li>RawBlueCorn</li>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/RecipeDef[defName = "CraftCornmeal"]/fixedIngredientFilter/thingDefs|Defs/RecipeDef[defName = "CraftBulkCornMeal"]/fixedIngredientFilter/thingDefs</xpath>
+								<order>Append</order>
+								<value>
+									<li>RawBlueCorn</li>
+								</value>
+							</li>
+						</operations>
+					</match>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+						<xpath>Defs/ThingDef[defName = "Schematic"]/comps/li[contains(@Class,'CompProperties_Book')]/doers/li[contains(@Class,'BookOutcomeProperties_GainResearch')]/tabs/VG </xpath>
+							<success>Invert</success>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName = "Schematic"]/comps/li[contains(@Class,'CompProperties_Book')]/doers/li[contains(@Class,'BookOutcomeProperties_GainResearch')]/tabs </xpath>
+							<value>
+								<VG />
+							</value>
+						</li>
+					</operations>
+				</Operation>
+			<!-- VGP GARDEN GOURMET -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>VGP Garden Gourmet</li>
+					</mods>
+						<match Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationConditional">
+								<xpath>Defs/RecipeDef[defName = "PickleVegetable"]/ingredients/li[1]/filter/thingDefs/RawTomatoes</xpath>		
+							<nomatch Class="PatchOperationAdd">
+					<xpath>Defs/RecipeDef[defName = "PickleVegetable"]/ingredients/li[1]/filter/thingDefs	|
+						Defs/RecipeDef[defName = "BulkPickleVegetable"]/ingredients/li[1]/filter/thingDefs
+					</xpath>
+					<value>
+						<li>RawTomatoes</li>
+						<li>Rawsquash</li>
+						<li>Rawpumpkin</li>
+					</value>
+							</nomatch>
+							</li>
+							<li Class="PatchOperationConditional">
+								<xpath>Defs/RecipeDef[defName = "PickleVegetable"]/ingredients/li[1]/filter/thingDefs/RawTomatoes</xpath>
+							<nomatch Class="PatchOperationAdd">
+					<xpath>Defs/RecipeDef[defName = "PickleVegetable"]/fixedIngredientFilter/thingDefs	|
+						Defs/RecipeDef[defName = "BulkPickleVegetable"]/fixedIngredientFilter/thingDefs
+					</xpath>
+					<value>
+							<li>RawTomatoes</li>
+							<li>Rawsquash</li>
+							<li>Rawpumpkin</li>
+					</value>
+							</nomatch>
+							</li>
+							<li Class="PatchOperationConditional">
+								<xpath>Defs/RecipeDef[defName = "PickleVegetable"]/ingredients/li[1]/filter/thingDefs/RawTomatoes</xpath>
+							<nomatch Class="PatchOperationAdd">
+					<xpath>Defs/RecipeDef[defName = "PickleVegetable"]/defaultIngredientFilter/thingDefs|Defs/RecipeDef[defName = "BulkPickleVegetable"]/defaultIngredientFilter/thingDefs</xpath>
+					<value>
+							<li>RawTomatoes</li>
+							<li>Rawsquash</li>
+							<li>Rawpumpkin</li>
+					</value>
+						</nomatch>
+							</li>
+						</operations>
+						</match>
+					</Operation>
+					<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>VGP Garden Gourmet</li>
+					</mods>
+						<match Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationConditional">
+								<xpath>Defs/RecipeDef[defName = "PickleVegetable"]/ingredients/li[1]/filter/thingDefs/RawTomatoes</xpath>	
+							<nomatch Class="PatchOperationAdd">
+					<xpath>Defs/RecipeDef[defName = "Bakepizza"]/ingredients</xpath>
+					<value>
+						<li>
+							<filter>
+							<thingDefs>
+								<li>RawTomatoes</li>
+							</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+					</value>
+						</nomatch>
+							</li>
+							<li Class="PatchOperationConditional">
+								<xpath>Defs/RecipeDef[defName = "PickleVegetable"]/ingredients/li[1]/filter/thingDefs/RawTomatoes</xpath>	
+							<nomatch Class="PatchOperationAdd">
+					<xpath>Defs/RecipeDef[defName = "Bakepizza"]/fixedIngredientFilter/thingDefs</xpath>
+					<value>
+							<li>RawTomatoes</li>
+					</value>
+							</nomatch>
+							</li>
+							<li Class="PatchOperationConditional">
+								<xpath>Defs/RecipeDef[defName = "PickleVegetable"]/ingredients/li[1]/filter/thingDefs/RawTomatoes</xpath>			
+							<nomatch Class="PatchOperationAdd">
+					<xpath>Defs/RecipeDef[defName = "Bakepizza"]/defaultIngredientFilter/thingDefs</xpath>
+					<value>
+							<li>RawTomatoes</li>
+					</value>
+							</nomatch>
+							</li>
+						</operations>
+						</match>	
+					</Operation>
+					<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>VGP Garden Gourmet</li>
+					</mods>
+					<match Class="PatchOperationFindMod">
+						<mods>
+							<li>VGP More Veggies</li>
+						</mods>
+						<nomatch Class="PatchOperationSequence">
+							<success>Always</success>
+							<operations>
+								<li Class="PatchOperationAdd">
+					<xpath>Defs/RecipeDef[defName = "BakeBlueberryPie"]/ingredients/li[3]/filter</xpath>
+						<value>
+							<thingDefs>
+								<li>Rawpumpkin</li>
+							</thingDefs>
+						</value>
+							</li>
+							<li Class="PatchOperationAdd">
+					<xpath>Defs/RecipeDef[defName = "BakeBlueberryPie"]/fixedIngredientFilter/thingDefs</xpath>
+					<value>
+						<li>Rawpumpkin</li>
+					</value>
+							</li>
+							</operations>
+						</nomatch>
+					</match>
+				</Operation>
+			<!-- MEDIEVAL TIMES -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>Medieval Times</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<!--  Pizza -->
+						<li Class="PatchOperationAdd">
+							<xpath>/Defs/RecipeDef[defName="Bakepizza"]/ingredients/li[2]/filter/thingDefs</xpath>
+							<value>
+								<li>MedTimes_MealCheese</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>/Defs/RecipeDef[defName="Bakepizza"]/fixedIngredientFilter/thingDefs</xpath>
+							<value>
+								<li>MedTimes_MealCheese</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>/Defs/RecipeDef[defName="Bakepizza"]/defaultIngredientFilter/thingDefs</xpath>
+							<value>
+								<li>MedTimes_MealCheese</li>
+							</value>
+						</li>
+						<li Class="PatchOperationConditional">
+							<xpath>/Defs/RecipeDef[defName="Bakepizza"]/allowMixingIngredients</xpath>
+							<match Class="PatchOperationReplace">
+								<xpath>/Defs/RecipeDef[defName="Bakepizza"]/allowMixingIngredients</xpath>
+								<value>
+									<allowMixingIngredients>true</allowMixingIngredients>
+								</value>
+							</match>
+							<nomatch Class="PatchOperationAdd">
+								<xpath>/Defs/RecipeDef[defName="Bakepizza"]</xpath>
+								<value>
+									<allowMixingIngredients>true</allowMixingIngredients>
+								</value>
+							</nomatch>
+						</li>
+					</operations>
+					</match>
+				</Operation>
+			<!-- VGP MIX -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>VGP Vegetable Garden</li>
+					</mods>
+					<nomatch Class="PatchOperationFindMod">
+						<mods>
+							<li>VGP Garden Medicine</li>
+						</mods>
+						<nomatch Class="PatchOperationFindMod">
+							<mods>
+								<li>VGP Garden Canning</li>
+							</mods>
+							<nomatch Class="PatchOperationSequence">
+								<success>Always</success>
+								<operations>
+								<li Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName = "RawBerries"]</xpath>
+									<value>
+										<thingCategories>
+											<li>FruitFoodRaw</li>
+										</thingCategories>
+									</value>
+								</li>
+								</operations>
+							</nomatch>
+						</nomatch>
+					</nomatch>
+				</Operation>
+			<!-- WILD CULTIVATION -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>Wild Cultivation - Fan Update</li>
+					</mods>
+					<match Class="PatchOperationFindMod">
+						<mods>
+							<li>VGP More Veggies</li>
+						</mods>
+						<nomatch Class="PatchOperationSequence">
+						<success>Always</success>
+							<operations>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName = "Plantpumpkin"]/plant	|
+								Defs/ThingDef[defName = "Plantsquash"]/plant	|
+								Defs/ThingDef[defName = "Plant_BlueCorn"]/plant	|
+								Defs/ThingDef[defName = "PlantTomato"]/plant
+								</xpath>
+								<value>
+									<wildClusterRadius>4</wildClusterRadius>
+									<wildBiomes>
+										<AridShrubland>0.1</AridShrubland>
+										<BorealForest>0.01</BorealForest>
+										<Desert>0.01</Desert>
+										<ExtremeDesert>0.001</ExtremeDesert>
+										<TemperateForest>0.02</TemperateForest>
+										<TropicalRainforest>0.01</TropicalRainforest>
+										<Tundra>0.001</Tundra>
+										<ColdBog>0.0</ColdBog>
+										<TemperateSwamp>0.01</TemperateSwamp>
+										<TropicalSwamp>0.001</TropicalSwamp>
+									</wildBiomes>
+								</value>
+							</li>
+							</operations>
+						</nomatch>
+					</match>
+				</Operation>
+		<!-- SOYLENT PRODUCTION -->
+			<!-- PACKAGED MEAT -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>PackedMeat</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/RecipeDef[defName = "makesoylentpurple"]/ingredients/li/filter/thingDefs|Defs/RecipeDef[defName = "makesoylentpurple20times"]/ingredients/li/filter/thingDefs</xpath>
+								<value>
+									<li>avOddMeatPack</li>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/RecipeDef[defName = "makesoylentpurple"]/fixedIngredientFilter/thingDefs|Defs/RecipeDef[defName = "makesoylentpurple20times"]/fixedIngredientFilter/thingDefs</xpath>
+								<value>
+									<li>avOddMeatPack</li>
+								</value>
+							</li>
+						</operations>
+					</match>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/ThingDef[defName = "Schematic"]/comps/li[contains(@Class,'CompProperties_Book')]/doers/li[contains(@Class,'BookOutcomeProperties_GainResearch')]/tabs/VG </xpath>
+							<success>Invert</success>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName = "Schematic"]/comps/li[contains(@Class,'CompProperties_Book')]/doers/li[contains(@Class,'BookOutcomeProperties_GainResearch')]/tabs </xpath>
+							<value>
+								<VG />
+							</value>
+						</li>
+					</operations>
+				</Operation>
+		<!-- MORE VEGGIES -->
+			<!-- WILD CULTIVATION -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>Wild Cultivation - Fan Update</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName = "Planteggplant"]/plant|Defs/ThingDef[defName = "Plantpumpkin"]/plant|Defs/ThingDef[defName = "Plantsquash"]/plant|Defs/ThingDef[defName = "PlantTomato"]/plant|Defs/ThingDef[defName = "PlantCarrot"]/plant|Defs/ThingDef[defName = "PlantKiwi"]/plant</xpath>
+								<value>
+									<wildClusterRadius>4</wildClusterRadius>
+									<wildBiomes>
+										<AridShrubland>0.1</AridShrubland>
+										<BorealForest>0.01</BorealForest>
+										<Desert>0.01</Desert>
+										<ExtremeDesert>0.001</ExtremeDesert>
+										<TemperateForest>0.02</TemperateForest>
+										<TropicalRainforest>0.01</TropicalRainforest>
+										<Tundra>0.001</Tundra>
+										<ColdBog>0.0</ColdBog>
+										<TemperateSwamp>0.01</TemperateSwamp>
+										<TropicalSwamp>0.001</TropicalSwamp>
+									</wildBiomes>
+								</value>
+							</li>
+						</operations>
+					</match>
+				</Operation>
+			<!-- VGP GOURMET -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>VGP Garden Gourmet</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationConditional">
+								<xpath>Defs/RecipeDef[defName = "PickleVegetable"]/ingredients/li[1]/filter/thingDefs/RawTomatoes</xpath>
+								<nomatch Class="PatchOperationAdd">
+									<xpath>Defs/RecipeDef[defName = "PickleVegetable"]/ingredients/li[1]/filter/thingDefs|Defs/RecipeDef[defName = "BulkPickleVegetable"]/ingredients/li[1]/filter/thingDefs</xpath>
+									<value>
+										<li>RawTomatoes</li>
+										<li>Rawsquash</li>
+										<li>Rawpumpkin</li>
+									</value>
+								</nomatch>
+							</li>
+							<li Class="PatchOperationConditional">
+								<xpath>Defs/RecipeDef[defName = "PickleVegetable"]/ingredients/li[1]/filter/thingDefs/RawTomatoes</xpath>
+								<nomatch Class="PatchOperationAdd">
+									<xpath>Defs/RecipeDef[defName = "PickleVegetable"]/fixedIngredientFilter/thingDefs|Defs/RecipeDef[defName = "BulkPickleVegetable"]/fixedIngredientFilter/thingDefs</xpath>
+										<value>
+											<li>RawTomatoes</li>
+											<li>Rawsquash</li>
+											<li>Rawpumpkin</li>
+										</value>
+								</nomatch>
+							</li>
+							<li Class="PatchOperationConditional">
+								<xpath>Defs/RecipeDef[defName = "PickleVegetable"]/ingredients/li[1]/filter/thingDefs/RawTomatoes</xpath>
+								<nomatch Class="PatchOperationAdd">
+									<xpath>Defs/RecipeDef[defName = "PickleVegetable"]/defaultIngredientFilter/thingDefs|Defs/RecipeDef[defName = "BulkPickleVegetable"]/defaultIngredientFilter/thingDefs</xpath>
+									<value>
+										<li>RawTomatoes</li>
+										<li>Rawsquash</li>
+										<li>Rawpumpkin</li>
+									</value>
+								</nomatch>
+							</li>
+						</operations>
+					</match>
+				</Operation>
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>VGP Garden Gourmet</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationConditional">
+								<xpath>Defs/RecipeDef[defName = "PickleVegetable"]/ingredients/li[1]/filter/thingDefs/RawTomatoes</xpath>	
+								<nomatch Class="PatchOperationAdd">
+									<xpath>Defs/RecipeDef[defName = "Bakepizza"]/ingredients</xpath>
+									<value>
+										<li>
+											<filter>
+												<thingDefs>
+													<li>RawTomatoes</li>
+												</thingDefs>
+											</filter>
+											<count>2</count>
+										</li>
+									</value>
+								</nomatch>
+							</li>
+							<li Class="PatchOperationConditional">
+								<xpath>Defs/RecipeDef[defName = "PickleVegetable"]/ingredients/li[1]/filter/thingDefs/RawTomatoes</xpath>	
+								<nomatch Class="PatchOperationAdd">
+									<xpath>Defs/RecipeDef[defName = "Bakepizza"]/fixedIngredientFilter/thingDefs</xpath>
+									<value>
+										<li>RawTomatoes</li>
+									</value>
+								</nomatch>
+							</li>
+							<li Class="PatchOperationConditional">
+								<xpath>Defs/RecipeDef[defName = "PickleVegetable"]/ingredients/li[1]/filter/thingDefs/RawTomatoes</xpath>			
+								<nomatch Class="PatchOperationAdd">
+									<xpath>Defs/RecipeDef[defName = "Bakepizza"]/defaultIngredientFilter/thingDefs</xpath>
+									<value>
+										<li>RawTomatoes</li>
+									</value>
+								</nomatch>
+							</li>
+						</operations>
+					</match>
+				</Operation>
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>VGP Garden Gourmet</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/RecipeDef[defName = "BakeBlueberryPie"]/ingredients/li[3]/filter</xpath>
+								<value>
+									<thingDefs>
+										<li>Rawpumpkin</li>
+									</thingDefs>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/RecipeDef[defName = "BakeBlueberryPie"]/fixedIngredientFilter/thingDefs</xpath>
+								<value>
+									<li>Rawpumpkin</li>
+								</value>
+							</li>
+						</operations>
+					</match>
+				</Operation>
+			<!-- MEDIEVAL TIMES -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>Medieval Times</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<!--  Pizza -->
+							<li Class="PatchOperationAdd">
+								<xpath>/Defs/RecipeDef[defName="Bakepizza"]/ingredients/li[2]/filter/thingDefs</xpath>
+								<value>
+									<li>MedTimes_MealCheese</li>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>/Defs/RecipeDef[defName="Bakepizza"]/fixedIngredientFilter/thingDefs</xpath>
+								<value>
+									<li>MedTimes_MealCheese</li>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>/Defs/RecipeDef[defName="Bakepizza"]/defaultIngredientFilter/thingDefs</xpath>
+								<value>
+									<li>MedTimes_MealCheese</li>
+								</value>
+							</li>
+							<li Class="PatchOperationConditional">
+								<xpath>/Defs/RecipeDef[defName="Bakepizza"]/allowMixingIngredients</xpath>
+								<match Class="PatchOperationReplace">
+									<xpath>/Defs/RecipeDef[defName="Bakepizza"]/allowMixingIngredients</xpath>
+									<value>
+										<allowMixingIngredients>true</allowMixingIngredients>
+									</value>
+								</match>
+								<nomatch Class="PatchOperationAdd">
+									<xpath>/Defs/RecipeDef[defName="Bakepizza"]</xpath>
+									<value>
+										<allowMixingIngredients>true</allowMixingIngredients>
+									</value>
+								</nomatch>
+							</li>
+						</operations>
+					</match>
+				</Operation>
+			<!-- VGP GARDEN -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>VGP Vegetable Garden</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName = "RawMango"]/statBases/Nutrition</xpath>
+								<value>
+									<Nutrition>0.08</Nutrition>
+								</value>
+							</li>
+						</operations>
+					</match>
+				</Operation>
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>VGP Vegetable Garden</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName = "RawKiwi"]/statBases/Nutrition</xpath>
+								<value>
+									<Nutrition>0.08</Nutrition>
+								</value>
+							</li>
+						</operations>
+					</match>
+				</Operation>
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>VGP Vegetable Garden</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName = "PlantMangoTree"]/plant|Defs/ThingDef[defName = "PlantAvocadoTree"]/plant</xpath>
+								<value>
+									<sowResearchPrerequisites>
+										<li>agricultureIII</li>
+									</sowResearchPrerequisites>
+								</value>
+							</li>
+						</operations>
+					</match>
+				</Operation>
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>VGP Vegetable Garden</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName = "PlantKiwi"]/plant</xpath>
+								<value>
+									<sowResearchPrerequisites>
+										<li>agricultureII</li>
+									</sowResearchPrerequisites>
+								</value>
+							</li>
+						</operations>
+					</match>
+				</Operation>
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>VGP Vegetable Garden</li>
+					</mods>
+					<nomatch Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName = "PlantMangoTree"]/plant|Defs/ThingDef[defName = "PlantAvocadoTree"]/plant</xpath>
+								<value>
+									<sowResearchPrerequisites>
+										<li>TreeSowing</li>
+									</sowResearchPrerequisites>
+								</value>
+							</li>
+						</operations>
+					</nomatch>
+				</Operation>
+			<!-- VGP DRINKS -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>VGP Garden Drinks</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationInsert">
+								<xpath>Defs/ThingDef[@Name = "VG_RecipeInsertion"]</xpath>
+								<order>Prepend</order>
+								<value>
+									<RecipeDef ParentName="SweetSodaBase">
+										<defName>BrewMangoSoda</defName>
+										<label>brew mango soda</label>
+										<description>Brew mangoes and syrup into a sweet soda.</description>
+										<jobString>Brewing mango soda</jobString>
+										<ingredients>
+											<li>
+												<filter>
+													<thingDefs>
+														<li>RawMango</li>
+													</thingDefs>
+												</filter>
+												<count>20</count>
+											</li>
+										</ingredients>
+										<fixedIngredientFilter>
+											<thingDefs>
+												<li>RawMango</li>
+											</thingDefs>
+										</fixedIngredientFilter>
+										<products>
+											<MangoSoda>6</MangoSoda>
+										</products>
+									</RecipeDef>
+									<RecipeDef ParentName="SweetSodaBase">
+										<defName>BrewKiwiSoda</defName>
+										<label>brew kiwi soda</label>
+										<description>Brew kiwi and syrup into a sweet soda.</description>
+										<jobString>Brewing kiwi soda</jobString>
+										<ingredients>
+											<li>
+												<filter>
+													<thingDefs>
+														<li>RawKiwi</li>
+													</thingDefs>
+												</filter>
+												<count>20</count>
+											</li>
+										</ingredients>
+										<fixedIngredientFilter>
+											<thingDefs>
+												<li>RawKiwi</li>
+											</thingDefs>
+										</fixedIngredientFilter>
+										<products>
+											<KiwiSoda>6</KiwiSoda>
+										</products>
+									</RecipeDef>
+								</value>
+							</li>
+						</operations>
+					</match>
+				</Operation>
+		<!-- GARDEN TOOLS -->
+			<!-- TERRAIN -->
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationAdd">
+							<xpath>
+							Defs/TerrainDef[defName = "MossyTerrain"]/affordances	|
+							Defs/TerrainDef[defName = "MarshyTerrain"]/affordances	|
+							Defs/TerrainDef[defName = "SoilRich"]/affordances	|
+							Defs/TerrainDef[defName = "Mud"]/affordances	  	|
+							Defs/TerrainDef[defName = "Sand"]/affordances	|
+							Defs/TerrainDef[defName = "Gravel"]/affordances	|
+							Defs/TerrainDef[defName = "Ice"]/affordances	 |
+							Defs/TerrainDef[defName = "VG_PlaceSoil"]/affordances		|
+							Defs/TerrainDef[defName = "SoftSand"]/affordances
+							</xpath>
+							<value>
+								<li>VG_ReclaimableSoil</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationAdd">
+						<xpath>Defs/TerrainDef[@Name="WaterShallowBase"]/affordances	 
+						</xpath>
+						<value>
+									<li>VG_ReclaimableSoil</li>
+						</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationAdd">
+							<xpath>
+							Defs/TerrainDef[defName = "Soil"]/affordances	|
+							Defs/TerrainDef[defName = "MossyTerrain"]/affordances	|
+							Defs/TerrainDef[defName = "MarshyTerrain"]/affordances	|
+							Defs/TerrainDef[defName = "SoilRich"]/affordances	|
+							Defs/TerrainDef[defName = "Marsh"]/affordances	|
+							Defs/TerrainDef[defName = "Mud"]/affordances		|
+							Defs/TerrainDef[defName = "Gravel"]/affordances
+							</xpath>
+							<value>
+								<li>VG_DigSpot</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/ThingDef[defName = "Plant_Haygrass"]/plant/sowTags/li/Hydroponic</xpath>
+							<success>Invert</success>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName = "Plant_Haygrass"]/plant/sowTags</xpath>
+							<value>
+								<li>Hydroponic</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/TerrainDef[defName = "Mud"]/affordances/li/Diggable</xpath>
+							<success>Invert</success>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/TerrainDef[defName = "Mud"]/affordances</xpath>
+							<value>
+								<li>Mud</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/ThingDef[defName = "Plant_Devilstrand"]/plant/sowTags/li/Hydroponic</xpath>
+							<success>Invert</success>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName = "Plant_Devilstrand"]/plant/sowTags</xpath>
+							<value>
+								<li>Hydroponic</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/ThingDef[defName = "Plant_Corn"]/plant/sowTags/li/Hydroponic</xpath>
+							<success>Invert</success>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName = "Plant_Corn"]/plant/sowTags</xpath>
+							<value>
+								<li>Hydroponic</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+			<!-- ALPHA BIOMES -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>Alpha Biomes</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationAdd">
+								<xpath>
+									Defs/TerrainDef[defName = "AB_LushGrass"]/affordances	|
+									Defs/TerrainDef[defName = "AB_GrassySand"]/affordances	|
+									Defs/TerrainDef[defName = "AB_ParchedEarth"]/affordances	|
+									Defs/TerrainDef[defName = "AB_TarMud"]/affordances	|
+									Defs/TerrainDef[defName = "AB_HardenedGrass"]/affordances	|
+									Defs/TerrainDef[defName = "AB_MycoticSoil"]/affordances	|
+									Defs/TerrainDef[defName = "AB_MycoticGrass"]/affordances	|
+									Defs/TerrainDef[defName = "AB_SlimyMud"]/affordances	|
+									Defs/TerrainDef[defName = "AB_SlimeGrass"]/affordances	|
+									Defs/TerrainDef[defName = "AB_CrackedMud"]/affordances	|
+									Defs/TerrainDef[defName = "AB_ForsakenSand"]/affordances	|
+									Defs/TerrainDef[defName = "AB_ForsakenRock"]/affordances	|
+									Defs/TerrainDef[defName = "AB_DarkMud"]/affordances	|
+									Defs/TerrainDef[defName = "AB_DenseMud"]/affordances	|
+									Defs/TerrainDef[defName = "AB_DenseGrass"]/affordances	|
+									Defs/TerrainDef[defName = "AB_WebbedMarshyTerrain"]/affordances	|
+									Defs/TerrainDef[defName = "AB_HardenedGrassFertile"]/affordances	|
+									Defs/TerrainDef[defName = "GU_RichAlienSand"]/affordances	|
+									Defs/TerrainDef[defName = "AB_MycoticSoilRich"]/affordances	|
+									Defs/TerrainDef[defName = "AB_RichCrackedMud"]/affordances	|
+									Defs/TerrainDef[defName = "GU_AlienSand"]/affordances	|
+									Defs/TerrainDef[defName = "AB_RichSlime"]/affordances
+								</xpath>
+								<value>
+									<li>VG_DigSpot</li>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>
+									Defs/TerrainDef[defName = "AB_SnowOverRocks"]/affordances	|
+									Defs/TerrainDef[defName = "AB_SolidPropane"]/affordances	|
+									Defs/TerrainDef[defName = "GU_AlienSand"]/affordances	|
+									Defs/TerrainDef[defName = "GU_MossyRed"]/affordances	|
+									Defs/TerrainDef[defName = "GU_RedQuartzBase"]/affordances	|
+									Defs/TerrainDef[defName = "AB_Slime"]/affordances	|
+									Defs/TerrainDef[defName = "AB_FineForsakenSand"]/affordances	|
+									Defs/TerrainDef[defName = "AB_LushGrass"]/affordances	|
+									Defs/TerrainDef[defName = "AB_GrassySand"]/affordances	|
+									Defs/TerrainDef[defName = "AB_ParchedEarth"]/affordances	|
+									Defs/TerrainDef[defName = "AB_TarMud"]/affordances	|
+									Defs/TerrainDef[defName = "AB_HardenedGrass"]/affordances	|
+									Defs/TerrainDef[defName = "AB_MycoticSoil"]/affordances	|
+									Defs/TerrainDef[defName = "AB_MycoticGrass"]/affordances	|
+									Defs/TerrainDef[defName = "AB_SlimyMud"]/affordances	|
+									Defs/TerrainDef[defName = "AB_SlimeGrass"]/affordances	|
+									Defs/TerrainDef[defName = "AB_CrackedMud"]/affordances	|
+									Defs/TerrainDef[defName = "AB_ForsakenSand"]/affordances	|
+									Defs/TerrainDef[defName = "AB_ForsakenRock"]/affordances	|
+									Defs/TerrainDef[defName = "AB_DarkMud"]/affordances	|
+									Defs/TerrainDef[defName = "AB_DenseMud"]/affordances	|
+									Defs/TerrainDef[defName = "AB_DenseGrass"]/affordances	|
+									Defs/TerrainDef[defName = "AB_WebbedMarshyTerrain"]/affordances	|
+									Defs/TerrainDef[defName = "AB_BlackPebbles"]/affordances	|
+									Defs/TerrainDef[defName = "AB_Obsidian"]/affordances	|
+									Defs/TerrainDef[defName = "AB_SolidifiedLava"]/affordances	|
+									Defs/TerrainDef[defName = "AB_PackedSnow"]/affordances	|
+									Defs/TerrainDef[defName = "AB_PackedIce"]/affordances
+								</xpath>
+								<value>
+									<li>VG_ReclaimableSoil</li>
+								</value>
+							</li>
+						</operations>
+					</match>
+				</Operation>
+			<!-- VG TOOLS -->
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/ThingDef[defName = "Schematic"]/comps/li[contains(@Class,'CompProperties_Book')]/doers/li[contains(@Class,'BookOutcomeProperties_GainResearch')]/tabs/VG </xpath>
+							<success>Invert</success>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName = "Schematic"]/comps/li[contains(@Class,'CompProperties_Book')]/doers/li[contains(@Class,'BookOutcomeProperties_GainResearch')]/tabs </xpath>
+							<value>
+								<VG />
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/ThingDef[defName = "VG_Campfire"]</xpath>
+						</li>
+						<li Class="PatchOperationInsert">
+							<xpath>Defs/RecipeDef[defName = "FertilizerCorpseCampfire"]/recipeUsers/li</xpath>
+							<value>
+								<li>VG_Campfire</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/ThingDef[defName = "Bamboo"]</xpath>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/RecipeDef[defName = "MakeCompostStarter"]/ingredients/li[1]/filter/thingDefs|Defs/RecipeDef[defName = "MakeBulkCompostStarter"]/ingredients/li[1]/filter/thingDefs</xpath>
+							<value>
+								<li>Bamboo</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/RecipeDef[defName = "MakeCompostStarter"]/fixedIngredientFilter/thingDefs|Defs/RecipeDef[defName = "MakeBulkCompostStarter"]/fixedIngredientFilter/thingDefs</xpath>
+							<value>
+								<li>Bamboo</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+			<!-- DUBS BAD HYGIENE -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>Dubs Bad Hygiene</li>	
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Always</success>	
+						<operations>
+							<li Class="PatchOperationAdd">
+								<xpath>/Defs</xpath>
+								<value>
+									<RecipeDef>
+										<defName>MakeBiosolidFertilizerHand</defName>
+										<label>make biosolids fertilizer</label>
+										<description>Make biosolids fertilizer from fecal sludge and soil.</description>
+										<jobString>Making fertilizer.</jobString>
+										<workSpeedStat>CookSpeed</workSpeedStat>
+										<workSkillLearnFactor>0.25</workSkillLearnFactor>
+										<effectWorking>Cook</effectWorking>
+										<soundWorking>Recipe_CookMeal</soundWorking>
+										<allowMixingIngredients>true</allowMixingIngredients>
+										<workAmount>1500</workAmount>
+										<ingredients>
+											<li>
+												<filter>
+													<thingDefs>
+														<li>FecalSludge</li>
+													</thingDefs>
+												</filter>
+												<count>50</count>
+											</li>
+											<li>
+												<filter>
+													<thingDefs>
+														<li>VG_PileofDirt</li>
+													</thingDefs>
+												</filter>
+												<count>20</count>
+											</li>
+										</ingredients>
+										<fixedIngredientFilter>
+											<thingDefs>
+												<li>FecalSludge</li>
+												<li>VG_PileofDirt</li>
+											</thingDefs>
+											<specialFiltersToDisallow>
+												<li>AllowNonSmeltableWeapons</li>
+											</specialFiltersToDisallow>
+										</fixedIngredientFilter>
+										<products>
+											<Biosolids>25</Biosolids>
+										</products>
+										<workSkill>Crafting</workSkill>
+										<recipeUsers>
+											<li>TableButcher</li>
+										</recipeUsers>
+									</RecipeDef>
+								</value>
+							</li>
+						</operations>
+					</match>
+				</Operation>
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>Dubs Bad Hygiene</li>	
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Always</success>	
+						<operations>
+							<li Class="PatchOperationAdd">
+								<xpath>/Defs</xpath>
+								<value>
+									<RecipeDef>
+										<defName>MakeGardenFertilizerHand</defName>
+										<label>make fertilizer from fecal sludge</label>
+										<description>Make garden fertilizer from fecal sludge and soil.</description>
+										<jobString>Making fertilizer.</jobString>
+										<workSpeedStat>CookSpeed</workSpeedStat>
+										<workSkillLearnFactor>0.25</workSkillLearnFactor>
+										<effectWorking>Cook</effectWorking>
+										<soundWorking>Recipe_CookMeal</soundWorking>
+										<allowMixingIngredients>true</allowMixingIngredients>
+										<workAmount>1500</workAmount>
+										<ingredients>
+											<li>
+												<filter>
+													<thingDefs>
+														<li>FecalSludge</li>
+													</thingDefs>
+												</filter>
+												<count>50</count>
+											</li>
+											<li>
+												<filter>
+													<thingDefs>
+														<li>VG_PileofDirt</li>
+													</thingDefs>
+												</filter>
+												<count>20</count>
+											</li>
+										</ingredients>
+										<fixedIngredientFilter>
+											<thingDefs>
+												<li>FecalSludge</li>
+												<li>VG_PileofDirt</li>
+											</thingDefs>
+											<specialFiltersToDisallow>
+												<li>AllowNonSmeltableWeapons</li>
+											</specialFiltersToDisallow>
+										</fixedIngredientFilter>
+										<products>
+											<RawFertilizer>25</RawFertilizer>
+										</products>
+										<workSkill>Crafting</workSkill>
+										<recipeUsers>
+											<li>TableButcher</li>
+										</recipeUsers>
+									</RecipeDef>
+								</value>
+							</li>
+						</operations>
+					</match>
+				</Operation>
+		<!-- GARDEN MEDICINE -->
+			<!-- VEGETBALE GARDEN -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>VGP Vegetable Garden</li>
+					</mods>
+					<nomatch Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName = "RawBerries"]</xpath>
+								<value>
+									<thingCategories>
+										<li>FruitFoodRaw</li>
+									</thingCategories>
+								</value>
+							</li>
+						</operations>
+					</nomatch>
+				</Operation>
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>VGP Vegetable Garden</li>
+					</mods>
+					<nomatch Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName = "RawAgave"]</xpath>
+								<value>
+									<thingCategories>
+										<li>FruitFoodRaw</li>
+									</thingCategories>
+								</value>
+							</li>
+						</operations>
+					</nomatch>
+				</Operation>
+			<!-- HIGH DENSITY HYDROPONICS -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>High Density Hydroponics</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationRemove">
+								<xpath>Defs/ThingDef[defName = "VG_PlantAmbrosia"]/plant/harvestAfterGrowth</xpath>
+							</li>
+						</operations>
+					</match>
+				</Operation>
+			<!-- VANILLA -->
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>/Defs/HediffDef[defName = "GutWorms"]/comps/li[@Class = "HediffCompProperties_Immunizable"]</xpath>
+							<success>Invert</success>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>/Defs/HediffDef[defName = "GutWorms"]/comps</xpath>
+							<value>
+						<li Class="HediffCompProperties_Immunizable">
+						</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>/Defs/HediffDef[defName = "MuscleParasites"]/comps/li[@Class = "HediffCompProperties_Immunizable"]</xpath>
+							<success>Invert</success>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>/Defs/HediffDef[defName = "MuscleParasites"]/comps</xpath>
+							<value>
+						<li Class="HediffCompProperties_Immunizable">
+						</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>/Defs/HediffDef[defName = "PenoxycylineHigh"]/stages/li/makeImmuneTo/Animal_Plague</xpath>
+							<success>Invert</success>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>/Defs/HediffDef[defName = "PenoxycylineHigh"]/stages/li/makeImmuneTo</xpath>
+							<value>
+								<li>Animal_Plague</li>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>/Defs/ThingDef[defName = "Penoxycyline"]/description</xpath>
+							<value>
+								<description>A drug for preventing infections before they take hold. Blocks malaria, sleeping sickness, plague. Works in animals. Must be taken every five days to remain effective.\n\nThis drug only prevents new infections. It does not cure existing infections - even those that are not yet discovered.</description>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/ThingDef[defName = "Schematic"]/comps/li[contains(@Class,'CompProperties_Book')]/doers/li[contains(@Class,'BookOutcomeProperties_GainResearch')]/tabs/VG </xpath>
+							<success>Invert</success>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName = "Schematic"]/comps/li[contains(@Class,'CompProperties_Book')]/doers/li[contains(@Class,'BookOutcomeProperties_GainResearch')]/tabs </xpath>
+							<value>
+								<VG />
+							</value>
+						</li>
+					</operations>
+				</Operation>
+		<!-- GARDEN GOURMET -->
+			<!-- ALPHA ANIMALS -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>Alpha Animals</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/RecipeDef[defName = "Makesoycheese"]/ingredients/li/filter/thingDefs|Defs/RecipeDef[defName = "MakeBulksoycheese"]/ingredients/li/filter/thingDefs</xpath>
+								<value>
+									<li>AA_BlueMilk</li>
+									<li>AA_GowMilk</li>
+									<li>AA_NightMilk</li>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/RecipeDef[defName = "Makesoycheese"]/fixedIngredientFilter/thingDefs|Defs/RecipeDef[defName = "MakeBulksoycheese"]/fixedIngredientFilter/thingDefs</xpath>
+								<value>
+									<li>AA_BlueMilk</li>
+									<li>AA_GowMilk</li>
+									<li>AA_NightMilk</li>
+								</value>
+							</li>
+						</operations>
+					</match>
+				</Operation>
+			<!-- PROJECT FALLOUT -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>Project Fallout v1.8b</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/RecipeDef[defName = "CraftFlour"]/ingredients/li/filter/thingDefs|Defs/RecipeDef[defName = "CraftBulkFlour"]/ingredients/li/filter/thingDefs</xpath>
+								<order>Append</order>
+								<value>
+									<li>PFRazorgrain</li>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/RecipeDef[defName = "CraftFlour"]/fixedIngredientFilter/thingDefs|Defs/RecipeDef[defName = "CraftBulkFlour"]/fixedIngredientFilter/thingDefs</xpath>
+								<order>Append</order>
+								<value>
+									<li>PFRazorgrain</li>
+								</value>
+							</li>
+						</operations>
+					</match>
+				</Operation>
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>Project Fallout v1.8b</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/RecipeDef[defName = "CookPorridge"]/ingredients/li/filter/thingDefs</xpath>
+								<order>Append</order>
+								<value>
+									<li>PFRazorgrain</li>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/RecipeDef[defName = "CookPorridge"]/fixedIngredientFilter/thingDefs</xpath>
+								<order>Append</order>
+								<value>
+									<li>PFRazorgrain</li>
+								</value>
+							</li>
+						</operations>
+					</match>
+				</Operation>
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>Project Fallout v1.8b</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/RecipeDef[defName = "PickleVegetable"]/ingredients/li[1]/filter/thingDefs|Defs/RecipeDef[defName = "BulkPickleVegetable"]/ingredients/li[1]/filter/thingDefs</xpath>
+								<value>
+									<li>PFRawTatos</li>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/RecipeDef[defName = "PickleVegetable"]/fixedIngredientFilter/thingDefs</xpath>
+								<order>Append</order>
+								<value>
+									<li>PFRawTatos</li>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/RecipeDef[defName = "PickleVegetable"]/defaultIngredientFilter/thingDefs</xpath>
+								<order>Append</order>
+								<value>
+									<li>PFRawTatos</li>
+								</value>
+							</li>
+						</operations>
+						</match>
+				</Operation>
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>Project Fallout v1.8b</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName = "PFMutfruit"]</xpath>
+								<value>
+									<thingCategories>
+										<li>FruitFoodRaw</li>
+									</thingCategories>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName = "PFTarberry"]</xpath>
+								<value>
+									<thingCategories>
+										<li>FruitFoodRaw</li>
+									</thingCategories>
+								</value>
+							</li>
+						</operations>
+					</match>
+				</Operation>
+			<!-- MEDIEVAL TIMES -->
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/ThingDef[defName = "MedTimes_MealCheese"]</xpath>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/ThingDef[defName = "MedTimes_MealCheese"]/statBases/Nutrition</xpath>
+							<value>
+								<Nutrition>0.25</Nutrition>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/ThingDef[defName = "MedTimes_MealCheese"]/ingestible/optimalityOffsetHumanlikes</xpath>
+							<value>
+								<optimalityOffsetHumanlikes>-5</optimalityOffsetHumanlikes>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName = "MedTimes_MealCheese"]/ingestible</xpath>
+							<value>
+								<maxNumToIngestAtOnce>3</maxNumToIngestAtOnce>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/ThingDef[defName = "MedTimes_MealCheese"]</xpath>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/RecipeDef[defName = "MedTimes_CookMealCheese"]/products/MedTimes_MealCheese</xpath>
+							<value>
+								<MedTimes_MealCheese>3</MedTimes_MealCheese>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/RecipeDef[defName = "MedTimes_CookMealCheeseBulk"]/products/MedTimes_MealCheese</xpath>
+							<value>
+								<MedTimes_MealCheese>30</MedTimes_MealCheese>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/ThingDef[defName = "MedTimes_MealCheese"]</xpath>
+						</li>
+						<li Class="PatchOperationInsert">
+							<xpath>Defs/RecipeDef[defName = "MedTimes_CookMealCheese"]/recipeUsers/li|Defs/RecipeDef[defName = "MedTimes_CookMealCheeseBulk"]/recipeUsers/li</xpath>
+							<value>
+								<li>Canningstove</li>
+								<li>HandCanningstove</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/ThingDef[defName = "MedTimes_MealCheese"]</xpath>
+						</li>
+						<li Class="PatchOperationInsert">
+							<xpath>Defs/RecipeDef[defName = "SaltMeat"]/defaultIngredientFilter/exceptedThingDefs/li</xpath>
+							<value>
+								<li>MedTimes_MealJerkedMeats</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/ThingDef[defName = "MedTimes_MealCheese"]</xpath>
+						</li>
+						<li Class="PatchOperationInsert">
+							<xpath>Defs/RecipeDef[defName = "SaltMeat"]/recipeUsers/li|Defs/RecipeDef[defName = "PickleVegetable"]/recipeUsers/li|Defs/RecipeDef[defName = "PickleHighVegetable"]/recipeUsers/li|Defs/RecipeDef[defName = "BrewCoffee"]/recipeUsers/li|Defs/RecipeDef[defName = "BrewTea"]/recipeUsers/li|Defs/RecipeDef[defName = "MakePolenta"]/recipeUsers/li|Defs/RecipeDef[defName = "Makesoycheese"]/recipeUsers/li</xpath>
+							<value>
+								<li>MedTimes_FoodPrepStation</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/ThingDef[defName = "MedTimes_MealCheese"]</xpath>
+						</li>
+						<li Class="PatchOperationInsert">
+							<xpath>Defs/RecipeDef[defName = "BakeBread"]/recipeUsers/li|Defs/RecipeDef[defName = "Bakesweetroll"]/recipeUsers/li|Defs/RecipeDef[defName = "Bakepolenta"]/recipeUsers/li|Defs/RecipeDef[defName = "BakeCornbread"]/recipeUsers/li|Defs/RecipeDef[defName = "BakeMeatPie"]/recipeUsers/li|Defs/RecipeDef[defName = "DryFruit"]/recipeUsers/li</xpath>
+							<value>
+								<li>MedTimes_StoneHearth</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/ThingDef[defName = "MedTimes_MealCheese"]</xpath>
+						</li>
+						<li Class="PatchOperationInsert">
+							<xpath>Defs/RecipeDef[defName = "BakeMeatPie"]/recipeUsers/li|Defs/RecipeDef[defName = "DryFruit"]/recipeUsers/li</xpath>
+							<value>
+								<li>MedTimes_Smokehouse</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/ThingDef[defName = "MedTimes_MealCheese"]</xpath>
+						</li>
+						<li Class="PatchOperationInsert">
+							<xpath>Defs/RecipeDef[defName = "MedTimes_CookMealJerkedMeats"]/recipeUsers/li|Defs/RecipeDef[defName = "MedTimes_CookMealJerkedMeatsBulk"]/recipeUsers/li|Defs/RecipeDef[defName = "MedTimes_CookMealDriedAgaveFruit"]/recipeUsers/li|Defs/RecipeDef[defName = "MedTimes_CookMealDriedAgaveFruitBulk"]/recipeUsers/li|Defs/RecipeDef[defName = "MedTimes_CookMealDriedBerries"]/recipeUsers/li|Defs/RecipeDef[defName = "MedTimes_CookMealDriedBerriesBulk"]/recipeUsers/li</xpath>
+							<value>
+								<li>Oven</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/ThingDef[defName = "MedTimes_MealCheese"]</xpath>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/RecipeDef[defName = "CookGrillcheese"]/ingredients</xpath>
+							<value>
+								<ingredients>
+									<li>
+										<filter>
+											<thingDefs>
+												<li>Bread</li>
+											</thingDefs>
+										</filter>
+										<count>4</count>
+									</li>
+									<li>
+										<filter>
+											<thingDefs>
+												<li>cheese</li>
+												<li>MedTimes_MealCheese</li>
+											</thingDefs>
+										</filter>
+										<count>2</count>
+									</li>
+								</ingredients>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/RecipeDef[defName = "CookGrillcheese"]/fixedIngredientFilter/thingDefs</xpath>
+							<value>
+								<thingDefs>
+									<li>Bread</li>
+									<li>cheese</li>
+									<li>MedTimes_MealCheese</li>
+								</thingDefs>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/ThingDef[defName = "MedTimes_MealCheese"]</xpath>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/RecipeDef[defName = "Cookgrilledsandwich"]/ingredients</xpath>
+							<value>
+								<ingredients>
+									<li>
+										<filter>
+											<thingDefs>
+												<li>Bread</li>
+											</thingDefs>
+										</filter>
+										<count>2</count>
+									</li>
+									<li>
+										<filter>
+											<thingDefs>
+												<li>cheese</li>
+												<li>MedTimes_MealCheese</li>
+											</thingDefs>
+										</filter>
+										<count>2</count>
+									</li>
+									<li>
+										<filter>
+											<categories>
+												<li>MeatRaw</li>
+											</categories>
+										</filter>
+										<count>6</count>
+									</li>
+								</ingredients>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/RecipeDef[defName = "Cookgrilledsandwich"]/fixedIngredientFilter/thingDefs</xpath>
+							<value>
+								<thingDefs>
+									<li>Bread</li>
+									<li>cheese</li>
+									<li>MedTimes_MealCheese</li>
+								</thingDefs>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/RecipeDef[defName = "Cookgrilledsandwich"]/defaultIngredientFilter/thingDefs</xpath>
+							<value>
+								<thingDefs>
+									<li>Bread</li>
+									<li>cheese</li>
+									<li>MedTimes_MealCheese</li>
+								</thingDefs>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/ThingDef[defName = "MedTimes_MealCheese"]</xpath>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/RecipeDef[defName = "CookTacos"]/ingredients</xpath>
+							<value>
+								<ingredients>
+									<li>
+										<filter>
+											<thingDefs>
+												<li>Flour</li>
+											</thingDefs>
+										</filter>
+										<count>10</count>
+									</li>
+									<li>
+										<filter>
+											<thingDefs>
+												<li>cheese</li>
+												<li>MedTimes_MealCheese</li>
+											</thingDefs>
+										</filter>
+										<count>4</count>
+									</li>
+									<li>
+										<filter>
+											<categories>
+												<li>MeatRaw</li>
+											</categories>
+										</filter>
+										<count>10</count>
+									</li>
+								</ingredients>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/RecipeDef[defName = "CookTacos"]/fixedIngredientFilter/thingDefs</xpath>
+							<value>
+								<thingDefs>
+									<li>Flour</li>
+									<li>cheese</li>
+									<li>MedTimes_MealCheese</li>
+								</thingDefs>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/RecipeDef[defName = "CookTacos"]/defaultIngredientFilter/thingDefs</xpath>
+							<value>
+								<thingDefs>
+									<li>Flour</li>
+									<li>cheese</li>
+									<li>MedTimes_MealCheese</li>
+								</thingDefs>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+					<li Class="PatchOperationTest">
+						<xpath>Defs/ThingDef[defName = "MedTimes_MealCheese"]</xpath>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/RecipeDef[defName = "Bakepizza"]/ingredients</xpath>
+						<value>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>Flour</li>
+										</thingDefs>
+									</filter>
+									<count>10</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>cheese</li>
+											<li>MedTimes_MealCheese</li>
+										</thingDefs>
+									</filter>
+									<count>6</count>
+								</li>
+								<li>
+									<filter>
+										<categories>
+											<li>MeatRaw</li>
+										</categories>
+									</filter>
+									<count>10</count>
+								</li>
+							</ingredients>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/RecipeDef[defName = "Bakepizza"]/fixedIngredientFilter</xpath>
+						<value>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>Flour</li>
+										<li>cheese</li>
+									<li>MedTimes_MealCheese</li>
+								</thingDefs>
+								<categories>
+									<li>MeatRaw</li>
+								</categories>
+								<specialFiltersToDisallow>
+									<li>AllowRotten</li>
+								</specialFiltersToDisallow>
+							</fixedIngredientFilter>
+						</value>
+					</li>
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/RecipeDef[defName = "Bakepizza"]/defaultIngredientFilter</xpath>
+						<value>
+							<defaultIngredientFilter>
+								<categories>
+									<li>FoodRaw</li>
+								</categories>
+								<thingDefs>
+									<li>Flour</li>
+									<li>cheese</li>
+									<li>MedTimes_MealCheese</li>
+								</thingDefs>
+								<disallowedCategories>
+									<li>EggsFertilized</li>
+								</disallowedCategories>
+								<disallowedThingDefs>
+									<li>Meat_Human</li>
+								</disallowedThingDefs>
+							</defaultIngredientFilter>
+						</value>
+					</li>
+					</operations>
+				</Operation>
+			<!-- SUSHI -->
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/ThingDef[defName = "FishMeat"]</xpath>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/RecipeDef[defName = "Make_Nigiri"]/ingredients/li[2]/filter/thingDefs</xpath>
+							<value>
+								<li>FishMeat</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/RecipeDef[defName = "Make_Nigiri"]/fixedIngredientFilter/thingDefs</xpath>
+							<value>
+								<li>FishMeat</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/RecipeDef[defName = "CookMakiRoll"]/ingredients/li[2]/filter/thingDefs</xpath>
+							<value>
+								<li>FishMeat</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/RecipeDef[defName = "CookMakiRoll"]/fixedIngredientFilter/thingDefs</xpath>
+							<value>
+								<li>FishMeat</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/RecipeDef[defName = "CookMakiRoll"]/defaultIngredientFilter/thingDefs</xpath>
+							<value>
+								<li>FishMeat</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+			<!-- FISH INDUSTRY -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>FishIndustry</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/RecipeDef[defName = "Make_Nigiri"]/ingredients/li[2]/filter/thingDefs</xpath>
+							<value>
+								<li>Meat_Mashgon</li>
+								<li>Meat_Blueblade</li>
+								<li>Meat_Tailteeth</li>
+								<li>Meat_Sduiggles</li>
+								<li>Meat_Seasnake</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/RecipeDef[defName = "Make_Nigiri"]/fixedIngredientFilter/thingDefs</xpath>
+							<value>
+								<li>Meat_Mashgon</li>
+								<li>Meat_Blueblade</li>
+								<li>Meat_Tailteeth</li>
+								<li>Meat_Sduiggles</li>
+								<li>Meat_Seasnake</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/RecipeDef[defName = "CookMakiRoll"]/ingredients/li[2]/filter/thingDefs</xpath>
+							<value>
+								<li>Meat_Mashgon</li>
+								<li>Meat_Blueblade</li>
+								<li>Meat_Tailteeth</li>
+								<li>Meat_Sduiggles</li>
+								<li>Meat_Seasnake</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/RecipeDef[defName = "CookMakiRoll"]/fixedIngredientFilter/thingDefs</xpath>
+							<value>
+								<li>Meat_Mashgon</li>
+								<li>Meat_Blueblade</li>
+								<li>Meat_Tailteeth</li>
+								<li>Meat_Sduiggles</li>
+								<li>Meat_Seasnake</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/RecipeDef[defName = "CookMakiRoll"]/defaultIngredientFilter/thingDefs</xpath>
+							<value>
+								<li>Meat_Mashgon</li>
+								<li>Meat_Blueblade</li>
+								<li>Meat_Tailteeth</li>
+								<li>Meat_Sduiggles</li>
+								<li>Meat_Seasnake</li>
+							</value>
+						</li>
+					</operations>
+					</match>
+				</Operation>
+			<!-- VANILLA FISHING EXPANDED -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>Vanilla Fishing Expanded</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/RecipeDef[defName = "Make_Nigiri"]/ingredients/li[2]/filter</xpath>
+							<value>
+								<categories>
+									<li>VCEF_RawFishCategory</li>
+								</categories>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/RecipeDef[defName = "Make_Nigiri"]/fixedIngredientFilter</xpath>
+							<value>
+								<categories>
+									<li>VCEF_RawFishCategory</li>
+								</categories>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/RecipeDef[defName = "CookMakiRoll"]/ingredients/li[2]/filter</xpath>
+							<value>
+								<categories>
+									<li>VCEF_RawFishCategory</li>
+								</categories>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/RecipeDef[defName = "CookMakiRoll"]/fixedIngredientFilter</xpath>
+							<value>
+								<categories>
+									<li>VCEF_RawFishCategory</li>
+								</categories>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/RecipeDef[defName = "CookMakiRoll"]/defaultIngredientFilter</xpath>
+							<value>
+								<categories>
+									<li>VCEF_RawFishCategory</li>
+								</categories>
+							</value>
+						</li>
+					</operations>
+					</match>
+				</Operation>
+			<!-- RF FISHING -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>[RF] Fishing</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/RecipeDef[defName = "Make_Nigiri"]/ingredients/li[2]/filter/thingDefs</xpath>
+							<value>
+								<li>RawFishMeat</li>
+								<li>RawSquidMeat</li>
+								<li>RawEelMeat</li>
+								<li>JellyfishMeat</li>
+								<li>PufferfishMeat</li>
+								<li>SeaCucumberMeat</li>
+								<li>RawShellfishMeat</li>
+								<li>RawSnailMeat</li>
+								<li>RawShrimpMeat</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/RecipeDef[defName = "Make_Nigiri"]/fixedIngredientFilter/thingDefs</xpath>
+							<value>
+								<li>RawFishMeat</li>
+								<li>RawSquidMeat</li>
+								<li>RawEelMeat</li>
+								<li>JellyfishMeat</li>
+								<li>PufferfishMeat</li>
+								<li>SeaCucumberMeat</li>
+								<li>RawShellfishMeat</li>
+								<li>RawSnailMeat</li>
+								<li>RawShrimpMeat</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/RecipeDef[defName = "CookMakiRoll"]/ingredients/li[2]/filter/thingDefs</xpath>
+							<value>
+								<li>RawFishMeat</li>
+								<li>RawSquidMeat</li>
+								<li>RawEelMeat</li>
+								<li>JellyfishMeat</li>
+								<li>PufferfishMeat</li>
+								<li>SeaCucumberMeat</li>
+								<li>RawShellfishMeat</li>
+								<li>RawSnailMeat</li>
+								<li>RawShrimpMeat</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/RecipeDef[defName = "CookMakiRoll"]/fixedIngredientFilter/thingDefs</xpath>
+							<value>
+								<li>RawFishMeat</li>
+								<li>RawSquidMeat</li>
+								<li>RawEelMeat</li>
+								<li>JellyfishMeat</li>
+								<li>PufferfishMeat</li>
+								<li>SeaCucumberMeat</li>
+								<li>RawShellfishMeat</li>
+								<li>RawSnailMeat</li>
+								<li>RawShrimpMeat</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/RecipeDef[defName = "CookMakiRoll"]/defaultIngredientFilter/thingDefs</xpath>
+							<value>
+								<li>RawFishMeat</li>
+								<li>RawSquidMeat</li>
+								<li>RawEelMeat</li>
+								<li>JellyfishMeat</li>
+								<li>PufferfishMeat</li>
+								<li>SeaCucumberMeat</li>
+								<li>RawShellfishMeat</li>
+								<li>RawSnailMeat</li>
+								<li>RawShrimpMeat</li>
+							</value>
+						</li>
+					</operations>
+					</match>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/ThingDef[defName = "GTF_FishShallow"]</xpath>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/RecipeDef[defName = "Make_Nigiri"]/ingredients/li[2]/filter/thingDefs</xpath>
+							<value>
+								<li>GTF_FishShallow</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/RecipeDef[defName = "Make_Nigiri"]/fixedIngredientFilter/thingDefs</xpath>
+							<value>
+								<li>GTF_FishShallow</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/RecipeDef[defName = "CookMakiRoll"]/ingredients/li[2]/filter/thingDefs</xpath>
+							<value>
+								<li>GTF_FishShallow</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/RecipeDef[defName = "CookMakiRoll"]/fixedIngredientFilter/thingDefs</xpath>
+							<value>
+								<li>GTF_FishShallow</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/RecipeDef[defName = "CookMakiRoll"]/defaultIngredientFilter/thingDefs</xpath>
+							<value>
+								<li>GTF_FishShallow</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+			<!-- ROO'S FISHING SPOT -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>Roo's Fishing spot</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/RecipeDef[defName = "Make_Nigiri"]/ingredients/li[2]/filter/thingDefs</xpath>
+								<value>
+									<li>ROO_Fish_Spear</li>
+									<li>ROO_Fish_Flot</li>
+									<li>ROO_Fish_Hand</li>
+									<li>ROO_Smoked_fish</li>
+									<li>ROO_Trimmed_fish</li>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/RecipeDef[defName = "Make_Nigiri"]/fixedIngredientFilter/thingDefs</xpath>
+								<value>
+									<li>ROO_Fish_Spear</li>
+									<li>ROO_Fish_Flot</li>
+									<li>ROO_Fish_Hand</li>
+									<li>ROO_Smoked_fish</li>
+									<li>ROO_Trimmed_fish</li>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/RecipeDef[defName = "CookMakiRoll"]/ingredients/li[2]/filter/thingDefs</xpath>
+								<value>
+									<li>ROO_Fish_Spear</li>
+									<li>ROO_Fish_Flot</li>
+									<li>ROO_Fish_Hand</li>
+									<li>ROO_Smoked_fish</li>
+									<li>ROO_Trimmed_fish</li>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/RecipeDef[defName = "CookMakiRoll"]/fixedIngredientFilter/thingDefs</xpath>
+								<value>
+									<li>ROO_Fish_Spear</li>
+									<li>ROO_Fish_Flot</li>
+									<li>ROO_Fish_Hand</li>
+									<li>ROO_Smoked_fish</li>
+									<li>ROO_Trimmed_fish</li>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/RecipeDef[defName = "CookMakiRoll"]/defaultIngredientFilter/thingDefs</xpath>
+								<value>
+									<li>ROO_Fish_Spear</li>
+									<li>ROO_Fish_Flot</li>
+									<li>ROO_Fish_Hand</li>
+									<li>ROO_Smoked_fish</li>
+									<li>ROO_Trimmed_fish</li>
+								</value>
+							</li>
+						</operations>
+					</match>
+				</Operation>
+			<!-- TAKI'S RANDOM STUFF -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>Taki's Random Stuff</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/RecipeDef[defName = "CraftFlour"]/ingredients/li/filter/thingDefs|Defs/RecipeDef[defName = "CraftBulkFlour"]/ingredients/li/filter/thingDefs</xpath>
+								<order>Append</order>
+								<value>
+									<li>RawOats</li>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/RecipeDef[defName = "CraftFlour"]/fixedIngredientFilter/thingDefs|Defs/RecipeDef[defName = "CraftBulkFlour"]/fixedIngredientFilter/thingDefs</xpath>
+								<order>Append</order>
+								<value>
+									<li>RawOats</li>
+								</value>
+							</li>
+						</operations>
+					</match>
+				</Operation>
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>Taki's Random Stuff</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/RecipeDef[defName = "CookPorridge"]/ingredients/li/filter/thingDefs</xpath>
+								<order>Append</order>
+								<value>
+									<li>RawOats</li>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/RecipeDef[defName = "CookPorridge"]/fixedIngredientFilter/thingDefs</xpath>
+								<order>Append</order>
+								<value>
+									<li>RawOats</li>
+								</value>
+							</li>
+						</operations>
+					</match>
+				</Operation>
+			<!-- VANILLA GENETICS EXPANDED -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>Vanilla Genetics Expanded</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/RecipeDef[defName = "Makesoycheese"]/ingredients/li/filter/thingDefs|Defs/RecipeDef[defName = "MakeBulksoycheese"]/ingredients/li/filter/thingDefs</xpath>
+								<value>
+									<li>GR_WeirdMilk</li>
+									<li>GR_MechaMilk</li>
+									<li>GR_BearffaloMilk</li>
+									<li>GR_ThrumffaloMilk</li>
+									<li>GR_MuffalochickenMilk</li>
+									<li>GR_ChickenffaloMilk</li>
+									<li>GR_MuffalobearMilk</li>
+									<li>GR_WolffaloMilk</li>
+									<li>GR_RatMilk</li>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/RecipeDef[defName = "Makesoycheese"]/fixedIngredientFilter/thingDefs|Defs/RecipeDef[defName = "MakeBulksoycheese"]/fixedIngredientFilter/thingDefs</xpath>
+								<value>
+									<li>GR_WeirdMilk</li>
+									<li>GR_MechaMilk</li>
+									<li>GR_BearffaloMilk</li>
+									<li>GR_ThrumffaloMilk</li>
+									<li>GR_MuffalochickenMilk</li>
+									<li>GR_ChickenffaloMilk</li>
+									<li>GR_MuffalobearMilk</li>
+									<li>GR_WolffaloMilk</li>
+									<li>GR_RatMilk</li>
+								</value>
+							</li>
+						</operations>
+					</match>
+				</Operation>
+			<!-- VANILLA -->
+				<Operation Class="PatchOperationAdd">
+					<xpath>Defs/RecipeDef[defName = "MakeSilage"]/ingredients/li[1]/filter/thingDefs|Defs/RecipeDef[defName = "MakebulkSilage"]/ingredients/li[1]/filter/thingDefs</xpath>
+					<value>
+						<li>Rawwheat</li>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationAdd">
+					<xpath>Defs/RecipeDef[defName = "MakeSilage"]/fixedIngredientFilter/thingDefs|Defs/RecipeDef[defName = "MakebulkSilage"]/fixedIngredientFilter/thingDefs</xpath>
+					<value>
+						<li>Rawwheat</li>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[defName="Hopper"]/building/fixedStorageSettings/filter/disallowedThingDefs</xpath>
+					<match Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="Hopper"]/building/fixedStorageSettings/filter/disallowedThingDefs</xpath>
+						<value>
+							<li>Rawsugarcane</li>
+							<li>Flour</li>
+						</value>
+					</match>
+					<nomatch Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="Hopper"]/building/fixedStorageSettings/filter</xpath>
+						<value>
+							<disallowedThingDefs>
+								<li>Rawsugarcane</li>
+								<li>Flour</li>
+							</disallowedThingDefs>
+						</value>
+					</nomatch>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/ThingDef[defName = "FueledStove"]/comps/li[contains(@Class,'CompProperties_AffectedByFacilities')]/linkableFacilities|Defs/ThingDef[defName = "ElectricStove"]/comps/li[contains(@Class,'CompProperties_AffectedByFacilities')]/linkableFacilities</xpath>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName = "FueledStove"]/comps/li[contains(@Class,'CompProperties_AffectedByFacilities')]/linkableFacilities|Defs/ThingDef[defName = "ElectricStove"]/comps/li[contains(@Class,'CompProperties_AffectedByFacilities')]/linkableFacilities</xpath>
+							<value>
+								<li>CookingTools</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/ThingDef[defName = "FueledStove"]/comps/li[contains(@Class,'CompProperties_AffectedByFacilities')]/linkableFacilities|Defs/ThingDef[defName = "ElectricStove"]/comps/li[contains(@Class,'CompProperties_AffectedByFacilities')]/linkableFacilities</xpath>
+							<success>Invert</success>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName = "FueledStove"]/comps|Defs/ThingDef[defName = "ElectricStove"]/comps</xpath>
+							<value>
+								<li Class="CompProperties_AffectedByFacilities">
+									<linkableFacilities>
+									<li>CookingTools</li>
+									</linkableFacilities>
+								</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/ThingDef[defName = "ButcherSpot"]/comps/li[contains(@Class,'CompProperties_AffectedByFacilities')]/linkableFacilities|Defs/ThingDef[defName = "TableButcher"]/comps/li[contains(@Class,'CompProperties_AffectedByFacilities')]/linkableFacilities</xpath>
+							<value>
+								<linkableFacilities>
+									<li>CookingTools</li>
+								</linkableFacilities>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName = "Chocolate"]/thingCategories/li</xpath>
+					<value>
+						<li>SweetMeals</li>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName = "Milk"]/thingCategories/li</xpath>
+					<value>
+						<li>CookingSupplies</li>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationAdd">
+					<xpath>Defs/RecipeDef[@Name = "CookMealBase"]/fixedIngredientFilter</xpath>
+					<value>
+						<disallowedThingDefs>
+							<li>Rawsugarcane</li>
+							<li>Flour</li>
+						</disallowedThingDefs>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationAdd">
+					<xpath>Defs/RecipeDef[@Name = "CookMealBase"]/defaultIngredientFilter/disallowedThingDefs</xpath>
+					<value>
+						<li>PickledVeg</li>
+						<li>SaltedMeat</li>
+						<li>driedfruit</li>
+					</value>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/ThingDef[defName = "Coal"]</xpath>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName = "Oven"]/comps/li[contains(@Class,'CompProperties_Refuelable')]/fuelFilter/thingDefs|Defs/ThingDef[defName = "HandCanningstove"]/comps/li[contains(@Class,'CompProperties_Refuelable')]/fuelFilter/thingDefs|Defs/ThingDef[defName = "FueledCandyTable"]/comps/li[contains(@Class,'CompProperties_Refuelable')]/fuelFilter/thingDefs</xpath>
+							<value>
+								<li>Coal</li>
+								<li>Charcoal</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationAdd">
+							<xpath>/Defs/RecipeDef[defName = "Make_Kibble"]/fixedIngredientFilter/disallowedThingDefs|/Defs/RecipeDef[defName = "VG_MakebulkKibble"]/fixedIngredientFilter/disallowedThingDefs</xpath>
+							<value>
+								<li>Flour</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>/Defs/RecipeDef[defName = "Make_Kibble"]/defaultIngredientFilter/disallowedThingDefs|/Defs/RecipeDef[defName = "VG_MakebulkKibble"]/defaultIngredientFilter/disallowedThingDefs</xpath>
+							<value>
+								<li>cheese</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+			<!-- VANILLA EXPANDED -->
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationTest">
+							<xpath>Defs/ThingDef[defName = "VHGE_GasPoweredStove"]/comps/li[contains(@Class,'CompProperties_AffectedByFacilities')]/linkableFacilities</xpath>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName = "VHGE_GasPoweredStove"]/comps/li[contains(@Class,'CompProperties_AffectedByFacilities')]/linkableFacilities</xpath>
+							<value>
+								<li>CookingTools</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>Vanilla Helixien Gas Expanded</li>
+					</mods>
+					<match Class="PatchOperationFindMod">
+						<mods>
+							<li>Vanilla Furniture Expanded - Production</li>
+						</mods>
+						<nomatch Class="PatchOperationSequence">
+							<success>Always</success>
+								<operations>
+									<li Class="PatchOperationAdd">
+									<xpath>Defs/ThingDef[defName = "VHGE_GasPoweredStove"]/comps</xpath>
+										<value>
+											<li Class="CompProperties_AffectedByFacilities">
+												<linkableFacilities>
+													<li>CookingTools</li>
+												</linkableFacilities>
+											</li>
+										</value>
+									</li>
+								</operations>
+						</nomatch>
+					</match>
+				</Operation>
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>Vanilla Furniture Expanded - Production</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName = "Oven"]/comps/li[contains(@Class,'CompProperties_AffectedByFacilities')]/linkableFacilities|Defs/ThingDef[defName = "ElectricOven"]/comps/li[contains(@Class,'CompProperties_AffectedByFacilities')]/linkableFacilities	|Defs/ThingDef[defName = "HandCanningstove"]/comps/li[contains(@Class,'CompProperties_AffectedByFacilities')]/linkableFacilities |Defs/ThingDef[defName = "Canningstove"]/comps/li[contains(@Class,'CompProperties_AffectedByFacilities')]/linkableFacilities		|Defs/ThingDef[defName = "FueledCandyTable"]/comps/li[contains(@Class,'CompProperties_AffectedByFacilities')]/linkableFacilities |Defs/ThingDef[defName = "CandyTable"]/comps/li[contains(@Class,'CompProperties_AffectedByFacilities')]/linkableFacilities</xpath>
+								<value>
+									<li>VFE_KitchenSinkCabinet</li>
+								</value>
+							</li>
+						</operations>
+					</match>
+				</Operation>
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>Vanilla Factions Expanded - Insectoids</li>	
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Always</success>
+						<operations>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/RecipeDef[defName = "Makesoycheese"]/ingredients/li/filter/thingDefs|Defs/RecipeDef[defName = "MakeBulksoycheese"]/ingredients/li/filter/thingDefs</xpath>
+								<value>
+									<li>VFEI_InsectMilk</li>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/RecipeDef[defName = "Makesoycheese"]/fixedIngredientFilter/thingDefs|Defs/RecipeDef[defName = "MakeBulksoycheese"]/fixedIngredientFilter/thingDefs</xpath>
+								<value>
+									<li>VFEI_InsectMilk</li>
+								</value>
+							</li>
+						</operations>
+					</match>
+				</Operation>
+	<!-- GARDEN FABRICS -->
+		<!-- CURTAIN DOORS -->
+			<Operation Class="PatchOperationSequence">
+				<success>Always</success>
+				<operations>
+					<li Class="PatchOperationTest">
+						<xpath>Defs/ThingDef[defName = "CCPDoorCurtain"]</xpath>
+					</li>
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName = "Flaxcloth"]/stuffProps/statFactors</xpath>
+						<value><DoorOpenSpeed>5</DoorOpenSpeed></value>
+					</li>
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName = "HempCloth"]/stuffProps/statFactors</xpath>
+						<value><DoorOpenSpeed>5</DoorOpenSpeed></value>
+					</li>
+				</operations>
+			</Operation>
+		<!-- MEDIEVAL OVERHAUL -->
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>Medieval Overhaul</li>
+				</mods>
+				<nomatch Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/ThingDef[defName = "Plant_Cotton"]/plant/harvestedThingDef</xpath>
+							<value>
+								<harvestedThingDef>RawCotton</harvestedThingDef>
+							</value>
+						</li>
+					</operations>
+				</nomatch>
+			</Operation>
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>Medieval Overhaul</li>	
+				</mods>
+				<match Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/RecipeDef[defName = "MakeClothHand"]/ingredients/li/filter/thingDefs|Defs/RecipeDef[defName = "MakeCloth"]/ingredients/li/filter/thingDefs|Defs/RecipeDef[defName = "MakeClothBulk"]/ingredients/li/filter/thingDefs|Defs/RecipeDef[defName = "MakeSynthreadCloth"]/ingredients/li[1]/filter/thingDefs|Defs/RecipeDef[defName = "MakeSynthreadClothBulk"]/ingredients/li[1]/filter/thingDefs|Defs/RecipeDef[defName = "MakeHyperweaveCloth"]/ingredients/li[1]/filter/thingDefs|Defs/RecipeDef[defName = "MakeHyperweaveClothBulk"]/ingredients/li[1]/filter/thingDefs</xpath>
+							<value>
+								<thingDefs>
+									<li>DankPyon_RawCotton</li>
+								</thingDefs>
+							</value>
+						</li>
+					</operations>
+				</match>
+			</Operation>
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>Medieval Overhaul</li>
+				</mods>
+				<match Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName = "TableLoom"]</xpath>
+							<value>
+								<researchPrerequisites>
+									<li>DankPyon_TextileSpinning</li>
+								</researchPrerequisites>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/ThingDef[defName = "TableElecLoom"]/researchPrerequisites</xpath>
+							<value>
+								<researchPrerequisites>
+									<li>DankPyon_TextileSpinning</li>
+								</researchPrerequisites>
+							</value>
+						</li>
+					</operations>
+				</match>
+			</Operation>
+		<!-- VANILLA HARVEST -->
+			<Operation Class="PatchOperationReplace">
+				<xpath>Defs/ThingDef[defName = "Plant_Devilstrand"]/plant/harvestedThingDef</xpath>
+				<value>
+					<harvestedThingDef>RawDevilstrand</harvestedThingDef>
+				</value>
+			</Operation>
+		<!-- VANILLA PLANTS -->
+			<Operation Class="PatchOperationReplace">
+				<xpath>Defs/ThingDef[defName = "Plant_Cotton"]/graphicData/texPath</xpath>
+				<value>
+					<texPath>Things/Plants/CottonPlant</texPath>
+				</value>
+			</Operation>
+			<Operation Class="PatchOperationReplace">
+				<xpath>Defs/ThingDef[defName = "Plant_Cotton"]/plant/immatureGraphicPath</xpath>
+				<value>
+					<immatureGraphicPath>Things/Immature/CottonPlant</immatureGraphicPath>
+				</value>
+			</Operation>
+			<Operation Class="PatchOperationReplace">
+				<xpath>Defs/ThingDef[defName = "Plant_Devilstrand"]/graphicData/texPath</xpath>
+				<value>
+					<texPath>Things/Plants/Devilstrand</texPath>
+				</value>
+			</Operation>
+		<!-- VANILLA RECIPES DRUGS -->
+			<Operation Class="PatchOperationSequence">
+				<success>Always</success>
+				<operations>
+					<li Class="PatchOperationTest">
+						<xpath>Defs/RecipeDef[defName = "Make_Bandagekit"]</xpath>
+					</li>
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/RecipeDef[defName = "Make_Bandagekit"]/ingredients/li/filter/thingDefs</xpath>
+						<value>
+							<li>HempCloth</li>
+							<li>Flaxcloth</li>
+						</value>
+					</li>
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/RecipeDef[defName = "Make_Bandagekit"]/fixedIngredientFilter/thingDefs</xpath>
+						<value>
+							<li>HempCloth</li>
+							<li>Flaxcloth</li>
+						</value>
+					</li>
+				</operations>
+			</Operation>
+			<Operation Class="PatchOperationSequence">
+				<success>Always</success>
+				<operations>
+					<li Class="PatchOperationTest">
+						<xpath>Defs/RecipeDef[defName = "MakeBulkBandagekit"]</xpath>
+					</li>
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/RecipeDef[defName = "MakeBulkBandagekit"]/ingredients/li/filter/thingDefs</xpath>
+						<value>
+							<li>HempCloth</li>
+							<li>Flaxcloth</li>
+						</value>
+					</li>
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/RecipeDef[defName = "MakeBulkBandagekit"]/fixedIngredientFilter/thingDefs</xpath>
+						<value>
+							<li>HempCloth</li>
+							<li>Flaxcloth</li>
+						</value>
+					</li>
+				</operations>
+			</Operation>
+			<Operation Class="PatchOperationSequence">
+				<success>Always</success>
+				<operations>
+					<li Class="PatchOperationTest">
+						<xpath>Defs/ThingDef[defName = "Schematic"]/comps/li[contains(@Class,'CompProperties_Book')]/doers/li[contains(@Class,'BookOutcomeProperties_GainResearch')]/tabs/VG </xpath>
+						<success>Invert</success>
+					</li>
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName = "Schematic"]/comps/li[contains(@Class,'CompProperties_Book')]/doers/li[contains(@Class,'BookOutcomeProperties_GainResearch')]/tabs </xpath>
+						<value>
+							<VG />
+						</value>
+					</li>
+				</operations>
+			</Operation>
+		<!-- VANILLA RECIPES -->
+			<Operation Class="PatchOperationAdd">
+				<xpath>Defs/RecipeDef[defName = "Make_Patchleather"]/recipeUsers</xpath>
+				<value>
+					<li>TableLoom</li>
+					<li>TableElecLoom</li>
+				</value>
+			</Operation>
+			<Operation Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName = "Cloth"] |Defs/ThingDef[defName = "Synthread"] |Defs/ThingDef[defName = "DevilstrandCloth"] |Defs/ThingDef[defName = "Hyperweave"] |Defs/ThingDef[@Name = "WoolBase"] |Defs/ThingDef[@Name = "LeatherBase"]</xpath>
+				<value>
+					<smeltable>true</smeltable>
+				</value>
+			</Operation>
+		<!-- VFE - PRODUCTION -->
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>Vanilla Furniture Expanded - Production</li>
+				</mods>
+				<match Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName = "TableLoom"]/comps/li[contains(@Class,'CompProperties_AffectedByFacilities')]/linkableFacilities |Defs/ThingDef[defName = "TableElecLoom"]/comps/li[contains(@Class,'CompProperties_AffectedByFacilities')]/linkableFacilities</xpath>
+							<value>
+								<li>VFE_TailorCabinet</li>
+							</value>
+						</li>
+					</operations>
+				</match>
+			</Operation>
+		<!-- ALPHA ANIMALS -->
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>Alpha Animals</li>
+				</mods>
+				<match Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/RecipeDef[defName = "Makeblendedwool"]/ingredients/li/filter/thingDefs|Defs/RecipeDef[defName = "MakeblendedwoolBulk"]/ingredients/li/filter/thingDefs</xpath>
+							<value>
+								<li>AA_ChameleonYakWoolTemperate</li>
+								<li>AA_ChameleonYakWoolWinter</li>
+								<li>AA_ChameleonYakWoolJungle</li>
+								<li>AA_ChameleonYakWoolDesert</li>
+								<li>AA_GreyCoatedMouflonWool</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/RecipeDef[defName = "Makeblendedwool"]/fixedIngredientFilter/thingDefs|Defs/RecipeDef[defName = "MakeblendedwoolBulk"]/fixedIngredientFilter/thingDefs</xpath>
+							<value>
+								<li>AA_ChameleonYakWoolTemperate</li>
+								<li>AA_ChameleonYakWoolWinter</li>
+								<li>AA_ChameleonYakWoolJungle</li>
+								<li>AA_ChameleonYakWoolDesert</li>
+								<li>AA_GreyCoatedMouflonWool</li>
+							</value>
+						</li>
+					</operations>
+				</match>
+			</Operation>
+	<!-- TILLED SOIL -->
+		<!-- VFE - ARCHITECT -->
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>Vanilla Furniture Expanded - Architect</li>
+				</mods>
+				<match Class="PatchOperationAdd">
+					<xpath>Defs/TerrainDef[@Name="TS_TerrainBase"]/affordances</xpath>
+					<value>
+						<li>VFEArch_Soil</li>
+						<li>VFEArch_Foundation</li>
+					</value>
+				</match>
+			</Operation>
+</Patch>

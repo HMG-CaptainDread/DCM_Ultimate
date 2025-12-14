@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+<Operation Class="PatchOperationAdd">
+  <xpath>Defs/RecipeDef[@Name = "CookMealBase"]/defaultIngredientFilter/disallowedThingDefs</xpath>
+  <value>
+         	<li>CannedVeg</li>
+         	<li>CannedMeat</li>
+        	<li>CannedFruit</li>
+  </value>
+</Operation>
+
+<Operation Class="PatchOperationSequence">
+	<success>Always</success>
+	<operations>
+	<li Class="PatchOperationTest">
+<xpath>Defs/ThingDef[defName = "PickledVeg"]</xpath>
+				</li>
+			<li Class="PatchOperationAdd">
+	<xpath>Defs/RecipeDef[defName = "Canmeal"]/defaultIngredientFilter/disallowedThingDefs</xpath>
+		<value>
+         		<li>PickledVeg</li>
+			<li>SaltedMeat</li>
+         		<li>driedfruit</li>
+		</value>
+		</li>
+			<li Class="PatchOperationAdd">
+	<xpath>Defs/RecipeDef[defName = "CanVegetable"]/defaultIngredientFilter/disallowedThingDefs</xpath>
+		<value>
+         		<li>PickledVeg</li>
+		</value>
+		</li>
+			<li Class="PatchOperationAdd">
+	<xpath>Defs/RecipeDef[defName = "CanMeat"]/defaultIngredientFilter/disallowedThingDefs</xpath>
+		<value>
+			<li>SaltedMeat</li>
+		</value>
+		</li>
+	</operations>
+</Operation>
+
+<Operation Class="PatchOperationSequence">
+    <success>Always</success>
+    <operations>
+        <li Class="PatchOperationTest">
+		  <xpath>Defs/ThingDef[defName = "Schematic"]/comps/li[contains(@Class,'CompProperties_Book')]/doers/li[contains(@Class,'BookOutcomeProperties_GainResearch')]/tabs/VG </xpath>
+            <success>Invert</success>
+        </li>
+        <li Class="PatchOperationAdd">
+		  <xpath>Defs/ThingDef[defName = "Schematic"]/comps/li[contains(@Class,'CompProperties_Book')]/doers/li[contains(@Class,'BookOutcomeProperties_GainResearch')]/tabs </xpath>
+		  <value>
+				<VG />
+		  </value>
+        </li> 
+    </operations>
+</Operation>
+
+</Patch>
+

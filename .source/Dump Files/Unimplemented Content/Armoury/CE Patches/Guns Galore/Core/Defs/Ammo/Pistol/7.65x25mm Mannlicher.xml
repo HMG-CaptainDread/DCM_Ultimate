@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo765x25mmMannlicher</defName>
+		<label>7.65x25mm Mannlicher</label>
+		<parent>AmmoPistols</parent>
+		<iconPath>UI/Icons/ThingCategories/CaliberPistol</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>AmmoSet_765x25mmMannlicher</defName>
+		<label>7.65x25mm Mannlicher</label>
+		<ammoTypes>
+			<Ammo_765x25mmMannlicher_FMJ>Bullet_765x25mmMannlicher_FMJ</Ammo_765x25mmMannlicher_FMJ>
+			<Ammo_765x25mmMannlicher_AP>Bullet_765x25mmMannlicher_AP</Ammo_765x25mmMannlicher_AP>
+			<Ammo_765x25mmMannlicher_HP>Bullet_765x25mmMannlicher_HP</Ammo_765x25mmMannlicher_HP>			
+		</ammoTypes>
+		<similarTo>AmmoSet_Pistol</similarTo>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="765x25mmMannlicherBase" ParentName="SmallAmmoBase" Abstract="True" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+		<description>Old handgun cartridge made for use in semi-automatic pistols.</description>
+		<statBases>
+			<Mass>0.011</Mass>
+			<Bulk>0.01</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo765x25mmMannlicher</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="765x25mmMannlicherBase" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>Ammo_765x25mmMannlicher_FMJ</defName>
+		<label>7.65x25mm Mannlicher cartridge (FMJ)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/FMJ</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.05</MarketValue>
+		</statBases>
+		<ammoClass>FullMetalJacket</ammoClass>
+		<cookOffProjectile>Bullet_765x25mmMannlicher_FMJ</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="765x25mmMannlicherBase" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>Ammo_765x25mmMannlicher_AP</defName>
+		<label>7.65x25mm Mannlicher cartridge (AP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/AP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.05</MarketValue>
+		</statBases>
+		<ammoClass>ArmorPiercing</ammoClass>
+		<cookOffProjectile>Bullet_765x25mmMannlicher_AP</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="765x25mmMannlicherBase" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>Ammo_765x25mmMannlicher_HP</defName>
+		<label>7.65x25mm Mannlicher cartridge (HP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/HP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.05</MarketValue>
+		</statBases>
+		<ammoClass>HollowPoint</ammoClass>
+		<cookOffProjectile>Bullet_765x25mmMannlicher_HP</cookOffProjectile>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="Base765x25mmMannlicherBullet" ParentName="BaseBulletCE" Abstract="true" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>72</speed>
+			<dropsCasings>true</dropsCasings>
+			<casingMoteDefname>Fleck_PistolAmmoCasings</casingMoteDefname>
+			<casingFilthDefname>Filth_PistolAmmoCasings</casingFilthDefname>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base765x25mmMannlicherBullet" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>Bullet_765x25mmMannlicher_FMJ</defName>
+		<label>7.65x25mm Mannlicher bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>9</damageAmountBase>
+			<armorPenetrationSharp>2.5</armorPenetrationSharp>
+			<armorPenetrationBlunt>7.12</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base765x25mmMannlicherBullet" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>Bullet_765x25mmMannlicher_AP</defName>
+		<label>7.65x25mm Mannlicher bullet (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>6</damageAmountBase>
+			<armorPenetrationSharp>5</armorPenetrationSharp>
+			<armorPenetrationBlunt>7.12</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base765x25mmMannlicherBullet" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>Bullet_765x25mmMannlicher_HP</defName>
+		<label>7.65x25mm Mannlicher bullet (HP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>11</damageAmountBase>
+			<armorPenetrationSharp>1.5</armorPenetrationSharp>
+			<armorPenetrationBlunt>7.12</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>MakeAmmo_765x25mmMannlicher_FMJ</defName>
+		<label>make 7.65x25mm Mannlicher cartridge x500</label>
+		<description>Craft 500 7.65x25mm Mannlicher cartridges.</description>
+		<jobString>Making 7.65x25mm Mannlicher cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>12</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_765x25mmMannlicher_FMJ>500</Ammo_765x25mmMannlicher_FMJ>
+		</products>
+		<workAmount>1200</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>MakeAmmo_765x25mmMannlicher_AP</defName>
+		<label>make 7.65x25mm Mannlicher (AP) cartridge x500</label>
+		<description>Craft 500 7.65x25mm Mannlicher (AP) cartridges.</description>
+		<jobString>Making 7.65x25mm Mannlicher (AP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>12</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_765x25mmMannlicher_AP>500</Ammo_765x25mmMannlicher_AP>
+		</products>
+		<workAmount>1440</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>MakeAmmo_765x25mmMannlicher_HP</defName>
+		<label>make 7.65x25mm Mannlicher (HP) cartridge x500</label>
+		<description>Craft 500 7.65x25mm Mannlicher (HP) cartridges.</description>
+		<jobString>Making 7.65x25mm Mannlicher (HP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>12</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_765x25mmMannlicher_HP>500</Ammo_765x25mmMannlicher_HP>
+		</products>
+		<workAmount>1200</workAmount>
+	</RecipeDef>
+
+</Defs>

@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo120mmBATShells</defName>
+		<label>120mm BAT shell</label>
+		<parent>AmmoShells</parent>
+		<iconPath>CGF1/Ammo/120mm_L6/120mm_L6_a</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef MayRequire="cgf1.gunsgalore.coldwar.uk">
+		<defName>AmmoSet_120mmBATShell</defName>
+		<label>120mm BAT shells</label>
+		<ammoTypes>
+			<Ammo_120mmBATShell_HEAT>Bullet_120mmBATShell_HEAT</Ammo_120mmBATShell_HEAT>
+		</ammoTypes>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="120mmBATShellBase" ParentName="HeavyAmmoBase" Abstract="True" MayRequire="cgf1.gunsgalore.coldwar.uk">
+		<description>High caliber recoilless rifle shell used in the British BAT system.</description>
+		<thingCategories>
+			<li>Ammo120mmBATShells</li>
+		</thingCategories>
+		<stackLimit>25</stackLimit>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting_TableMachining</li>
+		</tradeTags>
+		<statBases>
+			<MaxHitPoints>200</MaxHitPoints>
+			<Mass>25.09</Mass>
+			<Bulk>13</Bulk>
+		</statBases>
+		<cookOffFlashScale>35</cookOffFlashScale>
+		<cookOffSound>MortarBomb_Explode</cookOffSound>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="120mmBATShellBase" MayRequire="cgf1.gunsgalore.coldwar.uk">
+		<defName>Ammo_120mmBATShell_HEAT</defName>
+		<label>120mm BAT shell (HEAT)</label>
+		<graphicData>
+			<texPath>CGF1/Projectile/120mm_L6</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>110</MarketValue>
+		</statBases>
+		<ammoClass>RocketHEAT</ammoClass>
+		<detonateProjectile>Bullet_120mmBATShell_HEAT</detonateProjectile>
+	</ThingDef>
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="Base120mmBATShell" ParentName="BaseExplosiveBullet" Abstract="true" MayRequire="cgf1.gunsgalore.coldwar.uk">
+		<graphicData>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<speed>93</speed>
+			<soundExplode>MortarBomb_Explode</soundExplode>
+			<flyOverhead>false</flyOverhead>
+			<dropsCasings>true</dropsCasings>
+			<casingMoteDefname>Fleck_BigShell</casingMoteDefname>
+ 			<casingFilthDefname>Filth_CannonAmmoCasings</casingFilthDefname>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base120mmBATShell" MayRequire="cgf1.gunsgalore.coldwar.uk">
+		<defName>Bullet_120mmBATShell_HEAT</defName>
+		<label>120mm BAT shell (HEAT)</label>
+		<graphicData>
+			<texPath>Things/Projectile/Cannon/HEAT</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>341</damageAmountBase>
+			<soundExplode>MortarBomb_Explode</soundExplode>
+			<armorPenetrationSharp>410</armorPenetrationSharp>
+			<armorPenetrationBlunt>53.916</armorPenetrationBlunt>
+		</projectile>
+		<comps>
+		  <li Class="CombatExtended.CompProperties_ExplosiveCE">
+			<damageAmountBase>180</damageAmountBase>
+			<explosiveDamageType>Bomb</explosiveDamageType>
+			<explosiveRadius>1.5</explosiveRadius>
+			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+		  </li>
+		  <li Class="CombatExtended.CompProperties_Fragments">
+			<fragments>
+			  <Fragment_Large>22</Fragment_Large>
+			  <Fragment_Small>50</Fragment_Small>
+			</fragments>
+		  </li>
+		</comps>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.coldwar.uk">
+		<defName>MakeAmmo_120mmBATShell_HEAT</defName>
+		<label>make 120mm HEAT BAT shells x2</label>
+		<description>Craft 2 120mm HEAT BAT shells.</description>
+		<jobString>Making 120mm HEAT BAT shells.</jobString>
+		<workAmount>8200</workAmount>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>46</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>FSX</li>
+					</thingDefs>
+				</filter>
+				<count>7</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentIndustrial</li>
+					</thingDefs>
+				</filter>
+				<count>2</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>FSX</li>
+				<li>ComponentIndustrial</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_120mmBATShell_HEAT>2</Ammo_120mmBATShell_HEAT>
+		</products>
+	</RecipeDef>
+
+</Defs>
