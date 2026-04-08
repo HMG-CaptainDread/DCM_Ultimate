@@ -915,6 +915,98 @@
 					</li>
 				</comps>
 			</ThingDef>
+	<!-- SCIENTIST CABINET -->
+		<ThingDef ParentName="AdaptiveStorageBase">
+			<defName>TMM_ScientistCabinet</defName>
+			<label>scientist cabinet</label>
+			<description>Greatly increases work speed (+30%) when placed near a workbench and slightly increases research speed (+5%) when placed near a research bench.\nOne workbench/research bench can only be connected to one scientist tool cabinet but can still be connected to other types of cabinets.</description>
+			<graphicData>
+				<texPath>Modules/Storage/Building/5_Ultra/Cabinets/ScientistCabinet</texPath>
+				<graphicClass>Graphic_Multi</graphicClass>
+				<drawSize>(2,1)</drawSize>
+				<damageData>
+					<cornerTL>Damage/Corner</cornerTL>
+					<cornerTR>Damage/Corner</cornerTR>
+					<cornerBL>Damage/Corner</cornerBL>
+					<cornerBR>Damage/Corner</cornerBR>
+				</damageData>
+			</graphicData>
+			<altitudeLayer>Building</altitudeLayer>
+			<passability>PassThroughOnly</passability>
+			<fillPercent>0.5</fillPercent>
+			<castEdgeShadows>true</castEdgeShadows>
+			<staticSunShadowHeight>0.35</staticSunShadowHeight>
+			<pathCost>60</pathCost>
+			<statBases>
+				<MaxHitPoints>400</MaxHitPoints>
+				<WorkToBuild>4000</WorkToBuild>
+				<Mass>40</Mass>
+				<Flammability>1.0</Flammability>
+			</statBases>
+			<size>(2,1)</size>
+			<surfaceType>Item</surfaceType>
+			<canOverlapZones>false</canOverlapZones>
+			<researchPrerequisites Inherit="false">
+				<li>TMM_St_Ultra</li>
+			</researchPrerequisites>
+			<minifiedDef>MinifiedThing</minifiedDef>
+			<thingCategories>
+				<li>TMM_Storage_CAT</li>
+			</thingCategories>
+			<uiIconOffset>(0, 0.1)</uiIconOffset>
+			<rotatable>false</rotatable>
+			<costList>
+				<Steel>300</Steel>
+				<ComponentSpacer>1</ComponentSpacer>
+				<ComponentIndustrial>5</ComponentIndustrial>
+				<Plasteel>50</Plasteel>
+				<Uranium>10</Uranium>
+			</costList>
+			<uiIconScale>0.4</uiIconScale>
+			<uiOrder>1360</uiOrder>
+			<staticSunShadowHeight>0.2</staticSunShadowHeight>
+			<building>
+				<preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+				<ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
+				<maxItemsInCell>3</maxItemsInCell>
+				<fixedStorageSettings>
+					<filter>
+						<disallowNotEverStorable>true</disallowNotEverStorable>
+						<categories>
+							<li>Weapons</li>
+						</categories>
+					</filter>
+				</fixedStorageSettings>
+				<defaultStorageSettings>
+					<priority>Preferred</priority>
+					<filter>
+						<disallowNotEverStorable>true</disallowNotEverStorable>
+						<categories>
+						</categories>
+					</filter>
+				</defaultStorageSettings>
+				<paintable>true</paintable>
+			</building>
+			<comps>
+				<li Class="CompProperties_Flickable" />
+				<li Class="CompProperties_Power">
+					<compClass>CompPowerTrader</compClass>
+					<shortCircuitInRain>true</shortCircuitInRain>
+					<basePowerConsumption>250</basePowerConsumption>
+				</li>
+				<li Class="CompProperties_Facility">
+					<statOffsets>
+					<WorkTableWorkSpeedFactor>0.3</WorkTableWorkSpeedFactor>
+					<ResearchSpeedFactor>0.05</ResearchSpeedFactor>
+					</statOffsets>
+					<maxSimultaneous>1</maxSimultaneous>
+				</li>
+			</comps>
+			<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+			<placeWorkers>
+				<li>PlaceWorker_ShowFacilitiesConnections</li>
+			</placeWorkers>
+		</ThingDef>
 	<!-- WASTE CONTAINERS -->
 		<!-- WASTE CONTAINER (SHIPPING) -->
 			<!-- WASTE CONTAINER (SHIPPING BASE) -->
