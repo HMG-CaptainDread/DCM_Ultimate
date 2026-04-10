@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<Vehicles.VehicleTurretDef ParentName="RT_BaseTurret">
+		<defName>Konkurs_Tank_Turret</defName>
+		<label>main turret</label>
+		<gizmoIconTexPath>Vehicles/9P148/vehicle_turret</gizmoIconTexPath>
+		<!-- 砲塔的渲染顯示 -->
+		<graphicData>
+			<texPath>Vehicles/9P148/vehicle_turret</texPath>
+			<drawSize>(1.8,1.8)</drawSize>
+		</graphicData>
+		<!-- 彈藥與裝填容量相關 -->
+		<reloadTimer>60</reloadTimer>
+		<reloadTimerMultiplierPerCrewCount>
+			<points>
+				<li>(1, 1)</li>
+				<li>(2, 0.5)</li>
+			</points>
+		</reloadTimerMultiplierPerCrewCount>
+		<magazineCapacity>5</magazineCapacity>
+		<chargePerAmmoCount>30</chargePerAmmoCount>
+		<genericAmmo>true</genericAmmo>
+		<ammunition>
+			<thingDefs>
+				<li>Chemfuel</li>
+			</thingDefs>
+		</ammunition>
+		<!-- 射程與射界相關 -->
+		<minRange>12</minRange>
+		<maxRange>60.9</maxRange>
+		<rotationSpeed>2</rotationSpeed>
+		<!-- 射擊相關 -->
+		<warmUpTimer>1</warmUpTimer>
+		<shotSound>RT_Shot_TOWSound</shotSound>
+		<projectile>RT_9M113Missile</projectile>
+		<projectileOffset>3.8</projectileOffset>
+		<!-- 出膛前後偏移，主要是能讓子彈能從炮口飛出去 -->
+		<projectileShifting>
+			<!-- 出膛左右偏移，多砲管可以根據list來回切 -->
+			<!-- <li>-1</li> -->
+			<li>-0.25</li>
+			<li>0.125</li>
+			<li>0</li>
+			<li>-0.125</li>
+			<li>0.25</li>
+		</projectileShifting>
+		<!-- 炮口製退動畫 -->
+		<!-- 射擊模式 -->
+		<fireModes Inherit = "false">
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenShots>120</ticksBetweenShots>
+				<ticksBetweenBursts>120</ticksBetweenBursts>
+				<label>Single</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+		</fireModes>
+	</Vehicles.VehicleTurretDef>
+
+	<!-- 主砲的投射物 -->
+	<ThingDef Class="Missile_dml._ThingDef" ParentName="BaseBullet">
+		<defName>RT_9M113Missile</defName>
+		<label>high-explosive shell</label>
+		<thingClass>Missile_dml.missile_dml</thingClass>
+		<graphicData>
+			<texPath>Vehicles/9P148/Ammo_9M113</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>2</drawSize>
+		</graphicData>
+		<fleck>RT_9M113_RocketSmoke</fleck>
+		<fleck1>RT_9M113_RocketExhaust</fleck1>
+		<frequency>0</frequency>
+		<scale>1.5</scale>
+		<shaking>0.3</shaking>
+		<searchRange>6</searchRange>
+		<projectile>
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>180</damageAmountBase>
+			<armorPenetrationBase>1.2</armorPenetrationBase>
+			<speed>60</speed>
+			<explosionRadius>5.9</explosionRadius>
+			<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+			<soundExplode>Explosion_GiantBomb</soundExplode>
+			<soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+			<soundAmbient>MortarRound_Ambient</soundAmbient>
+		</projectile>
+	</ThingDef>
+
+	<FleckDef ParentName = "FleckBase_Thrown">
+		<defName>RT_9M113_RocketSmoke</defName>
+		<graphicData>
+			<texPath>Things/Mote/Smoke</texPath>
+			<renderInstanced>true</renderInstanced>
+		</graphicData>
+		
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>1</fadeInTime>
+		<solidTime>4.5</solidTime>
+		<fadeOutTime>2.5</fadeOutTime>
+		<growthRate>0.01</growthRate>
+	</FleckDef>
+	
+	<FleckDef ParentName="FleckBaseSmoke">
+		<defName>RT_9M113_RocketExhaust</defName>
+		<graphicData>
+			<texPath>Things/Mote/FireGlow</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverheadLow</altitudeLayer>
+		<solidTime>0.03</solidTime>
+		<fadeOutTime>0.15</fadeOutTime>
+	</FleckDef>
+
+	<Vehicles.VehicleTurretDef ParentName="RT_BaseTurret">
+		<defName>UB32_Tank_Turret</defName>
+		<label>UB32</label>
+		<gizmoIconTexPath>Vehicles/UB32/vehicle_turret</gizmoIconTexPath>
+		<turretType>Rotatable</turretType>
+		<shotSound>RT_Shot_BM13Sound</shotSound>
+		<reloadSound>Artillery_ShellLoaded</reloadSound>
+		
+		<projectile>RT_S5KRocket</projectile>
+		<reloadTimer>60</reloadTimer>
+		<reloadTimerMultiplierPerCrewCount>
+			<points>
+				<li>(1, 1)</li>
+				<li>(2, 0.5)</li>
+			</points>
+		</reloadTimerMultiplierPerCrewCount>
+		<warmUpTimer>1</warmUpTimer>
+		<chargePerAmmoCount>10</chargePerAmmoCount>
+		
+		<magazineCapacity>32</magazineCapacity>
+		<genericAmmo>true</genericAmmo>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>1</rotationSpeed>
+		
+		<projectileOffset>1</projectileOffset>
+		
+		<minRange>12.9</minRange>
+		<maxRange>500</maxRange>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>32</shotsPerBurst>
+				<ticksBetweenShots>10</ticksBetweenShots>
+				<ticksBetweenBursts>480</ticksBetweenBursts>
+				<spreadRadius>15.9</spreadRadius>
+				<label>Full</label>
+				<texPath>UI/Gizmos/FireRate_Auto</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>16</shotsPerBurst>
+				<ticksBetweenShots>10</ticksBetweenShots>
+				<ticksBetweenBursts>240</ticksBetweenBursts>
+				<spreadRadius>12.9</spreadRadius>
+				<label>Half</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>8</shotsPerBurst>
+				<ticksBetweenShots>10</ticksBetweenShots>
+				<ticksBetweenBursts>120</ticksBetweenBursts>
+				<spreadRadius>9.9</spreadRadius>
+				<label>Short</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>nothing</texPath>
+			<drawSize>(2.5,2.5)</drawSize>
+		</graphicData>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Chemfuel</li>
+			</thingDefs>
+		</ammunition>
+		
+		<projectileShifting>
+			<li>0.5</li>
+			<li>-0.25</li>
+			<li>0.125</li>
+			<li>-0.125</li>
+			<li>0.25</li>
+			<li>-0.5</li>
+		</projectileShifting>
+	</Vehicles.VehicleTurretDef>
+
+	<ThingDef Class="Missile_dml._ThingDef" ParentName="BaseBullet">
+		<defName>RT_S5KRocket</defName>
+		<label>swarmer rocket</label>
+		<thingClass>Missile_dml.missile_dml</thingClass>
+		<graphicData>
+			<texPath>Things/Projectile/Rocket_Swarm</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.2</drawSize>
+		</graphicData>
+		<fleck>RT_UB32_RocketSmoke</fleck>
+		<fleck1>RT_UB32_RocketExhaust</fleck1>
+		<frequency>0</frequency>
+		<scale>1.5</scale>
+		<shaking>0.3</shaking>
+		<projectile>
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>68</damageAmountBase>
+			<armorPenetrationBase>0.4</armorPenetrationBase>
+			<flyOverhead>true</flyOverhead>
+			<speed>45</speed>
+			<arcHeightFactor>20</arcHeightFactor>
+			<explosionRadius>2.9</explosionRadius>
+			<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+			<soundExplode>Explosion_Rocket</soundExplode>
+			<soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+			<soundAmbient>MortarRound_Ambient</soundAmbient>
+		</projectile>
+		<drawOffscreen>true</drawOffscreen>
+	</ThingDef>
+	
+	<FleckDef ParentName = "FleckBase_Thrown">
+		<defName>RT_UB32_RocketSmoke</defName>
+		<graphicData>
+			<texPath>Things/Mote/Smoke</texPath>
+			<renderInstanced>true</renderInstanced>
+		</graphicData>
+		
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>0.5</fadeInTime>
+		<solidTime>2</solidTime>
+		<fadeOutTime>1</fadeOutTime>
+		<growthRate>0.01</growthRate>
+	</FleckDef>
+	
+	<FleckDef ParentName="FleckBaseSmoke">
+		<defName>RT_UB32_RocketExhaust</defName>
+		<graphicData>
+			<texPath>Things/Mote/FireGlow</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverheadLow</altitudeLayer>
+		<solidTime>0.03</solidTime>
+		<fadeOutTime>0.15</fadeOutTime>
+	</FleckDef>
+
+	<Vehicles.VehicleTurretDef ParentName="RT_BaseVehicleMG_Heavy">
+		<defName>RT_kpvt_MG_Turret</defName>
+		<label>main turret</label>
+		<!-- 炮塔图标 -->
+		<!-- 炮塔部分 -->
+		<graphicData>
+			<texPath>Vehicles/UB32/vehicle_turret</texPath>
+			<drawSize>(4,4)</drawSize>
+		</graphicData>
+		<!-- 炮管后座部分 -->
+
+		<!-- 彈藥與裝填容量相關 -->
+		<ammunition Inherit="false">
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+		<reloadTimer>3</reloadTimer>
+		<magazineCapacity>50</magazineCapacity>
+		<chargePerAmmoCount>0.5</chargePerAmmoCount>
+		<genericAmmo>true</genericAmmo>
+		<!-- 射程與射界相關 -->
+		<rotationSpeed>2</rotationSpeed>
+		<!-- 射擊相關 -->
+		<warmUpTimer>1</warmUpTimer>
+		<shotSound>RT_Shot_KPVSound</shotSound>
+		<reloadSound>RT_AutoCannonReloadSound</reloadSound>
+		<projectileOffset>1</projectileOffset>
+		<!-- 出膛前後偏移，主要是能讓子彈能從炮口飛出去 -->
+		<projectileShifting>
+			<!-- 出膛左右偏移，多砲管可以根據list來回切 -->
+			<li>0</li>
+		</projectileShifting>
+		<recoil>
+			<distanceTotal>0</distanceTotal>
+			<distancePerTick>0</distancePerTick>
+			<speedMultiplierPostRecoil>0</speedMultiplierPostRecoil>
+		</recoil>
+		<!-- 射擊模式 -->
+		<fireModes Inherit = "false">
+			<li>
+				<shotsPerBurst>10</shotsPerBurst>
+				<ticksBetweenShots>8</ticksBetweenShots>
+				<ticksBetweenBursts>100</ticksBetweenBursts>
+				<spreadRadius>3</spreadRadius>
+				<label>Auto</label>
+				<texPath>UI/Gizmos/FireRate_Auto</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>5</shotsPerBurst>
+				<ticksBetweenShots>8</ticksBetweenShots>
+				<ticksBetweenBursts>50</ticksBetweenBursts>
+				<spreadRadius>3</spreadRadius>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+		</fireModes>
+	</Vehicles.VehicleTurretDef>
+</Defs>

@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<Vehicles.UpgradeTreeDef>
+		<defName>RT_Kurganets25_Vehicle_UpgradeTree</defName>
+		<nodes>
+			<li>
+				<key>EpochAlmaty</key>
+				<label>EpochAlmaty Kornet Turret</label>
+				<description>Equip the EpochAlmaty Turret with 2A42 autocannon and 9M133 Kornet anti-tank Missile launchers.</description>
+				<icon>Vehicles/Kurganets25/EpochAlmaty/EpochAlmatyTurret_gizmo</icon>
+				<work>2500</work>
+				<disableIfUpgradeNodeEnabled>Baikal</disableIfUpgradeNodeEnabled>
+				<gridCoordinate>(5,10)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<upgrades>
+					<li Class="Vehicles.TurretUpgrade">
+						<turrets>
+							<li>
+								<turretDef>EpochAlmaty_Turret</turretDef>
+								<renderProperties>
+									<north>(0,-0.98)</north>
+									<south>(0, 1.3)</south>
+									<east>(-1.22,0.5)</east>
+									<west>(1.22,0.5)</west>
+								</renderProperties>
+								<gizmoLabel>Main Turret</gizmoLabel>
+								<aimPieOffset>(0, 1.5)</aimPieOffset>
+								<key>EpochAlmaty</key>
+							</li>
+							<li>
+								<turretDef>RT_PKT_ADV_MGTurret</turretDef>
+								<renderProperties>
+									<north>(0.1,2)</north>
+									<south>(-0.1,-2)</south>
+									<east>(2,-0.1)</east>
+									<west>(-2,-0.1)</west>
+								</renderProperties>
+								<gizmoLabel>coaxial MG</gizmoLabel>
+								<angleRestricted>(345,15)</angleRestricted>
+								<aimPieOffset>(0, 1.5)</aimPieOffset>
+								<key>EpochPKT</key>
+								<drawLayer>0</drawLayer>
+								<parentKey>EpochAlmaty</parentKey>
+							</li>
+							<li>
+								<!--短号-->
+								<turretDef>RT_Kornet_Turret</turretDef>
+								<renderProperties>
+									<north>(-1.3,0.4)</north>
+									<south>(1.3,-0.4)</south>
+									<east>(0.4,1.3)</east>
+									<west>(-0.4,1.3)</west>
+								</renderProperties>
+								<gizmoLabel>Missile launcher</gizmoLabel>
+								<angleRestricted>(345,15)</angleRestricted>
+								<aimPieOffset>(0, 0)</aimPieOffset>
+								<key>EAKornetL</key>
+								<drawLayer>2</drawLayer>
+								<parentKey>EpochAlmaty</parentKey>
+							</li>
+							<li>
+								<!--短号-->
+								<turretDef>RT_Kornet_Turret</turretDef>
+								<renderProperties>
+									<north>(1.3,0.4)</north>
+									<south>(-1.3,-0.4)</south>
+									<east>(0.4,-1.3)</east>
+									<west>(-0.4,-1.3)</west>
+								</renderProperties>
+								<gizmoLabel>Missile launcher</gizmoLabel>
+								<angleRestricted>(345,15)</angleRestricted>
+								<aimPieOffset>(0, 0)</aimPieOffset>
+								<key>EAKornetR</key>
+								<drawLayer>2</drawLayer>
+								<parentKey>EpochAlmaty</parentKey>
+							</li>
+						</turrets>
+						<removeTurrets>
+							<li>KPVT</li>
+						</removeTurrets>
+					</li>
+					<li Class = "Vehicles.StatUpgrade">
+						<vehicleStats>
+							<li>
+								<def>RepairRate</def>
+								<value>-0.1</value>
+								<type>Add</type>
+							</li>
+							<li>
+								<def>CargoCapacity</def>
+								<value>-150</value>
+							</li>
+						</vehicleStats>
+					</li>
+				</upgrades>
+				<ingredients>
+					<Steel>100</Steel>
+					<ComponentIndustrial>12</ComponentIndustrial>
+					<Plasteel>50</Plasteel>
+				</ingredients>
+			</li>
+
+			<li>
+				<key>Baikal</key>
+				<label>Baikal Turret</label>
+				<description>Equip the Baikal Turret with 2A90 and 9M133 Kornet anti-tank Missile launcher.</description>
+				<icon>Vehicles/Kurganets25/Baikal/BaikalTurret_gizmo</icon>
+				<work>2500</work>
+				<gridCoordinate>(10,10)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<disableIfUpgradeNodeEnabled>EpochAlmaty</disableIfUpgradeNodeEnabled>
+				<upgrades>
+					<li Class="Vehicles.TurretUpgrade">
+						<turrets>
+							<li>
+								<turretDef>RT_Baikal_Turret</turretDef>
+								<renderProperties>
+									<north>(0,-0.98)</north>
+									<south>(0, 1.3)</south>
+									<east>(-1.22,0.5)</east>
+									<west>(1.22,0.5)</west>
+								</renderProperties>
+								<gizmoLabel>Main Turret</gizmoLabel>
+								<aimPieOffset>(0, 3)</aimPieOffset>
+								<key>Baikal</key>
+							</li>
+							<li>
+								<turretDef>Baikal_PKT_Turret</turretDef>
+								<renderProperties>
+									<north>(0.7,0.7)</north>
+									<south>(-0.7,-0.7)</south>
+									<east>(0.7,-0.7)</east>
+									<west>(-0.7,-0.7)</west>
+								</renderProperties>
+								<gizmoLabel>coaxial MG</gizmoLabel>
+								<angleRestricted>(345,15)</angleRestricted>
+								<aimPieOffset>(0, 0.2)</aimPieOffset>
+								<drawLayer>2</drawLayer>
+								<key>BaikalPKT</key>
+								<parentKey>Baikal</parentKey>
+							</li>
+							<li>
+								<!--短号-->
+								<turretDef>RT_Kornet_Turret</turretDef>
+								<renderProperties>
+									<north>(1.4,0.4)</north>
+									<south>(-1.4,-0.4)</south>
+									<east>(0.4,-1.4)</east>
+									<west>(-0.4,-1.4)</west>
+								</renderProperties>
+								<gizmoLabel>Missile launcher</gizmoLabel>
+								<angleRestricted>(345,15)</angleRestricted>
+								<aimPieOffset>(0,0.2)</aimPieOffset>
+								<key>BaikalKornet</key>
+								<drawLayer>2</drawLayer>
+								<parentKey>Baikal</parentKey>
+							</li>
+						</turrets>
+						<removeTurrets>
+							<li>KPVT</li>
+						</removeTurrets>
+					</li>
+					<li Class = "Vehicles.StatUpgrade">
+						<vehicleStats>
+							<li>
+								<def>RepairRate</def>
+								<value>-0.1</value>
+								<type>Add</type>
+							</li>
+							<li>
+								<def>CargoCapacity</def>
+								<value>-200</value>
+							</li>
+						</vehicleStats>
+					</li>
+				</upgrades>
+				<ingredients>
+					<Steel>120</Steel>
+					<ComponentIndustrial>10</ComponentIndustrial>					
+					<Plasteel>50</Plasteel>
+				</ingredients>
+			</li>
+		</nodes>
+	</Vehicles.UpgradeTreeDef>
+	
+	<Vehicles.UpgradeTreeDef>
+		<defName>RT_T90M_Vehicle_UpgradeTree</defName>
+		<nodes>
+			<li>
+				<key>T90M_HeavyERA</key>
+				<label>T90M heavy ERA pack</label>
+				<description>Equip the Relikt heavy ERA pack to T-90M</description>
+				<icon>Vehicles/T90M/HeavyERA/HeavyERA_gizmo</icon>
+				<work>2500</work>
+				<gridCoordinate>(5,10)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<upgrades>
+					
+					<li Class = "Vehicles.StatUpgrade">
+						<vehicleStats>
+							<li>
+								<def>RepairRate</def>
+								<value>-0.2</value>
+								<type>Add</type>
+							</li>
+						</vehicleStats>
+					</li>
+
+					<li Class="Vehicles.VehicleUpgrade">
+						<retextureDef>RT_T90MHeavyERA</retextureDef>
+						<armor>
+							<li>
+								<key>LeftERAPlating</key>
+								<statModifiers>
+									<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+									<ArmorRating_Sharp>0.25</ArmorRating_Sharp>
+								</statModifiers>
+								<type>Add</type>
+							</li>
+							<li>
+								<key>RightERAPlating</key>
+								<statModifiers>
+									<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+									<ArmorRating_Sharp>0.25</ArmorRating_Sharp>
+								</statModifiers>
+								<type>Add</type>
+							</li>
+						</armor>
+						<health>
+							<li>
+								<key>LeftTrack</key>
+								<depth>Internal</depth>
+								<type>Set</type>
+							</li>
+							<li>
+								<key>RightTrack</key>
+								<depth>Internal</depth>
+								<type>Set</type>
+							</li>
+							<li>
+								<key>LeftRoadWheels</key>
+								<depth>Internal</depth>
+								<type>Set</type>
+							</li>
+							<li>
+								<key>RightRoadWheels</key>
+								<depth>Internal</depth>
+								<type>Set</type>
+							</li>
+							<li>
+								<key>LeftDriveSprocket</key>
+								<depth>Internal</depth>
+								<type>Set</type>
+							</li>
+							<li>
+								<key>RightDriveSprocket</key>
+								<depth>Internal</depth>
+								<type>Set</type>
+							</li>
+							<li>
+								<key>LeftTensionerWheel</key>
+								<depth>Internal</depth>
+								<type>Set</type>
+							</li>
+							<li>
+								<key>RightTensionerWheel</key>
+								<depth>Internal</depth>
+								<type>Set</type>
+							</li>
+						</health>
+					</li>
+				</upgrades>
+				<ingredients>
+					<Steel>150</Steel>
+					<Plasteel>20</Plasteel>
+					<Chemfuel>50</Chemfuel>
+				</ingredients>
+			</li>
+		</nodes>
+	</Vehicles.UpgradeTreeDef>
+
+	<Vehicles.UpgradeTreeDef>
+		<defName>RT_Boomerang_Vehicle_UpgradeTree</defName>
+		<nodes>
+			<li>
+				<key>2S25_Turret</key>
+				<label>2S25 Turret</label>
+				<description>Equip the 2S25M Turret with 2A75 Tank Cannon.</description>
+				<icon>Vehicles/Boomerang/2S25/2S25_Turret_gizmo</icon>
+				<work>2500</work>
+				<gridCoordinate>(5,10)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<upgrades>
+					<li Class="Vehicles.TurretUpgrade">
+						<turrets>
+							<li>
+								<turretDef>RT_2S25_Turret</turretDef>
+								<renderProperties>
+									<north>(0,-0.9)</north>
+									<south>(-0.02,1.34)</south>
+									<east>(-1.24,0.6)</east>
+									<west>(1.24,0.6)</west>
+								</renderProperties>
+								<gizmoLabel>Main Turret</gizmoLabel>
+								<aimPieOffset>(0, 5.8)</aimPieOffset>
+								<key>2S25</key>
+							</li>
+							<li>
+								<turretDef>RT_PKT_ADV_MGTurret</turretDef>
+								<renderProperties>
+									<north>(0.4,2)</north>
+									<south>(-0.4,-2)</south>
+									<east>(2,-0.4)</east>
+									<west>(-2,-0.4)</west>
+								</renderProperties>
+								<gizmoLabel>coaxial MG</gizmoLabel>
+								<angleRestricted>(345,15)</angleRestricted>
+								<aimPieOffset>(0, -1.1)</aimPieOffset>
+								<key>2S25PKT</key>
+								<drawLayer>0</drawLayer>
+								<parentKey>2S25</parentKey>
+							</li>
+						</turrets>
+						<removeTurrets>
+							<li>Apoch57</li>
+							<li>BOPKT</li>
+							<li>BOKornetL</li>
+							<li>BOKornetR</li>
+							<li>MinMissile</li>
+						</removeTurrets>
+					</li>
+					<li Class = "Vehicles.StatUpgrade">
+						<vehicleStats>
+							<li>
+								<def>CargoCapacity</def>
+								<value>-300</value>
+							</li>
+						</vehicleStats>
+					</li>
+					<li Class = "Vehicles.VehicleUpgrade">
+						<roles>
+							<li>
+								<key>Passenger</key>
+								<editKey>PassengerExpansion</editKey>
+								<label>Passenger</label>
+								<slots>4</slots>
+							</li>
+						</roles>
+					</li>
+				</upgrades>
+				<ingredients>
+					<Steel>150</Steel>
+					<ComponentIndustrial>10</ComponentIndustrial>
+				</ingredients>
+			</li>
+		</nodes>
+	</Vehicles.UpgradeTreeDef>
+</Defs>

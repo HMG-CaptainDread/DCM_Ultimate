@@ -1,0 +1,428 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>	
+	<Vehicles.UpgradeTreeDef>
+		<defName>RT_M1A2SEP_Vehicle_UpgradeTree</defName>
+		<nodes>
+			<li>
+				<key>M1A2_TUSK_ERA</key>
+				<label>M1A2 TUSK pack</label>
+				<description>Equip the TUSK ERA kits to M1A2 and add barrel MG.</description>
+				<icon>Vehicles/M1A2/TUSK/Armor</icon>
+				<work>2500</work>
+				<gridCoordinate>(5,5)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<upgrades>
+					<li Class="Vehicles.TurretUpgrade">
+						<turrets>
+							<li>
+								<turretDef>RT_M1A2SEP_Tank_Turret</turretDef>					
+								<renderProperties>
+									<north>(0, 0.2)</north>
+									<south>(0, 0.4)</south>
+									<east>(0, 0.4)</east>
+									<west>(0, 0.4)</west>
+								</renderProperties>
+								<gizmoLabel>Main Turret</gizmoLabel>
+								<aimPieOffset>(0, 5)</aimPieOffset>	<!-- 預熱指示器的x,z偏移 -->
+								<drawLayer>1</drawLayer>						
+								<key>M256_B</key>
+							</li>
+							<li><!--車頂砲塔-->	
+								<turretDef>RT_M1A2_Armor_MGTurret</turretDef>
+								<renderProperties><!--這裡的坐標系是無視旋轉的,所以x就是恆定左右偏移-->	
+									<north>(0.45,-0.15)</north>
+									<south>(-0.45,0.15)</south>
+									<east>(-0.15,-0.45)</east>
+									<west>(0.15,-0.45)</west>
+								</renderProperties>
+								<gizmoLabel>MG turret</gizmoLabel>
+								<aimPieOffset>(0, 1)</aimPieOffset>
+								<key>M2HB_B</key>
+								<drawLayer>3</drawLayer>					
+								<parentKey>M256_B</parentKey>
+							</li>
+							<li><!--同軸機槍-->	
+								<turretDef>RT_M1A2_TopCoaxial_MGTurret</turretDef>
+								<renderProperties>
+									<north>(-0.05,2.3)</north>
+									<south>(0.05,-2.3)</south>
+									<east>(2.3,0.05)</east>
+									<west>(-2.3,0.05)</west>
+								</renderProperties>
+								<gizmoLabel>barrel MG</gizmoLabel>
+								<angleRestricted>(345,15)</angleRestricted>
+								<aimPieOffset>(0, 1)</aimPieOffset>
+								<key>M2HB_C</key>
+								<drawLayer>2</drawLayer>					
+								<parentKey>M256_B</parentKey>
+							</li>
+							<li><!--同軸機槍-->	
+								<turretDef>RT_M240_MGTurret</turretDef>
+								<renderProperties>
+									<north>(0.2,1.2)</north>
+									<south>(-0.2,-1.2)</south>
+									<east>(1.2,-0.2)</east>
+									<west>(-1.2,0.2)</west>
+								</renderProperties>
+								<gizmoLabel>coaxial MG</gizmoLabel>
+								<angleRestricted>(345,15)</angleRestricted>
+								<aimPieOffset>(0, 0.5)</aimPieOffset>
+								<key>M240_B</key>
+								<drawLayer>0</drawLayer>					
+								<parentKey>M256_B</parentKey>
+							</li>
+							<li>
+								<turretDef>RT_GrenadeLauncherUS_A</turretDef>
+								<gizmoLabel>Left Grenade Launcher</gizmoLabel>
+								<renderProperties>
+									<north>(-1.1, 0.2)</north>
+									<south>(1.1, -0.2)</south>
+									<east>(0.2, 1.1)</east>
+									<west>(-0.2, -1.1)</west>
+								</renderProperties>
+								<aimPieOffset>(0, 0)</aimPieOffset>
+								<drawLayer>2</drawLayer>
+								<key>leftSmoke_B</key>
+								<parentKey>M256_B</parentKey>
+							</li>
+							<li>
+								<turretDef>RT_GrenadeLauncherUS_A</turretDef>
+								<gizmoLabel>Right Grenade Launcher</gizmoLabel>
+								<renderProperties>
+									<north>(1.1, 0.2)</north>
+									<south>(-1.1, -0.2)</south>
+									<east>(0.2, -1.1)</east>
+									<west>(-0.2, 1.1)</west>
+								</renderProperties>
+								<aimPieOffset>(0, 0)</aimPieOffset>
+								<drawLayer>2</drawLayer>
+								<key>rightSmoke_B</key>
+								<parentKey>M256_B</parentKey>
+							</li>
+						</turrets>
+						<removeTurrets>
+							<li>M256_A</li>
+							<li>M2HB_A</li>
+							<li>M240_A</li>
+							<li>leftSmoke_A</li>
+							<li>rightSmoke_A</li>
+						</removeTurrets>
+					</li>
+
+					<li Class = "Vehicles.StatUpgrade">
+						<vehicleStats>
+							<li>
+								<def>MoveSpeed</def>
+								<value>-1</value>
+								<type>Add</type>
+							</li>
+							<li>
+								<def>RepairRate</def>
+								<value>-0.1</value>
+								<type>Add</type>
+							</li>
+						</vehicleStats>
+					</li>
+
+					<li Class="Vehicles.VehicleUpgrade">
+						<retextureDef>RT_M1A2ERA</retextureDef>
+						<armor>
+							<li>
+								<key>LeftSkirtPlating</key>
+								<statModifiers>
+									<ArmorRating_Blunt>0.7</ArmorRating_Blunt>
+									<ArmorRating_Sharp>0.5</ArmorRating_Sharp>
+								</statModifiers>
+								<type>Add</type>
+							</li>
+							<li>
+								<key>RightSkirtPlating</key>
+								<statModifiers>
+									<ArmorRating_Blunt>0.7</ArmorRating_Blunt>
+									<ArmorRating_Sharp>0.5</ArmorRating_Sharp>
+								</statModifiers>
+								<type>Add</type>
+							</li>
+						</armor>
+						<health>
+							<li>
+								<key>LeftTrack</key>
+								<depth>Internal</depth>
+								<type>Set</type>
+							</li>
+							<li>
+								<key>RightTrack</key>
+								<depth>Internal</depth>
+								<type>Set</type>
+							</li>
+							<li>
+								<key>LeftRoadWheels</key>
+								<depth>Internal</depth>
+								<type>Set</type>
+							</li>
+							<li>
+								<key>RightRoadWheels</key>
+								<depth>Internal</depth>
+								<type>Set</type>
+							</li>
+							<li>
+								<key>LeftDriveSprocket</key>
+								<depth>Internal</depth>
+								<type>Set</type>
+							</li>
+							<li>
+								<key>RightDriveSprocket</key>
+								<depth>Internal</depth>
+								<type>Set</type>
+							</li>
+							<li>
+								<key>LeftTensionerWheel</key>
+								<depth>Internal</depth>
+								<type>Set</type>
+							</li>
+							<li>
+								<key>RightTensionerWheel</key>
+								<depth>Internal</depth>
+								<type>Set</type>
+							</li>
+						</health>
+					</li>
+				</upgrades>
+				<ingredients>
+					<Steel>40</Steel>
+					<Plasteel>50</Plasteel>
+					<Chemfuel>50</Chemfuel>
+				</ingredients>
+			</li>
+		</nodes>
+	</Vehicles.UpgradeTreeDef>
+	<Vehicles.UpgradeTreeDef>
+		<defName>RT_M2A3_Vehicle_UpgradeTree</defName>
+		<nodes>
+			<li>
+				<key>M2A3_BUSK_ERA</key>
+				<label>M2A3 BUSK III pack</label>
+				<description>Equip the BUSK III ERA kits to M2A3</description>
+				<icon>Vehicles/M2A3/BUSK/Armor</icon>
+				<work>2500</work>
+				<gridCoordinate>(5,5)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<upgrades>
+					<li Class="Vehicles.TurretUpgrade">
+						<turrets>
+							<li>
+								<turretDef>RT_BUSK_Tank_Turret</turretDef>					
+								<renderProperties>
+									<north>(0.2, 0.1)</north>
+									<south>(-0.2, 0.8)</south>
+									<east>(-0.35, 0.4)</east>
+									<west>(0.35, 0.45)</west>
+								</renderProperties>
+								
+								<gizmoLabel>Main Turret</gizmoLabel>
+								<aimPieOffset>(-0.1, 4)</aimPieOffset>	<!-- 預熱指示器的x,z偏移 -->
+								<drawLayer>1</drawLayer>						
+								<key>BushMasterII</key>
+							</li>
+							<li><!--同軸機槍-->	
+								<turretDef>RT_M240_MGTurret</turretDef>
+								<renderProperties>
+									<north>(0.2,1.2)</north>
+									<south>(-0.2,-1.2)</south>
+									<east>(1.2,-0.2)</east>
+									<west>(-1.2,0.2)</west>
+								</renderProperties>
+								<gizmoLabel>coaxial MG</gizmoLabel>
+								<angleRestricted>(345,15)</angleRestricted>
+								<aimPieOffset>(0, 0)</aimPieOffset>
+								<key>M240_B</key>
+								<drawLayer>0</drawLayer>					
+								<parentKey>BushMasterII</parentKey>
+							</li>
+							<li>
+								<turretDef>RT_GrenadeLauncherUS_A</turretDef>
+								<gizmoLabel>Left Grenade Launcher</gizmoLabel>
+								<renderProperties>
+									<north>(-1.1, 0.2)</north>
+									<south>(1.1, -0.2)</south>
+									<east>(0.2, 1.1)</east>
+									<west>(-0.2, -1.1)</west>
+								</renderProperties>
+								<aimPieOffset>(0, 0)</aimPieOffset>
+								<drawLayer>2</drawLayer>
+								<key>leftSmoke_B</key>
+								<parentKey>BushMasterII</parentKey>
+							</li>
+							<li>
+								<turretDef>RT_GrenadeLauncherUS_A</turretDef>
+								<gizmoLabel>Right Grenade Launcher</gizmoLabel>
+								<renderProperties>
+									<north>(1.1, 0.2)</north>
+									<south>(-1.1, -0.2)</south>
+									<east>(0.2, -1.1)</east>
+									<west>(-0.2, 1.1)</west>
+								</renderProperties>
+								<aimPieOffset>(0, 0)</aimPieOffset>
+								<drawLayer>2</drawLayer>
+								<key>rightSmoke_B</key>
+								<parentKey>BushMasterII</parentKey>
+							</li>
+							<li>
+								<turretDef>RT_TOW2A_Turret</turretDef>
+								<gizmoLabel>TOW2A Launcher</gizmoLabel>
+								<renderProperties>
+									<north>(-1.1, 0.2)</north>
+									<south>(1.1, -0.2)</south>
+									<east>(0.2, 1.1)</east>
+									<west>(-0.2, -1.1)</west>
+								</renderProperties>
+								<aimPieOffset>(0, 0)</aimPieOffset>
+								<drawLayer>2</drawLayer>
+								<key>TOW2A_Launcher_B</key>
+								<parentKey>BushMasterII</parentKey>
+							</li>
+						</turrets>
+						<removeTurrets>
+							<li>BushMaster</li>
+							<li>M240_A</li>
+							<li>leftSmoke_A</li>
+							<li>rightSmoke_A</li>
+							<li>TOW2A_Launcher_A</li>
+						</removeTurrets>
+					</li>
+					
+					<li Class = "Vehicles.StatUpgrade">
+						<vehicleStats>
+							<li>
+								<def>MoveSpeed</def>
+								<value>-2</value>
+								<type>Add</type>
+							</li>
+							<li>
+								<def>RepairRate</def>
+								<value>-0.1</value>
+								<type>Add</type>
+							</li>
+						</vehicleStats>
+					</li>
+
+					<li Class="Vehicles.VehicleUpgrade">
+						<retextureDef>RT_M2A3ERA</retextureDef>
+						<armor>
+							<li>
+								<key>MainTurret</key>
+								<statModifiers>
+									<ArmorRating_Blunt>0.05</ArmorRating_Blunt>
+									<ArmorRating_Sharp>0.05</ArmorRating_Sharp>
+								</statModifiers>
+								<type>Add</type>
+							</li>
+							<li>
+								<key>FrontArmorPlating</key>
+								<statModifiers>
+									<ArmorRating_Blunt>0.05</ArmorRating_Blunt>
+									<ArmorRating_Sharp>0.05</ArmorRating_Sharp>
+								</statModifiers>
+								<type>Add</type>
+							</li>
+							<li>
+								<key>LeftSkirtPlating</key>
+								<statModifiers>
+									<ArmorRating_Blunt>0.7</ArmorRating_Blunt>
+									<ArmorRating_Sharp>0.5</ArmorRating_Sharp>
+								</statModifiers>
+								<type>Add</type>
+							</li>
+							<li>
+								<key>RightSkirtPlating</key>
+								<statModifiers>
+									<ArmorRating_Blunt>0.7</ArmorRating_Blunt>
+									<ArmorRating_Sharp>0.5</ArmorRating_Sharp>
+								</statModifiers>
+								<type>Add</type>
+							</li>
+						</armor>
+						<health>
+							<li>
+								<key>LeftTrack</key>
+								<depth>Internal</depth>
+								<type>Set</type>
+							</li>
+							<li>
+								<key>RightTrack</key>
+								<depth>Internal</depth>
+								<type>Set</type>
+							</li>
+							<li>
+								<key>LeftRoadWheels</key>
+								<depth>Internal</depth>
+								<type>Set</type>
+							</li>
+							<li>
+								<key>RightRoadWheels</key>
+								<depth>Internal</depth>
+								<type>Set</type>
+							</li>
+							<li>
+								<key>LeftDriveSprocket</key>
+								<depth>Internal</depth>
+								<type>Set</type>
+							</li>
+							<li>
+								<key>RightDriveSprocket</key>
+								<depth>Internal</depth>
+								<type>Set</type>
+							</li>
+							<li>
+								<key>LeftTensionerWheel</key>
+								<depth>Internal</depth>
+								<type>Set</type>
+							</li>
+							<li>
+								<key>RightTensionerWheel</key>
+								<depth>Internal</depth>
+								<type>Set</type>
+							</li>
+						</health>
+					</li>
+				</upgrades>
+				<ingredients>
+					<Steel>40</Steel>
+					<Plasteel>50</Plasteel>
+					<Chemfuel>50</Chemfuel>
+				</ingredients>
+			</li>
+			<li>
+				<key>M2A3_Engine_Upgrade</key>
+				<label>M2A3 Engine Upgrade</label>
+				<description>Increase Power of Engine</description>
+				<icon>Vehicles/M2A3/Engine/Engine</icon>
+				<work>2500</work>
+				<gridCoordinate>(10,5)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<prerequisiteNodes>
+					<li>M2A3_BUSK_ERA</li>
+				</prerequisiteNodes>
+				<upgrades>
+					<li Class = "Vehicles.StatUpgrade">
+						<vehicleStats>
+							<li>
+								<def>MoveSpeed</def>
+								<value>2</value>
+								<type>Add</type>
+							</li>
+							<li>
+								<def>RepairRate</def>
+								<value>-0.1</value>
+								<type>Add</type>
+							</li>
+						</vehicleStats>
+					</li>
+				</upgrades>
+				<ingredients>
+					<ComponentIndustrial>8</ComponentIndustrial>
+				</ingredients>
+			</li>
+		</nodes>
+	</Vehicles.UpgradeTreeDef>
+</Defs>

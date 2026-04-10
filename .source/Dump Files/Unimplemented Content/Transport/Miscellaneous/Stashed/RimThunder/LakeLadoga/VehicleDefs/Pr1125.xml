@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	<Vehicles.VehicleBuildDef ParentName="RT_BaseVehicleBuild">
+		<defName>RT_Pr1125R_Blueprint</defName>
+		<label>Pr.1125</label>
+		<description>An armored gunboat for river battle and fire support, add MLRS instead of rear tank turret.</description>
+		
+		<graphicData>
+			<texPath>Pr1125/vehicle</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4, 18)</drawSize>
+		</graphicData>
+		
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<WorkToBuild>200000</WorkToBuild>
+			<Flammability>0.65</Flammability>
+		</statBases>
+		<terrainAffordanceNeeded>ShallowWater</terrainAffordanceNeeded>
+		<size>(3, 14)</size>
+		
+		<costList>
+			<EngineHeavy>1</EngineHeavy>
+			<ComponentFuelTank>2</ComponentFuelTank>
+			<ComponentTransmission>1</ComponentTransmission>
+			<ComponentHeavyCasting>8</ComponentHeavyCasting>
+			<ComponentIndustrial>36</ComponentIndustrial>
+			<Steel>1800</Steel>
+		</costList>
+		
+		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+		
+		<thingToSpawn>RT_Pr1125R</thingToSpawn>
+	</Vehicles.VehicleBuildDef>
+	
+	<Vehicles.VehicleDef ParentName="RT_BaseVehicle">
+		<defName>RT_Pr1125R</defName>
+		<label>Pr.1125</label>
+		<description>An armored gunboat for river battle and fire support, add MLRS instead of rear tank turret.</description>
+		
+		<graphicData>
+			<texPath>Pr1125/vehicle</texPath>
+			<drawSize>(4, 18)</drawSize>
+		</graphicData>
+		
+		<fillPercent>0.7</fillPercent>
+		<buildDef>RT_Pr1125R_Blueprint</buildDef>
+		
+		<size>(3, 14)</size>
+		
+		<vehicleMovementPermissions>DriverNeeded</vehicleMovementPermissions>
+		<vehicleCategory>Transport</vehicleCategory>
+		<techLevel>Industrial</techLevel>
+		<vehicleType>Sea</vehicleType>
+				
+		<statBases>
+			<ArmorRating_Blunt>0.8</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.6</ArmorRating_Sharp>
+			<ArmorRating_Heat>1.0</ArmorRating_Heat>
+			<MarketValue>1900</MarketValue>
+			<Flammability>0</Flammability>
+		</statBases>
+		
+		<vehicleStats>
+			<Mass>26000</Mass>
+			<MoveSpeed>8</MoveSpeed>
+			<CargoCapacity>5000</CargoCapacity>
+			<RepairRate>1.8</RepairRate>
+		</vehicleStats>
+		<soundOneShotsOnEvent Inherit = "False">
+			<li>
+				<key>PawnEntered</key>
+				<value>VVE_VehicleEnter</value>
+			</li>
+			<li>
+				<key>PawnExited</key>
+				<value>VVE_VehicleEnter</value>
+			</li>
+			<li>
+				<key>IgnitionOn</key>
+				<value>RT_F4FStart</value>
+			</li>
+			<li>
+				<key>IgnitionOff</key>
+				<value>RT_F4FStop</value>
+			</li>
+		</soundOneShotsOnEvent>
+		<soundSustainersOnEvent Inherit="false"> 
+			<li>
+				<start>IgnitionOn</start>
+				<stop>IgnitionOff</stop>
+				<value>RT_LightShipEngine</value>
+			</li>
+		</soundSustainersOnEvent>
+		<race>
+			<baseBodySize>4.2</baseBodySize>
+		</race>
+		
+		<properties>
+			<fishing>true</fishing>
+			<riverCost>1</riverCost>
+			
+			<track Class = "Vehicles.VehicleTrack_Wake">
+				<speed>1</speed>
+			</track>
+			
+			<defaultBiomesImpassable>true</defaultBiomesImpassable>
+			<defaultTerrainImpassable>true</defaultTerrainImpassable>
+			<customTerrainCosts AllowTerrainWithTag="Water" PathCost="1"/>
+			<customBiomeCosts>
+				<li>
+					<key>Ocean</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Lake</key>
+					<value>1</value>
+				</li>
+				</customBiomeCosts>
+			<worldSpeedMultiplier>1</worldSpeedMultiplier>
+			<winterSpeedMultiplier>5</winterSpeedMultiplier>
+			<vehicleJobLimitations>
+				<li>(RepairVehicle, 6)</li>
+			</vehicleJobLimitations>
+			<roles>
+				<li>
+					<key>driver</key>
+					<label>Captain</label>
+					<slots>2</slots>
+					<slotsToOperate>1</slotsToOperate>
+					
+					<handlingTypes>
+						<li>Movement</li>
+					</handlingTypes>
+				</li>
+				<li>
+					<key>gunnerMain</key>
+					<label>Gunner (T34)</label>
+					<slots>2</slots>
+					<slotsToOperate>1</slotsToOperate>			
+					<handlingTypes>Turret</handlingTypes>
+					<turretIds>
+						<li>t34</li>
+						<li>coaxialMG</li>
+					</turretIds>
+				</li>
+				<li>
+					<key>gunnerMG</key>
+					<label>Gunner (Dshk)</label>
+					<slots>1</slots>
+					<slotsToOperate>1</slotsToOperate>			
+					<handlingTypes>Turret</handlingTypes>
+					<turretIds>
+						<li>dshk</li>
+					</turretIds>
+				</li>
+				<li>
+					<key>gunnerRocket</key>
+					<label>Gunner (BM13)</label>
+					<slots>3</slots>
+					<slotsToOperate>2</slotsToOperate>			
+					<handlingTypes>Turret</handlingTypes>
+					<turretIds>
+						<li>bm13</li>
+					</turretIds>
+				</li>
+				<li>
+					<key>passenger</key>
+					<label>Passenger</label>
+					<slots>10</slots>
+				</li>
+			</roles>
+		</properties>
+		
+		<components>
+			<li><!--Engine 100-->
+				<key>Engine</key>
+				<label>Engine</label>
+				<health>120</health>
+				<priorityStatEfficiency>true</priorityStatEfficiency>
+				<categories><li>MoveSpeed</li></categories>
+				<depth>Internal</depth>		
+				<reactors>
+					<li Class = "Vehicles.Reactor_Explosive">
+						<indicator>VF_Explosive</indicator>
+						<chance>0.25</chance>
+						<maxHealth>0.5</maxHealth>
+						<radius>3</radius>
+						<damageDef>Bomb</damageDef>
+					</li>
+				</reactors>			
+				<hitbox>
+					<cells>
+						<li>(0, -2)</li>
+						<li>(0, -1)</li>
+					</cells>
+				</hitbox>				
+			</li>			
+			<li><!-- fuel tank 100-->
+				<key>FuelTank</key>
+				<label>fuel tank</label>
+				<health>120</health>
+				<depth>Internal</depth>			
+				<reactors><li Class = "Vehicles.Reactor_FuelLeak"/></reactors>			
+				<hitbox>
+					<cells>
+						<li>(0, 0)</li>
+						<li>(0, 1)</li>
+					</cells>
+				</hitbox>
+			</li>
+			<li><!-- Gearbox 50-->
+				<key>DriveShaft</key>
+				<label>drive shaft</label>
+				<health>70</health>
+				<depth>Internal</depth>
+				<categories><li>MoveSpeed</li></categories>	
+				<hitbox>
+					<cells>
+						<li>(0, -2)</li>
+						<li>(0, -3)</li>
+						<li>(0, -4)</li>
+					</cells>
+				</hitbox>			
+			</li>
+			<li><!-- AmmoRack 50-->
+				<key>AmmoRackMain</key>
+				<label>main ammo rack</label>
+				<health>140</health>
+				<depth>Internal</depth>
+				<reactors>
+					<li Class = "Vehicles.Reactor_Explosive">
+						<indicator>VF_Explosive</indicator>
+						<chance>0.5</chance>
+						<maxHealth>0.5</maxHealth>
+						<radius>5</radius>
+						<damageDef>Bomb</damageDef>
+					</li>
+				</reactors>	
+				<hitbox>
+					<cells>
+						<li>(0, 1)</li>
+						<li>(0, 2)</li>
+					</cells>
+				</hitbox>
+			</li>
+			<li><!-- AmmoRack 50-->
+				<key>AmmoRackRear</key>
+				<label>rear ammo rack</label>
+				<health>140</health>
+				<depth>Internal</depth>
+				<reactors>
+					<li Class = "Vehicles.Reactor_Explosive">
+						<indicator>VF_Explosive</indicator>
+						<chance>0.3</chance>
+						<maxHealth>0.5</maxHealth>
+						<radius>3</radius>
+						<damageDef>Bomb</damageDef>
+					</li>
+				</reactors>	
+				<hitbox>
+					<cells>
+						<li>(0, -4)</li>
+					</cells>
+				</hitbox>
+			</li>
+			<!-- External mobile Part 外部驅動部件-->		
+			<li><!-- RightTrack 150-->
+				<key>Prop</key>
+				<label>propeller</label>
+				<health>175</health>
+				<depth>Internal</depth>
+				<categories><li>MoveSpeed</li></categories>	
+				<tags><li>Wheel</li></tags>
+				<hitWeight>1</hitWeight>
+				<hitbox>
+					<cells>
+						<li>(0, -5)</li>
+						<li>(0, -6)</li>
+					</cells>
+				</hitbox>
+			</li>
+			<li><!-- RightTrack 150-->
+				<key>rudder</key>
+				<label>rudder</label>
+				<health>175</health>
+				<depth>Internal</depth>
+				<hitWeight>1</hitWeight>
+				<hitbox>
+					<cells>
+						<li>(0, -6)</li>
+					</cells>
+				</hitbox>
+			</li>
+		<!-- External Platings 外部防禦部件 -->
+			<li><!-- FrontArmorPlating 200-->
+				<key>FrontArmorPlating</key>
+				<label>front armor Plating</label>
+				<health>800</health>
+				<depth>External</depth>
+				<hitWeight>4</hitWeight>	
+				<armor>
+					<ArmorRating_Blunt>1.00</ArmorRating_Blunt>
+					<ArmorRating_Sharp>0.8</ArmorRating_Sharp>
+				</armor>		
+				<hitbox><side>Front</side></hitbox>
+			</li>
+			<li><!-- LeftArmorPlating 180-->
+				<key>LeftArmorPlating</key>
+				<label>left armor plating</label>
+				<health>1200</health>
+				<depth>External</depth>
+				<hitWeight>5</hitWeight>		
+				<armor>
+					<ArmorRating_Blunt>1.2</ArmorRating_Blunt>
+					<ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+				</armor>		
+				<hitbox><side>Left</side></hitbox>
+			</li>
+			<li><!-- RightArmorPlating 180-->
+				<key>RightArmorPlating</key>
+				<label>right armor plating</label>
+				<health>1200</health>
+				<depth>External</depth>
+				<hitWeight>5</hitWeight>	
+				<armor>
+					<ArmorRating_Blunt>1.2</ArmorRating_Blunt>
+					<ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+				</armor>			
+				<hitbox><side>Right</side></hitbox>
+			</li>
+			<li><!-- RoofArmorPlating 150 -->
+				<key>RoofArmorPlating</key>
+				<label>roof armor plating</label>
+				<health>1600</health>
+				<depth>External</depth>
+				<hitWeight>5</hitWeight>
+				<armor>
+					<ArmorRating_Blunt>1.00</ArmorRating_Blunt>
+					<ArmorRating_Sharp>0.8</ArmorRating_Sharp>
+				</armor>
+				<hitbox>
+					<side>Body</side>
+				</hitbox>
+			</li>
+			<li><!-- BackArmorPlating 150-->
+				<key>BackArmorPlating</key>
+				<label>rear armor plating</label>
+				<health>800</health>
+				<depth>External</depth>
+				<hitWeight>5</hitWeight>
+				<armor>
+					<ArmorRating_Blunt>1.00</ArmorRating_Blunt>
+					<ArmorRating_Sharp>0.8</ArmorRating_Sharp>
+				</armor>
+				<hitbox>
+					<side>Back</side>
+				</hitbox>
+			</li>
+			<li><!-- RoofArmorPlating 150 -->
+				<key>ArmoredBridge</key>
+				<label>Armored bridge</label>
+				<health>400</health>
+				<depth>External</depth>
+				<hitWeight>12</hitWeight>
+				<armor>
+					<ArmorRating_Blunt>1.2</ArmorRating_Blunt>
+					<ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+				</armor>
+				<hitbox>
+					<cells>
+						<li>(-1, 0)</li>
+						<li>(0, 0)</li>
+						<li>(1, 0)</li>
+						<li>(-1, -1)</li>
+						<li>(0, -1)</li>
+						<li>(1, -1)</li>
+					</cells>
+				</hitbox>
+			</li>
+			<li><!-- RoofArmorPlating 150 -->
+				<key>t34turret</key>
+				<label>T34 turret</label>
+				<health>240</health>
+				<depth>External</depth>
+				<hitWeight>12</hitWeight>
+				<armor>
+					<ArmorRating_Blunt>1.2</ArmorRating_Blunt>
+					<ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+				</armor>
+				<hitbox>
+					<cells>
+						<li>(-1, 3)</li>
+						<li>(0, 3)</li>
+						<li>(1, 3)</li>
+						<li>(-1, 2)</li>
+						<li>(0, 2)</li>
+						<li>(1, 2)</li>
+						<li>(-1, 1)</li>
+						<li>(0, 1)</li>
+						<li>(1, 1)</li>
+					</cells>
+				</hitbox>
+			</li>
+			<li><!-- RoofArmorPlating 150 -->
+				<key>dshkturret</key>
+				<label>Dshk turret</label>
+				<health>240</health>
+				<depth>External</depth>
+				<hitWeight>12</hitWeight>
+				<armor>
+					<ArmorRating_Blunt>1.2</ArmorRating_Blunt>
+					<ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+				</armor>
+				<hitbox>
+					<cells>
+						<li>(-1, 0)</li>
+						<li>(0, 0)</li>
+						<li>(1, 0)</li>
+						<li>(-1, -1)</li>
+						<li>(0, -1)</li>
+						<li>(1, -1)</li>
+					</cells>
+				</hitbox>
+			</li>
+			<li><!-- RoofArmorPlating 150 -->
+				<key>rocketturret</key>
+				<label>BM13 turret</label>
+				<health>300</health>
+				<depth>External</depth>
+				<hitWeight>12</hitWeight>
+				<armor>
+					<ArmorRating_Blunt>1.00</ArmorRating_Blunt>
+					<ArmorRating_Sharp>0.8</ArmorRating_Sharp>
+				</armor>
+				<hitbox>
+					<cells>
+						<li>(-1, -5)</li>
+						<li>(0, -5)</li>
+						<li>(1, -5)</li>
+						<li>(-1, -4)</li>
+						<li>(0, -4)</li>
+						<li>(1, -4)</li>
+						<li>(-1, -3)</li>
+						<li>(0, -3)</li>
+						<li>(1, -3)</li>
+					</cells>
+				</hitbox>
+			</li>
+		</components>
+		
+		<comps>
+			<li Class="Vehicles.CompProperties_FueledTravel">
+				<fuelType>Chemfuel</fuelType>
+				<leakDef>Filth_Fuel</leakDef>
+				<fuelConsumptionRate>12</fuelConsumptionRate>
+				<fuelCapacity>180</fuelCapacity>
+				<fuelConsumptionWorldMultiplier>0.8</fuelConsumptionWorldMultiplier>
+			</li>
+			<li Class="Vehicles.CompProperties_VehicleTurrets">
+				<!-- 砲塔 -->
+				<turrets>
+					<li>
+						<turretDef>RT_dshk_Turret</turretDef>
+						<renderProperties>
+							<north>(0, -0.8)</north>
+							<south>(0, 2.25)</south>
+							<east>(-1, 0.4)</east>
+							<west>(1, 0.4)</west>
+						</renderProperties>
+
+						<gizmoLabel>dshk</gizmoLabel>
+						<aimPieOffset>(0, 2)</aimPieOffset>
+						<!-- 預熱指示器的x,z偏移 -->
+						<key>dshk</key>
+						<component>
+							<key>dshkturret</key>
+							<healthPercent>0.01</healthPercent>
+						</component>
+					</li>
+
+					<li>
+						<turretDef>RT_Front_Tank_Turret</turretDef>
+						<renderProperties>
+							<north>(0, 1.45)</north>
+							<south>(0, -0.9)</south>
+							<east>(1.5, -0.1)</east>
+							<west>(-1.5, -0.1)</west>
+						</renderProperties>
+						<angleRestricted>(195,165)</angleRestricted>
+						<gizmoLabel>T34</gizmoLabel>
+						<aimPieOffset>(0, 2)</aimPieOffset>
+						<!-- 預熱指示器的x,z偏移 -->
+						<key>t34</key>
+						<component>
+							<key>t34turret</key>
+							<healthPercent>0.01</healthPercent>
+						</component>
+					</li>
+
+					<li>
+						<!--同軸機槍-->
+						<turretDef>RT_SGMT_Turret</turretDef>
+						<renderProperties>
+							<north>(0.28,1.6)</north>
+							<south>(-0.28,-1.6)</south>
+							<east>(1.6,-0.28)</east>
+							<west>(-1.6,0.28)</west>
+						</renderProperties>
+						<gizmoLabel>coaxial MG</gizmoLabel>
+						<angleRestricted>(345,15)</angleRestricted>
+						<aimPieOffset>(0, 0)</aimPieOffset>
+						<key>coaxialMG</key>
+						<drawLayer>0</drawLayer>
+						<parentKey>t34</parentKey>
+						<component>
+							<key>t34turret</key>
+							<healthPercent>0.01</healthPercent>
+						</component>
+					</li>
+
+					<li>
+						<turretDef>RT_BM13_Turret</turretDef>
+						<renderProperties>
+							<north>(0, -4.55)</north>
+							<south>(0, 5.5)</south>
+							<east>(-4.75, 0.2)</east>
+							<west>(4.75, 0.2)</west>
+						</renderProperties>
+
+						<gizmoLabel>BM13</gizmoLabel>
+						<aimPieOffset>(0, 2)</aimPieOffset>
+						<!-- 預熱指示器的x,z偏移 -->
+						<key>bm13</key>
+						<component>
+							<key>rocketturret</key>
+							<healthPercent>0.01</healthPercent>
+						</component>
+					</li>
+				</turrets>
+			</li>
+		</comps>
+
+		<drawProperties>
+			<graphicOverlays>
+				<li>
+					<rotation>0</rotation>
+					<renderUI>false</renderUI>
+					<graphicData>
+						<texPath>Pr1125/vehicle_mast</texPath>
+						<drawSize>(4,18)</drawSize>
+						<drawOffsetNorth>(0, 0, 0)</drawOffsetNorth>
+						<drawOffsetEast>(0, 0, 0)</drawOffsetEast>
+						<drawOffsetSouth>(0, 0, 0)</drawOffsetSouth>
+						<drawOffsetWest>(0, 0, 0)</drawOffsetWest>
+						<layer>4</layer>
+						<shaderType>Cutout</shaderType>
+						<graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+					</graphicData>
+				</li>
+			</graphicOverlays>
+		</drawProperties>
+	</Vehicles.VehicleDef>
+
+	<Vehicles.VehicleTurretDef ParentName="RT_BaseTurret">
+		<defName>RT_BM13_Turret</defName>
+		<label>BM13</label>
+		<turretType>Rotatable</turretType>
+		<shotSound>RT_Shot_BM13Sound</shotSound>
+		<reloadSound>Artillery_ShellLoaded</reloadSound>
+		
+		<projectile>Rocket_M13_132mm</projectile>
+		<reloadTimer>28</reloadTimer>
+		
+		<reloadTimerMultiplierPerCrewCount>
+			<points>
+				<li>(2, 1)</li>
+				<li>(3, 0.5)</li>
+			</points>
+		</reloadTimerMultiplierPerCrewCount>
+		
+		<warmUpTimer>2</warmUpTimer>
+		<chargePerAmmoCount>20</chargePerAmmoCount>
+		
+		<magazineCapacity>16</magazineCapacity>
+		<genericAmmo>true</genericAmmo>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>0.5</rotationSpeed>
+		
+		<projectileOffset>1</projectileOffset>
+		
+		<minRange>20.9</minRange>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>16</shotsPerBurst>
+				<ticksBetweenShots>20</ticksBetweenShots>
+				<ticksBetweenBursts>480</ticksBetweenBursts>
+				<spreadRadius>9.9</spreadRadius>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>8</shotsPerBurst>
+				<ticksBetweenShots>20</ticksBetweenShots>
+				<ticksBetweenBursts>160</ticksBetweenBursts>
+				<spreadRadius>9.9</spreadRadius>
+				<label>Half</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Pr1125/BM13</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>CutoutComplexPattern</shaderType>
+			<drawSize>(5.5, 5.5)</drawSize>
+			<layer>2</layer>
+		</graphicData>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Chemfuel</li>
+			</thingDefs>
+		</ammunition>
+		
+		<projectileShifting>
+			<li>-0.75</li>
+			<li>0.5</li>
+			<li>-0.25</li>
+			<li>0.125</li>
+			<li>-0.125</li>
+			<li>0.25</li>
+			<li>-0.5</li>
+			<li>0.75</li>
+		</projectileShifting>
+	</Vehicles.VehicleTurretDef>
+
+	<ThingDef Class="Missile_dml._ThingDef" ParentName="BaseBullet">
+		<defName>Rocket_M13_132mm</defName>
+		<label>swarmer rocket</label>
+		<thingClass>Missile_dml.missile_dml</thingClass>
+		<graphicData>
+			<texPath>Things/Projectile/Rocket_Swarm</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>1.2</drawSize>
+		</graphicData>
+		<fleck>RT_BM13_RocketSmoke</fleck>
+		<fleck1>RT_BM13_RocketExhaust</fleck1>
+		<frequency>0</frequency>
+		<scale>1.5</scale>
+		<shaking>0.3</shaking>
+		<projectile>
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>120</damageAmountBase>
+			<flyOverhead>true</flyOverhead>
+			<speed>36</speed>
+			<arcHeightFactor>35</arcHeightFactor>
+			<explosionRadius>4.9</explosionRadius>
+			<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+			<soundExplode>Explosion_Rocket</soundExplode>
+			<soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+			<soundAmbient>MortarRound_Ambient</soundAmbient>
+		</projectile>
+		<drawOffscreen>true</drawOffscreen>
+	</ThingDef>
+	
+	<FleckDef ParentName = "FleckBase_Thrown">
+		<defName>RT_BM13_RocketSmoke</defName>
+		<graphicData>
+			<texPath>Things/Mote/Smoke</texPath>
+			<renderInstanced>true</renderInstanced>
+		</graphicData>
+		
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<fadeInTime>1</fadeInTime>
+		<solidTime>4.5</solidTime>
+		<fadeOutTime>2.5</fadeOutTime>
+		<growthRate>0.01</growthRate>
+	</FleckDef>
+	
+	<FleckDef ParentName="FleckBaseSmoke">
+		<defName>RT_BM13_RocketExhaust</defName>
+		<graphicData>
+			<texPath>Things/Mote/FireGlow</texPath>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<altitudeLayer>MoteOverheadLow</altitudeLayer>
+		<solidTime>0.03</solidTime>
+		<fadeOutTime>0.15</fadeOutTime>
+	</FleckDef>
+
+</Defs>

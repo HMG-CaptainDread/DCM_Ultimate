@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<Vehicles.UpgradeTreeDef ParentName="TMM_UpgradeTree_WheeledLandBase">
+		<defName>TMM_UpgradeTree_Gunther</defName>
+
+		<nodes>
+			<!-- NON-ANTI-AIR -->
+				<!-- CANVAS TOP BASE -->
+					<li>
+						<key>CanvasTopBase_Gunther</key>
+						<label>Canvas Top Upgrade</label>
+						<description>Installs kit for canvas cover.</description>
+
+						<icon>Modules/Transport/UI/Upgrades/Upgrade_Miscellaneous</icon>
+
+						<work>3200</work>
+
+						<gridCoordinate>(3, 3)</gridCoordinate>
+						<drawSize>(80, 80)</drawSize>
+
+						<disableIfUpgradeNodesEnabled>
+							<li>AntiAirTurret_Gunther</li>
+						</disableIfUpgradeNodesEnabled>
+
+						<ingredients>
+							<Steel>20</Steel>
+							<Cloth>220</Cloth>
+						</ingredients>
+					</li>
+				<!-- CANVAS TOP FOLDED -->
+					<li>
+						<key>CanvasTopFolded_Gunther</key>
+						<label>Fold Canvas</label>
+						<description>Folds canvas cover.</description>
+
+						<icon>Modules/Transport/UI/Upgrades/Upgrade_Miscellaneous</icon>
+
+						<work>200</work>
+
+						<gridCoordinate>(1, 8)</gridCoordinate>
+						<drawSize>(40, 40)</drawSize>
+
+						<prerequisiteNodes>
+							<li>CanvasTopBase_Gunther</li>
+						</prerequisiteNodes>
+
+						<disableIfUpgradeNodesEnabled>
+							<li>CanvasTopOpened_Gunther</li>
+						</disableIfUpgradeNodesEnabled>
+
+						<graphicOverlays>
+							<li>
+								<graphicData>
+									<texPath>Modules/Transport/Upgrades/Land/Gunther_Truck/CanvasNoAAFoldedCanvas/CanvasNoAAFolded</texPath>
+									<graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+									<drawSize>(9,9)</drawSize>
+									<layer>9</layer>
+									<shaderType>Cutout</shaderType>
+								</graphicData>
+							</li>
+							<li>
+								<graphicData>
+									<texPath>Modules/Transport/Upgrades/Land/Gunther_Truck/CanvasNoAAFoldedVehicle/CanvasNoAAFolded</texPath>
+									<graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+									<drawSize>(9,9)</drawSize>
+									<layer>1</layer>
+									<shaderType>Cutout</shaderType>
+								</graphicData>
+							</li>
+						</graphicOverlays>
+					</li>
+				<!-- CANVAS TOP OPEN -->
+					<li>
+						<key>CanvasTopOpened_Gunther</key>
+						<label>Install</label>
+						<description>Installs folded canvas cover over the roof.</description>
+
+						<icon>Modules/Transport/UI/Upgrades/Upgrade_Tent</icon>
+
+						<work>200</work>
+
+						<gridCoordinate>(5, 8)</gridCoordinate>
+						<drawSize>(40, 40)</drawSize>
+
+						<prerequisiteNodes>
+							<li>CanvasTopBase_Gunther</li>
+						</prerequisiteNodes>
+
+						<disableIfUpgradeNodesEnabled>
+							<li>CanvasTopFolded_Gunther</li>
+						</disableIfUpgradeNodesEnabled>
+
+						<upgrades>
+							<li Class = "Vehicles.VehicleUpgrade">
+								<roles>
+									<li>
+										<key>driver</key>
+										<editKey>CanvasTopOpened</editKey>
+										<pawnRenderer>
+										<layer>-999</layer>
+										</pawnRenderer>
+									</li>
+									<li>
+										<key>Passenger_TopLeft</key>
+										<editKey>CanvasTopOpened</editKey>
+										<pawnRenderer>
+										<layer>-999</layer>
+										</pawnRenderer>
+									</li>
+									<li>
+										<key>driver</key>
+										<editKey>Passenger_BottomRight</editKey>
+										<pawnRenderer>
+										<layer>-999</layer>
+										</pawnRenderer>
+									</li>
+									<li>
+										<key>Passenger_BottomLeft</key>
+										<editKey>CanvasTopOpened</editKey>
+										<pawnRenderer>
+										<layer>-999</layer>
+										</pawnRenderer>
+									</li>
+								</roles>
+							</li>
+						</upgrades>
+
+						<graphicOverlays>
+							<li>
+								<graphicData>
+									<texPath>Modules/Transport/Upgrades/Land/Gunther_Truck/CanvasNoAAOpenCanvas/CanvasNoAAOpen</texPath>
+									<graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+									<drawSize>(9,9)</drawSize>
+									<layer>10</layer>
+									<shaderType>Cutout</shaderType>
+								</graphicData>
+							</li>
+							<li>
+								<graphicData>
+									<texPath>Modules/Transport/Upgrades/Land/Gunther_Truck/CanvasNoAAOpenVehicle/CanvasNoAAOpen</texPath>
+									<graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+									<drawSize>(9,9)</drawSize>
+									<layer>9</layer>
+									<shaderType>CutoutComplexPattern</shaderType>
+								</graphicData>
+							</li>
+						</graphicOverlays>
+					</li>
+			<!-- ANTI-AIR -->
+				<!-- ANTI-AIR TURRETS -->
+					<li>
+						<key>AntiAirTurret_Gunther</key>
+						<label>AA Upgrade</label>
+						<description>Installs twin MG turret.</description>
+
+						<icon>Modules/Transport/UI/Upgrades/Upgrade_Turret</icon>
+
+						<work>7200</work>
+
+						<gridCoordinate>(9, 3)</gridCoordinate>
+						<drawSize>(80, 80)</drawSize>
+
+						<disableIfUpgradeNodesEnabled>
+							<li>CanvasTopBase_Gunther</li>
+						</disableIfUpgradeNodesEnabled>
+
+						<upgrades>
+							<li Class = "Vehicles.VehicleUpgrade">
+								<roles>
+									<li>
+									<key>gunner</key>
+									<label>Gunner</label>
+									<slots>1</slots>
+									<slotsToOperate>1</slotsToOperate>
+									<handlingTypes>Turret</handlingTypes>
+									<exposed>true</exposed>
+									<turretIds>
+										<li>mainTurret</li>
+									</turretIds>
+										<hitbox>
+											<cells>
+												<li>(1, -1)</li>
+											</cells>
+										</hitbox>
+										<pawnRenderer>
+											<layer>5</layer>
+											<drawOffsetNorth>(0, 0, -1.05)</drawOffsetNorth>
+											<drawOffsetSouth>(0, 0, 1.6)</drawOffsetSouth>
+											<drawOffsetEast>(-1.37, 0, 0.37)</drawOffsetEast>
+											<northEast>North</northEast>
+											<southEast>South</southEast>
+											<southWest>South</southWest>
+											<northWest>North</northWest>
+										</pawnRenderer>
+									</li>
+									<li>
+										<key>Passenger_BottomLeft</key>
+										<remove>true</remove>
+									</li>
+									<li>
+										<key>Passenger_BottomRight</key>
+										<remove>true</remove>
+									</li>
+								</roles>
+							</li>
+							<li Class = "Vehicles.TurretUpgrade">
+								<turrets>
+									<li>
+										<turretDef>TMM_Turret_TwinMG</turretDef>
+										<renderProperties>
+										<north>(0, -0.579)</north>
+										<south>(0, 1.011)</south>
+										<east>(-0.934, 0.428)</east>
+										<west>(0.934, 0.428)</west>
+										</renderProperties>
+										<drawLayer>9</drawLayer>
+										<gizmoLabel>Main Turret</gizmoLabel>
+										<angleRestricted>(320, 45)</angleRestricted>
+										<aimPieOffset>(0, 0.3)</aimPieOffset>
+										<key>mainTurret</key>
+									</li>
+								</turrets>
+							</li>
+							<li Class = "Vehicles.StatUpgrade">
+								<vehicleStats>
+									<li>
+										<def>CargoCapacity</def>
+										<value>-50</value>
+									</li>
+								</vehicleStats>
+							</li>
+						</upgrades>
+
+						<ingredients>
+							<Steel>150</Steel>
+							<ComponentIndustrial>6</ComponentIndustrial>
+						</ingredients>
+
+						<graphicOverlays>
+							<li>
+								<graphicData>
+									<texPath>Modules/Transport/Upgrades/Land/Gunther_Truck/AntiAirTurret/AntiAirTurret</texPath>
+									<graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+									<drawSize>(9,9)</drawSize>
+									<layer>1</layer>
+									<shaderType>CutoutComplexPattern</shaderType>
+								</graphicData>
+							</li>
+							<li>
+								<graphicData>
+									<texPath>Modules/Transport/Upgrades/Land/Gunther_Truck/AntiAirTurret/AntiAirTurretSide</texPath>
+									<graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+									<drawSize>(9,9)</drawSize>
+									<layer>8</layer>
+									<shaderType>CutoutComplexPattern</shaderType>
+								</graphicData>
+							</li>
+							<li>
+								<graphicData>
+									<texPath>Modules/Transport/Upgrades/Land/Gunther_Truck/AntiAirTurret/AntiAirTurretWheel</texPath>
+									<graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+									<drawSize>(9,9)</drawSize>
+									<layer>9</layer>
+									<shaderType>Cutout</shaderType>
+								</graphicData>
+							</li>
+						</graphicOverlays>
+					</li>
+				<!-- CANVAS TOP BASE FOR AA -->
+					<li>
+						<key>CanvasTopBase_AA_Gunther</key>
+						<label>Canvas Top Upgrade</label>
+						<description>Installs kit for canvas cover.</description>
+
+						<icon>Modules/Transport/UI/Upgrades/Upgrade_Miscellaneous</icon>
+
+						<work>3200</work>
+
+						<gridCoordinate>(15, 3)</gridCoordinate>
+						<drawSize>(80, 80)</drawSize>
+
+						<prerequisiteNodes>
+							<li>AntiAirTurret_Gunther</li>
+						</prerequisiteNodes>
+
+						<ingredients>
+							<Steel>15</Steel>
+							<Cloth>120</Cloth>
+						</ingredients>
+					</li>
+				<!-- CANVAS TOP OPEN FOR AA -->
+					<li>
+						<key>CanvasTopOpen_AA_Gunther</key>
+						<label>Install</label>
+						<description>Installs folded canvas cover over the roof.</description>
+						
+						<icon>Modules/Transport/UI/Upgrades/Upgrade_Tent</icon>
+						
+						<work>200</work>
+						
+						<gridCoordinate>(13, 8)</gridCoordinate>
+						<drawSize>(40, 40)</drawSize>
+
+						<prerequisiteNodes>
+							<li>CanvasTopBase_AA_Gunther</li>
+						</prerequisiteNodes>
+
+						<disableIfUpgradeNodesEnabled>
+							<li>CanvasTopFolded_AA_Gunther</li>
+						</disableIfUpgradeNodesEnabled>
+
+						<upgrades>
+							<li Class = "Vehicles.VehicleUpgrade">
+								<roles>
+									<li>
+										<key>driver</key>
+										<editKey>CanvasTopOpen_AA_Gunther</editKey>
+										<pawnRenderer>
+										<layer>-999</layer>
+										</pawnRenderer>
+									</li>
+									<li>
+										<key>Passenger_TopLeft</key>
+										<editKey>CanvasTopOpen_AA_Gunther</editKey>
+										<pawnRenderer>
+										<layer>-999</layer>
+										</pawnRenderer>
+									</li>
+								</roles>
+							</li>
+						</upgrades>
+						
+						<graphicOverlays>
+							<li>
+								<graphicData>
+									<texPath>Modules/Transport/Upgrades/Land/Gunther_Truck/CanvasAAOpen/CanvasAAOpen</texPath>
+									<graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+									<drawSize>(9,9)</drawSize>
+									<layer>4</layer>
+									<shaderType>Cutout</shaderType>
+								</graphicData>
+							</li>
+						</graphicOverlays>
+					</li>
+				<!-- CANVAS TOP FOLDED FOR AA -->
+					<li>
+						<key>CanvasTopFolded_AA_Gunther</key>
+						<label>Fold</label>
+						<description>Folds canvas cover.</description>
+						
+						<icon>Modules/Transport/UI/Upgrades/Upgrade_Miscellaneous</icon>
+						
+						<work>200</work>
+						
+						<gridCoordinate>(17, 8)</gridCoordinate>
+						<drawSize>(40, 40)</drawSize>
+
+						<prerequisiteNodes>
+							<li>CanvasTopBase_AA_Gunther</li>
+						</prerequisiteNodes>
+
+						<disableIfUpgradeNodesEnabled>
+							<li>CanvasTopOpen_AA_Gunther</li>
+						</disableIfUpgradeNodesEnabled>
+
+						<graphicOverlays>
+							<li>
+								<graphicData>
+									<texPath>Modules/Transport/Upgrades/Land/Gunther_Truck/CanvasAAFolded/CanvasAAFolded</texPath>
+									<graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+									<drawSize>(9,9)</drawSize>
+									<layer>3</layer>
+									<shaderType>Cutout</shaderType>
+								</graphicData>
+							</li>
+						</graphicOverlays>
+					</li>
+			<!-- EXPEDITION FUEL TANK -->
+				<li>
+					<key>ExpeditionFuelTank_Gunther</key>
+					<label>Expedition Fuel Tank</label>
+					<description>Increases size of the fueltank.\n\nFuel 75 → &lt;color=#00ff00&gt;150&lt;/color&gt;</description>
+					
+					<icon>Modules/Transport/UI/Upgrades/Upgrade_FuelCapacity</icon>
+					
+					<work>800</work>
+					
+					<gridCoordinate>(21, 3)</gridCoordinate>
+					<drawSize>(80, 80)</drawSize>
+					
+					<upgrades>
+						<li Class = "Vehicles.StatUpgrade">
+							<statCategories>
+								<li>
+									<def>FuelCapacity</def>
+									<value>75</value>
+								</li>
+							</statCategories>
+						</li>
+					</upgrades>
+					
+					<ingredients>
+						<Steel>50</Steel>
+					</ingredients>
+				</li>
+		</nodes>
+	</Vehicles.UpgradeTreeDef>
+</Defs>

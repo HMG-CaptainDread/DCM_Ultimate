@@ -1,0 +1,770 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<Vehicles.UpgradeTreeDef>
+		<defName>RT_T14_Vehicle_UpgradeTree</defName>
+		<nodes>
+			<li>
+				<key>2A83Turret</key>
+				<label>2A83 Turret</label>
+				<description>Equip the powerful 2A83 152mm main gun and 2A72 Autocannon was replaced with PKT machine gun.</description>
+				<icon>Vehicles/T14/2A83/Turret_gizmo</icon>
+				<work>2500</work>
+				<gridCoordinate>(5,5)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<disableIfUpgradeNodeEnabled>T14UM</disableIfUpgradeNodeEnabled>
+				<upgrades>
+					<li Class="Vehicles.TurretUpgrade">
+						<turrets>
+							<li>
+								<turretDef>T14_2A83_Turret</turretDef>
+								<renderProperties>
+									<north>(0,-0.2)</north>
+									<south>(0,0.2)</south>
+									<east>(-0.4,0.35)</east>
+									<west>(0.4,0.35)</west>
+								</renderProperties>
+								<gizmoLabel>Main Turret</gizmoLabel>
+								<aimPieOffset>(0, 6.5)</aimPieOffset>
+								<key>2A83</key>
+							</li>
+							<li>
+								<turretDef>RT_PKT_NG_MGTurret</turretDef>
+								<renderProperties>
+									<north>(0.28,1.6)</north>
+									<south>(-0.28,-1.6)</south>
+									<east>(1.6,-0.28)</east>
+									<west>(-1.6,0.28)</west>
+								</renderProperties>
+								<gizmoLabel>coaxial MG</gizmoLabel>
+								<angleRestricted>(345,15)</angleRestricted>
+								<aimPieOffset>(0, -1)</aimPieOffset>
+								<key>T14PKT</key>
+								<drawLayer>0</drawLayer>
+								<parentKey>2A83</parentKey>
+							</li>
+							<li>
+								<!--車頂機槍-->
+								<turretDef>RT_HCBT_NG_Turret</turretDef>
+								<renderProperties>
+									<!--這裡的坐標系是無視旋轉的,所以x就是恆定左右偏移-->
+									<north>(0.39,-1)</north>
+									<south>(-0.39,1)</south>
+									<east>(-0.98,-0.42)</east>
+									<west>(0.98,-0.42)</west>
+								</renderProperties>
+								<gizmoLabel>support MG</gizmoLabel>
+								<aimPieOffset>(-0.25,-0.3)</aimPieOffset>
+								<key>HCBTB</key>
+								<drawLayer>2</drawLayer>
+								<parentKey>2A83</parentKey>
+							</li>
+							<li>
+								<turretDef>RT_GrenadeLauncherRuNG</turretDef>
+								<gizmoLabel>Left Grenade Launcher</gizmoLabel>
+								<renderProperties>
+									<north>(-1.1, 0.2)</north>
+									<south>(1.1, -0.2)</south>
+									<east>(0.2, 1.1)</east>
+									<west>(-0.2, -1.1)</west>
+								</renderProperties>
+								<aimPieOffset>(0, 0)</aimPieOffset>
+								<drawLayer>2</drawLayer>
+								<key>leftSmokeB</key>
+								<parentKey>2A83</parentKey>
+							</li>
+							<li>
+								<turretDef>RT_GrenadeLauncherRuNG</turretDef>
+								<gizmoLabel>Right Grenade Launcher</gizmoLabel>
+								<renderProperties>
+									<north>(1.1, 0.2)</north>
+									<south>(-1.1, -0.2)</south>
+									<east>(0.2, -1.1)</east>
+									<west>(-0.2, 1.1)</west>
+								</renderProperties>
+								<aimPieOffset>(0, 0)</aimPieOffset>
+								<drawLayer>2</drawLayer>
+								<key>rightSmokeB</key>
+								<parentKey>2A83</parentKey>
+							</li>
+						</turrets>
+						<removeTurrets>
+							<li>2A82</li>
+							<li>2A72</li>
+							<li>HCBTA</li>
+							<li>leftSmokeA</li>
+							<li>rightSmokeA</li>
+						</removeTurrets>
+					</li>
+					<li Class = "Vehicles.StatUpgrade">
+						<vehicleStats>
+							<li>
+								<def>CargoCapacity</def>
+								<value>-100</value>
+								<type>Add</type>
+							</li>
+						</vehicleStats>
+					</li>
+				</upgrades>
+				<ingredients>
+					<Steel>150</Steel>
+					<ComponentIndustrial>10</ComponentIndustrial>
+					<Plasteel>50</Plasteel>
+				</ingredients>
+			</li>
+			<li>
+				<key>T14FE</key>
+				<label>Fire Extinguisher</label>
+				<description>Equip the Fire Extinguisher.</description>
+				<icon>Things/UI/Icons/FireExtinguisher_gizmo</icon>
+				<work>2500</work>
+				<gridCoordinate>(5,10)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<upgrades>
+					<li Class="Vehicles.TurretUpgrade">
+						<turrets>
+							<li>
+								<turretDef>RT_FireExtinguisher</turretDef>
+								<gizmoLabel>FireExtinguisher</gizmoLabel>
+								<drawLayer>1</drawLayer>
+								<autoTargeting>false</autoTargeting>
+								<key>FireExtinguisher</key>
+							</li>
+						</turrets>
+					</li>
+				</upgrades>
+				<ingredients>
+					<Steel>50</Steel>
+					<Chemfuel>50</Chemfuel>
+					<ComponentIndustrial>2</ComponentIndustrial>
+				</ingredients>
+			</li>
+			<li>
+				<key>T14UM</key>
+				<label>Unmanned Upgrade</label>
+				<description>Upgrade to unmanned prototype with 2A82.\n\n(Caution: According to Protocol No.227 with Trade Fleet using this vehicle in ANY combat not in the colony is prohibited.)</description>
+				<icon>Things/UI/Icons/Unmanned_gizmo</icon>
+				<work>2500</work>
+				<gridCoordinate>(10,5)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<disableIfUpgradeNodeEnabled>2A83Turret</disableIfUpgradeNodeEnabled>
+				<upgrades>
+					<li Class="Vehicles.TurretUpgrade">
+						<turrets>
+							<li>
+								<turretDef>T14_2A82_Turret</turretDef>
+								<renderProperties>
+									<north>(0,-0.2)</north>
+									<south>(0,0.2)</south>
+									<east>(-0.4,0.35)</east>
+									<west>(0.4,0.35)</west>
+								</renderProperties>
+								<gizmoLabel>Main Turret</gizmoLabel>
+								<aimPieOffset>(0, 6.5)</aimPieOffset>
+								<key>2A82U</key>
+							</li>
+							<li>
+								<turretDef>T14_2A72_Turret</turretDef>
+								<renderProperties>
+									<north>(0.28,1.6)</north>
+									<south>(-0.28,-1.6)</south>
+									<east>(1.6,-0.28)</east>
+									<west>(-1.6,0.28)</west>
+								</renderProperties>
+								<gizmoLabel>coaxial MG</gizmoLabel>
+								<angleRestricted>(345,15)</angleRestricted>
+								<aimPieOffset>(0, -1)</aimPieOffset>
+								<key>2A72U</key>
+								<drawLayer>0</drawLayer>
+								<parentKey>2A82U</parentKey>
+							</li>
+							<li>
+								<!--車頂機槍-->
+								<turretDef>RT_HCBT_NG_Turret</turretDef>
+								<renderProperties>
+									<!--這裡的坐標系是無視旋轉的,所以x就是恆定左右偏移-->
+									<north>(0.39,-1)</north>
+									<south>(-0.39,1)</south>
+									<east>(-0.98,-0.42)</east>
+									<west>(0.98,-0.42)</west>
+								</renderProperties>
+								<gizmoLabel>support MG</gizmoLabel>
+								<aimPieOffset>(-0.25,-0.3)</aimPieOffset>
+								<key>HCBTC</key>
+								<drawLayer>2</drawLayer>
+								<parentKey>2A82U</parentKey>
+							</li>
+							<li>
+								<turretDef>RT_GrenadeLauncherRuNG</turretDef>
+								<gizmoLabel>Left Grenade Launcher</gizmoLabel>
+								<renderProperties>
+									<north>(-1.1, 0.2)</north>
+									<south>(1.1, -0.2)</south>
+									<east>(0.2, 1.1)</east>
+									<west>(-0.2, -1.1)</west>
+								</renderProperties>
+								<aimPieOffset>(0, 0)</aimPieOffset>
+								<drawLayer>2</drawLayer>
+								<key>leftSmokeC</key>
+								<parentKey>2A82U</parentKey>
+							</li>
+							<li>
+								<turretDef>RT_GrenadeLauncherRuNG</turretDef>
+								<gizmoLabel>Right Grenade Launcher</gizmoLabel>
+								<renderProperties>
+									<north>(1.1, 0.2)</north>
+									<south>(-1.1, -0.2)</south>
+									<east>(0.2, -1.1)</east>
+									<west>(-0.2, 1.1)</west>
+								</renderProperties>
+								<aimPieOffset>(0, 0)</aimPieOffset>
+								<drawLayer>2</drawLayer>
+								<key>rightSmokeC</key>
+								<parentKey>2A82U</parentKey>
+							</li>
+						</turrets>
+						<removeTurrets>
+							<li>2A82</li>
+							<li>2A72</li>
+							<li>HCBTA</li>
+							<li>leftSmokeA</li>
+							<li>rightSmokeA</li>
+						</removeTurrets>
+					</li>
+					<li Class = "Vehicles.VehicleUpgrade">
+					 	<roles>
+						 	<li>
+							 	<key>driver</key> <!--修改乘员使其能操控炮塔-->
+								<label>driver</label>
+							 	<remove>true</remove> <!--移除乘员-->
+						 	</li>
+							<li>
+								<key>gunner</key>
+								<label>gunner</label>
+								<remove>true</remove> <!--移除乘员-->
+							</li>
+						 	<li>
+							 	<key>Commander</key>
+								<label>Commander</label>
+							 	<remove>true</remove> <!--移除乘员-->
+						 	</li>
+						</roles>
+				 	</li>
+				</upgrades>
+				<ingredients>
+					<ComponentSpacer>5</ComponentSpacer>
+					<Plasteel>50</Plasteel>
+				</ingredients>
+			</li>
+			<li>
+				<key>T14SL</key>
+				<label>Spall Liners</label>
+				<description>Equip the Spall Liners to protect core components.</description>
+				<icon>Things/UI/Icons/SpallLiners_gizmo</icon>
+				<work>2500</work>
+				<gridCoordinate>(10,10)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<upgrades>
+					<li Class="Vehicles.VehicleUpgrade">
+						<armor>
+							<li>
+								<key>Engine</key>
+								<statModifiers>
+									<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+									<ArmorRating_Sharp>0.3</ArmorRating_Sharp>
+								</statModifiers>
+								<type>Add</type>
+							</li>
+							<li>
+								<key>FuelTank</key>
+								<statModifiers>
+									<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+									<ArmorRating_Sharp>0.3</ArmorRating_Sharp>
+								</statModifiers>
+								<type>Add</type>
+							</li>
+							<li>
+								<key>Gearbox</key>
+								<statModifiers>
+									<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+									<ArmorRating_Sharp>0.3</ArmorRating_Sharp>
+								</statModifiers>
+								<type>Add</type>
+							</li>
+							<li>
+								<key>AmmoRack</key>
+								<statModifiers>
+									<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+									<ArmorRating_Sharp>0.3</ArmorRating_Sharp>
+								</statModifiers>
+								<type>Add</type>
+							</li>
+							<li>
+								<key>RoofArmorPlating</key>
+								<statModifiers>
+									<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+									<ArmorRating_Sharp>0.3</ArmorRating_Sharp>
+								</statModifiers>
+								<type>Add</type>
+							</li>
+						</armor>
+					</li>
+				</upgrades>
+				<ingredients>
+					<DevilstrandCloth>100</DevilstrandCloth>
+					<Steel>50</Steel>
+				</ingredients>
+			</li>
+		</nodes>
+	</Vehicles.UpgradeTreeDef>
+
+	<Vehicles.UpgradeTreeDef>
+		<defName>RT_T15_Vehicle_UpgradeTree</defName>
+		<nodes>
+			<li>
+				<key>T15BaikalNG</key>
+				<label>Baikal Turret</label>
+				<description>Equip the Baikal Turret with 2A90 and 9M133 Kornet anti-tank Missile launcher.</description>
+				<icon>Vehicles/T15/Baikal/BaikalTurret_gizmo</icon>
+				<work>2500</work>
+				<gridCoordinate>(5,5)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<disableIfUpgradeNodesEnabled>
+					<li>T15Apoch57</li>
+					<li>T15UM</li>
+				</disableIfUpgradeNodesEnabled>
+				<upgrades>
+					<li Class="Vehicles.TurretUpgrade">
+						<turrets>
+							<li>
+								<turretDef>RT_T15_Baikal_Turret</turretDef>
+								<renderProperties>
+									<north>(0,-2.15)</north>
+									<south>(0,2.15)</south>
+									<east>(-2.15,0.35)</east>
+									<west>(2.15,0.35)</west>
+								</renderProperties>
+								<gizmoLabel>Main Turret</gizmoLabel>
+								<aimPieOffset>(0, 3)</aimPieOffset>
+								<key>BaikalNG</key>
+							</li>
+							<li>
+								<turretDef>T15_Baikal_PKT_Turret</turretDef>
+								<renderProperties>
+									<north>(0.7,0.7)</north>
+									<south>(-0.7,-0.7)</south>
+									<east>(0.7,-0.7)</east>
+									<west>(-0.7,-0.7)</west>
+								</renderProperties>
+								<gizmoLabel>coaxial MG</gizmoLabel>
+								<angleRestricted>(345,15)</angleRestricted>
+								<aimPieOffset>(0, 0.2)</aimPieOffset>
+								<drawLayer>2</drawLayer>
+								<key>BaikalPKTNG</key>
+								<parentKey>BaikalNG</parentKey>
+							</li>
+							<li>
+								<!--短号-->
+								<turretDef>RT_T15_Kornet_Turret</turretDef>
+								<renderProperties>
+									<north>(1.4,0.4)</north>
+									<south>(-1.4,-0.4)</south>
+									<east>(0.4,-1.4)</east>
+									<west>(-0.4,-1.4)</west>
+								</renderProperties>
+								<gizmoLabel>Missile launcher</gizmoLabel>
+								<angleRestricted>(345,15)</angleRestricted>
+								<aimPieOffset>(0,0.2)</aimPieOffset>
+								<key>BaikalKornetNG</key>
+								<drawLayer>2</drawLayer>
+								<parentKey>BaikalNG</parentKey>
+							</li>
+						</turrets>
+						<removeTurrets>
+							<li>MainTurret</li>
+							<li>KornetL</li>
+							<li>KornetR</li>
+							<li>PKTNG</li>
+						</removeTurrets>
+					</li>
+					<li Class = "Vehicles.StatUpgrade">
+						<vehicleStats>
+							<li>
+								<def>RepairRate</def>
+								<value>-0.1</value>
+								<type>Add</type>
+							</li>
+						</vehicleStats>
+					</li>
+				</upgrades>
+				<ingredients>
+					<Steel>120</Steel>
+					<ComponentIndustrial>10</ComponentIndustrial>					
+					<Plasteel>50</Plasteel>
+				</ingredients>
+			</li>
+
+			<li>
+				<key>T15Apoch57</key>
+				<label>Apoch57 Turret</label>
+				<description>Equip the Apoch57 Turret with LShO-57 autocannon and Blart mini missiles.</description>
+				<icon>Vehicles/T15/Apoch57/Apoch57Turret_gizmo</icon>
+				<work>2500</work>
+				<disableIfUpgradeNodesEnabled>
+					<li>T15BaikalNG</li>
+					<li>T15UM</li>
+				</disableIfUpgradeNodesEnabled>
+				<gridCoordinate>(10,5)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<upgrades>
+					<li Class="Vehicles.TurretUpgrade">
+						<turrets>
+							<li>
+								<turretDef>RT_T15_Apoch57_Turret</turretDef>
+								<renderProperties>
+									<north>(0,-2.15)</north>
+									<south>(0,2.15)</south>
+									<east>(-2.15,0.35)</east>
+									<west>(2.15,0.35)</west>
+								</renderProperties>
+								<gizmoLabel>Main Turret</gizmoLabel>
+								<aimPieOffset>(0, 1.5)</aimPieOffset>
+								<key>Apoch57</key>
+							</li>
+							<li>
+								<turretDef>RT_T15_Min_Missile_Turret</turretDef>
+								<renderProperties>
+									<north>(-0.5,-0.72)</north>
+									<south>(0.5,0.72)</south>
+									<east>(-0.72,0.5)</east>
+									<west>(0.72,0.5)</west>
+								</renderProperties>
+								<gizmoLabel>MinMissile</gizmoLabel>
+								<aimPieOffset>(0, 0)</aimPieOffset>
+								<key>MinMissileNG</key>
+								<drawLayer>2</drawLayer>
+								<parentKey>Apoch57</parentKey>
+							</li>
+							<li>
+								<!--短号-->
+								<turretDef>RT_T15_Kornet_Turret</turretDef>
+								<renderProperties>
+									<north>(-1.3,0.4)</north>
+									<south>(1.3,-0.4)</south>
+									<east>(0.4,1.3)</east>
+									<west>(-0.4,1.3)</west>
+								</renderProperties>
+								<gizmoLabel>Missile launcher</gizmoLabel>
+								<angleRestricted>(345,15)</angleRestricted>
+								<aimPieOffset>(0.3, 0)</aimPieOffset>
+								<key>A57KornetL</key>
+								<drawLayer>2</drawLayer>
+								<parentKey>Apoch57</parentKey>
+							</li>
+							<li>
+								<!--短号-->
+								<turretDef>RT_T15_Kornet_Turret</turretDef>
+								<renderProperties>
+									<north>(1.3,0.4)</north>
+									<south>(-1.3,-0.4)</south>
+									<east>(0.4,-1.3)</east>
+									<west>(-0.4,-1.3)</west>
+								</renderProperties>
+								<gizmoLabel>Missile launcher</gizmoLabel>
+								<angleRestricted>(345,15)</angleRestricted>
+								<aimPieOffset>(-0.3, 0)</aimPieOffset>
+								<key>A57KornetR</key>
+								<drawLayer>2</drawLayer>
+								<parentKey>Apoch57</parentKey>
+							</li>
+							<li>
+								<!--同軸機槍-->
+								<turretDef>RT_PKT_NG_MGTurret</turretDef>
+								<renderProperties>
+									<north>(0.28,1.6)</north>
+									<south>(-0.28,-1.6)</south>
+									<east>(1.6,-0.28)</east>
+									<west>(-1.6,0.28)</west>
+								</renderProperties>
+								<gizmoLabel>coaxial cannon</gizmoLabel>
+								<angleRestricted>(345,15)</angleRestricted>
+								<aimPieOffset>(0,-1)</aimPieOffset>
+								<key>A57PKT</key>
+								<drawLayer>0</drawLayer>
+								<parentKey>Apoch57</parentKey>
+							</li>
+						</turrets>
+						<removeTurrets>
+							<li>MainTurret</li>
+							<li>KornetL</li>
+							<li>KornetR</li>
+							<li>PKTNG</li>
+						</removeTurrets>
+					</li>
+					<li Class = "Vehicles.StatUpgrade">
+						<vehicleStats>
+							<li>
+								<def>RepairRate</def>
+								<value>-0.1</value>
+								<type>Add</type>
+							</li>
+						</vehicleStats>
+					</li>
+				</upgrades>
+				<ingredients>
+					<Steel>150</Steel>
+					<ComponentIndustrial>10</ComponentIndustrial>					
+					<Plasteel>50</Plasteel>
+				</ingredients>
+			</li>
+			<li>
+				<key>T15FE</key>
+				<label>Fire Extinguisher</label>
+				<description>Equip the Fire Extinguisher.</description>
+				<icon>Things/UI/Icons/FireExtinguisher_gizmo</icon>
+				<work>2500</work>
+				<gridCoordinate>(5,10)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<upgrades>
+					<li Class="Vehicles.TurretUpgrade">
+						<turrets>
+							<li>
+								<turretDef>RT_FireExtinguisher</turretDef>
+								<gizmoLabel>FireExtinguisher</gizmoLabel>
+								<drawLayer>1</drawLayer>
+								<autoTargeting>false</autoTargeting>
+								<key>FireExtinguisher</key>
+							</li>
+						</turrets>
+					</li>
+				</upgrades>
+				<ingredients>
+					<Steel>50</Steel>
+					<Chemfuel>50</Chemfuel>
+					<ComponentIndustrial>2</ComponentIndustrial>
+				</ingredients>
+			</li>
+			<li>
+				<key>T15Artillery</key>
+				<label>Artillery support</label>
+				<description>Equip the radio station to call Artillery support.</description>
+				<icon>Things/UI/Icons/Artillery_gizmo</icon>
+				<work>2500</work>
+				<gridCoordinate>(15,10)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<disableIfUpgradeNodeEnabled>T15UM</disableIfUpgradeNodeEnabled>
+				<upgrades>
+					<li Class="Vehicles.TurretUpgrade">
+						<turrets>
+							<li>
+								<turretDef>RT_ArtillerySupport</turretDef>
+								<gizmoLabel>Artillery support</gizmoLabel>
+								<drawLayer>1</drawLayer>
+								<autoTargeting>false</autoTargeting>
+								<key>Artillerysupport</key>
+							</li>
+						</turrets>
+					</li>
+				</upgrades>
+				<ingredients>
+					<Steel>50</Steel>
+					<ComponentSpacer>2</ComponentSpacer>
+					<ComponentIndustrial>5</ComponentIndustrial>
+				</ingredients>
+			</li>
+			<li>
+				<key>T15UM</key>
+				<label>Unmanned Upgrade</label>
+				<description>Upgrade to unmanned prototype with Apoch57 turret.\n\n(Caution: According to Protocol No.227 with Trade Fleet using this vehicle in ANY combat not in the colony is prohibited.)</description>
+				<icon>Things/UI/Icons/Unmanned_gizmo</icon>
+				<work>2500</work>
+				<disableIfUpgradeNodesEnabled>
+					<li>T15BaikalNG</li>
+					<li>T15Apoch57</li>
+					<li>T15Artillery</li>
+				</disableIfUpgradeNodesEnabled>
+				<gridCoordinate>(15,5)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<upgrades>
+					<li Class="Vehicles.TurretUpgrade">
+						<turrets>
+							<li>
+								<turretDef>RT_T15_Apoch57_Turret</turretDef>
+								<renderProperties>
+									<north>(0,-2.15)</north>
+									<south>(0,2.15)</south>
+									<east>(-2.15,0.35)</east>
+									<west>(2.15,0.35)</west>
+								</renderProperties>
+								<gizmoLabel>Main Turret</gizmoLabel>
+								<aimPieOffset>(0, 1.5)</aimPieOffset>
+								<key>Apoch57U</key>
+							</li>
+							<li>
+								<turretDef>RT_T15_Min_Missile_Turret</turretDef>
+								<renderProperties>
+									<north>(-0.5,-0.72)</north>
+									<south>(0.5,0.72)</south>
+									<east>(-0.72,0.5)</east>
+									<west>(0.72,0.5)</west>
+								</renderProperties>
+								<gizmoLabel>MinMissile</gizmoLabel>
+								<aimPieOffset>(0, 0)</aimPieOffset>
+								<key>MinMissileNGU</key>
+								<drawLayer>2</drawLayer>
+								<parentKey>Apoch57U</parentKey>
+							</li>
+							<li>
+								<!--短号-->
+								<turretDef>RT_T15_Kornet_Turret</turretDef>
+								<renderProperties>
+									<north>(-1.3,0.4)</north>
+									<south>(1.3,-0.4)</south>
+									<east>(0.4,1.3)</east>
+									<west>(-0.4,1.3)</west>
+								</renderProperties>
+								<gizmoLabel>Missile launcher</gizmoLabel>
+								<angleRestricted>(345,15)</angleRestricted>
+								<aimPieOffset>(0.3, 0)</aimPieOffset>
+								<key>A57KornetLU</key>
+								<drawLayer>2</drawLayer>
+								<parentKey>Apoch57U</parentKey>
+							</li>
+							<li>
+								<!--短号-->
+								<turretDef>RT_T15_Kornet_Turret</turretDef>
+								<renderProperties>
+									<north>(1.3,0.4)</north>
+									<south>(-1.3,-0.4)</south>
+									<east>(0.4,-1.3)</east>
+									<west>(-0.4,-1.3)</west>
+								</renderProperties>
+								<gizmoLabel>Missile launcher</gizmoLabel>
+								<angleRestricted>(345,15)</angleRestricted>
+								<aimPieOffset>(-0.3, 0)</aimPieOffset>
+								<key>A57KornetRU</key>
+								<drawLayer>2</drawLayer>
+								<parentKey>Apoch57U</parentKey>
+							</li>
+							<li>
+								<!--同軸機槍-->
+								<turretDef>RT_PKT_NG_MGTurret</turretDef>
+								<renderProperties>
+									<north>(0.28,1.6)</north>
+									<south>(-0.28,-1.6)</south>
+									<east>(1.6,-0.28)</east>
+									<west>(-1.6,0.28)</west>
+								</renderProperties>
+								<gizmoLabel>coaxial cannon</gizmoLabel>
+								<angleRestricted>(345,15)</angleRestricted>
+								<aimPieOffset>(0,-1)</aimPieOffset>
+								<key>A57PKTU</key>
+								<drawLayer>0</drawLayer>
+								<parentKey>Apoch57U</parentKey>
+							</li>
+						</turrets>
+						<removeTurrets>
+							<li>MainTurret</li>
+							<li>KornetL</li>
+							<li>KornetR</li>
+							<li>PKTNG</li>
+						</removeTurrets>
+					</li>
+					<li Class = "Vehicles.VehicleUpgrade">
+					 	<roles>
+						 	<li>
+							 	<key>driver</key> <!--修改乘员使其能操控炮塔-->
+								<label>driver</label>
+							 	<remove>true</remove> <!--移除乘员-->
+						 	</li>
+							<li>
+								<key>gunner</key>
+								<label>gunner</label>
+								<remove>true</remove> <!--移除乘员-->
+							</li>
+						 	<li>
+							 	<key>Commander</key>
+								<label>Commander</label>
+							 	<remove>true</remove> <!--移除乘员-->
+						 	</li>
+						</roles>
+				 	</li>
+					<li Class = "Vehicles.StatUpgrade">
+						<vehicleStats>
+							<li>
+								<def>RepairRate</def>
+								<value>-0.1</value>
+								<type>Add</type>
+							</li>
+						</vehicleStats>
+					</li>
+				</upgrades>
+				<ingredients>
+					<Steel>120</Steel>
+					<ComponentSpacer>5</ComponentSpacer>
+					<ComponentIndustrial>10</ComponentIndustrial>					
+					<Plasteel>100</Plasteel>
+				</ingredients>
+			</li>
+			
+			<li>
+				<key>T15SL</key>
+				<label>Spall Liners</label>
+				<description>Equip the Spall Liners to protect core components.</description>
+				<icon>Things/UI/Icons/SpallLiners_gizmo</icon>
+				<work>2500</work>
+				<gridCoordinate>(10,10)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<upgrades>
+					<li Class="Vehicles.VehicleUpgrade">
+						<armor>
+							<li>
+								<key>Engine</key>
+								<statModifiers>
+									<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+									<ArmorRating_Sharp>0.3</ArmorRating_Sharp>
+								</statModifiers>
+								<type>Add</type>
+							</li>
+							<li>
+								<key>FuelTank</key>
+								<statModifiers>
+									<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+									<ArmorRating_Sharp>0.3</ArmorRating_Sharp>
+								</statModifiers>
+								<type>Add</type>
+							</li>
+							<li>
+								<key>Gearbox</key>
+								<statModifiers>
+									<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+									<ArmorRating_Sharp>0.3</ArmorRating_Sharp>
+								</statModifiers>
+								<type>Add</type>
+							</li>
+							<li>
+								<key>AmmoRack</key>
+								<statModifiers>
+									<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+									<ArmorRating_Sharp>0.3</ArmorRating_Sharp>
+								</statModifiers>
+								<type>Add</type>
+							</li>
+							<li>
+								<key>RoofArmorPlating</key>
+								<statModifiers>
+									<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+									<ArmorRating_Sharp>0.3</ArmorRating_Sharp>
+								</statModifiers>
+								<type>Add</type>
+							</li>
+						</armor>
+					</li>
+				</upgrades>
+				<ingredients>
+					<DevilstrandCloth>100</DevilstrandCloth>
+					<Steel>50</Steel>
+				</ingredients>
+			</li>
+		</nodes>
+	</Vehicles.UpgradeTreeDef>
+</Defs>

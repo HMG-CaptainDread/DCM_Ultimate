@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+    <Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Vanilla Factions Expanded - Pirates</li>
+        </mods>
+        <match Class="PatchOperationConditional">
+            <xpath>*/ThingDef[@Name="VFEP_BaseWarcasketGun" or
+                @Name="VFEP_BaseMeleeWeapon_Warcasket"]/modExtensions/li[@Class =
+                "VEF.Weapons.HeavyWeapon"]/supportedArmors</xpath>
+            <nomatch Class="PatchOperationAdd">
+                <xpath>*/ThingDef[@Name="VFEP_BaseWarcasketGun" or
+                    @Name="VFEP_BaseMeleeWeapon_Warcasket"]/modExtensions/li[@Class =
+                    "VEF.Weapons.HeavyWeapon"]</xpath>
+                <value>
+                    <supportedArmors />
+                </value>
+            </nomatch>
+        </match>
+    </Operation>
+
+    <Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Vanilla Factions Expanded - Pirates</li>
+        </mods>
+        <match Class="PatchOperationConditional">
+            <xpath>*/ThingDef[@Name="VFEP_BaseWarcasketGun" or
+                @Name="VFEP_BaseMeleeWeapon_Warcasket"]/modExtensions/li[@Class =
+                "VEF.Weapons.HeavyWeapon"]</xpath>
+            <match Class="PatchOperationAdd">
+                <xpath>*/ThingDef[@Name="VFEP_BaseWarcasketGun" or
+                    @Name="VFEP_BaseMeleeWeapon_Warcasket"]/modExtensions/li[@Class =
+                    "VEF.Weapons.HeavyWeapon"]/supportedArmors</xpath>
+                <value>
+                    <li>RTMI_MobileSuit</li>
+                </value>
+            </match>
+        </match>
+    </Operation>
+
+</Patch>

@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<!--2c38 turret -->
+	
+	<Vehicles.VehicleTurretDef ParentName="RT_BaseTurret">
+		<defName>2S38_Tank_Turret</defName>
+		<label>main turret</label>
+		<gizmoIconTexPath>Vehicles/2S38/vehicle_turret_full</gizmoIconTexPath>
+		<!-- 砲塔的渲染顯示 -->
+		<graphicData>
+			<texPath>Vehicles/2S38/vehicle_turret</texPath>
+			<drawSize>(8,8)</drawSize>
+		</graphicData>
+		<!-- 彈藥與裝填容量相關 -->
+		<reloadTimer>1</reloadTimer>
+		<magazineCapacity>20</magazineCapacity>
+		<chargePerAmmoCount>5</chargePerAmmoCount>
+		<genericAmmo>true</genericAmmo>
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+		<!-- 射程與射界相關 -->
+		<minRange>2</minRange>
+		<maxRange>50.9</maxRange>
+		<rotationSpeed>2.5</rotationSpeed>
+		<!-- 射擊相關 -->
+		<warmUpTimer>1</warmUpTimer>
+		<shotSound>RT_Shot_Flak36Sound</shotSound>
+		<reloadSound>RT_AutoCannonReloadSound</reloadSound>
+		<projectile>RT_Bullet_2S38Shell</projectile>
+		<projectileOffset>3.8</projectileOffset>
+		<!-- 出膛前後偏移，主要是能讓子彈能從炮口飛出去 -->
+		<projectileShifting>
+			<!-- 出膛左右偏移，多砲管可以根據list來回切 -->
+			<!-- <li>-1</li> -->
+			<li>0</li>
+		</projectileShifting>
+		<!-- 炮口製退動畫 -->
+		<graphics>
+			<li>
+				<graphicData>
+					<texPath>Vehicles/2S38/vehicle_barrel</texPath>
+					<drawSize>(8,8)</drawSize>
+					<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+					<shaderType>CutoutComplexPattern</shaderType>
+				</graphicData>
+				<recoil>
+					<distanceTotal>0.2</distanceTotal>
+					<distancePerTick>0.05</distancePerTick>
+					<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+				</recoil>
+			</li>
+		</graphics>
+		<!-- 射擊模式 -->
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenBursts>1</ticksBetweenBursts>
+				<forcedMissRadius>2</forcedMissRadius>
+				<label>Single Shot</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>5</shotsPerBurst>
+				<ticksBetweenShots>30</ticksBetweenShots>
+				<ticksBetweenBursts>150</ticksBetweenBursts>
+				<forcedMissRadius>2</forcedMissRadius>
+				<label>Auto</label>
+				<texPath>UI/Gizmos/FireRate_Auto</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>3</shotsPerBurst>
+				<ticksBetweenShots>30</ticksBetweenShots>
+				<ticksBetweenBursts>90</ticksBetweenBursts>
+				<forcedMissRadius>2</forcedMissRadius>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+		</fireModes>
+		<motes>
+			<li>
+				<cycles>1</cycles>
+				<moteDef>Mote_CannonPlume</moteDef>
+				<animationType>Reset</animationType>
+				<offset>(0,0,5)</offset>
+			</li>
+		</motes>
+	</Vehicles.VehicleTurretDef>
+
+	<!-- 主砲的投射物 -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RT_Bullet_2S38Shell</defName>
+		<label>high-explosive shell</label>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>2</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>64</damageAmountBase>
+			<armorPenetrationBase>0.85</armorPenetrationBase>
+			<speed>100</speed>
+			<explosionRadius>1.9</explosionRadius>
+			<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+			<soundExplode>Explosion_GiantBomb</soundExplode>
+			<soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+			<soundAmbient>MortarRound_Ambient</soundAmbient>
+		</projectile>
+	</ThingDef>
+</Defs>

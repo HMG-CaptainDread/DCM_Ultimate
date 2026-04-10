@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<Vehicles.VehicleTurretDef ParentName="RT_BaseTurret">
+		<defName>RT_AFT10Turret</defName>
+		<label>AFT10 missile launcher</label>
+		<gizmoIconTexPath>Vehicles/ZBD04A/AFT/ATFTurret_gizmo</gizmoIconTexPath>
+		<graphicData>
+			<texPath>Vehicles/ZBD04A/AFT/ATFTurret</texPath>
+			<drawSize>(6.6,6.6)</drawSize>
+		</graphicData>
+		<reloadTimer>45</reloadTimer>
+		<magazineCapacity>8</magazineCapacity>
+		<chargePerAmmoCount>1</chargePerAmmoCount>
+		<ammunition>
+			<categories>
+				<li>RT_Tank_Missile</li>
+			</categories>
+		</ammunition>
+		<minRange>12</minRange>
+		<maxRange>120.9</maxRange>
+		<rotationSpeed>1.6</rotationSpeed>
+		<warmUpTimer>1</warmUpTimer>
+		<shotSound>RT_Shot_TOWSound</shotSound>
+		<projectileOffset>2.8</projectileOffset>
+		<projectileShifting>
+			<li>-0.6</li>
+			<li>0.6</li>
+		</projectileShifting>
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenBursts>90</ticksBetweenBursts>
+				<label>Single</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+		</fireModes>
+	</Vehicles.VehicleTurretDef>
+
+	<Vehicles.VehicleTurretDef ParentName="RT_BaseTurret">
+		<defName>RT_QZL04Turret</defName>
+		<label>QZL04 grenade launcher</label>
+		<gizmoIconTexPath>Vehicles/ZTQ15/HeavyArmor/WeaponStation_gizmo</gizmoIconTexPath>
+		<graphicData>
+			<texPath>nothing</texPath>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<reloadTimer>5</reloadTimer>
+		<magazineCapacity>30</magazineCapacity>
+		<chargePerAmmoCount>5</chargePerAmmoCount>
+		<genericAmmo>true</genericAmmo>
+		<ammunition>
+			<thingDefs>
+				<li>Chemfuel</li>
+			</thingDefs>
+		</ammunition>
+		<minRange>4</minRange>
+		<maxRange>32</maxRange>
+		<rotationSpeed>1.95</rotationSpeed>
+		<warmUpTimer>1</warmUpTimer>
+		<shotSound>RT_Shot_AGSSound</shotSound>
+		<projectile>Bullet_QZL04grenade</projectile>
+		<projectileOffset>1.7</projectileOffset>
+		<projectileShifting>
+			<li>0.05</li>
+		</projectileShifting>
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenBursts>1</ticksBetweenBursts>
+				<label>Single</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>5</shotsPerBurst>
+				<ticksBetweenShots>10</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<spreadRadius>5</spreadRadius>
+				<label>Auto</label>
+				<texPath>UI/Gizmos/FireRate_Auto</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>3</shotsPerBurst>
+				<ticksBetweenShots>10</ticksBetweenShots>
+				<ticksBetweenBursts>40</ticksBetweenBursts>
+				<spreadRadius>3</spreadRadius>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+		</fireModes>
+	</Vehicles.VehicleTurretDef>
+
+	<ThingDef ParentName="BaseBullet">
+		<defName>Bullet_QZL04grenade</defName>
+		<label>35mm QZL04grenade</label>
+		<graphicData>
+			<texPath>Things/Projectile/LauncherShot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<drawSize>1</drawSize>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<speed>40</speed>
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>48</damageAmountBase>
+			<armorPenetrationBase>0.4</armorPenetrationBase>
+			<explosionRadius>1.9</explosionRadius>
+			<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+			<soundExplode>Explosion_GiantBomb</soundExplode>
+			<soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+			<soundAmbient>MortarRound_Ambient</soundAmbient>
+		</projectile>
+	</ThingDef>
+
+	<Vehicles.VehicleTurretDef ParentName="RT_BaseVehicleMG_Heavy">
+		<defName>RT_QJC88sub_Turret</defName>
+		<label>QJC88 machine gun</label>
+		<!-- 砲塔的渲染顯示 -->
+		<gizmoIconTexPath>Vehicles/ZTZ99A/MG</gizmoIconTexPath>
+		<graphicData>
+			<texPath>Vehicles/ZTQ15/HeavyArmor/WeaponStation</texPath>
+			<drawSize>(3.4,3.4)</drawSize>
+		</graphicData>
+		<!-- 彈藥與裝填容量相關 -->
+		<reloadTimer>5</reloadTimer>
+		<chargePerAmmoCount>0.2</chargePerAmmoCount>
+		<magazineCapacity>150</magazineCapacity>
+		<genericAmmo>true</genericAmmo>
+		<!-- 射程與射界相關 -->
+		<rotationSpeed>1.7</rotationSpeed>
+		<!-- 射擊相關 -->
+		<warmUpTimer>1.5</warmUpTimer>
+		<projectileOffset>1.7</projectileOffset>
+		<!-- 出膛前後偏移，主要是能讓子彈能從炮口飛出去 -->
+		<projectileShifting>
+			<!-- 出膛左右偏移，多砲管可以根據list來回切 -->
+			<!-- <li>-1</li> -->
+			<li>-0.1</li>
+		</projectileShifting>
+		<ammunition Inherit="false">
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+	</Vehicles.VehicleTurretDef>
+</Defs>

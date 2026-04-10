@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<Vehicles.UpgradeTreeDef ParentName="TMM_UpgradeTree_TrackedLandBase">
+		<defName>TMM_UpgradeTree_Udar</defName>
+
+		<nodes>
+			<!-- AUTO TURRET -->
+				<li>
+					<key>AutoTurret_Udar</key>
+					<label>Auto-Turret</label>
+					<description>Mount an autonomous turret at the front of the vehicle.</description>
+
+					<icon>Modules/Transport/UI/Upgrades/Upgrade_Turret</icon>
+
+					<work>1920</work>
+
+					<gridCoordinate>(3, 3)</gridCoordinate>
+					<drawSize>(80,80)</drawSize>
+
+					<upgrades>
+						<li Class="Vehicles.TurretUpgrade">
+							<turrets>
+								<li>
+									<turretDef>TMM_Turret_Mini</turretDef>
+									<renderProperties>
+										<north>(0.58, 1.68)</north>
+										<south>(-0.6, -1.2)</south>
+										<east>(1.47, -0.15)</east>
+									</renderProperties>
+									<drawLayer>3</drawLayer>
+									<gizmoLabel>turret</gizmoLabel>
+									<defaultAngleRotated>45</defaultAngleRotated>
+									<angleRestricted>(345, 105)</angleRestricted>
+									<aimPieOffset>(0, -0.25)</aimPieOffset>
+									<key>mainTurret</key>
+								</li>
+							</turrets>
+						</li>
+					</upgrades>
+
+					<ingredients>
+						<Steel>100</Steel>
+						<ComponentIndustrial>3</ComponentIndustrial>
+					</ingredients>
+
+					<graphicOverlays>
+						<li>
+							<graphicData>
+								<texPath>Modules/Transport/Upgrades/Land/Udar_SPART/AutoTurret/AutoTurret</texPath>
+								<graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+								<drawSize>(3,4)</drawSize>
+								<layer>2</layer>
+								<shaderType>CutoutComplexPattern</shaderType>
+							</graphicData>
+						</li>
+					</graphicOverlays>
+				</li>
+			<!-- HEAVY ARMOUR -->
+				<li>
+					<key>HeavyArmour_Udar</key>
+					<label>Heavy Armour</label>
+					<description>Reinforce the armour of the vehicle with additional steel plates. These plates reinforce the hull and cover external parts like the treads. The added weight will make the vehicle heavier and somewhat slower.</description>
+
+					<icon>Modules/Transport/UI/Upgrades/Upgrade_ExtraArmor</icon>
+
+					<work>3840</work>
+
+					<gridCoordinate>(9, 3)</gridCoordinate>
+					<drawSize>(80, 80)</drawSize>
+
+					<upgrades>
+						<li Class="Vehicles.StatUpgrade">
+							<stats>
+								<li>
+									<def>ArmorRating_Blunt</def>
+									<value>0.16</value>
+								</li>
+								<li>
+									<def>ArmorRating_Sharp</def>
+									<value>0.18</value>
+								</li>
+							</stats>
+							<vehicleStats>
+								<li>
+									<def>AccelerationRate</def>
+									<value>-0.01</value>
+								</li>
+								<li>
+									<def>MoveSpeed</def>
+									<value>-1.5</value>
+								</li>
+								<li>
+									<def>Mass</def>
+									<value>60</value>
+								</li>
+							</vehicleStats>
+						</li>
+						<li Class="Vehicles.VehicleUpgrade">
+							<armor>
+								<li>
+									<key>LeftTrack</key>
+									<statModifiers>
+										<ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+										<ArmorRating_Sharp>0.2</ArmorRating_Sharp>
+									</statModifiers>
+								</li>
+								<li>
+									<key>RightTrack</key>
+									<statModifiers>
+										<ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+										<ArmorRating_Sharp>0.2</ArmorRating_Sharp>
+									</statModifiers>
+								</li>
+							</armor>
+							<health>
+								<li>
+									<key>LeftTrack</key>
+									<depth>Internal</depth>
+								</li>
+								<li>
+									<key>RightTrack</key>
+									<depth>Internal</depth>
+								</li>
+								<li>
+									<key>FrontLeftDriveSprocket</key>
+									<depth>Internal</depth>
+								</li>
+								<li>
+									<key>FrontRightDriveSprocket</key>
+									<depth>Internal</depth>
+								</li>
+								<li>
+									<key>BackLeftDriveSprocket</key>
+									<depth>Internal</depth>
+								</li>
+								<li>
+									<key>BackRightDriveSprocket</key>
+									<depth>Internal</depth>
+								</li>
+							</health>
+						</li>
+					</upgrades>
+
+					<ingredients>
+						<Steel>300</Steel>
+					</ingredients>
+
+					<graphicOverlays>
+						<li>
+							<graphicData>
+								<texPath>Modules/Transport/Upgrades/Land/Udar_SPART/HeavyArmour/HeavyArmour</texPath>
+								<graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+								<drawSize>(4,5)</drawSize>
+								<layer>2</layer>
+								<shaderType>CutoutComplexPattern</shaderType>
+							</graphicData>
+						</li>
+					</graphicOverlays>
+				</li>
+		</nodes>
+	</Vehicles.UpgradeTreeDef>
+</Defs>

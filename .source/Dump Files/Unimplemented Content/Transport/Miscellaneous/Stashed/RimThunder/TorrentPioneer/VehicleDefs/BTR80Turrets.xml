@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<!--2c38 turret -->
+	
+	<Vehicles.VehicleTurretDef ParentName="RT_BaseTurret">
+		<defName>BTR80A_Tank_Turret</defName>
+		<label>main turret</label>
+		<gizmoIconTexPath>Vehicles/BTR80A/vehicle_turret_full</gizmoIconTexPath>
+		<!-- 砲塔的渲染顯示 -->
+		<graphicData>
+			<texPath>Vehicles/BTR80A/vehicle_turret</texPath>
+			<drawSize>(4.8,4.8)</drawSize>
+		</graphicData>
+		<!-- 彈藥與裝填容量相關 -->
+		<reloadTimer>8</reloadTimer>
+		<magazineCapacity>150</magazineCapacity>
+		<chargePerAmmoCount>2</chargePerAmmoCount>
+		<genericAmmo>true</genericAmmo>
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+		<!-- 射程與射界相關 -->
+		<minRange>2</minRange>
+		<maxRange>45.9</maxRange>
+		<rotationSpeed>2</rotationSpeed>
+		<!-- 射擊相關 -->
+		<warmUpTimer>1</warmUpTimer>
+		<shotSound>RT_Shot_2A42Sound</shotSound>
+		<reloadSound>RT_AutoCannonReloadSound</reloadSound>
+		<projectile>RT_Bullet_BTR80AShell</projectile>
+		<projectileOffset>2</projectileOffset>
+		<!-- 出膛前後偏移，主要是能讓子彈能從炮口飛出去 -->
+		<projectileShifting>
+			<!-- 出膛左右偏移，多砲管可以根據list來回切 -->
+			<!-- <li>-1</li> -->
+			<li>0</li>
+		</projectileShifting>
+		<!-- 炮口製退動畫 -->
+		<graphics>
+			<li>
+				<graphicData>
+					<texPath>Vehicles/BTR80A/vehicle_barrel</texPath>
+					<drawSize>(4.8,4.8)</drawSize>
+					<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+					<shaderType>CutoutComplexPattern</shaderType>
+				</graphicData>
+				<recoil>
+					<distanceTotal>0.2</distanceTotal>
+					<distancePerTick>0.05</distancePerTick>
+					<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+				</recoil>
+			</li>
+		</graphics>
+		<!-- 射擊模式 -->
+		<fireModes Inherit = "false">
+			<li>
+				<shotsPerBurst>5</shotsPerBurst>
+				<ticksBetweenShots>15</ticksBetweenShots>
+				<ticksBetweenBursts>70</ticksBetweenBursts>
+				<spreadRadius>2</spreadRadius>
+				<label>Auto</label>
+				<texPath>UI/Gizmos/FireRate_Auto</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>3</shotsPerBurst>
+				<ticksBetweenShots>15</ticksBetweenShots>
+				<ticksBetweenBursts>50</ticksBetweenBursts>
+				<spreadRadius>2</spreadRadius>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenBursts>15</ticksBetweenBursts>
+				<spreadRadius>1</spreadRadius>
+				<label>Single Shot</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+		</fireModes>
+		<motes>
+			<li>
+				<cycles>1</cycles>
+				<moteDef>Mote_CannonPlume</moteDef>
+				<animationType>Reset</animationType>
+				<offset>(0,0,2)</offset>
+			</li>
+		</motes>
+	</Vehicles.VehicleTurretDef>
+
+	<!-- 主砲的投射物 -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RT_Bullet_BTR80AShell</defName>
+		<label>armor-piercing shell</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.5</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>70</damageAmountBase>
+			<armorPenetrationBase>0.82</armorPenetrationBase>
+			<speed>100</speed>
+		</projectile>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>1.9</explosiveRadius>
+				<explosiveDamageType>Bomb</explosiveDamageType>
+				<damageAmountBase>24</damageAmountBase>
+				<explodeOnDestroyed>true</explodeOnDestroyed>
+				<explodeOnKilled>true</explodeOnKilled>
+				<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+			</li>
+		</comps>
+	</ThingDef>
+
+</Defs>
