@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/RecipeDef[defName="Make_Kibble"]/ingredients/li[2]/filter/thingDefs/li[.="Hay"]</xpath>
+		<match Class="PatchOperationRemove">
+			<xpath>Defs/RecipeDef[defName="Make_Kibble"]/ingredients/li[2]/filter/thingDefs/li[.="Hay"]</xpath>
+		</match>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/RecipeDef[defName="Make_Kibble"]/ingredients/li[2]/filter/categories</xpath>
+		<value>
+			<li>Feed</li>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/RecipeDef[defName="Make_Kibble"]/fixedIngredientFilter/thingDefs/li[.="Hay"]</xpath>
+		<match Class="PatchOperationRemove">
+			<xpath>Defs/RecipeDef[defName="Make_Kibble"]/fixedIngredientFilter/thingDefs/li[.="Hay"]</xpath>
+		</match>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/RecipeDef[defName="Make_Kibble"]/fixedIngredientFilter/categories</xpath>
+		<value>
+			<li>Feed</li>
+		</value>
+	</Operation>
+
+</Patch>

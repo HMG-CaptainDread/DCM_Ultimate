@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo9x21mmIMI</defName>
+		<label>9x21mm IMI</label>
+		<parent>AmmoPistols</parent>
+		<iconPath>UI/Icons/ThingCategories/CaliberPistol</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef MayRequire="cgf1.gunsgalore.coldwar.germanyaustria">
+		<defName>AmmoSet_9x21mmIMI</defName>
+		<label>9x21mm IMI</label>
+		<ammoTypes>
+			<Ammo_9x21mmIMI_FMJ>Bullet_9x21mmIMI_FMJ</Ammo_9x21mmIMI_FMJ>
+			<Ammo_9x21mmIMI_AP>Bullet_9x21mmIMI_AP</Ammo_9x21mmIMI_AP>
+			<Ammo_9x21mmIMI_HP>Bullet_9x21mmIMI_HP</Ammo_9x21mmIMI_HP>			
+		</ammoTypes>
+		<similarTo>AmmoSet_Pistol</similarTo>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="9x21mmIMIBase" ParentName="SmallAmmoBase" Abstract="True" MayRequire="cgf1.gunsgalore.coldwar.germanyaustria">
+		<description>A rare pistol cartridge created to offer similar but superior ballistics to the 9x19mm Parabellum.</description>
+		<statBases>
+			<Mass>0.013</Mass>
+			<Bulk>0.01</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo9x21mmIMI</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="9x21mmIMIBase" MayRequire="cgf1.gunsgalore.coldwar.germanyaustria">
+		<defName>Ammo_9x21mmIMI_FMJ</defName>
+		<label>9x21mm IMI cartridge (FMJ)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/FMJ</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.06</MarketValue>
+		</statBases>
+		<ammoClass>FullMetalJacket</ammoClass>
+		<cookOffProjectile>Bullet_9x21mmIMI_FMJ</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="9x21mmIMIBase" MayRequire="cgf1.gunsgalore.coldwar.germanyaustria">
+		<defName>Ammo_9x21mmIMI_AP</defName>
+		<label>9x21mm IMI cartridge (AP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/AP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.06</MarketValue>
+		</statBases>
+		<ammoClass>ArmorPiercing</ammoClass>
+		<cookOffProjectile>Bullet_9x21mmIMI_AP</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="9x21mmIMIBase" MayRequire="cgf1.gunsgalore.coldwar.germanyaustria">
+		<defName>Ammo_9x21mmIMI_HP</defName>
+		<label>9x21mm IMI cartridge (HP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/HP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.06</MarketValue>
+		</statBases>
+		<ammoClass>HollowPoint</ammoClass>
+		<cookOffProjectile>Bullet_9x21mmIMI_HP</cookOffProjectile>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="Base9x21mmIMIBullet" ParentName="BaseBulletCE" Abstract="true" MayRequire="cgf1.gunsgalore.coldwar.germanyaustria">
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>72</speed>
+			<dropsCasings>true</dropsCasings>
+			<casingMoteDefname>Fleck_PistolAmmoCasings</casingMoteDefname>
+			<casingFilthDefname>Filth_PistolAmmoCasings</casingFilthDefname>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base9x21mmIMIBullet" MayRequire="cgf1.gunsgalore.coldwar.germanyaustria">
+		<defName>Bullet_9x21mmIMI_FMJ</defName>
+		<label>9x21mm IMI bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>11</damageAmountBase>
+			<armorPenetrationSharp>4</armorPenetrationSharp>
+			<armorPenetrationBlunt>10.36</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base9x21mmIMIBullet" MayRequire="cgf1.gunsgalore.coldwar.germanyaustria">
+		<defName>Bullet_9x21mmIMI_AP</defName>
+		<label>9x21mm IMI bullet (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>7</damageAmountBase>
+			<armorPenetrationSharp>8</armorPenetrationSharp>
+			<armorPenetrationBlunt>10.36</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base9x21mmIMIBullet" MayRequire="cgf1.gunsgalore.coldwar.germanyaustria">
+		<defName>Bullet_9x21mmIMI_HP</defName>
+		<label>9x21mm IMI bullet (HP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>14</damageAmountBase>
+			<armorPenetrationSharp>2</armorPenetrationSharp>
+			<armorPenetrationBlunt>10.36</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.coldwar.germanyaustria">
+		<defName>MakeAmmo_9x21mmIMI_FMJ</defName>
+		<label>make 9x21mm IMI cartridge x500</label>
+		<description>Craft 500 9x21mm IMI cartridges.</description>
+		<jobString>Making 9x21mm IMI cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>14</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_9x21mmIMI_FMJ>500</Ammo_9x21mmIMI_FMJ>
+		</products>
+		<workAmount>1400</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.coldwar.germanyaustria">
+		<defName>MakeAmmo_9x21mmIMI_AP</defName>
+		<label>make 9x21mm IMI (AP) cartridge x500</label>
+		<description>Craft 500 9x21mm IMI (AP) cartridges.</description>
+		<jobString>Making 9x21mm IMI (AP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>14</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_9x21mmIMI_AP>500</Ammo_9x21mmIMI_AP>
+		</products>
+		<workAmount>1680</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.coldwar.germanyaustria">
+		<defName>MakeAmmo_9x21mmIMI_HP</defName>
+		<label>make 9x21mm IMI (HP) cartridge x500</label>
+		<description>Craft 500 9x21mm IMI (HP) cartridges.</description>
+		<jobString>Making 9x21mm IMI (HP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>14</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_9x21mmIMI_HP>500</Ammo_9x21mmIMI_HP>
+		</products>
+		<workAmount>1400</workAmount>
+	</RecipeDef>
+
+</Defs>

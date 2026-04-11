@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo357Maximum</defName>
+		<label>.357 Maximum</label>
+		<parent>AmmoPistols</parent>
+		<iconPath>UI/Icons/ThingCategories/CaliberPistol</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>AmmoSet_357Maximum</defName>
+		<label>.357 Maximum</label>
+		<ammoTypes>
+			<Ammo_357Maximum_FMJ>Bullet_357Maximum_FMJ</Ammo_357Maximum_FMJ>
+			<Ammo_357Maximum_AP>Bullet_357Maximum_AP</Ammo_357Maximum_AP>
+			<Ammo_357Maximum_HP>Bullet_357Maximum_HP</Ammo_357Maximum_HP>			
+		</ammoTypes>
+		<similarTo>AmmoSet_PistolMagnum</similarTo>
+	</CombatExtended.AmmoSetDef>
+	
+	<CombatExtended.AmmoSetDef MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>AmmoSet_357Maximum_Revolver</defName>
+		<label>.357 Maximum</label>
+		<ammoTypes>
+			<Ammo_357Maximum_FMJ>Bullet_357Maximum_FMJ</Ammo_357Maximum_FMJ>
+			<Ammo_357Maximum_AP>Bullet_357Maximum_AP</Ammo_357Maximum_AP>
+			<Ammo_357Maximum_HP>Bullet_357Maximum_HP</Ammo_357Maximum_HP>		
+			<Ammo_357Magnum_FMJ>Bullet_357Magnum_FMJ</Ammo_357Magnum_FMJ>
+			<Ammo_357Magnum_AP>Bullet_357Magnum_AP</Ammo_357Magnum_AP>
+			<Ammo_357Magnum_HP>Bullet_357Magnum_HP</Ammo_357Magnum_HP>
+			<Ammo_38Special_FMJ>Bullet_38Special_FMJ</Ammo_38Special_FMJ>
+			<Ammo_38Special_AP>Bullet_38Special_AP</Ammo_38Special_AP>
+			<Ammo_38Special_HP>Bullet_38Special_HP</Ammo_38Special_HP>
+			<Ammo_38LongColt_FMJ>Bullet_38LongColt_FMJ</Ammo_38LongColt_FMJ>
+			<Ammo_38LongColt_AP>Bullet_38LongColt_AP</Ammo_38LongColt_AP>
+			<Ammo_38LongColt_HP>Bullet_38LongColt_HP</Ammo_38LongColt_HP>
+			<Ammo_38ShortColt_FMJ>Bullet_38ShortColt_FMJ</Ammo_38ShortColt_FMJ>
+			<Ammo_38ShortColt_AP>Bullet_38ShortColt_AP</Ammo_38ShortColt_AP>
+			<Ammo_38ShortColt_HP>Bullet_38ShortColt_HP</Ammo_38ShortColt_HP>	
+		</ammoTypes>
+		<similarTo>AmmoSet_PistolMagnum</similarTo>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="357MaximumBase" ParentName="SmallAmmoBase" Abstract="True" MayRequire="cgf1.gunsgalore.magnum.i">
+		<description>A commercialized "super magnum" cartridge similar to the .357 Super Mag wildcat.</description>
+		<statBases>
+			<Mass>0.02</Mass>
+			<Bulk>0.02</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo357Maximum</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="357MaximumBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Ammo_357Maximum_FMJ</defName>
+		<label>.357 Maximum cartridge (FMJ)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/FMJ</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.08</MarketValue>
+		</statBases>
+		<ammoClass>FullMetalJacket</ammoClass>
+		<cookOffProjectile>Bullet_357Maximum_FMJ</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="357MaximumBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Ammo_357Maximum_AP</defName>
+		<label>.357 Maximum cartridge (AP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/AP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.08</MarketValue>
+		</statBases>
+		<ammoClass>ArmorPiercing</ammoClass>
+		<cookOffProjectile>Bullet_357Maximum_AP</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="357MaximumBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Ammo_357Maximum_HP</defName>
+		<label>.357 Maximum cartridge (HP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/HP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.08</MarketValue>
+		</statBases>
+		<ammoClass>HollowPoint</ammoClass>
+		<cookOffProjectile>Bullet_357Maximum_HP</cookOffProjectile>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="Base357MaximumBullet" ParentName="BaseBulletCE" Abstract="true" MayRequire="cgf1.gunsgalore.magnum.i">
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>120</speed>
+			<dropsCasings>true</dropsCasings>
+			<casingMoteDefname>Fleck_PistolAmmoCasings</casingMoteDefname>
+			<casingFilthDefname>Filth_PistolAmmoCasings</casingFilthDefname>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base357MaximumBullet" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Bullet_357Maximum_FMJ</defName>
+		<label>.357 Maximum bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>18</damageAmountBase>
+			<armorPenetrationSharp>7</armorPenetrationSharp>
+			<armorPenetrationBlunt>43.2</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base357MaximumBullet" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Bullet_357Maximum_AP</defName>
+		<label>.357 Maximum bullet (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>11</damageAmountBase>
+			<armorPenetrationSharp>14</armorPenetrationSharp>
+			<armorPenetrationBlunt>43.2</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base357MaximumBullet" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Bullet_357Maximum_HP</defName>
+		<label>.357 Maximum bullet (HP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>23</damageAmountBase>
+			<armorPenetrationSharp>3.5</armorPenetrationSharp>
+			<armorPenetrationBlunt>43.2</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>MakeAmmo_357Maximum_FMJ</defName>
+		<label>make .357 Maximum cartridge x500</label>
+		<description>Craft 500 .357 Maximum cartridges.</description>
+		<jobString>Making .357 Maximum cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_357Maximum_FMJ>500</Ammo_357Maximum_FMJ>
+		</products>
+		<workAmount>2000</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>MakeAmmo_357Maximum_AP</defName>
+		<label>make .357 Maximum (AP) cartridge x500</label>
+		<description>Craft 500 .357 Maximum (AP) cartridges.</description>
+		<jobString>Making .357 Maximum (AP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_357Maximum_AP>500</Ammo_357Maximum_AP>
+		</products>
+		<workAmount>2400</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>MakeAmmo_357Maximum_HP</defName>
+		<label>make .357 Maximum (HP) cartridge x500</label>
+		<description>Craft 500 .357 Maximum (HP) cartridges.</description>
+		<jobString>Making .357 Maximum (HP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_357Maximum_HP>500</Ammo_357Maximum_HP>
+		</products>
+		<workAmount>2000</workAmount>
+	</RecipeDef>
+
+</Defs>

@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo763x23mmMannlicher</defName>
+		<label>7.63x23mm Mannlicher</label>
+		<parent>AmmoPistols</parent>
+		<iconPath>UI/Icons/ThingCategories/CaliberPistol</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_763x23mmMannlicher</defName>
+		<label>7.63x23mm Mannlicher</label>
+		<ammoTypes>
+			<Ammo_763x23mmMannlicher_FMJ>Bullet_763x23mmMannlicher_FMJ</Ammo_763x23mmMannlicher_FMJ>
+			<Ammo_763x23mmMannlicher_AP>Bullet_763x23mmMannlicher_AP</Ammo_763x23mmMannlicher_AP>
+			<Ammo_763x23mmMannlicher_HP>Bullet_763x23mmMannlicher_HP</Ammo_763x23mmMannlicher_HP>			
+		</ammoTypes>
+		<similarTo>AmmoSet_Pistol</similarTo>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="763x23mmMannlicherBase" ParentName="SmallAmmoBase" Abstract="True">
+		<description>Old handgun cartridge made for use in semi-automatic pistols.</description>
+		<statBases>
+			<Mass>0.01</Mass>
+			<Bulk>0.01</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo763x23mmMannlicher</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="763x23mmMannlicherBase">
+		<defName>Ammo_763x23mmMannlicher_FMJ</defName>
+		<label>7.63x23mm Mannlicher cartridge (FMJ)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/FMJ</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.04</MarketValue>
+		</statBases>
+		<ammoClass>FullMetalJacket</ammoClass>
+		<cookOffProjectile>Bullet_763x23mmMannlicher_FMJ</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="763x23mmMannlicherBase">
+		<defName>Ammo_763x23mmMannlicher_AP</defName>
+		<label>7.63x23mm Mannlicher cartridge (AP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/AP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.04</MarketValue>
+		</statBases>
+		<ammoClass>ArmorPiercing</ammoClass>
+		<cookOffProjectile>Bullet_763x23mmMannlicher_AP</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="763x23mmMannlicherBase">
+		<defName>Ammo_763x23mmMannlicher_HP</defName>
+		<label>7.63x23mm Mannlicher cartridge (HP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/HP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.04</MarketValue>
+		</statBases>
+		<ammoClass>HollowPoint</ammoClass>
+		<cookOffProjectile>Bullet_763x23mmMannlicher_HP</cookOffProjectile>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="Base763x23mmMannlicherBullet" ParentName="BaseBulletCE" Abstract="true">
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>56</speed>
+			<dropsCasings>true</dropsCasings>
+			<casingMoteDefname>Fleck_PistolAmmoCasings</casingMoteDefname>
+			<casingFilthDefname>Filth_PistolAmmoCasings</casingFilthDefname>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base763x23mmMannlicherBullet">
+		<defName>Bullet_763x23mmMannlicher_FMJ</defName>
+		<label>7.63x23mm Mannlicher bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>8</damageAmountBase>
+			<armorPenetrationSharp>2</armorPenetrationSharp>
+			<armorPenetrationBlunt>4.32</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base763x23mmMannlicherBullet">
+		<defName>Bullet_763x23mmMannlicher_AP</defName>
+		<label>7.63x23mm Mannlicher bullet (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>5</damageAmountBase>
+			<armorPenetrationSharp>4</armorPenetrationSharp>
+			<armorPenetrationBlunt>4.32</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base763x23mmMannlicherBullet">
+		<defName>Bullet_763x23mmMannlicher_HP</defName>
+		<label>7.63x23mm Mannlicher bullet (HP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>10</damageAmountBase>
+			<armorPenetrationSharp>1</armorPenetrationSharp>
+			<armorPenetrationBlunt>4.32</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase">
+		<defName>MakeAmmo_763x23mmMannlicher_FMJ</defName>
+		<label>make 7.63x23mm Mannlicher cartridge x500</label>
+		<description>Craft 500 7.63x23mm Mannlicher cartridges.</description>
+		<jobString>Making 7.63x23mm Mannlicher cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_763x23mmMannlicher_FMJ>500</Ammo_763x23mmMannlicher_FMJ>
+		</products>
+		<workAmount>1000</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase">
+		<defName>MakeAmmo_763x23mmMannlicher_AP</defName>
+		<label>make 7.63x23mm Mannlicher (AP) cartridge x500</label>
+		<description>Craft 500 7.63x23mm Mannlicher (AP) cartridges.</description>
+		<jobString>Making 7.63x23mm Mannlicher (AP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_763x23mmMannlicher_AP>500</Ammo_763x23mmMannlicher_AP>
+		</products>
+		<workAmount>1200</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase">
+		<defName>MakeAmmo_763x23mmMannlicher_HP</defName>
+		<label>make 7.63x23mm Mannlicher (HP) cartridge x500</label>
+		<description>Craft 500 7.63x23mm Mannlicher (HP) cartridges.</description>
+		<jobString>Making 7.63x23mm Mannlicher (HP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_763x23mmMannlicher_HP>500</Ammo_763x23mmMannlicher_HP>
+		</products>
+		<workAmount>1000</workAmount>
+	</RecipeDef>
+
+</Defs>

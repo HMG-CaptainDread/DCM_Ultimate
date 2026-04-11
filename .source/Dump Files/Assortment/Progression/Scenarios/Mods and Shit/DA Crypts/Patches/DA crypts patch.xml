@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>    
+
+<!-- Spacer -->
+                <Operation Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DA_Catacombs"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DA_Catacombs"]/tags</xpath>
+                                <value>
+                                    <li>FernySpacerStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DA_Catacombs"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>FernySpacerStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </Operation>
+
+
+
+
+<!-- Biotech shit -->
+
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Biotech</li>
+		</mods>
+		<match Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="DA_BloodflameCatacomb"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DA_BloodflameCatacomb"]/tags</xpath>
+                                <value>
+                                    <li>FernySpacerStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="DA_BloodflameCatacomb"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>FernySpacerStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+		</match>
+	</Operation>
+
+
+
+
+</Patch>

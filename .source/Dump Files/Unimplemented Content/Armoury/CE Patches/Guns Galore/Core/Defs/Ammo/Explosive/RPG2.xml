@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>AmmoRPG2Grenades</defName>
+		<label>RPG-2 grenades</label>
+		<parent>AmmoRockets</parent>
+		<iconPath>UI/Icons/ThingCategories/CaliberRocket</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef MayRequireAnyOf="cgf1.gunsgalore.coldwar.chinavietnam,cgf1.gunsgalore.coldwar.ussr">
+		<defName>AmmoSet_RPG2Grenade</defName>
+		<label>RPG-2 Grenades</label>
+		<ammoTypes>
+			<Ammo_RPG2Grenade_HEAT>Bullet_RPG2Grenade_HEAT</Ammo_RPG2Grenade_HEAT>
+		</ammoTypes>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="RPG2GrenadeBase" ParentName="MediumAmmoBase" Abstract="True" MayRequireAnyOf="cgf1.gunsgalore.coldwar.chinavietnam,cgf1.gunsgalore.coldwar.ussr">
+		<description>Rocket-propelled grenade designed for the RPG-2 launcher. After being fired a rocket motor kicks in to propel the grenade further.</description>
+		<statBases>
+			<MaxHitPoints>150</MaxHitPoints>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting_TableMachining</li>
+		</tradeTags>
+		<thingCategories>
+			<li>AmmoRPG2Grenades</li>
+		</thingCategories>
+		<stackLimit>25</stackLimit>
+		<cookOffFlashScale>40</cookOffFlashScale>
+		<cookOffSound>MortarBomb_Explode</cookOffSound>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="RPG2GrenadeBase" MayRequireAnyOf="cgf1.gunsgalore.coldwar.chinavietnam,cgf1.gunsgalore.coldwar.ussr">
+		<defName>Ammo_RPG2Grenade_HEAT</defName>
+		<label>RPG-2 grenade (HEAT)</label>
+		<graphicData>
+			<texPath>CGF1/Ammo/PG2</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>52.78</MarketValue>
+			<Mass>2</Mass>
+			<Bulk>7.14</Bulk>
+		</statBases>
+		<ammoClass>RocketHEAT</ammoClass>
+		<detonateProjectile>Bullet_RPG2Grenade_HEAT</detonateProjectile>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="BaseRPG2Grenade" ParentName="BaseExplosiveBullet" Abstract="true" MayRequireAnyOf="cgf1.gunsgalore.coldwar.chinavietnam,cgf1.gunsgalore.coldwar.ussr">
+		<graphicData>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<speed>65</speed>
+			<soundAmbient>RocketPropelledLoop_Small</soundAmbient>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseRPG2Grenade" MayRequireAnyOf="cgf1.gunsgalore.coldwar.chinavietnam,cgf1.gunsgalore.coldwar.ussr">
+		<defName>Bullet_RPG2Grenade_HEAT</defName>
+		<label>RPG-2 grenade (HEAT)</label>
+		<graphicData>
+			<texPath>CGF1/Projectile/PG2</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>250</damageAmountBase>
+			<armorPenetrationSharp>180</armorPenetrationSharp>
+			<armorPenetrationBlunt>41.555</armorPenetrationBlunt>
+		</projectile>
+		<comps>
+			<li Class="CombatExtended.CompProperties_ExplosiveCE">
+				<damageAmountBase>150</damageAmountBase>
+				<explosiveDamageType>Bomb</explosiveDamageType>
+				<explosiveRadius>1.5</explosiveRadius>
+				<explosionSound>MortarBomb_Explode</explosionSound>
+				<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+			</li>
+			<li Class="CombatExtended.CompProperties_Fragments">
+				<fragments>
+					<Fragment_Large>2</Fragment_Large>
+					<Fragment_Small>12</Fragment_Small>
+				</fragments>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="LauncherAmmoRecipeBase" MayRequireAnyOf="cgf1.gunsgalore.coldwar.chinavietnam,cgf1.gunsgalore.coldwar.ussr">
+		<defName>MakeAmmo_RPG2Grenade_HEAT</defName>
+		<label>make RPG-2 HEAT grenades x5</label>
+		<description>Craft 5 RPG-2 HEAT grenades.</description>
+		<jobString>Making RPG-2 HEAT grenades.</jobString>
+		<workAmount>8800</workAmount>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>FSX</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentIndustrial</li>
+					</thingDefs>
+				</filter>
+				<count>4</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>FSX</li>
+				<li>ComponentIndustrial</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_RPG2Grenade_HEAT>5</Ammo_RPG2Grenade_HEAT>
+		</products>
+	</RecipeDef>
+
+
+</Defs>

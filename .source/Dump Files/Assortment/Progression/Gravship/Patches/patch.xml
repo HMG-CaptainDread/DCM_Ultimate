@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>    
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ScenarioDef[defName="TheGravship"]/scenario/playerFaction/factionDef</xpath>
+        <value>
+            <factionDef>Ferny_GravshipSpacers</factionDef>
+        </value>
+    </Operation>
+
+
+
+
+    <Operation Class="PatchOperationFindMod">
+        <mods>
+        <li>Progression: Scenarios</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+        <operations>
+            <li Class="PatchOperationReplace">
+                <xpath>Defs/FactionDef[defName="Ferny_GravshipSpacers"]/startingResearchTags</xpath>
+                <value>
+                    <startingResearchTags>
+                    <li>ClassicStart</li>
+                    <li>FernySpacerStart</li>
+                    </startingResearchTags>
+                </value>
+            </li>
+        </operations>
+        </match>
+    </Operation>
+
+
+
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="BasicGravtech"]/baseCost</xpath>
+        <value>
+            <baseCost>1500</baseCost>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="StandardGravtech"]/baseCost</xpath>
+        <value>
+            <baseCost>2500</baseCost>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="AdvancedGravtech"]/baseCost</xpath>
+        <value>
+            <baseCost>3800</baseCost>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationAdd">
+    <success>Always</success>
+        <xpath>Defs/FactionDef[defName="Empire"]/permanentEnemyToEveryoneExcept</xpath>
+        <value>
+            <li>Ferny_GravshipSpacers</li>
+        </value>
+    </Operation>
+
+
+
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="BasicGravtech"]/techLevel</xpath>
+        <value>
+            <techLevel>Spacer</techLevel>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="StandardGravtech"]/techLevel</xpath>
+        <value>
+            <techLevel>Spacer</techLevel>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="AdvancedGravtech"]/techLevel</xpath>
+        <value>
+            <techLevel>Spacer</techLevel>
+        </value>
+    </Operation>
+
+</Patch>

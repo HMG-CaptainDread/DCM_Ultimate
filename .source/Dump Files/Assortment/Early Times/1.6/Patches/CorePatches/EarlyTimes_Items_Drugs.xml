@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ThingDef[defName = "PsychoidLeaves"]/ingestible</xpath>
+    <value>
+		<ingestible>
+		  <ingestEffect>EatVegetarian</ingestEffect>
+		  <baseIngestTicks>100</baseIngestTicks>
+		  <chairSearchRadius>4</chairSearchRadius>
+		  <preferability>DesperateOnly</preferability>
+		  <tasteThought></tasteThought>
+		  <foodType>Plant</foodType>
+		  <joyKind>Chemical</joyKind>
+		  <joy>0.1</joy>
+		  <nurseable>true</nurseable>
+		  <drugCategory>Social</drugCategory>
+		  <outcomeDoers>
+			<li Class="IngestionOutcomeDoer_GiveHediff">
+			  <hediffDef>PsychiteHigh</hediffDef>
+			  <severity>0.25</severity>
+			  <toleranceChemical>Psychite</toleranceChemical>
+			</li>
+			<li Class="IngestionOutcomeDoer_GiveHediff">
+			  <hediffDef>PsychiteTolerance</hediffDef>
+			  <severity>0.02</severity>
+			  <divideByBodySize>true</divideByBodySize>
+			</li>
+			<li Class="IngestionOutcomeDoer_OffsetNeed">
+			  <need>Rest</need>
+			  <offset>0.02</offset>
+			  <toleranceChemical>Psychite</toleranceChemical>
+			</li>
+		  </outcomeDoers>
+		</ingestible>
+    </value>
+  </Operation>
+  
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "PsychoidLeaves"]/comps</xpath>
+    <value>
+      <li Class="CompProperties_Drug">
+        <chemical>Psychite</chemical>
+        <addictiveness>0.02</addictiveness>
+        <minToleranceToAddict>0.5</minToleranceToAddict>
+        <existingAddictionSeverityOffset>0.20</existingAddictionSeverityOffset>
+        <needLevelOffset>1</needLevelOffset>
+        <listOrder>130</listOrder>
+	   </li>
+    </value>
+  </Operation>
+  
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "PsychoidLeaves"]/statBases</xpath>
+    <value>
+		<Nutrition>0.05</Nutrition>
+    </value>
+  </Operation>
+  
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ThingDef[defName = "SmokeleafLeaves"]/ingestible</xpath>
+    <value>
+		<ingestible>
+      <foodType>Plant</foodType>
+      <joyKind>Chemical</joyKind>
+      <joy>0.14</joy>
+      <baseIngestTicks>380</baseIngestTicks>
+      <nurseable>true</nurseable>
+	  <preferability>DesperateOnly</preferability>
+      <drugCategory>Social</drugCategory>
+      <ingestSound>Ingest_Smoke</ingestSound>
+      <ingestEffect>Smoke_Joint</ingestEffect>
+	  <ingestEffectEat>EatVegetarian</ingestEffectEat>
+      <ingestHoldUsesTable>false</ingestHoldUsesTable>
+      <ingestCommandString>Snuff {0}</ingestCommandString>
+      <ingestReportString>Snuffing {0}.</ingestReportString>
+      <ingestReportStringEat>Consuming {0}.</ingestReportStringEat>
+      <useEatingSpeedStat>false</useEatingSpeedStat>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>SmokeleafHigh</hediffDef>
+          <severity>0.14</severity>
+          <toleranceChemical>Smokeleaf</toleranceChemical>
+        </li>
+        <li Class="IngestionOutcomeDoer_OffsetNeed">
+          <need>Rest</need>
+          <offset>-0.03</offset>
+        </li>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>SmokeleafTolerance</hediffDef>
+          <severity>0.030</severity>
+			<divideByBodySize>true</divideByBodySize>
+		</li>
+      </outcomeDoers>
+    </ingestible>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "SmokeleafLeaves"]/comps</xpath>
+    <value>
+      <li Class="CompProperties_Drug">
+        <chemical>Smokeleaf</chemical>
+        <addictiveness>0.020</addictiveness>
+        <minToleranceToAddict>0.35</minToleranceToAddict>
+        <existingAddictionSeverityOffset>0.03</existingAddictionSeverityOffset>
+        <needLevelOffset>1</needLevelOffset>
+        <listOrder>20</listOrder>
+      </li>
+    </value>
+  </Operation>
+  
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "SmokeleafLeaves"]/statBases</xpath>
+    <value>
+		<Nutrition>0.05</Nutrition>
+    </value>
+  </Operation>
+  
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/HediffDef[defName = "SmokeleafHigh"]/stages/li/capMods/li[capacity="Consciousness"]/offset</xpath>
+    <value>
+	  <offset>0.2</offset>
+    </value>
+  </Operation>
+  
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ThingDef[defName = "Penoxycyline"]/costList</xpath>
+    <value>
+    <costList>
+      <Neutroamine>1</Neutroamine>
+      <RawFungus>1</RawFungus>
+      <MedTimes_Wax>1</MedTimes_Wax>
+    </costList>
+    </value>
+  </Operation>
+  
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ThingDef[defName = "WakeUp"]/costList</xpath>
+    <value>
+    <costList>
+      <Neutroamine>1</Neutroamine>
+      <PsychoidLeaves>1</PsychoidLeaves>
+      <MedTimes_Wax>1</MedTimes_Wax>
+    </costList>
+    </value>
+  </Operation>
+  
+</Patch>
+  

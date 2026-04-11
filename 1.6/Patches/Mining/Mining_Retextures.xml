@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- QUARRY -->
+		<Operation Class="PatchOperationFindMod">
+			<mods>
+				<li>Quarry</li>
+			</mods>
+			<match Class="PatchOperationSequence">
+				<success>Always</success> <!-- this cries about something being broken but it's full of shit -->
+				<operations>
+					<!-- CODE BASED RETEXTURING -->
+						<!-- GRAPHIC CLASS -->
+							<li Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[@Name="QRY_QuarryBase"]/graphicData/graphicClass</xpath>
+								<value>
+									<graphicClass>Graphic_Single</graphicClass>
+								</value>
+							</li>
+						<!-- ROTATABLE -->
+							<li Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[@Name="QRY_QuarryBase"]/rotatable</xpath>
+								<value>
+									<rotatable>false</rotatable>
+								</value>
+							</li>
+					<!-- MAIN RETEXTURING -->
+						<!-- BUILDINGS -->
+							<!-- QUARRIES -->
+								<!-- LARGE -->
+									<li Class="PatchOperationReplace">
+										<xpath>Defs/ThingDef[defName = "QRY_Quarry"]/graphicData/texPath</xpath>
+										<value>
+											<texPath>Modules/Mining/Retextures/Quarry/Buildings/Quarries/Quarry</texPath>
+										</value>
+									</li>
+								<!-- MEDIUM -->
+									<li Class="PatchOperationReplace">
+										<xpath>Defs/ThingDef[defName = "QRY_MediQuarry"]/graphicData/texPath</xpath>
+										<value>
+											<texPath>Modules/Mining/Retextures/Quarry/Buildings/Quarries/MiniQuarry</texPath>
+										</value>
+									</li>
+								<!-- SMALL -->
+									<li Class="PatchOperationReplace">
+										<xpath>Defs/ThingDef[defName = "QRY_MiniQuarry"]/graphicData/texPath</xpath>
+										<value>
+											<texPath>Modules/Mining/Retextures/Quarry/Buildings/Quarries/MiniQuarry</texPath>
+										</value>
+									</li>
+							<!-- PLATFORMS -->
+								<li Class="PatchOperationReplace">
+									<xpath>Defs/ThingDef[defName = "QRY_Platform"]/graphicData/texPath</xpath>
+									<value>
+										<texPath>Modules/Mining/Retextures/Quarry/Buildings/Platforms/Platform_Smooth</texPath>
+									</value>
+								</li>
+				</operations>
+			</match>
+		</Operation>
+</Patch>

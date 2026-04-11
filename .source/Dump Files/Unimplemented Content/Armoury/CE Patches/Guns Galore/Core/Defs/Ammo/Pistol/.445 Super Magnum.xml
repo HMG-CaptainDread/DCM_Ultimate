@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo445SuperMagnum</defName>
+		<label>.445 Super Magnum</label>
+		<parent>AmmoPistols</parent>
+		<iconPath>UI/Icons/ThingCategories/CaliberPistol</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>AmmoSet_445SuperMagnum</defName>
+		<label>.445 Super Magnum</label>
+		<ammoTypes>
+			<Ammo_445SuperMagnum_FMJ>Bullet_445SuperMagnum_FMJ</Ammo_445SuperMagnum_FMJ>
+			<Ammo_445SuperMagnum_AP>Bullet_445SuperMagnum_AP</Ammo_445SuperMagnum_AP>
+			<Ammo_445SuperMagnum_HP>Bullet_445SuperMagnum_HP</Ammo_445SuperMagnum_HP>			
+		</ammoTypes>
+		<similarTo>AmmoSet_PistolMagnum</similarTo>
+	</CombatExtended.AmmoSetDef>
+	
+	<CombatExtended.AmmoSetDef MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>AmmoSet_445SuperMagnum_Revolver</defName>
+		<label>.445 Super Magnum</label>
+		<ammoTypes>
+			<Ammo_445SuperMagnum_FMJ>Bullet_445SuperMagnum_FMJ</Ammo_445SuperMagnum_FMJ>
+			<Ammo_445SuperMagnum_AP>Bullet_445SuperMagnum_AP</Ammo_445SuperMagnum_AP>
+			<Ammo_445SuperMagnum_HP>Bullet_445SuperMagnum_HP</Ammo_445SuperMagnum_HP>	
+			<Ammo_44Magnum_FMJ>Bullet_44Magnum_FMJ</Ammo_44Magnum_FMJ>
+			<Ammo_44Magnum_AP>Bullet_44Magnum_AP</Ammo_44Magnum_AP>
+			<Ammo_44Magnum_HP>Bullet_44Magnum_HP</Ammo_44Magnum_HP>
+			<Ammo_44SWSpecial_FMJ>Bullet_44SWSpecial_FMJ</Ammo_44SWSpecial_FMJ>
+			<Ammo_44SWSpecial_AP>Bullet_44SWSpecial_AP</Ammo_44SWSpecial_AP>
+			<Ammo_44SWSpecial_HP>Bullet_44SWSpecial_HP</Ammo_44SWSpecial_HP>
+		</ammoTypes>
+		<similarTo>AmmoSet_PistolMagnum</similarTo>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="445SuperMagnumBase" ParentName="SmallAmmoBase" Abstract="True" MayRequire="cgf1.gunsgalore.magnum.i">
+		<description>A .44 Magnum cartridge necked up to 1.610 inches for substantially increased power.</description>
+		<statBases>
+			<Mass>0.024</Mass>
+			<Bulk>0.02</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo445SuperMagnum</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="445SuperMagnumBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Ammo_445SuperMagnum_FMJ</defName>
+		<label>.445 Super Magnum cartridge (FMJ)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/FMJ</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.11</MarketValue>
+		</statBases>
+		<ammoClass>FullMetalJacket</ammoClass>
+		<cookOffProjectile>Bullet_445SuperMagnum_FMJ</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="445SuperMagnumBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Ammo_445SuperMagnum_AP</defName>
+		<label>.445 Super Magnum cartridge (AP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/AP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.11</MarketValue>
+		</statBases>
+		<ammoClass>ArmorPiercing</ammoClass>
+		<cookOffProjectile>Bullet_445SuperMagnum_AP</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="445SuperMagnumBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Ammo_445SuperMagnum_HP</defName>
+		<label>.445 Super Magnum cartridge (HP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/HP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.11</MarketValue>
+		</statBases>
+		<ammoClass>HollowPoint</ammoClass>
+		<cookOffProjectile>Bullet_445SuperMagnum_HP</cookOffProjectile>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="Base445SuperMagnumBullet" ParentName="BaseBulletCE" Abstract="true" MayRequire="cgf1.gunsgalore.magnum.i">
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>113</speed>
+			<dropsCasings>true</dropsCasings>
+			<casingMoteDefname>Fleck_PistolAmmoCasings</casingMoteDefname>
+			<casingFilthDefname>Filth_PistolAmmoCasings</casingFilthDefname>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base445SuperMagnumBullet" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Bullet_445SuperMagnum_FMJ</defName>
+		<label>.445 Super Magnum bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>19</damageAmountBase>
+			<armorPenetrationSharp>7</armorPenetrationSharp>
+			<armorPenetrationBlunt>45.32</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base445SuperMagnumBullet" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Bullet_445SuperMagnum_AP</defName>
+		<label>.445 Super Magnum bullet (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>12</damageAmountBase>
+			<armorPenetrationSharp>14</armorPenetrationSharp>
+			<armorPenetrationBlunt>45.32</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base445SuperMagnumBullet" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>Bullet_445SuperMagnum_HP</defName>
+		<label>.445 Super Magnum bullet (HP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>24</damageAmountBase>
+			<armorPenetrationSharp>3.5</armorPenetrationSharp>
+			<armorPenetrationBlunt>45.32</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>MakeAmmo_445SuperMagnum_FMJ</defName>
+		<label>make .445 Super Magnum cartridge x500</label>
+		<description>Craft 500 .445 Super Magnum cartridges.</description>
+		<jobString>Making .445 Super Magnum cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>26</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_445SuperMagnum_FMJ>500</Ammo_445SuperMagnum_FMJ>
+		</products>
+		<workAmount>2600</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>MakeAmmo_445SuperMagnum_AP</defName>
+		<label>make .445 Super Magnum (AP) cartridge x500</label>
+		<description>Craft 500 .445 Super Magnum (AP) cartridges.</description>
+		<jobString>Making .445 Super Magnum (AP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>26</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_445SuperMagnum_AP>500</Ammo_445SuperMagnum_AP>
+		</products>
+		<workAmount>3120</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.magnum.i">
+		<defName>MakeAmmo_445SuperMagnum_HP</defName>
+		<label>make .445 Super Magnum (HP) cartridge x500</label>
+		<description>Craft 500 .445 Super Magnum (HP) cartridges.</description>
+		<jobString>Making .445 Super Magnum (HP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>26</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_445SuperMagnum_HP>500</Ammo_445SuperMagnum_HP>
+		</products>
+		<workAmount>2600</workAmount>
+	</RecipeDef>
+
+</Defs>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>Vanilla Factions Expanded - Medieval</li>
+		<li>Vanilla Factions Expanded - Medieval (Fork)</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName = "VFEM_Candle"]/comps/li[@Class="CompProperties_Refuelable"]/fuelFilter</xpath>		
+				<value> 
+					<fuelFilter>
+					  <thingDefs>
+						<li>MedTimes_Wax</li>
+					  </thingDefs>
+					</fuelFilter>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName = "VFEM_Candle"]</xpath>		
+				<value>
+					<researchPrerequisites>
+						<li>MedTimes_ContainedFire</li>
+						<li>MedTimes_WaxUsage</li>
+					</researchPrerequisites>
+				</value>
+			</li>
+			
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName = "VFEM_WallTorchLamp"]</xpath>		
+				<value>
+				  <researchPrerequisites>
+					<li>TS_Firemaking</li>
+					<li>TS_Shelter</li>
+				  </researchPrerequisites>
+				</value>
+			</li>
+			
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName = "VFEM_ArcheryTarget"]</xpath>		
+				<value>
+				  <researchPrerequisites>
+					<li>TS_BasicGames</li>
+					<li>TS_ShortBow</li>
+				  </researchPrerequisites>
+				</value>
+			</li>
+			
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName = "VFEM_MeatSmoker"]/researchPrerequisites</xpath>		
+				<value> 
+					  <researchPrerequisites>
+						<li>MedTimes_DriedFood</li>
+					  </researchPrerequisites>
+				</value>
+			</li>
+			
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName = "VFEM_CobblestoneWall"]</xpath>		
+				<value> 
+					  <researchPrerequisites>
+						<li>MedTimes_ReinforcedStructure</li>
+					  </researchPrerequisites>
+				</value>
+			</li>
+			
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName = "VFEM_LowRockWall"]</xpath>		
+				<value> 
+					  <researchPrerequisites>
+						<li>MedTimes_ReinforcedStructure</li>
+						<li>MedTimes_Fence</li>
+					  </researchPrerequisites>
+				</value>
+			</li>
+			
+			
+		</operations>
+	</match>
+  </Operation>
+  
+</Patch>
+
+
+
+
