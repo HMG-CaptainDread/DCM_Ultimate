@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- ================ Artillery Bases ==================-->
+  <ThingDef Name="RWPArtilleryBuilding" ParentName="BuildingBase" Abstract="True">
+    <thingClass>Building_TurretGun</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Turrets/CannonBase</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2,2)</drawSize>
+      <damageData>
+        <rect>(0.38,0.2,0.56375,0.8)</rect>
+        <cornerTL>Damage/Corner</cornerTL>
+      </damageData>
+    </graphicData>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <size>(2,2)</size>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <altitudeLayer>Building</altitudeLayer>
+    <thingCategories>
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+    <techLevel>Medieval</techLevel>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <stealable>true</stealable>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>1</fillPercent>
+    <castEdgeShadows>true</castEdgeShadows>
+    <tickerType>Normal</tickerType>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+    <!-- SHUT MY MOUTH AND SLAP MY GRANDMA! IT NOW ACCEPTS STUFF!! -->
+    <costStuffCount>300</costStuffCount>
+    <stuffCategories>
+      <li>Metallic</li>
+      <!-- Support for Mod Stuff -->
+      <li MayRequire="Dubwise.Rimefeller">Composite</li>
+      <li MayRequire="sarg.alphabiomes">AB_ExoticMetals</li>
+    </stuffCategories>
+    <costList>
+      <ComponentIndustrial>3</ComponentIndustrial>
+    </costList>
+    <inspectorTabs>
+      <li>ITab_Shells</li>
+    </inspectorTabs>
+    <comps>
+      <li Class="CompProperties_Forbiddable" />
+      <li Class="CompProperties_Mannable">
+        <manWorkType>Violent</manWorkType>
+      </li>
+    </comps>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+      <WorkToBuild>1900</WorkToBuild>
+      <Mass>30</Mass>
+      <Beauty>-20</Beauty>
+    </statBases>
+    <building>
+      <turretBurstWarmupTime>4.0</turretBurstWarmupTime>
+      <turretBurstCooldownTime>28.0</turretBurstCooldownTime>
+      <buildingTags>
+        <li>Artillery</li>
+      </buildingTags>
+    </building>
+    <rotatable>true</rotatable>
+    <placeWorkers>
+      <li>PlaceWorker_NotUnderRoof</li>
+      <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>RWP_Artillery</li>
+    </researchPrerequisites>
+  </ThingDef>
+  <ThingDef Name="RWPArtilleryWeapon" Abstract="True">
+    <category>Item</category>
+    <thingClass>ThingWithComps</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <label>artillery error</label>
+    <useHitPoints>false</useHitPoints>
+    <equipmentType>Primary</equipmentType>
+    <tickerType>Never</tickerType>
+    <techLevel>Medieval</techLevel>
+    <destroyOnDrop>True</destroyOnDrop>
+    <tradeability>None</tradeability>
+    <weaponTags>
+      <li>Artillery</li>
+      <li>VFEP_Artillery_Cabbin</li>
+    </weaponTags>
+    <comps>
+      <li>
+        <compClass>CompEquippable</compClass>
+      </li>
+      <li Class="CompProperties_ChangeableProjectile" />
+    </comps>
+    <building>
+      <fixedStorageSettings>
+        <filter>
+          <categories>
+            <li>MortarShells</li>
+          </categories>
+        </filter>
+      </fixedStorageSettings>
+      <defaultStorageSettings>
+        <filter>
+          <categories>
+            <li>MortarShells</li>
+          </categories>
+          <disallowedThingDefs>
+            <li>Shell_Firefoam</li>
+            <li>Shell_AntigrainWarhead</li>
+          </disallowedThingDefs>
+        </filter>
+      </defaultStorageSettings>
+    </building>
+  </ThingDef>
+  <!--=============== Cannon ===============-->
+  <ThingDef ParentName="RWPArtilleryBuilding">
+    <defName>RWP_Building_Cannon</defName>
+    <label>twelve-pounder Napoleon cannon</label>
+    <description>The twelve-pounder Napoleon, also known as the "Canon de L’Empereur", was a smooth-bore cannon developed by France in 1853. Popular with both sides of the American Civil War, the Napoleon was capable of firing ball, shell, and canister shot, thus making it versatile enough to replace nearly all previous field guns of the day. Compared to more modern, industrial mortars, these vintage cannons shoot farther distances but are more inaccurate due to the absence of computers, precision weights, or modern measures.</description>
+    <designationHotKey>Misc3</designationHotKey>
+    <uiIconPath>Things/Building/Turrets/CannonIcon</uiIconPath>
+    <building>
+      <turretGunDef>RWP_Gun_Cannon</turretGunDef>
+      <buildingTags>
+        <li>Artillery_BaseDestroyer</li>
+      </buildingTags>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
+    </placeWorkers>
+  </ThingDef>
+  <ThingDef ParentName="RWPArtilleryWeapon">
+    <defName>RWP_Gun_Cannon</defName>
+    <label>twelve-pounder Napoleon cannon</label>
+    <description>A twelve-pounder Napoleon cannon attached to wagon-wheeled mount.</description>
+    <graphicData>
+      <texPath>Things/Building/Turrets/CPCanontest2</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <weaponTags>
+      <li>Artillery_BaseDestroyer</li>
+    </weaponTags>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+        <hasStandardCommand>true</hasStandardCommand>
+        <isMortar>true</isMortar>
+        <warmupTime>4.8</warmupTime>
+        <forcedMissRadius>14</forcedMissRadius>
+        <!-- The maximum for Vanilla rendition Mortars is thirteen, and thus this cannon will never be more accurate than the Industrial level ones -->
+        <requireLineOfSight>true</requireLineOfSight>
+        <minRange>4</minRange>
+        <range>600</range>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>Mortar_LaunchA</soundCast>
+        <muzzleFlashScale>16</muzzleFlashScale>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+      </li>
+    </verbs>
+    <researchPrerequisites>
+      <li MayRequire="george.napoleonicrim">FrenchEarlyTechnology</li>
+      <!-- Inherits the RWP Artillery from the Base -->
+    </researchPrerequisites>
+  </ThingDef>
+  <!--=============== Coehorn Mortar ===============-->
+  <ThingDef ParentName="RWPArtilleryBuilding">
+    <defName>RWP_Building_CoehornMortar</defName>
+    <label>twelve-pound Coehorn mortar</label>
+    <description>The Coehorn mortar, named for its Dutch inventor, Baron Menno van Coehorn, was a small muzzle-loading mortar mounted on a block or platform with handles. This particular variant is the twelve-pound Coehorn mortar, which was popular with the Confederacy during the American Civil War, and was capable of firing a twelve pound, one hundred twenty-one millimeter projectile over one thousand two hundred yards. Compared to more modern, industrial mortars, these vintage cannons shoot farther distances but are more inaccurate due to the absence of computers, precision weights, or modern measures.</description>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>4.9</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+      </li>
+    </comps>
+    <designationHotKey>Misc3</designationHotKey>
+    <uiIconPath>Things/Building/Turrets/CoehornMortarIcon</uiIconPath>
+    <building>
+      <turretGunDef>RWP_Gun_CoehornMortar</turretGunDef>
+      <buildingTags>
+        <li>Artillery_BaseDestroyer</li>
+      </buildingTags>
+    </building>
+  </ThingDef>
+  <ThingDef ParentName="RWPArtilleryWeapon">
+    <defName>RWP_Gun_CoehornMortar</defName>
+    <label>12-pound Coehorn mortar</label>
+    <description>A 12-pound Coehorn mortar mounted on a four-handled mortar bed.</description>
+    <graphicData>
+      <texPath>Things/Building/Turrets/CoehornMortar</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <weaponTags>
+      <li>Artillery_BaseDestroyer</li>
+    </weaponTags>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+        <hasStandardCommand>true</hasStandardCommand>
+        <isMortar>true</isMortar>
+        <warmupTime>5.8</warmupTime>
+        <forcedMissRadius>14</forcedMissRadius>
+        <!-- The maximum for Vanilla rendition Mortars is thirteen, and thus this cannon will never be more accurate than the Industrial level ones -->
+        <requireLineOfSight>false</requireLineOfSight>
+        <minRange>30</minRange>
+        <range>600</range>
+        <burstShotCount>1</burstShotCount>
+        <soundCast>Mortar_LaunchA</soundCast>
+        <muzzleFlashScale>16</muzzleFlashScale>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
+      </li>
+    </verbs>
+    <researchPrerequisites>
+      <li MayRequire="george.napoleonicrim">PrussianEarlyTechnology</li>
+      <!-- Inherits the RWP Artillery from the Base -->
+    </researchPrerequisites>
+  </ThingDef>
+</Defs>

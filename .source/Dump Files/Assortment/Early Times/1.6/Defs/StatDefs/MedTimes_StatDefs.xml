@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <StatDef>
+    <defName>ComposingQuality</defName>
+    <label>Composing quality</label>
+    <description>The quality at which this person is capable to make books.\n\nThis stat influences quality of books that can be made by author, quality of books of certain theme are affected by author`s repective skills.</description>
+    <category>PawnWork</category>
+    <defaultBaseValue>0.5</defaultBaseValue>
+    <minValue>0.1</minValue>
+	<maxValue>1</maxValue>
+    <toStringStyle>PercentZero</toStringStyle>
+    <capacityFactors>
+      <li>
+        <capacity>Consciousness</capacity>
+        <weight>1</weight>
+      </li>
+    </capacityFactors>
+	<skillNeedFactors>
+		<li Class="SkillNeed_BaseBonus">
+			<skill>Intellectual</skill>
+			<baseValue>0.0</baseValue>
+			<bonusPerLevel>0.35</bonusPerLevel>
+		</li>
+		<li Class="SkillNeed_BaseBonus">
+			<skill>Artistic</skill>
+			<baseValue>0.0</baseValue>
+			<bonusPerLevel>0.3</bonusPerLevel>
+		</li>
+		<li Class="SkillNeed_BaseBonus">
+			<skill>Social</skill>
+			<baseValue>0.1</baseValue>
+			<bonusPerLevel>0.1</bonusPerLevel>
+		</li>
+	</skillNeedFactors>
+	    <postProcessCurve>
+      <points>
+        <li>(0.0, 0.0)</li>
+        <li>(0.41, 0.025)</li>
+        <li>(0.82, 0.095)</li>
+        <li>(2.05, 0.5)</li>
+        <li>(3.075, 0.85)</li>
+        <li>(3.28, 0.9)</li>
+        <li>(4.1, 1.00)</li>
+      </points>
+    </postProcessCurve>
+  </StatDef>
+  
+  <StatDef>
+    <defName>BookQualityFactor</defName>
+    <label>book quality</label>
+    <description>How effectively this item entertains people and fulfills the need for recreation.</description>
+    <category>BasicsNonPawn</category>
+    <defaultBaseValue>1</defaultBaseValue>
+    <minValue>0.1</minValue>
+    <toStringStyle>PercentZero</toStringStyle>
+    <showIfUndefined>false</showIfUndefined>
+    <parts>
+      <li Class="StatPart_Quality">
+        <factorAwful>0.21</factorAwful>
+        <factorPoor>0.58</factorPoor>
+        <factorNormal>0.79</factorNormal>
+        <factorGood>1</factorGood>
+        <factorExcellent>1.29</factorExcellent>
+        <factorMasterwork>1.67</factorMasterwork>
+        <factorLegendary>2.6</factorLegendary>
+      </li>
+    </parts>
+  </StatDef>
+  
+  <StatDef>
+    <defName>BookChairSearchRadius</defName>
+    <label>Chair search radius</label>
+    <description>How far pawn tries to find a place to sit on.</description>
+    <category>BasicsNonPawn</category>
+    <defaultBaseValue>15</defaultBaseValue>
+    <toStringStyle>Integer</toStringStyle>
+    <showIfUndefined>false</showIfUndefined>
+  </StatDef>
+</Defs>

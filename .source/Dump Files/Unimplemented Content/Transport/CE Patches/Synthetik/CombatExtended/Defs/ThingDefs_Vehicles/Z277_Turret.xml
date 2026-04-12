@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+		<defName>Z277_Autocannon</defName>
+		<label>Z277 Turret</label>
+		<description>Fires VERY quickly.</description>
+		<turretType>Rotatable</turretType>
+		<shotSound>Synthetik_Z277Autocannon</shotSound>
+		<projectile>Bullet_09cmSplit_AP</projectile>
+		<reloadTimer>7.8</reloadTimer>
+		<warmUpTimer>1.25</warmUpTimer>
+
+		<magazineCapacity>1200</magazineCapacity>
+		<chargePerAmmoCount>0.14</chargePerAmmoCount>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>0.5</rotationSpeed>
+
+		<hitFlags>All</hitFlags>
+		<minRange>4</minRange>
+		<maxRange>86</maxRange>
+		
+		<attachProjectileFlag>Tank</attachProjectileFlag>
+		<projectileOffset>1.45</projectileOffset>
+		<projectileShifting> <!-- CE doesnt like Projectile shifting it seems-->
+			<li>0</li>
+			<!--li>0.7</li>
+			<li>-0.7</li-->
+			<!--li>0.6</li>
+			<li>-0.6</li>
+			<li>0.75</li>
+			<li>-0.75</li-->
+		</projectileShifting>
+
+		<recoil>
+			<distanceTotal>0.1</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+
+		<fireModes>
+			<li>
+				<shotsPerBurst>4</shotsPerBurst>
+				<spreadRadius>3</spreadRadius>
+				<ticksBetweenShots>1</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<label>Single</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>16</shotsPerBurst>
+				<spreadRadius>3</spreadRadius>
+				<ticksBetweenShots>1</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>32</shotsPerBurst>
+				<spreadRadius>3</spreadRadius>
+				<ticksBetweenShots>1</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<label>Auto</label>
+				<texPath>UI/Gizmos/FireRate_Auto</texPath>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Synthetik/Vehicles/Z277_Top</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>CutoutComplexPattern</shaderType>
+			<drawSize>5</drawSize>
+		</graphicData>
+
+		<gizmoIconTexPath>Synthetik/Icons/Flak_Icon</gizmoIconTexPath>
+		<gizmoDescription>0.9cm Heavy Machinegun</gizmoDescription>
+
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+				<li>Ammo_09cmSplit_AP</li>
+				<li>Ammo_09cmSplit_API</li>
+				<li>Ammo_09cmSplit_APHE</li>
+				<li>Ammo_09cmSplit_Sabot</li>
+			</thingDefs>
+		</ammunition>
+
+		<motes>
+			<li>
+				<cycles>1</cycles>
+				<moteDef>Mote_MuzzleFlash_SynthetikCE</moteDef>
+				<animationType>Reset</animationType>
+			</li>
+		</motes>
+
+		<modExtensions>
+			<li Class="Vehicles.CETurretDataDefModExtension">
+				<ammoSet>AmmoSet_09cmSplit</ammoSet>
+				<shotHeight>1.9</shotHeight>
+				<speed>152</speed>
+				<sway>1.24</sway>
+				<spread>0.5</spread>
+			</li>
+		</modExtensions>
+	</Vehicles.VehicleTurretDef>
+
+	<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+		<defName>Z277_RocketTube</defName>
+		<label>Z277 Turret</label>
+		<description>Meant for destroying static positions.</description>
+		<turretType>Rotatable</turretType>
+		<shotSound>Synthetik_Z277Rocket</shotSound>
+		<projectile>Bullet_76mmMissile_HE</projectile>
+		<reloadTimer>9.8</reloadTimer>
+		<warmUpTimer>1.25</warmUpTimer>
+
+		<magazineCapacity>8</magazineCapacity>
+		<chargePerAmmoCount>1</chargePerAmmoCount>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>0.5</rotationSpeed>
+
+		<hitFlags>All</hitFlags>
+		<minRange>4</minRange>
+		<maxRange>86</maxRange>
+		
+		<attachProjectileFlag>Tank</attachProjectileFlag>
+		<projectileOffset>0.25</projectileOffset>
+		<projectileShifting> <!-- CE doesnt like Projectile shifting it seems-->
+			<li>0</li>
+			<!--li>1.0</li>
+			<li>-1.0</li-->
+			<!--li>1.05</li>
+			<li>0.95</li>
+			<li>1.05</li>
+			<li>0.95</li>
+			<li>-1.05</li>
+			<li>-0.95</li>
+			<li>-1.05</li>
+			<li>-0.95</li-->
+		</projectileShifting>
+
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<spreadRadius>3</spreadRadius>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<label>Single</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>4</shotsPerBurst>
+				<spreadRadius>3</spreadRadius>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<label>Quad</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>8</shotsPerBurst>
+				<spreadRadius>3</spreadRadius>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<label>Fire everything</label>
+				<texPath>UI/Gizmos/FireRate_Auto</texPath>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Synthetik/Vehicles/Z277_Top</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>CutoutComplexPattern</shaderType>
+			<drawSize>0.5</drawSize>
+		</graphicData>
+
+		<gizmoIconTexPath>Synthetik/Icons/Rocket_Icon</gizmoIconTexPath>
+		<gizmoDescription>76mm Missile Tube</gizmoDescription>
+
+		<ammunition>
+			<thingDefs>
+				<li>Ammo_76mmMissile_HE</li>
+			</thingDefs>
+		</ammunition>
+
+		<!--motes>
+			<li>
+				<cycles>1</cycles>
+				<moteDef>Mote_MuzzleFlash_Synthetik</moteDef>
+				<animationType>Reset</animationType>
+			</li>
+		</motes-->
+
+		<modExtensions>
+			<li Class="Vehicles.CETurretDataDefModExtension">
+				<ammoSet>AmmoSet_76mmMissile</ammoSet>
+				<shotHeight>0.9</shotHeight>
+				<speed>122</speed>
+				<sway>1.0</sway>
+				<spread>0.01</spread>
+			</li>
+		</modExtensions>
+	</Vehicles.VehicleTurretDef>
+
+</Defs>

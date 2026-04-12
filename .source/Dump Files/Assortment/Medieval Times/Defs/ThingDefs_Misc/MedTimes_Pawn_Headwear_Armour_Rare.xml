@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!-- Start of thingDefs -->
+ <!-- =========================== Helmet Base Class =========================== -->
+  <!-- Armour Makeable Base Class -->
+  <ThingDef Name="MedTimes_Helm_Rare" Abstract="True">
+    <thingClass>Apparel</thingClass>
+    <category>Item</category>
+    <selectable>True</selectable>
+    <pathCost>10</pathCost>
+    <graphicData>
+      <onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(0.8,0.8)</drawSize>	
+      <shaderType>Transparent</shaderType>	  
+    </graphicData>
+    <drawGUIOverlay>true</drawGUIOverlay>	
+    <altitudeLayer>Item</altitudeLayer>
+    <alwaysHaulable>True</alwaysHaulable>
+    <tickerType>Never</tickerType>	
+    <statBases>
+      <SellPriceFactor>0.9</SellPriceFactor>
+      <Insulation_Cold>3</Insulation_Cold>
+		<EquipDelay>2</EquipDelay>	  
+		<Beauty>-3</Beauty>
+		<Mass>2</Mass>	  
+    </statBases>		
+    <apparel>
+		<tags>
+			<li MayRequire="Ludeon.RimWorld.Royalty">PrestigeCombatGear</li>
+		</tags>
+		<careIfWornByCorpse>false</careIfWornByCorpse>	
+		<defaultOutfitTags><li>Soldier</li></defaultOutfitTags>	
+		<bodyPartGroups><li>FullHead</li></bodyPartGroups>	
+		<layers><li>Overhead</li></layers>
+    </apparel>		
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+    </comps>	
+  </ThingDef>
+  
+  
+  <!-- (Artifact) Helmet Base Class -->
+  <ThingDef Name="MedTimes_Helm_Art" ParentName="MedTimes_Helm_Rare" Abstract="True">
+      <useHitPoints>True</useHitPoints>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>	  
+      <ArmorRating_Blunt>0.5</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.95</ArmorRating_Sharp>	
+      <Flammability>1.0</Flammability>	
+      <DeteriorationRate>1</DeteriorationRate>  
+    </statBases>
+	<comps>
+      <li><compClass>CompQuality</compClass></li>
+    </comps>	
+    <thingCategories><li>HeadArmour_Art</li></thingCategories>	
+    <tradeTags><li>MedTimes_Artifact</li></tradeTags>			
+  </ThingDef>  
+  
+  
+   <!-- (Legendary) Helmet Base Class -->
+  <ThingDef Name="MedTimes_Helm_Leg" ParentName="MedTimes_Helm_Rare" Abstract="True">
+    <useHitPoints>False</useHitPoints>
+	<costList><MedTimes_NaniteVial>1</MedTimes_NaniteVial></costList>
+    <statBases>
+      <ArmorRating_Blunt>0.92</ArmorRating_Blunt>
+      <ArmorRating_Sharp>1.75</ArmorRating_Sharp>
+      <Insulation_Cold>4</Insulation_Cold>	
+    </statBases>	
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Intellectual</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>MedTimes_UnfinishedNanite</unfinishedThingDef>	  
+      <recipeUsers>
+		<li>MedTimes_EternityForge</li>
+      </recipeUsers>
+		<skillRequirements>
+				<Intellectual>10</Intellectual>
+		</skillRequirements>	  
+	</recipeMaker>		
+    <thingCategories><li>HeadArmour_Leg</li></thingCategories>	
+    <tradeTags><li>MedTimes_Legendary</li></tradeTags>
+    <thingSetMakerTags>
+		<li>PeaceTalksGift</li>
+		<li>ItemStashQuest</li>
+		<li>BanditCampQuestRewards</li>
+		<li>AncientTempleContents</li>
+		<li>AncientPodContents</li>
+    </thingSetMakerTags>	
+  </ThingDef>  
+  
+  
+
+<!-- ========================= Helmets (Artifact) ===================================== -->  
+<!-- God King's Mask Blue -->		 
+  <ThingDef ParentName="MedTimes_Helm_Art">
+    <defName>MedTimes_Helm_GodKingBlue_Art</defName>
+    <label>God King's Mask (Art)</label>
+    <description>(Artifact)[SocialImpact: +5%] A soft cap made of leather and cloth padding. This layer is covered in a gold plated scale-mail coif and topped with a large Ornate helmet. The helmet is a bascinet, meaning the front/facial portion can be lifted or removed. All these pieces together provide excellent protection without hampering either mobility or visibility. This helmet also has a voice modulator installed in the face mask so as to help the wearer sound more masculine and authoritative.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Headwear/GodKing/GodKing_Blue/MedTimes_Helm_GodKing_Blue</texPath>	  
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Headwear/GodKing/GodKing_Blue/MedTimes_Helm_GodKing_Blue_Art</uiIconPath>		
+    <statBases><MarketValue>3100</MarketValue></statBases>	
+    <equippedStatOffsets>
+      <SocialImpact>0.05</SocialImpact>
+    </equippedStatOffsets>	
+    <apparel>	
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Headwear/GodKing/GodKing_Blue/MedTimes_Helm_GodKing_Blue</wornGraphicPath>  	
+    </apparel>
+  </ThingDef>  
+
+  
+<!-- God King's Mask Green -->		 
+  <ThingDef ParentName="MedTimes_Helm_Art">
+    <defName>MedTimes_Helm_GodKingGreen_Art</defName>
+    <label>Society God King's Mask (Art)</label>
+    <description>(Artifact)[SocialImpact: +5%] A soft cap made of leather and cloth padding. This layer is covered in a gold plated scale-mail coif and topped with a large Ornate helmet. The helmet is a bascinet, meaning the front/facial portion can be lifted or removed. All these pieces together provide excellent protection without hampering either mobility or visibility.This helmet also has a voice modulator installed in the face mask so as to help the wearer sound more masculine and authoritative.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Headwear/GodKing/GodKing_Green/MedTimes_Helm_GodKing_Green</texPath>	  
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Headwear/GodKing/GodKing_Green/MedTimes_Helm_GodKing_Green_Art</uiIconPath>		
+    <statBases><MarketValue>3100</MarketValue></statBases>	
+    <equippedStatOffsets>
+      <SocialImpact>0.05</SocialImpact>
+    </equippedStatOffsets>	
+    <apparel>	
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Headwear/GodKing/GodKing_Green/MedTimes_Helm_GodKing_Green</wornGraphicPath>  
+    </apparel>
+  </ThingDef> 
+
+ <!-- Warlord's Mask Green -->		 
+  <ThingDef ParentName="MedTimes_Helm_Art">
+    <defName>MedTimes_Helm_Warlord_Art</defName>
+    <label>Warlord's Mask (Art)</label>
+    <description>(Artifact)[SocialImpact: +5%] This steel helmet is made in such a manner that it resembles a human skull, it's teeth appear to be sharpened fangs and the top is adorned with two large and winding horns. The back of the skull also contains a wild hair like mane made from what appears to be a high end stain resistant thrumbo fur. This helment was clearly designed to intimidate and make a statement.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Headwear/Warlord/MedTimes_Helm_Warlord</texPath>	  
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Headwear/Warlord/MedTimes_Helm_Warlord_Art</uiIconPath>		
+    <statBases><MarketValue>3100</MarketValue></statBases>	
+    <equippedStatOffsets>
+      <SocialImpact>0.05</SocialImpact>
+    </equippedStatOffsets>	
+    <apparel>	
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Headwear/Warlord/MedTimes_Helm_Warlord</wornGraphicPath>  
+    </apparel>
+  </ThingDef>  
+ 
+ 
+<!-- Torvald's Headwrap -->		 
+  <ThingDef ParentName="MedTimes_Helm_Art">
+    <defName>MedTimes_Helm_Torvald_Art</defName>
+    <label>Torvald's Headwrap (Art)</label>
+    <description>(Artifact)[MeleeDodge: +8%] The warlord Torvald was a big man, so much so that every time the blacksmith made Torvald a new helmet it was one size too small. Eventually the blacksmith became frustrated and ordered some exotic goods, producing one of these as a result. Torvald was ecstatic with his new headgear, and all the men who served him wanted a fancy new hat just like Torvald. It is said the blacksmith mass produced these for several years until his death at the behest of Torvald's men. It is made primarily from plasteel and hyperweave and is of very high quality.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Headwear/Torvald/MedTimes_Torvald</texPath>	  
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Headwear/Torvald/MedTimes_Torvald_Art</uiIconPath>		
+    <statBases><MarketValue>3300</MarketValue></statBases>
+		<equippedStatOffsets>
+			<MeleeDodgeChance>0.08</MeleeDodgeChance>			
+		</equippedStatOffsets>		
+    <apparel>	
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Headwear/Torvald/MedTimes_Torvald</wornGraphicPath>   	  
+    </apparel>  
+  </ThingDef>	
+  
+<!-- Combat Helmet -->		 
+  <ThingDef ParentName="MedTimes_Helm_Art">
+    <defName>MedTimes_Helm_Combat_Art</defName>
+    <label>Combat Helmet (Art)</label>
+    <description>(Artifact)[ShootAcc: +8%][AimDelay: -8%] Mass Produced in the millions on high-tech urban worlds for soldiers. How this particualr helmet made it's way to a backwater on the rim is anyone's guess. The helmet is made primarily of plasteel. It has Nano-stretch materials and contouring hyper-foam ensure a comfortable fit. Hyper Gel inserts also provide extra protection against heavy blunt force / shock impacts. The helmet comes imbeded with a generic Aim Assist and data composites useful for the everyday soldier.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Headwear/Combat/MedTimes_Combat</texPath>	  
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Headwear/Combat/MedTimes_Combat_Art</uiIconPath>		
+    <statBases><MarketValue>3500</MarketValue></statBases>	
+    <equippedStatOffsets> 
+      <ShootingAccuracyPawn>0.08</ShootingAccuracyPawn>	  
+      <AimingDelayFactor>-0.08</AimingDelayFactor>		  
+    </equippedStatOffsets>		
+    <apparel>			
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Headwear/Combat/MedTimes_Combat</wornGraphicPath>  	  
+    </apparel>  
+  </ThingDef>	  
+	
+	
+<!-- ========================= Helmets (Legendary) ===================================== -->   
+<!-- God King's Mask Blue -->		 
+  <ThingDef ParentName="MedTimes_Helm_Leg">
+    <defName>MedTimes_Helm_GodKingBlue_Leg</defName>
+    <label>God King's Mask (Leg)</label>
+    <description>(Legendary)[SocialImpact: +8%] A soft cap made of leather and cloth padding. This layer is covered in a gold plated scale-mail coif and topped with a large Ornate helmet. The helmet is a bascinet, meaning the front/facial portion can be lifted or removed. All these pieces together provide excellent protection without hampering either mobility or visibility. The extra layers means it is also great for keeping warm in winter.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Headwear/GodKing/GodKing_Blue/MedTimes_Helm_GodKing_Blue</texPath>		  
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Headwear/GodKing/GodKing_Blue/MedTimes_Helm_GodKing_Blue_Leg</uiIconPath>
+	<costList><MedTimes_Helm_GodKingBlue_Art>1</MedTimes_Helm_GodKingBlue_Art></costList>				
+    <equippedStatOffsets>
+      <SocialImpact>0.08</SocialImpact>
+    </equippedStatOffsets>	
+    <apparel>	
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Headwear/GodKing/GodKing_Blue/MedTimes_Helm_GodKing_Blue</wornGraphicPath>  	
+    </apparel>
+  </ThingDef>  
+
+  
+<!-- God King's Mask Green -->		 
+  <ThingDef ParentName="MedTimes_Helm_Leg">
+    <defName>MedTimes_Helm_GodKingGreen_Leg</defName>
+    <label>Society God King's Mask (Leg)</label>
+    <description>(Legendary)[SocialImpact: +8%] A soft cap made of leather and cloth padding. This layer is covered in a gold plated scale-mail coif and topped with a large Ornate helmet. The helmet is a bascinet, meaning the front/facial portion can be lifted or removed. All these pieces together provide excellent protection without hampering either mobility or visibility. The extra layers means it is also great for keeping warm in winter.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Headwear/GodKing/GodKing_Green/MedTimes_Helm_GodKing_Green</texPath>	  
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Headwear/GodKing/GodKing_Green/MedTimes_Helm_GodKing_Green_Leg</uiIconPath>
+	<costList><MedTimes_Helm_GodKingGreen_Art>1</MedTimes_Helm_GodKingGreen_Art></costList>				
+    <equippedStatOffsets>
+      <SocialImpact>0.08</SocialImpact>
+    </equippedStatOffsets>	
+    <apparel>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Headwear/GodKing/GodKing_Green/MedTimes_Helm_GodKing_Green</wornGraphicPath>  
+    </apparel>
+  </ThingDef>
+
+ <!-- Warlord's Mask -->		 
+  <ThingDef ParentName="MedTimes_Helm_Leg">
+    <defName>MedTimes_Helm_Warlord_Leg</defName>
+    <label>Warlord's Mask (Leg)</label>
+    <description>(Legendary)[SocialImpact: +8%] This steel helmet is made in such a manner that it resembles a human skull, it's teeth appear to be sharpened fangs and the top is adorned with two large and winding horns. The back of the skull also contains a wild hair like mane made from what appears to be a high end stain resistant thrumbo fur. This helment was clearly designed to intimidate and make a statement.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Headwear/Warlord/MedTimes_Helm_Warlord</texPath>	  
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Headwear/Warlord/MedTimes_Helm_Warlord_Leg</uiIconPath>
+	<costList><MedTimes_Helm_Warlord_Art>1</MedTimes_Helm_Warlord_Art></costList>				
+    <equippedStatOffsets>
+      <SocialImpact>0.08</SocialImpact>
+    </equippedStatOffsets>	
+    <apparel>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Headwear/Warlord/MedTimes_Helm_Warlord</wornGraphicPath>  
+    </apparel>
+  </ThingDef>    
+
+  
+<!-- Torvald's Headwrap -->		 
+  <ThingDef ParentName="MedTimes_Helm_Leg">
+    <defName>MedTimes_Helm_Torvald_Leg</defName>
+    <label>Torvald's Headwrap (Leg)</label>
+    <description>(Legendary) [MeleeDodge: +10%]The warlord Torvald was a big man, so much so that every time the blacksmith made Torvald a new helmet it was one size too small. Eventually the blacksmith became frustrated and ordered some exotic goods, producing one of these as a result. Torvald was ecstatic with his new headgear, and all the men who served him wanted a fancy new hat just like Torvald. It is said the blacksmith mass produced these for several years until his death at the behest of Torvald's men. It is made primarily from plasteel and hyperweave and is of very high quality.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Headwear/Torvald/MedTimes_Torvald</texPath>	  
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Headwear/Torvald/MedTimes_Torvald_Leg</uiIconPath>
+	<costList><MedTimes_Helm_Torvald_Art>1</MedTimes_Helm_Torvald_Art></costList>
+		<equippedStatOffsets>
+			<MeleeDodgeChance>0.1</MeleeDodgeChance>			
+		</equippedStatOffsets>		
+    <apparel>
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Headwear/Torvald/MedTimes_Torvald</wornGraphicPath>    
+    </apparel>
+  </ThingDef>     
+
+<!-- Combat Helmet -->		 
+  <ThingDef ParentName="MedTimes_Helm_Leg">
+    <defName>MedTimes_Helm_Combat_Leg</defName>
+    <label>Combat Helmet (Leg)</label>
+    <description>(Legendary)[ShootAcc: +10%][AimDelay: -10%] Mass Produced in the millions on high-tech urban worlds for soldiers. How this particualr helmet made it's way to a backwater on the rim is anyone's guess. The helmet is made primarily of plasteel. It has Nano-stretch materials and contouring hyper-foam ensure a comfortable fit. Hyper Gel inserts also provide extra protection against heavy blunt force / shock impacts. The helmet comes imbeded with a generic Aim Assist and data composites useful for the everyday soldier. The data logs state that this particular helmet has been enhanced with self-repairing nanites.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Headwear/Combat/MedTimes_Combat</texPath>	  
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Headwear/Combat/MedTimes_Combat_Leg</uiIconPath>
+	<costList><MedTimes_Helm_Combat_Art>1</MedTimes_Helm_Combat_Art></costList>			
+    <equippedStatOffsets> 
+      <ShootingAccuracyPawn>0.1</ShootingAccuracyPawn>	  
+      <AimingDelayFactor>-0.1</AimingDelayFactor>		  
+    </equippedStatOffsets>	
+    <apparel>			
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Headwear/Combat/MedTimes_Combat</wornGraphicPath>  	  
+    </apparel>  
+  </ThingDef>
+  
+<!-- End of thingDefs -->  
+</Defs>
