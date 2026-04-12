@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!-- Start of thingDefs -->
+
+<!-- ==================== Bases -Classes- ========================== -->
+<!-- Ranged Weapon -->
+  <ThingDef Name="MedTimes_RangedWeapon_Rare" Abstract="True">
+    <category>Item</category>
+    <thingClass>ThingWithComps</thingClass>
+    <equipmentType>Primary</equipmentType>
+	<smeltable>false</smeltable>
+	  <weaponTags>
+		  <li MayRequire="Ludeon.RimWorld.Royalty">MedievalMeleeDecent</li>
+	  </weaponTags>
+    <pathCost>35</pathCost>
+    <selectable>True</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+    <alwaysHaulable>True</alwaysHaulable>
+    <tickerType>Never</tickerType>	
+    <drawGUIOverlay>true</drawGUIOverlay>	
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass> 	
+      <onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+      <shaderType>Transparent</shaderType>	  
+    </graphicData>
+
+    <statBases>
+      <SellPriceFactor>0.9</SellPriceFactor>
+      <Mass>2</Mass>	  
+	  <Beauty>-5</Beauty>	  
+    </statBases>
+
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li>
+        <compClass>CompEquippable</compClass>
+      </li>
+    </comps>	
+  </ThingDef>
+ 
+ 
+<!--  (Artifact) Ranged Weapon -->
+  <ThingDef Name="MedTimes_RangedWeapon_Art" ParentName="MedTimes_RangedWeapon_Rare" Abstract="True">
+    <useHitPoints>True</useHitPoints>  
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <Flammability>1.0</Flammability>	
+      <DeteriorationRate>1</DeteriorationRate>  
+    </statBases>  
+    <comps>
+      <li><compClass>CompQuality</compClass></li>
+      <li Class="CompProperties_Art">
+        <nameMaker>NamerArtWeaponGun</nameMaker>
+        <descriptionMaker>ArtDescription_WeaponGun</descriptionMaker>
+        <minQualityForArtistic>Excellent</minQualityForArtistic>
+      </li>
+    </comps>
+    <inspectorTabs><li>ITab_Art</li></inspectorTabs>  	
+    <thingCategories><li>WeaponsRanged_Art</li></thingCategories>	
+    <tradeTags><li>MedTimes_Artifact</li></tradeTags>		
+  </ThingDef>
+ 
+ 
+<!--  (Legendary) Ranged Weapon -->
+  <ThingDef Name="MedTimes_RangedWeapon_Leg" ParentName="MedTimes_RangedWeapon_Rare" Abstract="True">
+    <useHitPoints>False</useHitPoints>
+	<costList><MedTimes_NaniteVial>1</MedTimes_NaniteVial></costList>		
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Intellectual</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>MedTimes_UnfinishedNanite</unfinishedThingDef>	  
+      <recipeUsers>
+		<li>MedTimes_EternityForge</li>
+      </recipeUsers>
+		<skillRequirements>
+				<Intellectual>10</Intellectual>
+		</skillRequirements>	  
+	</recipeMaker>	
+    <thingCategories><li>WeaponsRanged_Leg</li></thingCategories>	
+    <tradeTags><li>MedTimes_Legendary</li></tradeTags>
+    <thingSetMakerTags>
+		<li>PeaceTalksGift</li>
+		<li>ItemStashQuest</li>
+		<li>BanditCampQuestRewards</li>
+		<li>AncientTempleContents</li>
+		<li>AncientPodContents</li>
+    </thingSetMakerTags>		
+  </ThingDef> 
+ 
+ 
+<!--  Bullet Base Class --> 
+  <ThingDef Name="MedTimes_Bullet" Abstract="True">
+    <category>Projectile</category>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>Projectile</altitudeLayer>
+    <thingClass>Bullet</thingClass>
+    <label>bullet</label>
+    <useHitPoints>False</useHitPoints>
+    <neverMultiSelect>True</neverMultiSelect>
+    <graphicData>
+      <shaderType>Transparent</shaderType>
+    </graphicData>
+  </ThingDef>
+
+  
+<!-- ========================== SPECIFICS ============================== -->
+
+<!--   ==== Projectiles ==== -->
+<!-- Charge-10 shot-->
+  <ThingDef ParentName="MedTimes_Bullet">
+    <defName>Medieval_Bullet_CMG</defName>
+    <label>charge shot</label>
+    <graphicData>
+      <texPath>Things/Projectile/Charge_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>10</damageAmountBase>
+      <speed>70</speed>
+      <stoppingPower>1</stoppingPower>
+    </projectile>
+  </ThingDef>
+  
+<!-- Black Bow Ammo -->
+  <ThingDef ParentName="MedTimes_ArrowBase">
+    <defName>MedTimes_Arrow_Black</defName>
+    <label>Black Bow Arrow</label>
+    <projectile>
+      <damageAmountBase>20</damageAmountBase>
+      <speed>68</speed>
+      <stoppingPower>1</stoppingPower>
+      <armorPenetrationBase>0.15</armorPenetrationBase>	  
+    </projectile>
+  </ThingDef>  
+  
+  
+<!--   ==== (Artifact) Weapons ==== -->  
+<!-- The Black Bow --> 
+  <ThingDef ParentName="MedTimes_RangedWeapon_Art">
+    <defName>MedTimes_Ranged_BlackBow_Art</defName>
+    <label>The Black Bow (Art)</label>
+    <description>(Artifact) This bow is rumored to be the primary weapon of the warlord known as Torvald who unified the various raider and mercenary companies into the modern mega-guild that it currently is today. It is likely that Torvald hand many of these bows made for his use, if this is an original or a counterfeit made during that era is unknown. How it was made was lost to the ages, however, it is understood that it was made from some kind of polymer consisting of both plasteel and a rare type of blackwood. Hence its name the "Blackwood Bow" or simply the black bow. The front of the bow has been edged so as to allow the user to slash at and fight off attackers who come to close to it's wielder. Although useful in combat, the exterior blades make stringing the bow an exceedingly dangerous and difficult maneuver.</description>
+    <techLevel>Medieval</techLevel>		
+
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/MedTimes_BlackBow</texPath>	  
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponRanged/MedTimes_BlackBow_Art</uiIconPath>			
+	
+	<statBases>
+      <MarketValue>4500</MarketValue>	
+      <AccuracyTouch>0.87</AccuracyTouch>
+      <AccuracyShort>0.83</AccuracyShort>
+      <AccuracyMedium>0.67</AccuracyMedium>
+      <AccuracyLong>0.57</AccuracyLong>
+      <RangedWeapon_Cooldown>1.65</RangedWeapon_Cooldown> 
+    </statBases>
+	
+    <equippedAngleOffset>-45</equippedAngleOffset>
+    <tools>
+      <li> 
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>15</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>	
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>1.35</warmupTime>
+        <soundCast>Bow_Large</soundCast>	  
+        <defaultProjectile>MedTimes_Arrow_Black</defaultProjectile>
+        <range>25</range>
+      </li>
+    </verbs>
+  </ThingDef>
+
+
+<!-- (Artifact) Charge-10 MG -->
+  <ThingDef ParentName="MedTimes_RangedWeapon_Art">
+    <defName>MedTimes_Ranged_ChargeMG_Art</defName>
+    <label>Charge-10 MG (Art)</label>
+    <description>(Artifact) A high-tech variant of the charged-shot energy/projectile rifle. This marvel of technology is a long ranged light machine gun and is probably why gunpowder based projectiles were deemed "obsolete" by galactic military forces. Became highly popularized by Robo-Willis in the action-epic "Last Crusader", became legendary in the third galactic war.</description>
+    <techLevel>Spacer</techLevel>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/MedTimes_C10MG</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponRanged/MedTimes_C10MG_Art</uiIconPath>			
+    <soundInteract>Interact_ChargeRifle</soundInteract>	
+    <statBases>
+      <MarketValue>6500</MarketValue>
+      <AccuracyTouch>0.8</AccuracyTouch>
+      <AccuracyShort>0.83</AccuracyShort>
+      <AccuracyMedium>0.63</AccuracyMedium>
+      <AccuracyLong>0.5</AccuracyLong>
+      <RangedWeapon_Cooldown>1.45</RangedWeapon_Cooldown>
+    </statBases>
+    <tools>
+      <li>
+        <label>limb</label>
+        <capacities>
+          <li>Blunt</li>
+          <li>Poke</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>	
+    <verbs><li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Medieval_Bullet_CMG</defaultProjectile>
+        <warmupTime>1.25</warmupTime>
+        <range>31</range>
+        <ticksBetweenBurstShots>12</ticksBetweenBurstShots>
+        <burstShotCount>4</burstShotCount>
+        <soundCast>Shot_ChargeRifle</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+    </li></verbs>
+    <weaponTags><li>AdvancedGun</li></weaponTags>
+  </ThingDef>
+
+  
+  
+  
+<!--   ==== (Legendary) Weapons ==== --> 
+<!-- The Black Bow --> 
+  <ThingDef ParentName="MedTimes_RangedWeapon_Leg">
+    <defName>MedTimes_Ranged_BlackBow_Leg</defName>
+    <label>The Black Bow (Leg)</label>
+    <description>(Legendary) This bow is rumored to be the primary weapon of the warlord known as Torvald who unified the various raider and mercenary companies into the modern mega-guild that it currently is today. It is likely that Torvald hand many of these bows made for his use, so this is most likely an original. How it was made was lost to the ages, however, it is understood that it was made from some kind of polymer consisting of both plasteel and a rare type of blackwood. Hence its name the "Blackwood Bow" or simply the black bow. The front of the bow has been edged so as to allow the user to slash at and fight off attackers who come to close to it's wielder. Although useful in combat, the exterior blades make stringing the bow an exceedingly dangerous and difficult maneuver.</description>
+    <techLevel>Medieval</techLevel>		
+
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/MedTimes_BlackBow</texPath>	  
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponRanged/MedTimes_BlackBow_Leg</uiIconPath>			
+	<costList><MedTimes_Ranged_BlackBow_Art>1</MedTimes_Ranged_BlackBow_Art></costList>		
+	<statBases>
+      <AccuracyTouch>1.3</AccuracyTouch>
+      <AccuracyShort>1.25</AccuracyShort>
+      <AccuracyMedium>1</AccuracyMedium>
+      <AccuracyLong>0.85</AccuracyLong>
+      <RangedWeapon_Cooldown>1.55</RangedWeapon_Cooldown> 
+    </statBases>
+	
+    <equippedAngleOffset>-45</equippedAngleOffset>
+	
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>1.3</warmupTime>
+        <soundCast>Bow_Large</soundCast>	  
+        <defaultProjectile>MedTimes_Arrow_Black</defaultProjectile>
+        <range>26</range>
+      </li>
+    </verbs>
+    <tools>
+      <li> 
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>23.25</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>	  
+  </ThingDef>
+ 
+<!-- (Legendary) Charge-10 MG -->
+  <ThingDef ParentName="MedTimes_RangedWeapon_Leg">
+    <defName>MedTimes_Ranged_ChargeMG_Leg</defName>
+    <label>Charge-10 MG (Leg)</label>
+    <description>(Legendary) A high-tech variant of the charged-shot energy/projectile rifle. This marvel of technology is a long ranged light machine gun and is probably why gunpowder based projectiles were deemed "obsolete" by galactic military forces. Became highly popularized by Robo-Willis in the action-epic "Last Crusader", became legendary in the third galactic war.</description>
+    <techLevel>Spacer</techLevel>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponRanged/MedTimes_C10MG</texPath>
+    </graphicData>
+		<uiIconPath>Things/Item/Equipment/WeaponRanged/MedTimes_C10MG_Leg</uiIconPath>			
+    <soundInteract>Interact_ChargeRifle</soundInteract>
+	<costList><MedTimes_Ranged_ChargeMG_Art>1</MedTimes_Ranged_ChargeMG_Art></costList>		
+    <statBases>
+      <AccuracyTouch>1.2</AccuracyTouch>
+      <AccuracyShort>1.25</AccuracyShort>
+      <AccuracyMedium>0.95</AccuracyMedium>
+      <AccuracyLong>0.75</AccuracyLong>
+      <RangedWeapon_Cooldown>1.35</RangedWeapon_Cooldown>
+    </statBases>
+    <tools>
+      <li>
+        <label>limb</label>
+        <capacities>
+          <li>Blunt</li>
+          <li>Poke</li>
+        </capacities>
+        <power>18.6</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>	
+    <verbs><li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <defaultProjectile>Medieval_Bullet_CMG</defaultProjectile>
+        <warmupTime>1.2</warmupTime>
+        <range>32</range>
+        <ticksBetweenBurstShots>12</ticksBetweenBurstShots>
+        <burstShotCount>4</burstShotCount>
+        <soundCast>Shot_ChargeRifle</soundCast>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+    </li></verbs>
+    <weaponTags><li>AdvancedGun</li></weaponTags>	
+  </ThingDef>
+  
+<!-- End of thingDefs --> 
+</Defs>

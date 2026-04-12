@@ -1,0 +1,1784 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- <></> -->
+	<!-- PLANNED ADDITIONS -->
+	<!-- this is currently mostly taken and readjusted stuff from the tools o' plenty mod -->
+	<!-- in future i'll add some extras, more indepth tooling, adjustments to the recipes and some extras that can be used as weapons proper, like nailguns -->
+	<!-- TOOL PARENT -->
+		<ThingDef ParentName="BaseMeleeWeapon" Name="DCM_Tool_Parent" Abstract="True">
+			<comps>
+				<li>
+					<compClass>CompQuality</compClass>
+				</li>
+				<li Class="CompProperties_Art">
+					<nameMaker>NamerArtWeaponMelee</nameMaker> <!-- TODO: create a names list for tools specifically -->
+					<descriptionMaker>ArtDescription_WeaponMelee</descriptionMaker> <!-- TODO: create a description list for tools -->
+					<minQualityForArtistic>Excellent</minQualityForArtistic>
+				</li>
+			</comps>
+			<possessionCount>1</possessionCount>
+			<graphicData>
+				<graphicClass>Graphic_Single</graphicClass>
+			</graphicData>
+			<uiIconScale>1</uiIconScale>
+			<weaponTags>DCM_Tool</weaponTags>
+			<recipeMaker>
+				<displayPriority>400</displayPriority>
+			</recipeMaker>
+		</ThingDef>
+	<!-- 1 - NEOLITHIC -->
+		<!-- AXE -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Primitive_Axe</defName>
+				<label>primitive axe</label>
+				<description>A rudimentary cutting tool crafted from natural materials like stone, flint, or bone. Featuring a sharp, wedge-shaped blade securely attached to a wooden or bone handle, it embodies early human innovation in woodworking and survival. Used for chopping wood, shaping materials, and various tasks requiring efficient cutting, it represents an essential tool in ancient civilizations and early human societies.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Neolithic/NeolithicAxe</texPath>
+					<drawSize>(1,1)</drawSize>
+				</graphicData>
+				<techLevel>Neolithic</techLevel>
+				<costStuffCount>10</costStuffCount>
+				<statBases>
+					<WorkToMake>6000</WorkToMake>
+					<Mass>1</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<PlantHarvestYield>0.05</PlantHarvestYield>
+					<PlantWorkSpeed>0.10</PlantWorkSpeed>
+				</equippedStatOffsets>
+				<stuffCategories>
+					<li>Metallic</li>
+					<li>Woody</li>
+				</stuffCategories>
+				<tools>
+					<li>
+						<label>handle</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>4</power>
+						<cooldownTime>1</cooldownTime>
+					</li>
+					<li>
+						<label>edge</label>
+						<capacities>
+							<li>Cut</li>
+						</capacities>
+						<power>4</power>
+						<cooldownTime>1</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_NeolithicTools</researchPrerequisite>
+					<skillRequirements>
+						<Crafting>3</Crafting>
+					</skillRequirements>
+					<recipeUsers Inherit="false">
+						<li>CraftingSpot</li>
+						<li>FueledSmithy</li>
+						<li>ElectricSmithy</li>
+					</recipeUsers>
+				</recipeMaker>
+			</ThingDef>
+		<!-- KNIFE -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Primitive_Knife</defName>
+				<label>primitive knife</label>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Neolithic/NeolithicKnife</texPath>
+					<drawSize>(0.7,0.7)</drawSize>
+				</graphicData>
+				<techLevel>Neolithic</techLevel>
+				<costStuffCount>10</costStuffCount>
+				<statBases>
+					<WorkToMake>3000</WorkToMake>
+					<Mass>0.30</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<CookSpeed>0.10</CookSpeed>
+					<ButcheryFleshSpeed>0.10</ButcheryFleshSpeed>
+					<MedicalSurgerySuccessChance>0.05</MedicalSurgerySuccessChance>
+				</equippedStatOffsets>
+				<stuffCategories>
+					<li>Metallic</li>
+					<li>Woody</li>
+				</stuffCategories>
+				<tools>
+					<li>
+						<label>handle</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>4</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+					<li>
+						<label>blade</li>
+						<capacities>
+							<li>Cut</li>
+						</capacities>
+						<power>6</power>
+						<cooldownTime>1.5</cooldownTime>
+					</li>
+					<li>
+						<label>point</label>
+						<capacities>
+							<li>Stab</li>
+						</capacities>
+						<power>7</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_NeolithicTools</researchPrerequisite>
+					<recipeUsers Inherit="false">
+						<li>CraftingSpot</li>
+						<li>FueledSmithy</li>
+						<li>ElectricSmithy</li>
+					</recipeUsers>
+					<skillRequirements>
+						<Crafting>3</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+		<!-- MEDICAL KIT -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Primitive_MedicalKit</defName>
+				<label>primitive medical kit</label>
+				<description>A primitive medical kit that predominantly consists of rudimentary bandaging material; strips of cloth, leaves, or other natural materials, used to cover and protect wounds or injuries. These bandages are rudimentary in nature, lacking modern adhesive or sterile properties, and are typically secured by tying or wrapping. While basic, they serve the fundamental purpose of providing some level of protection and support to the injured area.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Neolithic/NeolithicMedicalKit</texPath>
+					<drawSize>(0.7,0.7)</drawSize>
+				</graphicData>
+				<techLevel>Neolithic</techLevel>
+				<costStuffCount>10</costStuffCount>
+				<statBases>
+					<WorkToMake>1200</WorkToMake>
+					<Mass>0.30</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<MedicalTendSpeed>0.10</MedicalTendSpeed>
+					<MedicalTendQuality>0.05</MedicalTendQuality>
+				</equippedStatOffsets>
+				<stuffCategories>
+					<li>Leathery</li>
+					<li>Fabric</li>
+				</stuffCategories>
+				<tools>
+					<li>
+						<label>handle</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>0.1</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_NeolithicTools</researchPrerequisite>
+					<recipeUsers Inherit="false">
+						<li>CraftingSpot</li>
+						<li>FueledSmithy</li>
+						<li>ElectricSmithy</li>
+					</recipeUsers>
+					<skillRequirements>
+						<Crafting>2</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+		<!-- PICKAXE -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Primitive_Pickaxe</defName>
+				<label>primitive pickaxe</label>
+				<description>A rugged hand tool fashioned from durable materials such as wood, bone, or stone. Characterized by a pointed or chiseled end affixed to a sturdy handle, it serves as a versatile implement for digging, breaking up soil, and extracting minerals or resources. Reflecting early human ingenuity, it embodies the essential tool for survival and resource gathering in primitive environments.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Neolithic/NeolithicPickaxe</texPath>
+					<drawSize>(1,1)</drawSize>
+				</graphicData>
+				<techLevel>Neolithic</techLevel>
+				<costStuffCount>10</costStuffCount>
+				<statBases>
+					<WorkToMake>6000</WorkToMake>
+					<Mass>0.10</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<MiningSpeed>0.10</MiningSpeed>
+					<MiningYield>0.10</MiningYield>
+				</equippedStatOffsets>
+				<stuffCategories>
+					<li>Metallic</li>
+					<li>Woody</li>
+				</stuffCategories>
+				<tools>
+					<li>
+						<label>handle</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>4</power>
+						<cooldownTime>1</cooldownTime>
+					</li>
+					<li>
+						<label>point</label>
+						<capacities>
+							<li>Stab</li>
+						</capacities>
+						<power>4</power>
+						<cooldownTime>1</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_NeolithicTools</researchPrerequisite>
+					<skillRequirements>
+						<Crafting>3</Crafting>
+					</skillRequirements>
+					<recipeUsers Inherit="false">
+						<li>CraftingSpot</li>
+						<li>FueledSmithy</li>
+						<li>ElectricSmithy</li>
+					</recipeUsers>
+				</recipeMaker>
+			</ThingDef>
+	<!-- 2 - MEDIEVAL -->
+		<!-- BROOM -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Medieval_Broom</defName>
+				<label>straw broom</label>
+				<description>A traditional cleaning tool composed of straw or natural fibers bundled together. With its simple yet effective design, the straw broom efficiently sweeps dirt, dust, and debris from floors and surfaces. Known for its versatility and durability, it remains a staple in household cleaning routines, offering a timeless solution for tidying indoor and outdoor spaces with ease.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Medieval/MedievalBroom</texPath>
+					<drawSize>(0.8,0.8)</drawSize>
+				</graphicData>
+				<techLevel>Medieval</techLevel>
+				<costStuffCount>20</costStuffCount>
+				<statBases>
+					<WorkToMake>3000</WorkToMake>
+					<Mass>0.20</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<CleaningSpeed>0.10</CleaningSpeed>
+				</equippedStatOffsets>
+				<stuffCategories>
+					<li>Woody</li>
+				</stuffCategories>
+				<tools>
+					<li>
+						<label>handle</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>2</power>
+						<cooldownTime>1</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_MedievalTools</researchPrerequisite>
+					<skillRequirements>
+						<Crafting>1</Crafting>
+					</skillRequirements>
+					<recipeUsers Inherit="false">
+						<li>CraftingSpot</li>
+						<li>FueledSmithy</li>
+						<li>ElectricSmithy</li>
+					</recipeUsers>
+				</recipeMaker>
+			</ThingDef>
+		<!-- COMB -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Medieval_Comb</defName>
+				<label>simple comb</label>
+				<description>A simple yet effective grooming tool designed for use in taming and caring for animals. Crafted from basic materials such as bone or wood, this comb features strategically placed teeth to gently untangle fur and remove debris, promoting the health and well-being of domesticated creatures. With its rudimentary design and practical functionality.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Medieval/MedievalComb</texPath>
+					<drawSize>(0.7,0.7)</drawSize>
+				</graphicData>
+				<techLevel>Medieval</techLevel>
+				<costStuffCount>10</costStuffCount>
+				<statBases>
+					<WorkToMake>3000</WorkToMake>
+					<Mass>0.30</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<AnimalGatherSpeed>0.10</AnimalGatherSpeed>
+				</equippedStatOffsets>
+				<stuffCategories>
+					<li>Metallic</li>
+					<li>Woody</li>
+				</stuffCategories>
+				<tools>
+					<li>
+						<label>handle</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>3</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+					<li>
+						<label>point</label>
+						<capacities>
+							<li>Stab</li>
+						</capacities>
+						<power>3</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_MedievalTools</researchPrerequisite>
+					<recipeUsers Inherit="false">
+						<li>CraftingSpot</li>
+						<li>FueledSmithy</li>
+						<li>ElectricSmithy</li>
+					</recipeUsers>
+					<skillRequirements>
+						<Crafting>2</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+		<!-- MALLET --> <!-- TODO: this may eventually be cut/changed heavily -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Medieval_Mallet</defName>
+				<label>mallet</label>
+				<description>A simple yet versatile tool featuring a solid head, typically made of wood, rubber, or metal, attached to a sturdy handle. Designed for delivering controlled force without damaging delicate surfaces, it serves various purposes in woodworking and construction, offering precision and effectiveness in tasks requiring gentle yet impactful percussion.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Medieval/MedievalMallet</texPath>
+					<drawSize>(1,1)</drawSize>
+				</graphicData>
+				<techLevel>Medieval</techLevel>
+				<costStuffCount>10</costStuffCount>
+				<statBases>
+					<WorkToMake>6000</WorkToMake>
+					<Mass>1</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<ConstructionSpeed>0.10</ConstructionSpeed>
+					<ConstructSuccessChance>0.05</ConstructSuccessChance>
+				</equippedStatOffsets>
+				<stuffCategories>
+					<li>Metallic</li>
+					<li>Woody</li>
+				</stuffCategories>
+				<tools>
+					<li>
+						<label>handle</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>4</power>
+						<cooldownTime>1</cooldownTime>
+					</li>
+					<li>
+						<label>head</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>4</power>
+						<cooldownTime>1</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_MedievalTools</researchPrerequisite>
+					<skillRequirements>
+						<Crafting>5</Crafting>
+					</skillRequirements>
+					<recipeUsers Inherit="false">
+						<li>CraftingSpot</li>
+						<li>FueledSmithy</li>
+						<li>ElectricSmithy</li>
+					</recipeUsers>
+				</recipeMaker>
+			</ThingDef>
+		<!-- MORTAR AND PESTLE -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Medieval_MortarAndPestle</defName>
+				<label>mortal and pestle</label>
+				<description>A traditional culinary tool consisting of a sturdy bowl (mortar) and a blunt, club-shaped instrument (pestle). Used for grinding, crushing, and mixing herbs, spices, and other ingredients, it offers a timeless method for preparing flavorful concoctions and unlocking the aromas and flavors of various substances through manual pulverization.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Medieval/MedievalMortarAndPestle</texPath>
+					<drawSize>(0.8,0.8)</drawSize>
+				</graphicData>
+				<techLevel>Medieval</techLevel>
+				<costStuffCount>10</costStuffCount>
+				<statBases>
+					<WorkToMake>3000</WorkToMake>
+					<Mass>0.30</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<DrugSynthesisSpeed>0.10</DrugSynthesisSpeed>
+					<DrugCookingSpeed>0.10</DrugCookingSpeed>
+				</equippedStatOffsets>
+				<stuffCategories>
+					<li>Metallic</li>
+					<li>Woody</li>
+				</stuffCategories>
+				<tools>
+					<li>
+						<label>handle</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>4</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+					<li>
+						<label>head</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>4</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_MedievalTools</researchPrerequisite>
+					<recipeUsers Inherit="false">
+						<li>CraftingSpot</li>
+						<li>FueledSmithy</li>
+						<li>ElectricSmithy</li>
+					</recipeUsers>
+					<skillRequirements>
+						<Crafting>3</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+		<!-- PARCHMENT -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Medieval_Parchment</defName>
+				<label>parchment</label>
+				<description>A durable material made from specially prepared animal skin, typically sheep, goat, or calf. Through a meticulous process of cleaning, stretching, and drying, parchment becomes smooth and resilient, suitable for writing, drawing, or painting. Widely used historically for manuscripts, legal documents, and artwork, parchment embodies a timeless medium prized for its longevity and elegance in preserving written or visual creations.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Medieval/MedievalParchment</texPath>
+					<drawSize>(1,1)</drawSize>
+				</graphicData>
+				<techLevel>Medieval</techLevel>
+				<costStuffCount>10</costStuffCount>
+				<statBases>
+					<WorkToMake>6000</WorkToMake>
+					<Mass>0.10</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<GlobalLearningFactor>0.08</GlobalLearningFactor>
+					<TradePriceImprovement>0.08</TradePriceImprovement>
+					<ResearchSpeed>0.08</ResearchSpeed>
+				</equippedStatOffsets>
+				<stuffCategories>
+					<li>Leathery</li>
+				</stuffCategories>
+				<tools>
+					<li>
+						<label>handle</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>1</power>
+						<cooldownTime>1</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_MedievalTools</researchPrerequisite>
+					<skillRequirements>
+						<Crafting>5</Crafting>
+					</skillRequirements>
+					<recipeUsers Inherit="false">
+						<li>CraftingSpot</li>
+						<li>FueledSmithy</li>
+						<li>ElectricSmithy</li>
+					</recipeUsers>
+				</recipeMaker>
+			</ThingDef>
+		<!-- TOOLKIT -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Medieval_Toolkit</defName>
+				<label>simple tools set</label>
+				<description>The simple leather-bound toolset is a collection of essential implements crafted for basic manual tasks, encompassing a chisel, a small hammer, and a file. Encased within a durable leather sheath, these tools are designed to facilitate precision workmanship in various materials, such as wood or metal.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Medieval/MedievalToolKit</texPath>
+					<drawSize>(1,1)</drawSize>
+				</graphicData>
+				<techLevel>Medieval</techLevel>
+				<costStuffCount>20</costStuffCount>
+				<statBases>
+					<WorkToMake>9000</WorkToMake>
+					<Mass>0.5</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<SmithingSpeed>0.10</SmithingSpeed>
+					<SculptingSpeed>0.10</SculptingSpeed>
+					<TailoringSpeed>0.10</TailoringSpeed>
+				</equippedStatOffsets>
+				<stuffCategories>
+					<li>Leathery</li>
+				</stuffCategories>
+				<costList>
+					<Steel>30</Steel>
+				</costList>
+				<tools>
+					<li>
+						<label>handle</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>0.5</power>
+						<cooldownTime>1</cooldownTime>
+					</li>
+						<li>
+						<label>point</label>
+						<capacities>
+							<li>Stab</li>
+						</capacities>
+						<power>4</power>
+						<cooldownTime>1</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_MedievalTools</researchPrerequisite>
+					<skillRequirements>
+						<Crafting>5</Crafting>
+					</skillRequirements>
+					<recipeUsers Inherit="false">
+						<li>CraftingSpot</li>
+						<li>FueledSmithy</li>
+						<li>ElectricSmithy</li>
+					</recipeUsers>
+				</recipeMaker>
+			</ThingDef>
+	<!-- 3 - INDUSTRIAL -->
+		<!-- AXE -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Industrial_Axe</defName>
+				<label>axe</label>
+				<description>A robust cutting tool meticulously crafted through the process of forging, where metal is heated, shaped, and hammered into its final form. Featuring a high-quality steel blade securely affixed to a sturdy wooden or metal handle, the forged axe embodies superior strength and durability. Renowned for its sharp edge and balanced weight distribution, it excels in tasks such as chopping wood, shaping timber, and wilderness survival, making it an essential tool for lumberjacks, outdoorsmen, and craftsmen alike.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Industrial/IndustrialAxe</texPath>
+					<drawSize>(0.7,0.7)</drawSize>
+				</graphicData>
+				<techLevel>Industrial</techLevel>
+				<costStuffCount>50</costStuffCount>
+				<statBases>
+					<WorkToMake>9000</WorkToMake>
+					<Mass>1.5</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<PlantWorkSpeed>0.20</PlantWorkSpeed>
+					<PlantHarvestYield>0.10</PlantHarvestYield>
+				</equippedStatOffsets>
+				<stuffCategories>
+					<li>Metallic</li>
+				</stuffCategories>
+				<tools>
+					<li>
+						<label>handle</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>4</power>
+						<cooldownTime>1</cooldownTime>
+					</li>
+					<li>
+						<label>edge</label>
+						<capacities>
+							<li>Cut</li>
+						</capacities>
+						<power>6</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_IndustrialTools</researchPrerequisite>
+					<recipeUsers Inherit="false">
+						<li>FueledSmithy</li>
+						<li>ElectricSmithy</li>
+					</recipeUsers>
+					<skillRequirements>
+						<Crafting>1</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+		<!-- BEAKER -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Industrial_Beaker</defName>
+				<label>Beaker</label>
+				<description>The drug synthesis beaker is a laboratory vessel designed and manufactured specifically for the synthesis of pharmaceutical compounds. Constructed with meticulous attention to detail, it is engineered to meet the stringent requirements of chemical laboratories.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Industrial/IndustrialBeaker</texPath>
+					<drawSize>(0.7,0.7)</drawSize>
+				</graphicData>
+				<techLevel>Industrial</techLevel>
+				<statBases>
+					<WorkToMake>3000</WorkToMake>
+					<Mass>0.5</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<DrugSynthesisSpeed>0.25</DrugSynthesisSpeed>
+					<DrugCookingSpeed>0.25</DrugCookingSpeed>
+				</equippedStatOffsets>
+				<costList>
+					<Steel>20</Steel>
+					<Chemfuel>10</Chemfuel>
+				</costList>
+				<tools>
+					<li>
+						<label>head</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>2</power>
+						<cooldownTime>1</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_IndustrialTools</researchPrerequisite>
+					<recipeUsers Inherit="false">
+						<li>FueledSmithy</li>
+						<li>ElectricSmithy</li>
+					</recipeUsers>
+					<skillRequirements>
+						<Crafting>1</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+		<!-- BROOM -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Industrial_Broom</defName>
+				<label>broom</label>
+				<description>A household cleaning tool consisting of a bundle of stiff bristles or fibers attached to a handle. Used for sweeping dirt, dust, and debris from floors and other surfaces, the broom is a staple in maintaining cleanliness and tidiness in homes, offices, and outdoor spaces. Its simple yet effective design allows for efficient removal of unwanted particles, making it an essential tool for everyday cleaning tasks.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Industrial/IndustrialBroom</texPath>
+					<drawSize>(1,1)</drawSize>
+				</graphicData>
+				<techLevel>Industrial</techLevel>
+				<costStuffCount>50</costStuffCount>
+				<statBases>
+					<WorkToMake>3000</WorkToMake>
+					<Mass>0.7</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<CleaningSpeed>0.20</CleaningSpeed>
+				</equippedStatOffsets>
+				<stuffCategories>
+					<li>Metallic</li>
+				</stuffCategories>
+				<tools>
+					<li>
+						<label>handle</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>2</power>
+						<cooldownTime>1</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_IndustrialTools</researchPrerequisite>
+					<recipeUsers Inherit="false">
+						<li>FueledSmithy</li>
+						<li>ElectricSmithy</li>
+					</recipeUsers>
+					<skillRequirements>
+						<Crafting>1</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+		<!-- CLEAVER -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Industrial_Cleaver</defName>
+				<label>cleaver</label>
+				<description>A heavy-duty kitchen knife characterized by a broad, rectangular blade with a thick spine and a sharp edge. Designed for chopping through tough cuts of meat and bone with ease, the cleaver offers precision and power in food preparation tasks. Its weight and sturdy construction allow for efficient cutting, making it a versatile tool in butcher shops, restaurants, and home kitchens alike.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Industrial/IndustrialCleaver</texPath>
+					<drawSize>(0.7,0.7)</drawSize>
+				</graphicData>
+				<techLevel>Industrial</techLevel>
+				<costStuffCount>50</costStuffCount>
+				<statBases>
+					<WorkToMake>6000</WorkToMake>
+					<Mass>1</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<ButcheryFleshSpeed>0.15</ButcheryFleshSpeed>
+					<ButcheryFleshEfficiency>0.10</ButcheryFleshEfficiency>
+				</equippedStatOffsets>
+				<stuffCategories>
+					<li>Metallic</li>
+				</stuffCategories>
+				<tools>
+					<li>
+						<label>handle</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>4</power>
+						<cooldownTime>1</cooldownTime>
+					</li>
+					<li>
+						<label>edge</label>
+						<capacities>
+							<li>Cut</li>
+						</capacities>
+						<power>6</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_IndustrialTools</researchPrerequisite>
+					<recipeUsers Inherit="false">
+						<li>FueledSmithy</li>
+						<li>ElectricSmithy</li>
+					</recipeUsers>
+					<skillRequirements>
+						<Crafting>1</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+		<!-- HAMMER -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Industrial_Hammer</defName>
+				<label>hammer</label>
+				<description>A versatile hand tool featuring a heavy head attached to a sturdy handle, typically made of wood, metal, or fiberglass. Used for driving nails, breaking objects, and shaping materials, the hammer is a fundamental tool in construction, carpentry, and general household tasks. With its simple yet effective design, it delivers controlled force and precision, making it indispensable for a wide range of applications.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Industrial/IndustrialHammer</texPath>
+					<drawSize>(0.7,0.7)</drawSize>
+				</graphicData>
+				<techLevel>Industrial</techLevel>
+				<costStuffCount>50</costStuffCount>
+				<statBases>
+					<WorkToMake>9000</WorkToMake>
+					<Mass>1</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<ConstructionSpeed>0.20</ConstructionSpeed>
+					<ConstructSuccessChance>0.10</ConstructSuccessChance>
+				</equippedStatOffsets>
+				<stuffCategories>
+					<li>Metallic</li>
+				</stuffCategories>
+				<tools>
+					<li>
+						<label>handle</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>3</power>
+						<cooldownTime>1</cooldownTime>
+					</li>
+					<li>
+						<label>head</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>6</power>
+						<cooldownTime>1</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_IndustrialTools</researchPrerequisite>
+					<recipeUsers Inherit="false">
+						<li>FueledSmithy</li>
+						<li>ElectricSmithy</li>
+					</recipeUsers>
+					<skillRequirements>
+						<Crafting>1</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+		<!-- HAMMER AND CHISEL -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Industrial_HammerAndChisel</defName>
+				<label>hammer and chisel</label>
+				<description>A classic pairing of tools for precision work in various trades and crafts. The hammer, with its heavy head and sturdy handle, delivers controlled force to the chisel's sharp blade, allowing for accurate cutting, shaping, and carving of materials such as wood, stone, or metal. Together, they form an essential toolkit for sculptors, masons, carpenters, and artisans, facilitating the creation of intricate designs and precise cuts with ease.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Industrial/IndustrialHammerAndChisel</texPath>
+					<drawSize>(1,1)</drawSize>
+				</graphicData>
+				<techLevel>Industrial</techLevel>
+				<costStuffCount>50</costStuffCount>
+				<statBases>
+					<WorkToMake>9000</WorkToMake>
+					<Mass>1</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<SmoothingSpeed>0.20</SmoothingSpeed>
+				</equippedStatOffsets>
+				<stuffCategories>
+					<li>Metallic</li>
+				</stuffCategories>
+				<tools>
+					<li>
+						<label>handle</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>3</power>
+						<cooldownTime>1</cooldownTime>
+					</li>
+					<li>
+						<label>point</label>
+						<capacities>
+							<li>Stab</li>
+						</capacities>
+						<power>3</power>
+						<cooldownTime>1</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_IndustrialTools</researchPrerequisite>
+					<recipeUsers Inherit="false">
+						<li>FueledSmithy</li>
+						<li>ElectricSmithy</li>
+					</recipeUsers>
+					<skillRequirements>
+						<Crafting>1</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+		<!-- MEDICAL KIT -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Industrial_MedicalKit</defName>
+				<label>medical bag</label>
+				<description>A portable collection of essential supplies and equipment used for providing basic first aid and medical care in emergencies or during minor injuries. It typically includes items such as adhesive bandages, gauze pads, antiseptic wipes, medical tape, scissors, tweezers, disposable gloves, pain relievers, and other necessities.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Industrial/IndustrialMedicalKit</texPath>
+					<drawSize>(0.7,0.7)</drawSize>
+				</graphicData>
+				<techLevel>Industrial</techLevel>
+				<costStuffCount>30</costStuffCount>
+				<statBases>
+					<WorkToMake>9000</WorkToMake>
+					<Mass>2</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<MedicalTendQuality>0.20</MedicalTendQuality>
+					<MedicalTendSpeed>0.20</MedicalTendSpeed>
+				</equippedStatOffsets>
+				<stuffCategories>
+					<li>Fabric</li>
+				</stuffCategories>
+				<costList>
+					<MedicineIndustrial>2</MedicineIndustrial>
+					<Steel>20</Steel>
+				</costList>
+				<tools>
+					<li>
+						<label>handle</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>2</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_IndustrialTools</researchPrerequisite>
+					<recipeUsers Inherit="false">
+						<li>TableMachining</li>
+					</recipeUsers>
+					<skillRequirements>
+						<Crafting>7</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+		<!-- PICKAXE -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Industrial_Pickaxe</defName>
+				<label>pick</label>
+				<description>A formidable hand tool meticulously crafted through the process of forging, where metal is heated, shaped, and tempered to create a robust and durable implement. Characterized by a pointed or chiseled end affixed to a sturdy handle, the forged pick excels in breaking up hard materials such as rock, concrete, or soil. Renowned for its strength and reliability, it is an essential tool in mining, construction, and geological exploration, providing precision and efficiency in challenging environments.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Industrial/IndustrialPickaxe</texPath>
+					<drawSize>(1,1)</drawSize>
+				</graphicData>
+				<techLevel>Industrial</techLevel>
+				<costStuffCount>50</costStuffCount>
+				<statBases>
+					<WorkToMake>9000</WorkToMake>
+					<Mass>1.5</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<MiningSpeed>0.25</MiningSpeed>
+					<MiningYield>0.10</MiningYield>
+				</equippedStatOffsets>
+				<stuffCategories>
+					<li>Metallic</li>
+				</stuffCategories>
+				<tools>
+					<li>
+						<label>handle</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>4</power>
+						<cooldownTime>1</cooldownTime>
+					</li>
+					<li>
+						<label>point</label>
+						<capacities>
+							<li>Stab</li>
+						</capacities>
+						<power>6</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_IndustrialTools</researchPrerequisite>
+					<recipeUsers Inherit="false">
+						<li>FueledSmithy</li>
+						<li>ElectricSmithy</li>
+					</recipeUsers>
+					<skillRequirements>
+						<Crafting>1</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+		<!-- SHEARS -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Industrial_Shears</defName>
+				<label>shears</label>
+				<description>A specialized tool crafted for efficiently shearing wool and fur from domesticated animals. Designed with precision blades and ergonomic handles, these shears allow colonists to quickly and effectively harvest valuable resources while minimizing stress and discomfort to the animals.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Industrial/IndustrialShears</texPath>
+					<drawSize>(0.7,0.7)</drawSize>
+				</graphicData>
+				<techLevel>Industrial</techLevel>
+				<costStuffCount>50</costStuffCount>
+				<statBases>
+					<WorkToMake>6000</WorkToMake>
+					<Mass>0.5</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<AnimalGatherSpeed>0.20</AnimalGatherSpeed>
+					<AnimalGatherYield>0.10</AnimalGatherYield>
+				</equippedStatOffsets>
+				<stuffCategories>
+					<li>Metallic</li>
+				</stuffCategories>
+				<tools>
+					<li>
+						<label>blade</label>
+						<capacities>
+							<li>Cut</li>
+						</capacities>
+						<power>7</power>
+						<cooldownTime>1.5</cooldownTime>
+					</li>
+					<li>
+						<label>point</label>
+						<capacities>
+							<li>Stab</li>
+						</capacities>
+						<power>5</power>
+						<cooldownTime>1</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_IndustrialTools</researchPrerequisite>
+					<recipeUsers Inherit="false">
+						<li>FueledSmithy</li>
+						<li>ElectricSmithy</li>
+					</recipeUsers>
+					<skillRequirements>
+						<Crafting>1</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+		<!-- SPATULA -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Industrial_Spatula</defName>
+				<label>spatula</label>
+				<description>A versatile kitchen utensil featuring a flat, broad blade with a long handle. Used for flipping, lifting, and spreading food items such as pancakes, eggs, and frosting, the spatula is a must-have tool for cooking and baking. Its flexible yet sturdy design allows for easy maneuvering and precise control, making it indispensable in culinary tasks that require delicacy and finesse.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Industrial/IndustrialSpatula</texPath>
+					<drawSize>(0.7,0.7)</drawSize>
+				</graphicData>
+				<techLevel>Industrial</techLevel>
+				<costStuffCount>20</costStuffCount>
+				<statBases>
+					<WorkToMake>3000</WorkToMake>
+					<Mass>0.5</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<CookSpeed>0.25</CookSpeed>
+				</equippedStatOffsets>
+				<stuffCategories>
+					<li>Metallic</li>
+				</stuffCategories>
+				<tools>
+					<li>
+						<label>head</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>2</power>
+						<cooldownTime>1</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_IndustrialTools</researchPrerequisite>
+					<recipeUsers Inherit="false">
+						<li>FueledSmithy</li>
+						<li>ElectricSmithy</li>
+					</recipeUsers>
+					<skillRequirements>
+						<Crafting>1</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+		<!-- SURGEON'S KIT -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Industrial_SurgeonsKit</defName>
+				<label>medical instruments</label>
+				<description>This essential collection features key tools for medical procedures and surgeries. Included are medical needles for injections and fluid aspiration, scalpels for precise incisions, and scissors for cutting sutures and bandages. Crafted with precision and durability, these instruments ensure safe and effective medical interventions, supporting healthcare professionals in delivering quality care to patients with accuracy and precision.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Industrial/IndustrialSurgeonsKit</texPath>
+					<drawSize>(0.7,0.7)</drawSize>
+				</graphicData>
+				<techLevel>Industrial</techLevel>
+				<costStuffCount>50</costStuffCount>
+				<statBases>
+					<WorkToMake>9000</WorkToMake>
+					<Mass>0.5</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<MedicalOperationSpeed>0.15</MedicalOperationSpeed>
+					<MedicalSurgerySuccessChance>0.15</MedicalSurgerySuccessChance>
+				</equippedStatOffsets>
+				<stuffCategories>
+					<li>Metallic</li>
+				</stuffCategories>
+				<tools>
+					<li>
+						<label>point</label>
+						<capacities>
+							<li>Stab</li>
+						</capacities>
+						<power>2</power>
+						<cooldownTime>1</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_IndustrialTools</researchPrerequisite>
+					<recipeUsers Inherit="false">
+						<li>FueledSmithy</li>
+						<li>ElectricSmithy</li>
+					</recipeUsers>
+					<skillRequirements>
+						<Crafting>1</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+		<!-- TECHNICAL DOCUMENTS -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Industrial_TechnicalDocuments</defName>
+				<label>Technical Documents</label>
+				<description>Written materials containing detailed information, instructions, specifications, or procedures related to a particular subject or technology. These documents aim to convey complex concepts, processes, or data in a clear and concise manner, typically targeting professionals, engineers, technicians, or individuals with specialized knowledge. Examples include user manuals, engineering drawings, specifications sheets, installation guides, and technical reports. Technical documents play a crucial role in facilitating understanding, communication, and implementation of technical concepts and procedures across various industries and disciplines.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Industrial/IndustrialTechnicalDocuments</texPath>
+					<graphicClass>Graphic_Single</graphicClass>
+					<drawSize>(0.7,0.7)</drawSize>
+				</graphicData>
+				<techLevel>Industrial</techLevel>
+				<statBases>
+					<WorkToMake>3000</WorkToMake>
+					<Mass>0.20</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<GlobalLearningFactor>0.12</GlobalLearningFactor>
+					<TradePriceImprovement>0.12</TradePriceImprovement>
+					<ResearchSpeed>0.12</ResearchSpeed>
+				</equippedStatOffsets>
+				<costList>
+					<WoodLog>10</WoodLog>
+					<Chemfuel>10</Chemfuel>
+				</costList>
+				<tools>
+					<li>
+						<label>handle</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>1</power>
+						<cooldownTime>1</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_IndustrialTools</researchPrerequisite>
+					<recipeUsers Inherit="false">
+						<li>FueledSmithy</li>
+						<li>ElectricSmithy</li>
+					</recipeUsers>
+					<skillRequirements>
+						<Crafting>1</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+		<!-- TOOLKIT -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Industrial_Toolkit</defName>
+				<label>basic tool set</label>
+				<description>This versatile set comprises essential tools for woodworking and crafting projects. Included are a screwdriver for fastening and loosening screws, a handsaw for cutting wood with precision, and tongs for gripping and holding materials securely. Crafted with durable materials and ergonomic designs, these tools offer reliability and efficiency, empowering artisans and DIY enthusiasts to tackle various tasks with ease and precision.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Industrial/IndustrialToolKit</texPath>
+					<drawSize>(0.8,0.8)</drawSize>
+				</graphicData>
+				<techLevel>Industrial</techLevel>
+				<costStuffCount>100</costStuffCount>
+				<statBases>
+					<WorkToMake>9000</WorkToMake>
+					<Mass>1</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<SmithingSpeed>0.20</SmithingSpeed>
+					<SculptingSpeed>0.20</SculptingSpeed>
+					<TailoringSpeed>0.20</TailoringSpeed>
+				</equippedStatOffsets>
+				<stuffCategories>
+					<li>Metallic</li>
+				</stuffCategories>
+				<tools>
+					<li>
+						<label>handle</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>3</power>
+						<cooldownTime>1</cooldownTime>
+					</li>
+					<li>
+						<label>point</label>
+						<capacities>
+							<li>Stab</li>
+						</capacities>
+						<power>3</power>
+						<cooldownTime>1</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_IndustrialTools</researchPrerequisite>
+					<recipeUsers Inherit="false">
+						<li>FueledSmithy</li>
+						<li>ElectricSmithy</li>
+					</recipeUsers>
+					<skillRequirements>
+						<Crafting>1</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+	<!-- 4 - SPACER -->
+		<!-- BRIEFCASE -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Spacer_Briefcase</defName>
+				<label>document_briefcase</label>
+				<description>Meticulously crafted accessory tailored to meet the demands of scholars, academics, and professionals engaged in comprehensive research endeavors. Constructed from durable and high-quality materials, such as leather or nylon, it features a sophisticated yet functional design optimized for the organization, protection, and transport of research materials. This includes academic papers, reference books, journals, electronic devices, and writing implements.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Spacer/SpacerBriefcase</texPath>
+					<drawSize>(0.8,0.8)</drawSize>
+				</graphicData>
+				<techLevel>Spacer</techLevel>
+				<costStuffCount>100</costStuffCount>
+				<statBases>
+					<WorkToMake>9000</WorkToMake>
+					<Mass>2</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<GlobalLearningFactor>0.20</GlobalLearningFactor>
+					<TradePriceImprovement>0.20</TradePriceImprovement>
+					<ResearchSpeed>0.20</ResearchSpeed>
+				</equippedStatOffsets>
+				<stuffCategories>
+					<li>Leathery</li>
+				</stuffCategories>
+				<costList>
+					<ComponentIndustrial>3</ComponentIndustrial>
+					<Chemfuel>50</Chemfuel>
+				</costList>
+				<tools>
+					<li>
+						<label>handle</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>3</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_SpacerTools</researchPrerequisite>
+					<recipeUsers Inherit="false">
+						<li>TableMachining</li>
+					</recipeUsers>
+					<skillRequirements>
+						<Crafting>7</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+		<!-- CHAINSAW -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Spacer_Chainsaw</defName>
+				<label>chainsaw</label>
+				<description>A powerful handheld cutting tool equipped with a motorized chain and teeth that rotate around a guide bar. Used primarily for felling trees, pruning branches, and cutting lumber, the chainsaw is a versatile and efficient tool in forestry, landscaping, and construction. It enables users to quickly and precisely cut through wood with ease, making it indispensable for tasks requiring fast and precise cutting in outdoor environments.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Spacer/SpacerChainsaw</texPath>
+					<drawSize>(1,1)</drawSize>
+				</graphicData>
+				<techLevel>Spacer</techLevel>
+				<costStuffCount>100</costStuffCount>
+				<statBases>
+					<WorkToMake>15000</WorkToMake>
+					<Mass>2</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<PlantWorkSpeed>0.35</PlantWorkSpeed>
+					<PlantHarvestYield>0.20</PlantHarvestYield>
+				</equippedStatOffsets>
+				<stuffCategories>
+					<li>Metallic</li>
+				</stuffCategories>
+				<costList>
+					<ComponentIndustrial>5</ComponentIndustrial>
+					<Chemfuel>50</Chemfuel>
+				</costList>
+				<tools>
+					<li>
+						<label>handle</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>8</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+					<li>
+						<label>blade</label>
+						<capacities>
+							<li>Cut</li>
+						</capacities>
+						<power>12</power>
+						<cooldownTime>0.5</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_SpacerTools</researchPrerequisite>
+					<recipeUsers Inherit="false">
+						<li>TableMachining</li>
+					</recipeUsers>
+					<skillRequirements>
+						<Crafting>7</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+		<!-- DRILL -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Spacer_Drill</defName>
+				<label>drill</label>
+				<description>A portable, manually-operated tool used for drilling holes in various materials such as wood, metal, and plastic. Consisting of a handle, a chuck to hold drill bits, and a rotating mechanism, the hand drill allows users to exert controlled force to create precise holes without the need for electricity. Versatile and convenient, it's an essential tool for woodworking, DIY projects, and tasks where mobility and simplicity are valued.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Spacer/SpacerDrill</texPath>
+					<drawSize>(0.8,0.8)</drawSize>
+				</graphicData>
+				<techLevel>Spacer</techLevel>
+				<costStuffCount>50</costStuffCount>
+				<statBases>
+					<WorkToMake>12000</WorkToMake>
+					<Mass>1.2</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<ConstructionSpeed>0.30</ConstructionSpeed>
+					<ConstructSuccessChance>0.20</ConstructSuccessChance>
+					<ButcheryMechanoidSpeed>0.15</ButcheryMechanoidSpeed>
+					<ButcheryMechanoidEfficiency>0.15</ButcheryMechanoidEfficiency>
+				</equippedStatOffsets>
+				<stuffCategories>
+					<li>Metallic</li>
+				</stuffCategories>
+				<costList>
+					<ComponentIndustrial>3</ComponentIndustrial>
+				</costList>
+				<tools>
+					<li>
+						<label>handle</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>6</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+					<li>
+						<label>point</label>
+						<capacities>
+							<li>Stab</li>
+						</capacities>
+						<power>6</power>
+						<cooldownTime>1</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_SpacerTools</researchPrerequisite>
+					<recipeUsers Inherit="false">
+						<li>TableMachining</li>
+					</recipeUsers>
+					<skillRequirements>
+						<Crafting>7</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+		<!-- DRILLING PAD -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Spacer_DrillingPad</defName>
+				<label>Drilling pad</label>
+				<description>A versatile drilling assistant pad designed to enhance stability and precision during drilling tasks. Its ergonomic design offers comfort and control, reducing fatigue and improving efficiency. Compatible with various drills, it provides a reliable foundation for accurate drilling, suitable for both professionals and DIY enthusiasts alike.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Spacer/SpacerDrillingPad</texPath>
+					<drawSize>(0.8,0.8)</drawSize>
+				</graphicData>
+				<techLevel>Spacer</techLevel>
+				<statBases>
+					<WorkToMake>9000</WorkToMake>
+					<Mass>2</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<DeepDrillingSpeed>0.50</DeepDrillingSpeed>
+				</equippedStatOffsets>
+				<costList>
+					<Steel>100</Steel>
+					<ComponentIndustrial>5</ComponentIndustrial>
+				</costList>
+				<tools>
+					<li>
+						<label>handle</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>1</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_SpacerTools</researchPrerequisite>
+					<recipeUsers Inherit="false">
+						<li>TableMachining</li>
+					</recipeUsers>
+					<skillRequirements>
+						<Crafting>7</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+		<!-- MIXER -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Spacer_Mixer</defName>
+				<label>mixer</label>
+				<description>A versatile kitchen appliance designed for combining, blending, and whipping ingredients together to create various culinary concoctions. Featuring a motorized base with multiple speed settings, a mixing bowl, and interchangeable attachments such as beaters, whisks, and dough hooks, the mixer offers convenience and efficiency in food preparation tasks.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Spacer/SpacerMixer</texPath>
+					<drawSize>(0.8,0.8)</drawSize>
+				</graphicData>
+				<techLevel>Spacer</techLevel>
+				<costStuffCount>50</costStuffCount>
+				<statBases>
+					<WorkToMake>9000</WorkToMake>
+					<Mass>1.2</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<CookSpeed>0.35</CookSpeed>
+					<DrugSynthesisSpeed>0.35</DrugSynthesisSpeed>
+					<DrugCookingSpeed>0.35</DrugCookingSpeed>
+				</equippedStatOffsets>
+				<stuffCategories>
+					<li>Metallic</li>
+				</stuffCategories>
+				<costList>
+					<ComponentIndustrial>2</ComponentIndustrial>
+				</costList>
+				<tools>
+					<li>
+						<label>head</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>4</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_SpacerTools</researchPrerequisite>
+					<recipeUsers Inherit="false">
+						<li>TableMachining</li>
+					</recipeUsers>
+					<skillRequirements>
+						<Crafting>7</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+		<!-- ROCK DRILL -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Spacer_RockDrill</defName>
+				<label>rock drill</label>
+				<description>A powerful, specialized tool designed for drilling holes into hard materials such as rock, concrete, or masonry. Featuring a pneumatic or hydraulic mechanism, along with hardened drill bits, the rock drill is capable of delivering high impact forces to penetrate tough surfaces efficiently. Widely used in construction, mining, and geological exploration, it enables workers to create boreholes for various purposes, including blasting, anchoring, and exploration.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Spacer/SpacerRockDrill</texPath>
+					<drawSize>(1.1,1.1)</drawSize>
+				</graphicData>
+				<techLevel>Spacer</techLevel>
+				<costStuffCount>100</costStuffCount>
+				<statBases>
+					<WorkToMake>15000</WorkToMake>
+					<Mass>2</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<MiningSpeed>0.35</MiningSpeed>
+					<MiningYield>0.20</MiningYield>
+				</equippedStatOffsets>
+				<stuffCategories>
+					<li>Metallic</li>
+				</stuffCategories>
+				<costList>
+					<ComponentIndustrial>5</ComponentIndustrial>
+					<Chemfuel>50</Chemfuel>
+				</costList>
+				<tools>
+					<li>
+						<label>handle</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>8</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+					<li>
+						<label>point</label>
+						<capacities>
+							<li>Stab</li>
+						</capacities>
+						<power>12</power>
+						<cooldownTime>0.5</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_SpacerTools</researchPrerequisite>
+					<recipeUsers Inherit="false">
+						<li>TableMachining</li>
+					</recipeUsers>
+					<skillRequirements>
+						<Crafting>7</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+		<!-- SANDER -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Spacer_Sander</defName>
+				<label>sander</label>
+				<description>A versatile power tool used for smoothing surfaces by abrasion. Featuring a motorized mechanism and abrasive material such as sandpaper, the sander rapidly removes rough spots, imperfections, or old finishes from wood, metal, or other materials</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Spacer/SpacerSander</texPath>
+					<drawSize>(0.8,0.8)</drawSize>
+				</graphicData>
+				<techLevel>Spacer</techLevel>
+				<costStuffCount>100</costStuffCount>
+				<statBases>
+					<WorkToMake>12000</WorkToMake>
+					<Mass>1.5</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<SmoothingSpeed>0.30</SmoothingSpeed>
+				</equippedStatOffsets>
+				<stuffCategories>
+					<li>Metallic</li>
+				</stuffCategories>
+				<costList>
+					<ComponentIndustrial>3</ComponentIndustrial>
+				</costList>
+				<tools>
+					<li>
+						<label>handle</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>7</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_SpacerTools</researchPrerequisite>
+					<recipeUsers Inherit="false">
+						<li>TableMachining</li>
+					</recipeUsers>
+					<skillRequirements>
+						<Crafting>7</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+		<!-- SHEARS -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Spacer_Shears</defName>
+				<label>electric shears</label>
+				<description>Revolutionize the process of wool and fur harvesting by harnessing the power of electricity to enhance efficiency and productivity. Featuring precision-engineered blades and a motorized mechanism, these advanced shears effortlessly glide through animal coats, swiftly gathering valuable resources with minimal effort from colonists</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Spacer/SpacerShears</texPath>
+					<drawSize>(0.7,0.7)</drawSize>
+				</graphicData>
+				<techLevel>Spacer</techLevel>
+				<costStuffCount>50</costStuffCount>
+				<statBases>
+					<WorkToMake>9000</WorkToMake>
+					<Mass>2</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<AnimalGatherSpeed>0.30</AnimalGatherSpeed>
+					<AnimalGatherYield>0.20</AnimalGatherYield>
+				</equippedStatOffsets>
+				<stuffCategories>
+					<li>Metallic</li>
+				</stuffCategories>
+				<costList>
+					<ComponentIndustrial>2</ComponentIndustrial>
+					<Chemfuel>50</Chemfuel>
+				</costList>
+				<tools>
+					<li>
+						<label>handle</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>4</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+					<li>
+						<label>blade</label>
+						<capacities>
+							<li>Cut</li>
+						</capacities>
+						<power>6</power>
+						<cooldownTime>0.5</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_SpacerTools</researchPrerequisite>
+					<recipeUsers Inherit="false">
+						<li>TableMachining</li>
+					</recipeUsers>
+					<skillRequirements>
+						<Crafting>7</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+		<!-- TOOLKIT -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Spacer_Toolkit</defName>
+				<label>industrial tool set</label>
+				<description>The industrial tool set for crafting is a comprehensive collection of high-quality tools specifically engineered for precision work in manufacturing, construction, or fabrication industries. This robust kit comprises a diverse range of instruments tailored to handle various materials and tasks with efficiency and accuracy.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Spacer/SpacerToolKit</texPath>
+					<drawSize>(0.8,0.8)</drawSize>
+				</graphicData>
+				<techLevel>Spacer</techLevel>
+				<costStuffCount>100</costStuffCount>
+				<statBases>
+					<WorkToMake>9000</WorkToMake>
+					<Mass>2</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<SmithingSpeed>0.35</SmithingSpeed>
+					<SculptingSpeed>0.35</SculptingSpeed>
+					<TailoringSpeed>0.35</TailoringSpeed>
+				</equippedStatOffsets>
+				<stuffCategories>
+					<li>Metallic</li>
+				</stuffCategories>
+				<costList>
+					<ComponentIndustrial>5</ComponentIndustrial>
+				</costList>
+				<tools>
+					<li>
+						<label>handle</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>6</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_SpacerTools</researchPrerequisite>
+					<recipeUsers Inherit="false">
+						<li>TableMachining</li>
+					</recipeUsers>
+					<skillRequirements>
+						<Crafting>7</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+		<!-- VACUUM -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Spacer_Vacuum</defName>
+				<label>vacuum cleaner</label>
+				<description>A vacuum cleaner, commonly known as a hoover or simply vacuum, is a household appliance designed for the removal of dust, dirt, and debris from floors, carpets, and other surfaces. Typically consisting of a motorized suction mechanism housed within a casing, vacuum cleaners utilize various attachments such as brushes and hoses to agitate and capture particles.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Spacer/SpacerVacuum</texPath>
+					<drawSize>(0.8,0.8)</drawSize>
+				</graphicData>
+				<techLevel>Spacer</techLevel>
+				<statBases>
+					<WorkToMake>9000</WorkToMake>
+					<Mass>2</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<CleaningSpeed>0.30</CleaningSpeed>
+				</equippedStatOffsets>
+				<costList>
+					<Steel>100</Steel>
+					<ComponentIndustrial>5</ComponentIndustrial>
+				</costList>
+				<tools>
+					<li>
+						<label>handle</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>3</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_SpacerTools</researchPrerequisite>
+					<recipeUsers Inherit="false">
+						<li>TableMachining</li>
+					</recipeUsers>
+					<skillRequirements>
+						<Crafting>7</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+	<!-- 5 - ULTRA -->
+		<!-- DATAPAD -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Ultra_Datapad</defName>
+				<label>Datapad</label>
+				<description>A portable electronic device resembling a tablet, commonly used in science fiction settings. It serves as a versatile tool for data storage, communication, and information retrieval. Featuring a touchscreen interface and wireless connectivity, the datapad allows users to access databases, analyze data, send messages, and perform various tasks on-the-go. With its compact design and advanced functionality, it is an indispensable tool for scientists, engineers, and spacefarers navigating futuristic environments.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Ultra/UltraDatapad</texPath>
+					<drawSize>(0.8,0.8)</drawSize>
+				</graphicData>
+				<techLevel>Ultra</techLevel>
+				<statBases>
+					<WorkToMake>21000</WorkToMake>
+					<Mass>0.5</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<ResearchSpeed>0.28</ResearchSpeed>
+					<GlobalLearningFactor>0.28</GlobalLearningFactor>
+					<TradePriceImprovement>0.28</TradePriceImprovement>
+				</equippedStatOffsets>
+				<costList>
+					<Plasteel>50</Plasteel>
+					<ComponentSpacer>3</ComponentSpacer>
+				</costList>
+				<tools>
+					<li>
+						<label>handle</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>2</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_UltratechTools</researchPrerequisite>
+					<recipeUsers Inherit="false">
+						<li>FabricationBench</li>
+					</recipeUsers>
+					<skillRequirements>
+						<Crafting>15</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+		<!-- MEDICAL STIM -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Ultra_MedicalStim</defName>
+				<label>Medical Stim</label>
+				<description>A potent pharmaceutical agent designed to swiftly alleviate pain and heal physical damage. Administered via injection, this stimulant acts rapidly promotes accelerated healing. With its potent blend of pharmacological compounds, the Medical Stim serves as a vital tool in emergency medical situations, offering colonists a crucial edge in combat scenarios or when facing severe injuries.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Ultra/UltraMedicalStim</texPath>
+					<drawSize>(0.7,0.7)</drawSize>
+				</graphicData>
+				<techLevel>Ultra</techLevel>
+				<statBases>
+					<WorkToMake>21000</WorkToMake>
+					<Mass>0.5</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<MedicalTendSpeed>0.70</MedicalTendSpeed>
+					<MedicalTendQualityOffset>0.50</MedicalTendQualityOffset>
+				</equippedStatOffsets>
+				<costList>
+					<Plasteel>50</Plasteel>
+					<MedicineUltratech>1</MedicineUltratech>
+					<ComponentSpacer>3</ComponentSpacer>
+				</costList>
+				<tools>
+					<li>
+						<label>handle</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>3</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_UltratechTools</researchPrerequisite>
+					<recipeUsers Inherit="false">
+						<li>FabricationBench</li>
+					</recipeUsers>
+					<skillRequirements>
+						<Crafting>15</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+		<!-- MULTI TOOL -->
+			<ThingDef ParentName="DCM_Tool_Parent">
+				<defName>DCM_U_Ultra_MultiTool</defName>
+				<label>Multi Tool</label>
+				<description>A state-of-the-art device optimized for material acquisition and crafting in futuristic settings. This advanced tool integrates cutting-edge technology, including molecular scanners, energy manipulators, and nano-fabrication capabilities. It can analyze and harvest raw materials from various sources, manipulate their molecular structures, and fabricate them into desired components or objects. With its compact design and versatile functionality, the sci-fi multitool revolutionizes resource procurement and crafting processes, making it an indispensable tool for explorers, engineers, and artisans across the galaxy.</description>
+				<graphicData>
+					<texPath>Modules/Tools/Things/Tools/Ultra/UltraMultiTool</texPath>
+					<drawSize>(0.7,0.7)</drawSize>
+				</graphicData>
+				<techLevel>Ultra</techLevel>
+				<statBases>
+					<WorkToMake>24000</WorkToMake>
+					<Mass>2</Mass>
+				</statBases>
+				<equippedStatOffsets>
+					<WorkSpeedGlobal>0.60</WorkSpeedGlobal>
+				</equippedStatOffsets>
+				<costList>
+					<Plasteel>100</Plasteel>
+					<Uranium>50</Uranium>
+					<ComponentSpacer>5</ComponentSpacer>
+				</costList>
+				<tools>
+					<li>
+						<label>blade</label>
+						<capacities>
+							<li>Cut</li>
+						</capacities>
+						<power>20</power>
+						<cooldownTime>1</cooldownTime>
+					</li>
+					<li>
+						<label>handle</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>4</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+				</tools>
+				<recipeMaker>
+					<researchPrerequisite>DCM_U_T_UltratechTools</researchPrerequisite>
+					<recipeUsers Inherit="false">
+						<li>FabricationBench</li>
+					</recipeUsers>
+					<skillRequirements>
+						<Crafting>15</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+</Defs>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <HistoryEventDef>
+    <defName>VanillaBooksExpandedExpanded_BookKilled</defName>
+    <label>book was destroyed</label>
+  </HistoryEventDef>
+  <HistoryEventDef>
+    <defName>VanillaBooksExpandedExpanded_BookBurned</defName>
+    <label>book was burned</label>
+  </HistoryEventDef>
+  <IssueDef>
+    <defName>VanillaBooksExpandedExpanded_BookBurning</defName>
+    <label>book burning</label>
+    <iconPath>UI/Issues/VanillaBooksExpandedExpanded_BookBurning</iconPath>
+  </IssueDef>
+  <PreceptDef>
+    <defName>VanillaBooksExpandedExpanded_BookBurning_Desired</defName>
+    <issue>VanillaBooksExpandedExpanded_BookBurning</issue>
+    <label>desired</label>
+    <description>Books are unnecessary and should be burned.</description>
+    <impact>Low</impact>
+    <comps>
+      <li Class="PreceptComp_SelfTookMemoryThought">
+        <eventDef>VanillaBooksExpandedExpanded_BookBurned</eventDef>
+        <thought>VanillaBooksExpandedExpanded_BookBurned_Desired_Self</thought>
+      </li>
+      <li Class="PreceptComp_SelfTookMemoryThought">
+        <eventDef>VanillaBooksExpandedExpanded_BookKilled</eventDef>
+        <thought>VanillaBooksExpandedExpanded_BookKilled_Desired_Self</thought>
+      </li>
+      <li Class="PreceptComp_KnowsMemoryThought">
+        <eventDef>VanillaBooksExpandedExpanded_BookBurned</eventDef>
+        <thought>VanillaBooksExpandedExpanded_BookBurned_Desired</thought>
+      </li>
+      <li Class="PreceptComp_KnowsMemoryThought">
+        <eventDef>VanillaBooksExpandedExpanded_BookKilled</eventDef>
+        <thought>VanillaBooksExpandedExpanded_BookKilled_Desired</thought>
+      </li>
+    </comps>
+  </PreceptDef>
+  <PreceptDef>
+    <defName>VanillaBooksExpandedExpanded_BookBurning_Horrible</defName>
+    <issue>VanillaBooksExpandedExpanded_BookBurning</issue>
+    <label>horrible</label>
+    <description>Burning books is a terrifying thing.</description>
+    <impact>Low</impact>
+    <associatedMemes>
+      <li>VME_Cultured</li>
+    </associatedMemes>
+    <comps>
+      <li Class="PreceptComp_SelfTookMemoryThought">
+        <eventDef>VanillaBooksExpandedExpanded_BookBurned</eventDef>
+        <thought>VanillaBooksExpandedExpanded_BookBurned_Horrible_Self</thought>
+      </li>
+      <li Class="PreceptComp_SelfTookMemoryThought">
+        <eventDef>VanillaBooksExpandedExpanded_BookKilled</eventDef>
+        <thought>VanillaBooksExpandedExpanded_BookKilled_Horrible_Self</thought>
+      </li>
+      <li Class="PreceptComp_KnowsMemoryThought">
+        <eventDef>VanillaBooksExpandedExpanded_BookBurned</eventDef>
+        <thought>VanillaBooksExpandedExpanded_BookBurned_Horrible</thought>
+      </li>
+      <li Class="PreceptComp_KnowsMemoryThought">
+        <eventDef>VanillaBooksExpandedExpanded_BookKilled</eventDef>
+        <thought>VanillaBooksExpandedExpanded_BookKilled_Horrible</thought>
+      </li>
+    </comps>
+  </PreceptDef>
+  <ThoughtDef>
+    <defName>VanillaBooksExpandedExpanded_BookBurned_Desired_Self</defName>
+    <durationDays>1</durationDays>
+    <stackLimit>5</stackLimit>
+    <stages>
+      <li>
+        <label>burned a book</label>
+        <description>I finally burned those useless books.</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VanillaBooksExpandedExpanded_BookKilled_Desired_Self</defName>
+    <durationDays>1</durationDays>
+    <stackLimit>5</stackLimit>
+    <stages>
+      <li>
+        <label>destroyed a book</label>
+        <description>I destroyed a useless book.</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VanillaBooksExpandedExpanded_BookBurned_Desired</defName>
+    <durationDays>1</durationDays>
+    <stackLimit>5</stackLimit>
+    <stages>
+      <li>
+        <label>a book was burned</label>
+        <description>We finally destroyed those useless books.</description>
+        <baseMoodEffect>2</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VanillaBooksExpandedExpanded_BookKilled_Desired</defName>
+    <durationDays>1</durationDays>
+    <stackLimit>5</stackLimit>
+    <stages>
+      <li>
+        <label>a book was destroyed</label>
+        <description>We destroyed a useless book.</description>
+        <baseMoodEffect>1</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VanillaBooksExpandedExpanded_BookBurned_Horrible_Self</defName>
+    <durationDays>1</durationDays>
+    <stackLimit>10</stackLimit>
+    <stages>
+      <li>
+        <label>burned a book</label>
+        <description>I burned a precious book! Why did I let it happen?</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VanillaBooksExpandedExpanded_BookKilled_Horrible_Self</defName>
+    <durationDays>1</durationDays>
+    <stackLimit>10</stackLimit>
+    <stages>
+      <li>
+        <label>destroyed a book</label>
+        <description>I destroyed a precious book! Why did I let it happen?</description>
+        <baseMoodEffect>-8</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VanillaBooksExpandedExpanded_BookBurned_Horrible</defName>
+    <durationDays>1</durationDays>
+    <stackLimit>10</stackLimit>
+    <stages>
+      <li>
+        <label>a book was burned</label>
+        <description>We burned precious books! Do I live among savages?</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>VanillaBooksExpandedExpanded_BookKilled_Horrible</defName>
+    <durationDays>1</durationDays>
+    <stackLimit>10</stackLimit>
+    <stages>
+      <li>
+        <label>a book was destroyed</label>
+        <description>We lost precious books! What a disaster!</description>
+        <baseMoodEffect>-3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

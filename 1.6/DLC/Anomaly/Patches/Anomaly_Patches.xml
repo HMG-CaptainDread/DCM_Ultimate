@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<Operation Class="PatchOperationSequence">
+		<success>Normal</success>
+		<operations>
+			<!-- RITUALS ANYWHERE -->
+				<!-- BLOOD RAIN -->
+					<li Class="PatchOperationRemove">
+						<xpath>/Defs/PsychicRitualDef_BloodRain[defName="BloodRain"]/layerWhitelist</xpath>
+					</li>
+				<!-- SUMMON ANIMALS -->
+					<li Class="PatchOperationRemove">
+						<xpath>/Defs/PsychicRitualDef_SummonAnimals[defName="SummonAnimals"]/layerWhitelist</xpath>
+					</li>
+				<!-- SUMMON FLESHBEASTS -->
+					<li Class="PatchOperationRemove">
+						<xpath>/Defs/PsychicRitualDef_SummonFleshbeastsPlayer[defName="SummonFleshbeastsPlayer"]/layerWhitelist</xpath>
+					</li>
+				<!-- SUMMON PIT GATE -->
+					<li Class="PatchOperationRemove">
+						<xpath>/Defs/PsychicRitualDef_SummonPitGate[defName="SummonPitGate"]/layerWhitelist</xpath>
+					</li>
+				<!-- SUMMON SHAMBLERS -->
+					<li Class="PatchOperationRemove">
+						<xpath>/Defs/PsychicRitualDef_SummonShamblers[defName="SummonShamblers"]/layerWhitelist</xpath>
+					</li>
+				<!-- VOID PROVOCATION -->
+					<li Class="PatchOperationRemove">
+						<xpath>/Defs/PsychicRitualDef_VoidProvocation[defName="VoidProvocation"]/layerWhitelist</xpath>
+					</li>
+			<!-- SHAMBLER BEHAVIOUR CHANGES -->
+				<!-- GORE HULK COMBAT POWER -->
+					<li Class="PatchOperationAdd">
+						<xpath>/Defs/PawnKindDef[defName = "ShamblerGorehulk"]</xpath>
+						<value>
+							<combatPower>240</combatPower>
+						</value>
+					</li>
+				<!-- SHAMBLER SWARMER COMBAT POWER -->
+					<li Class="PatchOperationReplace">
+						<xpath>/Defs/PawnKindDef[defName = "ShamblerSwarmer"]/combatPower</xpath>
+						<value>
+							<combatPower>115</combatPower>
+						</value>
+					</li>
+				<!-- SHAMBLER SOLDIER COMBAT POWER -->
+					<li Class="PatchOperationReplace">
+						<xpath>/Defs/PawnKindDef[defName = "ShamblerSoldier"]/combatPower</xpath>
+						<value>
+							<combatPower>180</combatPower>
+						</value>
+					</li>
+				<!-- SHAMBLER TARGET ACQUIRE RADIUS -->
+					<li Class="PatchOperationReplace">
+						<xpath>/Defs/ThinkTreeDef[defName = "Shambler"]/thinkRoot/subNodes/li[8]/targetAcquireRadius</xpath>
+						<value>
+							<targetAcquireRadius>10</targetAcquireRadius>
+						</value>
+					</li>
+				<!-- SHAMBLE TARGET RETAIN RADIUS -->
+					<li Class="PatchOperationReplace">
+						<xpath>/Defs/ThinkTreeDef[defName = "Shambler"]/thinkRoot/subNodes/li[8]/targetKeepRadius</xpath>
+						<value>
+							<targetKeepRadius>12</targetKeepRadius>
+						</value>
+					</li>
+		</operations>
+	</Operation>
+</Patch>

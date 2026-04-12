@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>Not Only just a cannon</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/ResearchProjectDef[defName = "CannonMaking"]</xpath>		
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ResearchProjectDef[defName="Fortification"]/prerequisites</xpath>		
+				<value>
+					<prerequisites>
+						<li>MedTimes_Cannons</li>
+					</prerequisites>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ResearchProjectDef[defName="EndLoaded"]/prerequisites</xpath>		
+				<value>
+					<prerequisites>
+						<li>MedTimes_Cannons</li>
+					</prerequisites>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ResearchProjectDef[defName="ArcedBallistic"]/prerequisites</xpath>		
+				<value>
+					<prerequisites>
+						<li>MedTimes_Cannons</li>
+					</prerequisites>
+				</value>
+			</li>
+		</operations>
+	</match>
+  </Operation>
+  
+</Patch>
+
+
+
+

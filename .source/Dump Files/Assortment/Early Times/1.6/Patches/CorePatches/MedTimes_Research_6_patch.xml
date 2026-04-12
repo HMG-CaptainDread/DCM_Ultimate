@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+     <Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ResearchProjectDef[defName="LongBlades"]/prerequisites</xpath>
+		<value>
+			<li>MedTimes_WeaponsBladed</li>
+		</value>
+	</Operation>
+	
+    <Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ResearchProjectDef[defName="PlateArmor"]/prerequisites</xpath>
+		<value>
+			<li>MedTimes_ArmorScaled</li>
+		</value>
+	</Operation>
+	
+    <Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ResearchProjectDef[defName="PlateArmor"]/description</xpath>
+		<value>
+		<description>Smith suits of plate armor from metal or wood. This heavy armor noticeably slows movement, but protects very effectively.
+		
+		"Good armor and a good horse means a good ransom if I unseat him." - George R.R. Martin</description>
+		</value>
+	</Operation>
+  	
+	  <Operation Class="PatchOperationConditional">
+		<xpath>/Defs/ThingDef[defName="FueledStove"]/researchPrerequisites</xpath>
+		<match Class="PatchOperationReplace">
+			<xpath>/Defs/ThingDef[defName="FueledStove"]/researchPrerequisites</xpath>
+			<value>
+			  <researchPrerequisites>
+				<li>MedTimes_Cooking</li>
+			  </researchPrerequisites>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[defName="FueledStove"]</xpath>
+			<value>
+			  <researchPrerequisites>
+				<li>MedTimes_Cooking</li>
+			  </researchPrerequisites>
+			</value>
+		</nomatch>
+	</Operation>
+	
+	  <Operation Class="PatchOperationConditional">
+		<xpath>/Defs/ThingDef[defName="ElectricStove"]/researchPrerequisites</xpath>
+		<match Class="PatchOperationReplace">
+			<xpath>/Defs/ThingDef[defName="ElectricStove"]/researchPrerequisites</xpath>
+			<value>
+			  <researchPrerequisites>
+				<li>Electricity</li>
+				<li>MedTimes_Cooking</li>
+			  </researchPrerequisites>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[defName="ElectricStove"]</xpath>
+			<value>
+			  <researchPrerequisites>
+				<li>Electricity</li>
+				<li>MedTimes_Cooking</li>
+			  </researchPrerequisites>
+			</value>
+		</nomatch>
+	</Operation>
+  
+</Patch>

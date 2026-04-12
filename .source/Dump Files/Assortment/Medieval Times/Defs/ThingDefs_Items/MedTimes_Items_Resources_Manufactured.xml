@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!-- ========================= Resource Base Classes ==========================-->
+<!-- Resource Base Class -->
+  <ThingDef Name="MedTimes_ResourceBase" Abstract="True">
+    <thingClass>ThingWithComps</thingClass>
+    <category>Item</category>
+    <resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <useHitPoints>true</useHitPoints>
+    <selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+    <stackLimit>75</stackLimit>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+    </comps>
+    <alwaysHaulable>true</alwaysHaulable>
+    <drawGUIOverlay>true</drawGUIOverlay>
+    <rotatable>false</rotatable>
+    <pathCost>15</pathCost>
+  </ThingDef>
+  
+  
+  
+<!--=============== Pure stuffs: Basics ====================--> 
+<!-- Adobe Bricks -->  
+  <ThingDef ParentName="MedTimes_ResourceBase">
+    <defName>MedTimes_Resource_AdobeBricks</defName>
+    <label>Adobe Bricks</label>
+    <description>Mud bricks made from dirt and straw, formed in the shape of bricks and baked in the sun. Adobe bricks are a Super low tech that can be used to create cheap and reliable housing.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/StoneBlocks</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+      <color>(100,75,55)</color>
+	</graphicData>
+    <soundInteract>Stone_Drop</soundInteract>
+    <soundDrop>Stone_Drop</soundDrop>
+    <useHitPoints>false</useHitPoints>
+    <tradeability>Buyable</tradeability>	
+    <statBases>	
+      <MarketValue>0.75</MarketValue>
+      <SharpDamageMultiplier>0.2</SharpDamageMultiplier>
+      <BluntDamageMultiplier>0.2</BluntDamageMultiplier>
+      <Mass>1.15</Mass>	  
+    </statBases>
+    <thingCategories>
+      <li>StoneBlocks</li>
+    </thingCategories>
+    <stuffProps>
+      <stuffAdjective>Adobe</stuffAdjective>
+      <appearance>Bricks</appearance>	  
+      <categories>
+        <li>Stony</li>
+      </categories>
+      <color>(100,75,55)</color>
+      <commonality>0.01</commonality>
+      <!--<soundImpactStuff>BulletImpact_Ground</soundImpactStuff>-->
+      <soundMeleeHitSharp>MeleeHit_Stone</soundMeleeHitSharp>
+      <soundMeleeHitBlunt>MeleeHit_Stone</soundMeleeHitBlunt>
+      <statFactors>
+        <MarketValue>0.25</MarketValue>	  
+        <MaxHitPoints>1.4</MaxHitPoints>
+        <Flammability>0.5</Flammability>
+        <Beauty>0.5</Beauty>
+        <WorkToMake>2</WorkToMake>
+		<DoorOpenSpeed>0.2</DoorOpenSpeed>
+	    <BedRestEffectiveness>0.6</BedRestEffectiveness>	
+      </statFactors>
+    </stuffProps>	
+  </ThingDef> 
+  
+<!-- Coal Chunks -->  
+  <ThingDef ParentName="ResourceBase">
+    <defName>MedTimes_Resource_Coal</defName>
+    <label>Coal Chunks</label>
+    <description>An extremely brittle rock. worthless in construction, however, it's highly flamable nature makes it great fuel for fire.
+	
+	(Special thanks and credit to "Flesh Forge" for idea's and implementation surrounding Coal concepts.)</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Coal/MedTimes_Coal</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(0.8,0.8)</drawSize>	  
+    </graphicData>
+
+    <soundInteract>Stone_Drop</soundInteract>
+    <soundDrop>Stone_Drop</soundDrop>
+    <statBases>
+      <MarketValue>2</MarketValue>
+      <MaxHitPoints>100</MaxHitPoints>	  
+      <Mass>0.5</Mass>
+      <DeteriorationRate>2</DeteriorationRate>
+			<Beauty>-10</Beauty>	  
+      <Flammability>2.0</Flammability>	  
+    </statBases>
+    <thingCategories>
+      <li>ResourcesRaw</li>
+    </thingCategories>
+
+    <stuffProps>
+      <stuffAdjective>Coal</stuffAdjective>	
+      <appearance>Bricks</appearance>	  
+      <categories>
+        <li>MedTimes_Coal</li>
+      </categories>
+      <commonality>0.01</commonality>	  
+      <color>(30,30,30)</color>
+      <constructEffect>ConstructMetal</constructEffect>
+      <!--<soundImpactStuff>BulletImpact_Metal</soundImpactStuff>-->
+      <soundMeleeHitSharp>MeleeHit_Metal_Sharp</soundMeleeHitSharp>
+      <soundMeleeHitBlunt>MeleeHit_Metal_Blunt</soundMeleeHitBlunt>
+    </stuffProps>
+  </ThingDef>
+  
+<!-- Ice Blocks -->
+  <ThingDef ParentName="MedTimes_ResourceBase">
+    <defName>MedTimes_Resource_IceBlocks</defName>
+    <label>Ice Blocks</label>
+    <description>Water which has been frozen to create Ice, unbelievably an extremely valuable resource, especially in hot environments. Careful as ice tends to melt at above 32°F</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Ice/MedTimes_IceBlocks</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <soundInteract>Stone_Drop</soundInteract>
+    <soundDrop>Stone_Drop</soundDrop>
+    <statBases>
+      <MaxHitPoints>30</MaxHitPoints>	
+      <MarketValue>3.5</MarketValue>
+      <DeteriorationRate>15</DeteriorationRate>
+      <Mass>1.35</Mass>	  
+    </statBases>
+    <thingCategories>
+      <li>ResourcesRaw</li>
+    </thingCategories>
+    <stuffProps>
+      <stuffAdjective>Ice</stuffAdjective>
+      <appearance>Bricks</appearance>	  
+      <categories>
+        <li>MedTimes_Ice</li>		
+      </categories>  
+      <color>(180,210,230)</color>
+      <commonality>0.01</commonality>
+      <constructEffect>ConstructMetal</constructEffect>
+      <!--<soundImpactStuff>BulletImpact_Ground</soundImpactStuff>-->
+      <soundMeleeHitSharp>MeleeHit_Stone</soundMeleeHitSharp>
+      <soundMeleeHitBlunt>MeleeHit_Stone</soundMeleeHitBlunt>
+      <statOffsets>
+        <Beauty>2</Beauty>
+      </statOffsets>
+      <statFactors>
+        <MaxHitPoints>2</MaxHitPoints>
+        <Flammability>0</Flammability>
+        <Beauty>1.2</Beauty>
+        <WorkToMake>1.2</WorkToMake>
+      </statFactors>	  
+    </stuffProps>
+      <tickerType>Rare</tickerType>		
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>0.8</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+      <li>
+        <compClass>CompMelter</compClass>
+      </li>	  
+    </comps>	
+  </ThingDef>
+  
+<!-- Nanite Vial -->  
+  <ThingDef ParentName="ResourceBase">
+    <defName>MedTimes_NaniteVial</defName>
+    <label>Nanite Vial</label>
+    <description>A small vial made of a clear see-through composite. Inside the tube is a blue glowing liquid that shimmers in the light. The liquid is a composite keeping the millions of self replicating nanites in stasis inside the tube. A modern marvel of engineering, with value far exceeding its price tag. These are industrial grade nanites. They can be programed at a eternity forge and will maintain any simple non-organic object well beyond it's normal lifespan. They consume the surrounding elements and use them to rebuild objects to it's programmed schematics at a microscopic level. Because of this its not recommended to touch the object directly for prolonged periods of time.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/NanVial/MedTimes_NanVial</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(0.7,0.7)</drawSize>	  
+    </graphicData>
+    <soundInteract>Standard_Drop</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop>
+    <tickerType>Never</tickerType>
+    <intricate>true</intricate>		
+    <statBases>
+      <MarketValue>3500</MarketValue>
+      <MaxHitPoints>100</MaxHitPoints>	  
+      <SellPriceFactor>1</SellPriceFactor>	  
+      <DeteriorationRate>2</DeteriorationRate>	  
+      <Flammability>1.0</Flammability>	
+	  <Beauty>10</Beauty>	
+      <Mass>0.05</Mass>	  
+    </statBases>
+    <thingCategories><li>TradeGoods</li></thingCategories>	
+  </ThingDef>  
+
+
+  
+<!--=============== Manufactured stuffs ====================-->  
+<!-- Quicklime Pitch And Wick, Resource -->
+  <ThingDef ParentName="MedTimes_ResourceBase">
+    <defName>MedTimes_Resource_Quicklime</defName>
+    <label>Quicklime Pitch</label>
+    <description>Ejected from Murder Holes, Murders on impact.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Produced/MedTimes_WoodPitchWick</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(0.6,0.6)</drawSize>	  
+    </graphicData>
+    <soundInteract>Standard_Drop</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop>
+    <tickerType>Normal</tickerType>
+    <stackLimit>25</stackLimit>
+    <statBases>
+      <MaxHitPoints>50</MaxHitPoints>
+      <MarketValue>10</MarketValue>
+      <Flammability>5.0</Flammability>
+      <DeteriorationRate>1</DeteriorationRate>
+      <Mass>1.5</Mass>	  
+    </statBases>
+    <thingCategories>
+      <li>MedArtillary</li>
+    </thingCategories>	
+    <comps>
+      <li Class="CompProperties_Explosive">	  
+        <explosiveRadius>2.5</explosiveRadius>
+        <explosiveDamageType>Flame</explosiveDamageType>
+        <explosiveExpandPerStackcount>0.3</explosiveExpandPerStackcount>
+        <startWickHitPointsPercent>0.5</startWickHitPointsPercent>
+        <wickTicks>
+          <min>5</min>
+          <max>10</max>
+        </wickTicks>
+      </li>
+    </comps>
+    <projectileWhenLoaded>MedTimes_Round_Quicklime</projectileWhenLoaded>	
+  </ThingDef>
+
+<!-- Exploding Pot, Resource -->
+  <ThingDef ParentName="MedTimes_ResourceBase">
+    <defName>MedTimes_Resource_ExplosivePot</defName>
+    <label>Explosive Pot</label>
+    <description>Fired from catapults, explodes on impact.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Produced/MedTimes_ExplosivePot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>	
+    <soundInteract>Standard_Drop</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop>
+    <tickerType>Normal</tickerType>
+    <stackLimit>25</stackLimit>
+    <statBases>
+      <MaxHitPoints>50</MaxHitPoints>
+      <MarketValue>30</MarketValue>
+      <Flammability>1.0</Flammability>
+      <DeteriorationRate>1</DeteriorationRate>
+      <Mass>1.5</Mass>	  
+    </statBases>
+    <thingCategories>
+      <li>MedArtillary</li>
+    </thingCategories>
+    <comps>
+      <li Class="CompProperties_Explosive">  
+        <explosiveRadius>2.9</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <explosiveExpandPerStackcount>0.4</explosiveExpandPerStackcount>
+        <startWickHitPointsPercent>0.5</startWickHitPointsPercent>
+        <wickTicks>
+          <min>10</min>
+          <max>30</max>
+        </wickTicks>
+      </li>
+    </comps>
+    <projectileWhenLoaded>MedTimes_Round_ExplosivePot</projectileWhenLoaded>		
+  </ThingDef>
+  
+  
+
+<!-- ============= End of Document  =================-->   
+</Defs>

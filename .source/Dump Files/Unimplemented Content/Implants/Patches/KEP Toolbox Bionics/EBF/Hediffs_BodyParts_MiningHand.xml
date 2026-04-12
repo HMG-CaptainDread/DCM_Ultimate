@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <HediffDef ParentName="KEPHediffBase">
+    <defName>KEP_MiningHand</defName>
+    <label>mining hand</label>
+    <labelNoun>a mining hand</labelNoun>
+    <description>An install mining hand.</description>
+    <descriptionHyperlinks><ThingDef>KEP_MiningHand</ThingDef></descriptionHyperlinks>
+    <spawnThingOnRemoved>KEP_MiningHand</spawnThingOnRemoved>
+    <addedPartProps>
+      <partEfficiency>0.90</partEfficiency>
+      <solid>true</solid>
+    </addedPartProps>
+    <stages>
+      <li>
+        <statOffsets>
+          <MiningSpeed>0.30</MiningSpeed>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+	<ThingDef Name="KEP_BASEMiningHand" ParentName="KEPBodyPartModBase" Abstract="True">
+	    <techLevel>Spacer</techLevel>
+		<tradeTags>
+			<li>Bionic</li>
+		</tradeTags>
+		<thingCategories>
+			<li>BodyPartsBionic</li>
+		</thingCategories>
+	</ThingDef>
+
+  <ThingDef ParentName="KEP_BASEMiningHand">
+    <defName>KEP_MiningHand</defName>
+    <label>mining hand</label>
+    <description>A hand replacement with plasteel-lined fingers for digging and stoneworking. The fingers are a bit slower than its fleshier predecessor.</description>
+	<graphicData>
+			<texPath>Things/Item/BodyPart/Mining_hand</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+    <descriptionHyperlinks><RecipeDef>KEP_InstallMiningHand</RecipeDef></descriptionHyperlinks>
+    <costList>
+      <Plasteel>25</Plasteel>
+      <ComponentSpacer>1</ComponentSpacer>
+    </costList>
+    <thingSetMakerTags><li>RewardStandardMidFreq</li></thingSetMakerTags>
+    <statBases>
+      <Mass>0.3</Mass>
+	        <MarketValue>850</MarketValue>
+    </statBases>
+	    <techHediffsTags>
+      <li>Advanced</li>
+	<li>KEP</li>
+    </techHediffsTags>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+    <defName>KEP_InstallMiningHand</defName>
+    <label>install mining hand</label>
+    <description>Install a mining hand.</description>
+    <descriptionHyperlinks>
+      <ThingDef>KEP_MiningHand</ThingDef>
+      <HediffDef>KEP_MiningHand</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing mining hand.</jobString>
+		<workAmount>4000</workAmount>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>Medicine</li>
+					</categories>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>KEP_MiningHand</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<categories>
+				<li>Medicine</li>
+			</categories>
+			<thingDefs>
+				<li>KEP_MiningHand</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Hand</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>KEP_MiningHand</addsHediff>
+	</RecipeDef>
+</Defs>

@@ -1,0 +1,646 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="ApparelMakeableBase" Name="StWoUn_UniformJacketBase" Abstract="True">
+    <recipeMaker>
+      <researchPrerequisites>
+		<li>SteamworldResearch_Uniforms</li>
+	  </researchPrerequisites>
+    </recipeMaker>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.85</drawSize>
+    </graphicData>
+    <costStuffCount>80</costStuffCount>
+    <stuffCategories>
+      <li>Fabric</li>
+      <li>Leathery</li>
+    </stuffCategories>
+    <statBases>
+      <MaxHitPoints>180</MaxHitPoints>
+      <WorkToMake>10000</WorkToMake>
+      <Mass>2</Mass>
+      <StuffEffectMultiplierArmor>0.4</StuffEffectMultiplierArmor>
+      <StuffEffectMultiplierInsulation_Cold>0.7</StuffEffectMultiplierInsulation_Cold>
+      <StuffEffectMultiplierInsulation_Heat>0.4</StuffEffectMultiplierInsulation_Heat>
+      <EquipDelay>3.5</EquipDelay>
+    </statBases>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+        <li>Neck</li>
+        <li>Shoulders</li>
+        <li>Arms</li>
+      </bodyPartGroups>
+      <layers>
+        <li>Shell</li>
+      </layers>
+      <tags>
+        <!--li>IndustrialMilitaryBasic</li-->
+		<li>SteamworldMilitary</li>
+      </tags>
+      <defaultOutfitTags>
+        <li>Soldier</li>
+      </defaultOutfitTags>
+    </apparel>
+	<generateCommonality>0.5</generateCommonality>
+	<thingCategories>
+      <li>ApparelMisc</li>
+    </thingCategories>
+	<colorGenerator Class="ColorGenerator_Options">
+      <options>
+		<li>
+          <weight>10</weight>
+          <only>(36,84,64)</only><!--> teal <-->
+        </li>
+		<li>
+          <weight>10</weight>
+          <only>(114,12,12)</only><!--> bestower red <-->
+        </li>
+		<li>
+          <weight>10</weight>
+          <only>(30,30,130)</only><!--> dark blue <-->
+        </li>
+		<li>
+          <weight>10</weight>
+          <only>(0,100,200)</only><!--> blue <-->
+        </li>
+		<li>
+          <weight>10</weight>
+          <only>(120,200,255)</only><!--> light blue <-->
+        </li>
+		<li>
+          <weight>10</weight>
+          <only>(250,250,250)</only><!--> cataphract white <-->
+        </li>
+      </options>
+    </colorGenerator>
+    <tradeTags>
+      <li>Clothing</li>
+      <li>Armor</li>
+    </tradeTags>
+  </ThingDef>
+
+  <ThingDef ParentName="StWoUn_UniformJacketBase" Name="StWoUn_UniformJacket">
+    <defName>StWoUn_RegularJacket</defName>
+    <label>regular uniform jacket</label>
+    <description>A tough single breasted jacket with a high collar and shoulder pieces.</description>
+	<graphicData>
+      <texPath>Apparel/UniformJacket/UniformJacket</texPath>
+	  <shaderType>CutoutComplex</shaderType>
+    </graphicData>
+	<costList>
+      <Steel>5</Steel>
+    </costList>
+	<apparel>
+      <wornGraphicPath>Apparel/UniformJacket/UniformJacket</wornGraphicPath>
+	  <useWornGraphicMask>true</useWornGraphicMask>
+	</apparel>  
+  </ThingDef>
+
+  <ThingDef ParentName="StWoUn_UniformJacket">
+    <defName>StWoUn_GuardJacket</defName>
+    <label>guard uniform jacket</label>
+    <description>A tough double breasted jacket with a high collar and shoulder pieces.</description>
+    <graphicData>
+      <texPath>Apparel/GuardJacket/GuardJacket</texPath>
+    </graphicData>	
+    <statBases>
+      <StuffEffectMultiplierInsulation_Cold>0.8</StuffEffectMultiplierInsulation_Cold>
+    </statBases>
+	<costStuffCount>85</costStuffCount>
+	<costList Inherit="False">
+      <Steel>10</Steel>
+    </costList>
+    <apparel>
+      <wornGraphicPath>Apparel/GuardJacket/GuardJacket</wornGraphicPath>
+	</apparel>
+  </ThingDef>
+  
+  <ThingDef ParentName="StWoUn_UniformJacket">
+    <defName>StWoUn_TropicalJacket</defName>
+    <label>tropical uniform jacket</label>
+    <description>A tough jacket with a half length button facing, a high collar and shoulder pieces. It is made to withstand in warmer climate.</description>
+    <graphicData>
+      <texPath>Apparel/TropicalJacket/TropicalJacket</texPath>
+    </graphicData>
+	<costList Inherit="False">
+      <Steel>5</Steel>
+    </costList>
+	<statBases>
+      <StuffEffectMultiplierInsulation_Cold>0.45</StuffEffectMultiplierInsulation_Cold>
+      <StuffEffectMultiplierInsulation_Heat>0.8</StuffEffectMultiplierInsulation_Heat>
+    </statBases>
+    <apparel>
+      <wornGraphicPath>Apparel/TropicalJacket/TropicalJacket</wornGraphicPath>
+	</apparel>
+  </ThingDef>
+
+  <ThingDef ParentName="StWoUn_UniformJacket" Name="StWoUn_SailorSuit">
+    <defName>StWoUn_SailorSuit</defName>
+    <label>sailor suit</label>
+    <description>The traditional uniform of seamen, recognizable by its flab collar.</description>
+    <graphicData>
+      <texPath>Apparel/SailorJacket/SailorJacket</texPath>
+    </graphicData>
+	<costList  Inherit="False">
+      <Cloth>10</Cloth>
+    </costList>
+	<statBases>
+      <StuffEffectMultiplierInsulation_Cold>0.65</StuffEffectMultiplierInsulation_Cold>
+      <StuffEffectMultiplierInsulation_Heat>0.65</StuffEffectMultiplierInsulation_Heat>
+    </statBases>
+    <apparel>
+      <wornGraphicPath>Apparel/SailorJacket/SailorJacket</wornGraphicPath>
+	  <tags  Inherit="False">
+        <li>Naval</li>
+      </tags>
+	</apparel>
+  </ThingDef>
+  
+	<ThingDef ParentName="StWoUn_SailorSuit" MayRequire="Ludeon.RimWorld.Biotech">
+	  <defName>StWoUn_SailorSuitChildren</defName>
+	  <label>kid sailor suit</label>
+	  <description>A miniature sailor suit made especially for children.</description>
+	  <graphicData>
+		<texPath>Apparel/SailorJacket/SailorJacket_Child</texPath>
+	  </graphicData>
+	  <costStuffCount>45</costStuffCount>
+	  <apparel>
+		<wornGraphicPath>Apparel/SailorJacket/SailorJacket</wornGraphicPath>
+		<developmentalStageFilter>Child</developmentalStageFilter>
+	  <tags>
+        <li>IndustrialAdvanced</li>
+      </tags>
+	</apparel>
+	</ThingDef>
+  
+  <ThingDef ParentName="StWoUn_UniformJacket">
+    <defName>StWoUn_InfantryCoat</defName>
+    <label>infantry coat</label>
+    <description>A long and though single breasted coat with two crossed shoulder belts.</description>
+    <graphicData>
+      <texPath>Apparel/InfantryCoat/InfantryCoat</texPath>
+    </graphicData>
+	<costStuffCount>80</costStuffCount>
+	<costList Inherit="False">
+      <Cloth>20</Cloth>
+    </costList>
+	<statBases>
+      <MaxHitPoints>220</MaxHitPoints>
+      <WorkToMake>11000</WorkToMake>
+      <StuffEffectMultiplierArmor>0.4</StuffEffectMultiplierArmor>
+      <StuffEffectMultiplierInsulation_Cold>1.0</StuffEffectMultiplierInsulation_Cold>
+      <StuffEffectMultiplierInsulation_Heat>0.33</StuffEffectMultiplierInsulation_Heat>
+    </statBases>
+    <apparel>
+      <wornGraphicPath>Apparel/InfantryCoat/InfantryCoat</wornGraphicPath>
+	  <bodyPartGroups>
+        <li>Legs</li>
+      </bodyPartGroups>
+	</apparel>
+  </ThingDef>
+  
+  <ThingDef ParentName="StWoUn_UniformJacket">
+    <defName>StWoUn_GreatCoat</defName>
+    <label>greatcoat</label>
+    <description>A long and though coat with an additional heavy flab on the neck that could be used as a hood. Comfortable in cold and humid conditions.</description>
+    <graphicData>
+      <texPath>Apparel/GreatCoat/GreatCoat</texPath>
+    </graphicData>
+	<costStuffCount>110</costStuffCount>
+	<statBases>
+      <MaxHitPoints>220</MaxHitPoints>
+      <WorkToMake>11000</WorkToMake>
+      <StuffEffectMultiplierArmor>0.4</StuffEffectMultiplierArmor>
+      <StuffEffectMultiplierInsulation_Cold>1.5</StuffEffectMultiplierInsulation_Cold>
+      <StuffEffectMultiplierInsulation_Heat>0.25</StuffEffectMultiplierInsulation_Heat>
+    </statBases>
+    <apparel>
+      <wornGraphicPath>Apparel/GreatCoat/GreatCoat</wornGraphicPath>
+	  <bodyPartGroups>
+        <li>Legs</li>
+      </bodyPartGroups>
+	</apparel>
+  </ThingDef>
+  
+  <ThingDef ParentName="StWoUn_UniformJacket">
+    <defName>StWoUn_CossackCoat</defName>
+    <label>cossack coat</label>
+    <description>A long and though coat with bullet pockets on the chest. It allows quick access to bullets, grenades, arrows, or whatever the user needs, reducing their weapon's ranged cooldown.</description>
+    <graphicData>
+      <texPath>Apparel/CossackCoat/CossackCoat</texPath>
+	  <shaderType/>
+    </graphicData>
+	<costStuffCount>100</costStuffCount>
+	<costList Inherit="False">
+      <Cloth>25</Cloth>
+    </costList>
+	<statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <WorkToMake>11500</WorkToMake>
+	  <StuffEffectMultiplierArmor>0.4</StuffEffectMultiplierArmor>
+      <StuffEffectMultiplierInsulation_Cold>0.9</StuffEffectMultiplierInsulation_Cold>
+      <StuffEffectMultiplierInsulation_Heat>0.35</StuffEffectMultiplierInsulation_Heat>
+    </statBases>
+	<equippedStatOffsets>
+	  <RangedCooldownFactor>-0.1</RangedCooldownFactor>
+    </equippedStatOffsets>
+    <apparel>
+      <wornGraphicPath>Apparel/CossackCoat/CossackCoat</wornGraphicPath>
+	  <useWornGraphicMask>false</useWornGraphicMask>
+	  <bodyPartGroups>
+        <li>Legs</li>
+      </bodyPartGroups>
+	</apparel>
+  </ThingDef>
+
+	<!--> Noble <-->
+
+  <ThingDef ParentName="StWoUn_UniformJacketBase" Name="StWoUn_FormalJacket">
+    <defName>StWoUn_FormalJacket</defName>
+    <label>formal uniform jacket</label>
+    <description>A tough double breasted jacket with a high collar and shoulder pieces.</description>
+    <graphicData>
+      <texPath>Apparel/FormalJacket/FormalJacket</texPath>
+	  <shaderType>CutoutComplex</shaderType>
+    </graphicData>
+    <costStuffCount>85</costStuffCount>	
+	<costList Inherit="False">
+      <Steel>10</Steel>
+    </costList>
+	<statBases>
+      <WorkToMake>15000</WorkToMake>
+    </statBases>
+    <apparel>
+      <wornGraphicPath>Apparel/FormalJacket/FormalJacket</wornGraphicPath>
+	  <useWornGraphicMask>true</useWornGraphicMask>
+      <tags>
+        <li>SteamworldMilitaryNoble</li>
+      </tags>
+	</apparel>
+	<recipeMaker>
+      <researchPrerequisites><li MayRequire="Ludeon.RimWorld.Royalty">NobleApparel</li></researchPrerequisites>
+    </recipeMaker>
+  </ThingDef>
+
+  <ThingDef ParentName="StWoUn_FormalJacket">
+    <defName>StWoUn_HussarJacket</defName>
+    <label>hussar jacket</label>
+    <description>A tough passementred jacket, also called attila or dolman, with a high collar and shoulder pieces. Historically the hussars are a light cavalry unit with an adventorous reputaion, orginating from central europe.</description>
+    <graphicData>
+      <texPath>Apparel/HussarJacket/HussarJacket</texPath>
+    </graphicData>
+    <costStuffCount>80</costStuffCount>	
+	<costList Inherit="False">
+      <Cloth>15</Cloth>
+    </costList>
+    <apparel>
+      <wornGraphicPath>Apparel/HussarJacket/HussarJacket</wornGraphicPath>
+	</apparel>
+	<recipeMaker>
+      <researchPrerequisites><li MayRequire="Ludeon.RimWorld.Royalty">NobleApparel</li></researchPrerequisites>
+    </recipeMaker>
+  </ThingDef>
+  
+    <ThingDef ParentName="StWoUn_UniformJacketBase">
+    <defName>StWoUn_ZouaveJacket</defName>
+    <label>zouave jacket</label>
+    <description>A tough passementred jacket with a sash belt. Historically the zouaves are a class of light infantry. Their origins were in French Algeria and they were copied by many armies.</description>
+	<graphicData>
+      <texPath>Apparel/ZouaveJacket/ZouaveJacket</texPath>
+    </graphicData>
+	<statBases>
+      <StuffEffectMultiplierArmor>0.4</StuffEffectMultiplierArmor>
+      <StuffEffectMultiplierInsulation_Cold>0.45</StuffEffectMultiplierInsulation_Cold>
+      <StuffEffectMultiplierInsulation_Heat>0.8</StuffEffectMultiplierInsulation_Heat>
+    </statBases>
+	<apparel>
+      <wornGraphicPath>Apparel/ZouaveJacket/ZouaveJacket</wornGraphicPath>
+	  <tags>
+		<li>Zouave</li>
+      </tags>
+	</apparel>  
+  </ThingDef>
+  
+  <ThingDef ParentName="StWoUn_FormalJacket">
+    <defName>StWoUn_ParadeJacket</defName>
+    <label>parade jacket</label>
+    <description>A tough single breasted jacket with a high collar and shoulder pieces.</description>
+    <graphicData>
+      <texPath>Apparel/ParadeJacket/ParadeJacket</texPath>
+    </graphicData>
+    <costStuffCount>80</costStuffCount>	
+	<costList Inherit="False">
+      <Steel>5</Steel>
+    </costList>
+    <apparel>
+      <wornGraphicPath>Apparel/ParadeJacket/ParadeJacket</wornGraphicPath>
+	</apparel>
+	<recipeMaker>
+      <researchPrerequisites><li MayRequire="Ludeon.RimWorld.Royalty">NobleApparel</li></researchPrerequisites>
+    </recipeMaker>
+  </ThingDef>
+
+	<!--> Misc <-->
+  
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>StWoUn_BedRoll</defName>
+    <label>shouldered bed roll</label>
+    <description>A rolled up blanket hung over the shoulder to provide extra protection against sabre cuts. Nudists won't mind wearing it.</description>
+    <recipeMaker>
+      <researchPrerequisite>SteamworldResearch_Uniforms</researchPrerequisite>
+    </recipeMaker>
+	<costStuffCount>85</costStuffCount>
+    <stuffCategories>
+      <li>Fabric</li>
+      <li>Leathery</li>
+    </stuffCategories>
+    <thingCategories>
+      <li>ApparelMisc</li>
+    </thingCategories>
+    <graphicData>
+      <texPath>Apparel/ShoulderedBedRoll/ShoulderedBedRoll</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <WorkToMake>10000</WorkToMake>
+      <Mass>1.7</Mass>
+      <StuffEffectMultiplierArmor>0.3</StuffEffectMultiplierArmor>
+      <StuffEffectMultiplierInsulation_Cold>0.1</StuffEffectMultiplierInsulation_Cold>
+      <StuffEffectMultiplierInsulation_Heat>0.1</StuffEffectMultiplierInsulation_Heat>
+      <EquipDelay>1.5</EquipDelay>
+    </statBases>
+    <apparel>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <wornGraphicPath>Apparel/ShoulderedBedRoll/ShoulderedBedRoll</wornGraphicPath>
+      <bodyPartGroups>
+        <li>Shoulders</li>
+		<li>Torso</li>
+      </bodyPartGroups>
+      <layers>
+        <li>Shell</li>
+      </layers>
+      <tags>
+        <!--li>IndustrialMilitaryBasic</li-->
+      </tags>
+	  <defaultOutfitTags>
+        <li>Soldier</li>
+		<li>Nudist</li>
+      </defaultOutfitTags>
+    </apparel>
+	<!--generateCommonality>0.01</generateCommonality-->
+    <colorGenerator Class="ColorGenerator_Options"><!--> tuque <-->
+      <options>
+        <li>
+          <weight>10</weight>
+          <only>(0.33,0.33,0.33,1)</only>
+        </li>
+        <li>
+          <weight>10</weight>
+          <only>(0.65,0.65,0.65,1)</only>
+        </li>
+        <li>
+          <weight>6</weight>
+          <min>(0.3,0.3,0.3,1)</min>
+          <max>(0.5,0.5,0.5,1)</max>
+        </li>
+        <li>
+          <weight>10</weight>
+          <only>(0.9,0.9,0.9,1)</only>
+        </li>
+      </options>
+    </colorGenerator>
+    <tradeTags>
+      <li>Clothing</li>
+      <li>Armor</li>
+    </tradeTags>
+  </ThingDef>
+  
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>StWoUn_SashBelt</defName>
+    <label>sash belt</label>
+    <description>A colourful and large ribbon wrapped around the waist. Often a symbol for officers.</description>
+    <graphicData>
+      <texPath>Apparel/SashBelt/SashBelt</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.7</drawSize>
+    </graphicData>
+    <techLevel>Industrial</techLevel>
+    <costStuffCount>25</costStuffCount>
+    <stuffCategories>
+      <li>Fabric</li>
+    </stuffCategories>
+    <statBases>
+      <MaxHitPoints>50</MaxHitPoints>
+      <WorkToMake>1000</WorkToMake>
+      <Mass>1</Mass>
+      <StuffEffectMultiplierArmor>0.1</StuffEffectMultiplierArmor>
+      <StuffEffectMultiplierInsulation_Cold>0.1</StuffEffectMultiplierInsulation_Cold>
+      <StuffEffectMultiplierInsulation_Heat>0.1</StuffEffectMultiplierInsulation_Heat>
+      <EquipDelay>1.5</EquipDelay>
+    </statBases>
+    <recipeMaker>
+      <researchPrerequisite>SteamworldResearch_Uniforms</researchPrerequisite>
+      <skillRequirements>
+        <Crafting>3</Crafting>
+      </skillRequirements>
+    </recipeMaker>
+    <thingCategories>
+      <li>ApparelMisc</li>
+    </thingCategories>
+    <apparel>
+      <bodyPartGroups>
+        <li>Torso</li>
+      </bodyPartGroups>
+      <countsAsClothingForNudity>false</countsAsClothingForNudity>
+      <wornGraphicPath>Apparel/SashBelt/SashBelt</wornGraphicPath>
+      <layers>
+        <li>Middle</li>
+      </layers>
+      <tags>
+        <li>Apparel_Yttakin</li>
+		<li>SteamWorldYttakin</li>
+		<!--li>IndustrialMilitaryBasic</li-->
+      </tags>
+      <defaultOutfitTags>
+        <li>Soldier</li>
+        <li>Nudist</li>
+      </defaultOutfitTags>
+      <canBeDesiredForIdeo>false</canBeDesiredForIdeo>
+    </apparel>
+	<colorGenerator Class="ColorGenerator_Options">
+      <options>
+		<li>
+          <weight>10</weight>
+          <only>(36,84,64)</only><!--> teal <-->
+        </li>
+		<li>
+          <weight>10</weight>
+          <only>(114,12,12)</only><!--> bestower red <-->
+        </li>
+		<li>
+          <weight>10</weight>
+          <only>(30,30,130)</only><!--> dark blue <-->
+        </li>
+		<li>
+          <weight>10</weight>
+          <only>(0,100,200)</only><!--> blue <-->
+        </li>
+		<li>
+          <weight>10</weight>
+          <only>(120,200,255)</only><!--> light blue <-->
+        </li>
+		<li>
+          <weight>10</weight>
+          <only>(250,250,250)</only><!--> cataphract white <-->
+        </li>
+      </options>
+    </colorGenerator>
+    <tradeTags>
+      <li>Armor</li>
+    </tradeTags>
+  </ThingDef>
+
+  <ThingDef ParentName="ApparelMakeableBase">
+    <defName>StWoUn_Epaulettes</defName>
+    <label>epaulettes</label>
+    <description>A pair of ornamantal shoulder pieces displaying high ranks.</description>
+    <graphicData>
+      <texPath>Apparel/Epaulettes/Epaulettes</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+	  <shaderType>CutoutComplex</shaderType>
+	  <drawSize>0.85</drawSize>
+    </graphicData>
+	<recipeMaker>
+      <researchPrerequisites>
+		<li>SteamworldResearch_Uniforms</li>
+	  </researchPrerequisites>
+    </recipeMaker>
+	<costStuffCount>10</costStuffCount>
+    <stuffCategories>
+      <li>Fabric</li>
+    </stuffCategories>
+	<costList>
+      <Steel>4</Steel>
+    </costList>
+    <thingCategories>
+      <li>Apparel</li>
+    </thingCategories>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <WorkToMake>5000</WorkToMake>
+      <Mass>1.7</Mass>
+      <ArmorRating_Sharp>0.1</ArmorRating_Sharp>
+      <ArmorRating_Blunt>0.1</ArmorRating_Blunt>
+      <EquipDelay>1.5</EquipDelay>
+    </statBases>
+	<equippedStatOffsets>
+	  <MentalBreakThreshold>-0.05</MentalBreakThreshold>
+	  <SuppressionPower MayRequire="Ludeon.RimWorld.Ideology">0.05</SuppressionPower>
+	  <SlaveSuppressionOffset MayRequire="Ludeon.RimWorld.Ideology">-0.05</SlaveSuppressionOffset>
+    </equippedStatOffsets>
+    <apparel>
+      <wornGraphicPath>Apparel/Epaulettes/Epaulettes</wornGraphicPath>
+	  <useWornGraphicMask>true</useWornGraphicMask>
+      <bodyPartGroups>
+        <li>Shoulders</li>
+      </bodyPartGroups>
+	  <countsAsClothingForNudity>false</countsAsClothingForNudity>
+	  <layers>
+        <li>Shell</li>
+      </layers>
+      <tags>
+		<!--li>IndustrialMilitaryBasic</li-->
+		<li>SteamworldMilitaryNoble</li>
+      </tags>
+	  <defaultOutfitTags>
+        <li>Soldier</li>
+		<li>Nudist</li>
+      </defaultOutfitTags>
+    </apparel>
+    <tradeTags>
+      <li>Clothing</li>
+      <li>Armor</li>
+    </tradeTags>
+  </ThingDef>
+  
+			<!-- Armour -->
+
+  <ThingDef ParentName="ArmorSmithableBase" Name="SteamworldArmour">
+    <defName>StWoUn_Cuirass</defName>
+    <label>cuirass</label>
+    <description>A refined plate armour covering only the torso.</description>
+	<possessionCount>1</possessionCount>
+	<recipeMaker>
+      <researchPrerequisites>
+		<li>SteamworldResearch_Uniforms</li>
+		<li>PlateArmor</li>
+	  </researchPrerequisites>
+	  <unfinishedThingDef>UnfinishedMetallicTechArmor</unfinishedThingDef>
+	  <skillRequirements>
+        <Crafting>7</Crafting>
+      </skillRequirements>
+    </recipeMaker>
+    <graphicData>
+      <texPath>Apparel/Cuirass/Cuirass</texPath>
+	  <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.85</drawSize>
+	  <shaderType>CutoutComplex</shaderType>
+    </graphicData>
+    <costStuffCount>80</costStuffCount>
+    <stuffCategories>
+      <li>Metallic</li>
+    </stuffCategories>
+    <statBases>
+      <WorkToMake>20000</WorkToMake>
+      <MaxHitPoints>250</MaxHitPoints>
+      <Mass>9</Mass>
+      <StuffEffectMultiplierArmor>0.9</StuffEffectMultiplierArmor>
+      <StuffEffectMultiplierInsulation_Cold>0.5</StuffEffectMultiplierInsulation_Cold>
+	  <StuffEffectMultiplierInsulation_Heat>0.5</StuffEffectMultiplierInsulation_Heat>
+	  <Insulation_Heat>9</Insulation_Heat>
+      <EquipDelay>7</EquipDelay>
+    </statBases>
+	<thingCategories>
+      <li>ApparelArmor</li>
+    </thingCategories>
+	<thingSetMakerTags>
+      <li>RewardStandardQualitySuper</li>
+    </thingSetMakerTags>
+    <equippedStatOffsets>
+      <MoveSpeed>-0.4</MoveSpeed>
+    </equippedStatOffsets>
+      <apparel>
+	    <wornGraphicPath>Apparel/Cuirass/Cuirass</wornGraphicPath>
+		<bodyPartGroups>
+		  <li>Torso</li>
+          <li>Neck</li>
+		  <!--li>Shoulders</li-->
+		</bodyPartGroups>
+	  <layers>
+        <li>Shell</li>
+		<li>Middle</li>
+      </layers>
+      <tags>       
+        <!--li>SteamworldMilitary</li-->
+		<li>SteamworldMilitaryArmour</li>
+      </tags>
+      <defaultOutfitTags>
+        <li>Soldier</li>
+      </defaultOutfitTags>
+	  <useWornGraphicMask>true</useWornGraphicMask>
+    </apparel>
+	<generateCommonality>0.1</generateCommonality>
+    <tradeTags>
+	  <li>Clothing</li>
+      <li>Armor</li>
+    </tradeTags>
+	<costList>
+      <Cloth>50</Cloth>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+  </ThingDef>
+
+</Defs>

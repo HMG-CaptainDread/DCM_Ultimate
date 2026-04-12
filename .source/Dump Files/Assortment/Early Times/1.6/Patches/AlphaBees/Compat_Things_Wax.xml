@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Alpha Bees</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+	<li Class="PatchOperationRemove">
+		<xpath>/Defs/ThingDef[defName="RB_Beeswax"]</xpath>
+	</li>	
+	
+	<li Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[@Name="RB_BeesWaxBase" or defName="MedTimes_Wax"]/statBases</xpath>
+		<value>
+			<statBases>
+				<MarketValue>5</MarketValue>
+				<Mass>0.01</Mass>
+				<Flammability>1</Flammability>
+				<MaxHitPoints>100</MaxHitPoints>
+				<DeteriorationRate>0.2</DeteriorationRate>
+				<StuffPower_Armor_Sharp>0.05</StuffPower_Armor_Sharp>
+				<StuffPower_Armor_Blunt>0.05</StuffPower_Armor_Blunt>
+				<StuffPower_Armor_Heat>0.05</StuffPower_Armor_Heat>
+				<StuffPower_Insulation_Cold>3</StuffPower_Insulation_Cold>
+				<StuffPower_Insulation_Heat>0</StuffPower_Insulation_Heat>
+				<SharpDamageMultiplier>0.2</SharpDamageMultiplier>
+				<BluntDamageMultiplier>0.8</BluntDamageMultiplier>
+			</statBases>
+		</value>
+	</li>	
+	
+	<li Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName="MedTimes_Wax"]/thingCategories</xpath>
+		<value>
+			<thingCategories>
+				<li>RB_BeeswaxCategory</li>
+			</thingCategories>
+		</value>
+	</li>	
+	
+	<li Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[@Name="RB_BeesWaxBase"]/stackLimit</xpath>
+		<value>
+			<stackLimit>300</stackLimit>
+		</value>
+	</li>	
+	
+	<li Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[@Name="RB_BeesWaxBase"]</xpath>
+		<value>
+			<tradeTags>
+				<li>MedTimes_TradeGoods</li>
+			</tradeTags>
+		</value>
+	</li>
+	
+	<li Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[@Name="RB_BeesWaxBase"]/tradeability</xpath>
+		<value>
+			<tradeability>All</tradeability>
+		</value>
+	</li>
+	
+	<li Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[@Name="RB_BeesWaxBase" or defName="MedTimes_Wax"]/stuffProps/categories</xpath>
+		<value>
+			<categories>
+				<li>Woody</li>
+				<li>RB_Waxy</li>
+			</categories>
+		</value>
+	</li>
+	
+	<li Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[@Name="RB_BeesWaxBase"]/stuffProps/statFactors</xpath>
+		<value>
+            <statFactors>
+                <MaxHitPoints>0.4</MaxHitPoints>
+                <Beauty>1</Beauty>
+                <Flammability>1</Flammability>
+                <WorkToMake>0.52</WorkToMake>
+                <WorkToBuild>0.52</WorkToBuild>
+				<DoorOpenSpeed>1.2</DoorOpenSpeed>
+            </statFactors>
+		</value>
+	</li>
+			</operations>
+		</match>
+	</Operation>
+	
+	
+	
+	
+</Patch>

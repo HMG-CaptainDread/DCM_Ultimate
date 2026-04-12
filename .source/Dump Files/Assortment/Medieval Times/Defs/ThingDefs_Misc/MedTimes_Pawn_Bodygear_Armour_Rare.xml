@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!-- Start of thingDefs -->
+<!-- ================== General Armour Classes ================ --> 
+  <!-- Armour Base Class -->
+  <ThingDef Name="MedTimes_BodyArmour_Rare" Abstract="True">
+    <thingClass>Apparel</thingClass>
+    <category>Item</category>
+	<techLevel>Medieval</techLevel>	
+    <selectable>True</selectable>
+    <pathCost>10</pathCost>
+
+    <graphicData>
+      <onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Transparent</shaderType>		  
+    </graphicData>
+    <drawGUIOverlay>true</drawGUIOverlay>
+    <altitudeLayer>Item</altitudeLayer>
+    <alwaysHaulable>True</alwaysHaulable>
+    <tickerType>Never</tickerType>	
+    <statBases>
+      <SellPriceFactor>0.8</SellPriceFactor>
+		<EquipDelay>5</EquipDelay> 
+	  <Beauty>-5</Beauty>
+      <Mass>3.5</Mass>	  
+    </statBases>
+    <equippedStatOffsets>
+      <MoveSpeed>-0.12</MoveSpeed>	  
+    </equippedStatOffsets>	
+    <apparel>
+		<tags>
+			<li MayRequire="Ludeon.RimWorld.Royalty">PrestigeCombatGear</li>
+		</tags>
+		<careIfWornByCorpse>false</careIfWornByCorpse>	
+		<layers><li>Middle</li></layers>	
+		<defaultOutfitTags><li>Soldier</li></defaultOutfitTags>		  
+      <bodyPartGroups>
+        <li>Torso</li>
+		<li>Shoulders</li>
+		<li>Arms</li>
+		<li>Legs</li>		
+      </bodyPartGroups>	 
+	</apparel>	
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+    </comps>	  
+  </ThingDef>
+  
+  
+  <!-- (Artifact) BodyArmour Base Class -->
+  <ThingDef Name="MedTimes_BodyArmour_Art" ParentName="MedTimes_BodyArmour_Rare" Abstract="True">
+      <useHitPoints>True</useHitPoints>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <ArmorRating_Blunt>0.5</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.95</ArmorRating_Sharp>		  
+      <Flammability>1.0</Flammability>	
+      <Insulation_Cold>3</Insulation_Cold>	  	
+      <DeteriorationRate>1</DeteriorationRate>  
+    </statBases>  
+    <comps>
+      <li><compClass>CompQuality</compClass></li>
+    </comps>	
+    <thingCategories><li>BodyArmour_Art</li></thingCategories>	
+    <tradeTags><li>MedTimes_Artifact</li></tradeTags>			
+  </ThingDef>  
+  
+  
+   <!-- (Legendary) BodyArmour Base Class -->
+  <ThingDef Name="MedTimes_BodyArmour_Leg" ParentName="MedTimes_BodyArmour_Rare" Abstract="True">
+    <useHitPoints>False</useHitPoints>
+	<costList><MedTimes_NaniteVial>1</MedTimes_NaniteVial></costList>
+    <statBases>
+      <ArmorRating_Blunt>0.92</ArmorRating_Blunt>
+      <ArmorRating_Sharp>1.75</ArmorRating_Sharp>
+      <Insulation_Cold>7</Insulation_Cold>	
+    </statBases>	
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Intellectual</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>MedTimes_UnfinishedNanite</unfinishedThingDef>	  
+      <recipeUsers>
+		<li>MedTimes_EternityForge</li>
+      </recipeUsers>
+		<skillRequirements>
+				<Intellectual>10</Intellectual>
+		</skillRequirements>	  
+	</recipeMaker>		
+    <thingCategories><li>BodyArmour_Leg</li></thingCategories>	
+    <tradeTags><li>MedTimes_Legendary</li></tradeTags>
+    <thingSetMakerTags>
+		<li>PeaceTalksGift</li>
+		<li>ItemStashQuest</li>
+		<li>BanditCampQuestRewards</li>
+		<li>AncientTempleContents</li>
+		<li>AncientPodContents</li>
+    </thingSetMakerTags>		
+  </ThingDef>    
+  
+
+<!-- ================== (Artifact) Body Armours ================ -->
+
+<!-- (Artifact) God King Armour, Blue Caped: Hot Apparel--> 
+  <ThingDef ParentName="MedTimes_BodyArmour_Art">
+    <defName>MedTimes_BodyArmour_GodKingBlue_Art</defName>
+    <label>God King's Plate (Art)</label>
+    <description>(Artifact)[SocialImpact: +8%] [Movespeed: -12%]This heavy armour made of many metal plates carefully sculpted, engraved and coated in pure gold. It demands the attention of everyone in the room and expouses it's wealth and refinement. It comes with a complimentary cape to inform of lineage and prestige. This armour is perfect for a God-King, intent on letting others know who's in charge.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/GodKing/GodKing_CapedBlue/MedTimes_GodKing</texPath>
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/GodKing/GodKing_CapedBlue/MedTimes_GodKing_Art</uiIconPath>		
+    <statBases>
+      <MarketValue>5000</MarketValue>
+	  <Insulation_Cold>36</Insulation_Cold>
+      <Insulation_Heat>12</Insulation_Heat>	  	  
+    </statBases>
+    <equippedStatOffsets>
+      <SocialImpact>0.08</SocialImpact>
+    </equippedStatOffsets>	
+    <apparel>	
+      <layers><li>Middle</li><li>Shell</li></layers>	
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/GodKing/GodKing_CapedBlue/MedTimes_GodKing</wornGraphicPath>	    
+    </apparel>	
+  </ThingDef>  
+  
+<!-- (Artifact) God King Armour, Green Caped: Hot Apparel--> 
+   <ThingDef ParentName="MedTimes_BodyArmour_Art">
+    <defName>MedTimes_BodyArmour_GodKingGreen_Art</defName>
+    <label>Society God King's Plate (Art)</label>
+    <description>(Artifact)[SocialImpact: +8%][Movespeed: -12%] This heavy armour made of many metal plates carefully sculpted, engraved and coated in pure gold. It demands the attention of everyone in the room and expouses it's wealth and refinement. It comes with a complimentary cape to inform of lineage and prestige. This armour is perfect for a God-King, intent on letting others know who's in charge.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/GodKing/GodKing_CapedGreen/MedTimes_GodKing</texPath>
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/GodKing/GodKing_CapedGreen/MedTimes_GodKing_Art</uiIconPath>	
+    <statBases>	
+      <MarketValue>5000</MarketValue>	
+	  <Insulation_Cold>36</Insulation_Cold>
+      <Insulation_Heat>12</Insulation_Heat>	  	  
+    </statBases>
+    <equippedStatOffsets>
+      <SocialImpact>0.08</SocialImpact>
+    </equippedStatOffsets>		
+    <apparel>	
+      <layers><li>Middle</li><li>Shell</li></layers>	
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/GodKing/GodKing_CapedGreen/MedTimes_GodKing</wornGraphicPath>   
+    </apparel>
+  </ThingDef>   
+  
+ <!-- (Artifact) Warlord Armour, Cloaked --> 
+   <ThingDef ParentName="MedTimes_BodyArmour_Art">
+    <defName>MedTimes_BodyArmour_Warlord_Art</defName>
+    <label>Warlord's Plate (Art)</label>
+    <description>(Artifact)[SocialImpact: +8%][Movespeed: -12%] This heavy armour made of many steel plates carefully sculpted and engraved. It comes with a large cloak to keep the wearer warm, yet it's unusual design also prevents the heat traps which can generally be the cause of heatstrokes. This armour screams power and authority and is perfect for a young warlord, intent on letting others know who's in charge.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/Warlord/Warlord_Cloaked/MedTimes_Warlord</texPath>
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/Warlord/Warlord_Cloaked/MedTimes_Warlord_Art</uiIconPath>	
+    <statBases>		
+      <MarketValue>5000</MarketValue>	
+	  <Insulation_Cold>36</Insulation_Cold>
+      <Insulation_Heat>12</Insulation_Heat>	  
+    </statBases>
+    <equippedStatOffsets>
+      <SocialImpact>0.08</SocialImpact>
+    </equippedStatOffsets>		
+    <apparel>	
+      <layers><li>Middle</li><li>Shell</li></layers>	
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/Warlord/Warlord_Cloaked/MedTimes_Warlord</wornGraphicPath>  
+    </apparel>	
+  </ThingDef>  
+
+ <!-- (Artifact) Combat Armour, --> 
+   <ThingDef ParentName="MedTimes_BodyArmour_Art">
+    <defName>MedTimes_BodyArmour_Combat_Art</defName>
+    <label>Combat Armour (Art)</label>
+    <description>(Artifact)[MeleeDodge: +10%][Movespeed: -12%] Body armour mass produced on high tech urbworlds for the horrors of war. Made primarily of plasteel plates, Nano-stretch materials and contouring Hyperfoam, this set of armour provides maximum mobility while providing government mandated "adequate" protection to "essential" areas. Mass produced in the millions, these peices of body armour are heavily regulated and heavily scrutinized. How one made it out here is anyone's guess.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/Combat/MedTimes_Combat</texPath>
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/Combat/MedTimes_Combat_Art</uiIconPath>			
+    <statBases>		
+      <MarketValue>5500</MarketValue>
+	  <ArmorRating_Heat>0.1</ArmorRating_Heat>
+    </statBases>
+		<equippedStatOffsets><MeleeDodgeChance>0.1</MeleeDodgeChance></equippedStatOffsets>		
+    <apparel>	
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/Combat/MedTimes_Combat</wornGraphicPath>  
+    </apparel>	
+  </ThingDef>   
+  
+  
+<!-- ================== (Legendary) Body Armours ================ -->
+
+<!-- (Legendary) God King Armour, Blue Caped: Hot Apparel--> 
+  <ThingDef ParentName="MedTimes_BodyArmour_Leg">
+    <defName>MedTimes_BodyArmour_GodKingBlue_Leg</defName>
+    <label>God King's Plate (Leg)</label>
+    <description>(Legendary)[SocialImpact: +10%][Movespeed: -12%] This heavy armour made of many metal plates carefully sculpted, engraved and coated in pure gold. It demands the attention of everyone in the room and expouses it's wealth and refinement. It comes with a complimentary cape to inform of lineage and prestige. This armour is perfect for a God-King, intent on letting others know who's in charge.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/GodKing/GodKing_CapedBlue/MedTimes_GodKing</texPath>
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/GodKing/GodKing_CapedBlue/MedTimes_GodKing_Leg</uiIconPath>	
+	<costList><MedTimes_BodyArmour_GodKingBlue_Art>1</MedTimes_BodyArmour_GodKingBlue_Art></costList>
+		
+    <statBases>
+	  <Insulation_Cold>38</Insulation_Cold>
+      <Insulation_Heat>12</Insulation_Heat>	  	  
+    </statBases>
+    <equippedStatOffsets>
+      <SocialImpact>0.1</SocialImpact>
+    </equippedStatOffsets>	
+    <apparel>	
+      <layers><li>Middle</li><li>Shell</li></layers>	
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/GodKing/GodKing_CapedBlue/MedTimes_GodKing</wornGraphicPath>	    
+    </apparel>	
+  </ThingDef>  
+  
+<!-- (Legendary) God King Armour, Green Caped: Hot Apparel--> 
+   <ThingDef ParentName="MedTimes_BodyArmour_Leg">
+    <defName>MedTimes_BodyArmour_GodKingGreen_Leg</defName>
+    <label>Society God King's Plate (Leg)</label>
+    <description>(Legendary)[SocialImpact: +10%][Movespeed: -12%] This heavy armour made of many metal plates carefully sculpted, engraved and coated in pure gold. It demands the attention of everyone in the room and expouses it's wealth and refinement. It comes with a complimentary cape to inform of lineage and prestige. This armour is perfect for a God-King, intent on letting others know who's in charge.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/GodKing/GodKing_CapedGreen/MedTimes_GodKing</texPath>
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/GodKing/GodKing_CapedGreen/MedTimes_GodKing_Leg</uiIconPath>
+	<costList><MedTimes_BodyArmour_GodKingGreen_Art>1</MedTimes_BodyArmour_GodKingGreen_Art></costList>
+		
+    <statBases>	
+	  <Insulation_Cold>38</Insulation_Cold>
+      <Insulation_Heat>12</Insulation_Heat>	    	  
+    </statBases>
+    <equippedStatOffsets>
+      <SocialImpact>0.1</SocialImpact>
+    </equippedStatOffsets>		
+    <apparel>	
+      <layers><li>Middle</li><li>Shell</li></layers>	
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/GodKing/GodKing_CapedGreen/MedTimes_GodKing</wornGraphicPath>  
+    </apparel>	
+  </ThingDef>
+  
+ <!-- (Legendary) Warlord Armour, Cloaked --> 
+   <ThingDef ParentName="MedTimes_BodyArmour_Leg">
+    <defName>MedTimes_BodyArmour_Warlord_Leg</defName>
+    <label>Warlord's Plate (Leg)</label>
+    <description>(Legendary)[SocialImpact: +10%][Movespeed: -12%] This heavy armour made of many steel plates carefully sculpted and engraved. It comes with a large cloak to keep the wearer warm, yet it's unusual design also prevents the heat traps which can generally be the cause of heatstrokes. This armour screams power and authority and is perfect for a young warlord, intent on letting others know who's in charge.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/Warlord/Warlord_Cloaked/MedTimes_Warlord</texPath>
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/Warlord/Warlord_Cloaked/MedTimes_Warlord_Leg</uiIconPath>
+		<costList><MedTimes_BodyArmour_Warlord_Art>1</MedTimes_BodyArmour_Warlord_Art></costList>
+	
+    <statBases>		  
+	  <Insulation_Cold>38</Insulation_Cold>
+      <Insulation_Heat>12</Insulation_Heat>	  
+    </statBases>
+    <equippedStatOffsets>
+      <SocialImpact>0.1</SocialImpact>
+    </equippedStatOffsets>		
+    <apparel>
+      <layers><li>Middle</li><li>Shell</li></layers>		
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/Warlord/Warlord_Cloaked/MedTimes_Warlord</wornGraphicPath>	  
+    </apparel>
+	
+  </ThingDef> 
+  
+ <!-- (Legendary) Combat Armour, --> 
+   <ThingDef ParentName="MedTimes_BodyArmour_Leg">
+    <defName>MedTimes_BodyArmour_Combat_Leg</defName>
+    <label>Combat Armour (Leg)</label>
+    <description>(Legendary) [MeleeDodge: +12%][Movespeed: -12%]Body armour mass produced on high tech urbworlds for the horrors of war. Made primarily of plasteel plates, Nano-stretch materials and contouring Hyperfoam, this set of armour provides maximum mobility while providing government mandated "adequate" protection to "essential" areas. Mass produced in the millions, these peices of body armour are heavily regulated and heavily scrutinized. How one made it out here is anyone's guess.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/Combat/MedTimes_Combat</texPath>
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/Combat/MedTimes_Combat_Leg</uiIconPath>
+		<costList><MedTimes_BodyArmour_Combat_Art>1</MedTimes_BodyArmour_Combat_Art></costList>
+	
+    <statBases>	
+	  <ArmorRating_Heat>0.21</ArmorRating_Heat>
+      <Insulation_Cold>12</Insulation_Cold>
+    </statBases>
+		<equippedStatOffsets><MeleeDodgeChance>0.1</MeleeDodgeChance></equippedStatOffsets>		
+    <apparel>	
+      <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Bodywear_Armor/Combat/MedTimes_Combat</wornGraphicPath>  
+    </apparel>	
+  </ThingDef>   
+  
+<!-- End of thingDefs -->	
+</Defs>

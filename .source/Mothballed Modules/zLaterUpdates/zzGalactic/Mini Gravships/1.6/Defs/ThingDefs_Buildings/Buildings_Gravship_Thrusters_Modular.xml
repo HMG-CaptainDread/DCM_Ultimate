@@ -1,0 +1,631 @@
+<Defs>
+
+  
+  <!-- XL Regular Thruster, loads first for menu UI alphabetical order-->
+  <ThingDef ParentName="ThrusterBase">
+    <defName>XLMiniGravshipThruster</defName>
+    <label>capital thruster</label>
+    <description>An advanced chemfuel thruster with a heat-resistant vacstone liner. It greatly increases the range of a gravship. Thrusters require an unobstructed area free of large buildings and gravship substructure.\n\nRequires vacstone blocks, which can be obtained from orbital asteroids.</description>
+    <graphicData>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <texPath>Things/Building/Gravship/XLMiniGravshipThruster</texPath>
+      <drawSize>(3.3, 6.6)</drawSize>
+      <shadowData>
+        <volume>(1.8, 0.75, 1.8)</volume>
+      </shadowData>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>1500</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <Beauty>-10</Beauty>
+      <WorkToBuild>34800</WorkToBuild>
+      <Mass>160</Mass>
+    </statBases>
+	<stealable>false</stealable>
+    <size>(3, 6)</size>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+    <costList>
+      <Steel>500</Steel>
+      <BlocksVacstone>100</BlocksVacstone>
+      <ComponentIndustrial>16</ComponentIndustrial>
+      <ComponentSpacer>4</ComponentSpacer>
+    </costList>
+    <costStuffCount>10</costStuffCount>
+    <stuffCategories Inherit="False">
+      <li>Metallic</li>
+    </stuffCategories>
+    <researchPrerequisites>
+      <li>StandardGravtech</li>
+    </researchPrerequisites>
+    <comps>
+      <li Class="CompProperties_GravshipThruster">
+        <statOffsets>
+          <GravshipRange>44</GravshipRange>
+        </statOffsets>
+        <componentTypeDef>Thruster</componentTypeDef>
+        <exclusionAreaSize>(3, 0, 7)</exclusionAreaSize>
+        <exclusionAreaOffset>(-1, 0, -9)</exclusionAreaOffset>
+        <directionInfluence>30</directionInfluence>
+        <flameSize>4.0</flameSize>
+        <flameOffsetsPerDirection>
+          <li>(0, 0, 1.0)</li>
+          <li>(0, 0, 0.5)</li>
+          <li>(0, 0, 0.5)</li>
+          <li>(0, 0, 0.5)</li>
+        </flameOffsetsPerDirection>
+        <flameShaderType>MoteGlow</flameShaderType>
+        <flameShaderParameters>
+          <_MainTex>/Things/Mote/LargeThruster_Burn</_MainTex>
+        </flameShaderParameters>
+        <requiresLOS>false</requiresLOS>
+        <showMaxSimultaneous>false</showMaxSimultaneous>
+        <maxSimultaneous>9999</maxSimultaneous>
+        <maxDistance>1000</maxDistance>
+        <exhaustSettings>
+          <exhaustFleckDef>GravshipThrusterExhaust</exhaustFleckDef>
+          <emissionsPerSecond>40.0</emissionsPerSecond>
+          <spawnRadiusRange>0.0~0.5</spawnRadiusRange>
+          <velocity>(0.0,0.0,-20.0)</velocity>
+          <velocityRotationRange>-10.0~10.0</velocityRotationRange>
+          <velocityMultiplierRange>0.8~1.2</velocityMultiplierRange>
+          <rotationOverTimeRange>-180.0~180.0</rotationOverTimeRange>
+          <scaleRange>3.0~5.0</scaleRange>
+        </exhaustSettings>
+      </li>
+      <li Class="CompProperties_Power">
+		<compClass>CompPowerTrader</compClass>
+		<basePowerConsumption>150</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+    </comps>
+    <building>
+      <relatedBuildCommands Inherit="False">
+    <li>SmallThruster</li>
+    <li>LargeThruster</li>
+    <li>XLargeThruster</li>
+    <li>ModularSmallThruster</li>
+    <li>ModularLargeThruster</li>
+    <li>ModularXLargeThruster</li>
+    <li>ModularXLMiniGravshipThruster</li>
+      </relatedBuildCommands>
+      <relatedTerrain>
+        <li>Substructure</li>
+      </relatedTerrain>
+				</building>
+    <uiOrder>2200</uiOrder>
+  </ThingDef>
+  
+  
+  <!-- XL Regular Thruster, loads first for menu UI alphabetical order-->
+  <ThingDef ParentName="ThrusterBase">
+    <defName>XLargeThruster</defName>
+    <label>extra large thruster</label>
+    <description>An advanced chemfuel thruster with a heat-resistant vacstone liner. It greatly increases the range of a gravship. Thrusters require an unobstructed area free of large buildings and gravship substructure.\n\nRequires vacstone blocks, which can be obtained from orbital asteroids.</description>
+    <graphicData>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <texPath>Things/Building/LateralThruster/LateralThruster</texPath>
+      <drawSize>(3.3, 3.3)</drawSize>
+      <shadowData>
+        <volume>(1.8, 0.75, 1.8)</volume>
+      </shadowData>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>750</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <Beauty>-10</Beauty>
+      <WorkToBuild>16400</WorkToBuild>
+      <Mass>40</Mass>
+    </statBases>
+	<stealable>false</stealable>
+    <size>(3, 3)</size>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+    <costList>
+      <Steel>260</Steel>
+      <BlocksVacstone>50</BlocksVacstone>
+      <ComponentIndustrial>8</ComponentIndustrial>
+      <ComponentSpacer>2</ComponentSpacer>
+    </costList>
+    <costStuffCount>20</costStuffCount>
+    <stuffCategories Inherit="False">
+      <li>Metallic</li>
+    </stuffCategories>
+    <researchPrerequisites>
+      <li>StandardGravtech</li>
+    </researchPrerequisites>
+    <comps>
+      <li Class="CompProperties_GravshipThruster">
+        <statOffsets>
+          <GravshipRange>22</GravshipRange>
+        </statOffsets>
+        <componentTypeDef>Thruster</componentTypeDef>
+        <exclusionAreaSize>(3, 0, 7)</exclusionAreaSize>
+        <exclusionAreaOffset>(-1, 0, -8)</exclusionAreaOffset>
+        <directionInfluence>30</directionInfluence>
+        <flameSize>4.0</flameSize>
+        <flameOffsetsPerDirection>
+          <li>(0, 0, 1.0)</li>
+          <li>(0, 0, 0.5)</li>
+          <li>(0, 0, 0.5)</li>
+          <li>(0, 0, 0.5)</li>
+        </flameOffsetsPerDirection>
+        <flameShaderType>MoteGlow</flameShaderType>
+        <flameShaderParameters>
+          <_MainTex>/Things/Mote/LargeThruster_Burn</_MainTex>
+        </flameShaderParameters>
+        <requiresLOS>false</requiresLOS>
+        <showMaxSimultaneous>false</showMaxSimultaneous>
+        <maxSimultaneous>9999</maxSimultaneous>
+        <maxDistance>500</maxDistance>
+        <exhaustSettings>
+          <exhaustFleckDef>GravshipThrusterExhaust</exhaustFleckDef>
+          <emissionsPerSecond>40.0</emissionsPerSecond>
+          <spawnRadiusRange>0.0~0.5</spawnRadiusRange>
+          <velocity>(0.0,0.0,-20.0)</velocity>
+          <velocityRotationRange>-10.0~10.0</velocityRotationRange>
+          <velocityMultiplierRange>0.8~1.2</velocityMultiplierRange>
+          <rotationOverTimeRange>-180.0~180.0</rotationOverTimeRange>
+          <scaleRange>3.0~5.0</scaleRange>
+        </exhaustSettings>
+      </li>
+      <li Class="CompProperties_Power">
+		<compClass>CompPowerTrader</compClass>
+		<basePowerConsumption>150</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+    </comps>
+    <building>
+      <relatedBuildCommands Inherit="False">
+    <li>SmallThruster</li>
+    <li>LargeThruster</li>
+    <li>XLMiniGravshipThruster</li>
+    <li>ModularSmallThruster</li>
+    <li>ModularLargeThruster</li>
+    <li>ModularXLargeThruster</li>
+    <li>ModularXLMiniGravshipThruster</li>
+      </relatedBuildCommands>
+      <relatedTerrain>
+        <li>Substructure</li>
+      </relatedTerrain>
+				</building>
+    <uiOrder>2200</uiOrder>
+  </ThingDef>
+  
+
+
+
+
+	<!-- modular thrusters-->
+	
+  <ThingDef Name="ModularThrusterBase" ParentName="GravshipComponentBase" Abstract="True">
+    <rotatable>true</rotatable>
+    <tickerType>Rare</tickerType>
+    <passability>Standable</passability>
+    <blockWind>false</blockWind>
+    <fillPercent>0</fillPercent>
+    <holdsRoof>false</holdsRoof>
+    <canOverlapZones>true</canOverlapZones>
+    <designationCategory>Odyssey</designationCategory>
+    <blockLight>false</blockLight>
+    <placeWorkers>
+      <li>PlaceWorker_GravshipThruster</li>
+      <li>PlaceWorker_OnSubstructure</li>
+    </placeWorkers>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    <drawPlaceWorkersWhileInstallBlueprintSelected>true</drawPlaceWorkersWhileInstallBlueprintSelected>
+    <building>
+	  <isEdifice>false</isEdifice>
+      <isAirtight>false</isAirtight>
+      <isInert>true</isInert>
+    </building>
+    <uiOrder>2200</uiOrder>
+    <clearBuildingArea>false</clearBuildingArea>
+  </ThingDef>
+
+  <ThingDef ParentName="ModularThrusterBase">
+    <defName>ModularSmallThruster</defName>
+    <label>modular small thruster</label>
+    <description>A chemfuel thruster that increases the range of a gravship. Thrusters require an unobstructed area free of large buildings and gravship substructure.\n\nModular engines cannot be constructed within the floor without having a clear area to do so. They can be built on top of, but cannot be built beneath existing structures. It is possible to layer regular engines on top of modular engines.</description>
+    <graphicData>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <texPath>Things/Building/SmallThruster/SmallThruster</texPath>
+      <drawSize>(1.1, 2.2)</drawSize>
+      <drawOffsetNorth>(0,0,-1)</drawOffsetNorth>
+      <drawOffsetSouth>(0,0,1)</drawOffsetSouth>
+      <drawOffsetWest>(1,0,0)</drawOffsetWest>
+      <drawOffsetEast>(-1,0,0)</drawOffsetEast>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <Beauty>-10</Beauty>
+      <WorkToBuild>10000</WorkToBuild>
+      <Mass>20</Mass>
+    </statBases>
+	<stealable>false</stealable>
+    <altitudeLayer>LowPlant</altitudeLayer>
+    <size>(1, 2)</size>
+    <constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+    <costList>
+      <Steel>180</Steel>
+      <ComponentIndustrial>4</ComponentIndustrial>
+    </costList>
+    <costStuffCount>20</costStuffCount>
+    <stuffCategories Inherit="False">
+      <li>Metallic</li>
+    </stuffCategories>
+    <researchPrerequisites>
+      <li>BasicGravtech</li>
+    </researchPrerequisites>
+    <comps>
+      <li Class="CompProperties_GravshipThruster">
+        <statOffsets>
+          <GravshipRange>10</GravshipRange>
+        </statOffsets>
+        <componentTypeDef>Thruster</componentTypeDef>
+        <exclusionAreaSize>(1, 0, 5)</exclusionAreaSize>
+        <exclusionAreaOffset>(0, 0, -5)</exclusionAreaOffset>
+        <directionInfluence>20</directionInfluence>
+        <flameSize>4.0</flameSize>
+        <flameOffsetsPerDirection>
+          <li>(0, 0, 0.5)</li>
+          <li>(0, 0, 0.5)</li>
+          <li>(0, 0, 0.5)</li>
+          <li>(0, 0, 0.5)</li>
+        </flameOffsetsPerDirection>
+        <flameShaderType>MoteGlow</flameShaderType>
+        <flameShaderParameters>
+          <_MainTex>/Things/Mote/SmallThruster_Burn</_MainTex>
+        </flameShaderParameters>
+        <requiresLOS>false</requiresLOS>
+        <showMaxSimultaneous>false</showMaxSimultaneous>
+        <maxSimultaneous>9999</maxSimultaneous>
+        <maxDistance>500</maxDistance>
+        <exhaustSettings>
+          <exhaustFleckDef>GravshipThrusterExhaust</exhaustFleckDef>
+          <emissionsPerSecond>40.0</emissionsPerSecond>
+          <spawnRadiusRange>0.0~0.5</spawnRadiusRange>
+          <velocity>(0.0,0.0,-20.0)</velocity>
+          <velocityRotationRange>-10.0~10.0</velocityRotationRange>
+          <velocityMultiplierRange>0.8~1.2</velocityMultiplierRange>
+          <rotationOverTimeRange>-180.0~180.0</rotationOverTimeRange>
+          <scaleRange>1.5~3.0</scaleRange>
+        </exhaustSettings>
+      </li>
+      <li Class="CompProperties_Power">
+		<compClass>CompPowerTrader</compClass>
+		<basePowerConsumption>150</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+    </comps>
+    <building>
+	  <isEdifice>false</isEdifice>
+      <isAirtight>false</isAirtight>
+      <isInert>true</isInert>
+      <relatedBuildCommands Inherit="False">
+    <li>SmallThruster</li>
+    <li>LargeThruster</li>
+    <li>XLargeThruster</li>
+    <li>XLMiniGravshipThruster</li>
+    <li>ModularLargeThruster</li>
+    <li>ModularXLargeThruster</li>
+    <li>ModularXLMiniGravshipThruster</li>
+      </relatedBuildCommands>
+      <relatedTerrain>
+        <li>Substructure</li>
+      </relatedTerrain>
+    </building>
+    <clearBuildingArea>false</clearBuildingArea>
+    <uiOrder>2200</uiOrder>
+  </ThingDef>
+
+  <ThingDef ParentName="ModularThrusterBase">
+    <defName>ModularLargeThruster</defName>
+    <label>modular large thruster</label>
+    <description>An advanced chemfuel thruster with a heat-resistant vacstone liner. It greatly increases the range of a gravship. Thrusters require an unobstructed area free of large buildings and gravship substructure.\n\nRequires vacstone blocks, which can be obtained from orbital asteroids.\n\nModular engines cannot be constructed within the floor without having a clear area to do so. They can be built on top of, but cannot be built beneath existing structures.  It is possible to layer regular engines on top of modular engines.</description>
+    <graphicData>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <texPath>Things/Building/LateralThruster/LateralThruster</texPath>
+      <drawSize>(2.2, 2.2)</drawSize>
+      <drawOffsetNorth>(0,0,-1)</drawOffsetNorth>
+      <drawOffsetSouth>(0,0,1)</drawOffsetSouth>
+      <drawOffsetWest>(1,0,0)</drawOffsetWest>
+      <drawOffsetEast>(-1,0,0)</drawOffsetEast>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <Beauty>-10</Beauty>
+      <WorkToBuild>13200</WorkToBuild>
+      <Mass>30</Mass>
+    </statBases>
+	<stealable>false</stealable>
+    <altitudeLayer>LowPlant</altitudeLayer>
+    <size>(2, 2)</size>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+    <costList>
+      <Steel>220</Steel>
+      <BlocksVacstone>50</BlocksVacstone>
+      <ComponentIndustrial>6</ComponentIndustrial>
+    </costList>
+    <costStuffCount>20</costStuffCount>
+    <stuffCategories Inherit="False">
+      <li>Metallic</li>
+    </stuffCategories>
+    <researchPrerequisites>
+      <li>StandardGravtech</li>
+    </researchPrerequisites>
+    <comps>
+      <li Class="CompProperties_GravshipThruster">
+        <statOffsets>
+          <GravshipRange>16</GravshipRange>
+        </statOffsets>
+        <componentTypeDef>Thruster</componentTypeDef>
+        <exclusionAreaSize>(2, 0, 7)</exclusionAreaSize>
+        <exclusionAreaOffset>(0, 0, -7)</exclusionAreaOffset>
+        <directionInfluence>30</directionInfluence>
+        <flameSize>4.0</flameSize>
+        <flameOffsetsPerDirection>
+          <li>(0, 0, 1.0)</li>
+          <li>(0, 0, 0.5)</li>
+          <li>(0, 0, 0.5)</li>
+          <li>(0, 0, 0.5)</li>
+        </flameOffsetsPerDirection>
+        <flameShaderType>MoteGlow</flameShaderType>
+        <flameShaderParameters>
+          <_MainTex>/Things/Mote/LargeThruster_Burn</_MainTex>
+        </flameShaderParameters>
+        <requiresLOS>false</requiresLOS>
+        <showMaxSimultaneous>false</showMaxSimultaneous>
+        <maxSimultaneous>9999</maxSimultaneous>
+        <maxDistance>500</maxDistance>
+        <exhaustSettings>
+          <exhaustFleckDef>GravshipThrusterExhaust</exhaustFleckDef>
+          <emissionsPerSecond>40.0</emissionsPerSecond>
+          <spawnRadiusRange>0.0~0.5</spawnRadiusRange>
+          <velocity>(0.0,0.0,-20.0)</velocity>
+          <velocityRotationRange>-10.0~10.0</velocityRotationRange>
+          <velocityMultiplierRange>0.8~1.2</velocityMultiplierRange>
+          <rotationOverTimeRange>-180.0~180.0</rotationOverTimeRange>
+          <scaleRange>3.0~5.0</scaleRange>
+        </exhaustSettings>
+      </li>
+      <li Class="CompProperties_Power">
+		<compClass>CompPowerTrader</compClass>
+		<basePowerConsumption>150</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+    </comps>
+    <building>
+	  <isEdifice>false</isEdifice>
+      <isAirtight>false</isAirtight>
+      <isInert>true</isInert>
+      <relatedBuildCommands Inherit="False">
+    <li>SmallThruster</li>
+    <li>XLargeThruster</li>
+    <li>XLMiniGravshipThruster</li>
+    <li>ModularSmallThruster</li>
+    <li>ModularLargeThruster</li>
+    <li>ModularXLargeThruster</li>
+    <li>ModularXLMiniGravshipThruster</li>
+      </relatedBuildCommands>
+      <relatedTerrain>
+        <li>Substructure</li>
+      </relatedTerrain>
+    </building>
+    <uiOrder>2200</uiOrder>
+    <clearBuildingArea>false</clearBuildingArea>
+  </ThingDef>
+  
+  <!-- XL Modular Thruster -->
+  <ThingDef ParentName="ModularThrusterBase">
+    <defName>ModularXLargeThruster</defName>
+    <label>modular extra large thruster</label>
+    <description>An advanced chemfuel thruster with a heat-resistant vacstone liner. It greatly increases the range of a gravship. Thrusters require an unobstructed area free of large buildings and gravship substructure.\n\nRequires vacstone blocks, which can be obtained from orbital asteroids.\n\nModular engines cannot be constructed within the floor without having a clear area to do so. They can be built on top of, but cannot be built beneath existing structures.  It is possible to layer regular engines on top of modular engines.</description>
+    <graphicData>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <texPath>Things/Building/LateralThruster/LateralThruster</texPath>
+      <drawSize>(3.3, 3.3)</drawSize>
+      <drawOffsetNorth>(0,0,-1)</drawOffsetNorth>
+      <drawOffsetSouth>(0,0,1)</drawOffsetSouth>
+      <drawOffsetWest>(1,0,0)</drawOffsetWest>
+      <drawOffsetEast>(-1,0,0)</drawOffsetEast>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>750</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <Beauty>-10</Beauty>
+      <WorkToBuild>16400</WorkToBuild>
+      <Mass>40</Mass>
+    </statBases>
+	<stealable>false</stealable>
+    <altitudeLayer>LowPlant</altitudeLayer>
+    <size>(3, 3)</size>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+    <costList>
+      <Steel>260</Steel>
+      <BlocksVacstone>50</BlocksVacstone>
+      <ComponentIndustrial>8</ComponentIndustrial>
+      <ComponentSpacer>2</ComponentSpacer>
+    </costList>
+    <costStuffCount>20</costStuffCount>
+    <stuffCategories Inherit="False">
+      <li>Metallic</li>
+    </stuffCategories>
+    <researchPrerequisites>
+      <li>StandardGravtech</li>
+    </researchPrerequisites>
+    <comps>
+      <li Class="CompProperties_GravshipThruster">
+        <statOffsets>
+          <GravshipRange>22</GravshipRange>
+        </statOffsets>
+        <componentTypeDef>Thruster</componentTypeDef>
+        <exclusionAreaSize>(3, 0, 7)</exclusionAreaSize>
+        <exclusionAreaOffset>(-1, 0, -8)</exclusionAreaOffset>
+        <directionInfluence>30</directionInfluence>
+        <flameSize>4.0</flameSize>
+        <flameOffsetsPerDirection>
+          <li>(0, 0, 1.0)</li>
+          <li>(0, 0, 0.5)</li>
+          <li>(0, 0, 0.5)</li>
+          <li>(0, 0, 0.5)</li>
+        </flameOffsetsPerDirection>
+        <flameShaderType>MoteGlow</flameShaderType>
+        <flameShaderParameters>
+          <_MainTex>/Things/Mote/LargeThruster_Burn</_MainTex>
+        </flameShaderParameters>
+        <requiresLOS>false</requiresLOS>
+        <showMaxSimultaneous>false</showMaxSimultaneous>
+        <maxSimultaneous>9999</maxSimultaneous>
+        <maxDistance>500</maxDistance>
+        <exhaustSettings>
+          <exhaustFleckDef>GravshipThrusterExhaust</exhaustFleckDef>
+          <emissionsPerSecond>40.0</emissionsPerSecond>
+          <spawnRadiusRange>0.0~0.5</spawnRadiusRange>
+          <velocity>(0.0,0.0,-20.0)</velocity>
+          <velocityRotationRange>-10.0~10.0</velocityRotationRange>
+          <velocityMultiplierRange>0.8~1.2</velocityMultiplierRange>
+          <rotationOverTimeRange>-180.0~180.0</rotationOverTimeRange>
+          <scaleRange>3.0~5.0</scaleRange>
+        </exhaustSettings>
+      </li>
+      <li Class="CompProperties_Power">
+		<compClass>CompPowerTrader</compClass>
+		<basePowerConsumption>150</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+    </comps>
+    <building>
+	  <isEdifice>false</isEdifice>
+      <isAirtight>false</isAirtight>
+      <isInert>true</isInert>
+      <relatedBuildCommands Inherit="False">
+    <li>SmallThruster</li>
+    <li>LargeThruster</li>
+    <li>XLargeThruster</li>
+    <li>XLMiniGravshipThruster</li>
+    <li>ModularSmallThruster</li>
+    <li>ModularLargeThruster</li>
+    <li>ModularXLMiniGravshipThruster</li>
+      </relatedBuildCommands>
+      <relatedTerrain>
+        <li>Substructure</li>
+      </relatedTerrain>
+    </building>
+    <clearBuildingArea>false</clearBuildingArea>
+    <uiOrder>2200</uiOrder>
+  </ThingDef>
+  
+  
+  
+  
+  <!-- XL Regular Thruster, loads first for menu UI alphabetical order-->
+  <ThingDef ParentName="ModularThrusterBase">
+    <defName>ModularXLMiniGravshipThruster</defName>
+    <label>modular capital thruster</label>
+    <description>An advanced chemfuel thruster with a heat-resistant vacstone liner. It greatly increases the range of a gravship. Thrusters require an unobstructed area free of large buildings and gravship substructure.\n\nRequires vacstone blocks, which can be obtained from orbital asteroids.</description>
+    <graphicData>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <texPath>Things/Building/Gravship/XLMiniGravshipThruster</texPath>
+      <drawSize>(3.3, 6.6)</drawSize>
+      <drawOffsetNorth>(0,0,-1)</drawOffsetNorth>
+      <drawOffsetSouth>(0,0,1)</drawOffsetSouth>
+      <drawOffsetWest>(1,0,0)</drawOffsetWest>
+      <drawOffsetEast>(-1,0,0)</drawOffsetEast>
+      <shadowData>
+        <volume>(1.8, 0.75, 1.8)</volume>
+      </shadowData>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>1500</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <Beauty>-10</Beauty>
+      <WorkToBuild>34800</WorkToBuild>
+      <Mass>160</Mass>
+    </statBases>
+	<stealable>false</stealable>
+    <altitudeLayer>LowPlant</altitudeLayer>
+    <size>(3, 6)</size>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+    <costList>
+      <Steel>500</Steel>
+      <BlocksVacstone>100</BlocksVacstone>
+      <ComponentIndustrial>16</ComponentIndustrial>
+      <ComponentSpacer>4</ComponentSpacer>
+    </costList>
+    <costStuffCount>10</costStuffCount>
+    <stuffCategories Inherit="False">
+      <li>Metallic</li>
+    </stuffCategories>
+    <researchPrerequisites>
+      <li>StandardGravtech</li>
+    </researchPrerequisites>
+    <comps>
+      <li Class="CompProperties_GravshipThruster">
+        <statOffsets>
+          <GravshipRange>44</GravshipRange>
+        </statOffsets>
+        <componentTypeDef>Thruster</componentTypeDef>
+        <exclusionAreaSize>(3, 0, 7)</exclusionAreaSize>
+        <exclusionAreaOffset>(-1, 0, -9)</exclusionAreaOffset>
+        <directionInfluence>30</directionInfluence>
+        <flameSize>4.0</flameSize>
+        <flameOffsetsPerDirection>
+          <li>(0, 0, 1.0)</li>
+          <li>(0, 0, 0.5)</li>
+          <li>(0, 0, 0.5)</li>
+          <li>(0, 0, 0.5)</li>
+        </flameOffsetsPerDirection>
+        <flameShaderType>MoteGlow</flameShaderType>
+        <flameShaderParameters>
+          <_MainTex>/Things/Mote/LargeThruster_Burn</_MainTex>
+        </flameShaderParameters>
+        <requiresLOS>false</requiresLOS>
+        <showMaxSimultaneous>false</showMaxSimultaneous>
+        <maxSimultaneous>9999</maxSimultaneous>
+        <maxDistance>1000</maxDistance>
+        <exhaustSettings>
+          <exhaustFleckDef>GravshipThrusterExhaust</exhaustFleckDef>
+          <emissionsPerSecond>40.0</emissionsPerSecond>
+          <spawnRadiusRange>0.0~0.5</spawnRadiusRange>
+          <velocity>(0.0,0.0,-20.0)</velocity>
+          <velocityRotationRange>-10.0~10.0</velocityRotationRange>
+          <velocityMultiplierRange>0.8~1.2</velocityMultiplierRange>
+          <rotationOverTimeRange>-180.0~180.0</rotationOverTimeRange>
+          <scaleRange>3.0~5.0</scaleRange>
+        </exhaustSettings>
+      </li>
+      <li Class="CompProperties_Power">
+		<compClass>CompPowerTrader</compClass>
+		<basePowerConsumption>150</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+    </comps>
+    <building>
+	  <isEdifice>false</isEdifice>
+      <isAirtight>false</isAirtight>
+      <isInert>true</isInert>
+      <relatedBuildCommands Inherit="False">
+    <li>SmallThruster</li>
+    <li>LargeThruster</li>
+    <li>XLargeThruster</li>
+    <li>XLMiniGravshipThruster</li>
+    <li>ModularSmallThruster</li>
+    <li>ModularLargeThruster</li>
+      </relatedBuildCommands>
+      <relatedTerrain>
+        <li>Substructure</li>
+      </relatedTerrain>
+    </building>
+    <uiOrder>2200</uiOrder>
+  </ThingDef>
+  
+  
+  
+  
+  
+  
+  
+</Defs>

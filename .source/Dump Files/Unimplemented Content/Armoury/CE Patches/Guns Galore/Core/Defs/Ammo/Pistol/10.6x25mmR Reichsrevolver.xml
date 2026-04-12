@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo106x25mmR_Reichsrevolver</defName>
+		<label>10.6x25mmR Reichsrevolver</label>
+		<parent>AmmoPistols</parent>
+		<iconPath>UI/Icons/ThingCategories/CaliberPistol</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>AmmoSet_106x25mmR_Reichsrevolver</defName>
+		<label>10.6x25mmR Reichsrevolver</label>
+		<ammoTypes>
+			<Ammo_106x25mmR_Reichsrevolver_FMJ>Bullet_106x25mmR_Reichsrevolver_FMJ</Ammo_106x25mmR_Reichsrevolver_FMJ>
+			<Ammo_106x25mmR_Reichsrevolver_AP>Bullet_106x25mmR_Reichsrevolver_AP</Ammo_106x25mmR_Reichsrevolver_AP>
+			<Ammo_106x25mmR_Reichsrevolver_HP>Bullet_106x25mmR_Reichsrevolver_HP</Ammo_106x25mmR_Reichsrevolver_HP>			
+		</ammoTypes>
+		<similarTo>AmmoSet_Pistol</similarTo>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="106x25mmR_ReichsrevolverBase" ParentName="SmallAmmoBase" Abstract="True" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.greatwar.centralpowers">
+		<description>Old handgun cartridge used in revolvers and single-shot pistols.</description>
+		<statBases>
+			<Mass>0.024</Mass>
+			<Bulk>0.02</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo106x25mmR_Reichsrevolver</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="106x25mmR_ReichsrevolverBase" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>Ammo_106x25mmR_Reichsrevolver_FMJ</defName>
+		<label>10.6x25mmR Reichsrevolver cartridge (FMJ)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/FMJ</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.11</MarketValue>
+		</statBases>
+		<ammoClass>FullMetalJacket</ammoClass>
+		<cookOffProjectile>Bullet_106x25mmR_Reichsrevolver_FMJ</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="106x25mmR_ReichsrevolverBase" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>Ammo_106x25mmR_Reichsrevolver_AP</defName>
+		<label>10.6x25mmR Reichsrevolver cartridge (AP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/AP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.11</MarketValue>
+		</statBases>
+		<ammoClass>ArmorPiercing</ammoClass>
+		<cookOffProjectile>Bullet_106x25mmR_Reichsrevolver_AP</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="106x25mmR_ReichsrevolverBase" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>Ammo_106x25mmR_Reichsrevolver_HP</defName>
+		<label>10.6x25mmR Reichsrevolver cartridge (HP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/HP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.11</MarketValue>
+		</statBases>
+		<ammoClass>HollowPoint</ammoClass>
+		<cookOffProjectile>Bullet_106x25mmR_Reichsrevolver_HP</cookOffProjectile>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="Base106x25mmR_ReichsrevolverBullet" ParentName="BaseBulletCE" Abstract="true" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.greatwar.centralpowers">
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>43</speed>
+			<dropsCasings>true</dropsCasings>
+			<casingMoteDefname>Fleck_PistolAmmoCasings</casingMoteDefname>
+			<casingFilthDefname>Filth_PistolAmmoCasings</casingFilthDefname>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base106x25mmR_ReichsrevolverBullet" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>Bullet_106x25mmR_Reichsrevolver_FMJ</defName>
+		<label>10.6x25mmR Reichsrevolver bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>10</damageAmountBase>
+			<armorPenetrationSharp>3</armorPenetrationSharp>
+			<armorPenetrationBlunt>7.86</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base106x25mmR_ReichsrevolverBullet" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>Bullet_106x25mmR_Reichsrevolver_AP</defName>
+		<label>10.6x25mmR Reichsrevolver bullet (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>7</damageAmountBase>
+			<armorPenetrationSharp>6</armorPenetrationSharp>
+			<armorPenetrationBlunt>7.86</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base106x25mmR_ReichsrevolverBullet" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>Bullet_106x25mmR_Reichsrevolver_HP</defName>
+		<label>10.6x25mmR Reichsrevolver bullet (HP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>13</damageAmountBase>
+			<armorPenetrationSharp>1.5</armorPenetrationSharp>
+			<armorPenetrationBlunt>7.86</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>MakeAmmo_106x25mmR_Reichsrevolver_FMJ</defName>
+		<label>make 10.6x25mmR Reichsrevolver cartridge x500</label>
+		<description>Craft 500 10.6x25mmR Reichsrevolver cartridges.</description>
+		<jobString>Making 10.6x25mmR Reichsrevolver cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>26</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_106x25mmR_Reichsrevolver_FMJ>500</Ammo_106x25mmR_Reichsrevolver_FMJ>
+		</products>
+		<workAmount>2600</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>MakeAmmo_106x25mmR_Reichsrevolver_AP</defName>
+		<label>make 10.6x25mmR Reichsrevolver (AP) cartridge x500</label>
+		<description>Craft 500 10.6x25mmR Reichsrevolver (AP) cartridges.</description>
+		<jobString>Making 10.6x25mmR Reichsrevolver (AP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>26</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_106x25mmR_Reichsrevolver_AP>500</Ammo_106x25mmR_Reichsrevolver_AP>
+		</products>
+		<workAmount>3120</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>MakeAmmo_106x25mmR_Reichsrevolver_HP</defName>
+		<label>make 10.6x25mmR Reichsrevolver (HP) cartridge x500</label>
+		<description>Craft 500 10.6x25mmR Reichsrevolver (HP) cartridges.</description>
+		<jobString>Making 10.6x25mmR Reichsrevolver (HP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>26</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_106x25mmR_Reichsrevolver_HP>500</Ammo_106x25mmR_Reichsrevolver_HP>
+		</products>
+		<workAmount>2600</workAmount>
+	</RecipeDef>
+
+</Defs>

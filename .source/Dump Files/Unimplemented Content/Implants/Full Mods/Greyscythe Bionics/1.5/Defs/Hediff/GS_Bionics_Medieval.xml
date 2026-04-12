@@ -1,0 +1,889 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<ThingDef Name="GS_MedievalBionicBase" ParentName="BodyPartBase" Abstract="True">
+		<techLevel>Medieval</techLevel>
+		<thingCategories>
+			<li>GS_BodyPartsBionicMedieval</li>
+		</thingCategories>
+		<graphicData>
+			<texPath>Things/Item/Health/HealthItem</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.80</drawSize>
+			<color>(100,100,100)</color>
+		</graphicData>
+		<statBases>
+			<WorkToMake>8000</WorkToMake>
+		</statBases>
+		<recipeMaker>
+			<displayPriority>600</displayPriority>
+		</recipeMaker>
+	</ThingDef>
+	
+	<ThingDef Name="GS_MedievalBionicMakeableBase" ParentName="GS_MedievalBionicBase" Abstract="True">
+		<recipeMaker>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>	
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<recipeUsers>
+				<li>FueledSmithy</li>
+				<li>ElectricSmithy</li>
+			</recipeUsers>
+			<skillRequirements>
+				<Crafting>6</Crafting>
+			</skillRequirements>
+			<unfinishedThingDef>UnfinishedHealthItemProsthetic</unfinishedThingDef>
+			<researchPrerequisite>GS_Research_MedievalBionics</researchPrerequisite>
+		</recipeMaker>
+	</ThingDef>
+	
+	<RecipeDef Name="GS_SurgeryInstallMedievalBionicBase" ParentName="SurgeryInstallBodyPartArtificialBase" Abstract="True">
+		<skillRequirements>
+			<Medicine>3</Medicine>
+		</skillRequirements>
+		<surgerySuccessChanceFactor>5</surgerySuccessChanceFactor>
+	</RecipeDef>
+
+<!-- 
+		*** macefist ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_Hediff_macefist</defName>
+		<label>macefist</label>
+		<labelNoun>a macefist</labelNoun>
+		<defaultLabelColor>(0.6, 0.6, 0.6)</defaultLabelColor>
+		<description>An installed macefist, a heavy blunt weapon attached to a finely crafted metal forearm, strapped to the wielder's arm stump with strips of leather and padded cloth. It is heavy and cumbersome, and not at all a good replacement for a hand, but undoubtedly a deadly weapon to one who is skilled at its use.</description>
+		<descriptionHyperlinks><ThingDef>GS_macefist</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Moving</capacity>
+				<offset>-0.1</offset>
+				</li>
+			</capMods>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+			<tools>
+				<li>
+				<label>club</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>18</power>
+				<cooldownTime>2</cooldownTime>
+				<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+				</li>
+			</tools>
+			</li>
+		</comps>
+		<spawnThingOnRemoved>GS_macefist</spawnThingOnRemoved>
+		<addedPartProps>
+			<isGoodWeapon>true</isGoodWeapon>
+			<solid>true</solid>
+			<partEfficiency>0.3</partEfficiency>
+			<betterThanNatural>false</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_MedievalBionicMakeableBase">
+		<defName>GS_macefist</defName>
+		<label>macefist</label>
+		<description>A combat-oriented hand replacement consisting of a heavy blunt weapon attached to a finely crafted metal forearm, strapped to the wielder's arm stump with strips of leather and padded cloth. It is heavy and cumbersome, and not at all a good replacement for a hand, but undoubtedly a deadly weapon to one who is skilled at its use.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installmacefist</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Steel>60</Steel>
+		</costList>
+		<statBases>
+			<Mass>6</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallMedievalBionicBase">
+		<defName>GS_Installmacefist</defName>
+		<label>install macefist</label>
+		<description>Install a macefist.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_macefist</ThingDef>
+			<HediffDef>GS_Hediff_macefist</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing macefist.</jobString>
+		<workAmount>1000</workAmount>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_macefist</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_macefist</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Hand</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_macefist</addsHediff>
+	</RecipeDef>
+	
+<!-- 
+		*** swordhand ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_Hediff_swordhand</defName>
+		<label>swordhand</label>
+		<labelNoun>a swordhand</labelNoun>
+		<defaultLabelColor>(0.6, 0.6, 0.6)</defaultLabelColor>
+		<description>An installed swordhand, a sharpened blade attached to a finely crafted metal forearm, strapped to the wielder's arm stump with strips of leather and padded cloth. It is awkward and cumbersome, and not at all a good replacement for a hand, but undoubtedly a deadly weapon to one who is skilled at its use.</description>
+		<descriptionHyperlinks><ThingDef>GS_swordhand</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Moving</capacity>
+				<offset>-0.1</offset>
+				</li>
+			</capMods>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+			<tools>
+				<li>
+					<label>point</label>
+					<capacities>
+					<li>Stab</li>
+					</capacities>
+					<power>18</power>
+					<cooldownTime>2</cooldownTime>
+				</li>
+				<li>
+					<label>edge</label>
+					<capacities>
+					<li>Cut</li>
+					</capacities>
+					<power>18</power>
+					<cooldownTime>2</cooldownTime>
+				</li>
+			</tools>
+			</li>
+		</comps>
+		<spawnThingOnRemoved>GS_swordhand</spawnThingOnRemoved>
+		<addedPartProps>
+			<isGoodWeapon>true</isGoodWeapon>
+			<solid>true</solid>
+			<partEfficiency>0.3</partEfficiency>
+			<betterThanNatural>false</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_MedievalBionicMakeableBase">
+		<defName>GS_swordhand</defName>
+		<label>swordhand</label>
+		<description>A combat-oriented hand replacement consisting of a sharpened blade attached to a finely crafted metal forearm, strapped to the wielder's arm stump with strips of leather and padded cloth. It is awkward and cumbersome, and not at all a good replacement for a hand, but undoubtedly a deadly weapon to one who is skilled at its use.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installswordhand</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Steel>60</Steel>
+		</costList>
+		<statBases>
+			<Mass>4</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallMedievalBionicBase">
+		<defName>GS_Installswordhand</defName>
+		<label>install swordhand</label>
+		<description>Install a swordhand.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_swordhand</ThingDef>
+			<HediffDef>GS_Hediff_swordhand</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing swordhand.</jobString>
+		<workAmount>1000</workAmount>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_swordhand</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_swordhand</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Hand</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_swordhand</addsHediff>
+	</RecipeDef>
+
+<!-- 
+		*** axehand ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_Hediff_axehand</defName>
+		<label>axehand</label>
+		<labelNoun>an axehand</labelNoun>
+		<defaultLabelColor>(0.6, 0.6, 0.6)</defaultLabelColor>
+		<description>An installed axehand, a sharpened axehead attached to a finely crafted metal forearm, strapped to the wielder's arm stump with strips of leather and padded cloth. It is awkward and cumbersome, and not at all a good replacement for a hand, but undoubtedly a deadly weapon to one who is skilled at its use. Also helps when cuting down trees.</description>
+		<descriptionHyperlinks><ThingDef>GS_axehand</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Moving</capacity>
+				<offset>-0.1</offset>
+				</li>
+			</capMods>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+			<tools>
+				<li>
+					<label>head</label>
+					<capacities>
+					<li>Cut</li>
+					</capacities>
+					<power>18</power>
+					<cooldownTime>2</cooldownTime>
+					<labelUsedInLogging>true</labelUsedInLogging>
+				</li>
+			</tools>
+			</li>
+		</comps>
+		<spawnThingOnRemoved>GS_axehand</spawnThingOnRemoved>
+		<addedPartProps>
+			<isGoodWeapon>true</isGoodWeapon>
+			<solid>true</solid>
+			<partEfficiency>0.3</partEfficiency>
+			<betterThanNatural>false</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_MedievalBionicMakeableBase">
+		<defName>GS_axehand</defName>
+		<label>axehand</label>
+		<description>A combat-oriented hand replacement consisting of a sharpened axehead attached to a finely crafted metal forearm, strapped to the wielder's arm stump with strips of leather and padded cloth. Also helps when cuting down trees. It is awkward and cumbersome, and not at all a good replacement for a hand, but undoubtedly a deadly weapon to one who is skilled at its use.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installaxehand</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Steel>60</Steel>
+		</costList>
+		<statBases>
+			<Mass>4</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallMedievalBionicBase">
+		<defName>GS_Installaxehand</defName>
+		<label>install axehand</label>
+		<description>Install an axehand.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_axehand</ThingDef>
+			<HediffDef>GS_Hediff_axehand</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing axehand.</jobString>
+		<workAmount>1000</workAmount>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_axehand</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_axehand</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Hand</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_axehand</addsHediff>
+	</RecipeDef>
+
+<!-- 
+		*** handbow ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_handbow</defName>
+		<label>handbow</label>
+		<labelNoun>an installed handbow</labelNoun>
+		<defaultLabelColor>(0.6, 0.6, 0.6)</defaultLabelColor>
+		<description>An installed handbow, a small yet powerful crossbow attached to a finely crafted metal forearm, strapped to the wielder's arm stump with strips of leather and padded cloth. It is awkward and cumbersome, and not at all a good replacement for a hand, but undoubtedly a deadly weapon to one who is skilled at its use.</description>
+		<descriptionHyperlinks><ThingDef>GS_handbow</ThingDef></descriptionHyperlinks>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+				<li>
+					<label>fist</label>
+					<capacities>
+					<li>Blunt</li>
+					</capacities>
+					<power>8.2</power> <!-- Same as natural fist -->
+					<cooldownTime>2</cooldownTime>
+				</li>
+				</tools>
+			<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>Crossbow_Bolt</defaultProjectile>
+				<burstShotCount>1</burstShotCount>
+				<warmupTime>3</warmupTime>
+				<range>18</range>
+				<soundCast>Bow_Recurve</soundCast>
+			</li>
+			</verbs>
+			</li>
+		</comps>
+		<spawnThingOnRemoved>GS_handbow</spawnThingOnRemoved>
+		<addedPartProps>
+		<solid>true</solid>
+		<partEfficiency>0.30</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+  
+	<ThingDef ParentName="BaseProjectileNeolithic">
+		<defName>Crossbow_Bolt</defName>
+		<label>crossbow bolt</label>
+		<graphicData>
+		<texPath>Things/Projectile/Arrow_Small</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+		<damageDef>ArrowHighVelocity</damageDef>
+		<damageAmountBase>18</damageAmountBase>
+		<stoppingPower>1</stoppingPower>
+		<speed>65</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="GS_MedievalBionicMakeableBase">
+		<defName>GS_handbow</defName>
+		<label>handbow</label>
+		<description>A combat-oriented hand replacement consisting of a small yet powerful crossbow attached to a finely crafted metal forearm, strapped to the wielder's arm stump with strips of leather and padded cloth. It is awkward and cumbersome, and not at all a good replacement for a hand, but undoubtedly a deadly weapon to one who is skilled at its use.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installhandbow</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<Steel>55</Steel>
+		<WoodLog>5</WoodLog>
+		</costList>
+		<statBases>
+		<Mass>5.8</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallMedievalBionicBase">
+		<defName>GS_Installhandbow</defName>
+		<label>install handbow</label>
+		<description>Install a handbow.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_handbow</ThingDef>
+		<HediffDef>GS_hediff_handbow</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing handbow.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_handbow</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_handbow</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Hand</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_handbow</addsHediff>
+	</RecipeDef>
+
+<!-- 
+		*** battlearm ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_Hediff_battlearm</defName>
+		<label>battlearm</label>
+		<labelNoun>a battlearm</labelNoun>
+		<defaultLabelColor>(0.6, 0.6, 0.6)</defaultLabelColor>
+		<description>An installed battlearm, a heavy metal prosthetic arm with spiked elbows and knuckles, attached to the user's shoulder with straps of leather and padded cloth. It is awkward and cumbersome, and not at all a good replacement for a hand, but undoubtedly a deadly weapon to one who is skilled at its use.</description>
+		<descriptionHyperlinks><ThingDef>GS_battlearm</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Moving</capacity>
+				<offset>-0.1</offset>
+				</li>
+			</capMods>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+			<tools>
+				<li>
+					<label>spike</label>
+					<capacities>
+					<li>Stab</li>
+					</capacities>
+					<power>14</power>
+					<cooldownTime>1.4</cooldownTime>
+				</li>
+			</tools>
+			</li>
+		</comps>
+		<spawnThingOnRemoved>GS_battlearm</spawnThingOnRemoved>
+		<addedPartProps>
+			<isGoodWeapon>true</isGoodWeapon>
+			<solid>true</solid>
+			<partEfficiency>0.4</partEfficiency>
+			<betterThanNatural>false</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_MedievalBionicMakeableBase">
+		<defName>GS_battlearm</defName>
+		<label>battlearm</label>
+		<description>A combat-oriented total arm replacement consisting of a heavy metal prosthetic arm with spiked elbows and knuckles, attached to the user's shoulder with straps of leather and padded cloth. It is awkward and cumbersome, and not at all a good replacement for a hand, but undoubtedly a deadly weapon to one who is skilled at its use.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installbattlearm</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Steel>60</Steel>
+		</costList>
+		<statBases>
+			<Mass>4</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallMedievalBionicBase">
+		<defName>GS_Installbattlearm</defName>
+		<label>install battlearm</label>
+		<description>Install a battlearm.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_battlearm</ThingDef>
+			<HediffDef>GS_Hediff_battlearm</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing battlearm.</jobString>
+		<workAmount>1000</workAmount>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_battlearm</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_battlearm</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_battlearm</addsHediff>
+	</RecipeDef>
+	
+<!-- 
+		*** battleleg ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_Hediff_battleleg</defName>
+		<label>battleleg</label>
+		<labelNoun>a battleleg</labelNoun>
+		<defaultLabelColor>(0.6, 0.6, 0.6)</defaultLabelColor>
+		<description>An installed battleleg, a heavy metal prosthetic leg with spiked knees and toes, attached to the user's leg stumps with straps of leather and padded cloth. It is awkward and cumbersome, and not at all a good replacement for a leg, but can become a deadly weapon to one who is skilled at its use.</description>
+		<descriptionHyperlinks><ThingDef>GS_battleleg</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Moving</capacity>
+				<offset>-0.1</offset>
+				</li>
+			</capMods>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+			<tools>
+				<li>
+					<label>spike</label>
+					<capacities>
+					<li>Stab</li>
+					</capacities>
+					<power>14</power>
+					<cooldownTime>1.4</cooldownTime>
+				</li>
+			</tools>
+			</li>
+		</comps>
+		<spawnThingOnRemoved>GS_battleleg</spawnThingOnRemoved>
+		<addedPartProps>
+			<isGoodWeapon>true</isGoodWeapon>
+			<solid>true</solid>
+			<partEfficiency>0.8</partEfficiency>
+			<betterThanNatural>false</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_MedievalBionicMakeableBase">
+		<defName>GS_battleleg</defName>
+		<label>battleleg</label>
+		<description>A combat-oriented total leg replacement consisting of a heavy metal prosthetic arm with spiked knees and toes, attached to the user's hip with straps of leather and padded cloth. It is awkward and cumbersome, and not at all a good replacement for a leg, but undoubtedly a deadly weapon to one who is skilled at its use.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installbattleleg</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Steel>100</Steel>
+		</costList>
+		<statBases>
+			<Mass>4</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallMedievalBionicBase">
+		<defName>GS_Installbattleleg</defName>
+		<label>install battleleg</label>
+		<description>Install a battleleg.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_battleleg</ThingDef>
+			<HediffDef>GS_Hediff_battleleg</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing battleleg.</jobString>
+		<workAmount>1000</workAmount>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_battleleg</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_battleleg</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Leg</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_battleleg</addsHediff>
+	</RecipeDef>
+	
+<!-- 
+		*** beastjaw ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_Hediff_beastjaw</defName>
+		<label>beastjaw</label>
+		<labelNoun>a beastjaw</labelNoun>
+		<defaultLabelColor>(0.6, 0.6, 0.6)</defaultLabelColor>
+		<description>An installed beastjaw, a replacement jaw that has the teeth replaced with the vicious fangs of a beast. good for intimidation, but also as an impromptu weapon in times of desperation.</description>
+		<descriptionHyperlinks><ThingDef>GS_beastjaw</ThingDef></descriptionHyperlinks>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+			<tools>
+				<li>
+				<label>fangs</label>
+				<capacities>
+					<li>Bite</li>
+				</capacities>
+				<power>18</power>
+				<cooldownTime>2</cooldownTime>
+				<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+				</li>
+			</tools>
+			</li>
+		</comps>
+		<spawnThingOnRemoved>GS_beastjaw</spawnThingOnRemoved>
+		<addedPartProps>
+			<isGoodWeapon>true</isGoodWeapon>
+			<solid>true</solid>
+			<partEfficiency>0.8</partEfficiency>
+			<betterThanNatural>false</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_MedievalBionicMakeableBase">
+		<defName>GS_beastjaw</defName>
+		<label>beastjaw</label>
+		<description>A beastjaw, a replacement jaw that has the teeth replaced with the vicious fangs of a beast. good for intimidation, but also as an impromptu weapon in times of desperation.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installbeastjaw</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Steel>20</Steel>
+			<WoodLog>20</WoodLog>
+		</costList>
+		<statBases>
+			<Mass>6</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallMedievalBionicBase">
+		<defName>GS_Installbeastjaw</defName>
+		<label>install beastjaw</label>
+		<description>Install a beastjaw.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_beastjaw</ThingDef>
+			<HediffDef>GS_Hediff_beastjaw</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing beastjaw.</jobString>
+		<workAmount>1000</workAmount>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_beastjaw</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_beastjaw</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Jaw</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_beastjaw</addsHediff>
+	</RecipeDef>
+	
+<!-- 
+		*** glasseye ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_Hediff_glasseye</defName>
+		<label>glass eye</label>
+		<labelNoun>a glass eye</labelNoun>
+		<defaultLabelColor>(0.6, 0.6, 0.6)</defaultLabelColor>
+		<description>A glass eyeball. Useless to see with, but a lot better looking than a gory hole.</description>
+		<descriptionHyperlinks><ThingDef>GS_glasseye</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_glasseye</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>0</partEfficiency>
+			<betterThanNatural>false</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_MedievalBionicMakeableBase">
+		<defName>GS_glasseye</defName>
+		<label>glass eye</label>
+		<description>A glass eyeball. Useless to see with, but a lot better looking than a gory hole.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installglasseye</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Steel>1</Steel>
+		</costList>
+		<statBases>
+			<Mass>0.5</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallMedievalBionicBase">
+		<defName>GS_Installglasseye</defName>
+		<label>install a glass eye</label>
+		<description>Install a glasseye.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_glasseye</ThingDef>
+			<HediffDef>GS_Hediff_glasseye</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing glass eye.</jobString>
+		<workAmount>1000</workAmount>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_glasseye</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_glasseye</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Eye</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_glasseye</addsHediff>
+	</RecipeDef>
+	
+<!-- 
+		*** woodnose ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_Hediff_woodnose</defName>
+		<label>wooden nose</label>
+		<labelNoun>a wooden nose</labelNoun>
+		<defaultLabelColor>(0.6, 0.6, 0.6)</defaultLabelColor>
+		<description>A wooden nose. Not any better than a real nose, but a lot better looking than a gory hole.</description>
+		<descriptionHyperlinks><ThingDef>GS_woodnose</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_woodnose</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>1</partEfficiency>
+			<betterThanNatural>false</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_MedievalBionicMakeableBase">
+		<defName>GS_woodnose</defName>
+		<label>wooden nose</label>
+		<description>A wooden nose. Useless to see with, but a lot better looking than a gory hole.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installwoodnose</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<WoodLog>1</WoodLog>
+		</costList>
+		<statBases>
+			<Mass>0.5</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallMedievalBionicBase">
+		<defName>GS_Installwoodnose</defName>
+		<label>install wooden nose</label>
+		<description>Install a wooden nose.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_woodnose</ThingDef>
+			<HediffDef>GS_Hediff_woodnose</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing wooden nose.</jobString>
+		<workAmount>1000</workAmount>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_woodnose</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_woodnose</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Nose</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_woodnose</addsHediff>
+	</RecipeDef>
+	
+<!-- 
+		*** woodear ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_Hediff_woodear</defName>
+		<label>wooden ear</label>
+		<labelNoun>a wooden ear</labelNoun>
+		<defaultLabelColor>(0.6, 0.6, 0.6)</defaultLabelColor>
+		<description>A wooden ear. A poor replacement for an actual ear, but a lot better looking than a gory hole.</description>
+		<descriptionHyperlinks><ThingDef>GS_woodear</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_woodear</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>0.25</partEfficiency>
+			<betterThanNatural>false</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_MedievalBionicMakeableBase">
+		<defName>GS_woodear</defName>
+		<label>wooden ear</label>
+		<description>A wooden ear. Useless to see with, but a lot better looking than a gory hole.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installwoodear</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<WoodLog>1</WoodLog>
+		</costList>
+		<statBases>
+			<Mass>0.5</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallMedievalBionicBase">
+		<defName>GS_Installwoodear</defName>
+		<label>install wooden ear</label>
+		<description>Install a wooden ear.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_woodear</ThingDef>
+			<HediffDef>GS_Hediff_woodear</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing wooden ear.</jobString>
+		<workAmount>1000</workAmount>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_woodear</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_woodear</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Ear</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_woodear</addsHediff>
+	</RecipeDef>
+
+</Defs>

@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+  <PipeSystem.PipeNetDef>
+    <defName>VCEUE_PrometheumNet</defName>
+    <resource>
+      <name>Prometheum</name>
+      <unit>l</unit>
+      <color>(0.478, 0.325, 0.247)</color>
+      <onlyShowStored>True</onlyShowStored>
+      <offTexPath>Things/Item/Resource/Prometheum</offTexPath>
+    </resource>
+    <pipeDefs>
+      <li>VCEUE_PrometheumPipe</li>
+      <li>VCEUE_UndergroundPrometheumPipe</li>
+    </pipeDefs>
+    <designator>
+      <deconstructIconPath>UI/Gizmos/PrometheumPipes_Deconstruct</deconstructIconPath>
+      <designationCategoryDef>VCHE_PipeNetworks</designationCategoryDef>
+    </designator>
+    <overlayOptions>
+      <overlayColor>(0.478, 0.325, 0.247)</overlayColor>
+    </overlayOptions>
+    <linkToRefuelables>
+      <li>
+        <thing>Prometheum</thing>
+        <ratio>1</ratio>
+      </li>
+    </linkToRefuelables>
+  </PipeSystem.PipeNetDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>VCEUE_PrometheumRefinery</defName>
+    <inspectorTabs>
+      <li>PipeSystem.ITab_Processor</li>
+    </inspectorTabs>
+    <label>prometheum refinery</label>
+    <description>A complex machine capable of refining prometheum from chemfuel delivered via chemfuel pipes into usable military explosive components. If no output is detected, the explosive components will automatically be dispensed into cans. If the output is connected to a tank or tap via chemical pipes, the finished product will be transported as such for storage or dispensing.</description>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <texPath>Things/Building/Production/PrometheumRefinery/PrometheumRefinery</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(4,4)</drawSize>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <rotatable>false</rotatable>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>Impassable</passability>
+    <pathCost>50</pathCost>
+    <blockWind>true</blockWind>
+    <castEdgeShadows>true</castEdgeShadows>
+    <fillPercent>1</fillPercent>
+    <tickerType>Normal</tickerType>
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <WorkToBuild>2500</WorkToBuild>
+      <Flammability>1.0</Flammability>
+    </statBases>
+    <size>(3,3)</size>
+    <costList>
+      <Plasteel>100</Plasteel>
+      <ComponentIndustrial>4</ComponentIndustrial>
+    </costList>
+    <comps>
+      <!-- <li MayRequire="ludeon.rimworld.biotech" Class="CompProperties_ThingContainer">
+        <compClass>CompThingContainer</compClass>
+        <stackLimit>100</stackLimit>
+        <drawContainedThing>false</drawContainedThing>
+        <dropEffecterDef>MechChargerWasteRemoved</dropEffecterDef>
+      </li>
+      <li MayRequire="ludeon.rimworld.biotech" Class="CompProperties_WasteProducer">
+        <showContentsInInspectPane>true</showContentsInInspectPane>
+      </li> -->
+      <li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
+        <showBufferInfo>false</showBufferInfo>
+        <notWorkingKey>VCEUE_CantRefinePrometheum</notWorkingKey>
+        <progressBarOffset>(0, 0, -0.65)</progressBarOffset>
+        <showResultItem>true</showResultItem>
+        <processes>
+          <li>VCEUE_ChemfuelIntoPrometheum</li>
+          <li>VCEUE_ChemfuelIntoPrometheumTierII</li>
+          <li>VCEUE_ChemfuelIntoPrometheumTierIII</li>
+        </processes>
+        <!-- <soundAmbient>VCHE_RefineryAmbient</soundAmbient> -->
+      </li>
+      <li Class="PipeSystem.CompProperties_Resource">
+        <pipeNet>VCEUE_PrometheumNet</pipeNet>
+      </li>
+      <li Class="PipeSystem.CompProperties_Resource">
+        <pipeNet>VCHE_ChemfuelNet</pipeNet>
+      </li>
+      <li Class="PipeSystem.CompProperties_Resource">
+        <pipeNet>VREA_NeutroamineNet</pipeNet>
+      </li>
+      <!-- <li MayRequire="ludeon.rimworld.biotech" Class="PipeSystem.CompProperties_Resource">
+        <pipeNet>VCEUE_ToxicWasteNet</pipeNet>
+      </li> -->
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>3000</basePowerConsumption>
+        <shortCircuitInRain>false</shortCircuitInRain>
+      </li>
+    </comps>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <designationCategory>VCHE_PipeNetworks</designationCategory>
+    <staticSunShadowHeight>0.2</staticSunShadowHeight>
+    <constructEffect>ConstructMetal</constructEffect>
+    <canOverlapZones>false</canOverlapZones>
+    <researchPrerequisites>
+      <li>VCEUE_PrometheumRefining</li>
+    </researchPrerequisites>
+    <designatorDropdown>Refineries</designatorDropdown>
+    <building>
+      <relatedBuildCommands>
+        <li>VCEUE_PrometheumPipe</li>
+        <li>VCEUE_UndergroundPrometheumPipe</li>
+        <li>VCEUE_PrometheumValve</li>
+        <li>VCEUE_PrometheumTank</li>
+        <li>VCEUE_PrometheumTap</li>
+        <li>VCEUE_PrometheumRefinery</li>
+        <li>VCEUE_PrometheumDrain</li>
+      </relatedBuildCommands>
+    </building>
+  </ThingDef>
+  <ThingDef ParentName="BuildingBase">
+    <defName>VCEUE_PrometheumPipe</defName>
+    <drawStyleCategory>Conduits</drawStyleCategory>
+    <label>Prometheum pipe</label>
+    <description>Plasteel pipes designed to transport usable Prometheum from deepchem refineries to Prometheum tanks for storage or to Prometheum-consuming structures for automatic refilling.</description>
+    <thingClass>PipeSystem.Building_Pipe</thingClass>
+    <category>Building</category>
+    <tickerType>Rare</tickerType>
+    <graphicData>
+      <texPath>Things/Building/Linked/OrangePipe</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <linkType>Basic</linkType>
+      <linkFlags>
+        <li>Custom7</li>
+      </linkFlags>
+      <damageData>
+        <rect>(0,0.35,1,0.3)</rect>
+      </damageData>
+    </graphicData>
+    <uiIconPath>Things/Building/Linked/PrometheumPipes_MenuIcon</uiIconPath>
+    <uiIconScale>0.7</uiIconScale>
+    <building>
+      <ai_chillDestination>false</ai_chillDestination>
+      <isInert>true</isInert>
+      <isEdifice>false</isEdifice>
+      <blueprintGraphicData>
+        <texPath>Things/Building/Linked/PipeAtlas</texPath>
+      </blueprintGraphicData>
+      <relatedBuildCommands>
+        <li>VCEUE_PrometheumPipe</li>
+        <li>VCEUE_UndergroundPrometheumPipe</li>
+        <li>VCEUE_PrometheumValve</li>
+        <li>VCEUE_PrometheumTank</li>
+        <li>VCEUE_PrometheumTap</li>
+        <li>VCEUE_PrometheumRefinery</li>
+        <li>VCEUE_PrometheumDrain</li>
+      </relatedBuildCommands>
+    </building>
+    <drawerType>MapMeshOnly</drawerType>
+    <altitudeLayer>Conduits</altitudeLayer>
+    <passability>Standable</passability>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <statBases>
+      <MaxHitPoints>40</MaxHitPoints>
+      <WorkToBuild>35</WorkToBuild>
+      <Flammability>1.0</Flammability>
+    </statBases>
+    <costList>
+      <Plasteel>1</Plasteel>
+    </costList>
+    <comps>
+      <li Class="PipeSystem.CompProperties_Resource">
+        <pipeNet>VCEUE_PrometheumNet</pipeNet>
+      </li>
+      <li Class="PipeSystem.CompProperties_SpillWhenDamaged">
+        <spillEachTicks>600</spillEachTicks>
+        <startAtHitPointsPercent>0.333</startAtHitPointsPercent>
+        <amountToDraw>1</amountToDraw>
+        <filthMaxSpawnRadius>1</filthMaxSpawnRadius>
+        <chooseFilthFrom>
+          <li>FilthPrometheum</li>
+        </chooseFilthFrom>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PipeSystem.PlaceWorker_Pipe</li>
+    </placeWorkers>
+    <rotatable>false</rotatable>
+    <selectable>true</selectable>
+    <neverMultiSelect>true</neverMultiSelect>
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>VCHE_PipeNetworks</designationCategory>
+    <constructEffect>ConstructMetal</constructEffect>
+    <clearBuildingArea>false</clearBuildingArea>
+    <researchPrerequisites>
+      <li>VCEUE_PrometheumRefining</li>
+    </researchPrerequisites>
+    <designatorDropdown>Pipes</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>VCEUE_UndergroundPrometheumPipe</defName>
+    <drawStyleCategory>Conduits</drawStyleCategory>
+    <label>subterranean Prometheum pipe</label>
+    <description>Subterranean plasteel pipes designed to transport usable Prometheum from deepchem refineries to Prometheum tanks for storage or to Prometheum-consuming structures for automatic refilling.</description>
+    <thingClass>PipeSystem.Building_Pipe</thingClass>
+    <category>Building</category>
+    <tickerType>Rare</tickerType>
+    <graphicData>
+      <texPath>UI/CSG/IConduit</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <linkType>Basic</linkType>
+      <linkFlags>
+        <li>Custom7</li>
+      </linkFlags>
+      <damageData>
+        <rect>(0,0.35,1,0.3)</rect>
+      </damageData>
+    </graphicData>
+    <uiIconPath>Things/Building/Linked/PrometheumPipes_MenuIcon</uiIconPath>
+    <uiIconScale>0.7</uiIconScale>
+    <building>
+      <relatedBuildCommands>
+        <li>VCEUE_PrometheumPipe</li>
+        <li>VCEUE_UndergroundPrometheumPipe</li>
+        <li>VCEUE_PrometheumValve</li>
+        <li>VCEUE_PrometheumTank</li>
+        <li>VCEUE_PrometheumTap</li>
+        <li>VCEUE_PrometheumRefinery</li>
+        <li>VCEUE_PrometheumDrain</li>
+      </relatedBuildCommands>
+      <ai_chillDestination>false</ai_chillDestination>
+      <isInert>true</isInert>
+      <isEdifice>false</isEdifice>
+      <blueprintGraphicData>
+        <texPath>Things/Building/Linked/PipeAtlas</texPath>
+      </blueprintGraphicData>
+    </building>
+    <drawerType>MapMeshOnly</drawerType>
+    <altitudeLayer>Conduits</altitudeLayer>
+    <passability>Standable</passability>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <statBases>
+      <MaxHitPoints>400</MaxHitPoints>
+      <WorkToBuild>120</WorkToBuild>
+      <Flammability>0</Flammability>
+    </statBases>
+    <costList>
+      <Plasteel>2</Plasteel>
+    </costList>
+    <comps>
+      <li Class="PipeSystem.CompProperties_Resource">
+        <pipeNet>VCEUE_PrometheumNet</pipeNet>
+      </li>
+      <li Class="PipeSystem.CompProperties_SpillWhenDamaged">
+        <spillEachTicks>1200</spillEachTicks>
+        <startAtHitPointsPercent>0.333</startAtHitPointsPercent>
+        <amountToDraw>1</amountToDraw>
+        <filthMaxSpawnRadius>1</filthMaxSpawnRadius>
+        <chooseFilthFrom>
+          <li>Filth_Fuel</li>
+        </chooseFilthFrom>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PipeSystem.PlaceWorker_Pipe</li>
+    </placeWorkers>
+    <rotatable>false</rotatable>
+    <selectable>true</selectable>
+    <neverMultiSelect>true</neverMultiSelect>
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>VCHE_PipeNetworks</designationCategory>
+    <constructEffect>ConstructMetal</constructEffect>
+    <clearBuildingArea>false</clearBuildingArea>
+    <researchPrerequisites>
+      <li>VCEUE_PrometheumRefining</li>
+    </researchPrerequisites>
+    <designatorDropdown>Pipes</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>VCEUE_PrometheumValve</defName>
+    <label>Prometheum valve</label>
+    <description>Switches Prometheum flow on/off.</description>
+    <thingClass>PipeSystem.Building_PipeValve</thingClass>
+    <category>Building</category>
+    <graphicData>
+      <texPath>Things/Building/Linked/Valve</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Transparent</shaderType>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+      <color>(0.478, 0.325, 0.247)</color>
+    </graphicData>
+    <building>
+      <relatedBuildCommands>
+        <li>VCEUE_PrometheumPipe</li>
+        <li>VCEUE_UndergroundPrometheumPipe</li>
+        <li>VCEUE_PrometheumValve</li>
+        <li>VCEUE_PrometheumTank</li>
+        <li>VCEUE_PrometheumTap</li>
+        <li>VCEUE_PrometheumRefinery</li>
+        <li>VCEUE_PrometheumDrain</li>
+      </relatedBuildCommands>
+      <ai_chillDestination>false</ai_chillDestination>
+      <allowWireConnection>false</allowWireConnection>
+    </building>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>Standable</passability>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <statBases>
+      <MaxHitPoints>120</MaxHitPoints>
+      <WorkToBuild>20</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>-2</Beauty>
+    </statBases>
+    <costList>
+      <Plasteel>6</Plasteel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <comps>
+      <li Class="PipeSystem.CompProperties_PipeValve">
+        <pipeNet>VCEUE_PrometheumNet</pipeNet>
+        <alwaysLinkToPipes>true</alwaysLinkToPipes>
+      </li>
+      <li Class="CompProperties_Flickable">
+        <commandTexture>Things/Item/Resource/Prometheum</commandTexture>
+        <commandLabelKey>VCEUE_PrometheumValve</commandLabelKey>
+        <commandDescKey>VCEUE_PrometheumValveDesc</commandDescKey>
+      </li>
+    </comps>
+    <rotatable>false</rotatable>
+    <selectable>true</selectable>
+    <neverMultiSelect>false</neverMultiSelect>
+    <tickerType>Normal</tickerType>
+    <designationCategory>VCHE_PipeNetworks</designationCategory>
+    <constructEffect>ConstructMetal</constructEffect>
+    <researchPrerequisites>
+      <li>VCEUE_PrometheumRefining</li>
+    </researchPrerequisites>
+    <designatorDropdown>PipeValves</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>VCEUE_PrometheumTank</defName>
+    <label>Prometheum tank</label>
+    <description>An industrial liquid storage tank meant for storing Prometheum delivered via Prometheum pipe network. Tanks can be designated to be siphoned for usable Prometheum as needed. If damaged even lightly the escaping fumes will very swiftly create a gaseous fireball, the size of the resulting explosion will depend on the amount stored within.</description>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <texPath>Things/Building/Production/PrometheumTank/PrometheumTank</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(4,4)</drawSize>
+      <drawOffset>(0,0,0.25)</drawOffset>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <rotatable>False</rotatable>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>Impassable</passability>
+    <pathCost>50</pathCost>
+    <blockWind>true</blockWind>
+    <castEdgeShadows>true</castEdgeShadows>
+    <fillPercent>1</fillPercent>
+    <tickerType>Normal</tickerType>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <WorkToBuild>1200</WorkToBuild>
+      <Mass>20</Mass>
+      <Flammability>1.0</Flammability>
+    </statBases>
+    <size>(2,3)</size>
+    <costList>
+      <Plasteel>65</Plasteel>
+    </costList>
+    <comps>
+      <li Class="PipeSystem.CompProperties_ResourceStorage">
+        <pipeNet>VCEUE_PrometheumNet</pipeNet>
+        <storageCapacity>1500</storageCapacity>
+        <barSize>(0.4, 0.175)</barSize>
+        <margin>0.15</margin>
+        <centerOffset>(0, 0, -0.65)</centerOffset>
+        <extractOptions>
+          <texPath>UI/Gizmos/ExtractPrometheum</texPath>
+          <labelKey>VCEUE_ExtractPrometheum</labelKey>
+          <descKey>VCEUE_ExtractPrometheumDesc</descKey>
+          <extractAmount>150</extractAmount>
+          <thing>Prometheum</thing>
+          <ratio>1</ratio>
+        </extractOptions>
+      </li>
+      <li Class="PipeSystem.CompProperties_ExplosiveContent">
+        <explosiveMaxRadius>12</explosiveMaxRadius>
+        <!-- Vanilla options below -->
+        <explosiveDamageType>Flame</explosiveDamageType>
+        <destroyThingOnExplosionSize>2</destroyThingOnExplosionSize>
+        <startWickHitPointsPercent>0.333</startWickHitPointsPercent>
+        <preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+        <preExplosionSpawnChance>1</preExplosionSpawnChance>
+        <wickTicks>70~150</wickTicks>
+      </li>
+    </comps>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <designationCategory>VCHE_PipeNetworks</designationCategory>
+    <staticSunShadowHeight>0.2</staticSunShadowHeight>
+    <constructEffect>ConstructMetal</constructEffect>
+    <canOverlapZones>false</canOverlapZones>
+    <researchPrerequisites>
+      <li>VCEUE_PrometheumRefining</li>
+    </researchPrerequisites>
+    <designatorDropdown>PipeContainers</designatorDropdown>
+    <building>
+      <relatedBuildCommands>
+        <li>VCEUE_PrometheumPipe</li>
+        <li>VCEUE_UndergroundPrometheumPipe</li>
+        <li>VCEUE_PrometheumValve</li>
+        <li>VCEUE_PrometheumTank</li>
+        <li>VCEUE_PrometheumTap</li>
+        <li>VCEUE_PrometheumRefinery</li>
+        <li>VCEUE_PrometheumDrain</li>
+      </relatedBuildCommands>
+    </building>
+  </ThingDef>
+
+  <ThingDef ParentName="FurnitureBase">
+    <defName>VCEUE_PrometheumTap</defName>
+    <label>Prometheum tap</label>
+    <description>A hopper-like storage basin meant to hold dispensed Prometheum from tanks periodically for use later.</description>
+    <thingClass>Building_Storage</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Production/TapGeneric</texPath>
+      <shaderType>CutoutComplex</shaderType>
+      <graphicClass>Graphic_Single</graphicClass>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+      <drawRotated>false</drawRotated>
+      <allowFlip>false</allowFlip>
+      <color>(0.478, 0.325, 0.247)</color>
+    </graphicData>
+    <rotatable>false</rotatable>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.5</fillPercent>
+    <castEdgeShadows>true</castEdgeShadows>
+    <pathCost>50</pathCost>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>8</Mass>
+      <WorkToBuild>30</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>0.5</Beauty>
+    </statBases>
+    <size>(1,1)</size>
+    <costList>
+      <Plasteel>25</Plasteel>
+    </costList>
+    <building>
+      <relatedBuildCommands>
+        <li>VCEUE_PrometheumPipe</li>
+        <li>VCEUE_UndergroundPrometheumPipe</li>
+        <li>VCEUE_PrometheumValve</li>
+        <li>VCEUE_PrometheumTank</li>
+        <li>VCEUE_PrometheumTap</li>
+        <li>VCEUE_PrometheumRefinery</li>
+        <li>VCEUE_PrometheumDrain</li>
+      </relatedBuildCommands>
+      <preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+      <ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
+      <fixedStorageSettings>
+        <filter>
+          <disallowNotEverStorable>true</disallowNotEverStorable>
+          <thingDefs>
+            <li>Prometheum</li>
+          </thingDefs>
+        </filter>
+      </fixedStorageSettings>
+      <defaultStorageSettings>
+        <priority>Important</priority>
+        <filter>
+          <disallowNotEverStorable>true</disallowNotEverStorable>
+          <thingDefs>
+            <li>Prometheum</li>
+          </thingDefs>
+        </filter>
+      </defaultStorageSettings>
+    </building>
+    <inspectorTabs>
+      <li>ITab_Storage</li>
+    </inspectorTabs>
+    <designationCategory>VCHE_PipeNetworks</designationCategory>
+    <staticSunShadowHeight>0.5</staticSunShadowHeight>
+    <surfaceType>Item</surfaceType>
+    <canOverlapZones>false</canOverlapZones>
+    <comps>
+      <li Class="PipeSystem.CompProperties_ConvertResourceToThing">
+        <pipeNet>VCEUE_PrometheumNet</pipeNet>
+        <thing>Prometheum</thing>
+      </li>
+    </comps>
+    <researchPrerequisites>
+      <li>VCEUE_PrometheumRefining</li>
+    </researchPrerequisites>
+    <designatorDropdown>PipeTaps</designatorDropdown>
+  </ThingDef>
+
+  <ThingDef ParentName="FurnitureBase">
+    <defName>VCEUE_PrometheumDrain</defName>
+    <label>Prometheum drain</label>
+    <description>A hopper-like storage basin meant to input Prometheum into the network, filling up connected tanks.</description>
+    <thingClass>Building_Storage</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Production/DrainGeneric</texPath>
+      <shaderType>CutoutComplex</shaderType>
+      <graphicClass>Graphic_Single</graphicClass>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+      <drawRotated>false</drawRotated>
+      <allowFlip>false</allowFlip>
+      <color>(0.478, 0.325, 0.247)</color>
+    </graphicData>
+    <rotatable>false</rotatable>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <!-- <altitudeLayer>Building</altitudeLayer> -->
+    <passability>Standable</passability>
+    <!-- <passability>PassThroughOnly</passability> -->
+    <fillPercent>0.5</fillPercent>
+    <castEdgeShadows>true</castEdgeShadows>
+    <pathCost>50</pathCost>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>8</Mass>
+      <WorkToBuild>30</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>0.5</Beauty>
+    </statBases>
+    <size>(1,1)</size>
+    <costList>
+      <Plasteel>35</Plasteel>
+    </costList>
+    <building>
+      <relatedBuildCommands>
+        <li>VCEUE_PrometheumPipe</li>
+        <li>VCEUE_UndergroundPrometheumPipe</li>
+        <li>VCEUE_PrometheumValve</li>
+        <li>VCEUE_PrometheumTank</li>
+        <li>VCEUE_PrometheumTap</li>
+        <li>VCEUE_PrometheumRefinery</li>
+        <li>VCEUE_PrometheumDrain</li>
+      </relatedBuildCommands>
+      <preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+      <ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
+      <fixedStorageSettings>
+        <filter>
+          <disallowNotEverStorable>true</disallowNotEverStorable>
+          <thingDefs>
+            <li>Prometheum</li>
+          </thingDefs>
+        </filter>
+      </fixedStorageSettings>
+      <defaultStorageSettings>
+        <priority>Important</priority>
+        <filter>
+          <disallowNotEverStorable>true</disallowNotEverStorable>
+          <thingDefs>
+            <li>Prometheum</li>
+          </thingDefs>
+        </filter>
+      </defaultStorageSettings>
+    </building>
+    <inspectorTabs>
+      <li>ITab_Storage</li>
+    </inspectorTabs>
+    <designationCategory>VCHE_PipeNetworks</designationCategory>
+    <staticSunShadowHeight>0.5</staticSunShadowHeight>
+    <surfaceType>Item</surfaceType>
+    <canOverlapZones>false</canOverlapZones>
+    <comps>
+      <li Class="PipeSystem.CompProperties_ConvertThingToResource">
+        <pipeNet>VCEUE_PrometheumNet</pipeNet>
+        <thing>Prometheum</thing>
+      </li>
+    </comps>
+    <researchPrerequisites>
+      <li>VCEUE_PrometheumRefining</li>
+    </researchPrerequisites>
+    <designatorDropdown>PipeDrains</designatorDropdown>
+  </ThingDef>
+</Defs>

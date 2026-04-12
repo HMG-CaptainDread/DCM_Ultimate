@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <HediffDef ParentName="KEPHediffBase">
+    <defName>KEP_MultiToolArm</defName>
+    <label>multi-tool arm</label>
+    <labelNoun>a multi-tool arm</labelNoun>
+    <description>An installed multi-tool arm.</description>
+    <descriptionHyperlinks><ThingDef>KEP_MultiToolArm</ThingDef></descriptionHyperlinks>
+    <spawnThingOnRemoved>KEP_MultiToolArm</spawnThingOnRemoved>
+    <addedPartProps>
+      <solid>true</solid>
+	  <partEfficiency>1.10</partEfficiency>
+    </addedPartProps>
+    <stages>
+      <li>
+        <statOffsets>
+          <WorkSpeedGlobal>0.25</WorkSpeedGlobal>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+	<ThingDef Name="KEP_BASEMultiToolArm" ParentName="KEPBodyPartModBase" Abstract="True">
+	    <techLevel>Spacer</techLevel>
+		<tradeTags>
+			<li>Bionic</li>
+		</tradeTags>
+		<thingCategories>
+			<li>BodyPartsBionic</li>
+		</thingCategories>
+		<statBases>
+			<DeteriorationRate>2.0</DeteriorationRate>
+		</statBases>
+	</ThingDef>
+
+  <ThingDef ParentName="KEP_BASEMultiToolArm">
+    <defName>KEP_MultiToolArm</defName>
+    <label>multi-tool arm</label>
+    <description>A glitter-world arm replacement with spacer tools for general use. Great for any colonist.</description>
+	<graphicData>
+			<texPath>Things/Item/BodyPart/Multi-Tool_Arm</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+    <descriptionHyperlinks><RecipeDef>KEP_InstallMultiToolArm</RecipeDef></descriptionHyperlinks>
+    <costList>
+      <Plasteel>60</Plasteel>
+      <ComponentSpacer>3</ComponentSpacer>
+    </costList>
+    <thingSetMakerTags><li>RewardStandardLowFreq</li></thingSetMakerTags>
+    <statBases>
+      <Mass>0.3</Mass>
+	        <MarketValue>1200</MarketValue>
+    </statBases>
+	    <techHediffsTags>
+      <li>Advanced</li>
+	<li>KEP</li>
+    </techHediffsTags>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+    <defName>KEP_InstallMultiToolArm</defName>
+    <label>install a multi-tool arm</label>
+    <description>Install a multi-tool arm.</description>
+    <descriptionHyperlinks>
+      <ThingDef>KEP_MultiToolArm</ThingDef>
+      <HediffDef>KEP_MultiToolArm</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing a multi-tool arm.</jobString>
+		<workAmount>4000</workAmount>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>Medicine</li>
+					</categories>
+				</filter>
+				<count>2</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>KEP_MultiToolArm</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<categories>
+				<li>Medicine</li>
+			</categories>
+			<thingDefs>
+				<li>KEP_MultiToolArm</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>KEP_MultiToolArm</addsHediff>
+	</RecipeDef>
+</Defs>        

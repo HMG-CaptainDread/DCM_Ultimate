@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo143x33mmRWanzl</defName>
+		<label>14.3×33mmR Wänzl</label>
+		<parent>AmmoRifles</parent>
+    <iconPath>UI/Icons/ThingCategories/CaliberRifle</iconPath>
+	</ThingCategoryDef>
+	
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>AmmoSet_143x33mmRWanzl</defName>
+		<label>14.3×33mmR Wänzl</label>
+		<ammoTypes>
+			<Ammo_143x33mmRWanzl_FMJ>Bullet_143x33mmRWanzl_FMJ</Ammo_143x33mmRWanzl_FMJ>		
+		</ammoTypes>
+		<similarTo>AmmoSet_Rifle</similarTo>
+	</CombatExtended.AmmoSetDef>
+	
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="143x33mmRWanzlBase" ParentName="SmallAmmoBase" Abstract="True" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<description>Rimfire rifle cartridge found mostly in outdated rifles.</description>
+		<statBases>
+		<Mass>0.018</Mass>
+		<Bulk>0.04</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo143x33mmRWanzl</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="143x33mmRWanzlBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>Ammo_143x33mmRWanzl_FMJ</defName>
+		<label>14.3×33mmR Wänzl cartridge (FMJ)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Rifle/FMJ</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.11</MarketValue>
+		</statBases>
+		<ammoClass>FullMetalJacket</ammoClass>
+		<cookOffProjectile>Bullet_143x33mmRWanzl_FMJ</cookOffProjectile>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+	
+	<ThingDef Name="Base143x33mmRWanzlBullet" ParentName="BaseBulletCE" Abstract="true" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>57</speed>
+			<dropsCasings>true</dropsCasings>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base143x33mmRWanzlBullet" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>Bullet_143x33mmRWanzl_FMJ</defName>
+		<label>14.3×33mmR Wänzl bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>15</damageAmountBase>
+			<armorPenetrationSharp>5</armorPenetrationSharp>
+			<armorPenetrationBlunt>26</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+		<defName>MakeAmmo_143x33mmRWanzl_FMJ</defName>
+		<label>make 14.3×33mmR Wänzl (FMJ) cartridge x500</label>
+		<description>Craft 500 14.3×33mmR Wänzl (FMJ) cartridges.</description>
+		<jobString>Making 14.3×33mmR Wänzl (FMJ) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>28</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_143x33mmRWanzl_FMJ>500</Ammo_143x33mmRWanzl_FMJ>
+		</products>
+    	<workAmount>2800</workAmount>
+	</RecipeDef>
+
+</Defs>
