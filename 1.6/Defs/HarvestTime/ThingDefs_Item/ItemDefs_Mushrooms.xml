@@ -185,6 +185,68 @@
 				</li>
 			</comps>
 		</ThingDef>
+	<!-- MECHSHROOM -->
+		<ThingDef ParentName="DrugBase">
+			<defName>TMM_RawMechshroom</defName>
+			<label>mechshrooms</label>
+			<description>These 'magic' mushrooms, found only in the wild, cause the user to hallucinate and go on a 'trip' through what is often seen as a weird, strange reality. Not all of those who make it back are the same. Shrooms are a relatively safe drug - but users build up a tolerance for them very quickly.  Long-term users see an increased amount and severity of mental breaks the longer they use the drug - however, any sort of brain damage is extremely rare, and only if the user has a high level of the drug in their body for long periods of time.</description>
+			<tradeability>Sellable</tradeability>
+			<socialPropernessMatters>true</socialPropernessMatters>
+			<tickerType>Rare</tickerType>
+			<graphicData>
+				<texPath>Modules/Intoxicants/Things/Mechshrooms</texPath>
+				<graphicClass>Graphic_StackCount</graphicClass>
+			</graphicData>
+			<statBases>
+				<MarketValue>6</MarketValue>
+				<Mass>0.1</Mass>
+				<DeteriorationRate>4</DeteriorationRate>
+				<Nutrition>0.05</Nutrition>
+			</statBases>
+			<techLevel>Neolithic</techLevel>
+			<ingestible>
+				<baseIngestTicks>100</baseIngestTicks>
+				<chairSearchRadius>1</chairSearchRadius>
+				<foodType>Fungus</foodType>
+				<preferability>NeverForNutrition</preferability>
+				<tasteThought></tasteThought>
+				<joy>0.8</joy>
+				<joyKind>Chemical</joyKind>
+				<nurseable>true</nurseable>
+				<drugCategory>Hard</drugCategory>
+				<outcomeDoers>
+					<li Class="IngestionOutcomeDoer_GiveHediff">
+						<hediffDef>TMM_Hediff_MechshroomHigh</hediffDef>
+						<severity>0.8</severity>
+						<toleranceChemical>TMM_Chemical_Mechshroom</toleranceChemical>
+					</li>
+					<li Class="IngestionOutcomeDoer_GiveHediff">
+						<hediffDef>TMM_Tolerance_Mechshroom</hediffDef>
+						<severity>0.15</severity>
+						<divideByBodySize>true</divideByBodySize>
+					</li>
+				</outcomeDoers>
+			</ingestible>
+			<comps>
+				<li Class="CompProperties_Rottable">
+					<daysToRotStart>30</daysToRotStart>
+					<rotDestroys>true</rotDestroys>
+				</li>
+				<li Class="CompProperties_Drug">
+					<chemical>TMM_Chemical_Mechshroom</chemical>
+					<!--<addictiveness>0.0</addictiveness>
+							<minToleranceToAddict>1.0</minToleranceToAddict>
+							<existingAddictionSeverityOffset>0.0</existingAddictionSeverityOffset>
+							<needLevelOffset>1</needLevelOffset>-->
+					<listOrder>30</listOrder>
+					<overdoseSeverityOffset>
+						<min>0.08</min>
+						<max>0.14</max>
+					</overdoseSeverityOffset>
+					<largeOverdoseChance>0.02</largeOverdoseChance>
+				</li>
+			</comps>
+		</ThingDef>
 	<!-- MOREL -->
 		<ThingDef ParentName="TMM_RawMushroomBase">
 			<defName>TMM_RawMorel</defName>
