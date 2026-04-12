@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- DSHK -->
+  
+    <!--=============== DSHK ===============-->
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>RN2Gun_DSHK_HMG</defName>
+    <label>DShK 1938</label>
+	 <description>The DShK 1938 (Cyrillic: ДШК, for Russian: Дегтярёва-Шпагина Крупнокалиберный, romanized: Degtyaryova-Shpagina Krupnokaliberny, "Degtyaryov-Shpagin large-calibre") is a Soviet heavy machine gun. The weapon may be vehicle mounted or used on a tripod or wheeled carriage as a heavy infantry machine gun. The DShK's name is derived from its original designer, Vasily Degtyaryov, and Georgi Shpagin, who later improved the cartridge feed mechanism.</description>
+    <thingClass>Building_TurretGun</thingClass>
+	<drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <texPath>Things/Building/Security/DSHK/DSHK_Base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3,3)</drawSize>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+    </graphicData>
+    <uiIconPath>Things/Building/Security/DSHK/DSHK_Display</uiIconPath>
+    <minifiedDef>MinifiedThing</minifiedDef>
+	<altitudeLayer>Building</altitudeLayer>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+	<thingCategories>
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+    <statBases>
+	<Mass>50</Mass>
+      <MaxHitPoints>500</MaxHitPoints>
+      <Flammability>0.5</Flammability>
+      <WorkToBuild>8200</WorkToBuild>
+      <Beauty>-60</Beauty>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_Mannable">
+        <manWorkType>Violent</manWorkType>
+      </li>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_Refuelable">
+        <fuelLabel>Shots until ammo box change</fuelLabel>
+        <fuelGizmoLabel>ammunition box</fuelGizmoLabel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </fuelFilter>
+        <fuelCapacity>200</fuelCapacity>
+        <initialFuelPercent>1</initialFuelPercent>
+        <autoRefuelPercent>0.1667</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <minimumFueledThreshold>1</minimumFueledThreshold>
+        <atomicFueling>true</atomicFueling>
+        <fuelMultiplier>5</fuelMultiplier>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <outOfFuelMessage>Cannot shoot: Needs more ammo</outOfFuelMessage>
+        <fuelIconPath>UI/AmmoCan_12Box</fuelIconPath>
+      </li>
+    </comps>
+	<size>(2,2)</size>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.75</fillPercent>
+    <!--<castEdgeShadows>true</castEdgeShadows>-->
+    <hasTooltip>true</hasTooltip>
+    <costList>
+      <Steel>200</Steel>
+      <ComponentIndustrial>6</ComponentIndustrial>
+    </costList>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+    <constructEffect>ConstructMetal</constructEffect>
+    <specialDisplayRadius>45</specialDisplayRadius>
+    <building>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>RN2Gun_DSHK</turretGunDef>
+	  <turretTopDrawSize>3</turretTopDrawSize>
+      <turretBurstWarmupTime>0.08</turretBurstWarmupTime>
+      <turretBurstCooldownTime>0.03</turretBurstCooldownTime>
+    </building>
+    <researchPrerequisites><li>GunTurrets</li></researchPrerequisites>
+  </ThingDef>
+  
+  <!-- Gun itself -->
+  
+    <ThingDef ParentName="RNBaseWeaponTurret">
+    <defName>RN2Gun_DSHK</defName>
+    <label>DShK 1938</label>
+    <description>The DShK 1938 (Cyrillic: ДШК, for Russian: Дегтярёва-Шпагина Крупнокалиберный, romanized: Degtyaryova-Shpagina Krupnokaliberny, "Degtyaryov-Shpagin large-calibre") is a Soviet heavy machine gun. The weapon may be vehicle mounted or used on a tripod or wheeled carriage as a heavy infantry machine gun. The DShK's name is derived from its original designer, Vasily Degtyaryov, and Georgi Shpagin, who later improved the cartridge feed mechanism.</description>
+    <graphicData>
+      <texPath>Things/Building/Security/DSHK/DSHK</texPath>
+	  <drawSize>2</drawSize>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+  <AccuracyTouch>0.60</AccuracyTouch>
+  <AccuracyShort>0.65</AccuracyShort>
+  <AccuracyMedium>0.55</AccuracyMedium>
+  <AccuracyLong>0.45</AccuracyLong>
+  <RangedWeapon_Cooldown>6</RangedWeapon_Cooldown>
+  <DeteriorationRate>0.05</DeteriorationRate> <!-- Increased due to the DShK's heavier recoil -->
+  <Mass>8</Mass> <!-- Increased due to the heavier weight of the DShK -->
+  <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <defaultProjectile>RNBullet_127x108_DSHKMounted</defaultProjectile>
+    <warmupTime>0.6</warmupTime> <!-- Slightly longer warmup time -->
+    <range>45</range> <!-- Increased range to reflect the DShK's capabilities -->
+    <ticksBetweenBurstShots>4</ticksBetweenBurstShots> <!-- Slightly slower rate of fire -->
+    <burstShotCount>2</burstShotCount> <!-- Single shot per burst -->
+    <soundCast>RNShot_DSHK</soundCast> <!-- Changed sound effect to DShK -->
+    <soundCastTail>GunTail_Heavy</soundCastTail> <!-- Changed sound tail to heavy -->
+    <muzzleFlashScale>10</muzzleFlashScale> <!-- Increased muzzle flash scale -->
+    <consumeFuelPerShot>1</consumeFuelPerShot> <!-- Increased fuel consumption due to higher caliber -->
+      </li>
+    </verbs>
+  </ThingDef>
+  
+  
+	<ThingDef ParentName="BaseBullet">
+		<defName>RNBullet_127x108_DSHKMounted</defName>
+		<label>12.7x108mm bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<drawSize>1.2</drawSize>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>39</damageAmountBase>
+			<armorPenetrationBase>0.75</armorPenetrationBase>
+			<stoppingPower>3.0</stoppingPower>
+			<speed>90</speed>
+		</projectile>
+	</ThingDef>
+  
+  <!-- M2 Browning -->
+  
+    <!--=============== M2 Browning HMG Baby ===============-->
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>RN2Gun_M82A1_MountedAMR</defName>
+    <label>M82A1</label>
+	 <description>The Barrett M82, standardized by the U.S. military as the M107, is a recoil-operated, semi-automatic anti-materiel sniper system developed by the American Barrett Firearms Manufacturing company. Despite its designation as an anti-materiel rifle, it is used by some armed forces as an anti-personnel system. 
+	
+It is also called the Light Fifty for its .50 BMG (12.7×99mm NATO) chambering and significantly lighter weight compared to previous applications.</description>
+    <thingClass>Building_TurretGun</thingClass>
+	<drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <texPath>Things/Building/Security/M2_Browning/MG_Tripod</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2,2)</drawSize>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+    </graphicData>
+    <uiIconPath>Things/Building/Security/M82A1/M82A1_Display</uiIconPath>
+    <minifiedDef>MinifiedThing</minifiedDef>
+	<altitudeLayer>Building</altitudeLayer>
+	<hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+	<thingCategories>
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+    <statBases>
+	<Mass>17</Mass>
+      <MaxHitPoints>420</MaxHitPoints>
+      <Flammability>0.5</Flammability>
+      <WorkToBuild>5200</WorkToBuild>
+      <Beauty>-60</Beauty>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_Mannable">
+        <manWorkType>Violent</manWorkType>
+      </li>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_Refuelable">
+        <fuelLabel>Shots until ammo box change</fuelLabel>
+        <fuelGizmoLabel>ammunition box</fuelGizmoLabel>
+        <fuelFilter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </fuelFilter>
+        <fuelCapacity>10</fuelCapacity>
+        <initialFuelPercent>1</initialFuelPercent>
+        <autoRefuelPercent>0.1667</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <minimumFueledThreshold>1</minimumFueledThreshold>
+        <atomicFueling>true</atomicFueling>
+        <fuelMultiplier>5</fuelMultiplier>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <outOfFuelMessage>Cannot shoot: Needs more ammo</outOfFuelMessage>
+        <fuelIconPath>UI/AmmoMag_50BMG</fuelIconPath>
+      </li>
+    </comps>
+	<size>(2,2)</size>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.75</fillPercent>
+    <!--<castEdgeShadows>true</castEdgeShadows>-->
+    <hasTooltip>true</hasTooltip>
+    <costList>
+      <Steel>80</Steel>
+      <ComponentIndustrial>10</ComponentIndustrial>
+    </costList>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+    <constructEffect>ConstructMetal</constructEffect>
+    <specialDisplayRadius>54.9</specialDisplayRadius>
+    <building>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>RN2Gun_M82A1MountedAMR</turretGunDef>
+      <turretBurstWarmupTime>3.08</turretBurstWarmupTime>
+      <turretBurstCooldownTime>3.03</turretBurstCooldownTime>
+    </building>
+    <researchPrerequisites>
+	<li>GunTurrets</li>
+	<li>PrecisionRifling</li>
+	</researchPrerequisites>
+  </ThingDef>
+  
+  <!-- Gun itself -->
+  
+    <ThingDef ParentName="RNBaseWeaponTurret">
+    <defName>RN2Gun_M82A1MountedAMR</defName>
+    <label>M82A1</label>
+    <description>The Barrett M82, standardized by the U.S. military as the M107, is a recoil-operated, semi-automatic anti-materiel sniper system developed by the American Barrett Firearms Manufacturing company. Despite its designation as an anti-materiel rifle, it is used by some armed forces as an anti-personnel system. 
+	
+It is also called the Light Fifty for its .50 BMG (12.7×99mm NATO) chambering and significantly lighter weight compared to previous applications.</description>
+    <graphicData>
+      <texPath>Things/Building/Security/M82A1/M82A1</texPath>
+	  <drawSize>1.5</drawSize>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <AccuracyTouch>0.78</AccuracyTouch>
+      <AccuracyShort>0.87</AccuracyShort>
+      <AccuracyMedium>1.15</AccuracyMedium>
+      <AccuracyLong>1.10</AccuracyLong>
+      <RangedWeapon_Cooldown>5</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>5</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <defaultProjectile>RNBullet_50BMG_M2BrowningHMG</defaultProjectile>
+        <warmupTime>5.2</warmupTime>
+        <range>54.9</range>
+        <ticksBetweenBurstShots>57</ticksBetweenBurstShots>
+        <burstShotCount>2</burstShotCount>
+        <soundCast>RNShot50Cal</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+        <consumeFuelPerShot>1</consumeFuelPerShot>
+      </li>
+    </verbs>
+  </ThingDef>
+  
+  
+       <!-- MK19 Grenade Launcher -->
+  
+    <!--=============== MK19 Grenade Launcher ===============-->
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>RN2Gun_MIM23_SAM_TurretBase</defName>
+    <label>MIM-23 HAWK</label>
+	 <description>The Raytheon MIM-23 HAWK ("Homing All the Way Killer") is an American medium-range surface-to-air missile. It was designed to be a much more mobile counterpart to the MIM-14 Nike Hercules, trading off range and altitude capability for a much smaller size and weight. Its low-level performance was greatly improved over Nike through the adoption of new radars and a continuous wave semi-active radar homing guidance system. It entered service with the US Army in 1959.</description>
+    <thingClass>Building_TurretGun</thingClass>
+	<drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <texPath>Things/Building/Security/Mim23_Hawk_SAM/Mim23_Base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3.5,3.5)</drawSize>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+    </graphicData>
+    <uiIconPath>Things/Building/Security/Mim23_Hawk_SAM/SAM_Display</uiIconPath>
+    <minifiedDef>MinifiedThing</minifiedDef>
+	<altitudeLayer>Building</altitudeLayer>
+	<stealable>false</stealable>
+	<thingCategories>
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+    <statBases>
+	<Mass>120</Mass>
+      <MaxHitPoints>300</MaxHitPoints>
+      <Flammability>0.5</Flammability>
+      <WorkToBuild>15000</WorkToBuild>
+      <Beauty>-70</Beauty>
+	  <ShootingAccuracyTurret>0.7</ShootingAccuracyTurret>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Breakdownable"/>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>250</basePowerConsumption>
+      </li>
+	  <li Class="CompProperties_Explosive">
+        <wickTicks>780</wickTicks>
+        <explosiveRadius>8.9</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <chanceNeverExplodeFromDamage>0.65</chanceNeverExplodeFromDamage>
+      </li>
+    </comps>
+	<size>(3,3)</size>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.75</fillPercent>
+    <!--<castEdgeShadows>true</castEdgeShadows>-->
+    <hasTooltip>true</hasTooltip>
+    <costList>
+      <Steel>300</Steel>
+      <ComponentIndustrial>25</ComponentIndustrial>
+    </costList>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+	<constructionSkillPrerequisite>12</constructionSkillPrerequisite>
+    <constructEffect>ConstructMetal</constructEffect>
+    <building>
+	<combatPower>45</combatPower>   <!-- same as a scavenger -->
+      <turretGunDef>RN2Gun_MIM23_SAM_Launcher</turretGunDef>
+	  <turretTopDrawSize>3.5</turretTopDrawSize>
+	  <turretBurstWarmupTime>5.56</turretBurstWarmupTime>
+      <turretBurstCooldownTime>23</turretBurstCooldownTime>
+    </building>
+    <researchPrerequisites>
+	<li>GunTurrets</li>
+	<li>Electricity</li>
+	<li>MicroelectronicsBasics</li>
+	</researchPrerequisites>
+  </ThingDef>
+ 
+  <!-- Gun itself -->
+  
+    <ThingDef ParentName="RNBaseWeaponTurret">
+    <defName>RN2Gun_MIM23_SAM_Launcher</defName>
+    <label>MIM-23 HAWK</label>
+    <description>The Raytheon MIM-23 HAWK ("Homing All the Way Killer") is an American medium-range surface-to-air missile. It was designed to be a much more mobile counterpart to the MIM-14 Nike Hercules, trading off range and altitude capability for a much smaller size and weight. Its low-level performance was greatly improved over Nike through the adoption of new radars and a continuous wave semi-active radar homing guidance system. It entered service with the US Army in 1959.</description>
+    <graphicData>
+      <texPath>Things/Building/Security/Mim23_Hawk_SAM/SAM_Turret</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <RangedWeapon_Cooldown>23</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>5</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+		<forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+        <defaultProjectile>RNBullet_MIM23_SAMRocket</defaultProjectile>
+        <forcedMissRadius>0.7</forcedMissRadius>
+		<requireLineOfSight>false</requireLineOfSight>
+        <warmupTime>5.56</warmupTime>
+        <ai_AvoidFriendlyFireRadius>5</ai_AvoidFriendlyFireRadius>
+        <minRange>42.9</minRange>
+        <range>500</range>
+        <ticksBetweenBurstShots>45</ticksBetweenBurstShots>
+        <burstShotCount>3</burstShotCount>
+        <soundCast>RNShot_SAMLaunch</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <onlyManualCast>false</onlyManualCast> <!-- Changed due to 1.1 -->
+        <stopBurstWithoutLos>false</stopBurstWithoutLos>
+        <!--<targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>-->
+        <muzzleFlashScale>25</muzzleFlashScale>
+		</li>
+    </verbs>
+  </ThingDef>
+  
+     <ThingDef ParentName="BaseBullet">
+    <defName>RNBullet_MIM23_SAMRocket</defName>
+    <label>MIM-23 HAWK missile</label>
+    <graphicData>
+      <texPath>Things/Building/Security/Mim23_Hawk_SAM/SAM_Projectile</texPath>
+      <drawSize>3.5</drawSize>
+	  <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+    </graphicData>
+    <thingClass>Projectile_Explosive</thingClass>
+    <projectile>
+      <damageDef>RN2_SAMBomb</damageDef>
+      <!-- Use default damage from explosion def -->
+      <explosionRadius>4.2</explosionRadius>
+	  <flyOverhead>true</flyOverhead>
+      <soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+      <speed>30</speed>
+	<!--<explosionDelay>2</explosionDelay>-->
+	<damageAmountBase>125</damageAmountBase>
+    <stoppingPower>3</stoppingPower>
+    <armorPenetrationBase>0.8</armorPenetrationBase>
+	<soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+    <soundAmbient>MortarRound_Ambient</soundAmbient>
+    </projectile>
+  </ThingDef>
+  
+</Defs>

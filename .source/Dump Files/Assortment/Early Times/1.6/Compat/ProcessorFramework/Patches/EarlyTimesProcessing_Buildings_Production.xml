@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+  <Operation Class="PatchOperationRemove">
+    <xpath>/Defs/RecipeDef[@Name = "DriedMeatRecipe"]/recipeUsers/li[text()="MedTimes_Smokehouse"]</xpath>
+  </Operation>
+
+  <Operation Class="PatchOperationRemove">
+    <xpath>/Defs/RecipeDef[defName = "MedTimes_CookMealJerkedMeatsBulk"]</xpath>
+  </Operation>
+
+  <Operation Class="PatchOperationRemove">
+	<xpath>/Defs/WorkGiverDef[defName = "DoBillsCook"]/fixedBillGiverDefs/li[text()="MedTimes_Smokehouse"]</xpath>
+	<success>Always</success>
+  </Operation>
+  
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ThingDef[defName = "MedTimes_Smokehouse"]/thingClass</xpath>
+	<value>
+		<thingClass>ProcessorFramework.Building_ColorCoded</thingClass>
+    </value>
+  </Operation>
+  
+  <Operation Class="PatchOperationConditional">
+		<xpath>/Defs/ThingDef[defName = "MedTimes_Smokehouse"]/tickerType</xpath>
+		<match Class="PatchOperationReplace">
+			<xpath>/Defs/ThingDef[defName = "MedTimes_Smokehouse"]/tickerType</xpath>
+			<value>
+				<tickerType>Rare</tickerType>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[defName = "MedTimes_Smokehouse"]</xpath>
+			<value>
+				<tickerType>Rare</tickerType>
+			</value>
+		</nomatch>
+	</Operation>
+  <Operation Class="PatchOperationRemove">
+    <xpath>/Defs/ThingDef[defName = "MedTimes_Smokehouse"]/inspectorTabs</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove">
+    <xpath>/Defs/ThingDef[defName = "MedTimes_Smokehouse"]/statBases</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove">
+    <xpath>/Defs/ThingDef[defName = "MedTimes_Smokehouse"]/comps/li[@Class="CompProperties_AffectedByFacilities"]</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove">
+    <xpath>/Defs/ThingDef[defName = "MedTimes_Smokehouse"]/hasInteractionCell</xpath>
+  </Operation>
+  <Operation Class="PatchOperationRemove">
+    <xpath>/Defs/ThingDef[defName = "MedTimes_Smokehouse"]/interactionCellOffset</xpath>
+  </Operation>
+  
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "MedTimes_Smokehouse"]/comps</xpath>
+	<value>
+      <li Class="ProcessorFramework.CompProperties_Processor">
+        <capacity>400</capacity>
+        <independentProcesses>true</independentProcesses>
+        <parallelProcesses>true</parallelProcesses>
+        <dropIngredients>true</dropIngredients>
+        <showProductIcon>true</showProductIcon>
+        <barOffset>(0.0, 0.25)</barOffset>
+        <barScale>(1.0, 1.0)</barScale>
+        <colorCoded>false</colorCoded>
+        <processes>
+          <li>MedTimes_MealJerkedMeats</li>
+        </processes>
+      </li>
+      <li Class="CompProperties_Forbiddable"/>
+    </value>
+  </Operation>
+  
+  
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Cooking Expanded</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<success>Always</success>
+			<operations>
+				<li Class="PatchOperationAdd"> 
+					<success>Always</success>
+					<xpath>/Defs/ItemProcessor.CombinationDef[defName = "VFEM_SmokerMeatToSmokedMeat"]/disallowedThingDefs</xpath>
+					<value>
+						<li>MedTimes_MealJerkedMeats</li>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd"> 
+					<success>Always</success>
+					<xpath>/Defs/RecipeDef[@Name = "DriedMeatRecipe"]/fixedIngredientFilter/disallowedThingDefs</xpath>
+					<value>
+						<li>VCE_CannedMeat</li>
+						<li>VCE_CannedFish</li>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd"> 
+					<success>Always</success>
+					<xpath>/Defs/ProcessorFramework.ProcessDef[defName = "MedTimes_MealJerkedMeats"]/ingredientFilter/disallowedThingDefs</xpath>
+					<value>
+						<li>VCE_CannedMeat</li>
+						<li>VCE_CannedFish</li>
+					</value>
+				</li>
+			</operations>
+		</match>
+	</Operation>
+  
+  
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Factions Expanded - Mechanoids</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<success>Always</success>
+			<operations>
+				<li Class="PatchOperationAdd"> 
+					<success>Always</success>
+					<xpath>/Defs/ItemProcessor.CombinationDef[defName = "VFEM_SmokerMeatToSmokedMeat"]/disallowedThingDefs</xpath>
+					<value>
+						<li>MedTimes_MealJerkedMeats</li>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd"> 
+					<success>Always</success>
+					<xpath>/Defs/RecipeDef[@Name = "DriedMeatRecipe"]/fixedIngredientFilter/disallowedThingDefs</xpath>
+					<value>
+						<li>VFEM_ProcessedMeat</li>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd"> 
+					<success>Always</success>
+					<xpath>/Defs/ProcessorFramework.ProcessDef[defName = "MedTimes_MealJerkedMeats"]/ingredientFilter/disallowedThingDefs</xpath>
+					<value>
+						<li>VFEM_ProcessedMeat</li>
+					</value>
+				</li>
+			</operations>
+		</match>
+	</Operation>
+	
+	
+  <Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Factions Expanded - Medieval</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<success>Always</success>
+			<operations>
+				<li Class="PatchOperationRemove"> 
+					<xpath>/Defs/ProcessorFramework.ProcessDef[defName = "VFEM_SmokedMeat"]</xpath>
+				</li>
+				<li Class="PatchOperationRemove"> 
+					<xpath>/Defs/ThingDef[defName = "VFEM_MeatSmoker"]</xpath>
+				</li>
+			</operations>
+		</match>
+	</Operation>
+					
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Fishing Expanded</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<success>Always</success>
+			<operations>
+				<li Class="PatchOperationAdd"> 
+					<success>Always</success>
+					<xpath>/Defs/ItemProcessor.CombinationDef[defName = "VFEM_SmokerMeatToSmokedMeat"]/disallowedThingDefs</xpath>
+					<value>
+						<li>MedTimes_MealJerkedMeats</li>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd"> 
+					<success>Always</success>
+					<xpath>/Defs/RecipeDef[@Name = "DriedMeatRecipe"]/fixedIngredientFilter/disallowedThingDefs</xpath>
+					<value>
+						<li>VFEM_SmokedFish</li>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd"> 
+					<success>Always</success>
+					<xpath>/Defs/ProcessorFramework.ProcessDef[defName = "MedTimes_MealJerkedMeats"]/ingredientFilter/disallowedThingDefs</xpath>
+					<value>
+						<li>VFEM_SmokedFish</li>
+					</value>
+				</li>
+			</operations>
+		</match>
+	</Operation>
+</Patch>

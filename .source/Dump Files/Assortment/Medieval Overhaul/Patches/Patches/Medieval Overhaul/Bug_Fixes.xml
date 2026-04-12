@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<!-- Relabel Honeycomb -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="DankPyon_Honeycomb"]/label</xpath>
+		<value>
+			<label>oswin honeycomb</label>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="DankPyon_Honeycomb"]/description</xpath>
+		<value>
+			<description>This is a honeycomb produced by carrion bees. Honeycombs can be procesed in a Honey Extractor to get honey and beeswax.</description>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Alpha Bees</li>
+		</mods>
+		<nomatch Class="PatchOperationSequence">
+			<operations>
+
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/RecipeDef[defName="DankPyon_Extract_HoneyBulk"]/products/DankPyon_Wax</xpath>
+					<nomatch Class="PatchOperationAdd">
+						<xpath>Defs/RecipeDef[defName="DankPyon_Extract_HoneyBulk"]/products</xpath>
+						<value>
+							<DankPyon_Wax>25</DankPyon_Wax>
+						</value>
+					</nomatch>
+				</li>
+
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/RecipeDef[defName="DankPyon_Extract_Honey"]/products</xpath>
+					<match Class="PatchOperationConditional">
+						<xpath>Defs/RecipeDef[defName="DankPyon_Extract_Honey"]/specialProducts</xpath>
+						<nomatch Class="PatchOperationReplace">
+							<xpath>Defs/RecipeDef[defName="DankPyon_Extract_Honey"]/products</xpath>
+							<value>
+								<specialProducts>
+									<li>Butchery</li>
+								</specialProducts>
+							</value>
+						</nomatch>
+					</match>
+				</li>
+
+			</operations>
+		</nomatch>
+	</Operation>
+
+	<!-- Cheese Nerf -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[@Name="DankPyon_CheeseBase"]/statBases/Nutrition</xpath>
+		<value>
+			<Nutrition>0.15</Nutrition>
+		</value>
+	</Operation>
+
+</Patch>

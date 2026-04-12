@@ -1,0 +1,655 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!-- Start of thingDefs -->
+    <!-- =========================== Helmet Base Class =========================== -->
+	<!-- Armour Makeable Base Class -->
+    <ThingDef Name="MedTimes_Helmet" Abstract="True">
+        <thingClass>Apparel</thingClass>
+        <category>Item</category>
+        <selectable>True</selectable>
+        <pathCost>10</pathCost>
+        <graphicData>
+            <onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(0.8,0.8)</drawSize>
+        </graphicData>
+        <drawGUIOverlay>true</drawGUIOverlay>
+        <statBases>
+            <SellPriceFactor>0.6</SellPriceFactor>
+            <Insulation_Cold>3</Insulation_Cold>
+            <EquipDelay>2</EquipDelay>
+            <Beauty>-3</Beauty>
+            <Mass>2</Mass>
+        </statBases>
+        <altitudeLayer>Item</altitudeLayer>
+        <alwaysHaulable>True</alwaysHaulable>
+        <tickerType>Never</tickerType>
+        <apparel>
+			<countsAsClothingForNudity>false</countsAsClothingForNudity>
+            <careIfWornByCorpse>false</careIfWornByCorpse>
+            <defaultOutfitTags>
+                <li>Soldier</li>
+            </defaultOutfitTags>
+            <layers>
+                <li>Overhead</li>
+            </layers>
+        </apparel>
+        <comps>
+            <li Class="CompProperties_Forbiddable" />
+        </comps>
+    </ThingDef>
+    <!-- (Base Class) Makeable -->
+    <ThingDef Name="MedTimes_HelmetNN" ParentName="MedTimes_Helmet" Abstract="True">
+        <useHitPoints>True</useHitPoints>
+        <statBases>
+            <MaxHitPoints>70</MaxHitPoints>
+            <Flammability>1.0</Flammability>
+            <DeteriorationRate>2</DeteriorationRate>
+        </statBases>
+        <comps>
+            <li>
+                <compClass>CompQuality</compClass>
+            </li>
+        </comps>
+        <thingCategories>
+            <li>HeadArmour</li>
+        </thingCategories>
+        <tradeTags>
+            <li>MedTimes_Gear</li>
+        </tradeTags>
+    </ThingDef>
+    <!-- ================================== Tier 0 Classes =================================-->
+    <!-- ==== Light Classes ==== -->
+    <!-- (Light Class) Tier 0 Non-Makeable -->
+    <ThingDef Name="MedTimes_Helm_T0_L" ParentName="MedTimes_HelmetNN" Abstract="True">
+        <costStuffCount>25</costStuffCount>
+		<statBases>
+            <Mass>1.2</Mass>
+        </statBases>
+        <equippedStatOffsets>
+            <MeleeDodgeChance>0.05</MeleeDodgeChance>
+        </equippedStatOffsets>
+    </ThingDef>
+    <!-- (Light Class) Tier 0 Makeable -->
+    <ThingDef Name="MedTimes_Craft_Helm_T0_L" ParentName="MedTimes_Helm_T0_L" Abstract="True">
+        <statBases>
+            <WorkToMake>2000</WorkToMake>
+        </statBases>
+        <recipeMaker>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Crafting</workSkill>
+            <effectWorking>Smith</effectWorking>
+            <soundWorking>Recipe_Smith</soundWorking>
+            <researchPrerequisite>TS_PrimitiveArmor</researchPrerequisite>
+            <unfinishedThingDef>UnfinishedArmor</unfinishedThingDef>
+            <recipeUsers>
+                <li>CraftingSpot</li>
+                <li>MedTimes_CraftingStation</li>
+            </recipeUsers>
+        </recipeMaker>
+    </ThingDef>
+    <!-- ================================== Tier 1 Classes =================================-->
+    <!-- ==== Light Classes ==== -->
+    <!-- (Light Class) Tier 1 Non-Makeable -->
+    <ThingDef Name="MedTimes_Helm_T1_L" ParentName="MedTimes_HelmetNN" Abstract="True">
+        <costStuffCount>25</costStuffCount>
+		<statBases>
+            <Mass>2.1</Mass>
+        </statBases>
+        <equippedStatOffsets>
+            <MeleeDodgeChance>0.05</MeleeDodgeChance>
+        </equippedStatOffsets>
+    </ThingDef>
+    <!-- (Light Class) Tier 1 Makeable -->
+    <ThingDef Name="MedTimes_Smith_Helm_T1_L" ParentName="MedTimes_Helm_T1_L" Abstract="True">
+        <statBases>
+            <WorkToMake>3000</WorkToMake>
+        </statBases>
+        <recipeMaker>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Crafting</workSkill>
+            <effectWorking>Smith</effectWorking>
+            <soundWorking>Recipe_Smith</soundWorking>
+            <researchPrerequisite>MedTimes_ArmorScaled</researchPrerequisite>
+            <unfinishedThingDef>UnfinishedArmor</unfinishedThingDef>
+            <recipeUsers>
+                <li>MedTimes_BlacksmithForge</li>
+                <li>MedTimes_ElectricBlacksmithForge</li>
+            </recipeUsers>
+            <skillRequirements>
+                <Crafting>4</Crafting>
+            </skillRequirements>
+        </recipeMaker>
+    </ThingDef>
+    <!-- ==== Heavy Classes ==== -->
+    <!-- (Heavy Class) Tier 1 Non-Makeable -->
+    <ThingDef Name="MedTimes_Helm_T1_H" ParentName="MedTimes_HelmetNN" Abstract="True">
+        <costStuffCount>35</costStuffCount>
+        <statBases>
+            <Mass>3.2</Mass>
+        </statBases>
+    </ThingDef>
+    <!-- (Heavy Class) Tier 1 Makeable -->
+    <ThingDef Name="MedTimes_Smith_Helm_T1_H" ParentName="MedTimes_Helm_T1_H" Abstract="True">
+        <statBases>
+            <WorkToMake>4500</WorkToMake>
+        </statBases>
+        <recipeMaker>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Crafting</workSkill>
+            <effectWorking>Smith</effectWorking>
+            <soundWorking>Recipe_Smith</soundWorking>
+            <researchPrerequisite>MedTimes_ArmorScaled</researchPrerequisite>
+            <unfinishedThingDef>UnfinishedArmor</unfinishedThingDef>
+            <recipeUsers>
+                <li>MedTimes_BlacksmithForge</li>
+                <li>MedTimes_ElectricBlacksmithForge</li>
+            </recipeUsers>
+            <skillRequirements>
+                <Crafting>6</Crafting>
+            </skillRequirements>
+        </recipeMaker>
+    </ThingDef>
+    <!-- ================================== Tier 2 Classes =================================-->
+    <!-- ==== Light Classes ==== -->
+    <!-- (Light Class) Tier 2 Non-Makeable -->
+    <ThingDef Name="MedTimes_Helm_T2_L" ParentName="MedTimes_HelmetNN" Abstract="True">
+        <costStuffCount>25</costStuffCount>
+		<statBases>
+            <Mass>2.7</Mass>
+        </statBases>
+        <equippedStatOffsets>
+            <MeleeDodgeChance>0.05</MeleeDodgeChance>
+        </equippedStatOffsets>
+    </ThingDef>
+    <!-- (Light Class) Tier 2 Makeable -->
+    <ThingDef Name="MedTimes_Smith_Helm_T2_L" ParentName="MedTimes_Helm_T2_L" Abstract="True">
+        <statBases>
+            <WorkToMake>3000</WorkToMake>
+        </statBases>
+        <recipeMaker>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Crafting</workSkill>
+            <effectWorking>Smith</effectWorking>
+            <soundWorking>Recipe_Smith</soundWorking>
+            <unfinishedThingDef>UnfinishedArmor</unfinishedThingDef>
+            <researchPrerequisite>PlateArmor</researchPrerequisite>
+            <recipeUsers>
+                <li>MedTimes_BlacksmithForgeTierTwo</li>
+                <li>MedTimes_ElectricBlacksmithForgeTierTwo</li>
+            </recipeUsers>
+            <skillRequirements>
+                <Crafting>4</Crafting>
+            </skillRequirements>
+        </recipeMaker>
+    </ThingDef>
+    <!-- (Light Class) Tier 2 Exceptional Makeable -->
+    <ThingDef Name="MedTimes_Smith_Helm_T2_LX" ParentName="MedTimes_Helm_T2_L" Abstract="True">
+        <statBases>
+            <WorkToMake>5000</WorkToMake>
+        </statBases>
+        <recipeMaker>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Crafting</workSkill>
+            <effectWorking>Smith</effectWorking>
+            <soundWorking>Recipe_Smith</soundWorking>
+            <unfinishedThingDef>UnfinishedArmor</unfinishedThingDef>
+            <researchPrerequisite>PlateArmor</researchPrerequisite>
+            <recipeUsers>
+                <li>ElectricSmithy</li>
+                <li>FueledSmithy</li>
+            </recipeUsers>
+            <skillRequirements>
+                <Crafting>8</Crafting>
+            </skillRequirements>
+        </recipeMaker>
+    </ThingDef>
+    <!-- ==== Heavy Classes ==== -->
+    <!-- (Heavy Class) Tier 2 Non-Makeable -->
+    <ThingDef Name="MedTimes_Helm_T2_H" ParentName="MedTimes_HelmetNN" Abstract="True">
+        <costStuffCount>25</costStuffCount>
+		<statBases>
+            <Mass>4.1</Mass>
+        </statBases>
+    </ThingDef>
+    <!-- (Heavy Class) Tier 2 Makeable -->
+    <ThingDef Name="MedTimes_Smith_Helm_T2_H" ParentName="MedTimes_Helm_T2_H" Abstract="True">
+        <statBases>
+            <WorkToMake>4500</WorkToMake>
+        </statBases>
+        <recipeMaker>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Crafting</workSkill>
+            <effectWorking>Smith</effectWorking>
+            <soundWorking>Recipe_Smith</soundWorking>
+            <unfinishedThingDef>UnfinishedArmor</unfinishedThingDef>
+            <researchPrerequisite>PlateArmor</researchPrerequisite>
+            <recipeUsers>
+                <li>MedTimes_BlacksmithForgeTierTwo</li>
+                <li>MedTimes_ElectricBlacksmithForgeTierTwo</li>
+            </recipeUsers>
+            <skillRequirements>
+                <Crafting>6</Crafting>
+            </skillRequirements>
+        </recipeMaker>
+    </ThingDef>
+    <!-- (Heavy Class) Tier 2 Exceptional Makeable -->
+    <ThingDef Name="MedTimes_Smith_Helm_T2_HX" ParentName="MedTimes_Helm_T2_H" Abstract="True">
+        <statBases>
+            <WorkToMake>5000</WorkToMake>
+        </statBases>
+        <recipeMaker>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Crafting</workSkill>
+            <effectWorking>Smith</effectWorking>
+            <soundWorking>Recipe_Smith</soundWorking>
+            <unfinishedThingDef>UnfinishedArmor</unfinishedThingDef>
+            <researchPrerequisite>PlateArmor</researchPrerequisite>
+            <recipeUsers>
+                <li>ElectricSmithy</li>
+                <li>FueledSmithy</li>
+            </recipeUsers>
+            <skillRequirements>
+                <Crafting>10</Crafting>
+            </skillRequirements>
+        </recipeMaker>
+    </ThingDef>
+    <!-- ==================================== Actual Helmets ========================== -->
+    <!-- ================== Helmets Tier 0 ================ -->
+    <!-- ==== Light Armours ==== -->
+    <!-- Wooden Helmet -->
+    <ThingDef ParentName="MedTimes_Craft_Helm_T0_L">
+        <defName>MedTimes_Helm_Armour</defName>
+        <label>Protective Helmet</label>
+        <description>A simple protective helmet. Not much comfortable but offers some protection.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/Headwear/Primitive/MedTimes_Helm_Armour</texPath>
+        </graphicData>
+        <apparel>
+			<bodyPartGroups>
+				<li>UpperHead</li>
+			</bodyPartGroups>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Headwear/Primitive/MedTimes_Helm_Armour</wornGraphicPath>
+        </apparel>
+        <stuffCategories>
+            <li>Metallic</li>
+            <li>Woody</li>
+            <li>Leathery</li>
+        </stuffCategories>
+		<costList>
+            <Leather_Patch>35</Leather_Patch>
+		</costList>
+        <statBases>
+            <StuffEffectMultiplierArmor>0.85</StuffEffectMultiplierArmor>
+            <ArmorRating_Blunt>0.06</ArmorRating_Blunt>
+            <ArmorRating_Sharp>0.0</ArmorRating_Sharp>
+        </statBases>
+    </ThingDef>
+    <!-- ================== Helmets Tier 1 ================ -->
+    <!-- ==== Light Armours ==== -->
+    <!-- Padded Head-wrap -->
+    <ThingDef ParentName="MedTimes_Smith_Helm_T1_L">
+        <defName>MedTimes_Helm_Headwrap</defName>
+        <label>Steel Plated Head-wrap</label>
+        <description>A soft cap made of leather and cloth padding. It contains a single steel plate to deflect incoming blows. Great for keeping warm in winter.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/Headwear/Headwrap/MedTimes_Headwrap</texPath>
+        </graphicData>
+        <apparel>
+			<bodyPartGroups>
+				<li>UpperHead</li>
+			</bodyPartGroups>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Headwear/Headwrap/MedTimes_Headwrap</wornGraphicPath>
+        </apparel>
+		<costList>
+            <Leather_Patch>35</Leather_Patch>
+		</costList>
+        <stuffCategories>
+            <li>Metallic</li>
+        </stuffCategories>
+        <statBases>
+            <StuffEffectMultiplierArmor>0.55</StuffEffectMultiplierArmor>
+            <ArmorRating_Blunt>0.0</ArmorRating_Blunt>
+            <ArmorRating_Sharp>0.05</ArmorRating_Sharp>
+        </statBases>
+    </ThingDef>
+    <!-- ==== Heavy Armours ==== -->
+    <!-- Domed Helmet -->
+    <ThingDef ParentName="MedTimes_Smith_Helm_T1_H">
+        <defName>MedTimes_Helm_Domed</defName>
+        <label>Domed Helmet</label>
+        <description>A soft cap made of leather and cloth padding. This layer is covered in a chain-mail coif and topped with a large domed helmet. All these pieces together provide excellent protection without hampering either mobility or visibility. The extra layers means it is also great for keeping warm in winter.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/Headwear/Domed/MedTimes_Helm_Domed</texPath>
+        </graphicData>
+        <apparel>
+			<bodyPartGroups>
+				<li>UpperHead</li>
+			</bodyPartGroups>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Headwear/Domed/MedTimes_Helm_Domed</wornGraphicPath>
+            <tags>
+                <li>MedTimes_Armor_Soldier</li>
+                <li>MedTimes_Armor_Warband_Soldier</li>
+            </tags>
+        </apparel>
+        <stuffCategories>
+            <li>Metallic</li>
+        </stuffCategories>
+		<costList>
+            <Leather_Patch>35</Leather_Patch>
+		</costList>
+        <statBases>
+            <StuffEffectMultiplierArmor>0.55</StuffEffectMultiplierArmor>
+            <ArmorRating_Blunt>0.0</ArmorRating_Blunt>
+            <ArmorRating_Sharp>0.15</ArmorRating_Sharp>
+        </statBases>
+    </ThingDef>
+    <!-- Sallet Helmet -->
+    <ThingDef ParentName="MedTimes_Smith_Helm_T1_H">
+        <defName>MedTimes_Helm_Sallet</defName>
+        <label>Sallet Helmet</label>
+        <description>A soft cap made of leather and cloth padding. This layer is covered in a chain-mail coif and topped with a large Sallet helmet. All these pieces together provide excellent protection without hampering either mobility or visibility. The extra layers means it is also great for keeping warm in winter.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/Headwear/Sallet/MedTimes_Helm_Sallet</texPath>
+        </graphicData>
+        <apparel>
+			<bodyPartGroups>
+				<li>FullHead</li>
+			</bodyPartGroups>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Headwear/Sallet/MedTimes_Helm_Sallet</wornGraphicPath>
+            <tags>
+                <li>MedTimes_Armor_Soldier</li>
+                <li>MedTimes_Armor_Warband_Soldier</li>
+            </tags>
+        </apparel>
+        <stuffCategories>
+            <li>Metallic</li>
+        </stuffCategories>
+        <equippedStatOffsets>
+            <MeleeDodgeChance>-0.1</MeleeDodgeChance>
+			<ShootingAccuracyPawn>-0.3</ShootingAccuracyPawn>
+        </equippedStatOffsets>
+		<costList>
+            <Leather_Patch>35</Leather_Patch>
+		</costList>
+        <statBases>
+            <StuffEffectMultiplierArmor>0.55</StuffEffectMultiplierArmor>
+            <ArmorRating_Blunt>0.0</ArmorRating_Blunt>
+            <ArmorRating_Sharp>0.15</ArmorRating_Sharp>
+        </statBases>
+    </ThingDef>
+    <!-- Nasal Helmet -->
+    <ThingDef ParentName="MedTimes_Smith_Helm_T1_H">
+        <defName>MedTimes_Helm_Nasal</defName>
+        <label>Nasal Helmet</label>
+        <description>A soft cap made of leather and cloth padding. This layer is covered in a chain-mail coif and topped with a Nasal helmet. All these pieces together provide excellent protection without hampering either mobility or visibility. The extra layers means it is also great for keeping warm in winter.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/Headwear/Nasal/MedTimes_Helm_Nasal</texPath>
+        </graphicData>
+        <apparel>
+			<bodyPartGroups>
+				<li>UpperHead</li>
+				<li>Nose</li>
+			</bodyPartGroups>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Headwear/Nasal/MedTimes_Helm_Nasal</wornGraphicPath>
+            <tags>
+                <li>MedTimes_Armor_Soldier</li>
+                <li>MedTimes_Armor_Warband_Soldier</li>
+            </tags>
+        </apparel>
+        <stuffCategories>
+            <li>Metallic</li>
+        </stuffCategories>
+		<costList>
+            <Leather_Patch>35</Leather_Patch>
+		</costList>
+        <statBases>
+            <StuffEffectMultiplierArmor>0.55</StuffEffectMultiplierArmor>
+            <ArmorRating_Blunt>0.0</ArmorRating_Blunt>
+            <ArmorRating_Sharp>0.15</ArmorRating_Sharp>
+        </statBases>
+    </ThingDef>
+    <!-- ================== Helmets Tier 2 ================ -->
+    <!-- ==== Light Armours ==== -->
+    <!-- Full Plated Head-wrap -->
+    <ThingDef ParentName="MedTimes_Smith_Helm_T2_L">
+        <defName>MedTimes_Helm_FullPlated</defName>
+        <label>Full Plated Head-wrap</label>
+        <description>A leather helmet covered in full plates. Plates are placed in a way to cover head from all around.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/Headwear/FullPlated/MedTimes_FullPlated</texPath>
+        </graphicData>
+        <apparel>
+			<bodyPartGroups>
+				<li>UpperHead</li>
+			</bodyPartGroups>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Headwear/FullPlated/MedTimes_FullPlated</wornGraphicPath>
+        </apparel>
+        <stuffCategories>
+            <li>Metallic</li>
+        </stuffCategories>
+		<costList>
+            <Leather_Patch>35</Leather_Patch>
+		</costList>
+        <statBases>
+            <StuffEffectMultiplierArmor>0.77</StuffEffectMultiplierArmor>
+            <ArmorRating_Blunt>0.0</ArmorRating_Blunt>
+            <ArmorRating_Sharp>0.05</ArmorRating_Sharp>
+        </statBases>
+    </ThingDef>
+    <!-- Warbourne Helm -->
+    <ThingDef ParentName="MedTimes_Helm_T2_L">
+        <defName>MedTimes_Helm_Warbourne</defName>
+        <label>Warbourne's Helm</label>
+        <description>Chain helmet designed to be protective and allwo better movement in battle.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/Headwear/Warbourne/MedTimes_Warbourne</texPath>
+        </graphicData>
+        <equippedStatOffsets>
+            <MeleeDodgeChance>0.08</MeleeDodgeChance>
+        </equippedStatOffsets>
+		<costList>
+            <Leather_Patch>15</Leather_Patch>
+			<Steel>15</Steel>
+		</costList>
+        <apparel>
+			<bodyPartGroups>
+				<li>UpperHead</li>
+				<li>Teeth</li>
+			</bodyPartGroups>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Headwear/Warbourne/MedTimes_Warbourne</wornGraphicPath>
+        </apparel>
+        <stuffCategories>
+            <li>Metallic</li>
+        </stuffCategories>
+        <statBases>
+            <StuffEffectMultiplierArmor>0.77</StuffEffectMultiplierArmor>
+            <ArmorRating_Blunt>0.0</ArmorRating_Blunt>
+            <ArmorRating_Sharp>0.05</ArmorRating_Sharp>
+        </statBases>
+    </ThingDef>
+    <!-- ==== Heavy Armours ==== -->
+    <!-- Bascinet -->
+    <ThingDef ParentName="MedTimes_Smith_Helm_T2_H">
+        <defName>MedTimes_Helm_Bascinet</defName>
+        <label>Bascinet</label>
+        <description>A soft cap made of leather and cloth padding. This layer is covered in a chain-mail coif and topped with a large bucket helmet. The helmet is a bascinet, meaning the front/facial portion can be lifted or removed. All these pieces together provide excellent protection without hampering either mobility or visibility. The extra layers means it is also great for keeping warm in winter.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/Headwear/Bascinet/MedTimes_Helm_Bascinet</texPath>
+        </graphicData>
+        <apparel>
+			<bodyPartGroups>
+				<li>UpperHead</li>
+				<li>Nose</li>
+				<li>Teeth</li>
+			</bodyPartGroups>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Headwear/Bascinet/MedTimes_Helm_Bascinet</wornGraphicPath>
+            <tags>
+                <li>MedTimes_Armor_Knightly</li>
+                <li>MedTimes_Armor_Warband_Knightly</li>
+            </tags>
+        </apparel>
+        <stuffCategories>
+            <li>Metallic</li>
+        </stuffCategories>
+		<costList>
+            <Leather_Patch>35</Leather_Patch>
+		</costList>
+        <statBases>
+            <StuffEffectMultiplierArmor>0.88</StuffEffectMultiplierArmor>
+            <ArmorRating_Blunt>0.0</ArmorRating_Blunt>
+            <ArmorRating_Sharp>0.217</ArmorRating_Sharp>
+        </statBases>
+    </ThingDef>
+    <!-- Conical Bascinet -->
+    <ThingDef ParentName="MedTimes_Smith_Helm_T2_H">
+        <defName>MedTimes_Helm_ConicalBascinet</defName>
+        <label>Conical Bascinet</label>
+        <description>A soft cap made of leather and cloth padding. This layer is covered in a chain-mail coif and topped with a large conical helmet. The helmet is a bascinet, meaning the front/facial portion can be lifted or removed. All these pieces together provide excellent protection without hampering either mobility or visibility. The extra layers means it is also great for keeping warm in winter.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/Headwear/Conical_Bascinet/MedTimes_Helm_Conical_Bascinet</texPath>
+        </graphicData>
+        <apparel>
+			<bodyPartGroups>
+				<li>UpperHead</li>
+				<li>Nose</li>
+				<li>Teeth</li>
+			</bodyPartGroups>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Headwear/Conical_Bascinet/MedTimes_Helm_Conical_Bascinet</wornGraphicPath>
+            <tags>
+                <li>MedTimes_Armor_Knightly</li>
+                <li>MedTimes_Armor_Warband_Knightly</li>
+            </tags>
+        </apparel>
+        <stuffCategories>
+            <li>Metallic</li>
+        </stuffCategories>
+		<costList>
+            <Leather_Patch>35</Leather_Patch>
+		</costList>
+        <statBases>
+            <StuffEffectMultiplierArmor>0.88</StuffEffectMultiplierArmor>
+            <ArmorRating_Blunt>0.0</ArmorRating_Blunt>
+            <ArmorRating_Sharp>0.217</ArmorRating_Sharp>
+        </statBases>
+    </ThingDef>
+    <!-- Royal Mask -->
+    <ThingDef ParentName="MedTimes_Smith_Helm_T2_HX">
+        <defName>MedTimes_Helm_RoyalMask</defName>
+        <label>Royal Mask</label>
+        <description>A soft cap made of leather and cloth padding. This layer is covered in a scale-mail coif and topped with a large Ornate helmet. The helmet is a bascinet, meaning the front/facial portion can be lifted or removed. All these pieces together provide excellent protection without hampering either mobility or visibility. The extra layers means it is also great for keeping warm in winter.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/Headwear/RoyalMask/MedTimes_Helm_RoyalMask</texPath>
+        </graphicData>
+        <apparel>
+			<tags>
+				<li>Royal</li>
+				<li>RoyalTier5</li>
+				<li>RoyalTier6</li>
+            </tags>
+			<bodyPartGroups>
+				<li>UpperHead</li>
+				<li>Nose</li>
+				<li>Teeth</li>
+			</bodyPartGroups>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Headwear/RoyalMask/MedTimes_Helm_RoyalMask</wornGraphicPath>
+        </apparel>
+        <stuffCategories>
+            <li>Metallic</li>
+        </stuffCategories>
+		<costList>
+			<Gold>10</Gold>
+            <Leather_Patch>35</Leather_Patch>
+		</costList>
+        <statBases>
+            <StuffEffectMultiplierArmor>0.95</StuffEffectMultiplierArmor>
+            <ArmorRating_Blunt>0.0</ArmorRating_Blunt>
+            <ArmorRating_Sharp>0.03</ArmorRating_Sharp>
+        </statBases>
+    </ThingDef>
+    <!-- Death Mask -->
+    <ThingDef ParentName="MedTimes_Smith_Helm_T2_HX">
+        <defName>MedTimes_Helm_DeathMask</defName>
+        <label>Death Mask</label>
+        <description>A soft cap made of leather and cloth padding. This layer is covered in a scale-mail coif and topped with a large Ornate helmet. The helmet is a bascinet, meaning the front/facial portion can be lifted or removed. All these pieces together provide excellent protection without hampering either mobility or visibility. The extra layers means it is also great for keeping warm in winter.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/Headwear/DeathMask/MedTimes_Helm_DeathMask</texPath>
+        </graphicData>
+        <apparel>
+			<bodyPartGroups>
+				<li>UpperHead</li>
+				<li>Nose</li>
+			</bodyPartGroups>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Headwear/DeathMask/MedTimes_Helm_DeathMask</wornGraphicPath>
+        </apparel>
+        <stuffCategories>
+            <li>Metallic</li>
+        </stuffCategories>
+		<costList>
+			<Steel>10</Steel>
+			<Gold>10</Gold>
+            <Leather_Patch>35</Leather_Patch>
+		</costList>
+        <equippedStatOffsets>
+            <MeleeDodgeChance>0.1</MeleeDodgeChance>
+        </equippedStatOffsets>
+        <statBases>
+            <StuffEffectMultiplierArmor>0.95</StuffEffectMultiplierArmor>
+            <ArmorRating_Blunt>0.0</ArmorRating_Blunt>
+            <ArmorRating_Sharp>0.03</ArmorRating_Sharp>
+        </statBases>
+    </ThingDef>
+    <!-- Death Mask -->
+    <ThingDef ParentName="MedTimes_Smith_Helm_T2_HX">
+        <defName>MedTimes_Helm_Warlord</defName>
+        <label>Warlord Helmet</label>
+        <description>A mask made by using several armor crafting techniques. This masterpiece hasmaximized protection with minimized weight. Added thrumbo fur to complete portrait.</description>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/Apparel/Headwear/Warlord/MedTimes_Helm_Warlord</texPath>
+        </graphicData>
+        <apparel>        
+			<tags>
+                <li>MedTimes_Armour_Warlord</li>
+				<li>Royal</li>
+				<li>RoyalTier5</li>
+				<li>RoyalTier6</li>
+            </tags>
+			<bodyPartGroups>
+				<li>UpperHead</li>
+				<li>Nose</li>
+				<li>Teeth</li>
+			</bodyPartGroups>
+            <wornGraphicPath>Things/Pawn/Humanlike/Apparel/Headwear/Warlord/MedTimes_Helm_Warlord</wornGraphicPath>
+        </apparel>
+        <stuffCategories>
+            <li>Metallic</li>
+        </stuffCategories>
+		<tradeability>Sellable</tradeability>
+		<costList>
+            <Leather_Patch>10</Leather_Patch>
+            <Leather_Thrumbo>35</Leather_Thrumbo>
+		</costList>
+        <equippedStatOffsets>
+            <MeleeDodgeChance>0.1</MeleeDodgeChance>
+        </equippedStatOffsets>
+        <statBases>
+            <WorkToMake>240000</WorkToMake>
+            <StuffEffectMultiplierArmor>1.1</StuffEffectMultiplierArmor>
+            <ArmorRating_Blunt>0.15</ArmorRating_Blunt>
+            <ArmorRating_Sharp>0.4</ArmorRating_Sharp>
+            <ArmorRating_Heat>0.2</ArmorRating_Heat>
+            <Insulation_Cold>8</Insulation_Cold>
+            <Insulation_Heat>1</Insulation_Heat>
+        </statBases>
+        <recipeMaker>
+            <researchPrerequisite>MedTimes_CombatArmor</researchPrerequisite>
+			<recipeUsers>
+                <li>ElectricSmithy</li>
+            </recipeUsers>
+        </recipeMaker>    
+		<thingSetMakerTags>
+			<li>RewardStandardLowFreq</li>
+		</thingSetMakerTags>
+    </ThingDef>
+    <!-- End of thingDefs -->
+</Defs>

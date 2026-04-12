@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingDef ParentName="AdaptiveStorageBase">
+        <defName>ReelStorageFridge</defName>
+		<label>fridge</label>
+    <designationCategory Inherit="False" />
+		<graphicData>
+			<texPath>Things/Building/KitchenProps/Fridge/KitchenFridge</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(3,3)</drawSize>
+			<drawRotated>false</drawRotated>
+		</graphicData>
+		<uiIconScale>0.6</uiIconScale>
+		<description>A sealed metal container designed to keep your perishable food safe, frozen, and easily accessible for both lunch and dinner. Items stored inside will not rot over time and have no impact on the beauty of their surroundings, as long as it's powered. \n\n&lt;color=#E5E54C&gt;Storage stats:&lt;/color&gt; 
+Stack size total: 6 
+Stack per tile: 6 
+
+Allowed items: Foods, Plant matter, Alcohol, Beverages, Musts, Hay, Condiments \n\n&lt;color=#0094FF&gt;Items stored can be frozen when powered.&lt;/color&gt;</description>
+		<fillPercent>0.20</fillPercent>
+		<size>(1,1)</size>
+		<rotatable>true</rotatable>
+		<defaultPlacingRot>South</defaultPlacingRot>
+		<statBases>
+			<MaxHitPoints>110</MaxHitPoints>
+			<WorkToBuild>900</WorkToBuild>
+			<Beauty>0</Beauty>
+			<Mass>7.5</Mass>
+			<Flammability>0</Flammability>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>100</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+		</comps>
+		<modExtensions>
+			<li Class="AdaptiveStorage.Extension">
+				<temperature>
+					<coolingOffset>105</coolingOffset>
+				</temperature>
+			</li>
+		</modExtensions>
+		<costList>
+			<Steel>70</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<building>
+			<preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+			<ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
+			<maxItemsInCell>6</maxItemsInCell>
+			<fixedStorageSettings>
+				<filter>
+					<specialFiltersToAllow>
+						<li MayRequire="ludeon.rimworld.ideology">AllowVegetarian</li>
+					</specialFiltersToAllow>
+					<disallowNotEverStorable>true</disallowNotEverStorable>
+					<categories>
+						<li>Foods</li>
+						<li>PlantMatter</li>
+						<li MayRequire="vanillaexpanded.vbrewe">VBE_Musts</li>	
+						<li MayRequire="vanillaexpanded.vcooke">VCE_Condiments</li>   			
+                       	<li MayRequire="vanillaexpanded.vbrewe">VBE_DrinksSimpleSpirits</li>               	
+                        <li MayRequire="vanillaexpanded.vbrewe">VBE_DrinksLuxurySpirits</li>    						
+					</categories>
+					<thingDefs>
+                        <li>Beer</li>	   
+                        <li>PsychiteTea</li>	
+						<li>Wort</li>
+						<li>Hay</li>
+						<li MayRequire="oskarpotocki.vanillafactionsexpanded.medievalmodule">VFEM_Must</li>
+					</thingDefs>
+					<specialFiltersToDisallow>
+						<li>AllowRotten</li>
+					</specialFiltersToDisallow>
+					<disallowedThingDefs>
+						<li MayRequire="ludeon.rimworld.ideology">Dye</li>
+						<li>Kibble</li>
+					</disallowedThingDefs>
+				</filter>
+			</fixedStorageSettings>
+			<defaultStorageSettings>
+				<priority>Important</priority>
+				<filter>
+					<disallowNotEverStorable>true</disallowNotEverStorable>
+					<categories>
+						<li>Foods</li>
+						<li>PlantMatter</li>
+						<li MayRequire="vanillaexpanded.vbrewe">VBE_Musts</li>	
+						<li MayRequire="vanillaexpanded.vcooke">VCE_Condiments</li>   			
+                       	<li MayRequire="vanillaexpanded.vbrewe">VBE_DrinksSimpleSpirits</li>               	
+                        <li MayRequire="vanillaexpanded.vbrewe">VBE_DrinksLuxurySpirits</li>    						
+					</categories>
+					<thingDefs>
+                        <li>Beer</li>	   
+						<li>Wort</li>
+						<li>Hay</li>
+						<li MayRequire="oskarpotocki.vanillafactionsexpanded.medievalmodule">VFEM_Must</li>
+					</thingDefs>
+				</filter>
+			</defaultStorageSettings>
+			<paintable>true</paintable>
+		</building>
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<thingCategories>
+			<li>BuildingsFurniture</li>
+		</thingCategories>
+	</ThingDef>
+</Defs>

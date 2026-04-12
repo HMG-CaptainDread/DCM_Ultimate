@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef ParentName="BaseRPG7Grenade" MayRequire="cgf1.gunsgalore.coldwar.usa">
+		<defName>Bullet_140mmDragonMissile</defName>
+		<label>M47 Dragon missile</label>
+		<graphicData>
+			<texPath>CGF1/Projectile/M47Dragon</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>350</damageAmountBase>
+			<armorPenetrationSharp>600</armorPenetrationSharp>
+			<armorPenetrationBlunt>175.402</armorPenetrationBlunt>
+			<speed>55</speed>
+			<soundAmbient>RocketPropelledLoop_Small</soundAmbient>
+		</projectile>
+		<comps>
+		  <li Class="CombatExtended.CompProperties_ExplosiveCE">
+			<damageAmountBase>585</damageAmountBase>
+			<explosiveDamageType>Bomb</explosiveDamageType>
+			<explosiveRadius>3</explosiveRadius>
+			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+			<explosionSound>MortarBomb_Explode</explosionSound>
+		  </li>
+		  <li Class="CombatExtended.CompProperties_Fragments">
+			<fragments>
+				<Fragment_Large>2</Fragment_Large>
+			  <Fragment_Small>400</Fragment_Small>
+			</fragments>
+		  </li>
+		</comps>
+	</ThingDef>
+
+</Defs>

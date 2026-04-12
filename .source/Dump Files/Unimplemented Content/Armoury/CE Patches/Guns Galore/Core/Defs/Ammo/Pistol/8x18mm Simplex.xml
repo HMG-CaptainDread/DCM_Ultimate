@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo8x18mmSimplex</defName>
+		<label>8x18mm Simplex</label>
+		<parent>AmmoPistols</parent>
+		<iconPath>UI/Icons/ThingCategories/CaliberPistol</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>AmmoSet_8x18mmSimplex</defName>
+		<label>8x18mm Simplex</label>
+		<ammoTypes>
+			<Ammo_8x18mmSimplex_FMJ>Bullet_8x18mmSimplex_FMJ</Ammo_8x18mmSimplex_FMJ>
+			<Ammo_8x18mmSimplex_AP>Bullet_8x18mmSimplex_AP</Ammo_8x18mmSimplex_AP>
+			<Ammo_8x18mmSimplex_HP>Bullet_8x18mmSimplex_HP</Ammo_8x18mmSimplex_HP>			
+		</ammoTypes>
+		<similarTo>AmmoSet_Pistol</similarTo>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="8x18mmSimplexBase" ParentName="SmallAmmoBase" Abstract="True" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+		<description>Old low-power handgun cartridge made for use in semi-automatic pistols.</description>
+		<statBases>
+			<Mass>0.008</Mass>
+			<Bulk>0.01</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo8x18mmSimplex</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="8x18mmSimplexBase" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>Ammo_8x18mmSimplex_FMJ</defName>
+		<label>8x18mm Simplex cartridge (FMJ)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/FMJ</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.04</MarketValue>
+		</statBases>
+		<ammoClass>FullMetalJacket</ammoClass>
+		<cookOffProjectile>Bullet_8x18mmSimplex_FMJ</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="8x18mmSimplexBase" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>Ammo_8x18mmSimplex_AP</defName>
+		<label>8x18mm Simplex cartridge (AP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/AP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.04</MarketValue>
+		</statBases>
+		<ammoClass>ArmorPiercing</ammoClass>
+		<cookOffProjectile>Bullet_8x18mmSimplex_AP</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="8x18mmSimplexBase" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>Ammo_8x18mmSimplex_HP</defName>
+		<label>8x18mm Simplex cartridge (HP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/HP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.04</MarketValue>
+		</statBases>
+		<ammoClass>HollowPoint</ammoClass>
+		<cookOffProjectile>Bullet_8x18mmSimplex_HP</cookOffProjectile>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="Base8x18mmSimplexBullet" ParentName="BaseBulletCE" Abstract="true" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>49</speed>
+			<dropsCasings>true</dropsCasings>
+			<casingMoteDefname>Fleck_PistolAmmoCasings</casingMoteDefname>
+			<casingFilthDefname>Filth_PistolAmmoCasings</casingFilthDefname>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base8x18mmSimplexBullet" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>Bullet_8x18mmSimplex_FMJ</defName>
+		<label>8x18mm Simplex bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>6</damageAmountBase>
+			<armorPenetrationSharp>1.5</armorPenetrationSharp>
+			<armorPenetrationBlunt>2.68</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base8x18mmSimplexBullet" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>Bullet_8x18mmSimplex_AP</defName>
+		<label>8x18mm Simplex bullet (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>4</damageAmountBase>
+			<armorPenetrationSharp>3</armorPenetrationSharp>
+			<armorPenetrationBlunt>2.68</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base8x18mmSimplexBullet" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>Bullet_8x18mmSimplex_HP</defName>
+		<label>8x18mm Simplex bullet (HP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>8</damageAmountBase>
+			<armorPenetrationSharp>1</armorPenetrationSharp>
+			<armorPenetrationBlunt>2.68</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>MakeAmmo_8x18mmSimplex_FMJ</defName>
+		<label>make 8x18mm Simplex cartridge x500</label>
+		<description>Craft 500 8x18mm Simplex cartridges.</description>
+		<jobString>Making 8x18mm Simplex cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_8x18mmSimplex_FMJ>500</Ammo_8x18mmSimplex_FMJ>
+		</products>
+		<workAmount>1000</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>MakeAmmo_8x18mmSimplex_AP</defName>
+		<label>make 8x18mm Simplex (AP) cartridge x500</label>
+		<description>Craft 500 8x18mm Simplex (AP) cartridges.</description>
+		<jobString>Making 8x18mm Simplex (AP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_8x18mmSimplex_AP>500</Ammo_8x18mmSimplex_AP>
+		</products>
+		<workAmount>1200</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>MakeAmmo_8x18mmSimplex_HP</defName>
+		<label>make 8x18mm Simplex (HP) cartridge x500</label>
+		<description>Craft 500 8x18mm Simplex (HP) cartridges.</description>
+		<jobString>Making 8x18mm Simplex (HP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_8x18mmSimplex_HP>500</Ammo_8x18mmSimplex_HP>
+		</products>
+		<workAmount>1000</workAmount>
+	</RecipeDef>
+
+</Defs>

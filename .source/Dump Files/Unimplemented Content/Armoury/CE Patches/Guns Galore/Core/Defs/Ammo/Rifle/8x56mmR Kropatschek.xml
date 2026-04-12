@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo8x56mmRKropatschek</defName>
+		<label>8x56mmR Kropatschek</label>
+		<parent>AmmoRifles</parent>
+		<iconPath>UI/Icons/ThingCategories/CaliberRifle</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef MayRequire="cgf1.comradespack.rifles">
+		<defName>AmmoSet_8x56mmRKropatschek</defName>
+		<label>8x56mmR Kropatschek</label>
+		<ammoTypes>
+			<Ammo_8x56mmRKropatschek_FMJ>Bullet_8x56mmRKropatschek_FMJ</Ammo_8x56mmRKropatschek_FMJ>
+			<Ammo_8x56mmRKropatschek_AP>Bullet_8x56mmRKropatschek_AP</Ammo_8x56mmRKropatschek_AP>
+			<Ammo_8x56mmRKropatschek_HP>Bullet_8x56mmRKropatschek_HP</Ammo_8x56mmRKropatschek_HP>
+		</ammoTypes>
+		<similarTo>AmmoSet_Rifle</similarTo>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="8x56mmRKropatschekBase" ParentName="SmallAmmoBase" Abstract="True" MayRequire="cgf1.comradespack.rifles">
+		<description>Obsolete rimfire cartridge used in old bolt-action rifles.</description>
+		<statBases>
+			<Mass>0.029</Mass>
+			<Bulk>0.04</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo8x56mmRKropatschek</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="8x56mmRKropatschekBase" MayRequire="cgf1.comradespack.rifles">
+		<defName>Ammo_8x56mmRKropatschek_FMJ</defName>
+		<label>8x56mmR Kropatschek cartridge (FMJ)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Rifle/Clip/FMJ</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.12</MarketValue>
+		</statBases>
+		<ammoClass>FullMetalJacket</ammoClass>
+		<cookOffProjectile>Bullet_8x56mmRKropatschek_FMJ</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="8x56mmRKropatschekBase" MayRequire="cgf1.comradespack.rifles">
+		<defName>Ammo_8x56mmRKropatschek_AP</defName>
+		<label>8x56mmR Kropatschek cartridge (AP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Rifle/Clip/AP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.12</MarketValue>
+		</statBases>
+		<ammoClass>ArmorPiercing</ammoClass>
+		<cookOffProjectile>Bullet_8x56mmRKropatschek_AP</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="8x56mmRKropatschekBase" MayRequire="cgf1.comradespack.rifles">
+		<defName>Ammo_8x56mmRKropatschek_HP</defName>
+		<label>8x56mmR Kropatschek cartridge (HP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Rifle/Clip/HP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.12</MarketValue>
+		</statBases>
+		<ammoClass>HollowPoint</ammoClass>
+		<cookOffProjectile>Bullet_8x56mmRKropatschek_HP</cookOffProjectile>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="Base8x56mmRKropatschekBullet" ParentName="BaseBulletCE" Abstract="true" MayRequire="cgf1.comradespack.rifles">
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>150</speed>
+			<dropsCasings>true</dropsCasings>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base8x56mmRKropatschekBullet" MayRequire="cgf1.comradespack.rifles">
+		<defName>Bullet_8x56mmRKropatschek_FMJ</defName>
+		<label>8mmR Lebel bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>21</damageAmountBase>
+			<armorPenetrationSharp>6</armorPenetrationSharp>
+			<armorPenetrationBlunt>73.12</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base8x56mmRKropatschekBullet" MayRequire="cgf1.comradespack.rifles">
+		<defName>Bullet_8x56mmRKropatschek_AP</defName>
+		<label>8mmR Lebel bullet (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>13</damageAmountBase>
+			<armorPenetrationSharp>12</armorPenetrationSharp>
+			<armorPenetrationBlunt>73.12</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base8x56mmRKropatschekBullet" MayRequire="cgf1.comradespack.rifles">
+		<defName>Bullet_8x56mmRKropatschek_HP</defName>
+		<label>8mmR Lebel bullet (HP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>26</damageAmountBase>
+			<armorPenetrationSharp>3</armorPenetrationSharp>
+			<armorPenetrationBlunt>73.12</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.comradespack.rifles">
+		<defName>MakeAmmo_8x56mmRKropatschek_FMJ</defName>
+		<label>make 8x56mmR Kropatschek (FMJ) cartridge x500</label>
+		<description>Craft 500 8x56mmR Kropatschek (FMJ) cartridges.</description>
+		<jobString>Making 8x56mmR Kropatschek (FMJ) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>30</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_8x56mmRKropatschek_FMJ>500</Ammo_8x56mmRKropatschek_FMJ>
+		</products>
+		<workAmount>3000</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.comradespack.rifles">
+		<defName>MakeAmmo_8x56mmRKropatschek_AP</defName>
+		<label>make 8x56mmR Kropatschek (AP) cartridge x500</label>
+		<description>Craft 500 8x56mmR Kropatschek (AP) cartridges.</description>
+		<jobString>Making 8x56mmR Kropatschek (AP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>30</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_8x56mmRKropatschek_AP>500</Ammo_8x56mmRKropatschek_AP>
+		</products>
+		<workAmount>3600</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.comradespack.rifles">
+		<defName>MakeAmmo_8x56mmRKropatschek_HP</defName>
+		<label>make 8x56mmR Kropatschek (HP) cartridge x500</label>
+		<description>Craft 500 8x56mmR Kropatschek (HP) cartridges.</description>
+		<jobString>Making 8x56mmR Kropatschek (HP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>30</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_8x56mmRKropatschek_HP>500</Ammo_8x56mmRKropatschek_HP>
+		</products>
+		<workAmount>3000</workAmount>
+	</RecipeDef>
+
+</Defs>

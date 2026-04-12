@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- COMPOST -->
+		<!-- BASE -->
+			<RecipeDef Name="TMM_CompostRecipeBase" Abstract="True">
+				<jobString>making compost.</jobString>
+				<workSpeedStat>CookSpeed</workSpeedStat>
+				<workSkillLearnFactor>0.5</workSkillLearnFactor>
+				<effectWorking>Cook</effectWorking>
+				<soundWorking>Recipe_CookMeal</soundWorking>
+				<allowMixingIngredients>true</allowMixingIngredients>
+				<ingredients>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>WoodLog</li>
+							</thingDefs>
+						</filter>
+					</li>
+					<li>
+						<filter>
+							<categories>
+								<li>FoodRaw</li>
+							</categories>
+						</filter>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+					<categories>
+						<li>FoodRaw</li>
+					</categories>
+					<specialFiltersToDisallow>
+						<li>AllowNonSmeltableWeapons</li>
+					</specialFiltersToDisallow>
+				</fixedIngredientFilter>
+				<workSkill>Crafting</workSkill>
+				<recipeUsers>
+					<li>TableButcher</li>
+				</recipeUsers>
+			</RecipeDef>
+		<!-- MAKE COMPOST -->
+			<RecipeDef ParentName="TMM_CompostRecipeBase">
+				<defName>TMM_MakeCompost</defName>
+				<label>Make Compost (Small Scale)</label>
+				<description>Make compost from a wood source and a food source.\n\nMakes 15.</description>
+				<workAmount>800</workAmount>
+				<ingredients>
+					<li>
+						<count>10</count>
+					</li>
+					<li>
+						<count>10</count>
+					</li>
+				</ingredients>
+				<products>
+					<TMM_Compost>15</TMM_Compost>
+				</products>
+			</RecipeDef>
+		<!-- MAKE COMPOST BULK -->
+			<RecipeDef ParentName="TMM_CompostRecipeBase">
+				<defName>TMM_MakeCompostBulk</defName>
+				<label>Make Compost (Large Scale)</label>
+				<description>Make a larger amount of compost from a wood source and a food source.\n\nMakes 60.</description>
+				<workAmount>2400</workAmount>
+				<ingredients>
+					<li>
+						<count>40</count>
+					</li>
+					<li>
+						<count>40</count>
+					</li>
+				</ingredients>
+				<products>
+					<TMM_Compost>60</TMM_Compost>
+				</products>
+			</RecipeDef>
+	<!-- FERTILISER -->
+		<!-- BASE -->
+			<RecipeDef Name="TMM_FertiliserRecipeBase" Abstract="True">
+				<jobString>making fertiliser.</jobString>
+				<workSpeedStat>CookSpeed</workSpeedStat>
+				<workSkillLearnFactor>0.25</workSkillLearnFactor>
+				<effectWorking>Cook</effectWorking>
+				<soundWorking>Recipe_CookMeal</soundWorking>
+				<allowMixingIngredients>true</allowMixingIngredients>
+				<fixedIngredientFilter>
+					<thingDefs>
+						<li>TMM_Compost</li>
+						<li>TMM_DirtPile</li>
+					</thingDefs>
+					<specialFiltersToDisallow>
+						<li>AllowNonSmeltableWeapons</li>
+					</specialFiltersToDisallow>
+				</fixedIngredientFilter>
+				<workSkill>Crafting</workSkill>
+				<recipeUsers>
+					<li>TableButcher</li>
+				</recipeUsers>
+			</RecipeDef>
+		<!-- CREMATION BASE -->
+			<RecipeDef Name="TMM_CremationRecipeBase" Abstract="True">
+				<jobString>cremating.</jobString>
+				<effectWorking>Cremate</effectWorking>
+				<soundWorking>Recipe_Cremate</soundWorking>
+				<autoStripCorpses>true</autoStripCorpses>
+				<ingredients>
+					<li>
+						<filter>
+							<categories>
+								<li>Corpses</li>
+							</categories>
+						</filter>
+						<count>1</count>
+					</li>
+				</ingredients>
+				<fixedIngredientFilter>
+					<categories>
+						<li>Corpses</li>
+					</categories>
+					<disallowedCategories>
+						<li>CorpsesMechanoid</li>
+					</disallowedCategories>
+				</fixedIngredientFilter>
+				<defaultIngredientFilter>
+					<specialFiltersToAllow>
+						<li>AllowCorpsesColonist</li>
+						<li>AllowCorpsesStranger</li>
+					</specialFiltersToAllow>
+				</defaultIngredientFilter>
+				<recipeUsers>
+					<li>ElectricCrematorium</li>
+				</recipeUsers>
+			</RecipeDef>
+		<!-- MAKE FERTILISER FROM COMPOST -->
+			<RecipeDef ParentName="TMM_FertiliserRecipeBase">
+				<defName>TMM_MakeFertiliser</defName>
+				<label>Make Fertiliser</label>
+				<description>Make fertiliser from compost and dirt.\n\nMakes 10.</description>
+				<workAmount>1500</workAmount>
+				<ingredients>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>TMM_Compost</li>
+							</thingDefs>
+						</filter>
+						<count>10</count>
+					</li>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>TMM_DirtPile</li>
+							</thingDefs>
+						</filter>
+						<count>10</count>
+					</li>
+				</ingredients>
+				<products>
+					<TMM_RawFertiliser>10</TMM_RawFertiliser>
+				</products>
+			</RecipeDef>
+		<!-- CREMATE INTO FERTILISER -->
+			<RecipeDef ParentName="TMM_CremationRecipeBase">
+				<defName>TMM_CremateCorpseToFertiliser</defName>
+				<label>Cremate Into Fertiliser</label>
+				<description>Cremate a corpse into fertiliser. By default everything is set to off.\n\nMakes 25 fertiliser.</description>
+				<workAmount>300</workAmount>
+				<products>
+					<TMM_RawFertiliser>25</TMM_RawFertiliser>
+				</products>
+			</RecipeDef>
+		<!-- CREMATE INTO FERTILISER (CAMPFIRE) -->
+			<RecipeDef ParentName="TMM_CremationRecipeBase">
+				<defName>TMM_CremateCorpseToFertiliserCampfire</defName>
+				<label>Cremate Into Fertiliser</label>
+				<description>Cremate a corpse into fertiliser at a campfire. Much less effective then the Crematorium. And less efficient. By default everything is set to off.\n\nMakes 12 fertiliser.</description>
+				<workAmount>900</workAmount>
+				<products>
+					<TMM_RawFertiliser>12</TMM_RawFertiliser>
+				</products>
+				<recipeUsers>
+					<li>Campfire</li>
+				</recipeUsers>
+			</RecipeDef>
+	<!-- WOOD CONVERSIONS -->
+		<!-- CONVERT BASE -->
+			<RecipeDef Name="TMM_ConvertWoodRecipeBase" Abstract="True">
+				<jobString>chopping wood.</jobString>
+				<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+				<effectWorking>CutStone</effectWorking>
+				<soundWorking>Recipe_MakeWoodPlanks_Hand</soundWorking>
+				<allowMixingIngredients>true</allowMixingIngredients>
+				<workAmount>500</workAmount>
+				<products>
+					<WoodLog>100</WoodLog>
+				</products>
+				<recipeUsers>
+					<li>TableStonecutter</li>
+				</recipeUsers>
+			</RecipeDef>
+		<!-- CONVERT BAMBOO -->
+			<RecipeDef ParentName="TMM_ConvertWoodRecipeBase">
+				<defName>TMM_ConvertBamboo</defName>
+				<label>Convert Bamboo</label>
+				<description>Convert bamboo into wood.\n\n100 bamboo into 100 wood logs.</description>
+				<ingredients>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>TMM_RawBamboo</li>
+							</thingDefs>
+						</filter>
+						<count>100</count>
+					</li>
+				</ingredients>
+			</RecipeDef>
+		<!-- CONVERT IRONWOOD -->
+			<RecipeDef ParentName="TMM_ConvertWoodRecipeBase">
+				<defName>TMM_ConvertIronwood</defName>
+				<label>convert ironwood into woodlogs</label>
+				<description>Convert ironwood into wood.\n\n100 ironwood into 100 wood logs.</description>
+				<ingredients>
+					<li>
+						<filter>
+							<thingDefs>
+								<li>TMM_RawIronWood</li>
+							</thingDefs>
+						</filter>
+						<count>100</count>
+					</li>
+				</ingredients>
+			</RecipeDef>
+</Defs>
