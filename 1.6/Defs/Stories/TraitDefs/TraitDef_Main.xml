@@ -1,0 +1,1063 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!-- TMM_Trait_ -->
+
+
+
+	<!--  BASES-->
+		<!-- COMMON TRAIT BASE -->
+			<TraitDef Name="TMM_Trait_CommonBase" Abstract="True">
+				<commonality>1</commonality>
+			</TraitDef>
+		<!-- UNCOMMON TRAIT BASE -->
+			<TraitDef Name="TMM_Trait_UncommonBase" Abstract="True">
+				<commonality>0.75</commonality>
+			</TraitDef>
+		<!-- RARE TRAIT BASE -->
+			<TraitDef Name="TMM_Trait_RareBase" Abstract="True">
+				<commonality>0.5</commonality>
+			</TraitDef>
+	<!-- COMMON TRAITS -->
+		<!-- ATHLETICISM TRAITS -->
+			<!-- ATHLETIC -->
+				<TraitDef ParentName="TMM_Trait_CommonBase">
+					<defName>TMM_Trait_Athletic</defName>
+					<degreeDatas>
+						<li>
+							<label>athletic</label>
+							<description>[PAWN_nameDef]'s movements are smooth and graceful, positively swanlike.</description>
+							<statOffsets>
+								<MeleeDodgeChance>2</MeleeDodgeChance>
+								<MoveSpeed>0.10</MoveSpeed>
+							</statOffsets>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Stiff</li>
+					</conflictingTraits>
+				</TraitDef>
+			<!-- STIFF -->
+				<TraitDef ParentName="TMM_Trait_CommonBase">
+					<defName>TMM_Trait_Stiff</defName>
+					<degreeDatas>
+						<li>
+							<label>stiff</label>
+							<description>[PAWN_nameDef]'s movements are rigid and stiff, almost robotic.</description>
+							<statOffsets>
+								<MeleeDodgeChance>-2</MeleeDodgeChance>
+								<MoveSpeed>-0.10</MoveSpeed>
+							</statOffsets>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>Nimble</li>
+						<li>TMM_Trait_Athletic</li>
+					</conflictingTraits>
+				</TraitDef>
+		<!-- BODY DEFINITION TRAITS -->
+			<!-- FRAIL -->
+				<TraitDef ParentName="TMM_Trait_CommonBase">
+					<defName>TMM_Trait_Frail</defName>
+					<degreeDatas>
+						<li>
+							<label>frail</label>
+							<description>[PAWN_nameDef] looks a bit fragile, not even a manhunter would consider them for a meal.</description>
+							<statOffsets>
+								<CarryingCapacity>-5</CarryingCapacity>
+								<PawnBeauty>-1</PawnBeauty>
+							</statOffsets>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Muscular</li>
+					</conflictingTraits>
+				</TraitDef>
+			<!-- MUSCULAR -->
+				<TraitDef ParentName="TMM_Trait_CommonBase">
+					<defName>TMM_Trait_Muscular</defName>
+					<degreeDatas>
+						<li>
+							<label>muscular</label>
+							<description>[PAWN_nameDef] has a well built body, people around [PAWN_pronoun] find that rather attractive.</description>
+							<statOffsets>
+								<CarryingCapacity>5</CarryingCapacity>
+								<PawnBeauty>1</PawnBeauty>
+							</statOffsets>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Frail</li>
+					</conflictingTraits>
+				</TraitDef>
+		<!-- BRAVERY TRAITS -->
+			<!-- CRAVEN -->
+				<TraitDef ParentName="TMM_Trait_CommonBase">
+					<defName>TMM_Trait_Craven</defName>
+					<degreeDatas>
+						<li>
+							<label>craven</label>
+							<description>When there's a fight, [PAWN_nameDef] is the first to run.</description>
+							<statOffsets>
+								<MentalBreakThreshold>0.05</MentalBreakThreshold>
+								<PainShockThreshold>-0.05</PainShockThreshold>
+							</statOffsets>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Valiant</li>
+					</conflictingTraits>
+				</TraitDef>
+			<!-- VALIANT -->
+				<TraitDef ParentName="TMM_Trait_CommonBase">
+					<defName>TMM_Trait_Valiant</defName>
+					<degreeDatas>
+						<li>
+							<label>valiant</label>
+							<description>[PAWN_nameDef] is brave, [PAWN_pronoun] would stand [PAWN_possessive] ground where others would scramble and run.</description>
+							<statOffsets>
+								<MentalBreakThreshold>-0.05</MentalBreakThreshold>
+								<PainShockThreshold>0.05</PainShockThreshold>
+							</statOffsets>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Craven</li>
+					</conflictingTraits>
+				</TraitDef>
+		<!-- CHARISMA TRAITS -->
+			<!-- PERSUASIVE -->
+				<TraitDef ParentName="TMM_Trait_CommonBase">
+					<defName>TMM_Trait_Persuasive</defName>
+					<degreeDatas>
+						<li>
+							<label>persuasive</label>
+							<description>[PAWN_nameDef] has a silver tongue, and as so, often gets [PAWN_possessive] way with things.</description>
+							<statOffsets>
+								<NegotiationAbility>0.25</NegotiationAbility>
+								<ArrestSuccessChance>0.25</ArrestSuccessChance>
+							</statOffsets>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Unconvincing</li>
+					</conflictingTraits>
+				</TraitDef>
+			<!-- UNCONVINCING -->
+				<TraitDef ParentName="TMM_Trait_CommonBase">
+					<defName>TMM_Trait_Unconvincing</defName>
+					<degreeDatas>
+						<li>
+							<label>unconvincing</label>
+							<description>[PAWN_nameDef] once debated a rock, and lost.</description>
+							<statOffsets>
+								<NegotiationAbility>-0.25</NegotiationAbility>
+								<ArrestSuccessChance>-0.25</ArrestSuccessChance>
+							</statOffsets>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Persuasive</li>
+					</conflictingTraits>
+				</TraitDef>
+		<!-- DIET TRAITS -->
+			<!-- ABSTINENT -->
+				<TraitDef ParentName="TMM_Trait_CommonBase">
+					<defName>TMM_Trait_Abstinent</defName>
+					<degreeDatas>
+						<li>
+							<label>abstinent</label>
+							<description>[PAWN_nameDef] doesn't need to eat or drink much.</description>
+							<hungerRateFactor>0.75</hungerRateFactor>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Ravenous</li>
+					</conflictingTraits>
+				</TraitDef>
+			<!-- RAVENOUS -->
+				<TraitDef ParentName="TMM_Trait_CommonBase">
+					<defName>TMM_Trait_Ravenous</defName>
+					<degreeDatas>
+						<li>
+							<label>ravenous</label>
+							<description>[PAWN_nameDef] has a bottomless pit for a stomach.</description>
+							<hungerRateFactor>1.25</hungerRateFactor>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Abstinent</li>
+					</conflictingTraits>
+				</TraitDef>
+		<!-- EFFICIENCY TRAITS -->
+			<!-- EFFICIENT -->
+				<TraitDef ParentName="TMM_Trait_CommonBase">
+					<defName>TMM_Trait_Efficient</defName>
+					<degreeDatas>
+						<li>
+							<label>efficient</label>
+							<description>[PAWN_nameDef] is quite productive when it comes to work.</description>
+							<statOffsets>
+								<WorkSpeedGlobal>0.20</WorkSpeedGlobal>
+								<GlobalLearningFactor>0.20</GlobalLearningFactor>
+							</statOffsets>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Inefficient</li>
+					</conflictingTraits>
+				</TraitDef>
+			<!-- INEFFICIENT -->
+				<TraitDef ParentName="TMM_Trait_CommonBase">
+					<defName>TMM_Trait_Inefficient</defName>
+					<degreeDatas>
+						<li>
+							<label>inefficient</label>
+							<description>[PAWN_nameDef] is somewhat of a bottleneck in the colony.</description>
+							<statOffsets>
+								<WorkSpeedGlobal>-0.20</WorkSpeedGlobal>
+								<GlobalLearningFactor>-0.20</GlobalLearningFactor>
+							</statOffsets>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Efficient</li>
+					</conflictingTraits>
+				</TraitDef>
+		<!-- ENERGY TRAITS -->
+			<!-- ENERGETIC -->
+				<TraitDef ParentName="TMM_Trait_CommonBase">
+					<defName>TMM_Trait_Energetic</defName>
+					<degreeDatas>
+						<li>
+							<label>energetic</label>
+							<description>[PAWN_nameDef] always tackles [PAWN_possessive] tasks with great enthusiasm.</description>
+							<statOffsets>
+								<WorkSpeedGlobal>0.20</WorkSpeedGlobal>
+								<MoveSpeed>0.15</MoveSpeed>
+							</statOffsets>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Sluggish</li>
+					</conflictingTraits>
+				</TraitDef>
+			<!-- SLUGGISH -->
+				<TraitDef ParentName="TMM_Trait_CommonBase">
+					<defName>TMM_Trait_Sluggish</defName>
+					<degreeDatas>
+						<li>
+							<label>sluggish</label>
+							<description>[PAWN_nameDef] always seems to struggle to commit to doing [PAWN_possessive] tasks with any urgency.</description>
+							<statOffsets>
+								<WorkSpeedGlobal>-0.20</WorkSpeedGlobal>
+								<MoveSpeed>-0.15</MoveSpeed>
+							</statOffsets>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Energetic</li>
+					</conflictingTraits>
+				</TraitDef>
+		<!-- HYGIENE TRAITS -->
+		<!-- TODO: need to adjust these eventually for DBH compatibility -->
+			<!-- GOOD HYGIENE -->
+				<TraitDef ParentName="TMM_Trait_CommonBase">
+					<defName>TMM_Trait_GoodHygiene</defName>
+					<degreeDatas>
+						<li>
+							<label>good hygiene</label>
+							<description>[PAWN_nameDef] takes care of [PAWN_possessive] personal hygiene.</description>
+							<statOffsets>
+								<FoodPoisonChance>-0.10</FoodPoisonChance>
+							</statOffsets>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_PoorHygiene</li>
+					</conflictingTraits>
+				</TraitDef>
+			<!-- POOR HYGIENE -->
+				<TraitDef ParentName="TMM_Trait_CommonBase">
+					<defName>TMM_Trait_PoorHygiene</defName>
+					<degreeDatas>
+						<li>
+							<label>poor hygiene</label>
+							<description>[PAWN_nameDef] doesn't care about [PAWN_possessive] hygiene, and sometimes get sick from bad food.</description>
+							<statOffsets>
+								<FoodPoisonChance>0.10</FoodPoisonChance>
+							</statOffsets>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_GoodHygiene</li>
+					</conflictingTraits>
+				</TraitDef>
+		<!-- ROWDINESS TRAITS -->
+			<!-- COMPOSED -->
+				<TraitDef ParentName="TMM_Trait_CommonBase">
+					<defName>TMM_Trait_Composed</defName>
+					<degreeDatas>
+						<li>
+							<label>composed</label>
+							<description>[PAWN_nameDef] is usually calm and collected.</description>
+							<statOffsets>
+								<MentalBreakThreshold>-0.05</MentalBreakThreshold>
+							</statOffsets>
+							<socialFightChanceFactor>-2</socialFightChanceFactor>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Rowdy</li>
+					</conflictingTraits>
+				</TraitDef>
+			<!-- ROWDY -->
+				<TraitDef ParentName="TMM_Trait_CommonBase">
+					<defName>TMM_Trait_Rowdy</defName>
+					<degreeDatas>
+						<li>
+							<label>rowdy</label>
+							<description>[PAWN_nameDef] likes a good fight, [PAWN_pronoun] will sometimes start a fight just because [PAWN_pronoun] can.</description>
+							<statOffsets>
+								<MentalBreakThreshold>0.05</MentalBreakThreshold>
+							</statOffsets>
+							<socialFightChanceFactor>2</socialFightChanceFactor>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Composed</li>
+					</conflictingTraits>
+				</TraitDef>
+		<!-- SIGHT TRAITS -->
+			<!-- FARSIGHTED -->
+				<TraitDef ParentName="TMM_Trait_CommonBase">
+					<defName>TMM_Trait_Farsighted</defName>
+					<degreeDatas>
+						<li>
+							<label>farsighted</label>
+							<description>[PAWN_nameDef] could spot a target from nearly a hundred meters, yet still somehow walk into walls.</description>
+							<statOffsets>
+								<ShootingAccuracyPawn>2</ShootingAccuracyPawn>
+								<AimingDelayFactor>-0.15</AimingDelayFactor>
+								<MeleeHitChance>-2</MeleeHitChance>
+								<MeleeDodgeChance>-2</MeleeDodgeChance>
+							</statOffsets>
+							<skillGains>
+								<Shooting>2</Shooting>
+								<Melee>-2</Melee>
+							</skillGains>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Nearsighted</li>
+					</conflictingTraits>
+				</TraitDef>
+			<!-- NEAR-SIGHTED -->
+				<TraitDef ParentName="TMM_Trait_CommonBase">
+					<defName>TMM_Trait_Nearsighted</defName>
+					<commonality>1</commonality>
+					<degreeDatas>
+						<li>
+							<label>nearsighted</label>
+							<description>[PAWN_nameDef] finds it difficult to focus on distant targets, and prefers to get up close and personal.</description>
+							<statOffsets>
+								<ShootingAccuracyPawn>-2</ShootingAccuracyPawn>
+								<AimingDelayFactor>0.15</AimingDelayFactor>
+								<MeleeHitChance>2</MeleeHitChance>
+								<MeleeDodgeChance>2</MeleeDodgeChance>
+							</statOffsets>
+							<skillGains>
+								<Shooting>-2</Shooting>
+								<Melee>2</Melee>
+							</skillGains>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Farsighted</li>
+					</conflictingTraits>
+				</TraitDef>
+		<!-- SLEEPING TRAITS -->
+			<!-- RESTFUL -->
+				<TraitDef ParentName="TMM_Trait_CommonBase">
+					<defName>TMM_Trait_Restful</defName>
+					<degreeDatas>
+						<li>
+							<label>restful</label>
+							<description>[PAWN_nameDef] always sleeps like a baby.</description>
+							<statOffsets>
+								<RestRateMultiplier>0.25</RestRateMultiplier>
+							</statOffsets>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Restless</li>
+					</conflictingTraits>
+				</TraitDef>
+			<!-- RESTLESS -->
+				<TraitDef ParentName="TMM_Trait_CommonBase">
+					<defName>TMM_Trait_Restless</defName>
+					<degreeDatas>
+						<li>
+							<label>restless</label>
+							<description>[PAWN_nameDef] often has a difficult time falling asleep.</description>
+							<statOffsets>
+								<RestRateMultiplier>-0.25</RestRateMultiplier>
+							</statOffsets>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Restful</li>
+					</conflictingTraits>
+				</TraitDef>
+		<!-- TEMPERATURE TRAITS -->
+			<!-- COLD -->
+				<!-- COLD INTOLERANT -->
+					<TraitDef ParentName="TMM_Trait_CommonBase">
+						<defName>TMM_Trait_ColdIntolerant</defName>
+						<degreeDatas>
+							<li>
+								<label>cold intolerant</label>
+								<description>[PAWN_nameDef] does not like being in the cold.</description>
+								<statOffsets>
+									<ComfyTemperatureMin>3</ComfyTemperatureMin>
+								</statOffsets>
+							</li>
+						</degreeDatas>
+						<conflictingTraits>
+							<li>TMM_Trait_ColdTolerant</li>
+							<li>TMM_Trait_TemperatureTolerant</li>
+							<li>TMM_Trait_TemperatureIntolerant</li>
+						</conflictingTraits>
+					</TraitDef>
+				<!-- COLD TOLERANT -->
+					<TraitDef ParentName="TMM_Trait_CommonBase">
+						<defName>TMM_Trait_ColdTolerant</defName>
+						<degreeDatas>
+							<li>
+								<label>cold tolerant</label>
+								<description>[PAWN_nameDef] is more comfortable being in cold environments than [PAWN_possessive] peers.</description>
+								<statOffsets>
+									<ComfyTemperatureMin>-3</ComfyTemperatureMin>
+								</statOffsets>
+							</li>
+						</degreeDatas>
+						<conflictingTraits>
+							<li>TMM_Trait_ColdIntolerant</li>
+							<li>TMM_Trait_TemperatureTolerant</li>
+							<li>TMM_Trait_TemperatureIntolerant</li>
+						</conflictingTraits>
+					</TraitDef>
+			<!-- HEAT -->
+				<!-- HEAT INTOLERANT -->
+					<TraitDef ParentName="TMM_Trait_CommonBase">
+						<defName>TMM_Trait_HeatIntolerant</defName>
+						<degreeDatas>
+							<li>
+								<label>heat intolerant</label>
+								<description>[PAWN_nameDef] does not like being in the heat.</description>
+								<statOffsets>
+									<ComfyTemperatureMax>-3</ComfyTemperatureMax>
+								</statOffsets>
+							</li>
+						</degreeDatas>
+						<conflictingTraits>
+							<li>TMM_Trait_HeatTolerant</li>
+							<li>TMM_Trait_TemperatureTolerant</li>
+							<li>TMM_Trait_TemperatureIntolerant</li>
+						</conflictingTraits>
+					</TraitDef>
+				<!-- HEAT TOLERANT -->
+					<TraitDef ParentName="TMM_Trait_CommonBase">
+						<defName>TMM_Trait_HeatTolerant</defName>
+						<degreeDatas>
+							<li>
+								<label>heat tolerant</label>
+								<description>[PAWN_nameDef] is more comfortable being in hot environments than [PAWN_possessive] peers.</description>
+								<statOffsets>
+									<ComfyTemperatureMax>3</ComfyTemperatureMax>
+								</statOffsets>
+							</li>
+						</degreeDatas>
+						<conflictingTraits>
+							<li>TMM_Trait_HeatIntolerant</li>
+							<li>TMM_Trait_TemperatureTolerant</li>
+							<li>TMM_Trait_TemperatureIntolerant</li>
+						</conflictingTraits>
+					</TraitDef>
+		<!-- TOUGHNESS TRAITS -->
+			<!-- FRAGILE -->
+				<TraitDef ParentName="TMM_Trait_CommonBase">
+					<defName>TMM_Trait_Fragile</defName>
+					<degreeDatas>
+						<li>
+							<label>fragile</label>
+							<description>[PAWN_nameDef] lived a pampered life until now, and is not used to the brutal challenges present out in the Rim.</description>
+							<statOffsets>
+								<IncomingDamageFactor>0.10</IncomingDamageFactor>
+								<PainShockThreshold>-0.05</PainShockThreshold>
+							</statOffsets>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Resilient</li>
+						<li>TMM_Trait_Hardy</li>
+						<li>Tough</li>
+					</conflictingTraits>
+				</TraitDef>
+			<!-- RESILIENT -->
+				<TraitDef ParentName="TMM_Trait_CommonBase">
+					<defName>TMM_Trait_Resilient</defName>
+					<degreeDatas>
+						<li>
+							<label>resilient</label>
+							<description>[PAWN_nameDef] has been in plenty of fights since [PAWN_pronoun] was a kid, and has built up a tolerance to injury and pain as a result.</description>
+							<statOffsets>
+								<IncomingDamageFactor>-0.10</IncomingDamageFactor>
+								<PainShockThreshold>0.05</PainShockThreshold>
+							</statOffsets>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Fragile</li>
+						<li>TMM_Trait_Feeble</li>
+					</conflictingTraits>
+				</TraitDef>
+	<!-- UNCOMMON TRAITS -->
+		<!-- AMUSEMENT TRAITS -->
+			<!-- CONSTANTLY BEMUSED -->
+				<TraitDef ParentName="TMM_Trait_UncommonBase">
+					<defName>TMM_Trait_ConstantlyBemused</defName>
+					<degreeDatas>
+						<li>
+							<label>constantly bemused</label>
+							<description>Life to [PAWN_nameDef] is an endless, boring joke that [PAWN_pronoun] just can't get away from.</description>
+							<skillGains>
+								<Artistic>-3</Artistic>
+							</skillGains>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_EasilyAmused</li>
+					</conflictingTraits>
+				</TraitDef>
+			<!-- EASILY AMUSED -->
+				<TraitDef ParentName="TMM_Trait_UncommonBase">
+					<defName>TMM_Trait_EasilyAmused</defName>
+					<degreeDatas>
+						<li>
+							<label>easily amused</label>
+							<description>Whether by sheer optimism or a force of personality, [PAWN_nameDef] always manages to see the bright side of life.</description>
+							<skillGains>
+								<Artistic>3</Artistic>
+							</skillGains>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_ConstantlyBemused</li>
+					</conflictingTraits>
+				</TraitDef>
+		<!-- CLUMSINESS TRAITS -->
+			<!-- CLUMSY -->
+				<TraitDef ParentName="TMM_Trait_UncommonBase">
+					<defName>TMM_Trait_Clumsy</defName>
+					<degreeDatas>
+						<li>
+							<label>clumsy</label>
+							<description>[PAWN_nameDef] is easily distracted and often trips over [PAWN_possessive]self when it comes to physical activities.</description>
+							<statOffsets>
+								<ShootingAccuracyPawn>-2</ShootingAccuracyPawn>
+								<MeleeHitChance>-2</MeleeHitChance>
+								<MeleeDodgeChance>-2</MeleeDodgeChance>
+							</statOffsets>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Coordinated</li>
+					</conflictingTraits>
+				</TraitDef>
+			<!-- COORDINATED -->
+				<TraitDef ParentName="TMM_Trait_UncommonBase">
+					<defName>TMM_Trait_Coordinated</defName>
+					<degreeDatas>
+						<li>
+							<label>coordinated</label>
+							<description>[PAWN_nameDef] has good reaction time and finds physical activities less stressful than [PAWN_possessive] peers.</description>
+							<statOffsets>
+								<ShootingAccuracyPawn>2</ShootingAccuracyPawn>
+								<MeleeHitChance>2</MeleeHitChance>
+								<MeleeDodgeChance>2</MeleeDodgeChance>
+							</statOffsets>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Clumsy</li>
+					</conflictingTraits>
+				</TraitDef>
+		<!-- CURIOSITY TRAITS -->
+			<!-- IGNORANT -->
+				<TraitDef ParentName="TMM_Trait_UncommonBase">
+					<defName>TMM_Trait_Ignorant</defName>
+					<degreeDatas>
+						<li>
+							<label>ignorant</label>
+							<description>Gaps in [PAWN_nameDef]'s education and general lack of curiosity makes life often stressful for [PAWN_objective].</description>
+							<statOffsets>
+								<MentalBreakThreshold>0.05</MentalBreakThreshold>
+							</statOffsets>
+							<skillGains>
+								<Intellectual>-4</Intellectual>
+							</skillGains>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Inquisitive</li>
+					</conflictingTraits>
+				</TraitDef>
+			<!-- INQUISITIVE -->
+				<TraitDef ParentName="TMM_Trait_UncommonBase">
+					<defName>TMM_Trait_Inquisitive</defName>
+					<degreeDatas>
+						<li>
+							<label>inquisitive</label>
+							<description>[PAWN_nameDef] has an interest in understanding the workings of the world, and is able to apply [PAWN_possessive] knowledge in daily life.</description>
+							<statOffsets>
+								<MentalBreakThreshold>-0.05</MentalBreakThreshold>
+							</statOffsets>
+							<skillGains>
+								<Intellectual>4</Intellectual>
+							</skillGains>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Ignorant</li>
+					</conflictingTraits>
+				</TraitDef>
+		<!-- HARDINESS TRAITS -->
+			<!-- FEEBLE -->
+				<TraitDef ParentName="TMM_Trait_UncommonBase">
+					<defName>TMM_Trait_Feeble</defName>
+					<degreeDatas>
+						<li>
+							<label>feeble</label>
+							<description>[PAWN_nameDef] is so fragile, it doesn't take much to take [PAWN_objective] out of action.</description>
+							<statOffsets>
+								<IncomingDamageFactor>0.10</IncomingDamageFactor>
+								<ImmunityGainSpeed>-0.10</ImmunityGainSpeed>
+								<!--<ToxicSensitivity>0.10</ToxicSensitivity>-->
+								<ToxicResistance>-0.10</ToxicResistance>
+								<ToxicEnvironmentResistance>-0.10</ToxicEnvironmentResistance>
+								<ComfyTemperatureMax>-1</ComfyTemperatureMax>
+								<ComfyTemperatureMin>1</ComfyTemperatureMin>
+							</statOffsets>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Resilient</li>
+						<li>TMM_Trait_Hardy</li>
+						<li>Tough</li>
+					</conflictingTraits>
+				</TraitDef>
+			<!-- HARDY -->
+				<TraitDef ParentName="TMM_Trait_UncommonBase">
+					<defName>TMM_Trait_Hardy</defName>
+					<degreeDatas>
+						<li>
+							<label>hardy</label>
+							<description>[PAWN_nameDef] is hardy, able to take an absolute beating before falling.</description>
+							<statOffsets>
+								<IncomingDamageFactor>-0.10</IncomingDamageFactor>
+								<ImmunityGainSpeed>0.10</ImmunityGainSpeed>
+								<!--<ToxicSensitivity>-0.10</ToxicSensitivity>-->
+								<ToxicResistance>0.10</ToxicResistance>
+								<ToxicEnvironmentResistance>0.10</ToxicEnvironmentResistance>
+								<ComfyTemperatureMax>1</ComfyTemperatureMax>
+								<ComfyTemperatureMin>-1</ComfyTemperatureMin>
+							</statOffsets>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Fragile</li>
+						<li>TMM_Trait_Feeble</li>
+					</conflictingTraits>
+				</TraitDef>
+		<!-- TIDINESS TRAITS -->
+			<!-- MESSY -->
+				<TraitDef ParentName="TMM_Trait_UncommonBase">
+					<defName>TMM_Trait_Messy</defName>
+					<degreeDatas>
+						<li>
+							<label>messy</label>
+							<description>[PAWN_nameDef] often neglects their surroundings, making it difficult for [PAWN_objective] to get work done.</description>
+							<statOffsets>
+								<RestRateMultiplier>-0.05</RestRateMultiplier>
+								<WorkSpeedGlobal>-0.05</WorkSpeedGlobal>
+								<CleaningSpeed>-0.15</CleaningSpeed>
+							</statOffsets>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Tidy</li>
+					</conflictingTraits>
+				</TraitDef>
+			<!-- TIDY -->
+				<TraitDef ParentName="TMM_Trait_UncommonBase">
+					<defName>TMM_Trait_Tidy</defName>
+					<degreeDatas>
+						<li>
+							<label>tidy</label>
+							<description>[PAWN_nameDef] likes to keep [PAWN_possessive] surroundings clean, and is used to being in an organised environment.</description>
+							<statOffsets>
+								<RestRateMultiplier>0.05</RestRateMultiplier>
+								<WorkSpeedGlobal>0.05</WorkSpeedGlobal>
+								<CleaningSpeed>0.15</CleaningSpeed>
+							</statOffsets>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Messy</li>
+					</conflictingTraits>
+				</TraitDef>
+	<!-- RARE TRAITS -->
+		<!-- CAPABILITY TRAITS -->
+			<!-- GIFTED -->
+				<TraitDef ParentName="TMM_Trait_RareBase">
+					<defName>TMM_Trait_Gifted</defName>
+					<degreeDatas>
+						<li>
+							<label>gifted</label>
+							<description>[PAWN_nameDef] is naturally talented, [PAWN_pronoun] gets a head start before everyone else.</description>
+							<skillGains>
+								<Shooting>4</Shooting>
+								<Melee>4</Melee>
+								<Construction>4</Construction>
+								<Mining>4</Mining>
+								<Cooking>4</Cooking>
+								<Plants>4</Plants>
+								<Animals>4</Animals>
+								<Crafting>4</Crafting>
+								<Artistic>4</Artistic>
+								<Medicine>4</Medicine>
+								<Social>4</Social>
+								<Intellectual>4</Intellectual>
+							</skillGains>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Incompetent</li>
+					</conflictingTraits>
+				</TraitDef>
+			<!-- INCOMPETENT -->
+				<TraitDef ParentName="TMM_Trait_RareBase">
+					<defName>TMM_Trait_Incompetent</defName>
+					<degreeDatas>
+						<li>
+							<label>incompetent</label>
+							<description>[PAWN_nameDef] is naturally untalented, [PAWN_pronoun] struggles to get started on basic things, poor [PAWN_nameDef].</description>
+							<skillGains>
+								<Shooting>-4</Shooting>
+								<Melee>-4</Melee>
+								<Construction>-4</Construction>
+								<Mining>-4</Mining>
+								<Cooking>-4</Cooking>
+								<Plants>-4</Plants>
+								<Animals>-4</Animals>
+								<Crafting>-4</Crafting>
+								<Artistic>-4</Artistic>
+								<Medicine>-4</Medicine>
+								<Social>-4</Social>
+								<Intellectual>-4</Intellectual>
+							</skillGains>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Gifted</li>
+					</conflictingTraits>
+				</TraitDef>
+		<!-- COOKING TRAITS -->
+			<!-- IMPATIENT COOK -->
+				<TraitDef ParentName="TMM_Trait_RareBase">
+					<defName>TMM_Trait_ImpatientCook</defName>
+					<degreeDatas>
+						<li>
+							<label>impatient cook</label>
+							<description>[PAWN_nameDef] couldn't care less about following the recipes as long as [PAWN_pronoun] can get food into [PAWN_possessive] mouth in record time.</description>
+							<statOffsets>
+								<CookSpeed>0.75</CookSpeed>
+								<FoodPoisonChance>0.10</FoodPoisonChance>
+							</statOffsets>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_PatientCook</li>
+					</conflictingTraits>
+				</TraitDef>
+			<!-- PATIENT COOK -->
+				<TraitDef ParentName="TMM_Trait_RareBase">
+					<defName>TMM_Trait_PatientCook</defName>
+					<degreeDatas>
+						<li>
+							<label>patient cook</label>
+							<description>[PAWN_nameDef] takes great care in the preparation of food, [PAWN_pronoun] never skips a step just to have an early meal.</description>
+							<statOffsets>
+								<CookSpeed>-0.75</CookSpeed>
+								<FoodPoisonChance>-0.10</FoodPoisonChance>
+							</statOffsets>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_ImpatientCook</li>
+					</conflictingTraits>
+				</TraitDef>
+		<!-- HEALTHINESS TRAITS -->
+			<!-- CHRONICALLY ILL -->
+				<TraitDef ParentName="TMM_Trait_RareBase">
+					<defName>TMM_Trait_ChronicallyIll</defName>
+					<degreeDatas>
+						<li>
+							<label>chronically ill</label>
+							<description>[PAWN_nameDef] gets ill quite often, and seems to require more effort to get out of bed than the average person.</description>
+							<statOffsets>
+								<RestRateMultiplier>-0.1</RestRateMultiplier>
+								<ImmunityGainSpeed>-0.1</ImmunityGainSpeed>
+								<ToxicResistance>-0.05</ToxicResistance>
+								<ToxicEnvironmentResistance>-0.05</ToxicEnvironmentResistance>
+								<ComfyTemperatureMax>-1</ComfyTemperatureMax>
+								<ComfyTemperatureMin>1</ComfyTemperatureMin>
+							</statOffsets>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_Healthy</li>
+					</conflictingTraits>
+				</TraitDef>
+			<!-- HEALTHY -->
+				<TraitDef ParentName="TMM_Trait_RareBase">
+					<defName>TMM_Trait_Healthy</defName>
+					<degreeDatas>
+						<li>
+							<label>healthy</label>
+							<description>[PAWN_nameDef] lives a healthy lifestyle, and wakes up feeling energetic and cheerful.</description>
+							<statOffsets>
+								<RestRateMultiplier>0.1</RestRateMultiplier>
+								<ImmunityGainSpeed>0.1</ImmunityGainSpeed>
+								<ToxicResistance>0.05</ToxicResistance>
+								<ToxicEnvironmentResistance>0.05</ToxicEnvironmentResistance>
+								<ComfyTemperatureMax>1</ComfyTemperatureMax>
+								<ComfyTemperatureMin>-1</ComfyTemperatureMin>
+							</statOffsets>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_ChronicallyIll</li>
+					</conflictingTraits>
+				</TraitDef>
+		<!-- TEMPERATURE TRAITS -->
+			<!-- TEMPERATURE INTOLERANT -->
+				<TraitDef ParentName="TMM_Trait_RareBase">
+					<defName>TMM_Trait_TemperatureIntolerant</defName>
+					<degreeDatas>
+						<li>
+							<label>temperature intolerant</label>
+							<description>[PAWN_nameDef] thinks that summer is way too hot, and winter is way too cold.</description>
+							<statOffsets>
+								<ComfyTemperatureMax>-3</ComfyTemperatureMax>
+								<ComfyTemperatureMin>3</ComfyTemperatureMin>
+							</statOffsets>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_HeatTolerant</li>
+						<li>TMM_Trait_ColdTolerant</li>
+						<li>TMM_Trait_TemperatureTolerant</li>
+					</conflictingTraits>
+				</TraitDef>
+			<!-- TEMPERATURE TOLERANT -->
+				<TraitDef ParentName="TMM_Trait_RareBase">
+					<defName>TMM_Trait_TemperatureTolerant</defName>
+					<degreeDatas>
+						<li>
+							<label>temperature tolerant</label>
+							<description>[PAWN_nameDef] is comfortable in all seasons.</description>
+							<statOffsets>
+								<ComfyTemperatureMax>3</ComfyTemperatureMax>
+								<ComfyTemperatureMin>-3</ComfyTemperatureMin>
+							</statOffsets>
+						</li>
+					</degreeDatas>
+					<conflictingTraits>
+						<li>TMM_Trait_HeatTolerant</li>
+						<li>TMM_Trait_ColdTolerant</li>
+						<li>TMM_Trait_TemperatureIntolerant</li>
+					</conflictingTraits>
+				</TraitDef>
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+</Defs>
