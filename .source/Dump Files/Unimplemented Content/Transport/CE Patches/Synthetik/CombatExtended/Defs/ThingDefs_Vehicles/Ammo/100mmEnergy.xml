@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<!-- If youre going to copy, please at least give credit, I spent hours collecting data for this-->
+
+	<CombatExtended.AmmoCategoryDef>
+		<defName>EnergyThermal</defName>
+		<label>Thermal Canister</label>
+		<labelShort>Thermal</labelShort>
+		<description>Advanced High explosive energy canister.</description>
+	</CombatExtended.AmmoCategoryDef>
+
+	<ThingCategoryDef>
+		<defName>Ammo100mmEnergyCanister</defName>
+		<label>100x640mm energy canister</label>
+		<parent>AmmoAdvanced</parent>
+		<iconPath>Synthetik/Ammo/100mmEnergyCanister/Radiation/Radiation_a</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_100mmEnergyCanister</defName>
+		<label>100mmx640mm energy canister</label>
+		<ammoTypes>
+			<Ammo_100mmEnergyCanister_HE>Bullet_100mmEnergyCanister_HE</Ammo_100mmEnergyCanister_HE>
+			<Ammo_100mmEnergyCanister_EMP>Bullet_100mmEnergyCanister_EMP</Ammo_100mmEnergyCanister_EMP>
+			<Ammo_100mmEnergyCanister_Plasma>Bullet_100mmEnergyCanister_Plasma</Ammo_100mmEnergyCanister_Plasma>
+		</ammoTypes>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="100mmEnergyCanisterBase" ParentName="HeavyAmmoBase" Abstract="True">
+		<description>Large energy canister for Saturn 7 Heavy Tank's cannon.</description>
+		<thingCategories>
+			<li>Ammo100mmEnergyCanister</li>
+		</thingCategories>
+		<stackLimit>25</stackLimit>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting_TableMachining</li>
+		</tradeTags>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<Mass>5</Mass>
+			<Bulk>15.08</Bulk>
+		</statBases>
+		<cookOffFlashScale>60</cookOffFlashScale>
+		<cookOffSound>MortarBomb_Explode</cookOffSound>
+		<isMortarAmmo>true</isMortarAmmo>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="100mmEnergyCanisterBase">
+		<defName>Ammo_100mmEnergyCanister_HE</defName>
+		<label>100x640mm energy canister (HE)</label>
+		<graphicData>
+			<texPath>Synthetik/Ammo/100mmEnergyCanister/Radiation</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>232.14</MarketValue>
+		</statBases>
+		<ammoClass>RocketHE</ammoClass>
+		<detonateProjectile>Bullet_100mmEnergyCanister_HE</detonateProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="100mmEnergyCanisterBase">
+		<defName>Ammo_100mmEnergyCanister_EMP</defName>
+		<label>100x640mm energy canister (Ion)</label>
+		<graphicData>
+			<texPath>Synthetik/Ammo/100mmEnergyCanister/Ion</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>478.8</MarketValue>
+		</statBases>
+		<ammoClass>GrenadeEMP</ammoClass>
+		<detonateProjectile>Bullet_100mmEnergyCanister_HE</detonateProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="100mmEnergyCanisterBase">
+		<defName>Ammo_100mmEnergyCanister_Plasma</defName>
+		<label>100x640mm energy canister (Plasma)</label>
+		<graphicData>
+			<texPath>Synthetik/Ammo/100mmEnergyCanister/Plasma</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>292.64</MarketValue>
+		</statBases>
+		<ammoClass>Plasma</ammoClass>
+		<detonateProjectile>Bullet_100mmEnergyCanister_HE</detonateProjectile>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="Base100mmEnergyCanister" ParentName="BaseExplosiveBullet" Abstract="true">
+		<thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+		<graphicData>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<speed>426</speed>
+			<flyOverhead>false</flyOverhead>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base100mmEnergyCanister">
+		<defName>Bullet_100mmEnergyCanister_HE</defName>
+		<label>100mm energy bolt (HE)</label>
+		<graphicData>
+			<texPath>Synthetik/Projectile/Radiation_Projectile</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,4)</drawSize>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Thermobaric</damageDef>
+			<damageAmountBase>386</damageAmountBase>
+			<explosionRadius>4.5</explosionRadius>
+			<explosionEffect>GiantExplosion</explosionEffect>
+			<soundExplode>Synthetik_HE_Explode</soundExplode>
+			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base100mmEnergyCanister">
+		<defName>Bullet_100mmEnergyCanister_EMP</defName>
+		<label>100mm energy bolt (Ion)</label>
+		<graphicData>
+			<texPath>Synthetik/Projectile/Ion_Projectile</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,4)</drawSize>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>EMP</damageDef>
+			<damageAmountBase>386</damageAmountBase>
+			<explosionRadius>9</explosionRadius>
+			<explosionEffect>IonExplosion</explosionEffect>
+			<soundExplode>Synthetik_Ion_Explode</soundExplode>
+			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base100mmEnergyCanister">
+		<defName>Bullet_100mmEnergyCanister_Plasma</defName>
+		<label>100mm energy bolt (Plasma)</label>
+		<thingClass>CombatExtended.BulletCE</thingClass>
+		<graphicData>
+			<texPath>Synthetik/Projectile/Plasma_Projectile</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,4)</drawSize>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>386</damageAmountBase>
+			<explosionRadius>4.5</explosionRadius>
+			<explosionEffect>PlasmaExplosion</explosionEffect>
+			<soundExplode>Synthetik_Plasma_Explode</soundExplode>
+			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+			<explosionDamageFalloff>false</explosionDamageFalloff>
+			<secondaryDamage>
+				<li>
+					<def>Flame_Secondary</def>
+					<amount>981</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+		<defName>MakeAmmo_100mmEnergyCanister_HE</defName>
+		<label>make 100x640mm energy (HE) canister x1</label>
+		<description>Craft 1 100x640mm energy (HE) canister.</description>
+		<jobString>Making 100x640mm energy (HE) canister.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>12</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>FSX</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentIndustrial</li>
+					</thingDefs>
+				</filter>
+				<count>4</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>FSX</li>
+				<li>ComponentIndustrial</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_100mmEnergyCanister_HE>1</Ammo_100mmEnergyCanister_HE>
+		</products>
+		<workAmount>7600</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+		<defName>MakeAmmo_100mmEnergyCanister_EMP</defName>
+		<label>make 100x640mm energy (Ion) canister x1</label>
+		<description>Craft 1 100x640mm energy (Ion) canister.</description>
+		<jobString>Making 100x640mm energy (Ion) canister.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>12</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentIndustrial</li>
+					</thingDefs>
+				</filter>
+				<count>14</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>ComponentIndustrial</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_100mmEnergyCanister_EMP>1</Ammo_100mmEnergyCanister_EMP>
+		</products>
+		<workAmount>9600</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AdvancedAmmoRecipeBase">
+		<defName>MakeAmmo_100mmEnergyCanister_Plasma</defName>
+		<label>make 100x640mm energy (Plasma) canister x1</label>
+		<description>Craft 1 100x640mm energy (Plasma) canister.</description>
+		<jobString>Making 100x640mm energy (Plasma) canister.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>2</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Plasteel</li>
+					</thingDefs>
+				</filter>
+				<count>17</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentIndustrial</li>
+					</thingDefs>
+				</filter>
+				<count>4</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>Plasteel</li>
+				<li>ComponentIndustrial</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_100mmEnergyCanister_Plasma>1</Ammo_100mmEnergyCanister_Plasma>
+		</products>
+		<workAmount>9400</workAmount>
+	</RecipeDef>
+
+</Defs>

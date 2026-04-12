@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ThingDef Name="MedTimes_BuildingBase" Abstract="True">
+    <category>Building</category>
+    <thingClass>Building</thingClass>
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <selectable>true</selectable>
+    <drawerType>MapMeshOnly</drawerType>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <repairEffect>Repair</repairEffect>
+    <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+    <filthLeaving>Filth_RubbleBuilding</filthLeaving>
+    <statBases>
+      <SellPriceFactor>0.70</SellPriceFactor>
+    </statBases>
+  </ThingDef>
+
+    <!-- ================***** Workbench Classes *****================ -->
+    <!-- Workbench Base Class -->
+  <ThingDef Name="MedTimes_BenchBase" ParentName="MedTimes_BuildingBase" Abstract="True">
+    <canOverlapZones>false</canOverlapZones>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <altitudeLayer>Building</altitudeLayer>
+    <thingCategories>
+      <li>BuildingsProduction</li>
+    </thingCategories>
+    <statBases>
+		<MaxHitPoints>100</MaxHitPoints>
+		<WorkToBuild>1000</WorkToBuild>
+		<Flammability>1.0</Flammability>
+		<Mass>100</Mass>
+    </statBases>
+    <interactionCellIcon>DiningChair</interactionCellIcon>
+    <comps>
+      <li>
+        <compClass>CompReportWorkSpeed</compClass>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_ReportWorkSpeedPenalties</li>
+    </placeWorkers>
+    <building>
+      <buildingTags>
+        <li>Production</li>
+      </buildingTags>
+    </building>
+  </ThingDef>
+  
+    <!-- ================***** Quality Classes *****================ -->
+    <!-- Non-Quality Base Class -->
+    <ThingDef Name="MedTimes_NoQualityBase" ParentName="MedTimes_BuildingBase" Abstract="True">
+        <statBases>
+            <MaxHitPoints>100</MaxHitPoints>
+            <Flammability>1.0</Flammability>
+            <WorkToBuild>1000</WorkToBuild>
+            <Beauty>3</Beauty>
+            <Mass>10</Mass>
+        </statBases>
+        <pathCost>75</pathCost>
+        <thingCategories>
+            <li>BuildingsFurniture</li>
+        </thingCategories>
+        <minifiedDef>MinifiedThing</minifiedDef>
+        <tradeTags>
+            <li>MedTimes_Furniture</li>
+        </tradeTags>
+    </ThingDef>
+    <!-- Quality Base Class -->
+    <ThingDef Name="MedTimes_QualityBase" ParentName="MedTimes_NoQualityBase" Abstract="True">
+        <comps>
+            <li>
+                <compClass>CompQuality</compClass>
+            </li>
+        </comps>
+    </ThingDef>
+    <!-- ================***** Tagged Classes *****================ -->
+    <!-- Tagged Building Base Class -->
+    <ThingDef Name="MedTimes_BuildingBaseTag" ParentName="MedTimes_BuildingBase" Abstract="True">
+        <designationCategory>Temperature</designationCategory>
+    </ThingDef>
+    <!-- Tagged Bench Base Class -->
+    <ThingDef Name="MedTimes_BenchBaseTag" ParentName="MedTimes_BenchBase" Abstract="True">
+        <designationCategory>Production</designationCategory>
+    </ThingDef>
+    <!-- Tagged No Quality Base Class -->
+    <ThingDef Name="MedTimes_NoQualityBaseTag" ParentName="MedTimes_NoQualityBase" Abstract="True">
+        <designationCategory>Furniture</designationCategory>
+    </ThingDef>
+    <!-- ================ Specialty Classes ================ -->
+	
+    <!-- Ash and fire Kicker Class -->
+    <ThingDef Name="MedTimes_FlameMeditationBase" ParentName="MedTimes_NoQualityBaseTag" Abstract="True">
+		<drawerType>MapMeshAndRealTime</drawerType>
+        <comps>
+			<li Class="CompProperties_MeditationFocus">
+                <statDef>MeditationFocusStrength</statDef>
+                <focusTypes>
+                    <li>Flame</li>
+                </focusTypes>
+                <offsets>
+                    <li Class="FocusStrengthOffset_Lit">
+                        <offset>0.12</offset>
+                    </li>
+                    <li Class="FocusStrengthOffset_BuildingDefsLit">
+                        <defs>
+                            <li>Campfire</li>
+                            <li>TorchLamp</li>
+                            <li MayRequire="Ludeon.RimWorld.Royalty">Brazier</li>
+                            <li>MedTimes_StoneHearth</li>
+                            <li>MedTimes_Brazier</li>
+                            <li>MedTimes_CorpseBonfire</li>
+                            <li>MedTimes_Candle</li>
+                            <li>MedTimes_Chandeller</li>
+                            <li>MedTimes_StreetLamp</li>
+                            <li>MedTimes_Reflector</li>
+                            <li MayRequire="sarg.rimbees">RB_WaxCandle</li>
+                        </defs>
+                        <radius>9.9</radius>
+                        <maxBuildings>8</maxBuildings>
+                        <offsetPerBuilding>0.02</offsetPerBuilding>
+                        <explanationKey>MeditationFocusPerFlame</explanationKey>
+                        <explanationKeyAbstract>MeditationFocusPerFlameAbstract</explanationKeyAbstract>
+                    </li>
+                </offsets>
+            </li>
+        </comps>
+    </ThingDef>
+    <ThingDef Name="MedTimes_AshKicker" ParentName="MedTimes_FlameMeditationBase" Abstract="True">
+        <size>(1,1)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
+        <tickerType>Normal</tickerType>
+        <altitudeLayer>Building</altitudeLayer>
+        <passability>PassThroughOnly</passability>
+        <placeWorkers>
+            <li>PlaceWorker_Heater</li>
+        </placeWorkers>
+        <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+        <comps>
+            <li Class="CompProperties_Flickable" />
+            <li Class="CompProperties_Forbiddable" />
+            <li Class="EarlyTimes.CompProperties_FueledSpawner">
+                <requiresPower>true</requiresPower>
+                <thingToSpawn>Filth_Ash</thingToSpawn>
+                <spawnCount>1</spawnCount>
+                <spawnIntervalRange>
+                    <min>16000</min>
+                    <max>24000</max>
+                </spawnIntervalRange>
+                <spawnMaxAdjacent>6</spawnMaxAdjacent>
+            </li>
+        </comps>
+    </ThingDef>
+    <ThingDef Name="MedTimes_FireKicker" ParentName="MedTimes_FlameMeditationBase" Abstract="True">
+        <size>(1,1)</size>
+		<drawerType>MapMeshAndRealTime</drawerType>
+        <tickerType>Normal</tickerType>
+        <altitudeLayer>Building</altitudeLayer>
+        <passability>PassThroughOnly</passability>
+        <placeWorkers>
+            <li>PlaceWorker_Heater</li>
+        </placeWorkers>
+        <statBases>
+            <MeditationFocusStrength>0.0</MeditationFocusStrength>
+        </statBases>
+        <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+        <comps>
+            <li Class="CompProperties_Flickable" />
+            <li Class="CompProperties_Forbiddable" />
+            <li Class="EarlyTimes.CompProperties_FueledSpawner">
+                <requiresPower>true</requiresPower>
+                <thingToSpawn>Fire</thingToSpawn>
+                <spawnCount>1</spawnCount>
+                <spawnIntervalRange>
+                    <min>150000</min>
+                    <max>300000</max>
+                </spawnIntervalRange>
+                <spawnMaxAdjacent>1</spawnMaxAdjacent>
+            </li>
+            
+        </comps>
+    </ThingDef>
+    <ThingDef Name="MedTimes_AshFireKicker" ParentName="MedTimes_FireKicker" Abstract="True">
+        <comps>
+            <li Class="EarlyTimes.CompProperties_FueledSpawner">
+                <requiresPower>true</requiresPower>
+                <thingToSpawn>Filth_Ash</thingToSpawn>
+                <spawnCount>1</spawnCount>
+                <spawnIntervalRange>
+                    <min>16000</min>
+                    <max>24000</max>
+                </spawnIntervalRange>
+                <spawnMaxAdjacent>6</spawnMaxAdjacent>
+            </li>
+        </comps>
+    </ThingDef>
+    <!-- Blacksmith's Forge Tiered Base Class -->
+    <ThingDef Name="MedTimes_BlacksmithsForgeBase" ParentName="MedTimes_BenchBaseTag" Abstract="True">
+        <thingClass>Building_WorkTable</thingClass>
+		<drawerType>MapMeshAndRealTime</drawerType>
+        <fillPercent>0.5</fillPercent>
+        <useHitPoints>True</useHitPoints>
+        <statBases>
+            <WorkToBuild>2000</WorkToBuild>
+            <MaxHitPoints>180</MaxHitPoints>
+            <Flammability>1.0</Flammability>
+            <Cleanliness>-5</Cleanliness>
+        </statBases>
+        <hasInteractionCell>True</hasInteractionCell>
+        <surfaceType>Item</surfaceType>
+        <inspectorTabs>
+            <li>ITab_Bills</li>
+        </inspectorTabs>
+    </ThingDef>
+    <ThingDef Name="MedTimes_BlacksmithsForgeRefuelable" ParentName="MedTimes_BlacksmithsForgeBase" Abstract="True">
+        <comps>
+            <li Class="CompProperties_Refuelable">
+                <fuelConsumptionRate>50.0</fuelConsumptionRate>
+                <fuelCapacity>75.0</fuelCapacity>
+                <fuelFilter>
+                    <thingDefs>
+                        <li>Resource_Coal</li>
+                    </thingDefs>
+                </fuelFilter>
+                <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+				<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+            </li>
+        </comps>
+    </ThingDef>
+    <ThingDef Name="MedTimes_BlacksmithsForgeElectric" ParentName="MedTimes_BlacksmithsForgeBase" Abstract="True">
+        <comps>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <shortCircuitInRain>true</shortCircuitInRain>
+                <basePowerConsumption>160</basePowerConsumption>
+            </li>
+            <li Class="CompProperties_Flickable" />
+        </comps>
+    </ThingDef>
+</Defs>

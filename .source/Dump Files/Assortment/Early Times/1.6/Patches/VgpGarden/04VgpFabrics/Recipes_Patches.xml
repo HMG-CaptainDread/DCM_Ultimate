@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>VGP Garden Fabrics</li>
+		  <li>VGP Garden Fabrics Simplified</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/RecipeDef[defName="MakeClothHand" or defName="MakeLinenHand" or defName="MakeLinenHand"]/recipeUsers</xpath>		
+				<value>
+					<recipeUsers>
+						<li>MedTimes_CraftingStation</li>
+					</recipeUsers>
+				</value>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/RecipeDef[defName="Make_PatchleatherBulk"]</xpath>
+			</li>
+			
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/RecipeDef[defName="MakePlasteelThread"]/recipeUsers</xpath>		
+				<value>
+					<recipeUsers>
+						<li>TableMachining</li>
+					</recipeUsers>
+				</value>
+			</li>
+		</operations>
+	</match>
+  </Operation>
+    
+</Patch>

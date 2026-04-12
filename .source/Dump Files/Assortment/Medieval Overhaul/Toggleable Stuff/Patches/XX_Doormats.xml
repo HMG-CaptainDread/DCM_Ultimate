@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+			
+	<Operation Class="VEF.PatchOperationToggableSequence">
+		<enabled>True</enabled>
+		<mods>
+		  <li>Doormats</li>
+		</mods>
+		<label>[Doormats] Patched Rugs act as doormat:</label>
+		<operations>
+			
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[@ParentName="DankPyon_RugPatched_ClothBase" or @ParentName="DankPyon_RugPatched_LeatherBase"]</xpath>
+				<value>
+					<thingClass Inherit="False">SyrDoorMats.Building_DoorMat</thingClass>
+				</value>
+			</li>
+			
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[@ParentName="DankPyon_RugPatched_ClothBase" or @ParentName="DankPyon_RugPatched_LeatherBase"]</xpath>
+				<value>
+					<filthLeaving Inherit="False">Filth_RubbleBuilding</filthLeaving>
+				</value>
+			</li>
+			
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[@ParentName="DankPyon_RugPatched_ClothBase" or @ParentName="DankPyon_RugPatched_LeatherBase"]</xpath>
+				<value>
+					<tickerType>Normal</tickerType>
+				</value>
+			</li>
+			
+		</operations>
+	</Operation>
+</Patch>	

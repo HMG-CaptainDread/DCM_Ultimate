@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Skills Expanded</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationSetName">
+					<xpath>Defs/VSE.Expertise.ExpertiseDef/statOffsets/VSE_ArtSpeed</xpath>
+					<name>SculptingSpeed</name>
+				</li>
+				<li Class="PatchOperationSetName">
+					<xpath>Defs/VSE.Expertise.ExpertiseDef/statOffsets/VSE_TailoringSpeed</xpath>
+					<name>TailoringSpeed</name>
+				</li>
+				<li Class="PatchOperationRemove">
+					<xpath>Defs/StatDef[defName="VSE_TailoringSpeed" or defName="VSE_ArtSpeed"]</xpath>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/StatDef[defName="VSE_WeaponCreationSpeed" or defName="VSE_ComponentCraftingSpeed"]/statFactors/li[text()="GeneralLaborSpeed"]</xpath>
+					<value>
+						<li>SmithingSpeed</li>
+					</value>
+				</li>
+			</operations>
+		</match>
+	</Operation>
+</Patch>

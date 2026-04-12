@@ -1,0 +1,1216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- CANNIBAL AND INSECT MEALS -->
+		<!-- ACHIEVEMENTS EXPANDED -->
+			<Operation Class="PatchOperationConditional">
+				<xpath>/Defs/MainButtonDef[defName="Achievements"]</xpath>
+				<success>Always</success>
+				<match Class="PatchOperationSequence">
+				<success>Always</success>
+				<operations>
+					<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+						<AchievementsExpanded.AchievementTabDef>
+						<defName>Mlie_Originals</defName>
+						<label>Mlies Mods</label>
+						</AchievementsExpanded.AchievementTabDef>
+					</value>
+					</li>
+					<li Class="PatchOperationConditional">
+					<success>Always</success>
+					<xpath>/Defs/AchievementsExpanded.AchievementDef[@Name="Mlie_OriginalAchievementParent"]</xpath>
+					<nomatch Class="PatchOperationAdd">
+						<xpath>Defs</xpath>
+						<value>
+						<AchievementsExpanded.AchievementDef Name="Mlie_OriginalAchievementParent" Abstract="true">
+							<bgtexPath>Achievements/OriginalAchievmentsBG</bgtexPath>
+							<tab>Mlie_Originals</tab>
+						</AchievementsExpanded.AchievementDef>
+						</value>
+					</nomatch>
+					</li>
+					<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+						<AchievementsExpanded.AchievementDef ParentName="Mlie_OriginalAchievementParent">
+						<defName>CAN_WhenInNeed</defName>
+						<label>When in need</label>
+						<description>Obtain 20 simple cannibal meals</description>
+						<tracker Class="AchievementsExpanded.ItemTracker">
+							<def>CAN_CannibalMealSimple</def>
+							<count>20</count>
+						</tracker>
+						<texPath>Achievements/CAN_CannibalSimple</texPath>
+						<points>10</points>
+						</AchievementsExpanded.AchievementDef>
+					</value>
+					</li>
+					<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+						<AchievementsExpanded.AchievementDef ParentName="Mlie_OriginalAchievementParent">
+						<defName>CAN_CannibalCook</defName>
+						<label>Cannibal Cook</label>
+						<description>Obtain 20 fine cannibal meals</description>
+						<tracker Class="AchievementsExpanded.ItemTracker">
+							<def>CAN_CannibalMealFine</def>
+							<count>20</count>
+						</tracker>
+						<texPath>Achievements/CAN_CannibalFine</texPath>
+						<points>15</points>
+						</AchievementsExpanded.AchievementDef>
+					</value>
+					</li>
+					<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+						<AchievementsExpanded.AchievementDef ParentName="Mlie_OriginalAchievementParent">
+						<defName>CAN_HannibalCook</defName>
+						<label>Hannibal Cook</label>
+						<description>Obtain 20 lavish cannibal meals</description>
+						<tracker Class="AchievementsExpanded.ItemTracker">
+							<def>CAN_CannibalMealLavish</def>
+							<count>20</count>
+						</tracker>
+						<texPath>Achievements/CAN_CannibalLavish</texPath>
+						<points>25</points>
+						</AchievementsExpanded.AchievementDef>
+					</value>
+					</li>
+					<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+						<AchievementsExpanded.AchievementDef ParentName="Mlie_OriginalAchievementParent">
+						<defName>CAN_NothingWasted</defName>
+						<label>Nothing wasted</label>
+						<description>Obtain 20 simple insect meals</description>
+						<tracker Class="AchievementsExpanded.ItemTracker">
+							<def>CAN_InsectMealSimple</def>
+							<count>20</count>
+						</tracker>
+						<texPath>Achievements/CAN_InsectSimple</texPath>
+						<points>10</points>
+						</AchievementsExpanded.AchievementDef>
+					</value>
+					</li>
+					<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+						<AchievementsExpanded.AchievementDef ParentName="Mlie_OriginalAchievementParent">
+						<defName>CAN_TryToIgnoreTheTaste</defName>
+						<label>Try to ignore the taste</label>
+						<description>Obtain 20 fine insect meals</description>
+						<tracker Class="AchievementsExpanded.ItemTracker">
+							<def>CAN_InsectMealFine</def>
+							<count>20</count>
+						</tracker>
+						<texPath>Achievements/CAN_InsectFine</texPath>
+						<points>15</points>
+						</AchievementsExpanded.AchievementDef>
+					</value>
+					</li>
+					<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+						<AchievementsExpanded.AchievementDef ParentName="Mlie_OriginalAchievementParent">
+						<defName>CAN_ActuallyNotThatBad</defName>
+						<label>Actually not that bad</label>
+						<description>Obtain 20 lavish insect meals</description>
+						<tracker Class="AchievementsExpanded.ItemTracker">
+							<def>CAN_InsectMealLavish</def>
+							<count>20</count>
+						</tracker>
+						<texPath>Achievements/CAN_InsectLavish</texPath>
+						<points>25</points>
+						</AchievementsExpanded.AchievementDef>
+					</value>
+					</li>
+				</operations>
+				</match>
+			</Operation>
+		<!-- GLOOMY FURNITURE -->
+			<Operation Class="PatchOperationSequence">
+				<success>Always</success>
+				<operations>
+				<li Class="PatchOperationTest">
+					<xpath>/Defs/ThingDef[defName = "GL_Bonfire"]</xpath>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>*/RecipeDef[@Name="CAN_CannibalCampfire" or @Name="CAN_CannibalStove" or @Name="CAN_InsectCampfire" or @Name="CAN_InsectStove"]/recipeUsers</xpath>
+					<value>
+					<li>GL_Bonfire</li>
+					</value>
+				</li>
+				</operations>
+			</Operation>
+		<!-- OTHER -->
+			<Operation Class="PatchOperationSequence">
+				<success>Always</success>
+				<operations>
+				<li Class="PatchOperationTest">
+					<xpath>/Defs/ThingDef[defName = "VFE_TableStoveLarge"]</xpath>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>*/RecipeDef[@Name="CAN_CannibalCampfire" or @Name="CAN_CannibalStove" or @Name="CAN_InsectCampfire" or @Name="CAN_InsectStove"]/recipeUsers</xpath>
+					<value>
+					<li>VFE_TableStoveLarge</li>
+					</value>
+				</li>
+				</operations>
+			</Operation>
+			<Operation Class="PatchOperationSequence">
+				<success>Always</success>
+				<operations>
+				<li Class="PatchOperationTest">
+					<xpath>/Defs/ThingDef[defName = "VFE_TableButcherElectric"]</xpath>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>*/RecipeDef[@Name="CAN_CannibalButcher" or @Name="CAN_InsectButcher"]/recipeUsers</xpath>
+					<value>
+					<li>VFE_TableButcherElectric</li>
+					</value>
+				</li>
+				</operations>
+			</Operation>
+			<Operation Class="PatchOperationSequence">
+				<success>Always</success>
+				<operations>
+				<li Class="PatchOperationTest">
+					<xpath>/Defs/ThingDef[defName = "ElectricTableButcher"]</xpath>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>*/RecipeDef[@Name="CAN_CannibalButcher" or @Name="CAN_InsectButcher"]/recipeUsers</xpath>
+					<value>
+					<li>ElectricTableButcher</li>
+					</value>
+				</li>
+				</operations>
+			</Operation>
+		<!-- ALIEN RACES -->
+			<!-- ARGONIAN -->
+				<Operation Class="PatchOperationConditional">
+					<xpath>/Defs/AlienRace.ThingDef_AlienRace[defName="Alien_Argonian"]</xpath>
+					<success>Always</success>
+					<match Class="PatchOperationSequence">
+					<operations>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@Name="CAN_CookMealBase"]/fixedIngredientFilter/thingDefs</xpath>
+						<value>
+							<li>Meat_Alien_Argonian</li>
+						</value>
+						</li>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@Name="CAN_CookMealBase"]/defaultIngredientFilter/thingDefs</xpath>
+						<value>
+							<li>Meat_Alien_Argonian</li>
+						</value>
+						</li>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@ParentName="CAN_CannibalCampfire" or @ParentName="CAN_CannibalStove" or @ParentName="CAN_CannibalButcher"]/ingredients/li/filter/thingDefs</xpath>
+						<value>
+							<li>Meat_Alien_Argonian</li>
+						</value>
+						</li>
+					</operations>
+					</match>
+				</Operation>
+			<!-- BEAST TRIBES -->
+				<Operation Class="PatchOperationConditional">
+					<xpath>/Defs/AlienRace.ThingDef_AlienRace[defName="BearMan"]</xpath>
+					<success>Always</success>
+					<match Class="PatchOperationSequence">
+					<operations>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@Name="CAN_CookMealBase"]/fixedIngredientFilter/thingDefs</xpath>
+						<value>
+							<li>Meat_BearMan</li>
+							<li>Meat_CamelMan</li>
+							<li>Meat_ElephantMan</li>
+							<li>Meat_ElkMan</li>
+							<li>Meat_FoxMan</li>
+							<li>Meat_GazelleMan</li>
+							<li>Meat_LynxMan</li>
+							<li>Meat_PigMan</li>
+							<li>Meat_RaccoonMan</li>
+							<li>Meat_WolfMan</li>
+						</value>
+						</li>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@Name="CAN_CookMealBase"]/defaultIngredientFilter/thingDefs</xpath>
+						<value>
+							<li>Meat_BearMan</li>
+							<li>Meat_CamelMan</li>
+							<li>Meat_ElephantMan</li>
+							<li>Meat_ElkMan</li>
+							<li>Meat_FoxMan</li>
+							<li>Meat_GazelleMan</li>
+							<li>Meat_LynxMan</li>
+							<li>Meat_PigMan</li>
+							<li>Meat_RaccoonMan</li>
+							<li>Meat_WolfMan</li>
+						</value>
+						</li>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@ParentName="CAN_CannibalCampfire" or @ParentName="CAN_CannibalStove" or @ParentName="CAN_CannibalButcher"]/ingredients/li/filter/thingDefs</xpath>
+						<value>
+							<li>Meat_BearMan</li>
+							<li>Meat_CamelMan</li>
+							<li>Meat_ElephantMan</li>
+							<li>Meat_ElkMan</li>
+							<li>Meat_FoxMan</li>
+							<li>Meat_GazelleMan</li>
+							<li>Meat_LynxMan</li>
+							<li>Meat_PigMan</li>
+							<li>Meat_RaccoonMan</li>
+							<li>Meat_WolfMan</li>
+						</value>
+						</li>
+					</operations>
+					</match>
+				</Operation>
+			<!-- GERZEE -->
+				<Operation Class="PatchOperationConditional">
+					<xpath>/Defs/AlienRace.ThingDef_AlienRace[defName="GerzeeRace"]</xpath>
+					<success>Always</success>
+					<match Class="PatchOperationSequence">
+					<operations>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@Name="CAN_CookMealBase"]/fixedIngredientFilter/thingDefs</xpath>
+						<value>
+							<li>Meat_GerzeeRace</li>
+						</value>
+						</li>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@Name="CAN_CookMealBase"]/defaultIngredientFilter/thingDefs</xpath>
+						<value>
+							<li>Meat_GerzeeRace</li>
+						</value>
+						</li>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@ParentName="CAN_CannibalCampfire" or @ParentName="CAN_CannibalStove" or @ParentName="CAN_CannibalButcher"]/ingredients/li/filter/thingDefs</xpath>
+						<value>
+							<li>Meat_GerzeeRace</li>
+						</value>
+						</li>
+					</operations>
+					</match>
+				</Operation>
+			<!-- GOBLINS -->
+				<Operation Class="PatchOperationConditional">
+					<xpath>/Defs/AlienRace.ThingDef_AlienRace[defName="Fantasy_Goblin"]</xpath>
+					<success>Always</success>
+					<match Class="PatchOperationSequence">
+					<operations>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@Name="CAN_CookMealBase"]/fixedIngredientFilter/thingDefs</xpath>
+						<value>
+							<li>Meat_Fantasy_Goblin</li>
+						</value>
+						</li>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@Name="CAN_CookMealBase"]/defaultIngredientFilter/thingDefs</xpath>
+						<value>
+							<li>Meat_Fantasy_Goblin</li>
+						</value>
+						</li>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@ParentName="CAN_CannibalCampfire" or @ParentName="CAN_CannibalStove" or @ParentName="CAN_CannibalButcher"]/ingredients/li/filter/thingDefs</xpath>
+						<value>
+							<li>Meat_Fantasy_Goblin</li>
+						</value>
+						</li>
+					</operations>
+					</match>
+				</Operation>
+			<!-- LOTR DWARVES -->
+				<Operation Class="PatchOperationConditional">
+					<xpath>/Defs/AlienRace.ThingDef_AlienRace[defName="LotRD_DwarfStandardRace"]</xpath>
+					<success>Always</success>
+					<match Class="PatchOperationSequence">
+					<operations>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@Name="CAN_CookMealBase"]/fixedIngredientFilter/thingDefs</xpath>
+						<value>
+							<li>Meat_LotRD_DwarfStandardRace</li>
+						</value>
+						</li>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@Name="CAN_CookMealBase"]/defaultIngredientFilter/thingDefs</xpath>
+						<value>
+							<li>Meat_LotRD_DwarfStandardRace</li>
+						</value>
+						</li>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@ParentName="CAN_CannibalCampfire" or @ParentName="CAN_CannibalStove" or @ParentName="CAN_CannibalButcher"]/ingredients/li/filter/thingDefs</xpath>
+						<value>
+							<li>Meat_LotRD_DwarfStandardRace</li>
+						</value>
+						</li>
+					</operations>
+					</match>
+				</Operation>
+			<!-- LOTR ELVES -->
+				<Operation Class="PatchOperationConditional">
+					<xpath>/Defs/AlienRace.ThingDef_AlienRace[defName="LotRE_ElfStandardRace"]</xpath>
+					<success>Always</success>
+					<match Class="PatchOperationSequence">
+					<operations>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@Name="CAN_CookMealBase"]/fixedIngredientFilter/thingDefs</xpath>
+						<value>
+							<li>Meat_LotRE_ElfStandardRace</li>
+							<li>Meat_LotRE_ElfStandardRaceHalf</li>
+						</value>
+						</li>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@Name="CAN_CookMealBase"]/defaultIngredientFilter/thingDefs</xpath>
+						<value>
+							<li>Meat_LotRE_ElfStandardRace</li>
+							<li>Meat_LotRE_ElfStandardRaceHalf</li>
+						</value>
+						</li>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@ParentName="CAN_CannibalCampfire" or @ParentName="CAN_CannibalStove" or @ParentName="CAN_CannibalButcher"]/ingredients/li/filter/thingDefs</xpath>
+						<value>
+							<li>Meat_LotRE_ElfStandardRace</li>
+							<li>Meat_LotRE_ElfStandardRaceHalf</li>
+						</value>
+						</li>
+					</operations>
+					</match>
+				</Operation>
+			<!-- LOTR HOBBITS -->
+				<Operation Class="PatchOperationConditional">
+					<xpath>/Defs/AlienRace.ThingDef_AlienRace[defName="LotRH_HobbitStandardRace"]</xpath>
+					<success>Always</success>
+					<match Class="PatchOperationSequence">
+					<operations>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@Name="CAN_CookMealBase"]/fixedIngredientFilter/thingDefs</xpath>
+						<value>
+							<li>Meat_LotRH_HobbitStandardRace</li>
+						</value>
+						</li>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@Name="CAN_CookMealBase"]/defaultIngredientFilter/thingDefs</xpath>
+						<value>
+							<li>Meat_LotRH_HobbitStandardRace</li>
+						</value>
+						</li>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@ParentName="CAN_CannibalCampfire" or @ParentName="CAN_CannibalStove" or @ParentName="CAN_CannibalButcher"]/ingredients/li/filter/thingDefs</xpath>
+						<value>
+							<li>Meat_LotRH_HobbitStandardRace</li>
+						</value>
+						</li>
+					</operations>
+					</match>
+				</Operation>
+			<!-- NI HAL -->
+				<Operation Class="PatchOperationConditional">
+					<xpath>/Defs/AlienRace.ThingDef_AlienRace[defName="Alien_NiHal"]</xpath>
+					<success>Always</success>
+					<match Class="PatchOperationSequence">
+					<operations>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@Name="CAN_CookMealBase"]/fixedIngredientFilter/thingDefs</xpath>
+						<value>
+							<li>Meat_Alien_NiHal</li>
+						</value>
+						</li>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@Name="CAN_CookMealBase"]/defaultIngredientFilter/thingDefs</xpath>
+						<value>
+							<li>Meat_Alien_NiHal</li>
+						</value>
+						</li>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@ParentName="CAN_CannibalCampfire" or @ParentName="CAN_CannibalStove" or @ParentName="CAN_CannibalButcher"]/ingredients/li/filter/thingDefs</xpath>
+						<value>
+							<li>Meat_Alien_NiHal</li>
+						</value>
+						</li>
+					</operations>
+					</match>
+				</Operation>
+			<!-- ORASSANS -->
+				<Operation Class="PatchOperationConditional">
+					<xpath>/Defs/AlienRace.ThingDef_AlienRace[defName="Alien_Orassan"]</xpath>
+					<success>Always</success>
+					<match Class="PatchOperationSequence">
+					<operations>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@Name="CAN_CookMealBase"]/fixedIngredientFilter/thingDefs</xpath>
+						<value>
+							<li>Meat_Alien_Orassan</li>
+						</value>
+						</li>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@Name="CAN_CookMealBase"]/defaultIngredientFilter/thingDefs</xpath>
+						<value>
+							<li>Meat_Alien_Orassan</li>
+						</value>
+						</li>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@ParentName="CAN_CannibalCampfire" or @ParentName="CAN_CannibalStove" or @ParentName="CAN_CannibalButcher"]/ingredients/li/filter/thingDefs</xpath>
+						<value>
+							<li>Meat_Alien_Orassan</li>
+						</value>
+						</li>
+					</operations>
+					</match>
+				</Operation>
+			<!-- ORCS -->
+				<Operation Class="PatchOperationConditional">
+					<xpath>/Defs/AlienRace.ThingDef_AlienRace[defName="Alien_Orc"]</xpath>
+					<success>Always</success>
+					<match Class="PatchOperationSequence">
+					<operations>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@Name="CAN_CookMealBase"]/fixedIngredientFilter/thingDefs</xpath>
+						<value>
+							<li>Meat_Alien_Orc</li>
+						</value>
+						</li>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@Name="CAN_CookMealBase"]/defaultIngredientFilter/thingDefs</xpath>
+						<value>
+							<li>Meat_Alien_Orc</li>
+						</value>
+						</li>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@ParentName="CAN_CannibalCampfire" or @ParentName="CAN_CannibalStove" or @ParentName="CAN_CannibalButcher"]/ingredients/li/filter/thingDefs</xpath>
+						<value>
+							<li>Meat_Alien_Orc</li>
+						</value>
+						</li>
+					</operations>
+					</match>
+				</Operation>
+			<!-- TREE PEOPLE -->
+				<Operation Class="PatchOperationConditional">
+					<xpath>/Defs/AlienRace.ThingDef_AlienRace[defName="Alien_Tree"]</xpath>
+					<success>Always</success>
+					<match Class="PatchOperationSequence">
+					<operations>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@Name="CAN_CookMealBase"]/fixedIngredientFilter/thingDefs</xpath>
+						<value>
+							<li>Meat_Alien_Tree</li>
+						</value>
+						</li>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@Name="CAN_CookMealBase"]/defaultIngredientFilter/thingDefs</xpath>
+						<value>
+							<li>Meat_Alien_Tree</li>
+						</value>
+						</li>
+						<li Class="PatchOperationAdd">
+						<xpath>/Defs/RecipeDef[@ParentName="CAN_CannibalCampfire" or @ParentName="CAN_CannibalStove" or @ParentName="CAN_CannibalButcher"]/ingredients/li/filter/thingDefs</xpath>
+						<value>
+							<li>Meat_Alien_Tree</li>
+						</value>
+						</li>
+					</operations>
+					</match>
+				</Operation>
+	<!-- VBE - COFFEES AND TEAS -->
+		<!-- ALPHA ANIMALS -->
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>Alpha Animals</li>
+				</mods>
+
+				<match Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationAdd">
+							<success>Always</success>
+							<xpath>/Defs/RecipeDef[defName = "VBE_BrewLatteCoffee"]/ingredients/li[@Name="VBE_MilkIngredient"]/filter/thingDefs</xpath>
+							<value>
+								<li>AA_BlueMilk</li>
+								<li>AA_GowMilk</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<success>Always</success>
+							<xpath>/Defs/RecipeDef[defName = "VBE_BrewLatteCoffee"]/fixedIngredientFilter/thingDefs</xpath>
+							<value>
+								<li>AA_BlueMilk</li>
+								<li>AA_GowMilk</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<success>Always</success>
+							<xpath>/Defs/RecipeDef[defName = "VBE_BrewLatteCoffee"]/defaultIngredientFilter/thingDefs</xpath>
+							<value>
+								<li>AA_BlueMilk</li>
+								<li>AA_GowMilk</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<success>Always</success>
+							<xpath>/Defs/RecipeDef[defName = "VBE_MakeBlackTea"]/ingredients/li[@Name="VBE_MilkIngredient"]/filter/thingDefs</xpath>
+							<value>
+								<li>AA_BlueMilk</li>
+								<li>AA_GowMilk</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<success>Always</success>
+							<xpath>/Defs/RecipeDef[defName = "VBE_MakeBlackTea"]/fixedIngredientFilter/thingDefs</xpath>
+							<value>
+								<li>AA_BlueMilk</li>
+								<li>AA_GowMilk</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<success>Always</success>
+							<xpath>/Defs/RecipeDef[defName = "VBE_MakeBlackTea"]/defaultIngredientFilter/thingDefs</xpath>
+							<value>
+								<li>AA_BlueMilk</li>
+								<li>AA_GowMilk</li>
+							</value>
+						</li>
+					</operations>
+				</match>
+			</Operation>
+		<!-- ARGENTINIAN MATE - MIXED HERBS -->
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>Argentinian Mate - Mixed Herbs</li>
+				</mods>
+				<match Class="PatchOperationSequence">
+					<operations>
+						<!-- AMB Lemons to eureka lemons -->
+							<li Class="PatchOperationReplace">
+								<xpath>/Defs/ThingDef[defName="AMB_LemonTree"]/label</xpath>
+								<value>
+									<label>eureka lemon tree</label>
+								</value>
+							</li>
+							<li Class="PatchOperationReplace">
+								<xpath>/Defs/ThingDef[defName="AMB_LemonTree"]/description</xpath>
+								<value>
+									<description>A bushy, semi-tropical tree dotted with eureka lemons, a citric fruit used as base to prepare different drinks and meals.\nEureka lemons are very acid on its own, eating them raw is not so enjoyable and may produce tooth sensitivity.</description>
+								</value>
+							</li>
+							<li Class="PatchOperationReplace">
+								<xpath>/Defs/ThingDef[defName="AMB_RawLemon"]/label</xpath>
+								<value>
+									<label>eureka lemons</label>
+								</value>
+							</li>
+							<li Class="PatchOperationReplace">
+								<xpath>/Defs/ThingDef[defName="AMB_RawLemon"]/description</xpath>
+								<value>
+									<description>Yellow citric fruits, while not so sweet like most other fruits, mixing lemon juice with sugar allows the creation of lemonade, a refreshing and healthy drink.\nEureka lemons are very acid on its own, eating them raw is not so enjoyable and may produce tooth sensitivity.</description>
+								</value>
+							</li>
+						<!-- AMB Mint to spearmint -->
+							<li Class="PatchOperationReplace">
+								<xpath>/Defs/ThingDef[defName="AMB_MintPlant"]/label</xpath>
+								<value>
+									<label>spearmint plant</label>
+								</value>
+							</li>
+							<li Class="PatchOperationReplace">
+								<xpath>/Defs/ThingDef[defName="AMB_MintPlant"]/description</xpath>
+								<value>
+									<description>Mentha Spicata, the most popular type of mint. Spearmint has an invasive taste, added in small quantities it can give a magic taste to Mate.</description>
+								</value>
+							</li>
+							<li Class="PatchOperationReplace">
+								<xpath>/Defs/ThingDef[defName="AMB_MintLeaves"]/label</xpath>
+								<value>
+									<label>spearmint leaves</label>
+								</value>
+							</li>
+							<li Class="PatchOperationReplace">
+								<xpath>/Defs/ThingDef[defName="AMB_MintLeaves"]/description</xpath>
+								<value>
+									<description>Spearmint leaves, used to flavour mate with an unique taste.\n\nSpearmint dries very fast upon being harvested, and it loses its taste, so be sure to make Mate with it as soon as possible.</description>
+								</value>
+							</li>
+					</operations>
+				</match>
+			</Operation>
+		<!-- FORSAKENS: FAUNA -->
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>Forsakens: Fauna</li>
+				</mods>
+				<match Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<!-- Night Milk -->
+							<li Class="PatchOperationAdd">
+								<success>Always</success>
+								<xpath>/Defs/RecipeDef[defName = "VBE_BrewLatteCoffee"]/ingredients/li[@Name="VBE_MilkIngredient"]/filter/thingDefs</xpath>
+								<value>
+									<li>FO_NightMilk</li>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<success>Always</success>
+								<xpath>/Defs/RecipeDef[defName = "VBE_BrewLatteCoffee"]/fixedIngredientFilter/thingDefs</xpath>
+								<value>
+									<li>FO_NightMilk</li>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<success>Always</success>
+								<xpath>/Defs/RecipeDef[defName = "VBE_BrewLatteCoffee"]/defaultIngredientFilter/thingDefs</xpath>
+								<value>
+									<li>FO_NightMilk</li>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<success>Always</success>
+								<xpath>/Defs/RecipeDef[defName = "VBE_MakeBlackTea"]/ingredients/li[@Name="VBE_MilkIngredient"]/filter/thingDefs</xpath>
+								<value>
+									<li>FO_NightMilk</li>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<success>Always</success>
+								<xpath>/Defs/RecipeDef[defName = "VBE_MakeBlackTea"]/fixedIngredientFilter/thingDefs</xpath>
+								<value>
+									<li>FO_NightMilk</li>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<success>Always</success>
+								<xpath>/Defs/RecipeDef[defName = "VBE_MakeBlackTea"]/defaultIngredientFilter/thingDefs</xpath>
+								<value>
+									<li>FO_NightMilk</li>
+								</value>
+							</li>
+					</operations>
+				</match>
+			</Operation>
+		<!-- MERCHANT PATCHES -->
+			<Operation Class="PatchOperationAdd">
+				<xpath>/Defs/TraderKindDef[defName = "Caravan_Outlander_Exotic"]/stockGenerators</xpath>
+				<value>
+					<li Class="StockGenerator_SingleDef">
+						<thingDef>VBE_PumpkinCoffee</thingDef>
+						<countRange>10~50</countRange>
+					</li>
+				</value>
+			</Operation>
+			<Operation Class="PatchOperationAdd">
+				<xpath>/Defs/TraderKindDef[defName = "Orbital_Exotic"]/stockGenerators</xpath>
+				<value>
+					<li Class="StockGenerator_SingleDef">
+						<thingDef>VBE_PumpkinCoffee</thingDef>
+						<countRange>10~50</countRange>
+					</li>
+				</value>
+			</Operation>
+			<Operation Class="PatchOperationAdd">
+				<xpath>/Defs/TraderKindDef[defName = "Caravan_Outlander_BulkGoods"]/stockGenerators</xpath>
+				<value>
+					<li Class="StockGenerator_SingleDef">
+						<thingDef>VBE_PumpkinCoffee</thingDef>
+						<countRange>10~50</countRange>
+					</li>
+				</value>
+			</Operation>
+			<Operation Class="PatchOperationAdd">
+				<xpath>/Defs/TraderKindDef[defName = "Orbital_BulkGoods"]/stockGenerators</xpath>
+				<value>
+					<li Class="StockGenerator_SingleDef">
+						<thingDef>VBE_PumpkinCoffee</thingDef>
+						<countRange>10~50</countRange>
+					</li>
+				</value>
+			</Operation>
+			<Operation Class="PatchOperationAdd">
+				<xpath>/Defs/TraderKindDef[defName = "Base_Outlander_Standard"]/stockGenerators</xpath>
+				<value>
+					<li Class="StockGenerator_SingleDef">
+						<thingDef>VBE_PumpkinCoffee</thingDef>
+						<countRange>10~50</countRange>
+					</li>
+				</value>
+			</Operation>
+		<!-- RIMBEES -->
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>RimBees</li>
+				</mods>
+
+				<match Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<!-- Bee Milk -->
+							<li Class="PatchOperationAdd">
+								<success>Always</success>
+								<xpath>/Defs/RecipeDef[defName = "VBE_BrewLatteCoffee"]/ingredients/li[@Name="VBE_MilkIngredient"]/filter/thingDefs</xpath>
+								<value>
+									<li>RB_BeeMilk</li>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<success>Always</success>
+								<xpath>/Defs/RecipeDef[defName = "VBE_BrewLatteCoffee"]/fixedIngredientFilter/thingDefs</xpath>
+								<value>
+									<li>RB_BeeMilk</li>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<success>Always</success>
+								<xpath>/Defs/RecipeDef[defName = "VBE_BrewLatteCoffee"]/defaultIngredientFilter/thingDefs</xpath>
+								<value>
+									<li>RB_BeeMilk</li>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<success>Always</success>
+								<xpath>/Defs/RecipeDef[defName = "VBE_MakeBlackTea"]/ingredients/li[@Name="VBE_MilkIngredient"]/filter/thingDefs</xpath>
+								<value>
+									<li>RB_BeeMilk</li>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<success>Always</success>
+								<xpath>/Defs/RecipeDef[defName = "VBE_MakeBlackTea"]/fixedIngredientFilter/thingDefs</xpath>
+								<value>
+									<li>RB_BeeMilk</li>
+								</value>
+							</li>
+							<li Class="PatchOperationAdd">
+								<success>Always</success>
+								<xpath>/Defs/RecipeDef[defName = "VBE_MakeBlackTea"]/defaultIngredientFilter/thingDefs</xpath>
+								<value>
+									<li>RB_BeeMilk</li>
+								</value>
+							</li>
+					</operations>
+				</match>
+			</Operation>
+		<!-- VFE - INSECTOIDS -->
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>Vanilla Factions Expanded - Insectoids</li>
+				</mods>
+				<match Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationAdd">
+							<success>Always</success>
+							<xpath>/Defs/RecipeDef[defName = "VBE_BrewLatteCoffee"]/ingredients/li[@Name="VBE_MilkIngredient"]/filter/thingDefs</xpath>
+							<value>
+								<li>VFEI_InsectMilk</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<success>Always</success>
+							<xpath>/Defs/RecipeDef[defName = "VBE_BrewLatteCoffee"]/fixedIngredientFilter/thingDefs</xpath>
+							<value>
+								<li>VFEI_InsectMilk</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<success>Always</success>
+							<xpath>/Defs/RecipeDef[defName = "VBE_BrewLatteCoffee"]/defaultIngredientFilter/thingDefs</xpath>
+							<value>
+								<li>VFEI_InsectMilk</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<success>Always</success>
+							<xpath>/Defs/RecipeDef[defName = "VBE_MakeBlackTea"]/ingredients/li[@Name="VBE_MilkIngredient"]/filter/thingDefs</xpath>
+							<value>
+								<li>VFEI_InsectMilk</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<success>Always</success>
+							<xpath>/Defs/RecipeDef[defName = "VBE_MakeBlackTea"]/fixedIngredientFilter/thingDefs</xpath>
+							<value>
+								<li>VFEI_InsectMilk</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<success>Always</success>
+							<xpath>/Defs/RecipeDef[defName = "VBE_MakeBlackTea"]/defaultIngredientFilter/thingDefs</xpath>
+							<value>
+								<li>VFEI_InsectMilk</li>
+							</value>
+						</li>
+					</operations>
+				</match>
+			</Operation>
+		<!-- VANILLA GENETICS EXPANDED -->
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>Vanilla Genetics Expanded</li>
+				</mods>
+				<match Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationAdd">
+							<success>Always</success>
+							<xpath>/Defs/RecipeDef[defName = "VBE_BrewLatteCoffee"]/ingredients/li[@Name="VBE_MilkIngredient"]/filter/thingDefs</xpath>
+							<value>
+								<li>GR_WeirdMilk</li>
+								<li>GR_BearffaloMilk</li>
+								<li>GR_ThrumffaloMilk</li>
+								<li>GR_MuffalochickenMilk</li>
+								<li>GR_ChickenffaloMilk</li>
+								<li>GR_MuffalobearMilk</li>
+								<li>GR_WolffaloMilk</li>
+								<li>GR_RatMilk</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<success>Always</success>
+							<xpath>/Defs/RecipeDef[defName = "VBE_BrewLatteCoffee"]/fixedIngredientFilter/thingDefs</xpath>
+							<value>
+								<li>GR_WeirdMilk</li>
+								<li>GR_BearffaloMilk</li>
+								<li>GR_ThrumffaloMilk</li>
+								<li>GR_MuffalochickenMilk</li>
+								<li>GR_ChickenffaloMilk</li>
+								<li>GR_MuffalobearMilk</li>
+								<li>GR_WolffaloMilk</li>
+								<li>GR_RatMilk</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<success>Always</success>
+							<xpath>/Defs/RecipeDef[defName = "VBE_BrewLatteCoffee"]/defaultIngredientFilter/thingDefs</xpath>
+							<value>
+								<li>GR_WeirdMilk</li>
+								<li>GR_BearffaloMilk</li>
+								<li>GR_ThrumffaloMilk</li>
+								<li>GR_MuffalochickenMilk</li>
+								<li>GR_ChickenffaloMilk</li>
+								<li>GR_MuffalobearMilk</li>
+								<li>GR_WolffaloMilk</li>
+								<li>GR_RatMilk</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<success>Always</success>
+							<xpath>/Defs/RecipeDef[defName = "VBE_MakeBlackTea"]/ingredients/li[@Name="VBE_MilkIngredient"]/filter/thingDefs</xpath>
+							<value>
+								<li>GR_WeirdMilk</li>
+								<li>GR_BearffaloMilk</li>
+								<li>GR_ThrumffaloMilk</li>
+								<li>GR_MuffalochickenMilk</li>
+								<li>GR_ChickenffaloMilk</li>
+								<li>GR_MuffalobearMilk</li>
+								<li>GR_WolffaloMilk</li>
+								<li>GR_RatMilk</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<success>Always</success>
+							<xpath>/Defs/RecipeDef[defName = "VBE_MakeBlackTea"]/fixedIngredientFilter/thingDefs</xpath>
+							<value>
+								<li>GR_WeirdMilk</li>
+								<li>GR_BearffaloMilk</li>
+								<li>GR_ThrumffaloMilk</li>
+								<li>GR_MuffalochickenMilk</li>
+								<li>GR_ChickenffaloMilk</li>
+								<li>GR_MuffalobearMilk</li>
+								<li>GR_WolffaloMilk</li>
+								<li>GR_RatMilk</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<success>Always</success>
+							<xpath>/Defs/RecipeDef[defName = "VBE_MakeBlackTea"]/defaultIngredientFilter/thingDefs</xpath>
+							<value>
+								<li>GR_WeirdMilk</li>
+								<li>GR_BearffaloMilk</li>
+								<li>GR_ThrumffaloMilk</li>
+								<li>GR_MuffalochickenMilk</li>
+								<li>GR_ChickenffaloMilk</li>
+								<li>GR_MuffalobearMilk</li>
+								<li>GR_WolffaloMilk</li>
+								<li>GR_RatMilk</li>
+							</value>
+						</li>
+						<!-- CALL OF CTHULU - COSMIC HORRORS -->
+						<li Class="PatchOperationFindMod">
+							<mods>
+								<li>Call of Cthulhu - Cosmic Horrors</li>
+							</mods>
+							<match Class="PatchOperationSequence">
+								<success>Always</success>
+								<operations>
+									<!-- Eldritch Milk -->
+									<li Class="PatchOperationAdd">
+										<success>Always</success>
+										<xpath>/Defs/RecipeDef[defName = "VBE_BrewLatteCoffee"]/ingredients/li[@Name="VBE_MilkIngredient"]/filter/thingDefs</xpath>
+										<value>
+											<li>GR_EldritchMilk</li>
+										</value>
+									</li>
+									<li Class="PatchOperationAdd">
+										<success>Always</success>
+										<xpath>/Defs/RecipeDef[defName = "VBE_BrewLatteCoffee"]/fixedIngredientFilter/thingDefs</xpath>
+										<value>
+											<li>GR_EldritchMilk</li>
+										</value>
+									</li>
+									<li Class="PatchOperationAdd">
+										<success>Always</success>
+										<xpath>/Defs/RecipeDef[defName = "VBE_BrewLatteCoffee"]/defaultIngredientFilter/thingDefs</xpath>
+										<value>
+											<li>GR_EldritchMilk</li>
+										</value>
+									</li>
+									<li Class="PatchOperationAdd">
+										<success>Always</success>
+										<xpath>/Defs/RecipeDef[defName = "VBE_MakeBlackTea"]/ingredients/li[@Name="VBE_MilkIngredient"]/filter/thingDefs</xpath>
+										<value>
+											<li>GR_EldritchMilk</li>
+
+										</value>
+									</li>
+									<li Class="PatchOperationAdd">
+										<success>Always</success>
+										<xpath>/Defs/RecipeDef[defName = "VBE_MakeBlackTea"]/fixedIngredientFilter/thingDefs</xpath>
+										<value>
+											<li>GR_EldritchMilk</li>
+										</value>
+									</li>
+									<li Class="PatchOperationAdd">
+										<success>Always</success>
+										<xpath>/Defs/RecipeDef[defName = "VBE_MakeBlackTea"]/defaultIngredientFilter/thingDefs</xpath>
+										<value>
+											<li>GR_EldritchMilk</li>
+										</value>
+									</li>
+								</operations>
+							</match>
+						</li>
+						<!-- DINOSAURIA -->
+						<li Class="PatchOperationFindMod">
+							<mods>
+								<li>Dinosauria</li>
+							</mods>
+							<match Class="PatchOperationSequence">
+								<success>Always</success>
+								<operations>
+									<!-- Dino Milk -->
+									<li Class="PatchOperationAdd">
+										<success>Always</success>
+										<xpath>/Defs/RecipeDef[defName = "VBE_BrewLatteCoffee"]/ingredients/li[@Name="VBE_MilkIngredient"]/filter/thingDefs</xpath>
+										<value>
+											<li>GR_DinoMilk</li>
+										</value>
+									</li>
+									<li Class="PatchOperationAdd">
+										<success>Always</success>
+										<xpath>/Defs/RecipeDef[defName = "VBE_BrewLatteCoffee"]/fixedIngredientFilter/thingDefs</xpath>
+										<value>
+											<li>GR_DinoMilk</li>
+										</value>
+									</li>
+									<li Class="PatchOperationAdd">
+										<success>Always</success>
+										<xpath>/Defs/RecipeDef[defName = "VBE_BrewLatteCoffee"]/defaultIngredientFilter/thingDefs</xpath>
+										<value>
+											<li>GR_DinoMilk</li>
+										</value>
+									</li>
+									<li Class="PatchOperationAdd">
+										<success>Always</success>
+										<xpath>/Defs/RecipeDef[defName = "VBE_MakeBlackTea"]/ingredients/li[@Name="VBE_MilkIngredient"]/filter/thingDefs</xpath>
+										<value>
+											<li>GR_DinoMilk</li>
+
+										</value>
+									</li>
+									<li Class="PatchOperationAdd">
+										<success>Always</success>
+										<xpath>/Defs/RecipeDef[defName = "VBE_MakeBlackTea"]/fixedIngredientFilter/thingDefs</xpath>
+										<value>
+											<li>GR_DinoMilk</li>
+										</value>
+									</li>
+									<li Class="PatchOperationAdd">
+										<success>Always</success>
+										<xpath>/Defs/RecipeDef[defName = "VBE_MakeBlackTea"]/defaultIngredientFilter/thingDefs</xpath>
+										<value>
+											<li>GR_DinoMilk</li>
+										</value>
+									</li>
+								</operations>
+							</match>
+						</li>
+						<!-- MEGAFAUNA -->
+						<li Class="PatchOperationFindMod">
+							<mods>
+								<li>Megafauna</li>
+							</mods>
+							<match Class="PatchOperationSequence">
+								<success>Always</success>
+								<operations>
+									<!-- Para Milk -->
+									<li Class="PatchOperationAdd">
+										<success>Always</success>
+										<xpath>/Defs/RecipeDef[defName = "VBE_BrewLatteCoffee"]/ingredients/li[@Name="VBE_MilkIngredient"]/filter/thingDefs</xpath>
+										<value>
+											<li>GR_ParaMilk</li>
+											<li>GR_GreenMilk</li>
+										</value>
+									</li>
+									<li Class="PatchOperationAdd">
+										<success>Always</success>
+										<xpath>/Defs/RecipeDef[defName = "VBE_BrewLatteCoffee"]/fixedIngredientFilter/thingDefs</xpath>
+										<value>
+											<li>GR_ParaMilk</li>
+											<li>GR_GreenMilk</li>
+										</value>
+									</li>
+									<li Class="PatchOperationAdd">
+										<success>Always</success>
+										<xpath>/Defs/RecipeDef[defName = "VBE_BrewLatteCoffee"]/defaultIngredientFilter/thingDefs</xpath>
+										<value>
+											<li>GR_ParaMilk</li>
+											<li>GR_GreenMilk</li>
+										</value>
+									</li>
+									<li Class="PatchOperationAdd">
+										<success>Always</success>
+										<xpath>/Defs/RecipeDef[defName = "VBE_MakeBlackTea"]/ingredients/li[@Name="VBE_MilkIngredient"]/filter/thingDefs</xpath>
+										<value>
+											<li>GR_ParaMilk</li>
+											<li>GR_GreenMilk</li>
+										</value>
+									</li>
+									<li Class="PatchOperationAdd">
+										<success>Always</success>
+										<xpath>/Defs/RecipeDef[defName = "VBE_MakeBlackTea"]/fixedIngredientFilter/thingDefs</xpath>
+										<value>
+											<li>GR_ParaMilk</li>
+											<li>GR_GreenMilk</li>
+										</value>
+									</li>
+									<li Class="PatchOperationAdd">
+										<success>Always</success>
+										<xpath>/Defs/RecipeDef[defName = "VBE_MakeBlackTea"]/defaultIngredientFilter/thingDefs</xpath>
+										<value>
+											<li>GR_ParaMilk</li>
+											<li>GR_GreenMilk</li>
+										</value>
+									</li>
+								</operations>
+							</match>
+						</li>
+					</operations>
+				</match>
+			</Operation>
+		<!-- VANILLA COOKING EXPANDED -->
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>Vanilla Cooking Expanded</li>
+				</mods>
+				<match Class="PatchOperationSequence">
+					<operations>
+						<li Class="PatchOperationAdd">
+							<xpath>/Defs/RecipeDef[defName = "VBE_MixLemonade"]/ingredients</xpath>
+							<value>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>VCE_RawSugar</li>
+										</thingDefs>
+									</filter>
+									<count>4</count>
+								</li>
+							</value>
+						</li>
+					</operations>
+				</match>
+			</Operation>
+		<!-- VANILLA PLANTS EXPANDED -->
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>Vanilla Plants Expanded</li>
+				</mods>
+				<match Class="PatchOperationSequence">
+					<operations>
+						<li Class="PatchOperationAdd">
+							<xpath>/Defs/BiomeDef[defName = "TemperateSwamp"]/wildPlants</xpath>
+							<value>
+								<VBE_LemonTree>0.01</VBE_LemonTree>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>/Defs/BiomeDef[defName = "TropicalRainforest"]/wildPlants</xpath>
+							<value>
+								<VBE_LemonTree>0.01</VBE_LemonTree>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>/Defs/BiomeDef[defName = "AridShrubland"]/wildPlants</xpath>
+							<value>
+								<VBE_LemonTree>0.01</VBE_LemonTree>
+							</value>
+						</li>
+					</operations>
+				</match>
+			</Operation>
+	<!-- VCE - STEWS -->
+		<!-- VANILLA FURNITURE EXPANDED -->
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>Vanilla Furniture Expanded</li>
+				</mods>
+				<match Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationAdd">
+							<success>Always</success>
+							<xpath>/Defs/RecipeDef[defName="VCE_CookStewSimple"]/recipeUsers</xpath>
+							<value>
+								<li>Stone_Campfire</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<success>Always</success>
+							<xpath>/Defs/RecipeDef[defName="VCE_CookStewFine"]/recipeUsers</xpath>
+							<value>
+								<li>Stone_Campfire</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<success>Always</success>
+							<xpath>/Defs/RecipeDef[defName="VCE_CookStewLavish"]/recipeUsers</xpath>
+							<value>
+								<li>Stone_Campfire</li>
+							</value>
+						</li>
+					</operations>
+				</match>
+			</Operation>
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+</Patch>

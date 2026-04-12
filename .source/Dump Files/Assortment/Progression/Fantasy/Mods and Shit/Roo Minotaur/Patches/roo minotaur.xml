@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="PatchOperationReplace">
+    <success>Always</success>
+    <xpath>Defs/XenotypeDef[defName="RBM_Minotaur"]/description</xpath>
+    <value>
+      <description>Originating from the xenohuman branch of the Hecate Project, minotaurs have turned angry towards their bioengineered creators. Man once reared minotaur as they did cattle — branding them with hot irons and enslaving them as labourers or cannon fodder. Today, minotaur civilisations are typically found as far away from humans as possible. An exception to this rule are the "guardians": minotaur bred and sworn to protect the monarchy of mentally superior but physically inferior xenos. \n\nMinotaurs are generally characterised by their short tempers and inability to comprehend the lofty concepts that other xenos do. They go into heat every Aprimay, are able to digest plant matter with ease and celebrate every victory with a bellowing moo.</description>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Alpha Mythology</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+        <li Class="PatchOperationRemove">
+          <success>Always</success>
+          <xpath>/Defs/ThingDef[defName="MM_WildMinotaur"]</xpath>
+        </li>
+        <li Class="PatchOperationRemove">
+          <success>Always</success>
+          <xpath>/Defs/PawnKindDef[defName="MM_WildMinotaur"]</xpath>
+        </li>
+        <li Class="PatchOperationFindMod">
+          <mods>
+            <li>Vanilla Genetics Expanded</li>
+          </mods>
+          <match Class="PatchOperationSequence">
+            <operations>
+              <li Class="PatchOperationRemove">
+                <xpath>Defs/RecipeDef[defName = "GR_ExtractGenesMuffalo"]/ingredients/li/filter/thingDefs/li[text()="Corpse_MM_WildMinotaur"]</xpath>
+              </li>
+              <li Class="PatchOperationRemove">
+                <xpath>Defs/RecipeDef[defName = "GR_ExtractGenesMuffalo"]/fixedIngredientFilter/thingDefs/li[text()="Corpse_MM_WildMinotaur"]</xpath>
+              </li>
+              <li Class="PatchOperationRemove">
+                <xpath>Defs/GeneticRim.ExtractableAnimalsList[defName="GR_TierOneAnimalsMuffaloAlphaMythology"]/extractableAnimals/li[text()="MM_WildMinotaur"]</xpath>
+              </li>
+            </operations>
+          </match>
+        </li>
+        <li Class="PatchOperationFindMod">
+          <mods>
+            <li>Too Many Mods - Compats and Rebalances</li>
+          </mods>
+          <match Class="PatchOperationFindMod">
+            <mods>
+              <li>ReGrowth: Aspen</li>
+            </mods>
+            <match Class="PatchOperationRemove">
+              <xpath>Defs/BiomeDef[defName="RG_AspenForest"]/wildAnimals/MM_WildMinotaur</xpath>
+            </match>
+          </match>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+  
+</Patch>

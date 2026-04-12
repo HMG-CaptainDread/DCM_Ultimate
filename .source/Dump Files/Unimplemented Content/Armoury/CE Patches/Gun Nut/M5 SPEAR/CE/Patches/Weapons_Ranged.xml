@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+    <Operation Class="PatchOperationSequence">
+        <operations>
+
+            <!--===== TOOLS FOR THE TOOL GOD =====-->
+            <li Class="PatchOperationReplace">
+                <xpath>
+				    /Defs/ThingDef[
+					defName = "HRK_SIGM5SPEAR" or
+					defName = "HRK_SIGM5SPEAR_C" or
+                    defName = "HRK_SIGM250SAW" or
+					defName = "HRK_SIGM250SAW_C" or
+                    defName = "HRK_SIG338MG" or
+					defName = "HRK_SIG338MG_C"]/tools
+                </xpath>
+                <value>
+                    <tools>
+                        <li Class="CombatExtended.ToolCE">
+                            <label>stock</label>
+                            <capacities>
+                                <li>Blunt</li>
+                            </capacities>
+                            <power>8</power>
+                            <cooldownTime>1.55</cooldownTime>
+                            <chanceFactor>1.5</chanceFactor>
+                            <armorPenetrationBlunt>2.755</armorPenetrationBlunt>
+                            <linkedBodyPartsGroup>Stock</linkedBodyPartsGroup>
+                        </li>
+                        <li Class="CombatExtended.ToolCE">
+                            <label>barrel</label>
+                            <capacities>
+                                <li>Blunt</li>
+                            </capacities>
+                            <power>5</power>
+                            <cooldownTime>2.02</cooldownTime>
+                            <armorPenetrationBlunt>1.630</armorPenetrationBlunt>
+                            <linkedBodyPartsGroup>Barrel</linkedBodyPartsGroup>
+                        </li>
+                        <li Class="CombatExtended.ToolCE">
+                            <label>muzzle</label>
+                            <capacities>
+                                <li>Poke</li>
+                            </capacities>
+                            <power>8</power>
+                            <cooldownTime>1.55</cooldownTime>
+                            <armorPenetrationBlunt>2.755</armorPenetrationBlunt>
+                            <linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+                        </li>
+                    </tools>
+                </value>
+            </li>
+
+            <!--===== MCX SPEAR =====-->
+            <li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+                <defName>HRK_SIGM5SPEAR</defName>
+                <statBases>
+                    <WorkToMake>28500</WorkToMake>
+                    <Mass>3.80</Mass>
+                    <Bulk>8.66</Bulk>
+                    <SwayFactor>1.25</SwayFactor>
+                    <ShotSpread>0.11</ShotSpread>
+                    <SightsEfficiency>1</SightsEfficiency>
+                    <RangedWeapon_Cooldown>0.37</RangedWeapon_Cooldown>
+                </statBases>
+                <costList>
+                    <Steel>50</Steel>
+                    <Chemfuel>5</Chemfuel>
+                    <ComponentIndustrial>5</ComponentIndustrial>
+                </costList>
+                <Properties>
+                    <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+                    <hasStandardCommand>True</hasStandardCommand>
+                    <defaultProjectile>Bullet_277Fury_FMJ</defaultProjectile>
+                    <burstShotCount>6</burstShotCount>
+                    <ticksBetweenBurstShots>5</ticksBetweenBurstShots>
+                    <warmupTime>1.1</warmupTime>
+                    <range>57</range>
+                    <soundCast>HRK_Shot_SIGM5SPEAR</soundCast>
+                    <soundCastTail>GunTail_Medium</soundCastTail>
+                    <muzzleFlashScale>9</muzzleFlashScale>
+                    <recoilAmount>2.08</recoilAmount>
+                </Properties>
+                <AmmoUser>
+                    <magazineSize>20</magazineSize>
+                    <reloadTime>4</reloadTime>
+                    <ammoSet>AmmoSet_277Fury</ammoSet>
+                </AmmoUser>
+                <FireModes>
+                    <aiAimMode>AimedShot</aiAimMode>
+                    <aiUseBurstMode>True</aiUseBurstMode>
+                    <aimedBurstShotCount>3</aimedBurstShotCount>
+                </FireModes>
+                <weaponTags>
+                    <li>CE_AI_Rifle</li>
+                </weaponTags>
+            </li>
+
+            <!--===== MCX SPEAR (Custom) =====-->
+            <li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+                <defName>HRK_SIGM5SPEAR_C</defName>
+                <statBases>
+                    <WorkToMake>32000</WorkToMake>
+                    <Mass>4.80</Mass>
+                    <Bulk>10.66</Bulk>
+                    <SwayFactor>1.55</SwayFactor>
+                    <ShotSpread>0.06</ShotSpread>
+                    <SightsEfficiency>1.1</SightsEfficiency>
+                    <RangedWeapon_Cooldown>0.37</RangedWeapon_Cooldown>
+                </statBases>
+                <costList>
+                    <Steel>65</Steel>
+                    <Chemfuel>5</Chemfuel>
+                    <ComponentIndustrial>6</ComponentIndustrial>
+                </costList>
+                <Properties>
+                    <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+                    <hasStandardCommand>True</hasStandardCommand>
+                    <defaultProjectile>Bullet_277Fury_FMJ</defaultProjectile>
+                    <burstShotCount>6</burstShotCount>
+                    <ticksBetweenBurstShots>5</ticksBetweenBurstShots>
+                    <warmupTime>1</warmupTime>
+                    <range>57</range>
+                    <soundCast>HRK_Shot_SDSIGM5SPEAR</soundCast>
+                    <soundCastTail>GunTail_Medium</soundCastTail>
+                    <muzzleFlashScale>9</muzzleFlashScale>
+                    <recoilAmount>1.85</recoilAmount>
+                </Properties>
+                <AmmoUser>
+                    <magazineSize>20</magazineSize>
+                    <reloadTime>4</reloadTime>
+                    <ammoSet>AmmoSet_277Fury</ammoSet>
+                </AmmoUser>
+                <FireModes>
+                    <aiAimMode>AimedShot</aiAimMode>
+                    <aiUseBurstMode>True</aiUseBurstMode>
+                    <aimedBurstShotCount>3</aimedBurstShotCount>
+                </FireModes>
+                <weaponTags>
+                    <li>CE_AI_Rifle</li>
+                </weaponTags>
+            </li>
+
+            <!--===== MG 6.8 =====-->
+            <li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+                <defName>HRK_SIGM250SAW</defName>
+                <statBases>
+                    <WorkToMake>38000</WorkToMake>
+                    <Mass>7.35</Mass>
+                    <Bulk>13.45</Bulk>
+                    <SwayFactor>1.25</SwayFactor>
+                    <ShotSpread>0.07</ShotSpread>
+                    <SightsEfficiency>1</SightsEfficiency>
+                    <RangedWeapon_Cooldown>0.56</RangedWeapon_Cooldown>
+                </statBases>
+                <costList>
+                    <Steel>75</Steel>
+                    <Chemfuel>10</Chemfuel>
+                    <ComponentIndustrial>6</ComponentIndustrial>
+                </costList>
+                <Properties>
+                    <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+                    <hasStandardCommand>True</hasStandardCommand>
+                    <defaultProjectile>Bullet_277Fury_FMJ</defaultProjectile>
+                    <burstShotCount>10</burstShotCount>
+                    <ticksBetweenBurstShots>5</ticksBetweenBurstShots>
+                    <warmupTime>1.3</warmupTime>
+                    <range>67</range>
+                    <soundCast>HRK_Shot_SIGM5SPEAR</soundCast>
+                    <soundCastTail>GunTail_Medium</soundCastTail>
+                    <muzzleFlashScale>9</muzzleFlashScale>
+                    <recoilAmount>1.46</recoilAmount>
+                    <recoilPattern>Mounted</recoilPattern>
+                    <targetParams>
+                        <canTargetLocations>true</canTargetLocations>
+                    </targetParams>
+                </Properties>
+                <AmmoUser>
+                    <magazineSize>100</magazineSize>
+                    <reloadTime>7.8</reloadTime>
+                    <ammoSet>AmmoSet_277Fury</ammoSet>
+                </AmmoUser>
+                <FireModes>
+                    <aiAimMode>SuppressFire</aiAimMode>
+                    <aiUseBurstMode>False</aiUseBurstMode>
+                    <aimedBurstShotCount>5</aimedBurstShotCount>
+                </FireModes>
+                <weaponTags>
+                    <li>CE_MachineGun</li>
+                    <li>CE_AI_Suppressive</li>
+                    <li>Bipod_SAW</li>
+                </weaponTags>
+            </li>
+
+            <!--===== MG 6.8 (Custom) =====-->
+            <li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+                <defName>HRK_SIGM250SAW_C</defName>
+                <statBases>
+                    <WorkToMake>42000</WorkToMake>
+                    <Mass>8.35</Mass>
+                    <Bulk>15.45</Bulk>
+                    <SwayFactor>1.47</SwayFactor>
+                    <ShotSpread>0.04</ShotSpread>
+                    <SightsEfficiency>2.15</SightsEfficiency>
+                    <RangedWeapon_Cooldown>0.56</RangedWeapon_Cooldown>
+                </statBases>
+                <costList>
+                    <Steel>85</Steel>
+                    <Chemfuel>10</Chemfuel>
+                    <ComponentIndustrial>7</ComponentIndustrial>
+                </costList>
+                <Properties>
+                    <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+                    <hasStandardCommand>True</hasStandardCommand>
+                    <defaultProjectile>Bullet_277Fury_FMJ</defaultProjectile>
+                    <burstShotCount>10</burstShotCount>
+                    <ticksBetweenBurstShots>5</ticksBetweenBurstShots>
+                    <warmupTime>1.4</warmupTime>
+                    <range>67</range>
+                    <soundCast>HRK_Shot_SDSIGM5SPEAR</soundCast>
+                    <soundCastTail>GunTail_Medium</soundCastTail>
+                    <muzzleFlashScale>9</muzzleFlashScale>
+                    <recoilAmount>1.36</recoilAmount>
+                    <recoilPattern>Mounted</recoilPattern>
+                    <targetParams>
+                        <canTargetLocations>true</canTargetLocations>
+                    </targetParams>
+                </Properties>
+                <AmmoUser>
+                    <magazineSize>200</magazineSize>
+                    <reloadTime>7.8</reloadTime>
+                    <ammoSet>AmmoSet_277Fury</ammoSet>
+                </AmmoUser>
+                <FireModes>
+                    <aiAimMode>SuppressFire</aiAimMode>
+                    <aiUseBurstMode>False</aiUseBurstMode>
+                    <aimedBurstShotCount>5</aimedBurstShotCount>
+                </FireModes>
+                <weaponTags>
+                    <li>CE_MachineGun</li>
+                    <li>CE_AI_Suppressive</li>
+                    <li>Bipod_SAW</li>
+                </weaponTags>
+            </li>
+
+            <!--===== MG 338 =====-->
+            <li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+                <defName>HRK_SIG338MG</defName>
+                <statBases>
+                    <WorkToMake>40000</WorkToMake>
+                    <Mass>9.70</Mass>
+                    <Bulk>15.70</Bulk>
+                    <SwayFactor>1.57</SwayFactor>
+                    <ShotSpread>0.05</ShotSpread>
+                    <SightsEfficiency>1</SightsEfficiency>
+                    <RangedWeapon_Cooldown>0.57</RangedWeapon_Cooldown>
+                </statBases>
+                <costList>
+                    <Steel>90</Steel>
+                    <Chemfuel>10</Chemfuel>
+                    <ComponentIndustrial>6</ComponentIndustrial>
+                </costList>
+                <Properties>
+                    <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+                    <hasStandardCommand>True</hasStandardCommand>
+                    <defaultProjectile>Bullet_338Norma_FMJ</defaultProjectile>
+                    <burstShotCount>10</burstShotCount>
+                    <ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+                    <warmupTime>1.3</warmupTime>
+                    <range>75</range>
+                    <soundCast>HRK_Shot_SIG338MG</soundCast>
+                    <soundCastTail>GunTail_Medium</soundCastTail>
+                    <muzzleFlashScale>9</muzzleFlashScale>
+                    <recoilAmount>1.77</recoilAmount>
+                    <recoilPattern>Mounted</recoilPattern>
+                    <targetParams>
+                        <canTargetLocations>true</canTargetLocations>
+                    </targetParams>
+                </Properties>
+                <AmmoUser>
+                    <magazineSize>50</magazineSize>
+                    <reloadTime>7.8</reloadTime>
+                    <ammoSet>AmmoSet_338Norma</ammoSet>
+                </AmmoUser>
+                <FireModes>
+                    <aiAimMode>SuppressFire</aiAimMode>
+                    <aiUseBurstMode>False</aiUseBurstMode>
+                    <aimedBurstShotCount>5</aimedBurstShotCount>
+                </FireModes>
+                <weaponTags>
+                    <li>CE_AI_Suppressive</li>
+                    <li>CE_MachineGun</li>
+                    <li>Bipod_LMG</li>
+                </weaponTags>
+            </li>
+
+            <!--===== MG 338 (Custom)=====-->
+            <li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+                <defName>HRK_SIG338MG_C</defName>
+                <statBases>
+                    <WorkToMake>43000</WorkToMake>
+                    <Mass>10.70</Mass>
+                    <Bulk>17.70</Bulk>
+                    <SwayFactor>1.78</SwayFactor>
+                    <ShotSpread>0.01</ShotSpread>
+                    <SightsEfficiency>1.1</SightsEfficiency>
+                    <RangedWeapon_Cooldown>0.56</RangedWeapon_Cooldown>
+                </statBases>
+                <costList>
+                    <Steel>100</Steel>
+                    <Chemfuel>10</Chemfuel>
+                    <ComponentIndustrial>7</ComponentIndustrial>
+                </costList>
+                <Properties>
+                    <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+                    <hasStandardCommand>True</hasStandardCommand>
+                    <defaultProjectile>Bullet_338Norma_FMJ</defaultProjectile>
+                    <burstShotCount>10</burstShotCount>
+                    <ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+                    <warmupTime>1.2</warmupTime>
+                    <range>75</range>
+                    <soundCast>HRK_Shot_SIG338MG</soundCast>
+                    <soundCastTail>GunTail_Medium</soundCastTail>
+                    <muzzleFlashScale>9</muzzleFlashScale>
+                    <recoilAmount>1.68</recoilAmount>
+                    <recoilPattern>Mounted</recoilPattern>
+                    <targetParams>
+                        <canTargetLocations>true</canTargetLocations>
+                    </targetParams>
+                </Properties>
+                <AmmoUser>
+                    <magazineSize>100</magazineSize>
+                    <reloadTime>7.8</reloadTime>
+                    <ammoSet>AmmoSet_338Norma</ammoSet>
+                </AmmoUser>
+                <FireModes>
+                    <aiAimMode>SuppressFire</aiAimMode>
+                    <aiUseBurstMode>False</aiUseBurstMode>
+                    <aimedBurstShotCount>5</aimedBurstShotCount>
+                </FireModes>
+                <weaponTags>
+                    <li>CE_AI_Suppressive</li>
+                    <li>CE_MachineGun</li>
+                    <li>Bipod_LMG</li>
+                </weaponTags>
+            </li>
+
+            <li Class="PatchOperationRemove">
+                <xpath>Defs/ThingDef[defName="HRK_SIG338MG" or defName="HRK_SIG338MG_C"]/equippedStatOffsets/MoveSpeed</xpath>
+            </li>
+
+        </operations>
+    </Operation>
+</Patch>

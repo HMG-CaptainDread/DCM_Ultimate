@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="HRK_KS23M"]/tools</xpath>
+        <value>
+            <tools>
+                <li Class="CombatExtended.ToolCE">
+                    <label>barrel</label>
+                    <capacities>
+                        <li>Blunt</li>
+                    </capacities>
+                    <power>5</power>
+                    <cooldownTime>2.02</cooldownTime>
+                    <armorPenetrationBlunt>1.630</armorPenetrationBlunt>
+                    <linkedBodyPartsGroup>Barrel</linkedBodyPartsGroup>
+                </li>
+                <li Class="CombatExtended.ToolCE">
+                    <label>muzzle</label>
+                    <capacities>
+                        <li>Poke</li>
+                    </capacities>
+                    <power>8</power>
+                    <cooldownTime>1.55</cooldownTime>
+                    <armorPenetrationBlunt>2.755</armorPenetrationBlunt>
+                    <linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+                </li>
+            </tools>
+        </value>
+    </Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="HRK_KS23Charged" or defName="HRK_KS23L"]/tools
+        </xpath>
+        <value>
+            <tools>
+                <li Class="CombatExtended.ToolCE">
+                    <label>stock</label>
+                    <capacities>
+                        <li>Blunt</li>
+                    </capacities>
+                    <power>8</power>
+                    <cooldownTime>1.55</cooldownTime>
+                    <chanceFactor>1.5</chanceFactor>
+                    <armorPenetrationBlunt>2.755</armorPenetrationBlunt>
+                    <linkedBodyPartsGroup>Stock</linkedBodyPartsGroup>
+                </li>
+                <li Class="CombatExtended.ToolCE">
+                    <label>barrel</label>
+                    <capacities>
+                        <li>Blunt</li>
+                    </capacities>
+                    <power>5</power>
+                    <cooldownTime>2.02</cooldownTime>
+                    <armorPenetrationBlunt>1.630</armorPenetrationBlunt>
+                    <linkedBodyPartsGroup>Barrel</linkedBodyPartsGroup>
+                </li>
+                <li Class="CombatExtended.ToolCE">
+                    <label>muzzle</label>
+                    <capacities>
+                        <li>Poke</li>
+                    </capacities>
+                    <power>8</power>
+                    <cooldownTime>1.55</cooldownTime>
+                    <armorPenetrationBlunt>2.755</armorPenetrationBlunt>
+                    <linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+                </li>
+            </tools>
+        </value>
+    </Operation>
+
+    <!--===== KS-23M =====-->
+    <Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+        <defName>HRK_KS23M</defName>
+        <statBases>
+            <Mass>3.40</Mass>
+            <RangedWeapon_Cooldown>1.1</RangedWeapon_Cooldown>
+            <ShotSpread>0.14</ShotSpread>
+            <SwayFactor>1.14</SwayFactor>
+            <Bulk>6.50</Bulk>
+            <SightsEfficiency>1</SightsEfficiency>
+            <WorkToMake>12000</WorkToMake>
+        </statBases>
+        <costList>
+            <Steel>50</Steel>
+            <Chemfuel>10</Chemfuel>
+            <ComponentIndustrial>1</ComponentIndustrial>
+        </costList>
+        <Properties>
+            <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Bullet_23x75mmR_Buck</defaultProjectile>
+            <warmupTime>0.6</warmupTime>
+            <range>21</range>
+            <soundCast>HRK_Shot_KS23M</soundCast>
+            <soundCastTail>GunTail_Heavy</soundCastTail>
+            <muzzleFlashScale>9</muzzleFlashScale>
+            <recoilAmount>3.48</recoilAmount>
+        </Properties>
+        <AmmoUser>
+            <magazineSize>4</magazineSize>
+            <reloadOneAtATime>true</reloadOneAtATime>
+            <reloadTime>0.85</reloadTime>
+            <ammoSet>AmmoSet_23x75mmR</ammoSet>
+        </AmmoUser>
+        <FireModes>
+            <aiAimMode>AimedShot</aiAimMode>
+        </FireModes>
+        <weaponTags>
+            <li>CE_AI_BROOM</li>
+        </weaponTags>
+    </Operation>
+
+    <!--===== KS-23 =====-->
+    <Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+        <defName>HRK_KS23L</defName>
+        <statBases>
+            <Mass>3.85</Mass>
+            <RangedWeapon_Cooldown>1.1</RangedWeapon_Cooldown>
+            <ShotSpread>0.14</ShotSpread>
+            <SwayFactor>1.43</SwayFactor>
+            <Bulk>10.40</Bulk>
+            <SightsEfficiency>1</SightsEfficiency>
+            <WorkToMake>12500</WorkToMake>
+        </statBases>
+        <costList>
+            <Steel>60</Steel>
+            <Chemfuel>10</Chemfuel>
+            <ComponentIndustrial>1</ComponentIndustrial>
+        </costList>
+        <Properties>
+            <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Bullet_23x75mmR_Buck</defaultProjectile>
+            <warmupTime>0.9</warmupTime>
+            <range>25</range>
+            <soundCast>HRK_Shot_KS23M</soundCast>
+            <soundCastTail>GunTail_Heavy</soundCastTail>
+            <muzzleFlashScale>9</muzzleFlashScale>
+            <recoilAmount>3.24</recoilAmount>
+        </Properties>
+        <AmmoUser>
+            <magazineSize>4</magazineSize>
+            <reloadOneAtATime>true</reloadOneAtATime>
+            <reloadTime>0.85</reloadTime>
+            <ammoSet>AmmoSet_23x75mmR</ammoSet>
+        </AmmoUser>
+        <FireModes>
+            <aiAimMode>Snapshot</aiAimMode>
+        </FireModes>
+        <weaponTags>
+            <li>CE_AI_BROOM</li>
+        </weaponTags>
+    </Operation>
+
+    <!--===== KS-23 Charged =====-->
+    <Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+        <defName>HRK_KS23Charged</defName>
+        <statBases>
+            <Mass>9.40</Mass>
+            <RangedWeapon_Cooldown>0.95</RangedWeapon_Cooldown>
+            <ShotSpread>0.15</ShotSpread>
+            <SwayFactor>1.30</SwayFactor>
+            <Bulk>3.60</Bulk>
+            <SightsEfficiency>1.1</SightsEfficiency>
+            <WorkToMake>31500</WorkToMake>
+        </statBases>
+        <costList>
+            <Plasteel>45</Plasteel>
+            <Steel>50</Steel>
+            <Chemfuel>10</Chemfuel>
+            <ComponentIndustrial>6</ComponentIndustrial>
+        </costList>
+        <Properties>
+            <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+            <hasStandardCommand>true</hasStandardCommand>
+            <defaultProjectile>Bullet_23x75mmCharged</defaultProjectile>
+            <warmupTime>0.5</warmupTime>
+            <range>27</range>
+            <soundCast>HRK_Shot_KS23Charged</soundCast>
+            <soundCastTail>GunTail_Heavy</soundCastTail>
+            <muzzleFlashScale>9</muzzleFlashScale>
+            <recoilAmount>3.88</recoilAmount>
+        </Properties>
+        <AmmoUser>
+            <magazineSize>6</magazineSize>
+            <reloadOneAtATime>true</reloadOneAtATime>
+            <reloadTime>0.85</reloadTime>
+            <ammoSet>AmmoSet_23x75mmCharged</ammoSet>
+        </AmmoUser>
+        <FireModes>
+            <aiAimMode>Snapshot</aiAimMode>
+        </FireModes>
+        <weaponTags>
+            <li>CE_AI_BROOM</li>
+        </weaponTags>
+    </Operation>
+
+    <!--===== KS23 CE Sounds =====-->
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="HRK_KS23M" or defName="HRK_KS23L" or defName="HRK_KS23Charged"]/soundInteract</xpath>
+        <value>
+            <soundInteract>HRK_Reload_23x75mmTube</soundInteract>
+        </value>
+    </Operation>
+
+</Patch>
