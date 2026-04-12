@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <ThingDef ParentName="MedTimes_BuildingBaseTag">
+        <defName>MedTimes_Firepit</defName>
+        <label>Firepit</label>
+		<drawerType>MapMeshAndRealTime</drawerType>
+        <minifiedDef Inherit="False"/>
+        <thingCategories Inherit="False"/>
+        <thingClass>Building_WorkTable</thingClass>
+        <description>A non-portable wood conscious campfire. Produces little to no heat.</description>
+        <graphicData>
+            <texPath>Things/Building/Temperature/Firepit/MedTimes_Firepit</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>CutoutComplex</shaderType>
+            <drawSize>(1.1,1.1)</drawSize>
+            <drawRotated>false</drawRotated>
+            <allowFlip>false</allowFlip>
+        </graphicData>
+        <size>(1,1)</size>
+        <fillPercent>0.1</fillPercent>
+        <rotatable>true</rotatable>
+        <tickerType>Normal</tickerType>
+        <hasInteractionCell>True</hasInteractionCell>
+        <interactionCellOffset>(0,0,0)</interactionCellOffset>
+        <stuffCategories>
+            <li>Metallic</li>
+			<li>Stony</li>
+        </stuffCategories>
+        <costStuffCount>15</costStuffCount>
+        <statBases>
+            <WorkToBuild>300</WorkToBuild>
+            <Cleanliness>-10</Cleanliness>
+            <Flammability>0</Flammability>
+            <Mass>10</Mass>
+            <WorkTableWorkSpeedFactor>0.75</WorkTableWorkSpeedFactor>
+        </statBases>
+        <comps>
+            <li Class="CompProperties_Flickable" />
+            <li Class="CompProperties_Refuelable">
+                <fuelConsumptionRate>4.0</fuelConsumptionRate>
+                <fuelCapacity>20.0</fuelCapacity>
+                <fuelFilter>
+                    <thingDefs>
+                        <li>WoodLog</li>
+                    </thingDefs>
+                </fuelFilter>
+				<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+            </li>
+            <li Class="CompProperties_HeatPusher">
+                <compClass>CompHeatPusherPowered</compClass>
+                <heatPerSecond>2</heatPerSecond>
+                <heatPushMaxTemperature>28</heatPushMaxTemperature>
+            </li>
+        </comps>
+        <recipes>
+            <li>CookMealSimple</li>
+            <li>Make_Pemmican</li>
+            <li>BurnApparel</li>
+            <li>BurnDrugs</li>
+        </recipes>
+        <inspectorTabs>
+            <li>ITab_Bills</li>
+        </inspectorTabs>
+        <placeWorkers>
+            <li>PlaceWorker_Heater</li>
+        </placeWorkers>
+        <building>
+            <isMealSource>true</isMealSource>
+            <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+            <heatPerTickWhileWorking>5</heatPerTickWhileWorking>
+        </building>
+        <designationCategory>Production</designationCategory>
+        <researchPrerequisites>
+            <li>MedTimes_ContainedFire</li>
+        </researchPrerequisites>
+    </ThingDef>
+    <ThingDef ParentName="MedTimes_AshFireKicker">
+        <defName>MedTimes_CorpseBonfire</defName>
+        <label>Corpse Bonfire</label>
+        <thingClass>Building_WorkTable</thingClass>
+        <description>Originally described as a "Banefire", Bonfires are large controlled fires used in the disposal of corpses and bones. Eventually, Bonfires became a term to include not just corpses, but any trash or waste products which needed to be disposed of. Sometimes the plague rolls into town and kills half your colonist, other times a massive tribal attack leaves you with more corpses than you know what to do with. Either way, the Bonfire is the appropriate solution to you're excess corpse collection situation. Beware, however, because the bonfire provides significant de-buffs to both beauty and cleanliness in it's surrounding area.</description>
+        <altitudeLayer>Building</altitudeLayer>
+        <surfaceType>Item</surfaceType>
+        <size>(1,1)</size>
+        <graphicData>
+            <texPath>Things/Building/Temperature/Bonfire/MedTimes_CorpseBonfire</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawRotated>false</drawRotated>
+            <allowFlip>false</allowFlip>
+            <drawSize>(2,2)</drawSize>
+        </graphicData>
+        <uiIconPath>Things/Building/Temperature/Bonfire/MedTimes_CorpseBonfire</uiIconPath>
+        <costList>
+            <WoodLog>50</WoodLog>
+        </costList>
+        <statBases>
+            <MaxHitPoints>50</MaxHitPoints>
+            <WorkToBuild>300</WorkToBuild>
+            <Flammability>0</Flammability>
+            <Cleanliness>-50</Cleanliness>
+            <Beauty>-50</Beauty>
+            <MeditationFocusStrength>0.0</MeditationFocusStrength>
+        </statBases>
+        <useHitPoints>True</useHitPoints>
+        <hasInteractionCell>True</hasInteractionCell>
+        <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+        <tickerType>Normal</tickerType>
+        <designationCategory>Temperature</designationCategory>
+        <recipes>
+            <li>CremateCorpse</li>
+            <li>BurnApparel</li>
+            <li>BurnDrugs</li>
+        </recipes>
+        <inspectorTabs>
+            <li>ITab_Bills</li>
+        </inspectorTabs>
+        <comps>
+            <li Class="CompProperties_Refuelable">
+                <fuelConsumptionRate>500.0</fuelConsumptionRate>
+                <fuelCapacity>50.0</fuelCapacity>
+                <initialFuelPercent>1</initialFuelPercent>
+                <fuelConsumptionPerTickInRain>0.005</fuelConsumptionPerTickInRain>
+                <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+                <destroyOnNoFuel>true</destroyOnNoFuel>
+                <fuelFilter>
+                    <thingDefs>
+                        <li>Resource_Coal</li>
+                        <li>WoodLog</li>
+                    </thingDefs>
+                </fuelFilter>
+				<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+            </li>
+            <li Class="CompProperties_Glower">
+                <glowRadius>9</glowRadius>
+                <glowColor>(252,187,113,0)</glowColor>
+            </li>
+            <li Class="CompProperties_FireOverlay">
+                <fireSize>1.1</fireSize>
+                <offset>(0,0,0.25)</offset>
+            </li>
+            <li Class="CompProperties_HeatPusher">
+                <compClass>CompHeatPusherPowered</compClass>
+                <heatPerSecond>48</heatPerSecond>
+                <heatPushMaxTemperature>255</heatPushMaxTemperature>
+            </li>
+        </comps>
+        <building>
+            <heatPerTickWhileWorking>15</heatPerTickWhileWorking>
+        </building>
+        <researchPrerequisites>
+            <li>TS_BurialRites</li>
+        </researchPrerequisites>
+    </ThingDef>
+    <ThingDef ParentName="MedTimes_FireKicker">
+        <defName>MedTimes_StoneHearth</defName>
+        <label>Masonry stove</label>
+        <minifiedDef Inherit="False"/>
+        <thingCategories Inherit="False"/>
+        <thingClass>Building_WorkTable_HeatPush</thingClass>
+        <description>Your best most cost effective heating and light solution for individual bedrooms, Stone hearths are OP, they provide constant heat, light, can cook food(at no excess cost), act as a joy activity and can even be used as a gathering spot. The Stone Hearth is the heart of any Medieval home, be it Lord or Peasant, the hearth is what cooked the meals and maintained heat within the household. With a steady supply of wood, this hearth can keep you going in the most dire of times.</description>
+        <category>Building</category>
+        <graphicData>
+            <texPath>Things/Building/Temperature/StoneHearth/MedTimes_StoneHearth</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>CutoutComplex</shaderType>
+            <drawSize>(2,2)</drawSize>
+        </graphicData>
+        <uiIconPath>Things/Building/Temperature/StoneHearth/MedTimes_StoneHearth_Icon</uiIconPath>
+        <stuffCategories>
+            <li>Stony</li>
+        </stuffCategories>
+        <costStuffCount>75</costStuffCount>
+        <statBases>
+            <MaxHitPoints>200</MaxHitPoints>
+            <Flammability>0</Flammability>
+            <JoyGainFactor>1</JoyGainFactor>
+            <Beauty>15</Beauty>
+            <Mass>200</Mass>
+            <WorkTableWorkSpeedFactor>0.8</WorkTableWorkSpeedFactor>
+        </statBases>
+        <soundImpactDefault>BulletImpact_Ground</soundImpactDefault>
+        <socialPropernessMatters>true</socialPropernessMatters>
+        <fillPercent>0.25</fillPercent>
+        <comps>
+			<li Class="CompProperties_Facility">
+				<statOffsets>
+					<WorkTableWorkSpeedFactor>1.0</WorkTableWorkSpeedFactor>
+				</statOffsets>
+				<maxSimultaneous>1</maxSimultaneous>
+			</li>
+            <li Class="CompProperties_Refuelable">
+                <fuelConsumptionRate>10</fuelConsumptionRate>
+                <fuelCapacity>150.0</fuelCapacity>
+                <fuelFilter>
+                    <thingDefs>
+                        <li>Resource_Coal</li>
+                        <li>WoodLog</li>
+                    </thingDefs>
+                </fuelFilter>
+				<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+            </li>
+            <li Class="CompProperties_Glower">
+                <glowRadius>8</glowRadius>
+                <glowColor>(252,187,113,0)</glowColor>
+            </li>
+            <li Class="CompProperties_HeatPusher">
+                <compClass>CompHeatPusherPowered</compClass>
+                <heatPerSecond>15</heatPerSecond>
+                <heatPushMaxTemperature>20</heatPushMaxTemperature>
+            </li>
+        </comps>
+        <hasInteractionCell>True</hasInteractionCell>
+        <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+        <recipes>
+            <li>CookMealSimpleBulk</li>
+            <li>CookMealSimple</li>
+            <li>Make_Pemmican</li>
+        </recipes>
+        <inspectorTabs>
+            <li>ITab_Bills</li>
+        </inspectorTabs>
+        <building>
+            <joyKind>Meditative</joyKind>
+            <isMealSource>true</isMealSource>
+            <watchBuildingStandDistanceRange>
+                <min>3</min>
+                <max>3</max>
+            </watchBuildingStandDistanceRange>
+            <watchBuildingStandRectWidth>3</watchBuildingStandRectWidth>
+        </building>
+        <designationCategory>Furniture</designationCategory>
+        <researchPrerequisites>
+            <li>MedTimes_ReinforcedStructure</li>
+            <li>MedTimes_ContainedFire</li>
+        </researchPrerequisites>
+    </ThingDef>
+    <!-- (Medieval) Fancy Icebox -->
+    <ThingDef ParentName="MedTimes_BenchBaseTag">
+        <defName>MedTimes_Icebox</defName>
+        <label>Ice Box</label>
+		<drawerType>MapMeshAndRealTime</drawerType>
+        <thingClass>Building_Storage</thingClass>
+        <description>A traditional un-powered cooler that works by sticking Ice in a metal box. If you have enough of these you can bring a room's temperature down to just above freezing. Will run out of ice after only a few days. This one is fairly crude and tends to rust while leaking water all over the place</description>
+        <graphicData>
+            <texPath>Things/Building/Temperature/Icebox/MedTimes_Icebox</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <stuffCategories>
+            <li>Metallic</li>
+        </stuffCategories>
+        <costStuffCount>35</costStuffCount>
+        <statBases>
+            <WorkToBuild>600</WorkToBuild>
+            <Flammability>0</Flammability>
+            <Cleanliness>-10</Cleanliness>
+            <Beauty>-5</Beauty>
+            <Mass>60</Mass>
+        </statBases>		
+		<building>
+            <preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+            <ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
+            <defaultStorageSettings>
+                <priority>Important</priority>
+                <filter>
+                    <categories>
+                        <li>Root</li>
+                    </categories>
+                    <disallowedCategories>
+                        <li>EggsFertilized</li>
+                    </disallowedCategories>
+                </filter>
+            </defaultStorageSettings>
+        </building>
+        <inspectorTabs>
+            <li>ITab_Storage</li>
+        </inspectorTabs>
+        <surfaceType>Item</surfaceType>
+        <canOverlapZones>false</canOverlapZones>
+        <tickerType>Normal</tickerType>
+        <fillPercent>0.65</fillPercent>
+        <castEdgeShadows>true</castEdgeShadows>
+        <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+        <placeWorkers>
+            <li>PlaceWorker_CoolerSimple</li>
+        </placeWorkers>
+        <comps>
+            <li Class="CompProperties_Refuelable">
+                <fuelConsumptionRate>4.0</fuelConsumptionRate>
+                <fuelConsumptionPerTickInRain>0.00003</fuelConsumptionPerTickInRain>
+                <fuelCapacity>30.0</fuelCapacity>
+                <fuelFilter>
+                    <thingDefs>
+                        <li>MedTimes_Resource_IceBlocks</li>
+                    </thingDefs>
+                </fuelFilter>
+                <fuelIconPath>Things/Item/Resource/Ice/MedTimes_NoIceBlocks</fuelIconPath>
+				<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+            </li>
+            <li Class="CompProperties_HeatPusher">
+                <compClass>CompHeatPusherPowered</compClass>
+                <heatPerSecond>-10</heatPerSecond>
+                <heatPushMinTemperature>1</heatPushMinTemperature>
+            </li>
+            <li Class="EarlyTimes.CompProperties_Refrigerator" />
+        </comps>
+        <designationCategory>Temperature</designationCategory>
+        <researchPrerequisites>
+            <li>MedTimes_IceUsage</li>
+            <li>MedTimes_MedievalCrafting</li>
+        </researchPrerequisites>
+    </ThingDef>
+    <!-- (Medieval) Fancy Icebox -->
+    <ThingDef ParentName="MedTimes_BenchBaseTag">
+        <defName>MedTimes_IceboxFancy</defName>
+        <label>Fancy Ice Box</label>
+        <thingClass>Building_Storage</thingClass>
+		<drawerType>MapMeshAndRealTime</drawerType>
+        <description>A traditional un-powered cooler that works by sticking Ice in a metal box. This particular one is quite fancy, making it pretty to look at. It also has a place for melting Ice water to gather instead of pooling on the ground beneath it. If you have enough of these you can bring a room's temperature down to just above freezing. Will run out of ice after only a few days.</description>
+        <graphicData>
+            <texPath>Things/Building/Temperature/Icebox/MedTimes_Icebox_Fancy</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>CutoutComplex</shaderType>
+        </graphicData>
+        <stuffCategories>
+            <li>Metallic</li>
+        </stuffCategories>
+        <costStuffCount>30</costStuffCount>
+        <costList>
+            <WoodLog>10</WoodLog>
+            <Gold>10</Gold>
+        </costList>
+        <statBases>
+            <WorkToBuild>600</WorkToBuild>
+            <Flammability>0</Flammability>
+            <Beauty>10</Beauty>
+            <Mass>60</Mass>
+        </statBases>
+		<building>
+            <preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+            <ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
+            <defaultStorageSettings>
+                <priority>Important</priority>
+                <filter>
+                    <categories>
+                        <li>Root</li>
+                    </categories>
+                    <disallowedCategories>
+                        <li>EggsFertilized</li>
+                    </disallowedCategories>
+                </filter>
+            </defaultStorageSettings>
+        </building>
+        <inspectorTabs>
+            <li>ITab_Storage</li>
+        </inspectorTabs>
+        <surfaceType>Item</surfaceType>
+        <canOverlapZones>false</canOverlapZones>
+        <tickerType>Normal</tickerType>
+        <fillPercent>0.65</fillPercent>
+        <castEdgeShadows>true</castEdgeShadows>
+        <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+        <placeWorkers>
+            <li>PlaceWorker_CoolerSimple</li>
+        </placeWorkers>
+        <comps>
+            <li Class="CompProperties_Refuelable">
+                <fuelConsumptionRate>4.0</fuelConsumptionRate>
+                <fuelConsumptionPerTickInRain>0.00003</fuelConsumptionPerTickInRain>
+                <fuelCapacity>30.0</fuelCapacity>
+                <fuelFilter>
+                    <thingDefs>
+                        <li>MedTimes_Resource_IceBlocks</li>
+                    </thingDefs>
+                </fuelFilter>
+                <fuelIconPath>Things/Item/Resource/Ice/MedTimes_NoIceBlocks</fuelIconPath>
+				<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+            </li>
+            <li Class="CompProperties_HeatPusher">
+                <compClass>CompHeatPusherPowered</compClass>
+                <heatPerSecond>-10</heatPerSecond>
+                <heatPushMinTemperature>1</heatPushMinTemperature>
+            </li>
+            <li Class="EarlyTimes.CompProperties_Refrigerator" />
+        </comps>
+        <designationCategory>Temperature</designationCategory>
+        <researchPrerequisites>
+            <li>MedTimes_IceUsage</li>
+            <li>MedTimes_MedievalCrafting</li>
+        </researchPrerequisites>
+    </ThingDef>
+</Defs>

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- ==================== RWP Marshal Base Class ================= -->
+  <!-- According to Google, "Marshall" is for proper nouns and "Marshal" is the adjective -->
+  <FactionDef Name="RWP_MarshalFactionBase" Abstract="True" ParentName="FactionBase">
+    <defName>RWP_Faction_Marshal_Core</defName>
+    <pawnsPlural>marshalls</pawnsPlural>
+    <techLevel>Industrial</techLevel>
+    <backstoryCategories>
+      <li>Outlander</li>
+    </backstoryCategories>
+    <canMakeRandomly>true</canMakeRandomly>
+    <maxConfigurableAtWorldCreation>9999</maxConfigurableAtWorldCreation>
+    <rescueesCanJoin>true</rescueesCanJoin>
+    <canStageAttacks>true</canStageAttacks>
+    <canSiege>true</canSiege>
+    <maxPawnCostPerTotalPointsCurve>
+      <points>
+        <li>(0,35)</li>
+        <li>(70, 50)</li>
+        <li>(700, 100)</li>
+        <li>(1300, 150)</li>
+        <li>(100000, 10000)</li>
+      </points>
+    </maxPawnCostPerTotalPointsCurve>
+    <raidCommonalityFromPointsCurve>
+      <points>
+        <li>(0, 1)</li>
+        <!--Constant 1 at all points levels-->
+      </points>
+    </raidCommonalityFromPointsCurve>
+    <earliestRaidDays>120</earliestRaidDays>
+    <allowedCultures>
+      <li>Rustican</li>
+    </allowedCultures>
+    <visitorTraderKinds>
+      <li>Visitor_Outlander_Standard</li>
+    </visitorTraderKinds>
+    <caravanTraderKinds>
+      <li>RWP_Caravan_Combat</li>
+    </caravanTraderKinds>
+    <baseTraderKinds>
+      <li>RWP_Base_Town_Standard</li>
+    </baseTraderKinds>
+    <!--RIMWORLD MARSHALL SERVICE -->
+    <!-- TURTLESHROOM PRODUCTIONS -->
+    <requiredMemes>
+      <!-- Five thousand years and this ancient Faction remains ideological -->
+      <li MayRequire="Ludeon.RimWorld.Ideology">Structure_Ideological</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Individualist</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Loyalist</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Rancher</li>
+      <!-- Appears only if you have the Mod for it -->
+      <li MayRequire="Zezz.Altrumeme">Altruism</li>
+    </requiredMemes>
+    <disallowedMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudism</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Blindsight</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">FemaleSupremacy</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Cannibal</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Raider</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">HighLife</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Supremacist</li>
+      <!-- Forbiden Mod Memes -->
+      <li MayRequire="llunak.MorePrecepts">Pacifism</li>
+      <li MayRequire="VanillaExpanded.VMemesE">VME_Pacifist</li>
+      <li MayRequire="FalloutRedScare.FalloutRedScare">FRS_Structure_Socialist</li>
+      <li MayRequire="SZ.TW.New.GuoHun">SZ_Structure_CultureQiYuan</li>
+      <li MayRequire="Qux.factionhippie">PeaceLove</li>
+      <li MayRequire="VanillaExpanded.VMemesE">VME_Structure_Corporate</li>
+      <li MayRequire="VanillaExpanded.VMemesE">VME_Vegan</li>
+      <li MayRequire="Sarg.AlphaMemes">AM_NonViolence</li>
+    </disallowedMemes>
+    <disallowedPrecepts>
+      <!-- Bleeding Kansas, plus the Wild West was almost entirely a free territory -->
+      <!-- The Marshall Service enforced the law without approving abolitionism or slavery -->
+      <li MayRequire="Ludeon.RimWorld.Ideology">Slavery_Honorable</li>
+      <!-- Obvious -->
+      <li MayRequire="Ludeon.RimWorld.Ideology">Cannibalism_Preferred</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Cannibalism_RequiredStrong</li>
+      <!-- Vegetarianism? In MY cowboys? -->
+      <li MayRequire="Ludeon.RimWorld.Ideology">MeatEating_Abhorrent</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">MeatEating_Horrible</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">MeatEating_Disapproved</li>
+      <!-- Take all the rope in Texas, find the tallest tree... -->
+      <li MayRequire="Ludeon.RimWorld.Ideology">Execution_Abhorrent</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Execution_Horrible</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Execution_Required</li>
+      <!-- This ain't no Ram Ranch! Enforcers of the law do not run naked! -->
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Male_Mandatory</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Female_Mandatory</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Male_CoveringAnythingButGroinDisapproved</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Female_CoveringAnythingButGroinDisapproved</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Male_NoRules</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Female_NoRules</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Female_UncoveredGroinDisapproved</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Female_UncoveredGroinChestHairOrFaceDisapproved</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Male_UncoveredGroinChestHairOrFaceDisapproved</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Lovin_Prohibited</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Lovin_Horrible</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Lovin_SpouseOnly_Mild</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Lovin_SpouseOnly_Moderate</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Lovin_FreeApproved</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Lovin_Free</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">IdeoDiversity_Abhorrent</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">IdeoDiversity_Horrible</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">IdeoDiversity_Disapproved</li>
+      <!-- The following Precepts are only forbidden if you have the Mod -->
+      <li MayRequire="martinbaste.Ideo.XenoPrecept">XenoDiversity_Abhorrent</li>
+      <li MayRequire="martinbaste.Ideo.XenoPrecept">XenoDiversity_Horrible</li>
+      <li MayRequire="martinbaste.Ideo.XenoPrecept">XenoDiversity_Disapproved</li>
+    </disallowedPrecepts>
+    <allowedArrivalTemperatureRange>
+      <min>-999</min>
+      <max>999</max>
+    </allowedArrivalTemperatureRange>
+    <settlementNameMaker>NamerSettlementMarshal</settlementNameMaker>
+    <settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
+    <leaderForceGenerateNewPawn>true</leaderForceGenerateNewPawn>
+    <fixedLeaderKinds>
+      <li>RWP_Marshal_Boss</li>
+    </fixedLeaderKinds>
+  </FactionDef>
+  <!-- ==================== RWP Marshal Faction ================= -->
+  <FactionDef ParentName="RWP_MarshalFactionBase">
+    <defName>RWP_Faction_Marshal</defName>
+    <label>Law enforcement agency</label>
+    <description>This is the planet's chapter of the United States Marshals Service, a nationwide law enforcement agency of the former United States of America. For well over three thousand years, these brave lawmen have served as an organized source of law enforcement and civil authority on the desolate frontier; they are tasked with bringing all manner of outlaws to justice. \n \n Founded by the ancient United States of America on Old Earth, this millinea-old order initially existed to enforce the USA's national-level courts' orders across administrative sub-districts. Particularly, they were tasked with serving arrests and transporting the accused in state custody. At the peak of American dominance, Marshalls were dispatched on all of its planets with a human population to capture those who dishonored the planetary courts of American colonies. Then, as it is now, the Rim lacked the institutions and infrastructure that Core Worlds possessed, making them home to bandits that harrassed the nation's colonists; even after the fall of America, the Marshalls continue to drive back bandits even today. \n \n When the United States of America collapsed, the Marshalls continued their work, reorganizing into an independent, neutral paramilitary service (retaining its police hierarchy) that stop the scores of bandits and threats that endanger the good people and tribesmen of the planet. With no American courts for them to account to, the rechristened Rimworld Marshals Service owes its allegiance to the protection of the innocent, and, when the gunsmoke settles: a steak dinner, whiskey for their men, and beer for their horses at the local saloon.</description>
+    <pawnsPlural>marshals</pawnsPlural>
+    <requiredCountAtGameStart>1</requiredCountAtGameStart>
+    <settlementGenerationWeight>1</settlementGenerationWeight>
+    <mustStartOneEnemy>false</mustStartOneEnemy>
+    <fixedName>Rimworld Marshall Service</fixedName>
+    <leaderTitle>Chief Planetary Marshall</leaderTitle>
+    <leaderForceGenerateNewPawn>true</leaderForceGenerateNewPawn>
+    <fixedLeaderKinds>
+      <li>RWP_Marshal_Boss</li>
+    </fixedLeaderKinds>
+    <!-- ====== Faction Groups ====== -->
+    <pawnGroupMakers>
+      <li>
+        <kindDef>Peaceful</kindDef>
+        <options>
+          <RWP_Marshal_Sniper>12</RWP_Marshal_Sniper>
+          <RWP_Marshal_Rifleman>15</RWP_Marshal_Rifleman>
+          <RWP_Marshal_Gunslinger>18</RWP_Marshal_Gunslinger>
+          <TSP_RWP_Marshall_Surplus>1</TSP_RWP_Marshall_Surplus>
+        </options>
+      </li>
+      <!-- Trading Group -->
+      <li>
+        <kindDef>Trader</kindDef>
+        <traders>
+          <TSP_RWP_Marshall_Surplus>1</TSP_RWP_Marshall_Surplus>
+        </traders>
+        <carriers>
+          <Horse>200</Horse>
+          <Bison>1</Bison>
+        </carriers>
+        <guards>
+          <RWP_Marshal_Rifleman>4</RWP_Marshal_Rifleman>
+          <RWP_Marshal_Gunslinger>1</RWP_Marshal_Gunslinger>
+          <RWP_Marshal_Sniper>1</RWP_Marshal_Sniper>
+        </guards>
+      </li>
+      <!-- Small Scale Tier 1 Attack -->
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>100</commonality>
+        <disallowedStrategies>
+          <li>Siege</li>
+        </disallowedStrategies>
+        <options>
+          <RWP_Marshal_Rifleman>4</RWP_Marshal_Rifleman>
+          <RWP_Marshal_Gunslinger>4</RWP_Marshal_Gunslinger>
+        </options>
+      </li>
+      <!-- Small Scale Tier 2 Attack -->
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>50</commonality>
+        <disallowedStrategies>
+          <li>ImmediateAttack</li>
+          <li>ImmediateAttackSappers</li>
+          <li>Siege</li>
+        </disallowedStrategies>
+        <options>
+          <RWP_Marshal_Sniper>1</RWP_Marshal_Sniper>
+          <RWP_Marshal_Rifleman>5</RWP_Marshal_Rifleman>
+          <RWP_Marshal_Gunslinger>5</RWP_Marshal_Gunslinger>
+        </options>
+      </li>
+      <!-- Large Scale Attack -->
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>25</commonality>
+        <disallowedStrategies>
+          <li>Siege</li>
+        </disallowedStrategies>
+        <options>
+          <RWP_Marshal_Sniper>2</RWP_Marshal_Sniper>
+          <RWP_Marshal_Rifleman>5</RWP_Marshal_Rifleman>
+          <RWP_Marshal_Gunslinger>8</RWP_Marshal_Gunslinger>
+        </options>
+      </li>
+      <!-- Siege Scale Attack -->
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>15</commonality>
+        <disallowedStrategies>
+          <li>ImmediateAttackSmart</li>
+          <li>ImmediateAttack</li>
+          <li>ImmediateAttackSappers</li>
+          <li>StageThenAttack</li>
+        </disallowedStrategies>
+        <options>
+          <RWP_Marshal_Boss>1</RWP_Marshal_Boss>
+          <RWP_Marshal_Sniper>2</RWP_Marshal_Sniper>
+          <RWP_Marshal_Rifleman>6</RWP_Marshal_Rifleman>
+          <RWP_Marshal_Gunslinger>6</RWP_Marshal_Gunslinger>
+        </options>
+      </li>
+      <!-- Faction Base -->
+      <li>
+        <kindDef>Settlement</kindDef>
+        <options>
+          <RWP_Marshal_Boss>2</RWP_Marshal_Boss>
+          <RWP_Marshal_Sniper>4</RWP_Marshal_Sniper>
+          <RWP_Marshal_Rifleman>10</RWP_Marshal_Rifleman>
+          <RWP_Marshal_Gunslinger>8</RWP_Marshal_Gunslinger>
+          <TSP_RWP_Marshall_Surplus>0.006</TSP_RWP_Marshall_Surplus>
+        </options>
+      </li>
+    </pawnGroupMakers>
+    <factionIconPath>World/WorldObjects/Factions/RWP_Marshal</factionIconPath>
+  </FactionDef>
+</Defs>

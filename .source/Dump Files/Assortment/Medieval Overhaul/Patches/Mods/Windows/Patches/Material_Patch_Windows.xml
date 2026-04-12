@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="OpenWindow" or defName="LargeOpenWindow" or defName="HugeOpenWindow"]/costList/Steel</xpath>
+		<match Class="PatchOperationSetName">
+			<xpath>Defs/ThingDef[defName="OpenWindow" or defName="LargeOpenWindow" or defName="HugeOpenWindow"]/costList/Steel</xpath>
+			<name>DankPyon_IronIngot</name>
+		</match>
+	</Operation>
+
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="ReinforcedOpenWindow" or defName="LargeReinforcedOpenWindow"]/costList/Plasteel</xpath>
+		<match Class="PatchOperationSetName">
+			<xpath>Defs/ThingDef[defName="ReinforcedOpenWindow" or defName="LargeReinforcedOpenWindow"]/costList/Plasteel</xpath>
+			<name>Steel</name>
+		</match>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="ReinforcedOpenWindow" or	defName="LargeReinforcedOpenWindow"]/researchPrerequisites</xpath>
+		<value>
+			<researchPrerequisites>
+				<li>Glassworks</li>
+				<li>DankPyon_Steel</li>
+			</researchPrerequisites>
+		</value>
+	</Operation>
+
+</Patch>

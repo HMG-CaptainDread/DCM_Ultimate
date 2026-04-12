@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+                        <!-- SCENARIO SEEDS -->
+
+<!-- BATTLE BROTHERS -->
+    <Operation Class="PatchOperationAdd">
+        <success>Always</success>
+        <xpath>Defs/ScenarioDef[defName="DankPyon_MercenaryStart"]/scenario/parts</xpath>
+        <value>
+        <li Class="RandomVegetables.ScenPart_RandomSeedBundles">
+            <_itemCount>2</_itemCount>
+            <def>RandomSeedBundles</def>
+        </li>
+        <li Class="ProgressionAgriculture.ScenPart_StartingSeeds">
+            <def>Ferny_StartingSeeds</def>
+            <thingDef>Plant_Healroot_SeedBundle</thingDef>
+        </li>
+        <li Class="ProgressionAgriculture.ScenPart_StartingSeeds">
+            <def>Ferny_StartingSeeds</def>
+            <thingDef>Plant_Cotton_SeedBundle</thingDef>
+        </li>
+        </value>
+    </Operation>
+
+<!-- LONE WOLF -->
+    <Operation Class="PatchOperationAdd">
+        <success>Always</success>
+        <xpath>Defs/ScenarioDef[defName="DankPyon_LoneWolfStart"]/scenario/parts</xpath>
+        <value>
+        <li Class="RandomVegetables.ScenPart_RandomSeedBundles">
+            <_itemCount>1</_itemCount>
+            <def>RandomSeedBundles</def>
+        </li>
+        <li Class="ProgressionAgriculture.ScenPart_StartingSeeds">
+            <def>Ferny_StartingSeeds</def>
+            <thingDef>Plant_Healroot_SeedBundle</thingDef>
+        </li>
+        </value>
+    </Operation>
+
+<!-- TAVERN OWNER -->
+    <Operation Class="PatchOperationAdd">
+        <success>Always</success>
+        <xpath>Defs/ScenarioDef[defName="DankPyon_TavernOwnerStart"]/scenario/parts</xpath>
+        <value>
+        <li Class="RandomVegetables.ScenPart_RandomSeedBundles">
+            <_itemCount>2</_itemCount>
+            <def>RandomSeedBundles</def>
+        </li>
+        <li Class="ProgressionAgriculture.ScenPart_StartingSeeds">
+            <def>Ferny_StartingSeeds</def>
+            <thingDef>Plant_Healroot_SeedBundle</thingDef>
+        </li>
+        <li Class="ProgressionAgriculture.ScenPart_StartingSeeds">
+            <def>Ferny_StartingSeeds</def>
+            <thingDef>Plant_Cotton_SeedBundle</thingDef>
+        </li>
+        </value>
+    </Operation>
+
+
+
+
+
+
+                        <!-- REORGANIZE BUILDINGS -->
+                        
+
+      <Operation Class="PatchOperationReplace">
+          <success>Always</success>
+          <xpath>Defs/TerrainDef[defName="DankPyon_PlowedSoil"]/designationCategory</xpath>
+          <value>
+              <designationCategory>Ferny_Farming</designationCategory>
+          </value>
+      </Operation>
+      <Operation Class="PatchOperationReplace">
+          <success>Always</success>
+          <xpath>Defs/ThingDef[defName="DankPyon_Post"]/designationCategory</xpath>
+          <value>
+              <designationCategory>Ferny_Farming</designationCategory>
+          </value>
+      </Operation>
+      <Operation Class="PatchOperationReplace">
+          <success>Always</success>
+          <xpath>Defs/ThingDef[defName="DankPyon_GardeningBox"]/designationCategory</xpath>
+          <value>
+              <designationCategory>Ferny_Farming</designationCategory>
+          </value>
+      </Operation>
+    <Operation Class="PatchOperationReplace">
+        <success>Always</success>
+        <xpath>Defs/ThingDef[defName="DankPyon_Apiary"]/designationCategory</xpath>
+        <value>
+            <designationCategory>Ferny_Farming</designationCategory>
+        </value>
+    </Operation>
+
+
+                        <!-- FUCK THESE RESEARCH PROJECTS -->
+      <Operation Class="PatchOperationRemove">
+          <success>Always</success>
+          <xpath>Defs/ResearchProjectDef[defName="DankPyon_IntermediateAgriculture"]</xpath>
+      </Operation>
+      <Operation Class="PatchOperationRemove">
+          <success>Always</success>
+          <xpath>Defs/ResearchProjectDef[defName="DankPyon_AdvancedAgriculture"]</xpath>
+      </Operation>
+      <Operation Class="PatchOperationRemove">
+          <success>Always</success>
+          <xpath>Defs/ResearchProjectDef[defName="DankPyon_TreeGriffonBerry"]</xpath>
+      </Operation>
+
+
+                        <!-- VE PLANTS OVERLAP -->
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Plants Expanded</li>
+		</mods>
+            <match Class="PatchOperationSequence">
+                <operations>
+                <li Class="PatchOperationRemove">
+                    <xpath>Defs/TerrainDef[defName="VCE_TilledSoil"]/designationCategory</xpath>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>/Defs</xpath>
+                    <value>
+                    <ReplaceLib.ReplacerDef>
+                        <defName>MedievalOverhaul_VEPlants</defName>
+                        <replacers>
+                            <li>
+                                <replace>DankPyon_RawPumpkins</replace>
+                                <with>VCE_RawPumpkin</with>
+                            </li>
+                            <li>
+                                <replace>DankPyon_Plant_Pumpkins</replace>
+                                <with>VCE_Pumpkin</with>
+                            </li>
+                            <li>
+                                <replace>DankPyon_RawOnions</replace>
+                                <with>VCE_RawOnion</with>
+                            </li>
+                            <li>
+                                <replace>DankPyon_Plant_Onions</replace>
+                                <with>VCE_Onion</with>
+                            </li>
+                            <li>
+                                <replace>DankPyon_RawTomatoes</replace>
+                                <with>VCE_RawTomatoes</with>
+                            </li>
+                            <li>
+                                <replace>DankPyon_Plant_Tomatoes</replace>
+                                <with>VCE_Tomato</with>
+                            </li>
+                            <li>
+                                <replace>VCE_AppleTree</replace>
+                                <with>DankPyon_Tree_Apple</with>
+                            </li>
+                            <li>
+                                <replace>VCE_RawApple</replace>
+                                <with>DankPyon_RawApples</with>
+                            </li>
+                        </replacers>
+                    </ReplaceLib.ReplacerDef>
+                    </value>
+                </li>
+                </operations>
+		</match>
+	</Operation>
+
+
+
+
+                        <!-- VE PLANTS MORE PLANTS OVERLAP -->
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Plants Expanded - More Plants</li>
+		</mods>
+            <match Class="PatchOperationSequence">
+                <operations>
+                <li Class="PatchOperationAdd">
+                    <xpath>/Defs</xpath>
+                    <value>
+                    <ReplaceLib.ReplacerDef>
+                        <defName>MedievalOverhaul_VEMorePlants</defName>
+                        <replacers>
+                            <li>
+                                <replace>DankPyon_RawCarrots</replace>
+                                <with>VCE_RawCarrot</with>
+                            </li>
+                            <li>
+                                <replace>DankPyon_Plant_Carrots</replace>
+                                <with>VCE_Carrot</with>
+                            </li>
+                            <li>
+                                <replace>DankPyon_RawGarlic</replace>
+                                <with>VCE_RawGarlic</with>
+                            </li>
+                            <li>
+                                <replace>DankPyon_Plant_Garlic</replace>
+                                <with>VCE_Garlic</with>
+                            </li>
+                        </replacers>
+                    </ReplaceLib.ReplacerDef>
+                    </value>
+                </li>
+                </operations>
+		</match>
+	</Operation>
+
+
+
+      <Operation Class="PatchOperationReplace">
+          <success>Always</success>
+          <xpath>Defs/ThingDef[defName="DankPyon_Post"]/researchPrerequisites</xpath>
+          <value>
+            <researchPrerequisites>
+                <li>DankPyon_BasicAgriculture</li>
+            </researchPrerequisites>
+          </value>
+      </Operation>
+
+
+
+
+                        <!-- VFE FARMING OVERLAP -->
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Furniture Expanded - Farming</li>
+		</mods>
+            <match Class="PatchOperationSequence">
+                <operations>
+
+
+
+
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="DankPyon_GardeningBox"]/label</xpath>
+                    <value>
+                        <label>tall planter box</label>
+                    </value>
+                </li>
+
+
+
+
+
+
+                <li Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ThingDef[defName="VFE_PlanterBox"]/researchPrerequisites</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationReplace">
+                                <xpath>/Defs/ThingDef[defName="VFE_PlanterBox"]/researchPrerequisites</xpath>
+                                <value>
+                                    <researchPrerequisites>
+                                        <li>DankPyon_BasicAgriculture</li>
+                                    </researchPrerequisites>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ThingDef[defName="VFE_PlanterBox"]</xpath>
+                                <value>
+                                    <researchPrerequisites>
+                                        <li>DankPyon_BasicAgriculture</li>
+                                    </researchPrerequisites>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </li>
+
+
+
+                <li Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ThingDef[defName="VFE_PlanterBox_Tilable"]/researchPrerequisites</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationReplace">
+                                <xpath>/Defs/ThingDef[defName="VFE_PlanterBox_Tilable"]/researchPrerequisites</xpath>
+                                <value>
+                                    <researchPrerequisites>
+                                        <li>DankPyon_BasicAgriculture</li>
+                                    </researchPrerequisites>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ThingDef[defName="VFE_PlanterBox_Tilable"]</xpath>
+                                <value>
+                                    <researchPrerequisites>
+                                        <li>DankPyon_BasicAgriculture</li>
+                                    </researchPrerequisites>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+                </li>
+
+
+
+
+
+
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="VFE_Scarecrow"]/researchPrerequisites</xpath>
+                        <value>
+                            <researchPrerequisites>
+                                <li>DankPyon_BasicAgriculture</li>
+                            </researchPrerequisites>
+                        </value>
+                </li>
+                <li Class="PatchOperationRemove">
+                    <xpath>Defs/ResearchProjectDef[defName="VFE_Res_FarmingTechniques"]</xpath>
+                </li>
+
+
+
+
+
+                </operations>
+		</match>
+	</Operation>
+
+
+                        <!-- VFE FARMING OVERLAP -->
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Brewing Expanded - Coffees and Teas</li>
+		</mods>
+            <match Class="PatchOperationSequence">
+                <operations>
+                    <li Class="PatchOperationFindMod">
+                        <mods>
+                            <li>Vanilla Plants Expanded</li>
+                        </mods>
+                            <match Class="PatchOperationSequence">
+                                <operations>
+                                    <li Class="PatchOperationAdd">
+                                        <xpath>/Defs</xpath>
+                                        <value>
+                                        <ReplaceLib.ReplacerDef>
+                                            <defName>MedievalOverhaul_VEBrewing_Agriculture</defName>
+                                            <replacers>
+                                                <li>
+                                                    <replace>VBE_LemonTree</replace>
+                                                    <with>DankPyon_Tree_Lemon</with>
+                                                </li>
+                                                <li>
+                                                    <replace>VCE_RawLemon</replace>
+                                                    <with>DankPyon_RawLemons</with>
+                                                </li>
+                                            </replacers>
+                                        </ReplaceLib.ReplacerDef>
+                                        </value>
+                                    </li>
+                                </operations>
+                            </match>
+                    </li>
+                </operations>
+		</match>
+	</Operation>
+<!-- 
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Factions Expanded - Medieval 2</li>
+		</mods>
+            <match Class="PatchOperationSequence">
+                <operations>
+                <li Class="PatchOperationAdd">
+                    <xpath>/Defs</xpath>
+                    <value>
+                    <ReplaceLib.ReplacerDef>
+                        <defName>MedievalOverhaul_VFEMedieval2_Agriculture</defName>
+                        <replacers>
+                            <li>
+                                <replace>DankPyon_Apiary</replace>
+                                <with>VFEM2_Apiary</with>
+                            </li>
+                            <li>
+                                <replace>VFEM2_Honey</replace>
+                                <with>DankPyon_Honey</with>
+                            </li>
+                        </replacers>
+                    </ReplaceLib.ReplacerDef>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="DankPyon_Honeycomb"]/label</xpath>
+                        <value>
+                            <label>honeycomb</label>
+                        </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="DankPyon_Honeycomb"]/description</xpath>
+                        <value>
+                            <description>Raw honeycombs which can be extracted to gain wax and honey.</description>
+                        </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="DankPyon_Honey"]/label</xpath>
+                        <value>
+                            <label>honey</label>
+                        </value>
+                </li>
+
+
+                </operations>
+		</match>
+	</Operation> -->
+
+</Patch>

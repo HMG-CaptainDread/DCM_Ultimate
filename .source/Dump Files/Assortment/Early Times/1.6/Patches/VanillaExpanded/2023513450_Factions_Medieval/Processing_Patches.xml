@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>Vanilla Factions Expanded - Medieval</li>
+		<li>Vanilla Factions Expanded - Medieval (Fork)</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/ThingDef[defName = "VFEM_SmokedMeat"]</xpath>		
+			</li>
+			
+			<!--li Class="PatchOperationRemove"> it does not pay off
+				<xpath>/Defs/ThingDef[defName = "MedTimes_Smokehouse"]</xpath>		
+			</li-->
+			
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ItemProcessor.CombinationDef[defName = "VFEM_SmokerMeatToSmokedMeat"]/result</xpath>		
+				<value>
+					<result>MedTimes_MealJerkedMeats</result>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ItemProcessor.CombinationDef[defName = "VFEM_SmokerMeatToSmokedMeat"]/disallowedThingDefs</xpath>		
+				<value>
+					<disallowedThingDefs>
+						<li>MedTimes_MealJerkedMeats</li>
+					</disallowedThingDefs>
+				</value>
+			</li>
+		</operations>
+	</match>
+  </Operation>
+  
+</Patch>
+
+
+
+

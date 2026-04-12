@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Alpha Bees</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ResearchProjectDef[defName="RB_BasicBeekeeping"]</xpath>
+					<value>
+						<prerequisites>
+						  <li>TS_Agriculture</li>
+						</prerequisites>
+					</value>
+				</li>	
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ResearchProjectDef[defName="RB_BeeswaxLighting"]/prerequisites</xpath>
+					<value>
+						  <li>MedTimes_WaxUsage</li>
+					</value>
+				</li>	
+				
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ResearchProjectDef[defName="RB_ClimatizedBeehouses"]/prerequisites</xpath>
+					<value>
+						  <li>MedTimes_Mechanization</li>
+					</value>
+				</li>	
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ResearchProjectDef[defName="RB_ClimatizedBeehouses"]</xpath>
+					<value>
+						<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+					</value>
+				</li>	
+				
+				<li Class="PatchOperationRemove">
+					<xpath>/Defs/ResearchProjectDef[defName="RB_AdvancedBeehouses"]/requiredResearchFacilities</xpath>
+				</li>
+				
+				<li Class="PatchOperationRemove">
+					<xpath>/Defs/ResearchProjectDef[defName="RB_AdvancedCentrifugation"]/requiredResearchFacilities</xpath>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ResearchProjectDef[defName="RB_AdvancedCentrifugation"]/prerequisites</xpath>
+					<value>
+						<prerequisites>
+						  <li>RB_BasicBeekeeping</li>
+						</prerequisites>
+					</value>
+				</li>	
+				
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ResearchProjectDef[defName="RB_AdvancedClimatization"]/prerequisites</xpath>
+					<value>
+						  <li>RB_ClimatizedBeehouses</li>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ResearchProjectDef[defName="RB_AdvancedClimatization"]/researchViewX</xpath>
+					<value>
+						<researchViewX>3</researchViewX>
+					</value>
+				</li>	
+			</operations>
+		</match>
+	</Operation>
+</Patch>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+	
+	<Operation Class="PatchOperationSequence">
+	  <success>Always</success>
+	  <operations>
+		<li Class="PatchOperationTest">
+			<xpath>/Defs/ResearchProjectDef[defName="Pemmican"]</xpath>
+		</li>
+		<li Class="PatchOperationRemove">
+			<xpath>/Defs/ResearchProjectDef[defName="Pemmican"]</xpath>
+		</li>
+	  </operations>
+	</Operation>
+  
+   <Operation Class="PatchOperationAdd">
+    <xpath>*/ResearchProjectDef[defName="PassiveCooler"]</xpath>
+    <value>
+      <prerequisites>
+        <li>MedTimes_IceUsage</li>
+      </prerequisites>
+    </value>
+  </Operation>
+  
+  
+	<!-- Agriculture -->
+	
+  <Operation Class="PatchOperationAdd">
+    <xpath>*/ThingDef[defName = "Plant_Rice"]/plant</xpath>
+    <value>
+      <sowResearchPrerequisites>
+        <li>TS_Agriculture</li>
+      </sowResearchPrerequisites>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>*/ThingDef[defName = "Plant_Potato"]/plant</xpath>
+    <value>
+      <sowResearchPrerequisites>
+        <li>TS_Agriculture</li>
+      </sowResearchPrerequisites>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>*/ThingDef[defName = "Plant_Corn"]/plant</xpath>
+    <value>
+      <sowResearchPrerequisites>
+        <li>TS_Agriculture</li>
+      </sowResearchPrerequisites>
+    </value>
+  </Operation>
+  
+  <Operation Class="PatchOperationAdd">
+    <xpath>*/ThingDef[defName = "Plant_Haygrass"]/plant</xpath>
+    <value>
+      <sowResearchPrerequisites>
+        <li>TS_Agriculture</li>
+      </sowResearchPrerequisites>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>*/ThingDef[defName = "Plant_Cotton"]/plant</xpath>
+    <value>
+      <sowResearchPrerequisites>
+        <li>TS_Agriculture</li>
+      </sowResearchPrerequisites>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>*/ThingDef[defName = "Plant_Hops"]/plant</xpath>
+    <value>
+      <sowResearchPrerequisites>
+        <li>TS_Agriculture</li>
+      </sowResearchPrerequisites>
+    </value>
+  </Operation>  
+  
+  <Operation Class="PatchOperationAdd">
+    <xpath>*/ThingDef[defName = "Campfire"]</xpath>
+    <value>
+      <researchPrerequisites>
+        <li>TS_Firemaking</li>
+      </researchPrerequisites>
+    </value>
+  </Operation>
+  
+    <Operation Class="PatchOperationAdd">
+    <xpath>*/ThingDef[defName = "TorchLamp"]</xpath>
+    <value>
+      <researchPrerequisites>
+        <li>TS_Firemaking</li>
+      </researchPrerequisites>
+    </value>
+  </Operation>
+  
+    <Operation Class="PatchOperationAdd">
+    <xpath>*/ThingDef[defName = "ButcherSpot"]</xpath>
+    <value>
+      <researchPrerequisites>
+        <li>TS_PrimitiveButchering</li>
+      </researchPrerequisites>
+    </value>
+  </Operation>
+  
+  <Operation Class="PatchOperationAdd">
+    <xpath>*/ThingDef[defName = "Grave"]</xpath>
+    <value>
+      <researchPrerequisites>
+        <li>TS_BurialRites</li>
+      </researchPrerequisites>
+    </value>
+  </Operation>
+ 
+  <Operation Class="PatchOperationAdd">
+    <xpath>*/ThingDef[defName = "CraftingSpot"]</xpath>
+    <value>
+      <researchPrerequisites>
+        <li>TS_Crafting</li>
+      </researchPrerequisites>
+    </value>
+  </Operation>
+  
+  	<Operation Class="PatchOperationConditional">
+		<xpath>/Defs/ThingDef[defName = "MeleeWeapon_Club"]/recipeMaker/researchPrerequisite</xpath>
+		<match Class="PatchOperationReplace">
+			<xpath>/Defs/ThingDef[defName = "MeleeWeapon_Club"]/recipeMaker/researchPrerequisite</xpath>
+			<value>
+				<researchPrerequisite>TS_Crafting</researchPrerequisite>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[defName = "MeleeWeapon_Club"]/recipeMaker</xpath>
+			<value>
+				<researchPrerequisite>TS_Crafting</researchPrerequisite>
+			</value>
+		</nomatch>
+	</Operation>
+  
+
+</Patch>

@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo11x59mmRGras</defName>
+		<label>11x59mmR Gras</label>
+		<parent>AmmoPistols</parent>
+		<iconPath>UI/Icons/ThingCategories/CaliberPistol</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.coldwar.chinavietnam,cgf1.comradespack.rifles">
+		<defName>AmmoSet_11x59mmRGras</defName>
+		<label>11x59mmR Gras</label>
+		<ammoTypes>
+			<Ammo_11x59mmRGras_FMJ>Bullet_11x59mmRGras_FMJ</Ammo_11x59mmRGras_FMJ>
+			<Ammo_11x59mmRGras_AP>Bullet_11x59mmRGras_AP</Ammo_11x59mmRGras_AP>
+			<Ammo_11x59mmRGras_HP>Bullet_11x59mmRGras_HP</Ammo_11x59mmRGras_HP>			
+		</ammoTypes>
+		<similarTo>AmmoSet_Pistol</similarTo>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="11x59mmRGrasBase" ParentName="SmallAmmoBase" Abstract="True" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.coldwar.chinavietnam,cgf1.comradespack.rifles">
+		<description>Obsolete rimfire cartridge used in bolt-action rifles.</description>
+		<statBases>
+			<Mass>0.041</Mass>
+			<Bulk>0.04</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo11x59mmRGras</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="11x59mmRGrasBase" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.coldwar.chinavietnam,cgf1.comradespack.rifles">
+		<defName>Ammo_11x59mmRGras_FMJ</defName>
+		<label>11x59mmR Gras cartridge (FMJ)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/FMJ</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.17</MarketValue>
+		</statBases>
+		<ammoClass>FullMetalJacket</ammoClass>
+		<cookOffProjectile>Bullet_11x59mmRGras_FMJ</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="11x59mmRGrasBase" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.coldwar.chinavietnam,cgf1.comradespack.rifles">
+		<defName>Ammo_11x59mmRGras_AP</defName>
+		<label>11x59mmR Gras cartridge (AP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/AP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.17</MarketValue>
+		</statBases>
+		<ammoClass>ArmorPiercing</ammoClass>
+		<cookOffProjectile>Bullet_11x59mmRGras_AP</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="11x59mmRGrasBase" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.coldwar.chinavietnam,cgf1.comradespack.rifles">
+		<defName>Ammo_11x59mmRGras_HP</defName>
+		<label>11x59mmR Gras cartridge (HP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/HP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.17</MarketValue>
+		</statBases>
+		<ammoClass>HollowPoint</ammoClass>
+		<cookOffProjectile>Bullet_11x59mmRGras_HP</cookOffProjectile>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="Base11x59mmRGrasBullet" ParentName="BaseBulletCE" Abstract="true" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.coldwar.chinavietnam,cgf1.comradespack.rifles">
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>91</speed>
+			<dropsCasings>true</dropsCasings>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base11x59mmRGrasBullet" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.coldwar.chinavietnam,cgf1.comradespack.rifles">
+		<defName>Bullet_11x59mmRGras_FMJ</defName>
+		<label>11x59mmR Gras bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>20</damageAmountBase>
+			<armorPenetrationSharp>6</armorPenetrationSharp>
+			<armorPenetrationBlunt>51.76</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base11x59mmRGrasBullet" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.coldwar.chinavietnam,cgf1.comradespack.rifles">
+		<defName>Bullet_11x59mmRGras_AP</defName>
+		<label>11x59mmR Gras bullet (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>13</damageAmountBase>
+			<armorPenetrationSharp>12</armorPenetrationSharp>
+			<armorPenetrationBlunt>51.76</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base11x59mmRGrasBullet" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.coldwar.chinavietnam,cgf1.comradespack.rifles">
+		<defName>Bullet_11x59mmRGras_HP</defName>
+		<label>11x59mmR Gras bullet (HP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>26</damageAmountBase>
+			<armorPenetrationSharp>3</armorPenetrationSharp>
+			<armorPenetrationBlunt>51.76</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.coldwar.chinavietnam,cgf1.comradespack.rifles">
+		<defName>MakeAmmo_11x59mmRGras_FMJ</defName>
+		<label>make 11x59mmR Gras cartridge x500</label>
+		<description>Craft 500 11x59mmR Gras cartridges.</description>
+		<jobString>Making 11x59mmR Gras cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>42</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_11x59mmRGras_FMJ>500</Ammo_11x59mmRGras_FMJ>
+		</products>
+		<workAmount>4200</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.coldwar.chinavietnam,cgf1.comradespack.rifles">
+		<defName>MakeAmmo_11x59mmRGras_AP</defName>
+		<label>make 11x59mmR Gras (AP) cartridge x500</label>
+		<description>Craft 500 11x59mmR Gras (AP) cartridges.</description>
+		<jobString>Making 11x59mmR Gras (AP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>42</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_11x59mmRGras_AP>500</Ammo_11x59mmRGras_AP>
+		</products>
+		<workAmount>5040</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.coldwar.chinavietnam,cgf1.comradespack.rifles">
+		<defName>MakeAmmo_11x59mmRGras_HP</defName>
+		<label>make 11x59mmR Gras (HP) cartridge x500</label>
+		<description>Craft 500 11x59mmR Gras (HP) cartridges.</description>
+		<jobString>Making 11x59mmR Gras (HP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>42</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_11x59mmRGras_HP>500</Ammo_11x59mmRGras_HP>
+		</products>
+		<workAmount>4200</workAmount>
+	</RecipeDef>
+
+</Defs>

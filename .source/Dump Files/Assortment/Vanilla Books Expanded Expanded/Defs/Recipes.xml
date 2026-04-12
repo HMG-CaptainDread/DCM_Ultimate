@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <RecipeDef>
+    <defName>VanillaBooksExpandedExpanded_BurnBooks</defName>
+    <label>burn books</label>
+    <description>Burn unwanted books to completely destroy them.</description>
+    <jobString>Burning books.</jobString>
+    <workAmount>60</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <requiredGiverWorkType>Hauling</requiredGiverWorkType>
+    <effectWorking>Cremate</effectWorking>
+    <soundWorking>Recipe_Cremate</soundWorking>
+    <ignoreIngredientCountTakeEntireStacks>true</ignoreIngredientCountTakeEntireStacks>
+    <ingredients>
+      <li>
+        <filter>
+          <categories>
+            <li>VBE_Books</li>
+          </categories>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <categories>
+        <li>VBE_Books</li>
+      </categories>
+    </fixedIngredientFilter>
+  </RecipeDef>
+  <WorkGiverDef>
+    <defName>VanillaBooksExpandedExpanded_DoBillsPrintingPress</defName>
+    <label>operate printing press</label>
+    <giverClass>WorkGiver_DoBill</giverClass>
+    <workType>VBE_Writing</workType>
+    <priorityInType>200</priorityInType>
+    <fixedBillGiverDefs>
+      <li>VanillaBooksExpandedExpanded_PrintingPressElectric</li>
+      <li>VanillaBooksExpandedExpanded_PrintingPressManual</li>
+    </fixedBillGiverDefs>
+    <verb>print</verb>
+    <gerund>printing at</gerund>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+    <prioritizeSustains>true</prioritizeSustains>
+  </WorkGiverDef>
+  <ThingDef>
+    <defName>VanillaBooksExpandedExpanded_CopyBookPlaceholder</defName>
+    <label>copied book</label>
+    <description>This placeholder item will be replaced with a copy of the book used as an ingredient for this recipe.</description>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <texPath>Things/Item/BookIntellectual</texPath>
+    </graphicData>
+    <thingClass>VanillaBooksExpanded.Book</thingClass>
+  </ThingDef>
+  <RecipeDef>
+    <defName>VanillaBooksExpandedExpanded_PrintCopiedBook</defName>
+    <label>copy book</label>
+    <description>Use the printing press to make a copy of a book.</description>
+    <jobString>Copying a book.</jobString>
+    <workAmount>12000</workAmount>
+    <workerClass>VanillaBooksExpandedExpanded.RecipeWorker_CopyBook</workerClass>
+    <workerCounterClass>VanillaBooksExpandedExpanded.RecipeWorkerCounter_CopyBook</workerCounterClass>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <requiredGiverWorkType>VBE_Writing</requiredGiverWorkType>
+    <effectWorking>Sculpt</effectWorking>
+    <soundWorking>Recipe_Sculpt</soundWorking>
+    <recipeUsers>
+      <li>VanillaBooksExpandedExpanded_PrintingPressElectric</li>
+      <li>VanillaBooksExpandedExpanded_PrintingPressManual</li>
+    </recipeUsers>
+    <productHasIngredientStuff>true</productHasIngredientStuff>
+    <ingredients>
+      <li>
+        <filter>
+          <stuffCategoriesToAllow>
+            <li>Leathery</li>
+          </stuffCategoriesToAllow>
+        </filter>
+        <count>20</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Cloth</li>
+          </thingDefs>
+        </filter>
+        <count>75</count>
+      </li>
+      <li>
+        <filter>
+          <customSummary>copyable book (not consumed)</customSummary>
+          <allowWithComp>VanillaBooksExpandedExpanded.CompCopiedBook</allowWithComp>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <allowWithComp>VanillaBooksExpandedExpanded.CompCopiedBook</allowWithComp>
+      <stuffCategoriesToAllow>
+        <li>Leathery</li>
+      </stuffCategoriesToAllow>
+    </fixedIngredientFilter>
+    <products>
+      <VanillaBooksExpandedExpanded_CopyBookPlaceholder>1</VanillaBooksExpandedExpanded_CopyBookPlaceholder>
+    </products>
+  </RecipeDef>
+  <RecipeDef>
+    <defName>VanillaBooksExpandedExpanded_PrintCopiedBookFewest</defName>
+    <label>copy book with fewest copies</label>
+    <description>Use the printing press to make a copy of the book that has the fewest currently-existing copies in the colony.</description>
+    <jobString>Copying a book.</jobString>
+    <workAmount>12000</workAmount>
+    <workerClass>VanillaBooksExpandedExpanded.RecipeWorker_CopyBook</workerClass>
+    <workerCounterClass>VanillaBooksExpandedExpanded.RecipeWorkerCounter_CopyBookFewest</workerCounterClass>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <requiredGiverWorkType>VBE_Writing</requiredGiverWorkType>
+    <effectWorking>Sculpt</effectWorking>
+    <soundWorking>Recipe_Sculpt</soundWorking>
+    <recipeUsers>
+      <li>VanillaBooksExpandedExpanded_PrintingPressElectric</li>
+      <li>VanillaBooksExpandedExpanded_PrintingPressManual</li>
+    </recipeUsers>
+    <productHasIngredientStuff>true</productHasIngredientStuff>
+    <ingredients>
+      <li>
+        <filter>
+          <stuffCategoriesToAllow>
+            <li>Leathery</li>
+          </stuffCategoriesToAllow>
+        </filter>
+        <count>20</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Cloth</li>
+          </thingDefs>
+        </filter>
+        <count>75</count>
+      </li>
+      <li>
+        <filter>
+          <customSummary>copyable book (not consumed)</customSummary>
+          <allowWithComp>VanillaBooksExpandedExpanded.CompCopiedBook</allowWithComp>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <allowWithComp>VanillaBooksExpandedExpanded.CompCopiedBook</allowWithComp>
+      <stuffCategoriesToAllow>
+        <li>Leathery</li>
+      </stuffCategoriesToAllow>
+    </fixedIngredientFilter>
+    <products>
+      <VanillaBooksExpandedExpanded_CopyBookPlaceholder>1</VanillaBooksExpandedExpanded_CopyBookPlaceholder>
+    </products>
+  </RecipeDef>
+</Defs>

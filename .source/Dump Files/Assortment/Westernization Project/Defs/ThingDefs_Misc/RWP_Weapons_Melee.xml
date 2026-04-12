@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef Name="RWPBaseMeleeWeapon" Abstract="True" ParentName="BaseWeapon">
+    <techLevel>Industrial</techLevel>
+    <smeltable>true</smeltable>
+    <tradeTags>
+      <li>RWP_Gear</li>
+    </tradeTags>
+    <thingCategories>
+      <li>WeaponsMelee</li>
+    </thingCategories>
+    <comps>
+      <li>
+        <compClass>CompQuality</compClass>
+      </li>
+      <li Class="CompProperties_Art">
+        <nameMaker>NamerArtWeaponMelee</nameMaker>
+        <descriptionMaker>ArtDescription_WeaponMelee</descriptionMaker>
+        <minQualityForArtistic>Excellent</minQualityForArtistic>
+      </li>
+    </comps>
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <recipeUsers>
+        <li>ElectricSmithy</li>
+        <li>FueledSmithy</li>
+      </recipeUsers>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
+    </recipeMaker>
+    <inspectorTabs>
+      <li>ITab_Art</li>
+    </inspectorTabs>
+  </ThingDef>
+  <ThingDef Name="RWPBaseMeleeWeapon_Sharp" ParentName="RWPBaseMeleeWeapon" Abstract="True">
+    <recipeMaker>
+      <defaultIngredientFilter>
+        <categories>
+          <li>Root</li>
+        </categories>
+        <disallowedThingDefs>
+          <li>Silver</li>
+          <li>Gold</li>
+        </disallowedThingDefs>
+      </defaultIngredientFilter>
+    </recipeMaker>
+  </ThingDef>
+  <!-- ==================== Spike Bayonet ================================ -->
+  <ThingDef ParentName="RWPBaseMeleeWeapon_Sharp">
+    <defName>MeleeWeapon_SpikeBayonet</defName>
+    <label>Spike bayonet</label>
+    <description>A standard issue spike bayonet for attachment to a musket or rifle. Required to craft the bayoneted variants of the Springfield Model 1822 and Model 1873.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/SpikeBayonet</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <weaponTags>
+      <li>Bayonet</li>
+    </weaponTags>
+    <!-- SHUT MY MOUTH AND SLAP MY GRANDMA! IT NOW ACCEPTS STUFF!! -->
+    <costStuffCount>25</costStuffCount>
+    <stuffCategories>
+      <li>Metallic</li>
+      <!-- Support for Mod Stuff -->
+      <li MayRequire="sarg.alphabiomes">AB_Exotic</li>
+      <li MayRequire="sarg.alphabiomes">AB_ExoticMetals</li>
+      <li MayRequire="Dubwise.Rimefeller">Composite</li>
+    </stuffCategories>
+    <statBases>
+      <WorkToMake>1000</WorkToMake>
+      <Mass>0.5</Mass>
+    </statBases>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+    <tools>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>8</power>
+        <cooldownTime>1.5</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+  <!-- ==================== Bowie Knife ================================ -->
+  <ThingDef ParentName="RWPBaseMeleeWeapon_Sharp">
+    <defName>MeleeWeapon_BowieKnife</defName>
+    <label>Bowie knife</label>
+    <description>The Bowie knife is a long, fixed-blade fighting knife made famous by its designer and namesake, James "Jim" Bowie. A notorious knife fighter, Jim Bowie designed the knife to fill the need for a wearable, convenient close combat weapon - a short sword much shorter than the saber or other swords of the day, yet still possessing a heavy blade. This cleaver-like blade had enough weight to give the blade sufficient force in a slashing attack, while permitting the use of cut-and-thrust sword fighting tactics, yet still leaving the knife a practical tool for frontier survival purposes. Although Bowie carried his legendary knife for remainder of his life, it is unknown what happened to the blade following his 1836 death in Texas at the Battle of the Alamo.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/BowieKnife</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <weaponTags>
+      <li>NonNeolithicOnlyMelee</li>
+      <li>NonNeolithicOnlySimpleMelee</li>
+      <li>RWPMelee</li>
+      <li>MeleePiercer</li>
+      <li>IndustrialMelee</li>
+      <li>IndustrialMeleeBasic</li>
+      <li>IndustrialMeleeDecent</li>
+    </weaponTags>
+    <!-- SHUT MY MOUTH AND SLAP MY GRANDMA! IT NOW ACCEPTS STUFF!! -->
+    <costStuffCount>40</costStuffCount>
+    <stuffCategories>
+      <li>Metallic</li>
+      <!-- Support for Mod Stuff -->
+      <li MayRequire="sarg.alphabiomes">AB_Exotic</li>
+      <li MayRequire="sarg.alphabiomes">AB_ExoticMetals</li>
+      <li MayRequire="Dubwise.Rimefeller">Composite</li>
+    </stuffCategories>
+    <statBases>
+      <WorkToMake>6000</WorkToMake>
+      <Mass>0.6</Mass>
+    </statBases>
+    <equippedAngleOffset>-65</equippedAngleOffset>
+    <tools>
+      <li>
+        <label>handle</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>6</power>
+        <cooldownTime>1.7</cooldownTime>
+      </li>
+      <li>
+        <label>blade</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>11</power>
+        <cooldownTime>1.7</cooldownTime>
+      </li>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>13.5</power>
+        <cooldownTime>1.7</cooldownTime>
+      </li>
+    </tools>
+  </ThingDef>
+  <!-- ==================== Model 1840 Heavy Cavalry Saber ================================ -->
+  <ThingDef ParentName="RWPBaseMeleeWeapon_Sharp">
+    <defName>MeleeWeapon_M1840Saber</defName>
+    <label>Model 1840 Heavy Cavalry Saber</label>
+    <description>The Model 1840 Cavalry Saber, also known as "Old Wrist Breaker" due to its heavy flat-backed blade, was the standard issue sword of the US Cavalry during the Mexican-American War. Although the M1840 was later replaced by the smaller and lighter Model 1860 Cavalry Saber, it still saw extensive use by both sides of the American Civil War. During that conflict, Confederate General Nathan Bedford Forrest was famous for his use of the M1840, and even sharpened both edges of the blade to increase its combat effectiveness.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/M1860_Saber</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <weaponTags>
+      <li>NonNeolithicOnlyMelee</li>
+      <li>RWPMelee</li>
+      <li>MeleePiercer</li>
+      <li>MedievalMeleeDecent</li>
+      <li>LongSword</li>
+      <li>Royal</li>
+      <li>RoyalTier1</li>
+      <li>RoyalTier2</li>
+    </weaponTags>
+    <!-- SHUT MY MOUTH AND SLAP MY GRANDMA! IT NOW ACCEPTS STUFF!! -->
+    <costStuffCount>130</costStuffCount>
+    <stuffCategories>
+      <li>Metallic</li>
+      <!-- Support for Mod Stuff -->
+      <li MayRequire="sarg.alphabiomes">AB_Exotic</li>
+      <li MayRequire="sarg.alphabiomes">AB_ExoticMetals</li>
+      <li MayRequire="Dubwise.Rimefeller">Composite</li>
+    </stuffCategories>
+    <statBases>
+      <WorkToMake>22000</WorkToMake>
+      <Mass>1.9</Mass>
+    </statBases>
+    <equippedAngleOffset>-25</equippedAngleOffset>
+    <tools>
+      <li>
+        <label>handle</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>1</power>
+        <cooldownTime>0.4</cooldownTime>
+        <chanceFactor>0.1</chanceFactor>
+      </li>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>2.4</cooldownTime>
+        <chanceFactor>0.98</chanceFactor>
+      </li>
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>24</power>
+        <cooldownTime>2.4</cooldownTime>
+        <chanceFactor>1</chanceFactor>
+      </li>
+    </tools>
+    <recipeMaker>
+      <researchPrerequisite>LongBlades</researchPrerequisite>
+    </recipeMaker>
+  </ThingDef>
+  <!-- ==================== Model 1860 Light Cavalry Saber ================================ -->
+  <ThingDef ParentName="RWPBaseMeleeWeapon_Sharp">
+    <defName>MeleeWeapon_M1860Saber</defName>
+    <label>Model 1860 Light Cavalry Saber</label>
+    <description>The Model 1860 Light Cavalry Saber was the successor to the Model 1840 Cavalry saber, and served as the standard issue sword of the US Cavalry from the American Civil War until the end of the American Indian Wars. Although very similar in design to the M1840, the M1860 was both shorter and lighter than its predecessor, and thus easier to handle in combat. Despite being obsolete for combat usage by the end of the 19th Century, the M1860 is still used for ceremonial purposes by some US Cavalry units to this day, such as the dress uniform for members of the Order of the Spur.</description>
+    <graphicData>
+      <texPath>Things/Item/Equipment/WeaponMelee/M1860_Saber</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <weaponTags>
+      <li>NonNeolithicOnlyMelee</li>
+      <li>RWPMelee</li>
+      <li>MeleePiercer</li>
+      <li>MedievalMeleeDecent</li>
+      <li>LongSword</li>
+      <li>Royal</li>
+      <li>RoyalTier1</li>
+      <li>RoyalTier2</li>
+    </weaponTags>
+    <!-- SHUT MY MOUTH AND SLAP MY GRANDMA! IT NOW ACCEPTS STUFF!! -->
+    <costStuffCount>100</costStuffCount>
+    <stuffCategories>
+      <li>Metallic</li>
+      <!-- Support for Mod Stuff -->
+      <li MayRequire="sarg.alphabiomes">AB_Exotic</li>
+      <li MayRequire="sarg.alphabiomes">AB_ExoticMetals</li>
+      <li MayRequire="Dubwise.Rimefeller">Composite</li>
+    </stuffCategories>
+    <statBases>
+      <WorkToMake>20000</WorkToMake>
+      <Mass>1.4</Mass>
+    </statBases>
+    <equippedAngleOffset>-25</equippedAngleOffset>
+    <tools>
+      <li>
+        <label>handle</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>1</power>
+        <cooldownTime>0.3</cooldownTime>
+        <chanceFactor>0.1</chanceFactor>
+      </li>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>2.1</cooldownTime>
+        <chanceFactor>1</chanceFactor>
+      </li>
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>20</power>
+        <cooldownTime>2.1</cooldownTime>
+        <chanceFactor>1</chanceFactor>
+      </li>
+    </tools>
+    <recipeMaker>
+      <researchPrerequisite>LongBlades</researchPrerequisite>
+    </recipeMaker>
+  </ThingDef>
+</Defs>

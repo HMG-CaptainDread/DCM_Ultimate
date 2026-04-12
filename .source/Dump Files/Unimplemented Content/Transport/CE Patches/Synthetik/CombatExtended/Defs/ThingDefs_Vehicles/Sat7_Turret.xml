@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+		<defName>Sat7_MainGun</defName>
+		<label>Saturn 7 Main gun</label>
+		<description>Fires shells at near-instant speeds.</description>
+		<turretType>Rotatable</turretType>
+		<shotSound>Synthetik_Sat7MainGun</shotSound>
+		<projectile>Bullet_100mmEnergyCanister_HE</projectile>
+		<reloadTimer>9.8</reloadTimer>
+		<warmUpTimer>1.0</warmUpTimer>
+		<magazineCapacity>25</magazineCapacity>
+		<chargePerAmmoCount>1</chargePerAmmoCount>
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>0.5</rotationSpeed>
+		<projectileOffset>6.0</projectileOffset>
+		<hitFlags>IntendedTarget</hitFlags>
+		<attachProjectileFlag>Tank</attachProjectileFlag>
+		<minRange>10</minRange>
+		<maxRange>92</maxRange>
+
+		<recoil>
+			<distanceTotal>0.1</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<spreadRadius>3</spreadRadius>
+				<ticksBetweenShots>60</ticksBetweenShots>
+				<ticksBetweenBursts>588</ticksBetweenBursts>
+				<label>Single</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Synthetik/Vehicles/Sat7_Top</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>CutoutComplexPattern</shaderType>
+			<drawSize>7.5</drawSize>
+		</graphicData>
+
+		<gizmoIconTexPath>Synthetik/Icons/Cannon_Icon</gizmoIconTexPath>
+		<gizmoDescription>100mm Energy Cannon</gizmoDescription>
+
+		<ammunition>
+			<thingDefs>
+				<li>Ammo_100mmEnergyCanister_HE</li>
+				<li>Ammo_100mmEnergyCanister_EMP</li>
+				<li>Ammo_100mmEnergyCanister_Plasma</li>
+			</thingDefs>
+		</ammunition>
+
+		<motes>
+			<li>
+				<cycles>1</cycles>
+				<moteDef>Mote_CannonPlume</moteDef>
+				<animationType>Reset</animationType>
+			</li>
+		</motes>
+
+		<modExtensions>
+			<li Class="Vehicles.CETurretDataDefModExtension">
+				<ammoSet>AmmoSet_100mmEnergyCanister</ammoSet>
+				<shotHeight>1.2</shotHeight>
+				<speed>426</speed>
+				<sway>1.0</sway>
+				<spread>0.01</spread>
+			</li>
+		</modExtensions>
+	</Vehicles.VehicleTurretDef>
+
+	<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+		<defName>Sat7_CoaxLaser</defName>
+		<label>Saturn 7 Laser machinegun</label>
+		<description>A rapid-fire laser weapon.</description>
+		<turretType>Rotatable</turretType>
+		<shotSound>Synthetik_Sat7Coax</shotSound>
+		<projectile>Bullet_SynthetikLaserCell</projectile>
+		<reloadTimer>7.8</reloadTimer>
+		<warmUpTimer>1.0</warmUpTimer>
+		<magazineCapacity>300</magazineCapacity>
+		<chargePerAmmoCount>0.05</chargePerAmmoCount>
+		<hitFlags>All</hitFlags>
+		<autoSnapTargeting>true</autoSnapTargeting>
+		<rotationSpeed>2.0</rotationSpeed>
+		<projectileOffset>0.2</projectileOffset>
+		<maxRange>62</maxRange>
+
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<label>Single</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>4</shotsPerBurst>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>90</ticksBetweenBursts>
+				<spreadRadius>1</spreadRadius>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>8</shotsPerBurst>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>90</ticksBetweenBursts>
+				<label>Auto</label>
+				<texPath>UI/Gizmos/FireRate_Auto</texPath>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Synthetik/Vehicles/Sat7_LaserMG_Top</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>CutoutComplexPattern</shaderType>
+			<drawSize>(0.25, 0.25)</drawSize>
+		</graphicData>
+
+		<gizmoIconTexPath>Synthetik/Icons/Coax_Icon</gizmoIconTexPath>
+		<gizmoDescription>Laser Machinegun</gizmoDescription>
+
+		<ammunition>
+			<thingDefs>
+				<li>Plasteel</li>
+				<li>Ammo_SynthetikLaserCell</li>
+				<li>Ammo_SynthetikLaserCellAP</li>
+				<li>Ammo_SynthetikLaserCellIncendiary</li>
+			</thingDefs>
+		</ammunition>
+
+		<motes>
+			<li>
+				<cycles>1</cycles>
+				<moteDef>Mote_LaserFlash</moteDef>
+				<animationType>Reset</animationType>
+			</li>
+		</motes>
+
+		<modExtensions>
+			<li Class="Vehicles.CETurretDataDefModExtension">
+				<ammoSet>AmmoSet_SynthetikLaserCell</ammoSet>
+				<shotHeight>1.2</shotHeight>
+				<speed>168</speed>
+				<sway>1.0</sway>
+				<spread>0.01</spread>
+			</li>
+		</modExtensions>
+	</Vehicles.VehicleTurretDef>
+
+	<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase">
+		<defName>Sat7_TopLaser</defName>
+		<label>Saturn 7 Laser machinegun</label>
+		<description>A rapid-fire laser weapon.</description>
+		<turretType>Rotatable</turretType>
+		<shotSound>Synthetik_Sat7Coax</shotSound>
+		<projectile>Bullet_SynthetikLaserCell</projectile>
+		<reloadTimer>7.8</reloadTimer>
+		<warmUpTimer>1.2</warmUpTimer>
+		<magazineCapacity>150</magazineCapacity>
+		<chargePerAmmoCount>0.05</chargePerAmmoCount>
+		<hitFlags>IntendedTarget</hitFlags>
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>1.25</rotationSpeed>
+		<projectileOffset>0.4</projectileOffset>
+		<maxRange>75</maxRange>
+
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<label>Single</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>4</shotsPerBurst>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<spreadRadius>1</spreadRadius>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>8</shotsPerBurst>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>90</ticksBetweenBursts>
+				<label>Auto</label>
+				<texPath>UI/Gizmos/FireRate_Auto</texPath>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Synthetik/Vehicles/Sat7_LaserMG_Top</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>CutoutComplexPattern</shaderType>
+			<drawSize>(0.67, 0.67)</drawSize>
+		</graphicData>
+
+		<gizmoIconTexPath>Synthetik/Icons/Top_turret_Icon</gizmoIconTexPath>
+		<gizmoDescription>Laser Machinegun</gizmoDescription>
+
+		<ammunition>
+			<thingDefs>
+				<li>Plasteel</li>
+				<li>Ammo_SynthetikLaserCell</li>
+				<li>Ammo_SynthetikLaserCellAP</li>
+				<li>Ammo_SynthetikLaserCellIncendiary</li>
+			</thingDefs>
+		</ammunition>
+
+		<motes>
+			<li>
+				<cycles>1</cycles>
+				<moteDef>Mote_LaserFlash</moteDef>
+				<animationType>Reset</animationType>
+			</li>
+		</motes>
+
+		<modExtensions>
+			<li Class="Vehicles.CETurretDataDefModExtension">
+				<ammoSet>AmmoSet_SynthetikLaserCell</ammoSet>
+				<shotHeight>1.4</shotHeight>
+				<speed>168</speed>
+				<sway>1.0</sway>
+				<spread>0.01</spread>
+			</li>
+		</modExtensions>
+
+	</Vehicles.VehicleTurretDef>
+
+</Defs>

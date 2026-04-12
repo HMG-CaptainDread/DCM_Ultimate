@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+    <!-- Damage amount is handled in a Harmony patch -->
+	<Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>[XND] Proper Shotguns</li>
+		  <li>Proper Shotguns (Unofficial Patch)</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<operations>
+			<li Class="PatchOperationAddModExtension">
+				<xpath>/Defs/ThingDef[defName="MedTimes_Ball_Blunderbuss"]</xpath>
+				<value>
+					<li Class="ProperShotguns.ShotgunExtension">
+						<pelletCount>5</pelletCount>
+					</li>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName="MedTimes_Ball_Blunderbuss"]/graphicData/texPath</xpath>
+				<value>
+					<texPath>Things/Projectile/Bullet_Small</texPath>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName="MedTimes_Ranged_Blunderbuss"]/verbs//li[verbClass="Verb_Shoot" and defaultProjectile="MedTimes_Ball_Blunderbuss"]/verbClass</xpath>
+				<value>
+					<verbClass>ProperShotguns.Verb_ShootShotgun</verbClass>
+				</value>
+			</li>
+		</operations>
+	</match>
+  </Operation>
+
+</Patch>
