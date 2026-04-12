@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+  
+  <Operation Class="PatchOperationAdd">
+    <xpath>*/ResearchProjectDef[defName="TreeSowing"]</xpath>
+    <value>
+      <prerequisites>
+        <li>TS_DomHerb</li>
+      </prerequisites>
+    </value>
+  </Operation>
+  
+	<!-- fungus domestication -->
+	
+  <Operation Class="PatchOperationReplace">
+    <xpath>*/ThingDef[defName = "Plant_Devilstrand"]/plant/sowResearchPrerequisites</xpath>
+    <value>
+      <sowResearchPrerequisites>
+        <li>TS_FungusDom</li>
+      </sowResearchPrerequisites>
+    </value>
+  </Operation>
+  
+	<Operation Class="PatchOperationConditional">
+		<xpath>/Defs/ThingDef[defName = "Agarilux"]/plant/sowResearchPrerequisites</xpath>
+		<match Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[defName = "Agarilux"]/plant/sowResearchPrerequisites</xpath>
+			<value>
+				<li>TS_FungusDom</li>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[defName = "Agarilux"]/plant</xpath>
+			<value>
+			  <sowResearchPrerequisites>
+				<li>TS_FungusDom</li>
+			  </sowResearchPrerequisites>
+			</value>
+		</nomatch>
+	</Operation>
+	
+	<Operation Class="PatchOperationConditional">
+		<xpath>/Defs/ThingDef[defName = "Glowstool"]/plant/sowResearchPrerequisites</xpath>
+		<match Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[defName = "Glowstool"]/plant/sowResearchPrerequisites</xpath>
+			<value>
+				<li>TS_FungusDom</li>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[defName = "Glowstool"]/plant</xpath>
+			<value>
+			  <sowResearchPrerequisites>
+				<li>TS_FungusDom</li>
+			  </sowResearchPrerequisites>
+			</value>
+		</nomatch>
+	</Operation>
+  
+	<Operation Class="PatchOperationConditional">
+		<xpath>/Defs/ThingDef[defName = "Bryolux"]/plant/sowResearchPrerequisites</xpath>
+		<match Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[defName = "Bryolux"]/plant/sowResearchPrerequisites</xpath>
+			<value>
+				<li>TS_FungusDom</li>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[defName = "Bryolux"]/plant</xpath>
+			<value>
+			  <sowResearchPrerequisites>
+				<li>TS_FungusDom</li>
+			  </sowResearchPrerequisites>
+			</value>
+		</nomatch>
+	</Operation>
+  
+	<!-- Herbalism -->
+		<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>VGP Vegetable Garden</li>
+		</mods>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>*/ThingDef[defName = "Plant_Strawberry"]/plant</xpath>
+			<value>
+			  <sowResearchPrerequisites>
+				<li>TS_DomHerb</li>
+			  </sowResearchPrerequisites>
+			</value>
+		</nomatch>
+	</Operation>
+	
+    <Operation Class="PatchOperationAdd">
+    <xpath>*/ThingDef[defName = "Plant_Healroot"]/plant</xpath>
+    <value>
+      <sowResearchPrerequisites>
+        <li>TS_DomHerb</li>
+      </sowResearchPrerequisites>
+    </value>
+  </Operation>
+  
+  <Operation Class="PatchOperationAdd">
+    <xpath>*/ThingDef[defName = "Plant_Smokeleaf"]/plant</xpath>
+    <value>
+      <sowResearchPrerequisites>
+        <li>TS_DomHerb</li>
+      </sowResearchPrerequisites>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>*/ThingDef[defName = "Plant_Psychoid"]/plant</xpath>
+    <value>
+      <sowResearchPrerequisites>
+        <li>TS_DomHerb</li>
+      </sowResearchPrerequisites>
+    </value>
+  </Operation>
+
+	<!-- botany -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>*/ThingDef[defName = "Plant_Rose"]/plant</xpath>
+    <value>
+      <sowResearchPrerequisites>
+        <li>TS_Botany</li>
+      </sowResearchPrerequisites>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>*/ThingDef[defName = "Plant_Daylily"]/plant</xpath>
+    <value>
+      <sowResearchPrerequisites>
+        <li>TS_Botany</li>
+      </sowResearchPrerequisites>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>*/ThingDef[defName = "Plant_Dandelion"]/plant</xpath>
+    <value>
+      <sowResearchPrerequisites>
+        <li>TS_Botany</li>
+      </sowResearchPrerequisites>
+    </value>
+  </Operation>
+  
+	<!-- Cooking -->
+  
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/RecipeDef[defName = "Make_Pemmican"]/researchPrerequisite</xpath>
+    <value>
+      <researchPrerequisite>TS_PrimitiveCooking</researchPrerequisite>
+    </value>
+  </Operation>
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/RecipeDef[defName = "Make_PemmicanBulk"]/researchPrerequisite</xpath>
+    <value>
+      <researchPrerequisite>TS_PrimitiveCooking</researchPrerequisite>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>*/RecipeDef[defName = "CookMealSimple"]</xpath>
+    <value>
+      <researchPrerequisite>TS_PrimitiveCooking</researchPrerequisite>
+    </value>
+  </Operation>
+
+  
+	<!-- basic games -->
+  <Operation Class="PatchOperationConditional">
+	<xpath>/Defs/ThingDef[defName="HorseshoesPin"]/prerequisites</xpath>
+	<match Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName="HorseshoesPin"]/prerequisites</xpath>
+		<value>
+		  <researchPrerequisites>
+			<li>TS_BasicGames</li>
+			<li>MedTimes_MedievalCrafting</li>
+		  </researchPrerequisites>
+		</value>
+	</match>
+	<nomatch Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName="HorseshoesPin"]</xpath>
+		<value>
+		  <researchPrerequisites>
+			<li>TS_BasicGames</li>
+			<li>MedTimes_MedievalCrafting</li>
+		  </researchPrerequisites>
+		</value>
+	</nomatch>
+  </Operation>
+
+  <Operation  Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName="HoopstoneRing"]</xpath>
+		<value>
+		  <researchPrerequisites>
+			<li>TS_BasicGames</li>
+		  </researchPrerequisites>
+		</value>
+  </Operation>
+   
+	<!-- primitive tailoring -->
+	
+    <Operation Class="PatchOperationAdd">
+    <xpath>*/ThingDef[defName = "Bedroll"]</xpath>
+    <value>
+      <researchPrerequisites>
+        <li>TS_PrimitiveClothing</li>
+      </researchPrerequisites>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>*/ThingDef[defName = "BedrollDouble"]</xpath>
+    <value>
+      <researchPrerequisites>
+        <li>TS_PrimitiveClothing</li>
+      </researchPrerequisites>
+    </value>
+  </Operation>
+  
+  <Operation Class="PatchOperationAdd">
+    <xpath>*/ThingDef[defName = "Apparel_TribalA"]/recipeMaker</xpath>
+    <value>
+      <researchPrerequisite>TS_PrimitiveClothing</researchPrerequisite>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>*/ThingDef[defName = "Apparel_TribalHeaddress"]/recipeMaker/researchPrerequisite</xpath>
+    <value>
+      <researchPrerequisite>TS_PrimitiveClothing</researchPrerequisite>
+    </value>
+  </Operation>
+  
+  <Operation Class="PatchOperationAdd">
+    <xpath>*/ThingDef[defName = "Apparel_WarVeil"]/recipeMaker</xpath>
+    <value>
+      <researchPrerequisite>TS_PrimitiveClothing</researchPrerequisite>
+    </value>
+  </Operation>
+  
+  
+  <Operation Class="PatchOperationAdd">
+    <xpath>*/ThingDef[defName = "AnimalBed"]</xpath>
+    <value>
+      <researchPrerequisites>
+        <li>TS_PrimitiveClothing</li>
+      </researchPrerequisites>
+    </value>
+  </Operation>
+  
+	<!-- primitive furniture -->
+	
+	  <Operation Class="PatchOperationAdd">
+    <xpath>*/ThingDef[defName = "AnimalSleepingBox"]</xpath>
+    <value>
+      <researchPrerequisites>
+        <li>TS_PrimitiveFurniture</li>
+      </researchPrerequisites>
+    </value>
+  </Operation>
+  
+	<!-- primitive stonecutting -->
+	
+	
+	<!-- primitive weapons -->
+
+	
+   <!-- wooden flooring -->  
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/TerrainDef[defName = "WoodPlankFloor"]</xpath>
+    <value>
+      <researchPrerequisites>
+        <li>TS_IndoorFlooring</li>
+      </researchPrerequisites>
+    </value>
+  </Operation>
+  
+</Patch>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="XmlExtensions.FindMod">
+    <mods>
+      <li>Medieval Overhaul</li>
+    </mods>
+    <caseTrue>
+
+      <!-- Fix Log Double Beds! -->
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/ThingDef[defName="DankPyon_BedLogDouble"]</xpath>
+        <value>
+          <researchPrerequisites Inherit="false" />
+        </value>
+      </li>
+
+      <li Class="XmlExtensions.OptionalPatch">
+        <modId>zenlor.MOTweaks</modId>
+        <key>mot-workbench-recipes</key>
+        <defaultValue>true</defaultValue>
+        <caseTrue>
+
+          <li Class="PatchOperationAddModExtension">
+            <xpath>/Defs/ThingDef[defName="DankPyon_Workbench"]</xpath>
+            <value>
+              <li Class="VEF.Buildings.RecipeInheritanceExtension">
+                <inheritRecipesFrom>
+                  <li>CraftingSpot</li>
+                </inheritRecipesFrom>
+              </li>
+            </value>
+          </li>
+
+        </caseTrue>
+      </li>
+
+      <li Class="XmlExtensions.OptionalPatch">
+        <modId>zenlor.MOTweaks</modId>
+        <key>mot-recipes-anvil</key>
+        <defaultValue>true</defaultValue>
+        <caseTrue>
+
+          <li Class="PatchOperationAddModExtension">
+            <xpath>/Defs/ThingDef[defName="DankPyon_Anvil"]</xpath>
+            <value>
+              <li Class="VEF.Buildings.RecipeInheritanceExtension">
+                <inheritRecipesFrom>
+                  <li>FueledSmithy</li>
+                </inheritRecipesFrom>
+              </li>
+            </value>
+          </li>
+
+          <li Class="PatchOperationAddModExtension">
+            <xpath>/Defs/ThingDef[defName="DankPyon_Anvil"]</xpath>
+            <value>
+              <li Class="VEF.Buildings.RecipeInheritanceExtension">
+                <inheritRecipesFrom>
+                  <li>ElectricSmithy</li>
+                </inheritRecipesFrom>
+              </li>
+            </value>
+          </li>
+
+          <li Class="PatchOperationAddModExtension">
+            <xpath>/Defs/ThingDef[defName="DankPyon_Anvil"]</xpath>
+            <value>
+              <li Class="VEF.Buildings.RecipeInheritanceExtension">
+                <inheritRecipesFrom>
+                  <li>TableMachining</li>
+                </inheritRecipesFrom>
+              </li>
+            </value>
+          </li>
+
+        </caseTrue>
+      </li>
+
+      <li Class="XmlExtensions.OptionalPatch">
+        <modId>zenlor.MOTweaks</modId>
+        <key>mot-darkforest-easy</key>
+        <defaultValue>false</defaultValue>
+        <caseTrue>
+
+          <li Class="PatchOperationReplace">
+            <xpath>/Defs/ThingDef[defName="DankPyon_GreatOak"]/comps/li[@Class="MedievalOverhaul.CompProperties_PawnSpawnerOnDestroy"]/chance</xpath>
+            <value>
+              <chance>0.00001</chance>
+            </value>
+          </li>
+
+        </caseTrue>
+      </li>
+
+      <li Class="XmlExtensions.OptionalPatch">
+        <modId>zenlor.MOTweaks</modId>
+        <key>mot-darkforest-hard</key>
+        <defaultValue>false</defaultValue>
+        <caseTrue>
+
+          <li Class="PatchOperationReplace">
+            <xpath>/Defs/ThingDef[defName="DankPyon_GreatOak"]/comps/li[@Class="MedievalOverhaul.CompProperties_PawnSpawnerOnDestroy"]/chance</xpath>
+            <value>
+              <chance>0.25</chance>
+            </value>
+          </li>
+
+        </caseTrue>
+      </li>
+
+      <li Class="XmlExtensions.OptionalPatch">
+        <modId>zenlor.MOTweaks</modId>
+        <key>mot-dangerous-patches</key>
+        <defaultValue>false</defaultValue>
+        <caseTrue>
+
+          <!-- Replace Industrial Components -->
+          <li Class="PatchOperationConditional">
+            <xpath>Defs/ThingDef[costList/ComponentIndustrial][costList[not(DankPyon_ComponentBasic)]]/costList/ComponentIndustrial</xpath>
+            <success>Always</success>
+            <match Class="PatchOperationSetName">
+              <success>Always</success>
+              <xpath>Defs/ThingDef[costList/ComponentIndustrial][costList[not(DankPyon_ComponentBasic)]]/costList/ComponentIndustrial</xpath>
+              <name>DankPyon_ComponentBasic</name>
+            </match>
+          </li>
+
+          <!-- Replace Spacer Components -->
+          <li Class="PatchOperationConditional">
+            <xpath>Defs/ThingDef[costList/ComponentSpacer][costList[not(DankPyon_ComponentBasic)]]/costList/ComponentSpacer</xpath>
+            <success>Always</success>
+            <match Class="PatchOperationSetName">
+              <success>Always</success>
+              <xpath>Defs/ThingDef[costList/ComponentSpacer][costList[not(DankPyon_ComponentBasic)]]/costList/ComponentSpacer</xpath>
+              <name>DankPyon_ComponentBasic</name>
+            </match>
+          </li>
+
+        </caseTrue>
+      </li>
+
+      <li Class="XmlExtensions.OptionalPatch">
+        <modId>zenlor.MOTweaks</modId>
+        <key>mot-lagfree-lamps</key>
+        <defaultValue>false</defaultValue>
+        <caseTrue>
+
+          <li Class="PatchOperationRemove">
+            <success>Always</success>
+            <xpath>/Defs/ThingDef[(
+            defName="DankPyon_WallTorchBase" or
+            defName="DankPyon_WallLamp" or
+            defName="DankPyon_LampPost" or
+            defName="DankPyon_Candles" or
+            defName="DankPyon_Candles_Beeswax" or
+            defName="DankPyon_CandleStand" or
+            defName="DankPyon_CandleStand_Beeswax" or
+            defName="DevDesigner_RusticBloodTorchLamp" or
+            defName="DevDesigner_WallBloodTorch"
+              )]/comps/li[@Class="CompProperties_Refuelable"]</xpath>
+          </li>
+
+        </caseTrue>
+      </li>
+
+      <li Class="XmlExtensions.OptionalPatch">
+        <modId>zenlor.MOTweaks</modId>
+        <key>mot-scenario-fix</key>
+        <defaultValue>false</defaultValue>
+        <caseTrue>
+
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/ScenarioDef/scenario/parts/li[thingDef="WoodLog"]/thingDef</xpath>
+            <value><thingDef>DankPyon_RawWood</thingDef></value>
+          </li>
+
+        </caseTrue>
+      </li>
+
+    </caseTrue>
+  </Operation>
+</Patch>

@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- SILAGE -->
+		<ThingDef ParentName="OrganicProductBase">
+			<defName>Silage</defName>
+			<label>silage</label>
+			<thingCategories>
+			<li>AnimalFeed</li>
+			</thingCategories>
+			<description>Nutrient-rich fermented hay and grains for your animals. The fermentation process preserves the silage preventing rot.</description>
+			<stackLimit>200</stackLimit>
+			<statBases>
+			<MarketValue>1.3</MarketValue>
+			<Mass>0.015</Mass>
+			<Nutrition>0.05</Nutrition>
+			</statBases>
+			<ingestible>
+			<foodType>VegetarianAnimal</foodType>
+			<preferability>RawBad</preferability>
+			<tasteThought>AteKibble</tasteThought>
+			<optimalityOffsetHumanlikes>-30</optimalityOffsetHumanlikes>
+			<optimalityOffsetFeedingAnimals>15</optimalityOffsetFeedingAnimals>
+			<ingestEffect>EatVegetarian</ingestEffect>
+			<ingestSound>RawVegetable_Eat</ingestSound>
+			</ingestible>
+			<graphicData>
+			<texPath>Things/Item/Resource/PlantFoodRaw/Hay</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+			<color>(107,142,35)</color>
+			</graphicData>
+			<socialPropernessMatters>true</socialPropernessMatters>
+		</ThingDef>
+	<!-- BIOFUEL -->
+		<ThingDef ParentName="ResourceBase">
+			<defName>VG_Biofuel</defName>
+			<label>biofuel</label>
+			<description>Fuel made from the processes of refining various types of plants for oils and alcohols. And is used to fuel generators and workbenches.</description>
+			<graphicData>
+			<texPath>Things/Item/BioFuel</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			</graphicData>
+			<stackLimit>400</stackLimit>
+				<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<MarketValue>4</MarketValue>
+			<Mass>0.05</Mass>
+			<Flammability>1.0</Flammability>
+					<DeteriorationRate>1.0</DeteriorationRate>
+				</statBases>
+			<thingCategories>
+			<li>Manufactured</li>
+			</thingCategories>
+		</ThingDef>
+	<!-- MEAL BASE -->
+		<ThingDef Name="VG_MealsBase" Abstract="True">
+			<thingClass>ThingWithComps</thingClass>
+			<category>Item</category>
+			<drawerType>MapMeshOnly</drawerType>
+			<useHitPoints>true</useHitPoints>
+			<healthAffectsPrice>false</healthAffectsPrice>
+			<selectable>true</selectable>
+			<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<Beauty>0</Beauty>
+			<Mass>0.44</Mass>
+			<DeteriorationRate>10</DeteriorationRate>
+			</statBases>
+			<altitudeLayer>Item</altitudeLayer>
+			<stackLimit>50</stackLimit>
+			<tickerType>Rare</tickerType>
+			<socialPropernessMatters>true</socialPropernessMatters>
+			<alwaysHaulable>true</alwaysHaulable>
+			<comps>
+				<li Class="CompProperties_Forbiddable" />
+				<li Class="CompProperties_Ingredients">
+					<performMergeCompatibilityChecks>false</performMergeCompatibilityChecks>
+				</li>
+				<li MayRequire="Ludeon.RimWorld.Anomaly" Class="CompProperties_MetalhorrorInfectible" />	  
+			</comps>
+			<pathCost>14</pathCost>
+			<allowedArchonexusCount>40</allowedArchonexusCount>
+			<resourceReadoutPriority>Last</resourceReadoutPriority>
+			<drawGUIOverlay>true</drawGUIOverlay>
+			<uiIconForStackCount>1</uiIconForStackCount>
+			<ingestible>
+			<foodType>Meal</foodType>
+			<maxNumToIngestAtOnce>1</maxNumToIngestAtOnce>
+			<defaultNumToIngestAtOnce>1</defaultNumToIngestAtOnce>
+			<optimalityOffsetHumanlikes>16</optimalityOffsetHumanlikes>
+			</ingestible>
+				<orderedTakeGroup>Drug</orderedTakeGroup>
+		</ThingDef>
+	<!-- FRUIT JUICE DRINK -->
+		<ThingDef ParentName="VG_MealsBase">
+			<defName>Fruitdrink</defName>
+			<label>fruit juice drink</label>
+			<description>A drink made from pressing fruit for their juice. \n\nDrink Effects: Consciousness and Blood Filtration.</description>
+			<graphicData>
+			<texPath>Things/Item/Fruitdrink</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+			</graphicData>
+			<statBases>
+				<DeteriorationRate>1</DeteriorationRate>
+				<MarketValue>7</MarketValue>
+				<WorkToMake>600</WorkToMake>
+			</statBases>
+			<ingestible>
+				<preferability>NeverForNutrition</preferability>
+				<foodType>Fluid, Processed, Liquor</foodType>
+				<joy>0.25</joy>
+				<joyKind>Gluttonous</joyKind>
+				<nurseable>true</nurseable>
+				<drugCategory>Social</drugCategory>
+				<ingestSound>Ingest_Beer</ingestSound>
+				<ingestHoldOffsetStanding>
+				<northDefault>
+				<offset>(0.18,0,0)</offset>
+				</northDefault>
+			</ingestHoldOffsetStanding>
+			<ingestCommandString>Drink {0}</ingestCommandString>
+			<ingestReportString>Drinking {0}.</ingestReportString>
+			<chairSearchRadius>25</chairSearchRadius>
+			<outcomeDoers>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+				<hediffDef>GoodHappy</hediffDef>
+				<severity>0.25</severity>
+				</li>
+			</outcomeDoers>
+			</ingestible>
+			<thingCategories>
+				<li>GardenDrinks</li>
+			</thingCategories>
+			<comps>
+			<li Class="CompProperties_Drug">
+				<listOrder>1100</listOrder>
+			</li>
+			<li Class="CompProperties_Rottable">
+				<daysToRotStart>10</daysToRotStart>
+				<rotDestroys>true</rotDestroys>
+			</li>
+			</comps>
+		</ThingDef>
+	<!-- CHOCOLATE MILK -->
+		<ThingDef ParentName="VG_MealsBase">
+			<defName>Chocomilk</defName>
+			<label>chocolate milk</label>
+			<description>Chocolate added to milk.</description>
+			<graphicData>
+			<texPath>Things/Item/chocomilk</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			</graphicData>
+			<statBases>
+				<DeteriorationRate>10</DeteriorationRate>
+				<Nutrition>0.5</Nutrition>
+				<MarketValue>15</MarketValue>
+			</statBases>
+			<ingestible>
+					<preferability>MealSimple</preferability>
+					<joy>0.25</joy>
+					<joyKind>Gluttonous</joyKind>
+					<ingestEffect>EatVegetarian</ingestEffect>
+					<ingestSound>Meal_Eat</ingestSound>
+			</ingestible>
+			<thingCategories>
+				<li>GardenDrinks</li>
+			</thingCategories>
+			<comps>
+			<li Class="CompProperties_Rottable">
+				<daysToRotStart>6</daysToRotStart>
+				<rotDestroys>true</rotDestroys>
+			</li>
+			</comps>
+		</ThingDef>
+	<!-- MEALS FROM VANILLA BASE -->
+		<ThingDef Name="VG_MealBaseIngredientless" Abstract="True">
+			<thingClass>ThingWithComps</thingClass>
+			<category>Item</category>
+			<drawerType>MapMeshOnly</drawerType>
+			<useHitPoints>true</useHitPoints>
+			<healthAffectsPrice>false</healthAffectsPrice>
+			<selectable>true</selectable>
+			<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<Beauty>0</Beauty>
+			<Mass>0.44</Mass>
+			<DeteriorationRate>10</DeteriorationRate>
+			</statBases>
+			<altitudeLayer>Item</altitudeLayer>
+			<stackLimit>10</stackLimit>
+			<tickerType>Rare</tickerType>
+			<socialPropernessMatters>true</socialPropernessMatters>
+			<alwaysHaulable>true</alwaysHaulable>
+			<comps>
+			<li Class="CompProperties_Forbiddable" />
+			<li Class="CompProperties_FoodPoisonable" />
+			<li MayRequire="Ludeon.RimWorld.Anomaly" Class="CompProperties_MetalhorrorInfectible" />
+			</comps>
+			<pathCost>14</pathCost>
+			<allowedArchonexusCount>40</allowedArchonexusCount>
+			<resourceReadoutPriority>Last</resourceReadoutPriority>
+			<drawGUIOverlay>true</drawGUIOverlay>
+			<uiIconForStackCount>1</uiIconForStackCount>
+			<ingestible>
+			<foodType>Meal</foodType>
+			<maxNumToIngestAtOnce>1</maxNumToIngestAtOnce>
+			<defaultNumToIngestAtOnce>1</defaultNumToIngestAtOnce>
+			<optimalityOffsetHumanlikes>16</optimalityOffsetHumanlikes>
+			</ingestible>
+		</ThingDef>
+	<!-- COOKED MEAL BASE -->
+		<ThingDef ParentName="VG_MealBaseIngredientless" Name="VG_MealCookedIngredientless" Abstract="True">
+			<tradeability>Buyable</tradeability>
+			<comps>
+			<li Class="CompProperties_Rottable">
+				<daysToRotStart>4</daysToRotStart>
+				<rotDestroys>true</rotDestroys>
+			</li>
+			</comps>
+		</ThingDef>
+	<!-- HARD TACK -->
+		<ThingDef ParentName="OrganicProductBase">
+			<defName>VG_Hardtack</defName>
+			<label>Hardtack</label>
+			<description>A simple type of biscuit. Tastes bland, but not offensive. Made from grains. It lasts a very long time without refrigeration. Great for travelling.</description>
+			<thingClass>ThingWithComps</thingClass>
+			<thingCategories>
+			<li>Foods</li>
+			</thingCategories>
+			<graphicData>
+			<texPath>Things/Item/Hardtack</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+			</graphicData>
+			<socialPropernessMatters>true</socialPropernessMatters>
+			<stackLimit>250</stackLimit>
+			<statBases>
+			<MarketValue>1.2</MarketValue>
+			<Mass>0.018</Mass>
+			<Flammability>0.6</Flammability>
+			<WorkToMake>700</WorkToMake>
+			<DeteriorationRate>1</DeteriorationRate>
+			<Nutrition>0.05</Nutrition>
+			</statBases>
+			<ingestible>
+			<foodType>Meal</foodType>
+			<preferability>MealSimple</preferability>
+			<ingestEffect>EatVegetarian</ingestEffect>
+			<ingestSound>Meal_Eat</ingestSound>
+			<optimalityOffsetHumanlikes>6</optimalityOffsetHumanlikes>
+			</ingestible>
+			<comps>
+			<li Class="CompProperties_Rottable">
+				<daysToRotStart>70</daysToRotStart>
+				<rotDestroys>true</rotDestroys>
+			</li>
+			<li Class="CompProperties_Ingredients" />
+			<li Class="CompProperties_FoodPoisonable" />
+			</comps>
+		</ThingDef>
+	<!-- BAMBOO DRYAD -->
+		<ThingDef ParentName="DryadBase">
+			<defName>Dryad_Bamboomaker</defName>
+			<label>bamboomaker dryad</label>
+			<description>A slow, bumbling caste of dryad which specializes in bamboo production. Together with its Gauranlen tree, this dryad can generate a bamboo-like material on an ongoing basis. However, it is slow and ineffective at work or combat.\n\nIn general, dryads are mammal-like creatures that have a symbiotic relationship with the Gauranlen tree. They reproduce together with their tree, which contains a hidden dryad queen. Dryads can morph into various specialized castes.</description>
+			<statBases>
+			<MoveSpeed>3</MoveSpeed>
+			</statBases>
+			<uiIconScale>1.25</uiIconScale>
+			<descriptionHyperlinks>
+			<ThingDef>Bamboo</ThingDef>
+			</descriptionHyperlinks>
+			<race>
+			<useMeatFrom>Dryad_Basic</useMeatFrom>
+			<lifeStageAges>
+				<li>
+				<def>AnimalAdult</def>
+				<soundWounded>Pawn_Dryad_Woodmaker_Wounded</soundWounded>
+				<soundCall>Pawn_Dryad_Woodmaker_Call</soundCall>
+				</li>
+			</lifeStageAges>
+			</race>
+			<comps>
+			<li Class="CompProperties_Spawner">
+				<thingToSpawn>Bamboo</thingToSpawn>
+				<spawnCount>32</spawnCount>
+				<spawnIntervalRange>120000</spawnIntervalRange>
+				<writeTimeLeftToSpawn>true</writeTimeLeftToSpawn>
+				<showMessageIfOwned>true</showMessageIfOwned>
+			</li>
+			</comps>
+		</ThingDef>
+	<!-- IRONWOOD DRYAD -->
+		<ThingDef ParentName="DryadBase">
+			<defName>Dryad_IronWoodmaker</defName>
+			<label>ironwoodmaker dryad</label>
+			<description>A slow, bumbling caste of dryad which specializes in ironwood production. Together with its Gauranlen tree, this dryad can generate a ironwood-like material on an ongoing basis. However, it is slow and ineffective at work or combat.\n\nIn general, dryads are mammal-like creatures that have a symbiotic relationship with the Gauranlen tree. They reproduce together with their tree, which contains a hidden dryad queen. Dryads can morph into various specialized castes.</description>
+			<statBases>
+			<MoveSpeed>3</MoveSpeed>
+			</statBases>
+			<uiIconScale>1.25</uiIconScale>
+			<descriptionHyperlinks>
+			<ThingDef>VG_IronWoodLog</ThingDef>
+			</descriptionHyperlinks>
+			<race>
+			<useMeatFrom>Dryad_Basic</useMeatFrom>
+			<lifeStageAges>
+				<li>
+				<def>AnimalAdult</def>
+				<soundWounded>Pawn_Dryad_Woodmaker_Wounded</soundWounded>
+				<soundCall>Pawn_Dryad_Woodmaker_Call</soundCall>
+				</li>
+			</lifeStageAges>
+			</race>
+			<comps>
+			<li Class="CompProperties_Spawner">
+				<thingToSpawn>VG_IronWoodLog</thingToSpawn>
+				<spawnCount>32</spawnCount>
+				<spawnIntervalRange>120000</spawnIntervalRange>
+				<writeTimeLeftToSpawn>true</writeTimeLeftToSpawn>
+				<showMessageIfOwned>true</showMessageIfOwned>
+			</li>
+			</comps>
+		</ThingDef>
+	<!-- BAMBOO BONSAI POT -->
+		<ThingDef ParentName="FurnitureWithQualityBase">
+			<defName>PlantPot_BambooBonsai</defName>
+			<label>bamboo bonsai pot</label>
+			<description>This special pot is suitable for planting bamboo bonsai trees, which can improve the mood of people nearby and satisfy ideoligious requirements.</description>
+			<thingClass>Building_PlantGrower</thingClass>
+			<graphicData>
+			<texPath>Things/Building/Misc/BonsaiTreePot/BonsaiTreePot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			</graphicData>
+			<altitudeLayer>Building</altitudeLayer>
+			<passability>PassThroughOnly</passability>
+			<fillPercent>0.20</fillPercent>
+			<statBases>
+			<MaxHitPoints>80</MaxHitPoints>
+			<WorkToBuild>275</WorkToBuild>
+			<Mass>3</Mass>
+			<Flammability>1.0</Flammability>
+			</statBases>
+			<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+			<li>Stony</li>
+			</stuffCategories>
+			<costStuffCount>24</costStuffCount>
+			<comps>
+			<li Class="CompProperties_Forbiddable"/>
+			</comps>
+			<researchPrerequisites>
+			<li>TreeSowing</li>
+			</researchPrerequisites>
+			<fertility>1.0</fertility>
+			<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+			<building>
+			<defaultPlantToGrow>Plant_BambooBonsai</defaultPlantToGrow>
+			<sowTag>VG_DecorativeTree</sowTag>
+			</building>
+			<rotatable>false</rotatable>
+		</ThingDef>
+	<!-- BONSAI BAMBOO -->
+		<ThingDef ParentName="VG_FruitTree">
+			<defName>Plant_BambooBonsai</defName>
+			<label>bonsai bamboo</label>
+			<description>A small bamboo tree, pruned and shaped to look visually pleasing.</description>
+			<graphicData>
+					<texPath>Things/Plants/bambooPlant</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			</graphicData>
+			<altitudeLayer>Item</altitudeLayer>
+			<minifiedDef IsNull="True" />
+			<statBases>
+			<MaxHitPoints>85</MaxHitPoints>
+			<Beauty>15</Beauty>
+			<BeautyOutdoors>15</BeautyOutdoors>
+			<Nutrition>0.25</Nutrition>
+			<Mass>15</Mass>
+			</statBases>
+			<blockWind>false</blockWind>
+			<pathCost>0</pathCost>
+			<fillPercent>0.01</fillPercent>
+			<plant>
+			<sowTags>
+				<li>DecorativeTree</li>
+			</sowTags>
+			<harvestTag>Wood</harvestTag>
+			<harvestedThingDef>Bamboo</harvestedThingDef>
+			<harvestYield>2</harvestYield>
+			<skipDeteriorationMessage>true</skipDeteriorationMessage>
+			<autoHarvestable>false</autoHarvestable>
+			<burnedThingDef IsNull="True" />
+			<choppedThingDef IsNull="True" />
+			<smashedThingDef IsNull="True" />
+			<sowWork>750</sowWork>
+			<growMinGlow>0.3</growMinGlow>
+			<topWindExposure>0.1</topWindExposure>
+			<growDays>1.5</growDays>
+			<visualSizeRange>0.3~0.5</visualSizeRange>
+			<interferesWithRoof>false</interferesWithRoof>
+			<blockAdjacentSow>false</blockAdjacentSow>
+			<treeLoversCareIfChopped>false</treeLoversCareIfChopped>
+			<purpose>Beauty</purpose>
+			<treeCategory>Mini</treeCategory>
+			</plant>
+		</ThingDef>
+</Defs>

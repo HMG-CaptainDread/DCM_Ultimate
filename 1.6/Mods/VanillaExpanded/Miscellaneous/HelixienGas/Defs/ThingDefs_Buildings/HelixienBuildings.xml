@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- HELIXIEN PRODUCTION -->
+		<!-- LARGE HELIXIEN GAS SMITHY -->
+			<ThingDef ParentName="BenchBase">
+				<defName>TMM_TableSmithyLargeGas</defName>
+				<label>large helixien gas smithy</label>
+				<description>A gas-powered work center for smithing non-mechanical weapons and tools. Consumes a lot of gas.</description>
+				<thingClass>PipeSystem.Building_ResourceWorkTable_HeatPush</thingClass>
+				<graphicData>
+					<texPath>Modules/Production/Building/Benches/LargeGasSmithy/LargeGasSmithy</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<shaderType>CutoutComplex</shaderType>
+					<drawSize>(7,4)</drawSize>
+					<shadowData>
+						<volume>(2.8, 0.35, 0.59)</volume>
+						<offset>(0, 0, 0.08)</offset>
+					</shadowData>
+					<damageData>
+						<cornerTL>Damage/Corner</cornerTL>
+						<cornerTR>Damage/Corner</cornerTR>
+						<cornerBL>Damage/Corner</cornerBL>
+						<cornerBR>Damage/Corner</cornerBR>
+					</damageData>
+				</graphicData>
+				<constructEffect>ConstructWood</constructEffect>
+				<altitudeLayer>Building</altitudeLayer>
+				<fillPercent>0.5</fillPercent>
+				<passability>PassThroughOnly</passability>
+				<pathCost>70</pathCost>
+				<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+				<hasInteractionCell>true</hasInteractionCell>
+				<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+				<designationCategory>Production</designationCategory>
+				<surfaceType>Item</surfaceType>
+				<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+				<minifiedDef />
+				<thingCategories Inherit="false" />
+				<size>(5,2)</size>
+				<statBases>
+					<MaxHitPoints>300</MaxHitPoints>
+					<WorkToBuild>5000</WorkToBuild>
+					<Flammability>1.0</Flammability>
+					<Cleanliness>-3</Cleanliness>
+					<WorkTableWorkSpeedFactor>1.5</WorkTableWorkSpeedFactor>
+				</statBases>
+				<costList>
+					<Steel>200</Steel>
+					<ComponentIndustrial>6</ComponentIndustrial>
+				</costList>
+				<recipes />
+				<inspectorTabs>
+					<li>ITab_Bills</li>
+				</inspectorTabs>
+				<comps>
+					<li Class="CompProperties_AffectedByFacilities">
+						<linkableFacilities>
+							<li>ToolCabinet</li>
+							<li MayRequire="vanillaexpanded.vfeproduction">VFE_SmithyCabinet</li>
+						</linkableFacilities>
+					</li>
+					<li Class="CompProperties_Flickable">
+						<commandTexture>Things/Special/Fluid/VHGE_OverlayBase</commandTexture>
+						<commandLabelKey>VHGE_CommandToggleGas_Label</commandLabelKey>
+						<commandDescKey>VHGE_CommandToggleGas_Desc</commandDescKey>
+					</li>
+					<li Class="PipeSystem.CompProperties_ResourceTrader">
+						<pipeNet>VHGE_HelixienNet</pipeNet>
+						<consumptionPerTick>2</consumptionPerTick>
+						<idleConsumptionPerTick>0</idleConsumptionPerTick>
+					</li>
+					<li Class="CompProperties_Breakdownable"/>
+					<li Class="CompProperties_HeatPusher">
+						<compClass>PipeSystem.CompHeatPusherNeedResource</compClass>
+						<heatPerSecond>4</heatPerSecond>
+					</li>
+				</comps>
+				<building>
+					<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+					<workTableRoomRole>Workshop</workTableRoomRole>
+					<workTableNotInRoomRoleFactor>0.8</workTableNotInRoomRoleFactor>
+				</building>
+				<designationHotKey>Misc7</designationHotKey>
+				<placeWorkers>
+					<li>PlaceWorker_ShowFacilitiesConnections</li>
+				</placeWorkers>
+				<researchPrerequisites>
+					<li>Smithing</li>
+					<li MayRequire="vanillaexpanded.vfeproduction">VFE_Manufacturing</li>
+					<li>VHGE_GasExtraction</li>
+				</researchPrerequisites>
+				<modExtensions>
+					<!--<li Class="RecipeInheritance.ThingDefExtension">-->
+					<li Class="VEF.Buildings.RecipeInheritanceExtension">
+						<inheritRecipesFrom>
+							<li>ElectricSmithy</li>
+						</inheritRecipesFrom>
+					</li>
+				</modExtensions>
+			</ThingDef>
+		<!-- LARGE HELIXIEN GAS STOVE -->
+			<ThingDef ParentName="BenchBase">
+				<defName>TMM_TableStoveLargeGas</defName>
+				<label>large helixien gas stove</label>
+				<description>A large size gas-powered manufacturing stove as well as multiple ovens to prepare meals and cook significantly faster.</description>
+				<thingClass>PipeSystem.Building_ResourceWorkTable_HeatPush</thingClass>
+				<graphicData>
+					<texPath>Modules/Production/Building/Benches/LargeGasStove/LargeGasStove</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<shaderType>CutoutComplex</shaderType>
+					<drawSize>(7,4)</drawSize>
+					<damageData>
+						<cornerTL>Damage/Corner</cornerTL>
+						<cornerTR>Damage/Corner</cornerTR>
+						<cornerBL>Damage/Corner</cornerBL>
+						<cornerBR>Damage/Corner</cornerBR>
+					</damageData>
+				</graphicData>
+				<constructEffect>ConstructMetal</constructEffect>
+				<altitudeLayer>Building</altitudeLayer>
+				<fillPercent>0.5</fillPercent>
+				<passability>PassThroughOnly</passability>
+				<pathCost>70</pathCost>
+				<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+				<hasInteractionCell>true</hasInteractionCell>
+				<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+				<designationCategory>Production</designationCategory>
+				<surfaceType>Item</surfaceType>
+				<constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+				<minifiedDef />
+				<thingCategories Inherit="false" />
+				<size>(5,2)</size>
+				<statBases>
+					<MaxHitPoints>300</MaxHitPoints>
+					<WorkToBuild>5000</WorkToBuild>
+					<Flammability>1.0</Flammability>
+					<WorkTableWorkSpeedFactor>1.5</WorkTableWorkSpeedFactor>
+				</statBases>
+				<costList>
+					<Steel>160</Steel>
+					<ComponentIndustrial>6</ComponentIndustrial>
+				</costList>
+				<castEdgeShadows>true</castEdgeShadows>
+				<staticSunShadowHeight>0.20</staticSunShadowHeight>
+				<inspectorTabs>
+					<li>ITab_Bills</li>
+				</inspectorTabs>
+				<comps>
+					<li Class="CompProperties_AffectedByFacilities">
+						<linkableFacilities>
+							<li>ToolCabinet</li>
+							<li MayRequire="vanillaexpanded.vfeproduction">VFE_KitchenSinkCabinet</li>
+						</linkableFacilities>
+					</li>
+					<li Class="CompProperties_Flickable">
+						<commandTexture>Things/Special/Fluid/VHGE_OverlayBase</commandTexture>
+						<commandLabelKey>VHGE_CommandToggleGas_Label</commandLabelKey>
+						<commandDescKey>VHGE_CommandToggleGas_Desc</commandDescKey>
+					</li>
+					<li Class="PipeSystem.CompProperties_ResourceTrader">
+						<pipeNet>VHGE_HelixienNet</pipeNet>
+						<consumptionPerTick>2</consumptionPerTick>
+						<idleConsumptionPerTick>0</idleConsumptionPerTick>
+					</li>
+					<li Class="CompProperties_Breakdownable"/>
+					<li Class="CompProperties_HeatPusher">
+						<compClass>PipeSystem.CompHeatPusherNeedResource</compClass>
+						<heatPerSecond>3</heatPerSecond>
+					</li>
+				</comps>
+				<building>
+					<isMealSource>true</isMealSource>
+					<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+					<heatPerTickWhileWorking>0.10</heatPerTickWhileWorking>
+					<workTableRoomRole>Kitchen</workTableRoomRole>
+					<workTableNotInRoomRoleFactor>0.8</workTableNotInRoomRoleFactor>
+				</building>
+				<designationHotKey>Misc8</designationHotKey>
+				<placeWorkers>
+					<li>PlaceWorker_ShowFacilitiesConnections</li>
+				</placeWorkers>
+				<researchPrerequisites>
+					<li MayRequire="vanillaexpanded.vfeproduction">VFE_Manufacturing</li>
+					<li>VHGE_GasExtraction</li>
+				</researchPrerequisites>
+				<modExtensions>
+					<!--<li Class="RecipeInheritance.ThingDefExtension">-->
+					<li Class="VEF.Buildings.RecipeInheritanceExtension">
+						<inheritRecipesFrom>
+							<li>ElectricStove</li>
+						</inheritRecipesFrom>
+					</li>
+				</modExtensions>
+			</ThingDef>
+</Defs>

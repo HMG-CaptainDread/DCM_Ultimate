@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>VGP Vegetable Garden</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<!-- ironwood balance change -->
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName = "VG_IronWoodLog"]/statBases/Mass</xpath>		
+				<value>
+					<Mass>0.6</Mass>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName = "VG_IronWoodLog"]/stuffProps/statFactors</xpath>		
+				<value>
+					<Mass>1.3</Mass>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/RecipeDef[defName = "MakeIronWood"]/products</xpath>		
+				<value>
+					<products>
+						<WoodLog>30</WoodLog>
+					</products>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/RecipeDef[defName = "MakeIronWood"]/ingredients/li[0]/count</xpath>		
+				<value>
+					<count>20</count>
+				</value>
+			</li>
+		</operations>
+	</match>
+  </Operation>
+    
+</Patch>

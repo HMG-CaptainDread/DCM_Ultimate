@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ResearchProjectDef[defName="RF_ArcaneCrafting"]</xpath>
+		<value>
+			<prerequisites>
+				<li>Esoteric_Studies</li>
+			</prerequisites>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[
+					defName="RF_ArcaneDefences" or
+					defName="RF_ArcaneLighting" or
+					defName="RF_ArcaneTemperatureRegulation" or
+					defName="RF_ArcaneWeapons"]/baseCost		</xpath>
+		<value>
+			<baseCost>500</baseCost>
+		</value>
+	</Operation>
+
+	<!-- Move Tabs -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="RF_ArcaneCrafting" or defName="RF_ArcaneDefences" or defName="RF_ArcaneLighting" or defName="RF_ArcaneTemperatureRegulation" or defName="RF_ArcaneWeapons"]/tab</xpath>
+		<value>
+			<tab>DankPyon_MedievalResearchTab</tab>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ResearchProjectDef/tab[.="RF_RimFantasy"]</xpath>
+		<nomatch Class="PatchOperationRemove">
+			<xpath>Defs/ResearchTabDef[defName="RF_RimFantasy"]</xpath>
+		</nomatch>
+	</Operation>
+
+	<!-- Adjsut Location -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="RF_ArcaneCrafting"]/researchViewX</xpath>
+		<value>
+			<researchViewX>6.00</researchViewX>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="RF_ArcaneCrafting"]/researchViewY</xpath>
+		<value>
+			<researchViewY>6.10</researchViewY>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="RF_ArcaneDefences"]/researchViewX</xpath>
+		<value>
+			<researchViewX>7.00</researchViewX>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="RF_ArcaneDefences"]/researchViewY</xpath>
+		<value>
+			<researchViewY>5.50</researchViewY>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="RF_ArcaneLighting"]/researchViewX</xpath>
+		<value>
+			<researchViewX>7.00</researchViewX>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="RF_ArcaneLighting"]/researchViewY</xpath>
+		<value>
+			 <researchViewY>4.80</researchViewY>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="RF_ArcaneWeapons"]/researchViewX</xpath>
+		<value>
+			<researchViewX>7.00</researchViewX>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="RF_ArcaneWeapons"]/researchViewY</xpath>
+		<value>
+			<researchViewY>6.10</researchViewY>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="RF_ArcaneTemperatureRegulation"]/researchViewX</xpath>
+		<value>
+			<researchViewX>6.00</researchViewX>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="RF_ArcaneTemperatureRegulation"]/researchViewY</xpath>
+		<value>
+			<researchViewY>5.30</researchViewY>
+		</value>
+	</Operation>
+
+</Patch>

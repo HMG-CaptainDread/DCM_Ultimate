@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="XmlExtensions.FindMod">
+    <mods>
+      <li>Fortifications - Medieval - Material</li>
+      <li>Medieval Overhaul</li>
+    </mods>
+    <logic>and</logic>
+    <caseTrue>
+
+      <li Class="XmlExtensions.OptionalPatch">
+        <modId>zenlor.MOTweaks</modId>
+        <key>mot-integration-fortifications-medieval</key>
+        <defaultValue>True</defaultValue>
+        <caseTrue>
+
+            <li Class="PatchOperationReplace">
+                <xpath>/Defs/ThingDef[defName="FT_TableMasonry"]/costList</xpath>
+                <value>
+                    <costList>
+                        <DankPyon_IronIngot>20</DankPyon_IronIngot>
+                        <WoodLog>50</WoodLog>
+                    </costList>
+                </value>
+            </li>
+
+        </caseTrue>
+      </li>
+    </caseTrue>
+  </Operation>
+</Patch>

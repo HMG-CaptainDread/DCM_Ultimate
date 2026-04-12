@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo765x25mmBorchardt</defName>
+		<label>7.65x25mm Borchardt</label>
+		<parent>AmmoPistols</parent>
+		<iconPath>UI/Icons/ThingCategories/CaliberPistol</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>AmmoSet_765x25mmBorchardt</defName>
+		<label>7.65x25mm Borchardt</label>
+		<ammoTypes>
+			<Ammo_765x25mmBorchardt_FMJ>Bullet_765x25mmBorchardt_FMJ</Ammo_765x25mmBorchardt_FMJ>
+			<Ammo_765x25mmBorchardt_AP>Bullet_765x25mmBorchardt_AP</Ammo_765x25mmBorchardt_AP>
+			<Ammo_765x25mmBorchardt_HP>Bullet_765x25mmBorchardt_HP</Ammo_765x25mmBorchardt_HP>			
+		</ammoTypes>
+		<similarTo>AmmoSet_Pistol</similarTo>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="765x25mmBorchardtBase" ParentName="SmallAmmoBase" Abstract="True" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.greatwar.centralpowers">
+		<description>Old handgun cartridge made for use in semi-automatic pistols.</description>
+		<statBases>
+			<Mass>0.011</Mass>
+			<Bulk>0.01</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo765x25mmBorchardt</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="765x25mmBorchardtBase" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>Ammo_765x25mmBorchardt_FMJ</defName>
+		<label>7.65x25mm Borchardt cartridge (FMJ)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/FMJ</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.05</MarketValue>
+		</statBases>
+		<ammoClass>FullMetalJacket</ammoClass>
+		<cookOffProjectile>Bullet_765x25mmBorchardt_FMJ</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="765x25mmBorchardtBase" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>Ammo_765x25mmBorchardt_AP</defName>
+		<label>7.65x25mm Borchardt cartridge (AP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/AP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.05</MarketValue>
+		</statBases>
+		<ammoClass>ArmorPiercing</ammoClass>
+		<cookOffProjectile>Bullet_765x25mmBorchardt_AP</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="765x25mmBorchardtBase" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>Ammo_765x25mmBorchardt_HP</defName>
+		<label>7.65x25mm Borchardt cartridge (HP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/HP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.05</MarketValue>
+		</statBases>
+		<ammoClass>HollowPoint</ammoClass>
+		<cookOffProjectile>Bullet_765x25mmBorchardt_HP</cookOffProjectile>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="Base765x25mmBorchardtBullet" ParentName="BaseBulletCE" Abstract="true" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.greatwar.centralpowers">
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>78</speed>
+			<dropsCasings>true</dropsCasings>
+			<casingMoteDefname>Fleck_PistolAmmoCasings</casingMoteDefname>
+			<casingFilthDefname>Filth_PistolAmmoCasings</casingFilthDefname>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base765x25mmBorchardtBullet" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>Bullet_765x25mmBorchardt_FMJ</defName>
+		<label>7.65x25mm Borchardt bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>10</damageAmountBase>
+			<armorPenetrationSharp>3.5</armorPenetrationSharp>
+			<armorPenetrationBlunt>8.36</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base765x25mmBorchardtBullet" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>Bullet_765x25mmBorchardt_AP</defName>
+		<label>7.65x25mm Borchardt bullet (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>6</damageAmountBase>
+			<armorPenetrationSharp>7</armorPenetrationSharp>
+			<armorPenetrationBlunt>8.36</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base765x25mmBorchardtBullet" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>Bullet_765x25mmBorchardt_HP</defName>
+		<label>7.65x25mm Borchardt bullet (HP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>12</damageAmountBase>
+			<armorPenetrationSharp>2</armorPenetrationSharp>
+			<armorPenetrationBlunt>8.36</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>MakeAmmo_765x25mmBorchardt_FMJ</defName>
+		<label>make 7.65x25mm Borchardt cartridge x500</label>
+		<description>Craft 500 7.65x25mm Borchardt cartridges.</description>
+		<jobString>Making 7.65x25mm Borchardt cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>12</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_765x25mmBorchardt_FMJ>500</Ammo_765x25mmBorchardt_FMJ>
+		</products>
+		<workAmount>1200</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>MakeAmmo_765x25mmBorchardt_AP</defName>
+		<label>make 7.65x25mm Borchardt (AP) cartridge x500</label>
+		<description>Craft 500 7.65x25mm Borchardt (AP) cartridges.</description>
+		<jobString>Making 7.65x25mm Borchardt (AP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>12</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_765x25mmBorchardt_AP>500</Ammo_765x25mmBorchardt_AP>
+		</products>
+		<workAmount>1440</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequireAnyOf="cgf1.gunsgalore.industrialage.i,cgf1.gunsgalore.greatwar.centralpowers">
+		<defName>MakeAmmo_765x25mmBorchardt_HP</defName>
+		<label>make 7.65x25mm Borchardt (HP) cartridge x500</label>
+		<description>Craft 500 7.65x25mm Borchardt (HP) cartridges.</description>
+		<jobString>Making 7.65x25mm Borchardt (HP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>12</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_765x25mmBorchardt_HP>500</Ammo_765x25mmBorchardt_HP>
+		</products>
+		<workAmount>1200</workAmount>
+	</RecipeDef>
+
+</Defs>
