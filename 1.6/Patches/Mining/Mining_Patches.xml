@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<!-- <></> -->
+	<!--  -->
+
+
+	<!-- MODS -->
+		<!-- DEEP RIM -->
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>DeepRim (Continued)</li>
+				</mods>
+				<match Class="PatchOperationSequence">
+					<success>Normal</success>
+					<operations>
+						<!-- CUTOUT COMPLEX ADDITION -->
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="miningshaft"]/graphicData</xpath>
+								<value>
+									<shaderType>CutoutComplex</shaderType>
+								</value>
+							</li>
+					</operations>
+				</match>
+			</Operation>
+		<!-- QUARRY -->
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>Quarry</li>
+				</mods>
+				<match Class="PatchOperationSequence">
+					<success>Normal</success>
+					<operations>
+						<!-- COST LIST COUNT -->
+							<!-- LARGE -->
+								<li Class="PatchOperationReplace">
+									<xpath>Defs/ThingDef[defName ="QRY_Quarry"]/costList</xpath>
+									<value>
+										<costList>
+											<WoodLog>300</WoodLog>
+										</costList>
+									</value>
+								</li>
+							<!-- MEDIUM -->
+								<li Class="PatchOperationReplace">
+									<xpath>Defs/ThingDef[defName ="QRY_MediQuarry"]/costList</xpath>
+									<value>
+										<costList>
+											<WoodLog>150</WoodLog>
+										</costList>
+									</value>
+								</li>
+							<!-- SMALL -->
+								<li Class="PatchOperationReplace">
+									<xpath>Defs/ThingDef[defName ="QRY_MiniQuarry"]/costList</xpath>
+									<value>
+										<costList>
+											<WoodLog>75</WoodLog>
+										</costList>
+									</value>
+								</li>
+					</operations>
+				</match>
+			</Operation>
+</Patch>
