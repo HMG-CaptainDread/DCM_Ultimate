@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="XmlExtensions.FindMod">
+    <success>Always</success>
+    <mods>
+      <li>Medieval Overhaul</li>
+      <li>Vanilla Factions Expanded - Tribals</li>
+    </mods>
+    <logic>and</logic>
+    <caseTrue>
+
+      <li Class="XmlExtensions.OptionalPatch">
+        <modId>zenlor.MOTweaks</modId>
+        <key>mot-integration-vfetribal</key>
+        <defaultValue>True</defaultValue>
+        <caseTrue>
+          <!-- Scenario patch -->
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/ScenarioDef[defName="VFET_WildMen"]/scenario/parts/li[thingDef="WoodLog"]/thingDef</xpath>
+            <value><thingDef>DankPyon_RawWood</thingDef></value>
+          </li>
+
+          <!-- Large Fire (wood logs) -->
+          <li Class="PatchOperationReplace">
+            <success>Always</success>
+            <xpath>Defs/ThingDef[defName="VFET_LargeFire"]/costList</xpath>
+            <value>
+              <costList>
+                <DankPyon_RawWood>150</DankPyon_RawWood>
+              </costList>
+            </value>
+          </li>
+
+          <li Class="PatchOperationReplace">
+            <success>Always</success>
+            <xpath>Defs/ThingDef[(
+            defName="SimpleResearchBench"
+            or defName="TableSculpting"
+              )]/researchPrerequisites</xpath>
+            <value>
+              <researchPrerequisites>
+                <li>DankPyon_RusticFurniture</li>
+              </researchPrerequisites>
+            </value>
+          </li>
+
+          <li Class="PatchOperationReplace">
+            <success>Always</success>
+            <xpath>Defs/ThingDef[defName="VFET_Throwspikes"]/costList</xpath>
+            <value>
+              <costList>
+                <DankPyon_RawWood>15</DankPyon_RawWood>
+              </costList>
+            </value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <success>Always</success>
+            <xpath>Defs/ThingDef[defName="VFET_Stake"]/costList</xpath>
+            <value>
+              <costList>
+                <DankPyon_RawWood>5</DankPyon_RawWood>
+              </costList>
+            </value>
+          </li>
+        </caseTrue>
+      </li>
+
+      <li Class="XmlExtensions.OptionalPatch">
+        <modId>zenlor.MOTweaks</modId>
+        <key>mot-integration-vfetribal</key>
+        <defaultValue>True</defaultValue>
+        <caseTrue>
+          <!-- Storage -->
+          <!-- FIXME: remove when MO updates -->
+          <li Class="PatchOperationRemove">
+            <success>Always</success>
+            <xpath>Defs/ThingDef[(
+            defName="DankPyon_WoodLogs1x1c" or
+            defName="DankPyon_WoodLogs1x2c" or
+            defName="DankPyon_WoodLogs2x2c" or
+            defName="DankPyon_Timber1x1c" or
+            defName="DankPyon_Timber1x2c" or
+            defName="DankPyon_Timber2x2c" or
+            defName="DankPyon_Bricks1x1c" or
+            defName="DankPyon_Bricks1x2c" or
+            defName="DankPyon_Bricks2x2c" or
+            defName="DankPyon_IngotStack1x1c" or
+            defName="DankPyon_SteelIngotStack1x1c" or
+            defName="DankPyon_SilverIngotStack1x1c" or
+            defName="DankPyon_GoldIngotStack1x1c"
+              )]/researchPrerequisites</xpath>
+          </li>
+          <li Class="PatchOperationAdd">
+            <success>Always</success>
+            <xpath>Defs/ThingDef[(
+            defName="DankPyon_WoodLogs1x1c" or
+            defName="DankPyon_WoodLogs1x2c" or
+            defName="DankPyon_WoodLogs2x2c" or
+            defName="DankPyon_Timber1x1c" or
+            defName="DankPyon_Timber1x2c" or
+            defName="DankPyon_Timber2x2c" or
+            defName="DankPyon_Bricks1x1c" or
+            defName="DankPyon_Bricks1x2c" or
+            defName="DankPyon_Bricks2x2c" or
+            defName="DankPyon_IngotStack1x1c" or
+            defName="DankPyon_SteelIngotStack1x1c" or
+            defName="DankPyon_SilverIngotStack1x1c" or
+            defName="DankPyon_GoldIngotStack1x1c"
+              )]</xpath>
+            <value>
+              <researchPrerequisites>
+                <li>VFET_Furniture</li>
+              </researchPrerequisites>
+            </value>
+          </li>
+
+          <!-- Hay/Straw processor -->
+          <li Class="PatchOperationAdd">
+            <success>Always</success>
+            <xpath>Defs/ThingDef[defName="DankPyon_HayRack"]/researchPrerequisites</xpath>
+            <value>
+              <li>VFET_Agriculture</li>
+            </value>
+          </li>
+
+          <!-- Leather/Hide processor -->
+          <li Class="PatchOperationAdd">
+            <success>Always</success>
+            <xpath>Defs/ThingDef[defName="DankPyon_DryRack" and not(researchPrerequisites)]</xpath>
+            <value>
+              <researchPrerequisites>
+                <li>VFET_Hunting</li>
+              </researchPrerequisites>
+            </value>
+          </li>
+
+          <!-- Butcher's Block -->
+          <li Class="PatchOperationAdd">
+            <success>Always</success>
+            <xpath>Defs/ThingDef[defName="DankPyon_ButchersBlock" and not(researchPrerequisites)]</xpath>
+            <value>
+              <researchPrerequisites>
+                <li>VFET_Hunting</li>
+                <li>VFET_Construction</li>
+              </researchPrerequisites>
+            </value>
+          </li>
+
+          <!-- FIXME: remove when MO updates -->
+          <li Class="PatchOperationRemove">
+            <success>Always</success>
+            <xpath>Defs/ThingDef[defName="TableButcher"]/researchPrerequisites</xpath>
+          </li>
+          <li Class="PatchOperationAdd">
+            <success>Always</success>
+            <xpath>Defs/ThingDef[defName="TableButcher" and not(researchPrerequisites)]</xpath>
+            <value>
+              <researchPrerequisites>
+                <li>DankPyon_RusticFurniture</li>
+              </researchPrerequisites>
+            </value>
+          </li>
+
+          <!-- Mining Spot -->
+          <li Class="PatchOperationAdd">
+            <success>Always</success>
+            <xpath>Defs/ThingDef[defName="DankPyon_MiningSpot" and not(researchPrerequisites)]</xpath>
+            <value>
+              <researchPrerequisites>
+                <li>VFET_Mining</li>
+              </researchPrerequisites>
+            </value>
+          </li>
+
+          <!-- Stonecutting Spot -->
+          <li Class="PatchOperationAdd">
+            <success>Always</success>
+            <xpath>Defs/ThingDef[defName="DankPyon_StonecuttingSpot" and not(researchPrerequisites)]</xpath>
+            <value>
+              <researchPrerequisites>
+                <li>VFET_Mining</li>
+                <li>VFET_Construction</li>
+              </researchPrerequisites>
+            </value>
+          </li>
+
+          <!-- Structures moved to construction -->
+          <li Class="PatchOperationAdd">
+            <success>Always</success>
+            <xpath>Defs/ThingDef[(
+            defName="DankPyon_RusticDoor" or
+            defName="DankPyon_SlabDoor" or
+            defName="DankPyon_Gate" or
+            defName="DankPyon_LogGate" or
+            defName="DankPyon_LogWall" or
+            defName="DankPyon_Frame_Log" or
+            defName="DankPyon_Palisade" or
+            defName="DankPyon_EmbPalisade"
+              ) and not(researchPrerequisites)]</xpath>
+            <value>
+              <researchPrerequisites>
+                <li>VFET_Construction</li>
+              </researchPrerequisites>
+            </value>
+          </li>
+
+          <!-- Tents when animals discover hunting -->
+          <li Class="PatchOperationAdd">
+            <success>Always</success>
+            <xpath>Defs/ThingDef[(
+            defName="DankPyon_HideTentWall" or
+            defName="DankPyon_TentWall"
+              ) and not(researchPrerequisites)]</xpath>
+            <value>
+              <researchPrerequisites>
+                <li>VFET_Hunting</li>
+              </researchPrerequisites>
+            </value>
+          </li>
+
+          <!-- Neolithic furnitures -->
+          <li Class="PatchOperationReplace">
+            <success>Always</success>
+            <xpath>Defs/ThingDef[(
+            defName="DankPyon_LogTable1x2c" or
+            defName="DankPyon_LogTable1x3c" or
+            defName="DankPyon_LogTable1x4c" or
+            defName="DankPyon_LogTable2x4c" or
+            defName="DankPyon_LogChair" or
+            defName="DankPyon_LogBench1x2c" or
+            defName="DankPyon_LogBench1x3c" or
+            defName="DankPyon_LogBench1x4c"
+              )]/researchPrerequisites</xpath>
+            <value>
+              <researchPrerequisites>
+                <li>VFET_Furniture</li>
+              </researchPrerequisites>
+            </value>
+          </li>
+
+          <!-- move back industrial furnitures -->
+          <li Class="PatchOperationReplace">
+            <success>Always</success>
+            <xpath>Defs/ThingDef[(
+            defName="Table1x2c" or
+            defName="Table2x2c" or
+            defName="Table2x4c" or
+            defName="Table3x3c" or
+            defName="Stool"
+              )]/researchPrerequisites</xpath>
+            <value>
+              <researchPrerequisites>
+                <li>ComplexFurniture</li>
+              </researchPrerequisites>
+            </value>
+          </li>
+
+          <!-- Cultured things unfit of animals -->
+          <li Class="PatchOperationAdd">
+            <success>Always</success>
+            <xpath>Defs/ThingDef[(
+            defName="DankPyon_ResearchingSpot" or
+            defName="DankPyon_RusticCookingTable" or
+            defName="DankPyon_CleaningBench" or
+            defName="DankPyon_Workbench"
+              ) and not(researchPrerequisites)]</xpath>
+            <value>
+              <researchPrerequisites>
+                <li>VFET_Culture</li>
+              </researchPrerequisites>
+            </value>
+          </li>
+
+          <li Class="PatchOperationAdd">
+            <xpath>Defs</xpath>
+            <value>
+              <VFETribals.TribalResearchProjectDef>
+                <defName>MOTW_Lumber</defName>
+                <label>lumber</label>
+                <description>Unlock the capability to transform raw wooden logs into fresh lumber ready to be used for crafting and construction.</description>
+                <baseCost>25</baseCost>
+                <tab>VFET_Basics</tab>
+                <techLevel>Animal</techLevel>
+                <tags>
+                  <li>ClassicStart</li>
+                </tags>
+                <prerequisites>
+                  <li>VFET_Agriculture</li>
+                  <li>VFET_Construction</li>
+                </prerequisites>
+              </VFETribals.TribalResearchProjectDef>
+            </value>
+          </li>
+
+          <li Class="PatchOperationAdd">
+            <xpath>Defs/VFETribals.TribalResearchProjectDef[defName="VFET_Furniture"]/prerequisites</xpath>
+            <value>
+              <li>MOTW_Lumber</li>
+            </value>
+          </li>
+
+          <li Class="PatchOperationAdd">
+            <success>Always</success>
+            <xpath>Defs/ResearchProjectDef[defName="DankPyon_Lumber" and not(prerequisites)]</xpath>
+            <value>
+              <prerequisites>
+                <li>MOTW_Lumber</li>
+              </prerequisites>
+            </value>
+          </li>
+          <li Class="PatchOperationAdd">
+            <xpath>Defs/ResearchProjectDef[defName="DankPyon_Lumber"]/prerequisites</xpath>
+            <value>
+              <li>MOTW_Lumber</li>
+            </value>
+          </li>
+
+          <!-- Timber work -->
+          <li Class="PatchOperationAdd">
+            <xpath>Defs/RecipeDef[@Name="DankPyon_MakeTimberBase"]</xpath>
+            <value>
+              <researchPrerequisites>
+                <li>MOTW_Lumber</li>
+              </researchPrerequisites>
+            </value>
+          </li>
+
+        </caseTrue>
+      </li>
+
+      <li Class="XmlExtensions.OptionalPatch">
+        <modId>zenlor.MOTweaks</modId>
+        <key>mot-integration-vfetribal-research</key>
+        <defaultValue>True</defaultValue>
+        <caseTrue>
+
+          <li Class="PatchOperationAdd">
+            <success>Always</success>
+            <xpath>Defs/ResearchProjectDef[not(prerequisites) and not(defName="VFET_Fire")]/hiddenPrerequisites</xpath>
+            <value>
+              <li>VFET_Culture</li>
+            </value>
+          </li>
+
+          <!-- Scenario patch -->
+          <li Class="PatchOperationReplace">
+            <success>Always</success>
+            <xpath>Defs/ScenarioDef/scenario/parts/li[thingDef="WoodLog"]/thingDef</xpath>
+            <value>
+              <thingDef>DankPyon_RawWood</thingDef>
+            </value>
+          </li>
+
+        </caseTrue>
+      </li>
+    </caseTrue>
+  </Operation>
+</Patch>

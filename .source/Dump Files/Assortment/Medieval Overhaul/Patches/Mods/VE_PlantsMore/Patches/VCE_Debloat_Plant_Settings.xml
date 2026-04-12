@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<Operation Class="MO_Patches.PatchOperation_ToggleSettings">
+		<settings>
+			<li>plant_bloat</li>
+		</settings>
+		<active Class="PatchOperationSequence">
+			<operations>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="DankPyon_Plant_Carrots"]/plant/sowTags</xpath>
+					<value>
+						<sowTags/>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="VCE_Chickpea"]/plant/sowTags</xpath>
+					<value>
+						<sowTags/>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="VCE_Garlic"]/plant/sowTags</xpath>
+					<value>
+						<sowTags/>
+					</value>
+				</li>
+
+			</operations>
+		</active>
+		<inactive Class="PatchOperationSequence">
+			<operations>
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="VCE_Garlic"]/plant</xpath>
+					<value>
+						<sowResearchPrerequisites>
+							<li>DankPyon_BasicAgriculture</li>
+						</sowResearchPrerequisites>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="VCE_Chickpea"]/plant</xpath>
+					<value>
+						<sowResearchPrerequisites>
+							<li>DankPyon_BasicAgriculture</li>
+						</sowResearchPrerequisites>
+					</value>
+				</li>
+
+			</operations>
+		</inactive>
+	</Operation>
+
+</Patch>

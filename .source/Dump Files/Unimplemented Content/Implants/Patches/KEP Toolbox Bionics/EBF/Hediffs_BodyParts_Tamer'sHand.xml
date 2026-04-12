@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+
+
+<Defs>
+
+  <HediffDef ParentName="KEPHediffBase">
+    <defName>KEP_TamersHand</defName>
+    <label>tamer's hand</label>
+    <labelNoun>a tamer's hand</labelNoun>
+    <description>An installed tamer's hand.</description>
+    <descriptionHyperlinks><ThingDef>KEP_TamersHand</ThingDef></descriptionHyperlinks>
+    <spawnThingOnRemoved>KEP_TamersHand</spawnThingOnRemoved>
+    <addedPartProps>
+	  <partEfficiency>0.80</partEfficiency>
+      <solid>true</solid>
+    </addedPartProps>
+    <stages>
+      <li>
+        <statOffsets>
+          <TameAnimalChance>0.20</TameAnimalChance>
+		  <TrainAnimalChance>0.20 </TrainAnimalChance>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+	<ThingDef Name="KEP_BASETamersHand" ParentName="KEPBodyPartModBase" Abstract="True">
+	    <techLevel>Spacer</techLevel>
+		<tradeTags>
+			<li>Bionic</li>
+		</tradeTags>
+		<thingCategories>
+			<li>BodyPartsBionic</li>
+		</thingCategories>
+		<statBases>
+			<DeteriorationRate>2.0</DeteriorationRate>
+		</statBases>
+	</ThingDef>
+
+  <ThingDef ParentName="KEP_BASETamersHand">
+    <defName>KEP_TamersHand</defName>
+    <label>tamer's hand</label>
+    <description>A hand replacement with a built-in animal heartbeat monitor and a soft pillowed palm for calming animals. Great for taming and training thrumbos and rats alike.</description>
+	<graphicData>
+			<texPath>Things/Item/BodyPart/Tamer's_hand</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+    <descriptionHyperlinks><RecipeDef>KEP_InstallTamersHand</RecipeDef></descriptionHyperlinks>
+    <costList>
+      <Plasteel>25</Plasteel>
+      <ComponentSpacer>3</ComponentSpacer>
+    </costList>
+    <thingSetMakerTags><li>RewardStandardMidFreq</li></thingSetMakerTags>
+    <statBases>
+      <Mass>0.3</Mass>
+	        <MarketValue>950</MarketValue>
+    </statBases>
+	    <techHediffsTags>
+      <li>Advanced</li>
+	<li>KEP</li>
+    </techHediffsTags>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+    <defName>KEP_InstallTamersHand</defName>
+    <label>install tamer's hand</label>
+    <description>Install a tamer's hand.</description>
+    <descriptionHyperlinks>
+      <ThingDef>KEP_TamersHand</ThingDef>
+      <HediffDef>KEP_TamersHand</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing tamer's hand.</jobString>
+		<workAmount>4000</workAmount>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>Medicine</li>
+					</categories>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>KEP_TamersHand</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<categories>
+				<li>Medicine</li>
+			</categories>
+			<thingDefs>
+				<li>KEP_TamersHand</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Hand</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>KEP_TamersHand</addsHediff>
+	</RecipeDef>
+</Defs>

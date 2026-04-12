@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ThingDef[defName="Dye"]/statBases/MarketValue</xpath>
+    <value>
+      <MarketValue>0.65</MarketValue>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationRemove">
+    <xpath>/Defs/ThingDef[defName="PS_DeepchemRefinery"]/comps/li[@Class="VCHE.CompProperties_Refinery"]</xpath>
+  </Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName="PS_DeepchemRefinery"]</xpath>
+    <value>
+      <inspectorTabs>
+        <li>PipeSystem.ITab_Processor</li>
+      </inspectorTabs>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Biotech</li>
+    </mods>
+    <nomatch Class="PatchOperationReplace">
+      <xpath>/Defs/ThingDef[defName="PS_DeepchemRefinery"]/comps/li[@Class="PipeSystem.CompProperties_ResourceProcessor"]</xpath>
+      <value>
+        <li Class="PipeSystem.CompProperties_Resource">
+          <pipeNet>VCHE_DeepchemNet</pipeNet>
+        </li>
+        <li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
+          <showBufferInfo>false</showBufferInfo>
+          <notWorkingKey>VCHE_CantRefine</notWorkingKey>
+          <progressBarOffset>(0, 0, -0.65)</progressBarOffset>
+          <showResultItem>true</showResultItem>
+          <processes>
+            <li>VCEUE_DeepchemIntoChemfuel</li>
+            <li>VCEUE_DeepchemIntoChemfuelTierII</li>
+            <li>VCEUE_DeepchemIntoChemfuelTierIII</li>
+          </processes>
+          <!-- <soundAmbient>VCHE_RefineryAmbient</soundAmbient> -->
+        </li>
+      </value>
+    </nomatch>
+    <match Class="PatchOperationReplace">
+      <xpath>/Defs/ThingDef[defName="PS_DeepchemRefinery"]/comps/li[@Class="PipeSystem.CompProperties_ResourceProcessor"]</xpath>
+      <value>
+        <li Class="CompProperties_ThingContainer">
+          <compClass>CompThingContainer</compClass>
+          <stackLimit>100</stackLimit>
+          <drawContainedThing>false</drawContainedThing>
+          <dropEffecterDef>MechChargerWasteRemoved</dropEffecterDef>
+        </li>
+        <li Class="CompProperties_WasteProducer">
+          <showContentsInInspectPane>true</showContentsInInspectPane>
+        </li>
+        <li Class="PipeSystem.CompProperties_Resource">
+          <pipeNet>VCHE_DeepchemNet</pipeNet>
+        </li>
+        <li Class="PipeSystem.CompProperties_AdvancedResourceProcessor">
+          <showBufferInfo>false</showBufferInfo>
+          <notWorkingKey>VCHE_CantRefine</notWorkingKey>
+          <progressBarOffset>(0, 0, -0.65)</progressBarOffset>
+          <showResultItem>true</showResultItem>
+          <processes>
+            <li>VCEUE_DeepchemIntoChemfuel</li>
+            <li>VCEUE_DeepchemIntoChemfuelTierII</li>
+            <li>VCEUE_DeepchemIntoChemfuelTierIII</li>
+          </processes>
+          <!-- <soundAmbient>VCHE_RefineryAmbient</soundAmbient> -->
+          <stopWhenWastepackFull>True</stopWhenWastepackFull>
+        </li>
+        <li Class="PipeSystem.CompProperties_Resource">
+          <pipeNet>VCEUE_ToxicWasteNet</pipeNet>
+        </li>
+      </value>
+    </match>
+
+  </Operation>
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>VGP Garden Fabrics</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs/ThingDef[defName="TableElecLoom" or defName="TableLoom"]/recipes</xpath>
+          <value>
+            <li>VCEUE_Make_DevilstrandFromRawThread</li>
+            <li>VCEUE_Make_Devilstrand_4</li>
+            <li>VCEUE_Make_Devilstrand_2</li>
+            <li>VCEUE_Make_HyperweaveFromRawThread</li>
+            <li>VCEUE_Make_Hyperweave_4</li>
+            <li>VCEUE_Make_Hyperweave_2</li>
+            <li>VCEUE_Make_SynthreadFromRawThread</li>
+            <li>VCEUE_Make_Synthread_4</li>
+            <li>VCEUE_Make_Synthread_2</li>
+          </value>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>VGP Garden Fabrics Simplified</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs/ThingDef[defName="TableElecLoom" or defName="TableLoom"]/recipes</xpath>
+          <value>
+            <li>VCEUE_Make_DevilstrandFromRawThread</li>
+            <li>VCEUE_Make_Devilstrand_4</li>
+            <li>VCEUE_Make_Devilstrand_2</li>
+            <li>VCEUE_Make_HyperweaveFromRawThread</li>
+            <li>VCEUE_Make_Hyperweave_4</li>
+            <li>VCEUE_Make_Hyperweave_2</li>
+            <li>VCEUE_Make_SynthreadFromRawThread</li>
+            <li>VCEUE_Make_Synthread_4</li>
+            <li>VCEUE_Make_Synthread_2</li>
+          </value>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Vanilla Chemfuel Expanded</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs/ThingDef[defName="PS_DeepchemRefinery"]/researchPrerequisites</xpath>
+          <value>
+            <li>VCEUE_ChemfuelRefining</li>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs/ThingDef[defName="VCHE_ChemfuelPipe" or defName="VCHE_UndergroundChemfuelPipe" or defName="VCHE_DeepchemPipe" or defName="VCHE_UndergroundDeepchemPipe"]</xpath>
+          <value>
+            <designatorDropdown>Pipes</designatorDropdown>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs/ThingDef[defName="VCHE_ChemfuelValve" or defName="VCHE_DeepchemValve"]</xpath>
+          <value>
+            <designatorDropdown>PipeValves</designatorDropdown>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs/ThingDef[defName="PS_ChemfuelTank" or defName="PS_DeepchemTank"]</xpath>
+          <value>
+            <designatorDropdown>PipeContainers</designatorDropdown>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs/ThingDef[defName="VCHE_ChemfuelDrain" or defName="VCHE_DeepchemDrain"]</xpath>
+          <value>
+            <designatorDropdown>PipeDrains</designatorDropdown>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs/ThingDef[defName="VCHE_ChemfuelTap" or defName="VCHE_DeepchemTap"]</xpath>
+          <value>
+            <designatorDropdown>PipeTaps</designatorDropdown>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs/ThingDef[defName="PS_DeepchemRefinery"]</xpath>
+          <value>
+            <designatorDropdown>Refineries</designatorDropdown>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs/ThingDef[defName="VCHE_ChemfuelPipe" or defName="VCHE_UndergroundChemfuelPipe" or defName="VCHE_ChemfuelTap" or defName="VCHE_ChemfuelDrain" or defName="VCHE_ChemfuelValve" or defName="PS_DeepchemRefinery"]/building</xpath>
+          <value>
+            <relatedBuildCommands>
+              <li>PS_DeepchemRefinery</li>
+              <li>VCHE_ChemfuelPipe</li>
+              <li>VCHE_UndergroundChemfuelPipe</li>
+              <li>VCHE_ChemfuelValve</li>
+              <li>PS_ChemfuelTank</li>
+              <li>VCHE_ChemfuelTap</li>
+              <li>VCHE_ChemfuelDrain</li>
+            </relatedBuildCommands>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs/ThingDef[defName="PS_ChemfuelTank"]</xpath>
+          <value>
+            <building>
+              <relatedBuildCommands>
+                <li>PS_DeepchemRefinery</li>
+                <li>VCHE_ChemfuelPipe</li>
+                <li>VCHE_UndergroundChemfuelPipe</li>
+                <li>VCHE_ChemfuelValve</li>
+                <li>PS_ChemfuelTank</li>
+                <li>VCHE_ChemfuelTap</li>
+                <li>VCHE_ChemfuelDrain</li>
+              </relatedBuildCommands>
+            </building>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs/ThingDef[defName="VCHE_DeepchemPipe" or defName="VCHE_DeepchemPumpjack" or defName="VCHE_UndergroundDeepchemPipe" or defName="VCHE_DeepchemTap" or defName="VCHE_DeepchemDrain" or defName="VCHE_DeepchemValve"]/building</xpath>
+          <value>
+            <relatedBuildCommands>
+              <li>PS_DeepchemRefinery</li>
+              <li>VCHE_DeepchemPipe</li>
+              <li>VCHE_UndergroundDeepchemPipe</li>
+              <li>VCHE_DeepchemValve</li>
+              <li>PS_DeepchemTank</li>
+              <li>VCHE_DeepchemTap</li>
+              <li>VCHE_DeepchemDrain</li>
+              <li>VCHE_DeepchemDrain</li>
+              <li>VCEUE_RawPlasteelRefinery</li>
+              <li>VCEUE_AdvancedAutoWeavery</li>
+              <li>VCEUE_Autoweave</li>
+              <li>VCEUE_Autoclave</li>
+              <li>VCHE_DeepchemPumpjack</li>
+            </relatedBuildCommands>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs/ThingDef[defName="PS_DeepchemTank" or defName="PS_DeepchemRefinery"]</xpath>
+          <value>
+            <building>
+              <relatedBuildCommands>
+                <li>PS_DeepchemRefinery</li>
+                <li>VCHE_DeepchemPipe</li>
+                <li>VCHE_UndergroundDeepchemPipe</li>
+                <li>VCHE_DeepchemValve</li>
+                <li>PS_DeepchemTank</li>
+                <li>VCHE_DeepchemTap</li>
+                <li>VCHE_DeepchemDrain</li>
+                <li>VCHE_DeepchemDrain</li>
+                <li>VCEUE_RawPlasteelRefinery</li>
+                <li>VCEUE_AdvancedAutoWeavery</li>
+                <li>VCEUE_Autoweave</li>
+                <li>VCEUE_Autoclave</li>
+                <li>VCHE_DeepchemPumpjack</li>
+              </relatedBuildCommands>
+            </building>
+          </value>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Vanilla Helixien Gas Expanded</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs/ThingDef[defName="VHGE_HelixienPipe" or defName="VHGE_SubterraneanHelixienPipe"]</xpath>
+          <value>
+            <designatorDropdown>Pipes</designatorDropdown>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs/ThingDef[defName="VHGE_GasPipeValve"]</xpath>
+          <value>
+            <designatorDropdown>PipeValves</designatorDropdown>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs/ThingDef[defName="VHGE_GasTank"]</xpath>
+          <value>
+            <designatorDropdown>PipeContainers</designatorDropdown>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs/ThingDef[defName="VHGE_HelixienPipe" or defName="VHGE_SubterraneanHelixienPipe"]/building</xpath>
+          <value>
+            <relatedBuildCommands>
+              <li>VHGE_HelixienPipe</li>
+              <li>VHGE_SubterraneanHelixienPipe</li>
+              <li>VHGE_GasPipeValve</li>
+              <li>VHGE_GasTank</li>
+              <li>VHGE_HelixienPump</li>
+            </relatedBuildCommands>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs/ThingDef[defName="VHGE_GasPipeValve"]/building</xpath>
+          <value>
+            <relatedBuildCommands>
+              <li>VHGE_HelixienPipe</li>
+              <li>VHGE_SubterraneanHelixienPipe</li>
+              <li>VHGE_GasPipeValve</li>
+              <li>VHGE_GasTank</li>
+              <li>VHGE_HelixienPump</li>
+            </relatedBuildCommands>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs/ThingDef[defName="VHGE_GasTank"]</xpath>
+          <value>
+            <building>
+              <relatedBuildCommands>
+                <li>VHGE_HelixienPipe</li>
+                <li>VHGE_SubterraneanHelixienPipe</li>
+                <li>VHGE_GasPipeValve</li>
+                <li>VHGE_GasTank</li>
+                <li>VHGE_HelixienPump</li>
+              </relatedBuildCommands>
+            </building>
+          </value>
+        </li>
+        <li Class="PatchOperationAdd">
+          <xpath>/Defs/ThingDef[defName="VHGE_HelixienPump"]</xpath>
+          <value>
+            <building>
+              <relatedBuildCommands>
+                <li>VHGE_HelixienPipe</li>
+                <li>VHGE_SubterraneanHelixienPipe</li>
+                <li>VHGE_GasPipeValve</li>
+                <li>VHGE_GasTank</li>
+                <li>VHGE_HelixienPump</li>
+              </relatedBuildCommands>
+            </building>
+          </value>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+
+</Patch>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+  
+	<Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>[WD] Simple Concrete</li>
+        </mods>		
+        <match Class="PatchOperationSequence">
+            <operations>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/RecipeDef[defName="WDMakeConcreteBlocks"]/recipeUsers</xpath>
+				<value>
+					<recipeUsers>
+						<li>CraftingSpot</li>
+						<li>MedTimes_CraftingStation</li>
+					</recipeUsers>	
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/RecipeDef[defName="WDMakeConcreteBlocks"]/ingredients</xpath>
+				<value>
+					<ingredients>
+					  <li>
+						<filter>
+						  <thingDefs>
+							<li>Crushed_Stones</li>
+						  </thingDefs>	  
+						</filter>
+						<count>40</count>
+					  </li>
+					  <li>
+						<filter>
+						  <thingDefs>
+							<li>MedTimes_Resource_Cement</li>
+						  </thingDefs>
+						</filter>
+						<count>20</count>
+					  </li>
+					</ingredients>
+				</value>
+			  </li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/RecipeDef[defName="WDMakeConcreteBlocks"]/fixedIngredientFilter</xpath>
+				<value>
+					<fixedIngredientFilter>
+					  <thingDefs>
+						<li>MedTimes_Resource_Cement</li>
+						<li>Crushed_Stones</li>
+					  </thingDefs>	 	  	  
+					</fixedIngredientFilter>
+				</value>
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/RecipeDef[defName="WDMakeConcreteBlocks"]/defaultIngredientFilter</xpath>
+			</li>
+            </operations>
+		</match>
+    </Operation>
+   
+  
+</Patch>

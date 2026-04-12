@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<Operation Class="MO_Patches.PatchOperation_EnumToggle">
+		<enumSettingName>darkForestDifficultyMode</enumSettingName>
+		<settingsTypeString>MO_Patches.ModSettings_MOPatches</settingsTypeString>
+		<operationMapping>
+			<li>
+				<enumValue>Easy</enumValue>
+				<patchOperation Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef/comps/li[@Class="MedievalOverhaul.CompProperties_PawnSpawnerOnDestroy"]/chance</xpath>
+					<value><chance>0</chance></value>
+				</patchOperation>
+			</li>
+			<li>
+				<enumValue>Normal</enumValue>
+				<patchOperation Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef/comps/li[@Class="MedievalOverhaul.CompProperties_PawnSpawnerOnDestroy"]/chance</xpath>
+					<value><chance>0.05</chance></value>
+				</patchOperation>
+			</li>
+			<li>
+				<enumValue>Hard</enumValue>
+				<patchOperation Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef/comps/li[@Class="MedievalOverhaul.CompProperties_PawnSpawnerOnDestroy"]/chance</xpath>
+					<value><chance>0.10</chance></value>
+				</patchOperation>
+			</li>
+			<li>
+				<enumValue>Nightmare</enumValue>
+				<patchOperation Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef/comps/li[@Class="MedievalOverhaul.CompProperties_PawnSpawnerOnDestroy"]/chance</xpath>
+					<value><chance>0.25</chance></value>
+				</patchOperation>
+			</li>
+			<li>
+				<enumValue>Ultra_Nightmare</enumValue>
+				<patchOperation Class="PatchOperationSequence">
+					<operations>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/ThingDef/comps/li[@Class="MedievalOverhaul.CompProperties_PawnSpawnerOnDestroy"]/chance</xpath>
+							<value><chance>0.50</chance></value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/ThingDef/comps/li[@Class="MedievalOverhaul.CompProperties_PawnSpawnerOnDestroy"]/numberToSpawn</xpath>
+							<value>
+								<numberToSpawn>1~2</numberToSpawn>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/ThingDef/comps/li[@Class="MedievalOverhaul.CompProperties_PawnSpawnerOnDestroy"]/mentalStateDef</xpath>
+							<value>
+								<mentalStateDef>ManhunterPermanent</mentalStateDef>
+							</value>
+						</li>
+					</operations>
+				</patchOperation>
+			</li>
+		</operationMapping>
+	</Operation>
+
+
+</Patch>

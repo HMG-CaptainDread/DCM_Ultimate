@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+  
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName="Drape"]/researchPrerequisites</xpath>
+		<value>
+			<researchPrerequisites>
+			  <li>MedTimes_BasicFurniture</li>
+			  <li>MedTimes_MedievalTailoring</li>
+			</researchPrerequisites>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName="Brazier"]/researchPrerequisites</xpath>
+		<value>
+			<researchPrerequisites>
+			  <li>MedTimes_BasicFurniture</li>
+			  <li>MedTimes_ContainedFire</li>
+			</researchPrerequisites>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[@Name="NatureShrineBase"]</xpath>
+		<value>
+			<researchPrerequisites>
+			  <li>MedTimes_BasicArt</li>
+			</researchPrerequisites>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName="AnimusStone"]</xpath>
+		<value>
+			<recipeMaker>
+				<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+				<workSkill>Artistic</workSkill>
+				<unfinishedThingDef>UnfinishedSculpture</unfinishedThingDef>
+				<effectWorking>Sculpt</effectWorking>
+				<soundWorking>Recipe_Sculpt</soundWorking>
+				<researchPrerequisite>MedTimes_BasicArt</researchPrerequisite>
+				<recipeUsers>
+					<li>TS_StonecuttingSpot</li>
+				</recipeUsers>
+			</recipeMaker>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName="AnimusStone"]/statBases</xpath>
+		<value>
+			<WorkToBuild>1250000</WorkToBuild>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName="AnimusStone"]</xpath>
+		<value>
+			<costList>
+				<Jade>60</Jade>
+			</costList>	
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName="MeleeWeapon_Axe"]/recipeMaker/researchPrerequisite</xpath>
+		<value>
+			<researchPrerequisite>MedTimes_WeaponsMetal</researchPrerequisite>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName="MeleeWeapon_Warhammer"]/recipeMaker/researchPrerequisite</xpath>
+		<value>
+			<researchPrerequisite>Smithing</researchPrerequisite>
+		</value>
+	</Operation>
+		
+</Patch>

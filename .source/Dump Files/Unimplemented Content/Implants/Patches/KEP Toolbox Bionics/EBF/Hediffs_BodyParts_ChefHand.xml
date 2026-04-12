@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <HediffDef ParentName="KEPHediffBase">
+    <defName>KEP_ChefHand</defName>
+    <label>chef hand</label>
+    <labelNoun>a chef hand</labelNoun>
+    <description>An installed chef hand.</description>
+    <descriptionHyperlinks><ThingDef>KEP_ChefHand</ThingDef></descriptionHyperlinks>
+    <spawnThingOnRemoved>KEP_ChefHand</spawnThingOnRemoved>
+    <addedPartProps>
+	<partEfficiency>0.80</partEfficiency>
+      <solid>true</solid>
+    </addedPartProps>
+    <stages>
+      <li>
+        <statOffsets>
+          <CookSpeed>30</CookSpeed>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+
+	<ThingDef Name="KEP_BASEchefHand" ParentName="KEPBodyPartModBase" Abstract="True">
+	    <techLevel>Spacer</techLevel>
+		<tradeTags>
+			<li>Bionic</li>
+		</tradeTags>
+		<thingCategories>
+			<li>BodyPartsBionic</li>
+		</thingCategories>
+	</ThingDef>
+
+  <ThingDef ParentName="KEP_BASEchefHand">
+    <defName>KEP_ChefHand</defName>
+    <label>chef hand</label>
+    <description>A hand replacement with built-in cooking tools as well as a simple recipe database. Can be rather intrusive at times.</description>
+	<graphicData>
+			<texPath>Things/Item/BodyPart/Chef_hand</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+    <descriptionHyperlinks><RecipeDef>KEP_InstallChefHand</RecipeDef></descriptionHyperlinks>
+    <costList>
+      <Plasteel>25</Plasteel>
+      <ComponentSpacer>4</ComponentSpacer>
+    </costList>
+    <thingSetMakerTags><li>RewardStandardMidFreq</li></thingSetMakerTags>
+    <statBases>
+      <Mass>0.3</Mass>
+	        <MarketValue>850</MarketValue>
+    </statBases>
+	    <techHediffsTags>
+      <li>Advanced</li>
+	<li>KEP</li>
+    </techHediffsTags>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+    <defName>KEP_InstallChefHand</defName>
+    <label>install chef hand</label>
+    <description>Install an chef hand.</description>
+    <descriptionHyperlinks>
+      <ThingDef>KEP_ChefHand</ThingDef>
+      <HediffDef>KEP_ChefHand</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing chef hand.</jobString>
+		<workAmount>4000</workAmount>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>Medicine</li>
+					</categories>
+				</filter>
+				<count>1</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>KEP_ChefHand</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<categories>
+				<li>Medicine</li>
+			</categories>
+			<thingDefs>
+				<li>KEP_ChefHand</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Hand</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>KEP_ChefHand</addsHediff>
+	</RecipeDef>
+</Defs>

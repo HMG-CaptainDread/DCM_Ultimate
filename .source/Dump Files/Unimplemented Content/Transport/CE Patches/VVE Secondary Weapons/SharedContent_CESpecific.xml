@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- ======= Combat Extended caliber-specific guns (would be redundant in base game) ======= -->	
+	<!-- Mounted M2A1 - Marshal -->
+	<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase" MayRequireAnyOf="CETeam.CombatExtended,CETeam.CombatExtended_steam">
+		<defName>TGBM_Marshal_PintleHMG</defName>
+		<label>Mounted Turret</label>
+		<description>A heavy machine gun mounted to an enclosed turret.</description>
+		
+		<turretType>Rotatable</turretType>
+		<shotSound>TGBM_Shot_HeavyMachineGun</shotSound>
+		
+		<projectile>Bullet_50BMG_FMJ</projectile>
+		<reloadTimer>7.8</reloadTimer>
+		<warmUpTimer>1.3</warmUpTimer>
+		<chargePerAmmoCount>1</chargePerAmmoCount>
+		
+		<magazineCapacity>200</magazineCapacity>
+		<genericAmmo>false</genericAmmo>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>2.5</rotationSpeed>
+		
+		<projectileOffset>1</projectileOffset>
+		
+		<maxRange>75</maxRange>
+		
+		<recoil>
+			<distanceTotal>0.15</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		
+		<attachProjectileFlag>VVE_Tank</attachProjectileFlag>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenShots>5</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<label>Single</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>5</shotsPerBurst>
+				<ticksBetweenShots>5</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>10</shotsPerBurst>
+				<ticksBetweenShots>5</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<label>Auto</label>
+				<texPath>UI/Gizmos/FireRate_Auto</texPath>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Things/Vehicles/Armament/VVE_PintleMG</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(2, 2)</drawSize>
+		</graphicData>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Ammo_50BMG_FMJ</li>
+				<li>Ammo_50BMG_AP</li>
+				<li>Ammo_50BMG_Incendiary</li>
+				<li>Ammo_50BMG_HE</li>
+				<li>Ammo_50BMG_Sabot</li>
+			</thingDefs>
+		</ammunition>
+		<modExtensions>
+			<li Class="Vehicles.CETurretDataDefModExtension">
+				<ammoSet>AmmoSet_50BMG</ammoSet>
+				<shotHeight>2.5</shotHeight>
+				<speed>156</speed>
+				<sway>1.26</sway>
+				<spread>0.01</spread>
+			</li>
+		</modExtensions>
+	</Vehicles.VehicleTurretDef>
+	
+	<!-- ==== Shared === -->
+	<!-- PKM (CE Armory) Weight: 7.5 \n\n&lt;color=#bb8f04&gt;Ammo type:&lt;/color&gt; 7.62x54mmR -->
+	<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase" MayRequireAnyOf="CETeam.CombatExtended,CETeam.CombatExtended_steam">
+		<defName>TGBM_ExposedPKM</defName>
+		<label>PKM light machine gun</label>
+		<description>A belt-fed light machine gun mounted on a vehicle, a suitable tool to delay a human wave attack or chipping off bits of armor. Offers average performance for a machine gun.</description>
+		
+		<turretType>Rotatable</turretType>
+		<shotSound>TGBM_Shot_MediumMachineGun</shotSound>
+		
+		<projectile>Bullet_762x54mmR_FMJ</projectile>
+		<reloadTimer>7.8</reloadTimer>
+		<reloadTimerMultiplierPerCrewCount>
+			<points>
+				<li>(1, 1)</li>
+				<li>(2, 0.75)</li>
+			</points>
+		</reloadTimerMultiplierPerCrewCount>
+		<warmUpTimer>1.2</warmUpTimer>
+		<chargePerAmmoCount>1</chargePerAmmoCount>
+		
+		<magazineCapacity>100</magazineCapacity>
+		<genericAmmo>false</genericAmmo>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>2.2</rotationSpeed>
+		
+		<projectileOffset>1</projectileOffset>
+		
+		<maxRange>62</maxRange>
+		
+		<recoil>
+			<distanceTotal>0.15</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		
+		<attachProjectileFlag>VVE_Tank</attachProjectileFlag>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenShots>5</ticksBetweenShots>
+				<ticksBetweenBursts>30</ticksBetweenBursts>
+				<label>Single</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>5</shotsPerBurst>
+				<ticksBetweenShots>5</ticksBetweenShots>
+				<ticksBetweenBursts>30</ticksBetweenBursts>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>10</shotsPerBurst>
+				<ticksBetweenShots>5</ticksBetweenShots>
+				<ticksBetweenBursts>30</ticksBetweenBursts>
+				<label>Auto</label>
+				<texPath>UI/Gizmos/FireRate_Auto</texPath>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Things/TGBM_ThirdParty_Vehicles/CEA_PKM</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(2.2, 2.2)</drawSize>
+		</graphicData>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Ammo_762x54mmR_FMJ</li>
+				<li>Ammo_762x54mmR_AP</li>
+				<li>Ammo_762x54mmR_HP</li>
+				<li>Ammo_762x54mmR_Incendiary</li>
+				<li>Ammo_762x54mmR_HE</li>
+				<li>Ammo_762x54mmR_Sabot</li>
+			</thingDefs>
+		</ammunition>
+		
+		<modExtensions>
+			<li Class="Vehicles.CETurretDataDefModExtension">
+				<ammoSet>AmmoSet_762x54mmR</ammoSet>
+				<shotHeight>2</shotHeight>
+				<speed>155</speed>
+				<sway>0.96</sway>
+				<spread>0.04</spread>
+			</li>
+		</modExtensions>
+	</Vehicles.VehicleTurretDef>
+	
+	<!-- AGS-30 (CE) Weight: 17.5 \n\n&lt;color=#bb8f04&gt;Ammo type:&lt;/color&gt; 30x29mm Grenades -->
+	<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase" MayRequireAnyOf="CETeam.CombatExtended,CETeam.CombatExtended_steam">
+		<defName>TGBM_ExposedAGSThirty</defName>
+		<label>AGS-30 grenade machine gun</label>
+		<description>A mounted grenade machine gun. Can be loaded with various ammo, fire the solution for your specific predicament. Has a minimum arming range to ensure operator safety.</description>
+		
+		<turretType>Rotatable</turretType>
+		<shotSound>Shot_IncendiaryLauncher</shotSound>
+		
+		<projectile>Bullet_30x29mmGrenade_HE</projectile>
+		<reloadTimer>7.8</reloadTimer>
+		<reloadTimerMultiplierPerCrewCount>
+			<points>
+				<li>(1, 1)</li>
+				<li>(2, 0.75)</li>
+			</points>
+		</reloadTimerMultiplierPerCrewCount>
+		<warmUpTimer>1.435</warmUpTimer>
+		<chargePerAmmoCount>1</chargePerAmmoCount>
+		
+		<magazineCapacity>48</magazineCapacity>
+		<genericAmmo>false</genericAmmo>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>1.7</rotationSpeed>
+		
+		<projectileOffset>1</projectileOffset>
+		
+		<minRange>2</minRange>
+		<maxRange>62</maxRange>
+		
+		<recoil>
+			<distanceTotal>0.15</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		
+		<attachProjectileFlag>VVE_Tank</attachProjectileFlag>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenShots>8</ticksBetweenShots>
+				<ticksBetweenBursts>22</ticksBetweenBursts>
+				<label>Single</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>3</shotsPerBurst>
+				<ticksBetweenShots>8</ticksBetweenShots>
+				<ticksBetweenBursts>22</ticksBetweenBursts>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>6</shotsPerBurst>
+				<ticksBetweenShots>8</ticksBetweenShots>
+				<ticksBetweenBursts>22</ticksBetweenBursts>
+				<label>Auto</label>
+				<texPath>UI/Gizmos/FireRate_Auto</texPath>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Things/TGBM_ThirdParty_Vehicles/CE_AGS30</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(2.6, 2.6)</drawSize>
+		</graphicData>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Ammo_30x29mmGrenade_HE</li>
+				<li>Ammo_30x29mmGrenade_HE_TFuzed</li>
+				<li>Ammo_30x29mmGrenade_HEDP</li>
+				<li>Ammo_30x29mmGrenade_EMP</li>
+				<li>Ammo_30x29mmGrenade_Smoke</li>
+			</thingDefs>
+		</ammunition>
+		<modExtensions>
+			<li Class="Vehicles.CETurretDataDefModExtension">
+				<ammoSet>AmmoSet_30x29mmGrenade</ammoSet>
+				<shotHeight>2.5</shotHeight>
+				<speed>51</speed>
+				<sway>0.92</sway>
+				<spread>0.15</spread>
+			</li>
+		</modExtensions>
+	</Vehicles.VehicleTurretDef>
+	
+	<!-- KPV (CE) Weight: 50 \n\n&lt;color=#bb8f04&gt;Ammo type:&lt;/color&gt; 14.5x114mm -->
+	<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase" MayRequireAnyOf="CETeam.CombatExtended,CETeam.CombatExtended_steam">
+		<defName>TGBM_ExposedKPV</defName>
+		<label>KPV heavy machine gun</label>
+		<description>A mounted heavy machine gun designed for use against relatively light armor, which means effective against mechanoids and other troublemakers found on rimworlds. Gruesome results when used against unarmored hordes.</description>
+		
+		<turretType>Rotatable</turretType>
+		<shotSound>TGBM_Shot_HeavyMachineGun</shotSound>
+		
+		<projectile>Bullet_145x114mm_FMJ</projectile>
+		<reloadTimer>7.8</reloadTimer>
+		<reloadTimerMultiplierPerCrewCount>
+			<points>
+				<li>(1, 1)</li>
+				<li>(2, 0.75)</li>
+			</points>
+		</reloadTimerMultiplierPerCrewCount>
+		<warmUpTimer>1.4</warmUpTimer>
+		<chargePerAmmoCount>1</chargePerAmmoCount>
+		
+		<magazineCapacity>100</magazineCapacity>
+		<genericAmmo>false</genericAmmo>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>1.9</rotationSpeed>
+
+		<projectileOffset>1</projectileOffset>
+		
+		<maxRange>75</maxRange>
+		
+		<recoil>
+			<distanceTotal>0.15</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		
+		<attachProjectileFlag>VVE_Tank</attachProjectileFlag>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<label>Single</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>5</shotsPerBurst>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>10</shotsPerBurst>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<label>Auto</label>
+				<texPath>UI/Gizmos/FireRate_Auto</texPath>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Things/TGBM_ThirdParty_Vehicles/CE_KPV</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(2.5, 2.5)</drawSize>
+		</graphicData>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Ammo_145x114mm_FMJ</li>
+				<li>Ammo_145x114mm_AP</li>
+				<li>Ammo_145x114mm_Incendiary</li>
+				<li>Ammo_145x114mm_HE</li>
+				<li>Ammo_145x114mm_Sabot</li>
+			</thingDefs>
+		</ammunition>
+		
+		<modExtensions>
+			<li Class="Vehicles.CETurretDataDefModExtension">
+				<ammoSet>AmmoSet_145x114mm</ammoSet>
+				<shotHeight>2</shotHeight>
+				<speed>178</speed>
+				<sway>1.42</sway>
+				<spread>0.01</spread>
+			</li>
+		</modExtensions>
+	</Vehicles.VehicleTurretDef>
+	
+	<!-- DShK (CE+ CZARsenal) Weight: 34 \n\n&lt;color=#bb8f04&gt;Ammo type:&lt;/color&gt; 12.7x108mm -->
+	<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase" MayRequireAnyOf="CETeam.CombatExtended,CETeam.CombatExtended_steam">
+		<defName>TGBM_ExposedDShK</defName>
+		<label>DShK heavy machine gun</label>
+		<description>A mounted heavy machine gun designed for use against relatively light armor, which means effective against mechanoids and other troublemakers found on rimworlds. Gruesome results when used against unarmored hordes.</description>
+		
+		<turretType>Rotatable</turretType>
+		<shotSound>TGBM_Shot_HeavyMachineGun</shotSound>
+		
+		<projectile>Bullet_127x108mm_FMJ</projectile>
+		<reloadTimer>7.8</reloadTimer>
+		<reloadTimerMultiplierPerCrewCount>
+			<points>
+				<li>(1, 1)</li>
+				<li>(2, 0.75)</li>
+			</points>
+		</reloadTimerMultiplierPerCrewCount>
+		<warmUpTimer>1.4</warmUpTimer>
+		<chargePerAmmoCount>1</chargePerAmmoCount>
+		
+		<magazineCapacity>100</magazineCapacity>
+		<genericAmmo>false</genericAmmo>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>1.9</rotationSpeed>
+		
+		<projectileOffset>1</projectileOffset>
+		
+		<maxRange>75</maxRange>
+		
+		<recoil>
+			<distanceTotal>0.15</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		
+		<attachProjectileFlag>VVE_Tank</attachProjectileFlag>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<label>Single</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>5</shotsPerBurst>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>10</shotsPerBurst>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>60</ticksBetweenBursts>
+				<label>Auto</label>
+				<texPath>UI/Gizmos/FireRate_Auto</texPath>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Things/TGBM_ThirdParty_Vehicles/CE_Cza_DShK</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(2.5, 2.5)</drawSize>
+		</graphicData>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Ammo_127x108mm_FMJ</li>
+				<li>Ammo_127x108mm_AP</li>
+				<li>Ammo_127x108mm_Incendiary</li>
+				<li>Ammo_127x108mm_HE</li>
+				<li>Ammo_127x108mm_Sabot</li>
+			</thingDefs>
+		</ammunition>
+		
+		<modExtensions>
+			<li Class="Vehicles.CETurretDataDefModExtension">
+				<ammoSet>AmmoSet_127x108mm</ammoSet>
+				<shotHeight>2</shotHeight>
+				<speed>159</speed>
+				<sway>1.36</sway>
+				<spread>0.01</spread>
+			</li>
+		</modExtensions>
+	</Vehicles.VehicleTurretDef>
+	
+	<!-- Maxim (CE+ CZARsenal) Weight: 18 \n\n&lt;color=#bb8f04&gt;Ammo type:&lt;/color&gt; 7.62x54mmR-->
+	<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase" MayRequireAnyOf="CETeam.CombatExtended,CETeam.CombatExtended_steam">
+		<defName>TGBM_ExposedMaxim</defName>
+		<label>Maxim light machine gun</label>
+		<description>An ancient water-cooled machine gun mounted on a vehicle, a suitable tool to delay a human wave attack or chipping off bits of armor; it has done just that for thousands of years. Offers great capacity, but has a lower-than-average rate of fire.</description>
+		
+		<turretType>Rotatable</turretType>
+		<shotSound>TGBM_Shot_MediumMachineGun</shotSound>
+		
+		<projectile>Bullet_762x54mmR_FMJ</projectile>
+		<reloadTimer>8.2</reloadTimer>
+		<reloadTimerMultiplierPerCrewCount>
+			<points>
+				<li>(1, 1)</li>
+				<li>(2, 0.75)</li>
+			</points>
+		</reloadTimerMultiplierPerCrewCount>
+		<warmUpTimer>1.3</warmUpTimer>
+		<chargePerAmmoCount>1</chargePerAmmoCount>
+		
+		<magazineCapacity>250</magazineCapacity>
+		<genericAmmo>false</genericAmmo>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>2.2</rotationSpeed>
+
+		<projectileOffset>1</projectileOffset>
+		
+		<maxRange>62</maxRange>
+		
+		<recoil>
+			<distanceTotal>0.15</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		
+		<attachProjectileFlag>VVE_Tank</attachProjectileFlag>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>30</ticksBetweenBursts>
+				<label>Single</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>5</shotsPerBurst>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>30</ticksBetweenBursts>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>10</shotsPerBurst>
+				<ticksBetweenShots>6</ticksBetweenShots>
+				<ticksBetweenBursts>30</ticksBetweenBursts>
+				<label>Auto</label>
+				<texPath>UI/Gizmos/FireRate_Auto</texPath>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Things/TGBM_ThirdParty_Vehicles/CE_Cza_Maxim</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(2.5, 2.5)</drawSize>
+		</graphicData>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Ammo_762x54mmR_FMJ</li>
+				<li>Ammo_762x54mmR_AP</li>
+				<li>Ammo_762x54mmR_HP</li>
+				<li>Ammo_762x54mmR_Incendiary</li>
+				<li>Ammo_762x54mmR_HE</li>
+				<li>Ammo_762x54mmR_Sabot</li>
+			</thingDefs>
+		</ammunition>
+		
+		<modExtensions>
+			<li Class="Vehicles.CETurretDataDefModExtension">
+				<ammoSet>AmmoSet_762x54mmR</ammoSet>
+				<shotHeight>2</shotHeight>
+				<speed>155</speed>
+				<sway>1.15</sway>
+				<spread>0.03</spread>
+			</li>
+		</modExtensions>
+	</Vehicles.VehicleTurretDef>
+	
+	<!-- SPG-9 (CE Armory) Weight: 60 \n\n&lt;color=#bb8f04&gt;Ammo type:&lt;/color&gt; SPG-9 Rockets -->
+	<Vehicles.VehicleTurretDef ParentName="VehicleTurretBase" MayRequireAnyOf="CETeam.CombatExtended,CETeam.CombatExtended_steam">
+		<defName>TGBM_ExposedSPGNine</defName>
+		<label>SPG-9 recoilless gun</label>
+		<description>A mounted anti-tank recoilless gun. Can be loaded with a variety of specialized shells; fire the specific solution for your predicament. Has a minimum arming range to ensure operator safety.</description>
+		
+		<turretType>Rotatable</turretType>
+		<shotSound>InfernoCannon_Fire</shotSound>
+		<reloadSound>Artillery_ShellLoaded</reloadSound>
+		
+		<projectile>Bullet_SPG9Rocket_HEAT</projectile>
+		<reloadTimer>5</reloadTimer>
+		<reloadTimerMultiplierPerCrewCount>
+			<points>
+				<li>(1, 1)</li>
+				<li>(2, 0.75)</li>
+			</points>
+		</reloadTimerMultiplierPerCrewCount>
+		<warmUpTimer>2.05</warmUpTimer>
+		<chargePerAmmoCount>1</chargePerAmmoCount>
+		
+		<magazineCapacity>1</magazineCapacity>
+		<genericAmmo>false</genericAmmo>
+		
+		<autoSnapTargeting>false</autoSnapTargeting>
+		<rotationSpeed>2</rotationSpeed>
+
+		<projectileOffset>1</projectileOffset>
+		
+		<minRange>8</minRange>
+		<maxRange>86</maxRange>
+		
+		<recoil>
+			<distanceTotal>0.15</distanceTotal>
+			<distancePerTick>0.05</distancePerTick>
+			<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+		</recoil>
+		
+		<attachProjectileFlag>VVE_Tank</attachProjectileFlag>
+		
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenShots>5</ticksBetweenShots>
+				<ticksBetweenBursts>90</ticksBetweenBursts>
+				<label>Single</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+		</fireModes>
+
+		<graphicData>
+			<texPath>Things/TGBM_ThirdParty_Vehicles/CEA_SPG-9</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>Cutout</shaderType>
+			<drawSize>(2.6, 2.6)</drawSize>
+		</graphicData>
+		
+		<ammunition>
+			<thingDefs>
+				<li>Ammo_SPG9Rocket_HEAT</li>
+				<li>Ammo_SPG9Rocket_Thermobaric</li>
+				<li>Ammo_SPG9Rocket_Frag</li>
+				<li>Ammo_SPG9Rocket_EMP</li>
+			</thingDefs>
+		</ammunition>
+		<modExtensions>
+			<li Class="Vehicles.CETurretDataDefModExtension">
+				<ammoSet>AmmoSet_SPG9Rocket</ammoSet>
+				<shotHeight>2.5</shotHeight>
+				<speed>75</speed>
+				<sway>2.5</sway>
+				<spread>0.08</spread>
+			</li>
+		</modExtensions>
+	</Vehicles.VehicleTurretDef>
+</Defs>

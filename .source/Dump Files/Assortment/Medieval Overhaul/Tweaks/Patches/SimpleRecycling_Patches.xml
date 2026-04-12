@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="XmlExtensions.FindMod">
+    <mods>
+      <li>Simple Recycling</li>
+      <li>Medieval Overhaul</li>
+    </mods>
+    <logic>and</logic>
+    <caseTrue>
+
+      <li Class="XmlExtensions.OptionalPatch">
+        <modId>zenlor.MOTweaks</modId>
+        <key>mot-integration-simplerecycling</key>
+        <defaultValue>True</defaultValue>
+        <caseTrue>
+
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/ResearchProjectDef[defName="ApparelRecycling"]/techLevel</xpath>
+            <value>
+              <techLevel>Medieval</techLevel>
+            </value>
+          </li>
+
+        </caseTrue>
+      </li>
+
+    </caseTrue>
+  </Operation>
+</Patch>

@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<!-- Garlic Integration -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="VCE_Garlic"]/plant/harvestedThingDef</xpath>
+		<value>
+			<harvestedThingDef>DankPyon_RawGarlic</harvestedThingDef>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="DankPyon_RawGarlic"]/description</xpath>
+		<value>
+			<description>Leafy green stalks, whos base consists of a segmented off-white bulb. Garlic makes for a good seasoning and ingredient for many meals, either minced and sauteed for use as an ingredient, or pulverized and used as a seasoning.\n\n&lt;color=#E5E54C&gt;Gameplay effect:&lt;/color&gt; Garlic has very little yield, but can grow in almost any terrain and takes an obscene time to rot, as dried garlic can be used to cook too.</description>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="DankPyon_RawGarlic"]/comps</xpath>
+		<value>
+			<comps>
+				<li Class="CompProperties_Rottable">
+					<daysToRotStart>140</daysToRotStart>
+					<rotDestroys>true</rotDestroys>
+				</li>
+			</comps>
+		</value>
+	</Operation>
+
+	<!-- Carrot Integration -->
+	<Operation Class="PatchOperationRemove">
+		<xpath>Defs/ThingDef[defName="DankPyon_Plant_Carrots"]/plant/sowResearchPrerequisites</xpath>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="VCE_Carrot"]/plant/harvestedThingDef</xpath>
+		<value>
+			<harvestedThingDef>DankPyon_RawCarrots</harvestedThingDef>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="VCE_Carrot"]/graphicData/texPath</xpath>
+		<value>
+			<texPath>Things/Plants/FullGrown/CarrotPlant</texPath>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="VCE_Carrot"]/description</xpath>
+		<value>
+			<description>Bushy, short stalks whos root consists of a brightly-colored orange tuber. They make for healthy, if not tasty snacks on their own, or a good addition to any meal when boiled, stewed or sauteed.\n\n&lt;color=#E5E54C&gt;Gameplay effect:&lt;/color&gt; Companion planting: carrots will grow faster if green beans are cultivated in the same map (up to 30% faster if 100 are found).</description>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="VCE_Carrot"]/plant</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>DankPyon_IntermediateAgriculture</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+			
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="VCE_RawBuckwheat"]/ingestible</xpath>
+		<value>
+			<ingestible>
+				<foodType>Seed</foodType>
+				<preferability>NeverForNutrition</preferability>
+			</ingestible>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="VCE_RawBuckwheat"]</xpath>
+		<value>
+			<thingCategories>
+				<li>DankPyon_Cereal</li>
+			</thingCategories>
+		</value>
+	</Operation>
+			
+	<!-- Add Research -->
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="VCE_Lettuce" or defName="VCE_Cassava" or defName="VCE_SweetPotato" or defName="VCE_BellPepper" or defName="VCE_Taro" or defName="VCE_Watercress"]/plant</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>DankPyon_BasicAgriculture</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[
+				defName="VCE_Celery" or
+				defName="VCE_BrusselsSprout" or
+				defName="VCE_Buckwheat" or
+				defName="VCE_Sunflower" or
+				defName="VCE_Okra" or
+				defName="VCE_Beans" or
+				defName="VCE_Lotus" or
+				defName="VCE_WaterChestnut"]/plant
+		</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>DankPyon_IntermediateAgriculture</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[defName="VCE_Pineapple" or defName="VCE_Melon"]/plant</xpath>
+		<value>
+			<sowResearchPrerequisites>
+				<li>DankPyon_AdvancedAgriculture</li>
+			</sowResearchPrerequisites>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Cooking Expanded</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+							
+				<!-- VCE Barley -->
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="VCE_Barley"]/plant</xpath>
+					<value>
+						<sowResearchPrerequisites>
+							<li>DankPyon_BasicAgriculture</li>
+						</sowResearchPrerequisites>
+					</value>
+				</li>
+							
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="VCE_Barley"]/plant/harvestedThingDef</xpath>
+					<value>
+						<harvestedThingDef>DankPyon_RawBarley</harvestedThingDef>
+					</value>
+				</li>
+							
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="VCE_Barley"]/description</xpath>
+					<value>
+						<description>A cereal grain that people can use in bread, beverages, stews, and other dishes. As a whole grain, barley provides fiber, vitamins, and minerals.\n\n&lt;color=#E5E54C&gt;Gameplay effect:&lt;/color&gt; Barley is a "dual crop", in the sense that it produces both barley and hay.</description>
+					</value>
+				</li>
+							
+				<!--VCE Sorghum -->
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="VCE_Sorghum"]/plant</xpath>
+					<value>
+						<sowResearchPrerequisites>
+							<li>DankPyon_AdvancedAgriculture</li>
+						</sowResearchPrerequisites>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="VCE_Sorghum"]/plant/harvestedThingDef</xpath>
+					<value>
+						<harvestedThingDef>DankPyon_RawSorghum</harvestedThingDef>
+					</value>
+				</li>
+				<!--VCE Rye -->
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="VCE_Rye"]/plant</xpath>
+					<value>
+						<sowResearchPrerequisites>
+							<li>DankPyon_IntermediateAgriculture</li>
+						</sowResearchPrerequisites>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="VCE_Rye"]/plant/harvestedThingDef</xpath>
+					<value>
+						<harvestedThingDef>DankPyon_RawRye</harvestedThingDef>
+					</value>
+				</li>
+
+				<!--VCE Oats -->
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="VCE_Oats"]/plant</xpath>
+					<value>
+						<sowResearchPrerequisites>
+							<li>DankPyon_IntermediateAgriculture</li>
+						</sowResearchPrerequisites>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="VCE_Oats"]/plant/harvestedThingDef</xpath>
+					<value>
+						<harvestedThingDef>DankPyon_Straw</harvestedThingDef>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="VCE_Oats"]/description</xpath>
+					<value>
+						<description>The oat, sometimes called the common oat, is a species of cereal grain grown for its seed, which is known by the same name. Oats have numerous uses in gastronomy, and they can also be turned into vegetable milk.\n\n&lt;color=#E5E54C&gt;Gameplay effect:&lt;/color&gt; Oat has low yield, but it is very versatile, in the sense that it can be used for ground into flour, used as a vegetable, or turned into milk.</description>
+					</value>
+				</li>
+
+				<!--li Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="VCE_Oats"]/modExtensions/li[@Class="VanillaPlantsExpanded.DualCropExtension"]/outPutAmount</xpath>
+								<value>
+									<outPutAmount>15</outPutAmount>
+								</value>
+							</li-->
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+
+						<!-- Oat Flour -->
+						<ProcessorFramework.ProcessDef>
+							<defName>DankPyon_MillOatProcess</defName>
+							<thingDef>DankPyon_Flour</thingDef>
+							<ingredientFilter>
+								<thingDefs>
+									<li>VCE_RawOats</li>
+								</thingDefs>
+							</ingredientFilter>
+							<processDays>0.2</processDays><!-- in days, a day is 60,000 ticks -->
+							<capacityFactor>1.0</capacityFactor>
+							<efficiency>1.0</efficiency>
+							<usesTemperature>false</usesTemperature>
+							<temperatureSafe>-1.0~99.0</temperatureSafe>
+							<temperatureIdeal>21.0~99.0</temperatureIdeal>
+							<ruinedPerDegreePerHour>2.5</ruinedPerDegreePerHour><!-- percent per degree per hour -->
+							<speedBelowSafe>0.1</speedBelowSafe>
+							<speedAboveSafe>1.0</speedAboveSafe>
+							<sunFactor>1.0~1.0</sunFactor>
+							<rainFactor>1.0~1.0</rainFactor>
+							<snowFactor>1.0~1.0</snowFactor>
+							<windFactor>0.0~3.0</windFactor>
+							<unpoweredFactor>0.0</unpoweredFactor>
+							<unfueledFactor>0.0</unfueledFactor>
+							<powerUseFactor>1.0</powerUseFactor>
+							<fuelUseFactor>1.0</fuelUseFactor>
+							<filledGraphicSuffix/>
+							<usesQuality>false</usesQuality>
+							<qualityDays>(1, 2, 3, 4, 5, 6, 7)</qualityDays>
+							<color>(255, 255, 255)</color><!-- 0-255 or 0.0-1.0 -->
+							<customLabel/>
+							<destroyChance>0.0</destroyChance>
+						</ProcessorFramework.ProcessDef>
+
+						<RecipeDef>
+							<defName>DankPyon_CraftOatFlour</defName>
+							<label>grind oats into flour</label>
+							<description>Grind oat into flour.</description>
+							<jobString>Grinding oat into flour.</jobString>
+							<workSpeedStat>CookSpeed</workSpeedStat>
+							<effectWorking>Cook</effectWorking>
+							<workAmount>100</workAmount>
+							<soundWorking>Recipe_CookMeal</soundWorking>
+							<allowMixingIngredients>true</allowMixingIngredients>
+							<ingredients>
+
+								<li>
+									<filter>
+										<thingDefs>
+											<li>VCE_RawOats</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>VCE_RawOats</li>
+								</thingDefs>
+								<specialFiltersToDisallow>
+									<li>AllowRotten</li>
+								</specialFiltersToDisallow>
+							</fixedIngredientFilter>
+							<products>
+								<DankPyon_Flour>1</DankPyon_Flour>
+							</products>
+							<workSkill>Cooking</workSkill>
+							<recipeUsers>
+								<li>DankPyon_Millstone</li>
+							</recipeUsers>
+						</RecipeDef>
+
+						<RecipeDef>
+							<defName>DankPyon_CraftOatFlourBulk</defName>
+							<label>grind oat into flour x10</label>
+							<description>Grind oat into flour.</description>
+							<jobString>Grinding oat into 12 flour.</jobString>
+							<workSpeedStat>CookSpeed</workSpeedStat>
+							<effectWorking>Cook</effectWorking>
+							<workAmount>800</workAmount>
+							<soundWorking>Recipe_CookMeal</soundWorking>
+							<allowMixingIngredients>true</allowMixingIngredients>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>VCE_RawOats</li>
+										</thingDefs>
+									</filter>
+									<count>10</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>VCE_RawOats</li>
+								</thingDefs>
+								<specialFiltersToDisallow>
+									<li>AllowRotten</li>
+								</specialFiltersToDisallow>
+							</fixedIngredientFilter>
+							<products>
+								<DankPyon_Flour>10</DankPyon_Flour>
+							</products>
+							<workSkill>Cooking</workSkill>
+							<recipeUsers>
+								<li>DankPyon_Millstone</li>
+							</recipeUsers>
+						</RecipeDef>
+									
+					</value>
+				</li>
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="DankPyon_WindMill"]/comps/li[@Class="ProcessorFramework.CompProperties_Processor"]/processes</xpath>
+					<value>
+						<li>DankPyon_MillOatProcess</li>
+					</value>
+				</li>
+							
+				<!-- Medieval Milk Press -->
+				<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+						<ThingDef ParentName="BenchBase">
+							<defName>DankPyon_VegMilkExtractor</defName>
+							<label>vegetable milk press</label>
+							<description>A small work station containing a presser to separate vegetable extract from mash. This lengthy process allows you to extract vegetable milk from rice, almonds, coconuts, oats and soybeans.</description>
+							<thingClass>Building_WorkTable_HeatPush</thingClass>
+							<drawerType>MapMeshAndRealTime</drawerType>
+							<graphicData>
+								<texPath>Things/Building/Production/Presser/Presser</texPath>
+								<graphicClass>Graphic_Multi</graphicClass>
+								<shaderType>CutoutComplex</shaderType>
+								<drawSize>(4,3)</drawSize>
+								<color>(0.75,0.75,0.75,1)</color>
+								<damageData>
+									<cornerTL>Damage/Corner</cornerTL>
+									<cornerTR>Damage/Corner</cornerTR>
+									<cornerBL>Damage/Corner</cornerBL>
+									<cornerBR>Damage/Corner</cornerBR>
+								</damageData>
+							</graphicData>
+							<!--castEdgeShadows>true</castEdgeShadows-->
+							<staticSunShadowHeight>0.20</staticSunShadowHeight>
+							<costList>
+								<DankPyon_IronIngot>30</DankPyon_IronIngot>
+								<DankPyon_ComponentBasic>2</DankPyon_ComponentBasic>
+							</costList>
+							<stuffCategories>
+								<li>Woody</li>
+							</stuffCategories>
+							<costStuffCount>30</costStuffCount>
+							<altitudeLayer>Building</altitudeLayer>
+							<fillPercent>0.5</fillPercent>
+							<useHitPoints>True</useHitPoints>
+							<statBases>
+								<WorkToBuild>2000</WorkToBuild>
+								<MaxHitPoints>180</MaxHitPoints>
+								<Flammability>1.0</Flammability>
+								<WorkTableWorkSpeedFactor>0.5</WorkTableWorkSpeedFactor>
+							</statBases>
+							<size>(2,1)</size>
+							<designationCategory>Production</designationCategory>
+							<uiOrder>2120</uiOrder>
+							<passability>PassThroughOnly</passability>
+							<pathCost>50</pathCost>
+							<hasInteractionCell>True</hasInteractionCell>
+							<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+							<surfaceType>Item</surfaceType>
+							<inspectorTabs>
+								<li>ITab_Bills</li>
+							</inspectorTabs>
+							<researchPrerequisites>
+								<li>DankPyon_Presser</li>
+								<li>DankPyon_BasicCooking</li>
+							</researchPrerequisites>
+							<comps>
+							</comps>
+							<placeWorkers>
+								<li>PlaceWorker_PreventInteractionSpotOverlap</li>
+							</placeWorkers>
+							<building>
+								<isMealSource>true</isMealSource>
+								<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+							</building>
+						</ThingDef>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/RecipeDef[defName="VCE_MilkFromRice" or defName="VCE_MilkFromAlmonds" or defName="VCE_MilkFromCoconuts" or defName="VCE_MilkFromOats"]/recipeUsers</xpath>
+					<value>
+						<li>DankPyon_VegMilkExtractor</li>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/RecipeDef[defName="VCE_MilkFromRice" or defName="VCE_MilkFromAlmonds" or defName="VCE_MilkFromCoconuts" or defName="VCE_MilkFromOats"]/researchPrerequisite</xpath>
+					<value>
+						<researchPrerequisite>
+							<li>DankPyon_BasicCooking</li>
+						</researchPrerequisite>
+					</value>
+				</li>
+
+			</operations>
+		</match>
+	</Operation>
+
+</Patch>

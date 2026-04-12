@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="RG_MushroomCultivation" or defName="RG_BerryCultivation"]/tab</xpath>
+		<value>
+			<tab>
+				<li>DankPyon_MedievalResearchTab</li>
+			</tab>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="RG_MushroomCultivation"]/researchViewX</xpath>
+		<value>
+			<researchViewX>0.00</researchViewX>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="RG_MushroomCultivation"]/researchViewY</xpath>
+		<value>
+			<researchViewY>3.40</researchViewY>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="RG_BerryCultivation"]/researchViewX</xpath>
+		<value>
+			<researchViewX>0.00</researchViewX>
+		</value>
+	</Operation>
+				
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="RG_BerryCultivation"]/researchViewY</xpath>
+		<value>
+			<researchViewY>4.10</researchViewY>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchoperationConditional">
+		<xpath>Defs/ResearchProjectDef/tab[.="RG_ReGrowth"]</xpath>
+		<nomatch Class="PatchOperationRemove">
+			<xpath>Defs/ResearchTabDef[defName="RG_ReGrowth"]</xpath>
+		</nomatch>
+	</Operation>
+
+</Patch>

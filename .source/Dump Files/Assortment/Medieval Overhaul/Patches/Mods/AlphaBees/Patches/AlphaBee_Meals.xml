@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<!-- Preserved Food -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/RecipeDef[defName="RB_PreserveMeat" or defName="RB_PreserveVegetables"]/researchPrerequisites</xpath>
+		<match Class="PatchOperationReplace">
+			<xpath>Defs/RecipeDef[defName="RB_PreserveMeat" or defName="RB_PreserveVegetables"]/researchPrerequisites</xpath>
+			<value>
+				<researchPrerequisites>
+					<li>Pemmican</li>
+				</researchPrerequisites>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>Defs/RecipeDef[defName="RB_PreserveMeat" or defName="RB_PreserveVegetables"]</xpath>
+			<value>
+				<researchPrerequisites>
+					<li>Pemmican</li>
+				</researchPrerequisites>
+			</value>
+		</nomatch>
+	</Operation>
+				
+	<!-- Honey Meals -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/RecipeDef[defName="RB_CookHoneyMealFine" or	defName="RB_CookHoneyMealFineBulk"]/researchPrerequisites</xpath>
+		<match Class="PatchOPerationReplace">
+			<value>
+				<researchPrerequisites>
+					<li>DankPyon_BasicCooking</li>
+				</researchPrerequisites>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>Defs/RecipeDef[defName="RB_CookHoneyMealFine" or	defName="RB_CookHoneyMealFineBulk"]</xpath>
+			<value>
+				<researchPrerequisites>
+					<li>DankPyon_BasicCooking</li>
+				</researchPrerequisites>
+			</value>
+		</nomatch>
+	</Operation>
+				
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/RecipeDef[defName="RB_CookHoneyMealLavish" or	defName="RB_CookHoneyMealLavishBulk"]/researchPrerequisites</xpath>
+		<match Class="PatchOPerationReplace">
+			<value>
+				<researchPrerequisites>
+					<li>DankPyon_IntermediateCooking</li>
+				</researchPrerequisites>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>Defs/RecipeDef[defName="RB_CookHoneyMealLavish" or defName="RB_CookHoneyMealLavishBulk"]</xpath>
+			<value>
+				<researchPrerequisites>
+					<li>DankPyon_IntermediateCooking</li>
+				</researchPrerequisites>
+			</value>
+		</nomatch>
+	</Operation>
+				
+	<!-- Kibble -->
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/RecipeDef[defName="AA_Make_Kibble_Bees"]/recipeUsers</xpath>
+		<value>
+			<li>ButcherSpot</li>
+			<li>DankPyon_ButchersBlock</li>
+		</value>
+	</Operation>
+
+</Patch>

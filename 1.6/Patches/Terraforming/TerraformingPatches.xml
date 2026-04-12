@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- CORE -->
+		<Operation Class="PatchOperationSequence">
+			<success>Normal</success>
+			<operations>
+				<!-- DIRT/SAND DIGGABLE AREA -->
+					<li Class="PatchOperationAdd">
+						<xpath>
+							Defs/TerrainDef[defName = "Soil"] |
+							Defs/TerrainDef[defName = "MossyTerrain"] |
+							Defs/TerrainDef[defName = "MarshyTerrain"] |
+							Defs/TerrainDef[defName = "SoilRich"] |
+							Defs/TerrainDef[defName = "Marsh"] |
+							Defs/TerrainDef[defName = "Mud"] |
+							Defs/TerrainDef[defName = "Gravel"]
+						</xpath>
+						<value>
+							<affordances>
+								<li>TMM_DirtDiggable</li>
+							</affordances>
+						</value>
+					</li>
+				<!-- MUD -->
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/TerrainDef[defName = "Mud"]</xpath>
+						<value>
+							<affordances>
+								<li>Mud</li>
+							</affordances>
+						</value>
+					</li>
+			</operations>
+		</Operation>
+	<!-- ALPHA BIOMES -->
+		<Operation Class="PatchOperationFindMod">
+			<mods>
+				<li>Alpha Biomes</li>
+			</mods>
+			<match Class="PatchOperationSequence">
+				<success>Normal</success>
+				<operations>
+				<!-- DIRT/SAND DIGGABLE AREA -->
+					<li Class="PatchOperationAdd">
+						<xpath>
+							Defs/TerrainDef[defName = "AB_LushGrass"] |
+							Defs/TerrainDef[defName = "AB_GrassySand"] |
+							Defs/TerrainDef[defName = "AB_ParchedEarth"] |
+							Defs/TerrainDef[defName = "AB_TarMud"] |
+							Defs/TerrainDef[defName = "AB_HardenedGrass"] |
+							Defs/TerrainDef[defName = "AB_MycoticSoil"] |
+							Defs/TerrainDef[defName = "AB_MycoticGrass"] |
+							Defs/TerrainDef[defName = "AB_SlimyMud"] |
+							Defs/TerrainDef[defName = "AB_SlimeGrass"] |
+							Defs/TerrainDef[defName = "AB_CrackedMud"] |
+							Defs/TerrainDef[defName = "AB_ForsakenSand"] |
+							Defs/TerrainDef[defName = "AB_ForsakenRock"] |
+							Defs/TerrainDef[defName = "AB_DarkMud"] |
+							Defs/TerrainDef[defName = "AB_DenseMud"] |
+							Defs/TerrainDef[defName = "AB_DenseGrass"] |
+							Defs/TerrainDef[defName = "AB_WebbedMarshyTerrain"] |
+							Defs/TerrainDef[defName = "AB_HardenedGrassFertile"] |
+							Defs/TerrainDef[defName = "GU_RichAlienSand"] |
+							Defs/TerrainDef[defName = "AB_MycoticSoilRich"] |
+							Defs/TerrainDef[defName = "AB_RichCrackedMud"] |
+							Defs/TerrainDef[defName = "GU_AlienSand"] |
+							Defs/TerrainDef[defName = "AB_RichSlime"]
+						</xpath>
+						<value>
+							<affordances>
+								<li>TMM_DirtDiggable</li>
+							</affordances>
+						</value>
+					</li>
+			</operations>
+			</match>
+		</Operation>
+</Patch>

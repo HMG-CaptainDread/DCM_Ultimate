@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- METALS+ -->
+		<!-- BASE PATCHES -->
+			<!-- RESOURCES TO TRADERS -->
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationAdd">
+							<xpath>/Defs/TraderKindDef[defName = "Base_Neolithic_Standard"]/stockGenerators</xpath>
+							<value>
+								<li Class="StockGenerator_SingleDef">
+									<thingDef>Copper</thingDef>
+									<countRange>250~500</countRange>
+								</li>
+								<li Class="StockGenerator_SingleDef">
+									<thingDef>Tin</thingDef>
+									<countRange>150~400</countRange>
+								</li>
+								<!-- in Vanilla -40~120 Gold -->
+								<li Class="StockGenerator_SingleDef">
+									<thingDef>Bronze</thingDef>
+									<countRange>-150~250</countRange>
+								</li>
+								<!-- in Vanilla 200~300 Steel-->
+								<li Class="StockGenerator_SingleDef">
+									<thingDef>Iron</thingDef>
+									<countRange>300~400</countRange>
+								</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>/Defs/TraderKindDef[defName = "Base_Outlander_Standard"]/stockGenerators</xpath>
+							<value>
+								<li Class="StockGenerator_SingleDef">
+									<thingDef>Copper</thingDef>
+									<countRange>100~300</countRange>
+								</li>
+								<li Class="StockGenerator_SingleDef">
+									<thingDef>Tin</thingDef>
+									<countRange>50~200</countRange>
+								</li>
+								<!-- in Vanilla 100~200 Gold -->
+								<li Class="StockGenerator_SingleDef">
+									<thingDef>Bronze</thingDef>
+									<countRange>250~400</countRange>
+								</li>
+								<!-- in Vanilla 500~800 Steel -->
+								<li Class="StockGenerator_SingleDef">
+									<thingDef>Iron</thingDef>
+									<countRange>650~950</countRange>
+								</li>
+								<!-- in Vanilla 100~250 Plasteel -->
+								<li Class="StockGenerator_SingleDef">
+									<thingDef>Titanium</thingDef>
+									<countRange>150~300</countRange>
+								</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+			<!-- CORE RECIPES -->
+				<Operation Class="PatchOperationAdd">
+					<xpath> Defs/ThingDef[defName = "ElectricSmelter"]/recipes</xpath>				
+					<value>
+						<li>MakeSteelFromIron</li>
+						<li>MakeSteelFromIronBulk</li>
+						<li>MakeBronzeFromCopper</li>
+						<li>MakeBronzeFromCopperBulk</li>
+						<li>MakePlasteel</li>
+					</value>
+				</Operation>
+			<!-- CORE TRADERS -->
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationAdd">
+							<xpath>/Defs/TraderKindDef[defName = "Caravan_Outlander_BulkGoods"]/stockGenerators</xpath>
+							<value>
+								<li Class="StockGenerator_SingleDef">
+									<thingDef>Copper</thingDef>
+									<countRange>150~300</countRange>
+								</li>
+								<li Class="StockGenerator_SingleDef">
+									<thingDef>Tin</thingDef>
+									<countRange>50~250</countRange>
+								</li>
+								<!-- in Vanilla 0 Gold -->
+								<li Class="StockGenerator_SingleDef">
+									<thingDef>Bronze</thingDef>
+									<countRange>-100~150</countRange>
+								</li>
+								<!-- in Vanilla 250~400 Steel -->
+								<li Class="StockGenerator_SingleDef">
+									<thingDef>Iron</thingDef>
+									<countRange>150~250</countRange>
+								</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>/Defs/TraderKindDef[defName = "Caravan_Outlander_Exotic"]/stockGenerators</xpath>
+							<value>
+								<!-- in Vanilla 40~80 Gold -->
+								<li Class="StockGenerator_SingleDef">
+									<thingDef>Bronze</thingDef>
+									<countRange>100~200</countRange>
+								</li>
+								<!-- in Vanilla 50~150 Plasteel -->
+								<li Class="StockGenerator_SingleDef">
+									<thingDef>Titanium</thingDef>
+									<countRange>100~250</countRange>
+								</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>/Defs/TraderKindDef[defName = "Orbital_BulkGoods"]/stockGenerators</xpath>
+							<value>
+								<!-- in Vanilla 500~800 Steel -->
+								<li Class="StockGenerator_SingleDef">
+									<thingDef>Iron</thingDef>
+									<countRange>250~400</countRange>
+								</li>
+								<!-- in Vanilla 100~400 Plasteel -->
+								<li Class="StockGenerator_SingleDef">
+									<thingDef>Titanium</thingDef>
+									<countRange>-100~300</countRange>
+								</li>
+							</value>
+						</li>
+					</operations>
+				</Operation>
+		<!-- EMPIRE PATCHES -->
+			<!-- CHECK IF EXIST -->
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+					<li Class="PatchOperationTest">
+						<xpath>Defs/TraderKindDef[defName = "Base_Empire_Standard"]</xpath>
+							<success>Normal</success>
+					</li>
+					<li Class="PatchOperationAdd">
+						<xpath>/Defs/TraderKindDef[defName = "Base_Empire_Standard"]/stockGenerators</xpath>
+						<value>
+							<li Class="StockGenerator_SingleDef">
+								<thingDef>Copper</thingDef>
+								<countRange>150~300</countRange>
+							</li>
+							<li Class="StockGenerator_SingleDef">
+								<thingDef>Tin</thingDef>
+								<countRange>50~250</countRange>
+							</li>
+							<!-- in Vanilla 100~200 Gold -->
+							<li Class="StockGenerator_SingleDef">
+								<thingDef>Bronze</thingDef>
+								<countRange>-200~400</countRange>
+							</li>
+							<!-- in Vanilla 500~800 Steel -->
+							<li Class="StockGenerator_SingleDef">
+								<thingDef>Iron</thingDef>
+								<countRange>650~950</countRange>
+							</li>
+							<!-- in Vanilla 200~350 Plasteel -->
+							<li Class="StockGenerator_SingleDef">
+								<thingDef>Titanium</thingDef>
+								<countRange>250~500</countRange>
+							</li>
+						</value>
+					</li>
+					</operations>
+				</Operation>
+			<!-- RESOURCES TO TRADERS -->
+				<Operation Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+					<li Class="PatchOperationTest">
+						<xpath>Defs/TraderKindDef[defName = "Empire_Caravan_TraderGeneral"]</xpath>
+							<success>Normal</success>
+					</li>
+					<li Class="PatchOperationAdd">
+						<xpath>/Defs/TraderKindDef[defName = "Empire_Caravan_TraderGeneral"]/stockGenerators</xpath>
+						<value>
+							<!-- in Vanilla 250~400 Steel -->
+							<li Class="StockGenerator_SingleDef">
+								<thingDef>Iron</thingDef>
+								<countRange>300~500</countRange>
+							</li>
+							<!-- in Vanilla 0 Plasteel -->
+							<li Class="StockGenerator_SingleDef">
+								<thingDef>Titanium</thingDef>
+								<countRange>-150~200</countRange>
+							</li>
+						</value>
+					</li>
+					</operations>
+				</Operation>
+		<!-- THE ROCK TRADE MOD PATCHES -->
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>The Rock Trade</li>
+				</mods>
+				<match Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationAdd">
+							<xpath>/Defs/TraderKindDef[defName = "Caravan_Neolithic_Excavation"]/stockGenerators</xpath>
+							<value>
+								<li Class="StockGenerator_SingleDef">
+									<thingDef>Copper</thingDef>
+									<countRange>50~450</countRange>
+								</li>
+								<li Class="StockGenerator_SingleDef">
+									<thingDef>Tin</thingDef>
+									<countRange>0~300</countRange>
+								</li>
+								<!-- in The Rock Trade 0 Gold -->
+								<li Class="StockGenerator_SingleDef">
+									<thingDef>Bronze</thingDef>
+									<countRange>-100~200</countRange>
+								</li>
+								<!-- made so that they would buy metals -->
+								<li Class="StockGenerator_MultiDef">
+									<thingDefs>
+										<li>Iron</li>
+										<li>Titanium</li>
+									</thingDefs>
+								</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>/Defs/TraderKindDef[defName = "Caravan_Outlander_Excavation"]/stockGenerators</xpath>
+							<value>
+								<li Class="StockGenerator_SingleDef">
+									<thingDef>Copper</thingDef>
+									<countRange>350~700</countRange>
+								</li>
+								<li Class="StockGenerator_SingleDef">
+									<thingDef>Tin</thingDef>
+									<countRange>200~400</countRange>
+								</li>
+								<!-- in The Rock Trade 50~350 Gold -->
+								<li Class="StockGenerator_SingleDef">
+									<thingDef>Bronze</thingDef>
+									<countRange>100~500</countRange>
+								</li>
+								<!-- in The Rock Trade 450~650 Steel -->
+								<li Class="StockGenerator_SingleDef">
+									<thingDef>Iron</thingDef>
+									<countRange>750~900</countRange>
+								</li>
+								<!-- in The Rock Trade 50~350 Plasteel -->
+								<li Class="StockGenerator_SingleDef">
+									<thingDef>Titanium</thingDef>
+									<countRange>100~500</countRange>
+								</li>
+							</value>
+						</li>
+						<li Class="PatchOperationAdd">
+							<xpath>/Defs/TraderKindDef[defName = "Orbital_Excavation"]/stockGenerators</xpath>
+							<value>
+								<!-- in The Rock Trade 50~250 Gold (only precious metals)  -->
+								<li Class="StockGenerator_SingleDef">
+									<thingDef>Bronze</thingDef>
+									<countRange>100~400</countRange>
+								</li>
+								<!-- made so that they would buy metals -->
+								<li Class="StockGenerator_MultiDef">
+									<thingDefs>
+										<li>Copper</li>
+										<li>Tin</li>
+										<li>Iron</li>
+										<li>Titanium</li>
+									</thingDefs>
+								</li>
+							</value>
+						</li>
+					</operations>
+				</match>
+			</Operation>
+	<!-- SLAG REFINED PLUS -->
+		<!-- RECIPES -->
+			<Operation Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[defName = "ExtractMetalFromSlag"]/ingredients/li/filter/thingDefs</xpath>
+				<value>
+				<li>ChunkSlagSterile</li>
+				<li>ChunkSlagPlasteel</li>
+				<li>ChunkSlagGold</li>
+				</value>
+			</Operation>
+			<Operation Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[defName = "ExtractMetalFromSlag"]/fixedIngredientFilter/thingDefs</xpath>
+				<value>
+				<li>ChunkSlagSterile</li>
+				<li>ChunkSlagPlasteel</li>
+				<li>ChunkSlagGold</li>
+				</value>
+			</Operation>
+			<Operation Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[defName = "ExtractMetalFromSlag"]</xpath>
+				<value>
+				<specialProducts>
+					<li>Smelted</li>
+				</specialProducts>
+				</value>
+			</Operation>
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+</Patch>

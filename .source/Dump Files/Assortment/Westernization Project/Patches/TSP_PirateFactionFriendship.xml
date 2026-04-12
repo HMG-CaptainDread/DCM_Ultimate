@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationConditional">
+    <!-- Does this exist? -->
+    <xpath>/Defs/FactionDef[defName="VFEP_Junkers"]</xpath>
+    <!-- If it does, do this replacement. -->
+    <match Class="PatchOperationReplace">
+      <success>Always</success>
+      <xpath>Defs/FactionDef[defName="RWP_Faction_Bandit_Core"]/requiredMemes/li[2]</xpath>
+      <value>
+        <li>VFEP_PirateMeme</li>
+      </value>
+    </match>
+    <!-- If the first XPATH does not exist, the original code stands. -->
+  </Operation>
+</Patch>
