@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- ==================== RWP Bandit Base Class ================= -->
+  <FactionDef Name="RWP_BanditFactionBase" Abstract="True" ParentName="FactionBase">
+    <defName>RWP_Faction_Bandit_Core</defName>
+    <pawnsPlural>bandits</pawnsPlural>
+    <techLevel>Industrial</techLevel>
+    <naturalEnemy>true</naturalEnemy>
+    <backstoryFilters>
+      <li>
+        <categories>
+          <li>Outlander</li>
+        </categories>
+        <commonality>0.331</commonality>
+      </li>
+      <li>
+        <categories>
+          <li>Pirate</li>
+        </categories>
+        <commonality>0.669</commonality>
+      </li>
+    </backstoryFilters>
+    <canMakeRandomly>true</canMakeRandomly>
+    <maxConfigurableAtWorldCreation>9999</maxConfigurableAtWorldCreation>
+    <rescueesCanJoin>true</rescueesCanJoin>
+    <canStageAttacks>true</canStageAttacks>
+    <canSiege>true</canSiege>
+    <maxPawnCostPerTotalPointsCurve>
+      <!-- I don't understand how this works, but my attempt is to make more of them spawn faster. -->
+      <points>
+        <li>(0,50)</li>
+        <li>(70, 100)</li>
+        <li>(700, 200)</li>
+        <li>(1070, 300)</li>
+        <li>(100000, 10000)</li>
+      </points>
+    </maxPawnCostPerTotalPointsCurve>
+    <raidCommonalityFromPointsCurve>
+      <points>
+        <li>(0, 1.5)</li>
+        <!--Constant one and one half at all points levels-->
+      </points>
+    </raidCommonalityFromPointsCurve>
+    <earliestRaidDays>1</earliestRaidDays>
+    <allowedCultures>
+      <li>Kriminul</li>
+    </allowedCultures>
+    <visitorTraderKinds>
+      <li>Visitor_Outlander_Standard</li>
+    </visitorTraderKinds>
+    <baseTraderKinds>
+      <li>RWP_Base_Town_Standard</li>
+    </baseTraderKinds>
+    <caravanTraderKinds>
+      <li>TSP_RWP_Caravan_PatentMedicine</li>
+      <li>Caravan_Outlander_PirateMerchant</li>
+      <li>Caravan_Neolithic_Slaver</li>
+    </caravanTraderKinds>
+    <!-- RIMWORLD COWBOY BANDITS MUH IMMERSION -->
+    <!-- TurtleShroom Productions -->
+    <requiredMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Structure_Ideological</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Raider</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Rancher</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Loyalist</li>
+    </requiredMemes>
+    <disallowedMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudism</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Blindsight</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">FemaleSupremacy</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Cannibal</li>
+      <!-- Forbidden Mod Memes -->
+      <li MayRequire="VanillaExpanded.VMemesE">VME_Vegan</li>
+      <li MayRequire="llunak.MorePrecepts">Pacifism</li>
+      <li MayRequire="Qux.factionhippie">PeaceLove</li>
+      <li MayRequire="Zezz.Altrumeme">Altruism</li>
+      <li MayRequire="VanillaExpanded.VMemesE">VME_Pacifist</li>
+      <li MayRequire="FalloutRedScare.FalloutRedScare">FRS_Structure_Socialist</li>
+      <li MayRequire="SZ.TW.New.GuoHun">SZ_Structure_CultureQiYuan</li>
+      <li MayRequire="Qux.factionhippie">PeaceLove</li>
+      <li MayRequire="VanillaExpanded.VMemesE">VME_Structure_Corporate</li>
+    </disallowedMemes>
+    <disallowedPrecepts>
+      <!-- Bandits love slaves -->
+      <li MayRequire="Ludeon.RimWorld.Ideology">Slavery_Abhorrent</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Slavery_Horrible</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Slavery_Disapproved</li>
+      <!-- Obvious -->
+      <li MayRequire="Ludeon.RimWorld.Ideology">Cannibalism_Preferred</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Cannibalism_RequiredStrong</li>
+      <!-- Vegetarianism? In MY cowboys? -->
+      <li MayRequire="Ludeon.RimWorld.Ideology">MeatEating_Abhorrent</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">MeatEating_Horrible</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">MeatEating_Disapproved</li>
+      <!-- Take all the rope in Texas, find the tallest tree... -->
+      <li MayRequire="Ludeon.RimWorld.Ideology">Execution_Abhorrent</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Execution_Horrible</li>
+      <li MayRequire="Ludeon.Rimworld.Ideology">Execution_HorribleIfInnocent</li>
+      <!-- This ain't no Ram Ranch! -->
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Male_Mandatory</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Female_Mandatory</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Male_CoveringAnythingButGroinDisapproved</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Female_CoveringAnythingButGroinDisapproved</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Male_NoRules</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Female_NoRules</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Female_UncoveredGroinDisapproved</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Female_UncoveredGroinChestHairOrFaceDisapproved</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Male_UncoveredGroinChestHairOrFaceDisapproved</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Lovin_Prohibited</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Lovin_Horrible</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Lovin_FreeApproved</li>
+      <!-- DO YOU THINK THAT'LL HURT ME? ALL YOU HAVE DONE IS MAKE MY FACE LOOK COOLER! -->
+      <li MayRequire="Ludeon.RimWorld.Ideology">Scarification_Horrible</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Scarification_Extreme</li>
+      <!-- The following Precepts are only forbidden if you have the Mod -->
+      <li MayRequire="martinbaste.Ideo.XenoPrecept">XenoDiversity_Abhorrent</li>
+      <li MayRequire="martinbaste.Ideo.XenoPrecept">XenoDiversity_Horrible</li>
+      <li MayRequire="martinbaste.Ideo.XenoPrecept">XenoDiversity_Disapproved</li>
+      <li MayRequire="martinbaste.Ideo.XenoPrecept">XenoDiversity_Standard</li>
+    </disallowedPrecepts>
+    <allowedArrivalTemperatureRange>
+      <min>-50</min>
+      <max>50</max>
+    </allowedArrivalTemperatureRange>
+    <leaderForceGenerateNewPawn>true</leaderForceGenerateNewPawn>
+    <fixedLeaderKinds>
+      <li>RWP_Bandit_Boss</li>
+    </fixedLeaderKinds>
+    <settlementNameMaker>NamerFactionPirate</settlementNameMaker>
+    <settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
+  </FactionDef>
+  <!-- ==================== RWP Bandit Faction ================= -->
+  <FactionDef ParentName="RWP_BanditFactionBase">
+    <defName>RWP_Faction_Bandit</defName>
+    <label>bandit gang</label>
+    <description>Nearly four thousand years since the Old Earth's western hemisphere pacified its westernmost territories, the threats that plagued those ancient cowboys continue to exist, in an almost completely unaltered form, on the lawless frontiers of the Rim. Just like Old Earth's Wild West, where banditoes and outlaws roamed the colonial settlements, the lack of infrastructure and institutions that Core Worlds have make the frontiers of the Rim identical in danger and adventure. This is the largest and most powerful gang of Wild West bandits. Known for wearing their signature scarves, these outlaws are the bane of life on the frontier, and will stop at nothing to enrich themselves. Do not let their ancient kinetic weapons fool you, they are still an existential threat to all but the most advanced colonies. They nominally elect a planet-wide leader, the Planetary Desparado, but his position is ceremonial as an 'ambassador' of the plundering men in communications calls. If you value your life, either befriend them or avoid them at all costs.</description>
+    <pawnsPlural>bandits</pawnsPlural>
+    <requiredCountAtGameStart>1</requiredCountAtGameStart>
+    <settlementGenerationWeight>1</settlementGenerationWeight>
+    <mustStartOneEnemy>true</mustStartOneEnemy>
+    <factionNameMaker>NamerFactionBandit</factionNameMaker>
+    <leaderTitle>Planetary Desparado</leaderTitle>
+    <naturalEnemy>true</naturalEnemy>
+    <!-- ====== Faction Groups ====== -->
+    <pawnGroupMakers>
+      <li>
+        <kindDef>Peaceful</kindDef>
+        <options>
+          <RWP_Bandit_Recruit>5</RWP_Bandit_Recruit>
+          <RWP_Bandit_Sniper>2</RWP_Bandit_Sniper>
+          <RWP_Bandit_Rifleman>3</RWP_Bandit_Rifleman>
+          <RWP_Bandit_Slasher>3</RWP_Bandit_Slasher>
+          <RWP_Bandit_Gunslinger>4</RWP_Bandit_Gunslinger>
+          <TSP_RWP_Bandit_Tradesman>1</TSP_RWP_Bandit_Tradesman>
+        </options>
+      </li>
+      <!-- Trading Group -->
+      <li>
+        <kindDef>Trader</kindDef>
+        <traders>
+          <TSP_RWP_Bandit_Tradesman>1</TSP_RWP_Bandit_Tradesman>
+        </traders>
+        <carriers>
+          <Muffalo>1</Muffalo>
+          <Dromedary>25</Dromedary>
+          <Donkey>25</Donkey>
+          <Horse>25</Horse>
+          <Bison>25</Bison>
+        </carriers>
+        <guards>
+          <RWP_Bandit_Gunslinger>6</RWP_Bandit_Gunslinger>
+          <RWP_Bandit_Rifleman>3</RWP_Bandit_Rifleman>
+          <RWP_Bandit_Boss>0.1</RWP_Bandit_Boss>
+          <GoblinTinkerer MayRequire="TSP.Isengriff.Storytime">1</GoblinTinkerer>
+        </guards>
+      </li>
+      <!-- Small Scale Tier 1 Attack -->
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>100</commonality>
+        <disallowedStrategies>
+          <li>Siege</li>
+        </disallowedStrategies>
+        <options>
+          <RWP_Bandit_Recruit>3</RWP_Bandit_Recruit>
+          <RWP_Bandit_Rifleman>2</RWP_Bandit_Rifleman>
+          <RWP_Bandit_Gunslinger>3</RWP_Bandit_Gunslinger>
+          <RWP_Bandit_Slasher>2</RWP_Bandit_Slasher>
+          <GoblinTinkerer MayRequire="TSP.Isengriff.Storytime">0.02</GoblinTinkerer>
+        </options>
+      </li>
+      <!-- Small Scale Tier 2 Attack -->
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>50</commonality>
+        <disallowedStrategies>
+          <li>ImmediateAttack</li>
+          <li>ImmediateAttackSappers</li>
+          <li>Siege</li>
+        </disallowedStrategies>
+        <options>
+          <RWP_Bandit_Recruit>2</RWP_Bandit_Recruit>
+          <RWP_Bandit_Sniper>1</RWP_Bandit_Sniper>
+          <RWP_Bandit_Rifleman>3</RWP_Bandit_Rifleman>
+          <RWP_Bandit_Gunslinger>4</RWP_Bandit_Gunslinger>
+          <RWP_Bandit_Slasher>3</RWP_Bandit_Slasher>
+          <GoblinTinkerer MayRequire="TSP.Isengriff.Storytime">0.02</GoblinTinkerer>
+        </options>
+      </li>
+      <!-- Large Scale Attack -->
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>25</commonality>
+        <disallowedStrategies>
+          <li>ImmediateAttack</li>
+          <li>Siege</li>
+        </disallowedStrategies>
+        <options>
+          <RWP_Bandit_Boss>1</RWP_Bandit_Boss>
+          <RWP_Bandit_Recruit>2</RWP_Bandit_Recruit>
+          <RWP_Bandit_Sniper>2</RWP_Bandit_Sniper>
+          <RWP_Bandit_Rifleman>3</RWP_Bandit_Rifleman>
+          <RWP_Bandit_Slasher>2</RWP_Bandit_Slasher>
+          <RWP_Bandit_Gunslinger>4</RWP_Bandit_Gunslinger>
+          <GoblinTinkerer MayRequire="TSP.Isengriff.Storytime">0.02</GoblinTinkerer>
+        </options>
+      </li>
+      <!-- Siege Scale Attack -->
+      <li>
+        <kindDef>Combat</kindDef>
+        <commonality>15</commonality>
+        <disallowedStrategies>
+          <li>ImmediateAttackSmart</li>
+          <li>ImmediateAttack</li>
+          <li>ImmediateAttackSappers</li>
+          <li>StageThenAttack</li>
+        </disallowedStrategies>
+        <options>
+          <RWP_Bandit_Boss>1</RWP_Bandit_Boss>
+          <RWP_Bandit_Recruit>3</RWP_Bandit_Recruit>
+          <RWP_Bandit_Sniper>2</RWP_Bandit_Sniper>
+          <RWP_Bandit_Slasher>3</RWP_Bandit_Slasher>
+          <RWP_Bandit_Rifleman>3</RWP_Bandit_Rifleman>
+          <RWP_Bandit_Gunslinger>4</RWP_Bandit_Gunslinger>
+          <GoblinTinkerer MayRequire="TSP.Isengriff.Storytime">0.02</GoblinTinkerer>
+        </options>
+      </li>
+      <!-- Faction Base -->
+      <li>
+        <kindDef>Settlement</kindDef>
+        <options>
+          <RWP_Bandit_Recruit>6</RWP_Bandit_Recruit>
+          <RWP_Bandit_Boss>1</RWP_Bandit_Boss>
+          <RWP_Bandit_Sniper>2</RWP_Bandit_Sniper>
+          <RWP_Bandit_Rifleman>3</RWP_Bandit_Rifleman>
+          <RWP_Bandit_Slasher>2</RWP_Bandit_Slasher>
+          <RWP_Bandit_Gunslinger>4</RWP_Bandit_Gunslinger>
+          <TSP_RWP_Bandit_Tradesman>0.1</TSP_RWP_Bandit_Tradesman>
+          <GoblinTinkerer MayRequire="TSP.Isengriff.Storytime">0.02</GoblinTinkerer>
+        </options>
+      </li>
+    </pawnGroupMakers>
+    <factionIconPath>World/WorldObjects/Factions/RWP_Bandit</factionIconPath>
+    <colorSpectrum>
+      <li>(1, 0.5, 0)</li>
+      <li>(0.75, 0.38, 0)</li>
+      <li>(0.5, 0.25, 0)</li>
+    </colorSpectrum>
+    <allowedArrivalTemperatureRange>
+      <min>-999</min>
+      <max>999</max>
+    </allowedArrivalTemperatureRange>
+    <leaderForceGenerateNewPawn>true</leaderForceGenerateNewPawn>
+    <fixedLeaderKinds>
+      <li>RWP_Bandit_Boss</li>
+    </fixedLeaderKinds>
+    <settlementNameMaker>NamerFactionPirate</settlementNameMaker>
+    <settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
+  </FactionDef>
+</Defs>

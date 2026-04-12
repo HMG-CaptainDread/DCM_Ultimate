@@ -1,0 +1,594 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<!-- ========== Pawn stats ========== -->
+
+    <!-- Aiming Delay Factor -->
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/StatDef[defName="AimingDelayFactor"]/postProcessCurve</xpath>
+        <value>
+            <postProcessCurve>
+                <points>
+                    <li>(0.01, 0.01)</li>
+                    <li>(0.75, 0.75)</li>
+                    <li>(1.0, 1.0)</li>
+                    <li>(1.25, 1.25)</li>
+                    <li>(2.0, 1.5)</li>
+                </points>
+            </postProcessCurve>
+        </value>
+    </Operation>
+
+	<!-- Melee Dodge Chance -->
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/StatDef[defName="MeleeDodgeChance"]/postProcessCurve</xpath>
+		<value>
+			<postProcessCurve>
+				<points>
+					<li>(0.0, 0.0)</li>
+					<li>(0.3, 0.3)</li>
+					<li>(0.6, 0.45)</li>
+					<li>(1.2, 0.6)</li>
+					<li>(2.4, 0.75)</li>
+					<li>(3.2, 0.8)</li>
+					<li>(6.4, 0.9)</li>
+					<li>(12.8, 0.95)</li>
+				</points>
+			</postProcessCurve>
+		</value>
+	</Operation>
+
+	<!-- ========== Cyberware ========== -->
+
+	<!--  Militech Apogee sandevistan -->
+  
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="ActiveSandevistanMilitechApogee"]/stages/li/statFactors</xpath>
+		<value>
+			<AimingAccuracy>1.2</AimingAccuracy>
+			<MeleeCritChance>1.2</MeleeCritChance>
+			<MeleeParryChance>8.00</MeleeParryChance>
+		</value>
+	</Operation>
+
+	<!--  Militech Falcon sandevistan -->
+  
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="ActiveSandevistanMilitechFalcon"]/stages/li/statFactors</xpath>
+		<value>
+			<AimingAccuracy>1.15</AimingAccuracy>
+			<MeleeCritChance>1.15</MeleeCritChance>
+			<MeleeParryChance>3.83</MeleeParryChance>
+		</value>
+	</Operation>
+
+	<!--  QianT Warp Dancer sandevistan -->
+  
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="ActiveSandevistanQianTWarpDancer_5T"]/stages/li/statFactors</xpath>
+		<value>
+				<MeleeParryChance>1.25</MeleeParryChance>
+		</value>
+	</Operation>
+
+	<!--  Dynalar sandevistan -->
+  
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="ActiveSandevistanDynalar_5T"]/stages/li/statFactors</xpath>
+		<value>
+			<AimingAccuracy>1.15</AimingAccuracy>
+			<MeleeCritChance>1.15</MeleeCritChance>
+			<MeleeParryChance>2.3</MeleeParryChance>
+		</value>
+	</Operation>
+
+	<!--  Zetatech sandevistan -->
+  
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="ActiveSandevistanZetatech_5T"]/stages/li/statFactors</xpath>
+		<value>
+			<MeleeParryChance>1.43</MeleeParryChance>
+		</value>
+	</Operation>
+
+	<!--  Militech berserk -->
+  
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="ActiveBerserkMilitech"]/stages/li/statFactors</xpath>
+		<value>
+			<AimingAccuracy>0.0</AimingAccuracy>
+			<MeleeCritChance>1.2</MeleeCritChance>
+		</value>
+	</Operation>
+
+	<!--  Zetatech Berserk -->
+  
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="ActiveBerserkZetatech_5T"]/stages/li/statFactors</xpath>
+		<value>
+			<AimingAccuracy>0.0</AimingAccuracy>
+			<MeleeCritChance>1.2</MeleeCritChance>
+		</value>
+	</Operation>
+
+	<!--  BioDyne Berserk -->
+  
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="ActiveBerserkBioDyne_5T"]/stages/li/statFactors</xpath>
+		<value>
+			<AimingAccuracy>0.0</AimingAccuracy>
+			<MeleeCritChance>1.4</MeleeCritChance>
+		</value>
+	</Operation>
+
+	<!--  Moore Tech Berserk-->
+  
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="ActiveBerserkMooreTech_5T"]/stages/li/statFactors</xpath>
+		<value>
+			<AimingAccuracy>0.0</AimingAccuracy>
+			<MeleeCritChance>1.2</MeleeCritChance>
+		</value>
+	</Operation>
+	
+	<!-- Gorilla Arms -->
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="GorillaArm_5T"]/stages/li/statFactors</xpath>
+		<value>
+			<CarryBulk>1.2</CarryBulk>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/HediffDef[defName="GorillaArm_5T"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+		<value>
+			<tools>
+				<li Class="CombatExtended.ToolCE">
+					<label>fist</label>
+					<capacities>
+						<li>Blunt</li>
+					</capacities>
+					<power>24</power>
+					<cooldownTime>1.2</cooldownTime>
+					<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+					<armorPenetrationBlunt>80.0</armorPenetrationBlunt>
+					<armorPenetrationSharp>4.0</armorPenetrationSharp>
+					<soundMeleeHit>MeleeHit_BionicPunch</soundMeleeHit>
+					<soundMeleeMiss>MeleeMiss_BionicPunch</soundMeleeMiss>
+				</li>
+				<li Class="CombatExtended.ToolCE">
+					<label>fist</label>
+					<capacities>
+						<li>Blunt</li>
+					</capacities>
+					<power>8</power>
+					<cooldownTime>0.32</cooldownTime>
+					<armorPenetrationBlunt>40.0</armorPenetrationBlunt>
+					<armorPenetrationSharp>2.0</armorPenetrationSharp>
+					<soundMeleeHit>MeleeHit_BionicPunch</soundMeleeHit>
+					<soundMeleeMiss>MeleeMiss_BionicPunch</soundMeleeMiss>
+				</li>
+			</tools>
+		</value>
+	</Operation>
+	
+	<!-- Mantis Blades -->
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/HediffDef[defName="MantisBlade_5T"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+		<value>
+			<tools>
+				<li Class="CombatExtended.ToolCE">
+					<label>blade</label>
+					<capacities>
+						<li>Cut</li>
+					</capacities>
+					<power>12</power>
+					<armorPenetrationBlunt>1.0</armorPenetrationBlunt>
+					<armorPenetrationSharp>8.0</armorPenetrationSharp>
+					<cooldownTime>0.32</cooldownTime>
+					<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+					<linkedBodyPartsGroup>Blade</linkedBodyPartsGroup>
+					<soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+					<soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+				</li>
+				<li Class="CombatExtended.ToolCE">
+					<label>blade</label>
+					<capacities>
+						<li>Stab</li>
+					</capacities>
+					<power>36</power>
+					<armorPenetrationBlunt>10.0</armorPenetrationBlunt>
+					<armorPenetrationSharp>40.0</armorPenetrationSharp>
+					<cooldownTime>1.8</cooldownTime>
+					<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+					<linkedBodyPartsGroup>Blade</linkedBodyPartsGroup>
+					<soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+					<soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+				</li>
+				<li Class="CombatExtended.ToolCE">
+					<label>fist</label>
+					<capacities>
+						<li>Blunt</li>
+					</capacities>
+					<power>8</power>
+					<cooldownTime>0.32</cooldownTime>
+					<armorPenetrationBlunt>20.0</armorPenetrationBlunt>
+					<armorPenetrationSharp>1.0</armorPenetrationSharp>
+					<soundMeleeHit>MeleeHit_BionicPunch</soundMeleeHit>
+					<soundMeleeMiss>MeleeMiss_BionicPunch</soundMeleeMiss>
+				</li>
+			</tools>
+		</value>
+	</Operation>
+	
+	<!-- Higurashi 20-13 Mantis Blades -->
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/HediffDef[defName="MantisBlade_Iconic"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+		<value>
+			<tools>
+				<li Class="CombatExtended.ToolCE">
+					<label>blade</label>
+					<capacities>
+						<li>Cut</li>
+					</capacities>
+					<power>12</power>
+					<armorPenetrationBlunt>1.0</armorPenetrationBlunt>
+					<armorPenetrationSharp>12.0</armorPenetrationSharp>
+					<cooldownTime>0.25</cooldownTime>
+					<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+					<linkedBodyPartsGroup>Blade</linkedBodyPartsGroup>
+					<soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+					<soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+				</li>
+				<li Class="CombatExtended.ToolCE">
+					<label>blade</label>
+					<capacities>
+						<li>Stab</li>
+					</capacities>
+					<power>36</power>
+					<armorPenetrationBlunt>10.0</armorPenetrationBlunt>
+					<armorPenetrationSharp>60.0</armorPenetrationSharp>
+					<cooldownTime>1.5</cooldownTime>
+					<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+					<linkedBodyPartsGroup>Blade</linkedBodyPartsGroup>
+					<soundMeleeHit>MeleeHit_BionicSlash</soundMeleeHit>
+					<soundMeleeMiss>MeleeMiss_BionicSlash</soundMeleeMiss>
+				</li>
+				<li Class="CombatExtended.ToolCE">
+					<label>fist</label>
+					<capacities>
+						<li>Blunt</li>
+					</capacities>
+					<power>8</power>
+					<cooldownTime>0.32</cooldownTime>
+					<armorPenetrationBlunt>20.0</armorPenetrationBlunt>
+					<armorPenetrationSharp>1.0</armorPenetrationSharp>
+					<soundMeleeHit>MeleeHit_BionicPunch</soundMeleeHit>
+					<soundMeleeMiss>MeleeMiss_BionicPunch</soundMeleeMiss>
+				</li>
+			</tools>
+		</value>
+	</Operation>
+	
+	<!-- Projectile Launch System -->
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/HediffDef[defName="ProjectileLaunchSystem_5T"]/comps/li[@Class="HediffCompProperties_VerbGiver"]/tools</xpath>
+		<value>
+			<tools>
+				<li Class="CombatExtended.ToolCE">
+					<label>fist</label>
+					<capacities>
+						<li>Blunt</li>
+					</capacities>
+					<power>8</power>
+					<cooldownTime>0.32</cooldownTime>
+					<armorPenetrationBlunt>20.0</armorPenetrationBlunt>
+					<armorPenetrationSharp>1.0</armorPenetrationSharp>
+					<soundMeleeHit>MeleeHit_BionicPunch</soundMeleeHit>
+					<soundMeleeMiss>MeleeMiss_BionicPunch</soundMeleeMiss>
+				</li>
+			</tools>
+		</value>
+	</Operation>
+	
+	<!--  Kiroshi "Stalker" Eye -->
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="KiroshiStalkerEye_5T"]/stages/li/statFactors</xpath>
+		<value>
+			<AimingAccuracy>1.4</AimingAccuracy>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="KiroshiStalkerEye_5T"]/stages/li/statOffsets</xpath>
+		<value>
+			<NightVisionEfficiency_Implant>0.5</NightVisionEfficiency_Implant>
+		</value>
+	</Operation>
+
+	<!--  Kiroshi "Doomsayer" Eye -->
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="KiroshiDoomsayerEye_5T"]/stages/li/statFactors</xpath>
+		<value>
+			<MeleeCritChance>1.4</MeleeCritChance>
+			<MeleeParryChance>1.4</MeleeParryChance>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="KiroshiDoomsayerEye_5T"]/stages/li/statOffsets</xpath>
+		<value>
+			<NightVisionEfficiency_Implant>0.5</NightVisionEfficiency_Implant>
+		</value>
+	</Operation>
+	
+	<!--  Kiroshi "The Oracle" Eye -->
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="KiroshiTheOracleEye_Iconic"]/stages/li/statFactors</xpath>
+		<value>
+			<AimingAccuracy>1.4</AimingAccuracy>
+			<MeleeCritChance>1.4</MeleeCritChance>
+			<MeleeParryChance>1.4</MeleeParryChance>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="KiroshiTheOracleEye_Iconic"]/stages/li/statOffsets</xpath>
+		<value>
+			<NightVisionEfficiency_Implant>0.5</NightVisionEfficiency_Implant>
+		</value>
+	</Operation>
+
+	<!--  Ballistic Coprocessor -->
+  
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/HediffDef[defName="BallisticCoprocessor_5T"]/stages/li/statFactors/ShootingAccuracyPawn</xpath>
+		<value>
+			<AimingAccuracy>1.3</AimingAccuracy>
+		</value>
+	</Operation>
+
+	<!--  Handle Wrap -->
+  
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="HandleWrap_5T"]/stages/li/statFactors</xpath>
+		<value>
+			<MeleeCritChance>1.27</MeleeCritChance>
+		</value>
+	</Operation>
+
+	<!--  Optical Camo -->
+  
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="OpticalCamo_5T"]/stages/li/statOffsets</xpath>
+		<value>
+			<ArmorRating_Sharp>2.4</ArmorRating_Sharp>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="OpticalCamo_5T"]/stages/li/statOffsets</xpath>
+		<value>
+			<ArmorRating_Blunt>6</ArmorRating_Blunt>
+		</value>
+	</Operation>
+
+	<!--  Subdermal Armor -->
+  
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/HediffDef[defName="SubdermalArmor_5T"]/stages/li/statOffsets/ArmorRating_Sharp</xpath>
+		<value>
+			<ArmorRating_Sharp>2</ArmorRating_Sharp>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/HediffDef[defName="SubdermalArmor_5T"]/stages/li/statOffsets/ArmorRating_Blunt</xpath>
+		<value>
+			<ArmorRating_Blunt>5</ArmorRating_Blunt>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/HediffDef[defName="SubdermalArmor_5T"]/stages/li/statOffsets/ArmorRating_Heat</xpath>
+		<value>
+			<ArmorRating_Heat>0.10</ArmorRating_Heat>
+		</value>
+	</Operation>
+
+	<!--  Proxishield -->
+  
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="Proxishield_5T"]/stages/li/statFactors</xpath>
+		<value>
+			<MeleeParryChance>1.2</MeleeParryChance>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="Proxishield_5T"]/stages/li/statOffsets</xpath>
+		<value>
+			<ArmorRating_Sharp>2.88</ArmorRating_Sharp>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="Proxishield_5T"]/stages/li/statOffsets</xpath>
+		<value>
+			<ArmorRating_Blunt>7.2</ArmorRating_Blunt>
+		</value>
+	</Operation>
+
+	<!--  Pain Editor -->
+  
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="PainEditor_5T"]/stages/li/statOffsets</xpath>
+		<value>
+			<ArmorRating_Sharp>8.64</ArmorRating_Sharp>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="PainEditor_5T"]/stages/li/statOffsets</xpath>
+		<value>
+			<ArmorRating_Blunt>21.6</ArmorRating_Blunt>
+		</value>
+	</Operation>
+
+	<!--  Chitin -->
+  
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/HediffDef[defName="Chitin_Iconic"]/stages/li/statOffsets/ArmorRating_Sharp</xpath>
+		<value>
+			<ArmorRating_Sharp>32</ArmorRating_Sharp>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/HediffDef[defName="Chitin_Iconic"]/stages/li/statOffsets/ArmorRating_Blunt</xpath>
+		<value>
+			<ArmorRating_Blunt>80</ArmorRating_Blunt>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/HediffDef[defName="Chitin_Iconic"]/stages/li/statOffsets/ArmorRating_Heat</xpath>
+		<value>
+			<ArmorRating_Heat>0.25</ArmorRating_Heat>
+		</value>
+	</Operation>
+
+	<!--  Fortified Ankles -->
+  
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="FortifiedAnkles_5T"]/stages/li/statOffsets</xpath>
+		<value>
+			<ArmorRating_Sharp>8.24</ArmorRating_Sharp>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="FortifiedAnkles_5T"]/stages/li/statOffsets</xpath>
+		<value>
+			<ArmorRating_Blunt>20.6</ArmorRating_Blunt>
+		</value>
+	</Operation>
+
+	<!--  Leeroy Ligament System -->
+  
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="LeeroyLigamentSystem_Iconic"]/stages/li/statOffsets</xpath>
+		<value>
+			<ArmorRating_Sharp>2.08</ArmorRating_Sharp>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="LeeroyLigamentSystem_Iconic"]/stages/li/statOffsets</xpath>
+		<value>
+			<ArmorRating_Blunt>5.2</ArmorRating_Blunt>
+		</value>
+	</Operation>
+
+	<!--  Jenkins' Tendons -->
+  
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="JenkinsTendons_5T"]/stages/li/statOffsets</xpath>
+		<value>
+			<ArmorRating_Sharp>1.76</ArmorRating_Sharp>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="JenkinsTendons_5T"]/stages/li/statOffsets</xpath>
+		<value>
+			<ArmorRating_Blunt>4.4</ArmorRating_Blunt>
+		</value>
+	</Operation>
+
+	<!--  Kerenzikov -->
+  
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="Kerenzikov_5T"]/stages/li/statFactors</xpath>
+		<value>
+			<AimingAccuracy>1.14</AimingAccuracy>
+			<MeleeCritChance>1.14</MeleeCritChance>
+			<MeleeParryChance>1.14</MeleeParryChance>
+		</value>
+	</Operation>
+
+	<!--  Stabber -->
+  
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="Stabber_5T"]/stages/li/statFactors</xpath>
+		<value>
+			<MeleeCritChance>1.2</MeleeCritChance>
+			<MeleeParryChance>1.2</MeleeParryChance>
+		</value>
+	</Operation>
+
+	<!--  Visual Cortex Support -->
+  
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="VisualCortexSupport_5T"]/stages/li/statFactors</xpath>
+		<value>
+			<AimingAccuracy>1.3</AimingAccuracy>
+		</value>
+	</Operation>
+
+	<!--  Bionic Joints -->
+  
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="BionicJoints_5T"]/stages/li/statFactors</xpath>
+		<value>
+			<CarryBulk>1.62</CarryBulk>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="BionicJoints_5T"]/stages/li/statOffsets</xpath>
+		<value>
+			<ArmorRating_Sharp>2.72</ArmorRating_Sharp>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="BionicJoints_5T"]/stages/li/statOffsets</xpath>
+		<value>
+			<ArmorRating_Blunt>6.8</ArmorRating_Blunt>
+		</value>
+	</Operation>
+
+	<!--  Titanium Bones -->
+  
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/HediffDef[defName="TitaniumBones_5T"]/stages/li/statOffsets/ArmorRating_Sharp</xpath>
+		<value>
+			<ArmorRating_Sharp>4.75</ArmorRating_Sharp>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/HediffDef[defName="TitaniumBones_5T"]/stages/li/statOffsets/ArmorRating_Blunt</xpath>
+		<value>
+			<ArmorRating_Blunt>11.875</ArmorRating_Blunt>
+		</value>
+	</Operation>
+
+	<!--  Dense Marrow -->
+  
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="DenseMarrow_5T"]/stages/li/statOffsets</xpath>
+		<value>
+			<ArmorRating_Sharp>3.36</ArmorRating_Sharp>
+		</value>
+	</Operation>
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="DenseMarrow_5T"]/stages/li/statOffsets</xpath>
+		<value>
+			<ArmorRating_Blunt>8.4</ArmorRating_Blunt>
+		</value>
+	</Operation>
+
+	<!--  Microrotors -->
+  
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/HediffDef[defName="Microrotors_5T"]/stages/li/statFactors</xpath>
+		<value>
+			<MeleeParryChance>1.33</MeleeParryChance> 
+		</value>
+	</Operation>
+
+</Patch>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="Mending"]/techLevel</xpath>
+		<value>
+			<techLevel>Medieval</techLevel>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ResearchProjectDef[defName="Mending"]</xpath>
+		<value>
+			<tab>DankPyon_MedievalResearchTab</tab>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="Mending"]/researchViewX</xpath>
+		<value>
+			<researchViewX>5.00</researchViewX>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="Mending"]/researchViewY</xpath>
+		<value>
+			<researchViewY>3.00</researchViewY>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/RecipeDef[defName="MendComplexApparel"]/workAmount</xpath>
+		<value>
+			<workAmount>720</workAmount>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/RecipeDef[defName="MendComplexWeapon"]/workAmount</xpath>
+		<value>
+			<workAmount>720</workAmount>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/RecipeDef[defName="MendSimpleApparel"]/workAmount</xpath>
+		<value>
+			<workAmount>480</workAmount>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/RecipeDef[defName="MendSimpleWeapon"]/workAmount</xpath>
+		<value>
+			<workAmount>480</workAmount>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="TableMending"]/comps/li[@Class="CompProperties_Power"]</xpath>
+		<match Class="PatchOperationRemove">
+			<xpath>Defs/ThingDef[defName="TableMending"]/comps/li[@Class="CompProperties_Power"]</xpath>
+		</match>
+	</Operation>
+
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="TableMending"]/comps/li[@Class="CompProperties_Flickable"]</xpath>
+		<match Class="PatchOperationRemove">
+			<xpath>Defs/ThingDef[defName="TableMending"]/comps/li[@Class="CompProperties_Flickable"]</xpath>
+		</match>
+	</Operation>
+
+	<Operation Class="PatchOperationInsert">
+		<xpath>Defs/ThingDef[defName="MendingKit"]/thingCategories</xpath>
+		<value>
+			<researchPrerequisites>
+				<li>Mending</li>
+			</researchPrerequisites>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationInsert">
+		<xpath>Defs/RecipeDef[defName="MendComplexApparel"]/label</xpath>
+		<value>
+			<researchPrerequisite>Smithing</researchPrerequisite>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationInsert">
+		<xpath>Defs/RecipeDef[defName="MendComplexWeapon"]/label</xpath>
+		<value>
+			<researchPrerequisite>Smithing</researchPrerequisite>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="TableMending"]/costList</xpath>
+		<value>
+			<costList>
+				<DankPyon_IronIngot>30</DankPyon_IronIngot>
+				<DankPyon_ComponentBasic>3</DankPyon_ComponentBasic>
+			</costList>
+		</value>
+	</Operation>
+
+</Patch>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>Vanilla Armour Expanded</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+		
+			<!-- gloves -->
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/ThingDef[defName="VAE_Handwear_PlateGloves"]</xpath>	
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[@Name="MedTimes_HandArmour"]/apparel</xpath>	
+				<value>		
+					<tags>
+						<li>MedievalMilitary</li>
+					</tags>
+				</value>
+			</li>
+			
+			<!-- boots -->
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/ThingDef[defName="VAE_Footwear_PlateBoots"]</xpath>	
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[@Name="MedTimes_FootArmour"]/apparel</xpath>	
+				<value>		
+					<tags>
+						<li>MedievalMilitary</li>
+					</tags>
+				</value>
+			</li>
+			
+			<!-- body armor -->
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[@Name="MedTimes_ArmourBase"]/apparel</xpath>	
+				<value>		
+					<tags>
+						<li>MedievalMilitary</li>
+					</tags>
+				</value>
+			</li>
+			
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/ThingDef[defName="VAE_Apparel_Chainmail"]</xpath>	
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/ThingDef[defName="VAE_Apparel_Gambeson"]</xpath>	
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/ThingDef[defName="VAE_Apparel_QuiltedVest"]</xpath>	
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/ThingDef[defName="VAE_Apparel_LightPlateArmor"]</xpath>	
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/ThingDef[defName="VAE_Apparel_Chestplate"]</xpath>	
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[@Name="MedTimes_Armour_T0_L"]</xpath>	
+				<value>		
+					<apparel>
+						<tags>
+							<li>Neolitic</li>
+						</tags>
+					</apparel>
+				</value>
+			</li>
+			
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[@Name="MedTimes_Armour_T1_L" or @Name="MedTimes_Armour_T1_H"]</xpath>	
+				<value>		
+					<apparel>
+						<tags>
+							<li>MedievalArmorBasic</li>
+						</tags>
+					</apparel>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[@Name="MedTimes_Armour_T2_L" or @Name="MedTimes_Armour_T2_H"]</xpath>	
+				<value>		
+					<apparel>
+						<tags>
+							<li>MedievalArmorDecent</li>
+						</tags>
+					</apparel>
+				</value>
+			</li>
+			
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName="VAE_Apparel_PlateShoulderpads"]/recipeMaker</xpath>	
+				<value>		
+					<recipeMaker>
+						<researchPrerequisite>MedTimes_ArmorScaled</researchPrerequisite>
+						<skillRequirements>
+							<Crafting>6</Crafting>
+						</skillRequirements>     
+						<recipeUsers Inherit="False">
+							<li>MedTimes_BlacksmithForge</li>
+							<li>MedTimes_ElectricBlacksmithForge</li>
+						</recipeUsers>
+					</recipeMaker>
+				</value>
+			</li>
+			
+			
+			<!-- helmets -->
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/ThingDef[defName="VAE_Apparel_PlateHelmet"]</xpath>	
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[@Name="MedTimes_Helmet"]/apparel</xpath>	
+				<value>		
+					<tags>
+						<li>MedievalMilitary</li>
+					</tags>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[@Name="MedTimes_Helm_T0_L"]</xpath>	
+				<value>		
+					<apparel>
+						<tags>
+							<li>Neolitic</li>
+						</tags>
+					</apparel>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[@Name="MedTimes_Helm_T1_L" or @Name="MedTimes_Helm_T1_H"]</xpath>	
+				<value>		
+					<apparel>
+						<tags>
+							<li>MedievalArmorBasic</li>
+						</tags>
+					</apparel>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[@Name="MedTimes_Helm_T2_L" or @Name="MedTimes_Helm_T2_H"]</xpath>	
+				<value>		
+					<apparel>
+						<tags>
+							<li>MedievalArmorDecent</li>
+						</tags>
+					</apparel>
+				</value>
+			</li>
+			
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/ThingDef[defName="VAE_Apparel_WoodenArmor"]</xpath>	
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName="VAE_Headgear_StoneWarMask"]/recipeMaker</xpath>	
+				<value>		
+					<researchPrerequisite>TS_Crafting</researchPrerequisite>
+				</value>
+			</li>
+			
+			
+		</operations>
+	</match>
+  </Operation>
+  
+</Patch>
+
+
+
+

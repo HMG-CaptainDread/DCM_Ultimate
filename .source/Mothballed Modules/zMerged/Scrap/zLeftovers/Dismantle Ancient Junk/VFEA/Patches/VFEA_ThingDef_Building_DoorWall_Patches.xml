@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+<Operation Class="PatchOperationSequence">
+	<success>Normal</success>
+		<operations>
+			<!-- Ancient Vault Wall/Door leave Resources -->
+			<li Class="PatchOperationReplace">
+				<xpath>*/ThingDef[defName="VFEA_VaultWall"]/leaveResourcesWhenKilled</xpath>
+				<value>
+					<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>*/ThingDef[defName="VFEA_VaultDoor"]</xpath>
+				<order>Append</order>
+				<value>
+					<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+				</value>
+			</li>
+			<!-- Ancient Vault Wall/Door deconstructible -->
+			<li Class="PatchOperationReplace">
+				<xpath>*/ThingDef[defName="VFEA_VaultWall" or defName="VFEA_VaultDoor"]/building/deconstructible</xpath>
+				<value>
+					<alwaysDeconstructible>true</alwaysDeconstructible>
+				</value>
+			</li>
+			<!-- Ancient Vault Wall/Door WorkToBuild -->
+			<li Class="PatchOperationReplace">
+				<xpath>*/ThingDef[defName="VFEA_VaultWall"]/statBases/WorkToBuild</xpath>
+				<value>
+					<WorkToBuild>120000</WorkToBuild>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>*/ThingDef[defName="VFEA_VaultDoor"]/statBases/WorkToBuild</xpath>
+				<value>
+					<WorkToBuild>100000</WorkToBuild>
+				</value>
+			</li>
+			<!-- Ancient Supply Slingshot -->
+			<li Class="PatchOperationAdd">
+				<xpath>*/ThingDef[defName="VFEA_AncientSupplySlingshot"]</xpath>
+				<order>Append</order>
+				<value>
+					<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>*/ThingDef[defName="VFEA_AncientSupplySlingshot"]/building/deconstructible</xpath>
+				<value>
+					<alwaysDeconstructible>true</alwaysDeconstructible>
+				</value>
+			</li>
+			<!-- Ancient Large Locked Door -->
+			<li Class="PatchOperationAdd">
+				<xpath>*/ThingDef[defName="VFEA_LargeLockedDoor"]</xpath>
+				<order>Append</order>
+				<value>
+					<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>*/ThingDef[defName="VFEA_LargeLockedDoor"]/building/deconstructible</xpath>
+				<value>
+					<deconstructible>true</deconstructible>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>*/ThingDef[defName="VFEA_LargeLockedDoor"]/statBases</xpath>
+				<order>Append</order>
+				<value>
+					<WorkToBuild>80000</WorkToBuild>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>*/ThingDef[defName="VFEA_LargeLockedDoor"]/killedLeavings</xpath>
+				<value>
+					<costList>
+						<Steel>150</Steel>
+						<ComponentIndustrial>4</ComponentIndustrial>
+					</costList>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>*/ThingDef[defName="VFEA_LargeLockedDoor"]</xpath>
+				<order>Append</order>
+				<value>
+					<holdsRoof>true</holdsRoof>
+					<blockLight>true</blockLight>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>*/ThingDef[defName="VFEA_LargeLockedDoor"]/building</xpath>
+				<order>Append</order>
+				<value>
+					<ai_chillDestination>false</ai_chillDestination>
+					<paintable>true</paintable>
+				</value>
+			</li>
+		</operations>
+</Operation>
+
+</Patch>

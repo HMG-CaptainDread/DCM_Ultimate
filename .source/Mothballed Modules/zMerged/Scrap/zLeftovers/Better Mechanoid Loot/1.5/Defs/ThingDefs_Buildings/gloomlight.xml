@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Base -->
+
+  <ThingDef ParentName="BuildingBase" Name="MechBuildingBase" Abstract="True">
+    <altitudeLayer>Building</altitudeLayer>
+    <pathCost>50</pathCost>
+    <blockWind>true</blockWind>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>1.0</fillPercent>
+    <tickerType>Normal</tickerType>
+    <rotatable>true</rotatable>
+    <selectable>true</selectable>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <drawerType>MapMeshOnly</drawerType>
+    <repairEffect>ConstructMetal</repairEffect>
+    <forceDebugSpawnable>true</forceDebugSpawnable>
+    <receivesSignals>true</receivesSignals>
+    <isMechClusterThreat>true</isMechClusterThreat>
+    <building>
+      <buildingTags>
+        <li>MechClusterMember</li>
+      </buildingTags>
+      <claimable>true</claimable>
+      <roofCollapseDamageMultiplier>0.2</roofCollapseDamageMultiplier>
+    </building>
+    <statBases>
+      <Flammability>0</Flammability>
+      <Beauty>-20</Beauty>
+    </statBases>
+    <damageMultipliers>
+      <li>
+        <damageDef>Flame</damageDef>
+        <multiplier>0</multiplier>
+      </li>
+    </damageMultipliers>
+  </ThingDef>
+
+
+  <!-- gloomlight -->
+
+  <ThingDef ParentName="MechBuildingBase">
+    <defName>Gloomlight</defName>
+    <label>mech node</label>
+    <description>A self-powered mechanoid node of unknown function. Mech nodes can be deconstructed to yield valuable resources - but only if they are captured intact. The internal micro power cell will flame out and ruin the materials if the unit takes too much damage.</description>
+    <size>(1,1)</size>
+    <passability>PassThroughOnly</passability>
+    <pathCost>30</pathCost>
+    <stealable>true</stealable>
+    <statBases>
+      <MaxHitPoints>50</MaxHitPoints>
+      <Mass>9</Mass>
+      <MarketValue>200</MarketValue>
+      <WorkToBuild>300</WorkToBuild>
+      <Beauty>7</Beauty>
+    </statBases>
+    <graphicData>
+      <texPath>Things/Building/Mech/Gloomlight</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <shadowData>
+        <volume>(0.6, 0.4, 0.6)</volume>
+      </shadowData>
+      <damageData>
+        <rect>(0.2, 0.2, 0.6, 0.6)</rect>
+      </damageData>
+    </graphicData>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <building>
+      <buildingTags>
+        <li>MechClusterMemberLamp</li>
+      </buildingTags>
+    </building>
+    <thingCategories>
+      <li>BuildingsSpecial</li>
+    </thingCategories>
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <comps>
+      <li Class="CompProperties_Glower">
+        <overlightRadius>7.0</overlightRadius>
+        <glowRadius>14</glowRadius>
+        <glowColor>(370,370,370,0)</glowColor>
+      </li>
+    </comps>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <resourcesFractionWhenDeconstructed>1</resourcesFractionWhenDeconstructed>
+    <costList>
+      <Plasteel>22</Plasteel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+    </costList>
+    <specialDisplayRadius>5.8</specialDisplayRadius>
+  </ThingDef>
+  
+  
+</Defs>

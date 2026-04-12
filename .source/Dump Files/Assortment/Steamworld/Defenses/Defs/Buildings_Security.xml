@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <ThingDef ParentName="BuildingBase" Name="StWoDe_ExplosiveCrates" Abstract="True">
+    <fillPercent>0.30</fillPercent>
+    <altitudeLayer>Building</altitudeLayer>
+	<minifiedDef>MinifiedThing</minifiedDef>
+	<thingCategories>
+      <li>BuildingsSecurity</li>
+    </thingCategories>
+	<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+	<designationCategory>Security</designationCategory>
+	<researchPrerequisites>
+      <li>SteamworldResearch_ExplosiveCrates</li>
+    </researchPrerequisites>
+	 <statBases>
+      <Flammability>1.5</Flammability>
+	  <Beauty>-4</Beauty>
+    </statBases>
+	<constructionSkillPrerequisite>3</constructionSkillPrerequisite>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <tickerType>Normal</tickerType>
+	<building>
+      <expandHomeArea>false</expandHomeArea>
+      <ai_chillDestination>false</ai_chillDestination>
+	  <isInert>true</isInert>
+	  <ai_neverTrashThis>true</ai_neverTrashThis>
+    </building>
+	<designatorDropdown>StWoDe_ExplosiveCrates</designatorDropdown>
+	
+  </ThingDef>
+  
+  
+  <ThingDef ParentName="StWoDe_ExplosiveCrates">
+    <defName>StWoDe_ExplosiveCrateSmall</defName>
+    <label>small explosive crate</label>
+    <description>A small wooden crate filled with explosives. Thought stabilized condition an explosion might be triggered by either flames or another previous explosion.</description>
+    <rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Building/Crates/ExplosiveCrate_small</texPath>
+      <drawSize>(1,1)</drawSize>
+	  <graphicClass>Graphic_Single</graphicClass>
+      <shadowData>
+        <volume>(0.65, 0.35, 0.8)</volume>
+      </shadowData>
+    </graphicData>
+    <size>(1, 1)</size>
+	<costList>
+      <Cloth>20</Cloth>
+	  <Chemfuel>50</Chemfuel>
+	  <WoodLog>10</WoodLog>
+    </costList>
+    <statBases>
+      <Mass>10</Mass>
+	  <MaxHitPoints>50</MaxHitPoints>
+      <WorkToBuild>300</WorkToBuild>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>2.9</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+		<!-- damage amount is the damage def default -->
+        <startWickHitPointsPercent>0.3</startWickHitPointsPercent>
+        <wickTicks>50~150</wickTicks>
+        <startWickOnDamageTaken>
+          <li>Flame</li>
+		  <li>Bomb</li>
+        </startWickOnDamageTaken>
+		<explodeOnKilled>true</explodeOnKilled>
+      </li>
+    </comps>	
+	<specialDisplayRadius>2.9</specialDisplayRadius>
+  </ThingDef>
+
+  <ThingDef ParentName="StWoDe_ExplosiveCrates">
+    <defName>StWoDe_ExplosiveCrateMedium</defName>
+    <label>explosive crate</label>
+    <description>A wooden crate filled with explosives. Thought stabilized condition an explosion might be triggered by either flames or another previous explosion.</description>
+    <rotatable>false</rotatable>
+    <graphicData>
+      <texPath>Building/Crates/ExplosiveCrate_medium</texPath>
+      <drawSize>(1 ,1)</drawSize>
+	  <graphicClass>Graphic_Single</graphicClass>
+      <shadowData>
+        <volume>(0.9, 0.35, 0.8)</volume>
+      </shadowData>
+    </graphicData>
+    <size>(1, 1)</size>
+	<costList>
+      <Cloth>30</Cloth>
+	  <Chemfuel>70</Chemfuel>
+	  <WoodLog>15</WoodLog>
+    </costList>
+    <statBases>
+      <Mass>15</Mass>
+	  <MaxHitPoints>80</MaxHitPoints>
+      <WorkToBuild>450</WorkToBuild>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>5.4</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+		<damageAmountBase>70</damageAmountBase>
+        <startWickHitPointsPercent>0.3</startWickHitPointsPercent>
+        <wickTicks>100~200</wickTicks>
+        <startWickOnDamageTaken>
+          <li>Flame</li>
+		  <li>Bomb</li>
+        </startWickOnDamageTaken>
+		<explodeOnKilled>true</explodeOnKilled>
+      </li>
+    </comps>	
+	<specialDisplayRadius>5.4</specialDisplayRadius>
+  </ThingDef>
+
+  <ThingDef ParentName="StWoDe_ExplosiveCrates">
+    <defName>StWoDe_ExplosiveCrateLarge</defName>
+    <label>large explosive crate</label>
+    <description>A bigger wooden crate filled with explosives. Thought stabilized condition an explosion might be triggered by either flames or another previous explosion.</description>
+    <rotatable>true</rotatable>
+    <graphicData>
+      <texPath>Building/Crates/ExplosiveCrate_large</texPath>
+      <drawSize>(1 ,2)</drawSize>
+	  <graphicClass>Graphic_Multi</graphicClass>
+      <shadowData>
+        <volume>(0.6, 0.35, 1.7)</volume>
+      </shadowData>
+    </graphicData>
+    <size>(1, 2)</size>
+	<costList>
+      <Cloth>45</Cloth>
+	  <Chemfuel>100</Chemfuel>
+	  <WoodLog>20</WoodLog>
+    </costList>
+    <statBases>
+      <Mass>20</Mass>
+	  <MaxHitPoints>120</MaxHitPoints>
+      <WorkToBuild>700</WorkToBuild>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <explosiveRadius>7.9</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+		<damageAmountBase>90</damageAmountBase>
+        <startWickHitPointsPercent>0.3</startWickHitPointsPercent>
+        <wickTicks>150~250</wickTicks>
+        <startWickOnDamageTaken>
+          <li>Flame</li>
+		  <li>Bomb</li>
+        </startWickOnDamageTaken>
+		<explodeOnKilled>true</explodeOnKilled>
+      </li>
+    </comps>	
+	<specialDisplayRadius>7.9</specialDisplayRadius>
+  </ThingDef>
+  
+ <ThingDef ParentName="BuildingBase">
+    <defName>StWoDe_Sconce</defName>
+    <label>sconce</label>
+    <description>A very basic type of fortification made from earthwork. Due to their soft and grainy nature, sconces take a lot less damage from arrows or gunshots while being also more difficult to climb over. Sconces will block certain kinds of animals the same way that fences do.</description>
+    <thingClass>Building</thingClass>
+    <category>Building</category>
+    <graphicData>
+      <texPath>Building/Linked/Sconce</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <linkType>CornerFiller</linkType>
+      <linkFlags>
+        <li>Rock</li>
+      </linkFlags>
+    </graphicData>
+    <uiIconPath>Building/Sconce</uiIconPath>
+    <altitudeLayer>Building</altitudeLayer>
+    <pathCost>66</pathCost>
+    <pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
+    <passability>PassThroughOnly</passability>
+    <castEdgeShadows>true</castEdgeShadows>
+    <fillPercent>0.55</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <uiOrder>0</uiOrder>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <Beauty>-10</Beauty>
+      <WorkToBuild>550</WorkToBuild>
+      <Flammability>0</Flammability>
+    </statBases>
+    <building>
+      <ai_chillDestination>false</ai_chillDestination>
+      <isInert>true</isInert>
+	  <isFence>true</isFence>
+      <isPlaceOverableWall>true</isPlaceOverableWall>
+      <blueprintGraphicData>
+        <texPath>Building/Linked/Sconce_Blueprint</texPath>
+      </blueprintGraphicData>
+    </building>
+    <drawStyleCategory>Defenses</drawStyleCategory>
+	<constructEffect>ConstructDirt</constructEffect>
+    <filthLeaving>Filth_Dirt</filthLeaving>
+    <rotatable>false</rotatable>
+    <selectable>true</selectable>
+    <neverMultiSelect>true</neverMultiSelect>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+    <staticSunShadowHeight>0.20</staticSunShadowHeight>
+    <repairEffect>ConstructDirt</repairEffect>
+	<damageMultipliers>
+      <li>
+        <damageDef>Bullet</damageDef>
+        <multiplier>0.2</multiplier>
+      </li>
+      <li>
+        <damageDef>Arrow</damageDef>
+        <multiplier>0.2</multiplier>
+      </li>
+	  <li>
+        <damageDef>ArrowHighVelocity</damageDef>
+        <multiplier>0.2</multiplier>
+      </li>
+    </damageMultipliers>
+  </ThingDef>
+  
+</Defs>

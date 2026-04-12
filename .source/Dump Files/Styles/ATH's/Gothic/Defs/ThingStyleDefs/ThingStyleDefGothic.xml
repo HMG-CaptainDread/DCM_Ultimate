@@ -1,0 +1,854 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <ThingStyleDef Name="RotateWeapons"  Abstract="True">		
+		<graphicData>
+			 <onGroundRandomRotateAngle>30</onGroundRandomRotateAngle>
+		</graphicData>
+	</ThingStyleDef>
+
+<!--structures-->
+    <!--wall-->
+    <ThingStyleDef ParentName="IdeoTableStyleBase">
+		<defName>Gothic_Wall</defName>
+		<graphicData>
+			<texPath>Things/Building/BuildingStyles/Gothic/Wall/GothicWall</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<linkType>CornerFiller</linkType>
+			<linkFlags>
+				<li>Wall</li>
+			</linkFlags>
+		</graphicData>
+		<uiIconPath>Things/Building/BuildingStyles/Gothic/Wall/GothicWall_Icon</uiIconPath>
+	</ThingStyleDef>
+
+    <!--doors-->
+    <ThingStyleDef>
+        <defName>Gothic_Door</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Door/DoorSimpleGothic_Mover</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <damageData>
+                <enabled>false</enabled>
+            </damageData>
+        </graphicData>
+    <uiIconPath>Things/Building/BuildingStyles/Gothic/Door/DoorSimpleGothic_MenuIcon</uiIconPath>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_Autodoor</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Door/AutodoorGothic_Mover</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <damageData>
+                <enabled>false</enabled>
+            </damageData>
+        </graphicData>
+        <uiIconPath>Things/Building/BuildingStyles/Gothic/Door/AutodoorGothic_MenuIcon</uiIconPath>
+    </ThingStyleDef>
+
+<!--ideology-->
+    <!--sculpture-->
+    <ThingStyleDef>
+        <defName>Gothic_SculptureSmall</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Sculptures/Small</texPath>
+            <graphicClass>Graphic_Random</graphicClass>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_SculptureLarge</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Sculptures/Large</texPath>
+            <graphicClass>Graphic_Random</graphicClass>
+        <drawSize>(3,3)</drawSize>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_SculptureGrand</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Sculptures/Grand</texPath>
+            <graphicClass>Graphic_Random</graphicClass>
+            <drawSize>(4,4)</drawSize>
+        </graphicData>
+    </ThingStyleDef>
+
+    <!--ideogram-->
+    <ThingStyleDef>
+        <defName>Gothic_IdeogramA</defName>
+        <graphicData>
+            <texPath>Things/Building/Misc/Ideogram/IconGothic/IconGothicA</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(3,3)</drawSize>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_IdeogramB</defName>
+        <graphicData>
+            <texPath>Things/Building/Misc/Ideogram/IconGothic/IconGothicB</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(3,3)</drawSize>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_IdeogramC</defName>
+        <graphicData>
+            <texPath>Things/Building/Misc/Ideogram/IconGothic/IconGothicC</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(3,3)</drawSize>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_IdeogramD</defName>
+        <graphicData>
+            <texPath>Things/Building/Misc/Ideogram/IconGothic/IconGothicD</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(3,3)</drawSize>
+        </graphicData>
+    </ThingStyleDef>
+
+    <!--altar-->
+    <ThingStyleDef>
+        <defName>Gothic_AltarSmall</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Altars/AltarGothic1x1</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <shadowData>
+                <volume>(0.8, 1, 0.8)</volume>
+            </shadowData>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_AltarMedium</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Altars/AltarGothic1x3</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <drawSize>(3,1)</drawSize>
+            <shadowData>
+                <volume>(2.4, 1, 0.8)</volume>
+            </shadowData>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_AltarLarge</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Altars/AltarGothic2x3</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <drawSize>(3,2)</drawSize>
+            <shadowData>
+                <volume>(2.4, 1, 1.6)</volume>
+            </shadowData>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_AltarGrand</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Altars/AltarGothic3x3</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(3,3)</drawSize>
+            <shadowData>
+                <volume>(2.4, 1, 2.4)</volume>
+            </shadowData>
+        </graphicData>
+    </ThingStyleDef>
+
+    <!--column-->
+    <ThingStyleDef ParentName="IdeoColumnStyleBase">
+        <defName>Gothic_Column</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/ColumnGothic</texPath>
+        </graphicData>
+    </ThingStyleDef>
+
+    <!--ritual-seats-->
+    <ThingStyleDef>
+        <defName>Gothic_Pew</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Pew/PewGothic</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <drawSize>(3,1)</drawSize>
+            <shadowData>
+                <volume>(0.8, 1, 0.8)</volume>
+            </shadowData>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_KneelSheet</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/KneelSheet/KneelSheetGothic</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <drawSize>(2,2)</drawSize>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_KneelPillow</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/KneelPillow/KneelPillowGothic</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <drawSize>(1,1)</drawSize>
+        </graphicData>
+    </ThingStyleDef>
+
+    <!--other-->
+    <ThingStyleDef>
+        <defName>Gothic_Lectern</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Lectern/LecternGothic</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <drawSize>(1,1)</drawSize>
+            <shadowData>
+                <volume>(0.8, 1, 0.8)</volume>
+            </shadowData>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_Drum</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Drum/DrumGothic</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>CutoutComplex</shaderType>
+            <drawSize>(1,1)</drawSize>
+            <drawRotated>False</drawRotated>
+            <shadowData>
+                <volume>(0.5, 1, 0.5)</volume>
+            </shadowData>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_Reliquary</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Reliquary/ReliquaryGothic</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <shaderType>CutoutComplex</shaderType>
+            <drawSize>(3,2)</drawSize>
+            <shadowData>
+                <volume>(2.9,0.6,1.9)</volume>
+            </shadowData>
+        </graphicData>
+    </ThingStyleDef>
+
+    <!--apparel-->
+    <ThingStyleDef>
+        <defName>Gothic_Duster</defName>
+        <wornGraphicPath>Things/Pawn/Humanlike/GothicApparelStyles/DusterGothic/DusterGothic</wornGraphicPath>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/GothicApparelStyles/DusterGothic/DusterGothic</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_Parka</defName>
+        <wornGraphicPath>Things/Pawn/Humanlike/GothicApparelStyles/ParkaGothic/ParkaGothic</wornGraphicPath>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/GothicApparelStyles/ParkaGothic/ParkaGothic</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_PlateArmor</defName>
+        <wornGraphicPath>Things/Pawn/Humanlike/GothicApparelStyles/PlateArmorGothic/PlateArmorGothic</wornGraphicPath>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/GothicApparelStyles/PlateArmorGothic/PlateArmorGothic</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+    </ThingStyleDef>
+
+    <!--headgear-->
+    <ThingStyleDef>
+        <defName>Gothic_SlaveCollar</defName>
+        <wornGraphicPath>Things/Pawn/Humanlike/GothicApparelStyles/SlaveCollarGothic/SlaveCollarGothic</wornGraphicPath>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/GothicApparelStyles/SlaveCollarGothic/SlaveCollarGothic</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_VisageMask</defName>
+        <wornGraphicPath>Things/Pawn/Humanlike/GothicApparelStyles/VisageMaskGothic/VisageMaskGothic</wornGraphicPath>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/GothicApparelStyles/VisageMaskGothic/VisageMaskGothic</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+    </ThingStyleDef>
+
+
+<!--royalty-->
+    <!--thrones-->
+    <ThingStyleDef>
+        <defName>Gothic_Throne</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Thrones/ThroneGothic</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <drawSize>(3,3)</drawSize>
+            <shadowData>
+                <volume>(0.3,0.35,0.3)</volume>
+            </shadowData>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_GrandThrone</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Thrones/GrandThroneGothic</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <shaderType>CutoutComplex</shaderType>
+            <drawSize>(4,4)</drawSize>
+            <shadowData>
+                <volume>(2.1,0.5,1.5)</volume>
+            </shadowData>
+        </graphicData>
+    </ThingStyleDef>
+
+    <!--apparel-->
+    <ThingStyleDef>
+        <defName>Gothic_ArmorCataphract</defName>
+        <wornGraphicPath>Things/Pawn/Humanlike/GothicApparelStyles/ArmorCataphractGothic/ArmorCataphractGothic</wornGraphicPath>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/GothicApparelStyles/ArmorCataphractGothic/ArmorCataphractGothic</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_ArmorCataphractPrestige</defName>
+        <wornGraphicPath>Things/Pawn/Humanlike/GothicApparelStyles/ArmorCataphractPrestigeGothic/ArmorCataphractPrestigeGothic</wornGraphicPath>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/GothicApparelStyles/ArmorCataphractPrestigeGothic/ArmorCataphractPrestigeGothic</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>CutoutComplex</shaderType>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_ArmorReconPrestige</defName>
+        <wornGraphicPath>Things/Pawn/Humanlike/GothicApparelStyles/ArmorReconPrestigeGothic/ArmorReconPrestigeGothic</wornGraphicPath>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/GothicApparelStyles/ArmorReconPrestigeGothic/ArmorReconPrestigeGothic</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>CutoutComplex</shaderType>
+        </graphicData>
+    </ThingStyleDef>
+
+    <!--headgear-->
+    <ThingStyleDef>
+        <defName>Gothic_Crown</defName>
+        <wornGraphicPath>Things/Pawn/Humanlike/GothicApparelStyles/CrownGothic/CrownGothic</wornGraphicPath>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/GothicApparelStyles/CrownGothic/CrownGothic</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>CutoutComplex</shaderType>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_ArmorHelmetReconPrestige</defName>
+        <wornGraphicPath>Things/Pawn/Humanlike/GothicApparelStyles/PrestigeReconHelmetGothic/PrestigeReconHelmetGothic</wornGraphicPath>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/GothicApparelStyles/PrestigeReconHelmetGothic/PrestigeReconHelmetGothic</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>CutoutComplex</shaderType>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_ArmorHelmetCataphract</defName>
+        <wornGraphicPath>Things/Pawn/Humanlike/GothicApparelStyles/CataphractHelmetGothic/CataphractHelmetGothic</wornGraphicPath>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/GothicApparelStyles/CataphractHelmetGothic/CataphractHelmetGothic</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_ArmorHelmetCataphractPrestige</defName>
+        <wornGraphicPath>Things/Pawn/Humanlike/GothicApparelStyles/PrestigeCataphractHelmetGothic/PrestigeCataphractHelmetGothic</wornGraphicPath>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/GothicApparelStyles/PrestigeCataphractHelmetGothic/PrestigeCataphractHelmetGothic</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>CutoutComplex</shaderType>
+        </graphicData>
+    </ThingStyleDef>
+
+    <!--weapons-->
+    <ThingStyleDef ParentName="RotateWeapons">
+		<defName>Gothic_Axe</defName>
+		<graphicData>
+			<texPath>Things/Weapons/Gothic/GothicAxe</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	</ThingStyleDef>
+
+    <ThingStyleDef ParentName="RotateWeapons">
+		<defName>Gothic_Warhammer</defName>
+		<graphicData>
+			<texPath>Things/Weapons/Gothic/GothicWarhammer</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	</ThingStyleDef>
+
+    <ThingStyleDef ParentName="RotateWeapons">
+		<defName>Gothic_MonoSword</defName>
+		<graphicData>
+			<texPath>Things/Weapons/Gothic/GothicMonosword</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	</ThingStyleDef>
+
+    <ThingStyleDef ParentName="RotateWeapons">
+		<defName>Gothic_PlasmaSword</defName>
+		<graphicData>
+			<texPath>Things/Weapons/Gothic/GothicPlasmaSword</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	</ThingStyleDef>
+
+    <ThingStyleDef ParentName="RotateWeapons">
+		<defName>Gothic_Zeushammer</defName>
+		<graphicData>
+			<texPath>Things/Weapons/Gothic/GothicZeusHammer</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	</ThingStyleDef>
+
+    <!--others-->
+    <ThingStyleDef>
+        <defName>Gothic_Drape</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Drape/DrapeGothic</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <shaderType>CutoutComplex</shaderType>
+            <drawSize>(4.2,4.2)</drawSize>
+            <shadowData>
+                <volume>(2,0.5,0.3)</volume>
+            </shadowData>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_Brazier</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Brazier/BrazierGothic</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>CutoutComplex</shaderType>
+            <shadowData>
+                <volume>(0.55, 0.35, 0.3)</volume>
+                <offset>(0, 0, -0.28)</offset>
+            </shadowData>
+            <damageData>
+                <rect>(0.2,0.3,0.6,0.6)</rect>
+            </damageData>      
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_DarklightBrazier</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Brazier/BrazierGothic</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>CutoutComplex</shaderType>
+            <shadowData>
+                <volume>(0.55, 0.35, 0.3)</volume>
+                <offset>(0, 0, -0.28)</offset>
+            </shadowData>
+            <damageData>
+                <rect>(0.2,0.3,0.6,0.6)</rect>
+            </damageData>      
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_Harp</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/HarpGothic</texPath>
+            <drawSize>(3, 3)</drawSize>
+            <drawOffset>(0, 0, 0.2)</drawOffset>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawRotated>false</drawRotated>
+            <allowFlip>false</allowFlip>
+            <shadowData>
+                <volume>(0.5, 0.5, 0.2)</volume>
+                <offset>(0, 0, -0.12)</offset>
+            </shadowData>
+            <damageData>
+                <rect>(0.2, 0.2, 0.5, 0.5)</rect>
+            </damageData>
+        </graphicData>
+    </ThingStyleDef>       
+
+<!--biotech-->
+    <!--learning-->
+    <ThingStyleDef>
+        <defName>Gothic_SchoolDesk</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/SchoolDesk/SchoolDeskGothic</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <drawSize>(4,3)</drawSize>
+        </graphicData>
+    </ThingStyleDef>
+
+    <!--children-->
+    <ThingStyleDef>
+        <defName>Gothic_Crib</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Crib/CribGothic</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <shaderType>CutoutComplex</shaderType>
+            <drawSize>(2.1,2.1)</drawSize>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_BabyDecoration</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Childcare/BabyDecoration</texPath>
+            <graphicClass>Graphic_Random</graphicClass>
+            <shadowData>
+                <volume>(0.55, 0.35, 0.55)</volume>
+            </shadowData>
+        </graphicData>
+    </ThingStyleDef>
+
+
+<!--core-->
+    <!--lamp-->
+    <ThingStyleDef Name="Gothic_StandingLamp">
+        <defName>Gothic_StandingLamp</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/StandingLampGothic</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_TorchLamp</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/TorchGothic</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <uiIconPath>Things/Building/BuildingStyles/Gothic/TorchGothic_MenuIcon</uiIconPath>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_Darktorch</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/DarktorchGothic</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+        <uiIconPath>Things/Building/BuildingStyles/Gothic/DarktorchGothic_MenuIcon</uiIconPath>
+    </ThingStyleDef>
+
+    <!--chairs-->
+    <ThingStyleDef>
+        <defName>Gothic_DiningChair</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Chair/ChairGothic</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <drawSize>(1,1)</drawSize>
+            <damageData>
+                <rectN>(0.25,0.234375,0.5,0.28125)</rectN>
+                <rectS>(0.25,0.234375,0.5,0.28125)</rectS>
+                <rectE>(0.28125,0.25,0.453125,0.25)</rectE>
+                <rectW>(0.28125,0.25,0.453125,0.25)</rectW>
+            </damageData>
+            <shadowData>
+                <volume>(0.23, 0.26, 0.23)</volume>
+            </shadowData>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_Armchair</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Armchair/ArmchairGothic</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <drawSize>(3,3)</drawSize>
+            <damageData>
+                <rectN>(0,0,1,0.703125)</rectN>
+                <rectS>(0.09375,0,0.84375,1)</rectS>
+                <rectE>(0,0,0.84375,0.625)</rectE>
+                <rectW>(0.15625,0,0.84375,0.625)</rectW>
+            </damageData>
+            <shadowData>
+                <volume>(0.3, 0.33, 0.3)</volume>
+            </shadowData>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_Stool</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Stool/StoolGothic</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <damageData>
+                <rectN>(0.125,0.296875,0.734375,0.421875)</rectN>
+                <rectS>(0.125,0.296875,0.734375,0.421875)</rectS>
+                <rectE>(0.234375,0.296875,0.5,0.546875)</rectE>
+                <rectW>(0.234375,0.296875,0.5,0.546875)</rectW>
+                <cornerTL>Damage/Corner</cornerTL>
+                <cornerTR>Damage/Corner</cornerTR>
+                <cornerBL>Damage/Corner</cornerBL>
+                <cornerBR>Damage/Corner</cornerBR>
+            </damageData>
+            <shadowData>
+                <volume>(0.18, 0.23, 0.18)</volume>
+            </shadowData>
+        </graphicData>
+    </ThingStyleDef>
+
+    <!--tables-->
+    <ThingStyleDef ParentName="IdeoTableStyleBase">
+        <defName>Gothic_Table1x2c</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Tables/TableGothic1x2</texPath>
+            <drawSize>(3,4)</drawSize>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef ParentName="IdeoTableStyleBase">
+        <defName>Gothic_Table2x2c</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Tables/TableGothic2x2</texPath>
+            <drawSize>(4,4)</drawSize>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef ParentName="IdeoTableStyleBase">
+        <defName>Gothic_Table2x4c</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Tables/TableGothic2x4</texPath>
+            <drawSize>(4,6)</drawSize>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef ParentName="IdeoTableStyleBase">
+        <defName>Gothic_Table3x3c</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Tables/TableGothic3x3</texPath>
+            <drawSize>(5,5)</drawSize>
+        </graphicData>
+    </ThingStyleDef>
+
+    <!--beds-->
+    <ThingStyleDef ParentName="IdeoTableStyleBase">
+        <defName>Gothic_Bed</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Bed/BedGothic</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <shaderType>CutoutComplex</shaderType>
+            <drawSize>(2,2)</drawSize>
+            <damageData>
+                <rect>(0,0.05,1,1.95)</rect>
+            </damageData>
+        </graphicData>
+    </ThingStyleDef>
+    
+    <ThingStyleDef>
+        <defName>Gothic_DoubleBed</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Bed/DoubleBedGothic</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <shaderType>CutoutComplex</shaderType>
+            <drawSize>(2.05,2.05)</drawSize>
+            <damageData>
+                <rect>(0,0.05,2,1.95)</rect>
+            </damageData>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_RoyalBed</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Bed/RoyalBedGothic</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <shaderType>CutoutComplex</shaderType>
+            <drawSize>(2.05,2.05)</drawSize>
+            <damageData>
+                <rect>(0,0.05,2,1.95)</rect>
+            </damageData>
+        </graphicData>
+    </ThingStyleDef>
+
+
+    <!--apparel-->
+    <ThingStyleDef>
+        <defName>Gothic_ArmorRecon</defName>
+        <wornGraphicPath>Things/Pawn/Humanlike/GothicApparelStyles/ArmorReconGothic/ArmorReconGothic</wornGraphicPath>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/GothicApparelStyles/ArmorReconGothic/ArmorReconGothic</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+    </ThingStyleDef>
+
+    <!--headgear-->
+    <ThingStyleDef>
+        <defName>Gothic_WarMask</defName>
+        <wornGraphicPath>Things/Pawn/Humanlike/GothicApparelStyles/WarMaskGothic/WarMaskGothic</wornGraphicPath>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/GothicApparelStyles/WarMaskGothic/WarMaskGothic</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_SimpleHelmet</defName>
+        <wornGraphicPath>Things/Pawn/Humanlike/GothicApparelStyles/SimpleHelmetGothic/SimpleHelmetGothic</wornGraphicPath>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/GothicApparelStyles/SimpleHelmetGothic/SimpleHelmetGothic</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_AdvancedHelmet</defName>
+        <wornGraphicPath>Things/Pawn/Humanlike/GothicApparelStyles/AdvancedHelmetGothic/AdvancedHelmetGothic</wornGraphicPath>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/GothicApparelStyles/AdvancedHelmetGothic/AdvancedHelmetGothic</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_ArmorHelmetRecon</defName>
+        <wornGraphicPath>Things/Pawn/Humanlike/GothicApparelStyles/ReconHelmetGothic/ReconHelmetGothic</wornGraphicPath>
+        <graphicData>
+            <texPath>Things/Pawn/Humanlike/GothicApparelStyles/ReconHelmetGothic/ReconHelmetGothic</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+        </graphicData>
+    </ThingStyleDef>
+
+    <!--weapons-->
+    <ThingStyleDef ParentName="RotateWeapons">
+		<defName>Gothic_Gladius</defName>
+		<graphicData>
+			<texPath>Things/Weapons/Gothic/GothicGladius</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	</ThingStyleDef>
+
+    <ThingStyleDef ParentName="RotateWeapons">
+		<defName>Gothic_BreachAxe</defName>
+		<graphicData>
+			<texPath>Things/Weapons/Gothic/GothicBreachAxe</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	</ThingStyleDef>
+
+    <ThingStyleDef ParentName="RotateWeapons">
+		<defName>Gothic_Mace</defName>
+		<graphicData>
+			<texPath>Things/Weapons/Gothic/GothicMace</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	</ThingStyleDef>
+
+    <ThingStyleDef ParentName="RotateWeapons">
+		<defName>Gothic_Ikwa</defName>
+		<graphicData>
+			<texPath>Things/Weapons/Gothic/GothicIkwa</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	</ThingStyleDef>
+
+    <ThingStyleDef ParentName="RotateWeapons">
+		<defName>Gothic_Club</defName>
+		<graphicData>
+			<texPath>Things/Weapons/Gothic/GothicClub</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	</ThingStyleDef>
+
+    <ThingStyleDef ParentName="RotateWeapons">
+		<defName>Gothic_Spear</defName>
+		<graphicData>
+			<texPath>Things/Weapons/Gothic/GothicSpear</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	</ThingStyleDef>
+
+    <ThingStyleDef ParentName="RotateWeapons">
+		<defName>Gothic_Knife</defName>
+		<graphicData>
+			<texPath>Things/Weapons/Gothic/GothicKnife</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	</ThingStyleDef>
+
+    <ThingStyleDef ParentName="RotateWeapons">
+		<defName>Gothic_LongSword</defName>
+		<graphicData>
+			<texPath>Things/Weapons/Gothic/GothicLongSword</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+	</ThingStyleDef>
+
+    <!--other-->
+    <ThingStyleDef>
+        <defName>Gothic_Shelf</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Shelf/ShelfGothic</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <drawSize>(4,3)</drawSize>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_ShelfSmall</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/SmallShelf/SmallShelfGothic</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <drawSize>(3,3)</drawSize>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_Decoration</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/Decoration/DecorationGothic</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <drawSize>(2,2)</drawSize>
+            <drawOffset>(0,0,0.5)</drawOffset>
+        </graphicData>
+    </ThingStyleDef>
+
+    <ThingStyleDef>
+        <defName>Gothic_PlantPot</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/PotGothic</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+                <shadowData>
+                    <volume>(0.65, 0.35, 0.3)</volume>
+                    <offset>(0, 0, -0.28)</offset>
+                </shadowData>
+                <damageData>
+                    <rect>(0.2,0.2,0.6,0.6)</rect>
+                </damageData>
+        </graphicData>
+    </ThingStyleDef>
+
+        <ThingStyleDef>
+        <defName>Gothic_EndTable</defName>
+        <graphicData>
+            <texPath>Things/Building/BuildingStyles/Gothic/EndTable/EndTableGothic</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <shadowData>
+                <volume>(0.3, 0.6, 0.3)</volume>
+            </shadowData>
+        </graphicData>
+    </ThingStyleDef>
+
+</Defs>

@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>AmmoArbalestBolts</defName>
+		<label>arbalest bolts</label>
+		<parent>AmmoNeolithic</parent>
+		<iconPath>UI/Icons/ThingCategories/CaliberArrow</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef MayRequire="cgf1.meleegalore.medieval.i">
+		<defName>AmmoSet_ArbalestBolt</defName>
+		<label>arbalest bolts</label>
+		<ammoTypes>
+			<Ammo_ArbalestBolt_Stone>Projectile_ArbalestBolt_Stone</Ammo_ArbalestBolt_Stone>
+			<Ammo_ArbalestBolt_Steel>Projectile_ArbalestBolt_Steel</Ammo_ArbalestBolt_Steel>
+			<Ammo_ArbalestBolt_Plasteel>Projectile_ArbalestBolt_Plasteel</Ammo_ArbalestBolt_Plasteel>
+			<Ammo_ArbalestBolt_Venom>Projectile_ArbalestBolt_Venom</Ammo_ArbalestBolt_Venom>
+			<Ammo_ArbalestBolt_Flame>Projectile_ArbalestBolt_Flame</Ammo_ArbalestBolt_Flame>
+		</ammoTypes>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="AmmoArbalestBoltBase" ParentName="NeolithicAmmoBase" Abstract="True" MayRequire="cgf1.meleegalore.medieval.i">
+		<description>A arbalest bolt.</description>
+		<statBases>
+			<Mass>0.11</Mass>
+			<Bulk>0.28</Bulk>
+			<Flammability>1</Flammability>
+		</statBases>
+		<thingCategories>
+			<li>AmmoArbalestBolts</li>
+		</thingCategories>
+		<stackLimit>4000</stackLimit>
+		<tradeTags>
+			<li>CE_PreIndustrialAmmo</li>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting_FueledSmithy</li>
+			<li>CE_AutoEnableCrafting_ElectricSmithy</li>
+		</tradeTags>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoArbalestBoltBase" MayRequire="cgf1.meleegalore.medieval.i">
+		<defName>Ammo_ArbalestBolt_Stone</defName>
+		<label>arbalest bolt (stone)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Medieval/Bolt/Stone</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<Mass>0.07</Mass>
+			<MarketValue>0.39</MarketValue>
+		</statBases>
+		<ammoClass>StoneCrossbowBolt</ammoClass>
+		<tradeTags>
+			<li>CE_AutoEnableCrafting_CraftingSpot</li>
+		</tradeTags>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoArbalestBoltBase" MayRequire="cgf1.meleegalore.medieval.i">
+		<defName>Ammo_ArbalestBolt_Steel</defName>
+		<label>arbalest bolt (steel)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Medieval/Bolt/Steel</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.66</MarketValue>
+		</statBases>
+		<ammoClass>SteelCrossbowBolt</ammoClass>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoArbalestBoltBase" MayRequire="cgf1.meleegalore.medieval.i">
+		<defName>Ammo_ArbalestBolt_Plasteel</defName>
+		<label>arbalest bolt (plasteel)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Medieval/Bolt/Plasteel</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<Mass>0.08</Mass>
+			<MarketValue>3.06</MarketValue>
+		</statBases>
+		<ammoClass>PlasteelCrossbowBolt</ammoClass>
+		<generateAllowChance>0.2</generateAllowChance>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoArbalestBoltBase" MayRequire="cgf1.meleegalore.medieval.i">
+		<defName>Ammo_ArbalestBolt_Venom</defName>
+		<label>arbalest bolt (venom)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Medieval/Bolt/Venom</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>2.71</MarketValue>
+		</statBases>
+		<ammoClass>VenomCrossbowBolt</ammoClass>
+		<generateAllowChance>0.1</generateAllowChance>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="AmmoArbalestBoltBase" MayRequire="cgf1.meleegalore.medieval.i">
+		<defName>Ammo_ArbalestBolt_Flame</defName>
+		<label>arbalest bolt (flame)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Medieval/Bolt/Flame</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<Mass>0.08</Mass>
+			<MarketValue>1.29</MarketValue>
+		</statBases>
+		<ammoClass>FlameCrossbowBolt</ammoClass>
+		<generateAllowChance>0.2</generateAllowChance>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="BaseArbalestBoltProjectile" ParentName="BaseBulletCE" Abstract="true" MayRequire="cgf1.meleegalore.medieval.i">
+		<graphicData>
+			<texPath>Things/Projectile/Arrow_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Arrow</damageDef>
+			<speed>32</speed>
+		</projectile>
+	</ThingDef>
+
+	<!-- The amount of arrows usable over the ammo lifetime for each resource cost is equal to
+		[r / (1 - x)];
+			x = preExplosionSpawnChance,
+			r = resource cost. -->
+
+	<ThingDef ParentName="BaseArbalestBoltProjectile" MayRequire="cgf1.meleegalore.medieval.i">
+		<defName>Projectile_ArbalestBolt_Stone</defName>
+		<label>arbalest bolt (stone)</label>
+		<graphicData>
+			<texPath>Things/Projectile/Arrows/Arrow_Stone</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<speed>27</speed>
+			<damageAmountBase>12</damageAmountBase>
+			<armorPenetrationBlunt>3.04</armorPenetrationBlunt>
+			<armorPenetrationSharp>1.6</armorPenetrationSharp>
+			<preExplosionSpawnChance>0.1</preExplosionSpawnChance><!-- 11.11 bolts per resource -->
+			<preExplosionSpawnThingDef>Ammo_ArbalestBolt_Stone</preExplosionSpawnThingDef>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseArbalestBoltProjectile" MayRequire="cgf1.meleegalore.medieval.i">
+		<defName>Projectile_ArbalestBolt_Steel</defName>
+		<label>arbalest bolt (steel)</label>
+		<graphicData>
+			<texPath>Things/Projectile/Arrows/Arrow_Steel</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>13</damageAmountBase>
+			<armorPenetrationBlunt>6.6</armorPenetrationBlunt>
+			<armorPenetrationSharp>2.6</armorPenetrationSharp>
+			<preExplosionSpawnChance>0.333</preExplosionSpawnChance><!-- 14.99 bolts per resource -->
+			<preExplosionSpawnThingDef>Ammo_ArbalestBolt_Steel</preExplosionSpawnThingDef>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseArbalestBoltProjectile" MayRequire="cgf1.meleegalore.medieval.i">
+		<defName>Projectile_ArbalestBolt_Plasteel</defName>
+		<label>arbalest bolt (plasteel)</label>
+		<graphicData>
+			<texPath>Things/Projectile/Arrows/Arrow_Plasteel</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<speed>33</speed>
+			<damageAmountBase>11</damageAmountBase>
+			<armorPenetrationBlunt>6.42</armorPenetrationBlunt>
+			<armorPenetrationSharp>3.6</armorPenetrationSharp>
+			<preExplosionSpawnChance>0.6</preExplosionSpawnChance><!-- 25 bolts per resource -->
+			<preExplosionSpawnThingDef>Ammo_ArbalestBolt_Plasteel</preExplosionSpawnThingDef>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseArbalestBoltProjectile" MayRequire="cgf1.meleegalore.medieval.i">
+		<defName>Projectile_ArbalestBolt_Venom</defName>
+		<label>arbalest bolt (venom)</label>
+		<graphicData>
+			<texPath>Things/Projectile/Arrows/Arrow_Venom</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>ArrowVenom</damageDef>
+			<damageAmountBase>13</damageAmountBase>
+			<armorPenetrationBlunt>6.6</armorPenetrationBlunt>
+			<armorPenetrationSharp>2.6</armorPenetrationSharp>
+			<preExplosionSpawnChance>0.6</preExplosionSpawnChance><!-- 25 arrows per resource -->
+			<preExplosionSpawnThingDef>Ammo_ArbalestBolt_Steel</preExplosionSpawnThingDef>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="BaseArbalestBoltProjectile" MayRequire="cgf1.meleegalore.medieval.i">
+		<defName>Projectile_ArbalestBolt_Flame</defName>
+		<label>arbalest bolt (flame)</label>
+		<thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+		<graphicData>
+			<texPath>Things/Projectile/Arrows/Arrow_Flame</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<explosionRadius>0.2</explosionRadius>
+			<damageDef>ArrowFire</damageDef>
+			<damageAmountBase>5</damageAmountBase>
+			<preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+			<preExplosionSpawnChance>0.16</preExplosionSpawnChance>
+		</projectile>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeNeolithicBase" MayRequire="cgf1.meleegalore.medieval.i">
+		<defName>MakeAmmo_ArbalestBolt_Stone</defName>
+		<label>make stone arbalest bolts x10</label>
+		<description>Craft 10 stone arbalest bolts.</description>
+		<jobString>Making stone arbalest bolts.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>3</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_ArbalestBolt_Stone>10</Ammo_ArbalestBolt_Stone>
+		</products>
+		<workAmount>300</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeNeolithicBase" MayRequire="cgf1.meleegalore.medieval.i">
+		<defName>MakeAmmo_ArbalestBolt_Steel</defName>
+		<label>make steel arbalest bolts x10</label>
+		<description>Craft 10 steel arbalest bolts.</description>
+		<jobString>Making steel arbalest bolts.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>2</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>2</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>WoodLog</li>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_ArbalestBolt_Steel>10</Ammo_ArbalestBolt_Steel>
+		</products>
+		<workAmount>400</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeNeolithicBase" MayRequire="cgf1.meleegalore.medieval.i">
+		<defName>MakeAmmo_ArbalestBolt_Plasteel</defName>
+		<label>make plasteel arbalest bolts x10</label>
+		<description>Craft 10 plasteel arbalest bolts.</description>
+		<jobString>Making plasteel arbalest bolts.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>2</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Plasteel</li>
+					</thingDefs>
+				</filter>
+				<count>3</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>WoodLog</li>
+				<li>Plasteel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_ArbalestBolt_Plasteel>10</Ammo_ArbalestBolt_Plasteel>
+		</products>
+		<workAmount>1400</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeNeolithicBase" MayRequire="cgf1.meleegalore.medieval.i">
+		<defName>MakeAmmo_ArbalestBolt_Venom</defName>
+		<label>make venom arbalest bolts x10</label>
+		<description>Craft 10 venom arbalest bolts.</description>
+		<jobString>Making venom arbalest bolts.</jobString>
+		<workAmount>1000</workAmount>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>2</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>2</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>MedicineHerbal</li>
+					</thingDefs>
+				</filter>
+				<count>2</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>WoodLog</li>
+				<li>Steel</li>
+				<li>MedicineHerbal</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_ArbalestBolt_Venom>10</Ammo_ArbalestBolt_Venom>
+		</products>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeNeolithicBase" MayRequire="cgf1.meleegalore.medieval.i">
+		<defName>MakeAmmo_ArbalestBolt_Flame</defName>
+		<label>make flame arbalest bolts x10</label>
+		<description>Craft 10 flame arbalest bolts.</description>
+		<jobString>Making flame arbalest bolts.</jobString>
+		<workAmount>800</workAmount>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</filter>
+				<count>2</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>2</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Prometheum</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>WoodLog</li>
+				<li>Steel</li>
+				<li>Prometheum</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_ArbalestBolt_Flame>10</Ammo_ArbalestBolt_Flame>
+		</products>
+	</RecipeDef>
+
+</Defs>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <ThingDef Name="TerraTech_BuildingBase" Abstract="True">
+        <category>Building</category>
+        <thingClass>Building</thingClass>
+        <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+        <selectable>true</selectable>
+        <drawerType>MapMeshAndRealTime</drawerType>
+        <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+        <repairEffect>Repair</repairEffect>
+        <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+        <filthLeaving>Filth_RubbleBuilding</filthLeaving>
+        <canOverlapZones>false</canOverlapZones>
+        <graphicData>
+            <damageData>
+                <cornerTL>Damage/Corner</cornerTL>
+                <cornerTR>Damage/Corner</cornerTR>
+                <cornerBL>Damage/Corner</cornerBL>
+                <cornerBR>Damage/Corner</cornerBR>
+                <edgeTop>Damage/Edge</edgeTop>
+                <edgeBot>Damage/Edge</edgeBot>
+                <edgeLeft>Damage/Edge</edgeLeft>
+                <edgeRight>Damage/Edge</edgeRight>
+            </damageData>
+        </graphicData>
+        <statBases>
+            <SellPriceFactor>0.70</SellPriceFactor>
+        </statBases>
+    </ThingDef>
+	
+	<ThingDef Name="TerraTech_WallBase" ParentName="TerraTech_BuildingBase" Abstract="True">
+		<description>Base Class for Walls</description>
+		<graphicData>
+			<texPath>Things/Building/Linked/Wall</texPath>
+			<graphicClass>Graphic_Appearances</graphicClass>
+			<linkType>CornerFiller</linkType>
+			<linkFlags>
+				<li>Wall</li>
+				<li>Rock</li>
+			</linkFlags>
+		</graphicData>
+		<uiIconPath>Things/Building/Linked/WallSmooth_MenuIcon</uiIconPath>
+		<statBases>
+			<MaxHitPoints>350</MaxHitPoints>
+			<WorkToBuild>150</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<MeditationFocusStrength>0.22</MeditationFocusStrength>
+		</statBases>
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<altitudeLayer>Building</altitudeLayer>
+		<castEdgeShadows>true</castEdgeShadows>
+		<coversFloor>true</coversFloor>
+		<placingDraggableDimensions>1</placingDraggableDimensions>
+		<rotatable>false</rotatable>
+		<neverMultiSelect>true</neverMultiSelect>
+		<staticSunShadowHeight>1.0</staticSunShadowHeight>
+		<building>
+			<blueprintGraphicData>
+				<texPath>Things/Building/Linked/Wall_Blueprint_Atlas</texPath>
+			</blueprintGraphicData>
+			<isInert>true</isInert>
+		</building>
+		<comps>
+			<li Class="CompProperties_MeditationFocus">
+				<statDef>MeditationFocusStrength</statDef>
+				<focusTypes>
+					<li>Minimal</li>
+				</focusTypes>
+			</li>
+		</comps>
+		<damageMultipliers>
+			<li>
+				<damageDef>Bomb</damageDef>
+				<multiplier>2</multiplier>
+			</li>
+		</damageMultipliers>
+		<designationCategory>Structure</designationCategory>
+	</ThingDef>
+	
+  <ThingDef ParentName="TerraTech_WallBase">
+    <defName>EarlyTimes_TerraformStoneWall</defName>
+	<thingClass>TerraformTech.Building_TerraformStoneWall</thingClass>
+    <label>wall terraform</label>
+    <description>An unfinished stone terraforming.</description>
+	<graphicData>
+      <texPath>Things/Building/Mics/RockWallTerraform</texPath>
+      <graphicClass>Graphic_Single</graphicClass>  
+    </graphicData>
+    <uiIconPath>Things/Building/Mics/RockWallTerraform</uiIconPath>
+	<building>
+      <artificialForMeditationPurposes>false</artificialForMeditationPurposes>
+    </building>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <WorkToBuild>90</WorkToBuild>
+      <MeditationFocusStrength>0.24</MeditationFocusStrength>
+    </statBases>
+    <stuffCategories>
+      <li>TerraTech_Chunky</li> 
+    </stuffCategories>
+    <costStuffCount>4</costStuffCount>
+    <pathCostIgnoreRepeat>false</pathCostIgnoreRepeat>	
+    <passability>Impassable</passability>
+    <fillPercent>1</fillPercent>
+    <tickerType>Never</tickerType>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <holdsRoof>true</holdsRoof>
+    <blockLight>true</blockLight>
+    <blockWind>true</blockWind>	
+    <researchPrerequisites>
+		<li>TerraformTech_WallTerraform</li>
+	</researchPrerequisites>	
+  </ThingDef>
+  
+</Defs>

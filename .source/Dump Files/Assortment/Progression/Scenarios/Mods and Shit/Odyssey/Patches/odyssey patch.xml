@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>    
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ScenarioDef[defName="TheGravship"]/label</xpath>
+        <value>
+            <label>Orbital Chase</label>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>Defs/ScenarioDef[defName="TheGravship"]/scenario/summary</xpath>
+        <value>
+            <summary>A crew of three piloting an orbital Gravship, locked in an eternal race against time.</summary>
+        </value>
+    </Operation>
+
+
+
+
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Progression: Agriculture</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationAdd">
+                    <success>Always</success>
+                    <xpath>Defs/ScenarioDef[defName="GravshipEarth"]/scenario/parts</xpath>
+                    <value>
+                        <li Class="RandomVegetables.ScenPart_RandomSeedBundles">
+                            <_itemCount>2</_itemCount>
+                            <def>RandomSeedBundles</def>
+                        </li>
+                        <li Class="ProgressionAgriculture.ScenPart_StartingSeeds">
+                            <def>Ferny_StartingSeeds</def>
+                            <thingDef>Plant_Healroot_SeedBundle</thingDef>
+                        </li>
+                        <li Class="ProgressionAgriculture.ScenPart_StartingSeeds">
+                            <def>Ferny_StartingSeeds</def>
+                            <thingDef>Plant_Cotton_SeedBundle</thingDef>
+                        </li>
+                        <li Class="ProgressionAgriculture.ScenPart_StartingSeeds">
+                            <def>Ferny_StartingSeeds</def>
+                            <thingDef>Plant_Psychoid_SeedBundle</thingDef>
+                        </li>
+                    </value>
+				</li>
+			</operations>
+		</match>
+	</Operation>
+</Patch>

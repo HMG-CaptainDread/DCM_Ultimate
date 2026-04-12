@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	
+	<Operation Class="XmlExtensions.OptionalPatch">
+		<modId>FrozenSnowFox.FrozenSnowFoxVanillaBionicsExpansion</modId>
+		<key>FSFVBEBionicsTableOn</key>
+		<defaultValue>false</defaultValue>
+		<caseTrue>
+			
+		<Operation Class="PatchOperationSequence">
+			<success>Normal</success>
+			<operations>
+				
+			<!-- Unhide Bionics Table -->
+			
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName = "FSFBionicsTable"]</xpath>
+				<value>
+					<designationCategory>Production</designationCategory>
+					<researchPrerequisites>
+						<li>Prosthetics</li>
+					</researchPrerequisites>
+				</value>
+			</li>
+				
+			<!-- Give Component Recipe a Research Requirement -->
+				
+			<li Class="XmlExtensions.PatchOperationSafeAdd">
+				<xpath>/Defs/RecipeDef[defName = "Make_ComponentIndustrial"]</xpath>
+				<value>
+					<researchPrerequisite>Fabrication</researchPrerequisite>
+				</value>
+			</li>
+				
+			<!-- Change Prosthetic Base Recipe -->
+			
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[@Name = "BodyPartProstheticMakeableBase"]/recipeMaker/recipeUsers</xpath>
+				<value>
+					<recipeUsers>
+						<li>FSFBionicsTable</li>
+					</recipeUsers>
+				</value>
+			</li>
+			
+			<!-- Change Bionic Base Recipe -->
+			
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[@Name = "BodyPartBionicBase"]/recipeMaker/recipeUsers</xpath>
+				<value>
+					<recipeUsers>
+						<li>FSFBionicsTable</li>
+					</recipeUsers>
+				</value>
+			</li>
+				
+			<!-- Remove Biotech Bionics reciperUsers -->
+			
+			<li MayRequire="Ludeon.RimWorld.Biotech" Class="PatchOperationRemove">
+				<xpath>/Defs/ThingDef[defName = "DetoxifierLung"]/recipeMaker/recipeUsers</xpath>
+			</li>
+				
+			<li MayRequire="Ludeon.RimWorld.Biotech" Class="PatchOperationRemove">
+				<xpath>/Defs/ThingDef[defName = "DetoxifierKidney"]/recipeMaker/recipeUsers</xpath>
+			</li>
+				
+			</operations>
+		</Operation>
+			
+		</caseTrue>
+	</Operation>
+
+</Patch>

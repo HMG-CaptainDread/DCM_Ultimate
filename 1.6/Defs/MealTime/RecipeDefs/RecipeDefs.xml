@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- DOUGH BASE -->
+		<RecipeDef Name="TMM_DoughRecipeBase" Abstract="True">
+			<ingredients>
+				<li>
+					<filter>
+						<thingDefs>
+							<li>VCE_Flour</li>
+						</thingDefs>
+					</filter>
+					<count>50</count>
+				</li>
+			</ingredients>
+			<fixedIngredientFilter>
+				<thingDefs>
+					<li>VCE_Flour</li>
+				</thingDefs>
+			</fixedIngredientFilter>
+			<defaultIngredientFilter>
+				<thingDefs>
+					<li>VCE_Flour</li>
+				</thingDefs>
+			</defaultIngredientFilter>
+			<workSpeedStat>CookSpeed</workSpeedStat>
+			<workSkill>Cooking</workSkill>
+			<effectWorking>Cook</effectWorking>
+			<soundWorking>Recipe_CookMeal</soundWorking>
+		</RecipeDef>
+	<!-- MAKE BREAD DOUGH -->
+		<RecipeDef ParentName="TMM_DoughRecipeBase">
+			<defName>TMM_MakeBreadDough</defName>
+			<label>Make bread dough</label>
+			<description>Make dough for bread from flour.</description>
+			<jobString>Making dough.</jobString>
+			<allowMixingIngredients>true</allowMixingIngredients>
+
+			<recipeUsers>
+				<li>ElectricStove</li>
+				<li>FueledStove</li>
+			</recipeUsers>
+
+			<products>
+				<TMM_DoughBread>2</TMM_DoughBread>
+			</products>
+
+			<workAmount>700</workAmount>
+		</RecipeDef>
+</Defs>

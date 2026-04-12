@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>VGP Garden Fabrics</li>
+		  <li>VGP Garden Fabrics Simplified</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ResearchProjectDef[defName="VG_ClothI"]/prerequisites</xpath>		
+				<value>
+					<prerequisites>
+						<li>Machining</li>
+						<li>ComplexClothing</li>
+					</prerequisites>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ResearchProjectDef[defName="VG_ClothII"]/prerequisites</xpath>		
+				<value>
+					<prerequisites>
+						<li>VG_ClothI</li>
+						<li>MultiAnalyzer</li>
+					</prerequisites>
+				</value>
+			</li>
+		</operations>
+	</match>
+  </Operation>
+    
+</Patch>

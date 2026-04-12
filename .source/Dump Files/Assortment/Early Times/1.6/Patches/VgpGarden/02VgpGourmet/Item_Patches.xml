@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>VGP Garden Gourmet</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+		<li Class="PatchOperationRemove">
+			<xpath>/Defs/ThingDef[defName = "MedTimes_MealCheese"]/ingestible/maxNumToIngestAtOnce</xpath>
+		</li>
+		<li Class="PatchOperationReplace">
+			<xpath>/Defs/ThingDef[defName = "MedTimes_MealCheese"]/ingestible/maxNumToIngestAtOnce</xpath>				
+			<value>
+				<maxNumToIngestAtOnce>3</maxNumToIngestAtOnce>
+			</value>
+		</li>
+		<li Class="PatchOperationReplace">
+			<xpath>/Defs/ThingDef[defName = "MedTimes_MealCheese"]/statBases/Mass</xpath>				
+			<value>
+				<Mass>0.1</Mass>
+			</value>
+		</li>
+		<li Class="PatchOperationReplace">
+			<xpath>/Defs/ThingDef[defName = "MedTimes_MealCheese"]/stackLimit</xpath>				
+			<value>
+				<stackLimit>50</stackLimit>
+			</value>
+		</li>
+		<li Class="PatchOperationReplace">
+			<xpath>Defs/RecipeDef[defName = "MedTimes_CookMealCheese"]/ingredients</xpath>
+				<value>
+					<ingredients>
+						<li>
+						<filter>
+							<thingDefs>
+								<li>Milk</li>
+							</thingDefs>
+						</filter>
+						<count>0.4</count>
+						</li>
+					</ingredients>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+			<xpath>Defs/RecipeDef[defName = "MedTimes_CookMealCheeseBulk"]/ingredients</xpath>
+				<value>
+					<ingredients>
+						<li>
+						<filter>
+							<thingDefs>
+								<li>Milk</li>
+							</thingDefs>
+						</filter>
+						<count>4</count>
+						</li>
+					</ingredients>
+				</value>
+			</li>
+		</operations>
+	</match>
+  </Operation>
+  
+</Patch>
+
+
+
+

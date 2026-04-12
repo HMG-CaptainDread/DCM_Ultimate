@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<!-- Medieval Overhaul patch -->
+
+<!-- change deconstructible : true -->
+
+<Operation Class="PatchOperationConditional">
+	<xpath>*/ThingDef[@Name = "DankPyon_SmallRuin"]/building/deconstructible</xpath>
+	<match Class="PatchOperationReplace">
+		<xpath>*/ThingDef[@Name = "DankPyon_SmallRuin"]/building/deconstructible</xpath>
+			<value>
+				<deconstructible>true</deconstructible>
+			</value>
+	</match>
+	<nomatch Class="PatchOperationTest">
+		<xpath>*/ThingDef[defName = "MealSurvivalPack"]</xpath>
+		<success>Always</success>
+	</nomatch>
+</Operation>
+
+<!-- change alwaysDeconstructible : true -->
+
+<Operation Class="PatchOperationConditional">
+	<xpath>*/ThingDef[@Name = "DankPyon_SmallRuin"]/building/alwaysDeconstructible</xpath>
+	<match Class="PatchOperationReplace">
+		<xpath>*/ThingDef[@Name = "DankPyon_SmallRuin"]/building/alwaysDeconstructible</xpath>
+			<value>
+				<alwaysDeconstructible>true</alwaysDeconstructible>
+			</value>
+	</match>
+	<nomatch Class="PatchOperationTest">
+		<xpath>*/ThingDef[defName = "MealSurvivalPack"]</xpath>
+		<success>Always</success>
+	</nomatch>
+</Operation>
+
+<!-- add leaveResourcesWhenKilled -->
+
+<Operation Class="PatchOperationConditional">
+	<xpath>*/ThingDef[@Name = "DankPyon_SmallRuin"]/leaveResourcesWhenKilled</xpath>
+	<nomatch Class="PatchOperationAdd">
+		<xpath>*/ThingDef[@Name = "DankPyon_SmallRuin"]</xpath>
+		<value>
+			<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		</value>
+	</nomatch>
+	<match Class="PatchOperationTest">
+		<xpath>*/ThingDef[defName = "MealSurvivalPack"]</xpath>
+		<success>Always</success>
+	</match>
+</Operation>
+
+<!-- change ParentName "AncientBuildingBase" -->
+
+<Operation Class="PatchOperationConditional">
+	<xpath>*/ThingDef[defName = "DankPyon_RuinedBatteringRam" or defName = "DankPyon_RuinedSiegeTower"][@ParentName="NonDeconstructibleAncientBuildingBase"]</xpath>
+	<match Class="PatchOperationAttributeSet">
+		<xpath>*/ThingDef[defName = "DankPyon_RuinedBatteringRam" or defName = "DankPyon_RuinedSiegeTower"]</xpath>
+		<attribute>ParentName</attribute>
+		<value>AncientBuildingBase</value>
+	</match>
+	<nomatch Class="PatchOperationTest">
+		<xpath>*/ThingDef[defName = "MealSurvivalPack"]</xpath>
+		<success>Always</success>
+	</nomatch>
+</Operation>
+
+<!-- add CanDeconstructibleAncientBuildingBase -->
+
+<Operation Class="PatchOperationConditional">
+	<xpath>*/ThingDef[defName = "DankPyon_RuinedBatteringRam" or defName = "DankPyon_RuinedSiegeTower"]</xpath>
+	<match Class="PatchOperationAdd">
+		<xpath>*/ThingDef[defName = "DankPyon_RuinedBatteringRam" or defName = "DankPyon_RuinedSiegeTower"]</xpath>
+		<value>
+			<building>
+				<deconstructible>true</deconstructible>
+				<displayAttackToDestroyOnInspectPane>true</displayAttackToDestroyOnInspectPane>
+				<alwaysDeconstructible>true</alwaysDeconstructible>
+			</building>
+		</value>
+	</match>
+	<nomatch Class="PatchOperationTest">
+		<xpath>*/ThingDef[defName = "MealSurvivalPack"]</xpath>
+		<success>Always</success>
+	</nomatch>
+</Operation>
+
+<!-- passability -->
+
+<!-- <Operation Class="PatchOperationFindMod">
+	<success>Always</success>
+	<mods>
+		<li>Medieval Overhaul</li>
+		<li>3219596926</li>
+		<li>2553700067</li>
+	</mods>
+	<match Class="PatchOperationReplace">
+		<xpath>*/ThingDef[defName = "DankPyon_RuinedBatteringRam" or defName = "DankPyon_RuinedSiegeTower"]/passability</xpath>
+		<value>
+			<passability>Impassable</passability>
+		</value>
+	</match>
+	<nomatch Class="PatchOperationTest">
+		<xpath>*/ThingDef[defName = "MealSurvivalPack"]</xpath>
+		<success>Always</success>
+	</nomatch>
+</Operation> -->
+
+<!-- add new statBases -->
+
+<Operation Class="PatchOperationConditional">
+	<xpath>*/ThingDef[defName = "DankPyon_RuinedBatteringRam" or defName = "DankPyon_RuinedSiegeTower"]</xpath>
+	<match Class="PatchOperationAdd">
+		<xpath>*/ThingDef[defName = "DankPyon_RuinedBatteringRam" or defName = "DankPyon_RuinedSiegeTower"]/statBases</xpath>
+		<value>
+			<WorkToBuild>5000</WorkToBuild>
+			<Flammability>0</Flammability>
+		</value>
+	</match>
+	<nomatch Class="PatchOperationTest">
+		<xpath>*/ThingDef[defName = "MealSurvivalPack"]</xpath>
+		<success>Always</success>
+	</nomatch>
+</Operation>
+
+<!-- add costList -->
+
+<Operation Class="PatchOperationConditional">
+	<xpath>*/ThingDef[defName = "DankPyon_RuinedBatteringRam"]</xpath>
+	<match Class="PatchOperationAdd">
+		<xpath>*/ThingDef[defName = "DankPyon_RuinedBatteringRam"]</xpath>
+		<value>
+			<costList>
+				<WoodLog>100</WoodLog>
+				<DankPyon_RawWood>50</DankPyon_RawWood>
+				<DankPyon_ComponentBasic>5</DankPyon_ComponentBasic>
+			</costList>
+		</value>
+	</match>
+	<nomatch Class="PatchOperationTest">
+		<xpath>*/ThingDef[defName = "MealSurvivalPack"]</xpath>
+		<success>Always</success>
+	</nomatch>
+</Operation>
+
+<Operation Class="PatchOperationConditional">
+	<xpath>*/ThingDef[defName = "DankPyon_RuinedSiegeTower"]</xpath>
+	<match Class="PatchOperationAdd">
+		<xpath>*/ThingDef[defName = "DankPyon_RuinedSiegeTower"]</xpath>
+		<value>
+			<costList>
+				<WoodLog>150</WoodLog>
+				<DankPyon_RawWood>90</DankPyon_RawWood>
+				<DankPyon_ComponentBasic>10</DankPyon_ComponentBasic>
+			</costList>
+		</value>
+	</match>
+	<nomatch Class="PatchOperationTest">
+		<xpath>*/ThingDef[defName = "MealSurvivalPack"]</xpath>
+		<success>Always</success>
+	</nomatch>
+</Operation>
+
+</Patch>
