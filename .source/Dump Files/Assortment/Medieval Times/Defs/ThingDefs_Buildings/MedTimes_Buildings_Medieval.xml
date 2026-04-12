@@ -1,0 +1,1906 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!-- Start of ThingDefs --> 
+<!-- ================ Base Classes ================ -->  
+  <!-- Building Base Class -->
+<ThingDef Name="MedTimes_BuildingBase" Abstract="True">
+    <category>Building</category>
+    <thingClass>Building</thingClass>
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <selectable>true</selectable>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <repairEffect>Repair</repairEffect>
+    <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+    <filthLeaving>Filth_RubbleBuilding</filthLeaving>
+    <canOverlapZones>false</canOverlapZones>	
+    <graphicData>	
+	  <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+        <edgeTop>Damage/Edge</edgeTop>
+        <edgeBot>Damage/Edge</edgeBot>
+        <edgeLeft>Damage/Edge</edgeLeft>
+        <edgeRight>Damage/Edge</edgeRight>
+      </damageData>
+    </graphicData>	
+</ThingDef>
+
+
+<!-- ================***** Workbench Classes *****================ -->
+ <!-- Workbench Base Class --> 
+<ThingDef Name="MedTimes_BenchBase" ParentName="MedTimes_BuildingBase" Abstract="True">
+    <altitudeLayer>Building</altitudeLayer> 
+    <surfaceType>Item</surfaceType>	
+	<passability>PassThroughOnly</passability>
+    <pathCost>75</pathCost>	
+    <useHitPoints>True</useHitPoints>	
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <WorkToBuild>1000</WorkToBuild>
+      <Flammability>1.0</Flammability>
+	  <Mass>100</Mass>	  
+    </statBases>		
+    <building>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>    
+    </building>
+    <thingCategories><li>BuildingsProduction</li></thingCategories>	
+    <minifiedDef>MinifiedThing</minifiedDef>	
+</ThingDef>
+
+
+<!-- ================***** Quality Classes *****================ -->
+ <!-- Non-Quality Base Class -->   
+  <ThingDef Name="MedTimes_NoQualityBase" ParentName="MedTimes_BuildingBase" Abstract="True"> 
+    <statBases>
+		<MaxHitPoints>100</MaxHitPoints>
+		<Flammability>1.0</Flammability>
+		<WorkToBuild>1000</WorkToBuild>
+		<Beauty>3</Beauty>		
+		<Mass>10</Mass>		
+    </statBases>	
+	<pathCost>75</pathCost>
+    <thingCategories><li>BuildingsFurniture</li></thingCategories>	
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <tradeTags><li>MedTimes_Furniture</li></tradeTags>	
+  </ThingDef> 
+ 
+ <!-- Quality Base Class -->   
+  <ThingDef Name="MedTimes_QualityBase" ParentName="MedTimes_NoQualityBase" Abstract="True"> 
+    <comps>
+      <li><compClass>CompQuality</compClass></li>	
+    </comps>	
+  </ThingDef> 
+  
+ <!-- Hi Quality Base Class -->   
+  <ThingDef Name="MedTimes_HiQualityBase" ParentName="MedTimes_NoQualityBase" Abstract="True"> 
+    <comps>
+      <li><compClass>CompQuality</compClass></li>	
+      <li Class="CompProperties_Art">
+        <nameMaker>NamerArtFurniture</nameMaker>
+        <descriptionMaker>ArtDescription_Furniture</descriptionMaker>
+        <minQualityForArtistic>Excellent</minQualityForArtistic>
+      </li>
+    </comps>
+    <inspectorTabs><li>ITab_Art</li></inspectorTabs>
+  </ThingDef>   
+
+
+<!-- ================***** Tagged Classes *****================ -->
+ <!-- Tagged Building Base Class -->  
+<ThingDef Name="MedTimes_BuildingBaseTag" ParentName="MedTimes_BuildingBase" Abstract="True">
+    <designationCategory>MedTimes_Medieval</designationCategory>			
+</ThingDef>
+
+<!-- Tagged Bench Base Class -->
+<ThingDef Name="MedTimes_BenchBaseTag" ParentName="MedTimes_BenchBase" Abstract="True">
+    <designationCategory>MedTimes_Medieval</designationCategory>			
+</ThingDef>
+
+<!-- Tagged No Quality Base Class -->
+<ThingDef Name="MedTimes_NoQualityBaseTag" ParentName="MedTimes_NoQualityBase" Abstract="True">
+    <designationCategory>MedTimes_Medieval</designationCategory>			
+</ThingDef>
+
+<!-- Tagged Quality Base Class -->
+<ThingDef Name="MedTimes_QualityBaseTag" ParentName="MedTimes_QualityBase" Abstract="True">
+    <designationCategory>MedTimes_Medieval</designationCategory>			
+</ThingDef>
+
+<!-- Tagged Hi Quality Base Class -->
+<ThingDef Name="MedTimes_HiQualityBaseTag" ParentName="MedTimes_HiQualityBase" Abstract="True">
+    <designationCategory>MedTimes_Medieval</designationCategory>			
+</ThingDef>
+
+<!-- ================ Specialty Classes ================ -->
+<!-- Ash Kicker Class -->
+<ThingDef Name="MedTimes_AshKicker" ParentName="MedTimes_NoQualityBaseTag" Abstract="True">
+	<size>(1,1)</size>	
+	<drawerType>RealtimeOnly</drawerType>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <placeWorkers>
+      <li>PlaceWorker_Heater</li>
+    </placeWorkers>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+
+    <comps>
+      <li Class="CompProperties_Flickable" />
+	  <li Class="CompProperties_Forbiddable"/>   
+<!-- Issue: Continues to kick ash and fire when un-powered / no fuel -->	  
+<!--      <li Class="CompProperties_Spawner"> -->
+<!--        <thingToSpawn>FilthAsh</thingToSpawn> -->
+<!--        <spawnCount>1</spawnCount> -->
+<!--        <spawnIntervalRange> -->
+<!--          <min>8000</min> -->
+<!--          <max>16000</max> -->
+<!--        </spawnIntervalRange> -->
+<!--       <spawnMaxAdjacent>12</spawnMaxAdjacent> -->
+<!--      </li> -->	
+<!--      <li Class="CompProperties_Spawner"> -->
+<!--        <thingToSpawn>Fire</thingToSpawn> -->
+<!--        <spawnCount>1</spawnCount> -->
+<!--        <spawnIntervalRange> -->
+<!--          <min>50000</min> -->
+<!--          <max>100000</max> -->
+<!--        </spawnIntervalRange> -->
+<!--        <spawnMaxAdjacent>1</spawnMaxAdjacent> -->
+<!--      </li> -->	  	  
+    </comps>
+</ThingDef>
+ 
+<!-- Blacksmith's Forge Tiered Base Class -->
+  <ThingDef Name="MedTimes_BlacksmithsForgeBase" ParentName="MedTimes_BenchBaseTag" Abstract="True">
+    <thingClass>Building_WorkTable</thingClass>
+    <fillPercent>0.5</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <statBases>
+      <WorkToBuild>2000</WorkToBuild>
+      <MaxHitPoints>180</MaxHitPoints>
+      <Flammability>1.0</Flammability>
+      <Cleanliness>-5</Cleanliness>	  
+    </statBases>
+    <hasInteractionCell>True</hasInteractionCell>
+    <surfaceType>Item</surfaceType>	
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <comps>
+      <li Class="CompProperties_Refuelable">
+        <fuelConsumptionRate>50.0</fuelConsumptionRate>
+        <fuelCapacity>75.0</fuelCapacity>
+        <fuelFilter>
+			<thingDefs>
+				<li>MedTimes_Resource_Coal</li>
+				<li>WoodLog</li>
+			</thingDefs>
+		</fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+      </li>  
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>ToolCabinet</li>
+        </linkableFacilities>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+    </placeWorkers>
+  </ThingDef>
+ <!-- End of Parent Nodes --> 
+
+ 
+ 
+<!-- ================ Instant Gets ================ -->
+<!-- Fire Pit -->
+  <ThingDef ParentName="MedTimes_BenchBaseTag">
+    <defName>MedTimes_Firepit</defName>
+    <label>Firepit</label>
+    <thingClass>Building_WorkTable</thingClass>	
+    <description>[Portable, Cook Products](Workspeed: 75%)(Clean -10) A portable wood conscious campfire. Only uses wood when you cook something, produces no heat otherwise.</description>	
+    <graphicData>
+      <texPath>Things/Building/Medieval/Firepit/MedTimes_Firepit</texPath>
+      <graphicClass>Graphic_Single</graphicClass>  
+      <shaderType>CutoutComplex</shaderType>	  
+      <drawSize>(1.1,1.1)</drawSize>
+      <drawRotated>false</drawRotated>
+      <allowFlip>false</allowFlip>		  
+    </graphicData>
+	
+    <size>(1,1)</size>
+    <fillPercent>0.2</fillPercent>
+    <rotatable>true</rotatable>
+    <tickerType>Normal</tickerType>
+    <drawerType>RealtimeOnly</drawerType>	
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+	
+    <stuffCategories>
+      <li>Metallic</li>
+    </stuffCategories>
+    <costStuffCount>15</costStuffCount>
+	
+    <statBases>	
+		<WorkToBuild>300</WorkToBuild>
+		<Cleanliness>-10</Cleanliness>
+		<Flammability>0</Flammability>
+		<Mass>10</Mass>
+		<WorkTableWorkSpeedFactor>0.75</WorkTableWorkSpeedFactor>		
+    </statBases>	
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>		
+      <li Class="CompProperties_Refuelable">
+        <fuelConsumptionRate>25.0</fuelConsumptionRate>
+        <fuelCapacity>50.0</fuelCapacity>
+        <fuelFilter>
+			<thingDefs>
+				<li>MedTimes_Resource_Coal</li>
+				<li>WoodLog</li>
+			</thingDefs>
+		</fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+      </li>	  
+      <li Class="CompProperties_FireOverlay">
+        <fireSize>0.6</fireSize>	
+      </li>	  
+    </comps>	
+    <recipes>
+      <li>CookMealSimple</li>
+      <li>Make_Pemmican</li>
+      <li>BurnApparel</li>
+      <li>BurnDrugs</li>
+    </recipes>	
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>	
+    <building>
+      <isMealSource>true</isMealSource>
+      <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>	  
+      <heatPerTickWhileWorking>5</heatPerTickWhileWorking>
+    </building>
+  </ThingDef>
+ 
+ 
+<!-- Butchers Block -->
+  <ThingDef ParentName="MedTimes_BenchBaseTag">
+    <defName>MedTimes_ButcherBlock</defName>
+    <label>Portable Butcher's Block</label>
+    <thingClass>Building_WorkTable</thingClass>
+    <description>[Portable, Butcher Products](Workspeed: 75%)(Beauty -10, Clean -10) A portable but sturdy stump of wood and a butcher's cleaver for butchering dead creatures into pieces of raw meat.</description>
+    <graphicData>
+      <texPath>Things/Building/Medieval/ButcherBlock/MedTimes_ButcherBlock</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <costList>
+      <WoodLog>35</WoodLog>
+    </costList>
+    <fillPercent>0.5</fillPercent>
+    <statBases>
+		<Cleanliness>-10</Cleanliness>
+		<Beauty>-10</Beauty>		
+		<Mass>10</Mass>
+		<WorkTableWorkSpeedFactor>0.75</WorkTableWorkSpeedFactor>		
+    </statBases>
+    <size>(1,1)</size>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <recipes>
+      <li>ButcherCorpseFlesh</li>
+      <li>Make_Kibble</li>
+    </recipes>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <comps>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>ToolCabinet</li>
+        </linkableFacilities>
+      </li>
+    </comps>
+ 		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+		</placeWorkers>
+  </ThingDef>
+
+  
+<!-- Corpse Bonfire -->
+  <ThingDef ParentName="MedTimes_BuildingBaseTag">
+    <defName>MedTimes_CorpseBonfire</defName>
+    <label>Corpse Bonfire</label>
+    <thingClass>Building_WorkTable</thingClass>
+    <description>[Burn Corpse/Apparel/Drugs](Rain damage, Destroy on Empty)(Being Used; Heat Output: 15)(Beauty -50, Clean -50) Originally described as a "Banefire", Bonfires are large controlled fires used in the disposal of corpses and bones. Eventually, Bonfires became a term to include not just corpses, but any trash or waste products which needed to be disposed of. Sometimes the plague rolls into town and kills half your colonist, other times a massive tribal attack leaves you with more corpses than you know what to do with. Either way, the Bonfire is the appropriate solution to you're excess corpse collection situation. Beware, however, because the bonfire provides significant de-buffs to both beauty and cleanliness in it's surrounding area.</description>
+    <altitudeLayer>Building</altitudeLayer>
+    <surfaceType>Item</surfaceType>	
+    <size>(1,1)</size>
+    <graphicData>
+      <texPath>Things/Building/Medieval/Bonfire/MedTimes_CorpseBonfire</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawRotated>false</drawRotated>
+      <allowFlip>false</allowFlip>
+      <drawSize>(2,2)</drawSize>
+    </graphicData>
+    <uiIconPath>Things/Building/Medieval/Bonfire/MedTimes_CorpseBonfire</uiIconPath>			
+    <costList><WoodLog>50</WoodLog></costList>			
+    <statBases>
+		<MaxHitPoints>50</MaxHitPoints>	
+		<WorkToBuild>300</WorkToBuild>
+		<Flammability>0</Flammability>
+		<Cleanliness>-50</Cleanliness>
+		<Beauty>-50</Beauty>	  
+    </statBases>
+    <useHitPoints>True</useHitPoints>	
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <tickerType>Normal</tickerType>	
+    <recipes>
+      <li>CremateCorpse</li>
+      <li>BurnApparel</li>
+      <li>BurnDrugs</li>	  
+    </recipes>	
+    <inspectorTabs><li>ITab_Bills</li></inspectorTabs>	
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>	
+      <li Class="CompProperties_Refuelable">
+        <fuelConsumptionRate>500.0</fuelConsumptionRate>
+        <fuelCapacity>50.0</fuelCapacity>
+        <initialFuelPercent>1</initialFuelPercent>		
+        <fuelConsumptionPerTickInRain>0.005</fuelConsumptionPerTickInRain>
+		<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <destroyOnNoFuel>true</destroyOnNoFuel>		
+        <fuelFilter>
+			<thingDefs>
+				<li>MedTimes_Resource_Coal</li>
+				<li>WoodLog</li>
+			</thingDefs>
+		</fuelFilter>
+      </li>
+      <li Class="CompProperties_FireOverlay">
+        <fireSize>1.1</fireSize>
+        <offset>(0,0,0.25)</offset>		
+      </li>
+    </comps>
+    <building>
+      <heatPerTickWhileWorking>15</heatPerTickWhileWorking>
+    </building>		
+  </ThingDef>
+
+  
+  
+<!-- ========================= Medieval Technologies ==========================-->
+<!-- (Medieval) Stone Hearth -->
+  <ThingDef ParentName="MedTimes_AshKicker">
+    <defName>MedTimes_StoneHearth</defName>
+    <label>Stone Hearth</label>
+    <thingClass>Building_WorkTable_HeatPush</thingClass>
+    <description>[Cook's meals, Used for Heating, Joy Activity](Workspeed: 80%)(Glow Radius: 8, No UV, No rain damage)(Heat Output: 15)(Wood Fuel Consumption: 3)(Beauty +15, Clean -3) Your best most cost effective heating and light solution for individual bedrooms, Stone hearths are OP, they provide constant heat, light, can cook food(at no excess cost), act as a joy activity and can even be used as a gathering spot. The Stone Hearth is the heart of any Medieval home, be it Lord or Peasant, the hearth is what cooked the meals and maintained heat within the household. With a steady supply of wood, this hearth can keep you going in the most dire of times.</description>    
+    <category>Building</category>
+	
+    <graphicData>
+      <texPath>Things/Building/Medieval/StoneHearth/MedTimes_StoneHearth</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>	  
+      <drawSize>(2,2)</drawSize>	  
+    </graphicData>		
+		<uiIconPath>Things/Building/Medieval/StoneHearth/MedTimes_StoneHearth_Icon</uiIconPath>			
+    <stuffCategories>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>75</costStuffCount>	
+	
+    <statBases>
+		<MaxHitPoints>200</MaxHitPoints>
+		<Flammability>0</Flammability>	  
+		<JoyGainFactor>1</JoyGainFactor>
+		<Beauty>15</Beauty>
+		<Mass>200</Mass>
+		<WorkTableWorkSpeedFactor>0.8</WorkTableWorkSpeedFactor>		
+    </statBases>
+	
+    <soundImpactDefault>BulletImpact_Ground</soundImpactDefault>
+    <socialPropernessMatters>true</socialPropernessMatters>			
+    <fillPercent>0.25</fillPercent>
+		
+	<comps>		  
+		<li Class="CompProperties_Refuelable">
+			<fuelConsumptionRate>3</fuelConsumptionRate>
+			<fuelCapacity>150.0</fuelCapacity>
+			<fuelFilter>
+				<thingDefs>
+					<li>MedTimes_Resource_Coal</li>
+					<li>WoodLog</li>
+				</thingDefs>
+			</fuelFilter>
+		</li>
+		<li Class="CompProperties_Glower">
+			<glowRadius>8</glowRadius>
+			<glowColor>(252,187,113,0)</glowColor>
+		</li>
+		<li Class="CompProperties_HeatPusher">
+			<compClass>CompHeatPusherPowered</compClass>	  
+			<heatPerSecond>15</heatPerSecond>
+			<heatPushMaxTemperature>20</heatPushMaxTemperature>
+		</li>
+
+	</comps>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <recipes>
+      <li>CookMealSimple</li>	  
+      <li>Make_Pemmican</li> 	  
+    </recipes>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <building>
+      <joyKind>Meditative</joyKind>		
+		<isMealSource>true</isMealSource>
+      <watchBuildingStandDistanceRange>
+        <min>3</min>
+        <max>3</max>		
+      </watchBuildingStandDistanceRange>		
+		<watchBuildingStandRectWidth>3</watchBuildingStandRectWidth>		
+    </building>
+    <researchPrerequisites>
+      <li>MedTimes_MedievalTechnologies</li>
+    </researchPrerequisites>		
+  </ThingDef>
+  
+ 
+   <!-- (Medieval) Smokehouse -->
+  <ThingDef ParentName="MedTimes_BenchBaseTag">
+    <defName>MedTimes_Smokehouse</defName>
+    <label>Smoke-house</label>
+    <thingClass>Building_WorkTable</thingClass>
+    <description>[Cook's Preserved Meals](Being Used; Wood Fuel Consumption: 25)(Clean -5) A smoke-house is an enclosed area through which large quantities of smoke is funnelled. This allows food stored inside the smoke-house to be dried in such a manner as to create long term preservation.</description>    
+    <category>Building</category>
+    <size>(2,1)</size>		
+	
+    <graphicData>
+      <texPath>Things/Building/Medieval/Smokehouse/MedTimes_Smokehouse</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>	  
+     <drawSize>(2,1)</drawSize>	  
+    </graphicData>
+		<uiIconPath>Things/Building/Medieval/Smokehouse/MedTimes_Smokehouse_Icon</uiIconPath>		
+    <costList><Steel>25</Steel></costList>	
+    <stuffCategories><li>Woody</li></stuffCategories>
+    <costStuffCount>50</costStuffCount>	
+	
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <fillPercent>0.25</fillPercent>
+    <soundImpactDefault>BulletImpact_Ground</soundImpactDefault>
+	
+    <comps>
+      <li Class="CompProperties_Refuelable">
+        <fuelConsumptionRate>25</fuelConsumptionRate>
+        <fuelCapacity>75.0</fuelCapacity>
+        <fuelFilter>
+			<thingDefs>
+				<li>MedTimes_Resource_Coal</li>
+				<li>WoodLog</li>
+			</thingDefs>
+		</fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>		
+      </li>
+    </comps>  
+	
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <building><isMealSource>true</isMealSource></building>
+    <researchPrerequisites>
+      <li>MedTimes_MedievalTechnologies</li>
+    </researchPrerequisites>		
+  </ThingDef> 
+
+  
+<!-- ========= Non-Quality Furniture ========= -->
+<!-- Medieval Cot -->
+    <ThingDef ParentName="MedTimes_NoQualityBaseTag">
+    <defName>MedTimes_Cot</defName>
+    <thingClass>Building_Bed</thingClass>
+     <label>Medieval Cot</label>
+    <description>[Portable](Beauty +3) A cot made of interwoven hay attached to a makeshift frame. despite it's simple nature it can be quite cozy, except for the fact that the hay invites all manner of bed bugs.  A simple sheet and pillow compliment this utilitarian style bed.</description>
+	
+    <graphicData>
+      <texPath>Things/Building/Medieval/Cot/MedTimes_Cot</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(1.1,2.2)</drawSize>
+    </graphicData>
+		<uiIconPath>Things/Building/Medieval/Cot/MedTimes_Cot_Icon</uiIconPath>		
+	
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>25</costStuffCount>
+	<costList><Hay>50</Hay></costList>	
+	
+    <statBases>
+		<WorkToBuild>800</WorkToBuild>
+		<BedRestEffectiveness>1</BedRestEffectiveness>
+		<Comfort>0.8</Comfort>
+		<ImmunityGainSpeedFactor>1</ImmunityGainSpeedFactor>
+		<SurgerySuccessChanceFactor>1</SurgerySuccessChanceFactor>
+		<Mass>30</Mass>		
+    </statBases>	
+	
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+    </placeWorkers>	
+    <comps>
+      <li Class="CompProperties_AssignableToPawn">
+        <drawAssignmentOverlay>false</drawAssignmentOverlay>
+        <compClass>CompAssignableToPawn_Bed</compClass>
+      </li>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>EndTable</li>
+          <li>Dresser</li>
+        </linkableFacilities>
+      </li>
+    </comps>
+
+    <building>
+      <bed_showSleeperBody>False</bed_showSleeperBody>
+      <bed_healPerDay>3</bed_healPerDay>
+    </building>
+	
+    <size>(1,2)</size>	
+    <fillPercent>0.5</fillPercent>
+    <staticSunShadowHeight>0.17</staticSunShadowHeight>
+    <castEdgeShadows>True</castEdgeShadows>
+    <altitudeLayer>Building</altitudeLayer>	
+    <drawGUIOverlay>true</drawGUIOverlay>
+    <passability>PassThroughOnly</passability>
+    <socialPropernessMatters>true</socialPropernessMatters>	
+    <defaultPlacingRot>South</defaultPlacingRot>
+    <techLevel>Medieval</techLevel>
+    <researchPrerequisites><li>MedTimes_MedievalTechnologies</li></researchPrerequisites>
+  </ThingDef>
+  
+  
+  
+<!-- Medieval Double Cot -->
+    <ThingDef ParentName="MedTimes_NoQualityBaseTag">
+    <defName>MedTimes_CotDouble</defName>
+    <thingClass>Building_Bed</thingClass>	
+    <label>Medieval Double Cot</label>
+    <description>[Portable](Beauty +3) A cot made of interwoven hay attached to a makeshift frame. Despite it's simple nature it can be quite cozy, except for the fact that the hay invites all manner of bed bugs. This particular cot is actually two cots sharing a central support beam. It leaves enough room for two people, but sleeping in the center of it would be quite uncomfortable. A simple sheet and two pillows compliment this utilitarian style bed.</description>
+	
+    <graphicData>
+      <texPath>Things/Building/Medieval/CotDouble/MedTimes_CotDouble</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+      <drawSize>(2.2,2.2)</drawSize>
+    </graphicData>
+		<uiIconPath>Things/Building/Medieval/CotDouble/MedTimes_CotDouble_Icon</uiIconPath>		
+	
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>45</costStuffCount>
+	<costList><Hay>100</Hay></costList>	
+	
+    <statBases>
+		<BedRestEffectiveness>1</BedRestEffectiveness>
+		<Comfort>0.8</Comfort>
+		<ImmunityGainSpeedFactor>1</ImmunityGainSpeedFactor>
+		<SurgerySuccessChanceFactor>1</SurgerySuccessChanceFactor>
+		<Mass>50</Mass>		
+    </statBases>	
+	
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+    </placeWorkers>	
+    <comps>
+      <li Class="CompProperties_AssignableToPawn">
+        <drawAssignmentOverlay>false</drawAssignmentOverlay>
+        <compClass>CompAssignableToPawn_Bed</compClass>
+      </li>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>EndTable</li>
+          <li>Dresser</li>
+        </linkableFacilities>
+      </li>
+    </comps>
+
+    <building>
+      <bed_showSleeperBody>False</bed_showSleeperBody>
+      <bed_healPerDay>3</bed_healPerDay>
+    </building>
+	
+    <size>(2,2)</size>	
+    <fillPercent>0.5</fillPercent>
+    <staticSunShadowHeight>0.17</staticSunShadowHeight>
+    <castEdgeShadows>True</castEdgeShadows>
+    <altitudeLayer>Building</altitudeLayer>	
+    <drawGUIOverlay>true</drawGUIOverlay>
+    <passability>PassThroughOnly</passability>
+    <socialPropernessMatters>true</socialPropernessMatters>	
+    <defaultPlacingRot>South</defaultPlacingRot>
+    <techLevel>Medieval</techLevel>
+    <researchPrerequisites><li>MedTimes_MedievalTechnologies</li></researchPrerequisites>
+	
+  </ThingDef>  
+  
+ 
+ 
+<!-- Small Table -->
+  <ThingDef ParentName="MedTimes_NoQualityBaseTag">
+    <defName>MedTimes_SmallTable</defName>
+    <label>Small Table</label>
+    <description>[Portable](Beauty +3) A small table that food can be eaten on.</description>
+
+    <graphicData>
+      <texPath>Things/Building/Medieval/SmallTable/MedTimes_SmallTable</texPath>
+      <graphicClass>Graphic_Single</graphicClass>	  
+      <shaderType>CutoutComplex</shaderType>	  
+      <drawSize>(1,1)</drawSize>
+      <drawRotated>false</drawRotated>
+      <allowFlip>false</allowFlip>		  
+    </graphicData>
+    <size>(1,1)</size>		
+    <rotatable>true</rotatable>	
+	<altitudeLayer>Building</altitudeLayer>		
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <surfaceType>Eat</surfaceType>	
+    <fillPercent>0.5</fillPercent>	
+    <passability>PassThroughOnly</passability>
+	
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>35</costStuffCount>	
+	
+    <statBases>
+		<JoyGainFactor>1</JoyGainFactor>	  
+    </statBases>
+
+    <building><joyKind>Gaming_Cerebral</joyKind></building>
+	
+
+    <researchPrerequisites><li>MedTimes_MedievalTechnologies</li></researchPrerequisites>
+  </ThingDef>  
+
+  
+<!-- Medieval Stool -->  
+  <ThingDef ParentName="MedTimes_NoQualityBaseTag">
+    <defName>MedTimes_MedStool</defName>
+    <label>Medieval Stool</label>
+    <description>[Portable](Beauty: +3)(Comfort: +0.65) A simple platform containing three legs on which one can sit.</description>
+	
+    <graphicData>
+      <texPath>Things/Building/Medieval/Stool/MedTimes_Stool</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <shadowData>
+        <volume>(0.3, 0.6, 0.3)</volume>
+      </shadowData>
+    </graphicData>
+		<uiIconPath>Things/Building/Medieval/Stool/MedTimes_Stool_Icon</uiIconPath>			
+	
+    <altitudeLayer>Building</altitudeLayer>
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <fillPercent>0.35</fillPercent>
+	
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>15</costStuffCount>
+	
+    <statBases>
+      <MaxHitPoints>75</MaxHitPoints>
+      <WorkToBuild>650</WorkToBuild>
+      <Mass>3</Mass>
+      <Comfort>0.65</Comfort>
+    </statBases>
+
+    <building>
+      <isSittable>true</isSittable>
+    </building>
+    <researchPrerequisites><li>MedTimes_MedievalTechnologies</li></researchPrerequisites>
+	
+  </ThingDef>  
+ 
+<!-- ========= Quality Furniture ========= -->
+   
+
+
+  
+<!-- ========= Storage Based Furniture ========= -->
+<!-- Combat Stand -->
+  <ThingDef ParentName="MedTimes_NoQualityBaseTag">
+    <defName>MedTimes_CombatStandPlaced</defName>
+    <thingClass>Building_Storage</thingClass>
+    <label>Combat Stand</label>	
+    <description>[Weapon/Armour Storage](Beauty +1) Items stored in this will not deteriorate, even if outside.</description>
+	
+    <graphicData>
+      <texPath>Things/Building/Medieval/CombatStand/MedTimes_CombatStand</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.35</fillPercent>
+    <castEdgeShadows>true</castEdgeShadows>
+    <size>(1,1)</size>	
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>20</costStuffCount>
+    <statBases>	
+		<WorkToBuild>500</WorkToBuild>
+		<Beauty>1</Beauty>	   
+    </statBases>
+
+    <building>
+      <preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+      <ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
+      <fixedStorageSettings>
+        <filter>
+          <categories>
+            <li>Weapons</li>
+            <li>Apparel</li>
+          </categories>
+        </filter>
+      </fixedStorageSettings>
+      <defaultStorageSettings>
+        <priority>Important</priority>
+        <filter>
+          <categories>
+            <li>Weapons</li>
+            <li>Apparel</li>
+          </categories>
+        </filter>
+      </defaultStorageSettings>
+    </building>
+    <inspectorTabs>
+      <li>ITab_Storage</li>
+    </inspectorTabs>
+
+    <surfaceType>Item</surfaceType>
+  </ThingDef>
+  
+  
+<!-- Storage Pallet -->  
+  <ThingDef ParentName="MedTimes_NoQualityBaseTag">
+    <defName>MedTimes_StoragePallet</defName>
+    <thingClass>Building_Storage</thingClass>	
+    <label>Storage Pallet</label>
+    <description>[General Storage](Beauty +1)Items stored in this will not deteriorate and the items beauty factor will be ignored, even if outside.(Note food items can still rot)</description>
+	
+    <graphicData>
+      <texPath>Things/Building/Medieval/StoragePallet/MedTimes_Pallet</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <size>(1,1)</size>	
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.4</fillPercent>
+    <castEdgeShadows>false</castEdgeShadows>
+    <defaultPlacingRot>South</defaultPlacingRot>
+	
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>15</costStuffCount>
+    <statBases>
+		<MarketValue>5</MarketValue>	
+		<MaxHitPoints>50</MaxHitPoints>
+		<WorkToBuild>300</WorkToBuild>
+		<Beauty>1</Beauty>		  
+    </statBases>
+
+
+    <building>
+      <preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+      <ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
+      <defaultStorageSettings>
+        <priority>Important</priority>
+        <filter>
+          <categories>
+            <li>Root</li>
+          </categories>
+        </filter>
+      </defaultStorageSettings>
+    </building>
+    <inspectorTabs>
+      <li>ITab_Storage</li>
+    </inspectorTabs>
+    <staticSunShadowHeight>0.5</staticSunShadowHeight>
+    <surfaceType>Item</surfaceType>
+    <canOverlapZones>false</canOverlapZones>
+  </ThingDef>
+  
+  
+<!-- Storage Pot -->
+  <ThingDef ParentName="MedTimes_NoQualityBaseTag">
+    <defName>MedTimes_StoragePotPlaced</defName>
+    <thingClass>Building_Storage</thingClass>
+    <label>Storage Pot</label>	
+    <description>[Food Storage](Beauty +1)Items stored in this will not deteriorate and the items beauty factor will be ignored, even if outside.(Note food items can still rot)</description>
+	
+    <graphicData>
+      <texPath>Things/Item/TradeGoods/StoragePot/MedTimes_StoragePotPlaced</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <size>(1,1)</size>	
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.4</fillPercent>
+    <castEdgeShadows>false</castEdgeShadows>
+    <defaultPlacingRot>South</defaultPlacingRot>
+	
+    <costList><MedTimes_StoragePot>1</MedTimes_StoragePot></costList>
+    <statBases>	
+		<MarketValue>10</MarketValue>	
+		<MaxHitPoints>30</MaxHitPoints>
+		<WorkToBuild>50</WorkToBuild>
+		<Beauty>1</Beauty>		   
+    </statBases>
+    <building>
+      <preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+      <ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
+      <fixedStorageSettings>
+        <filter>
+          <categories>
+            <li>Foods</li>
+            <li>Medicine</li>
+            <li>Drugs</li>			
+          </categories>
+        </filter>
+      </fixedStorageSettings>
+      <defaultStorageSettings>
+        <priority>Important</priority>
+        <filter>
+          <categories>
+            <li>Foods</li>
+            <li>Medicine</li>
+            <li>Drugs</li>	
+          </categories>
+        </filter>
+      </defaultStorageSettings>
+    </building>
+    <inspectorTabs>
+      <li>ITab_Storage</li>
+    </inspectorTabs>
+    <staticSunShadowHeight>0.5</staticSunShadowHeight>
+    <surfaceType>Item</surfaceType>
+  </ThingDef>
+
+
+  
+<!-- ========= Light Based Furniture ========= -->
+<!-- Brazier -->  
+  <ThingDef ParentName="MedTimes_AshKicker">
+    <defName>MedTimes_Brazier</defName>
+    <label>Brazier</label>
+    <description>(Glow Radius: 8, No UV, No rain damage)(Heat Output: 2.5)(Wood Fuel Consumption: 1.5)(Beauty +3, Clean -3) A small metal dish which contains a small fire. A simple medieval style lighting solution.</description>
+
+    <graphicData>
+      <texPath>Things/Building/Medieval/Brazier/MedTimes_Brazier</texPath>
+      <graphicClass>Graphic_Single</graphicClass>	  
+      <drawRotated>false</drawRotated>
+      <shaderType>CutoutComplex</shaderType>	  
+    </graphicData>
+	
+    <rotatable>false</rotatable>
+
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Stony</li>
+    </stuffCategories>
+
+    <costStuffCount>20</costStuffCount>	
+	
+    <fillPercent>0.45</fillPercent>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <WorkToBuild>500</WorkToBuild>
+      <Flammability>0</Flammability>
+      <Cleanliness>-3</Cleanliness>
+      <Beauty>3</Beauty>
+      <Mass>35</Mass>	  
+    </statBases>	
+    <comps>
+      <li Class="CompProperties_Refuelable">
+        <fuelConsumptionRate>1.5</fuelConsumptionRate>
+        <fuelCapacity>45.0</fuelCapacity>
+        <fuelFilter>
+			<thingDefs>
+				<li>MedTimes_Resource_Coal</li>
+				<li>WoodLog</li>
+			</thingDefs>
+		</fuelFilter>
+      </li>	  
+      <li Class="CompProperties_Glower">	  
+        <glowRadius>8</glowRadius>
+        <glowColor>(252,187,113,0)</glowColor>
+      </li>
+      <li Class="CompProperties_HeatPusher">
+        <compClass>CompHeatPusherPowered</compClass>	  
+        <heatPerSecond>2.5</heatPerSecond>
+        <heatPushMaxTemperature>20</heatPushMaxTemperature>
+      </li>
+      <li Class="CompProperties_FireOverlay">
+        <fireSize>0.3</fireSize>
+        <offset>(0,0,0.25)</offset>
+      </li>
+    </comps>
+    <researchPrerequisites>
+      <li>MedTimes_MedievalTechnologies</li>
+    </researchPrerequisites>	
+  </ThingDef>
+
+  <!-- Street Lamp -->  
+  <ThingDef ParentName="MedTimes_AshKicker">
+    <defName>MedTimes_StreetLamp</defName>
+    <label>Street Lamp</label>
+    <description>(Glow Radius: 12, No UV, No rain damage)(Heat Output: 2.5)(Wood Fuel Consumption: 1.5)(Clean -3) A metal cage which contains a small fire suspended from a wooden pole. A simple medieval style lighting solution. Can be automatically refueled with wood.</description>
+    <graphicData>
+      <texPath>Things/Building/Medieval/StreetLamp/MedTimes_StreetLamp</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(2,2)</drawSize>	  
+    </graphicData>
+		<uiIconPath>Things/Building/Medieval/StreetLamp/MedTimes_StreetLamp</uiIconPath>	
+    <constructEffect>ConstructWood</constructEffect>
+
+    <fillPercent>0.75</fillPercent>
+    <statBases>
+      <MaxHitPoints>180</MaxHitPoints>
+      <WorkToBuild>400</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Cleanliness>-3</Cleanliness>	  
+    </statBases>
+    <costList>
+      <WoodLog>20</WoodLog>
+	  <Steel>5</Steel>
+    </costList>
+    <soundImpactDefault>BulletImpact_Ground</soundImpactDefault>
+    <placeWorkers>
+      <li>PlaceWorker_Heater</li>
+    </placeWorkers>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+
+    <comps>  
+      <li Class="CompProperties_Refuelable">
+        <fuelConsumptionRate>1.5</fuelConsumptionRate>
+        <fuelCapacity>45.0</fuelCapacity>
+        <fuelFilter>
+			<thingDefs>
+				<li>MedTimes_Resource_Coal</li>
+				<li>WoodLog</li>
+			</thingDefs>
+		</fuelFilter>
+      </li> 
+      <li Class="CompProperties_Glower">
+        <glowRadius>8</glowRadius>
+        <glowColor>(252,187,113,0)</glowColor>
+      </li>
+      <li Class="CompProperties_HeatPusher">
+        <compClass>CompHeatPusherPowered</compClass>	  
+        <heatPerSecond>2.5</heatPerSecond>
+        <heatPushMaxTemperature>20</heatPushMaxTemperature>
+      </li>
+      <li Class="CompProperties_FireOverlay">
+        <fireSize>0.3</fireSize>
+        <offset>(0,-1,0.15)</offset>
+      </li>
+    </comps>
+    <researchPrerequisites>
+      <li>MedTimes_MedievalTechnologies</li>
+    </researchPrerequisites>	
+  </ThingDef>
+
+<!-- ========= Light Based Food Stuff ========= -->
+ <!-- Reflector -->  
+  <ThingDef ParentName="MedTimes_AshKicker">
+    <defName>MedTimes_Reflector</defName>
+    <label>Light Reflector</label>
+    <description>(Glow Radius: 3, UV: 3, No rain damage)(Heat Output: 5)(Coal Consumption: 5)(Beauty +3, Clean -15) Highly polished metal plates that reflect massive amounts of fire light in a concentrated area. Not the best growing solution, but better than nothing. The high light output requires the use of coal as a fuel source. Be careful as these contraptions have been known to turn a room into hell incarnate... At least the plants like it. "Coal Chunks" can be mined at a quarry or manufactured at a crafting spot or crafting station.</description>
+
+    <graphicData>
+      <texPath>Things/Building/Medieval/Reflector/MedTimes_Reflector</texPath>
+      <graphicClass>Graphic_Single</graphicClass>	 
+      <shaderType>CutoutComplex</shaderType>	  	  
+    </graphicData>
+ 	
+    <rotatable>false</rotatable>	
+    <fillPercent>0.45</fillPercent>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <WorkToBuild>500</WorkToBuild>
+      <Flammability>0</Flammability>
+      <Cleanliness>-15</Cleanliness>
+      <Beauty>3</Beauty>		  
+    </statBases>
+
+    <stuffCategories>
+      <li>Metallic</li>
+    </stuffCategories>
+
+    <costStuffCount>35</costStuffCount>	
+
+    <placeWorkers>
+      <li>PlaceWorker_Heater</li>
+    </placeWorkers>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+	
+    <comps>
+      <li Class="CompProperties_Refuelable">
+        <fuelConsumptionRate>10</fuelConsumptionRate>
+        <fuelCapacity>75.0</fuelCapacity>
+        <fuelFilter>
+			<thingDefs>
+				<li>MedTimes_Resource_Coal</li>
+			</thingDefs>
+		</fuelFilter>
+      </li>	  
+      <li Class="CompProperties_Glower">
+        <overlightRadius>3</overlightRadius>	  
+        <glowRadius>5</glowRadius>
+        <glowColor>(252,187,113,0)</glowColor>
+      </li>
+      <li Class="CompProperties_HeatPusher">
+        <compClass>CompHeatPusherPowered</compClass>	  
+        <heatPerSecond>5</heatPerSecond>
+        <heatPushMaxTemperature>35</heatPushMaxTemperature>		
+      </li>
+      <li Class="CompProperties_FireOverlay">
+        <fireSize>0.3</fireSize>
+        <offset>(0,0,0)</offset>
+      </li>
+    </comps>
+    <specialDisplayRadius>1.95</specialDisplayRadius>
+    <researchPrerequisites><li>MedTimes_MedievalTechnologies</li></researchPrerequisites>	
+  </ThingDef>
+
+  
+<!-- Gardening Box -->
+<ThingDef ParentName="MedTimes_BuildingBaseTag">
+    <defName>MedTimes_GardeningBox</defName>
+    <label>Gardening Box</label>
+    <description>[Plant Growing Location](Clean -5) For growing food. Requires 51% light to grow food. Can be used Outside in desert enviroments or inside in combination with a sun lamp or a "Light Reflector"(available under Medieval Food Systems research). A gardening box is old school technology that still works wonders. Putting dirt in a box gives you the ability to grow plants where you want and under the conditions you desire. It also makes it easier to keep your food source away from raiders.</description>	
+    <thingClass>Building_PlantGrower</thingClass>
+    <graphicData>
+      <texPath>Things/Building/Medieval/Gardening/MedTimes_GardeningBox</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>	  
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>25</costStuffCount>	
+    <statBases>
+		<MaxHitPoints>50</MaxHitPoints> 
+		<WorkToBuild>300</WorkToBuild>
+		<Flammability>1.0</Flammability>
+		<Cleanliness>-5</Cleanliness>
+		<Mass>10</Mass>	  
+    </statBases>
+    <altitudeLayer>LowPlant</altitudeLayer>
+    <size>(1,1)</size>		
+    <useHitPoints>True</useHitPoints>	
+	  <tickerType>Rare</tickerType>
+    <fillPercent>0.25</fillPercent>	
+    <fertility>1.0</fertility>
+    <passability>Standable</passability>
+    <pathCost>35</pathCost>	
+    <comps><li Class="CompProperties_Forbiddable"/></comps>
+    <building>
+      <defaultPlantToGrow>Plant_Strawberry</defaultPlantToGrow>
+      <sowTag>Hydroponic</sowTag>	  
+    </building>
+
+    <thingCategories><li>BuildingsProduction</li></thingCategories>		
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <researchPrerequisites><li>MedTimes_MedievalTechnologies</li></researchPrerequisites>	
+  </ThingDef>
+
+
+  
+<!-- =========================**** Workbenches ****==========================-->
+<!-- ===================== Crafting Tech ======================--> 
+<!-- Personal Desk -->
+  <ThingDef ParentName="MedTimes_BenchBaseTag">
+    <defName>MedTimes_Desk</defName>
+    <label>Desk</label>
+    <thingClass>Building_WorkTable</thingClass>	
+    <description>A personal Desk for your room which can be used to eat at. Made from Cherrywood, this desk comes complete with spare paper and a glass inkwell. Write personal logs or a short story, keep tabs on important business or work related matters. Realistically desks are important to have for your own personal room, provided of course that your a person of prestige in the colony.</description>
+    <size>(3,1)</size>
+    <surfaceType>Eat</surfaceType>		
+	
+    <graphicData>
+      <texPath>Things/Building/Medieval/Desk/MedTimes_Desk</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(2.5,1)</drawSize>	
+    </graphicData>
+	
+    <costList>
+      <WoodLog>60</WoodLog>
+    </costList>		
+			
+    <statBases>
+      <JoyGainFactor>1</JoyGainFactor>	  
+      <Beauty>20</Beauty>	  
+    </statBases>
+	
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <fillPercent>0.5</fillPercent>	
+    <hasInteractionCell>true</hasInteractionCell>
+    <interactionCellOffset>(0,0,1)</interactionCellOffset>	
+    <rotatable>true</rotatable>
+	
+    <building><joyKind>Gaming_Cerebral</joyKind></building>	
+    <inspectorTabs><li>ITab_Bills</li></inspectorTabs>	
+    <researchPrerequisites>
+		<li>MedTimes_MedievalCrafting</li>
+	</researchPrerequisites>
+  </ThingDef>
+
+  
+<!-- (Medieval) Crafting Station -->
+  <ThingDef ParentName="MedTimes_BenchBaseTag">
+    <defName>MedTimes_CraftingStation</defName>
+    <label>Crafting Station</label>
+    <thingClass>Building_WorkTable</thingClass>
+    <description>[Create Crafted Goods](Clean -3) A crafting station equipped with various tools for the production of various necessities and trade goods.</description>
+    <size>(3,1)</size>
+	
+    <graphicData>
+      <texPath>Things/Building/Medieval/CraftingStation/MedTimes_CraftingStation</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>	  
+      <drawSize>(3,1)</drawSize>	  
+    </graphicData>
+		<uiIconPath>Things/Building/Medieval/CraftingStation/MedTimes_CraftingStation_Icon</uiIconPath>	
+    <stuffCategories>
+      <li>Woody</li>
+    </stuffCategories>
+    <costStuffCount>50</costStuffCount>
+    <costList><MedTimes_CraftingTools>1</MedTimes_CraftingTools></costList>	
+    <fillPercent>0.5</fillPercent>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+
+    <comps>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>ToolCabinet</li>
+        </linkableFacilities>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>MedTimes_MedievalCrafting</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  
+<!-- (Medieval) Artisan Station -->
+  <ThingDef ParentName="MedTimes_BenchBaseTag">
+    <defName>MedTimes_ArtisanStation</defName>
+    <label>Artisan Station</label>
+    <thingClass>Building_WorkTable</thingClass>
+    <description>[Create Artisan Goods](Clean -3) An Artisan station equipped with various tools for the production of various sculptures and decorative goods.</description>
+    <size>(3,1)</size>
+	
+    <graphicData>
+      <texPath>Things/Building/Medieval/ArtisanStation/MedievalTimes_ArtisanStation</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>	  
+      <drawSize>(3.2,1.04)</drawSize>	  
+    </graphicData>
+		<uiIconPath>Things/Building/Medieval/ArtisanStation/MedievalTimes_ArtisanStation_Icon</uiIconPath>			  
+    <stuffCategories>
+      <li>Woody</li>
+    </stuffCategories>
+    <costStuffCount>50</costStuffCount>
+    <costList><MedTimes_CraftingTools>1</MedTimes_CraftingTools></costList>
+	
+    <fillPercent>0.5</fillPercent>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+
+    <comps>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>ToolCabinet</li>
+        </linkableFacilities>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>MedTimes_MedievalCrafting</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  
+<!-- ===================== Food Production Tech ======================-->  
+<!-- (Medieval) FoodPrep Station -->
+  <ThingDef ParentName="MedTimes_BenchBaseTag">
+    <defName>MedTimes_FoodPrepStation</defName>
+    <label>FoodPrep Station</label>
+    <thingClass>Building_WorkTable</thingClass>
+    <description>[Cook's Bulk Meals](Being Used; Wood Fuel Consumption: 25)(Clean -5) A Food preparation station equipped with various tools and a large cooker's cauldron. These items can be used in the long term storage processes of various foods or the creation of large quantities of various food-stuffs such as stews and cheese.</description>
+    <size>(3,1)</size>	
+	
+    <graphicData>
+      <texPath>Things/Building/Medieval/FoodPrepStation/MedTimes_FoodPrepStation</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>	  
+      <drawSize>(3,1)</drawSize>	  
+    </graphicData>
+		<uiIconPath>Things/Building/Medieval/FoodPrepStation/MedTimes_FoodPrepStation_Icon</uiIconPath>	
+    <costList><Steel>50</Steel></costList>
+    <stuffCategories>
+      <li>Woody</li>
+    </stuffCategories>
+    <costStuffCount>35</costStuffCount>	
+	
+    <fillPercent>0.5</fillPercent>
+    <useHitPoints>True</useHitPoints>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <comps>
+      <li Class="CompProperties_Refuelable">
+        <fuelConsumptionRate>25</fuelConsumptionRate>
+        <fuelCapacity>75.0</fuelCapacity>
+        <fuelFilter>
+			<thingDefs>
+				<li>MedTimes_Resource_Coal</li>
+				<li>WoodLog</li>
+			</thingDefs>
+		</fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>		
+      </li>
+    </comps>
+    <building><isMealSource>true</isMealSource></building>		
+    <researchPrerequisites>
+      <li>MedTimes_MedievalFoodStorage</li>
+    </researchPrerequisites>
+  </ThingDef>
+  
+
+<!-- ===================== Tailoring Tech ======================-->    
+<!-- (Medieval) Tailoring Station -->
+  <ThingDef ParentName="MedTimes_BenchBaseTag">
+    <defName>MedTimes_TailoringStation</defName>
+    <label>Tailoring Station</label>
+    <thingClass>Building_WorkTable</thingClass>
+    <description>[Create Medieval Clothing, Disassemble clothing](Clean -3) A Tailoring station equipped with various tools for the production and disassembly of various medieval clothings.</description>
+    <size>(3,1)</size>
+	
+    <graphicData>
+      <texPath>Things/Building/Medieval/TailoringStation/MedTimes_TailoringStation</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>	
+      <drawSize>(3,1)</drawSize>	  
+    </graphicData>
+		<uiIconPath>Things/Building/Medieval/TailoringStation/MedTimes_TailoringStation_Icon</uiIconPath>	
+    <costList>
+      <MedTimes_CraftingTools>1</MedTimes_CraftingTools>	  
+    </costList>
+    <stuffCategories>
+      <li>Woody</li>
+    </stuffCategories>
+    <costStuffCount>50</costStuffCount>		
+	
+    <fillPercent>0.5</fillPercent>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+	
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+
+    <comps>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>ToolCabinet</li>
+        </linkableFacilities>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>MedTimes_MedievalTailoring</li>
+    </researchPrerequisites>
+  </ThingDef>  
+ 
+ 
+<!-- ===================== Smithing Techs ======================-->  
+  <!--  (Medieval) Tier 1 Blacksmith's Forge -->
+  <ThingDef ParentName="MedTimes_BlacksmithsForgeBase">
+    <defName>MedTimes_BlacksmithForge</defName>
+    <label>Blacksmith's Forge</label>
+    <description>(1st Tier)[Create Weapons/Armour/Tools](Being Used; Wood Fuel Consumption: 50)(Clean -5) A wood-fueled station equipped for smithing medieval era weapons, armour and tools.</description>
+    <size>(2,1)</size>
+	
+    <graphicData>
+      <texPath>Things/Building/Medieval/Forge/MedTimes_Forge_Tier1</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>	  
+      <drawSize>(2,1)</drawSize>  
+    </graphicData>
+		<uiIconPath>Things/Building/Medieval/Forge/MedTimes_Forge_Tier1_Icon</uiIconPath>	
+	
+    <stuffCategories>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>35</costStuffCount>		
+    <costList><Steel>35</Steel></costList>
+
+    <interactionCellOffset>(1,0,-1)</interactionCellOffset>	
+    <researchPrerequisites>
+      <li>MedTimes_MedievalTechnologies</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+  
+  <!--  (Medieval) Tier 2 Blacksmith's Forge -->
+  <ThingDef ParentName="MedTimes_BlacksmithsForgeBase">
+    <defName>MedTimes_BlacksmithForgeTierTwo</defName>
+    <label>Improved Blacksmith's Forge</label>
+    <description>(2nd Tier)[Create Weapons/Armour/Tools](Being Used; Wood Fuel Consumption: 50)(Clean -5) A wood-fueled station equipped for smithing medieval era weapons, armour and tools.</description>
+    <size>(3,3)</size>
+	
+    <graphicData>
+      <texPath>Things/Building/Medieval/Forge/MedTimes_Forge_Tier2</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>	  
+      <drawSize>(3,3)</drawSize>  
+    </graphicData> 
+		<uiIconPath>Things/Building/Medieval/Forge/MedTimes_Forge_Tier2_Icon</uiIconPath>		
+	<costList><Steel>50</Steel></costList>
+    <stuffCategories>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>50</costStuffCount>		
+    <statBases>		
+		<Mass>350</Mass>		  
+    </statBases>
+    <interactionCellOffset>(0,0,0)</interactionCellOffset>	
+    <researchPrerequisites>
+      <li>MedTimes_AdvancedMedievalSmithing</li>
+    </researchPrerequisites>
+  </ThingDef> 
+
+  
+<!--  (Medieval) Blacksmith's Smelter -->  
+  <ThingDef ParentName="MedTimes_BenchBaseTag">
+    <defName>MedTimes_FueledSmelter</defName>
+    <label>Blacksmith's Smelter</label>
+    <thingClass>Building_WorkTable</thingClass>
+    <description>[Smelt Weapons/Armour/Slag Chunks](Being Used; Wood Fuel Consumption: 100)(Clean -5) Extracts usable metal from slag chunks and other mixed metal items. Consumes a lot of wood.</description>
+    <size>(3,1)</size>
+	
+    <graphicData>
+      <texPath>Things/Building/Medieval/Smelter/MedTimes_Smelter</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>	  
+      <drawSize>(3,1)</drawSize>
+    </graphicData>
+		<uiIconPath>Things/Building/Medieval/Smelter/MedTimes_Smelter_Icon</uiIconPath>	
+    <stuffCategories>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>60</costStuffCount>	
+    <costList><Steel>15</Steel></costList>
+	
+    <statBases>
+		<WorkToBuild>1500</WorkToBuild>
+		<MaxHitPoints>180</MaxHitPoints>
+		<Mass>200</Mass>	  
+    </statBases>
+
+    <fillPercent>0.5</fillPercent>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+	
+    <recipes>
+      <li>ExtractMetalFromSlag</li>
+	  <li>MedTimes_SmeltArmor</li>
+      <li>SmeltWeapon</li>
+    </recipes>
+	
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <comps>
+      <li Class="CompProperties_Refuelable">
+        <fuelConsumptionRate>100.0</fuelConsumptionRate>
+        <fuelCapacity>75.0</fuelCapacity>
+        <fuelFilter>
+			<thingDefs>
+				<li>MedTimes_Resource_Coal</li>
+				<li>WoodLog</li>
+			</thingDefs>
+		</fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+      </li>	  
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>ToolCabinet</li>
+        </linkableFacilities>
+      </li>	  
+    </comps>
+    <building>
+      <heatPerTickWhileWorking>0.5</heatPerTickWhileWorking>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+    </placeWorkers>	
+    <researchPrerequisites>
+	         <li>MedTimes_AdvancedMedievalSmithing</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+
+ 
+<!-- ========================= Coal Resource Items/Buildings ==========================-->
+<!-- (Medieval) Stone Quarry -->
+  <ThingDef ParentName="MedTimes_BenchBaseTag">
+    <defName>MedTimes_StoneQuarry</defName>
+    <label>Stone Quarry</label>
+    <thingClass>Building_WorkTable</thingClass>
+    <description>[Create Stone Chunks](Clean -3) A Stone Quarry equipped with various tools used for the production of various types of stone chunks.</description>
+    <size>(5,5)</size>
+	
+    <graphicData>
+      <texPath>Things/Building/Medieval/Quarry/MedTimes_StoneQuarry</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>	  
+      <drawSize>(5,5)</drawSize>	  
+    </graphicData>
+    <uiIconPath>Things/Building/Medieval/Quarry/MedTimes_StoneQuarry_Icon</uiIconPath>		
+
+    <costList>
+      <MedTimes_CraftingTools>1</MedTimes_CraftingTools>		  
+    </costList>
+    <stuffCategories>
+      <li>Woody</li>
+    </stuffCategories>
+    <costStuffCount>50</costStuffCount>		
+	
+    <fillPercent>0.5</fillPercent>
+
+    <statBases>
+		<WorkToBuild>5000</WorkToBuild>
+		<MaxHitPoints>500</MaxHitPoints>
+		<Flammability>0</Flammability>
+		<Mass>500</Mass>	  
+    </statBases>
+
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(1,0,-3)</interactionCellOffset>
+	
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <comps>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>ToolCabinet</li>
+        </linkableFacilities>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+    </placeWorkers>
+    <researchPrerequisites>
+      <li>MedTimes_MedievalCrafting</li>	
+      <li>Stonecutting</li>
+    </researchPrerequisites>
+  </ThingDef>
+  
+
+    
+  
+  
+<!-- ========================= Ice Resource Items/Buildings ==========================-->
+<!-- Ice Creation Station -->
+  <ThingDef ParentName="MedTimes_BenchBaseTag">
+    <defName>MedTimes_IceCreationStation</defName>
+    <label>Ice Creation Station</label>
+    <thingClass>Building_WorkTable</thingClass>
+    <description>[Create Ice Blocks](Clean -3) Originally developed by the ancient Greeks, co-opted by the Romans, and used throughout the Medieval and modern era. Various methods exist that use endothermic principals to create Ice from the evaporation of water. Although it is simpler to just import the ice, This labour intensive "Creation Station" will allow you to create small amounts of ice even in the desert.</description>
+    <size>(1,1)</size>
+	
+    <graphicData>
+      <texPath>Things/Building/Medieval/IceCreation/MedTimes_IceCreation</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.2,1.2)</drawSize>	  
+    </graphicData>
+		<uiIconPath>Things/Building/Medieval/IceCreation/MedTimes_IceCreation</uiIconPath>		
+
+	<costList>
+	  <MedTimes_StoragePot>1</MedTimes_StoragePot>	
+      <Hay>50</Hay>
+    </costList>
+	
+    <constructEffect>ConstructWood</constructEffect>
+    <fillPercent>0.1</fillPercent>
+
+    <statBases>
+		<MaxHitPoints>50</MaxHitPoints>
+		<Mass>40</Mass>	  
+    </statBases>
+
+
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,1)</interactionCellOffset>
+
+    <recipes>
+      <li>MedTimes_MakeIceBlocks</li>
+    </recipes>
+		
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <comps>
+      <li Class="CompProperties_Refuelable">
+        <fuelConsumptionRate>25.0</fuelConsumptionRate>
+        <fuelCapacity>50.0</fuelCapacity>
+        <fuelFilter><thingDefs><li>Hay</li></thingDefs></fuelFilter>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <fuelIconPath>Things/Item/Resource/PlantFoodRaw/Hay/Hay_b</fuelIconPath>
+      </li>
+    </comps>
+
+    <researchPrerequisites>
+      <li>MedTimes_MedievalFoodStorage</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+
+<!-- Ice Gathering Station -->
+  <ThingDef ParentName="MedTimes_BuildingBaseTag">
+    <defName>MedTimes_IceGatheringStation</defName>
+    <label>Ice Gathering Station</label>
+    <thingClass>Building_WorkTable</thingClass>
+    <description>[Create Ice Blocks](Clean -3)(Will self destruct in temps above freezing) Ice is a really valuable resource, right? So if your in the middle of the Antarctic it only makes sense to gather some up and sell it to a passing trader. It's not like they can just grab it themselves, turning snow into ice can be an exhaustive process. Not to mention that it's on your land, and therefore your property.</description>
+    <size>(1,1)</size>
+	
+    <graphicData>
+      <texPath>Things/Building/Misc/PartySpot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1.2,1.2)</drawSize>	  
+    </graphicData>
+		<uiIconPath>Things/Building/Misc/PartySpot</uiIconPath>		
+
+    <statBases>
+      <WorkToBuild>0</WorkToBuild>
+      <MaxHitPoints>1</MaxHitPoints>
+      <Flammability>0</Flammability>
+    </statBases>
+	
+    <useHitPoints>True</useHitPoints>	
+    <altitudeLayer>FloorEmplacement</altitudeLayer>	
+    <passability>Standable</passability>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,0)</interactionCellOffset>
+    <surfaceType>Item</surfaceType>
+    <tickerType>Rare</tickerType>	
+
+    <recipes>
+      <li>MedTimes_GatherIceBlocks</li>
+    </recipes>
+		
+    <inspectorTabs>
+      <li>ITab_Bills</li>
+    </inspectorTabs>
+    <comps>
+      <li><compClass>CompMelter</compClass></li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_NotUnderRoof</li>	  
+    </placeWorkers>
+  </ThingDef>
+  
+<!-- (Medieval) Fancy Icebox -->
+  <ThingDef ParentName="MedTimes_BenchBaseTag">
+    <defName>MedTimes_Icebox</defName>
+    <label>Ice Box</label>
+    <description>[Consumes Ice](Heat Output: -10)(Ice Block Consumption: 15)(Clean -10, Beauty -5) A traditional un-powered cooler that works by sticking Ice in a metal box. If you have enough of these you can bring a room's temperature down to just above freezing. Will run out of ice after only a few days. This one is fairly crude and tends to rust while leaking water all over the place</description>
+    <graphicData>
+      <texPath>Things/Building/Medieval/Icebox/MedTimes_Icebox</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+
+    <stuffCategories>
+      <li>Metallic</li>
+    </stuffCategories>
+	
+    <costStuffCount>35</costStuffCount>
+	
+    <statBases>
+      <WorkToBuild>600</WorkToBuild>
+      <Flammability>0</Flammability>
+      <Cleanliness>-10</Cleanliness>
+      <Beauty>-5</Beauty>
+	  <Mass>60</Mass>		  
+    </statBases>
+	
+    <tickerType>Normal</tickerType>
+    <fillPercent>0.65</fillPercent>
+    <castEdgeShadows>true</castEdgeShadows>	
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+	
+    <placeWorkers>
+      <li>PlaceWorker_CoolerSimple</li>
+    </placeWorkers>
+
+    <comps>	
+      <li Class="CompProperties_Forbiddable"/>	
+      <li Class="CompProperties_Refuelable">  
+        <fuelConsumptionRate>15.0</fuelConsumptionRate>
+        <fuelCapacity>30.0</fuelCapacity>	
+        <fuelFilter><thingDefs><li>MedTimes_Resource_IceBlocks</li></thingDefs></fuelFilter>
+        <fuelIconPath>Things/Item/Resource/Ice/MedTimes_NoIceBlocks</fuelIconPath>			
+      </li>	
+      <li Class="CompProperties_HeatPusher">
+        <compClass>CompHeatPusherPowered</compClass>
+        <heatPerSecond>-10</heatPerSecond>
+        <heatPushMinTemperature>1</heatPushMinTemperature>		
+      </li>
+    </comps>
+    <researchPrerequisites>
+      <li>MedTimes_MedievalFoodStorage</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+
+<!-- (Medieval) Fancy Icebox -->
+  <ThingDef ParentName="MedTimes_BenchBaseTag">
+    <defName>MedTimes_IceboxFancy</defName>
+    <label>Fancy Ice Box</label>
+    <description>[Consumes Ice](Heat Output: -10)(Ice Block Consumption: 15)(Beauty 10) A traditional un-powered cooler that works by sticking Ice in a metal box. This particular one is quite fancy, making it pretty to look at. It also has a place for melting Ice water to gather instead of pooling on the ground beneath it. If you have enough of these you can bring a room's temperature down to just above freezing. Will run out of ice after only a few days.</description>
+    <graphicData>
+      <texPath>Things/Building/Medieval/Icebox/MedTimes_Icebox_Fancy</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+
+    <costList>
+      <Steel>30</Steel>
+	  <WoodLog>10</WoodLog>
+	  <Gold>10</Gold>
+    </costList>
+	
+    <statBases>
+      <WorkToBuild>600</WorkToBuild>
+      <Flammability>0</Flammability>
+      <Beauty>10</Beauty>
+	  <Mass>60</Mass>		  
+    </statBases>
+	
+    <tickerType>Normal</tickerType>
+    <fillPercent>0.65</fillPercent>
+    <castEdgeShadows>true</castEdgeShadows>	
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>	
+    <placeWorkers>
+      <li>PlaceWorker_CoolerSimple</li>
+    </placeWorkers>	
+
+    <comps>	
+      <li Class="CompProperties_Forbiddable"/>	
+      <li Class="CompProperties_Refuelable">  
+        <fuelConsumptionRate>15.0</fuelConsumptionRate>
+        <fuelCapacity>30.0</fuelCapacity>	
+        <fuelFilter><thingDefs><li>MedTimes_Resource_IceBlocks</li></thingDefs></fuelFilter>
+        <fuelIconPath>Things/Item/Resource/Ice/MedTimes_NoIceBlocks</fuelIconPath>		
+      </li>	
+      <li Class="CompProperties_HeatPusher">
+        <compClass>CompHeatPusherPowered</compClass>
+        <heatPerSecond>-10</heatPerSecond>
+        <heatPushMinTemperature>1</heatPushMinTemperature>		
+      </li>
+    </comps>
+    <researchPrerequisites>
+      <li>MedTimes_MedievalFoodStorage</li>
+    </researchPrerequisites>
+  </ThingDef>  
+  
+  
+  
+<!-- ========================= Non-Makeable Items/Buildings ==========================-->
+<!--  (Medieval) Top Tier Eternity Forge -->
+  <ThingDef ParentName="MedTimes_BenchBase">
+    <defName>MedTimes_EternityForge</defName>
+    <label>Eternity Forge</label>
+    <thingClass>Building_WorkTable</thingClass>
+    <description>[Makes items unbreakable](Energy Consumption: 1000) Indigenous tribals and local Medieval tribes call it an "Eternity Forge", The mythos surrounding these items and their ability to create legendary weapons are ingrained in the minds of everyone living on this world. Officially It's known as a "Replicator Nanite Tool and Ordinance Combiner" or commonly refered to as a "Roc'Toc" and is made by Eternity Industries. This machine infuses replicator nanites into tools, armour and weapons of all shapes and sizes. The proccess leaves the item in a continually regenerative state scraping materials from its surrounding to effect repairs. Because of it's highly complicated nature, the technical skillset required to operate the machine is astoundingly high and requires specific scematics to be programed into the machine directly. Despite the technical difficulties it's benefits of customizable high end self repairing items are both astounding and of unbelivable value.</description>
+    <size>(3,1)</size>
+	
+    <graphicData>
+      <texPath>Things/Building/Medieval/EternityForge/MedievalTimes_EternityForge</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3,1)</drawSize>
+    </graphicData>
+	
+    <statBases>
+      <MaxHitPoints>300</MaxHitPoints>
+      <MarketValue>12000</MarketValue>	  
+    </statBases>
+
+    <fillPercent>0.5</fillPercent>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+	
+    <inspectorTabs><li>ITab_Bills</li></inspectorTabs>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>1000</basePowerConsumption>
+        <shortCircuitInRain>true</shortCircuitInRain>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>MultiAnalyzer</li>
+        </linkableFacilities>
+      </li>
+    </comps>
+    <building>
+      <heatPerTickWhileWorking>2</heatPerTickWhileWorking>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_ShowFacilitiesConnections</li>
+    </placeWorkers>	
+  </ThingDef>  
+  
+<!-- Personal Computer -->
+  <ThingDef ParentName="MedTimes_BenchBase">
+    <defName>MedTimes_PersonalComputer</defName>
+    <label>Personal Computer</label>
+    <description>A personal computer for all your gaming needs. It even comes with several of the most popular games pre-installed. It's a relaxing and fun hobby for a certain kind of person.</description>
+
+    <graphicData>
+      <texPath>Things/Building/Medieval/PersonalComputer/MedTimes_PersonalComputer</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3,1)</drawSize>	
+    </graphicData>
+
+    <socialPropernessMatters>true</socialPropernessMatters>	
+    <size>(3,1)</size>	
+    <fillPercent>0.5</fillPercent>	
+    <hasInteractionCell>true</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>	
+    <rotatable>true</rotatable>
+	
+    <statBases>	
+      <MaxHitPoints>100</MaxHitPoints>	  
+      <Flammability>1.0</Flammability>
+      <MarketValue>2350</MarketValue>
+      <JoyGainFactor>1.65</JoyGainFactor>	  
+      <Beauty>60</Beauty>	  
+    </statBases>
+
+    <building><joyKind>Gaming_Dexterity</joyKind></building>
+	
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <shortCircuitInRain>true</shortCircuitInRain>
+        <basePowerConsumption>200</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+    </comps>
+
+		<tradeTags>
+			<li>Television</li>
+			<li>Exotic</li>
+			<li>Joy</li>			
+		</tradeTags>	
+  </ThingDef>   
+
+  
+<!-- Coal Generator -->
+  <ThingDef ParentName="MedTimes_NoQualityBase">
+    <defName>MedTimes_CoalGenerator</defName>
+    <label>coal-fired generator</label>
+    <thingClass>Building</thingClass>
+    <description>(Beauty -3) Produces power by consuming coal as fuel. Must be fueled by hand.</description>
+	
+    <graphicData>
+      <texPath>Things/Building/Power/WoodFiredGenerator</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2,2)</drawSize>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>150</pathCost>
+    <blockWind>true</blockWind>
+    <fillPercent>1.0</fillPercent>
+    <castEdgeShadows>false</castEdgeShadows>
+    <rotatable>false</rotatable>
+    <statBases>
+		<MaxHitPoints>300</MaxHitPoints>
+		<WorkToBuild>2500</WorkToBuild>
+		<Beauty>-3</Beauty>
+		<Mass>120</Mass>			
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <canOverlapZones>false</canOverlapZones>
+    <size>(2,2)</size>
+    <costList>
+      <Steel>100</Steel>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerPlant</compClass>
+        <basePowerConsumption>-1000</basePowerConsumption>
+        <transmitsPower>true</transmitsPower>
+      </li>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Refuelable">
+        <fuelConsumptionRate>10.0</fuelConsumptionRate>
+        <fuelCapacity>75.0</fuelCapacity>
+        <fuelFilter>
+          <thingDefs>
+				<li>MedTimes_Resource_Coal</li>
+          </thingDefs>
+        </fuelFilter>
+        <fuelIconPath>Things/Item/Resource/Coal/MedTimes_NoCoal</fuelIconPath>		
+      </li>
+      <li Class="CompProperties_Glower">
+        <glowRadius>6</glowRadius>
+        <glowColor>(217,112,33,0)</glowColor>
+      </li>
+      <li Class="CompProperties_HeatPusher">
+        <compClass>CompHeatPusherPowered</compClass>
+        <heatPerSecond>4</heatPerSecond>
+      </li>
+      <li Class="CompProperties_Breakdownable"/>
+    </comps>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>Power</designationCategory>
+    <staticSunShadowHeight>0.5</staticSunShadowHeight>
+    <constructEffect>ConstructMetal</constructEffect>
+    <researchPrerequisites>
+      <li>Electricity</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+  </ThingDef>
+  
+  
+<!-- End of ThingDefs --> 
+</Defs>

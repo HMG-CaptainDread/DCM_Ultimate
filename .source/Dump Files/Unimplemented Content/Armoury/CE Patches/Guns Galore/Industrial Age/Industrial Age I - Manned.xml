@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+		<Operation Class="PatchOperationSequence">
+			<operations>
+					<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[
+						defName = "CGF1_MWP_Turret_Maxim_M1889_Prussian_" or
+						defName = "CGF1_MWP_Turret_SalvatorDormus_M1893_"		 			
+					]/thingClass</xpath>
+					<value>
+					  <thingClass>CombatExtended.Building_TurretGunCE</thingClass>
+					</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[	
+						defName = "CGF1_MWP_Turret_Maxim_M1889_Prussian_" or
+						defName = "CGF1_MWP_Turret_SalvatorDormus_M1893_"
+					]/fillPercent</xpath>
+					<value>
+					  <fillPercent>0.85</fillPercent>
+					</value>
+				</li>
+
+		<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+			<defName>CGF1_MWP_TurretGun_Maxim_M1889_Prussian_</defName>
+			<statBases>
+				<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+				<SightsEfficiency>1</SightsEfficiency>
+				<ShotSpread>0.08</ShotSpread>
+				<SwayFactor>1.16</SwayFactor>
+			</statBases>
+				<Properties>
+					<recoilAmount>0.81</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>True</hasStandardCommand>
+					<defaultProjectile>Bullet_11x60mmRMauser_FMJ</defaultProjectile>
+					<warmupTime>1.2</warmupTime>
+					<range>70</range>
+					<burstShotCount>12</burstShotCount>
+					<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+					<soundCast>CGF1_MWP_SFX_MG_Medium7</soundCast>
+					<soundCastTail>GunTail_Medium</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+			  </Properties>
+			  <AmmoUser>
+					<magazineSize>100</magazineSize>
+					<reloadTime>4.9</reloadTime>
+					<ammoSet>AmmoSet_11x60mmRMauser</ammoSet>
+			  </AmmoUser>
+			  <FireModes>
+					<aimedBurstShotCount>6</aimedBurstShotCount>
+					<aiAimMode>SuppressFire</aiAimMode>
+			  </FireModes>
+			  <weaponTags Inherit="False">
+					<li>TurretGun</li>
+			  </weaponTags>
+			</li>
+			
+			<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+			<defName>CGF1_MWP_TurretGun_SalvatorDormus_M1893_</defName>
+			<statBases>
+				<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+				<SightsEfficiency>1</SightsEfficiency>
+				<ShotSpread>0.08</ShotSpread>
+				<SwayFactor>1.16</SwayFactor>
+			</statBases>
+				<Properties>
+					<recoilAmount>0.81</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>True</hasStandardCommand>
+					<defaultProjectile>Bullet_8x50mmRMannlicher_FMJ</defaultProjectile>
+					<warmupTime>1.2</warmupTime>
+					<range>70</range>
+					<burstShotCount>12</burstShotCount>
+					<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+					<soundCast>CGF1_MWP_SFX_Rifle_Auto10</soundCast>
+					<soundCastTail>GunTail_Medium</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+			  </Properties>
+			  <AmmoUser>
+					<magazineSize>30</magazineSize>
+					<reloadTime>4.3</reloadTime>
+					<ammoSet>AmmoSet_8x50mmRMannlicher</ammoSet>
+			  </AmmoUser>
+			  <FireModes>
+					<aimedBurstShotCount>6</aimedBurstShotCount>
+					<aiAimMode>SuppressFire</aiAimMode>
+			  </FireModes>
+			  <weaponTags Inherit="False">
+					<li>TurretGun</li>
+			  </weaponTags>
+			</li>
+		</operations>
+	</Operation>
+</Patch>    

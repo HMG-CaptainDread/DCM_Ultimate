@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<Operation Class="MO_Patches.PatchOperation_ToggleSettings">
+		<settings>
+			<li>building_bloat</li>
+		</settings>
+		<active Class="PatchOperationSequence">
+			<operations>
+
+				<!-- Hide Stew Pot -->
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[defName="VCE_StewPot"]/designationCategory</xpath>
+					<match Class="PatchOperationRemove">
+						<xpath>Defs/ThingDef[defName="VCE_StewPot"]/designationCategory</xpath>
+					</match>
+				</li>
+
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[defName="VCE_StewPot"]/researchPrerequisites</xpath>
+					<match Class="PatchOperationRemove">
+						<xpath>Defs/ThingDef[defName="VCE_StewPot"]/researchPrerequisites</xpath>
+					</match>
+				</li>
+
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ResearchProjectDef[defName="VCE_StewCooking"]</xpath>
+					<match Class="PatchOperationRemove">
+						<xpath>Defs/ResearchProjectDef[defName="VCE_StewCooking"]</xpath>
+					</match>
+				</li>
+
+			</operations>
+		</active>
+	</Operation>
+
+</Patch>

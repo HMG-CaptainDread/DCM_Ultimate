@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+  <!-- Smokeleaf -->
+	
+  <Operation Class="PatchOperationAdd">
+    <xpath>*/ThingDef[defName = "SmokeleafJoint"]/recipeMaker</xpath>
+    <value>
+      <researchPrerequisite>TS_Smokeleaf</researchPrerequisite>
+    </value>
+  </Operation>
+  
+<!-- psychite -->
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>*/ThingDef[defName = "PsychiteTea"]/recipeMaker/researchPrerequisite</xpath>
+    <value>
+      <researchPrerequisite>TS_Psychoid</researchPrerequisite>
+    </value>
+  </Operation>
+  
+  <!-- armor -->
+
+  <Operation Class="PatchOperationConditional">
+    <xpath>*/ResearchProjectDef[defName="CarpetMaking"]/prerequisites</xpath>
+    <match Class="PatchOperationReplace">
+		<xpath>*/ResearchProjectDef[defName="CarpetMaking"]/prerequisites</xpath>
+		<value>
+		  <prerequisites>
+			<li>TS_PrimitiveClothing</li>
+			<li>TS_IndoorFlooring</li>
+		  </prerequisites>
+		</value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+		<xpath>*/ResearchProjectDef[defName="CarpetMaking"]</xpath>
+		<value>
+		  <prerequisites>
+			<li>TS_PrimitiveClothing</li>
+			<li>TS_IndoorFlooring</li>
+		  </prerequisites>
+		</value>
+    </nomatch>
+  </Operation>
+  
+<!-- armor -->
+  
+  <Operation Class="PatchOperationAdd">
+    <xpath>*/ThingDef[defName = "Apparel_WarMask"]/recipeMaker</xpath>
+    <value>
+      <researchPrerequisite>TS_PrimitiveArmor</researchPrerequisite>
+    </value>
+  </Operation>
+  
+<!-- methodical research -->
+
+  <Operation Class="PatchOperationConditional">
+		<xpath>/Defs/ThingDef[defName="SimpleResearchBench"]/researchPrerequisites</xpath>
+		<match Class="PatchOperationReplace">
+			<xpath>/Defs/ThingDef[defName="SimpleResearchBench"]/researchPrerequisites</xpath>
+			<value>
+			  <researchPrerequisites>
+				<li>TS_MethodicalResearch</li>
+			  </researchPrerequisites>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[defName="SimpleResearchBench"]</xpath>
+			<value>
+			  <researchPrerequisites>
+				<li>TS_MethodicalResearch</li>
+			  </researchPrerequisites>
+			</value>
+		</nomatch>
+	</Operation>  
+  
+<!-- short bow -->
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "Bow_Short"]/recipeMaker</xpath>
+    <value>
+      <researchPrerequisite>TS_ShortBow</researchPrerequisite>
+    </value>
+  </Operation>
+  
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ResearchProjectDef[defName = "Greatbow"]/prerequisites</xpath>
+    <value>
+		<prerequisites>
+			<li>MedTimes_Toolworking</li>
+			<li>RecurveBow</li>
+		</prerequisites>
+    </value>
+  </Operation>
+  
+<!-- traps -->
+  
+  <Operation Class="PatchOperationAdd">
+    <xpath>*/ThingDef[defName = "TrapSpike"]</xpath>
+    <value>
+      <researchPrerequisites>
+        <li>TS_BasicTraps</li>
+      </researchPrerequisites>
+    </value>
+  </Operation>
+  
+<!-- flagstone -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/TerrainDef[@Name = "FlagstoneBase"]</xpath>
+    <value>
+      <researchPrerequisites>
+        <li>TS_Roads</li>
+      </researchPrerequisites>
+    </value>
+  </Operation>
+
+<!-- bridge -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>*/TerrainDef[defName = "Bridge"]</xpath>
+    <value>
+      <researchPrerequisites>
+        <li>TS_Bridges</li>
+      </researchPrerequisites>
+    </value>
+  </Operation>
+  
+<!-- basic cover -->
+  
+  
+</Patch>

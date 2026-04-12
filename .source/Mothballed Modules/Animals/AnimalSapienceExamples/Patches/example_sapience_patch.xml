@@ -1,0 +1,35 @@
+<Patch>
+  <!--
+  This is an example of how to add sapience chance to an animal.
+  
+  Sapience by this method patches into the pawn generator. This means that pawns CAN get errors during generation if 
+  for example a mod expects the generator to return a regular animal and tries to directly access animal-specific properties 
+  such as trainability.
+
+  It is a bit brute-forced, but should generally be safe to use for modded animals or custom pawnkinds of existing ones.
+
+  The more proper way to make custom sapient-only animals is to use "generateHumanlikeAnimalFromThis"
+  -->
+
+  <!--Make sure  you don't add the extension if it already exists.-->
+  <Operation Class="PatchOperationConditional">
+    <success>Always</success>
+    <xpath>/Defs/PawnKindDef[defName = "Thrumbo"]/modExtensions</xpath>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>/Defs/PawnKindDef[defName = "Thrumbo"]</xpath>
+      <value>
+        <modExtensions />
+      </value>
+    </nomatch>
+  </Operation>
+
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/PawnKindDef[defName="Thrumbo"]/modExtensions</xpath>
+    <value>
+      <li Class="BigAndSmall.PawnKindExtension">
+        <animalSapienceChance>0.5</animalSapienceChance>
+      </li>
+    </value>
+  </Operation>
+</Patch>

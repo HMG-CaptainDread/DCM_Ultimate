@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- RT FUSE -->
+		<Operation Class="PatchOperationFindMod">
+			<mods>
+				<li>RT Fuse</li>
+			</mods>
+			<match Class="PatchOperationSequence">
+				<success>Normal</success>
+				<operations>
+					<!-- CIRCUIT BREAKER -->
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/ThingDef[defName = "Building_RTCircuitBreaker"]/graphicData/texPath</xpath>
+							<value>
+								<texPath>Modules/Production/Retextures/RT_Fuse/Building_RTCircuitBreaker</texPath>
+							</value>
+						</li>
+					<!-- MAKESHIFT FUSE -->
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/ThingDef[defName = "Building_RTMakeshiftFuse"]/graphicData/texPath</xpath>
+							<value>
+								<texPath>Modules/Production/Retextures/RT_Fuse/Building_RTMakeshiftFuse</texPath>
+							</value>
+						</li>
+				</operations>
+			</match>
+		</Operation>
+</Patch>

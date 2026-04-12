@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+    <Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Vanilla Helixien Gas Expanded</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+            <operations>
+                <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="VCEUE_FSXRefinery"]/description</xpath>
+                    <value>
+                        <description>A complex machine capable of refining FSX from neutroamine and chemfuel or neutroamine and helixien gas delivered via pipes into usable chemical components. If no output is detected, the chemical components will automatically be dispensed into cans. If the output is connected to a tank or tap via chemical pipes, the finished product will be transported as such for storage or dispensing.</description>
+                    </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                    <xpath>/Defs/ThingDef[defName="VCEUE_FSXRefinery"]/building/relatedBuildCommands</xpath>
+                    <value>
+                        <li>VHGE_HelixienPipe</li>
+                        <li>VHGE_SubterraneanHelixienPipe</li>
+                        <li>VHGE_GasPipeValve</li>
+                        <li>VHGE_GasTank</li>
+                        <li>VHGE_HelixienPump</li>
+                    </value>
+                </li>
+            </operations>
+        </match>
+        <nomatch Class="PatchOperationSequence">
+            <operations>
+                <li Class="PatchOperationAdd">
+                    <xpath>/Defs/ThingDef[defName="VCEUE_FSXRefinery"]/building/relatedBuildCommands</xpath>
+                    <value>
+                        <li>PS_DeepchemRefinery</li>
+                        <li>VCHE_ChemfuelPipe</li>
+                        <li>VCHE_UndergroundChemfuelPipe</li>
+                        <li>VCHE_ChemfuelValve</li>
+                        <li>PS_ChemfuelTank</li>
+                        <li>VCHE_ChemfuelTap</li>
+                        <li>VCHE_ChemfuelDrain</li>
+                    </value>
+                </li>
+            </operations>
+        </nomatch>
+    </Operation>
+</Patch>

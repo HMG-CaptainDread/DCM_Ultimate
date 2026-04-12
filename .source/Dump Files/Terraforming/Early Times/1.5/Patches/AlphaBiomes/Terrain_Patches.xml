@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>Alpha Biomes</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+		
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/TerraformTech.TerrainTerraformRuleSet[defName="Terraform_BasicSoilRemoval"]/rules/li[patchTag="SoilFromMud"]/sourceDefs</xpath>
+				<value>
+					  <li>AB_DenseMud</li>
+					  <li>AB_WebbedMarshyTerrain</li>
+					  <li>AB_CrackedMud</li>
+					  <li>AB_DarkMud</li>
+					  <li>AB_ParchedEarth</li>
+				</value>
+			</li>
+			
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/TerraformTech.TerrainTerraformRuleSet[defName="Terraform_BasicSoilRemoval"]/rules/li[patchTag="SoilFromSoftSand"]/sourceDefs</xpath>
+				<value>
+					  <li>AB_FineForsakenSand</li>
+					  <li>AB_ForsakenSand</li>
+					  <li>AB_FineSand</li>
+					  <li>GU_AlienSandFine</li>
+					  <li>AB_GrassySand</li>
+				</value>
+			</li>
+			
+			<!--pick rock -->
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/TerraformTech.TerrainTerraformRuleSet[defName="Terraform_BasicSoilRemoval"]/rules/li[patchTag="SoilFromGravel"]/sourceDefs</xpath>
+				<value>
+					  <li>AB_ForsakenRock</li>
+					  <li>AB_SoilOnCrackedMetal</li>
+					  <li>AB_BlackPebbles</li>
+				</value>
+			</li>
+				
+			<!--to soil -->
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/TerraformTech.TerrainTerraformRuleSet[defName="Terraform_BasicSoilRemoval"]/rules/li[patchTag="SoilFromMoss"]/sourceDefs</xpath>
+				<value>
+					  <li>AB_MycoticSoil</li>
+					  <li>AB_MycoticGrass</li>
+					  <li>GU_MossyRed</li>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/TerraformTech.TerrainTerraformRuleSet[defName="Terraform_BasicSoilRemoval"]/rules/li[patchTag="SoilFromEtcSoil"]/sourceDefs</xpath>
+				<value>
+					  <li>AB_DenseGrass</li>
+					  <li>AB_HardenedGrass</li>
+					  <li>AB_LushGrass</li>
+				</value>
+			</li>
+			
+			<!-- to rich soil -->
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/TerraformTech.TerrainTerraformRuleSet[defName="Terraform_BasicSoilRemoval"]/rules</xpath>		
+				<value>
+					<li>
+						<patchTag>SoilRichFromMossyRichSoil</patchTag>
+						<resultDef>SoilRich</resultDef>
+						<WorkToBuild>25000</WorkToBuild>
+						<sourceDefs>
+						  <li>AB_MycoticSoilRich</li>
+						</sourceDefs>
+						<costList>
+							<WoodLog>1</WoodLog>
+						</costList>
+						<resultList>
+							<WoodLog>1</WoodLog>
+							<RawFungus>10</RawFungus>
+						</resultList>
+					</li>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/TerraformTech.TerrainTerraformRuleSet[defName="Terraform_BasicSoilRemoval"]/rules</xpath>		
+				<value>
+					<li>
+						<patchTag>SoilRichFromFertileSoils</patchTag>
+						<resultDef>SoilRich</resultDef>
+						<WorkToBuild>5000</WorkToBuild>
+						<sourceDefs>
+							<li>AB_HardenedGrassFertile</li>
+							<li>AB_RichCrackedMud</li>
+						</sourceDefs>
+						<costList>
+							<WoodLog>1</WoodLog>
+						</costList>
+						<resultList>
+							<WoodLog>1</WoodLog>
+						</resultList>
+					</li>
+				</value>
+			</li>			
+			
+		</operations>
+	</match>
+  </Operation>
+    
+</Patch>

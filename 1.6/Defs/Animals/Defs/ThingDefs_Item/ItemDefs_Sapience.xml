@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- BASES -->
+		<!-- SAPIENCE SERUM BASE -->
+			<ThingDef Name="TMM_Serum_SapienceBase" ParentName="MechSerumBase" Abstract="True">
+				<graphicData>
+					<graphicClass>Graphic_StackCount</graphicClass>
+				</graphicData>
+				<stackLimit>10</stackLimit>
+				<statBases>
+					<MarketValue>1000</MarketValue>
+					<WorkToMake>2000</WorkToMake>
+				</statBases>
+				<thingCategories>
+					<li>ItemsMisc</li>
+				</thingCategories>
+				<tradeability>Sellable</tradeability>
+				<thingSetMakerTags>
+					<li>RewardStandardMidFreq</li>
+				</thingSetMakerTags>
+				<comps>
+					<li Class="CompProperties_Usable">
+						<useJob>BS_UseOnTarget</useJob>
+						<useLabel>Use {0_label}</useLabel>
+						<useDuration>600</useDuration>
+						<warmupMote>Mote_ResurrectAbility</warmupMote>
+					</li>
+					<li Class="CompProperties_UseEffectDestroySelf" />
+				</comps>
+			</ThingDef>
+	<!-- COGNI-FI -->
+		<ThingDef ParentName="TMM_Serum_SapienceBase">
+			<defName>TMM_Sapienator</defName>
+			<label>Cogni-Fi</label>
+			<description>A strange device with a unique blend of archites, capable of rewiring an animal's brain in order to bring about sapience.</description>
+			<graphicData>
+				<texPath>Modules/Animals/Things/Miscellaneous/Sapienator</texPath>
+			</graphicData>
+			<recipeMaker>
+				<researchPrerequisite>TMM_An_SapiencyDevelopment</researchPrerequisite>
+				<recipeUsers>
+					<li>DrugLab</li>
+					<li>FabricationBench</li>
+				</recipeUsers>
+				<soundWorking>Recipe_Drug</soundWorking>
+				<skillRequirements>
+					<Crafting>6</Crafting>
+					<Intellectual>8</Intellectual>
+				</skillRequirements>
+				<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			</recipeMaker>
+			<costList>
+				<Neutroamine>6</Neutroamine>
+				<MedicineUltratech>5</MedicineUltratech>
+				<ComponentSpacer>1</ComponentSpacer>
+			</costList>
+			<comps>
+				<li Class="BigAndSmall.CompProperties_TargetableExtended">
+					<targetInfo>
+						<canTargetBuildings>false</canTargetBuildings>
+						<canTargetHumans>false</canTargetHumans>
+						<canTargetMechs>false</canTargetMechs>
+					</targetInfo>
+				</li>
+				<li Class="BigAndSmall.CompProperties_SwapThingDef">
+					<sapientVersion>true</sapientVersion>
+				</li>
+			</comps>
+		</ThingDef>
+</Defs>
