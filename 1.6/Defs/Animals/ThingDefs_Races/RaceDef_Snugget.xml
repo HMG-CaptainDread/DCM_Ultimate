@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<!-- <></> -->
+	<!-- TMM_RaceAnimal_ -->
+
+
+
+	<ThingDef ParentName="AnimalThingBase">
+		<defName>TMM_RaceAnimal_Snugget</defName>
+		<label>snugget</label>
+		<description>A rodent-like creature with a gas-like body, they have a familial bond with Novakin as a companion but the information as to why is lost in time. They have the same characteristics as Novakin but without the facial brands, their cheerful nature and fluffy appearance made them highly adored by most.</description>
+		<statBases>
+			<MoveSpeed>5.0</MoveSpeed>
+			<MarketValue>700</MarketValue>
+			<ComfyTemperatureMin>-125</ComfyTemperatureMin>
+			<ComfyTemperatureMax>125</ComfyTemperatureMax>
+			<ToxicResistance>1</ToxicResistance>
+			<ToxicEnvironmentResistance>1</ToxicEnvironmentResistance>
+			<Flammability>0</Flammability>
+			<LeatherAmount>0</LeatherAmount>
+			<Wildness>0</Wildness>
+			<VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">1.0</VacuumResistance>
+		</statBases>
+		<race>
+			<deathAction>
+				<workerClass>DeathActionWorker_SmallExplosion</workerClass>
+			</deathAction>
+			<body>QuadrupedAnimalWithPawsAndTail</body>
+			<fleshType>TMM_FleshType_Gaslike</fleshType>
+			<baseBodySize>0.7</baseBodySize>
+			<baseHealthScale>0.6</baseHealthScale>
+			<baseHungerRate>0.55</baseHungerRate>
+			<foodType>OmnivoreRoughAnimal</foodType>
+			<executionRange>4</executionRange>
+			<trainability>Advanced</trainability>
+			<bloodDef>TMM_Filth_PlasmaBlood</bloodDef>
+			<bloodSmearDef>TMM_Filth_PlasmaSmear</bloodSmearDef>
+			<petness>1</petness>
+			<renderTree>TMM_RenderTree_SnuggetAura</renderTree>
+			<nuzzleMtbHours>12</nuzzleMtbHours>
+			<gestationPeriodDays>30</gestationPeriodDays>
+			<nameOnTameChance>1</nameOnTameChance>
+			<soundEating>Rodent_Eat</soundEating>
+			<litterSizeCurve>
+				<points>
+				<li>(0.5, 0)</li>
+				<li>(1, 1)</li>
+				<li>(2, 1.7)</li>
+				<li>(2.5, 0.7)</li>
+				<li>(3, 0)</li>
+				</points>
+			</litterSizeCurve>
+			<lifeExpectancy>25</lifeExpectancy>
+			<lifeStageAges>
+				<li>
+					<def>AnimalBaby</def>
+					<minAge>0</minAge>
+				</li>
+				<li>
+					<def>AnimalJuvenile</def>
+					<minAge>0.3</minAge>
+					<soundWounded>Pawn_GuineaPig_Wounded</soundWounded>
+					<soundDeath>Pawn_GuineaPig_Death</soundDeath>
+					<soundCall>Pawn_GuineaPig_Call</soundCall>
+					<soundAngry>Pawn_GuineaPig_Angry</soundAngry>
+				</li>
+				<li>
+					<def>AnimalAdult</def>
+					<minAge>0.4</minAge>
+					<soundWounded>Pawn_GuineaPig_Wounded</soundWounded>
+					<soundDeath>Pawn_GuineaPig_Death</soundDeath>
+					<soundCall>Pawn_GuineaPig_Call</soundCall>
+					<soundAngry>Pawn_GuineaPig_Angry</soundAngry>
+				</li>
+			</lifeStageAges>
+			<soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
+			<soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
+			<soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
+			<hasGenders>false</hasGenders>
+			<headPosPerRotation>
+				<li>(0.0, 0, 0.3)</li>
+				<li>(0.21, 0, 0.02)</li>
+				<li>(0.0, 0, -0.2)</li>
+				<li>(-0.21, 0, 0.02)</li>
+			</headPosPerRotation>
+			<specificMeatDef>Chemfuel</specificMeatDef>
+		</race>
+		<butcherProducts>
+			<Neutroamine>20</Neutroamine>
+		</butcherProducts>
+		<tradeTags>
+			<li>AnimalExotic</li>
+			<li>AnimalUncommon</li>
+			<li>AnimalPet</li>
+			<!-- <li>RB_Snuggles</li> -->
+		</tradeTags>
+		<tools>
+			<li>
+				<label>left claw</label>
+				<labelNoLocation>claw</labelNoLocation>
+				<capacities>
+					<li>Scratch</li>
+				</capacities>
+				<power>4</power>
+				<cooldownTime>1.5</cooldownTime>
+				<linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
+				<surpriseAttack>
+					<extraMeleeDamages>
+						<li>
+							<def>Flame</def>
+							<amount>3</amount>
+						</li>
+					</extraMeleeDamages>
+				</surpriseAttack>
+			</li>
+			<li>
+				<label>right claw</label>
+				<labelNoLocation>claw</labelNoLocation>
+				<capacities>
+					<li>Scratch</li>
+				</capacities>
+				<power>4</power>
+				<cooldownTime>1.5</cooldownTime>
+				<linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
+				<surpriseAttack>
+					<extraMeleeDamages>
+						<li>
+							<def>Flame</def>
+							<amount>3</amount>
+						</li>
+					</extraMeleeDamages>
+				</surpriseAttack>
+			</li>
+			<li>
+				<capacities>
+					<li>Bite</li>
+				</capacities>
+				<power>6.5</power>
+				<cooldownTime>2</cooldownTime>
+				<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+				<chanceFactor>0.7</chanceFactor>
+			</li>
+			<li>
+				<label>head</label>
+				<capacities>
+					<li>Blunt</li>
+				</capacities>
+				<power>3</power>
+				<cooldownTime>2</cooldownTime>
+				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+				<ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+				<chanceFactor>0.2</chanceFactor>
+			</li>
+		</tools>
+		<comps>
+			<li Class="VEF.AnimalBehaviours.CompProperties_NoFilth" MayRequire="OskarPotocki.VanillaFactionsExpanded.Core" />
+			<li Class="VEF.AnimalBehaviours.CompProperties_DiseaseEventImmunity" MayRequire="OskarPotocki.VanillaFactionsExpanded.Core" />
+			<li Class="VEF.AnimalBehaviours.CompProperties_DiseaseImmunity" MayRequire="OskarPotocki.VanillaFactionsExpanded.Core">
+				<hediffsToRemove>
+					<li>Animal_Plague</li>
+					<li>Animal_Flu</li>
+					<li MayRequire="Ludeon.RimWorld.Odyssey">VacuumExposure</li>
+				</hediffsToRemove>
+				<tickInterval>2000</tickInterval>
+			</li>
+			<li Class="VEF.AnimalBehaviours.CompProperties_Regeneration" MayRequire="OskarPotocki.VanillaFactionsExpanded.Core">
+				<rateInTicks>2500</rateInTicks>
+			</li>
+			<li Class="VEF.AnimalBehaviours.CompProperties_AsexualReproduction" MayRequire="OskarPotocki.VanillaFactionsExpanded.Core">
+				<reproductionIntervalDays>30</reproductionIntervalDays>
+				<customString>Cloning in: </customString>
+				<asexualCloningMessage>VEF_AsexualCloning</asexualCloningMessage>
+			</li>
+		</comps>
+	</ThingDef>
+</Defs>

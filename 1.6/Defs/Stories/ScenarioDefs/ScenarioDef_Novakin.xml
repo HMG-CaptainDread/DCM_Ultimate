@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- THE OUTLAW -->
+		<ScenarioDef ParentName="ScenarioBase">
+			<defName>TMM_Scenario_NK_TheOutlaw</defName>
+			<label>The Outlaw</label>
+			<description>You're being pursued by bounty hunters, luckily you're able to flee using a stolen rich explorer spaceship and start going towards the unknown space. But unfortunately, the fuel of your spaceship ran out. You can't do much except seek nearby planets, without further thinking you decided to land there.\n\nNote: Since your starting character will lack some skills and most faction being wary towards you, this is an especially difficult scenario in the early game.</description>
+			<scenario>
+				<summary>One outlaw out to experience the universe. Extra difficult.</summary>
+				<playerFaction>
+					<def>PlayerFaction</def>
+					<factionDef>PlayerColony</factionDef>
+				</playerFaction>
+				<parts>
+					<!-- Config pages -->
+					<li Class="ScenPart_ConfigPage_ConfigureStartingPawns_Xenotypes">
+						<def>ConfigurePawnsXenotypes</def>
+						<pawnChoiceCount>1</pawnChoiceCount>
+						<customSummary>Start with one adult novakin.</customSummary>
+						<overrideKinds>
+							<li>
+								<xenotype>TMM_Xenotype_Novakin</xenotype>
+								<pawnKind>TMM_PawnKind_NovakinFugitive</pawnKind>
+							</li>
+						</overrideKinds>
+						<xenotypeCounts>
+							<li>
+								<xenotype>TMM_Xenotype_Novakin</xenotype>
+								<count>1</count>
+								<description>adult novakin</description>
+								<requiredAtStart>true</requiredAtStart>
+								<allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+							</li>
+						</xenotypeCounts>
+					</li>
+					<!-- Player starting stuff spawn method-->
+					<li Class="ScenPart_PlayerPawnsArriveMethod">
+						<def>PlayerPawnsArriveMethod</def>
+						<visible>false</visible>
+						<method>DropPods</method>
+					</li>
+					<!-- Player starting things -->
+					<li Class="ScenPart_StartingThing_Defined">
+						<def>StartingThing_Defined</def>
+						<thingDef>Silver</thingDef>
+						<count>1000</count>
+					</li>
+					<li Class="ScenPart_StartingThing_Defined">
+						<def>StartingThing_Defined</def>
+						<thingDef>Gold</thingDef>
+						<count>50</count>
+					</li>
+					<li Class="ScenPart_StartingThing_Defined">
+						<def>StartingThing_Defined</def>
+						<thingDef>MealSurvivalPack</thingDef>
+						<count>40</count>
+					</li>
+					<li Class="ScenPart_StartingThing_Defined">
+						<def>StartingThing_Defined</def>
+						<thingDef>MedicineUltratech</thingDef>
+						<count>30</count>
+					</li>
+					<li Class="ScenPart_StartingThing_Defined">
+						<def>StartingThing_Defined</def>
+						<thingDef>ComponentIndustrial</thingDef>
+						<count>30</count>
+					</li>
+					<li Class="ScenPart_StartingThing_Defined">
+						<def>StartingThing_Defined</def>
+						<thingDef>Gun_ChargeRifle</thingDef>
+					</li>
+					<li Class="ScenPart_StartingAnimal">
+						<def>StartingAnimal</def>
+						<animalKind>TMM_PawnKind_Snugget</animalKind>
+						<count>1</count>
+						<bondToRandomPlayerPawnChance>1.0</bondToRandomPlayerPawnChance>
+					</li>
+					<!-- Goodwill -->
+					<li Class="VEF.Factions.ScenPart_ForcedFactionGoodwill" MayRequire="OskarPotocki.VanillaFactionsExpanded.Core">
+						<def>VFEC_ForcedFactionGoodwill</def>
+						<affectStartingGoodwill>True</affectStartingGoodwill>
+						<startingGoodwillRange>-75~-50</startingGoodwillRange>
+						<affectNaturalGoodwill>True</affectNaturalGoodwill>
+						<naturalGoodwillRange>-30~0</naturalGoodwillRange>
+					</li>
+					<!-- Scatter some things near player start -->
+					<li Class="ScenPart_ScatterThingsNearPlayerStart">
+						<def>ScatterThingsNearPlayerStart</def>
+						<thingDef>Steel</thingDef>
+						<count>450</count>
+					</li>
+					<li Class="ScenPart_ScatterThingsNearPlayerStart">
+						<def>ScatterThingsNearPlayerStart</def>
+						<thingDef>WoodLog</thingDef>
+						<count>300</count>
+					</li>
+					<!-- Game start dialog -->
+					<li Class="ScenPart_GameStartDialog">
+						<def>GameStartDialog</def>
+						<text>With your arrival, a broadcast has been announced regarding outlaws on the run to the rim.\n\nDo you think you're still free from pursuit and suspicion?</text>
+						<closeSound>GameStartSting</closeSound>
+					</li>
+				</parts>
+			</scenario>
+		</ScenarioDef>
+	<!-- NEWBORN STAR -->
+		<ScenarioDef ParentName="ScenarioBase">
+			<defName>TMM_Scenario_NK_NewbornStar</defName>
+			<label>Newborn Star</label>
+			<description>The aftermath of a supernova has scattered newborn Novakin out in space including you, and yet you're unable to go anywhere else except by drifting away using the excess force caused by the explosion. After waking up from your slumber for years, you've crashed into a distant planet. You're naked, alone, and totally unprepared. Yet, is this the mark of an adventure?\n\nNote: This scenario is an improved version of Naked Brutality but with Novakin as the starting pawn.</description>
+			<scenario>
+				<summary>Naked, alone, and utterly unprepared. Yet, is this the mark of an adventure?</summary>
+				<playerFaction>
+					<def>PlayerFaction</def>
+					<factionDef>PlayerColony</factionDef>
+				</playerFaction>
+				<parts>
+					<!-- Config pages -->
+					<li Class="ScenPart_ConfigPage_ConfigureStartingPawns_Xenotypes">
+						<def>ConfigurePawnsXenotypes</def>
+						<pawnChoiceCount>1</pawnChoiceCount>
+						<customSummary>Start with one adult novakin.</customSummary>
+						<overrideKinds>
+							<li>
+								<xenotype>TMM_Xenotype_Novakin</xenotype>
+								<pawnKind>Colonist</pawnKind>
+							</li>
+						</overrideKinds>
+						<xenotypeCounts>
+							<li>
+								<xenotype>TMM_Xenotype_Novakin</xenotype>
+								<count>1</count>
+								<description>adult novakin</description>
+								<requiredAtStart>true</requiredAtStart>
+								<allowedDevelopmentalStages>Adult</allowedDevelopmentalStages>
+							</li>
+						</xenotypeCounts>
+					</li>
+					<!-- Player starting stuff spawn method-->
+					<li Class="ScenPart_PlayerPawnsArriveMethod">
+						<def>PlayerPawnsArriveMethod</def>
+						<visible>false</visible>
+						<method>DropPods</method>
+					</li>
+					<!-- Player starting stuff spawn method-->
+					<li Class="ScenPart_Naked">
+						<def>Naked</def>
+						<context>PlayerStarter</context>
+					</li>
+					<!-- Player pawns start with no possessions eg. extra drugs. -->
+					<li Class="ScenPart_NoPossessions">
+						<def>NoPossessions</def>
+					</li>
+					<!-- Game start dialog -->
+					<li Class="ScenPart_GameStartDialog">
+						<def>GameStartDialog</def>
+						<text>Now you've awoken after punching through the atmosphere of a distant rimworld.\n\nIt is an unfamiliar environment, yet why does it feel adventurous?\n\nYou are totally naked. With no preparation, no supplies, and no tools, can you survive?</text>
+						<closeSound>GameStartSting</closeSound>
+					</li>
+				</parts>
+			</scenario>
+		</ScenarioDef>
+</Defs>

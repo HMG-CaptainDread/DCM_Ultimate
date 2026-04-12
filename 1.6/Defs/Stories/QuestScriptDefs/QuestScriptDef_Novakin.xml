@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- NOVAKIN BOUNTY -->
+		<QuestScriptDef>
+			<defName>TMM_Quest_NovakinBounty</defName>
+			<rootSelectionWeight>0.25</rootSelectionWeight>
+			<rootMinPoints>200</rootMinPoints>
+			<defaultChallengeRating>1</defaultChallengeRating>
+			<expireDaysRange>5~7</expireDaysRange>
+			<defaultCharity>true</defaultCharity>
+			<successHistoryEvent MayRequire="Ludeon.RimWorld.Ideology">CharityFulfilled_ThreatReward_Joiner</successHistoryEvent>
+			<failedOrExpiredHistoryEvent MayRequire="Ludeon.RimWorld.Ideology">CharityRefused_ThreatReward_Joiner</failedOrExpiredHistoryEvent>
+			<questNameRules>
+				<rulesStrings>
+					<li>questName->[questTitle_any]: [asker_nameFull] the Novakin</li>
+					<li>questTitle_any->wanted</li>
+					<li>questTitle_any->bounty</li>
+				</rulesStrings>
+			</questNameRules>
+			<questDescriptionRules>
+				<rulesStrings>
+					<li>questDescription->[asker_nameFull], a mysterious novakin is calling from nearby. [asker_pronoun] was marked with a bounty by [hunterFaction_name] for doing a felony and is now being hunted by a bounty hunter party. The bounty hunter party of [hunterFaction_pawnsPlural] is composed of: \n\n[raid/raidPawnKinds]\n\n[asker_nameFull] wants you to keep [asker_possessive] safe in [map_definite]. If you accept, [asker_pronoun] will arrive immediately, but [asker_pronoun] will be followed by the bounty hunter party you must defeat.\nBe aware that if the bounty comes from a friendly faction they may turn hostile towards you.\n\nNovakins are sapient plasma-shelled humanoids with with metallic "brands" where their faces would be. Novakin differ in personality depending on their brand symbol, naturally have short memories and attention spans but they are excel in what they're interested with according to their personality.</li>
+				</rulesStrings>
+			</questDescriptionRules>
+			<root Class="QuestNode_Sequence">
+				<nodes>
+					<li Class="QuestNode_GetMap"/>
+					<li Class="QuestNode_GetWalkInSpot"/>
+					<li Class="QuestNode_Set">
+						<name>raidPoints</name>
+						<value>$points</value>
+					</li>
+					<li Class="QuestNode_SubScript">
+						<def>Util_RandomizePointsChallengeRating</def>
+						<parms>
+							<pointsFactorTwoStar>1.5</pointsFactorTwoStar>
+							<pointsFactorThreeStar>2</pointsFactorThreeStar>
+						</parms>
+					</li>
+					<li Class="QuestNode_SubScript">
+						<def>Util_AdjustPointsForDistantFight</def>
+					</li>
+					<li Class="RimboundCore.QuestNode_GenerateXenotype">
+						<kindDef>TMM_PawnKind_NovakinFugitive</kindDef>
+						<xenotypeDef>TMM_Xenotype_Novakin</xenotypeDef>
+						<storeAs>asker</storeAs>
+					</li>
+					<li Class="QuestNode_GetFaction">
+						<allowEnemy>true</allowEnemy>
+						<allowNeutral>true</allowNeutral>
+						<allowAlly>true</allowAlly>
+						<storeAs>hunterFaction</storeAs>
+					</li>
+					<li Class="QuestNode_ChangeFactionGoodwill">
+						<faction>$hunterFaction</faction>
+						<change>-100</change>
+						<canSendLetter>false</canSendLetter>
+						<canSendMessage>false</canSendMessage>
+						<ensureHostile>true</ensureHostile>
+						<reason>TMM_Goodwill_NK_AcceptedFugitive</reason>
+					</li>
+					<li Class="QuestNode_PawnsArrive">
+						<pawns>$asker</pawns>
+						<walkInSpot>$walkInSpot</walkInSpot>
+						<joinPlayer>true</joinPlayer>
+						<customLetterText TKey="LetterLabelAskerBecameHostile">{BASETEXT}\n\nBecause you accepted [asker_nameDef], the band of bounty hunters pursuing [asker_possessive] will arrive soon.</customLetterText>
+						<isSingleReward>true</isSingleReward>
+						<rewardDetailsHidden>true</rewardDetailsHidden>
+					</li>
+					<li Class="QuestNode_Set">
+						<name>raidDelayTicks</name>
+						<value>$(roundToTicksRough(randInt(1800, 2400)))</value>
+					</li>
+					<li Class="QuestNode_Delay">
+						<delayTicks>$raidDelayTicks</delayTicks>
+						<node Class="QuestNode_SubScript">
+							<def>Util_Raid</def>
+							<prefix>raid</prefix>
+							<parms>
+								<inSignal>$inSignal</inSignal>
+								<map>$map</map>
+								<enemyFaction>$hunterFaction</enemyFaction>
+								<points>$raidPoints</points>
+								<walkInSpot>$walkInSpot</walkInSpot>
+								<customLetterLabel TKey="LetterLabelHunterSquad">{BASELABEL}: Pursuing bounty hunters</customLetterLabel>
+								<customLetterText TKey="LetterTextHunterSquad">{BASETEXT}\n\nThese are the bounty hunters that were hunting [../asker_nameFull].</customLetterText>
+							</parms>
+						</node>
+					</li>
+					<li Class="QuestNode_Delay">
+						<delayTicks>$($raidDelayTicks+600)</delayTicks>
+						<node Class="QuestNode_End"/>
+					</li>
+				</nodes>
+			</root>
+		</QuestScriptDef>
+</Defs>
