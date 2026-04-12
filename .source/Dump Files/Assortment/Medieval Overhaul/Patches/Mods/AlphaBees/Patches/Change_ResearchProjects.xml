@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<!-- Medieval Tech for Climatized Beehouse -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="RB_ClimatizedBeehouses"]/techLevel</xpath>
+		<value>
+			<techLevel>Medieval</techLevel>
+		</value>
+	</Operation>
+				
+	<!-- Remove Alpha Bee Candle Research -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ResearchProjectDef[defName="RB_BeeswaxLighting"]</xpath>
+		<match Class="PatchOperationRemove">
+			<xpath>Defs/ResearchProjectDef[defName="RB_BeeswaxLighting"]</xpath>
+		</match>
+	</Operation>
+
+	<!-- Industrial Hybridization requirement -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ResearchProjectDef[defName="RB_BeeHybridizing"]/prerequisites/li[.="Electricity"]</xpath>
+		<match Class="PatchOperationRemove">
+			<xpath>Defs/ResearchProjectDef[defName="RB_BeeHybridizing"]/prerequisites/li[.="Electricity"]</xpath>
+		</match>
+	</Operation>
+
+</Patch>

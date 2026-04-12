@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>Clockwork And Steam</li>
+	  </mods>
+	  <nomatch Class="PatchOperationSequence">
+			<operations>
+			  <li Class="PatchOperationAdd">
+				<xpath>/Defs/ResearchProjectDef[defName="DrugProduction"]</xpath>
+				<value>
+				  <prerequisites>
+					<li>TS_Psychoid</li>
+					<li>ET_Pyrolysis</li>
+				  </prerequisites>
+				</value>
+			  </li>
+			</operations>
+		</nomatch>
+	</Operation>
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ResearchProjectDef[defName="Brewing"]</xpath>
+    <value>
+      <prerequisites>
+		<li>ET_Pyrolysis</li>
+        <li>TS_Agriculture</li>
+        <li>MedTimes_BasicCooking</li>
+      </prerequisites>
+    </value>
+	</Operation>
+
+  <Operation Class="PatchOperationConditional">
+		<xpath>/Defs/ThingDef[defName="TableSculpting"]/researchPrerequisites</xpath>
+		<match Class="PatchOperationReplace">
+			<xpath>/Defs/ThingDef[defName="TableSculpting"]/researchPrerequisites</xpath>
+			<value>
+			  <researchPrerequisites>
+				<li>MedTimes_Art</li>
+			  </researchPrerequisites>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[defName="TableSculpting"]</xpath>
+			<value>
+			  <researchPrerequisites>
+				<li>MedTimes_Art</li>
+			  </researchPrerequisites>
+			</value>
+		</nomatch>
+	</Operation>
+	
+  <Operation Class="PatchOperationConditional">
+		<xpath>/Defs/ThingDef[defName="TableButcher"]/researchPrerequisites</xpath>
+		<match Class="PatchOperationReplace">
+			<xpath>/Defs/ThingDef[defName="TableButcher"]/researchPrerequisites</xpath>
+			<value>
+			  <researchPrerequisites>
+				<li>MedTimes_FullButchering</li>
+			  </researchPrerequisites>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>/Defs/ThingDef[defName="TableButcher"]</xpath>
+			<value>
+			  <researchPrerequisites>
+				<li>MedTimes_FullButchering</li>
+			  </researchPrerequisites>
+			</value>
+		</nomatch>
+	</Operation>
+  
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ResearchProjectDef[defName="Brewing"]/techLevel</xpath>
+    <value>
+		<techLevel>Medieval</techLevel>
+    </value>
+  </Operation>
+  
+  <Operation Class="PatchOperationRemove">
+    <xpath>/Defs/ResearchProjectDef[defName="PsychoidBrewing"]</xpath>
+  </Operation>
+
+  <Operation Class="PatchOperationRemove">
+    <xpath>/Defs/ResearchProjectDef[defName="Devilstrand"]</xpath>
+  </Operation>
+  
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ResearchProjectDef[defName="DeepDrilling"]/prerequisites</xpath>
+    <value>
+        <li>MedTimes_Quarry</li>
+    </value>
+  </Operation>
+  
+</Patch>

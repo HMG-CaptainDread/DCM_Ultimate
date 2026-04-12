@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+
+	<!-- Bionic Drill Arm -->
+	
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>FSFBionicDrillArm</defName>
+		<label>bionic drill arm</label>
+		<labelNoun>a bionic drill arm</labelNoun>
+		<description>An installed bionic drill arm.</description>
+		<descriptionHyperlinks><ThingDef>FSFBionicDrillArm</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+				<statOffsets>
+					<MiningSpeed>1.40</MiningSpeed>
+					<DeepDrillingSpeed>0.6</DeepDrillingSpeed>
+				</statOffsets>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+					<li>
+						<label>drill</label>
+						<capacities>
+							<li>Stab</li>
+						</capacities>
+						<power>16</power>
+						<cooldownTime>2</cooldownTime>
+						<alwaysTreatAsWeapon>true</alwaysTreatAsWeapon>
+						<soundMeleeHit>MeleeHit_DrillArm</soundMeleeHit>
+						<soundMeleeMiss>MeleeMiss_DrillArm</soundMeleeMiss>
+					</li>
+				</tools>
+			</li>
+        	<li MayRequire="V1024.EBFramework" Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust">
+            	<scaleAdjustment>0.25</scaleAdjustment>
+        	</li>
+		</comps>
+		<spawnThingOnRemoved>FSFBionicDrillArm</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>1.25</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	
+	<ThingDef ParentName="BodyPartBionicBase">
+		<defName>FSFBionicDrillArm</defName>
+		<label>bionic drill arm</label>
+		<description>An advanced artificial arm with a built-in snake drill, which allows the miner to rapidly find and exploit weak lines in the rock. Silenced mini-servos give great strength, while the biogel nerve-link gives exquisite control. A lattice-dust healing system allows it to recover from damage.</description>
+		<descriptionHyperlinks><RecipeDef>InstallFSFBionicDrillArm</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Plasteel>30</Plasteel>
+			<ComponentSpacer>6</ComponentSpacer>
+		</costList>
+		<butcherProducts>
+			<Plasteel>30</Plasteel>
+			<ComponentSpacer>6</ComponentSpacer>
+		</butcherProducts>
+		<recipeMaker>
+			<researchPrerequisites>
+				<li>Bionics</li>
+				<li>SpecializedLimbs</li>
+			</researchPrerequisites>
+		</recipeMaker>
+		<thingSetMakerTags><li>RewardStandardLowFreq</li></thingSetMakerTags>
+		<statBases>
+			<Mass>6</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+			<li>AdvancedWeapon</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+		<defName>InstallFSFBionicDrillArm</defName>
+		<label>install bionic drill arm</label>
+		<description>Install a bionic drill arm.</description>
+		<descriptionHyperlinks>
+			<ThingDef>FSFBionicDrillArm</ThingDef>
+			<HediffDef>FSFBionicDrillArm</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing bionic drill arm.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>FSFBionicDrillArm</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>FSFBionicDrillArm</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>FSFBionicDrillArm</addsHediff>
+		<uiIconThing>FSFBionicDrillArm</uiIconThing>
+	</RecipeDef>
+	
+	<!-- Bionic Field Arm -->
+	
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>FSFBionicFieldArm</defName>
+		<label>bionic field arm</label>
+		<labelNoun>a bionic field arm</labelNoun>
+		<description>An installed bionic field arm.</description>
+		<descriptionHyperlinks><ThingDef>FSFBionicFieldArm</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+				<statOffsets>
+					<PlantWorkSpeed>1.40</PlantWorkSpeed>
+				</statOffsets>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+					<li>
+						<label>fist</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>12</power>
+						<cooldownTime>2</cooldownTime>
+						<alwaysTreatAsWeapon>false</alwaysTreatAsWeapon>
+						<soundMeleeHit>MeleeHit_FieldHand</soundMeleeHit>
+						<soundMeleeMiss>MeleeMiss_FieldHand</soundMeleeMiss>
+					</li>
+				</tools>
+			</li>
+        	<li MayRequire="V1024.EBFramework" Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust">
+            	<scaleAdjustment>0.25</scaleAdjustment>
+        	</li>
+		</comps>
+		<spawnThingOnRemoved>FSFBionicFieldArm</spawnThingOnRemoved>
+		<addedPartProps>
+			<solid>true</solid>
+			<partEfficiency>1.25</partEfficiency>
+			<betterThanNatural>true</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	
+	<ThingDef ParentName="BodyPartBionicBase">
+		<defName>FSFBionicFieldArm</defName>
+		<label>bionic field arm</label>
+		<description>An advanced artificial arm with multiple built-in telescopic finger-like protrusions that can simultaneously harvest from several points on the same plant, or precisely sow several holes at once. Silenced mini-servos give great strength, while the biogel nerve-link gives exquisite control. A lattice-dust healing system allows it to recover from damage.</description>
+		<descriptionHyperlinks><RecipeDef>InstallFSFBionicFieldArm</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Plasteel>30</Plasteel>
+			<ComponentSpacer>6</ComponentSpacer>
+		</costList>
+		<butcherProducts>
+			<Plasteel>30</Plasteel>
+			<ComponentSpacer>6</ComponentSpacer>
+		</butcherProducts>
+		<recipeMaker>
+			<researchPrerequisites>
+				<li>Bionics</li>
+				<li>SpecializedLimbs</li>
+			</researchPrerequisites>
+		</recipeMaker>
+		<thingSetMakerTags><li>RewardStandardLowFreq</li></thingSetMakerTags>
+		<statBases>
+			<Mass>6</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+			<li>AdvancedWeapon</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+		<defName>InstallFSFBionicFieldArm</defName>
+		<label>install bionic field arm</label>
+		<description>Install a bionic field arm.</description>
+		<descriptionHyperlinks>
+			<ThingDef>FSFBionicFieldArm</ThingDef>
+			<HediffDef>FSFBionicFieldArm</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing bionic field arm.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>FSFBionicFieldArm</li>
+					</thingDefs>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>FSFBionicFieldArm</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>FSFBionicFieldArm</addsHediff>
+		<uiIconThing>FSFBionicFieldArm</uiIconThing>
+	</RecipeDef>
+
+</Defs>

@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Combat Extended</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationConditional">
+					<xpath>/Defs/ThingDef[defName="Apparel_FlakVest"]/stuffCategories</xpath>
+					<match Class="PatchOperationAdd">
+						<xpath>/Defs/ThingDef[defName="Apparel_FlakVest"]/stuffCategories</xpath>
+						<value>
+							<li>Ceramic</li>
+						</value>
+					</match>
+					<nomatch Class="PatchOperationAdd">
+						<xpath>/Defs/ThingDef[defName="Apparel_FlakVest"]</xpath>
+						<value>
+							<stuffCategories>
+								<li>Steeled</li>
+								<li>Ceramic</li>
+							</stuffCategories>
+						</value>
+					</nomatch>
+				</li>
+				<li Class="PatchOperationConditional">
+					<xpath>/Defs/ThingDef[defName="Apparel_FlakPants"]/stuffCategories</xpath>
+					<match Class="PatchOperationAdd">
+						<xpath>/Defs/ThingDef[defName="Apparel_FlakPants"]/stuffCategories</xpath>
+						<value>
+							<li>Ceramic</li>
+						</value>
+					</match>
+					<nomatch Class="PatchOperationAdd">
+						<xpath>/Defs/ThingDef[defName="Apparel_FlakPants"]</xpath>
+						<value>
+							<stuffCategories>
+								<li>Steeled</li>
+								<li>Ceramic</li>
+							</stuffCategories>
+						</value>
+					</nomatch>
+				</li>
+				<li Class="PatchOperationConditional">
+					<xpath>/Defs/ThingDef[defName="Apparel_FlakJacket"]/stuffCategories</xpath>
+					<match Class="PatchOperationAdd">
+						<xpath>/Defs/ThingDef[defName="Apparel_FlakJacket"]/stuffCategories</xpath>
+						<value>
+							<li>Ceramic</li>
+						</value>
+					</match>
+					<nomatch Class="PatchOperationAdd">
+						<xpath>/Defs/ThingDef[defName="Apparel_FlakJacket"]</xpath>
+						<value>
+							<stuffCategories>
+								<li>Steeled</li>
+								<li>Ceramic</li>
+							</stuffCategories>
+						</value>
+					</nomatch>
+				</li>
+				<!-- (core) power armour -->
+				<li Class="PatchOperationConditional">
+					<xpath>/Defs/ThingDef[defName="Apparel_AdvancedHelmet"]/stuffCategories</xpath>
+					<match Class="PatchOperationAdd">
+						<xpath>/Defs/ThingDef[defName="Apparel_AdvancedHelmet"]/stuffCategories</xpath>
+						<value>
+							<li>Ceramic</li>
+						</value>
+					</match>
+					<nomatch Class="PatchOperationAdd">
+						<xpath>/Defs/ThingDef[defName="Apparel_AdvancedHelmet"]</xpath>
+						<value>
+							<stuffCategories>
+								<li>Steeled</li>
+								<li>Ceramic</li>
+							</stuffCategories>
+						</value>
+					</nomatch>
+				</li>
+			</operations>
+		</match>
+		<nomatch Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[defName="Apparel_FlakVest"]/costList/Steel</xpath>
+					<value>
+						<Steel>5</Steel>
+					</value>
+				</li>
+				<li Class="PatchOperationConditional">
+					<xpath>/Defs/ThingDef[defName="Apparel_FlakVest"]/costStuffCount</xpath>
+					<match Class="PatchOperationReplace">
+						<xpath>/Defs/ThingDef[defName="Apparel_FlakVest"]/costStuffCount</xpath>
+						<value>
+							<costStuffCount>55</costStuffCount>
+						</value>
+					</match>
+					<nomatch Class="PatchOperationAdd">
+						<xpath>/Defs/ThingDef[defName="Apparel_FlakVest"]</xpath>
+						<value>
+							<costStuffCount>55</costStuffCount>
+						</value>
+					</nomatch>
+				</li>
+				<li Class="PatchOperationConditional">
+					<xpath>/Defs/ThingDef[defName="Apparel_FlakVest"]/stuffCategories</xpath>
+					<match Class="PatchOperationAdd">
+						<xpath>/Defs/ThingDef[defName="Apparel_FlakVest"]/stuffCategories</xpath>
+						<value>
+							<li>Ceramic</li>
+						</value>
+					</match>
+					<nomatch Class="PatchOperationAdd">
+						<xpath>/Defs/ThingDef[defName="Apparel_FlakVest"]</xpath>
+						<value>
+							<stuffCategories>
+								<li>Metallic</li>
+								<li>Ceramic</li>
+							</stuffCategories>
+						</value>
+					</nomatch>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[defName="Apparel_FlakVest"]/statBases</xpath>
+					<value>		
+					<statBases>
+						<WorkToMake>9000</WorkToMake>
+						<MaxHitPoints>100</MaxHitPoints>
+						<Mass>4</Mass>
+						<StuffEffectMultiplierArmor>1.2</StuffEffectMultiplierArmor>
+						<ArmorRating_Sharp>0.1</ArmorRating_Sharp>
+						<ArmorRating_Blunt>-0.1</ArmorRating_Blunt>
+						<ArmorRating_Heat>-0.3</ArmorRating_Heat>
+						<EquipDelay>5</EquipDelay>
+					</statBases>		
+					</value>
+				</li>
+				<li Class="PatchOperationRemove">
+					<xpath>/Defs/ThingDef[defName="Apparel_FlakPants"]/colorGenerator</xpath>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[defName="Apparel_FlakPants"]/costList/Steel</xpath>
+					<value>
+						<Steel>5</Steel>
+					</value>
+				</li>
+				<li Class="PatchOperationConditional">
+					<xpath>/Defs/ThingDef[defName="Apparel_FlakPants"]/costStuffCount</xpath>
+					<match Class="PatchOperationReplace">
+						<xpath>/Defs/ThingDef[defName="Apparel_FlakPants"]/costStuffCount</xpath>
+						<value>
+							<costStuffCount>55</costStuffCount>
+						</value>
+					</match>
+					<nomatch Class="PatchOperationAdd">
+						<xpath>/Defs/ThingDef[defName="Apparel_FlakPants"]</xpath>
+						<value>
+							<costStuffCount>55</costStuffCount>
+						</value>
+					</nomatch>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[defName="Apparel_FlakPants"]/statBases</xpath>
+					<value>		
+						<statBases>
+							<WorkToMake>9000</WorkToMake>
+							<MaxHitPoints>100</MaxHitPoints>
+							<Mass>4</Mass>
+							<StuffEffectMultiplierArmor>0.9</StuffEffectMultiplierArmor>
+							<ArmorRating_Sharp>-0.05</ArmorRating_Sharp>
+							<ArmorRating_Blunt>-0.1</ArmorRating_Blunt>
+							<ArmorRating_Heat>-0.10</ArmorRating_Heat>
+							<Insulation_Cold>2.5</Insulation_Cold>
+							<Insulation_Heat>1</Insulation_Heat>
+							<EquipDelay>5</EquipDelay>
+						</statBases>	
+					</value>
+				</li>
+				<li Class="PatchOperationConditional">
+					<xpath>/Defs/ThingDef[defName="Apparel_FlakPants"]/stuffCategories</xpath>
+					<match Class="PatchOperationAdd">
+						<xpath>/Defs/ThingDef[defName="Apparel_FlakPants"]/stuffCategories</xpath>
+						<value>
+							<li>Ceramic</li>
+						</value>
+					</match>
+					<nomatch Class="PatchOperationAdd">
+						<xpath>/Defs/ThingDef[defName="Apparel_FlakPants"]</xpath>
+						<value>
+							<stuffCategories>
+								<li>Metallic</li>
+								<li>Ceramic</li>
+							</stuffCategories>
+						</value>
+					</nomatch>
+				</li>
+				<!-- (core) flak jacket -->
+				<li Class="PatchOperationRemove">
+					<xpath>/Defs/ThingDef[defName="Apparel_FlakJacket"]/colorGenerator</xpath>
+				</li>
+				<li Class="PatchOperationRemove">
+					<xpath>/Defs/ThingDef[defName="Apparel_FlakJacket"]/costList/Steel</xpath>
+				</li>	
+				<li Class="PatchOperationConditional">
+					<xpath>/Defs/ThingDef[defName="Apparel_FlakJacket"]/costStuffCount</xpath>
+					<match Class="PatchOperationReplace">
+						<xpath>/Defs/ThingDef[defName="Apparel_FlakJacket"]/costStuffCount</xpath>
+						<value>
+							<costStuffCount>70</costStuffCount>
+						</value>
+					</match>
+					<nomatch Class="PatchOperationAdd">
+						<xpath>/Defs/ThingDef[defName="Apparel_FlakJacket"]</xpath>
+						<value>
+							<costStuffCount>70</costStuffCount>
+						</value>
+					</nomatch>
+				</li>	
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[defName="Apparel_FlakJacket"]/statBases</xpath>
+					<value>		
+					<statBases>
+						<MaxHitPoints>130</MaxHitPoints>
+						<WorkToMake>14000</WorkToMake>
+						<Mass>7</Mass>
+						<StuffEffectMultiplierArmor>0.9</StuffEffectMultiplierArmor>
+						<ArmorRating_Sharp>-0.05</ArmorRating_Sharp>
+						<ArmorRating_Blunt>-0.1</ArmorRating_Blunt>
+						<ArmorRating_Heat>-0.10</ArmorRating_Heat>
+						<Insulation_Cold>13.4</Insulation_Cold>
+						<!-- like a cloth jacket -->
+						<Insulation_Heat>3</Insulation_Heat>
+						<EquipDelay>3</EquipDelay>
+					</statBases>
+					</value>
+				</li>
+				<li Class="PatchOperationConditional">
+					<xpath>/Defs/ThingDef[defName="Apparel_FlakJacket"]/stuffCategories</xpath>
+					<match Class="PatchOperationAdd">
+						<xpath>/Defs/ThingDef[defName="Apparel_FlakJacket"]/stuffCategories</xpath>
+						<value>
+							<li>Ceramic</li>
+						</value>
+					</match>
+					<nomatch Class="PatchOperationAdd">
+						<xpath>/Defs/ThingDef[defName="Apparel_FlakJacket"]</xpath>
+						<value>
+							<stuffCategories>
+								<li>Metallic</li>
+								<li>Ceramic</li>
+							</stuffCategories>
+						</value>
+					</nomatch>
+				</li>
+				<!-- (core) power armour -->
+				<li Class="PatchOperationConditional">
+					<xpath>/Defs/ThingDef[defName="Apparel_AdvancedHelmet"]/stuffCategories</xpath>
+					<match Class="PatchOperationAdd">
+						<xpath>/Defs/ThingDef[defName="Apparel_AdvancedHelmet"]/stuffCategories</xpath>
+						<value>
+							<li>Ceramic</li>
+						</value>
+					</match>
+					<nomatch Class="PatchOperationAdd">
+						<xpath>/Defs/ThingDef[defName="Apparel_AdvancedHelmet"]</xpath>
+						<value>
+							<stuffCategories>
+								<li>Metallic</li>
+								<li>Ceramic</li>
+							</stuffCategories>
+						</value>
+					</nomatch>
+				</li>
+			</operations>
+		</nomatch>
+	</Operation>
+	
+</Patch>

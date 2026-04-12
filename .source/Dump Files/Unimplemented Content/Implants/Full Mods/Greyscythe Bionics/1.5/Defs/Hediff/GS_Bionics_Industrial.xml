@@ -1,0 +1,1165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<ThingDef Name="GS_IndustrialBionicBase" ParentName="BodyPartBase" Abstract="True">
+		<techLevel>Industrial</techLevel>
+		<thingCategories>
+			<li>GS_BodyPartsBionicIndustrial</li>
+		</thingCategories>
+		<graphicData>
+			<texPath>Things/Item/Health/HealthItem</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.80</drawSize>
+			<color>(180,180,180)</color>
+		</graphicData>
+		<statBases>
+			<WorkToMake>18000</WorkToMake>
+		</statBases>
+		<recipeMaker>
+			<displayPriority>600</displayPriority>
+		</recipeMaker>
+	</ThingDef>
+	
+	<ThingDef Name="GS_IndustrialBionicMakeableBase" ParentName="GS_IndustrialBionicBase" Abstract="True">
+		<recipeMaker>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>	
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<recipeUsers>
+				<li>TableMachining</li>
+			</recipeUsers>
+			<skillRequirements>
+				<Crafting>6</Crafting>
+			</skillRequirements>
+			<unfinishedThingDef>UnfinishedHealthItemProsthetic</unfinishedThingDef>
+			<researchPrerequisite>GS_Research_IndustrialBionics</researchPrerequisite>
+		</recipeMaker>
+	</ThingDef>
+	
+	<RecipeDef Name="GS_SurgeryInstallIndustrialBionicBase" ParentName="SurgeryInstallBodyPartArtificialBase" Abstract="True">
+		<skillRequirements>
+			<Medicine>5</Medicine>
+		</skillRequirements>
+	</RecipeDef>
+	
+<!-- 
+		*** pilebunkerarm ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_Hediff_pilebunkerarm</defName>
+		<label>pilebunker arm</label>
+		<labelNoun>a pilebunker arm</labelNoun>
+		<defaultLabelColor>(0.2, 0.5, 0.7)</defaultLabelColor>
+		<description>An installed pilebunker arm, a sharpened pneumatically driven metal stake, attached to the bottom of a structurally reinforced mechanical prosthetic. It is awkward and cumbersome, and not at all a good replacement for a hand, but undoubtedly a deadly weapon to one who is skilled at its use.</description>
+		<descriptionHyperlinks><ThingDef>GS_pilebunkerarm</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Moving</capacity>
+				<offset>-0.1</offset>
+				</li>
+			</capMods>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+			<tools>
+				<li>
+					<label>limb</label>
+					<capacities>
+					<li>Blunt</li>
+					</capacities>
+					<power>10</power>
+					<cooldownTime>2</cooldownTime>
+				</li>
+				<li>
+					<label>stake</label>
+					<capacities>
+					<li>Stab</li>
+					</capacities>
+					<power>34</power>
+					<armorPenetration>1.05</armorPenetration>
+					<cooldownTime>4.5</cooldownTime>
+				</li>
+			</tools>
+			</li>
+		</comps>
+		<spawnThingOnRemoved>GS_pilebunkerarm</spawnThingOnRemoved>
+		<addedPartProps>
+			<isGoodWeapon>true</isGoodWeapon>
+			<solid>true</solid>
+			<partEfficiency>0.4</partEfficiency>
+			<betterThanNatural>false</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_IndustrialBionicMakeableBase">
+		<defName>GS_pilebunkerarm</defName>
+		<label>pilebunker arm</label>
+		<description>A combat-oriented hand replacement consisting of an installed pilebunker arm, a sharpened pneumatically driven metal stake, attached to the bottom of a structurally reinforced mechanical prosthetic. It is awkward and cumbersome, and not at all a good replacement for a hand, but undoubtedly a deadly weapon to one who is skilled at its use.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installpilebunkerarm</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Steel>70</Steel>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<Mass>4</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallIndustrialBionicBase">
+		<defName>GS_Installpilebunkerarm</defName>
+		<label>install pilebunker arm</label>
+		<description>Install a pilebunker arm.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_pilebunkerarm</ThingDef>
+			<HediffDef>GS_Hediff_pilebunkerarm</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing pilebunker arm.</jobString>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_pilebunkerarm</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_pilebunkerarm</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_pilebunkerarm</addsHediff>
+	</RecipeDef>
+
+<!-- 
+		*** chainsawarm ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_Hediff_chainsawarm</defName>
+		<label>chainsaw arm</label>
+		<labelNoun>a chainsaw arm</labelNoun>
+		<defaultLabelColor>(0.2, 0.5, 0.7)</defaultLabelColor>
+		<description>An installed chainsaw arm, a hardened steel chainsaw attached to the bottom of a structurally reinforced mechanical prosthetic. It is awkward and cumbersome, and not at all a good replacement for a hand, but undoubtedly a deadly weapon to one who is skilled at its use. Also good for chopping down trees.</description>
+		<descriptionHyperlinks><ThingDef>GS_chainsawarm</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Moving</capacity>
+				<offset>-0.1</offset>
+				</li>
+			</capMods>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+			<tools>
+				<li>
+					<label>limb</label>
+					<capacities>
+					<li>Blunt</li>
+					</capacities>
+					<power>10</power>
+					<cooldownTime>2</cooldownTime>
+				</li>
+				<li>
+					<label>chainsaw</label>
+					<capacities>
+					<li>Cut</li>
+					</capacities>
+					<power>28</power>
+					<cooldownTime>2.8</cooldownTime>
+					<labelUsedInLogging>true</labelUsedInLogging>
+				</li>
+			</tools>
+			</li>
+		</comps>
+		<spawnThingOnRemoved>GS_chainsawarm</spawnThingOnRemoved>
+		<addedPartProps>
+			<isGoodWeapon>true</isGoodWeapon>
+			<solid>true</solid>
+			<partEfficiency>0.4</partEfficiency>
+			<betterThanNatural>false</betterThanNatural>
+		</addedPartProps>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_IndustrialBionicMakeableBase">
+		<defName>GS_chainsawarm</defName>
+		<label>chainsaw arm</label>
+		<description>A combat-oriented hand replacement consisting of an installed chainsaw arm, a hardened steel chainsaw attached to the bottom of a structurally reinforced mechanical prosthetic. It is awkward and cumbersome, and not at all a good replacement for a hand, but undoubtedly a deadly weapon to one who is skilled at its use.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installchainsawarm</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Steel>70</Steel>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<statBases>
+			<Mass>4</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallIndustrialBionicBase">
+		<defName>GS_Installchainsawarm</defName>
+		<label>install chainsaw arm</label>
+		<description>Install a chainsaw arm.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_chainsawarm</ThingDef>
+			<HediffDef>GS_Hediff_chainsawarm</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing chainsaw arm.</jobString>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_chainsawarm</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_chainsawarm</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_chainsawarm</addsHediff>
+	</RecipeDef>
+
+<!-- 
+		*** handcannon ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_handcannon</defName>
+		<label>hand-cannon</label>
+		<labelNoun>an installed hand-cannon</labelNoun>
+		<defaultLabelColor>(0.2, 0.5, 0.7)</defaultLabelColor>
+		<description>An installed hand-cannon, a deceptively powerful short-barreled gun attached to a prosthetic support, attached to the bottom of a structurally reinforced mechanical prosthetic. It is a poor replacement for a hand, but undoubtedly a deadly weapon to one who is skilled at its use.</description>
+		<descriptionHyperlinks><ThingDef>GS_handcannon</ThingDef></descriptionHyperlinks>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+				<li>
+					<label>barrel</label>
+					<capacities>
+					<li>Blunt</li>
+					</capacities>
+					<power>10</power>
+					<cooldownTime>2</cooldownTime>
+				</li>
+				</tools>
+			<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>GS_Handcannon_Bullet</defaultProjectile>
+				<ticksBetweenBurstShots>35</ticksBetweenBurstShots>
+				<burstShotCount>6</burstShotCount>
+				<warmupTime>2.6</warmupTime>
+				<range>18</range>
+				<soundCast>Shot_Revolver</soundCast>
+				<soundCastTail>GunTail_Light</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+				<accuracyTouch>0.80</accuracyTouch>
+				<accuracyShort>0.75</accuracyShort>
+				<accuracyMedium>0.45</accuracyMedium>
+				<accuracyLong>0.35</accuracyLong>
+			</li>
+			</verbs>
+			</li>
+		</comps>
+		<spawnThingOnRemoved>GS_handcannon</spawnThingOnRemoved>
+		<addedPartProps>
+		<solid>true</solid>
+		<partEfficiency>0.40</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+  
+	<ThingDef ParentName="BaseBullet">
+		<defName>GS_Handcannon_Bullet</defName>
+		<label>hand-cannon bullet</label>
+		<graphicData>
+		<texPath>Things/Projectile/Bullet_Small</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+		<damageDef>Bullet</damageDef>
+		<damageAmountBase>17</damageAmountBase>
+		<stoppingPower>2</stoppingPower>
+		<speed>60</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="GS_IndustrialBionicMakeableBase">
+		<defName>GS_handcannon</defName>
+		<label>hand-cannon</label>
+		<description>A combat-oriented hand replacement consisting of a deceptively powerful short-barreled gun attached to a prosthetic support, attached to the bottom of a structurally reinforced mechanical prosthetic. It is a poor replacement for a hand, but undoubtedly a deadly weapon to one who is skilled at its use.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installhandcannon</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<Steel>60</Steel>
+		<ComponentIndustrial>6</ComponentIndustrial>
+		</costList>
+		<statBases>
+		<Mass>5.8</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallIndustrialBionicBase">
+		<defName>GS_Installhandcannon</defName>
+		<label>install hand-cannon</label>
+		<description>Install a hand-cannon.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_handcannon</ThingDef>
+		<HediffDef>GS_hediff_handcannon</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing hand-cannon.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_handcannon</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_handcannon</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_handcannon</addsHediff>
+	</RecipeDef>
+	
+<!-- 
+		*** machinegunarm ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_machinegunarm</defName>
+		<label>machinegun-arm</label>
+		<labelNoun>an installed machinegun-arm</labelNoun>
+		<defaultLabelColor>(0.2, 0.5, 0.7)</defaultLabelColor>
+		<description>An installed machinegun-arm, a bulky and powerful belt-fed automatic weapon, attached to the bottom of a structurally reinforced mechanical prosthetic. It is particularly hefty and cumbersome, and a poor replacement for a hand, but undoubtedly a deadly weapon to one who is skilled at its use.</description>
+		<descriptionHyperlinks><ThingDef>GS_machinegunarm</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Moving</capacity>
+				<offset>-0.1</offset>
+				</li>
+			</capMods>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+				<li>
+					<label>fist</label>
+					<capacities>
+					<li>Blunt</li>
+					</capacities>
+					<power>8.2</power> <!-- Same as natural fist -->
+					<cooldownTime>2</cooldownTime>
+				</li>
+				</tools>
+			<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>GS_machinegunarm_Bullet</defaultProjectile>
+				<warmupTime>3.2</warmupTime>
+				<range>25.9</range>
+				<ticksBetweenBurstShots>7</ticksBetweenBurstShots>
+				<burstShotCount>6</burstShotCount>
+				<soundCast>Shot_Minigun</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+				<accuracyTouch>0.40</accuracyTouch>
+				<accuracyShort>0.48</accuracyShort>
+				<accuracyMedium>0.35</accuracyMedium>
+				<accuracyLong>0.26</accuracyLong>
+			</li>
+			</verbs>
+			</li>
+		</comps>
+		<spawnThingOnRemoved>GS_machinegunarm</spawnThingOnRemoved>
+		<addedPartProps>
+		<solid>true</solid>
+		<partEfficiency>0.30</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+  
+	<ThingDef ParentName="BaseBullet">
+		<defName>GS_machinegunarm_Bullet</defName>
+		<label>machinegun-arm bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>14</damageAmountBase>
+			<stoppingPower>1</stoppingPower>
+			<speed>46</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="GS_IndustrialBionicMakeableBase">
+		<defName>GS_machinegunarm</defName>
+		<label>machinegun-arm</label>
+		<description>A combat-oriented hand replacement consisting of a bulky and powerful belt-fed automatic weapon, attached to the bottom of a structurally reinforced mechanical prosthetic. It is particularly hefty and cumbersome, and a poor replacement for a hand, but undoubtedly a deadly weapon to one who is skilled at its use.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installmachinegunarm</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<Steel>120</Steel>
+		<ComponentIndustrial>8</ComponentIndustrial>
+		</costList>
+		<statBases>
+		<Mass>5.8</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallIndustrialBionicBase">
+		<defName>GS_Installmachinegunarm</defName>
+		<label>install machinegun-arm</label>
+		<description>Install a machinegun-arm.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_machinegunarm</ThingDef>
+		<HediffDef>GS_hediff_machinegunarm</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing machinegun-arm.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_machinegunarm</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_machinegunarm</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_machinegunarm</addsHediff>
+	</RecipeDef>
+
+<!-- 
+		*** launcherarm ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_launcherarm</defName>
+		<label>launcher-arm</label>
+		<labelNoun>an installed launcher-arm</labelNoun>
+		<defaultLabelColor>(0.2, 0.5, 0.7)</defaultLabelColor>
+		<description>An installed launcher-arm, a short-barreled repeating grenade launcher attached to a prosthetic support, attached to the bottom of a structurally reinforced mechanical prosthetic. It is a poor replacement for a hand, but undoubtedly a deadly weapon to one who is skilled at its use.</description>
+		<descriptionHyperlinks><ThingDef>GS_launcherarm</ThingDef></descriptionHyperlinks>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+				<li>
+					<label>barrel</label>
+					<capacities>
+					<li>Blunt</li>
+					</capacities>
+					<power>10</power>
+					<cooldownTime>2</cooldownTime>
+				</li>
+				</tools>
+			<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>GS_launcherarm_Bullet</defaultProjectile>
+				<ticksBetweenBurstShots>60</ticksBetweenBurstShots>
+				<forcedMissRadius>1.9</forcedMissRadius>
+				<burstShotCount>3</burstShotCount>
+				<warmupTime>4</warmupTime>
+				<range>25</range>
+				<soundCast>Shot_IncendiaryLauncher</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>14</muzzleFlashScale>
+			</li>
+			</verbs>
+			</li>
+		</comps>
+		<spawnThingOnRemoved>GS_launcherarm</spawnThingOnRemoved>
+		<addedPartProps>
+		<solid>true</solid>
+		<partEfficiency>0.40</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+  
+	<ThingDef ParentName="BaseBullet">
+		<defName>GS_launcherarm_Bullet</defName>
+		<label>launcher-arm bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/LauncherShot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<color>(140,135,156)</color>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<speed>40</speed>
+			<damageDef>Bomb</damageDef>
+			<!-- Use default damage from explosion def -->
+			<explosionRadius>2.5</explosionRadius>
+			<arcHeightFactor>0.2</arcHeightFactor>
+			<shadowSize>0.6</shadowSize>
+			<screenShakeFactor>0.5</screenShakeFactor>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="GS_IndustrialBionicMakeableBase">
+		<defName>GS_launcherarm</defName>
+		<label>launcher-arm</label>
+		<description>A combat-oriented hand replacement consisting of a short-barreled repeating grenade launcher attached to a prosthetic support, attached to the bottom of a structurally reinforced mechanical prosthetic. It is a poor replacement for a hand, but undoubtedly a deadly weapon to one who is skilled at its use.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installlauncherarm</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<Steel>100</Steel>
+		<ComponentIndustrial>6</ComponentIndustrial>
+		</costList>
+		<statBases>
+		<Mass>5.8</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallIndustrialBionicBase">
+		<defName>GS_Installlauncherarm</defName>
+		<label>install launcher-arm</label>
+		<description>Install a launcher-arm.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_launcherarm</ThingDef>
+		<HediffDef>GS_hediff_launcherarm</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing launcher-arm.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_launcherarm</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_launcherarm</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_launcherarm</addsHediff>
+	</RecipeDef>
+
+<!-- 
+		*** autoloader arm ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_autoloaderarm</defName>
+		<label>autoloader arm</label>
+		<labelNoun>an installed autoloader arm</labelNoun>
+		<defaultLabelColor>(0.2, 0.5, 0.7)</defaultLabelColor>
+		<description>An installed autoloader arm, a mechanical belt-feeder and stabilizer attached to the bottom of a structurally reinforced mechanical prosthetic. It is not at all a good replacement for a hand, but is an earstwhile mechanical assistant to any one-armed gunman.</description>
+		<descriptionHyperlinks><ThingDef>GS_autoloaderarm</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<statOffsets>
+				<ShootingAccuracyPawn>-0.15</ShootingAccuracyPawn>
+			</statOffsets>
+			<statFactors>
+				<VEF_RangeAttackSpeedFactor>1.4</VEF_RangeAttackSpeedFactor>
+			</statFactors>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+				<li>
+					<label>fist</label>
+					<capacities>
+					<li>Blunt</li>
+					</capacities>
+					<power>8.2</power> <!-- Same as natural fist -->
+					<cooldownTime>2</cooldownTime>
+				</li>
+				</tools>
+			</li>
+		</comps>
+		<spawnThingOnRemoved>GS_autoloaderarm</spawnThingOnRemoved>
+		<addedPartProps>
+		<solid>true</solid>
+		<partEfficiency>0.40</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+
+	<ThingDef ParentName="GS_IndustrialBionicMakeableBase">
+		<defName>GS_autoloaderarm</defName>
+		<label>autoloader arm</label>
+		<description>A combat-oriented hand replacement consisting of a small yet powerful crossbow attached to a finely crafted metal forearm, strapped to the wielder's arm stump with strips of leather and padded cloth. It is awkward and cumbersome, and not at all a good replacement for a hand, but undoubtedly a deadly weapon to one who is skilled at its use.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installautoloaderarm</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<Steel>60</Steel>
+		<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<statBases>
+		<Mass>5.8</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallIndustrialBionicBase">
+		<defName>GS_Installautoloaderarm</defName>
+		<label>install autoloader arm</label>
+		<description>Install a autoloader arm.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_autoloaderarm</ThingDef>
+		<HediffDef>GS_hediff_autoloaderarm</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing autoloader arm.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_autoloaderarm</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_autoloaderarm</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_autoloaderarm</addsHediff>
+	</RecipeDef>
+
+<!--
+		** Athlete's Prosthetic Leg **
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_Hediff_AthleteProstheticLeg</defName>
+		<label>athlete's prosthetic leg</label>
+		<labelNoun>an athlete's prosthetic leg</labelNoun>
+		<defaultLabelColor>(0.2, 0.5, 0.7)</defaultLabelColor>
+		<description>An installed prosthetic leg. While it lacks a neural interface, its complex arrangement of internal joints allows it to mimic natural movement quite convincingly. This model is specifically designed for athletes, and can be used to move faster, though it is more awkward to stand on.</description>
+		<descriptionHyperlinks><ThingDef>AthleteProstheticLeg</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<statOffsets>
+				<MoveSpeed>0.75</MoveSpeed>
+			</statOffsets>
+			</li>
+		</stages>
+		<spawnThingOnRemoved>AthleteProstheticLeg</spawnThingOnRemoved>
+		<addedPartProps>
+		<solid>true</solid>
+		<partEfficiency>0.75</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_IndustrialBionicMakeableBase">
+		<defName>AthleteProstheticLeg</defName>
+		<label>athlete's prosthetic leg</label>
+		<description>A leg prosthesis. While it lacks a neural interface, its complex arrangement of internal joints allows it to mimic natural movement quite convincingly. Still, it is inferior to a real leg. This model is specifically designed for athletes, and can be used to move faster, though it is more awkward to stand on.</description>
+		<descriptionHyperlinks><RecipeDef>InstallAthleteProstheticLeg</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<Steel>40</Steel>
+		<ComponentIndustrial>6</ComponentIndustrial>
+		</costList>
+		<statBases>
+		<Mass>8</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallIndustrialBionicBase">
+		<defName>InstallAthleteProstheticLeg</defName>
+		<label>install athlete's prosthetic leg</label>
+		<description>Install an athlete's prosthetic leg.</description>
+		<descriptionHyperlinks>
+		<ThingDef>AthleteProstheticLeg</ThingDef>
+		<HediffDef>GS_Hediff_AthleteProstheticLeg</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing athlete's prosthetic leg.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>AthleteProstheticLeg</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>AthleteProstheticLeg</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Leg</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_AthleteProstheticLeg</addsHediff>
+	</RecipeDef>
+	
+<!-- 
+		*** mining arm ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_miningarm</defName>
+		<label>mining arm</label>
+		<labelNoun>an installed mining arm</labelNoun>
+		<defaultLabelColor>(0.2, 0.5, 0.7)</defaultLabelColor>
+		<description>An installed mining tool arm, a pneumatically powered mining pick attached to the bottom of a structurally reinforced mechanical prosthetic. While it may be a poor replacement for a hand in regards to more dextrous tasks, it is plenty effective at its intended purpose.</description>
+		<descriptionHyperlinks><ThingDef>GS_miningarm</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<statFactors>
+				<MiningSpeed>1.20</MiningSpeed>
+				<MiningYield>1.20</MiningYield>
+			</statFactors>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+				<li>
+					<label>pick</label>
+					<capacities>
+					<li>Stab</li>
+					</capacities>
+					<power>18</power>
+					<cooldownTime>2.5</cooldownTime>
+				</li>
+				</tools>
+			</li>
+		</comps>
+		<spawnThingOnRemoved>GS_miningarm</spawnThingOnRemoved>
+		<addedPartProps>
+		<solid>true</solid>
+		<partEfficiency>0.40</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+
+	<ThingDef ParentName="GS_IndustrialBionicMakeableBase">
+		<defName>GS_miningarm</defName>
+		<label>mining arm</label>
+		<description>A utility hand replacement consisting of a pneumatically powered mining pick attached to the bottom of a structurally reinforced mechanical prosthetic. While it may be a poor replacement for a hand in regards to more dextrous tasks, it is plenty effective at its intended purpose.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installminingarm</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<Steel>60</Steel>
+		<ComponentIndustrial>6</ComponentIndustrial>
+		</costList>
+		<statBases>
+		<Mass>5.8</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallIndustrialBionicBase">
+		<defName>GS_Installminingarm</defName>
+		<label>install mining arm</label>
+		<description>Install a mining arm.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_miningarm</ThingDef>
+		<HediffDef>GS_hediff_miningarm</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing mining arm.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_miningarm</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_miningarm</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_miningarm</addsHediff>
+	</RecipeDef>
+	
+<!-- 
+		*** medi-arm ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_mediarm</defName>
+		<label>medi-arm</label>
+		<labelNoun>an installed medi-arm</labelNoun>
+		<defaultLabelColor>(0.2, 0.5, 0.7)</defaultLabelColor>
+		<description>An installed medical assistance tool arm, a full suite of medical scanners and tools attached to mechanical manipulators. While it may be a poor replacement for a hand in regards to more dextrous tasks, it is plenty effective at its intended purpose.</description>
+		<descriptionHyperlinks><ThingDef>GS_mediarm</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<statFactors>
+				<MedicalTendQuality>1.15</MedicalTendQuality>
+				<MedicalSurgerySuccessChance>1.15</MedicalSurgerySuccessChance>
+			</statFactors>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+				<li>
+					<label>scalpel</label>
+					<capacities>
+					<li>Stab</li>
+					</capacities>
+					<power>9</power>
+					<cooldownTime>2</cooldownTime>
+				</li>
+				</tools>
+			</li>
+		</comps>
+		<spawnThingOnRemoved>GS_mediarm</spawnThingOnRemoved>
+		<addedPartProps>
+		<solid>true</solid>
+		<partEfficiency>0.40</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+
+	<ThingDef ParentName="GS_IndustrialBionicMakeableBase">
+		<defName>GS_mediarm</defName>
+		<label>medi-arm</label>
+		<description>A utility hand replacement consisting of an installed medical assistance tool arm, a full suite of medical scanners and tools attached to mechanical manipulators. While it may be a poor replacement for a hand in regards to less specific tasks, it is plenty effective at its intended purpose.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installmediarm</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<Steel>60</Steel>
+		<ComponentIndustrial>6</ComponentIndustrial>
+		</costList>
+		<statBases>
+		<Mass>5.8</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallIndustrialBionicBase">
+		<defName>GS_Installmediarm</defName>
+		<label>install medi-arm</label>
+		<description>Install a medi-arm.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_mediarm</ThingDef>
+		<HediffDef>GS_hediff_mediarm</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing medi-arm.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_mediarm</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_mediarm</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_mediarm</addsHediff>
+	</RecipeDef>
+	
+<!-- 
+		*** culin-arm ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_culiarm</defName>
+		<label>culin-arm</label>
+		<labelNoun>an installed culin-arm</labelNoun>
+		<defaultLabelColor>(0.2, 0.5, 0.7)</defaultLabelColor>
+		<description>An installed food prep assistance tool arm, with in-built thermal scanners, slicers and spice storages. While it may be a poor replacement for a hand in regards to more dextrous tasks, it is plenty effective at its intended purpose.</description>
+		<descriptionHyperlinks><ThingDef>GS_culiarm</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<statFactors>
+				<CookSpeed>1.15</CookSpeed>
+				<ButcheryFleshSpeed>1.25</ButcheryFleshSpeed>
+			</statFactors>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+				<li>
+					<label>slicer</label>
+					<capacities>
+					<li>Cut</li>
+					</capacities>
+					<power>14</power>
+					<cooldownTime>2</cooldownTime>
+				</li>
+				</tools>
+			</li>
+		</comps>
+		<spawnThingOnRemoved>GS_culiarm</spawnThingOnRemoved>
+		<addedPartProps>
+		<solid>true</solid>
+		<partEfficiency>0.40</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+
+	<ThingDef ParentName="GS_IndustrialBionicMakeableBase">
+		<defName>GS_culiarm</defName>
+		<label>culin-arm</label>
+		<description>A utility hand replacement consisting of an installed food prep assistance tool arm, with in-built thermal scanners, slicers and spice storages. While it may be a poor replacement for a hand in regards to less specific tasks, it is plenty effective at its intended purpose.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installculiarm</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<Steel>60</Steel>
+		<ComponentIndustrial>6</ComponentIndustrial>
+		</costList>
+		<statBases>
+		<Mass>5.8</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallIndustrialBionicBase">
+		<defName>GS_Installculiarm</defName>
+		<label>install culin-arm</label>
+		<description>Install a culin-arm.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_culiarm</ThingDef>
+		<HediffDef>GS_hediff_culiarm</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing culin-arm.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_culiarm</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_culiarm</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_culiarm</addsHediff>
+	</RecipeDef>
+	
+<!-- 
+		*** garden-arm ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_gardenarm</defName>
+		<label>garden-arm</label>
+		<labelNoun>an installed garden-arm</labelNoun>
+		<defaultLabelColor>(0.2, 0.5, 0.7)</defaultLabelColor>
+		<description>An installed plant-tending assistance tool arm, with in-built soil acidity scanners and planting tools attached to mechanical manipulators. While it may be a poor replacement for a hand in regards to more dextrous tasks, it is plenty effective at its intended purpose.</description>
+		<descriptionHyperlinks><ThingDef>GS_gardenarm</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<statFactors>
+				<PlantWorkSpeed>1.20</PlantWorkSpeed>
+				<PlantHarvestYield>1.15</PlantHarvestYield>
+			</statFactors>
+			</li>
+		</stages>
+		<spawnThingOnRemoved>GS_gardenarm</spawnThingOnRemoved>
+		<addedPartProps>
+		<solid>true</solid>
+		<partEfficiency>0.40</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+
+	<ThingDef ParentName="GS_IndustrialBionicMakeableBase">
+		<defName>GS_gardenarm</defName>
+		<label>garden-arm</label>
+		<description>A utility hand replacement consisting of an installed plant-tending assistance tool arm, with in-built soil acidity scanners and planting tools attached to mechanical manipulators. While it may be a poor replacement for a hand in regards to less specific tasks, it is plenty effective at its intended purpose.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installgardenarm</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<Steel>60</Steel>
+		<ComponentIndustrial>6</ComponentIndustrial>
+		</costList>
+		<statBases>
+		<Mass>5.8</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallIndustrialBionicBase">
+		<defName>GS_Installgardenarm</defName>
+		<label>install garden-arm</label>
+		<description>Install a garden-arm.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_gardenarm</ThingDef>
+		<HediffDef>GS_hediff_gardenarm</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing garden-arm.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_gardenarm</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_gardenarm</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_gardenarm</addsHediff>
+	</RecipeDef>
+	
+<!-- 
+		*** construction arm ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_builderarm</defName>
+		<label>construction arm</label>
+		<labelNoun>an installed construction arm</labelNoun>
+		<defaultLabelColor>(0.2, 0.5, 0.7)</defaultLabelColor>
+		<description>An installed construction assistance tool arm, with built in pneumatic actuators and various tool manipulators, along with folding containers for small bits and bobs. While it may be a poor replacement for a hand in regards to more dextrous tasks, it is plenty effective at its intended purpose.</description>
+		<descriptionHyperlinks><ThingDef>GS_builderarm</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<statFactors>
+				<ConstructionSpeed>1.20</ConstructionSpeed>
+				<ConstructSuccessChance>1.15</ConstructSuccessChance>
+			</statFactors>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+				<li>
+					<label>hammer</label>
+					<capacities>
+					<li>Blunt</li>
+					</capacities>
+					<power>18</power>
+					<cooldownTime>2.5</cooldownTime>
+				</li>
+				</tools>
+			</li>
+		</comps>
+		<spawnThingOnRemoved>GS_builderarm</spawnThingOnRemoved>
+		<addedPartProps>
+		<solid>true</solid>
+		<partEfficiency>0.40</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+
+	<ThingDef ParentName="GS_IndustrialBionicMakeableBase">
+		<defName>GS_builderarm</defName>
+		<label>construction arm</label>
+		<description>A utility hand replacement consisting of an installed construction assistance tool arm, with built in pneumatic actuators and various tool manipulators, along with folding containers for small bits and bobs. While it may be a poor replacement for a hand in regards to less specific tasks, it is plenty effective at its intended purpose.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installbuilderarm</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<Steel>60</Steel>
+		<ComponentIndustrial>6</ComponentIndustrial>
+		</costList>
+		<statBases>
+		<Mass>5.8</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Simple</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallIndustrialBionicBase">
+		<defName>GS_Installbuilderarm</defName>
+		<label>install construction arm</label>
+		<description>Install a construction arm.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_builderarm</ThingDef>
+		<HediffDef>GS_hediff_builderarm</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing construction arm.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_builderarm</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_builderarm</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_builderarm</addsHediff>
+	</RecipeDef>
+
+</Defs>
