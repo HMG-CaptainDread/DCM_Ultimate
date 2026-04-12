@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<!-- If youre going to copy, please at least give credit, I spent hours collecting data for this-->
+
+	<!--CombatExtended.AmmoCategoryDef>
+		<defName>BallisticSplitShot</defName>
+		<label>Ballistic Scatter - Split Shot</label>
+		<labelShort>Split-shot</labelShort>
+		<description>Special round designed to fire two projectiles. Deals high burst damage should both the projectile hit the same target.</description>
+	</CombatExtended.AmmoCategoryDef-->
+
+	<ThingCategoryDef>
+		<defName>Ammo09cmSplit</defName>
+		<label>0.9cm Split Shot</label>
+		<parent>AmmoHighCaliber</parent>
+		<iconPath>UI/Icons/ThingCategories/CaliberHighCaliber</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_09cmSplit</defName>
+		<label>0.9cm Split Shot</label>
+		<ammoTypes>
+			<Ammo_09cmSplit_AP>Bullet_09cmSplit_AP</Ammo_09cmSplit_AP>
+			<Ammo_09cmSplit_API>Bullet_09cmSplit_API</Ammo_09cmSplit_API>
+			<Ammo_09cmSplit_APHE>Bullet_09cmSplit_APHE</Ammo_09cmSplit_APHE>
+			<Ammo_09cmSplit_Sabot>Bullet_09cmSplit_Sabot</Ammo_09cmSplit_Sabot>
+		</ammoTypes>
+		<similarTo>AmmoSet_RifleMagnum</similarTo>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="Ammo09cmSplitBase" ParentName="AmmoBase" Abstract="True">
+		<description>Ballistic Scatter - Split Shot\nA caseless ammo designed for Z277's High caliber machineguns. Fires two projectiles instead of one.</description>
+		<statBases>
+			<Mass>0.07</Mass>
+			<Bulk>0.03</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo09cmSplit</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="Ammo09cmSplitBase">
+		<defName>Ammo_09cmSplit_AP</defName>
+		<label>0.9cm Split Shot Caseless cartridge (AP)</label>
+		<graphicData>
+			<texPath>Synthetik/Ammo/Ballistic/0.9cmSplitShot</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.28</MarketValue>
+		</statBases>
+		<ammoClass>ArmorPiercing</ammoClass>
+		<cookOffProjectile>Bullet_09cmSplit_AP</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="Ammo09cmSplitBase">
+		<defName>Ammo_09cmSplit_API</defName>
+		<label>0.9cm Split Shot Caseless cartridge (AP-I)</label>
+		<graphicData>
+			<texPath>Synthetik/Ammo/Ballistic/0.9cmSplitShot</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.38</MarketValue>
+		</statBases>
+		<ammoClass>IncendiaryAP</ammoClass>
+		<cookOffProjectile>Bullet_09cmSplit_API</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="Ammo09cmSplitBase">
+		<defName>Ammo_09cmSplit_APHE</defName>
+		<label>0.9cm Split Shot Caseless cartridge (AP-HE)</label>
+		<graphicData>
+			<texPath>Synthetik/Ammo/Ballistic/0.9cmSplitShot</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.56</MarketValue>
+		</statBases>
+		<ammoClass>ExplosiveAP</ammoClass>
+		<cookOffProjectile>Bullet_09cmSplit_APHE</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="Ammo09cmSplitBase">
+		<defName>Ammo_09cmSplit_Sabot</defName>
+		<label>0.9cm Split Shot Caseless cartridge (APDS)</label>
+		<graphicData>
+			<texPath>Synthetik/Ammo/Ballistic/0.9cmSplitShot</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.31</MarketValue>
+		</statBases>
+		<ammoClass>Sabot</ammoClass>
+		<cookOffProjectile>Bullet_09cmSplit_Sabot</cookOffProjectile>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="Base09cmSplitBullet" ParentName="BaseBulletCE" Abstract="true">
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>152</speed>
+			<dropsCasings>true</dropsCasings>
+			<casingMoteDefname>Fleck_RifleAmmoCasings_HighCal</casingMoteDefname>
+			<casingFilthDefname>Filth_RifleAmmoCasings_HighCal</casingFilthDefname>
+			<pelletCount>2</pelletCount>
+			<spreadMult>8.9</spreadMult>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base09cmSplitBullet">
+		<defName>Bullet_09cmSplit_AP</defName>
+		<label>0.9cm Bullet (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>17</damageAmountBase>
+			<armorPenetrationSharp>26</armorPenetrationSharp>
+			<armorPenetrationBlunt>143.88</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base09cmSplitBullet">
+		<defName>Bullet_09cmSplit_API</defName>
+		<label>0.9cm Bullet (AP-I)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>17</damageAmountBase>
+			<armorPenetrationSharp>26</armorPenetrationSharp>
+			<armorPenetrationBlunt>143.88</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Flame_Secondary</def>
+					<amount>11</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base09cmSplitBullet">
+		<defName>Bullet_09cmSplit_APHE</defName>
+		<label>0.9cm Bullet (AP-HE)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>27</damageAmountBase>
+			<armorPenetrationSharp>13</armorPenetrationSharp>
+			<armorPenetrationBlunt>143.88</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>16</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base09cmSplitBullet">
+		<defName>Bullet_09cmSplit_Sabot</defName>
+		<label>0.9cm Bullet (APDS)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>15</damageAmountBase>
+			<armorPenetrationSharp>45.5</armorPenetrationSharp>
+			<armorPenetrationBlunt>143.88</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase">
+		<defName>MakeAmmo_09cmSplit_AP</defName>
+		<label>make 0.9cm Split Shot Caseless (AP) cartridge x200</label>
+		<description>Craft 200 0.9cm Split Shot Caseless (AP) cartridges.</description>
+		<jobString>Making 0.9cm Split Shot Caseless (AP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>28</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_09cmSplit_AP>200</Ammo_09cmSplit_AP>
+		</products>
+		<workAmount>3360</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase">
+		<defName>MakeAmmo_09cmSplit_API</defName>
+		<label>make 0.9cm Split Shot Caseless (AP-I) cartridge x200</label>
+		<description>Craft 200 0.9cm Split Shot Caseless (AP-I) cartridges.</description>
+		<jobString>Making 0.9cm Split Shot Caseless (AP-I) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>28</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Prometheum</li>
+					</thingDefs>
+				</filter>
+				<count>3</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>Prometheum</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_09cmSplit_API>200</Ammo_09cmSplit_API>
+		</products>
+		<workAmount>4000</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase">
+		<defName>MakeAmmo_09cmSplit_APHE</defName>
+		<label>make 0.9cm Split Shot Caseless (AP-HE) cartridge x200</label>
+		<description>Craft 200 0.9cm Split Shot Caseless (AP-HE) cartridges.</description>
+		<jobString>Making 0.9cm Split Shot Caseless (AP-HE) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>28</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>FSX</li>
+					</thingDefs>
+				</filter>
+				<count>7</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>FSX</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_09cmSplit_APHE>200</Ammo_09cmSplit_APHE>
+		</products>
+		<workAmount>5600</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase">
+		<defName>MakeAmmo_09cmSplit_Sabot</defName>
+		<label>make 0.9cm Split Shot Caseless (APDS) cartridge x200</label>
+		<description>Craft 200 0.9cm Split Shot Caseless (APDS) cartridges.</description>
+		<jobString>Making 0.9cm Split Shot Caseless (APDS) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>4</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Uranium</li>
+					</thingDefs>
+				</filter>
+				<count>6</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Chemfuel</li>
+					</thingDefs>
+				</filter>
+				<count>6</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>Uranium</li>
+				<li>Chemfuel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_09cmSplit_Sabot>200</Ammo_09cmSplit_Sabot>
+		</products>
+		<workAmount>4000</workAmount>
+	</RecipeDef>
+
+</Defs>

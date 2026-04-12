@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+	<!-- BASES -->
+		<!-- FRUIT TREE BASE -->
+			<ThingDef ParentName="PlantBase" Name="TMM_FruitTreeBase" Abstract="True">
+				<statBases>
+					<MaxHitPoints>200</MaxHitPoints>
+					<Flammability>0.8</Flammability>
+					<Nutrition>2</Nutrition>
+					<Mass>150</Mass>
+				</statBases>
+				<altitudeLayer>Building</altitudeLayer>
+				<selectable>true</selectable>
+				<fillPercent>0.25</fillPercent>
+				<graphicData>
+					<shadowData>
+						<volume>(0.2, 0.35, 0.13)</volume>
+						<offset>(0,0,-0.42)</offset>
+					</shadowData>
+					<shaderParameters>
+						<_FallColorSource>(0.254, 0.286, 0.125)</_FallColorSource>
+						<_FallColorDestination>/Other/TreeFallGradient</_FallColorDestination>
+						<_FallTransitionRange>(0.02, 0.10)</_FallTransitionRange>
+						<_FallBehaviorEnabled>1</_FallBehaviorEnabled>
+					</shaderParameters>
+				</graphicData>
+				<passability>PassThroughOnly</passability>
+				<pathCost>42</pathCost>
+				<blockWind>true</blockWind>
+				<ingestible>
+					<foodType>Tree</foodType>
+					<preferability>RawBad</preferability>
+				</ingestible>
+				<plant>
+					<lifespanDaysPerGrowDays>0</lifespanDaysPerGrowDays>
+					<fertilitySensitivity>0.5</fertilitySensitivity>
+					<soundHarvesting>Harvest_Tree</soundHarvesting>
+					<soundHarvestFinish>Harvest_Tree_Finish</soundHarvestFinish>
+					<harvestYield>50</harvestYield>
+					<sowWork>3000</sowWork>
+					<sowMinSkill>6</sowMinSkill>
+					<harvestWork>500</harvestWork>
+					<harvestTag>Standard</harvestTag>
+					<harvestAfterGrowth>0.30</harvestAfterGrowth>
+					<harvestMinGrowth>0.40</harvestMinGrowth>
+					<harvestFailable>false</harvestFailable>
+					<blockAdjacentSow>true</blockAdjacentSow>
+					<treeLoversCareIfChopped>false</treeLoversCareIfChopped>
+					<burnedThingDef>BurnedTree</burnedThingDef>
+					<treeCategory>Full</treeCategory>
+					<visualSizeRange>1.3~2.0</visualSizeRange>
+					<topWindExposure>0.25</topWindExposure>
+					<wildClusterRadius>8</wildClusterRadius>
+					<wildClusterWeight>24</wildClusterWeight>
+					<wildOrder>3</wildOrder>
+					<interferesWithRoof>true</interferesWithRoof>
+					<sowTags>
+						<li>Ground</li>
+					</sowTags>
+				</plant>
+			</ThingDef>
+		<!-- TREE BASE -->
+			<ThingDef ParentName="TreeBase" Name="TMM_TreeBase" Abstract="True">
+				<graphicData>
+					<graphicClass>Graphic_Random</graphicClass>
+				</graphicData>
+				<statBases>
+					<Nutrition>1</Nutrition>
+				</statBases>
+				<plant>
+					<mustBeWildToSow>false</mustBeWildToSow>
+					<sowResearchPrerequisites>
+						<li>TreeSowing</li>
+					</sowResearchPrerequisites>
+				</plant>
+			</ThingDef>
+		<!-- WILD TREE BASE -->
+			<ThingDef ParentName="TMM_FruitTreeBase" Name="TMM_WildFruitTreeBase" Abstract="True">
+				<minifiedDef>MinifiedTree</minifiedDef>
+				<neverMultiSelect>false</neverMultiSelect>
+				<plant>
+					<harvestYield>20</harvestYield>
+					<treeLoversCareIfChopped>false</treeLoversCareIfChopped>
+					<forceIsTree>true</forceIsTree>
+					<sowTags />
+				</plant>
+			</ThingDef>
+	<!-- FRUIT TREES -->
+		<!-- FARMABLE -->
+			<!-- DATE PALM -->
+				<ThingDef ParentName="TMM_FruitTreeBase">
+					<defName>TMM_DateTree</defName>
+					<label>Date Palm Tree</label>
+					<description>A fruit bearing tree that grows dates. It is not destroyed when picked.</description>
+					<graphicData>
+						<texPath>Modules/HarvestTime/Plants/Mature/Trees/DatePalm</texPath>
+					</graphicData>
+					<plant>
+						<growDays>12</growDays>
+						<harvestedThingDef>TMM_RawDate</harvestedThingDef>
+						<immatureGraphicPath>Modules/HarvestTime/Plants/Immature/Trees/DatePalm</immatureGraphicPath>
+						<sowResearchPrerequisites>
+							<li>TMM_HT_AgricultureIII</li>
+						</sowResearchPrerequisites>
+						<wildOrder>2</wildOrder>
+						<purpose>Food</purpose>
+					</plant>
+				</ThingDef>
+			<!-- FIG -->
+				<ThingDef ParentName="TMM_FruitTreeBase">
+					<defName>TMM_FigTree</defName>
+					<label>Fig Tree</label>
+					<description>A fruit bearing tree that grows figs. It is not destroyed when picked.</description>
+					<graphicData>
+						<texPath>Modules/HarvestTime/Plants/Mature/Trees/Fig</texPath>
+					</graphicData>
+					<plant>
+						<growDays>12</growDays>
+						<harvestedThingDef>TMM_RawFig</harvestedThingDef>
+						<immatureGraphicPath>Modules/HarvestTime/Plants/Immature/Trees/Fig</immatureGraphicPath>
+						<sowResearchPrerequisites>
+							<li>TMM_HT_AgricultureIII</li>
+						</sowResearchPrerequisites>
+						<wildOrder>2</wildOrder>
+						<purpose>Food</purpose>
+					</plant>
+				</ThingDef>
+		<!-- WILD -->
+			<!-- DATE PALM -->
+				<ThingDef ParentName="TMM_WildFruitTreeBase">
+					<defName>TMM_WildDateTree</defName>
+					<label>Date Palm Tree</label>
+					<description>A fruit bearing tree that grows dates. It is not destroyed when picked.</description>
+					<graphicData>
+						<texPath>Modules/HarvestTime/Plants/Mature/Trees/DatePalm</texPath>
+					</graphicData>
+					<plant>
+						<growDays>12</growDays>
+						<harvestedThingDef>TMM_RawDate</harvestedThingDef>
+						<immatureGraphicPath>Modules/HarvestTime/Plants/Immature/Trees/DatePalm</immatureGraphicPath>
+					</plant>
+				</ThingDef>
+			<!-- FIG -->
+				<ThingDef ParentName="TMM_WildFruitTreeBase">
+					<defName>TMM_WildFigTree</defName>
+					<label>Fig Tree</label>
+					<description>A fruit bearing tree that grows figs. It is not destroyed when picked.</description>
+					<graphicData>
+						<texPath>Modules/HarvestTime/Plants/Mature/Trees/Fig</texPath>
+					</graphicData>
+					<plant>
+						<growDays>12</growDays>
+						<harvestedThingDef>TMM_RawFig</harvestedThingDef>
+						<immatureGraphicPath>Modules/HarvestTime/Plants/Immature/Trees/Fig</immatureGraphicPath>
+					</plant>
+				</ThingDef>
+	<!-- REGULAR TREES -->
+		<!-- ACACIA -->
+			<ThingDef ParentName="TMM_TreeBase">
+				<defName>TMM_AcaciaTree</defName>
+				<label>Acacia Tree</label>
+				<description>Acacia trees are hardy and can grow in the toughest of arid environments. They don't provide much wood, and have sharp thorns to ward off many would be lumberjacks.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Plants/Mature/Trees/Acacia</texPath>
+					<shadowData>
+						<volume>(0.15, 0.3, 0.1)</volume>
+					</shadowData>
+				</graphicData>
+				<statBases>
+					<Beauty>3</Beauty>
+					<BeautyOutdoors>3</BeautyOutdoors>
+				</statBases>
+				<plant>
+					<leaflessGraphicPath>Things/Plant/TreeBirch_Leafless</leaflessGraphicPath>
+					<growDays>15</growDays>
+					<harvestWork>700</harvestWork>
+					<harvestYield>12</harvestYield>
+				</plant>
+			</ThingDef>
+		<!-- ASSORTED -->
+			<ThingDef ParentName="TMM_TreeBase">
+				<defName>TMM_RandomTree</defName>
+				<label>Assorted Tree</label>
+				<description>A random tree, more for decoration purposes than for wood. Grows a bit faster and does not change colours when the seasons do.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Plants/Mature/Trees/AssortedTree</texPath>
+					<shadowData>
+						<volume>(0.15, 0.3, 0.1)</volume>
+					</shadowData>
+				</graphicData>
+				<statBases>
+					<Beauty>3</Beauty>
+					<BeautyOutdoors>3</BeautyOutdoors>
+				</statBases>
+				<plant>
+					<leaflessGraphicPath>Things/Plant/TreeBirch_Leafless</leaflessGraphicPath>
+					<growDays>18</growDays>
+					<harvestWork>700</harvestWork>
+					<harvestYield>20</harvestYield>
+				</plant>
+			</ThingDef>
+		<!-- CAMELLIA -->
+			<ThingDef ParentName="TMM_TreeBase">
+				<defName>TMM_CamelliaTree</defName>
+				<label>Camellia Tree</label>
+				<description>This small ornamental tree has beautiful flowers that have been known to stay healthy even through tough winter conditions.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Plants/Mature/Trees/Camellia</texPath>
+					<shadowData>
+						<volume>(0.15, 0.3, 0.1)</volume>
+					</shadowData>
+					<shaderParameters>
+						<_FallColorSource>(0.360, 0.388, 0.180)</_FallColorSource>
+						<_FallColorDestination>/Other/TreeFallGradient</_FallColorDestination>
+						<_FallTransitionRange>(0.02, 0.10)</_FallTransitionRange>
+						<_FallBehaviorEnabled>1</_FallBehaviorEnabled>
+					</shaderParameters>
+				</graphicData>
+				<statBases>
+					<Beauty>8</Beauty>
+					<BeautyOutdoors>8</BeautyOutdoors>
+				</statBases>
+				<plant>
+					<leaflessGraphicPath>Things/Plant/TreeBirch_Leafless</leaflessGraphicPath>
+					<growDays>20</growDays>
+					<harvestWork>700</harvestWork>
+					<harvestYield>30</harvestYield>
+				</plant>
+			</ThingDef>
+		<!-- CHERRY BLOSSOM -->
+			<ThingDef ParentName="TMM_TreeBase">
+				<defName>TMM_CherryBlossomTree</defName>
+				<label>Cherry Blossom Tree</label>
+				<description>Cherry blossom trees are not just a good source of building materials, they are also one of the most beautiful trees to have in your lawn.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Plants/Mature/Trees/CherryBlossom</texPath>
+					<shadowData>
+						<volume>(0.15, 0.3, 0.1)</volume>
+					</shadowData>
+					<shaderParameters>
+						<_FallColorSource>(1, 0.682, 0.717)</_FallColorSource>
+						<_FallColorDestination>/Other/TreeFallGradient</_FallColorDestination>
+						<_FallTransitionRange>(0.02, 0.10)</_FallTransitionRange>
+						<_FallBehaviorEnabled>1</_FallBehaviorEnabled>
+					</shaderParameters>
+				</graphicData>
+				<statBases>
+					<Beauty>8</Beauty>
+					<BeautyOutdoors>8</BeautyOutdoors>
+				</statBases>
+				<plant>
+					<leaflessGraphicPath>Modules/HarvestTime/Plants/Mature/Trees/LeaflessTree/CherryBlossom_Leafless</leaflessGraphicPath>
+					<growDays>20</growDays>
+					<harvestWork>700</harvestWork>
+					<harvestYield>30</harvestYield>
+					<sowTags>
+						<li>Ground</li>
+					</sowTags>
+				</plant>
+			</ThingDef>
+		<!-- IRONWOOD -->
+			<ThingDef ParentName="TMM_TreeBase">
+				<defName>TMM_IronwoodTree</defName>
+				<label>Ironwood Tree</label>
+				<description>Ironwood trees get their name from the legendary strength of the wood.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Plants/Mature/Trees/Ironwood</texPath>
+					<shadowData>
+						<volume>(0.15, 0.3, 0.1)</volume>
+					</shadowData>
+					<shaderParameters>
+						<_FallColorSource>(0.254, 0.286, 0.125)</_FallColorSource>
+						<_FallColorDestination>/Other/TreeFallGradient</_FallColorDestination>
+						<_FallTransitionRange>(0.02, 0.10)</_FallTransitionRange>
+						<_FallBehaviorEnabled>1</_FallBehaviorEnabled>
+					</shaderParameters>
+				</graphicData>
+				<statBases>
+					<Beauty>3</Beauty>
+					<BeautyOutdoors>3</BeautyOutdoors>
+				</statBases>
+				<plant>
+					<leaflessGraphicPath>Modules/HarvestTime/Plants/Mature/Trees/LeaflessTree/Ironwood_Leafless</leaflessGraphicPath>
+					<growDays>25</growDays>
+					<harvestedThingDef>TMM_RawIronWood</harvestedThingDef>
+					<harvestWork>700</harvestWork>
+					<harvestYield>55</harvestYield>
+					<choppedThingDef>TMM_ChoppedIronStump</choppedThingDef>
+					<smashedThingDef>TMM_SmashedIronStump</smashedThingDef>
+				</plant>
+			</ThingDef>
+		<!-- JAPANESE MAPLE -->
+			<ThingDef ParentName="TMM_TreeBase">
+				<defName>TMM_JapaneseMapleTree</defName>
+				<label>Japanese Maple Tree</label>
+				<description>These beautiful trees have branches that twist and turn unpredictably with brilliant orange and red foliage that draws the eye.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Plants/Mature/Trees/JapaneseMaple</texPath>
+					<shadowData>
+						<volume>(0.15, 0.3, 0.1)</volume>
+					</shadowData>
+					<shaderParameters>
+						<_FallColorSource>(0.576, 0.235, 0.160)</_FallColorSource>
+						<_FallColorDestination>/Other/TreeFallGradient</_FallColorDestination>
+						<_FallTransitionRange>(0.02, 0.10)</_FallTransitionRange>
+						<_FallBehaviorEnabled>1</_FallBehaviorEnabled>
+					</shaderParameters>
+				</graphicData>
+				<statBases>
+					<Beauty>10</Beauty>
+					<BeautyOutdoors>10</BeautyOutdoors>
+				</statBases>
+				<plant>
+					<leaflessGraphicPath>Modules/HarvestTime/Plants/Mature/Trees/LeaflessTree/JapaneseMaple_Leafless</leaflessGraphicPath>
+					<growDays>18</growDays>
+					<harvestWork>700</harvestWork>
+					<harvestYield>20</harvestYield>
+					<sowTags>
+						<li>Ground</li>
+					</sowTags>
+				</plant>
+			</ThingDef>
+		<!-- RED MAPLE -->
+			<ThingDef ParentName="TMM_TreeBase">
+				<defName>TMM_RedMapleTree</defName>
+				<label>Red Maple Tree</label>
+				<description>A soft wood tree, most well known for its red leaves.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Plants/Mature/Trees/RedMaple</texPath>
+					<shaderParameters>
+						<_FallColorSource>(0.584, 0.196, 0.141)</_FallColorSource>
+						<_FallColorDestination>/Other/TreeFallGradient</_FallColorDestination>
+						<_FallTransitionRange>(0.02, 0.10)</_FallTransitionRange>
+						<_FallBehaviorEnabled>1</_FallBehaviorEnabled>
+					</shaderParameters>
+				</graphicData>
+				<statBases>
+					<Beauty>10</Beauty>
+					<BeautyOutdoors>10</BeautyOutdoors>
+				</statBases>
+				<plant>
+					<leaflessGraphicPath>Things/Plant/TreeOak_Leafless</leaflessGraphicPath>
+					<growDays>20</growDays>
+					<harvestWork>1000</harvestWork>
+					<harvestYield>30</harvestYield>
+					<sowTags>
+						<li>Ground</li>
+					</sowTags>
+				</plant>
+			</ThingDef>
+</Defs>

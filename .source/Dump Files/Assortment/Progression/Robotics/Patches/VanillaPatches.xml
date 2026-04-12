@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Biotech</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+	    <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="LargeMechGestator"]/costList</xpath>
+                <value>
+                  <VFE_ComponentMechanoid>2</VFE_ComponentMechanoid>
+                  <ComponentSpacer>4</ComponentSpacer>
+                </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="MechGestator"]/costList</xpath>
+                <value>
+                  <VFE_ComponentMechanoid>1</VFE_ComponentMechanoid>
+                  <ComponentSpacer>2</ComponentSpacer>
+                </value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="SubcoreBasic"]/costList</xpath>
+                <value>
+                  <costList>
+                    <Steel>70</Steel>
+                    <ComponentIndustrial>3</ComponentIndustrial>
+                    <Plasteel>15</Plasteel>
+                    <VFE_ComponentMechanoid>1</VFE_ComponentMechanoid>
+                  </costList>
+                </value>
+            </li>
+    <li Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="BasicMechtech"]/baseCost</xpath>
+        <value>
+            <baseCost>2000</baseCost>
+        </value>
+    </li>
+    <li Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="StandardMechtech"]/baseCost</xpath>
+        <value>
+            <baseCost>3000</baseCost>
+        </value>
+    </li>
+        <li Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="HighMechtech"]/baseCost</xpath>
+        <value>
+            <baseCost>4500</baseCost>
+        </value>
+    </li>
+        <li Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="UltraMechtech"]/baseCost</xpath>
+        <value>
+            <baseCost>6000</baseCost>
+        </value>
+    </li>
+    <li Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[@Name="MechtechBase"]/techLevel</xpath>
+        <value>
+            <techLevel>Spacer</techLevel>
+        </value>
+    </li>
+    <li Class="PatchOperationAdd">
+        <xpath>Defs/ResearchProjectDef[defName="BasicMechtech"]/prerequisites</xpath>
+        <value>
+            <li>VFE_BasicDroneAssembly</li>
+            <li>MicroelectronicsBasics</li>
+        </value>
+    </li>
+		</operations>
+		</match>
+	</Operation>
+</Patch>

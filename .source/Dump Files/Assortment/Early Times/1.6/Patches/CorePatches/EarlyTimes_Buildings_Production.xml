@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName = "ElectricSmelter"]/statBases</xpath>
+		<value>
+		  <WorkTableWorkSpeedFactor>1.35</WorkTableWorkSpeedFactor>
+		</value>
+	</Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ThingDef[defName = "ButcherSpot"]/statBases/WorkTableEfficiencyFactor</xpath>
+    <value>
+      <WorkTableEfficiencyFactor>0.35</WorkTableEfficiencyFactor>
+    </value>
+  </Operation>
+  
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ThingDef[defName = "CraftingSpot"]/statBases/WorkTableWorkSpeedFactor</xpath>
+    <value>
+      <WorkTableWorkSpeedFactor>0.15</WorkTableWorkSpeedFactor>
+    </value>
+  </Operation>
+  
+   <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "ButcherSpot"]/comps/li[@Class="CompProperties_AffectedByFacilities"]/linkableFacilities</xpath>
+    <value>
+          <li>TS_ToolPile</li>
+    </value>
+  </Operation>
+  
+   <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "CraftingSpot"]/comps/li[@Class="CompProperties_AffectedByFacilities"]/linkableFacilities</xpath>
+    <value>
+          <li>TS_ToolPile</li>
+    </value>
+  </Operation>
+  
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/ThingDef[defName = "ElectricStove"]/comps/li[@Class="CompProperties_AffectedByFacilities"]/linkableFacilities</xpath>
+    <match Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName = "ElectricStove"]/comps/li[@Class="CompProperties_AffectedByFacilities"]/linkableFacilities</xpath>
+		<value>
+			<li>CookingToolCabinet</li>
+		</value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName = "ElectricStove"]/comps</xpath>
+		<value>
+		  <li Class="CompProperties_AffectedByFacilities">
+			<linkableFacilities>
+			  <li>CookingToolCabinet</li>
+			</linkableFacilities>
+		  </li>
+		</value>
+    </nomatch>
+  </Operation>
+  
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/ThingDef[defName = "FueledStove"]/comps/li[@Class="CompProperties_AffectedByFacilities"]/linkableFacilities</xpath>
+    <match Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName = "FueledStove"]/comps/li[@Class="CompProperties_AffectedByFacilities"]/linkableFacilities</xpath>
+		<value>
+			<li>CookingToolCabinet</li>
+		</value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+		<xpath>/Defs/ThingDef[defName = "FueledStove"]/comps</xpath>
+		<value>
+		  <li Class="CompProperties_AffectedByFacilities">
+			<linkableFacilities>
+			  <li>CookingToolCabinet</li>
+			</linkableFacilities>
+		  </li>
+		</value>
+    </nomatch>
+  </Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "BiofuelRefinery"]/costList</xpath>
+		<value>
+			<costList>
+				<Steel>90</Steel>
+				<MedTimes_Resource_Glass>30</MedTimes_Resource_Glass>
+				<ComponentIndustrial>3</ComponentIndustrial>
+			</costList>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName="DrugLab"]/costList</xpath>
+		<value>
+			<costList>
+				<Steel>45</Steel>
+				<MedTimes_Resource_Glass>15</MedTimes_Resource_Glass>
+				<ComponentIndustrial>6</ComponentIndustrial>
+				<MedTimes_CraftingTools>1</MedTimes_CraftingTools>
+				<MedTimes_CookingTools>1</MedTimes_CookingTools>
+			</costList>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName="FabricationBench"]/costList</xpath>
+		<value>
+			<costList>
+				<Steel>120</Steel>
+				<MedTimes_Resource_Glass>40</MedTimes_Resource_Glass>
+				<ComponentIndustrial>12</ComponentIndustrial>
+				<ComponentSpacer>2</ComponentSpacer>
+			</costList>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName="HydroponicsBasin"]/costList</xpath>
+		<value>
+			<costList>
+			  <Steel>60</Steel>
+			  <MedTimes_Resource_Glass>20</MedTimes_Resource_Glass>
+			  <ComponentIndustrial>1</ComponentIndustrial>
+			</costList>
+		</value>
+	</Operation>
+	
+	
+   <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ThingDef[defName = "ElectricStove"]/costList</xpath>
+    <value>
+		<costList>
+			<Steel>60</Steel>
+			<MedTimes_Resource_Glass>10</MedTimes_Resource_Glass>
+			<ComponentIndustrial>2</ComponentIndustrial>
+			<MedTimes_CookingTools>2</MedTimes_CookingTools>
+		</costList>
+    </value>
+  </Operation>
+  
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ThingDef[defName = "ElectricSmithy"]/costList</xpath>
+    <value>
+		<costList>
+			<Steel>80</Steel>
+			<MedTimes_Resource_Glass>10</MedTimes_Resource_Glass>
+			<ComponentIndustrial>3</ComponentIndustrial>
+			<MedTimes_CraftingTools>2</MedTimes_CraftingTools>
+		</costList>
+    </value>
+  </Operation>  
+  
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName = "ElectricCrematorium"]/costList</xpath>
+    <value>
+		<MedTimes_Resource_Cement>80</MedTimes_Resource_Cement>
+    </value>
+  </Operation> 
+  
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ThingDef[defName = "ElectricCrematorium"]/costStuffCount</xpath>
+    <value>
+		<costStuffCount>70</costStuffCount>
+    </value>
+  </Operation> 
+	
+</Patch>

@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingCategoryDef>
+    <defName>AmmoGewehr98RifleGrenades</defName>
+    <label>Gewehr 98 Rifle Grenade</label>
+    <parent>AmmoGrenades</parent>
+    <iconPath>UI/Icons/ThingCategories/CaliberGrenade</iconPath>
+  </ThingCategoryDef>
+
+  <!-- ==================== AmmoSet ========================== -->
+
+  <CombatExtended.AmmoSetDef MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+    <defName>AmmoSet_Gewehr98RifleGrenade</defName>
+    <label>Gewehr 98 Rifle Grenades</label>
+    <ammoTypes>
+      <Ammo_Gewehr98RifleGrenade_M1913_>Bullet_Gewehr98RifleGrenade_M1913_</Ammo_Gewehr98RifleGrenade_M1913_>
+      <Ammo_Gewehr98RifleGrenade_M1917_>Bullet_Gewehr98RifleGrenade_M1917_</Ammo_Gewehr98RifleGrenade_M1917_>
+    </ammoTypes>
+    <similarTo>AmmoSet_LauncherGrenade</similarTo>
+  </CombatExtended.AmmoSetDef>
+
+  <!-- ==================== Ammo ========================== -->
+
+  <ThingDef Class="CombatExtended.AmmoDef" Name="Gewehr98RifleGrenadeBase" ParentName="MediumAmmoBase" Abstract="True" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+    <description>Low velocity grenades fired from Gewehr 98 rifles.</description>
+    <statBases>
+      <Mass>0.3</Mass>
+      <Bulk>0.40</Bulk>
+    </statBases>
+    <tradeTags>
+      <li>CE_AutoEnableTrade</li>
+      <li>CE_AutoEnableCrafting_TableMachining</li>
+    </tradeTags>
+    <thingCategories>
+      <li>AmmoGewehr98RifleGrenades</li>
+    </thingCategories>
+    <stackLimit>500</stackLimit>
+    <cookOffFlashScale>100</cookOffFlashScale>
+  </ThingDef>
+
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="Gewehr98RifleGrenadeBase" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+    <defName>Ammo_Gewehr98RifleGrenade_M1913_</defName>
+	<description>German Great War-era rifle grenade adapted for G98 rifles.</description>
+    <label>Gewehr 98 M1913 grenade</label>
+    <graphicData>
+      <texPath>CGF1/Ammo/Karabingranate/M1913</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>2.5</MarketValue>
+    </statBases>
+    <ammoClass>M17RifleGrenade</ammoClass>
+    <detonateProjectile>Bullet_Gewehr98RifleGrenade_M1913_</detonateProjectile>
+  </ThingDef>
+  
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="Gewehr98RifleGrenadeBase" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+    <defName>Ammo_Gewehr98RifleGrenade_M1917_</defName>
+	<description>German Great War-era rifle grenade adapted for G98 rifles.</description>
+    <label>Gewehr 98 M1917 grenade</label>
+    <graphicData>
+      <texPath>CGF1/Ammo/Karabingranate/M1917</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>2.75</MarketValue>
+    </statBases>
+    <ammoClass>M9A1RifleGrenade</ammoClass>
+    <detonateProjectile>Bullet_Gewehr98RifleGrenade_M1917_</detonateProjectile>
+  </ThingDef>
+
+  <!-- ================== Projectiles ================== -->
+
+  <ThingDef Name="BaseGewehr98RifleGrenadeBullet" ParentName="BaseExplosiveBullet" Abstract="true" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+    <thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <speed>19</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseGewehr98RifleGrenadeBullet" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+    <defName>Bullet_Gewehr98RifleGrenade_M1913_</defName>
+    <label>Gewehr 98 M1913 grenade</label>
+	<graphicData>
+      <texPath>CGF1/Projectile/Karabingranate_M1913</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(0.5,0.5)</drawSize>
+    </graphicData>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <explosionRadius>1.0</explosionRadius>
+      <damageDef>Bomb</damageDef>
+      <damageAmountBase>16</damageAmountBase>
+      <applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+    </projectile>
+    <comps>
+      <li Class="CombatExtended.CompProperties_Fragments">
+        <fragments>
+          <Fragment_Small>9</Fragment_Small>
+        </fragments>
+      </li>
+    </comps>
+  </ThingDef>
+  
+  <ThingDef ParentName="BaseGewehr98RifleGrenadeBullet" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+    <defName>Bullet_Gewehr98RifleGrenade_M1917_</defName>
+    <label>Gewehr 98 M1917 grenade</label>
+	<graphicData>
+      <texPath>CGF1/Projectile/Karabingranate_M1917</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(0.4,0.4)</drawSize>
+    </graphicData>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <explosionRadius>1.0</explosionRadius>
+      <damageDef>Bomb</damageDef>
+      <damageAmountBase>20</damageAmountBase>
+      <applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+    </projectile>
+    <comps>
+      <li Class="CombatExtended.CompProperties_Fragments">
+        <fragments>
+			<Fragment_Small>12</Fragment_Small>
+        </fragments>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!-- ==================== Recipes ========================== -->
+
+  <RecipeDef ParentName="LauncherAmmoRecipeBase" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+    <defName>MakeAmmo_Gewehr98RifleGrenade_M1913_</defName>
+    <label>make 22mm Gewehr 98 M1913 grenades x100</label>
+    <description>Craft 100 Gewehr 98 M1913 grenades.</description>
+    <jobString>Making Gewehr 98 M1913 grenades.</jobString>
+	<researchPrerequisite>CGF1_MWP_Research_T6_GreatWarFirearms</researchPrerequisite>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>50</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>FSX</li>
+          </thingDefs>
+        </filter>
+        <count>5</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentIndustrial</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+        <li>FSX</li>
+        <li>ComponentIndustrial</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_Gewehr98RifleGrenade_M1913_>100</Ammo_Gewehr98RifleGrenade_M1913_>
+    </products>
+    <workAmount>9000</workAmount>
+  </RecipeDef>
+  
+  <RecipeDef ParentName="LauncherAmmoRecipeBase" MayRequire="cgf1.gunsgalore.greatwar.centralpowers">
+    <defName>MakeAmmo_Gewehr98RifleGrenade_M1917_</defName>
+    <label>make Gewehr 98 M1917 grenades x100</label>
+    <description>Craft 100 Gewehr 98 M1917 grenades.</description>
+    <jobString>Making Gewehr 98 M1917 grenades.</jobString>
+	<researchPrerequisite>CGF1_MWP_Research_T6_GreatWarFirearms</researchPrerequisite>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>50</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>FSX</li>
+          </thingDefs>
+        </filter>
+        <count>5</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>ComponentIndustrial</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+        <li>FSX</li>
+        <li>ComponentIndustrial</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_Gewehr98RifleGrenade_M1917_>100</Ammo_Gewehr98RifleGrenade_M1917_>
+    </products>
+    <workAmount>9000</workAmount>
+  </RecipeDef>
+
+</Defs>

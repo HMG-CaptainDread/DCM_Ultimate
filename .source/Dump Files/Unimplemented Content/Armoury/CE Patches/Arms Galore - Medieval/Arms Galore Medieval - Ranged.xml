@@ -1,0 +1,981 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+		<Operation Class="PatchOperationSequence">
+			<operations>
+			
+				<li Class="PatchOperationRemove">
+					<xpath>Defs/ThingDef[
+							defName="CGF1_MWP_Composite_Bow_" or
+							defName="CGF1_MWP_Continental_WarBow_" or
+							defName="CGF1_MWP_English_Longbow_" or
+							defName="CGF1_MWP_Heavy_RecurveBow_" or
+							defName="CGF1_MWP_StaffSling_"
+					]/comps/li[@Class = "MVCF.Comps.CompProperties_VerbProps"]</xpath>
+					</li>
+			
+				<li Class="PatchOperationReplace">
+					<xpath>
+						/Defs/ThingDef[
+							defName = "CGF1_MWP_Composite_Bow_" or
+							defName = "CGF1_MWP_Continental_WarBow_" or
+							defName = "CGF1_MWP_English_Longbow_" or
+							defName = "CGF1_MWP_Heavy_RecurveBow_" or
+							defName = "CGF1_MWP_StaffSling_"
+						]/tools
+					</xpath>
+					<value>
+						<tools>
+							<li Class="CombatExtended.ToolCE">
+								<capacities>
+									<li>Blunt</li>
+								</capacities>
+								<power>7</power>
+								<cooldownTime>1.6</cooldownTime>
+								<armorPenetrationBlunt>0.65</armorPenetrationBlunt>
+							</li>
+						</tools>
+					</value>
+				</li>
+				
+				<!-- Bows -->
+				
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>CGF1_MWP_StaffSling_</defName>
+					<statBases>
+                        <SightsEfficiency>0.8</SightsEfficiency>
+                        <ShotSpread>1</ShotSpread>
+                        <SwayFactor>2</SwayFactor>
+                        <Bulk>4</Bulk>
+						<RangedWeapon_Cooldown>3.2</RangedWeapon_Cooldown>
+					</statBases>
+					<Properties>
+                           <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+                           <hasStandardCommand>true</hasStandardCommand>
+                           <defaultProjectile>Projectile_SlingBullet_Stone</defaultProjectile>
+                           <warmupTime>2.4</warmupTime>
+                           <range>36</range>
+                           <soundCast>ThrowGrenade</soundCast>
+                     </Properties>
+					 <AmmoUser>
+						<reloadTime>3.8</reloadTime>
+						<ammoSet>AmmoSet_SlingBullet</ammoSet>
+					</AmmoUser>
+					<FireModes>
+						<aiAimMode>AimedShot</aiAimMode>
+					</FireModes>
+				</li>
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>CGF1_MWP_Composite_Bow_</defName>
+					<statBases>
+                        <SightsEfficiency>0.8</SightsEfficiency>
+                        <ShotSpread>1</ShotSpread>
+                        <SwayFactor>2</SwayFactor>
+                        <Bulk>3.85</Bulk>
+						<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+					</statBases>
+					<Properties>
+                           <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+                           <hasStandardCommand>true</hasStandardCommand>
+                           <defaultProjectile>Projectile_Arrow_Stone</defaultProjectile>
+                           <warmupTime>0.95</warmupTime>
+                           <range>22</range>
+                           <soundCast>Bow_Recurve</soundCast>
+                     </Properties>
+					 <AmmoUser>
+						<ammoSet>AmmoSet_Arrow</ammoSet>
+					</AmmoUser>
+					<FireModes/>
+					<weaponTags>
+						<li>CE_Bow</li>
+					</weaponTags>
+					<AllowWithRunAndGun>false</AllowWithRunAndGun>
+				</li>
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>CGF1_MWP_Heavy_RecurveBow_</defName>
+					<statBases>
+                        <SightsEfficiency>0.8</SightsEfficiency>
+                        <ShotSpread>1</ShotSpread>
+                        <SwayFactor>2</SwayFactor>
+                        <Bulk>4.50</Bulk>
+						<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+					</statBases>
+					<Properties>
+                           <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+                           <hasStandardCommand>true</hasStandardCommand>
+                           <defaultProjectile>Projectile_StreamlinedArrow_Steel</defaultProjectile>
+                           <warmupTime>1.2</warmupTime>
+                           <range>25</range>
+                           <soundCast>Bow_Recurve</soundCast>
+                     </Properties>
+					 <AmmoUser>
+						<ammoSet>AmmoSet_StreamlinedArrow</ammoSet>
+					</AmmoUser>
+					<FireModes/>
+					<weaponTags>
+						<li>CE_Bow</li>
+					</weaponTags>
+					<AllowWithRunAndGun>false</AllowWithRunAndGun>
+				</li>
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>CGF1_MWP_Continental_WarBow_</defName>
+					<statBases>
+                        <SightsEfficiency>0.8</SightsEfficiency>
+                        <ShotSpread>1</ShotSpread>
+                        <SwayFactor>2</SwayFactor>
+                        <Bulk>5.25</Bulk>
+						<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+					</statBases>
+					<Properties>
+                           <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+                           <hasStandardCommand>true</hasStandardCommand>
+                           <defaultProjectile>Projectile_GreatArrow_Steel</defaultProjectile>
+                           <warmupTime>1.3</warmupTime>
+                           <range>30</range>
+                           <soundCast>Bow_Large</soundCast>
+                     </Properties>
+					 <AmmoUser>
+						<ammoSet>AmmoSet_GreatArrow</ammoSet>
+					</AmmoUser>
+					<FireModes/>
+					<weaponTags>
+						<li>CE_Bow</li>
+					</weaponTags>
+					<AllowWithRunAndGun>false</AllowWithRunAndGun>
+				</li>
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>CGF1_MWP_English_Longbow_</defName>
+					<statBases>
+                        <SightsEfficiency>0.8</SightsEfficiency>
+                        <ShotSpread>1</ShotSpread>
+                        <SwayFactor>2</SwayFactor>
+                        <Bulk>5.50</Bulk>
+						<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+					</statBases>
+					<Properties>
+                           <verbClass>CombatExtended.Verb_ShootCE</verbClass>
+                           <hasStandardCommand>true</hasStandardCommand>
+                           <defaultProjectile>Projectile_GreatArrow_Steel</defaultProjectile>
+                           <warmupTime>1.5</warmupTime>
+                           <range>32</range>
+                           <soundCast>Bow_Large</soundCast>
+                     </Properties>
+					 <AmmoUser>
+						<ammoSet>AmmoSet_GreatArrow</ammoSet>
+					</AmmoUser>
+					<FireModes/>
+					<weaponTags>
+						<li>CE_Bow</li>
+					</weaponTags>
+					<AllowWithRunAndGun>false</AllowWithRunAndGun>
+				</li>
+				
+				<!-- Francisca -->
+				<!-- Projectile -->
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Projectile_Francisca"]/projectile</xpath>
+					<value>
+						<projectile Class="CombatExtended.ProjectilePropertiesCE">
+							<damageDef>RangedStab</damageDef>
+							<damageAmountBase>16</damageAmountBase>
+							<flyOverhead>false</flyOverhead>
+							<speed>27</speed>
+							<armorPenetrationBlunt>3</armorPenetrationBlunt>
+							<armorPenetrationSharp>1.52</armorPenetrationSharp>
+							<preExplosionSpawnChance>0.65</preExplosionSpawnChance>
+							<preExplosionSpawnThingDef>CGF1_MWP_Francisca_</preExplosionSpawnThingDef>
+						</projectile>
+					</value>
+				</li>
+				<!-- Weapon-->
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Francisca_"]/graphicData</xpath>
+					<value>
+						<graphicData>
+							<texPath>CGF1/Ranged/Francisca</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>1.05</drawSize>
+						</graphicData>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAttributeSet">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Francisca_"]</xpath>
+					<attribute>ParentName</attribute>
+					<value>BaseWeapon</value>
+				</li>
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Francisca_"]</xpath>
+					<value>
+						<thingCategories>
+							<li>WeaponsRanged</li>
+						</thingCategories>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationRemove">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Francisca_"]/recipeMaker</xpath>
+				</li>
+				
+				<li Class="PatchOperationRemove">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Francisca_"]/costList</xpath>
+				</li>
+				
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Francisca_"]</xpath>
+					<value>
+						<thingClass>CombatExtended.AmmoThing</thingClass>
+						<stackLimit>25</stackLimit>
+						<resourceReadoutPriority>First</resourceReadoutPriority>
+						<smeltable>true</smeltable>
+						<smeltProducts>
+							<Steel>1</Steel>
+						</smeltProducts>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationAttributeSet">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Francisca_"]</xpath>
+					<attribute>Class</attribute>
+					<value>CombatExtended.AmmoDef</value>
+				</li>
+				
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>CGF1_MWP_Francisca_</defName>
+					<statBases>
+						<SightsEfficiency>1.0</SightsEfficiency>
+						<ShotSpread>1.5</ShotSpread>
+						<SwayFactor>2.5</SwayFactor>
+						<Bulk>1.25</Bulk>
+						<Mass>0.75</Mass>
+						<RangedWeapon_Cooldown>0.75</RangedWeapon_Cooldown>
+					</statBases>
+					<Properties>
+						<label>Throw axe</label>
+						<verbClass>CombatExtended.Verb_ShootCEOneUse</verbClass>
+						<hasStandardCommand>True</hasStandardCommand>
+						<defaultProjectile>CGF1_MWP_Projectile_Francisca</defaultProjectile>
+						<warmupTime>1.0</warmupTime>
+						<range>10</range>
+						<soundCast>ThrowGrenade</soundCast>
+					</Properties>
+					<weaponTags>
+						<li>CE_OneHandedWeapon</li>
+					</weaponTags>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Francisca_"]/tools</xpath>
+					<value>
+						<tools>
+							<li Class="CombatExtended.ToolCE">
+								<label>handle</label>
+								<capacities>
+									<li>Blunt</li>
+								</capacities>
+								<power>2</power>
+								<chanceFactor>0.33</chanceFactor>
+								<cooldownTime>1.4</cooldownTime>
+								<armorPenetrationBlunt>0.375</armorPenetrationBlunt>
+								<linkedBodyPartsGroup>Handle</linkedBodyPartsGroup>
+							</li>
+							<li Class="CombatExtended.ToolCE">
+								<label>edge</label>
+								<capacities>
+									<li>Cut</li>
+								</capacities>
+								<power>16</power>
+								<cooldownTime>2.15</cooldownTime>
+								<armorPenetrationBlunt>1.5</armorPenetrationBlunt>
+								<armorPenetrationSharp>0.62</armorPenetrationSharp>
+								<linkedBodyPartsGroup>Edge</linkedBodyPartsGroup>
+							</li>
+						</tools>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+						<RecipeDef ParentName="GrenadeRecipeBase">
+							<defName>CGF1_MakeAmmo_Francisca</defName>
+							<label>make francisca x5</label>
+							<description>Craft 5 franciscas.</description>
+							<jobString>Making franciscas.</jobString>
+							<researchPrerequisite>CGF1_MWP_Research_T0_MedievalRanged</researchPrerequisite>
+							<workAmount>960</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>Steel</li>
+										</thingDefs>
+									</filter>
+									<count>7</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>WoodLog</li>
+										</thingDefs>
+									</filter>
+									<count>4</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>Steel</li>
+									<li>WoodLog</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<CGF1_MWP_Francisca_>5</CGF1_MWP_Francisca_>
+							</products>
+						</RecipeDef>
+					</value>
+				</li>
+				
+				<!-- Heavy Throwing Axe -->
+				<!-- Projectile -->
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Projectile_Heavy_ThrowingAxe"]/projectile</xpath>
+					<value>
+						<projectile Class="CombatExtended.ProjectilePropertiesCE">
+							<damageDef>RangedStab</damageDef>
+							<damageAmountBase>18</damageAmountBase>
+							<flyOverhead>false</flyOverhead>
+							<speed>25</speed>
+							<armorPenetrationBlunt>3</armorPenetrationBlunt>
+							<armorPenetrationSharp>1.5</armorPenetrationSharp>
+							<preExplosionSpawnChance>0.60</preExplosionSpawnChance>
+							<preExplosionSpawnThingDef>CGF1_MWP_Heavy_ThrowingAxe_</preExplosionSpawnThingDef>
+						</projectile>
+					</value>
+				</li>
+				<!-- Weapon-->
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Heavy_ThrowingAxe_"]/graphicData</xpath>
+					<value>
+						<graphicData>
+							<texPath>CGF1/Ranged/Heavy_ThrowingAxe</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawSize>1.00</drawSize>
+						</graphicData>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAttributeSet">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Heavy_ThrowingAxe_"]</xpath>
+					<attribute>ParentName</attribute>
+					<value>BaseWeapon</value>
+				</li>
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Heavy_ThrowingAxe_"]</xpath>
+					<value>
+						<thingCategories>
+							<li>WeaponsRanged</li>
+						</thingCategories>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationRemove">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Heavy_ThrowingAxe_"]/recipeMaker</xpath>
+				</li>
+				
+				<li Class="PatchOperationRemove">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Heavy_ThrowingAxe_"]/costList</xpath>
+				</li>
+				
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Heavy_ThrowingAxe_"]</xpath>
+					<value>
+						<thingClass>CombatExtended.AmmoThing</thingClass>
+						<stackLimit>25</stackLimit>
+						<resourceReadoutPriority>First</resourceReadoutPriority>
+						<smeltable>true</smeltable>
+						<smeltProducts>
+							<Steel>1</Steel>
+						</smeltProducts>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationAttributeSet">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Heavy_ThrowingAxe_"]</xpath>
+					<attribute>Class</attribute>
+					<value>CombatExtended.AmmoDef</value>
+				</li>
+				
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>CGF1_MWP_Heavy_ThrowingAxe_</defName>
+					<statBases>
+						<SightsEfficiency>1.0</SightsEfficiency>
+						<ShotSpread>1.5</ShotSpread>
+						<SwayFactor>2.5</SwayFactor>
+						<Bulk>1.35</Bulk>
+						<Mass>0.9</Mass>
+						<RangedWeapon_Cooldown>0.75</RangedWeapon_Cooldown>
+					</statBases>
+					<Properties>
+						<label>Throw axe</label>
+						<verbClass>CombatExtended.Verb_ShootCEOneUse</verbClass>
+						<hasStandardCommand>True</hasStandardCommand>
+						<defaultProjectile>CGF1_MWP_Projectile_Heavy_ThrowingAxe</defaultProjectile>
+						<warmupTime>1.0</warmupTime>
+						<range>10</range>
+						<soundCast>ThrowGrenade</soundCast>
+					</Properties>
+					<weaponTags>
+						<li>CE_OneHandedWeapon</li>
+					</weaponTags>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Heavy_ThrowingAxe_"]/tools</xpath>
+					<value>
+						<tools>
+							<li Class="CombatExtended.ToolCE">
+								<label>handle</label>
+								<capacities>
+									<li>Blunt</li>
+								</capacities>
+								<power>2</power>
+								<chanceFactor>0.33</chanceFactor>
+								<cooldownTime>1.4</cooldownTime>
+								<armorPenetrationBlunt>0.375</armorPenetrationBlunt>
+								<linkedBodyPartsGroup>Handle</linkedBodyPartsGroup>
+							</li>
+							<li Class="CombatExtended.ToolCE">
+								<label>edge</label>
+								<capacities>
+									<li>Cut</li>
+								</capacities>
+								<power>18</power>
+								<cooldownTime>2.18</cooldownTime>
+								<armorPenetrationBlunt>1.5</armorPenetrationBlunt>
+								<armorPenetrationSharp>0.62</armorPenetrationSharp>
+								<linkedBodyPartsGroup>Edge</linkedBodyPartsGroup>
+							</li>
+						</tools>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+						<RecipeDef ParentName="GrenadeRecipeBase">
+							<defName>CGF1_MakeAmmo_Heavy_ThrowingAxe</defName>
+							<label>make heavy throwing axe x5</label>
+							<description>Craft 5 heavy throwing axes.</description>
+							<jobString>Making heavy throwing axes.</jobString>
+							<researchPrerequisite>CGF1_MWP_Research_T0_IronAgeRanged</researchPrerequisite>
+							<workAmount>1000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>Steel</li>
+										</thingDefs>
+									</filter>
+									<count>8</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>WoodLog</li>
+										</thingDefs>
+									</filter>
+									<count>4</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>Steel</li>
+									<li>WoodLog</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<CGF1_MWP_Heavy_ThrowingAxe_>5</CGF1_MWP_Heavy_ThrowingAxe_>
+							</products>
+						</RecipeDef>
+					</value>
+				</li>
+				
+				<!-- Fletched Javelin -->
+				<!-- Projectile -->
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Projectile_Fletched_Javelin"]/projectile</xpath>
+					<value>
+						<projectile Class="CombatExtended.ProjectilePropertiesCE">
+							<damageDef>RangedStab</damageDef>
+							<damageAmountBase>14</damageAmountBase>
+							<speed>15</speed>
+							<armorPenetrationBlunt>6.44</armorPenetrationBlunt>
+							<armorPenetrationSharp>3.5</armorPenetrationSharp>
+							<preExplosionSpawnChance>0.40</preExplosionSpawnChance>
+							<preExplosionSpawnThingDef>CGF1_MWP_Fletched_Javelin_</preExplosionSpawnThingDef>
+						</projectile>
+					</value>
+				</li>
+				<!-- Weapon-->
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Fletched_Javelin_"]/graphicData</xpath>
+					<value>
+						<graphicData>
+							<texPath>CGF1/Ranged/Fletched_Javelin</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+						</graphicData>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAttributeSet">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Fletched_Javelin_"]</xpath>
+					<attribute>ParentName</attribute>
+					<value>BaseWeapon</value>
+				</li>
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Fletched_Javelin_"]</xpath>
+					<value>
+						<thingCategories>
+							<li>WeaponsRanged</li>
+						</thingCategories>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationRemove">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Fletched_Javelin_"]/recipeMaker</xpath>
+				</li>
+				
+				<li Class="PatchOperationRemove">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Fletched_Javelin_"]/costList</xpath>
+				</li>
+				
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Fletched_Javelin_"]</xpath>
+					<value>
+						<thingClass>CombatExtended.AmmoThing</thingClass>
+						<stackLimit>25</stackLimit>
+						<resourceReadoutPriority>First</resourceReadoutPriority>
+						<smeltable>true</smeltable>
+						<smeltProducts>
+							<Steel>1</Steel>
+						</smeltProducts>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationAttributeSet">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Fletched_Javelin_"]</xpath>
+					<attribute>Class</attribute>
+					<value>CombatExtended.AmmoDef</value>
+				</li>
+				
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>CGF1_MWP_Fletched_Javelin_</defName>
+					<statBases>
+						<SightsEfficiency>1.0</SightsEfficiency>
+						<ShotSpread>1.5</ShotSpread>
+						<SwayFactor>2.5</SwayFactor>
+						<Bulk>3.5</Bulk>
+						<Mass>2</Mass>
+						<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+					</statBases>
+					<Properties>
+						<label>Throw fletched javelin</label>
+						<verbClass>CombatExtended.Verb_ShootCEOneUse</verbClass>
+						<hasStandardCommand>True</hasStandardCommand>
+						<defaultProjectile>CGF1_MWP_Projectile_Fletched_Javelin</defaultProjectile>
+						<warmupTime>0.8</warmupTime>
+						<range>19</range>
+						<soundCast>ThrowGrenade</soundCast>
+					</Properties>
+					<weaponTags>
+						<li>CE_OneHandedWeapon</li>
+					</weaponTags>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Fletched_Javelin_"]/tools</xpath>
+					<value>
+						<tools>
+							<li Class="CombatExtended.ToolCE">
+								<label>shaft</label>
+								<capacities>
+									<li>Blunt</li>
+								</capacities>
+								<power>7</power>
+								<cooldownTime>1.35</cooldownTime>
+								<armorPenetrationBlunt>2.25</armorPenetrationBlunt>
+								<linkedBodyPartsGroup>Shaft</linkedBodyPartsGroup>
+							</li>
+							<li Class="CombatExtended.ToolCE">
+								<label>point</label>
+								<capacities>
+									<li>Stab</li>
+								</capacities>
+								<power>15</power>
+								<cooldownTime>1.37</cooldownTime>
+								<chanceFactor>1.5</chanceFactor>
+								<armorPenetrationBlunt>1.69</armorPenetrationBlunt>
+								<armorPenetrationSharp>0.34</armorPenetrationSharp>
+								<linkedBodyPartsGroup>Point</linkedBodyPartsGroup>
+							</li>
+						</tools>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+						<RecipeDef ParentName="GrenadeRecipeBase">
+							<defName>CGF1_MakeAmmo_Fletched_Javelin</defName>
+							<label>make fletched javelin x5</label>
+							<description>Craft 5 fletched javelins.</description>
+							<jobString>Making fletched javelins.</jobString>
+							<researchPrerequisite>CGF1_MWP_Research_T0_MedievalRanged</researchPrerequisite>
+							<workAmount>1500</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>WoodLog</li>
+										</thingDefs>
+									</filter>
+									<count>6</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>Steel</li>
+										</thingDefs>
+									</filter>
+									<count>20</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>WoodLog</li>
+									<li>Steel</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<CGF1_MWP_Fletched_Javelin_>5</CGF1_MWP_Fletched_Javelin_>
+							</products>
+						</RecipeDef>
+					</value>
+				</li>
+				
+				<!-- Plumbata -->
+				<!-- Projectile -->
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Projectile_Plumbata"]/projectile</xpath>
+					<value>
+						<projectile Class="CombatExtended.ProjectilePropertiesCE">
+							<damageDef>RangedStab</damageDef>
+							<damageAmountBase>12</damageAmountBase>
+							<speed>16</speed>
+							<armorPenetrationBlunt>0.35</armorPenetrationBlunt>
+							<armorPenetrationSharp>0.66</armorPenetrationSharp>
+							<preExplosionSpawnChance>0.60</preExplosionSpawnChance>
+							<preExplosionSpawnThingDef>CGF1_MWP_Plumbata_</preExplosionSpawnThingDef>
+						</projectile>
+					</value>
+				</li>
+				<!-- Weapon-->
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Plumbata_"]/graphicData</xpath>
+					<value>
+						<graphicData>
+							<texPath>CGF1/Ranged/Plumbata</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+						</graphicData>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAttributeSet">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Plumbata_"]</xpath>
+					<attribute>ParentName</attribute>
+					<value>BaseWeapon</value>
+				</li>
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Plumbata_"]</xpath>
+					<value>
+						<thingCategories>
+							<li>WeaponsRanged</li>
+						</thingCategories>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationRemove">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Plumbata_"]/recipeMaker</xpath>
+				</li>
+				
+				<li Class="PatchOperationRemove">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Plumbata_"]/costList</xpath>
+				</li>
+				
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Plumbata_"]</xpath>
+					<value>
+						<thingClass>CombatExtended.AmmoThing</thingClass>
+						<stackLimit>50</stackLimit>
+						<resourceReadoutPriority>First</resourceReadoutPriority>
+						<smeltable>true</smeltable>
+						<smeltProducts>
+							<Steel>1</Steel>
+						</smeltProducts>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationAttributeSet">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Plumbata_"]</xpath>
+					<attribute>Class</attribute>
+					<value>CombatExtended.AmmoDef</value>
+				</li>
+				
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>CGF1_MWP_Plumbata_</defName>
+					<statBases>
+						<SightsEfficiency>1.0</SightsEfficiency>
+						<ShotSpread>1.5</ShotSpread>
+						<SwayFactor>2.5</SwayFactor>
+						<Bulk>1</Bulk>
+						<Mass>0.5</Mass>
+						<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+					</statBases>
+					<Properties>
+						<label>Throw plumbata</label>
+						<verbClass>CombatExtended.Verb_ShootCEOneUse</verbClass>
+						<hasStandardCommand>True</hasStandardCommand>
+						<defaultProjectile>CGF1_MWP_Projectile_Plumbata</defaultProjectile>
+						<warmupTime>0.66</warmupTime>
+						<range>15</range>
+						<soundCast>ThrowGrenade</soundCast>
+					</Properties>
+					<weaponTags>
+						<li>CE_OneHandedWeapon</li>
+					</weaponTags>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Plumbata_"]/tools</xpath>
+					<value>
+						<tools>
+							<li Class="CombatExtended.ToolCE">
+								<label>shaft</label>
+								<capacities>
+									<li>Blunt</li>
+								</capacities>
+								<power>2</power>
+								<cooldownTime>1.26</cooldownTime>
+								<armorPenetrationBlunt>0.25</armorPenetrationBlunt>
+								<linkedBodyPartsGroup>Shaft</linkedBodyPartsGroup>
+							</li>
+							<li Class="CombatExtended.ToolCE">
+								<label>point</label>
+								<capacities>
+									<li>Stab</li>
+								</capacities>
+								<power>11</power>
+								<cooldownTime>1.26</cooldownTime>
+								<chanceFactor>1.33</chanceFactor>
+								<armorPenetrationBlunt>0.25</armorPenetrationBlunt>
+								<armorPenetrationSharp>0.42</armorPenetrationSharp>
+								<linkedBodyPartsGroup>Point</linkedBodyPartsGroup>
+							</li>
+						</tools>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+						<RecipeDef ParentName="GrenadeRecipeBase">
+							<defName>CGF1_MakeAmmo_Plumbata</defName>
+							<label>make plumbata x10</label>
+							<description>Craft 10 plumbata.</description>
+							<jobString>Making plumbata.</jobString>
+							<researchPrerequisite>CGF1_MWP_Research_T0_IronAgeRanged</researchPrerequisite>
+							<workAmount>1000</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>WoodLog</li>
+										</thingDefs>
+									</filter>
+									<count>1</count>
+								</li>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>Steel</li>
+										</thingDefs>
+									</filter>
+									<count>10</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>WoodLog</li>
+									<li>Steel</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<CGF1_MWP_Plumbata_>10</CGF1_MWP_Plumbata_>
+							</products>
+						</RecipeDef>
+					</value>
+				</li>
+				
+				<!-- Wurfkreuz -->
+				<!-- Projectile -->
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Projectile_Wurfkreuz"]/projectile</xpath>
+					<value>
+						<projectile Class="CombatExtended.ProjectilePropertiesCE">
+							<damageDef>RangedStab</damageDef>
+							<damageAmountBase>12</damageAmountBase>
+							<flyOverhead>false</flyOverhead>
+							<speed>13</speed>
+							<armorPenetrationBlunt>0.25</armorPenetrationBlunt>
+							<armorPenetrationSharp>0.4</armorPenetrationSharp>
+							<preExplosionSpawnChance>0.80</preExplosionSpawnChance>
+							<preExplosionSpawnThingDef>CGF1_MWP_Wurfkreuz_</preExplosionSpawnThingDef>
+						</projectile>
+					</value>
+				</li>
+				<!-- Weapon-->
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Wurfkreuz_"]/graphicData</xpath>
+					<value>
+						<graphicData>
+							<texPath>CGF1/Ranged/Wurfkreuz</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+						</graphicData>
+					</value>
+				</li>
+
+				<li Class="PatchOperationAttributeSet">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Wurfkreuz_"]</xpath>
+					<attribute>ParentName</attribute>
+					<value>BaseWeapon</value>
+				</li>
+
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Wurfkreuz_"]</xpath>
+					<value>
+						<thingCategories>
+							<li>WeaponsRanged</li>
+						</thingCategories>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationRemove">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Wurfkreuz_"]/recipeMaker</xpath>
+				</li>
+				
+				<li Class="PatchOperationRemove">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Wurfkreuz_"]/costList</xpath>
+				</li>
+				
+				<li Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Wurfkreuz_"]</xpath>
+					<value>
+						<thingClass>CombatExtended.AmmoThing</thingClass>
+						<stackLimit>75</stackLimit>
+						<resourceReadoutPriority>First</resourceReadoutPriority>
+						<smeltable>true</smeltable>
+						<smeltProducts>
+							<Steel>1</Steel>
+						</smeltProducts>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationAttributeSet">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Wurfkreuz_"]</xpath>
+					<attribute>Class</attribute>
+					<value>CombatExtended.AmmoDef</value>
+				</li>
+				
+				<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+					<defName>CGF1_MWP_Wurfkreuz_</defName>
+					<statBases>
+						<SightsEfficiency>1.0</SightsEfficiency>
+						<ShotSpread>1.5</ShotSpread>
+						<SwayFactor>2</SwayFactor>
+						<Bulk>0.4</Bulk>
+						<Mass>0.2</Mass>
+						<RangedWeapon_Cooldown>0.48</RangedWeapon_Cooldown>
+					</statBases>
+					<Properties>
+						<label>Throw wurzkreuz</label>
+						<verbClass>CombatExtended.Verb_ShootCEOneUse</verbClass>
+						<hasStandardCommand>True</hasStandardCommand>
+						<defaultProjectile>CGF1_MWP_Projectile_Wurfkreuz</defaultProjectile>
+						<warmupTime>0.66</warmupTime>
+						<range>10</range>
+						<soundCast>ThrowGrenade</soundCast>
+					</Properties>
+					<weaponTags>
+						<li>CE_OneHandedWeapon</li>
+					</weaponTags>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName="CGF1_MWP_Wurfkreuz_"]/tools</xpath>
+					<value>
+						<tools>
+							<li Class="CombatExtended.ToolCE">
+								<label>point</label>
+								<capacities>
+									<li>Stab</li>
+								</capacities>
+								<power>11</power>
+								<cooldownTime>1.26</cooldownTime>
+								<chanceFactor>1.33</chanceFactor>
+								<armorPenetrationBlunt>0.25</armorPenetrationBlunt>
+								<armorPenetrationSharp>0.42</armorPenetrationSharp>
+								<linkedBodyPartsGroup>Point</linkedBodyPartsGroup>
+							</li>
+						</tools>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+						<RecipeDef ParentName="GrenadeRecipeBase">
+							<defName>CGF1_MakeAmmo_Wurfkreuz</defName>
+							<label>make wurfkreuz x10</label>
+							<description>Craft 10 wurfkreuz knives.</description>
+							<jobString>Making wurfkreuz knives.</jobString>
+							<researchPrerequisite>CGF1_MWP_Research_T0_MedievalRanged</researchPrerequisite>
+							<workAmount>800</workAmount>
+							<ingredients>
+								<li>
+									<filter>
+										<thingDefs>
+											<li>Steel</li>
+										</thingDefs>
+									</filter>
+									<count>15</count>
+								</li>
+							</ingredients>
+							<fixedIngredientFilter>
+								<thingDefs>
+									<li>Steel</li>
+								</thingDefs>
+							</fixedIngredientFilter>
+							<products>
+								<CGF1_MWP_Wurfkreuz_>10</CGF1_MWP_Wurfkreuz_>
+							</products>
+						</RecipeDef>
+					</value>
+				</li>
+
+			</operations>
+	</Operation>
+
+</Patch>

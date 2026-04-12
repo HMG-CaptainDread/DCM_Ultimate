@@ -1,0 +1,423 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingDef ParentName="MedTimes_BuildingBase">
+		<defName>TS_ThinkingSpot</defName>
+		<label>thinking spot</label>
+		<description>A place for thinking of new ideas and drawing stuff. Considered archaic, but it works.</description>
+		<thingClass>Building_ResearchBench</thingClass>
+		<size>(1,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Production/CraftingSpot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<statBases>
+			<WorkToBuild>0</WorkToBuild>
+			<ResearchSpeedFactor>0.15</ResearchSpeedFactor>
+		</statBases>
+		<scatterableOnMapGen>false</scatterableOnMapGen>
+		<useHitPoints>false</useHitPoints>
+		<designationCategory>Production</designationCategory>
+		<passability>Standable</passability>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,0)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<building>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+			<sowTag>SupportPlantsOnly</sowTag>
+			<canPlaceOverImpassablePlant>false</canPlaceOverImpassablePlant>
+			<ai_chillDestination>false</ai_chillDestination>
+		</building>
+		<comps>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>TS_ThinkingSpot</li>
+				</linkableFacilities>
+			</li>
+			<li Class="CompProperties_Facility">
+				<statOffsets>
+					<ResearchSpeedFactor>0.05</ResearchSpeedFactor>
+				</statOffsets>
+				<maxSimultaneous>4</maxSimultaneous>
+				<maxDistance>2</maxDistance>
+			</li>
+			<li>
+				<compClass>CompReportWorkSpeed</compClass>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+			<li>PlaceWorker_ReportWorkSpeedPenalties</li>
+		</placeWorkers>
+	</ThingDef>
+	<ThingDef ParentName="MedTimes_BuildingBase">
+		<defName>TS_StonecuttingSpot</defName>
+		<label>stonecutting spot</label>
+		<description>A place for cutting stone. Add some tools to speed up.</description>
+		<thingClass>Building_WorkTable</thingClass>
+		<graphicData>
+			<texPath>Things/Building/Misc/PartySpot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<statBases>
+			<WorkToBuild>0</WorkToBuild>
+			<WorkTableWorkSpeedFactor>0.5</WorkTableWorkSpeedFactor>
+			<WorkTableEfficiencyFactor>0.5</WorkTableEfficiencyFactor>
+		</statBases>
+		<scatterableOnMapGen>false</scatterableOnMapGen>
+		<useHitPoints>false</useHitPoints>
+		<size>(1,1)</size>
+		<tickerType>Normal</tickerType>
+		<designationCategory>Production</designationCategory>
+		<passability>Standable</passability>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<surfaceType>Item</surfaceType>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<building>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+			<sowTag>SupportPlantsOnly</sowTag>
+			<canPlaceOverImpassablePlant>false</canPlaceOverImpassablePlant>
+			<ai_chillDestination>false</ai_chillDestination>
+		</building>
+		<comps>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>TS_ToolPile</li>
+					<li>ToolCabinet</li>
+				</linkableFacilities>
+			</li>
+			<li>
+				<compClass>CompReportWorkSpeed</compClass>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+			<li>PlaceWorker_ReportWorkSpeedPenalties</li>
+		</placeWorkers>
+		<researchPrerequisites>
+			<li>TS_PrimitiveStonecutting</li>
+		</researchPrerequisites>
+	</ThingDef>
+	<ThingDef ParentName="MedTimes_BenchBaseTag">
+		<defName>MedTimes_ButcherBlock</defName>
+		<label>Portable Butcher's Block</label>
+		<thingClass>Building_WorkTable</thingClass>
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<description>A portable but sturdy stump of wood with material basement and a butcher's cleaver for butchering dead creatures into pieces of raw meat.</description>
+		<graphicData>
+			<texPath>Things/Building/Production/ButcherBlock/MedTimes_ButcherBlock</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+		</graphicData>
+		<costStuffCount>25</costStuffCount>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<costList>
+			<WoodLog>10</WoodLog>
+			<MedTimes_CraftingTools>1</MedTimes_CraftingTools>
+		</costList>
+		<fillPercent>0.5</fillPercent>
+		<statBases>
+			<Beauty>-10</Beauty>
+			<Mass>10</Mass>
+			<WorkTableWorkSpeedFactor>0.75</WorkTableWorkSpeedFactor>
+			<WorkTableEfficiencyFactor>0.70</WorkTableEfficiencyFactor>
+		</statBases>
+		<size>(1,1)</size>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<recipes>
+			<li>ButcherCorpseFlesh</li>
+			<li>Make_Kibble</li>
+		</recipes>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<comps>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>ToolCabinet</li>
+				</linkableFacilities>
+			</li>
+		</comps>
+		<placeWorkers>
+			<li>PlaceWorker_ShowFacilitiesConnections</li>
+		</placeWorkers>
+		<researchPrerequisites>
+			<li>MedTimes_Butchering</li>
+		</researchPrerequisites>
+	</ThingDef>
+	<ThingDef ParentName="MedTimes_BuildingBaseTag">
+		<defName>MedTimes_GardeningBox</defName>
+		<label>Gardening Box</label>
+		<description>For growing food. Requires light to grow food. A gardening box is old school technology that still works wonders. Putting dirt in a box gives you the ability to grow plants where you want and under the conditions you desire. It also makes it easier to keep your food source away from raiders.</description>
+		<thingClass>Building_PlantGrower</thingClass>
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<graphicData>
+			<texPath>Things/Building/Production/Gardening/MedTimes_GardeningBox</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>25</costStuffCount>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<WorkToBuild>300</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Cleanliness>-5</Cleanliness>
+			<Mass>3</Mass>
+		</statBases>
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<size>(1,1)</size>
+		<useHitPoints>True</useHitPoints>
+		<tickerType>Rare</tickerType>
+		<fillPercent>0.25</fillPercent>
+		<fertility>1.0</fertility>
+		<passability>Standable</passability>
+		<pathCost>35</pathCost>
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTransmitter</compClass>
+				<transmitsPower>false</transmitsPower>
+			</li>
+		</comps>
+		<building>
+			<defaultPlantToGrow>Plant_Strawberry</defaultPlantToGrow>
+			<sowTag>Hydroponic</sowTag>
+		</building>
+		<thingCategories>
+			<li>BuildingsProduction</li>
+		</thingCategories>
+		<designationCategory>Production</designationCategory>
+		<researchPrerequisites>
+			<li>MedTimes_PlantPot</li>
+		</researchPrerequisites>
+	</ThingDef>
+	<!-- =========================**** Workbenches ****==========================-->
+	<!-- ===================== Crafting Tech ======================-->
+	<!-- Personal Desk -->
+	<ThingDef ParentName="MedTimes_BenchBaseTag">
+		<defName>MedTimes_Desk</defName>
+		<label>Desk</label>
+		<thingClass>Building_WorkTable</thingClass>
+		<description>A personal Desk for your room which can be used to eat at. This desk comes complete with spare paper and a glass inkwell. Write personal logs or a short story, keep tabs on important business or work related matters. Realistically desks are important to have for your own personal room, provided of course that your a person of prestige in the colony.</description>
+		<size>(3,1)</size>
+		<surfaceType>Eat</surfaceType>
+		<graphicData>
+			<texPath>Things/Building/Production/Desk/MedTimes_Desk</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(2.5,1)</drawSize>
+		</graphicData>
+		<costList>
+			<WoodLog>60</WoodLog>
+		</costList>
+		<statBases>
+			<JoyGainFactor>1</JoyGainFactor>
+			<Beauty>20</Beauty>
+		</statBases>
+		<socialPropernessMatters>true</socialPropernessMatters>
+		<fillPercent>0.5</fillPercent>
+		<hasInteractionCell>true</hasInteractionCell>
+		<interactionCellOffset>(0,0,1)</interactionCellOffset>
+		<rotatable>true</rotatable>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<researchPrerequisites>
+			<li>MedTimes_BasicFurniture</li>
+			<li>MedTimes_Paperwork</li>
+		</researchPrerequisites>
+	</ThingDef>
+	<!-- Smokehouse -->
+	<ThingDef ParentName="MedTimes_BenchBaseTag">
+		<defName>MedTimes_Smokehouse</defName>
+		<label>Smoke-house</label>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<thingClass>Building_WorkTable</thingClass>
+		<description>A smoke-house is an enclosed area through which large quantities of smoke is funnelled. This allows food stored inside the smoke-house to be dried in such a manner as to create long term preservation.</description>
+		<category>Building</category>
+		<size>(2,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Production/Smokehouse/MedTimes_Smokehouse</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(2,1)</drawSize>
+		</graphicData>
+		<uiIconPath>Things/Building/Production/Smokehouse/MedTimes_Smokehouse_Icon</uiIconPath>
+		<costList>
+			<Steel>25</Steel>
+		</costList>
+		<statBases>
+			<WorkTableWorkSpeedFactor>0.25</WorkTableWorkSpeedFactor>
+		</statBases>
+		<stuffCategories>
+			<li>Woody</li>
+			<li>Metallic</li>
+		</stuffCategories>
+		<costStuffCount>50</costStuffCount>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<fillPercent>0.25</fillPercent>
+		<soundImpactDefault>BulletImpact_Ground</soundImpactDefault>
+		<comps>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>MedTimes_StoneHearth</li>
+				</linkableFacilities>
+			</li>
+			<li Class="CompProperties_Refuelable">
+				<fuelConsumptionRate>5</fuelConsumptionRate>
+				<fuelCapacity>50.0</fuelCapacity>
+				<fuelFilter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</fuelFilter>
+				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+				<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+			</li>
+		</comps>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<building>
+			<isMealSource>true</isMealSource>
+		</building>
+		<researchPrerequisites>
+			<li>MedTimes_DriedFood</li>
+			<li>MedTimes_BasicFurniture</li>
+		</researchPrerequisites>
+	</ThingDef>
+	<!-- (Medieval) FoodPrep Station -->
+	<ThingDef ParentName="MedTimes_BenchBaseTag">
+		<defName>MedTimes_FoodPrepStation</defName>
+		<label>FoodPrep Station</label>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<thingClass>Building_WorkTable</thingClass>
+		<description>A Food preparation station equipped with various tools and a large cooker's cauldron. These items can be used in the long term storage processes of various foods or the creation of large quantities of various food-stuffs such as stews and cheese.</description>
+		<size>(3,1)</size>
+		<graphicData>
+			<texPath>Things/Building/Production/FoodPrepStation/MedTimes_FoodPrepStation</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(3,1)</drawSize>
+		</graphicData>
+		<uiIconPath>Things/Building/Production/FoodPrepStation/MedTimes_FoodPrepStation_Icon</uiIconPath>
+		<costList>
+			<MedTimes_Resource_DryClayBricks>50</MedTimes_Resource_DryClayBricks>
+			<MedTimes_CookingTools>2</MedTimes_CookingTools>
+		</costList>
+		<stuffCategories>
+			<li>Woody</li>
+			<li>Metallic</li>
+		</stuffCategories>
+		<costStuffCount>35</costStuffCount>
+		<fillPercent>0.5</fillPercent>
+		<useHitPoints>True</useHitPoints>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<recipes>
+			<li>Make_Wort</li>
+		</recipes>
+		<comps>
+			<li Class="CompProperties_Refuelable">
+				<fuelConsumptionRate>25</fuelConsumptionRate>
+				<fuelCapacity>75.0</fuelCapacity>
+				<fuelFilter>
+					<thingDefs>
+						<li>WoodLog</li>
+					</thingDefs>
+				</fuelFilter>
+				<consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+				<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+			</li>
+			<li Class="CompProperties_AffectedByFacilities">
+				<linkableFacilities>
+					<li>CookingToolCabinet</li>
+				</linkableFacilities>
+			</li>
+		</comps>
+		<building>
+			<isMealSource>true</isMealSource>
+		</building>
+		<researchPrerequisites>
+			<li>MedTimes_BasicCooking</li>
+			<li>MedTimes_Toolworking</li>
+		</researchPrerequisites>
+	</ThingDef>
+	<!-- ========================= Cheese making stuff ==========================-->
+	<!--ThingDef ParentName="MedTimes_BuildingBase">
+		<defName>MedTimes_CheesePress</defName>
+		<label>Cheese press</label>
+		<description>A press mechanism for coagulating milk into cheese.</description>
+		<thingClass>EarlyTimes.Building_CheesePress</thingClass>
+		<uiIconPath>Things/Building/Production/CheesePress/Cheese_Press_Icon</uiIconPath>
+		<graphicData>
+			<texPath>Things/Building/Production/CheesePress/Cheese_Press</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawRotated>false</drawRotated>
+			<damageData>
+				<rect>(0.05,0.1,0.9,0.9)</rect>
+			</damageData>
+			<shadowData>
+				<volume>(0.35, 0.35, 0.63)</volume>
+			</shadowData>
+		</graphicData>
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.45</fillPercent>
+		<pathCost>60</pathCost>
+		<thingCategories>
+			<li>BuildingsProduction</li>
+		</thingCategories>
+		<statBases>
+			<WorkToBuild>600</WorkToBuild>
+			<Mass>10</Mass>
+			<MaxHitPoints>100</MaxHitPoints>
+		</statBases>
+		<stuffCategories>
+			<li>Stony</li>
+			<li>Woody</li>
+			<li>Metallic</li>
+		</stuffCategories>
+		<costStuffCount>15</costStuffCount>
+		<costList>
+			<Steel>10</Steel>
+			<WoodLog>15</WoodLog>
+		</costList>
+		<comps>
+			<li Class="CompProperties_TemperatureRuinable">
+				<minSafeTemperature>-1</minSafeTemperature>
+				<maxSafeTemperature>52</maxSafeTemperature>
+				<progressPerDegreePerTick>0.00001</progressPerDegreePerTick>
+			</li>
+		</comps>
+		<tickerType>Rare</tickerType>
+		<rotatable>false</rotatable>
+		<designationCategory>Production</designationCategory>
+		<researchPrerequisites>
+			<li>MedTimes_Cheese</li>
+		</researchPrerequisites>
+	</ThingDef>-->
+	
+</Defs>

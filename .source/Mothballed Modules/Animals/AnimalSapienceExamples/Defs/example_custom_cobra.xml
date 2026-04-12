@@ -1,0 +1,256 @@
+<Defs>
+  <!--
+  This is the proper way to make a Sapient-only animal-like.
+
+  I suggest you grab lifeStageAges and such from humans with tweaks unless you know what you're doing,
+  or things may not play nice.
+
+  You can also inherit from the Human ThingDe instead of AnimalThing if you want.
+
+  This is the preferred way to make a Sapient-only animal-like.
+  -->
+
+  <ThingDef ParentName="AnimalThingBase">
+    <defName>BS_Example_Cobra</defName>
+    <label>super-special-cobra</label>
+    <devNote>misc</devNote>
+    <description>A large predatory snake. Cobras can be highly aggressive if provoked, and their bite injects toxic venom into the victim.</description>
+    <statBases>
+      <MoveSpeed>3.5</MoveSpeed>
+      <MarketValue>300</MarketValue>
+      <ComfyTemperatureMin>0</ComfyTemperatureMin>
+      <ComfyTemperatureMax>60</ComfyTemperatureMax>
+      <Wildness>0.75</Wildness>
+    </statBases>
+    <uiIconScale>1.1</uiIconScale>
+    <tools>
+      <li>
+        <label>venom-fangs</label>
+        <capacities>
+          <li>ToxicBite</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>Mouth</linkedBodyPartsGroup>
+        <surpriseAttack>
+          <extraMeleeDamages>
+            <li>
+              <def>Stun</def>
+              <amount>14</amount>
+            </li>
+          </extraMeleeDamages>
+        </surpriseAttack>
+      </li>
+      <li>
+        <label>head</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>3</power>
+        <cooldownTime>2</cooldownTime>
+        <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+        <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+        <chanceFactor>0.2</chanceFactor>
+      </li>
+    </tools>
+    <comps>
+      <li Class="CompProperties_EggLayer">
+        <eggUnfertilizedDef>EggCobraUnfertilized</eggUnfertilizedDef>
+        <eggFertilizedDef>EggCobraFertilized</eggFertilizedDef>
+        <eggFertilizationCountMax>1</eggFertilizationCountMax>
+        <eggLayIntervalDays>10</eggLayIntervalDays>
+        <eggProgressUnfertilizedMax>0.5</eggProgressUnfertilizedMax>
+        <eggCountRange>1~2</eggCountRange>
+      </li>
+    </comps>
+    <race>
+      <!-- Custom -->
+      <renderTree>BS_HumanlikeAnimal</renderTree>
+      <hasUnnaturalCorpse>false</hasUnnaturalCorpse>
+
+       <!--From Humans-->
+      <thinkTreeMain>Humanlike</thinkTreeMain>
+      <thinkTreeConstant>HumanlikeConstant</thinkTreeConstant>
+      <intelligence>Humanlike</intelligence>
+
+      <lifeExpectancy>40</lifeExpectancy>
+      <foodType>OmnivoreHuman</foodType>
+      <lifeStageAges>
+        <li>
+          <def>HumanlikeBaby</def>
+          <minAge>0</minAge>
+        </li>
+        <li>
+          <def>HumanlikeChild</def>
+          <minAge>3</minAge>
+        </li>
+        <li MayRequire="Ludeon.RimWorld.Biotech">
+          <def>HumanlikePreTeenager</def>
+          <minAge>9</minAge>
+        </li>
+        <li>
+          <def>HumanlikeTeenager</def>
+          <minAge>13</minAge>
+        </li>
+        <li>
+          <def>HumanlikeAdult</def>
+          <minAge>18</minAge>
+        </li>
+      </lifeStageAges>
+
+      <lifeStageWorkSettings MayRequire="Ludeon.RimWorld.Biotech">
+        <Firefighter>7</Firefighter>
+        <Patient>0</Patient>
+        <Doctor>10</Doctor>
+        <PatientBedRest>0</PatientBedRest>
+        <Childcare MayRequire="Ludeon.RimWorld.Biotech">0</Childcare>
+        <BasicWorker>3</BasicWorker>
+        <Warden>10</Warden>
+        <Handling>7</Handling>
+        <Cooking>7</Cooking>
+        <Hunting>7</Hunting>
+        <Construction>10</Construction>
+        <Growing>7</Growing>
+        <Mining>7</Mining>
+        <PlantCutting>7</PlantCutting>
+        <Smithing>13</Smithing>
+        <Tailoring>7</Tailoring>
+        <Art>10</Art>
+        <Crafting>7</Crafting>
+        <Hauling>3</Hauling>
+        <Cleaning>3</Cleaning>
+        <Research>13</Research>
+        <DarkStudy MayRequire="Ludeon.RimWorld.Anomaly">13</DarkStudy>
+      </lifeStageWorkSettings>
+
+      <!-- From the animal -->
+
+      <body>Snake</body>
+      <predator>true</predator>
+      <maxPreyBodySize>0.35</maxPreyBodySize>
+      <baseBodySize>0.25</baseBodySize>
+      <baseHungerRate>0.07</baseHungerRate>
+      <baseHealthScale>0.5</baseHealthScale>
+      <leatherDef>Leather_Lizard</leatherDef>
+      <meatLabel>cobra meat</meatLabel>
+      <manhunterOnTameFailChance>0.10</manhunterOnTameFailChance>
+      <manhunterOnDamageChance>0.50</manhunterOnDamageChance>
+      <nameOnTameChance>1</nameOnTameChance>
+      
+      <soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
+      <soundEating>Reptile_Eat</soundEating>
+      <headPosPerRotation>
+        <li>(-0.03, 0, 0.35)</li>
+        <li>(0.03, 0, 0.36)</li>
+        <li>(-0.05, 0, 0.28)</li>
+        <li>(-0.03, 0, 0.36)</li>
+      </headPosPerRotation>
+    </race>
+    <modExtensions>
+      <li Class="BigAndSmall.RaceExtension"> <raceHediff>BS_Example_CobraRace</raceHediff> </li>
+    </modExtensions>
+  </ThingDef>
+
+  <PawnKindDef ParentName="AnimalKindBase">
+    <defName>BS_Example_Cobra</defName>
+    <label>cobra</label>
+    <race>BS_Example_Cobra</race>
+    <combatPower>65</combatPower>
+    <ecoSystemWeight>0</ecoSystemWeight>
+    <initialWillRange>0~1</initialWillRange>
+    <initialResistanceRange>10~17</initialResistanceRange>
+
+    <!-- Same number as your race. -->
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Animal/Cobra/Cobra</texPath>
+          <drawSize>0.75</drawSize>
+        </bodyGraphicData>
+        <dessicatedBodyGraphicData>
+          <texPath>Things/Pawn/Animal/Cobra/Dessicated_Cobra</texPath>
+          <drawSize>0.75</drawSize>
+        </dessicatedBodyGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Animal/Cobra/Cobra</texPath>
+          <drawSize>1</drawSize>
+        </bodyGraphicData>
+        <dessicatedBodyGraphicData>
+          <texPath>Things/Pawn/Animal/Cobra/Dessicated_Cobra</texPath>
+          <drawSize>1</drawSize>
+        </dessicatedBodyGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Animal/Cobra/Cobra</texPath>
+          <drawSize>1.25</drawSize>
+        </bodyGraphicData>
+        <dessicatedBodyGraphicData>
+          <texPath>Things/Pawn/Animal/Cobra/Dessicated_Cobra</texPath>
+          <drawSize>1.25</drawSize>
+        </dessicatedBodyGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Animal/Cobra/Cobra</texPath>
+          <drawSize>1.5</drawSize>
+        </bodyGraphicData>
+        <dessicatedBodyGraphicData>
+          <texPath>Things/Pawn/Animal/Cobra/Dessicated_Cobra</texPath>
+          <drawSize>1.5</drawSize>
+        </dessicatedBodyGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Animal/Cobra/Cobra</texPath>
+          <drawSize>1.5</drawSize>
+        </bodyGraphicData>
+        <dessicatedBodyGraphicData>
+          <texPath>Things/Pawn/Animal/Cobra/Dessicated_Cobra</texPath>
+          <drawSize>1.5</drawSize>
+        </dessicatedBodyGraphicData>
+      </li>
+    </lifeStages>
+    <modExtensions>
+      <li Class="BigAndSmall.PawnKindExtension">
+        <generateHumanlikeAnimalFromThis>true</generateHumanlikeAnimalFromThis>
+      </li>
+    </modExtensions>
+  </PawnKindDef>
+
+  <!-- Optional, but useful if you want to use Big & Small features like skill offsets.
+   It is identical to the various hediff "HL_" overrides.
+  -->
+  <HediffDef ParentName="BS_DefaultHumanlikeAnimal">
+    <defName>BS_Example_CobraRace</defName> 
+    <description>am scary example cober\nI do a flat\n\nHISS\n\ndon't heck with me. am great example.</description>
+    <label>scary example cobra</label>
+    <defaultLabelColor>(0.5, 1, 1)</defaultLabelColor>
+    <stages>
+      <li>
+        <statOffsets>
+          <MeleeDodgeChance>1</MeleeDodgeChance>
+        </statOffsets>
+        <statFactors>
+          <MeleeDamageFactor>1.25</MeleeDamageFactor>
+        </statFactors>
+      </li>
+    </stages>
+    <modExtensions>
+      <li Class="BigAndSmall.PawnExtension">
+        <traitIcon>Things/Pawn/Animal/Cobra/Cobra_east</traitIcon>
+        <animalFineManipulation>1.0</animalFineManipulation>
+
+        <!-- This node is needed unless yo  -->
+        <hideHumanlikeRenderNodes>true</hideHumanlikeRenderNodes>
+        <aptitudes>
+          <Social>4</Social>
+        </aptitudes>
+      </li>
+    </modExtensions>
+  </HediffDef>
+</Defs>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo402MartiniHenry</defName>
+		<label>.402 Martini-Henry</label>
+		<parent>AmmoRifles</parent>
+    <iconPath>UI/Icons/ThingCategories/CaliberRifle</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef MayRequire="cgf1.comradespack.rifles">
+		<defName>AmmoSet_402MartiniHenry</defName>
+		<label>.402 Martini-Henry</label>
+		<ammoTypes>
+			<Ammo_402MartiniHenry_FMJ>Bullet_402MartiniHenry_FMJ</Ammo_402MartiniHenry_FMJ>
+			<Ammo_402MartiniHenry_AP>Bullet_402MartiniHenry_AP</Ammo_402MartiniHenry_AP>
+			<Ammo_402MartiniHenry_HP>Bullet_402MartiniHenry_HP</Ammo_402MartiniHenry_HP>
+		</ammoTypes>
+		<similarTo>AmmoSet_Rifle</similarTo>
+	</CombatExtended.AmmoSetDef>
+
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="402MartiniHenryBase" ParentName="SmallAmmoBase" Abstract="True" MayRequire="cgf1.comradespack.rifles">
+		<description>Large and bulky rifle cartridge traditionally loaded with blackpowder.</description>
+		<statBases>
+			<Mass>0.04</Mass>
+			<Bulk>0.05</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo402MartiniHenry</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="402MartiniHenryBase" MayRequire="cgf1.comradespack.rifles">
+		<defName>Ammo_402MartiniHenry_FMJ</defName>
+		<label>.402 Martini-Henry cartridge (FMJ)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Rifle/FMJ</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.16</MarketValue>
+		</statBases>
+		<ammoClass>FullMetalJacket</ammoClass>
+		<cookOffProjectile>Bullet_402MartiniHenry_FMJ</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="402MartiniHenryBase" MayRequire="cgf1.comradespack.rifles">
+		<defName>Ammo_402MartiniHenry_AP</defName>
+		<label>.402 Martini-Henry cartridge (AP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Rifle/AP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.16</MarketValue>
+		</statBases>
+		<ammoClass>ArmorPiercing</ammoClass>
+		<cookOffProjectile>Bullet_402MartiniHenry_AP</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="402MartiniHenryBase" MayRequire="cgf1.comradespack.rifles">
+		<defName>Ammo_402MartiniHenry_HP</defName>
+		<label>.402 Martini-Henry cartridge (HP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Rifle/HP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.16</MarketValue>
+		</statBases>
+		<ammoClass>HollowPoint</ammoClass>
+		<cookOffProjectile>Bullet_402MartiniHenry_HP</cookOffProjectile>
+	</ThingDef>
+	
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="Base402MartiniHenryBullet" ParentName="BaseBulletCE" Abstract="true" MayRequire="cgf1.comradespack.rifles">
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>107</speed>
+			<dropsCasings>true</dropsCasings>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base402MartiniHenryBullet" MayRequire="cgf1.comradespack.rifles">
+		<defName>Bullet_402MartiniHenry_FMJ</defName>
+		<label>.402 Martini-Henry cartridge (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>20</damageAmountBase>
+			<armorPenetrationSharp>6</armorPenetrationSharp>
+			<armorPenetrationBlunt>68.18</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base402MartiniHenryBullet" MayRequire="cgf1.comradespack.rifles">
+		<defName>Bullet_402MartiniHenry_AP</defName>
+		<label>.402 Martini-Henry cartridge (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>12</damageAmountBase>
+			<armorPenetrationSharp>12</armorPenetrationSharp>
+			<armorPenetrationBlunt>68.18</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base402MartiniHenryBullet" MayRequire="cgf1.comradespack.rifles">
+		<defName>Bullet_402MartiniHenry_HP</defName>
+		<label>.402 Martini-Henry cartridge (HP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>25</damageAmountBase>
+			<armorPenetrationSharp>3</armorPenetrationSharp>
+			<armorPenetrationBlunt>68.18</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.comradespack.rifles">
+		<defName>MakeAmmo_402MartiniHenry_FMJ</defName>
+		<label>make .402 Martini-Henry cartridge (FMJ) cartridge x400</label>
+		<description>Craft 500 .402 Martini-Henry cartridge (FMJ) cartridges.</description>
+		<jobString>Making .402 Martini-Henry cartridge (FMJ) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>40</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_402MartiniHenry_FMJ>500</Ammo_402MartiniHenry_FMJ>
+		</products>
+	    <workAmount>4000</workAmount>			
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.comradespack.rifles">
+		<defName>MakeAmmo_402MartiniHenry_AP</defName>
+		<label>make .402 Martini-Henry cartridge (AP) cartridge x500</label>
+		<description>Craft 500 .402 Martini-Henry cartridge (AP) cartridges.</description>
+		<jobString>Making .402 Martini-Henry cartridge (AP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>40</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_402MartiniHenry_AP>500</Ammo_402MartiniHenry_AP>
+		</products>
+	    <workAmount>4800</workAmount>			
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.comradespack.rifles">
+		<defName>MakeAmmo_402MartiniHenry_HP</defName>
+		<label>make .402 Martini-Henry cartridge (HP) cartridge x500</label>
+		<description>Craft 500 .402 Martini-Henry cartridge (HP) cartridges.</description>
+		<jobString>Making .402 Martini-Henry cartridge (HP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>40</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_402MartiniHenry_HP>500</Ammo_402MartiniHenry_HP>
+		</products>
+	    <workAmount>4000</workAmount>	
+	</RecipeDef>
+	
+</Defs>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>VGP Garden Tools</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<!-- ass patching, again -->
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName="CeilingSunLamp" or 
+									   defName="SmallCeilingSunLamp" or 
+									   defName="MiniCeilingSunLamp" or 
+									   defName="AO_CeilSunLamp" or 
+									   defName="AO_SmallCeilSunLamp" or 
+									   defName="AO_MiniCeilSunLamp" or 
+									   defName="HeatedceilngSunLamp" or 
+									   defName="HeatedceilngSmallSunLamp" or 
+									   defName="HeatedMiniceilngSunLamp"]/comps</xpath>	
+				<value>
+					<li Class="EarlyTimes.CompProperties_CeilingHanger"/>
+				</value>
+			</li>	
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName="CeilingSunLamp" or 
+									   defName="SmallCeilingSunLamp" or 
+									   defName="MiniCeilingSunLamp" or 
+									   defName="AO_CeilSunLamp" or 
+									   defName="AO_SmallCeilSunLamp" or 
+									   defName="AO_MiniCeilSunLamp" or 
+									   defName="HeatedceilngSunLamp" or 
+									   defName="HeatedceilngSmallSunLamp" or 
+									   defName="HeatedMiniceilngSunLamp"]</xpath>	
+				<value>
+					<placeWorkers>
+						<li>EarlyTimes.PlaceWorker_UnderRoof</li>	  
+					</placeWorkers>
+				</value>
+			</li>
+			
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName="Planterbox" or 
+									   defName="ModularPlanterbox" or 
+									   defName="ModularFlowerbox"]</xpath>	
+				<value>
+					<researchPrerequisites>
+						<li>MedTimes_PlantPot</li>
+					</researchPrerequisites>
+				</value>
+			</li>	
+			
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName="MedTimes_GardeningBox"]</xpath>	
+				<value>
+					<costList>
+						<VG_PileofDirt>18</VG_PileofDirt>
+						<RawFertilizer>10</RawFertilizer>
+					</costList>
+				</value>
+			</li>	
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName="MedTimes_GardeningBox"]/designationCategory</xpath>	
+				<value>
+					<designationCategory>GardenTools</designationCategory>
+				</value>
+			</li>	
+			
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName="ADV_ModularPlanterbox"]/costList</xpath>	
+				<value>
+					<costList>
+						<VG_PileofDirt>20</VG_PileofDirt>
+						<RawFertilizer>40</RawFertilizer>
+					</costList>
+				</value>
+			</li>	
+			
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName="MedTimes_GardeningBox" or 
+									   defName="ADV_ModularPlanterbox"]/researchPrerequisites</xpath>	
+				<value>
+					<li>MedTimes_Fertilization</li>
+				</value>
+			</li>	
+		</operations>
+	</match>
+  </Operation>
+    
+</Patch>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>Remote Tech</li>
+		<li>Remote Tech (Continued)</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<operations>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/RecipeDef[defName="rxMakeCharcoal"]/recipeUsers</xpath>
+				<value>
+					<recipeUsers>
+						<li>rxBench</li>
+					</recipeUsers>
+				</value>			
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/RecipeDef[defName="rxMakeCharcoal"]/ingredients</xpath>
+				<value>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>Resource_Coal</li>
+								</thingDefs>
+							</filter>
+							<count>5</count>
+						</li>
+					</ingredients>
+				</value>			
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/RecipeDef[defName="rxMakeCharcoal"]/fixedIngredientFilter</xpath>
+				<value>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>Resource_Coal</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+				</value>			
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/RecipeDef[defName="rxMakeCharcoal"]/workAmount</xpath>
+				<value>
+					<workAmount>1</workAmount>
+				</value>			
+			</li>
+			
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/RecipeDef[defName="rxMakeExplosivePouch"]/ingredients</xpath>
+				<value>
+					<ingredients>
+						<li>
+							<filter>
+								<categories>
+									<li>Leathers</li>
+								</categories>
+							</filter>
+							<count>12</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>rxSparkpowder</li>
+								</thingDefs>
+							</filter>
+							<count>9</count>
+						</li>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>Resource_Coal</li>
+								</thingDefs>
+							</filter>
+							<count>15</count>
+						</li>
+					</ingredients>
+				</value>			
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/RecipeDef[defName="rxMakeExplosivePouch"]/fixedIngredientFilter</xpath>
+				<value>
+					<fixedIngredientFilter>
+						<categories>
+							<li>Leathers</li>
+						</categories>
+						<thingDefs>
+							<li>rxSparkpowder</li>
+							<li>Resource_Coal</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+				</value>			
+			</li>
+		</operations>
+	</match>
+  </Operation>
+</Patch>
