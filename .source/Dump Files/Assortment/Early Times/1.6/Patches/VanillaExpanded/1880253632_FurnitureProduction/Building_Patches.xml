@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>Vanilla Furniture Expanded - Production</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+		
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/ThingDef[defName = "VFE_FueledSmelter"]</xpath>		
+			</li>
+			<li Class="PatchOperationRemove">
+				<xpath>/Defs/WorkGiverDef[defName="DoBillsSmelter"]/fixedBillGiverDefs/li[text()="VFE_FueledSmelter"]</xpath>		
+			</li>
+			
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName = "MedTimes_ArtisanStation" or
+									  defName = "MedTimes_TailoringStation"]/comps/li[@Class="CompProperties_AffectedByFacilities"]/linkableFacilities</xpath>		
+				<value>
+					<li>VFE_TailorCabinet</li>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName = "MedTimes_BlacksmithForge" 
+								   or defName = "MedTimes_ElectricBlacksmithForge"
+								   or defName = "MedTimes_BlacksmithForgeTierTwo"
+								   or defName = "MedTimes_ElectricBlacksmithForgeTierTwo"]/comps/li[@Class="CompProperties_AffectedByFacilities"]/linkableFacilities</xpath>		
+				<value>
+					<li>VFE_SmithyCabinet</li>
+				</value>
+			</li>
+			
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName = "MedTimes_FoodPrepStation"]/comps/li[@Class="CompProperties_AffectedByFacilities"]/linkableFacilities</xpath>		
+				<value>
+					<li>VFE_KitchenSinkCabinet</li>
+				</value>
+			</li>
+			
+			
+		</operations>
+	</match>
+  </Operation>
+  
+</Patch>
+
+
+
+

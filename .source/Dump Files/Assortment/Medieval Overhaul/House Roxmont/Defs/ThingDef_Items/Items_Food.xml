@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- Cheese -->
+	<ThingDef ParentName="MealBase" Name="DankPyon_RoxCheeseBase" Abstract="True">
+		<thingClass>ThingWithComps</thingClass>
+		<tickerType>Rare</tickerType>
+		<statBases>
+			<MarketValue>10</MarketValue>
+			<Nutrition>0.85</Nutrition>
+		</statBases>
+		<ingestible>
+			<joy>0.10</joy>
+			<joyKind>Gluttonous</joyKind>
+			<foodType>Processed</foodType>
+			<preferability>MealSimple</preferability>
+			<optimalityOffsetHumanlikes>15</optimalityOffsetHumanlikes>
+			<optimalityOffsetFeedingAnimals>-10</optimalityOffsetFeedingAnimals>
+		</ingestible>
+		<comps>
+			<li Class="CompProperties_Rottable">
+				<daysToRotStart>45</daysToRotStart>
+				<rotDestroys>true</rotDestroys>
+			</li>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
+			<li Class="VFECore.CompProperties_IngestedThoughtFromQuality">
+				<ingestedThought>DankPyon_AteRoxCheese</ingestedThought>
+			</li>
+			<li MayRequire="vanillaexpanded.vcooke" Class="VanillaCookingExpanded.CompProperties_StackByQuality"/>
+		</comps>
+		<rotatable>false</rotatable>
+		<researchPrerequisites>
+			<li>DankPyon_Presser</li>
+		</researchPrerequisites>
+		<thingCategories>
+			<li>DankPyon_Cheese</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef ParentName="DankPyon_RoxCheeseBase">
+		<defName>DankPyon_MealRoxwoodCheese</defName>
+		<label>roxwood cheese</label>
+		<description>Rox cheese is a creamy, artisanal delight crafted from the rich milk of the rox. Its smooth texture and slightly tangy flavor make it a prized addition to any feast, perfect for pairing with rustic bread and hearty ales.</description>
+		<graphicData>
+			<texPath>HouseRoxmont/Meal/RoxwoodCheese</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+			<drawSize>1</drawSize>
+		</graphicData>
+	</ThingDef>
+
+	<!--============== Tier 2 Meals ===============-->
+	<!-- Roast Rox -->
+	<ThingDef ParentName="MealCooked">
+		<defName>DankPyon_MealRoxRoast</defName>
+		<label>rox roast</label>
+		<description>Thick-cut chunks of seared meat arranged on a wooden stake, making for an easily-eaten, tasty meal.</description>
+		<graphicData>
+			<texPath>HouseRoxmont/Meal/RoastRox</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>21</MarketValue>
+			<Nutrition>0.9</Nutrition>
+			<WorkToMake>450</WorkToMake>
+			<Mass>0.5</Mass>
+		</statBases>
+		<ingestible>
+			<tasteThought>DankPyon_AteRoxRoast</tasteThought>
+			<preferability>MealFine</preferability>
+			<outcomeDoers>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+					<hediffDef>DankPyon_AteGrillFine</hediffDef>
+					<severity>1</severity>
+				</li>
+			</outcomeDoers>
+		</ingestible>
+	</ThingDef>
+
+	<!--============== Tier 3 Meals ===============-->
+	<!-- Steak with Wine -->
+	<ThingDef ParentName="MealCooked">
+		<defName>DankPyon_MealRoxFeast</defName>
+		<label>rox feast</label>
+		<description>A rich meal consisting of spiced steak with toasted potatoes, sauteed in its own beef broth. A delightfully rich and bold-tasting meal.</description>
+		<graphicData>
+			<texPath>HouseRoxmont/Meal/RoxFeast</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>55</MarketValue>
+			<WorkToMake>800</WorkToMake>
+			<Nutrition>1</Nutrition>
+		</statBases>
+		<ingestible>
+			<preferability>MealLavish</preferability>
+			<tasteThought>DankPyon_AteRoxFeast</tasteThought>
+			<optimalityOffsetHumanlikes>17</optimalityOffsetHumanlikes>
+			<optimalityOffsetFeedingAnimals>-30</optimalityOffsetFeedingAnimals>
+			<outcomeDoers>
+				<li Class="IngestionOutcomeDoer_GiveHediff">
+					<hediffDef>DankPyon_AteRoxFeast</hediffDef>
+					<severity>1</severity>
+				</li>
+			</outcomeDoers>
+		</ingestible>
+		<rotatable>false</rotatable>
+	</ThingDef>
+  
+</Defs>

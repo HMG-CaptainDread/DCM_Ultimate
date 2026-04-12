@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- ================= Base Classes ============== -->
+	<!-- Artillery Building Base Class -->
+	<ThingDef Name="MedTimes_ArtilleryBuilding" ParentName="MedTimes_SecurityBase" Abstract="True">
+		<thingClass>Building_TurretGun</thingClass>
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<tickerType>Normal</tickerType>
+		<altitudeLayer>Building</altitudeLayer>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<hasTooltip>true</hasTooltip>
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="CompProperties_Mannable">
+				<manWorkType>Violent</manWorkType>
+			</li>
+		</comps>
+		<designationCategory>Security</designationCategory>
+		<thingCategories>
+			<li>BuildingsSecurity</li>
+		</thingCategories>
+		<placeWorkers>
+			<li>PlaceWorker_TurretTop</li>
+		</placeWorkers>
+		<building>
+			<turretBurstWarmupTime>1.0</turretBurstWarmupTime>
+			<turretBurstCooldownTime>10.0</turretBurstCooldownTime>
+			<buildingTags>
+				<li>Artillery</li>
+			</buildingTags>
+		</building>
+		<inspectorTabs>
+			<li>ITab_Shells</li>
+		</inspectorTabs>
+	</ThingDef>
+	<!-- Artillery Top Base Class -->
+	<ThingDef Name="MedTimes_ArtilleryWeapon" Abstract="True">
+		<category>Item</category>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<thingClass>ThingWithComps</thingClass>
+		<equipmentType>Primary</equipmentType>
+		<techLevel>Medieval</techLevel>
+		<graphicData>
+			<graphicClass>Graphic_Single</graphicClass>
+			<onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<DeteriorationRate>0</DeteriorationRate>
+			<Flammability>0</Flammability>
+			<Mass>5</Mass>
+		</statBases>
+		<pathCost>35</pathCost>
+		<selectable>True</selectable>
+		<alwaysHaulable>True</alwaysHaulable>
+		<useHitPoints>False</useHitPoints>
+		<drawGUIOverlay>true</drawGUIOverlay>
+		<altitudeLayer>Item</altitudeLayer>
+		<soundInteract>Interact_BeatFire</soundInteract>
+		<tickerType>Never</tickerType>
+		<destroyOnDrop>True</destroyOnDrop>
+		<tradeability>None</tradeability>
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+			<li>
+				<compClass>CompEquippable</compClass>
+			</li>
+		</comps>
+	</ThingDef>
+	<!-- Artillery Top Base Class -->
+	<ThingDef Name="MedTimes_ArtilleryChangeAmmo" ParentName="MedTimes_ArtilleryWeapon" Abstract="True">
+		<comps>
+			<li Class="CompProperties_ChangeableProjectile" />
+		</comps>
+	</ThingDef>
+	
+	<!-- =========================Attack Structures======================= -->
+	<!-- Medieval Ballista, Turret top-->
+	<ThingDef ParentName="MedTimes_ArtilleryChangeAmmo">
+		<defName>MedTimes_Turret_BallistaTop</defName>
+		<label>Ballista Top</label>
+		<description>A large crossbow-like weapon.</description>
+		<graphicData>
+			<texPath>Things/Building/Security/Ballista/MedTimes_Ballista_Top</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<AccuracyTouch>0.70</AccuracyTouch>
+			<AccuracyShort>0.90</AccuracyShort>
+			<AccuracyMedium>0.99</AccuracyMedium>
+			<AccuracyLong>0.99</AccuracyLong>
+			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
+		</statBases>
+		<building>
+			<fixedStorageSettings>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+						<li>BallistaArrow_Standart</li>
+						<li>BallistaArrow_ArmorPiercing</li>
+					</thingDefs>
+				</filter>
+			</fixedStorageSettings>
+			<defaultStorageSettings>
+				<filter>
+					<thingDefs>
+						<li>WoodLog</li>
+						<li>BallistaArrow_Standart</li>
+						<li>BallistaArrow_ArmorPiercing</li>
+					</thingDefs>
+				</filter>
+			</defaultStorageSettings>
+		</building>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+				<hasStandardCommand>true</hasStandardCommand>
+				<warmupTime>1.4</warmupTime>
+				<range>450</range>
+				<requireLineOfSight>false</requireLineOfSight>
+				<burstShotCount>1</burstShotCount>
+				<soundCast>Bow_Large</soundCast>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+			</li>
+		</verbs>
+	</ThingDef>
+	<!-- Ballista -->
+	<ThingDef ParentName="MedTimes_ArtilleryBuilding">
+		<defName>MedTimes_Turret_Ballista</defName>
+		<label>Ballista</label>
+		<thingClass>EarlyTimes.Building_TurretGunRotableCell</thingClass>
+		<description>A large siege weapon originally developed by the Romans. fires a the equivalent of a massive crossbow bolt.</description>
+		<graphicData>
+			<texPath>Things/Building/Security/Ballista/MedTimes_Ballista_Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>
+		<uiIconPath>Things/Building/Security/Ballista/MedTimes_Ballista_Icon</uiIconPath>
+		<size>(3,3)</size>
+		<hasInteractionCell>True</hasInteractionCell>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<statBases>
+			<WorkToBuild>3500</WorkToBuild>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<Beauty>-5</Beauty>
+			<Mass>75</Mass>
+		</statBases>
+		<costList>
+			<WoodLog>30</WoodLog>
+			<Steel>15</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+		</stuffCategories>
+		<costStuffCount>40</costStuffCount>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<fillPercent>0.65</fillPercent>
+		<building>
+			<ai_combatDangerous>false</ai_combatDangerous>
+			<turretGunDef>MedTimes_Turret_BallistaTop</turretGunDef>
+			<turretBurstWarmupTime>1.4</turretBurstWarmupTime>
+			<turretBurstCooldownTime>4</turretBurstCooldownTime>
+		</building>
+		<researchPrerequisites>
+			<li>MedTimes_Ballista</li>
+		</researchPrerequisites>
+	</ThingDef>
+	<!-- Medieval Murder Hole, Artillery Top -->
+	<ThingDef ParentName="MedTimes_ArtilleryChangeAmmo">
+		<defName>MedTimes_Artillery_MurderHoleTop</defName>
+		<label>MurderHole</label>
+		<description>Incendiary Quicklime Pitch launcher. Ejects fire-starting oil through walls. Accurate and devastating but extreamly short-ranged.</description>
+		<graphicData>
+			<texPath>Things/Building/Security/MurderHole/MedTimes_BoilingPitch</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<AccuracyTouch>0.99</AccuracyTouch>
+			<AccuracyShort>0.95</AccuracyShort>
+			<AccuracyMedium>0.90</AccuracyMedium>
+			<AccuracyLong>0.85</AccuracyLong>
+			<RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
+		</statBases>
+		<building>
+			<fixedStorageSettings>
+				<filter>
+					<thingDefs>
+						<li>MedTimes_Resource_Quicklime</li>
+					</thingDefs>
+				</filter>
+			</fixedStorageSettings>
+			<defaultStorageSettings>
+				<filter>
+					<thingDefs>
+						<li>MedTimes_Resource_Quicklime</li>
+					</thingDefs>
+				</filter>
+			</defaultStorageSettings>
+		</building>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+				<requireLineOfSight>false</requireLineOfSight>
+				<hasStandardCommand>true</hasStandardCommand>
+				<warmupTime>1</warmupTime>
+				<minRange>1.5</minRange>
+				<isMortar>true</isMortar>
+				<range>6</range>
+				<burstShotCount>3</burstShotCount>
+				<soundCast>ThrowGrenade</soundCast>
+				<ai_IsWeapon>true</ai_IsWeapon>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+			</li>
+		</verbs>
+	</ThingDef>
+	<!-- Murder Hole -->
+	<ThingDef ParentName="MedTimes_ArtilleryBuilding">
+		<defName>MedTimes_Artillery_MurderHole</defName>
+		<label>Murder Hole</label>
+		<description>A Storage shoot that ejects boiling oil and a contained burning wick. The proper term of such a device is a Machicolation, however, Murder hole simply sounds more fun! Must be manned.</description>
+		<thingClass>Building_TurretGun</thingClass>
+		<graphicData>
+			<texPath>Things/Building/Security/MurderHole/MedTimes_MurderHole</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(1.4,1.4)</drawSize>
+		</graphicData>
+		<uiIconPath>Things/Building/Security/MurderHole/MedTimes_MurderHole</uiIconPath>
+		<interactionCellOffset>(0,0,0)</interactionCellOffset>
+		<statBases>
+			<WorkToBuild>3500</WorkToBuild>
+			<MaxHitPoints>450</MaxHitPoints>
+			<Flammability>5.0</Flammability>
+			<Cleanliness>-10</Cleanliness>
+			<Beauty>-15</Beauty>
+			<Mass>50</Mass>
+		</statBases>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>45</costStuffCount>
+		<costList>
+			<Steel>35</Steel>
+		</costList>
+		<size>(1,1)</size>
+		<passability>PassThroughOnly</passability>
+		<pathCost>80</pathCost>
+		<fillPercent>1</fillPercent>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<holdsRoof>false</holdsRoof>
+		<blockLight>false</blockLight>
+		<blockWind>false</blockWind>
+		<castEdgeShadows>true</castEdgeShadows>
+		<specialDisplayRadius>6</specialDisplayRadius>
+		<building>
+			<turretGunDef>MedTimes_Artillery_MurderHoleTop</turretGunDef>
+			<turretBurstWarmupTime>1</turretBurstWarmupTime>
+			<turretBurstCooldownTime>10</turretBurstCooldownTime>
+			<buildingTags inherit="false">
+				<li>Artillery</li>
+			</buildingTags>
+		</building>
+		<researchPrerequisites>
+			<li>MedTimes_MedievalDefenses</li>
+			<li>MedTimes_Explosives</li>
+		</researchPrerequisites>
+	</ThingDef>
+	<!-- Medieval Catapult, Artillery -->
+	<!-- top gun -->
+	<ThingDef ParentName="MedTimes_ArtilleryChangeAmmo">
+		<defName>MedTimes_Artillery_CatapultTop</defName>
+		<label>Medieval Catapult</label>
+		<description>Items launcher. Launches things over long distances.</description>
+		<graphicData>
+			<texPath>Things/Building/Security/Catapult/MedTimes_Catapult_Top</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<statBases>
+			<AccuracyTouch>0.8</AccuracyTouch>
+			<AccuracyShort>0.82</AccuracyShort>
+			<AccuracyMedium>0.78</AccuracyMedium>
+			<AccuracyLong>0.66</AccuracyLong>
+			<RangedWeapon_Cooldown>8</RangedWeapon_Cooldown>
+		</statBases>
+		<building>
+			<fixedStorageSettings>
+				<filter>
+					<thingDefs>
+						<li>MedTimes_Resource_ExplosivePot</li>
+						<li>MedTimes_CatapultBall</li>
+					</thingDefs>
+				</filter>
+			</fixedStorageSettings>
+			<defaultStorageSettings>
+				<filter>
+					<thingDefs>
+						<li>MedTimes_Resource_ExplosivePot</li>
+						<li>MedTimes_CatapultBall</li>
+					</thingDefs>
+				</filter>
+			</defaultStorageSettings>
+		</building>
+		<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+				<requireLineOfSight>false</requireLineOfSight>
+				<hasStandardCommand>true</hasStandardCommand>
+				<isMortar>true</isMortar>
+				<warmupTime>4</warmupTime>
+				<minRange>32</minRange>
+				<range>600</range>
+				<forcedMissRadius>1</forcedMissRadius>
+				<burstShotCount>1</burstShotCount>
+				<soundCast>Bow_Large</soundCast>
+				<targetParams>
+					<canTargetLocations>true</canTargetLocations>
+				</targetParams>
+			</li>
+		</verbs>
+	</ThingDef>
+	<!-- Catapult -->
+	<ThingDef ParentName="MedTimes_ArtilleryBuilding">
+		<defName>MedTimes_Artillery_Catapult</defName>
+		<label>Catapult</label>
+		<thingClass>EarlyTimes.Building_TurretGunRotableCell</thingClass>
+		<description>A catapult that launches explosive/incendiary shells.</description>
+		<graphicData>
+			<texPath>Things/Building/Security/Catapult/MedTimes_Catapult_Base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<drawSize>(2,2)</drawSize>
+		</graphicData>
+		<hasInteractionCell>True</hasInteractionCell>
+		<size>(3,3)</size>
+		<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+		<uiIconPath>Things/Building/Security/Catapult/MedTimes_Catapult_Icon</uiIconPath>
+		<statBases>
+			<WorkToBuild>6700</WorkToBuild>
+			<MaxHitPoints>500</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<Beauty>-5</Beauty>
+			<Mass>75</Mass>
+		</statBases>
+		<stuffCategories>
+			<li>Metallic</li>
+			<li>Woody</li>
+			<li>Stony</li>
+		</stuffCategories>
+		<costStuffCount>50</costStuffCount>
+		<specialDisplayRadius>32</specialDisplayRadius>
+		<costList>
+			<WoodLog>65</WoodLog>
+			<Steel>20</Steel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+		</costList>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<fillPercent>0.65</fillPercent>
+		<castEdgeShadows>true</castEdgeShadows>
+		<placeWorkers>
+			<li>PlaceWorker_NotUnderRoof</li>
+		</placeWorkers>
+		<building>
+			<ai_combatDangerous>false</ai_combatDangerous>
+			<turretGunDef>MedTimes_Artillery_CatapultTop</turretGunDef>
+			<turretBurstWarmupTime>6</turretBurstWarmupTime>
+			<turretBurstCooldownTime>8</turretBurstCooldownTime>
+			<buildingTags>
+				<li>Artillery_BaseDestroyer</li>
+			</buildingTags>
+		</building>
+		<researchPrerequisites>
+			<li>MedTimes_SiedgeMechanisms</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	
+	<!-- Cannon -->
+   <!-- medieval-iron age Cannon, Turret top-->
+  <ThingDef ParentName="MedTimes_ArtilleryChangeAmmo">
+    <defName>MedTimes_Turret_CannonTop</defName>
+    <recoilPower>3</recoilPower>
+    <label>Cannon turret</label>
+    <description>A large shooty-like weapon.</description>	
+    <graphicData>
+      <texPath>Things/Building/Security/Cannon/MedTimes_Cannon_Top</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <AccuracyTouch>0.25</AccuracyTouch>
+      <AccuracyShort>0.50</AccuracyShort>
+      <AccuracyMedium>0.99</AccuracyMedium>
+      <AccuracyLong>0.90</AccuracyLong>
+      <RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+    </statBases> 
+	<building>
+	  <fixedStorageSettings>
+        <filter>
+          <categories>
+            <li>CannonAmmo</li>
+          </categories>
+        </filter>
+      </fixedStorageSettings>
+      <defaultStorageSettings>
+        <filter>
+          <categories>
+            <li>CannonAmmo</li>
+          </categories>
+        </filter>
+      </defaultStorageSettings>
+	</building>
+	<verbs>
+	  <li>
+		<verbClass>Verb_Shoot</verbClass>	
+        <forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+		<hasStandardCommand>true</hasStandardCommand>	
+		<warmupTime>4.5</warmupTime>
+		<minRange>8</minRange>
+        <range>700</range>
+        <requireLineOfSight>false</requireLineOfSight>	
+		<burstShotCount>1</burstShotCount>
+		<soundCast>Explosion_Flame</soundCast>
+		<targetParams>
+		  <canTargetLocations>true</canTargetLocations>
+		</targetParams>		
+	  </li>
+	</verbs>
+  </ThingDef>
+  
+	<!-- cannon building -->
+  <ThingDef ParentName="MedTimes_ArtilleryBuilding">
+    <defName>MedTimes_Turret_Cannon</defName>
+    <label>Cannon</label>
+	<thingClass>EarlyTimes.Building_TurretGunRotableCell</thingClass>
+    <description>A wide purpose cannon that shares principle with musket and is way larger.</description>	
+    <graphicData>
+      <texPath>Things/Building/Security/Cannon/MedTimes_Cannon_Base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>	
+      <drawSize>(2,2)</drawSize>  
+    </graphicData>
+	<uiIconPath>Things/Building/Security/Cannon/MedTimes_Cannon_Icon</uiIconPath>	
+    <size>(3,3)</size>
+    <hasInteractionCell>True</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+	<statBases>
+      <WorkToBuild>5000</WorkToBuild>	
+      <MaxHitPoints>200</MaxHitPoints>
+      <Flammability>1.0</Flammability>	  
+      <Beauty>-5</Beauty> 
+	  <Mass>75</Mass>	  
+    </statBases>	
+    <costList>
+	  <Steel>85</Steel>
+	  <ReinforcedBarrel>1</ReinforcedBarrel>
+    </costList>    
+	<stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+    </stuffCategories>
+    <costStuffCount>40</costStuffCount>
+    <passability>PassThroughOnly</passability>
+    <pathCost>70</pathCost>
+    <fillPercent>0.65</fillPercent>
+    <building>
+      <ai_combatDangerous>false</ai_combatDangerous>	
+      <turretGunDef>MedTimes_Turret_CannonTop</turretGunDef>
+      <turretBurstWarmupTime>4.4</turretBurstWarmupTime>	
+	  <turretBurstCooldownTime>2</turretBurstCooldownTime>
+	</building>	
+	<comps>
+      <li Class="CompProperties_Refuelable">
+        <fuelLabel>Shots until barrel change</fuelLabel>
+        <fuelGizmoLabel>Barrel durability</fuelGizmoLabel>
+        <outOfFuelMessage>Cannot shoot: Needs new reinforced barrel</outOfFuelMessage>
+        <fuelFilter><thingDefs><li>ReinforcedBarrel</li></thingDefs></fuelFilter>
+        <fuelIsMortarBarrel>true</fuelIsMortarBarrel>
+        <fuelCapacity>50</fuelCapacity>
+        <fuelMultiplier>50</fuelMultiplier>
+        <initialFuelPercent>1</initialFuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <minimumFueledThreshold>1</minimumFueledThreshold>
+        <consumeFuelOnlyWhenUsed>true</consumeFuelOnlyWhenUsed>
+        <initialAllowAutoRefuel>true</initialAllowAutoRefuel>
+        <autoRefuelPercent>0</autoRefuelPercent>
+        <fuelIconPath>Things/Item/Resource/ReinforcedBarrel/ReinforcedBarrel</fuelIconPath>
+      </li>
+    </comps>
+	<researchPrerequisites>
+		<li>MedTimes_Cannons</li>
+	</researchPrerequisites>		
+  </ThingDef>
+  
+</Defs>

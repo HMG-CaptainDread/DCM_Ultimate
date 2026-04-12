@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+  
+  	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ResearchProjectDef[defName="SpecializedLimbs"]/prerequisites</xpath>
+		<value>
+			<prerequisites>
+				<li>IndTimes_PrecisionComputing</li>
+			</prerequisites>
+		</value>
+	</Operation>
+  
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ResearchProjectDef[defName="CompactWeaponry"]/prerequisites</xpath>
+		<value>
+			<prerequisites>
+				<li>IndTimes_PrecisionComputing</li>
+			</prerequisites>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ResearchProjectDef[defName="ArtificialMetabolism"]/prerequisites</xpath>
+		<value>
+			<prerequisites>
+				<li>IndTimes_PrecisionComputing</li>
+			</prerequisites>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ResearchProjectDef[defName="SkinHardening"]/prerequisites</xpath>
+		<value>
+			<prerequisites>
+				<li>IndTimes_PrecisionComputing</li>
+			</prerequisites>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ResearchProjectDef[defName="HealingFactors"]/prerequisites</xpath>
+		<value>
+			<prerequisites>
+				<li>IndTimes_PrecisionComputing</li>
+			</prerequisites>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ResearchProjectDef[defName="FleshShaping"]/prerequisites</xpath>
+		<value>
+			<prerequisites>
+				<li>IndTimes_PrecisionComputing</li>
+			</prerequisites>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ResearchProjectDef[defName="MolecularAnalysis"]/prerequisites</xpath>
+		<value>
+			<prerequisites>
+				<li>IndTimes_PrecisionComputing</li>
+			</prerequisites>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ResearchProjectDef[defName="NeuralComputation"]/prerequisites</xpath>
+		<value>
+			<prerequisites>
+				<li>IndTimes_PrecisionComputing</li>
+			</prerequisites>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationConditional">
+		<xpath>/Defs/ResearchProjectDef[defName="BrainWiring"]/hiddenPrerequisites</xpath>
+		<match Class="PatchOperationReplace">
+			<xpath>/Defs/ResearchProjectDef[defName="BrainWiring"]/hiddenPrerequisites</xpath>
+			<value>
+				<hiddenPrerequisites>
+				  <li>Prosthetics</li>
+				  <li>MicroelectronicsBasics</li>
+				</hiddenPrerequisites>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>/Defs/ResearchProjectDef[defName="BrainWiring"]</xpath>
+			<value>
+				<hiddenPrerequisites>
+				  <li>Prosthetics</li>
+				  <li>MicroelectronicsBasics</li>
+				</hiddenPrerequisites>
+			</value>
+		</nomatch>
+	</Operation>
+
+	<Operation Class="PatchOperationConditional">
+		<xpath>/Defs/ResearchProjectDef[defName="CircadianInfluence"]/hiddenPrerequisites</xpath>
+		<match Class="PatchOperationReplace">
+			<xpath>/Defs/ResearchProjectDef[defName="CircadianInfluence"]/hiddenPrerequisites</xpath>
+			<value>
+				<hiddenPrerequisites>
+				  <li>BrainWiring</li>
+				</hiddenPrerequisites>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>/Defs/ResearchProjectDef[defName="CircadianInfluence"]</xpath>
+			<value>
+				<hiddenPrerequisites>
+				  <li>BrainWiring</li>
+				</hiddenPrerequisites>
+			</value>
+		</nomatch>
+	</Operation>
+  
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ResearchProjectDef[defName="JumpPack"]/prerequisites</xpath>
+		<value>
+			<prerequisites>
+				<li>IndTimes_PrecisionComputing</li>
+			</prerequisites>
+		</value>
+	</Operation>
+  
+</Patch>

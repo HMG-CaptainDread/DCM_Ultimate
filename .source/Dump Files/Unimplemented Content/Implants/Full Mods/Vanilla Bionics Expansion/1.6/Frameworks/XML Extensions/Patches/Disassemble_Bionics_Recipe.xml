@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	
+	<Operation Class="XmlExtensions.OptionalPatch">
+		<modId>FrozenSnowFox.FrozenSnowFoxVanillaBionicsExpansion</modId>
+		<key>FSFVBEBionicsDisassembly</key>
+		<defaultValue>false</defaultValue>
+		<caseTrue>
+			
+		<Operation Class="PatchOperationSequence">
+			<success>Normal</success>
+			<operations>
+				
+				<!-- Disassemble Bionic Efficiency Stat -->
+			
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs</xpath>
+					<value>
+	
+	<StatDef ParentName="ButcheryEfficiencyBase">
+		<defName>FSFDisassembleBionicEfficiency</defName>
+		<label>disassemble bionic efficiency</label>
+		<description>The amount of materials yielded when this person disassembles a bionic for resources.</description>
+		<maxValue>0.75</maxValue>
+		<skillNeedFactors>
+			<li Class="SkillNeed_BaseBonus">
+				<skill>Crafting</skill>
+				<baseValue>0.50</baseValue>
+				<bonusPerLevel>0.025</bonusPerLevel>
+			</li>
+		</skillNeedFactors>
+	</StatDef>
+						
+					</value>
+				</li>
+				
+			</operations>
+		</Operation>
+			
+		<!-- Add Recipe is nested so we can patch using the right recipeUsers -->
+			
+		<Operation Class="XmlExtensions.OptionalPatch">
+			<modId>FrozenSnowFox.FrozenSnowFoxVanillaBionicsExpansion</modId>
+			<key>FSFVBEBionicsTableOn</key>
+			<defaultValue>false</defaultValue>
+			<caseTrue>
+			
+				<!-- If True do normal patch -->
+			
+			<Operation Class="PatchOperationSequence">
+				<success>Normal</success>
+				<operations>
+				
+				<!-- Disassemble Bionic Recipe -->
+			
+					<li Class="PatchOperationAdd">
+						<xpath>/Defs</xpath>
+						<value>
+
+	<RecipeDef>
+		<defName>FSFDisassembleBionic</defName>
+		<label>disassemble bionic</label>
+		<description>Use a variety of tools to carefully disassemble bionics into their base components.</description>
+		<jobString>Disassembling bionic.</jobString>
+		<workAmount>2500</workAmount>
+		<workSkill>Crafting</workSkill>
+		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+		<efficiencyStat>FSFDisassembleBionicEfficiency</efficiencyStat>
+		<effectWorking>Smith</effectWorking>
+		<soundWorking>Recipe_Smith</soundWorking>
+		<researchPrerequisites>
+			<li>Prosthetics</li>
+		</researchPrerequisites>
+		<recipeUsers>
+			<li>FSFBionicsTable</li>
+		</recipeUsers>
+		<specialProducts>
+			<li>Butchery</li>
+		</specialProducts>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>BodyPartsProsthetic</li>
+						<li>BodyPartsBionic</li>
+						<li>BodyPartsUltra</li>
+						<li>BodyPartsMechtech</li>
+					</categories>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<categories>
+				<li>BodyPartsProsthetic</li>
+				<li>BodyPartsBionic</li>
+				<li>BodyPartsUltra</li>
+				<li>BodyPartsMechtech</li>
+			</categories>
+			<disallowedThingDefs>
+				<li MayRequire="Ludeon.RimWorld.Biotech">Mechlink</li>
+			</disallowedThingDefs>
+		</fixedIngredientFilter>
+	</RecipeDef>
+						
+						</value>
+					</li>
+				
+				</operations>
+			</Operation>
+			
+			</caseTrue>
+			<caseFalse>
+				
+				<!-- If False do alternative patch -->
+				
+			<Operation Class="PatchOperationSequence">
+				<success>Normal</success>
+				<operations>
+				
+				<!-- Disassemble Bionic Recipe -->
+			
+					<li Class="PatchOperationAdd">
+						<xpath>/Defs</xpath>
+						<value>
+
+	<RecipeDef>
+		<defName>FSFDisassembleBionic</defName>
+		<label>disassemble bionic</label>
+		<description>Use a variety of tools to carefully disassemble bionics into their base components.</description>
+		<jobString>Disassembling bionic.</jobString>
+		<workAmount>2500</workAmount>
+		<workSkill>Crafting</workSkill>
+		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+		<efficiencyStat>FSFDisassembleBionicEfficiency</efficiencyStat>
+		<effectWorking>Smith</effectWorking>
+		<soundWorking>Recipe_Smith</soundWorking>
+		<researchPrerequisites>
+			<li>Prosthetics</li>
+		</researchPrerequisites>
+		<recipeUsers>
+			<li>TableMachining</li>
+			<li>FabricationBench</li>
+		</recipeUsers>
+		<specialProducts>
+			<li>Butchery</li>
+		</specialProducts>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>BodyPartsProsthetic</li>
+						<li>BodyPartsBionic</li>
+						<li>BodyPartsUltra</li>
+						<li>BodyPartsMechtech</li>
+					</categories>
+				</filter>
+				<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<categories>
+				<li>BodyPartsProsthetic</li>
+				<li>BodyPartsBionic</li>
+				<li>BodyPartsUltra</li>
+				<li>BodyPartsMechtech</li>
+			</categories>
+			<disallowedThingDefs>
+				<li MayRequire="Ludeon.RimWorld.Biotech">Mechlink</li>
+			</disallowedThingDefs>
+		</fixedIngredientFilter>
+	</RecipeDef>
+						
+						</value>
+					</li>
+				
+				</operations>
+			</Operation>
+				
+			</caseFalse>
+		</Operation>
+			
+		</caseTrue>
+	</Operation>
+
+</Patch>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation MayRequire="DankPyon.Medieval.Overhaul" Class="XmlExtensions.FindMod">
+    <mods>
+      <li>Medieval Overhaul</li>
+    </mods>
+    <caseTrue>
+
+      <li Class="XmlExtensions.OptionalPatch">
+        <modId>zenlor.MOTweaks</modId>
+        <key>mot-mineshaft-gems</key>
+        <defaultValue>true</defaultValue>
+        <caseTrue>
+
+          <li Class="XmlExtensions.UseSetting">
+            <modId>zenlor.MOTweaks</modId>
+            <key>mot-mineshaft-gems-work</key>
+            <defaultValue>1600</defaultValue>
+            <apply>
+
+              <Operation Class="PatchOperationReplace">
+                <xpath>/Defs/RecipeDef[(
+                defName="MOT_MakeOre_Emerald" or
+                defName="MOT_MakeOre_Sapphire" or
+                defName="MOT_MakeOre_Onyx" or
+                defName="MOT_MakeOre_Amber" or
+                defName="MOT_MakeOre_Citrine" or
+                defName="MOT_MakeOre_Ruby" or
+                defName="MOT_MakeOre_Jade"
+                  )]/workAmount</xpath>
+                <value>
+                    <workAmount>{mot-mineshaft-gems-work}</workAmount>
+                </value>
+              </Operation>
+
+            </apply>
+          </li>
+
+        </caseTrue>
+      </li>
+
+    </caseTrue>
+  </Operation>
+</Patch>

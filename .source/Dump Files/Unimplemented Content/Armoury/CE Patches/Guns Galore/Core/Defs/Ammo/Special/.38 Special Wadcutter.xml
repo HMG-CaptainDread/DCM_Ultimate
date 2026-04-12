@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- .38 "Wadcutter" bullets meant for shooting paper targets; certain firearms like the S&W Model 52 handgun can ONLY fire these, rather than conventional .38 Special rounds. -->
+
+  <!-- ==================== AmmoSet ========================== -->
+
+  <CombatExtended.AmmoSetDef>
+    <defName>AmmoSet_38Special_Wadcutter</defName>
+    <label>.38 Special Wadcutter</label>
+    <ammoTypes>
+      <Ammo_38Special_Wadcutter>Bullet_38Special_Wadcutter</Ammo_38Special_Wadcutter>
+    </ammoTypes>
+		<similarTo>AmmoSet_Pistol</similarTo>
+  </CombatExtended.AmmoSetDef>
+
+  <!-- ==================== Ammo ========================== -->
+
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="38SpecialBase">
+    <defName>Ammo_38Special_Wadcutter</defName>
+    <label>.38 Special cartridge (Wadcutter)</label>
+    <graphicData>
+      <texPath>Things/Ammo/Pistol/Wadcutter</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>0.04</MarketValue>
+    </statBases>
+    <ammoClass>FullMetalJacket</ammoClass>
+    <cookOffProjectile>Bullet_38Special_Wadcutter</cookOffProjectile>
+  </ThingDef>
+
+  <!-- ================== Projectiles ================== -->
+
+  <ThingDef ParentName="Base38SpecialBullet">
+    <defName>Bullet_38Special_Wadcutter</defName>
+    <label>.38 Special bullet (Wadcutter)</label>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+	  <speed>23</speed>
+      <damageAmountBase>4</damageAmountBase>
+      <armorPenetrationSharp>1</armorPenetrationSharp>
+      <armorPenetrationBlunt>0.94</armorPenetrationBlunt>
+    </projectile>
+  </ThingDef>
+
+  <!-- ==================== Recipes ========================== -->
+
+  <!-- Standard manufacture -->
+  <RecipeDef ParentName="AmmoRecipeBase">
+    <defName>MakeAmmo_38Special_Wadcutter</defName>
+    <label>make .38 Special (Wadcutter) cartridge x500</label>
+    <description>Craft 500 .38 Special (Wadcutter) cartridges.</description>
+    <jobString>Making .38 Special (Wadcutter) cartridges.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>14</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_38Special_Wadcutter>500</Ammo_38Special_Wadcutter>
+    </products>
+    <workAmount>1400</workAmount>
+  </RecipeDef>
+ 
+</Defs>

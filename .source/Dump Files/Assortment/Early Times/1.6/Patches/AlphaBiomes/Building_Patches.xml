@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>Alpha Biomes</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<!-- flowers and grass -->
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName = "AB_ExoticDoor"]</xpath>		
+				<value>
+				  <researchPrerequisites>
+					<li>MedTimes_ReinforcedStructure</li>
+				  </researchPrerequisites>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName = "AB_ExoticWall"]</xpath>		
+				<value>
+				  <researchPrerequisites>
+					<li>MedTimes_ReinforcedStructure</li>
+				  </researchPrerequisites>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ResearchProjectDef[defName="AB_ExoticAutoDoor"]/prerequisites</xpath>
+				<value>
+					<prerequisites>
+						<li>MedTimes_Mechanization</li>
+					</prerequisites>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName = "AB_ExoticColumn"]</xpath>		
+				<value>
+				  <researchPrerequisites>
+					<li>TS_Columns</li>
+				  </researchPrerequisites>
+				</value>
+			</li>
+			
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName = "AB_ExoticWall"]/costStuffCount</xpath>		
+				<value>
+				  <costStuffCount>14</costStuffCount>
+				</value>
+			</li>
+		</operations>
+	</match>
+  </Operation>
+    
+</Patch>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- VANILLA -->
+	<!-- MODS -->
+		<!-- VANILLA EXPANDED -->
+			<!-- HELIXIEN GAS -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>Vanilla Helixien Gas Expanded</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Normal</success>
+						<operations>
+							<!-- VANILLA -->
+								<!-- SMITHY WORK GIVER -->
+									<li Class="PatchOperationAdd">
+										<xpath>/Defs/WorkGiverDef[defName="DoBillsMakeWeapons"]/fixedBillGiverDefs</xpath>
+										<value>
+											<li>TMM_TableSmithyLargeGas</li>
+										</value>
+									</li>
+								<!-- STOVE WORK GIVER -->
+									<li Class="PatchOperationAdd">
+										<xpath>/Defs/WorkGiverDef[defName="DoBillsCook"]/fixedBillGiverDefs</xpath>
+										<value>
+											<li>TMM_TableStoveLargeGas</li>
+										</value>
+									</li>
+							<!-- MOD ADDITIONS -->
+								<!-- VFE MEDIEVAL 2 -->
+									<li Class="PatchOperationFindMod">
+										<mods>
+											<li>Vanilla Factions Expanded - Medieval 2</li>
+										</mods>
+										<match Class="PatchOperationAdd">
+											<xpath>Defs/ThingDef[defName="TMM_TableSmithyLargeGas"]/comps/li[@Class="CompProperties_AffectedByFacilities"]/linkableFacilities</xpath>
+											<value>
+												<li>VFEM2_SmithingAnvil</li>
+												<li>VFEM2_ForgeBellows</li>
+											</value>
+										</match>
+									</li>
+						</operations>
+					</match>
+				</Operation>
+			<!-- NUTRIENT PASTE -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>Vanilla Nutrient Paste Expanded</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Normal</success>
+						<operations>
+							<!-- LABEL REPLACEMENT -->
+								<li Class="PatchOperationReplace">
+									<xpath>Defs/ThingDef[defName ="VNPE_NutrientPasteVat"]/label</xpath>
+									<value>
+										<label>nutrient paste vat (medium)</label>
+									</value>
+								</li>
+							<!-- DESCRIPTION REPLACEMENT -->
+								<li Class="PatchOperationReplace">
+									<xpath>Defs/ThingDef[defName ="VNPE_NutrientPasteVat"]/description</xpath>
+									<value>
+										<description>A medium size tank that can store up to 360 nutrient paste meals in it. Makes a big mess when destroyed.</description>
+									</value>
+								</li>
+							<!-- WORK TO BUILD REPLACEMENT -->
+								<li Class="PatchOperationReplace">
+									<xpath>Defs/ThingDef[defName ="VNPE_NutrientPasteVat"]/statBases/WorkToBuild</xpath>
+									<value>
+										<WorkToBuild>1600</WorkToBuild>
+									</value>
+								</li>
+							<!-- COST LIST REPLACEMENT -->
+								<li Class="PatchOperationReplace">
+									<xpath>Defs/ThingDef[defName ="VNPE_NutrientPasteVat"]/costList/Steel</xpath>
+									<value>
+										<Steel>320</Steel>
+									</value>
+								</li>
+							<!-- PIPE SYSTEM CAPACITY REPLACEMENT -->
+								<li Class="PatchOperationReplace">
+									<xpath>Defs/ThingDef[defName ="VNPE_NutrientPasteVat"]/comps/li[@Class="PipeSystem.CompProperties_ResourceStorage"]/storageCapacity</xpath>
+									<value>
+										<storageCapacity>360</storageCapacity>
+									</value>
+								</li>
+							<!-- DROPDOWN ADDITION -->
+								<li Class="PatchOperationAdd">
+									<xpath>Defs/ThingDef[defName ="VNPE_NutrientPasteVat"]</xpath>
+									<value>
+										<designatorDropdown>TMM_NutrientPasteVatGroup</designatorDropdown>
+									</value>
+								</li>
+						</operations>
+					</match>
+				</Operation>
+</Patch>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+<!-- ADJUSTMENTS -->
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="Smithing"]/techLevel</xpath>
+		<value>
+			<techLevel>Neolithic</techLevel>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[defName="Stonecutting"]/techLevel</xpath>
+		<value>
+			<techLevel>Neolithic</techLevel>
+		</value>
+	</Operation>
+
+<!-- Research bench -->
+    <Operation Class="PatchOperationConditional">
+    <success>Always</success>
+        <xpath>/Defs/ThingDef[defName="SimpleResearchBench"]/researchPrerequisites</xpath>
+        <match Class="PatchOperationSequence">
+            <operations>
+                <li Class="PatchOperationReplace">
+                    <xpath>/Defs/ThingDef[defName="SimpleResearchBench"]/researchPrerequisites</xpath>
+                    <value>
+						<researchPrerequisites>
+							<li>Ferny_ResearchBench</li>
+						</researchPrerequisites>
+                    </value>
+                </li>
+            </operations>
+        </match>
+        <nomatch Class="PatchOperationSequence">
+            <operations>
+                <li Class="PatchOperationAdd">
+                    <xpath>/Defs/ThingDef[defName="SimpleResearchBench"]</xpath>
+                    <value>
+						<researchPrerequisites>
+							<li>Ferny_ResearchBench</li>
+						</researchPrerequisites>
+                    </value>
+                </li>
+            </operations>
+        </nomatch>
+    </Operation>
+
+
+
+
+</Patch>

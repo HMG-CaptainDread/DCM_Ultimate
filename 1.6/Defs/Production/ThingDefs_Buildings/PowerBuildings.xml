@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- BASES -->
+		<!-- POWER BASE -->
+			<ThingDef ParentName="BuildingBase" Name="TMM_PowerBase" Abstract="True">
+				<thingClass>Building</thingClass>
+				<drawerType>MapMeshAndRealTime</drawerType>
+				<altitudeLayer>Building</altitudeLayer>
+				<passability>PassThroughOnly</passability>
+				<pathCost>50</pathCost>
+				<blockWind>true</blockWind>
+				<fillPercent>1.0</fillPercent>
+				<minifiedDef>MinifiedThing</minifiedDef>
+				<thingCategories>
+					<li>BuildingsPower</li>
+				</thingCategories>
+				<tickerType>Normal</tickerType>
+				<canOverlapZones>false</canOverlapZones>
+				<building>
+					<destroySound>BuildingDestroyed_Metal_Medium</destroySound>
+				</building>
+				<comps>
+					<li Class="CompProperties_Flickable" />
+				</comps>
+				<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+				<designationCategory>Power</designationCategory>
+				<constructEffect>ConstructMetal</constructEffect>
+			</ThingDef>
+		<!-- BREAKABLE POWER GENERATOR BASE -->
+			<ThingDef ParentName="TMM_PowerBase" Name="TMM_PowerBreakableBase" Abstract="True">
+				<statBases>
+					<Mass>50</Mass>
+					<MaxHitPoints>300</MaxHitPoints>
+					<WorkToBuild>2500</WorkToBuild>
+					<Flammability>1.0</Flammability>
+					<Beauty>-20</Beauty>
+				</statBases>
+				<comps>
+					<li Class="CompProperties_Breakdownable"/>
+					<li Class="CompProperties_HeatPusher">
+						<compClass>CompHeatPusherPowered</compClass>
+						<heatPerSecond>6</heatPerSecond>
+					</li>
+					<li Class="CompProperties_Glower">
+						<glowRadius>6</glowRadius>
+						<glowColor>(80,112,180,0)</glowColor>
+					</li>
+					<li Class="CompProperties_Explosive">
+						<explosiveRadius>0</explosiveRadius>
+						<explosiveExpandPerFuel>0.95</explosiveExpandPerFuel>
+						<explosiveDamageType>Flame</explosiveDamageType>
+						<destroyThingOnExplosionSize>2</destroyThingOnExplosionSize>
+						<startWickHitPointsPercent>0.333</startWickHitPointsPercent>
+						<preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+						<preExplosionSpawnChance>1</preExplosionSpawnChance>
+						<wickTicks>70~150</wickTicks>
+					</li>
+				</comps>
+			</ThingDef>
+		<!-- UNBREAKABLE POWER GENERATOR BASE -->
+			<ThingDef ParentName="TMM_PowerBase" Name="TMM_PowerUnbreakableBase" Abstract="True">
+				<comps>
+					<li Class="CompProperties_HeatPusher">
+						<compClass>CompHeatPusherPowered</compClass>
+						<heatPerSecond>6</heatPerSecond>
+					</li>
+					<li Class="CompProperties_Glower">
+						<glowRadius>3</glowRadius>
+						<glowColor>(155,226,231,0)</glowColor>
+					</li>
+					<li Class="CompProperties_Explosive">
+						<explosiveRadius>0</explosiveRadius>
+						<explosiveExpandPerFuel>0.05</explosiveExpandPerFuel>
+						<explosiveDamageType>Flame</explosiveDamageType>
+						<destroyThingOnExplosionSize>2</destroyThingOnExplosionSize>
+						<startWickHitPointsPercent>0.333</startWickHitPointsPercent>
+						<preExplosionSpawnChance>1</preExplosionSpawnChance>
+						<wickTicks>70~150</wickTicks>
+					</li>
+				</comps>
+			</ThingDef>
+	<!-- JADE GENERATORS -->
+		<!-- JADE GENERATOR -->
+			<ThingDef ParentName="TMM_PowerBreakableBase">
+				<defName>TMM_JadeGenerator</defName>
+				<label>Jade Generator</label>
+				<description>Net output: +1,000W If you've ever walked past a big air conditioning unit in real life, you know just how much it sucks to stand near one of these.</description>
+				<graphicData>
+					<texPath>Modules/Production/Buildings/Power/JadeGenerators/Regular/JadeGeneratorSmall</texPath>
+					<graphicClass>Graphic_Single</graphicClass>
+					<drawSize>(2,2)</drawSize>
+					<shadowData>
+						<volume>(1.8,1.5,1.5)</volume>
+						<offset>(0,0,-0.23)</offset>
+					</shadowData>
+				</graphicData>
+				<rotatable>false</rotatable>
+				<size>(2,2)</size>
+				<costList>
+					<Steel>150</Steel>
+					<ComponentIndustrial>3</ComponentIndustrial>
+					<Jade>100</Jade>
+				</costList>
+				<comps>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerPlant</compClass>
+						<basePowerConsumption>-1000</basePowerConsumption>
+						<transmitsPower>true</transmitsPower>
+						<soundAmbientProducingPower>ChemfuelFiredGenerator_Ambience</soundAmbientProducingPower>
+					</li>
+				</comps>
+				<!-- <researchPrerequisites>
+					<li>ucp_industrialgenerators</li>
+				</researchPrerequisites> -->
+				<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+			</ThingDef>
+		<!-- JADE GENERATOR LONG -->
+			<ThingDef ParentName="TMM_PowerBreakableBase">
+				<defName>TMM_JadeGeneratorLong</defName>
+				<label>Jade Generator Long</label>
+				<description>Net output: +1,550W If you've ever walked past a bigger air conditioning unit in real life, you know just how much it sucks to stand near one of these.</description>
+				<graphicData>
+					<texPath>Modules/Production/Buildings/Power/JadeGenerators/Long/JadeGeneratorLong</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>(3,2)</drawSize>
+					<shadowData>
+						<volume>(2.8,1,1.8)</volume>
+						<offset>(0,0,0)</offset>
+					</shadowData>
+				</graphicData>
+				<size>(3,2)</size>
+				<costList>
+					<Steel>280</Steel>
+					<ComponentIndustrial>4</ComponentIndustrial>
+					<Jade>200</Jade>
+				</costList>
+				<comps>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerPlant</compClass>
+						<basePowerConsumption>-1550</basePowerConsumption>
+						<transmitsPower>true</transmitsPower>
+						<soundAmbientProducingPower>ChemfuelFiredGenerator_Ambience</soundAmbientProducingPower>
+					</li>
+				</comps>
+				<!-- <researchPrerequisites>
+					<li>ucp_industrialgenerators</li>
+				</researchPrerequisites> -->
+				<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+			</ThingDef>
+		<!-- JADE GENERATOR INDUSTRIAL -->
+			<ThingDef ParentName="TMM_PowerBreakableBase">
+				<defName>TMM_JadeGeneratorLarge</defName>
+				<label>Jade Generator Industrial</label>
+				<description>Net output: +2,450W If you've ever walked past a super big air conditioning unit in real life, you know just how much it sucks to stand near one of these.</description>
+				<graphicData>
+					<texPath>Modules/Production/Buildings/Power/JadeGenerators/Industrial/JadeGeneratorIndustrial</texPath>
+					<graphicClass>Graphic_Single</graphicClass>
+					<drawSize>(3,3)</drawSize>
+					<shadowData>
+						<volume>(2.8,2.5,2.5)</volume>
+						<offset>(0,0,-0.23)</offset>
+					</shadowData>
+				</graphicData>
+				<rotatable>false</rotatable>
+				<size>(3,3)</size>
+				<costList>
+					<Steel>360</Steel>
+					<ComponentIndustrial>6</ComponentIndustrial>
+					<Jade>300</Jade>
+				</costList>
+				<comps>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerPlant</compClass>
+						<basePowerConsumption>-2450</basePowerConsumption>
+						<transmitsPower>true</transmitsPower>
+						<soundAmbientProducingPower>ChemfuelFiredGenerator_Ambience</soundAmbientProducingPower>
+					</li>
+				</comps>
+				<!-- <researchPrerequisites>
+					<li>ucp_industrialgenerators</li>
+				</researchPrerequisites> -->
+				<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+			</ThingDef>
+	<!-- OTHER GENERATORS -->
+		<!-- ENERGY CELL -->
+			<ThingDef ParentName="TMM_PowerBreakableBase">
+				<defName>TMM_EnergyCell</defName>
+				<label>Energy Cell</label>
+				<description>Net output: +2,600W A sci-fi power gizmo from the Peppermint-Sprinkler Nebula</description>
+				<graphicData>
+					<texPath>Modules/Production/Buildings/Power/SpacerGenerators/EnergyCell/EnergyCell</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>(2.2,2.2)</drawSize>
+					<shadowData>
+						<volume>(1.7,0.8,0.8)</volume>
+						<offset>(0,0,-0.4)</offset>
+					</shadowData>
+				</graphicData>
+				<size>(2,2)</size>
+				<costList>
+					<Steel>400</Steel>
+					<ComponentSpacer>1</ComponentSpacer>
+					<Jade>300</Jade>
+				</costList>
+				<comps>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerPlant</compClass>
+						<basePowerConsumption>-2600</basePowerConsumption>
+						<transmitsPower>true</transmitsPower>
+						<soundAmbientProducingPower>ChemfuelFiredGenerator_Ambience</soundAmbientProducingPower>
+					</li>
+				</comps>
+				<!-- <researchPrerequisites>
+					<li>ucp_spacergenerators</li>
+				</researchPrerequisites> -->
+				<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+			</ThingDef>
+		<!-- ENERGY CHAMBER -->
+			<ThingDef ParentName="TMM_PowerBreakableBase">
+				<defName>TMM_EnergyChamber</defName>
+				<label>Energy Chamber</label>
+				<description>Net output: +6,100W A specialized environment designed to improve the smaller generator's power output.</description>
+				<graphicData>
+					<texPath>Modules/Production/Buildings/Power/SpacerGenerators/EnergyChamber/EnergyChamber</texPath>
+					<graphicClass>Graphic_Single</graphicClass>
+					<drawSize>(4,4)</drawSize>
+					<shadowData>
+						<volume>(3,1,2.25)</volume>
+						<offset>(0,0,-0.6)</offset>
+					</shadowData>
+				</graphicData>
+				<rotatable>false</rotatable>
+				<size>(3,3)</size>
+				<costList>
+					<Steel>480</Steel>
+					<Jade>400</Jade>
+					<ComponentSpacer>2</ComponentSpacer>
+				</costList>
+				<comps>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerPlant</compClass>
+						<basePowerConsumption>-6100</basePowerConsumption>
+						<transmitsPower>true</transmitsPower>
+						<soundAmbientProducingPower>ChemfuelFiredGenerator_Ambience</soundAmbientProducingPower>
+					</li>
+				</comps>
+				<!-- <researchPrerequisites>
+					<li>ucp_spacergenerators</li>
+				</researchPrerequisites> -->
+				<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+			</ThingDef>
+		<!-- ENERGY MANIFOLD -->
+			<ThingDef ParentName="TMM_PowerBreakableBase">
+				<defName>TMM_EnergyManifold</defName>
+				<label>Energy Manifold</label>
+				<description>Net output: +19,500W A large machine that generates power from liquid science.</description>
+				<graphicData>
+					<texPath>Modules/Production/Buildings/Power/SpacerGenerators/EnergyManifold/EnergyManifold</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>(4,6)</drawSize>
+					<shadowData>
+						<volume>(3,1,5)</volume>
+						<offset>(0,0,0)</offset>
+					</shadowData>
+				</graphicData>
+				<size>(4,6)</size>
+				<costList>
+					<Steel>1000</Steel>
+					<Jade>500</Jade>
+					<ComponentSpacer>5</ComponentSpacer>
+				</costList>
+				<comps>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerPlant</compClass>
+						<basePowerConsumption>-19500</basePowerConsumption>
+						<transmitsPower>true</transmitsPower>
+						<soundAmbientProducingPower>GeothermalPlant_Ambience</soundAmbientProducingPower>
+					</li>
+				</comps>
+				<!-- <researchPrerequisites>
+					<li>ucp_spacergeneratorslarge</li>
+				</researchPrerequisites> -->
+				<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+			</ThingDef>
+	<!-- RTGs -->
+		<!-- PORTABLE RTG -->
+			<ThingDef ParentName="TMM_PowerUnbreakableBase">
+				<defName>TMM_PortableRTG</defName>
+				<label>Portable RTG</label>
+				<description>A radioisotope thermoelectric generator (RTG) is a type of generator that generate electricity by the Seebeck effect, which has no moving parts so it won't breakdown.</description>
+				<graphicData>
+					<texPath>Modules/Production/Buildings/Power/RTGs/Portable/PortableRTG</texPath>
+					<graphicClass>Graphic_Single</graphicClass>
+					<drawSize>(3,3)</drawSize>
+					<shadowData>
+						<volume>(1.93,1,1.69)</volume>
+						<offset>(-0.03,0,-0.1)</offset>
+					</shadowData>
+				</graphicData>
+				<uiIconScale>0.5</uiIconScale>
+				<rotatable>false</rotatable>
+				<statBases>
+					<Mass>50</Mass>
+					<MaxHitPoints>300</MaxHitPoints>
+					<WorkToBuild>2000</WorkToBuild>
+					<Flammability>0.5</Flammability>
+					<Beauty>5</Beauty>
+				</statBases>
+				<size>(1,1)</size>
+				<costList>
+					<Steel>50</Steel>
+					<Uranium>60</Uranium>
+					<ComponentIndustrial>2</ComponentIndustrial>
+				</costList>
+				<comps>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerPlant</compClass>
+						<basePowerConsumption>-750</basePowerConsumption>
+						<transmitsPower>true</transmitsPower>
+						<soundAmbientProducingPower>ChemfuelFiredGenerator_Ambience</soundAmbientProducingPower>
+					</li>
+					<li Class="CompProperties_Refuelable">
+						<fuelConsumptionRate>1.0</fuelConsumptionRate>
+						<fuelCapacity>60.0</fuelCapacity>
+						<fuelFilter>
+							<thingDefs>
+								<li>Uranium</li>
+							</thingDefs>
+						</fuelFilter>
+						<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+					</li>
+				</comps>
+				<!-- <researchPrerequisites>
+					<li>MicroelectronicsBasics</li>
+				</researchPrerequisites> -->
+				<constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+			</ThingDef>
+		<!-- STATIONARY RTG -->
+			<ThingDef ParentName="TMM_PowerUnbreakableBase">
+				<defName>TMM_StationaryRTG</defName>
+				<label>Stationary RTG</label>
+				<description>A radioisotope thermoelectric generator (RTG) is a type of generator that generate electricity by the Seebeck effect, which has no moving parts so it won't breakdown.</description>
+				<graphicData>
+					<texPath>Modules/Production/Buildings/Power/RTGs/Stationary/StationaryRTG</texPath>
+					<graphicClass>Graphic_Single</graphicClass>
+					<drawSize>(4,4)</drawSize>
+					<shadowData>
+						<volume>(1.93,1,1.69)</volume>
+						<offset>(-0.03,0,-0.1)</offset>
+					</shadowData>
+				</graphicData>
+				<rotatable>false</rotatable>
+				<statBases>
+					<Mass>100</Mass>
+					<MaxHitPoints>600</MaxHitPoints>
+					<WorkToBuild>4000</WorkToBuild>
+					<Flammability>0.5</Flammability>
+					<Beauty>5</Beauty>
+				</statBases>
+				<size>(2,2)</size>
+				<costList>
+					<Steel>150</Steel>
+					<Uranium>250</Uranium>
+					<ComponentIndustrial>4</ComponentIndustrial>
+				</costList>
+				<comps>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerPlant</compClass>
+						<basePowerConsumption>-3000</basePowerConsumption>
+						<transmitsPower>true</transmitsPower>
+						<soundAmbientProducingPower>ChemfuelFiredGenerator_Ambience</soundAmbientProducingPower>
+					</li>
+					<li Class="CompProperties_Refuelable">
+						<fuelConsumptionRate>4.0</fuelConsumptionRate>
+						<fuelCapacity>250.0</fuelCapacity>
+						<fuelFilter>
+						<thingDefs>
+							<li>Uranium</li>
+						</thingDefs>
+						</fuelFilter>
+						<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+					</li>
+					<li Class="CompProperties_HeatPusher">
+						<compClass>CompHeatPusherPowered</compClass>
+						<heatPerSecond>24</heatPerSecond>
+					</li>
+					<li Class="CompProperties_Glower">
+						<glowRadius>6</glowRadius>
+						<glowColor>(155,226,231,0)</glowColor>
+					</li>
+				</comps>
+				<!-- <researchPrerequisites>
+					<li>MicroelectronicsBasics</li>
+				</researchPrerequisites> -->
+				<constructionSkillPrerequisite>12</constructionSkillPrerequisite>
+			</ThingDef>
+</Defs>
