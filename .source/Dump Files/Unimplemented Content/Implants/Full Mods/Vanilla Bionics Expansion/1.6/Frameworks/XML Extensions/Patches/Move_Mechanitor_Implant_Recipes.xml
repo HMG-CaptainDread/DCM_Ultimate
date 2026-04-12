@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	
+	<Operation Class="XmlExtensions.OptionalPatch">
+		<modId>FrozenSnowFox.FrozenSnowFoxVanillaBionicsExpansion</modId>
+		<key>FSFVBEBionicsTableOn</key>
+		<defaultValue>false</defaultValue>
+		<caseTrue>
+			
+			
+			
+		<Operation Class="XmlExtensions.OptionalPatch">
+			<modId>FrozenSnowFox.FrozenSnowFoxVanillaBionicsExpansion</modId>
+			<key>FSFVBEMechanitorImplantRecipes</key>
+			<defaultValue>false</defaultValue>
+			<caseTrue>
+				
+			<Operation Class="PatchOperationSequence">
+				<success>Normal</success>
+				<operations>
+					
+			<!-- Change Mechanitor Implant Base Recipe -->
+			
+			<li MayRequire="Ludeon.RimWorld.Biotech" Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[@Name = "MechanitorImplantCraftableBase"]/recipeMaker/recipeUsers</xpath>
+				<value>
+					<recipeUsers>
+						<li>FSFBionicsTable</li>
+					</recipeUsers>
+				</value>
+			</li>			
+				
+				</operations>
+			</Operation>
+			
+			</caseTrue>
+		</Operation>
+			
+			
+			
+		</caseTrue>
+	</Operation>
+
+</Patch>

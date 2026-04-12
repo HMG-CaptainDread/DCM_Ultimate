@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo357SuperMagnum</defName>
+		<label>.357 Super Magnum</label>
+		<parent>AmmoPistols</parent>
+		<iconPath>UI/Icons/ThingCategories/CaliberPistol</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_357SuperMagnum</defName>
+		<label>.357 Super Magnum</label>
+		<ammoTypes>
+			<Ammo_357SuperMagnum_FMJ>Bullet_357SuperMagnum_FMJ</Ammo_357SuperMagnum_FMJ>
+			<Ammo_357SuperMagnum_AP>Bullet_357SuperMagnum_AP</Ammo_357SuperMagnum_AP>
+			<Ammo_357SuperMagnum_HP>Bullet_357SuperMagnum_HP</Ammo_357SuperMagnum_HP>			
+		</ammoTypes>
+		<similarTo>AmmoSet_PistolMagnum</similarTo>
+	</CombatExtended.AmmoSetDef>
+	
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_357SuperMagnum_Revolver</defName>
+		<label>.357 Super Magnum</label>
+		<ammoTypes>
+			<Ammo_357SuperMagnum_FMJ>Bullet_357SuperMagnum_FMJ</Ammo_357SuperMagnum_FMJ>
+			<Ammo_357SuperMagnum_AP>Bullet_357SuperMagnum_AP</Ammo_357SuperMagnum_AP>
+			<Ammo_357SuperMagnum_HP>Bullet_357SuperMagnum_HP</Ammo_357SuperMagnum_HP>	
+			<Ammo_357Maximum_FMJ MayRequire="cgf1.gunsgalore.magnum.i">Bullet_357Maximum_FMJ</Ammo_357Maximum_FMJ>
+			<Ammo_357Maximum_AP MayRequire="cgf1.gunsgalore.magnum.i">Bullet_357Maximum_AP</Ammo_357Maximum_AP>
+			<Ammo_357Maximum_HP MayRequire="cgf1.gunsgalore.magnum.i">Bullet_357Maximum_HP</Ammo_357Maximum_HP>	
+			<Ammo_357Magnum_FMJ>Bullet_357Magnum_FMJ</Ammo_357Magnum_FMJ>
+			<Ammo_357Magnum_AP>Bullet_357Magnum_AP</Ammo_357Magnum_AP>
+			<Ammo_357Magnum_HP>Bullet_357Magnum_HP</Ammo_357Magnum_HP>
+			<Ammo_38Special_FMJ>Bullet_38Special_FMJ</Ammo_38Special_FMJ>
+			<Ammo_38Special_AP>Bullet_38Special_AP</Ammo_38Special_AP>
+			<Ammo_38Special_HP>Bullet_38Special_HP</Ammo_38Special_HP>
+			<Ammo_38LongColt_FMJ>Bullet_38LongColt_FMJ</Ammo_38LongColt_FMJ>
+			<Ammo_38LongColt_AP>Bullet_38LongColt_AP</Ammo_38LongColt_AP>
+			<Ammo_38LongColt_HP>Bullet_38LongColt_HP</Ammo_38LongColt_HP>
+			<Ammo_38ShortColt_FMJ>Bullet_38ShortColt_FMJ</Ammo_38ShortColt_FMJ>
+			<Ammo_38ShortColt_AP>Bullet_38ShortColt_AP</Ammo_38ShortColt_AP>
+			<Ammo_38ShortColt_HP>Bullet_38ShortColt_HP</Ammo_38ShortColt_HP>	
+		</ammoTypes>
+		<similarTo>AmmoSet_PistolMagnum</similarTo>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="357SuperMagnumBase" ParentName="SmallAmmoBase" Abstract="True">
+		<description>A .357 Magnum cartridge necked up to 1.610 inches for substantially increased power.</description>
+		<statBases>
+			<Mass>0.023</Mass>
+			<Bulk>0.02</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo357SuperMagnum</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="357SuperMagnumBase">
+		<defName>Ammo_357SuperMagnum_FMJ</defName>
+		<label>.357 Super Magnum cartridge (FMJ)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/FMJ</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.10</MarketValue>
+		</statBases>
+		<ammoClass>FullMetalJacket</ammoClass>
+		<cookOffProjectile>Bullet_357SuperMagnum_FMJ</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="357SuperMagnumBase">
+		<defName>Ammo_357SuperMagnum_AP</defName>
+		<label>.357 Super Magnum cartridge (AP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/AP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.10</MarketValue>
+		</statBases>
+		<ammoClass>ArmorPiercing</ammoClass>
+		<cookOffProjectile>Bullet_357SuperMagnum_AP</cookOffProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="357SuperMagnumBase">
+		<defName>Ammo_357SuperMagnum_HP</defName>
+		<label>.357 Super Magnum cartridge (HP)</label>
+		<graphicData>
+			<texPath>Things/Ammo/Pistol/HP</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.10</MarketValue>
+		</statBases>
+		<ammoClass>HollowPoint</ammoClass>
+		<cookOffProjectile>Bullet_357SuperMagnum_HP</cookOffProjectile>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="Base357SuperMagnumBullet" ParentName="BaseBulletCE" Abstract="true">
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<speed>93</speed>
+			<dropsCasings>true</dropsCasings>
+			<casingMoteDefname>Fleck_PistolAmmoCasings</casingMoteDefname>
+			<casingFilthDefname>Filth_PistolAmmoCasings</casingFilthDefname>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base357SuperMagnumBullet">
+		<defName>Bullet_357SuperMagnum_FMJ</defName>
+		<label>.357 Super Magnum bullet (FMJ)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>16</damageAmountBase>
+			<armorPenetrationSharp>7</armorPenetrationSharp>
+			<armorPenetrationBlunt>29.40</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base357SuperMagnumBullet">
+		<defName>Bullet_357SuperMagnum_AP</defName>
+		<label>.357 Super Magnum bullet (AP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>10</damageAmountBase>
+			<armorPenetrationSharp>14</armorPenetrationSharp>
+			<armorPenetrationBlunt>29.40</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base357SuperMagnumBullet">
+		<defName>Bullet_357SuperMagnum_HP</defName>
+		<label>.357 Super Magnum bullet (HP)</label>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageAmountBase>20</damageAmountBase>
+			<armorPenetrationSharp>3.5</armorPenetrationSharp>
+			<armorPenetrationBlunt>29.40</armorPenetrationBlunt>
+		</projectile>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="AmmoRecipeBase">
+		<defName>MakeAmmo_357SuperMagnum_FMJ</defName>
+		<label>make .357 Super Magnum cartridge x500</label>
+		<description>Craft 500 .357 Super Magnum cartridges.</description>
+		<jobString>Making .357 Super Magnum cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>24</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_357SuperMagnum_FMJ>500</Ammo_357SuperMagnum_FMJ>
+		</products>
+		<workAmount>2400</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase">
+		<defName>MakeAmmo_357SuperMagnum_AP</defName>
+		<label>make .357 Super Magnum (AP) cartridge x500</label>
+		<description>Craft 500 .357 Super Magnum (AP) cartridges.</description>
+		<jobString>Making .357 Super Magnum (AP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>24</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_357SuperMagnum_AP>500</Ammo_357SuperMagnum_AP>
+		</products>
+		<workAmount>2880</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="AmmoRecipeBase">
+		<defName>MakeAmmo_357SuperMagnum_HP</defName>
+		<label>make .357 Super Magnum (HP) cartridge x500</label>
+		<description>Craft 500 .357 Super Magnum (HP) cartridges.</description>
+		<jobString>Making .357 Super Magnum (HP) cartridges.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>24</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_357SuperMagnum_HP>500</Ammo_357SuperMagnum_HP>
+		</products>
+		<workAmount>2400</workAmount>
+	</RecipeDef>
+
+</Defs>

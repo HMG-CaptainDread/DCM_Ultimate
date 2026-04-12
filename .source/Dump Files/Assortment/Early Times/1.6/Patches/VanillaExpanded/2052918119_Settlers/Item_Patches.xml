@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>Vanilla Factions Expanded - Settlers</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName = "VFES_Headgear_Bandana" or defName = "VFES_Headgear_Sombrero"]/recipeMaker</xpath>		
+				<value>
+					<recipeMaker>
+					  <researchPrerequisite>MedTimes_MedievalTailoring</researchPrerequisite>
+					  <recipeUsers Inherit="False">
+						<li>ElectricTailoringBench</li>
+						<li>HandTailoringBench</li>
+						<li>MedTimes_TailoringStation</li>
+					  </recipeUsers>
+					</recipeMaker>
+				</value>
+			</li>
+			
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName = "VFES_Tomahawk"]/recipeMaker</xpath>		
+				<value>
+					<recipeMaker>
+					  <recipeUsers Inherit="False">
+						<li>MedTimes_BlacksmithForge</li>
+						<li>MedTimes_ElectricBlacksmithForge</li>
+						<li>FueledSmithy</li>
+						<li>ElectricSmithy</li>
+						<li>CraftingSpot</li>
+					  </recipeUsers>
+					  <researchPrerequisite>MedTimes_Toolworking</researchPrerequisite>
+					  <skillRequirements>
+						<Crafting>5</Crafting>
+					  </skillRequirements>
+					</recipeMaker>
+				</value>
+			</li>
+
+		</operations>
+	</match>
+  </Operation>
+  
+</Patch>
+
+
+
+

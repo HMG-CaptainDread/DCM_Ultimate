@@ -1,0 +1,1147 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+	<!-- DOUBLE DOORS -->
+		<!-- DOUBLE DOOR -->
+			<ThingDef ParentName="DoorBase">
+				<defName>BDD_DoubleDoor</defName>
+				<label>double door</label>
+				<description>Divides rooms. Simple double doors must be manually opened, which slows people down. The amount of slowdown depends on what the door is made of.</description>
+				<thingClass>Building_MultiTileDoor</thingClass>
+				<statBases>
+					<WorkToBuild>1700</WorkToBuild>
+					<MaxHitPoints>200</MaxHitPoints>
+				</statBases>
+				<graphicData>
+					<texPath>Doors/BDD_DoorSimple_DoubleMover</texPath>
+					<graphicClass>Graphic_Single</graphicClass>
+					<damageData>
+						<enabled>false</enabled>
+					</damageData>
+				</graphicData>
+				<uiIconPath>Doors/BDD_DoorSimple_DoubleMenuIcon</uiIconPath>
+				<useBlueprintGraphicAsGhost>true</useBlueprintGraphicAsGhost>
+				<size>(2, 1)</size>
+				<rotatable>true</rotatable>
+				<costStuffCount>50</costStuffCount>
+				<building>
+					<isStuffableAirtight>true</isStuffableAirtight>
+					<blueprintClass>Blueprint_Build</blueprintClass>
+					<blueprintGraphicData>
+						<texPath>Doors/BDD_DoorSimple_DoubleMenuIcon</texPath>
+						<graphicClass>Graphic_Multi</graphicClass>
+						<shaderType>EdgeDetect</shaderType>
+						<drawSize>(2, 2)</drawSize>
+					</blueprintGraphicData>
+				</building>
+				<placeWorkers>
+					<li>PlaceWorker_MultiCellDoor</li>
+				</placeWorkers>
+			</ThingDef>
+		<!-- DOUBLE AUTODOOR -->
+			<ThingDef ParentName="DoorBase">
+				<defName>BDD_AutoDoor</defName>
+				<label>double autodoor</label>
+				<description>Divides rooms. Powered operation allows people to move through the door without slowing down.</description>
+				<thingClass>Building_MultiTileDoor</thingClass>
+				<statBases>
+					<WorkToBuild>2200</WorkToBuild>
+					<MaxHitPoints>200</MaxHitPoints>
+				</statBases>
+				<graphicData>
+					<texPath>Doors/BDD_Autodoor_DoubleMover</texPath>
+					<graphicClass>Graphic_Single</graphicClass>
+					<damageData>
+						<enabled>false</enabled>
+					</damageData>
+				</graphicData>
+				<uiIconPath>Doors/BDD_Autodoor_DoubleMenuIcon</uiIconPath>
+				<useBlueprintGraphicAsGhost>true</useBlueprintGraphicAsGhost>
+				<size>(2, 1)</size>
+				<rotatable>true</rotatable>
+				<costList>
+					<Steel>80</Steel>
+					<ComponentIndustrial>3</ComponentIndustrial>
+				</costList>
+				<costStuffCount>50</costStuffCount>
+				<building>
+					<isStuffableAirtight>true</isStuffableAirtight>
+					<blueprintClass>Blueprint_Build</blueprintClass>
+					<blueprintGraphicData>
+						<texPath>Doors/BDD_Autodoor_DoubleMenuIcon</texPath>
+						<graphicClass>Graphic_Multi</graphicClass>
+						<shaderType>EdgeDetect</shaderType>
+						<drawSize>(2, 2)</drawSize>
+					</blueprintGraphicData>
+				</building>
+				<comps>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerTrader</compClass>
+						<basePowerConsumption>50</basePowerConsumption>
+					</li>
+					<li Class="CompProperties_Breakdownable"/>
+					<li Class="CompProperties_Styleable" />
+				</comps>
+				<placeWorkers>
+					<li>PlaceWorker_MultiCellDoor</li>
+				</placeWorkers>
+				<researchPrerequisites>
+					<li>Autodoors</li>
+				</researchPrerequisites>
+				<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+			</ThingDef>
+	<!-- DOORS EXPANDED -->
+		<!-- CLOTH DOORS BASE -->
+			<ThingDef ParentName="AbstractHeronDoorBase" Name="HeronClothDoorBase" Abstract="True">
+				<!-- Only cloth doors are minifiable by default. -->
+				<thingCategories>
+				<li>Buildings</li>
+				</thingCategories>
+				<minifiedDef>MinifiedThing</minifiedDef>
+				<stuffCategories>
+				<li>Fabric</li>
+				<li>Leathery</li>
+				</stuffCategories>
+			</ThingDef>
+		<!-- METAL DOORS BASE -->
+			<ThingDef ParentName="AbstractHeronDoorBase" Name="HeronMetalDoorBase" Abstract="True">
+				<stuffCategories>
+				<li>Metallic</li>
+				</stuffCategories>
+			</ThingDef>
+		<!-- STANDARD DOORS BASE -->
+			<ThingDef ParentName="AbstractHeronDoorBase" Name="HeronDoorBase" Abstract="True">
+				<stuffCategories>
+				<li>Metallic</li>
+				<li>Woody</li>
+				<li>Stony</li>
+				</stuffCategories>
+			</ThingDef>
+		<!-- DOORS BASE -->
+			<ThingDef Name="AbstractHeronDoorBase" ParentName="BuildingBase" Abstract="True">
+				<!-- Note: thingClass will be overriden in a DoorsExpanded.CompProperties_DoorExpanded, which must be defined. -->
+				<thingClass>DoorsExpanded.Building_DoorExpanded</thingClass>
+				<category>Building</category>
+				<altitudeLayer>DoorMoveable</altitudeLayer>
+				<fillPercent>1</fillPercent>
+				<useHitPoints>true</useHitPoints>
+				<!-- Note: Not using stuffCategories from /Defs/ThingDefs[@Name="DoorBase"] - they're defined in ThingDefs inheriting this. -->
+				<statBases>
+				<MaxHitPoints>250</MaxHitPoints>
+				<Flammability>1.0</Flammability>
+				</statBases>
+				<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+				<selectable>true</selectable>
+				<tickerType>Normal</tickerType>
+				<!-- Note: rotatable should be false for 1x1 doors since they're auto-rotated. -->
+				<rotatable>true</rotatable>
+				<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+				<useStuffTerrainAffordance>true</useStuffTerrainAffordance>
+				<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+				<designationCategory>Structure</designationCategory>
+				<holdsRoof>true</holdsRoof>
+				<staticSunShadowHeight>1.0</staticSunShadowHeight>
+				<blockLight>true</blockLight>
+				<drawerType>RealtimeOnly</drawerType>
+				<building>
+				<isInert>true</isInert>
+				<canPlaceOverWall>true</canPlaceOverWall>
+				<soundDoorOpenPowered>Door_OpenPowered</soundDoorOpenPowered>
+				<soundDoorClosePowered>Door_ClosePowered</soundDoorClosePowered>
+				<soundDoorOpenManual>Door_OpenManual</soundDoorOpenManual>
+				<soundDoorCloseManual>Door_CloseManual</soundDoorCloseManual>
+				<ai_chillDestination>false</ai_chillDestination>
+				<!-- Note: Not using blueprintClass or blueprintGraphicData from /Defs/ThingDefs[@Name="DoorBase"]
+					since we're patching Blueprint and want the default blueprintGraphicData. -->
+				</building>
+				<comps>
+				<li Class="CompProperties_Forbiddable"/>
+				</comps>
+				<placeWorkers>
+				<li>PlaceWorker_DoorLearnOpeningSpeed</li>
+				</placeWorkers>
+			</ThingDef>
+		<!-- INVISIBLE DOOR -->
+			<ThingDef>
+				<defName>HeronInvisibleDoor</defName>
+				<label>(internal invisible door)</label> <!-- Note: This shouldn't need translation, since the user should never see this -->
+				<thingClass>DoorsExpanded.Building_DoorRegionHandler</thingClass>
+				<category>Building</category>
+				<thingCategories/>
+				<repairEffect>Repair</repairEffect>
+				<graphicData>
+				<texPath>BlankTex</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<damageData>
+					<enabled>false</enabled>
+				</damageData>
+				</graphicData>
+				<!-- In case another mod makes invis doors minifiable (note: Minify Everything is already mitigated against in code)
+					and a mod like Home Mover needs to show ghost textures, specify a dummy blank uiIconPath for said ghost textures. -->
+				<uiIconPath>BlankTex</uiIconPath>
+				<altitudeLayer>FloorEmplacement</altitudeLayer>
+				<fillPercent>0</fillPercent>
+				<useHitPoints>false</useHitPoints>
+				<scatterableOnMapGen>false</scatterableOnMapGen>
+				<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+				<selectable>false</selectable>
+				<neverMultiSelect>true</neverMultiSelect>
+				<isAutoAttackableMapObject>false</isAutoAttackableMapObject>
+				<tickerType>Normal</tickerType>
+				<rotatable>false</rotatable>
+				<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+				<drawerType>RealtimeOnly</drawerType>
+				<building>
+				<isEdifice>true</isEdifice>
+				<isInert>true</isInert>
+				<canPlaceOverWall>true</canPlaceOverWall>
+				</building>
+				<comps>
+				<li Class="CompProperties_Forbiddable"/>
+				</comps>
+			</ThingDef>
+		<!-- REMOTE DOOR BUTTON -->
+			<ThingDef ParentName="BuildingBase">
+				<defName>PH_DoorButton</defName>
+				<label>door button</label>
+				<description>A button that connects to doors (functions the same as a lever).</description>
+				<thingClass>DoorsExpanded.Building_DoorRemoteButton</thingClass>
+				<category>Building</category>
+				<defaultPlacingRot>South</defaultPlacingRot>
+				<hasInteractionCell>true</hasInteractionCell>
+				<interactionCellOffset>(0,0,1)</interactionCellOffset>
+				<building>
+				<isEdifice>false</isEdifice>
+				<fullGraveGraphicData>
+					<texPath>Things/Building/RemoteDoorButton/RemoteDoorButton_ON</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<shadowData>
+					<volume>(0.9,0.3,0.9)</volume>
+					</shadowData>
+					<damageData>
+					<rect>(0.2,0,0.6,0.1)</rect>
+					</damageData>
+					<drawSize>2</drawSize>
+				</fullGraveGraphicData>
+				</building>
+				<clearBuildingArea>false</clearBuildingArea>
+				<graphicData>
+				<texPath>Things/Building/RemoteDoorButton/RemoteDoorButton_OFF</texPath>
+				<graphicClass>Graphic_Multi</graphicClass>
+				<shadowData>
+					<volume>(0.9,0.3,0.9)</volume>
+				</shadowData>
+				<damageData>
+					<rect>(0.2,0,0.6,0.1)</rect>
+				</damageData>
+				<drawSize>2</drawSize>
+				</graphicData>
+				<altitudeLayer>BuildingOnTop</altitudeLayer>
+				<passability>PassThroughOnly</passability>
+				<pathCost>50</pathCost>
+				<constructEffect>ConstructDirt</constructEffect>
+				<tickerType>Normal</tickerType>
+				<drawerType>RealtimeOnly</drawerType>
+				<fillPercent>0.40</fillPercent>
+				<statBases>
+				<MaxHitPoints>80</MaxHitPoints>
+				<WorkToBuild>200</WorkToBuild>
+				<Flammability>1</Flammability>
+				</statBases>
+				<selectable>true</selectable>
+				<costList>
+				<Steel>10</Steel>
+				<ComponentIndustrial>1</ComponentIndustrial>
+				</costList>
+				<soundImpactDefault>BulletImpact_Ground</soundImpactDefault>
+				<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+				<resourcesFractionWhenDeconstructed>0.5</resourcesFractionWhenDeconstructed>
+				<placeWorkers>
+				<li>JecsTools.PlaceWorker_OnTopOfWalls</li>
+				</placeWorkers>
+				<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+				<comps>
+				<li Class="CompProperties_Power">
+					<compClass>CompPowerTrader</compClass>
+					<basePowerConsumption>5</basePowerConsumption>
+				</li>
+				</comps>
+				<designationCategory>Structure</designationCategory>
+				<researchPrerequisites>
+				<li>ProjectHeron_RemoteDoors</li>
+				</researchPrerequisites>
+			</ThingDef>
+		<!-- REMOTE DOOR LEVER -->
+			<ThingDef ParentName="BuildingBase">
+				<defName>PH_DoorLever</defName>
+				<label>door lever</label>
+				<description>A lever that connects to doors (functions the same as a button).</description>
+				<thingClass>DoorsExpanded.Building_DoorRemoteButton</thingClass>
+				<category>Building</category>
+				<defaultPlacingRot>South</defaultPlacingRot>
+				<hasInteractionCell>true</hasInteractionCell>
+				<interactionCellOffset>(0,0,1)</interactionCellOffset>
+				<building>
+				<isEdifice>false</isEdifice>
+				<fullGraveGraphicData>
+					<texPath>Things/Building/RemoteDoorLever/RemoteDoorLever_ON</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<shadowData>
+					<volume>(0.9,0.3,0.9)</volume>
+					</shadowData>
+					<damageData>
+					<rect>(0.2,0,0.6,0.1)</rect>
+					</damageData>
+					<drawSize>2</drawSize>
+				</fullGraveGraphicData>
+				</building>
+				<clearBuildingArea>false</clearBuildingArea>
+				<graphicData>
+				<texPath>Things/Building/RemoteDoorLever/RemoteDoorLever_OFF</texPath>
+				<graphicClass>Graphic_Multi</graphicClass>
+				<shadowData>
+					<volume>(0.9,0.3,0.9)</volume>
+				</shadowData>
+				<damageData>
+					<rect>(0.2,0,0.6,0.1)</rect>
+				</damageData>
+				<drawSize>2</drawSize>
+				</graphicData>
+				<altitudeLayer>BuildingOnTop</altitudeLayer>
+				<passability>PassThroughOnly</passability>
+				<pathCost>50</pathCost>
+				<constructEffect>ConstructDirt</constructEffect>
+				<tickerType>Normal</tickerType>
+				<drawerType>RealtimeOnly</drawerType>
+				<fillPercent>0.40</fillPercent>
+				<statBases>
+				<MaxHitPoints>40</MaxHitPoints>
+				<WorkToBuild>100</WorkToBuild>
+				<Flammability>1</Flammability>
+				</statBases>
+				<selectable>true</selectable>
+				<costList>
+				<Steel>5</Steel>
+				<ComponentIndustrial>1</ComponentIndustrial>
+				</costList>
+				<soundImpactDefault>BulletImpact_Ground</soundImpactDefault>
+				<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+				<resourcesFractionWhenDeconstructed>0.5</resourcesFractionWhenDeconstructed>
+				<placeWorkers>
+				<li>JecsTools.PlaceWorker_OnTopOfWalls</li>
+				</placeWorkers>
+				<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+				<comps>
+				<li Class="CompProperties_Power">
+					<compClass>CompPowerTrader</compClass>
+					<basePowerConsumption>1</basePowerConsumption>
+				</li>
+				</comps>
+				<designationCategory>Structure</designationCategory>
+				<researchPrerequisites>
+				<li>ProjectHeron_RemoteDoors</li>
+				</researchPrerequisites>
+			</ThingDef>
+		<!-- REMOTE DOOR -->
+			<ThingDef ParentName="HeronMetalDoorBase">
+				<defName>PH_DoorRemoteSingle</defName>
+				<label>remote door</label>
+				<description>Vertical sliding metal door. Uses less power than an autodoor but opens more slowly.</description>
+				<statBases>
+				<Mass>20</Mass>
+				<MaxHitPoints>160</MaxHitPoints>
+				<WorkToBuild>1000</WorkToBuild>
+				<DoorOpenSpeed>0.25</DoorOpenSpeed> <!-- when powered, 0.25*4 = 1x door speed (1/4 autodoor speed) -->
+				</statBases>
+				<costList>
+				<Steel>20</Steel>
+				<ComponentIndustrial>1</ComponentIndustrial>
+				</costList>
+				<costStuffCount>25</costStuffCount>
+				<size>(1,1)</size>
+				<rotatable>false</rotatable>
+				<building>
+				<soundDoorOpenManual>HeronGarageOpen</soundDoorOpenManual>
+				<soundDoorCloseManual>HeronGarageClose</soundDoorCloseManual>
+				</building>
+				<graphicData>
+				<texPath>Things/Building/Door/DoorRemote_Mover</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(1,1)</drawSize>
+				<damageData>
+					<!--  no damage marks because they don't move with the door
+					<rect>(0,0.12,1,0.76)</rect>-->
+					<enabled>false</enabled>
+				</damageData>
+				</graphicData>
+				<comps>
+				<li Class="DoorsExpanded.CompProperties_PostProcessText">
+					<appendSizeToLabel>true</appendSizeToLabel>
+				</li>
+				<li Class="DoorsExpanded.CompProperties_DoorExpanded">
+					<remoteDoor>true</remoteDoor>
+					<doorType>StretchVertical</doorType>
+					<singleDoor>true</singleDoor>
+				</li>
+				<li Class="CompProperties_Power">
+					<compClass>CompPowerTrader</compClass>
+					<basePowerConsumption>15</basePowerConsumption> <!-- 30% of equivalent autodoor to compensate for slower door open speed -->
+				</li>
+				<li Class="DoorsExpanded.CompProperties_BreakdownableCustom">
+					<breakdownMTBUnit>2.0</breakdownMTBUnit> <!-- half as likely to breakdown -->
+				</li>
+				</comps>
+				<researchPrerequisites>
+				<li>ProjectHeron_RemoteDoors</li>
+				</researchPrerequisites>
+			</ThingDef>
+		<!-- REMOTE DOUBLE DOOR -->
+			<ThingDef ParentName="HeronMetalDoorBase">
+				<defName>PH_DoorRemoteDouble</defName>
+				<!-- label and description are handled by CompProperties_PostProcessText -->
+				<statBases>
+				<Mass>40</Mass>
+				<MaxHitPoints>320</MaxHitPoints>
+				<WorkToBuild>2000</WorkToBuild>
+				<DoorOpenSpeed>0.25</DoorOpenSpeed> <!-- when powered, 0.25*4 = 1x door speed (1/4 autodoor speed) -->
+				</statBases>
+				<costList>
+				<Steel>40</Steel>
+				<ComponentIndustrial>2</ComponentIndustrial>
+				</costList>
+				<costStuffCount>50</costStuffCount>
+				<size>(2,1)</size>
+				<graphicData>
+				<texPath>Things/Building/Door/DoorDoubleRemote_Mover</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(2,1)</drawSize>
+				<damageData>
+					<!--  no damage marks because they don't move with the door
+					<rect>(0,0.12,1,0.76)</rect>-->
+					<enabled>false</enabled>
+				</damageData>
+				</graphicData>
+				<building>
+				<soundDoorOpenManual>HeronGarageOpen</soundDoorOpenManual>
+				<soundDoorCloseManual>HeronGarageClose</soundDoorCloseManual>
+				</building>
+				<comps>
+				<li Class="DoorsExpanded.CompProperties_PostProcessText">
+					<defaultLabelAndDescriptionFrom>PH_DoorRemoteSingle</defaultLabelAndDescriptionFrom>
+					<appendSizeToLabel>true</appendSizeToLabel>
+				</li>
+				<li Class="DoorsExpanded.CompProperties_DoorExpanded">
+					<remoteDoor>true</remoteDoor>
+					<doorType>StretchVertical</doorType>
+					<singleDoor>true</singleDoor>
+				</li>
+				<li Class="CompProperties_Power">
+					<compClass>CompPowerTrader</compClass>
+					<basePowerConsumption>30</basePowerConsumption> <!-- 30% of equivalent autodoor to compensate for slower door open speed -->
+				</li>
+				<li Class="DoorsExpanded.CompProperties_BreakdownableCustom">
+					<breakdownMTBUnit>2.0</breakdownMTBUnit> <!-- half as likely to breakdown -->
+				</li>
+				</comps>
+				<researchPrerequisites>
+				<li>ProjectHeron_RemoteDoors</li>
+				</researchPrerequisites>
+			</ThingDef>
+		<!-- REMOTE TRIPLE DOOR -->
+			<ThingDef ParentName="HeronMetalDoorBase">
+				<defName>PH_DoorRemoteTriple</defName>
+				<!-- label and description are handled by CompProperties_PostProcessText -->
+				<statBases>
+				<Mass>60</Mass>
+				<MaxHitPoints>480</MaxHitPoints>
+				<WorkToBuild>3000</WorkToBuild>
+				<DoorOpenSpeed>0.25</DoorOpenSpeed> <!-- when powered, 0.25*4 = 1x door speed (1/4 autodoor speed) -->
+				</statBases>
+				<costList>
+				<Steel>60</Steel>
+				<ComponentIndustrial>3</ComponentIndustrial>
+				</costList>
+				<costStuffCount>75</costStuffCount>
+				<size>(3,1)</size>
+				<graphicData>
+				<texPath>Things/Building/Door/DoorTripleRemote_Mover</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(3,1)</drawSize>
+				<damageData>
+					<!--  no damage marks because they don't move with the door
+					<rect>(0,0.12,1,0.76)</rect>-->
+					<enabled>false</enabled>
+				</damageData>
+				</graphicData>
+				<building>
+				<soundDoorOpenManual>HeronGarageOpen</soundDoorOpenManual>
+				<soundDoorCloseManual>HeronGarageClose</soundDoorCloseManual>
+				</building>
+				<comps>
+				<li Class="DoorsExpanded.CompProperties_PostProcessText">
+					<defaultLabelAndDescriptionFrom>PH_DoorRemoteSingle</defaultLabelAndDescriptionFrom>
+					<appendSizeToLabel>true</appendSizeToLabel>
+				</li>
+				<li Class="DoorsExpanded.CompProperties_DoorExpanded">
+					<remoteDoor>true</remoteDoor>
+					<doorType>StretchVertical</doorType>
+					<singleDoor>true</singleDoor>
+				</li>
+				<li Class="CompProperties_Power">
+					<compClass>CompPowerTrader</compClass>
+					<basePowerConsumption>45</basePowerConsumption> <!-- 30% of equivalent autodoor to compensate for slower door open speed -->
+				</li>
+				<li Class="DoorsExpanded.CompProperties_BreakdownableCustom">
+					<breakdownMTBUnit>2.0</breakdownMTBUnit> <!-- half as likely to breakdown -->
+				</li>
+				</comps>
+				<researchPrerequisites>
+				<li>ProjectHeron_RemoteDoors</li>
+				</researchPrerequisites>
+			</ThingDef>
+		<!-- DOUBLE DOOR -->
+			<ThingDef ParentName="HeronDoorBase">
+				<defName>PH_DoorDouble</defName>
+				<!-- label and description are handled by CompProperties_PostProcessText -->
+				<statBases>
+				<Mass>40</Mass>
+				<MaxHitPoints>320</MaxHitPoints>
+				<WorkToBuild>1700</WorkToBuild>
+				</statBases>
+				<costStuffCount>50</costStuffCount>
+				<size>(2,1)</size>
+				<graphicData>
+				<texPath>Things/Building/Door/DoorDouble_Mover</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(2,1)</drawSize>
+				<damageData>
+					<!--  no damage marks because they don't move with the door
+					<rect>(0,0.12,1,0.76)</rect>-->
+					<enabled>false</enabled>
+				</damageData>
+				</graphicData>
+				<uiIconPath>Things/Building/Door/DoorDouble_MenuIcon</uiIconPath>
+				<comps>
+				<li Class="DoorsExpanded.CompProperties_PostProcessText">
+					<defaultLabelAndDescriptionFrom>Door</defaultLabelAndDescriptionFrom>
+					<appendSizeToLabel>true</appendSizeToLabel>
+				</li>
+				<li Class="DoorsExpanded.CompProperties_DoorExpanded">
+					<doorType>Standard</doorType>
+				</li>
+				</comps>
+				<placeWorkers>
+				<li>JecsTools.PlaceWorker_Outline</li>
+				</placeWorkers>
+			</ThingDef>
+		<!-- TRIPLE DOOR -->
+			<ThingDef ParentName="HeronDoorBase">
+				<defName>PH_DoorTriple</defName>
+				<!-- label and description are handled by CompProperties_PostProcessText -->
+				<statBases>
+				<Mass>60</Mass>
+				<MaxHitPoints>480</MaxHitPoints>
+				<WorkToBuild>2550</WorkToBuild>
+				</statBases>
+				<costStuffCount>75</costStuffCount>
+				<size>(3,1)</size>
+				<graphicData>
+				<texPath>Things/Building/Door/DoorTriple_Mover</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(3,1)</drawSize>
+				<damageData>
+					<!--  no damage marks because they don't move with the door
+					<rect>(0,0.12,1,0.76)</rect>-->
+					<enabled>false</enabled>
+				</damageData>
+				</graphicData>
+				<uiIconPath>Things/Building/Door/DoorTriple_MenuIcon</uiIconPath>
+				<comps>
+				<li Class="DoorsExpanded.CompProperties_PostProcessText">
+					<defaultLabelAndDescriptionFrom>Door</defaultLabelAndDescriptionFrom>
+					<appendSizeToLabel>true</appendSizeToLabel>
+				</li>
+				<li Class="DoorsExpanded.CompProperties_DoorExpanded">
+					<doorType>Standard</doorType>
+				</li>
+				</comps>
+				<placeWorkers>
+				<li>JecsTools.PlaceWorker_Outline</li>
+				</placeWorkers>
+			</ThingDef>
+		<!-- AUTO DOUBLE DOOR -->
+			<ThingDef ParentName="HeronDoorBase">
+				<defName>PH_AutodoorDouble</defName>
+				<!-- label and description are handled by CompProperties_PostProcessText -->
+				<statBases>
+				<Mass>40</Mass>
+				<MaxHitPoints>320</MaxHitPoints>
+				<WorkToBuild>2200</WorkToBuild>
+				</statBases>
+				<costList>
+				<Steel>80</Steel>
+				<ComponentIndustrial>4</ComponentIndustrial>
+				</costList>
+				<costStuffCount>50</costStuffCount>
+				<size>(2,1)</size>
+				<graphicData>
+				<texPath>Things/Building/Door/AutodoorDouble_Mover</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(2,1)</drawSize>
+				<damageData>
+					<!--  no damage marks because they don't move with the door
+					<rect>(0,0.12,1,0.76)</rect>-->
+					<enabled>false</enabled>
+				</damageData>
+				</graphicData>
+				<uiIconPath>Things/Building/Door/AutodoorDouble_MenuIcon</uiIconPath>
+				<comps>
+				<li Class="DoorsExpanded.CompProperties_PostProcessText">
+					<defaultLabelAndDescriptionFrom>Autodoor</defaultLabelAndDescriptionFrom>
+					<appendSizeToLabel>true</appendSizeToLabel>
+				</li>
+				<li Class="DoorsExpanded.CompProperties_DoorExpanded">
+					<remoteDoor>true</remoteDoor>
+					<doorType>Standard</doorType>
+				</li>
+				<li Class="CompProperties_Power">
+					<compClass>CompPowerTrader</compClass>
+					<basePowerConsumption>100</basePowerConsumption>
+				</li>
+				<li Class="CompProperties_Breakdownable"/>
+				</comps>
+				<researchPrerequisites>
+				<li>Autodoors</li>
+				</researchPrerequisites>
+				<placeWorkers>
+				<li>JecsTools.PlaceWorker_Outline</li>
+				</placeWorkers>
+				<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+			</ThingDef>
+		<!-- AUTO TRIPLE DOOR -->
+			<ThingDef ParentName="HeronDoorBase">
+				<defName>PH_AutodoorTriple</defName>
+				<!-- label and description are handled by CompProperties_PostProcessText -->
+				<statBases>
+				<Mass>60</Mass>
+				<MaxHitPoints>480</MaxHitPoints>
+				<WorkToBuild>3300</WorkToBuild>
+				</statBases>
+				<costList>
+				<Steel>120</Steel>
+				<ComponentIndustrial>6</ComponentIndustrial>
+				</costList>
+				<costStuffCount>75</costStuffCount>
+				<size>(3,1)</size>
+				<graphicData>
+				<texPath>Things/Building/Door/AutodoorTriple_Mover</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(3,1)</drawSize>
+				<damageData>
+					<!--  no damage marks because they don't move with the door
+					<rect>(0,0.12,1,0.76)</rect>-->
+					<enabled>false</enabled>
+				</damageData>
+				</graphicData>
+				<uiIconPath>Things/Building/Door/AutodoorTriple_MenuIcon</uiIconPath>
+				<comps>
+				<li Class="DoorsExpanded.CompProperties_PostProcessText">
+					<defaultLabelAndDescriptionFrom>Autodoor</defaultLabelAndDescriptionFrom>
+					<appendSizeToLabel>true</appendSizeToLabel>
+				</li>
+				<li Class="DoorsExpanded.CompProperties_DoorExpanded">
+					<remoteDoor>true</remoteDoor>
+					<doorType>Standard</doorType>
+				</li>
+				<li Class="CompProperties_Power">
+					<compClass>CompPowerTrader</compClass>
+					<basePowerConsumption>150</basePowerConsumption>
+				</li>
+				<li Class="CompProperties_Breakdownable"/>
+				</comps>
+				<placeWorkers>
+				<li>JecsTools.PlaceWorker_Outline</li>
+				</placeWorkers>
+				<researchPrerequisites>
+				<li>Autodoors</li>
+				</researchPrerequisites>
+				<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+			</ThingDef>
+		<!-- JAIL DOOR -->
+			<ThingDef ParentName="HeronDoorBase">
+				<defName>PH_DoorJail</defName>
+				<label>jail door</label>
+				<description>Sliding jail cell door with strong bars.</description>
+				<statBases>
+				<Mass>30</Mass>
+				<MaxHitPoints>300</MaxHitPoints>
+				<WorkToBuild>1500</WorkToBuild>
+				</statBases>
+				<costList>
+				<Steel>30</Steel>
+				<ComponentIndustrial>2</ComponentIndustrial>
+				</costList>
+				<costStuffCount>50</costStuffCount>
+				<size>(1,1)</size>
+				<rotatable>false</rotatable>
+				<graphicData>
+				<texPath>Things/Building/Door/JailCell_Mover</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<shaderType>CutoutComplex</shaderType>
+				<drawSize>(1,1)</drawSize>
+				<damageData>
+					<!--  no damage marks because they don't move with the door
+					<rect>(0,0.12,1,0.76)</rect>-->
+					<enabled>false</enabled>
+				</damageData>
+				</graphicData>
+				<building>
+				<soundDoorOpenManual>HeronJailDoorOpen</soundDoorOpenManual>
+				<soundDoorCloseManual>HeronJailDoorClose</soundDoorCloseManual>
+				</building>
+				<comps>
+				<li Class="DoorsExpanded.CompProperties_DoorExpanded">
+					<doorType>Standard</doorType>
+					<singleDoor>true</singleDoor>
+					<doorOpenMultiplier>0.8</doorOpenMultiplier>
+					<rotatesSouth>false</rotatesSouth>
+				</li>
+				</comps>
+				<placeWorkers>
+				<li>JecsTools.PlaceWorker_Outline</li>
+				</placeWorkers>
+				<researchPrerequisites>
+				<li>ProjectHeron_PrisonDoors</li>
+				</researchPrerequisites>
+			</ThingDef>
+		<!-- TRIBAL CURTAIN -->
+			<ThingDef ParentName="HeronClothDoorBase">
+				<defName>HeronCurtainTribal</defName>
+				<label>curtain (tribal)</label>
+				<description>Divides rooms. Curtains are much faster to open than standard doors, but are flammable and slowly vent temperatures between rooms.</description>
+				<statBases>
+				<Mass>10</Mass>
+				<MaxHitPoints>50</MaxHitPoints>
+				<WorkToBuild>850</WorkToBuild>
+				<DoorOpenSpeed>4.0</DoorOpenSpeed> <!-- powered autodoor speed -->
+				<Beauty>1.0</Beauty>
+				</statBases>
+				<costStuffCount>25</costStuffCount>
+				<size>(1,1)</size>
+				<rotatable>false</rotatable>
+				<building>
+				<soundDoorOpenManual>HeronCurtainOpen</soundDoorOpenManual>
+				<soundDoorCloseManual>HeronCurtainClose</soundDoorCloseManual>
+				<roamerCanOpen>true</roamerCanOpen>
+				</building>
+				<graphicData>
+				<texPath>Things/Building/Door/Curtain_Mover</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(1,1)</drawSize>
+				<damageData>
+					<!--  no damage marks because they don't move with the door
+					<rect>(0,0.12,1,0.76)</rect>-->
+					<enabled>false</enabled>
+				</damageData>
+				</graphicData>
+				<comps>
+				<li Class="DoorsExpanded.CompProperties_PostProcessText">
+					<appendSizeToLabel>true</appendSizeToLabel>
+				</li>
+				<li Class="DoorsExpanded.CompProperties_DoorExpanded">
+					<doorType>Stretch</doorType>
+					<tempEqualizeRate>6.0</tempEqualizeRate> <!-- 6 times normal temperature equalize rate -->
+					<singleDoor>true</singleDoor>
+				</li>
+				</comps>
+				<researchPrerequisites>
+				<li>ProjectHeron_Curtains</li>
+				</researchPrerequisites>
+			</ThingDef>
+		<!-- TRIBAL DOUBLE CURTAIN -->
+			<ThingDef ParentName="HeronClothDoorBase">
+				<defName>HeronCurtainTribalDouble</defName>
+				<!-- label and description are handled by CompProperties_PostProcessText -->
+				<statBases>
+				<Mass>20</Mass>
+				<MaxHitPoints>100</MaxHitPoints>
+				<WorkToBuild>1700</WorkToBuild>
+				<DoorOpenSpeed>4.0</DoorOpenSpeed> <!-- powered autodoor speed -->
+				<Beauty>2.0</Beauty>
+				</statBases>
+				<costStuffCount>50</costStuffCount>
+				<size>(2,1)</size>
+				<building>
+				<soundDoorOpenManual>HeronCurtainOpen</soundDoorOpenManual>
+				<soundDoorCloseManual>HeronCurtainClose</soundDoorCloseManual>
+				<roamerCanOpen>true</roamerCanOpen>
+				</building>
+				<graphicData>
+				<texPath>Things/Building/Door/CurtainDouble_Mover</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(2,1)</drawSize>
+				<damageData>
+					<!--  no damage marks because they don't move with the door
+					<rect>(0,0.12,1,0.76)</rect>-->
+					<enabled>false</enabled>
+				</damageData>
+				</graphicData>
+				<comps>
+				<li Class="DoorsExpanded.CompProperties_PostProcessText">
+					<defaultLabelAndDescriptionFrom>HeronCurtainTribal</defaultLabelAndDescriptionFrom>
+					<appendSizeToLabel>true</appendSizeToLabel>
+				</li>
+				<li Class="DoorsExpanded.CompProperties_DoorExpanded">
+					<doorType>Stretch</doorType>
+					<tempEqualizeRate>6.0</tempEqualizeRate> <!-- 6 times normal temperature equalize rate -->
+					<singleDoor>true</singleDoor>
+					<stretchOpenSize>(0.2,1)</stretchOpenSize> <!-- shrink to same size as shrunken 1x1 curtain -->
+				</li>
+				</comps>
+				<researchPrerequisites>
+				<li>ProjectHeron_Curtains</li>
+				</researchPrerequisites>
+			</ThingDef>
+		<!-- TRIBAL TRIPLE CURTAIN -->
+			<ThingDef ParentName="HeronClothDoorBase">
+				<defName>HeronCurtainTribalTriple</defName>
+				<!-- label and description are handled by CompProperties_PostProcessText -->
+				<statBases>
+				<Mass>30</Mass>
+				<MaxHitPoints>150</MaxHitPoints>
+				<WorkToBuild>2550</WorkToBuild>
+				<DoorOpenSpeed>4.0</DoorOpenSpeed> <!-- powered autodoor speed -->
+				<Beauty>3.0</Beauty>
+				</statBases>
+				<costStuffCount>75</costStuffCount>
+				<size>(3,1)</size>
+				<building>
+				<soundDoorOpenManual>HeronCurtainOpen</soundDoorOpenManual>
+				<soundDoorCloseManual>HeronCurtainClose</soundDoorCloseManual>
+				<roamerCanOpen>true</roamerCanOpen>
+				</building>
+				<graphicData>
+				<texPath>Things/Building/Door/CurtainTriple_Mover</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(3,1)</drawSize>
+				<damageData>
+					<!--  no damage marks because they don't move with the door
+					<rect>(0,0.12,1,0.76)</rect>-->
+					<enabled>false</enabled>
+				</damageData>
+				</graphicData>
+				<comps>
+				<li Class="DoorsExpanded.CompProperties_PostProcessText">
+					<defaultLabelAndDescriptionFrom>HeronCurtainTribal</defaultLabelAndDescriptionFrom>
+					<appendSizeToLabel>true</appendSizeToLabel>
+				</li>
+				<li Class="DoorsExpanded.CompProperties_DoorExpanded">
+					<doorType>Stretch</doorType>
+					<tempEqualizeRate>6.0</tempEqualizeRate> <!-- 6 times normal temperature equalize rate -->
+					<singleDoor>true</singleDoor>
+					<stretchOpenSize>(0.2,1)</stretchOpenSize> <!-- shrink to same size as shrunken 1x1 curtain -->
+				</li>
+				</comps>
+				<researchPrerequisites>
+				<li>ProjectHeron_Curtains</li>
+				</researchPrerequisites>
+			</ThingDef>
+		<!-- DOUBLE GATE -->
+			<ThingDef ParentName="HeronDoorBase">
+				<defName>PH_GateDoubleThick</defName>
+				<label>gate</label>
+				<statBases>
+				<Mass>60</Mass>
+				<MaxHitPoints>500</MaxHitPoints>
+				<WorkToBuild>2500</WorkToBuild>
+				</statBases>
+				<costStuffCount>100</costStuffCount>
+				<size>(2,1)</size>
+				<graphicData>
+				<texPath>Things/Building/Door/GateDoubleThick_Mover</texPath>
+				<graphicClass>Graphic_Multi</graphicClass>
+				<drawSize>(2,2)</drawSize>
+				<damageData>
+					<!--  no damage marks because they don't move with the door
+					<rect>(0,0.12,1,0.76)</rect>-->
+					<enabled>false</enabled>
+				</damageData>
+				</graphicData>
+				<uiIconPath>Things/Building/Door/Gate_MenuUI</uiIconPath>
+				<comps>
+				<li Class="DoorsExpanded.CompProperties_PostProcessText">
+					<defaultLabelAndDescriptionFrom>Door</defaultLabelAndDescriptionFrom>
+					<appendSizeToLabel>true</appendSizeToLabel>
+				</li>
+				<li Class="DoorsExpanded.CompProperties_DoorExpanded">
+					<doorType>DoubleSwing</doorType>
+					<rotatesSouth>false</rotatesSouth>
+					<fixedPerspective>true</fixedPerspective>
+				</li>
+				</comps>
+				<placeWorkers>
+				<li>JecsTools.PlaceWorker_Outline</li>
+				</placeWorkers>
+				<researchPrerequisites>
+				<li>ProjectHeron_Gates</li>
+				</researchPrerequisites>
+			</ThingDef>
+		<!-- BLAST DOOR -->
+			<ThingDef ParentName="HeronMetalDoorBase">
+				<defName>PH_DoorBlastSingle</defName>
+				<label>blast door</label>
+				<description>A heavy door that is far more resilient to damage.</description>
+				<statBases>
+				<Mass>50</Mass>
+				<MaxHitPoints>500</MaxHitPoints>
+				<WorkToBuild>2000</WorkToBuild>
+				<DoorOpenSpeed>0.25</DoorOpenSpeed> <!-- when powered, 0.25*4 = 1x door speed (1/4 autodoor speed) -->
+				<Flammability>0.5</Flammability>
+				</statBases>
+				<costList>
+				<Steel>40</Steel>
+				<ComponentIndustrial>4</ComponentIndustrial>
+				</costList>
+				<costStuffCount>75</costStuffCount>
+				<size>(1,1)</size>
+				<rotatable>false</rotatable>
+				<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+				<graphicData>
+				<texPath>Things/Building/Door/DoorBlastDoor_MoverSingle</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(1,1)</drawSize>
+				<damageData>
+					<enabled>false</enabled>
+				</damageData>
+				</graphicData>
+				<uiIconPath>Things/Building/Door/BlastDoorSingleUI</uiIconPath>
+				<building>
+				<soundDoorOpenManual>HeronBlastDoorOpen</soundDoorOpenManual>
+				<soundDoorCloseManual>HeronBlastDoorClose</soundDoorCloseManual>
+				</building>
+				<comps>
+				<li Class="DoorsExpanded.CompProperties_PostProcessText">
+					<appendSizeToLabel>true</appendSizeToLabel>
+				</li>
+				<li Class="DoorsExpanded.CompProperties_DoorExpanded">
+					<remoteDoor>true</remoteDoor>
+					<doorType>Standard</doorType>
+					<rotatesSouth>false</rotatesSouth>
+					<doorFrameSplitOffset>(0,0,1)</doorFrameSplitOffset>
+					<doorFrame>
+					<texPath>Things/Building/Door/DoorBlastDoorSingle</texPath>
+					<graphicClass>Graphic_Single</graphicClass>
+					<shaderType>CutoutComplex</shaderType>
+					<drawSize>(1,1)</drawSize>
+					<damageData>
+						<enabled>false</enabled>
+					</damageData>
+					</doorFrame>
+				</li>
+				<li Class="CompProperties_Power">
+					<compClass>CompPowerTrader</compClass>
+					<basePowerConsumption>50</basePowerConsumption>
+				</li>
+				<li Class="DoorsExpanded.CompProperties_BreakdownableCustom">
+					<breakdownMTBUnit>2.0</breakdownMTBUnit> <!-- half as likely to breakdown -->
+				</li>
+				</comps>
+				<placeWorkers>
+				<li>JecsTools.PlaceWorker_Outline</li>
+				</placeWorkers>
+				<researchPrerequisites>
+				<li>ProjectHeron_BlastDoors</li>
+				</researchPrerequisites>
+				<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+			</ThingDef>
+		<!-- DOUBLE BLAST DOORS -->
+			<ThingDef ParentName="HeronMetalDoorBase">
+				<defName>PH_DoorBlastDoor</defName>
+				<label>blast door</label>
+				<description>A heavy pair of doors that are far more resilient to damage.</description>
+				<statBases>
+				<Mass>100</Mass>
+				<MaxHitPoints>1000</MaxHitPoints>
+				<WorkToBuild>4000</WorkToBuild>
+				<DoorOpenSpeed>0.25</DoorOpenSpeed> <!-- when powered, 0.25*4 = 1x door speed (1/4 autodoor speed) -->
+				<Flammability>0.5</Flammability>
+				</statBases>
+				<costList>
+				<Steel>80</Steel>
+				<ComponentIndustrial>7</ComponentIndustrial>
+				</costList>
+				<costStuffCount>150</costStuffCount>
+				<size>(2,1)</size>
+				<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+				<graphicData>
+				<texPath>Things/Building/Door/DoorBlastDoor_Mover</texPath>
+				<graphicClass>Graphic_Multi</graphicClass>
+				<drawSize>(2,1)</drawSize>
+				<damageData>
+					<enabled>false</enabled>
+				</damageData>
+				</graphicData>
+				<uiIconPath>Things/Building/Door/BlastDoorUI</uiIconPath>
+				<building>
+				<soundDoorOpenManual>HeronBlastDoorOpen</soundDoorOpenManual>
+				<soundDoorCloseManual>HeronBlastDoorClose</soundDoorCloseManual>
+				</building>
+				<comps>
+				<li Class="DoorsExpanded.CompProperties_PostProcessText">
+					<appendSizeToLabel>true</appendSizeToLabel>
+				</li>
+				<li Class="DoorsExpanded.CompProperties_DoorExpanded">
+					<remoteDoor>true</remoteDoor>
+					<doorType>Standard</doorType>
+					<fixedPerspective>true</fixedPerspective>
+					<rotatesSouth>false</rotatesSouth>
+					<doorAsync>
+					<texPath>Things/Building/Door/DoorBlastDoor_MoverAsync</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>(2,1)</drawSize>
+					<damageData>
+						<enabled>false</enabled>
+					</damageData>
+					</doorAsync>
+					<doorFrameSplitOffset>(0,0,1)</doorFrameSplitOffset>
+					<doorFrame>
+					<texPath>Things/Building/Door/DoorBlastDoor_Frame</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<shaderType>CutoutComplex</shaderType>
+					<drawSize>(2,1)</drawSize>
+					<damageData>
+						<enabled>false</enabled>
+					</damageData>
+					</doorFrame>
+					<doorFrameSplit>
+					<texPath>Things/Building/Door/DoorBlastDoor_FrameAsync</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<shaderType>CutoutComplex</shaderType>
+					<drawSize>(2,1)</drawSize>
+					<damageData>
+						<enabled>false</enabled>
+					</damageData>
+					</doorFrameSplit>
+				</li>
+				<li Class="CompProperties_Power">
+					<compClass>CompPowerTrader</compClass>
+					<basePowerConsumption>100</basePowerConsumption>
+				</li>
+				<li Class="DoorsExpanded.CompProperties_BreakdownableCustom">
+					<breakdownMTBUnit>2.0</breakdownMTBUnit> <!-- half as likely to breakdown -->
+				</li>
+				</comps>
+				<placeWorkers>
+				<li>JecsTools.PlaceWorker_Outline</li>
+				</placeWorkers>
+				<researchPrerequisites>
+				<li>ProjectHeron_BlastDoors</li>
+				</researchPrerequisites>
+				<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+			</ThingDef>
+		<!-- THICK BLAST DOOR -->
+			<ThingDef ParentName="HeronMetalDoorBase">
+				<defName>PH_DoorThickBlastDoor</defName>
+				<!-- label and description are handled by CompProperties_PostProcessText -->
+				<statBases>
+				<Mass>200</Mass>
+				<MaxHitPoints>2000</MaxHitPoints>
+				<WorkToBuild>8000</WorkToBuild>
+				<DoorOpenSpeed>0.25</DoorOpenSpeed> <!-- when powered, 0.25*4 = 1x door speed (1/4 autodoor speed) -->
+				<Flammability>0.5</Flammability>
+				</statBases>
+				<costList>
+				<Steel>160</Steel>
+				<ComponentIndustrial>14</ComponentIndustrial>
+				</costList>
+				<costStuffCount>300</costStuffCount>
+				<size>(3,2)</size>
+				<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+				<graphicData>
+				<texPath>Things/Building/Door/DoorBlastDoor_Mover</texPath>
+				<graphicClass>Graphic_Multi</graphicClass>
+				<drawSize>(3,2)</drawSize>
+				<damageData>
+					<enabled>false</enabled>
+				</damageData>
+				</graphicData>
+				<uiIconPath>Things/Building/Door/BlastDoorUI</uiIconPath>
+				<building>
+				<soundDoorOpenManual>HeronBlastDoorOpen</soundDoorOpenManual>
+				<soundDoorCloseManual>HeronBlastDoorClose</soundDoorCloseManual>
+				</building>
+				<comps>
+				<li Class="DoorsExpanded.CompProperties_PostProcessText">
+					<defaultLabelAndDescriptionFrom>PH_DoorBlastDoor</defaultLabelAndDescriptionFrom>
+					<appendSizeToLabel>true</appendSizeToLabel>
+				</li>
+				<li Class="DoorsExpanded.CompProperties_DoorExpanded">
+					<remoteDoor>true</remoteDoor>
+					<doorType>Standard</doorType>
+					<fixedPerspective>true</fixedPerspective>
+					<rotatesSouth>false</rotatesSouth>
+					<doorAsync>
+					<texPath>Things/Building/Door/DoorBlastDoor_MoverAsync</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>(3,2)</drawSize>
+					<damageData>
+						<enabled>false</enabled>
+					</damageData>
+					</doorAsync>
+					<doorFrame>
+					<texPath>Things/Building/Door/DoorBlastDoor_Frame</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<shaderType>CutoutComplex</shaderType>
+					<drawSize>(3,2)</drawSize>
+					<damageData>
+						<enabled>false</enabled>
+					</damageData>
+					</doorFrame>
+					<doorFrameSplit>
+					<texPath>Things/Building/Door/DoorBlastDoor_FrameAsync</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<shaderType>CutoutComplex</shaderType>
+					<drawSize>(3,2)</drawSize>
+					<damageData>
+						<enabled>false</enabled>
+					</damageData>
+					</doorFrameSplit>
+				</li>
+				<li Class="CompProperties_Power">
+					<compClass>CompPowerTrader</compClass>
+					<basePowerConsumption>200</basePowerConsumption>
+				</li>
+				<li Class="DoorsExpanded.CompProperties_BreakdownableCustom">
+					<breakdownMTBUnit>2.0</breakdownMTBUnit> <!-- half as likely to breakdown -->
+				</li>
+				</comps>
+				<placeWorkers>
+				<li>JecsTools.PlaceWorker_Outline</li>
+				</placeWorkers>
+				<researchPrerequisites>
+				<li>ProjectHeron_BlastDoors</li>
+				</researchPrerequisites>
+				<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+			</ThingDef>
+		<!--  -->
+		<!--  -->
+		<!--  -->
+		<!--  -->
+		<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+</Defs>

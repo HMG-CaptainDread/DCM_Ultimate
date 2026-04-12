@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- LOOM BASE -->
+		<ThingDef ParentName="BenchBase" Name="TMM_LoomBase" Abstract="True">
+			<thingClass>Building_WorkTable</thingClass>
+			<graphicData>
+				<graphicClass>Graphic_Multi</graphicClass>
+				<shaderType>CutoutComplex</shaderType>
+				<drawSize>(2.2,1.2)</drawSize>
+				<damageData>
+					<cornerTL>Damage/Corner</cornerTL>
+					<cornerTR>Damage/Corner</cornerTR>
+					<cornerBL>Damage/Corner</cornerBL>
+					<cornerBR>Damage/Corner</cornerBR>
+				</damageData>
+			</graphicData>
+			<altitudeLayer>Building</altitudeLayer>
+			<fillPercent>0.5</fillPercent>
+			<useHitPoints>True</useHitPoints>
+			<statBases>
+				<WorkToBuild>2250</WorkToBuild>
+				<MaxHitPoints>180</MaxHitPoints>
+				<Flammability>1</Flammability>
+			</statBases>
+			<size>(2,1)</size>
+			<designationCategory>Production</designationCategory>
+			<designatorDropdown>TMM_LoomGroup</designatorDropdown>
+			<passability>PassThroughOnly</passability>
+			<hasInteractionCell>True</hasInteractionCell>
+			<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+			<recipes>
+				<li>TMM_WeaveDevilstrandLoom</li>
+				<li>TMM_WeaveDevilstrandLoomBulk</li>
+				<!-- <li>MakeLinen</li> -->
+				<!-- <li>MakeLinenBulk</li> -->
+				<!-- <li>MakeSynthreadCloth</li> -->
+				<!-- <li>MakeSynthreadClothBulk</li> -->
+				<!-- <li>MakeHyperweaveCloth</li> -->
+				<!-- <li>MakeHyperweaveClothBulk</li> -->
+			</recipes>
+			<surfaceType>Item</surfaceType>
+			<inspectorTabs>
+				<li>ITab_Bills</li>
+			</inspectorTabs>
+			<comps>
+				<li Class="CompProperties_AffectedByFacilities">
+					<linkableFacilities>
+						<li>ToolCabinet</li>
+					</linkableFacilities>
+				</li>
+			</comps>
+			<building>
+				<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+			</building>
+		</ThingDef>
+	<!-- DIGGING SPOT BASE -->
+		<ThingDef ParentName="BuildingBase" Name="TMM_DiggingSpotBase" Abstract="True">
+			<thingClass>Building_WorkTable</thingClass>
+			<graphicData>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(1,1)</drawSize>
+			</graphicData>
+			<altitudeLayer>FloorEmplacement</altitudeLayer>
+			<statBases>
+				<WorkToBuild>0</WorkToBuild>
+			</statBases>
+			<scatterableOnMapGen>false</scatterableOnMapGen>
+			<useHitPoints>False</useHitPoints>
+			<size>(1,1)</size>
+			<passability>Standable</passability>
+			<hasInteractionCell>True</hasInteractionCell>
+			<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+			<surfaceType>Item</surfaceType>
+			<inspectorTabs>
+				<li>ITab_Bills</li>
+			</inspectorTabs>
+			<building>
+				<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+				<canPlaceOverImpassablePlant>false</canPlaceOverImpassablePlant>
+			</building>
+			<designationCategory>TMM_MiningDesignator</designationCategory>
+		</ThingDef>
+	<!-- TAILOR'S LOOM -->
+		<!-- UNPOWERED TAILOR'S LOOM -->
+			<ThingDef ParentName="TMM_LoomBase">
+				<defName>TMM_LoomHand</defName>
+				<label>Hand-Powered Loom</label>
+				<description>A tailor's table used to spin raw materials into usable cloth.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Buildings/UnpoweredLoom/UnpoweredLoom</texPath>
+				</graphicData>
+				<costList>
+					<Steel>20</Steel>
+				</costList>
+				<stuffCategories>
+					<li>Woody</li>
+				</stuffCategories>
+				<costStuffCount>60</costStuffCount>
+			</ThingDef>
+		<!-- ELECTRIC TAILOR'S LOOM -->
+			<ThingDef ParentName="TMM_LoomBase">
+				<defName>TMM_LoomElectric</defName>
+				<label>electric loom</label>
+				<thingClass>Building_WorkTable</thingClass>
+				<description>A tailor's table used to spin raw materials into usable cloth.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Buildings/ElectricLoom/ElectricLoom</texPath>
+				</graphicData>
+				<costList>
+					<Steel>75</Steel>
+					<ComponentIndustrial>2</ComponentIndustrial>
+				</costList>
+				<stuffCategories>
+					<li>Metallic</li>
+					<li>Woody</li>
+				</stuffCategories>
+				<costStuffCount>50</costStuffCount>
+				<statBases>
+					<WorkTableWorkSpeedFactor>1.15</WorkTableWorkSpeedFactor>
+				</statBases>
+				<comps>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerTrader</compClass>
+						<shortCircuitInRain>true</shortCircuitInRain>
+						<basePowerConsumption>120</basePowerConsumption>
+					</li>
+					<li Class="CompProperties_Flickable"/>
+					<li Class="CompProperties_Breakdownable"/>
+				</comps>
+				<placeWorkers>
+					<li>PlaceWorker_ShowFacilitiesConnections</li>
+				</placeWorkers>
+				<researchPrerequisites>
+					<li>ComplexClothing</li>
+					<li>Electricity</li>
+				</researchPrerequisites>
+			</ThingDef>
+	<!-- DIGGING SPOTS -->
+		<!-- DIRT/SAND DIGGING SPOT -->
+			<ThingDef ParentName="TMM_DiggingSpotBase">
+				<defName>TMM_DirtDiggingSpot</defName>
+				<label>Digging Spot</label>
+				<description>Place on diggable non rocky soil tiles to dig up piles of dirt or sand, they can be used in later processes or used in terraforming.</description>
+				<graphicData>
+					<texPath>Things/Building/Production/CraftingSpot</texPath>
+				</graphicData>
+				<terrainAffordanceNeeded>TMM_DirtDiggable</terrainAffordanceNeeded>
+			</ThingDef>
+		<!-- SALT/ROCK DIGGING SPOT -->
+			<ThingDef ParentName="TMM_DiggingSpotBase">
+				<defName>TMM_StoneDiggingSpot</defName>
+				<label>Stone Mine</label>
+				<description>Place on rough stone in order to dig up trace salt or rocks for processing.</description>
+				<graphicData>
+					<texPath>Things/Building/Production/CraftingSpot</texPath>
+				</graphicData>
+				<terrainAffordanceNeeded>SmoothableStone</terrainAffordanceNeeded>
+			</ThingDef>
+</Defs>

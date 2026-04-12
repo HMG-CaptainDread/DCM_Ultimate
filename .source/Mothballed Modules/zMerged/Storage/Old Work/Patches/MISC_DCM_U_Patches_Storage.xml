@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- WORKBENCH STORAGE -->
+		<!--  -->
+			<Operation Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[@Name="StorageShelfBase" or @Name="AdaptiveStorageBase"][not(placeWorkers)]</xpath>
+				<value>
+					<placeWorkers/>
+				</value>
+				<success>Always</success>
+			</Operation>
+		<!--  -->
+			<Operation Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[@Name="StorageShelfBase" or @Name="AdaptiveStorageBase"][placeWorkers]/placeWorkers</xpath>
+				<value>
+					<li>NeatStorageFix.Placeworker_StoragesNoOverlapEachOther</li>
+				</value>
+			</Operation>
+	<!-- GRAVSHIP CRATE -->
+		<!-- ODYSSEY RESEARCH -->
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>Odyssey</li>
+				</mods>
+				<match Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/ThingDef[@Name="sbzGravshipCrateBase" or @Name="sbzGravshipShelfBase" or @Name="sbzSmallGravshipShelfBase"]/researchPrerequisites</xpath>
+							<value>
+								<researchPrerequisites><li>BasicGravtech</li></researchPrerequisites>
+							</value>
+						</li>
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/ThingDef[defName="sbz_GravshipWeaponRack"]/researchPrerequisites</xpath>
+							<value>
+								<researchPrerequisites><li>BasicGravtech</li><li>Machining</li></researchPrerequisites>
+							</value>
+						</li>
+					</operations>
+				</match>
+			</Operation>
+	<!-- FRIDGE -->
+		<!-- VANILLA NUTRIENT PASTE EXTENDED -->
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>Vanilla Nutrient Paste Expanded</li>
+				</mods>
+				<match Class="PatchOperationSequence">
+					<success>Always</success>
+					<operations>
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[@Name = "sbzFridgeBase"]</xpath>
+							<value>
+								<comps>
+									<li Class="VNPE.CompProperties_RegisterToGrinder" />
+								</comps>
+							</value>
+						</li>
+					</operations>
+				</match>
+			</Operation>
+	<!-- CARGO HOLDS -->
+		<!-- PATCHES TO CATEGORIES -->
+			<Operation Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="jdgg_SqCargoHold"]</xpath>
+				<value>
+					<designationCategory>cargoholds</designationCategory>
+				</value>
+			</Operation>
+			<Operation Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="jdgg_CargoHold"]</xpath>
+				<value>
+					<designationCategory>cargoholds</designationCategory>
+				</value>
+			</Operation>
+			<Operation Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="jdgg_RefCargoHold"]</xpath>
+				<value>
+					<designationCategory>cargoholds</designationCategory>
+				</value>
+			</Operation>
+			<Operation Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="jdgg_2x2CargoHold"]</xpath>
+				<value>
+					<designationCategory>cargoholds</designationCategory>
+				</value>
+			</Operation>
+			<Operation Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="jdgg_MassCargoHold"]</xpath>
+				<value>
+					<designationCategory>cargoholds</designationCategory>
+				</value>
+			</Operation>
+			<Operation Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="jdgg_SmCargoComp"]</xpath>
+				<value>
+					<designationCategory>cargoholds</designationCategory>
+				</value>
+			</Operation>
+			<Operation Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="jdgg_nCargoHold"]</xpath>
+				<value>
+					<designationCategory>cargoholds</designationCategory>
+				</value>
+			</Operation>
+			<Operation Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="jdgg_nRefCargoHold"]</xpath>
+				<value>
+					<designationCategory>cargoholds</designationCategory>
+				</value>
+			</Operation>
+			<Operation Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="jdgg_n2x2CargoHold"]</xpath>
+				<value>
+					<designationCategory>cargoholds</designationCategory>
+				</value>
+			</Operation>
+			<Operation Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="jdgg_nMassCargoHold"]</xpath>
+				<value>
+					<designationCategory>cargoholds</designationCategory>
+				</value>
+			</Operation>
+			<Operation Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="jdgg_XMCH"]</xpath>
+				<value>
+					<designationCategory>cargoholds</designationCategory>
+				</value>
+			</Operation>
+			<Operation Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="jdgg_XMCHVB"]</xpath>
+				<value>
+					<designationCategory>cargoholds</designationCategory>
+				</value>
+			</Operation>
+	<!-- ADAPTIVE BEES -->
+		<Operation Class="PatchOperationFindMod">
+			<mods>
+				<li>Adaptive Storage Framework</li>
+			</mods>
+			<match Class="PatchOperationSequence">
+				<operations>
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs</xpath>
+					<value>
+						<ThingDef Name="ASF_RB_BeeRack" ParentName="AdaptiveStorageBase">
+							<defName>ASF_RB_BeeRack</defName>
+							<label>Bee Storage</label>
+							<pathCost>100</pathCost>
+							<graphicData>
+								<texPath>Things/Building/RB_BeeRack</texPath>
+								<graphicClass>Graphic_Multi</graphicClass>
+								<shaderType>CutoutComplex</shaderType>
+								<drawSize>(3,2)</drawSize>
+							</graphicData>
+							<description>A Collection of entomology jars, containers, tubes and vials suitable for collecting and examining specimens. Allows you to store bees in a controlled way.\n\n&lt;color=#E5E54C&gt;Storage stats:&lt;/color&gt; Stack size total: 14 Stack per tile: 7</description>
+							<size>(2,1)</size>
+							<statBases>
+								<Beauty>1</Beauty>
+								<MaxHitPoints>25</MaxHitPoints>
+								<Mass>8</Mass>
+								<WorkToBuild>500</WorkToBuild>
+								<Flammability>1.0</Flammability>
+							</statBases>
+							<stuffCategories>
+								<li>Metallic</li>
+								<li>Woody</li>
+							</stuffCategories>
+							<costStuffCount>60</costStuffCount>
+							<building>
+								<preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+								<ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
+								<maxItemsInCell>7</maxItemsInCell>
+								<fixedStorageSettings>
+									<filter>
+										<categories>
+											<li>RB_BeesAndQueens</li>
+										</categories>
+									</filter>
+								</fixedStorageSettings>
+							</building>
+							<minifiedDef>MinifiedThing</minifiedDef>
+							<thingCategories>
+								<li>BuildingsFurniture</li>
+							</thingCategories>
+						</ThingDef>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs</xpath>
+					<value>
+						<AdaptiveStorage.GraphicsDef Name="ASF_RB_BeeRackBase" Abstract="True">
+							<targetDef>ASF_RB_BeeRack</targetDef>
+							<graphics>
+								<li>
+									<graphicData>
+										<texPath>Things/Building/RB_BeeRack</texPath>
+										<graphicClass>Graphic_Multi</graphicClass>
+										<drawSize>(3,2)</drawSize>
+										<drawRotated>false</drawRotated>
+									</graphicData>
+								</li>
+							</graphics>
+							<showContainedItems>true</showContainedItems>
+						</AdaptiveStorage.GraphicsDef>
+						<AdaptiveStorage.GraphicsDef ParentName="ASF_RB_BeeRackBase">
+							<defName>RB_BeeRackA</defName>
+							<graphics>
+								<li>
+									<graphicData>
+										<texPath>Things/Building/RB_BeeRack</texPath>
+										<graphicClass>Graphic_Multi</graphicClass>
+										<drawSize>(3,2)</drawSize>
+										<drawRotated>false</drawRotated>
+									</graphicData>
+									<minimumStackCount>1</minimumStackCount>
+								</li>
+							</graphics>
+						</AdaptiveStorage.GraphicsDef>
+					</value>
+				</li>
+			</operations>
+			</match>
+		</Operation>
+	<!-- PHANERON'S STORAGE -->
+		<!-- CE AMMO -->
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>Combat Extended</li>
+				</mods>
+				<match Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BasicStorageWoodenCrate"
+							or defName="BasicStorageMetalCrate"
+							or defName="BasicStorageSack"]/building/fixedStorageSettings/filter/categories</xpath>
+						<value>
+							<li>Ammo</li>
+						</value>
+				</match>
+			</Operation>
+		<!-- VANILLA CHEMFUEL EXPANDED -->
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>Vanilla Chemfuel Expanded</li>
+				</mods>
+				<match Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="BasicStorageFuelTank"]/building/fixedStorageSettings/filter/thingDefs</xpath>
+						<value>
+							<li>VCHE_Deepchem</li>
+						</value>
+				</match>
+			</Operation>
+		<!-- VANILLA SHELVES -->
+			<Operation Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[defName="ShelfSmall"
+					or defName="Shelf"]</xpath>
+				<value>
+					<drawGUIOverlay>true</drawGUIOverlay>
+				</value>
+			</Operation>
+	<!-- REEL'S STORAGE -->
+		<!-- BEDROOM FURNITURE -->
+			<Operation Class="PatchOperationConditional">
+				<xpath>Defs/ThingDef[defName = "ReelStorageBookshelf"]</xpath>
+				<match Class="PatchOperationSequence">
+					<operations>
+
+						<li Class="PatchOperationConditional">
+							<xpath>Defs/ThingDef[defName = "SimpleResearchBench"]/comps</xpath>
+							<nomatch Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName = "SimpleResearchBench"]</xpath>
+								<value>
+									<comps>
+										<li Class="CompProperties_AffectedByFacilities">
+											<linkableFacilities>
+												<li>ReelStorageBookshelf</li>
+											</linkableFacilities>
+										</li>
+									</comps>
+								</value>
+							</nomatch>
+							<match Class="PatchOperationConditional">
+								<xpath>Defs/ThingDef[defName = "SimpleResearchBench"]/comps/li[@Class = "CompProperties_AffectedByFacilities"]/linkableFacilities</xpath>
+								<nomatch Class="PatchOperationAdd">
+									<xpath>Defs/ThingDef[defName = "SimpleResearchBench"]/comps</xpath>
+									<value>
+										<li Class="CompProperties_AffectedByFacilities">
+											<linkableFacilities>
+												<li>ReelStorageBookshelf</li>
+											</linkableFacilities>
+										</li>
+									</value>
+								</nomatch>
+								<match Class="PatchOperationAdd">
+									<xpath>Defs/ThingDef[defName = "SimpleResearchBench"]/comps/li[@Class = "CompProperties_AffectedByFacilities"]/linkableFacilities</xpath>
+									<value>
+										<li>ReelStorageBookshelf</li>
+									</value>
+								</match>
+							</match>
+						</li>
+
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName = "HiTechResearchBench"]/comps/li[@Class = "CompProperties_AffectedByFacilities"]/linkableFacilities</xpath>
+							<value>
+								<li>ReelStorageBookshelf</li>
+							</value>
+						</li>
+
+						<li Class="PatchOperationAdd">
+							<xpath>Defs/ThingDef[defName = "SimpleResearchBench"]/comps/li[@Class = "CompProperties_AffectedByFacilities"]/linkableFacilities</xpath>
+							<value>
+								<li>ReelStorageBookshelf</li>
+							</value>
+						</li>
+
+					</operations>
+				</match>
+			</Operation>
+		<!-- VE SECURITY - ADD ADS -->
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>Adaptive Storage Framework</li>
+				</mods>
+				<match Class="PatchOperationSequence">
+					<operations>
+
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ThingDef[defName="VFES_AmmoCrate"]/thingClass</xpath>
+						<value>
+							<thingClass>AdaptiveStorage.ThingClass</thingClass>
+						</value>
+					</li>
+
+					<li Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName="VFES_AmmoCrate"]</xpath>
+						<value>
+							<drawGUIOverlay>True</drawGUIOverlay>
+						</value>
+					</li>
+
+					<!-- DESCRIPTION PATCHES -->
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/ThingDef[defName="VFES_AmmoCrate"]/description</xpath>
+							<value>
+
+							<description>An ammo crate useful for storing shells and ammunition. Improves firing rate of surrounding soldiers. \n\n&lt;color=#E5E54C&gt;Storage stats:&lt;/color&gt; Stack size total: 14 Stack per tile: 14 Allowed items: Mortar Shells, Ammunition (LTS, Yayo)</description>
+
+							</value>
+						</li>
+					<!-- STORAGE PATCHES -->
+						<li Class="PatchOperationReplace">
+							<xpath>Defs/ThingDef[defName="VFES_AmmoCrate"]/building</xpath>
+							<value>
+							<building>
+								<storageGroupTag>Shelf</storageGroupTag>
+								<blueprintClass>Blueprint_Storage</blueprintClass>
+								<maxItemsInCell>14</maxItemsInCell>
+								<preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+								<ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
+								<fixedStorageSettings>
+									<filter>
+										<disallowNotEverStorable>true</disallowNotEverStorable>
+										<categories>
+											<li>MortarShells</li>
+											<li MayRequire="mlie.yayoscombat3">yy_ammo_category</li>
+											<li MayRequire="limetreesnake.ammunition">Ammunition</li>
+											<li MayRequire="ceteam.combatextended">Ammo</li>
+										</categories>
+										<disallowedCategories>
+										</disallowedCategories>
+										<disallowedThingDefs>
+										</disallowedThingDefs>
+										<thingDefs>
+										</thingDefs>
+									</filter>
+								</fixedStorageSettings>
+								<defaultStorageSettings>
+								<priority>Preferred</priority>
+									<filter>
+										<categories>
+											<li MayRequire="kentington.saveourship2">SpaceTorpedoes</li>
+											<li>MortarShells</li>
+										</categories>
+										<thingDefs>
+										</thingDefs>
+									</filter>
+								</defaultStorageSettings>
+								<destroySound>BuildingDestroyed_Metal_Small</destroySound>
+								<paintable>true</paintable>
+							</building>
+							</value>
+						</li>
+					</operations>
+				</match>
+			</Operation>
+	<!-- VFE - RESEARCH DATA -->
+		<Operation MayRequire="VanillaExpanded.VFECore" Class="PatchOperationSequence">
+			<operations>
+				<li MayRequire="kongkim.ResearchData" Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="Misc_FileCabinet"]/building/fixedStorageSettings/filter/categories</xpath>
+					<value>
+						<li>Research</li>
+						<li>Samples</li>
+						<li>Schematics</li>
+					</value>
+				</li>
+				<li MayRequire="kongkim.ResearchData" Class="PatchOperationAdd">
+					<xpath>Defs/ThingDef[defName="Misc_FileCabinet"]/building/defaultStorageSettings/filter/categories</xpath>
+					<value>
+						<li>Research</li>
+						<li>Samples</li>
+						<li>Schematics</li>
+					</value>
+				</li>
+			</operations>
+		</Operation>
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+</Patch>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="XmlExtensions.FindMod">
+    <mods>
+      <li>Medieval Overhaul</li>
+      <li>Vanilla Factions Expanded - Classical</li>
+    </mods>
+    <logic>and</logic>
+    <caseTrue>
+
+      <li Class="XmlExtensions.OptionalPatch">
+        <modId>zenlor.MOTweaks</modId>
+        <key>mot-integration-vfeclassical</key>
+        <defaultValue>True</defaultValue>
+        <caseTrue>
+
+          <li Class="PatchOperationReplace">
+            <xpath>/Defs/ThingDef[defName="VFEC_MeatDryingRack"]/costList</xpath>
+            <value>
+              <costList>
+                <WoodLog>80</WoodLog>
+                <DankPyon_IronIngot>20</DankPyon_IronIngot>
+              </costList>
+            </value>
+          </li>
+
+          <li Class="PatchOperationReplace">
+            <xpath>/Defs/ThingDef[defName="VFEC_CraftingBench"]/costList</xpath>
+            <value>
+              <costList>
+                <WoodLog>50</WoodLog>
+                <DankPyon_IronIngot>25</DankPyon_IronIngot>
+              </costList>
+            </value>
+          </li>
+
+          <li Class="PatchOperationReplace">
+            <xpath>/Defs/ThingDef[defName="VFEC_Beacon"]/costList</xpath>
+            <value>
+              <costList>
+                <WoodLog>150</WoodLog>
+                <VFEC_Bronze>50</VFEC_Bronze>
+              </costList>
+            </value>
+          </li>
+
+          <li Class="PatchOperationReplace">
+            <xpath>/Defs/ThingDef[defName="VFEC_Turret_Scorpion"]/costList</xpath>
+            <value>
+              <costList>
+                <WoodLog>70</WoodLog>
+                <VFEC_Bronze>25</VFEC_Bronze>
+              </costList>
+            </value>
+          </li>
+
+          <li Class="PatchOperationReplace">
+            <xpath>/Defs/RecipeDef[defName="VFEC_Make_Bronze"]/ingredients/li/filter/thingDefs/li[text()="Steel"]</xpath>
+            <value>
+              <li>DankPyon_IronOre</li>
+            </value>
+          </li>
+
+          <li Class="PatchOperationReplace">
+            <xpath>/Defs/RecipeDef[defName="VFEC_Make_Bronze"]/fixedIngredientFilter/thingDefs/li[text()="Steel"]</xpath>
+            <value>
+              <li>DankPyon_IronOre</li>
+            </value>
+          </li>
+
+        </caseTrue>
+      </li>
+
+    </caseTrue>
+  </Operation>
+
+</Patch>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- CORE -->
+		<Operation Class="PatchOperationFindMod">
+			<mods>
+				<li>Adaptive Storage Framework</li>
+			</mods>
+			<match Class="PatchOperationSequence">
+				<success>Normal</success>
+				<operations>
+					<!-- DRESSER -->
+						<!-- ADAPTIVE CLASS -->
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="Dresser"]</xpath>
+								<value>
+									<thingClass>AdaptiveStorage.ThingClass</thingClass>
+								</value>
+							</li>
+						<!-- STORAGE GUI -->
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="Dresser"]</xpath>
+								<value>
+									<drawGUIOverlay>True</drawGUIOverlay>
+									<inspectorTabs>
+										<li>ITab_Storage</li>
+									</inspectorTabs>
+								</value>
+							</li>
+						<!-- DESCRIPTION CHANGES -->
+							<li Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="Dresser"]/description</xpath>
+								<value>
+									<description>A dresser. Gives a small comfort bonus to all nearby beds. Placing more than one dresser near the same bed has no effect. Can be used to store Apparel. Items stored in this will not deteriorate, even if outside. \n\n&lt;color=#E5E54C&gt;Storage stats:&lt;/color&gt; Stack size total: 4 Stack per tile: 2 Allowed items: Apparel</description>
+								</value>
+							</li>
+						<!-- STORAGE PATCH -->
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="Dresser"]/building</xpath>
+								<value>
+									<blueprintClass>Blueprint_Storage</blueprintClass>
+									<maxItemsInCell>2</maxItemsInCell>
+									<storageGroupTag>Shelf</storageGroupTag>
+									<preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+									<ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
+									<fixedStorageSettings>
+										<filter>
+											<disallowNotEverStorable>true</disallowNotEverStorable>
+											<categories>
+												<li>Apparel</li>
+											</categories>
+											<disallowedCategories>
+												<li>ApparelArmor</li>
+												<li>ArmorHeadgear</li>
+												<li>ApparelUtility</li>
+											</disallowedCategories>
+											<disallowedThingDefs />
+											<thingDefs />
+										</filter>
+									</fixedStorageSettings>
+									<defaultStorageSettings>
+										<priority>Preferred</priority>
+										<filter>
+											<categories>
+												<li>Apparel</li>
+											</categories>
+											<thingDefs></thingDefs>
+										</filter>
+									</defaultStorageSettings>
+								</value>
+							</li>
+					<!-- SHELF (LARGE) -->
+						<!-- DESCRIPTION CHANGES -->
+							<li Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="Shelf"]/description</xpath>
+								<value>
+									<description>A triple-stack shelf that holds three times as much as empty ground. Items stored inside will never deteriorate and don't affect the beauty of their surroundings.\n\nSince shelf space is limited, shelves cannot hold chunks, buildings, plants and large corpses. \n\n&lt;color=#E5E54C&gt;Storage stats:&lt;/color&gt; Stack size total: 6 Stack per tile: 3 Allowed items: Foods, Manufactured, Raw Resources, Items, Weapons, Apparel, Corpses</description>
+								</value>
+							</li>
+					<!-- SHELF (SMALL) -->
+						<!-- DESCRIPTION CHANGES -->
+							<li Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="ShelfSmall"]/description</xpath>
+								<value>
+									<description>A small triple-stack shelf that holds three times as much as empty ground. Items stored inside will never deteriorate and don't affect the beauty of their surroundings.\n\nSince shelf space is limited, shelves cannot hold chunks, buildings, plants and large corpses. \n\n&lt;color=#E5E54C&gt;Storage stats:&lt;/color&gt; Stack size total: 3 Stack per tile: 3 Allowed items: Foods, Manufactured, Raw Resources, Items, Weapons, Apparel, Corpses</description>
+								</value>
+							</li>
+					<!-- TOOL CABINET -->
+						<!-- ADAPTIVE CLASS -->
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="ToolCabinet"]</xpath>
+								<value>
+									<thingClass>AdaptiveStorage.ThingClass</thingClass>
+								</value>
+							</li>
+						<!-- STORAGE GUI -->
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="ToolCabinet"]</xpath>
+								<value>
+									<drawGUIOverlay>True</drawGUIOverlay>
+									<inspectorTabs>
+										<li>ITab_Storage</li>
+									</inspectorTabs>
+								</value>
+							</li>
+						<!-- STUFFABLE CHANGES -->
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="ToolCabinet"]</xpath>
+								<value>
+									<surfaceType>Item</surfaceType>
+									<stuffCategories>
+										<li>Metallic</li>
+										<li>Woody</li>
+										<li>Stony</li>
+									</stuffCategories>
+									<costStuffCount>150</costStuffCount>
+								</value>
+							</li>
+						<!-- COST LIST -->
+							<li Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="ToolCabinet"]/costList</xpath>
+								<value>
+									<costList>
+										<Steel>50</Steel>
+									</costList>
+								</value>
+							</li>
+						<!-- DESCRIPTION CHANGES -->
+							<li Class="PatchOperationReplace">
+								<xpath>Defs/ThingDef[defName="ToolCabinet"]/description</xpath>
+								<value>
+									<description>Increases work speed when placed near a workbench. One workbench can use up to two tool cabinets. This structure can also be used to store goods and valuables. \n\n&lt;color=#E5E54C&gt;Storage stats:&lt;/color&gt; Stack size total: 6 Stack per tile: 3 Allowed items: Metals</description>
+								</value>
+							</li>
+						<!-- STORAGE PATCH -->
+							<li Class="PatchOperationAdd">
+								<xpath>Defs/ThingDef[defName="ToolCabinet"]/building</xpath>
+								<value>
+									<blueprintClass>Blueprint_Storage</blueprintClass>
+									<maxItemsInCell>3</maxItemsInCell>
+									<storageGroupTag>Shelf</storageGroupTag>
+									<preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+									<ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
+									<fixedStorageSettings>
+										<filter>
+											<disallowNotEverStorable>true</disallowNotEverStorable>
+											<categories>
+												<li>ResourcesRaw</li>
+											</categories>
+											<disallowedCategories>
+												<li>FoodMeals</li>
+												<li>Foods</li>
+												<li>PlantMatter</li>
+												<li>StoneBlocks</li>
+											</disallowedCategories>
+											<disallowedThingDefs>
+												<li>WoodLog</li>
+											</disallowedThingDefs>
+										</filter>
+									</fixedStorageSettings>
+									<defaultStorageSettings>
+										<priority>Preferred</priority>
+										<filter>
+											<categories>
+												<li>ResourcesRaw</li>
+											</categories>
+										</filter>
+									</defaultStorageSettings>
+								</value>
+							</li>
+				</operations>
+			</match>
+		</Operation>
+</Patch>
