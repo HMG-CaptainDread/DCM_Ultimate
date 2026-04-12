@@ -1,0 +1,1583 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- MVCF -->
+		<!-- AMERICAN CIVIL WAR -->
+			<MVCF.ModDef>
+				<defName>cgf1_gunsgalore_americancivilwar</defName>
+				<label>Guns Galore - American Civil War</label>
+				<description>MVCF compatibility</description>
+				<ActivateFeatures>
+					<li>ExtraEquipmentVerbs</li>
+					<li>IntegratedToggle</li>
+				</ActivateFeatures>
+			</MVCF.ModDef>
+		<!-- GUNS GALORE CORE -->
+			<MVCF.ModDef>
+				<defName>cgf1_gunsgalore</defName>
+				<label>Guns Galore</label>
+				<description>MVCF compatibility</description>
+				<ActivateFeatures>
+					<li>ExtraEquipmentVerbs</li>
+					<li>IntegratedToggle</li>
+				</ActivateFeatures>
+			</MVCF.ModDef>
+		<!-- KS23 -->
+			<MVCF.ModDef>
+				<defName>HarkonGunNutKS23Shotgun</defName>
+				<label>[HRK] Gun Nut - KS-23 Shotgun</label>
+				<description>[HRK] Gun Nut - KS-23 Shotgun</description>
+				<ActivateFeatures>
+					<li>ExtraEquipmentVerbs</li>
+					<li>IntegratedToggle</li>
+				</ActivateFeatures>
+			</MVCF.ModDef>
+		<!-- FN SCAR -->
+			<MVCF.ModDef>
+				<defName>HarkonGunNutFNSCAR</defName>
+				<label>[HRK] Gun Nut - FN SCAR</label>
+				<description>[HRK] Gun Nut - FN SCAR</description>
+				<ActivateFeatures>
+					<li>ExtraEquipmentVerbs</li>
+					<li>IntegratedToggle</li>
+				</ActivateFeatures>
+			</MVCF.ModDef>
+
+
+
+	<!-- MISC THING DEFS -->
+		<!-- GAS BASE -->
+			<ThingDef Name="CGF1_MWP_BaseGas" Abstract="True">
+				<thingClass>Gas</thingClass>
+				<label>gas</label>
+				<category>Gas</category>
+				<altitudeLayer>Gas</altitudeLayer>
+				<useHitPoints>false</useHitPoints>
+				<tickerType>Normal</tickerType>
+				<graphicData>
+					<graphicClass>Graphic_Gas</graphicClass>
+					<shaderType>Transparent</shaderType>
+				</graphicData>
+			</ThingDef>
+		<!-- GREEN SMOKE CLOUD -->
+			<ThingDef ParentName="CGF1_MWP_BaseGas">
+				<defName>CGF1_MWP_SmokeCloud_Green</defName>
+				<label>green smoke cloud</label>
+				<graphicData>
+					<texPath>CGF1/Gas/Smoke_Green</texPath>
+					<drawSize>2.6</drawSize>
+				</graphicData>
+				<gas>
+					<expireSeconds>
+						<min>15</min>
+						<max>35</max>
+					</expireSeconds>
+					<rotationSpeed>40</rotationSpeed>
+				</gas>
+			</ThingDef>
+		<!-- RED SMOKE CLOUD -->
+			<ThingDef ParentName="CGF1_MWP_BaseGas">
+				<defName>CGF1_MWP_SmokeCloud_Red</defName>
+				<label>red smoke cloud</label>
+				<graphicData>
+					<texPath>CGF1/Gas/Smoke_Red</texPath>
+					<drawSize>2.6</drawSize>
+				</graphicData>
+				<gas>
+					<expireSeconds>
+						<min>15</min>
+						<max>35</max>
+					</expireSeconds>
+					<rotationSpeed>40</rotationSpeed>
+				</gas>
+			</ThingDef>
+		<!-- VIOLET SMOKE CLOUD -->
+			<ThingDef ParentName="CGF1_MWP_BaseGas">
+				<defName>CGF1_MWP_SmokeCloud_Violet</defName>
+				<label>violet smoke cloud</label>
+				<graphicData>
+					<texPath>CGF1/Gas/Smoke_Violet</texPath>
+					<drawSize>2.6</drawSize>
+				</graphicData>
+				<gas>
+					<expireSeconds>
+						<min>15</min>
+						<max>35</max>
+					</expireSeconds>
+					<rotationSpeed>40</rotationSpeed>
+				</gas>
+			</ThingDef>
+		<!-- YELLOW SMOKE CLOUD -->
+			<ThingDef ParentName="CGF1_MWP_BaseGas">
+				<defName>CGF1_MWP_SmokeCloud_Yellow</defName>
+				<label>yellow smoke cloud</label>
+				<graphicData>
+					<texPath>CGF1/Gas/Smoke_Yellow</texPath>
+					<drawSize>2.6</drawSize>
+				</graphicData>
+				<gas>
+					<expireSeconds>
+						<min>15</min>
+						<max>35</max>
+					</expireSeconds>
+					<rotationSpeed>40</rotationSpeed>
+				</gas>
+			</ThingDef>
+		<!-- CS GAS -->
+			<ThingDef MayRequire="VanillaExpanded.VWENL" ParentName="CGF1_MWP_BaseGas">
+				<defName>CGF1_MWP_CSGasCloud</defName>
+				<label>CS gas</label>
+				<graphicData>
+					<texPath>CGF1/Gas/Smoke</texPath>
+					<drawSize>2.6</drawSize>
+				</graphicData>
+				<gas>
+					<expireSeconds>
+						<min>20</min>
+						<max>30</max>
+					</expireSeconds>
+					<!--<blockTurretTracking>true</blockTurretTracking>
+					<accuracyPenalty>0.3</accuracyPenalty>-->
+					<rotationSpeed>20</rotationSpeed>
+				</gas>
+				<thingClass>VanillaWeaponsExpandedNonLethal.Gas_TearGas</thingClass>
+			</ThingDef>
+	<!-- STUFF CATEGORY DEFS -->
+		<!-- STONY, NO JADE -->
+			<StuffCategoryDef>
+				<defName>CGF1_StuffCategory_Stony_NJ</defName>
+				<label>stony (no jade)</label>
+			</StuffCategoryDef>
+		<!-- JADE -->
+			<StuffCategoryDef>
+				<defName>CGF1_StuffCategory_Jade</defName>
+				<label>jade</label>
+			</StuffCategoryDef>
+	<!-- M5 SPEAR SETTINGS DEFS -->
+		<XmlExtensions.SettingsMenuDef>
+			<defName>HRK_settings_GunNutSIGSauerNGSW</defName>
+			<modId>Harkon.GunNut.SIGSauerNGSW</modId>
+			<label>Gun Nut - SIG Sauer NGSW</label>
+			<settings>
+
+				<li Class="XmlExtensions.Setting.Text">
+					<text>Gun Nut - SIG Sauer NGSW</text>
+					<font>Medium</font>
+					<anchor>Middle</anchor>
+				</li>
+
+				<!-- ========== CAMO SETTINGS ========== -->
+
+				<li Class="XmlExtensions.Setting.GapLine"/>
+				<li Class="XmlExtensions.Setting.Text">
+					<text>CAMO SETTINGS</text>
+					<anchor>Middle</anchor>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Gap"/>
+
+				<li Class="XmlExtensions.Setting.Text">
+					<text>Select a camo per gun, most of the time is just a simple color swap but in some cases some details may change, refer to the mod page to preview the options. This setting only affects the base gun and does not affect ideology styles.</text>
+					<font>Tiny</font>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Gap"/>
+
+				<li Class="XmlExtensions.Setting.SplitColumn">
+					<gapSize>70</gapSize>
+					<leftCol>
+
+						<li Class="XmlExtensions.Setting.Text">
+							<text>SIG M5 SPEAR</text>
+							<font>Small</font>
+							<anchor>Middle</anchor>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap">
+							<spacing>2</spacing>
+						</li>
+
+						<li Class="XmlExtensions.Setting.RadioButtons">
+							<key>SIGM5SPEAR_Camo</key>
+							<defaultValue>HRK_SIGM5SPEAR_Black</defaultValue>
+							<buttons>
+								<li>
+									<value>HRK_SIGM5SPEAR_Black</value>
+									<label>Black/Base</label>
+								</li>
+								<li>
+									<value>HRK_SIGM5SPEAR_Tan</value>
+									<label>Tan/Desert</label>
+								</li>
+								<li>
+									<value>HRK_SIGM5SPEAR_White</value>
+									<label>Snow/White</label>
+								</li>
+							</buttons>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap"/>
+
+						<li Class="XmlExtensions.Setting.Text">
+							<text>SIG M250</text>
+							<font>Small</font>
+							<anchor>Middle</anchor>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap">
+							<spacing>2</spacing>
+						</li>
+
+						<li Class="XmlExtensions.Setting.RadioButtons">
+							<key>SIGM250SAW_Camo</key>
+							<defaultValue>HRK_SIGM250SAW_Black</defaultValue>
+							<buttons>
+								<li>
+									<value>HRK_SIGM250SAW_Black</value>
+									<label>Black/Base</label>
+								</li>
+								<li>
+									<value>HRK_SIGM250SAW_Tan</value>
+									<label>Tan/Desert</label>
+								</li>
+								<li>
+									<value>HRK_SIGM250SAW_White</value>
+									<label>Snow/White</label>
+								</li>
+							</buttons>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap"/>
+
+						<li Class="XmlExtensions.Setting.Text">
+							<text>SIG MG 338</text>
+							<font>Small</font>
+							<anchor>Middle</anchor>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap">
+							<spacing>2</spacing>
+						</li>
+
+						<li Class="XmlExtensions.Setting.RadioButtons">
+							<key>SIG338MG_Camo</key>
+							<defaultValue>HRK_SIG338MG_Black</defaultValue>
+							<buttons>
+								<li>
+									<value>HRK_SIG338MG_Black</value>
+									<label>Black/Base</label>
+								</li>
+								<li>
+									<value>HRK_SIG338MG_Tan</value>
+									<label>Tan/Desert</label>
+								</li>
+								<li>
+									<value>HRK_SIG338MG_White</value>
+									<label>Snow/White</label>
+								</li>
+							</buttons>
+						</li>
+
+					</leftCol>
+					<rightCol>
+
+						<li Class="XmlExtensions.Setting.Text">
+							<text>SIG M5 SPEAR SD</text>
+							<font>Small</font>
+							<anchor>Middle</anchor>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap">
+							<spacing>2</spacing>
+						</li>
+
+						<li Class="XmlExtensions.Setting.RadioButtons">
+							<key>SIGM5SPEAR_C_Camo</key>
+							<defaultValue>HRK_SIGM5SPEAR_C_Tan</defaultValue>
+							<buttons>
+								<li>
+									<value>HRK_SIGM5SPEAR_C_Black</value>
+									<label>Black/Base</label>
+								</li>
+								<li>
+									<value>HRK_SIGM5SPEAR_C_Tan</value>
+									<label>Tan/Desert</label>
+								</li>
+								<li>
+									<value>HRK_SIGM5SPEAR_C_White</value>
+									<label>Snow/White</label>
+								</li>
+							</buttons>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap"/>
+
+						<li Class="XmlExtensions.Setting.Text">
+							<text>SIG M250 SAW</text>
+							<font>Small</font>
+							<anchor>Middle</anchor>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap">
+							<spacing>2</spacing>
+						</li>
+
+						<li Class="XmlExtensions.Setting.RadioButtons">
+							<key>SIGM250SAW_C_Camo</key>
+							<defaultValue>HRK_SIGM250SAW_C_Tan</defaultValue>
+							<buttons>
+								<li>
+									<value>HRK_SIGM250SAW_C_Black</value>
+									<label>Black/Base</label>
+								</li>
+								<li>
+									<value>HRK_SIGM250SAW_C_Tan</value>
+									<label>Tan/Desert</label>
+								</li>
+								<li>
+									<value>HRK_SIGM250SAW_C_White</value>
+									<label>Snow/White</label>
+								</li>
+							</buttons>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap"/>
+
+						<li Class="XmlExtensions.Setting.Text">
+							<text>SIG MG 338 SAW</text>
+							<font>Small</font>
+							<anchor>Middle</anchor>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap">
+							<spacing>2</spacing>
+						</li>
+
+						<li Class="XmlExtensions.Setting.RadioButtons">
+							<key>SIG338MG_C_Camo</key>
+							<defaultValue>HRK_SIG338MG_C_Tan</defaultValue>
+							<buttons>
+								<li>
+									<value>HRK_SIG338MG_C_Black</value>
+									<label>Black/Base</label>
+								</li>
+								<li>
+									<value>HRK_SIG338MG_C_Tan</value>
+									<label>Tan/Desert</label>
+								</li>
+								<li>
+									<value>HRK_SIG338MG_C_White</value>
+									<label>Snow/White</label>
+								</li>
+							</buttons>
+						</li>
+
+					</rightCol>
+				</li>
+
+				<li Class="XmlExtensions.Setting.GapLine"/>
+				<li Class="XmlExtensions.Setting.Text">
+					<text>Remember any change of the settings needs a restart to take effect.</text>
+					<font>Tiny</font>
+				</li>
+				<li Class="XmlExtensions.Setting.Gap"/>
+				<li Class="XmlExtensions.Setting.ResetSettings"/>
+				<li Class="XmlExtensions.Setting.Gap"/>
+
+			</settings>
+		</XmlExtensions.SettingsMenuDef>
+	<!-- KS23 SETTINGS DEFS -->
+		<XmlExtensions.SettingsMenuDef>
+			<defName>HRK_settings_GunNutKS23Shotgun</defName>
+			<modId>Harkon.GunNut.KS23Shotgun</modId>
+			<label>Gun Nut - KS-23 Shotgun</label>
+			<settings>
+
+				<li Class="XmlExtensions.Setting.Text">
+					<text>Gun Nut - KS-23 Shotgun</text>
+					<font>Medium</font>
+					<anchor>Middle</anchor>
+				</li>
+
+				<!-- ========== CAMO SETTINGS ========== -->
+
+				<li Class="XmlExtensions.Setting.GapLine"/>
+				<li Class="XmlExtensions.Setting.Text">
+					<text>CAMO SETTINGS</text>
+					<anchor>Middle</anchor>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Gap"/>
+
+				<li Class="XmlExtensions.Setting.Text">
+					<text>Select a camo per gun, most of the time is just a simple color swap but in some cases some details may change, refer to the mod page to preview the options. This setting only affects the base gun and does not affect ideology styles.</text>
+					<font>Tiny</font>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Gap"/>
+
+				<li Class="XmlExtensions.Setting.SplitColumn">
+					<gapSize>70</gapSize>
+					<leftCol>
+
+						<li Class="XmlExtensions.Setting.Text">
+							<text>KS-23M</text>
+							<font>Small</font>
+							<anchor>Middle</anchor>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap">
+							<spacing>2</spacing>
+						</li>
+
+						<li Class="XmlExtensions.Setting.RadioButtons">
+							<key>KS23M_Camo</key>
+							<defaultValue>HRK_KS23M_Black</defaultValue>
+							<buttons>
+								<li>
+									<value>HRK_KS23M_Black</value>
+									<label>Black/Base</label>
+								</li>
+								<li>
+									<value>HRK_KS23M_Tan</value>
+									<label>Tan/Desert</label>
+								</li>
+								<li>
+									<value>HRK_KS23M_White</value>
+									<label>Snow/White</label>
+								</li>
+							</buttons>
+						</li>
+
+					</leftCol>
+					<rightCol>
+
+						<li Class="XmlExtensions.Setting.Text">
+							<text>KS-23L</text>
+							<font>Small</font>
+							<anchor>Middle</anchor>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap">
+							<spacing>2</spacing>
+						</li>
+
+						<li Class="XmlExtensions.Setting.RadioButtons">
+							<key>KS23L_Camo</key>
+							<defaultValue>HRK_KS23L_Black</defaultValue>
+							<buttons>
+								<li>
+									<value>HRK_KS23L_Black</value>
+									<label>Black/Base</label>
+								</li>
+								<li>
+									<value>HRK_KS23L_Tan</value>
+									<label>Tan/Desert</label>
+								</li>
+								<li>
+									<value>HRK_KS23L_White</value>
+									<label>Snow/White</label>
+								</li>
+							</buttons>
+						</li>
+
+					</rightCol>
+				</li>
+				<li Class="XmlExtensions.Setting.GapLine"/>
+				<li Class="XmlExtensions.Setting.Text">
+					<text>Remember any change of the settings needs a restart to take effect.</text>
+					<font>Tiny</font>
+				</li>
+				<li Class="XmlExtensions.Setting.Gap"/>
+				<li Class="XmlExtensions.Setting.ResetSettings"/>
+				<li Class="XmlExtensions.Setting.Gap"/>
+			</settings>
+		</XmlExtensions.SettingsMenuDef>
+	<!-- KRISS VECTOR SETTINGS DEFS -->
+		<XmlExtensions.SettingsMenuDef>
+			<defName>HRK_settings_GunNutKRISSVector</defName>
+			<modId>Harkon.GunNut.KRISSVector</modId>
+			<label>Gun Nut - KRISS Vector</label>
+			<settings>
+
+				<li Class="XmlExtensions.Setting.Text">
+					<text>Gun Nut - KRISS Vector</text>
+					<font>Medium</font>
+					<anchor>Middle</anchor>
+				</li>
+
+				<!-- ========== CAMO SETTINGS ========== -->
+
+				<li Class="XmlExtensions.Setting.GapLine"/>
+				<li Class="XmlExtensions.Setting.Text">
+					<text>CAMO SETTINGS</text>
+					<anchor>Middle</anchor>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Gap"/>
+
+				<li Class="XmlExtensions.Setting.Text">
+					<text>Select a camo per gun, most of the time is just a simple color swap but in some cases some details may change, refer to the mod page to preview the options. This setting only affects the base gun and does not affect ideology styles.</text>
+					<font>Tiny</font>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Gap"/>
+
+				<li Class="XmlExtensions.Setting.SplitColumn">
+					<gapSize>70</gapSize>
+					<leftCol>
+
+						<li Class="XmlExtensions.Setting.Text">
+							<text>KRISS Vector</text>
+							<font>Small</font>
+							<anchor>Middle</anchor>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap">
+							<spacing>2</spacing>
+						</li>
+
+						<li Class="XmlExtensions.Setting.RadioButtons">
+							<key>KRISSVectorGenI_Camo</key>
+							<defaultValue>HRK_KRISSVectorGenI_Tan</defaultValue>
+							<buttons>
+								<li>
+									<value>HRK_KRISSVectorGenI_Black</value>
+									<label>Black/Base</label>
+								</li>
+								<li>
+									<value>HRK_KRISSVectorGenI_Tan</value>
+									<label>Tan/Desert</label>
+								</li>
+								<li>
+									<value>HRK_KRISSVectorGenI_White</value>
+									<label>Snow/White</label>
+								</li>
+							</buttons>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap"/>
+
+						<li Class="XmlExtensions.Setting.Text">
+							<text>KRISS Vector Gen.II</text>
+							<font>Small</font>
+							<anchor>Middle</anchor>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap">
+							<spacing>2</spacing>
+						</li>
+
+						<li Class="XmlExtensions.Setting.RadioButtons">
+							<key>KRISSVectorGenII_Camo</key>
+							<defaultValue>HRK_KRISSVectorGenII_White</defaultValue>
+							<buttons>
+								<li>
+									<value>HRK_KRISSVectorGenII_Black</value>
+									<label>Black/Base</label>
+								</li>
+								<li>
+									<value>HRK_KRISSVectorGenII_Tan</value>
+									<label>Tan/Desert</label>
+								</li>
+								<li>
+									<value>HRK_KRISSVectorGenII_White</value>
+									<label>Snow/White</label>
+								</li>
+							</buttons>
+						</li>
+
+					</leftCol>
+					<rightCol>
+
+						<li Class="XmlExtensions.Setting.Text">
+							<text>KRISS Vector ACP</text>
+							<font>Small</font>
+							<anchor>Middle</anchor>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap">
+							<spacing>2</spacing>
+						</li>
+
+						<li Class="XmlExtensions.Setting.RadioButtons">
+							<key>KRISSVectorACP_Camo</key>
+							<defaultValue>HRK_KRISSVectorACP_Black</defaultValue>
+							<buttons>
+								<li>
+									<value>HRK_KRISSVectorACP_Black</value>
+									<label>Black/Base</label>
+								</li>
+								<li>
+									<value>HRK_KRISSVectorACP_Tan</value>
+									<label>Tan/Desert</label>
+								</li>
+								<li>
+									<value>HRK_KRISSVectorACP_White</value>
+									<label>Snow/White</label>
+								</li>
+							</buttons>
+						</li>
+
+					</rightCol>
+				</li>
+
+				<li Class="XmlExtensions.Setting.GapLine"/>
+				<li Class="XmlExtensions.Setting.Text">
+					<text>Remember any change of the settings needs a restart to take effect.</text>
+					<font>Tiny</font>
+				</li>
+				<li Class="XmlExtensions.Setting.Gap"/>
+				<li Class="XmlExtensions.Setting.ResetSettings"/>
+				<li Class="XmlExtensions.Setting.Gap"/>
+
+			</settings>
+		</XmlExtensions.SettingsMenuDef>
+	<!-- FN SCAR SETTINGS DEFS -->
+		<XmlExtensions.SettingsMenuDef>
+			<defName>HRK_settings_GunNutFNSCAR</defName>
+			<modId>Harkon.GunNut.FNSCAR</modId>
+			<label>Gun Nut - FN SCAR</label>
+			<settings>
+
+				<li Class="XmlExtensions.Setting.Text">
+					<text>Gun Nut - FN SCAR</text>
+					<font>Medium</font>
+					<anchor>Middle</anchor>
+				</li>
+
+				<!-- ========== CAMO SETTINGS ========== -->
+
+				<li Class="XmlExtensions.Setting.GapLine"/>
+				<li Class="XmlExtensions.Setting.Text">
+					<text>CAMO SETTINGS</text>
+					<anchor>Middle</anchor>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Gap"/>
+
+				<li Class="XmlExtensions.Setting.Text">
+					<text>Select a camo per gun, most of the time is just a simple color swap but in some cases some details may change, refer to the mod page to preview the options. This setting only affects the base gun and does not affect ideology styles.</text>
+					<font>Tiny</font>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Gap"/>
+
+				<li Class="XmlExtensions.Setting.SplitColumn">
+					<gapSize>70</gapSize>
+					<leftCol>
+						<li Class="XmlExtensions.Setting.Text">
+							<text>FN SCAR L</text>
+							<font>Small</font>
+							<anchor>Middle</anchor>
+						</li>
+						<li Class="XmlExtensions.Setting.Gap">
+							<spacing>2</spacing>
+						</li>
+						<li Class="XmlExtensions.Setting.RadioButtons">
+							<key>FNSCARL_Camo</key>
+							<defaultValue>HRK_FNSCARL_Tan</defaultValue>
+							<buttons>
+								<li>
+									<value>HRK_FNSCARL_Black</value>
+									<label>Black/Base</label>
+								</li>
+								<li>
+									<value>HRK_FNSCARL_Tan</value>
+									<label>Tan/Desert</label>
+								</li>
+								<li>
+									<value>HRK_FNSCARL_White</value>
+									<label>Snow/White</label>
+								</li>
+							</buttons>
+						</li>
+						<li Class="XmlExtensions.Setting.Gap"/>
+						<li Class="XmlExtensions.Setting.Text">
+							<text>FN SCAR H</text>
+							<font>Small</font>
+							<anchor>Middle</anchor>
+						</li>
+						<li Class="XmlExtensions.Setting.Gap">
+							<spacing>2</spacing>
+						</li>
+						<li Class="XmlExtensions.Setting.RadioButtons">
+							<key>FNSCARH_Camo</key>
+							<defaultValue>HRK_FNSCARH_Black</defaultValue>
+							<buttons>
+								<li>
+									<value>HRK_FNSCARH_Black</value>
+									<label>Black/Base</label>
+								</li>
+								<li>
+									<value>HRK_FNSCARH_Tan</value>
+									<label>Tan/Desert</label>
+								</li>
+								<li>
+									<value>HRK_FNSCARH_White</value>
+									<label>Snow/White</label>
+								</li>
+							</buttons>
+						</li>
+						<li Class="XmlExtensions.Setting.Gap"/>
+						<li Class="XmlExtensions.Setting.Text">
+							<text>FN MK 20 SSR</text>
+							<font>Small</font>
+							<anchor>Middle</anchor>
+						</li>
+						<li Class="XmlExtensions.Setting.Gap">
+							<spacing>2</spacing>
+						</li>
+						<li Class="XmlExtensions.Setting.RadioButtons">
+							<key>FNSSR_Camo</key>
+							<defaultValue>HRK_FNSSR_Tan</defaultValue>
+							<buttons>
+								<li>
+									<value>HRK_FNSSR_Black</value>
+									<label>Black/Base</label>
+								</li>
+								<li>
+									<value>HRK_FNSSR_Tan</value>
+									<label>Tan/Desert</label>
+								</li>
+								<li>
+									<value>HRK_FNSSR_White</value>
+									<label>Snow/White</label>
+								</li>
+							</buttons>
+						</li>
+					</leftCol>
+					<rightCol>
+						<li Class="XmlExtensions.Setting.Text">
+							<text>FN SCAR L SOF</text>
+							<font>Small</font>
+							<anchor>Middle</anchor>
+						</li>
+						<li Class="XmlExtensions.Setting.Gap">
+							<spacing>2</spacing>
+						</li>
+						<li Class="XmlExtensions.Setting.RadioButtons">
+							<key>FNSCARL_C_Camo</key>
+							<defaultValue>HRK_FNSCARL_C_Tan</defaultValue>
+							<buttons>
+								<li>
+									<value>HRK_FNSCARL_C_Black</value>
+									<label>Black/Base</label>
+								</li>
+								<li>
+									<value>HRK_FNSCARL_C_Tan</value>
+									<label>Tan/Desert</label>
+								</li>
+								<li>
+									<value>HRK_FNSCARL_C_White</value>
+									<label>Snow/White</label>
+								</li>
+							</buttons>
+						</li>
+						<li Class="XmlExtensions.Setting.Gap"/>
+						<li Class="XmlExtensions.Setting.Text">
+							<text>FN SCAR H Marksman</text>
+							<font>Small</font>
+							<anchor>Middle</anchor>
+						</li>
+						<li Class="XmlExtensions.Setting.Gap">
+							<spacing>2</spacing>
+						</li>
+						<li Class="XmlExtensions.Setting.RadioButtons">
+							<key>FNSCARH_C_Camo</key>
+							<defaultValue>HRK_FNSCARH_C_Black</defaultValue>
+							<buttons>
+								<li>
+									<value>HRK_FNSCARH_C_Black</value>
+									<label>Black/Base</label>
+								</li>
+								<li>
+									<value>HRK_FNSCARH_C_Tan</value>
+									<label>Tan/Desert</label>
+								</li>
+								<li>
+									<value>HRK_FNSCARH_C_White</value>
+									<label>Snow/White</label>
+								</li>
+							</buttons>
+						</li>
+					</rightCol>
+				</li>
+				<li Class="XmlExtensions.Setting.GapLine"/>
+				<li Class="XmlExtensions.Setting.Text">
+					<text>Remember any change of the settings needs a restart to take effect.</text>
+					<font>Tiny</font>
+				</li>
+				<li Class="XmlExtensions.Setting.Gap"/>
+				<li Class="XmlExtensions.Setting.ResetSettings"/>
+				<li Class="XmlExtensions.Setting.Gap"/>
+			</settings>
+		</XmlExtensions.SettingsMenuDef>
+	<!-- KELTEC SETTINGS DEFS -->
+		<XmlExtensions.SettingsMenuDef>
+			<defName>HRK_settings_GunNutKelTec</defName>
+			<modId>Harkon.GunNut.KelTec</modId>
+			<label>Gun Nut - Kel-Tec</label>
+			<settings>
+
+				<li Class="XmlExtensions.Setting.Text">
+					<text>Gun Nut - Kel-Tec Firearms</text>
+					<font>Medium</font>
+					<anchor>Middle</anchor>
+				</li>
+
+				<!-- ========== CAMO SETTINGS ========== -->
+
+				<li Class="XmlExtensions.Setting.GapLine"/>
+				<li Class="XmlExtensions.Setting.Text">
+					<text>CAMO SETTINGS</text>
+					<anchor>Middle</anchor>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Gap"/>
+
+				<li Class="XmlExtensions.Setting.Text">
+					<text>Select a camo per gun, most of the time is just a simple color swap but in some cases some details may change, refer to the mod page to preview the options. This setting only affects the base gun and does not affect ideology styles.</text>
+					<font>Tiny</font>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Gap"/>
+
+				<li Class="XmlExtensions.Setting.SplitColumn">
+					<gapSize>70</gapSize>
+					<leftCol>
+
+						<li Class="XmlExtensions.Setting.Text">
+							<text>Kel-Tec CP33</text>
+							<font>Small</font>
+							<anchor>Middle</anchor>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap">
+							<spacing>2</spacing>
+						</li>
+
+						<li Class="XmlExtensions.Setting.RadioButtons">
+							<key>KelTecCP33P_Camo</key>
+							<defaultValue>HRK_KelTecCP33P_Black</defaultValue>
+							<buttons>
+								<li>
+									<value>HRK_KelTecCP33P_Black</value>
+									<label>Black/Base</label>
+								</li>
+								<li>
+									<value>HRK_KelTecCP33P_Tan</value>
+									<label>Tan/Desert</label>
+								</li>
+								<li>
+									<value>HRK_KelTecCP33P_White</value>
+									<label>Snow/White</label>
+								</li>
+							</buttons>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap"/>
+
+						<li Class="XmlExtensions.Setting.Text">
+							<text>Kel-Tec RFB</text>
+							<font>Small</font>
+							<anchor>Middle</anchor>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap">
+							<spacing>2</spacing>
+						</li>
+
+						<li Class="XmlExtensions.Setting.RadioButtons">
+							<key>KelTecRFB_Camo</key>
+							<defaultValue>HRK_KelTecRFB_Black</defaultValue>
+							<buttons>
+								<li>
+									<value>HRK_KelTecRFB_Black</value>
+									<label>Black/Base</label>
+								</li>
+								<li>
+									<value>HRK_KelTecRFB_Tan</value>
+									<label>Tan/Desert</label>
+								</li>
+								<li>
+									<value>HRK_KelTecRFB_White</value>
+									<label>Snow/White</label>
+								</li>
+							</buttons>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap"/>
+
+						<li Class="XmlExtensions.Setting.Text">
+							<text>Kel-Tec KSG</text>
+							<font>Small</font>
+							<anchor>Middle</anchor>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap">
+							<spacing>2</spacing>
+						</li>
+
+						<li Class="XmlExtensions.Setting.RadioButtons">
+							<key>KelTecKSG_Camo</key>
+							<defaultValue>HRK_KelTecKSG_Black</defaultValue>
+							<buttons>
+								<li>
+									<value>HRK_KelTecKSG_Black</value>
+									<label>Black/Base</label>
+								</li>
+								<li>
+									<value>HRK_KelTecKSG_Tan</value>
+									<label>Tan/Desert</label>
+								</li>
+								<li>
+									<value>HRK_KelTecKSG_White</value>
+									<label>Snow/White</label>
+								</li>
+							</buttons>
+						</li>
+
+
+						<li Class="XmlExtensions.Setting.Text">
+							<text>Kel-Tec RDB</text>
+							<font>Small</font>
+							<anchor>Middle</anchor>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap">
+							<spacing>2</spacing>
+						</li>
+
+						<li Class="XmlExtensions.Setting.RadioButtons">
+							<key>KelTecRDB_C_Camo</key>
+							<defaultValue>HRK_KelTecRDB_C_Black</defaultValue>
+							<buttons>
+								<li>
+									<value>HRK_KelTecRDB_C_Black</value>
+									<label>Black/Base</label>
+								</li>
+								<li>
+									<value>HRK_KelTecRDB_C_Tan</value>
+									<label>Tan/Desert</label>
+								</li>
+								<li>
+									<value>HRK_KelTecRDB_C_White</value>
+									<label>Snow/White</label>
+								</li>
+							</buttons>
+						</li>
+
+					</leftCol>
+					<rightCol>
+
+						<li Class="XmlExtensions.Setting.Text">
+							<text>Kel-Tec P50</text>
+							<font>Small</font>
+							<anchor>Middle</anchor>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap">
+							<spacing>2</spacing>
+						</li>
+
+						<li Class="XmlExtensions.Setting.RadioButtons">
+							<key>KelTecP50P_Camo</key>
+							<defaultValue>HRK_KelTecP50P_Black</defaultValue>
+							<buttons>
+								<li>
+									<value>HRK_KelTecP50P_Black</value>
+									<label>Black/Base</label>
+								</li>
+								<li>
+									<value>HRK_KelTecP50P_Tan</value>
+									<label>Tan/Desert</label>
+								</li>
+								<li>
+									<value>HRK_KelTecP50P_White</value>
+									<label>Snow/White</label>
+								</li>
+							</buttons>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap"/>
+
+						<li Class="XmlExtensions.Setting.Text">
+							<text>Kel-Tec RFB Hunter</text>
+							<font>Small</font>
+							<anchor>Middle</anchor>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap">
+							<spacing>2</spacing>
+						</li>
+
+						<li Class="XmlExtensions.Setting.RadioButtons">
+							<key>KelTecRFB_C_Camo</key>
+							<defaultValue>HRK_KelTecRFB_C_Black</defaultValue>
+							<buttons>
+								<li>
+									<value>HRK_KelTecRFB_C_Black</value>
+									<label>Black/Base</label>
+								</li>
+								<li>
+									<value>HRK_KelTecRFB_C_Tan</value>
+									<label>Tan/Desert</label>
+								</li>
+								<li>
+									<value>HRK_KelTecRFB_C_White</value>
+									<label>Snow/White</label>
+								</li>
+							</buttons>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap"/>
+
+						<li Class="XmlExtensions.Setting.Text">
+							<text>Kel-Tec KSG-25</text>
+							<font>Small</font>
+							<anchor>Middle</anchor>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap">
+							<spacing>2</spacing>
+						</li>
+
+						<li Class="XmlExtensions.Setting.RadioButtons">
+							<key>KelTecKSG25S_Camo</key>
+							<defaultValue>HRK_KelTecKSG25S_Black</defaultValue>
+							<buttons>
+								<li>
+									<value>HRK_KelTecKSG25S_Black</value>
+									<label>Black/Base</label>
+								</li>
+								<li>
+									<value>HRK_KelTecKSG25S_Tan</value>
+									<label>Tan/Desert</label>
+								</li>
+								<li>
+									<value>HRK_KelTecKSG25S_White</value>
+									<label>Snow/White</label>
+								</li>
+							</buttons>
+						</li>
+
+					</rightCol>
+				</li>
+
+				<!-- ========== MISC SETTINGS ========== -->
+				<li Class="XmlExtensions.Setting.GapLine" MayRequire="CETeam.CombatExtended"/>
+				<li Class="XmlExtensions.Setting.Text" MayRequire="CETeam.CombatExtended">
+					<text>MISC SETTINGS</text>
+					<anchor>Middle</anchor>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Gap" MayRequire="CETeam.CombatExtended"/>
+
+				<li Class="XmlExtensions.Setting.Text" MayRequire="CETeam.CombatExtended">
+					<text>- BE CAREFUL CHANGING THIS SETTING MID SAVE, UNLOAD ANY KSG OR KSG-25 AND DROP THEM ON THE GROUND TO MINIMIZE POSSIBLE ERRORS!</text>
+					<font>Tiny</font>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Gap" MayRequire="CETeam.CombatExtended"/>
+
+				<li Class="XmlExtensions.Setting.Checkbox" MayRequire="CETeam.CombatExtended">
+					<key>toggleKSGUBGLSystem</key>
+					<label>Use the attachment/UBGL system for the  KSG and the KSG-25</label>
+					<tooltip>Change the KSG and the KSG-25 to use the UBGL system. If active the two tubes will be able to be realoaded individualy with different 12g shells.</tooltip>
+					<defaultValue>false</defaultValue>
+				</li>
+
+				<li Class="XmlExtensions.Setting.GapLine"/>
+				<li Class="XmlExtensions.Setting.Text">
+					<text>Remember any change of the settings needs a restart to take effect.</text>
+					<font>Tiny</font>
+				</li>
+				<li Class="XmlExtensions.Setting.Gap"/>
+				<li Class="XmlExtensions.Setting.ResetSettings"/>
+				<li Class="XmlExtensions.Setting.Gap"/>
+
+			</settings>
+		</XmlExtensions.SettingsMenuDef>
+	<!-- DESERT TECH SETTINGS DEFS -->
+		<XmlExtensions.SettingsMenuDef>
+			<defName>HRK_settings_GunNutDesertTech</defName>
+			<modId>Harkon.GunNut.DesertTech</modId>
+			<label>Gun Nut - Desert Tech</label>
+			<settings>
+
+				<li Class="XmlExtensions.Setting.Text">
+					<text>Gun Nut - Desert Tech Firearms</text>
+					<font>Medium</font>
+					<anchor>Middle</anchor>
+				</li>
+
+				<!-- ========== CAMO SETTINGS ========== -->
+
+				<li Class="XmlExtensions.Setting.GapLine"/>
+				<li Class="XmlExtensions.Setting.Text">
+					<text>CAMO SETTINGS</text>
+					<anchor>Middle</anchor>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Gap"/>
+
+				<li Class="XmlExtensions.Setting.Text">
+					<text>Select a camo per gun, most of the time is just a simple color swap but in some cases some details may change, refer to the mod page to preview the options. This setting only affects the base gun and does not affect ideology styles.</text>
+					<font>Tiny</font>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Gap"/>
+
+				<li Class="XmlExtensions.Setting.SplitColumn">
+					<gapSize>70</gapSize>
+					<leftCol>
+
+						<li Class="XmlExtensions.Setting.Text">
+							<text>DT MDRX</text>
+							<font>Small</font>
+							<anchor>Middle</anchor>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap">
+							<spacing>2</spacing>
+						</li>
+
+						<li Class="XmlExtensions.Setting.RadioButtons">
+							<key>DTMDRX_Camo</key>
+							<defaultValue>HRK_DTMDRX_Tan</defaultValue>
+							<buttons>
+								<li>
+									<value>HRK_DTMDRX_Black</value>
+									<label>Black/Base</label>
+								</li>
+								<li>
+									<value>HRK_DTMDRX_Tan</value>
+									<label>Tan/Desert</label>
+								</li>
+								<li>
+									<value>HRK_DTMDRX_White</value>
+									<label>Snow/White</label>
+								</li>
+							</buttons>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap"/>
+
+						<li Class="XmlExtensions.Setting.Text">
+							<text>DT MDRX .308</text>
+							<font>Small</font>
+							<anchor>Middle</anchor>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap">
+							<spacing>2</spacing>
+						</li>
+
+						<li Class="XmlExtensions.Setting.RadioButtons">
+							<key>DT308MDRX_Camo</key>
+							<defaultValue>HRK_DT308MDRX_Black</defaultValue>
+							<buttons>
+								<li>
+									<value>HRK_DT308MDRX_Black</value>
+									<label>Black/Base</label>
+								</li>
+								<li>
+									<value>HRK_DT308MDRX_Tan</value>
+									<label>Tan/Desert</label>
+								</li>
+								<li>
+									<value>HRK_DT308MDRX_White</value>
+									<label>Snow/White</label>
+								</li>
+							</buttons>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap"/>
+
+						<li Class="XmlExtensions.Setting.Text">
+							<text>DT SRS</text>
+							<font>Small</font>
+							<anchor>Middle</anchor>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap">
+							<spacing>2</spacing>
+						</li>
+
+						<li Class="XmlExtensions.Setting.RadioButtons">
+							<key>DTSRS_Camo</key>
+							<defaultValue>HRK_DTSRS_Tan</defaultValue>
+							<buttons>
+								<li>
+									<value>HRK_DTSRS_Black</value>
+									<label>Black/Base</label>
+								</li>
+								<li>
+									<value>HRK_DTSRS_Tan</value>
+									<label>Tan/Desert</label>
+								</li>
+								<li>
+									<value>HRK_DTSRS_White</value>
+									<label>Snow/White</label>
+								</li>
+							</buttons>
+						</li>
+
+
+						<li Class="XmlExtensions.Setting.Text">
+							<text>DT HTI</text>
+							<font>Small</font>
+							<anchor>Middle</anchor>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap">
+							<spacing>2</spacing>
+						</li>
+
+						<li Class="XmlExtensions.Setting.RadioButtons">
+							<key>DTHTI_Camo</key>
+							<defaultValue>HRK_DTHTI_Black</defaultValue>
+							<buttons>
+								<li>
+									<value>HRK_DTHTI_Black</value>
+									<label>Black/Base</label>
+								</li>
+								<li>
+									<value>HRK_DTHTI_Tan</value>
+									<label>Tan/Desert</label>
+								</li>
+								<li>
+									<value>HRK_DTHTI_White</value>
+									<label>Snow/White</label>
+								</li>
+							</buttons>
+						</li>
+
+					</leftCol>
+					<rightCol>
+
+						<li Class="XmlExtensions.Setting.Text">
+							<text>DT MDRX SD</text>
+							<font>Small</font>
+							<anchor>Middle</anchor>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap">
+							<spacing>2</spacing>
+						</li>
+
+						<li Class="XmlExtensions.Setting.RadioButtons">
+							<key>DTMDRX_C_Camo</key>
+							<defaultValue>HRK_DTMDRX_C_Tan</defaultValue>
+							<buttons>
+								<li>
+									<value>HRK_DTMDRX_C_Black</value>
+									<label>Black/Base</label>
+								</li>
+								<li>
+									<value>HRK_DTMDRX_C_Tan</value>
+									<label>Tan/Desert</label>
+								</li>
+								<li>
+									<value>HRK_DTMDRX_C_White</value>
+									<label>Snow/White</label>
+								</li>
+							</buttons>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap"/>
+
+						<li Class="XmlExtensions.Setting.Text">
+							<text>DT MDRX .308 SD</text>
+							<font>Small</font>
+							<anchor>Middle</anchor>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap">
+							<spacing>2</spacing>
+						</li>
+
+						<li Class="XmlExtensions.Setting.RadioButtons">
+							<key>DT308MDRX_C_Camo</key>
+							<defaultValue>HRK_DT308MDRX_C_Black</defaultValue>
+							<buttons>
+								<li>
+									<value>HRK_DT308MDRX_C_Black</value>
+									<label>Black/Base</label>
+								</li>
+								<li>
+									<value>HRK_DT308MDRX_C_Tan</value>
+									<label>Tan/Desert</label>
+								</li>
+								<li>
+									<value>HRK_DT308MDRX_C_White</value>
+									<label>Snow/White</label>
+								</li>
+							</buttons>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap"/>
+
+						<li Class="XmlExtensions.Setting.Text">
+							<text>DT MICRON</text>
+							<font>Small</font>
+							<anchor>Middle</anchor>
+						</li>
+
+						<li Class="XmlExtensions.Setting.Gap">
+							<spacing>2</spacing>
+						</li>
+
+						<li Class="XmlExtensions.Setting.RadioButtons">
+							<key>DTMicron_Camo</key>
+							<defaultValue>HRK_DTMicron_White</defaultValue>
+							<buttons>
+								<li>
+									<value>HRK_DTMicron_Black</value>
+									<label>Black/Base</label>
+								</li>
+								<li>
+									<value>HRK_DTMicron_Tan</value>
+									<label>Tan/Desert</label>
+								</li>
+								<li>
+									<value>HRK_DTMicron_White</value>
+									<label>Snow/White</label>
+								</li>
+							</buttons>
+						</li>
+
+					</rightCol>
+				</li>
+
+				<li Class="XmlExtensions.Setting.GapLine"/>
+				<li Class="XmlExtensions.Setting.Text">
+					<text>Remember any change of the settings needs a restart to take effect.</text>
+					<font>Tiny</font>
+				</li>
+				<li Class="XmlExtensions.Setting.Gap"/>
+				<li Class="XmlExtensions.Setting.ResetSettings"/>
+				<li Class="XmlExtensions.Setting.Gap"/>
+
+			</settings>
+		</XmlExtensions.SettingsMenuDef>
+	<!-- GUN NUT SETTINGS DEFS -->
+		<XmlExtensions.SettingsMenuDef>
+			<defName>HRK_settings_GunNutCORE</defName>
+			<modId>Harkon.GunNut.CORE</modId>
+			<label>Gun Nut - CORE</label>
+			<settings>
+
+				<li Class="XmlExtensions.Setting.Text">
+					<text>Gun Nut - CORE</text>
+					<font>Medium</font>
+					<anchor>Middle</anchor>
+				</li>
+
+				<!-- ========== REALISTIC FIREARM LABELS ========== -->
+
+				<li Class="XmlExtensions.Setting.GapLine"/>
+				<li Class="XmlExtensions.Setting.Text">
+					<text>REALISTIC NAMES</text>
+					<anchor>Middle</anchor>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Gap"/>
+
+				<li Class="XmlExtensions.Setting.Text">
+					<text>Changes names of firearms in these mods to the real counterpart to fit better with other Gun Nut mods (Assault Rifle -> M16A3).</text>
+					<font>Tiny</font>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Gap"/>
+
+				<li Class="XmlExtensions.Setting.Checkbox">
+					<key>toggleCORENames</key>
+					<label>Vanilla</label>
+					<defaultValue>true</defaultValue>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Checkbox">
+					<key>toggleCENames</key>
+					<label>Combat Extended</label>
+					<defaultValue>true</defaultValue>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Checkbox">
+					<key>toggleVWENames</key>
+					<label>Vanilla Weapons Expanded</label>
+					<defaultValue>true</defaultValue>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Checkbox">
+					<key>toggleVWEFNames</key>
+					<label>Vanilla Weapons Expanded - Frontier</label>
+					<defaultValue>true</defaultValue>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Checkbox">
+					<key>toggleVWEQNames</key>
+					<label>Vanilla Weapons Expanded - Quickdraw</label>
+					<defaultValue>true</defaultValue>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Checkbox">
+					<key>toggleVFESNames</key>
+					<label>Vanilla Factions Expanded - Settlers</label>
+					<defaultValue>true</defaultValue>
+				</li>
+
+				<!-- ========== SOUND SETTINGS ========== -->
+
+				<li Class="XmlExtensions.Setting.GapLine"/>
+				<li Class="XmlExtensions.Setting.Text">
+					<text>SOUND SETTINGS</text>
+					<anchor>Middle</anchor>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Gap"/>
+
+				<li Class="XmlExtensions.Setting.Text">
+					<text>Replace the sounds of real firearms with more realistic and unique ones.</text>
+					<font>Tiny</font>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Gap"/>
+
+				<li Class="XmlExtensions.Setting.Checkbox">
+					<key>replaceCoreGrenadeSound</key>
+					<label>Grenades</label>
+					<defaultValue>true</defaultValue>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Checkbox">
+					<key>replaceCoreWeaponSound</key>
+					<label>Vanilla</label>
+					<defaultValue>true</defaultValue>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Checkbox">
+					<key>replaceVWEWeaponSound</key>
+					<label>Vanilla Expanded</label>
+					<defaultValue>true</defaultValue>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Checkbox">
+					<key>replaceCEWeaponSound</key>
+					<label>Combat Extended (disabled until CE 1.4 release)</label>
+					<defaultValue>true</defaultValue>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Checkbox">
+					<key>replaceCEGunsWeaponSound</key>
+					<label>Combat Extended Guns (disabled until CE 1.4 release)</label>
+					<defaultValue>true</defaultValue>
+				</li>
+
+				<!-- ========== TEXTURE SETTINGS ========== -->
+
+				<li Class="XmlExtensions.Setting.GapLine"/>
+				<li Class="XmlExtensions.Setting.Text">
+					<text>TEXTURE SETTINGS</text>
+					<anchor>Middle</anchor>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Gap"/>
+
+				<li Class="XmlExtensions.Setting.Text">
+					<text>Replace the textures of other mods to make them fit more with gun nut.</text>
+					<font>Tiny</font>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Gap"/>
+
+				<li Class="XmlExtensions.Setting.Text">
+					<text>WORK IN PROGRESS, settings for replacers will be added at a later date.</text>
+				</li>
+
+				<!-- ========== RESEARCH SETTINGS ========== -->
+
+				<li Class="XmlExtensions.Setting.GapLine"/>
+				<li Class="XmlExtensions.Setting.Text">
+					<text>RESEARCH SETTINGS</text>
+					<anchor>Middle</anchor>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Gap"/>
+
+				<li Class="XmlExtensions.Setting.Text">
+					<text>Depending of the mods you have you may want to tweak these values or put them to 0 if you dont have a gun in the category. Sorry no better way to do this at this moment.</text>
+					<font>Tiny</font>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Gap"/>
+
+				<li Class="XmlExtensions.Setting.Textbox">
+					<key>GunNutResearchCost</key>
+					<label>Attachments and modifications cost</label>
+					<defaultValue>1250</defaultValue>
+				</li>        
+
+				<!-- ========== MISC TWEAKS ========== -->
+
+				<li Class="XmlExtensions.Setting.GapLine"/>
+				<li Class="XmlExtensions.Setting.Text">
+					<text>MISC TWEAKS</text>
+					<anchor>Middle</anchor>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Gap"/>
+
+				<li Class="XmlExtensions.Setting.Text">
+					<text>A collection of misc tweaks and fixes. Hover over each setting to see what it does.</text>
+					<font>Tiny</font>
+				</li>
+
+				<li Class="XmlExtensions.Setting.Gap"/>
+
+				<li Class="XmlExtensions.Setting.Checkbox">
+					<key>LoadingBenchMachining</key>
+					<label>Loading Bench back to machining (CE)</label>
+					<defaultValue>true</defaultValue>
+					<tooltip>Moves the loading bench back to machining from gunsmithingsince reloading ammo is not the same as crafting weapons.</tooltip>
+				</li>
+
+				<li Class="XmlExtensions.Setting.GapLine"/>
+				<li Class="XmlExtensions.Setting.Text">
+					<text>Remember any change of the settings needs a restart to take effect.</text>
+					<font>Tiny</font>
+				</li>
+				<li Class="XmlExtensions.Setting.Gap"/>
+				<li Class="XmlExtensions.Setting.ResetSettings"/>
+				<li Class="XmlExtensions.Setting.Gap"/>
+
+			</settings>
+		</XmlExtensions.SettingsMenuDef>
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+	<!--  -->
+</Defs>

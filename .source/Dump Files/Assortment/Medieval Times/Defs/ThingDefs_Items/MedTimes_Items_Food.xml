@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!-- Start of ThingDefs --> 
+<!-- ========================= Meal Base Classes ==========================-->
+<!-- Meals Base Class -->  
+  <ThingDef Name="MedTimes_MealBase"  Abstract="True">
+    <thingClass>ThingWithComps</thingClass>
+    <category>Item</category>
+    <resourceReadoutPriority>Last</resourceReadoutPriority>
+    <useHitPoints>true</useHitPoints>
+    <selectable>true</selectable>
+    <altitudeLayer>Item</altitudeLayer>
+    <alwaysHaulable>true</alwaysHaulable>
+    <drawGUIOverlay>true</drawGUIOverlay>
+    <rotatable>false</rotatable>
+    <tickerType>Rare</tickerType>	
+    <pathCost>15</pathCost>
+    <stackLimit>10</stackLimit>	
+    <socialPropernessMatters>true</socialPropernessMatters>
+    <thingCategories><li>FoodMeals</li></thingCategories>
+    <statBases>
+		<MaxHitPoints>50</MaxHitPoints>
+		<Flammability>1.0</Flammability>
+		<DeteriorationRate>20</DeteriorationRate>
+		<MarketValue>10</MarketValue>	  
+		<WorkToMake>600</WorkToMake>	
+		<Mass>0.5</Mass>	
+		<Beauty>-4</Beauty>	  
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>	
+      <li Class="CompProperties_Ingredients" />
+      <li Class="CompProperties_FoodPoisonable" />
+    </comps>
+    <ingestible>
+      <foodType>Meal</foodType>
+      <maxNumToIngestAtOnce>1</maxNumToIngestAtOnce>
+      <optimalityOffsetHumanlikes>16</optimalityOffsetHumanlikes>
+      <ingestEffect>EatVegetarian</ingestEffect>
+      <ingestSound>Meal_Eat</ingestSound>  
+    </ingestible>
+  </ThingDef>  
+
+  
+<!-- ========================= Actual Meals ==========================-->
+<!--==============  Stews ===============-->
+<!-- Hearty Stew -->   
+  <ThingDef ParentName="MedTimes_MealBase">
+    <defName>MedTimes_MealHeartyStew</defName>
+    <label>Hearty Stew</label>
+    <description>A Hearty Stew, containing various ingredients, and cooked in a reasonable amount of time.</description>
+    <graphicData>
+      <texPath>Things/Item/Meal/Stew/MedTimes_HeartyStew</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+		<MarketValue>20</MarketValue>
+		<Nutrition>0.9</Nutrition>
+    </statBases>
+    <ingestible>
+      <preferability>MealFine</preferability>
+	  <tasteThought>MedTimes_AteHeartyStew</tasteThought>	  
+      <optimalityOffsetHumanlikes>15</optimalityOffsetHumanlikes>	  
+    </ingestible>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>4</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+    </comps>		
+  </ThingDef>
+
+  
+ <!-- Weak Stew --> 
+  <ThingDef ParentName="MedTimes_MealBase">
+    <defName>MedTimes_MealWeakStew</defName>
+    <label>Weak Stew</label>
+    <description>A simple stew quickly cooked from a few ingredients.</description>
+    <graphicData>
+      <texPath>Things/Item/Meal/Stew/MedTimes_WeakStew</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+		<MarketValue>10</MarketValue>
+		<Nutrition>0.8</Nutrition>
+    </statBases>	
+    <ingestible>
+      <preferability>MealSimple</preferability>
+	  <tasteThought>MedTimes_AteWeakStew</tasteThought>	 	  
+      <optimalityOffsetHumanlikes>10</optimalityOffsetHumanlikes>	  
+    </ingestible>	
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>4</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+    </comps>	
+  </ThingDef>
+
+
+  
+<!-- ============= Preserved Foods ============= -->
+<!-- Cheese -->
+  <ThingDef ParentName="MedTimes_MealBase">
+    <defName>MedTimes_MealCheese</defName>
+    <label>Cheese</label>
+    <description>Cheese is made from milk and is a by-product of coagulation of the milk's proteins.</description>
+    <graphicData>
+      <texPath>Things/Item/Meal/Cheese/MedTimes_Cheese</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(0.7,0.7)</drawSize>	  
+    </graphicData>
+    <statBases>
+		<Nutrition>0.85</Nutrition>
+    </statBases>	
+    <ingestible>
+      <preferability>MealSimple</preferability>
+	  <tasteThought>MedTimes_AteCheese</tasteThought>	  
+      <optimalityOffsetHumanlikes>20</optimalityOffsetHumanlikes>	  
+    </ingestible>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>45</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+    </comps>	
+  </ThingDef>
+  
+  
+<!-- Jerked Meats -->
+  <ThingDef ParentName="MedTimes_MealBase">
+    <defName>MedTimes_MealJerkedMeats</defName>
+    <label>Jerked Meats</label>
+    <description>Meats that have been smoked and dried out to help preserve them for long periods of time.</description>
+    <graphicData>
+      <texPath>Things/Item/Meal/Jerked/MedTimes_JerkedMeats</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(0.9,0.9)</drawSize>	  
+    </graphicData>
+    <statBases>
+		<Nutrition>0.85</Nutrition>
+    </statBases>	
+    <ingestible>
+      <preferability>MealAwful</preferability>		   
+    </ingestible>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>45</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+    </comps>	
+  </ThingDef>  
+
+  
+<!-- Dried Agave Fruit -->
+  <ThingDef ParentName="MedTimes_MealBase">
+    <defName>MedTimes_MealDriedAgave</defName>
+    <label>Dried Agave</label>
+    <description>Agave Fruits that have been smoked and dried out to help preserve them for long periods of time.</description>
+    <graphicData>
+      <texPath>Things/Item/Meal/DriedFruits/MedTimes_DriedFruits_Agave</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(0.7,0.7)</drawSize>	  
+    </graphicData>
+    <statBases>
+		<Nutrition>0.8</Nutrition>
+    </statBases>	
+    <ingestible>
+      <preferability>MealAwful</preferability>		  
+    </ingestible>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>35</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+    </comps>	
+  </ThingDef>   
+  
+  
+  <!-- Dried Berries -->
+  <ThingDef ParentName="MedTimes_MealBase">
+    <defName>MedTimes_MealDriedBerries</defName>
+    <label>Dried Berries</label>
+    <description>Various Berries that have been smoked and dried out to help preserve them for long periods of time.</description>
+    <graphicData>
+      <texPath>Things/Item/Meal/DriedFruits/MedTimes_DriedFruits_Berries</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(0.6,0.6)</drawSize>	  
+    </graphicData>
+    <statBases>
+		<Nutrition>0.8</Nutrition>
+    </statBases>	
+    <ingestible>
+      <preferability>MealAwful</preferability>					
+    </ingestible>
+    <comps>
+      <li Class="CompProperties_Rottable">
+        <daysToRotStart>35</daysToRotStart>
+        <rotDestroys>true</rotDestroys>
+      </li>
+    </comps>	
+  </ThingDef>  
+  
+<!-- End of ThingDefs -->   
+</Defs>

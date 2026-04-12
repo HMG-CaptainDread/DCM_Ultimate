@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>              
+
+    <!-- Check if ASFstorage exists -->
+    <Operation Class="PatchOperationConditional">
+        <success>Always</success>
+        <xpath>Defs/DesignationCategoryDef[defName="ASFstorage"]</xpath>
+        
+        <!-- If it doesn't, add it -->
+        <nomatch Class="PatchOperationAdd">
+            <xpath>Defs</xpath>
+            <value>
+                <DesignationCategoryDef>
+                    <defName>ASFstorage</defName>
+                    <label>storage</label>
+                    <order>503</order>
+                    <specialDesignatorClasses>
+                        <li>Designator_Cancel</li>
+                        <li>Designator_Deconstruct</li>
+                    </specialDesignatorClasses>
+                </DesignationCategoryDef>
+            </value>
+        </nomatch>
+    </Operation>
+
+
+<!-- CORE PATCHES -->
+                <Operation Class="PatchOperationAdd">
+                    <success>Always</success>
+                    <xpath>Defs/ThingDef[defName="ShelfSmall"]</xpath>
+                    <value>
+                        <designationCategory>ASFstorage</designationCategory>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationAdd">
+                    <success>Always</success>
+                    <xpath>Defs/ThingDef[defName="Shelf"]</xpath>
+                    <value>
+                        <designationCategory>ASFstorage</designationCategory>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationReplace">
+                    <success>Always</success>
+                    <xpath>Defs/ThingDef[@Name="BookcaseBase"]/designationCategory</xpath>
+                    <value>
+                        <designationCategory>ASFstorage</designationCategory>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationAdd">
+                    <success>Always</success>
+                    <xpath>Defs/ThingDef[defName="Bookcase"]</xpath>
+                    <value>
+                        <designationCategory>ASFstorage</designationCategory>
+                    </value>
+                </Operation>
+                <Operation Class="PatchOperationAdd">
+                    <success>Always</success>
+                    <xpath>Defs/ThingDef[defName="BookcaseSmall"]</xpath>
+                    <value>
+                        <designationCategory>ASFstorage</designationCategory>
+                    </value>
+                </Operation>
+<!-- ZONE PATCHES -->
+	<Operation Class="PatchOperationAdd">
+    <success>Always</success>
+	  <xpath>/Defs/DesignationCategoryDef[defName="ASFstorage"]/specialDesignatorClasses</xpath>
+	  <value>
+        <li>Designator_ZoneAddStockpile_Resources</li>
+        <li>Designator_ZoneAddStockpile_Dumping</li>
+	  </value>
+	</Operation>
+
+    <Operation Class="PatchOperationReplace">
+        <success>Always</success>
+        <xpath>Defs/DesignationCategoryDef[defName="ASFstorage"]/order</xpath>
+        <value>
+            <order>597</order>
+        </value>
+    </Operation>
+</Patch>

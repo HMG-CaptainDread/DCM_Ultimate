@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+	<!-- PLANNED ADDITIONS -->
+
+
+	<!-- SIMPLE PROPAGANDA -->
+	<!-- BROADCAST PRECEPT -->
+	<PreceptDef Name="PropagandaBroadcast" Abstract="True">
+    <description>Use a console to hijack radio frequencies and ancient satelites in orbit to transmit an ideological message of your choosing.</description>
+    <issue>Ritual</issue>
+    <impact>Medium</impact>
+    <iconPath>SPUI/prop</iconPath>
+    <preceptClass>Precept_Ritual</preceptClass>
+    <ritualPatternBase>PropagandaBroadcast</ritualPatternBase>
+    <allowDuplicates>true</allowDuplicates>
+    <countsTowardsPreceptLimit>false</countsTowardsPreceptLimit>
+    <ignoreLimitsInEditMode>true</ignoreLimitsInEditMode>
+    <receivesExpectationsQualityOffset>true</receivesExpectationsQualityOffset>
+  </PreceptDef>
+  
+  <RitualTargetFilterDef>
+<defName>IdeoBuilding</defName>
+<fallBackToGatherSpot>true</fallBackToGatherSpot>
+<workerClass>RitualTargetFilter_IdeoBuilding</workerClass>
+</RitualTargetFilterDef>
+
+<RitualObligationTargetFilterDef>
+<defName>LightBall</defName>
+<workerClass>RitualObligationTargetWorker_LightBall</workerClass>
+<maxSpeakerDistance>12</maxSpeakerDistance>
+<thingDefs>
+<li>SP_Broadcaster</li>
+</thingDefs>
+</RitualObligationTargetFilterDef>
+
+  <PreceptDef ParentName="PropagandaBroadcast">
+    
+	<!-- defName and label should be pretty familiar. Here I'm creating a really generic ritual that could represent a church/worship service, lecture, or even comedy routine -->
+	<defName>PropagandaBroadcast</defName>
+	<label>propaganda broadcast</label>
+    
+	<!-- admittedly I'm not sure what this does, but I think it has to do with the chance that it appears in the randomly generated rituals -->
+	<preceptInstanceCountCurve>
+		<points>
+			<li>(0.6, 0)</li>
+			<li>(1.0, 1)</li>
+      </points>
+	</preceptInstanceCountCurve>
+	
+	<!-- this is stuff that was normally inherited from the parent, but that seems to mess up behaviors and especially the mod extensions down the line -->
+	<description>Use a console to hijack radio frequencies and ancient satelites in orbit to transmit an ideological message of your choosing.</description>
+    <issue>Ritual</issue>
+    <impact>Medium</impact>
+    <iconPath>SPUI/prop</iconPath>
+    <preceptClass>Precept_Ritual</preceptClass>
+    <ritualPatternBase>PropagandaBroadcast</ritualPatternBase>
+    <allowDuplicates>true</allowDuplicates>
+    <countsTowardsPreceptLimit>true</countsTowardsPreceptLimit>
+    <ignoreLimitsInEditMode>true</ignoreLimitsInEditMode>
+    <receivesExpectationsQualityOffset>true</receivesExpectationsQualityOffset>
+	
+	<!-- now with modExtensions! Override the base cooldown -->  
+	<modExtensions>
+			<li Class="TPRitualAttachableOutcomes.Precept_Ritual_Custom">
+				<coolDownDays>7</coolDownDays>
+			</li>
+	</modExtensions>
+  </PreceptDef>
+
+
+  <!-- RITUAL PATTERN -->
+  <RitualPatternDef>
+		<defName>PropagandaBroadcast</defName>
+		<ritualFreeStartIntervalDaysRange>0.1</ritualFreeStartIntervalDaysRange>
+		<!-- ritual behavior is defined in another def. We'll get to that in a bit -->
+		<ritualBehavior>PropagandaBroadcastBehavior</ritualBehavior>
+		<shortDescOverride>propaganda broadcast</shortDescOverride>
+		<descOverride>A speaker records a message to be sent while another pawn hjiacks a radio frequency or hacks into a satelite.</descOverride>
+		<!-- the outcome is also defined in another def, which we'll also get to -->
+		<ritualOutcomeEffect>PropBroadcastOutcome</ritualOutcomeEffect>
+		
+		<nameMaker>NamerRitualFestival</nameMaker>
+		<ritualExpectedDesc>Every year on {DATE}, {MEMBERS} want to send out a {RITUAL_labelDef}.</ritualExpectedDesc>
+		<iconPathOverride>SPUI/prop</iconPathOverride>
+		<canStartAnytime>true</canStartAnytime>
+		<ritualTargetFilter>IdeoBuilding</ritualTargetFilter>
+		<ritualObligationTriggers>
+			<li Class="RitualObligationTrigger_DateProperties">
+				<mustBePlayerIdeo>true</mustBePlayerIdeo>
+			</li>
+		</ritualObligationTriggers>
+		<ritualObligationTargetFilter>LightBall</ritualObligationTargetFilter>
+		<tags>
+			<li>IdeoService</li>
+		</tags>
+		<patternGroupTag>IdeoService</patternGroupTag>
+		
+	</RitualPatternDef>
+
+	<!-- DUTY -->
+	<DutyDef>
+		<defName>send_out_broadcast</defName>
+		<socialModeMax>Off</socialModeMax>
+		<thinkNode Class="ThinkNode_Priority">
+		  <subNodes>
+			<li Class="TPRitualAttachableOutcomes.JobGiver_MusicianPlayInstrument">
+				<thingDefNames>
+					<li>SP_Broadcaster</li>	
+				</thingDefNames>
+				<maxDistance>8</maxDistance>
+			</li>
+		  </subNodes>
+		</thinkNode>
+	</DutyDef>
+
+
+	<!-- RITUAL BEHAVIOUR -->
+	<!-- RitualBehavior - this is where you define what the pawns do during the ritual.-->
+
+	 <RitualBehaviorDef>
+		<defName>PropagandaBroadcastBehavior</defName>
+		<durationTicks>6000</durationTicks>
+		<spectatorsLabel>Participants</spectatorsLabel>
+		<spectatorGerund>participate</spectatorGerund>
+		
+		<!-- here we can override the roles needed for the ritual. In this case, we just need a moralist (other than the spectators, of course) -->
+		<roles>
+            <li Class="RitualRoleTag">
+				<label>speaker</label>
+				<id>speaker</id>
+				<tag>Moralist</tag>
+				<precept>IdeoRole_Moralist</precept>
+				<required>True</required>
+				<substitutable>false</substitutable>
+				<maxCount>1</maxCount>
+				<countsAsParticipant>False</countsAsParticipant>
+			</li>
+			
+			<!-- anyone can be the musician. May later make a quality based on if a musician was present and their Artistic skill -->
+			<li Class="RitualRoleColonist">
+				<label>operator</label>
+				<id>operator</id>
+				<required>true</required>
+				<substitutable>true</substitutable>
+				<maxCount>1</maxCount>
+				<countsAsParticipant>False</countsAsParticipant>
+			</li>
+			
+			<!-- if we wanted to define more roles involved we would add another li tag like the above -->
+		</roles>
+		
+		<stages>
+			
+			<!-- wait for arrival -->
+
+			<!-- opening hymns, optional if musical instrument is available -->
+			<!-- speaker speaks -->
+			<!-- each of these outermost li tags is one stage of the ritual -->
+			<li>
+				<!-- the default duty is what everyone who doesn't have a roleBehavior assigned will do -->
+				<defaultDuty>Spectate</defaultDuty>
+				<essential>False</essential>
+				<!-- different things can end the stage, but the most common is time based.  The duration percentages are the duration of the total time each step should take, so they should add to 1 --> 
+				<endTriggers>
+				  <li Class="StageEndTrigger_DurationPercentage">
+					<percentage>0.7</percentage>
+				  </li>
+				</endTriggers>
+				<!-- this just sends a message to the top bar thing -->
+				<postAction Class="RitualStageAction_Message">
+					<text>{0}: Recording is done. The operator will now upload it.</text>
+					<messageTypeDef>NeutralEvent</messageTypeDef>
+				</postAction>
+				<!-- here's where you can define behaviors for each of the ritual's roles. Note that it's the role they take in the ritual, not necessarily the Ideoligion --> 
+				<roleBehaviors>
+				  <li>
+					<roleId>speaker</roleId>
+					<dutyDef>SpeakOnCell</dutyDef>
+					<speakerInteraction>Speech_Leader</speakerInteraction>
+					<customPositions>
+					  <li Class="RitualPosition_Lectern">
+						<maxDistanceToFocus>5</maxDistanceToFocus>
+					  </li>
+					  <li Class="RitualPosition_BesideThing" />
+					</customPositions>
+				  </li>
+				  <li>
+					<roleId>operator</roleId>
+					<dutyDef>ArriveToCell</dutyDef>
+					<speakerInteraction>Speech_DateRitual</speakerInteraction>
+					<customPositions>
+					  <li Class="RitualPosition_OnInteractionCell"/>
+					</customPositions>
+				  </li>
+				</roleBehaviors>
+			</li>
+		  <!-- quiet contemplation -->
+		  <li>
+			<defaultDuty>Spectate</defaultDuty>
+			<endTriggers>
+			  <li Class="StageEndTrigger_DurationPercentage">
+				<percentage>0.3</percentage>
+			  </li>
+			</endTriggers>
+				<roleBehaviors>
+
+				  <li>
+					<roleId>operator</roleId>
+					<dutyDef>StandOnCell</dutyDef>
+					<speakerInteraction>Speech_DateRitual</speakerInteraction>
+					<customPositions>
+					  <li Class="RitualPosition_OnInteractionCell"/>
+					</customPositions>
+				  </li>
+				</roleBehaviors>
+		  </li>
+		</stages>
+
+	  </RitualBehaviorDef>
+	<!-- RITUAL OUTCOME -->
+	<!-- RitualOucomeEffect defines what effects the quality, as well as the outcome (worst/bad/good/best) -->
+  
+  <RitualOutcomeEffectDef>
+    <defName>PropBroadcastOutcome</defName>
+    <description>Depending on propaganda quality, participants will get between {MINMOOD} and {MAXMOOD} mood for {MOODDAYS} days.</description>
+    <!-- the workerclass can actually do things on the outcome, but more or less the 'default' is RitualOutcomeEffectWorker_FromQuality for a ritual affected by quality -->
+	<!-- the mod framework has a TPRitualAttachableOutcomes.RitualOutcomeEffectWorker_FromQuality_TP_Custom which allows <modExtensions> in this definition that otherwise works exactly like the RitualAttachableOutcomeEffects -->
+	<workerClass>TPRitualAttachableOutcomes.RitualOutcomeEffectWorker_FromQuality_TP_Custom</workerClass>
+	<extraPredictedOutcomeDescriptions>
+<li>If the {0} is Satisfying or Spectacular, the ideoligion certainty of the participants will be increased and pawns of other ideoligions will have their certainty reduced.</li>
+<li>If the {0} is Spectacular, someone might decide to join your colony.</li>
+<!-- <li>If the {0} is Satisfying, a participant may gain an inspiration.</li> -->
+<li>If the {0} is Terrible, the broadcast might attract a group of angry raiders.</li>
+</extraPredictedOutcomeDescriptions>
+    <!-- whether this ritual should allow attachable outcomes. Defaults to true if not supplied -->
+    <allowAttachableOutcome>false</allowAttachableOutcome>
+    <comps>
+	  <!-- these comps define what affects the quality of the ritual and by how much --> 	
+      <li Class="RitualOutcomeComp_BuildingOfDefUsed">
+        <def>Lectern</def>
+		<!-- for a speech it's cool if they have a lectern -->
+        <qualityOffset>0.2</qualityOffset>
+        <maxHorDistFromTarget>5</maxHorDistFromTarget>
+      </li>
+	        <li Class="RitualOutcomeComp_BuildingOfDefUsed">
+        <def>SP_Antenna</def>
+		<!-- for a speech it's cool if they have a lectern -->
+        <qualityOffset>0.2</qualityOffset>
+        <maxHorDistFromTarget>50</maxHorDistFromTarget>
+      </li>
+	<li Class="RitualOutcomeComp_PawnStatScaled">
+<label>{PAWN_labelShort}'s social impact</label>
+<labelAbstract>speaker's social impact</labelAbstract>
+<roleId>moralist</roleId>
+<statDef>SocialImpact</statDef>
+<curve>
+<points>
+<li>(0.2, 0.0)</li>
+<li>(0.6, 0.18)</li>
+<li>(1.0, 0.25)</li>
+<li>(1.5, 0.3)</li>
+</points>
+</curve>
+</li>
+	<li Class="RitualOutcomeComp_PawnStatScaled">
+<label>{PAWN_labelShort}'s technical abilities</label>
+<labelAbstract>operator's technical skills</labelAbstract>
+<roleId>operator</roleId>
+<statDef>ResearchSpeed</statDef>
+<curve>
+<points>
+<li>(0.2, 0.0)</li>
+<li>(0.6, 0.18)</li>
+<li>(1.0, 0.25)</li>
+<li>(1.5, 0.3)</li>
+</points>
+</curve>
+</li>
+</comps>
+
+    <outcomeChances>
+      <li>
+        <label>Terrible</label>
+		<!-- these chances should add up to 1 -->
+		<chance>0.03</chance>
+        <!-- memories will be defined later -->
+		<memory>TerribleService</memory>
+		<!-- this is just a bit of flavor text, but that's really important for a role-play heavy DLC :) -->
+        <description>The {0} was terrible! The speaker droned on and didn't make any good points. The speech said nothing new or interesting, and the recipients surely got upset with this interruption.</description>
+        <!-- in theory you could create your own set of outcomes, more than 4, and have more than -2/-1/+1/+2 as positivityIndices. But mostly I'd leave this alone -->
+		<positivityIndex>-2</positivityIndex>
+      </li>
+      <li>
+        <label>Boring</label>
+        <chance>0.17</chance>
+        <memory>BoringService</memory>
+        <description>The {0} was boring. The speech was filled with shallow platitudes but the speaker tried too hard to engage the listeners and not enough to discuss the topic.</description>
+        <positivityIndex>-1</positivityIndex>
+      </li>
+      <li>
+        <label>Satisfying</label>
+        <chance>0.7</chance>
+		<ideoCertaintyOffset>0.5</ideoCertaintyOffset>
+        <memory>SatisfyingService</memory>
+        <description>The {0} was satisfying. The speech felt meaningful and gave everyone something to think about.</description>
+        <positivityIndex>1</positivityIndex>
+      </li>
+      <li>
+        <label>Spectacular</label>
+        <chance>0.1</chance>
+		<ideoCertaintyOffset>1</ideoCertaintyOffset>
+        <memory>SpectacularService</memory>
+        <description>The {0} was spectacular! The speaker really hit on some deep issues but presented it in a manner everyone could understand. Listeners surely were convinced!</description>
+        <positivityIndex>2</positivityIndex>
+      </li>
+    </outcomeChances>
+	<modExtensions>
+<li Class="TPRitualAttachableOutcomes.RitualAttachableOutcomeEffectDef_TP_Custom">
+<triggerPositivityIndex>
+<li>-2</li>
+</triggerPositivityIndex>
+<node>
+<li Class="TPRitualAttachableOutcomes.RitualAttachableOutcomeEffectDef_TP_Custom_Node">
+<incident>RaidEnemy</incident>
+				<incidentParms Class="TPRitualAttachableOutcomes.IncidentParmsCustom">
+					<scalePoints>true</scalePoints>
+					<myRaidStrategy>ImmediateAttack</myRaidStrategy>
+					<myRaidArrivalMode>EdgeWalkInGroups</myRaidArrivalMode>
+					<myFaction>Pirate</myFaction>
+</incidentParms>
+</li>
+</node>
+</li>
+<li Class="TPRitualAttachableOutcomes.RitualAttachableOutcomeEffectDef_TP_Custom">
+<triggerPositivityIndex>
+<li>1</li>
+</triggerPositivityIndex>
+<node>
+<li Class="TPRitualAttachableOutcomes.RitualAttachableOutcomeEffectDef_TP_Custom_Node">
+<inspiration>Inspired_Recruitment</inspiration>
+<invertApply>true</invertApply>
+<appliesTo>
+<li>leader</li>
+</appliesTo>
+<appliesToRandom>true</appliesToRandom>
+</li>
+</node>
+</li>
+<li Class="TPRitualAttachableOutcomes.RitualAttachableOutcomeEffectDef_TP_Custom">
+<triggerPositivityIndex>
+<li>2</li>
+</triggerPositivityIndex>
+<node>
+<li Class="TPRitualAttachableOutcomes.RitualAttachableOutcomeEffectDef_TP_Custom_Node">
+<incident>SP_BroadcastJoin</incident>
+				<incidentParms Class="TPRitualAttachableOutcomes.IncidentParmsCustom">
+					<myQuest>SP_WanderBroad</myQuest>
+</incidentParms>
+</li>
+</node>
+</li>
+	</modExtensions>
+	  </RitualOutcomeEffectDef>
+
+
+	<!-- THOUGHTS -->
+	<!-- ThoughtDefs for the outcomes! This is the last step for now -->
+  
+    <ThoughtDef>
+    <defName>TerribleService</defName>
+    <thoughtClass>Thought_AttendedRitual</thoughtClass>
+    <durationDays>6</durationDays>
+    <stackLimit>3</stackLimit>
+    <stages>
+      <li>
+        <label>terrible broadcast</label>
+        <description>The speech was awful. We had an chance to let everyone know of our achievements and we wasted it.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>BoringService</defName>
+    <thoughtClass>Thought_AttendedRitual</thoughtClass>
+    <durationDays>6</durationDays>
+    <stackLimit>3</stackLimit>
+    <stages>
+      <li>
+        <label>boring broadcast</label>
+        <description>The speech lacked something and the operator took way too long. What a shame.</description>
+        <baseMoodEffect>-2</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>SatisfyingService</defName>
+    <thoughtClass>Thought_AttendedRitual</thoughtClass>
+    <durationDays>6</durationDays>
+    <stackLimit>3</stackLimit>
+    <stages>
+      <li>
+        <label>satisfying broadcast</label>
+        <description>That was a lovely broadcast. We should do it again soon.</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>SpectacularService</defName>
+    <thoughtClass>Thought_AttendedRitual</thoughtClass>
+    <durationDays>6</durationDays>
+    <stackLimit>3</stackLimit>
+    <stages>
+      <li>
+        <label>spectacular broadcast</label>
+        <description>The broadcast was amazing! The speaker showcased everything great about our community. Surely it'll bring us positive attention.</description>
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

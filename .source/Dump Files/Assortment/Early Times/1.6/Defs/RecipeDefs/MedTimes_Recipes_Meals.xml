@@ -1,0 +1,507 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- ================================ Preserved Foods ============================= -->
+	<!-- ======= Jerked Meats ====== -->
+	<!-- (Medieval) Jerked Meats Single -->
+	<RecipeDef Name="DriedFoodRecipe" Abstract="true">
+		<workSpeedStat>CookSpeed</workSpeedStat>
+		<effectWorking>Cook</effectWorking>
+		<workSkill>Cooking</workSkill>
+		<soundWorking>Recipe_CookMeal</soundWorking>
+		<allowMixingIngredients>true</allowMixingIngredients>
+		<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+		<researchPrerequisite>MedTimes_DriedFood</researchPrerequisite>
+		<fixedIngredientFilter>
+			<categories/>
+			<disallowedThingDefs/>
+		</fixedIngredientFilter>
+	</RecipeDef>
+	<RecipeDef Name="DriedMeatRecipe" ParentName="DriedFoodRecipe" Abstract="true">
+		<recipeUsers>
+			<li>MedTimes_Smokehouse</li>
+		</recipeUsers>
+		<fixedIngredientFilter>
+			<categories>
+				<li>MeatRaw</li>
+			</categories>
+			<disallowedThingDefs>
+				<li>MedTimes_MealJerkedMeats</li>
+			</disallowedThingDefs>
+		</fixedIngredientFilter>
+		<defaultIngredientFilter>
+			<categories>
+				<li>MeatRaw</li>
+			</categories>
+			<disallowedCategories>
+				<li>EggsFertilized</li>
+			</disallowedCategories>
+			<disallowedThingDefs>
+				<li>Meat_Human</li>
+				<li>Meat_Megaspider</li>
+			</disallowedThingDefs>
+		</defaultIngredientFilter>
+	</RecipeDef>
+	<RecipeDef ParentName="DriedMeatRecipe">
+		<defName>MedTimes_CookMealJerkedMeats</defName>
+		<label>Cook Jerked Meats.</label>
+		<description>Cooks a somewhat simple food item from a complex process of drying meats over a fire.</description>
+		<jobString>Cooking and Jerking Meats.</jobString>
+		<workAmount>1200</workAmount>
+		<recipeUsers>
+			<li>MedTimes_StoneHearth</li>
+			<li>MedTimes_Firepit</li>
+			<li>Campfire</li>
+		</recipeUsers>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>MeatRaw</li>
+						<li>AnimalProductRaw</li>
+					</categories>
+				</filter>
+				<count>0.5</count>
+			</li>
+		</ingredients>
+		<products>
+			<MedTimes_MealJerkedMeats>10</MedTimes_MealJerkedMeats>
+		</products>
+		<skillRequirements>
+			<Cooking>3</Cooking>
+		</skillRequirements>
+	</RecipeDef>
+	<RecipeDef ParentName="DriedMeatRecipe">
+		<defName>MedTimes_CookMealJerkedMeatsBulk</defName>
+		<label>Bulk Cook 10 Jerked Meats.</label>
+		<description>Cooks a somewhat simple food item from a complex process of drying meats over a fire.</description>
+		<jobString>Cooking and Jerking Meats.</jobString>
+		<workAmount>5000</workAmount>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>MeatRaw</li>
+						<li>AnimalProductRaw</li>
+					</categories>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+		<products>
+			<MedTimes_MealJerkedMeats>100</MedTimes_MealJerkedMeats>
+		</products>
+		<skillRequirements>
+			<Cooking>6</Cooking>
+		</skillRequirements>
+	</RecipeDef>
+	<!-- ======= Dried Agave Fruits ====== -->
+	<RecipeDef ParentName="DriedFoodRecipe">
+		<defName>MedTimes_CookMealDriedAgaveFruit</defName>
+		<label>Cook Dried Agave Fruits.</label>
+		<description>Cooks a somewhat simple food item from a complex process of drying Agave fruits over a fire.</description>
+		<jobString>Cooking and drying fruits.</jobString>
+		<workAmount>1000</workAmount>
+		<recipeUsers>
+			<li>MedTimes_Smokehouse</li>
+			<li>MedTimes_StoneHearth</li>
+			<li>MedTimes_Firepit</li>
+			<li>Campfire</li>
+		</recipeUsers>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>RawAgave</li>
+					</thingDefs>
+				</filter>
+				<count>0.5</count>
+			</li>
+		</ingredients>
+		<products>
+			<MedTimes_MealDriedAgave>1</MedTimes_MealDriedAgave>
+		</products>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>RawAgave</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<skillRequirements>
+			<Cooking>3</Cooking>
+		</skillRequirements>
+	</RecipeDef>
+	<RecipeDef ParentName="DriedFoodRecipe">
+		<defName>MedTimes_CookMealDriedAgaveFruitBulk</defName>
+		<label>Bulk Cook 10 Dried Agave Fruits.</label>
+		<description>Cooks a somewhat simple food item from a complex process of drying Agave fruits over a fire.</description>
+		<jobString>Cooking and drying fruits.</jobString>
+		<workAmount>3000</workAmount>
+		<recipeUsers>
+			<li>MedTimes_Smokehouse</li>
+		</recipeUsers>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>RawAgave</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+		<products>
+			<MedTimes_MealDriedAgave>10</MedTimes_MealDriedAgave>
+		</products>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>RawAgave</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<skillRequirements>
+			<Cooking>6</Cooking>
+		</skillRequirements>
+	</RecipeDef>
+	<!-- ======= Dried Berries ====== -->
+	<RecipeDef ParentName="DriedFoodRecipe">
+		<defName>MedTimes_CookMealDriedBerries</defName>
+		<label>Cook Dried Berries.</label>
+		<description>Cooks a somewhat simple food item from a complex process of drying berries over a fire.</description>
+		<jobString>Cooking and drying fruits.</jobString>
+		<workAmount>1000</workAmount>
+		<recipeUsers>
+			<li>MedTimes_Smokehouse</li>
+			<li>MedTimes_StoneHearth</li>
+			<li>MedTimes_Firepit</li>
+			<li>Campfire</li>
+		</recipeUsers>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>RawBerries</li>
+					</thingDefs>
+				</filter>
+				<count>0.5</count>
+			</li>
+		</ingredients>
+		<products>
+			<MedTimes_MealDriedBerries>1</MedTimes_MealDriedBerries>
+		</products>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>RawBerries</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<skillRequirements>
+			<Cooking>3</Cooking>
+		</skillRequirements>
+	</RecipeDef>
+	<RecipeDef ParentName="DriedFoodRecipe">
+		<defName>MedTimes_CookMealDriedBerriesBulk</defName>
+		<label>Bulk Cook 10 Dried Berries.</label>
+		<description>Cooks a somewhat simple food item from a complex process of drying Berries over a fire.</description>
+		<jobString>Cooking and drying fruits.</jobString>
+		<workAmount>3000</workAmount>
+		<recipeUsers>
+			<li>MedTimes_Smokehouse</li>
+		</recipeUsers>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>RawBerries</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+		<products>
+			<MedTimes_MealDriedBerries>10</MedTimes_MealDriedBerries>
+		</products>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>RawBerries</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<skillRequirements>
+			<Cooking>6</Cooking>
+		</skillRequirements>
+	</RecipeDef>
+	<!-- ======= Cheese ====== -->
+	
+	<RecipeDef Name="CheeseFoodRecipe" Abstract="true">		
+	<workSpeedStat>CookSpeed</workSpeedStat>
+		<effectWorking>Cook</effectWorking>
+		<workSkill>Cooking</workSkill>
+		<soundWorking>Recipe_CookMeal</soundWorking>
+		<allowMixingIngredients>true</allowMixingIngredients>
+		<researchPrerequisite>MedTimes_Cheese</researchPrerequisite>
+		<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+		<recipeUsers>
+			<li>MedTimes_FoodPrepStation</li>
+			<li>FueledStove</li>
+			<li>ElectricStove</li>
+		</recipeUsers>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Milk</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="CheeseFoodRecipe">
+		<defName>MedTimes_CookMealCheese</defName>
+		<label>Create Cheese.</label>
+		<description>Cooks a somewhat simple food item from a complex process of adding an acidic, in most cases lemon juice to boiling milk and coagulating milk proteins together. Those proteins are than pressed together in a cloth to create cheese.</description>
+		<jobString>Coagulating milk into Cheese.</jobString>
+		<workAmount>1000</workAmount>
+		<recipeUsers>
+			<li>FueledStove</li>
+			<li>ElectricStove</li>
+			<li>MedTimes_FoodPrepStation</li>
+			<li>MedTimes_StoneHearth</li>
+		</recipeUsers>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Milk</li>
+					</thingDefs>
+				</filter>
+				<count>0.05</count>
+			</li>
+		</ingredients>
+		<products>
+			<MedTimes_MealCheese>1</MedTimes_MealCheese>
+		</products>
+		<skillRequirements>
+			<Cooking>3</Cooking>
+		</skillRequirements>
+	</RecipeDef>
+	<RecipeDef ParentName="CheeseFoodRecipe">
+		<defName>MedTimes_CookMealCheeseBulk</defName>
+		<label>Bulk Create 10 Cheese.</label>
+		<description>Cooks a somewhat simple food item from a complex process of adding an acidic, in most cases lemon juice to boiling milk and coagulating milk proteins together. Those proteins are than pressed together in a cloth to create cheese.</description>
+		<jobString>Coagulating milk into Cheese.</jobString>
+		<workAmount>3000</workAmount>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Milk</li>
+					</thingDefs>
+				</filter>
+				<count>0.5</count>
+			</li>
+		</ingredients>
+		<products>
+			<MedTimes_MealCheese>10</MedTimes_MealCheese>
+		</products>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Milk</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<skillRequirements>
+			<Cooking>6</Cooking>
+		</skillRequirements>
+	</RecipeDef>
+	<!-- ===================================== Stews ======================================== -->
+	<RecipeDef Name="StewFoodRecipe" Abstract="true">
+		<workSpeedStat>CookSpeed</workSpeedStat>
+		<workSkill>Cooking</workSkill>
+		<effectWorking>Cook</effectWorking>
+		<soundWorking>Recipe_CookMeal</soundWorking>
+		<allowMixingIngredients>true</allowMixingIngredients>
+		<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+		<researchPrerequisite>MedTimes_BasicCooking</researchPrerequisite>
+		<recipeUsers>
+			<li>MedTimes_FoodPrepStation</li>
+		</recipeUsers>
+		<fixedIngredientFilter>
+			<categories>
+				<li>FoodRaw</li>
+			</categories>
+			<specialFiltersToDisallow>
+				<li>AllowPlantFood</li>
+			</specialFiltersToDisallow>
+		</fixedIngredientFilter>
+		<defaultIngredientFilter>
+			<categories>
+				<li>FoodRaw</li>
+			</categories>
+			<disallowedCategories>
+				<li>EggsFertilized</li>
+			</disallowedCategories>
+			<disallowedThingDefs>
+				<li>Meat_Human</li>
+				<li>Meat_Megaspider</li>
+				<li>InsectJelly</li>
+				<li>Milk</li>
+			</disallowedThingDefs>
+		</defaultIngredientFilter>
+	</RecipeDef>
+	<!-- ======= Weak Stews ====== -->
+	<RecipeDef ParentName="StewFoodRecipe">
+		<defName>MedTimes_CookMealWeakStew</defName>
+		<label>Cook Weak Stew.</label>
+		<description>Cooks a straightforward stew from few ingredients.</description>
+		<jobString>Cooking a weak stew.</jobString>
+		<workAmount>600</workAmount>
+		<recipeUsers>
+			<li>FueledStove</li>
+			<li>ElectricStove</li>
+			<li>MedTimes_StoneHearth</li>
+			<li>MedTimes_Firepit</li>
+		</recipeUsers>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>FoodRaw</li>
+					</categories>
+				</filter>
+				<count>0.3</count>
+			</li>
+		</ingredients>
+		<products>
+			<MedTimes_MealWeakStew>1</MedTimes_MealWeakStew>
+		</products>
+	</RecipeDef>
+	<RecipeDef ParentName="StewFoodRecipe">
+		<defName>MedTimes_CookMealWeakStewBulk</defName>
+		<label>Bulk Cook 10 Weak Stew.</label>
+		<description>Cooks a straightforward stew from few ingredients.</description>
+		<jobString>Cooking a weak stew.</jobString>
+		<workAmount>1800</workAmount>
+		<recipeUsers>
+			<li>MedTimes_FoodPrepStation</li>
+		</recipeUsers>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>FoodRaw</li>
+					</categories>
+				</filter>
+				<count>3</count>
+			</li>
+		</ingredients>
+		<products>
+			<MedTimes_MealWeakStew>10</MedTimes_MealWeakStew>
+		</products>
+		<skillRequirements>
+			<Cooking>3</Cooking>
+		</skillRequirements>
+	</RecipeDef>
+	<!-- ======= Hearty Stews ====== -->
+	<RecipeDef ParentName="StewFoodRecipe">
+		<defName>MedTimes_CookMealHeartyStew</defName>
+		<label>Cook Hearty Stew.</label>
+		<description>Cooks a somewhat complex meal from a combination of raw meat and raw plant ingredients.</description>
+		<jobString>Cooking a hearty stew.</jobString>
+		<workAmount>600</workAmount>
+		<recipeUsers>
+			<li>FueledStove</li>
+			<li>ElectricStove</li>
+			<li>MedTimes_FoodPrepStation</li>
+			<li>MedTimes_StoneHearth</li>
+		</recipeUsers>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>MeatRaw</li>
+						<li>AnimalProductRaw</li>
+					</categories>
+				</filter>
+				<count>0.25</count>
+			</li>
+			<li>
+				<filter>
+					<categories>
+						<li>PlantFoodRaw</li>
+					</categories>
+				</filter>
+				<count>0.25</count>
+			</li>
+		</ingredients>
+		<products>
+			<MedTimes_MealHeartyStew>1</MedTimes_MealHeartyStew>
+		</products>
+		<skillRequirements>
+			<Cooking>3</Cooking>
+		</skillRequirements>
+	</RecipeDef>
+	<RecipeDef ParentName="StewFoodRecipe">
+		<defName>MedTimes_CookMealHeartyStewBulk</defName>
+		<label>Bulk Cook 10 Hearty Stew.</label>
+		<description>Cooks a somewhat complex meal from a combination of raw meat and raw plant ingredients.</description>
+		<jobString>Cooking a hearty stew.</jobString>
+		<workAmount>1800</workAmount>
+		<recipeUsers>
+			<li>MedTimes_FoodPrepStation</li>
+		</recipeUsers>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>MeatRaw</li>
+						<li>AnimalProductRaw</li>
+					</categories>
+				</filter>
+				<count>2.5</count>
+			</li>
+			<li>
+				<filter>
+					<categories>
+						<li>PlantFoodRaw</li>
+					</categories>
+				</filter>
+				<count>2.5</count>
+			</li>
+		</ingredients>
+		<products>
+			<MedTimes_MealHeartyStew>10</MedTimes_MealHeartyStew>
+		</products>
+		<skillRequirements>
+			<Cooking>6</Cooking>
+		</skillRequirements>
+	</RecipeDef>
+	<!-- Bulk meals -->
+	<RecipeDef ParentName="CookMealBase">
+		<defName>CookMealSimpleBulk</defName>
+		<label>cook simple meal x4</label>
+		<description>Cook a straightforward meal from one ingredient. x4</description>
+		<jobString>Cooking simple meal.</jobString>
+		<workSpeedStat>CookSpeed</workSpeedStat>
+		<requiredGiverWorkType>Cooking</requiredGiverWorkType>
+		<workSkill>Cooking</workSkill>
+		<effectWorking>Cook</effectWorking>
+		<soundWorking>Recipe_CookMeal</soundWorking>
+		<allowMixingIngredients>true</allowMixingIngredients>
+		<workAmount>960</workAmount>
+		<researchPrerequisite>MedTimes_BasicCooking</researchPrerequisite>
+		<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+		<recipeUsers>
+			<li>FueledStove</li>
+			<li>ElectricStove</li>
+			<li>MedTimes_FoodPrepStation</li>
+		</recipeUsers>
+		<ingredients>
+			<li>
+				<filter>
+					<categories>
+						<li>FoodRaw</li>
+					</categories>
+				</filter>
+				<count>2.0</count>
+			</li>
+		</ingredients>
+		<products>
+			<MealSimple>4</MealSimple>
+		</products>
+		<skillRequirements>
+			<Cooking>2</Cooking>
+		</skillRequirements>
+	</RecipeDef>
+</Defs>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- make writers' table stuffable -->
+  <Operation Class="PatchOperationSequence">
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VBE_WritersTable"]/label[text()="writers table"]</xpath>
+        <value>
+          <label>writers' table</label>
+        </value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VBE_WritersTable"]/graphicData/texPath</xpath>
+        <value>
+          <texPath>Things/Building/Production/TableWriters</texPath>
+          <shaderType>CutoutComplex</shaderType>
+        </value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VBE_WritersTable"]/costList/WoodLog[text()="120"]</xpath>
+        <value>
+          <WoodLog>20</WoodLog>
+        </value>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/ThingDef[defName="VBE_WritersTable"]/constructEffect</xpath>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="VBE_WritersTable"]</xpath>
+        <value>
+          <stuffCategories>
+            <li>Woody</li>
+            <li>Metallic</li>
+            <li>Stony</li>
+          </stuffCategories>
+          <costStuffCount>100</costStuffCount>
+        </value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VBE_WritersTable"]/designationCategory[text()="Misc"]</xpath>
+        <value>
+          <designationCategory>Production</designationCategory>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+  <!-- make typewriter table stuffable -->
+  <Operation Class="PatchOperationSequence">
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VBE_TypewritersTable"]/graphicData/texPath</xpath>
+        <value>
+          <texPath>Things/Building/Production/TableTypewriters</texPath>
+          <shaderType>CutoutComplex</shaderType>
+        </value>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/ThingDef[defName="VBE_TypewritersTable"]/costList/WoodLog[text()="100"]</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/ThingDef[defName="VBE_TypewritersTable"]/constructEffect</xpath>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="VBE_TypewritersTable"]</xpath>
+        <value>
+          <stuffCategories>
+            <li>Woody</li>
+            <li>Metallic</li>
+            <li>Stony</li>
+          </stuffCategories>
+          <costStuffCount>100</costStuffCount>
+        </value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VBE_TypewritersTable"]/designationCategory[text()="Misc"]</xpath>
+        <value>
+          <designationCategory>Production</designationCategory>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+  <!-- make typewriter table require writing+electricity (printing will unlock printing press and newspapers) -->
+  <Operation Class="PatchOperationSequence">
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VBE_TypewritersTable"]/researchPrerequisites/li[text()="VBE_Printing"]</xpath>
+        <value>
+          <li>VBE_Writing</li>
+          <li>Electricity</li>
+        </value>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="VBE_Newspaper"]/recipeMaker</xpath>
+        <value>
+          <researchPrerequisites>
+            <li>VBE_Printing</li>
+          </researchPrerequisites>
+        </value>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="VBE_Newspaper"]/recipeMaker/recipeUsers</xpath>
+        <value>
+          <li>VanillaBooksExpandedExpanded_PrintingPressElectric</li>
+          <li>VanillaBooksExpandedExpanded_PrintingPressManual</li>
+        </value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="VBE_Printing"]/description</xpath>
+        <value>
+          <description>Build a printing press, which allows your colonists to make copies of existing books, as well as write newspapers.</description>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+  <!-- introduce the concept of copyable books -->
+  <Operation Class="PatchOperationSequence">
+    <operations>
+      <li Class="PatchOperationAdd">
+        <success>Always</success>
+        <xpath>Defs/ThingDef[@Name="VBE_SkillBookBase" and not(comps)]</xpath>
+        <value>
+          <comps />
+        </value>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[@Name="VBE_SkillBookBase"]/comps</xpath>
+        <value>
+          <li>
+            <compClass>VanillaBooksExpandedExpanded.CompCopiedBook</compClass>
+          </li>
+        </value>
+      </li>
+      <!-- make copied books worth much less than originals -->
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/StatDef[@Name="MarketValueBase"]/parts</xpath>
+        <value>
+          <li Class="VanillaBooksExpandedExpanded.StatPart_CopiedBook">
+            <factorOriginal>1</factorOriginal>
+            <factorCopied>0.1</factorCopied>
+          </li>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+  <!-- add book burning -->
+  <Operation Class="PatchOperationSequence">
+    <operations>
+      <li Class="PatchOperationInsert">
+        <xpath>Defs/ThingDef/recipes/li[text()="BurnDrugs"]</xpath>
+        <value>
+          <li>VanillaBooksExpandedExpanded_BurnBooks</li>
+        </value>
+      </li>
+      <!-- compat -->
+      <li Class="PatchOperationFindMod">
+        <mods>
+          <li>Job Splitter</li>
+        </mods>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="VanillaBooksExpandedExpanded_BurnBooks"]/requiredGiverWorkType</xpath>
+          <value>
+            <requiredGiverWorkType>Mortifying</requiredGiverWorkType>
+          </value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+  <!-- take full control of the VBE JoyGiver -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/JoyGiverDef[defName="VBE_ReadBook"]/giverClass</xpath>
+    <value>
+      <giverClass>VanillaBooksExpandedExpanded.JoyGiver_ReadBook</giverClass>
+      <thingDefs>
+        <li>VBE_BookShooting</li>
+        <li>VBE_BookAnimals</li>
+        <li>VBE_BookArt</li>
+        <li>VBE_BookConstruction</li>
+        <li>VBE_BookCooking</li>
+        <li>VBE_BookCrafting</li>
+        <li>VBE_BookIntellectual</li>
+        <li>VBE_BookMedical</li>
+        <li>VBE_BookMelee</li>
+        <li>VBE_BookMining</li>
+        <li>VBE_BookGrowing</li>
+        <li>VBE_BookSocial</li>
+        <li>VBE_Newspaper</li>
+      </thingDefs>
+    </value>
+  </Operation>
+</Patch>

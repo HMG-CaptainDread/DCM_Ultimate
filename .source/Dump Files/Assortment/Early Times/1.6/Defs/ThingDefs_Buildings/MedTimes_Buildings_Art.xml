@@ -1,0 +1,481 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+    <!-- Start of ThingDefs -->
+    <!--  =========== Base Classes ============ -->
+    <!-- Artwork Base Class -->
+    <ThingDef Name="MedTimes_ArtworkBase" Abstract="True">
+        <category>Building</category>
+        <thingClass>Building_Art</thingClass>
+        <graphicData>
+            <damageData>
+                <cornerTL>Damage/Corner</cornerTL>
+                <cornerTR>Damage/Corner</cornerTR>
+                <cornerBL>Damage/Corner</cornerBL>
+                <cornerBR>Damage/Corner</cornerBR>
+                <edgeTop>Damage/Edge</edgeTop>
+                <edgeBot>Damage/Edge</edgeBot>
+                <edgeLeft>Damage/Edge</edgeLeft>
+                <edgeRight>Damage/Edge</edgeRight>
+            </damageData>
+        </graphicData>
+        <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+        <drawerType>MapMeshAndRealTime</drawerType>
+        <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+        <repairEffect>Repair</repairEffect>
+        <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+        <filthLeaving>Filth_RubbleBuilding</filthLeaving>
+        <castEdgeShadows>true</castEdgeShadows>
+        <useHitPoints>true</useHitPoints>
+        <altitudeLayer>Building</altitudeLayer>
+        <selectable>true</selectable>
+        <passability>PassThroughOnly</passability>
+        <pathCost>70</pathCost>
+        <fillPercent>0.5</fillPercent>
+        <statBases>
+			<MeditationFocusStrength>0.0</MeditationFocusStrength>
+        </statBases>
+        <recipeMaker>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Artistic</workSkill>
+            <unfinishedThingDef>UnfinishedSculpture</unfinishedThingDef>
+            <effectWorking>Sculpt</effectWorking>
+            <soundWorking>Recipe_Sculpt</soundWorking>
+            <recipeUsers>
+                <li>MedTimes_ArtisanStation</li>
+            </recipeUsers>
+        </recipeMaker>
+        <tradeTags>
+            <li>Art</li>
+        </tradeTags>
+    </ThingDef>
+    <!-- Artwork Sculpture Class -->
+    <ThingDef Name="MedTimes_ArtworkQuality" ParentName="MedTimes_ArtworkBase" Abstract="True">
+        <rotatable>false</rotatable>
+        <comps>
+            <li>
+                <compClass>CompQuality</compClass>
+            </li>
+        </comps>
+        <thingCategories>
+            <li>BuildingsArt</li>
+        </thingCategories>
+        <minifiedDef>MinifiedThing</minifiedDef>
+    </ThingDef>
+	
+    <!-- Artwork Sculpture Class -->
+    <ThingDef Name="MedTimes_ArtworkAnyQuality" ParentName="MedTimes_ArtworkQuality" Abstract="True">
+        <comps>
+            <li Class="CompProperties_Art">
+                <nameMaker>NamerArtSculpture</nameMaker>
+                <descriptionMaker>ArtDescription_Sculpture</descriptionMaker>
+            </li>
+        </comps>
+        <inspectorTabs>
+            <li>ITab_Art</li>
+        </inspectorTabs>
+    </ThingDef>
+	
+    <!-- Artwork Meditate Class -->
+	<ThingDef Name="MedTimes_ArtworkMeditate" ParentName="MedTimes_ArtworkAnyQuality" Abstract="True">
+        <comps>
+			<li Class="CompProperties_MeditationFocus">
+                <statDef>MeditationFocusStrength</statDef>
+                <focusTypes>
+                    <li>Artistic</li>
+                </focusTypes>
+                <offsets>
+                    <li Class="FocusStrengthOffset_Quality">
+                        <curve>
+                            <points>
+                                <li>(0,0.12)</li> <!-- awful -->
+                                <li>(1,0.16)</li> <!-- poor -->
+                                <li>(2,0.20)</li> <!-- normal -->
+                                <li>(3,0.22)</li> <!-- good -->
+                                <li>(4,0.24)</li> <!-- excellent -->
+                                <li>(5,0.26)</li> <!-- masterwork -->
+                                <li>(6,0.28)</li> <!-- legendary -->
+                            </points>
+                        </curve>
+                    </li>
+                    <li Class="FocusStrengthOffset_BuildingDefsWithQuality">
+                        <defs>
+                            <li>SculptureSmall</li>
+                            <li>SculptureLarge</li>
+                            <li>SculptureGrand</li>
+                            <li>MedTimes_IceSculptureSmall</li>
+                            <li>MedTimes_IceSculptureLarge</li>
+                            <li>MedTimes_IceSculptureGrand</li>
+                        </defs>
+                        <radius>9.9</radius>
+                        <maxBuildings>8</maxBuildings>
+                        <focusPerQuality>
+                            <points>
+                                <li>(0,0.0)</li> <!-- awful -->
+                                <li>(1,0.0)</li> <!-- poor -->
+                                <li>(2,0.01)</li> <!-- normal -->
+                                <li>(3,0.01)</li> <!-- good -->
+                                <li>(4,0.01)</li> <!-- excellent -->
+                                <li>(5,0.02)</li> <!-- masterwork -->
+                                <li>(6,0.02)</li> <!-- legendary -->
+                            </points>
+                        </focusPerQuality>
+                        <explanationKey>MeditationFocusPerSculpture</explanationKey>
+                        <explanationKeyAbstract>MeditationFocusPerSculptureAbstract</explanationKeyAbstract>
+                    </li>
+                </offsets>
+            </li>
+        </comps>
+		<placeWorkers>
+			<li>PlaceWorker_MeditationOffsetBuildingsNear</li>
+		</placeWorkers>
+    </ThingDef>
+    <!--  =========== Actual Artwork Buildings ============ -->
+    <!-- ========= Furniture ========= -->
+    <!-- "Full Muffaloon" Rug -->
+    <ThingDef ParentName="MedTimes_ArtworkQuality">
+        <defName>MedTimes_Rug_Muffalo</defName>
+        <label>"Full Muffaloon" Rug</label>
+        <description>A fancy rug embroidered from muffalo wool. It contains a mural of a muffalo as the primary subject. The scene takes place at night during a full moon, the light from the moon revealing a tragic story. The landscape is contains harsh tones and barren trees. Surrounding the muffalo is the dessicated corpses of what appears to be muffalo young-lings. The piece speaks to the harsh realities of living life on a rimworld.</description>
+        <graphicData>
+            <texPath>Things/Building/Art/Rugs/Muffalo/MedTimes_MuffaloRug</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>(2,2)</drawSize>
+        </graphicData>
+        <uiIconPath>Things/Building/Art/Rugs/Muffalo/MedTimes_MuffaloRug</uiIconPath>
+        <costList>
+            <WoolMuffalo>120</WoolMuffalo>
+        </costList>
+        <statBases>
+            <MaxHitPoints>100</MaxHitPoints>
+            <Beauty>65</Beauty>
+            <WorkToMake>50000</WorkToMake>
+            <Flammability>2</Flammability>
+            <Mass>5</Mass>
+        </statBases>
+        <size>(2,2)</size>
+        <altitudeLayer>FloorEmplacement</altitudeLayer>
+        <passability>Standable</passability>
+        <castEdgeShadows>false</castEdgeShadows>
+        <rotatable>true</rotatable>
+        <fillPercent>0</fillPercent>
+        <pathCost>0</pathCost>
+        <recipeMaker>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Artistic</workSkill>
+            <effectWorking>Tailor</effectWorking>
+            <soundWorking>Recipe_Tailor</soundWorking>
+            <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+            <researchPrerequisites>
+				<li>CarpetMaking</li>
+			</researchPrerequisites>
+            <recipeUsers>
+                <li>MedTimes_ArtisanStation</li>
+				<li>HandTailoringBench</li>
+				<li>ElectricTailoringBench</li>
+            </recipeUsers>
+        </recipeMaker>
+        <minifiedDef>MinifiedThing</minifiedDef>
+		<comps>
+            <li>
+                <compClass>CompQuality</compClass>
+            </li>
+        </comps>
+    </ThingDef>
+    <!-- "Tribal" Rug -->
+    <ThingDef ParentName="MedTimes_ArtworkQuality">
+        <defName>MedTimes_Rug_Tribal</defName>
+        <label>"Tribals" Rug</label>
+        <description>A fancy embroidered rug. It contains a mural of a wandering tribe as the primary subject. The scene takes place during the day. It contains two tribals and a what appears to be a white wolf all traveling in the same direction. The landscape is mostly desert with sparse life scattered amoung it's sand. The piece speaks to the natural unity of the tribe, and it's cautious momentum moving forward in a barren landscape.</description>
+        <graphicData>
+            <texPath>Things/Building/Art/Rugs/Tribal/MedTimes_TribalRug</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <shaderType>CutoutComplex</shaderType>
+            <drawSize>(2,2)</drawSize>
+        </graphicData>
+        <uiIconPath>Things/Building/Art/Rugs/Tribal/MedTimes_TribalRug</uiIconPath>
+        <stuffCategories>
+            <li>Fabric</li>
+        </stuffCategories>
+        <costStuffCount>120</costStuffCount>
+        <statBases>
+            <MaxHitPoints>100</MaxHitPoints>
+            <Beauty>65</Beauty>
+            <WorkToMake>50000</WorkToMake>
+            <Flammability>2</Flammability>
+            <Mass>2</Mass>
+        </statBases>
+        <size>(2,2)</size>
+        <altitudeLayer>FloorEmplacement</altitudeLayer>
+        <passability>Standable</passability>
+        <castEdgeShadows>false</castEdgeShadows>
+        <rotatable>true</rotatable>
+        <fillPercent>0</fillPercent>
+        <pathCost>0</pathCost>
+        <recipeMaker>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Artistic</workSkill>
+            <effectWorking>Tailor</effectWorking>
+            <soundWorking>Recipe_Tailor</soundWorking>
+            <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+			<researchPrerequisites>
+				<li>CarpetMaking</li>
+			</researchPrerequisites>
+            <recipeUsers>
+                <li>MedTimes_ArtisanStation</li>
+				<li>HandTailoringBench</li>
+				<li>ElectricTailoringBench</li>
+            </recipeUsers>
+        </recipeMaker>
+    </ThingDef>
+    <!-- ========= Ice Sculptures ========= -->
+    <!-- Small Ice Sculpture -->
+    <ThingDef ParentName="MedTimes_ArtworkMeditate">
+        <defName>MedTimes_IceSculptureSmall</defName> 
+        <label>Small Ice Sculpture</label>
+        <description>A torso-sized piece of material sculpted into an artistic form.</description>
+        <graphicData>
+            <graphicClass>Graphic_Random</graphicClass>
+            <texPath>Things/Building/Art/SculptureSmall</texPath>
+            <color>(180,210,230)</color>
+        </graphicData>
+        <tickerType>Normal</tickerType>
+        <fillPercent>0.35</fillPercent>
+        <statBases>
+            <MaxHitPoints>90</MaxHitPoints>
+            <Mass>10</Mass>
+            <Beauty>40</Beauty>
+            <WorkToMake>8000</WorkToMake>
+        </statBases>
+        <costList>
+            <MedTimes_Resource_IceBlocks>50</MedTimes_Resource_IceBlocks>
+        </costList>
+        <building>
+            <repairable>false</repairable>
+        </building>
+        <comps>
+            <li Class="CompProperties_Forbiddable" />
+            <li Class="EarlyTimes.CompProperties_HitpointRefuelable">
+                <fuelConsumptionRate>1.0</fuelConsumptionRate>
+                <destroyOnNoFuel>true</destroyOnNoFuel>
+                <fuelCapacity>20.0</fuelCapacity>
+                <fuelLabel>Ice Thickness</fuelLabel>
+                <initialFuelPercent>1</initialFuelPercent>
+                <fuelFilter>
+                    <thingDefs>
+                        <li>MedTimes_Resource_IceBlocks</li>
+                    </thingDefs>
+                </fuelFilter>
+            </li>
+            <li Class="EarlyTimes.CompProperties_HeatPusherIce">
+                <compClass>CompHeatPusher</compClass>
+                <heatPerSecond>-1</heatPerSecond>
+                <heatPushMinTemperature>1</heatPushMinTemperature>
+            </li>
+        </comps>
+        <recipeMaker>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Artistic</workSkill>
+            <unfinishedThingDef>UnfinishedSculpture</unfinishedThingDef>
+            <effectWorking>Sculpt</effectWorking>
+            <soundWorking>Recipe_Sculpt</soundWorking>
+            <researchPrerequisite>MedTimes_BasicArt</researchPrerequisite>
+            <recipeUsers>
+                <li>MedTimes_ArtisanStation</li>
+                <li>TableSculpting</li>
+            </recipeUsers>
+        </recipeMaker>
+    </ThingDef>
+    <!-- Large Ice Sculpture -->
+    <ThingDef ParentName="MedTimes_ArtworkMeditate">
+        <defName>MedTimes_IceSculptureLarge</defName>
+        <label>Large Ice Sculpture</label>
+        <description>A person-sized piece of material sculpted into an artistic form.</description>
+        <graphicData>
+            <graphicClass>Graphic_Random</graphicClass>
+            <texPath>Things/Building/Art/SculptureLarge</texPath>
+            <drawSize>(3,3)</drawSize>
+            <color>(180,210,230)</color>
+        </graphicData>
+        <tickerType>Normal</tickerType>
+        <fillPercent>0.5</fillPercent>
+        <statBases>
+            <MaxHitPoints>150</MaxHitPoints>
+            <Mass>25</Mass>
+            <Beauty>80</Beauty>
+            <WorkToMake>10000</WorkToMake>
+        </statBases>
+        <costList>
+            <MedTimes_Resource_IceBlocks>75</MedTimes_Resource_IceBlocks>
+        </costList>
+        <building>
+            <repairable>false</repairable>
+        </building>
+        <comps>
+            <li Class="CompProperties_Forbiddable" />
+            <li Class="EarlyTimes.CompProperties_HitpointRefuelable">
+                <fuelConsumptionRate>1.0</fuelConsumptionRate>
+                <destroyOnNoFuel>true</destroyOnNoFuel>
+                <fuelCapacity>40.0</fuelCapacity>
+                <fuelLabel>Ice Thickness</fuelLabel>
+                <initialFuelPercent>1</initialFuelPercent>
+                <fuelFilter>
+                    <thingDefs>
+                        <li>MedTimes_Resource_IceBlocks</li>
+                    </thingDefs>
+                </fuelFilter>
+            </li>
+            <li Class="EarlyTimes.CompProperties_HeatPusherIce">
+                <compClass>CompHeatPusher</compClass>
+                <heatPerSecond>-1</heatPerSecond>
+                <heatPushMinTemperature>1</heatPushMinTemperature>
+            </li>
+        </comps>
+        <recipeMaker>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Artistic</workSkill>
+            <unfinishedThingDef>UnfinishedSculpture</unfinishedThingDef>
+            <effectWorking>Sculpt</effectWorking>
+            <soundWorking>Recipe_Sculpt</soundWorking>
+            <researchPrerequisite>MedTimes_Art</researchPrerequisite>
+            <recipeUsers>
+                <li>TableSculpting</li>
+            </recipeUsers>
+        </recipeMaker>
+    </ThingDef>
+    <!-- Grand Ice Sculpture -->
+    <ThingDef ParentName="MedTimes_ArtworkMeditate">
+        <defName>MedTimes_IceSculptureGrand</defName>
+        <label>Grand Ice Sculpture</label>
+        <description>A car-sized piece of material sculpted into an artistic form.</description>
+        <graphicData>
+            <graphicClass>Graphic_Random</graphicClass>
+            <texPath>Things/Building/Art/SculptureGrand</texPath>
+            <drawSize>(4,4)</drawSize>
+            <color>(180,210,230)</color>
+        </graphicData>
+        <tickerType>Normal</tickerType>
+        <fillPercent>0.5</fillPercent>
+        <size>(2,2)</size>
+        <statBases>
+            <MaxHitPoints>250</MaxHitPoints>
+            <Beauty>170</Beauty>
+            <Mass>45</Mass>
+            <WorkToMake>15000</WorkToMake>
+        </statBases>
+        <costList>
+            <MedTimes_Resource_IceBlocks>150</MedTimes_Resource_IceBlocks>
+        </costList>
+        <building>
+            <repairable>false</repairable>
+        </building>
+        <comps>
+            <li Class="CompProperties_Forbiddable" />
+            <li Class="EarlyTimes.CompProperties_HitpointRefuelable">
+                <fuelConsumptionRate>1.0</fuelConsumptionRate>
+                <destroyOnNoFuel>true</destroyOnNoFuel>
+                <fuelCapacity>80.0</fuelCapacity>
+                <fuelLabel>Ice Thickness</fuelLabel>
+                <initialFuelPercent>1</initialFuelPercent>
+                <fuelFilter>
+                    <thingDefs>
+                        <li>MedTimes_Resource_IceBlocks</li>
+                    </thingDefs>
+                </fuelFilter>
+            </li>
+            <li Class="EarlyTimes.CompProperties_HeatPusherIce">
+                <compClass>CompHeatPusher</compClass>
+                <heatPerSecond>-1</heatPerSecond>
+                <heatPushMinTemperature>1</heatPushMinTemperature>
+            </li>
+        </comps>
+        <recipeMaker>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Artistic</workSkill>
+            <unfinishedThingDef>UnfinishedSculpture</unfinishedThingDef>
+            <effectWorking>Sculpt</effectWorking>
+            <soundWorking>Recipe_Sculpt</soundWorking>
+            <researchPrerequisite>MedTimes_Art</researchPrerequisite>
+            <recipeUsers>
+                <li>TableSculpting</li>
+            </recipeUsers>
+        </recipeMaker>
+    </ThingDef>
+	
+    <ThingDef ParentName="MedTimes_ArtworkQuality">
+        <defName>MedTimes_GodKingThrone</defName>
+        <label>God King's Throne</label>
+		
+		<thingClass>Building_Throne</thingClass>
+        <description>The kind of grandure reserved for only the glitterati of pompus postieriers. A large soft and comfy seat, Great for relaxation and lording over others in the room.</description>
+        <graphicData>
+            <texPath>Things/Building/Art/GodKingThrone/MedTimes_GodKingThrone</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawRotated>true</drawRotated>
+            <drawSize>(3,2)</drawSize>
+        </graphicData>
+		<size>(3,2)</size>
+        <uiIconPath>Things/Building/Art/GodKingThrone/MedTimes_GodKingThrone_Icon</uiIconPath>
+        <drawerType>MapMeshOnly</drawerType>
+        <rotatable>true</rotatable>
+        <altitudeLayer>Building</altitudeLayer>
+        <socialPropernessMatters>true</socialPropernessMatters>
+        <statBases>
+            <MaxHitPoints>220</MaxHitPoints>
+            <WorkToMake>50000</WorkToMake>
+            <Flammability>0.3</Flammability>
+            <Beauty>300</Beauty>
+            <Comfort>1.8</Comfort>
+            <Mass>25</Mass>
+			<MeditationFocusStrength>0.15</MeditationFocusStrength>
+        </statBases>
+		<comps>
+		  <li Class="CompProperties_AssignableToPawn">
+			<drawAssignmentOverlay>true</drawAssignmentOverlay>
+			<compClass>CompAssignableToPawn_Throne</compClass>
+		  </li>
+		  <li Class="CompProperties_MeditationFocus">
+			<statDef>MeditationFocusStrength</statDef>
+			<focusTypes>
+			  <li>Dignified</li>
+			</focusTypes>
+			<offsets>
+			  <li Class="FocusStrengthOffset_ThroneSatisfiesRequirements">
+				<offset>0.08</offset>
+			  </li>
+			  <li Class="FocusStrengthOffset_RoomImpressiveness">
+				<curve>
+				  <points>
+					<li>(0,   -0.05)</li>
+					<li>(30,   0.00)</li>
+					<li>(60,   0.04)</li>
+					<li>(100,  0.08)</li>
+					<li>(170,  0.10)</li>
+				  </points>
+				</curve>
+			  </li>
+			</offsets>
+		  </li>
+		</comps>
+        <costList>
+            <Steel>125</Steel>
+            <Gold>50</Gold>
+        </costList>
+        <pathCost>30</pathCost>
+        <fillPercent>0.40</fillPercent>
+        <building>
+            <isSittable>true</isSittable>
+        </building>
+        <recipeMaker>
+            <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+            <workSkill>Artistic</workSkill>
+            <unfinishedThingDef>UnfinishedSculpture</unfinishedThingDef>
+            <effectWorking>Sculpt</effectWorking>
+            <soundWorking>Recipe_Sculpt</soundWorking>
+            <researchPrerequisite>MedTimes_Religions</researchPrerequisite>
+            <recipeUsers Inherit="False">
+                <li>MedTimes_BlacksmithForgeTierTwo</li>
+            </recipeUsers>
+        </recipeMaker>
+		<drawPlaceWorkersWhileSelected>True</drawPlaceWorkersWhileSelected>
+    </ThingDef>
+</Defs>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>	
+
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/TerrainDef[defName = "SoilRich"]/affordances</xpath>
+    <value>
+		  <li>FertileSoil</li>
+    </value>
+  </Operation>
+  
+  <Operation Class="PatchOperationConditional">
+    <xpath>/Defs/TerrainDef[@Name = "WaterBase"]/affordances</xpath>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>/Defs/TerrainDef[@Name = "WaterBase"]</xpath>
+			<value>
+				<affordances />
+			</value>
+		</nomatch>
+	</Operation>  
+	
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/TerrainDef[@Name = "WaterBase"]/affordances</xpath>
+    <value>
+		<li>Water</li>
+    </value>
+  </Operation>
+  
+</Patch>

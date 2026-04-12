@@ -1,0 +1,975 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+		<Operation Class="PatchOperationSequence">
+			<operations>
+
+					<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[
+						defName = "CGF1_MWP_Turret_Becker_TypeM2_Aircraft_" or
+						defName = "CGF1_MWP_Turret_Becker_TypeM2_Infantry_" or
+						defName = "CGF1_MWP_Turret_Bergmann_MG02_" or	
+						defName = "CGF1_MWP_Turret_Dreyse_MG15_" or		
+						defName = "CGF1_MWP_Turret_Dreyse_MG15_18_" or		
+						defName = "CGF1_MWP_Turret_Fokker_Leimburger_" or		
+						defName = "CGF1_MWP_Turret_Gast_Gun_" or		
+						defName = "CGF1_MWP_Turret_Maxim_LMG08_15_" or		
+						defName = "CGF1_MWP_Turret_Maxim_LMG08_15_Zeppelin_" or		
+						defName = "CGF1_MWP_Turret_Maxim_MG01_" or		
+						defName = "CGF1_MWP_Turret_Maxim_MG08_" or		
+						defName = "CGF1_MWP_Turret_Maxim_MG08_15_" or		
+						defName = "CGF1_MWP_Turret_Maxim_MG08_18_" or		
+						defName = "CGF1_MWP_Turret_Maxim_MG16_" or		
+						defName = "CGF1_MWP_Turret_Maxim_MG18_TuF_" or		
+						defName = "CGF1_MWP_Turret_Parabellum_MG14_" or		
+						defName = "CGF1_MWP_Turret_Parabellum_MG14_17_" or		
+						defName = "CGF1_MWP_Turret_Schwarzlose_M07_" or		
+						defName = "CGF1_MWP_Turret_Schwarzlose_M07_12_" or	 			
+						defName = "CGF1_MWP_Turret_Schwarzlose_M07_12_16_" or	 			
+						defName = "CGF1_MWP_Turret_Schwarzlose_MG16_" or	 			
+						defName = "CGF1_MWP_Turret_Skoda_M1909_" or	
+						defName = "CGF1_MWP_Turret_Sturmpistole_M18_"	
+					]/thingClass</xpath>
+					<value>
+					  <thingClass>CombatExtended.Building_TurretGunCE</thingClass>
+					</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[	
+						defName = "CGF1_MWP_Turret_Becker_TypeM2_Aircraft_" or
+						defName = "CGF1_MWP_Turret_Becker_TypeM2_Infantry_" or
+						defName = "CGF1_MWP_Turret_Bergmann_MG02_" or	
+						defName = "CGF1_MWP_Turret_Dreyse_MG15_" or		
+						defName = "CGF1_MWP_Turret_Dreyse_MG15_18_" or		
+						defName = "CGF1_MWP_Turret_Fokker_Leimburger_" or		
+						defName = "CGF1_MWP_Turret_Gast_Gun_" or		
+						defName = "CGF1_MWP_Turret_Maxim_LMG08_15_" or		
+						defName = "CGF1_MWP_Turret_Maxim_LMG08_15_Zeppelin_" or		
+						defName = "CGF1_MWP_Turret_Maxim_MG01_" or		
+						defName = "CGF1_MWP_Turret_Maxim_MG08_" or		
+						defName = "CGF1_MWP_Turret_Maxim_MG08_15_" or		
+						defName = "CGF1_MWP_Turret_Maxim_MG08_18_" or		
+						defName = "CGF1_MWP_Turret_Maxim_MG16_" or		
+						defName = "CGF1_MWP_Turret_Maxim_MG18_TuF_" or		
+						defName = "CGF1_MWP_Turret_Parabellum_MG14_" or		
+						defName = "CGF1_MWP_Turret_Parabellum_MG14_17_" or		
+						defName = "CGF1_MWP_Turret_Schwarzlose_M07_" or		
+						defName = "CGF1_MWP_Turret_Schwarzlose_M07_12_" or	 			
+						defName = "CGF1_MWP_Turret_Schwarzlose_M07_12_16_" or	 			
+						defName = "CGF1_MWP_Turret_Schwarzlose_MG16_" or	 			
+						defName = "CGF1_MWP_Turret_Skoda_M1909_" or	
+						defName = "CGF1_MWP_Turret_Sturmpistole_M18_"		
+					]/fillPercent</xpath>
+					<value>
+					  <fillPercent>0.85</fillPercent>
+					</value>
+				</li>
+				
+		<!-- Becker Type M2 -->
+		
+		<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+			<defName>CGF1_MWP_TurretGun_Becker_TypeM2_Aircraft_</defName>
+			<statBases>
+				<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+				<SightsEfficiency>1</SightsEfficiency>
+				<ShotSpread>0.08</ShotSpread>
+				<SwayFactor>1.2</SwayFactor>
+			</statBases>
+				<Properties>
+					<recoilAmount>0.81</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>True</hasStandardCommand>
+					<defaultProjectile>Bullet_20x70mmRB_AP</defaultProjectile>
+					<warmupTime>1.2</warmupTime>
+					<range>90</range>
+					<burstShotCount>5</burstShotCount>
+					<ticksBetweenBurstShots>7</ticksBetweenBurstShots>
+					<soundCast>CGF1_MWP_SFX_MG_Heavy5</soundCast>
+					<soundCastTail>GunTail_Heavy</soundCastTail>
+					<muzzleFlashScale>14</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+			  </Properties>
+			  <AmmoUser>
+					<magazineSize>15</magazineSize>
+					<reloadTime>4.9</reloadTime>
+					<ammoSet>AmmoSet_20x70mmRB</ammoSet>
+			  </AmmoUser>
+			  <FireModes>
+					<aimedBurstShotCount>3</aimedBurstShotCount>
+					<aiAimMode>SuppressFire</aiAimMode>
+			  </FireModes>
+			  <weaponTags Inherit="False">
+					<li>TurretGun</li>
+			  </weaponTags>
+		</li>
+		<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+			<defName>CGF1_MWP_TurretGun_Becker_TypeM2_Infantry_</defName>
+			<statBases>
+				<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+				<SightsEfficiency>1</SightsEfficiency>
+				<ShotSpread>0.08</ShotSpread>
+				<SwayFactor>1.2</SwayFactor>
+			</statBases>
+				<Properties>
+					<recoilAmount>0.81</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>True</hasStandardCommand>
+					<defaultProjectile>Bullet_20x70mmRB_AP</defaultProjectile>
+					<warmupTime>1.2</warmupTime>
+					<range>90</range>
+					<burstShotCount>5</burstShotCount>
+					<ticksBetweenBurstShots>7</ticksBetweenBurstShots>
+					<soundCast>CGF1_MWP_SFX_MG_Heavy5</soundCast>
+					<soundCastTail>GunTail_Heavy</soundCastTail>
+					<muzzleFlashScale>14</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+			  </Properties>
+			  <AmmoUser>
+					<magazineSize>15</magazineSize>
+					<reloadTime>4.9</reloadTime>
+					<ammoSet>AmmoSet_20x70mmRB</ammoSet>
+			  </AmmoUser>
+			  <FireModes>
+					<aimedBurstShotCount>3</aimedBurstShotCount>
+					<aiAimMode>SuppressFire</aiAimMode>
+			  </FireModes>
+			  <weaponTags Inherit="False">
+					<li>TurretGun</li>
+			  </weaponTags>
+		</li>
+		
+		<!-- Bergmann MG-02 -->
+		
+		<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+			<defName>CGF1_MWP_TurretGun_Bergmann_MG02_</defName>
+			<statBases>
+				<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+				<SightsEfficiency>1</SightsEfficiency>
+				<ShotSpread>0.11</ShotSpread>
+				<SwayFactor>1.00</SwayFactor>
+			</statBases>
+				<Properties>
+					<recoilAmount>0.81</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>True</hasStandardCommand>
+					<defaultProjectile>Bullet_792x57mmMauser_FMJ</defaultProjectile>
+					<warmupTime>1.2</warmupTime>
+					<range>75</range>
+					<burstShotCount>12</burstShotCount>
+					<ticksBetweenBurstShots>7</ticksBetweenBurstShots>
+					<soundCast>CGF1_MWP_SFX_Rifle_Semi6</soundCast>
+					<soundCastTail>GunTail_Medium</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+			  </Properties>
+			  <AmmoUser>
+					<magazineSize>250</magazineSize>
+					<reloadTime>4.9</reloadTime>
+					<ammoSet>AmmoSet_792x57mmMauser</ammoSet>
+			  </AmmoUser>
+			  <FireModes>
+					<aimedBurstShotCount>6</aimedBurstShotCount>
+					<aiAimMode>SuppressFire</aiAimMode>
+			  </FireModes>
+			  <weaponTags Inherit="False">
+					<li>TurretGun</li>
+			  </weaponTags>
+		</li>
+		
+		<!-- Dreyse MG-15 -->
+		
+		<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+			<defName>CGF1_MWP_TurretGun_Dreyse_MG15_</defName>
+			<statBases>
+				<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+				<SightsEfficiency>1</SightsEfficiency>
+				<ShotSpread>0.11</ShotSpread>
+				<SwayFactor>1.00</SwayFactor>
+			</statBases>
+				<Properties>
+					<recoilAmount>0.81</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>True</hasStandardCommand>
+					<defaultProjectile>Bullet_792x57mmMauser_FMJ</defaultProjectile>
+					<warmupTime>1.2</warmupTime>
+					<range>75</range>
+					<burstShotCount>12</burstShotCount>
+					<ticksBetweenBurstShots>7</ticksBetweenBurstShots>
+					<soundCast>CGF1_MWP_SFX_MG_Light6</soundCast>
+					<soundCastTail>GunTail_Medium</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+			  </Properties>
+			  <AmmoUser>
+					<magazineSize>250</magazineSize>
+					<reloadTime>4.9</reloadTime>
+					<ammoSet>AmmoSet_792x57mmMauser</ammoSet>
+			  </AmmoUser>
+			  <FireModes>
+					<aimedBurstShotCount>6</aimedBurstShotCount>
+					<aiAimMode>SuppressFire</aiAimMode>
+			  </FireModes>
+			  <weaponTags Inherit="False">
+					<li>TurretGun</li>
+			  </weaponTags>
+		</li>
+		<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+			<defName>CGF1_MWP_TurretGun_Dreyse_MG15_18_</defName>
+			<statBases>
+				<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+				<SightsEfficiency>1</SightsEfficiency>
+				<ShotSpread>0.11</ShotSpread>
+				<SwayFactor>1.00</SwayFactor>
+			</statBases>
+				<Properties>
+					<recoilAmount>0.81</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>True</hasStandardCommand>
+					<defaultProjectile>Bullet_792x57mmMauser_FMJ</defaultProjectile>
+					<warmupTime>1.2</warmupTime>
+					<range>75</range>
+					<burstShotCount>12</burstShotCount>
+					<ticksBetweenBurstShots>7</ticksBetweenBurstShots>
+					<soundCast>CGF1_MWP_SFX_MG_Light6</soundCast>
+					<soundCastTail>GunTail_Medium</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+			  </Properties>
+			  <AmmoUser>
+					<magazineSize>250</magazineSize>
+					<reloadTime>4.9</reloadTime>
+					<ammoSet>AmmoSet_792x57mmMauser</ammoSet>
+			  </AmmoUser>
+			  <FireModes>
+					<aimedBurstShotCount>6</aimedBurstShotCount>
+					<aiAimMode>SuppressFire</aiAimMode>
+			  </FireModes>
+			  <weaponTags Inherit="False">
+					<li>TurretGun</li>
+			  </weaponTags>
+		</li>
+		
+		<!-- Fokker-Leimburger -->
+		
+		<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+			<defName>CGF1_MWP_TurretGun_Fokker_Leimburger_</defName>
+			<statBases>
+				<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+				<SightsEfficiency>1</SightsEfficiency>
+				<ShotSpread>0.12</ShotSpread>
+				<SwayFactor>1.4</SwayFactor>
+			</statBases>
+				<Properties>
+					<recoilAmount>1.0</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>True</hasStandardCommand>
+					<defaultProjectile>Bullet_792x57mmMauser_FMJ</defaultProjectile>
+					<warmupTime>1.2</warmupTime>
+					<range>70</range>
+					<burstShotCount>50</burstShotCount>
+					<ticksBetweenBurstShots>2</ticksBetweenBurstShots>
+					<soundCast>CGF1_MWP_SFX_MG_Minigun2</soundCast>
+					<soundCastTail>GunTail_Medium</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+			  </Properties>
+			  <AmmoUser>
+					<magazineSize>600</magazineSize>
+					<reloadTime>12.9</reloadTime>
+					<ammoSet>AmmoSet_792x57mmMauser</ammoSet>
+			  </AmmoUser>
+			  <FireModes>
+					<aimedBurstShotCount>25</aimedBurstShotCount>
+					<aiAimMode>SuppressFire</aiAimMode>
+			  </FireModes>
+			  <weaponTags Inherit="False">
+					<li>TurretGun</li>
+			  </weaponTags>
+		</li>
+		
+		<!-- Gast Gun -->
+		
+		<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+			<defName>CGF1_MWP_TurretGun_Gast_Gun_</defName>
+			<statBases>
+				<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+				<SightsEfficiency>1</SightsEfficiency>
+				<ShotSpread>0.13</ShotSpread>
+				<SwayFactor>1.00</SwayFactor>
+			</statBases>
+				<Properties>
+					<recoilAmount>0.9</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>True</hasStandardCommand>
+					<defaultProjectile>Bullet_792x57mmMauser_FMJ</defaultProjectile>
+					<warmupTime>1.2</warmupTime>
+					<range>75</range>
+					<burstShotCount>12</burstShotCount>
+					<ticksBetweenBurstShots>3</ticksBetweenBurstShots>
+					<soundCast>CGF1_MWP_SFX_MG_Light7</soundCast>
+					<soundCastTail>GunTail_Medium</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+			  </Properties>
+			  <AmmoUser>
+					<magazineSize>360</magazineSize>
+					<reloadTime>4.9</reloadTime>
+					<ammoSet>AmmoSet_792x57mmMauser</ammoSet>
+			  </AmmoUser>
+			  <FireModes>
+					<aimedBurstShotCount>6</aimedBurstShotCount>
+					<aiAimMode>SuppressFire</aiAimMode>
+			  </FireModes>
+			  <weaponTags Inherit="False">
+					<li>TurretGun</li>
+			  </weaponTags>
+		</li>
+		
+		<!-- Maxim -->
+		
+		<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+			<defName>CGF1_MWP_TurretGun_Maxim_LMG08_15_</defName>
+			<statBases>
+				<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+				<SightsEfficiency>1</SightsEfficiency>
+				<ShotSpread>0.10</ShotSpread>
+				<SwayFactor>1.00</SwayFactor>
+			</statBases>
+				<Properties>
+					<recoilAmount>0.81</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>True</hasStandardCommand>
+					<defaultProjectile>Bullet_792x57mmMauser_FMJ</defaultProjectile>
+					<warmupTime>1.2</warmupTime>
+					<range>75</range>
+					<burstShotCount>12</burstShotCount>
+					<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+					<soundCast>CGF1_MWP_SFX_MG_Light6</soundCast>
+					<soundCastTail>GunTail_Medium</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+			  </Properties>
+			  <AmmoUser>
+					<magazineSize>500</magazineSize>
+					<reloadTime>4.9</reloadTime>
+					<ammoSet>AmmoSet_792x57mmMauser</ammoSet>
+			  </AmmoUser>
+			  <FireModes>
+					<aimedBurstShotCount>6</aimedBurstShotCount>
+					<aiAimMode>SuppressFire</aiAimMode>
+			  </FireModes>
+			  <weaponTags Inherit="False">
+					<li>TurretGun</li>
+			  </weaponTags>
+		</li>
+		<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+			<defName>CGF1_MWP_TurretGun_Maxim_LMG08_15_Zeppelin_</defName>
+			<statBases>
+				<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+				<SightsEfficiency>1</SightsEfficiency>
+				<ShotSpread>0.10</ShotSpread>
+				<SwayFactor>1.00</SwayFactor>
+			</statBases>
+				<Properties>
+					<recoilAmount>0.81</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>True</hasStandardCommand>
+					<defaultProjectile>Bullet_792x57mmMauser_FMJ</defaultProjectile>
+					<warmupTime>1.2</warmupTime>
+					<range>75</range>
+					<burstShotCount>12</burstShotCount>
+					<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+					<soundCast>CGF1_MWP_SFX_MG_Light6</soundCast>
+					<soundCastTail>GunTail_Medium</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+			  </Properties>
+			  <AmmoUser>
+					<magazineSize>500</magazineSize>
+					<reloadTime>4.9</reloadTime>
+					<ammoSet>AmmoSet_792x57mmMauser</ammoSet>
+			  </AmmoUser>
+			  <FireModes>
+					<aimedBurstShotCount>6</aimedBurstShotCount>
+					<aiAimMode>SuppressFire</aiAimMode>
+			  </FireModes>
+			  <weaponTags Inherit="False">
+					<li>TurretGun</li>
+			  </weaponTags>
+		</li>
+		<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+			<defName>CGF1_MWP_TurretGun_Maxim_MG01_</defName>
+			<statBases>
+				<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+				<SightsEfficiency>1</SightsEfficiency>
+				<ShotSpread>0.10</ShotSpread>
+				<SwayFactor>1.00</SwayFactor>
+			</statBases>
+				<Properties>
+					<recoilAmount>0.81</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>True</hasStandardCommand>
+					<defaultProjectile>Bullet_792x57mmMauser_FMJ</defaultProjectile>
+					<warmupTime>1.2</warmupTime>
+					<range>75</range>
+					<burstShotCount>12</burstShotCount>
+					<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+					<soundCast>CGF1_MWP_SFX_MG_Light6</soundCast>
+					<soundCastTail>GunTail_Medium</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+			  </Properties>
+			  <AmmoUser>
+					<magazineSize>250</magazineSize>
+					<reloadTime>4.9</reloadTime>
+					<ammoSet>AmmoSet_792x57mmMauser</ammoSet>
+			  </AmmoUser>
+			  <FireModes>
+					<aimedBurstShotCount>6</aimedBurstShotCount>
+					<aiAimMode>SuppressFire</aiAimMode>
+			  </FireModes>
+			  <weaponTags Inherit="False">
+					<li>TurretGun</li>
+			  </weaponTags>
+		</li>
+		<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+			<defName>CGF1_MWP_TurretGun_Maxim_MG08_</defName>
+			<statBases>
+				<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+				<SightsEfficiency>1</SightsEfficiency>
+				<ShotSpread>0.10</ShotSpread>
+				<SwayFactor>1.00</SwayFactor>
+			</statBases>
+				<Properties>
+					<recoilAmount>0.81</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>True</hasStandardCommand>
+					<defaultProjectile>Bullet_792x57mmMauser_FMJ</defaultProjectile>
+					<warmupTime>1.2</warmupTime>
+					<range>75</range>
+					<burstShotCount>12</burstShotCount>
+					<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+					<soundCast>CGF1_MWP_SFX_MG_Light6</soundCast>
+					<soundCastTail>GunTail_Medium</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+			  </Properties>
+			  <AmmoUser>
+					<magazineSize>250</magazineSize>
+					<reloadTime>4.9</reloadTime>
+					<ammoSet>AmmoSet_792x57mmMauser</ammoSet>
+			  </AmmoUser>
+			  <FireModes>
+					<aimedBurstShotCount>6</aimedBurstShotCount>
+					<aiAimMode>SuppressFire</aiAimMode>
+			  </FireModes>
+			  <weaponTags Inherit="False">
+					<li>TurretGun</li>
+			  </weaponTags>
+		</li>
+		<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+			<defName>CGF1_MWP_TurretGun_Maxim_MG08_15_</defName>
+			<statBases>
+				<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+				<SightsEfficiency>1</SightsEfficiency>
+				<ShotSpread>0.10</ShotSpread>
+				<SwayFactor>1.00</SwayFactor>
+			</statBases>
+				<Properties>
+					<recoilAmount>0.81</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>True</hasStandardCommand>
+					<defaultProjectile>Bullet_792x57mmMauser_FMJ</defaultProjectile>
+					<warmupTime>1.2</warmupTime>
+					<range>75</range>
+					<burstShotCount>12</burstShotCount>
+					<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+					<soundCast>CGF1_MWP_SFX_MG_Light6</soundCast>
+					<soundCastTail>GunTail_Medium</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+			  </Properties>
+			  <AmmoUser>
+					<magazineSize>250</magazineSize>
+					<reloadTime>4.9</reloadTime>
+					<ammoSet>AmmoSet_792x57mmMauser</ammoSet>
+			  </AmmoUser>
+			  <FireModes>
+					<aimedBurstShotCount>6</aimedBurstShotCount>
+					<aiAimMode>SuppressFire</aiAimMode>
+			  </FireModes>
+			  <weaponTags Inherit="False">
+					<li>TurretGun</li>
+			  </weaponTags>
+		</li>
+		<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+			<defName>CGF1_MWP_TurretGun_Maxim_MG08_18_</defName>
+			<statBases>
+				<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+				<SightsEfficiency>1</SightsEfficiency>
+				<ShotSpread>0.10</ShotSpread>
+				<SwayFactor>1.00</SwayFactor>
+			</statBases>
+				<Properties>
+					<recoilAmount>0.81</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>True</hasStandardCommand>
+					<defaultProjectile>Bullet_792x57mmMauser_FMJ</defaultProjectile>
+					<warmupTime>1.2</warmupTime>
+					<range>75</range>
+					<burstShotCount>12</burstShotCount>
+					<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+					<soundCast>CGF1_MWP_SFX_MG_Light6</soundCast>
+					<soundCastTail>GunTail_Medium</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+			  </Properties>
+			  <AmmoUser>
+					<magazineSize>250</magazineSize>
+					<reloadTime>4.9</reloadTime>
+					<ammoSet>AmmoSet_792x57mmMauser</ammoSet>
+			  </AmmoUser>
+			  <FireModes>
+					<aimedBurstShotCount>6</aimedBurstShotCount>
+					<aiAimMode>SuppressFire</aiAimMode>
+			  </FireModes>
+			  <weaponTags Inherit="False">
+					<li>TurretGun</li>
+			  </weaponTags>
+		</li>
+		<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+			<defName>CGF1_MWP_TurretGun_Maxim_MG16_</defName>
+			<statBases>
+				<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+				<SightsEfficiency>1</SightsEfficiency>
+				<ShotSpread>0.10</ShotSpread>
+				<SwayFactor>1.00</SwayFactor>
+			</statBases>
+				<Properties>
+					<recoilAmount>0.81</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>True</hasStandardCommand>
+					<defaultProjectile>Bullet_792x57mmMauser_FMJ</defaultProjectile>
+					<warmupTime>1.2</warmupTime>
+					<range>75</range>
+					<burstShotCount>12</burstShotCount>
+					<ticksBetweenBurstShots>7</ticksBetweenBurstShots>
+					<soundCast>CGF1_MWP_SFX_MG_Light6</soundCast>
+					<soundCastTail>GunTail_Medium</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+			  </Properties>
+			  <AmmoUser>
+					<magazineSize>250</magazineSize>
+					<reloadTime>4.9</reloadTime>
+					<ammoSet>AmmoSet_792x57mmMauser</ammoSet>
+			  </AmmoUser>
+			  <FireModes>
+					<aimedBurstShotCount>6</aimedBurstShotCount>
+					<aiAimMode>SuppressFire</aiAimMode>
+			  </FireModes>
+			  <weaponTags Inherit="False">
+					<li>TurretGun</li>
+			  </weaponTags>
+		</li>
+		
+		<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+			<defName>CGF1_MWP_TurretGun_Maxim_MG18_TuF_</defName>
+			<statBases>
+				<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+				<SightsEfficiency>1</SightsEfficiency>
+				<ShotSpread>0.10</ShotSpread>
+				<SwayFactor>1.2</SwayFactor>
+			</statBases>
+				<Properties>
+					<recoilAmount>0.81</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>True</hasStandardCommand>
+					<defaultProjectile>Bullet_132x92mmSRTuF_FMJ</defaultProjectile>
+					<warmupTime>1.2</warmupTime>
+					<range>90</range>
+					<burstShotCount>10</burstShotCount>
+					<ticksBetweenBurstShots>9</ticksBetweenBurstShots>
+					<soundCast>CGF1_MWP_SFX_MG_Heavy5</soundCast>
+					<soundCastTail>GunTail_Heavy</soundCastTail>
+					<muzzleFlashScale>14</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+			  </Properties>
+			  <AmmoUser>
+					<magazineSize>75</magazineSize>
+					<reloadTime>4.9</reloadTime>
+					<ammoSet>AmmoSet_132x92mmSRTuF</ammoSet>
+			  </AmmoUser>
+			  <FireModes>
+					<aimedBurstShotCount>6</aimedBurstShotCount>
+					<aiAimMode>SuppressFire</aiAimMode>
+			  </FireModes>
+			  <weaponTags Inherit="False">
+					<li>TurretGun</li>
+			  </weaponTags>
+		</li>
+		
+		<!-- Parabellum MG-14 -->
+		
+		<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+			<defName>CGF1_MWP_TurretGun_Parabellum_MG14_</defName>
+			<statBases>
+				<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+				<SightsEfficiency>1</SightsEfficiency>
+				<ShotSpread>0.08</ShotSpread>
+				<SwayFactor>1.15</SwayFactor>
+			</statBases>
+				<Properties>
+					<recoilAmount>0.81</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>True</hasStandardCommand>
+					<defaultProjectile>Bullet_792x57mmMauser_FMJ</defaultProjectile>
+					<warmupTime>1.2</warmupTime>
+					<range>75</range>
+					<burstShotCount>12</burstShotCount>
+					<ticksBetweenBurstShots>9</ticksBetweenBurstShots>
+					<soundCast>CGF1_MWP_SFX_Rifle_Semi6</soundCast>
+					<soundCastTail>GunTail_Medium</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+			  </Properties>
+			  <AmmoUser>
+					<magazineSize>100</magazineSize>
+					<reloadTime>4.9</reloadTime>
+					<ammoSet>AmmoSet_792x57mmMauser</ammoSet>
+			  </AmmoUser>
+			  <FireModes>
+					<aimedBurstShotCount>6</aimedBurstShotCount>
+					<aiAimMode>SuppressFire</aiAimMode>
+			  </FireModes>
+			  <weaponTags Inherit="False">
+					<li>TurretGun</li>
+			  </weaponTags>
+		</li>
+		<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+			<defName>CGF1_MWP_TurretGun_Parabellum_MG14_17_</defName>
+			<statBases>
+				<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+				<SightsEfficiency>1</SightsEfficiency>
+				<ShotSpread>0.08</ShotSpread>
+				<SwayFactor>1.15</SwayFactor>
+			</statBases>
+				<Properties>
+					<recoilAmount>0.81</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>True</hasStandardCommand>
+					<defaultProjectile>Bullet_792x57mmMauser_FMJ</defaultProjectile>
+					<warmupTime>1.2</warmupTime>
+					<range>75</range>
+					<burstShotCount>12</burstShotCount>
+					<ticksBetweenBurstShots>9</ticksBetweenBurstShots>
+					<soundCast>CGF1_MWP_SFX_Rifle_Semi6</soundCast>
+					<soundCastTail>GunTail_Medium</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+			  </Properties>
+			  <AmmoUser>
+					<magazineSize>100</magazineSize>
+					<reloadTime>4.9</reloadTime>
+					<ammoSet>AmmoSet_792x57mmMauser</ammoSet>
+			  </AmmoUser>
+			  <FireModes>
+					<aimedBurstShotCount>6</aimedBurstShotCount>
+					<aiAimMode>SuppressFire</aiAimMode>
+			  </FireModes>
+			  <weaponTags Inherit="False">
+					<li>TurretGun</li>
+			  </weaponTags>
+		</li>
+		
+		<!-- Schwarzlose -->
+		
+		<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+			<defName>CGF1_MWP_TurretGun_Schwarzlose_M07_</defName>
+			<statBases>
+				<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+				<SightsEfficiency>1</SightsEfficiency>
+				<ShotSpread>0.10</ShotSpread>
+				<SwayFactor>1.00</SwayFactor>
+			</statBases>
+				<Properties>
+					<recoilAmount>0.81</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>True</hasStandardCommand>
+					<defaultProjectile>Bullet_8x50mmRMannlicher_FMJ</defaultProjectile>
+					<warmupTime>1.2</warmupTime>
+					<range>75</range>
+					<burstShotCount>12</burstShotCount>
+					<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+					<soundCast>CGF1_MWP_SFX_Rifle_Semi7</soundCast>
+					<soundCastTail>GunTail_Medium</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+			  </Properties>
+			  <AmmoUser>
+					<magazineSize>250</magazineSize>
+					<reloadTime>4.9</reloadTime>
+					<ammoSet>AmmoSet_8x50mmRMannlicher</ammoSet>
+			  </AmmoUser>
+			  <FireModes>
+					<aimedBurstShotCount>6</aimedBurstShotCount>
+					<aiAimMode>SuppressFire</aiAimMode>
+			  </FireModes>
+			  <weaponTags Inherit="False">
+					<li>TurretGun</li>
+			  </weaponTags>
+		</li>
+		<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+			<defName>CGF1_MWP_TurretGun_Schwarzlose_M07_12_</defName>
+			<statBases>
+				<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+				<SightsEfficiency>1</SightsEfficiency>
+				<ShotSpread>0.10</ShotSpread>
+				<SwayFactor>1.00</SwayFactor>
+			</statBases>
+				<Properties>
+					<recoilAmount>0.81</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>True</hasStandardCommand>
+					<defaultProjectile>Bullet_8x50mmRMannlicher_FMJ</defaultProjectile>
+					<warmupTime>1.2</warmupTime>
+					<range>75</range>
+					<burstShotCount>12</burstShotCount>
+					<ticksBetweenBurstShots>7</ticksBetweenBurstShots>
+					<soundCast>CGF1_MWP_SFX_Rifle_Semi7</soundCast>
+					<soundCastTail>GunTail_Medium</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+			  </Properties>
+			  <AmmoUser>
+					<magazineSize>250</magazineSize>
+					<reloadTime>4.9</reloadTime>
+					<ammoSet>AmmoSet_8x50mmRMannlicher</ammoSet>
+			  </AmmoUser>
+			  <FireModes>
+					<aimedBurstShotCount>6</aimedBurstShotCount>
+					<aiAimMode>SuppressFire</aiAimMode>
+			  </FireModes>
+			  <weaponTags Inherit="False">
+					<li>TurretGun</li>
+			  </weaponTags>
+		</li>
+		<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+			<defName>CGF1_MWP_TurretGun_Schwarzlose_M07_12_16_</defName>
+			<statBases>
+				<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+				<SightsEfficiency>1</SightsEfficiency>
+				<ShotSpread>0.10</ShotSpread>
+				<SwayFactor>1.00</SwayFactor>
+			</statBases>
+				<Properties>
+					<recoilAmount>0.81</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>True</hasStandardCommand>
+					<defaultProjectile>Bullet_8x50mmRMannlicher_FMJ</defaultProjectile>
+					<warmupTime>1.2</warmupTime>
+					<range>75</range>
+					<burstShotCount>12</burstShotCount>
+					<ticksBetweenBurstShots>7</ticksBetweenBurstShots>
+					<soundCast>CGF1_MWP_SFX_Rifle_Semi7</soundCast>
+					<soundCastTail>GunTail_Medium</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+			  </Properties>
+			  <AmmoUser>
+					<magazineSize>250</magazineSize>
+					<reloadTime>4.9</reloadTime>
+					<ammoSet>AmmoSet_8x50mmRMannlicher</ammoSet>
+			  </AmmoUser>
+			  <FireModes>
+					<aimedBurstShotCount>6</aimedBurstShotCount>
+					<aiAimMode>SuppressFire</aiAimMode>
+			  </FireModes>
+			  <weaponTags Inherit="False">
+					<li>TurretGun</li>
+			  </weaponTags>
+		</li>
+		<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+			<defName>CGF1_MWP_TurretGun_Schwarzlose_MG16_</defName>
+			<statBases>
+				<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+				<SightsEfficiency>1</SightsEfficiency>
+				<ShotSpread>0.11</ShotSpread>
+				<SwayFactor>1.00</SwayFactor>
+			</statBases>
+				<Properties>
+					<recoilAmount>0.81</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>True</hasStandardCommand>
+					<defaultProjectile>Bullet_8x50mmRMannlicher_FMJ</defaultProjectile>
+					<warmupTime>1.2</warmupTime>
+					<range>75</range>
+					<burstShotCount>12</burstShotCount>
+					<ticksBetweenBurstShots>5</ticksBetweenBurstShots>
+					<soundCast>CGF1_MWP_SFX_Rifle_Semi7</soundCast>
+					<soundCastTail>GunTail_Medium</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+			  </Properties>
+			  <AmmoUser>
+					<magazineSize>250</magazineSize>
+					<reloadTime>4.9</reloadTime>
+					<ammoSet>AmmoSet_8x50mmRMannlicher</ammoSet>
+			  </AmmoUser>
+			  <FireModes>
+					<aimedBurstShotCount>6</aimedBurstShotCount>
+					<aiAimMode>SuppressFire</aiAimMode>
+			  </FireModes>
+			  <weaponTags Inherit="False">
+					<li>TurretGun</li>
+			  </weaponTags>
+		</li>
+		
+		<!-- Škoda M1909 -->
+		
+		<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+			<defName>CGF1_MWP_TurretGun_Skoda_M1909_</defName>
+			<statBases>
+				<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+				<SightsEfficiency>1</SightsEfficiency>
+				<ShotSpread>0.10</ShotSpread>
+				<SwayFactor>1.00</SwayFactor>
+			</statBases>
+				<Properties>
+					<recoilAmount>0.81</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>True</hasStandardCommand>
+					<defaultProjectile>Bullet_8x50mmRMannlicher_FMJ</defaultProjectile>
+					<warmupTime>1.2</warmupTime>
+					<range>75</range>
+					<burstShotCount>12</burstShotCount>
+					<ticksBetweenBurstShots>7</ticksBetweenBurstShots>
+					<soundCast>CGF1_MWP_SFX_Rifle_Auto10</soundCast>
+					<soundCastTail>GunTail_Medium</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+			  </Properties>
+			  <AmmoUser>
+					<magazineSize>250</magazineSize>
+					<reloadTime>4.9</reloadTime>
+					<ammoSet>AmmoSet_8x50mmRMannlicher</ammoSet>
+			  </AmmoUser>
+			  <FireModes>
+					<aimedBurstShotCount>6</aimedBurstShotCount>
+					<aiAimMode>SuppressFire</aiAimMode>
+			  </FireModes>
+			  <weaponTags Inherit="False">
+					<li>TurretGun</li>
+			  </weaponTags>
+		</li>
+		
+		<!-- Sturmpistole M.18 -->
+		
+		<li Class="CombatExtended.PatchOperationMakeGunCECompatible">
+			<defName>CGF1_MWP_TurretGun_Sturmpistole_M18_</defName>
+			<statBases>
+				<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+				<SightsEfficiency>1</SightsEfficiency>
+				<ShotSpread>0.14</ShotSpread>
+				<SwayFactor>1.00</SwayFactor>
+			</statBases>
+				<Properties>
+					<recoilAmount>0.81</recoilAmount>
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<hasStandardCommand>True</hasStandardCommand>
+					<defaultProjectile>Bullet_9x23mmSteyr_FMJ</defaultProjectile>
+					<warmupTime>1.0</warmupTime>
+					<range>40</range>
+					<burstShotCount>10</burstShotCount>
+					<ticksBetweenBurstShots>3</ticksBetweenBurstShots>
+					<soundCast>CGF1_GG_SFXR_Pistol6</soundCast>
+					<soundCastTail>GunTail_Light</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+			  </Properties>
+			  <AmmoUser>
+					<magazineSize>50</magazineSize>
+					<reloadTime>4.3</reloadTime>
+					<ammoSet>AmmoSet_9x23mmSteyr</ammoSet>
+			  </AmmoUser>
+			  <FireModes>
+					<aimedBurstShotCount>5</aimedBurstShotCount>
+					<aiAimMode>SuppressFire</aiAimMode>
+			  </FireModes>
+			  <weaponTags Inherit="False">
+					<li>TurretGun</li>
+			  </weaponTags>
+		</li>
+		
+		</operations>
+	</Operation>
+</Patch>    

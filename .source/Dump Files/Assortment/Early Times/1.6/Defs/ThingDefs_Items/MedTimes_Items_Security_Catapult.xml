@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- Exploding Pot, Resource -->
+	<ThingDef ParentName="MedTimes_ResourceBase">
+		<defName>MedTimes_Resource_ExplosivePot</defName>
+		<label>Explosive Pot</label>
+		<description>Fired from catapults, explodes on impact.</description>
+		<graphicData>
+			<texPath>Things/Item/Resource/Produced/MedTimes_ExplosivePot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<soundInteract>Standard_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<tickerType>Normal</tickerType>
+		<stackLimit>25</stackLimit>
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<MarketValue>30</MarketValue>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>1</DeteriorationRate>
+			<Mass>1.5</Mass>
+		</statBases>
+		<thingCategories>
+			<li>CatapultAmmo</li>
+		</thingCategories>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>2.9</explosiveRadius>
+				<explosiveDamageType>Bomb</explosiveDamageType>
+				<explosiveExpandPerStackcount>0.4</explosiveExpandPerStackcount>
+				<startWickHitPointsPercent>0.5</startWickHitPointsPercent>
+				<wickTicks>
+					<min>10</min>
+					<max>30</max>
+				</wickTicks>
+			</li>
+		</comps>
+		<projectileWhenLoaded>MedTimes_Round_ExplosivePot</projectileWhenLoaded>
+	</ThingDef>
+	<!-- Explosive Pot, In Motion -->
+	<ThingDef ParentName="MedTimes_ArrowBase">
+		<defName>MedTimes_Round_ExplosivePot</defName>
+		<thingClass>Projectile_Explosive</thingClass>
+		<label>Explosive Pot Round</label>
+		<graphicData>
+			<texPath>Things/Item/Resource/Produced/MedTimes_ExplosivePot</texPath>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<projectile>
+			<damageDef>Flame</damageDef>
+			<flyOverhead>true</flyOverhead>
+			<damageAmountBase>15</damageAmountBase>
+			<explosionRadius>4.5</explosionRadius>
+			<speed>35</speed>
+			<preExplosionSpawnThingDef>Filth_Fuel</preExplosionSpawnThingDef>
+			<preExplosionSpawnChance>0.35</preExplosionSpawnChance>
+			<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+			<soundExplode>MedTimes_Sound_Firebomb</soundExplode>
+			<soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+			<soundAmbient>MortarRound_Ambient</soundAmbient>
+			<ai_IsIncendiary>true</ai_IsIncendiary>
+		</projectile>
+	</ThingDef>
+	<!-- Catapult -->
+	<ThingDef Name="CatapultAmmoBase" ParentName="ResourceBase" Abstract="True">
+		<soundInteract>Stone_Drop</soundInteract>
+		<soundDrop>Stone_Drop</soundDrop>
+		<tickerType>Normal</tickerType>
+		<stackLimit>50</stackLimit>
+		<techLevel>Medieval</techLevel>
+		<statBases>
+			<MaxHitPoints>240</MaxHitPoints>
+			<Flammability>0.0</Flammability>
+			<DeteriorationRate>0.0</DeteriorationRate>
+			<Beauty>2</Beauty>
+		</statBases>
+		<thingCategories>
+			<li>CatapultAmmo</li>
+		</thingCategories>
+	</ThingDef>
+	<ThingDef ParentName="CatapultAmmoBase">
+		<defName>MedTimes_CatapultBall</defName>
+		<label>Shaped ammmo for catapult</label>
+		<description>Simple plain shaped stone for catapult.</description>
+		<graphicData>
+			<texPath>Things/Item/Shells/Medieval_Catapult_Ball</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(0.6,0.6)</drawSize>
+		</graphicData>
+		<projectileWhenLoaded>MedTimes_Round_RockChunk</projectileWhenLoaded>
+		<stackLimit>20</stackLimit>
+		<statBases>
+			<Mass>4.8</Mass>
+		</statBases>
+	</ThingDef>
+	<!-- Rock Chunks, In Motion -->
+	<ThingDef ParentName="MedTimes_ArrowBase">
+		<defName>MedTimes_Round_RockChunk</defName>
+		<thingClass>Projectile_Explosive</thingClass>
+		<label>Rock Chunk</label>
+		<graphicData>
+			<texPath>Bullets/CatapultBall</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<color>(132,135,132)</color>
+			<drawSize>(0.6,0.6)</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>Bomb</damageDef>
+			<stoppingPower>4</stoppingPower>
+			<flyOverhead>true</flyOverhead>
+			<damageAmountBase>45</damageAmountBase>
+			<explosionRadius>1.6</explosionRadius>
+			<explosionDamageFalloff>true</explosionDamageFalloff>
+			<explosionEffect>ExtinguisherExplosion</explosionEffect>
+			<preExplosionSpawnThingDef>Filth_RubbleRock</preExplosionSpawnThingDef>
+			<speed>30</speed>
+			<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+			<soundExplode>MedTimes_Sound_Impact</soundExplode>
+			<soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+			<soundAmbient>MortarRound_Ambient</soundAmbient>
+		</projectile>
+	</ThingDef>
+</Defs>

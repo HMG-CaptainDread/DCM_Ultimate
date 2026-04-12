@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+  	<ThingDef ParentName="BuildingBase">
+		<defName>Ferny_MerchantBox</defName>
+		<label>Merchant box</label>
+		<description>A merchant box, a low-tech workplace. From here you can manage your restaurant or shop.</description>
+		<category>Building</category>
+		<thingClass>CashRegister.Building_CashRegister</thingClass>
+		<graphicData>
+			<texPath>Things/MerchantBox</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(2,2)</drawSize>
+			<damageData>
+				<rect>(0.35,0.35,0.3,0.3)</rect>
+			</damageData>
+			<shaderType>CutoutComplex</shaderType>
+		</graphicData>
+		<placeWorkers>
+			<li>CashRegister.TableTops.PlaceWorker_OnTable</li>
+			<li>PlaceWorker_PreventInteractionSpotOverlap</li>
+		</placeWorkers>
+		<uiIconScale>0.8</uiIconScale>
+		<rotatable>true</rotatable>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<hasInteractionCell>True</hasInteractionCell>
+		<!-- <surfaceType>Item</surfaceType> -->
+		<constructionSkillPrerequisite>2</constructionSkillPrerequisite>
+		<interactionCellOffset>(0,0,1)</interactionCellOffset>
+		<inspectorTabs>
+		  <li>CashRegister.Shifts.ITab_Register_Shifts</li>
+		</inspectorTabs>
+		<fillPercent>0.2</fillPercent>
+		<costList>
+		  <WoodLog>35</WoodLog>
+		  <Steel>8</Steel>
+		</costList>
+		<comps>
+			<li Class="CashRegister.Shifts.CompProperties_AssignableToPawn_Shifts">
+				<drawAssignmentOverlay>false</drawAssignmentOverlay>
+				<drawUnownedAssignmentOverlay>false</drawUnownedAssignmentOverlay>
+				<maxAssignedPawnsCount>1000</maxAssignedPawnsCount>
+			</li>
+		</comps>
+		<statBases>
+			<MaxHitPoints>70</MaxHitPoints>
+			<WorkToBuild>500</WorkToBuild>
+			<Mass>1</Mass>
+			<Flammability>0.2</Flammability>
+			<Beauty>-5</Beauty>
+		</statBases>
+		<selectable>true</selectable>
+		<building>
+			<isEdifice>false</isEdifice>
+			<fixedStorageSettings>
+				<priority>Unstored</priority>
+		    </fixedStorageSettings>
+		</building>
+		<soundImpactDefault>BulletImpact_Ground</soundImpactDefault>
+		<defaultPlacingRot>South</defaultPlacingRot>
+		<tickerType>Rare</tickerType>
+		<designationCategory>Ferny_Hosting</designationCategory>
+		<destroyable>true</destroyable>
+		<tradeability>None</tradeability>
+		<clearBuildingArea>false</clearBuildingArea>
+		<minifiedDef>MinifiedThing</minifiedDef>		
+        <researchPrerequisites>
+            <li>Ferny_BasicRetail</li>
+        </researchPrerequisites>
+		<thingCategories>
+			<li>BuildingsFurniture</li>
+		</thingCategories>
+		<uiOrder>1998</uiOrder>
+	</ThingDef>
+
+</Defs>
