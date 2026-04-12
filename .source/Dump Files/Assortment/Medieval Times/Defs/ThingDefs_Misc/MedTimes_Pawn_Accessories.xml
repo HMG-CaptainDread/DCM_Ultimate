@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+<!-- Start of thingDefs --> 
+  <!-- ============================== Base Classes ============================== -->
+  <!-- Accessories Base Class -->
+  <ThingDef Name="MedTimes_Accessories" Abstract="True">
+    <category>Item</category>
+    <selectable>True</selectable>
+    <pathCost>35</pathCost>
+	<drawerType>MapMeshOnly</drawerType>
+    <graphicData>
+      <onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>Transparent</shaderType>	
+	</graphicData>
+    <drawGUIOverlay>true</drawGUIOverlay>
+
+    <altitudeLayer>Item</altitudeLayer>
+    <alwaysHaulable>True</alwaysHaulable>
+    <tickerType>Never</tickerType>
+	
+    <statBases>
+		<EquipDelay>2</EquipDelay>			
+		<Beauty>-6</Beauty>
+		<Mass>0.5</Mass>		
+	</statBases>	
+		<apparel>
+			<careIfWornByCorpse>false</careIfWornByCorpse>
+			<bodyPartGroups><li>Waist</li></bodyPartGroups>
+			<layers><li>Belt</li></layers>
+		</apparel>	
+    <comps><li Class="CompProperties_Forbiddable"/></comps>		
+  </ThingDef>
+
+  <!-- (Use Hitpoints Base) Accessories Class -->
+  <ThingDef Name="MedTimes_Accessories_HPBase" ParentName="MedTimes_Accessories" Abstract="True">
+    <useHitPoints>True</useHitPoints>  
+    <statBases>
+		<MaxHitPoints>100</MaxHitPoints>
+		<Flammability>1.0</Flammability>	
+		<DeteriorationRate>1</DeteriorationRate>
+	</statBases>	  			
+  </ThingDef>    
+  
+  <!-- (Use Hitpoints Base) Accessories Class -->
+  <ThingDef Name="MedTimes_Accessories_HPQBase" ParentName="MedTimes_Accessories_HPBase" Abstract="True">	  
+    <comps>
+      <li><compClass>CompQuality</compClass></li>
+    </comps>			
+  </ThingDef>   
+  
+    <!-- (Don't Use Hitpoints Base) Accessories Class -->
+  <ThingDef Name="MedTimes_Accessories_NoHPBase" ParentName="MedTimes_Accessories" Abstract="True">
+    <useHitPoints>False</useHitPoints>
+	<costList><MedTimes_NaniteVial>1</MedTimes_NaniteVial></costList>		
+    <recipeMaker>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Intellectual</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <unfinishedThingDef>MedTimes_UnfinishedNanite</unfinishedThingDef>	  
+      <recipeUsers>
+		<li>MedTimes_EternityForge</li>
+      </recipeUsers>
+		<skillRequirements>
+				<Intellectual>10</Intellectual>
+		</skillRequirements>	  
+	</recipeMaker>		
+  </ThingDef>  
+  
+  <!-- ============================== Specefic Classes ============================== -->   
+<!-- (Normal) Accessories Class -->
+	<ThingDef Name="MedTimes_Accessories_Norm" ParentName="MedTimes_Accessories_HPBase" Abstract="True">
+		<thingCategories><li>Accessories</li></thingCategories>	
+		<tradeTags><li>MedTimes_Gear</li></tradeTags>
+	</ThingDef>  
+
+   <!-- (Nanite) Accessories Class -->
+  <ThingDef Name="MedTimes_Accessories_Nan" ParentName="MedTimes_Accessories_NoHPBase" Abstract="True">
+    <thingCategories><li>Accessories_Nan</li></thingCategories>	
+    <tradeTags><li>MedTimes_NanGear</li></tradeTags>		
+  </ThingDef> 	
+	
+<!-- (Artifact) Accessories Class -->
+  <ThingDef Name="MedTimes_Accessories_Art" ParentName="MedTimes_Accessories_HPQBase" Abstract="True">
+    <thingCategories><li>Accessories_Art</li></thingCategories>	
+    <tradeTags><li>MedTimes_Artifact</li></tradeTags>			
+  </ThingDef>  
+    
+   <!-- (Legendary) Accessories Class -->
+  <ThingDef Name="MedTimes_Accessories_Leg" ParentName="MedTimes_Accessories_NoHPBase" Abstract="True">
+    <thingCategories><li>Accessories_Leg</li></thingCategories>	
+    <tradeTags><li>MedTimes_Legendary</li></tradeTags>
+    <thingSetMakerTags>
+		<li>PeaceTalksGift</li>
+		<li>ItemStashQuest</li>
+		<li>BanditCampQuestRewards</li>
+		<li>AncientTempleContents</li>
+		<li>AncientPodContents</li>
+    </thingSetMakerTags>		
+  </ThingDef>  
+ 
+
+ 
+  <!-- ====================================== Actual Items ========================================= --> 
+  <!-- ====================== Standard Gear =========================== --> 
+    <!-- (Normal) Toolbelt --> 
+  <ThingDef ParentName="MedTimes_Accessories_Norm">
+    <thingClass>Apparel</thingClass>  
+    <defName>MedTimes_Acc_Toolbelt</defName>
+    <label>Toolbelt</label>
+    <description>[Workspeed: +20%] A tool-belt and the necessary hand-tools one needs to use it.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Accessories/MedTimes_Toolbelt</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <costList>
+      <MedTimes_CraftingTools>1</MedTimes_CraftingTools>	
+      <Steel>25</Steel>
+    </costList>
+    <tickerType>Normal</tickerType>
+    <statBases>
+      <WorkToMake>3500</WorkToMake>	  
+      <Mass>3</Mass>
+    </statBases>	
+    <equippedStatOffsets>
+      <WorkSpeedGlobal>0.2</WorkSpeedGlobal>	  
+    </equippedStatOffsets>			
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedBelt</unfinishedThingDef>
+      <recipeUsers>
+        <li>MedTimes_CraftingStation</li>
+      </recipeUsers>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+    </recipeMaker>	
+  </ThingDef> 
+
+
+<!-- (Normal) Smokepop Toolbelt 
+  <ThingDef ParentName="MedTimes_Accessories_Norm">
+    <thingClass>SmokepopBelt</thingClass>
+    <defName>MedTimes_Acc_ToolbeltSmokepop</defName>
+    <label>Smokepop Toolbelt</label>
+    <description>[Workspeed: +20%] A tool-belt with smoke-pop canisters woven in. An automatic defensive smokescreen. It will release a thick cloud of smoke if the wearer is hit by a projectile, providing line-of-sight cover and preventing turrets from locking on. Single-use.</description>
+    <techLevel>Industrial</techLevel>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Accessories/MedTimes_ToolbeltSmoke</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <costList>
+      <MedTimes_Acc_Toolbelt>1</MedTimes_Acc_Toolbelt>	
+      <Chemfuel>75</Chemfuel>
+      <ComponentIndustrial>1</ComponentIndustrial>
+      <Steel>25</Steel>
+    </costList>
+    <tickerType>Normal</tickerType>
+    <statBases>
+      <WorkToMake>3500</WorkToMake>
+      <Mass>3</Mass>
+      <SmokepopBeltRadius>4</SmokepopBeltRadius>
+    </statBases>
+    <equippedStatOffsets>
+      <WorkSpeedGlobal>0.2</WorkSpeedGlobal>	  
+    </equippedStatOffsets>		
+    <recipeMaker>
+      <unfinishedThingDef>UnfinishedBelt</unfinishedThingDef>
+      <researchPrerequisite>SmokepopBelt</researchPrerequisite>
+      <recipeUsers>
+        <li>TableMachining</li>
+      </recipeUsers>
+      <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+    </recipeMaker>	
+  </ThingDef>-->   
+  
+  
+<!-- (Normal) Warbourne Shield Belt -->   
+  <ThingDef ParentName="MedTimes_Accessories_Norm">
+    <defName>MedTimes_WarbourneShield</defName>
+		 <thingClass>Apparel</thingClass>	
+		<label>Warbourne's Shield Belt</label>
+    <description>A single-person energy shield device. This one is of low quality and is put together with crude construction techniques. It will attempt to stop any rapidly-moving projectile or energy attack that comes from a distance. It does nothing against melee attacks or shots from point-blank range. It also prevents firing past touch range.(Note: works the same as core game sheildbelts, will prevent ranged characters from shooting if equiped. does not protect against melee attacks)</description>
+
+	<graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Accessories/MedTimes_ShieldBelt</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+	
+    <tickerType>Normal</tickerType>
+    <statBases>
+
+		<WorkToMake>25000</WorkToMake>		
+		<MaxHitPoints>30</MaxHitPoints>		
+		<EnergyShieldRechargeRate>0.06</EnergyShieldRechargeRate>
+		<EnergyShieldEnergyMax>1</EnergyShieldEnergyMax>
+		<Mass>0.5</Mass>
+    </statBases>
+		<costList>
+			<ComponentIndustrial>2</ComponentIndustrial>
+			<Uranium>5</Uranium>
+			<Steel>25</Steel>			
+		</costList>
+	<comps>
+      <li Class="CompProperties_Shield" />
+    </comps>
+  </ThingDef>  
+  
+  
+  <!-- ====================== Nanite Gear =========================== --> 
+<!-- (Nanite) Toolbelt --> 
+  <ThingDef ParentName="MedTimes_Accessories_Nan">
+    <thingClass>Apparel</thingClass>  
+    <defName>MedTimes_Acc_Toolbelt_Nan</defName>
+    <label>Toolbelt (Nan)</label>
+    <description>(Nanite)[Workspeed: +25%] A toolbelt and the nessisary handtools one needs to use it.</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Accessories/MedTimes_Toolbelt</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Accessories/MedTimes_Toolbelt_Nan</uiIconPath>	
+    <costList><MedTimes_Acc_Toolbelt>1</MedTimes_Acc_Toolbelt></costList>
+    <tickerType>Normal</tickerType>
+    <statBases>
+      <WorkToMake>1000</WorkToMake>
+      <Mass>3</Mass>
+    </statBases>	
+    <equippedStatOffsets>
+      <WorkSpeedGlobal>0.25</WorkSpeedGlobal>	  
+    </equippedStatOffsets>			
+
+  </ThingDef>   
+  
+  
+  
+  <!-- ====================== Artifacts =========================== -->    
+  <!-- (Artifact) Happy Shield --> 
+	<ThingDef ParentName="MedTimes_Accessories_Art">
+		<thingClass>Apparel</thingClass>
+		<defName>MedTimes_Acc_HappyMerchant_Art</defName>
+		<label>The Happy Merchant (Art)</label>
+		<description>(Artifact) [TradePrice: +5%][Social: +5%][Diplomacy: +5%] A single-person energy shield device. It will attempt to stop any rapidly-moving projectile or energy attack that comes from a distance. It does nothing against melee attacks or shots from point-blank range. It also prevents firing past touch range. different from the standard mass produced energy shields common in the area, This one was presumably crafted by a local. The general demeanor of the object suggest the local was of an interesting psychological perspective. It is shaped like a medallion and worn around the neck. A large smiling face encompasses the center of the medallion and their are engravings on the back "Von vielen, kommt man". The bloodshot eyes of the face seem to follow you from one side to the other. The teeth are jagged and made of metal, an unknown red substance seems to leak from between the teeth. How this substance is produced remains a mystery, as does the objects energy source. When equiped the wearer will also have a deeper more pronounced voice, why this is the case also remains a mystery.(Note: works the same as core game sheildbelts, will prevent ranged characters from shooting if equiped. does not protect against melee attacks)</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Accessories/MedTimes_HappyMerchant</texPath>
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Accessories/MedTimes_HappyMerchant_Art</uiIconPath>			
+    <tickerType>Normal</tickerType>
+		<statBases>
+			<MarketValue>5100</MarketValue>
+			<EnergyShieldRechargeRate>0.15</EnergyShieldRechargeRate>
+			<EnergyShieldEnergyMax>1.1</EnergyShieldEnergyMax>
+		</statBases>
+		<equippedStatOffsets>
+			<TradePriceImprovement>0.05</TradePriceImprovement>
+			<SocialImpact>0.05</SocialImpact>
+			<NegotiationAbility>0.05</NegotiationAbility>			
+		</equippedStatOffsets>
+	<comps>
+      <li Class="CompProperties_Shield" />
+    </comps>		
+	</ThingDef>
+	
+  <!-- (Artifact) Wargod Crest --> 
+	<ThingDef ParentName="MedTimes_Accessories_Art">
+		<thingClass>Apparel</thingClass>
+		<defName>MedTimes_Acc_WargodCrest_Art</defName>
+		<label>Wargod's Crest (Art)</label>
+		<description>(Artifact) [MeleeHit: +5%][MeleeDodge: +5%] A single-person energy shield device. It will attempt to stop any rapidly-moving projectile or energy attack that comes from a distance. It does nothing against melee attacks or shots from point-blank range. It also prevents firing past touch range. Different from the standard mass produced energy shields common in the area, This one was presumably crafted by skilled technicians during the Pang Era. The Wargod Crest was handed out to skilled officers and warriors in Pang Li's army and eventually took a cerimonial tone, falling into the hands of Nobles and kings over the many years.(Note: works the same as core game sheildbelts, will prevent ranged characters from shooting if equiped. does not protect against melee attacks)</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Accessories/MedTimes_WarGodCrest</texPath>
+      <drawSize>(0.8,0.8)</drawSize>		  
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Accessories/MedTimes_WarGodCrest_Art</uiIconPath>			
+    <tickerType>Normal</tickerType>
+		<statBases>
+			<MarketValue>5400</MarketValue>
+			<EnergyShieldRechargeRate>0.15</EnergyShieldRechargeRate>
+			<EnergyShieldEnergyMax>1.2</EnergyShieldEnergyMax>
+		</statBases>
+		<equippedStatOffsets>
+			<MeleeHitChance>0.05</MeleeHitChance>
+			<MeleeDodgeChance>0.05</MeleeDodgeChance>			
+		</equippedStatOffsets>
+	<comps>
+      <li Class="CompProperties_Shield" />
+    </comps>		
+	</ThingDef>	
+	
+	
+  <!-- ====================== Legendary =========================== -->    
+  <!-- (Legendary) Happy Shield --> 
+	<ThingDef ParentName="MedTimes_Accessories_Leg">
+		<thingClass>Apparel</thingClass>
+		<defName>MedTimes_Acc_HappyMerchant_Leg</defName>
+		<label>The Happy Merchant (Leg)</label>
+		<description>(Legendary) [TradePrice: +8%][Social: +8%][Diplomacy: +8%] A single-person energy shield device. It will attempt to stop any rapidly-moving projectile or energy attack that comes from a distance. It does nothing against melee attacks or shots from point-blank range. It also prevents firing past touch range. different from the standard mass produced energy shields common in the area, This one was presumably crafted by a local. The general demeanor of the object suggest the local was of an interesting psychological perspective. It is shaped like a medallion and worn around the neck. A large smiling face encompasses the center of the medallion and their are engravings on the back "Von vielen, kommt man". The bloodshot eyes of the face seem to follow you from one side to the other. The teeth are jagged and made of metal, an unknown red substance seems to leak from between the teeth. How this substance is produced remains a mystery, as does the objects energy source. When equipped the wearer will also have a deeper more pronounced voice, why this is the case also remains a mystery.(Note: works the same as core game sheildbelts, will prevent ranged characters from shooting if equiped. does not protect against melee attacks)</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Accessories/MedTimes_HappyMerchant</texPath>
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Accessories/MedTimes_HappyMerchant_Leg</uiIconPath>
+	<costList><MedTimes_Acc_HappyMerchant_Art>1</MedTimes_Acc_HappyMerchant_Art></costList>		
+    <tickerType>Normal</tickerType>
+		<statBases>
+			<EnergyShieldRechargeRate>0.18</EnergyShieldRechargeRate>
+			<EnergyShieldEnergyMax>2.1</EnergyShieldEnergyMax>			
+		</statBases>
+		<equippedStatOffsets>
+			<TradePriceImprovement>0.08</TradePriceImprovement>		
+			<SocialImpact>0.08</SocialImpact>
+			<NegotiationAbility>0.08</NegotiationAbility>			
+		</equippedStatOffsets>
+	<comps>
+      <li Class="CompProperties_Shield" />
+    </comps>		
+	</ThingDef>	
+	
+  <!-- (Artifact) Wargod Crest --> 
+	<ThingDef ParentName="MedTimes_Accessories_Leg">
+		<thingClass>Apparel</thingClass>
+		<defName>MedTimes_Acc_WargodCrest_Leg</defName>
+		<label>Wargod's Crest (Leg)</label>
+		<description>(Legendary) [MeleeHit: +8%][MeleeDodge: +8%] A single-person energy shield device. It will attempt to stop any rapidly-moving projectile or energy attack that comes from a distance. It does nothing against melee attacks or shots from point-blank range. It also prevents firing past touch range. Different from the standard mass produced energy shields common in the area, This one was presumably crafted by skilled technicians during the Pang Era. The Wargod Crest was handed out to skilled officers and warriors in Pang Li's army and eventually took a cerimonial tone, falling into the hands of Nobles and kings over the many years.(Note: works the same as core game sheildbelts, will prevent ranged characters from shooting if equiped. does not protect against melee attacks)</description>
+    <graphicData>
+      <texPath>Things/Pawn/Humanlike/Apparel/Accessories/MedTimes_WarGodCrest</texPath>
+      <drawSize>(0.8,0.8)</drawSize>		  
+    </graphicData>
+		<uiIconPath>Things/Pawn/Humanlike/Apparel/Accessories/MedTimes_WarGodCrest_Leg</uiIconPath>	
+	<costList><MedTimes_Acc_WargodCrest_Art>1</MedTimes_Acc_WargodCrest_Art></costList>		
+    <tickerType>Normal</tickerType>
+		<statBases>
+			<EnergyShieldRechargeRate>0.18</EnergyShieldRechargeRate>
+			<EnergyShieldEnergyMax>2.3</EnergyShieldEnergyMax>
+		</statBases>
+		<equippedStatOffsets>
+			<MeleeHitChance>0.08</MeleeHitChance>
+			<MeleeDodgeChance>0.08</MeleeDodgeChance>			
+		</equippedStatOffsets>
+		<comps>
+      <li Class="CompProperties_Shield" />
+    </comps>	
+	</ThingDef>	
+	
+<!-- End of thingDefs --> 	
+</Defs>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+	<Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Simple Chains: Leather</li>
+        </mods>		
+        <match Class="PatchOperationSequence">
+            <operations>
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[@Name="HideBase"]</xpath>
+					<value>    
+						<tickerType>Rare</tickerType>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[@Name="HideBase"]</xpath>
+					<value>    
+						<comps>
+						  <li Class="EarlyTimes.CompProperties_Dryable">
+							<defDriesTo>Leather_Rawhide</defDriesTo>
+							<daysToDry>6</daysToDry>
+						  </li>
+						  <li Class="CompProperties_Rottable">
+							<daysToRotStart>4</daysToRotStart>
+							<rotDestroys>true</rotDestroys>
+						  </li>
+						</comps>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[@Name="PreparedHideBase"]</xpath>
+					<value>    
+						<tickerType>Rare</tickerType>
+					</value>
+				</li>
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[@Name="PreparedHideBase"]</xpath>
+					<value>    
+						<comps Inherit="False">
+						  <li Class="EarlyTimes.CompProperties_Dryable">
+							<defDriesTo>Leather_Patch</defDriesTo>
+							<daysToDry>6</daysToDry>
+						  </li>
+						  <li Class="CompProperties_Rottable">
+							<daysToRotStart>4</daysToRotStart>
+							<rotDestroys>true</rotDestroys>
+						  </li>
+						</comps>
+					</value>
+				</li>
+            </operations>
+		</match>
+    </Operation>
+	
+	
+	
+</Patch>

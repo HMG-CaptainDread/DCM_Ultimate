@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+	<Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>[WD] Simple Concrete</li>
+        </mods>		
+        <match Class="PatchOperationSequence">
+            <operations>
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ResearchProjectDef[defName="WDReinforcedConcrete"]/prerequisites</xpath>
+					<value>    
+						<prerequisites>
+						  <li>MedTimes_Calcination</li>
+						</prerequisites>
+					</value>
+				</li>
+				<li Class="PatchOperationConditional">
+					<xpath>/Defs/ResearchProjectDef[defName = "WDReinforcedConcrete"]/requiredResearchBuilding</xpath>
+					<match Class="PatchOperationRemove">
+						<xpath>/Defs/ResearchProjectDef[defName="WDReinforcedConcrete"]/requiredResearchBuilding</xpath>
+					</match>
+				</li>
+            </operations>
+		</match>
+    </Operation>
+	
+	
+	
+</Patch>

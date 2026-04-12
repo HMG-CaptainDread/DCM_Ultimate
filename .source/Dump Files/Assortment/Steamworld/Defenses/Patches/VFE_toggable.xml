@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+  
+  <Operation Class="VEF.PatchOperationToggableSequence">
+    
+	<enabled>False</enabled>
+	
+    <label>mark most of the weapon technology as medieval</label>
+	
+    <operations>
+	
+	  <li Class="PatchOperationAdd">
+        <xpath>Defs</xpath>
+		<value>
+          <ResearchProjectDef>
+			<defName>SteamworldResearch_Rifling</defName>
+			<label>rifling and breech loading</label>
+			<description>Make firearms that have rifled instead of smoothbore barrels and where the bullet is inserted at a breech instead of the muzzle.</description>
+			<baseCost>1000</baseCost>
+			<techLevel>Medieval</techLevel>
+			<tab>SteamworldResearchTab</tab>
+			<researchViewX>0.0</researchViewX>
+			<researchViewY>0.0</researchViewY>
+			<prerequisites>
+			  <li>Smithing</li>
+			  <li MayRequire="VanillaExpanded.VWE">VWE_Gunpowder</li>
+			</prerequisites>
+		  </ResearchProjectDef>
+		</value>
+      </li>
+	  
+      <li Class="PatchOperationReplace">
+		<xpath>Defs/ResearchProjectDef[@Name="BaseSteamworldResearch"]/techLevel</xpath>
+        <value>
+          <techLevel>Medieval</techLevel>
+		</value>
+      </li>
+	  <li Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="SteamworldResearch_Field_Guns" or defName="SteamworldResearch_VolleyGuns" or defName="SteamworldResearch_WoodenMunition"]/prerequisites/li[1]</xpath>
+        <value>
+		  <li>SteamworldResearch_Rifling</li>
+		</value>
+      </li>
+	  
+	   <li Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="StWoDe_SmallShell"]/recipeMaker/recipeUsers</xpath>
+        <value>
+		  <li>ElectricSmithy</li>
+		  <li>FueledSmithy</li>
+		</value>
+      </li>
+
+	  <li Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[@Name="BaseSteamworldGun"]</xpath>
+        <value>
+		  <recipeMaker>
+			<recipeUsers>
+			  <li>ElectricSmithy</li>
+			  <li>FueledSmithy</li>
+			</recipeUsers>
+			<researchPrerequisite>SteamworldResearch_Rifling</researchPrerequisite>
+		  </recipeMaker>
+		</value>
+      </li>
+	  
+    </operations>
+  </Operation>
+  
+</Patch>

@@ -1,0 +1,1411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<ThingDef Name="GS_SpacerBionicBase" ParentName="BodyPartBase" Abstract="True">
+		<techLevel>Spacer</techLevel>
+		<thingCategories>
+			<li>GS_BodyPartsBionicSpacer</li>
+		</thingCategories>
+		<graphicData>
+			<texPath>Things/Item/Health/HealthItem</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.80</drawSize>
+			<color>(120,180,220)</color>
+		</graphicData>
+		<statBases>
+			<WorkToMake>30000</WorkToMake>
+		</statBases>
+		<recipeMaker>
+			<displayPriority>600</displayPriority>
+		</recipeMaker>
+	</ThingDef>
+	
+	<ThingDef Name="GS_SpacerBionicMakeableBase" ParentName="GS_SpacerBionicBase" Abstract="True">
+		<recipeMaker>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>	
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<recipeUsers>
+				<li>FabricationBench</li>
+			</recipeUsers>
+			<skillRequirements>
+				<Crafting>9</Crafting>
+			</skillRequirements>
+			<unfinishedThingDef>UnfinishedHealthItemProsthetic</unfinishedThingDef>
+			<researchPrerequisite>GS_Research_SpacerBionics</researchPrerequisite>
+		</recipeMaker>
+	</ThingDef>
+	
+	<ThingDef Name="GS_SpacerImplantMakeableBase" ParentName="GS_SpacerBionicBase" Abstract="True">
+		<recipeMaker>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>	
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<recipeUsers>
+				<li>FabricationBench</li>
+			</recipeUsers>
+			<skillRequirements>
+				<Crafting>11</Crafting>
+			</skillRequirements>
+			<unfinishedThingDef>UnfinishedHealthItemProsthetic</unfinishedThingDef>
+			<researchPrerequisite>GS_Research_SpacerBionics</researchPrerequisite>
+		</recipeMaker>
+	</ThingDef>
+	
+	<RecipeDef Name="GS_SurgeryInstallSpacerBionicBase" ParentName="SurgeryInstallBodyPartArtificialBase" Abstract="True">
+		<skillRequirements>
+			<Medicine>8</Medicine>
+		</skillRequirements>
+	</RecipeDef>
+
+<!-- 
+		*** handcannon_transform ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_handcannon_transform</defName>
+		<label>transformable hand-cannon</label>
+		<labelNoun>an installed transformable hand-cannon</labelNoun>
+		<defaultLabelColor>(0.5, 0.7, 1.0)</defaultLabelColor>
+		<description>An installed transformable hand-cannon, a deceptively powerful short-barreled gun folded into a bionic arm, installed in such a way that it does not intefere with the performance of the arm.</description>
+		<descriptionHyperlinks><ThingDef>GS_handcannon_transform</ThingDef></descriptionHyperlinks>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+				<li>
+					<label>barrel</label>
+					<capacities>
+					<li>Blunt</li>
+					</capacities>
+					<power>10</power>
+					<cooldownTime>2</cooldownTime>
+				</li>
+				</tools>
+			<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>GS_Handcannon_Bullet_Spacer</defaultProjectile>
+				<ticksBetweenBurstShots>35</ticksBetweenBurstShots>
+				<burstShotCount>6</burstShotCount>
+				<warmupTime>2.6</warmupTime>
+				<range>18</range>
+				<soundCast>Shot_Revolver</soundCast>
+				<soundCastTail>GunTail_Light</soundCastTail>
+				<muzzleFlashScale>9</muzzleFlashScale>
+				<accuracyTouch>0.80</accuracyTouch>
+				<accuracyShort>0.75</accuracyShort>
+				<accuracyMedium>0.55</accuracyMedium>
+				<accuracyLong>0.45</accuracyLong>
+			</li>
+			</verbs>
+			</li>
+		</comps>
+		<spawnThingOnRemoved>GS_handcannon_transform</spawnThingOnRemoved>
+		<addedPartProps>
+		<solid>true</solid>
+		<partEfficiency>1.25</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+  
+	<ThingDef ParentName="BaseBullet">
+		<defName>GS_Handcannon_Bullet_Spacer</defName>
+		<label>transformable hand-cannon bullet</label>
+		<graphicData>
+		<texPath>Things/Projectile/Bullet_Small</texPath>
+		<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+		<damageDef>Bullet</damageDef>
+		<damageAmountBase>20</damageAmountBase>
+		<stoppingPower>2</stoppingPower>
+		<speed>70</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="GS_SpacerBionicMakeableBase">
+		<defName>GS_handcannon_transform</defName>
+		<label>transformable hand-cannon</label>
+		<description>A combat-oriented hand replacement consisting of a transformable hand-cannon, a deceptively powerful short-barreled gun folded into a bionic arm, installed in such a way that it does not intefere with the performance of the arm.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installhandcannon_transform</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<Plasteel>30</Plasteel>
+		<Steel>10</Steel>
+		<ComponentSpacer>5</ComponentSpacer>
+		</costList>
+		<statBases>
+		<Mass>5.8</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallSpacerBionicBase">
+		<defName>GS_Installhandcannon_transform</defName>
+		<label>install transformable hand-cannon</label>
+		<description>Install a transformable hand-cannon.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_handcannon_transform</ThingDef>
+		<HediffDef>GS_hediff_handcannon_transform</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing transformable hand-cannon.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_handcannon_transform</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_handcannon_transform</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_handcannon_transform</addsHediff>
+	</RecipeDef>
+
+<!-- 
+		*** machinegunarm_transform ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_machinegunarm_transform</defName>
+		<label>transformable machinegun-arm</label>
+		<labelNoun>an installed transformable machinegun-arm</labelNoun>
+		<defaultLabelColor>(0.5, 0.7, 1.0)</defaultLabelColor>
+		<description>An installed transformable machinegun-arm, a powerful box-fed automatic weapon designed to fold into an advanced bionic arm. It still slows the user down slightly due to its weight, but performs perfectly fine as a bionic arm.</description>
+		<descriptionHyperlinks><ThingDef>GS_machinegunarm_transform</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Moving</capacity>
+				<offset>-0.1</offset>
+				</li>
+			</capMods>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+				<li>
+					<label>fist</label>
+					<capacities>
+					<li>Blunt</li>
+					</capacities>
+					<power>8.2</power> <!-- Same as natural fist -->
+					<cooldownTime>2</cooldownTime>
+				</li>
+				</tools>
+			<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>GS_machinegunarm_transform_Bullet</defaultProjectile>
+				<warmupTime>3.2</warmupTime>
+				<range>32</range>
+				<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
+				<burstShotCount>6</burstShotCount>
+				<soundCast>Shot_Minigun</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>11</muzzleFlashScale>
+				<accuracyTouch>0.42</accuracyTouch>
+				<accuracyShort>0.55</accuracyShort>
+				<accuracyMedium>0.45</accuracyMedium>
+				<accuracyLong>0.32</accuracyLong>
+			</li>
+			</verbs>
+			</li>
+		</comps>
+		<spawnThingOnRemoved>GS_machinegunarm_transform</spawnThingOnRemoved>
+		<addedPartProps>
+		<solid>true</solid>
+		<partEfficiency>1.25</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+  
+	<ThingDef ParentName="BaseBullet">
+		<defName>GS_machinegunarm_transform_Bullet</defName>
+		<label>transformable machinegun-arm bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/Charge_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>17</damageAmountBase>
+			<stoppingPower>1</stoppingPower>
+			<speed>60</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="GS_SpacerBionicMakeableBase">
+		<defName>GS_machinegunarm_transform</defName>
+		<label>transformable machinegun-arm</label>
+		<description>A combat-oriented hand replacement consisting of an installed transformable machinegun-arm, a powerful box-fed automatic weapon designed to fold into an advanced bionic arm. It still slows the user down slightly due to its weight, but performs perfectly fine as a bionic arm.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installmachinegunarm_transform</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<Plasteel>30</Plasteel>
+		<Steel>80</Steel>
+		<ComponentSpacer>8</ComponentSpacer>
+		</costList>
+		<statBases>
+		<Mass>5.8</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallSpacerBionicBase">
+		<defName>GS_Installmachinegunarm_transform</defName>
+		<label>install transformable machinegun-arm</label>
+		<description>Install a transformable machinegun-arm.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_machinegunarm_transform</ThingDef>
+		<HediffDef>GS_hediff_machinegunarm_transform</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing transformable machinegun-arm.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_machinegunarm_transform</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_machinegunarm_transform</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_machinegunarm_transform</addsHediff>
+	</RecipeDef>
+
+<!-- 
+		*** launcherarm_transform ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_launcherarm_transform</defName>
+		<label>transformable launcher-arm</label>
+		<labelNoun>an installed transformable launcher-arm</labelNoun>
+		<defaultLabelColor>(0.5, 0.7, 1.0)</defaultLabelColor>
+		<description>An installed transformable transformable launcher-arm, a powerful repeating grenade launcher, designed to fold into an advanced bionic arm. It still slows the user down slightly due to its weight, but performs perfectly fine as a bionic arm.</description>
+		<descriptionHyperlinks><ThingDef>GS_launcherarm_transform</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Moving</capacity>
+				<offset>-0.1</offset>
+				</li>
+			</capMods>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+				<li>
+					<label>barrel</label>
+					<capacities>
+					<li>Blunt</li>
+					</capacities>
+					<power>10</power>
+					<cooldownTime>2</cooldownTime>
+				</li>
+				</tools>
+			<verbs>
+			<li>
+				<verbClass>Verb_Shoot</verbClass>
+				<hasStandardCommand>true</hasStandardCommand>
+				<defaultProjectile>GS_launcherarm_transform_Bullet</defaultProjectile>
+				<forcedMissRadius>1.6</forcedMissRadius>
+				<ticksBetweenBurstShots>20</ticksBetweenBurstShots>
+				<burstShotCount>3</burstShotCount>
+				<warmupTime>4</warmupTime>
+				<range>32</range>
+				<soundCast>Shot_IncendiaryLauncher</soundCast>
+				<soundCastTail>GunTail_Medium</soundCastTail>
+				<muzzleFlashScale>14</muzzleFlashScale>
+			</li>
+			</verbs>
+			</li>
+		</comps>
+		<spawnThingOnRemoved>GS_launcherarm_transform</spawnThingOnRemoved>
+		<addedPartProps>
+		<solid>true</solid>
+		<partEfficiency>1.25</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+  
+	<ThingDef ParentName="BaseBullet">
+		<defName>GS_launcherarm_transform_Bullet</defName>
+		<label>transformable launcher-arm bullet</label>
+		<graphicData>
+			<texPath>Things/Projectile/LauncherShot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+			<color>(140,135,156)</color>
+		</graphicData>
+		<thingClass>Projectile_Explosive</thingClass>
+		<projectile>
+			<speed>55</speed>
+			<damageDef>Bomb</damageDef>
+			<!-- Use default damage from explosion def -->
+			<explosionRadius>2.8</explosionRadius>
+			<arcHeightFactor>0.2</arcHeightFactor>
+			<shadowSize>0.6</shadowSize>
+			<screenShakeFactor>0.5</screenShakeFactor>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="GS_SpacerBionicMakeableBase">
+		<defName>GS_launcherarm_transform</defName>
+		<label>transformable launcher-arm</label>
+		<description>A combat-oriented hand replacement consisting of an installed transformable transformable launcher-arm, a powerful repeating grenade launcher, designed to fold into an advanced bionic arm. It still slows the user down slightly due to its weight, but performs perfectly fine as a bionic arm.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installlauncherarm_transform</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<Plasteel>30</Plasteel>
+		<Steel>80</Steel>
+		<ComponentSpacer>8</ComponentSpacer>
+		</costList>
+		<statBases>
+		<Mass>5.8</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallSpacerBionicBase">
+		<defName>GS_Installlauncherarm_transform</defName>
+		<label>install transformable launcher-arm</label>
+		<description>Install a transformable launcher-arm.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_launcherarm_transform</ThingDef>
+		<HediffDef>GS_hediff_launcherarm_transform</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing transformable launcher-arm.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_launcherarm_transform</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_launcherarm_transform</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_launcherarm_transform</addsHediff>
+	</RecipeDef>
+
+<!-- 
+		*** mining arm mk.2 ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_miningarm_spacer</defName>
+		<label>mining arm mk.2</label>
+		<labelNoun>an installed mining arm mk.2</labelNoun>
+		<defaultLabelColor>(0.5, 0.7, 1.0)</defaultLabelColor>
+		<description>An installed mining tool arm, a high-powered foldeable mining tool attached to a high-tech bionic arm. The tool is installed in such a way that it does not intefere with the performance of the arm.</description>
+		<descriptionHyperlinks><ThingDef>GS_miningarm_spacer</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<statFactors>
+				<MiningSpeed>1.50</MiningSpeed>
+				<MiningYield>1.40</MiningYield>
+			</statFactors>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+				<li>
+					<label>drill</label>
+					<capacities>
+					<li>Stab</li>
+					</capacities>
+					<power>24</power>
+					<cooldownTime>2.5</cooldownTime>
+				</li>
+				</tools>
+			</li>
+		</comps>
+		<spawnThingOnRemoved>GS_miningarm_spacer</spawnThingOnRemoved>
+		<addedPartProps>
+		<solid>true</solid>
+		<partEfficiency>1.25</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+
+	<ThingDef ParentName="GS_SpacerBionicMakeableBase">
+		<defName>GS_miningarm_spacer</defName>
+		<label>mining arm mk.2</label>
+		<description>An installed mining tool arm, a high-powered foldeable mining tool attached to a high-tech bionic arm. The tool is installed in such a way that it does not intefere with the performance of the arm.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installminingarm_spacer</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<GS_miningarm>1</GS_miningarm>
+		<Plasteel>60</Plasteel>
+		<ComponentSpacer>6</ComponentSpacer>
+		</costList>
+		<statBases>
+		<Mass>5.8</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallSpacerBionicBase">
+		<defName>GS_Installminingarm_spacer</defName>
+		<label>install mining arm mk.2</label>
+		<description>Install a mining arm mk.2.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_miningarm_spacer</ThingDef>
+		<HediffDef>GS_hediff_miningarm_spacer</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing mining arm mk.2.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_miningarm_spacer</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_miningarm_spacer</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_miningarm_spacer</addsHediff>
+	</RecipeDef>
+	
+<!-- 
+		*** medi-arm mk.2 ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_mediarm_spacer</defName>
+		<label>medi-arm mk.2</label>
+		<labelNoun>an installed medi-arm mk.2</labelNoun>
+		<defaultLabelColor>(0.5, 0.7, 1.0)</defaultLabelColor>
+		<description>An installed hi-tech medical assistance tool arm, with a full suite of advanced medical scanners and tools attached to intricate mechanical micro-manipulators. The tool is installed in such a way that it does not intefere with the performance of the arm.</description>
+		<descriptionHyperlinks><ThingDef>GS_mediarm_spacer</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<statFactors>
+				<MedicalTendQuality>1.4</MedicalTendQuality>
+				<MedicalSurgerySuccessChance>1.4</MedicalSurgerySuccessChance>
+			</statFactors>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+				<li>
+					<label>scalpel</label>
+					<capacities>
+					<li>Stab</li>
+					</capacities>
+					<power>11</power>
+					<cooldownTime>2</cooldownTime>
+				</li>
+				</tools>
+			</li>
+		</comps>
+		<spawnThingOnRemoved>GS_mediarm_spacer</spawnThingOnRemoved>
+		<addedPartProps>
+		<solid>true</solid>
+		<partEfficiency>1.25</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+
+	<ThingDef ParentName="GS_SpacerBionicMakeableBase">
+		<defName>GS_mediarm_spacer</defName>
+		<label>medi-arm mk.2</label>
+		<description>An installed hi-tech medical assistance tool arm, with a full suite of advanced medical scanners and tools attached to intricate mechanical micro-manipulators. The tool is installed in such a way that it does not intefere with the performance of the arm.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installmediarm_spacer</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<GS_mediarm>1</GS_mediarm>
+		<Plasteel>60</Plasteel>
+		<ComponentSpacer>6</ComponentSpacer>
+		</costList>
+		<statBases>
+		<Mass>5.8</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallSpacerBionicBase">
+		<defName>GS_Installmediarm_spacer</defName>
+		<label>install medi-arm mk.2</label>
+		<description>Install a medi-arm mk.2.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_mediarm_spacer</ThingDef>
+		<HediffDef>GS_hediff_mediarm_spacer</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing medi-arm mk.2.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_mediarm_spacer</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_mediarm_spacer</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_mediarm_spacer</addsHediff>
+	</RecipeDef>
+	
+<!-- 
+		*** culin-arm mk.2 ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_culiarm_spacer</defName>
+		<label>culin-arm mk.2</label>
+		<labelNoun>an installed culin-arm mk.2</labelNoun>
+		<defaultLabelColor>(0.5, 0.7, 1.0)</defaultLabelColor>
+		<description>An advanced food prep assistance tool arm, with in-built thermal scanners, slicers and spice storages. The tool is installed in such a way that it does not intefere with the performance of the arm.</description>
+		<descriptionHyperlinks><ThingDef>GS_culiarm_spacer</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<statFactors>
+				<CookSpeed>1.4</CookSpeed>
+				<ButcheryFleshSpeed>1.5</ButcheryFleshSpeed>
+			</statFactors>
+			</li>
+		</stages>
+		<spawnThingOnRemoved>GS_culiarm_spacer</spawnThingOnRemoved>
+		<addedPartProps>
+		<solid>true</solid>
+		<partEfficiency>1.25</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+
+	<ThingDef ParentName="GS_SpacerBionicMakeableBase">
+		<defName>GS_culiarm_spacer</defName>
+		<label>culin-arm mk.2</label>
+		<description>An advanced food prep assistance tool arm, with in-built thermal scanners, slicers and spice storages. The tool is installed in such a way that it does not intefere with the performance of the arm.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installculiarm_spacer</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<GS_culiarm>1</GS_culiarm>
+		<Plasteel>60</Plasteel>
+		<ComponentSpacer>6</ComponentSpacer>
+		</costList>
+		<statBases>
+		<Mass>5.8</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallSpacerBionicBase">
+		<defName>GS_Installculiarm_spacer</defName>
+		<label>install culin-arm mk.2</label>
+		<description>Install a culin-arm mk.2.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_culiarm_spacer</ThingDef>
+		<HediffDef>GS_hediff_culiarm_spacer</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing culin-arm mk.2.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_culiarm_spacer</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_culiarm_spacer</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_culiarm_spacer</addsHediff>
+	</RecipeDef>
+	
+<!-- 
+		*** garden-arm mk.2 ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_gardenarm_spacer</defName>
+		<label>garden-arm mk.2</label>
+		<labelNoun>an installed garden-arm mk.2</labelNoun>
+		<defaultLabelColor>(0.5, 0.7, 1.0)</defaultLabelColor>
+		<description>An advanced plant-tending assistance tool arm, with in-built soil acidity scanners and planting tools attached to mechanical manipulators. The tool is installed in such a way that it does not intefere with the performance of the arm..</description>
+		<descriptionHyperlinks><ThingDef>GS_gardenarm_spacer</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<statFactors>
+				<PlantWorkSpeed>1.45</PlantWorkSpeed>
+				<PlantHarvestYield>1.3</PlantHarvestYield>
+			</statFactors>
+			</li>
+		</stages>
+		<spawnThingOnRemoved>GS_gardenarm_spacer</spawnThingOnRemoved>
+		<addedPartProps>
+		<solid>true</solid>
+		<partEfficiency>1.25</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+
+	<ThingDef ParentName="GS_SpacerBionicMakeableBase">
+		<defName>GS_gardenarm_spacer</defName>
+		<label>garden-arm mk.2</label>
+		<description>An advanced utility hand replacement consisting of an installed plant-tending assistance tool arm, with in-built soil acidity scanners and planting tools attached to mechanical manipulators. The tool is installed in such a way that it does not intefere with the performance of the arm.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installgardenarm_spacer</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<GS_gardenarm>1</GS_gardenarm>
+		<Plasteel>60</Plasteel>
+		<ComponentSpacer>6</ComponentSpacer>
+		</costList>
+		<statBases>
+		<Mass>5.8</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallSpacerBionicBase">
+		<defName>GS_Installgardenarm_spacer</defName>
+		<label>install garden-arm mk.2</label>
+		<description>Install a garden-arm mk.2.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_gardenarm_spacer</ThingDef>
+		<HediffDef>GS_hediff_gardenarm_spacer</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing garden-arm mk.2.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_gardenarm_spacer</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_gardenarm_spacer</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_gardenarm_spacer</addsHediff>
+	</RecipeDef>
+	
+<!-- 
+		*** construction arm mk.2 ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_builderarm_spacer</defName>
+		<label>construction arm mk.2</label>
+		<labelNoun>an installed construction arm mk.2</labelNoun>
+		<defaultLabelColor>(0.5, 0.7, 1.0)</defaultLabelColor>
+		<description>An installed construction assistance tool arm, with built in pneumatic actuators and various tool manipulators, along with folding containers for small bits and bobs. The tool is installed in such a way that it does not intefere with the performance of the arm.</description>
+		<descriptionHyperlinks><ThingDef>GS_builderarm_spacer</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<statFactors>
+				<ConstructionSpeed>1.45</ConstructionSpeed>
+				<ConstructSuccessChance>1.35</ConstructSuccessChance>
+			</statFactors>
+			</li>
+		</stages>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+				<tools>
+				<li>
+					<label>hammer</label>
+					<capacities>
+					<li>Blunt</li>
+					</capacities>
+					<power>18</power>
+					<cooldownTime>2.5</cooldownTime>
+				</li>
+				</tools>
+			</li>
+		</comps>
+		<spawnThingOnRemoved>GS_builderarm_spacer</spawnThingOnRemoved>
+		<addedPartProps>
+		<solid>true</solid>
+		<partEfficiency>1.25</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+
+	<ThingDef ParentName="GS_SpacerBionicMakeableBase">
+		<defName>GS_builderarm_spacer</defName>
+		<label>construction arm mk.2</label>
+		<description>A utility hand replacement consisting of an installed construction assistance tool arm, with built in pneumatic actuators and various tool manipulators, along with folding containers for small bits and bobs. The tool is installed in such a way that it does not intefere with the performance of the arm..</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installbuilderarm_spacer</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<GS_builderarm>1</GS_builderarm>
+		<Plasteel>60</Plasteel>
+		<ComponentSpacer>6</ComponentSpacer>
+		</costList>
+		<statBases>
+		<Mass>5.8</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallSpacerBionicBase">
+		<defName>GS_Installbuilderarm_spacer</defName>
+		<label>install construction arm mk.2</label>
+		<description>Install a construction arm mk.2.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_builderarm_spacer</ThingDef>
+		<HediffDef>GS_hediff_builderarm_spacer</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing construction arm mk.2.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_builderarm_spacer</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_builderarm_spacer</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_builderarm_spacer</addsHediff>
+	</RecipeDef>
+
+<!-- 
+		*** compressiontank ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_compressiontank</defName>
+		<label>Fuel Compression Tank</label>
+		<labelNoun>a compression tank implant</labelNoun>
+		<defaultLabelColor>(0.5, 0.7, 1.0)</defaultLabelColor>
+		<description>An advanced compression tank implant attached to the stomach, which helps to store and compress food as it is consumed, allowing more nutrients to be effectively "banked" for future use, allowing the user to go for longer periods between eating. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove whatever it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><ThingDef>GS_compressiontank</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_compressiontank</spawnThingOnRemoved>
+		<stages>
+			<li>
+			<statOffsets>
+				<MaxNutrition>1.5</MaxNutrition>
+			</statOffsets>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_SpacerImplantMakeableBase">
+		<defName>GS_compressiontank</defName>
+		<label>fuel compression tank</label>
+		<description>An advanced compression tank implant attached to the stomach, which helps to store and compress food as it is consumed, allowing more nutrients to be effectively "banked" for future use, allowing the user to go for longer periods between eating. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove whatever it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installcompressiontank</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Plasteel>35</Plasteel>
+			<Uranium>10</Uranium>
+			<ComponentSpacer>6</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>3</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallImplantBase">
+		<defName>GS_Installcompressiontank</defName>
+		<label>install compressiontank</label>
+		<description>Install a compressiontank.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_compressiontank</ThingDef>
+			<HediffDef>GS_Hediff_compressiontank</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing compressiontank.</jobString>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_compressiontank</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_compressiontank</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Stomach</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_compressiontank</addsHediff>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removecompressiontank</defName>
+		<label>remove compressiontank</label>
+		<description>Remove compressiontank.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_compressiontank</ThingDef>
+		<HediffDef>GS_Hediff_compressiontank</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing compressiontank.</jobString>
+		<removesHediff>GS_Hediff_compressiontank</removesHediff>
+	</RecipeDef>
+
+<!-- 
+		*** spinalreinforcement ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_spinalreinforcement</defName>
+		<label>Spinal Reinforcement Rig</label>
+		<labelNoun>a spinal reinforcement implant</labelNoun>
+		<defaultLabelColor>(0.5, 0.7, 1.0)</defaultLabelColor>
+		<description>An advanced spinal reinforcement implant which supports and strengthens the spine, allowing the user to carry more weight without being suffering from any strain injuries. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove whatever it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><ThingDef>GS_spinalreinforcement</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_spinalreinforcement</spawnThingOnRemoved>
+		<stages>
+			<li>
+			<statFactors>
+				<CarryingCapacity>1.5</CarryingCapacity>
+				<VEF_MassCarryCapacity>1.5</VEF_MassCarryCapacity>
+			</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_SpacerImplantMakeableBase">
+		<defName>GS_spinalreinforcement</defName>
+		<label>Spinal Reinforcement Rig</label>
+		<description>An advanced spinal reinforcement implant which supports and strengthens the spine, allowing the user to carry more weight without being suffering from any strain injuries. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove whatever it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installspinalreinforcement</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Plasteel>45</Plasteel>
+			<Gold>3</Gold>
+			<ComponentSpacer>8</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>3</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallImplantBase">
+		<defName>GS_Installspinalreinforcement</defName>
+		<label>install spinalreinforcement</label>
+		<description>Install a spinalreinforcement.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_spinalreinforcement</ThingDef>
+			<HediffDef>GS_Hediff_spinalreinforcement</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing spinalreinforcement.</jobString>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_spinalreinforcement</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_spinalreinforcement</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Spine</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_spinalreinforcement</addsHediff>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removespinalreinforcement</defName>
+		<label>remove spinalreinforcement</label>
+		<description>Remove spinalreinforcement.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_spinalreinforcement</ThingDef>
+		<HediffDef>GS_Hediff_spinalreinforcement</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing spinalreinforcement.</jobString>
+		<removesHediff>GS_Hediff_spinalreinforcement</removesHediff>
+	</RecipeDef>
+
+<!-- 
+		*** carapace ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_carapace</defName>
+		<label>Carapace Implant</label>
+		<labelNoun>a carapace implant</labelNoun>
+		<defaultLabelColor>(0.5, 0.7, 1.0)</defaultLabelColor>
+		<description>An advanced carapace implant which is planted in the torso, piped into the heart. It sends out a swarm of intelligent mechanites which reinforce the user's skin during combat, shielding them from incoming damage as though they were wearing a layer of skintight armor. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove whatever it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><ThingDef>GS_carapace</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_carapace</spawnThingOnRemoved>
+		<stages>
+			<li>
+			<statOffsets>
+				<ArmorRating_Blunt>0.4</ArmorRating_Blunt>
+				<ArmorRating_Sharp>0.6</ArmorRating_Sharp>
+				<ArmorRating_Heat>0.2</ArmorRating_Heat>
+			</statOffsets>
+			<statFactors>
+				<IncomingDamageFactor>0.85</IncomingDamageFactor>
+			</statFactors>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_SpacerImplantMakeableBase">
+		<defName>GS_carapace</defName>
+		<label>carapace</label>
+		<description>An advanced carapace implant which is planted in the torso, piped into the heart. It sends out a swarm of intelligent mechanites which reinforce the user's skin during combat, shielding them from incoming damage as though they were wearing a layer of skintight armor.\n\nPlayer's note: remember to remove this implant when planning to upgrade/remove whatever it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installcarapace</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Plasteel>150</Plasteel>
+			<Silver>80</Silver>
+			<ComponentSpacer>8</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>3</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallImplantBase">
+		<defName>GS_Installcarapace</defName>
+		<label>install carapace</label>
+		<description>Install a carapace.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_carapace</ThingDef>
+			<HediffDef>GS_Hediff_carapace</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing carapace.</jobString>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_carapace</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_carapace</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Torso</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_carapace</addsHediff>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removecarapace</defName>
+		<label>remove carapace</label>
+		<description>Remove carapace.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_carapace</ThingDef>
+		<HediffDef>GS_Hediff_carapace</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing carapace.</jobString>
+		<removesHediff>GS_Hediff_carapace</removesHediff>
+	</RecipeDef>
+
+<!-- 
+		*** plasteel ribcage ***
+-->
+	<HediffDef ParentName="AddedBodyPartBase">
+		<defName>GS_hediff_plasteelrib</defName>
+		<label>plasteel ribcage</label>
+		<labelNoun>an installed plasteel ribcage</labelNoun>
+		<defaultLabelColor>(0.5, 0.7, 1.0)</defaultLabelColor>
+		<description>A plasteel ribcage that replaces the natural organic version. Advanced bionics make it a perfect replacement to a ntural set of ribs, while offering greater protection to the soft tissue held within.</description>
+		<descriptionHyperlinks><ThingDef>GS_plasteelrib</ThingDef></descriptionHyperlinks>
+		<stages>
+			<li>
+			<statOffsets>
+				<ArmorRating_Blunt>0.4</ArmorRating_Blunt>
+				<ArmorRating_Sharp>0.2</ArmorRating_Sharp>
+			</statOffsets>
+			<statFactors>
+				<IncomingDamageFactor>0.9</IncomingDamageFactor>
+			</statFactors>
+			</li>
+		</stages>
+		<spawnThingOnRemoved>GS_plasteelrib</spawnThingOnRemoved>
+		<addedPartProps>
+		<solid>true</solid>
+		<partEfficiency>1</partEfficiency>
+		</addedPartProps>
+	</HediffDef>
+
+	<ThingDef ParentName="GS_SpacerBionicMakeableBase">
+		<defName>GS_plasteelrib</defName>
+		<label>plasteel ribcage</label>
+		<description>A plasteel ribcage that replaces the natural organic version. Advanced bionics make it a perfect replacement to a ntural set of ribs, while offering greater protection to the soft tissue held within.</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installplasteelrib</RecipeDef></descriptionHyperlinks>
+		<costList>
+		<Plasteel>80</Plasteel>
+		<ComponentSpacer>4</ComponentSpacer>
+		</costList>
+		<statBases>
+		<Mass>5.8</Mass>
+		</statBases>
+		<techHediffsTags>
+		<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+
+	<RecipeDef ParentName="GS_SurgeryInstallSpacerBionicBase">
+		<defName>GS_Installplasteelrib</defName>
+		<label>install plasteel ribcage</label>
+		<description>Install a plasteel ribcage.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_plasteelrib</ThingDef>
+		<HediffDef>GS_hediff_plasteelrib</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing plasteel ribcage.</jobString>
+		<ingredients>
+		<li>
+			<filter>
+			<thingDefs>
+				<li>GS_plasteelrib</li>
+			</thingDefs>
+			</filter>
+			<count>1</count>
+		</li>
+		</ingredients>
+		<fixedIngredientFilter>
+		<thingDefs>
+			<li>GS_plasteelrib</li>
+		</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+		<li>Ribcage</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_hediff_plasteelrib</addsHediff>
+	</RecipeDef>
+
+<!-- 
+		*** powerpack ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_powerpack</defName>
+		<label>Powerpack Implant</label>
+		<labelNoun>a powerpack implant</labelNoun>
+		<defaultLabelColor>(0.5, 0.7, 1.0)</defaultLabelColor>
+		<description>An advanced powerpack implant which is attached to the sternum. Using an advanced computer to monitor oxygenation and strain, it adjusts the pumping rate of the user's lungs, while occasionally injecting bursts of pure oxygen to maintain high performance. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove whatever it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><ThingDef>GS_powerpack</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_powerpack</spawnThingOnRemoved>
+		<stages>
+			<li>
+			<capMods>
+				<li>
+				<capacity>Breathing</capacity>
+				<offset>0.25</offset>
+				</li>
+				<li>
+				<capacity>Moving</capacity>
+				<offset>0.05</offset>
+				</li>
+				<li>
+				<capacity>Manipulation</capacity>
+				<offset>0.05</offset>
+				</li>
+			</capMods>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_SpacerImplantMakeableBase">
+		<defName>GS_powerpack</defName>
+		<label>powerpack</label>
+		<description>An advanced powerpack implant which is attached to the sternum. Using an advanced computer to monitor oxygenation and strain, it adjusts the pumping rate of the user's lungs, while occasionally injecting bursts of pure oxygen to maintain high performance. \n\nPlayer's note: remember to remove this implant when planning to upgrade/remove whatever it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installpowerpack</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Plasteel>20</Plasteel>
+			<Gold>1</Gold>
+			<ComponentSpacer>6</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>2</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallImplantBase">
+		<defName>GS_Installpowerpack</defName>
+		<label>install powerpack</label>
+		<description>Install a powerpack.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_powerpack</ThingDef>
+			<HediffDef>GS_Hediff_powerpack</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing powerpack.</jobString>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_powerpack</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_powerpack</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Torso</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_powerpack</addsHediff>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removepowerpack</defName>
+		<label>remove powerpack</label>
+		<description>Remove powerpack.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_powerpack</ThingDef>
+		<HediffDef>GS_Hediff_powerpack</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing powerpack.</jobString>
+		<removesHediff>GS_Hediff_powerpack</removesHediff>
+	</RecipeDef>
+
+<!-- 
+		*** beamblade ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_beamblade</defName>
+		<label>Beam Blade</label>
+		<labelNoun>a beamblade</labelNoun>
+		<defaultLabelColor>(0.5, 0.7, 1.0)</defaultLabelColor>
+		<description>A retractable energy blade projector, normally attached to the wrist or elbow. A powerful and compact close combat tool, it is equally capable of tearing open armor as it is at slicing bread.\nPlayer's note: remember to remove this implant when planning to upgrade/remove the arm it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><ThingDef>GS_beamblade</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_beamblade</spawnThingOnRemoved>
+		<comps>
+			<li Class="HediffCompProperties_VerbGiver">
+			<tools>
+				<li>
+					<label>point</label>
+					<capacities>
+					<li>Stab</li>
+					</capacities>
+					<power>22</power>
+					<armorPenetration>0.4</armorPenetration>
+					<cooldownTime>2</cooldownTime>
+				</li>
+			</tools>
+			</li>
+		</comps>
+		<addedPartProps>
+			<isGoodWeapon>true</isGoodWeapon>
+		</addedPartProps>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_SpacerImplantMakeableBase">
+		<defName>GS_beamblade</defName>
+		<label>beamblade</label>
+		<description>A retractable energy blade projector, normally attached to the wrist or elbow. A powerful and compact close combat tool, it is equally capable of tearing open armor as it is at slicing bread.\n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the arm it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installbeamblade</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Plasteel>45</Plasteel>
+			<ComponentSpacer>6</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>3</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallImplantBase">
+		<defName>GS_Installbeamblade</defName>
+		<label>install beamblade</label>
+		<description>Install a beamblade.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_beamblade</ThingDef>
+			<HediffDef>GS_Hediff_beamblade</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing beamblade.</jobString>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_beamblade</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_beamblade</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Shoulder</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_beamblade</addsHediff>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removebeamblade</defName>
+		<label>remove beamblade</label>
+		<description>Remove beamblade.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_beamblade</ThingDef>
+		<HediffDef>GS_Hediff_beamblade</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing beamblade.</jobString>
+		<removesHediff>GS_Hediff_beamblade</removesHediff>
+	</RecipeDef>
+
+<!-- 
+		*** heelskate ***
+-->
+	<HediffDef ParentName="ImplantHediffBase">
+		<defName>GS_Hediff_heelskate</defName>
+		<label>Heel Skates</label>
+		<labelNoun>heel skate implant</labelNoun>
+		<defaultLabelColor>(0.5, 0.7, 1.0)</defaultLabelColor>
+		<description>Compact and retractable powered skates implated into the heels, allowing them to move quickly over long distances.\n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the leg it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><ThingDef>GS_heelskate</ThingDef></descriptionHyperlinks>
+		<spawnThingOnRemoved>GS_heelskate</spawnThingOnRemoved>
+		<stages>
+			<li>
+			<statOffsets>
+				<MoveSpeed>0.8</MoveSpeed>
+			</statOffsets>
+			</li>
+		</stages>
+	</HediffDef>
+	
+	<ThingDef ParentName="GS_SpacerImplantMakeableBase">
+		<defName>GS_heelskate</defName>
+		<label>heel skates</label>
+		<description>Compact and retractable powered skates implated into the heels, allowing them to move quickly over long distances.\n\nPlayer's note: remember to remove this implant when planning to upgrade/remove the leg it's attached to, otherwise it will be destroyed!</description>
+		<descriptionHyperlinks><RecipeDef>GS_Installheelskate</RecipeDef></descriptionHyperlinks>
+		<costList>
+			<Steel>25</Steel>
+			<Plasteel>25</Plasteel>
+			<ComponentSpacer>6</ComponentSpacer>
+		</costList>
+		<statBases>
+			<Mass>3</Mass>
+		</statBases>
+		<techHediffsTags>
+			<li>Advanced</li>
+		</techHediffsTags>
+	</ThingDef>
+	
+	<RecipeDef ParentName="GS_SurgeryInstallImplantBase">
+		<defName>GS_Installheelskate</defName>
+		<label>install heel skate</label>
+		<description>Install a heelskate.</description>
+		<descriptionHyperlinks>
+			<ThingDef>GS_heelskate</ThingDef>
+			<HediffDef>GS_Hediff_heelskate</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Installing heel skate.</jobString>
+		<ingredients>
+			<li>
+			<filter>
+				<thingDefs>
+				<li>GS_heelskate</li>
+				</thingDefs>
+			</filter>
+			<count>1</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+			<li>GS_heelskate</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<appliedOnFixedBodyParts>
+			<li>Leg</li>
+		</appliedOnFixedBodyParts>
+		<addsHediff>GS_Hediff_heelskate</addsHediff>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="SurgeryRemoveImplantBase">
+		<defName>GS_Removeheelskate</defName>
+		<label>remove heelskate</label>
+		<description>Remove heelskate.</description>
+		<descriptionHyperlinks>
+		<ThingDef>GS_heelskate</ThingDef>
+		<HediffDef>GS_Hediff_heelskate</HediffDef>
+		</descriptionHyperlinks>
+		<jobString>Removing heelskate.</jobString>
+		<removesHediff>GS_Hediff_heelskate</removesHediff>
+	</RecipeDef>
+
+</Defs>

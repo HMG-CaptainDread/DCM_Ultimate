@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- Start of thingDefs -->
+	<!-- ============================== Base Classes ============================== -->
+	<!-- Accessories Base Class -->
+	<ThingDef Name="MedTimes_Accessories" Abstract="True">
+		<category>Item</category>
+		<selectable>True</selectable>
+		<pathCost>35</pathCost>
+		<graphicData>
+			<onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>Transparent</shaderType>
+		</graphicData>
+		<drawGUIOverlay>true</drawGUIOverlay>
+		<altitudeLayer>Item</altitudeLayer>
+		<alwaysHaulable>True</alwaysHaulable>
+		<tickerType>Never</tickerType>
+		<techLevel>Medieval</techLevel>
+		<statBases>
+			<EquipDelay>2</EquipDelay>
+			<Beauty>-6</Beauty>
+			<Mass>0.5</Mass>
+		</statBases>
+		<apparel>
+			<careIfWornByCorpse>false</careIfWornByCorpse>
+			<bodyPartGroups>
+				<li>Waist</li>
+			</bodyPartGroups>
+			<layers>
+				<li>Belt</li>
+			</layers>
+		</apparel>
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+		</comps>
+	</ThingDef>
+	<!-- (Use Hitpoints Base) Accessories Class -->
+	<ThingDef Name="MedTimes_Accessories_HPBase" ParentName="MedTimes_Accessories" Abstract="True">
+		<useHitPoints>True</useHitPoints>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>1</DeteriorationRate>
+		</statBases>
+	</ThingDef>
+	<!-- (Use Hitpoints Base) Accessories Class -->
+	<ThingDef Name="MedTimes_Accessories_HPQBase" ParentName="MedTimes_Accessories_HPBase" Abstract="True">
+		<comps>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
+		</comps>
+	</ThingDef>
+	<!-- ============================== Specefic Classes ============================== -->
+	<!-- (Normal) Accessories Class -->
+	<ThingDef Name="MedTimes_Accessories_Norm" ParentName="MedTimes_Accessories_HPQBase" Abstract="True">
+		<thingCategories>
+			<li>Accessories</li>
+		</thingCategories>
+		<tradeTags>
+			<li>MedTimes_Gear</li>
+		</tradeTags>
+	</ThingDef>
+	<!-- ====================================== Actual Items ========================================= -->
+	<!-- ====================== Standard Gear =========================== -->
+	<!-- (Normal) Toolbelt -->
+	<ThingDef ParentName="MedTimes_Accessories_Norm">
+		<thingClass>Apparel</thingClass>
+		<defName>MedTimes_Acc_Toolbelt</defName>
+		<label>Pocketed toolbelt</label>
+		<description>A tool-belt and the necessary hand-tools one needs to use it.</description>
+		<graphicData>
+			<texPath>Things/Pawn/Humanlike/Apparel/Accessories/MedTimes_Toolbelt</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<stuffCategories>
+			<li>Fabric</li>
+			<li>Leathery</li>
+		</stuffCategories>
+		<costStuffCount>40</costStuffCount>
+		<costList>
+			<MedTimes_CraftingTools>1</MedTimes_CraftingTools>
+			<Steel>5</Steel>
+		</costList>
+		<tickerType>Normal</tickerType>
+		<statBases>
+			<WorkToMake>3500</WorkToMake>
+			<Mass>3</Mass>
+		</statBases>
+		<equippedStatOffsets>
+			<WorkSpeedGlobal>0.2</WorkSpeedGlobal>
+		</equippedStatOffsets>
+		<recipeMaker>
+			<unfinishedThingDef>UnfinishedBelt</unfinishedThingDef>
+			<recipeUsers>
+				<li>MedTimes_CraftingStation</li>
+			</recipeUsers>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+		</recipeMaker>
+	</ThingDef>
+	<!-- (Normal) Smokepop Toolbelt -->
+	<ThingDef ParentName="MedTimes_Accessories_Norm">
+		<thingClass>SmokepopBelt</thingClass>
+		<defName>MedTimes_Acc_ToolbeltSmokepop</defName>
+		<label>Smokepop Toolbelt</label>
+		<description>A tool-belt with smoke-pop canisters woven in. An automatic defensive smokescreen. It will release a thick cloud of smoke if the wearer is hit by a projectile, providing line-of-sight cover and preventing turrets from locking on. Single-use.</description>
+		<techLevel>Industrial</techLevel>
+		<graphicData>
+			<texPath>Things/Pawn/Humanlike/Apparel/Accessories/MedTimes_ToolbeltSmoke</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<stuffCategories>
+			<li>Fabric</li>
+			<li>Leathery</li>
+		</stuffCategories>
+		<costStuffCount>25</costStuffCount>
+		<costList>
+			<Chemfuel>20</Chemfuel>
+			<ComponentIndustrial>1</ComponentIndustrial>
+			<Steel>10</Steel>
+		</costList>
+		<tickerType>Normal</tickerType>
+		 <comps>
+      <li Class="CompProperties_ApparelReloadable">
+        <maxCharges>2</maxCharges>
+        <ammoDef>Chemfuel</ammoDef>
+        <ammoCountToRefill>10</ammoCountToRefill>
+        <baseReloadTicks>60</baseReloadTicks>
+        <soundReload>Standard_Reload</soundReload>
+        <hotKey>Misc4</hotKey>
+        <chargeNoun>smokepop</chargeNoun>
+        <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+      </li>
+    </comps>
+    <verbs>
+      <li>
+        <verbClass>Verb_Smokepop</verbClass>
+        <label>pop smoke</label>
+        <violent>false</violent>
+        <hasStandardCommand>true</hasStandardCommand>
+        <targetable>false</targetable>
+        <nonInterruptingSelfCast>true</nonInterruptingSelfCast>
+        <onlyManualCast>True</onlyManualCast>
+      </li>
+    </verbs>
+		<statBases>
+			<WorkToMake>3500</WorkToMake>
+			<Mass>3</Mass>
+			<PackRadius>2.5</PackRadius>
+			<EquipDelay>2</EquipDelay>
+		</statBases>
+		<equippedStatOffsets>
+			<WorkSpeedGlobal>0.2</WorkSpeedGlobal>
+		</equippedStatOffsets>
+		<recipeMaker>
+			<unfinishedThingDef>UnfinishedBelt</unfinishedThingDef>
+			<researchPrerequisite>SmokepopBelt</researchPrerequisite>
+			<recipeUsers>
+				<li>MedTimes_CraftingStation</li>
+			</recipeUsers>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+		</recipeMaker>
+		<apparel>
+			<tags>
+				<li>BeltDefensePop</li>
+			</tags>
+		</apparel>
+	</ThingDef>
+	<!-- (Normal) Warbourne Shield Belt -->
+	<ThingDef ParentName="MedTimes_Accessories_Norm">
+		<defName>MedTimes_WarbourneShield</defName>
+		<label>Warbourne's Shield Belt</label>
+		 <thingClass>Apparel</thingClass>
+		<description>A single-person energy shield device. This one is of low quality and is put together with crude construction techniques. It will attempt to stop any rapidly-moving projectile or energy attack that comes from a distance. It does nothing against melee attacks or shots from point-blank range.</description>
+		<graphicData>
+			<texPath>Things/Pawn/Humanlike/Apparel/Accessories/MedTimes_ShieldBelt</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<tickerType>Normal</tickerType>
+		<statBases>
+			<WorkToMake>25000</WorkToMake>
+			<MaxHitPoints>30</MaxHitPoints>
+			<EnergyShieldRechargeRate>0.06</EnergyShieldRechargeRate>
+			<EnergyShieldEnergyMax>1</EnergyShieldEnergyMax>
+			<Mass>0.5</Mass>
+		</statBases>
+		<comps>
+		  <li Class="CompProperties_Shield" />
+		</comps>
+		<costList>
+			<ComponentIndustrial>2</ComponentIndustrial>
+			<Uranium>5</Uranium>
+			<Steel>25</Steel>
+		</costList>
+		<apparel>
+			<countsAsClothingForNudity>false</countsAsClothingForNudity>
+			<careIfWornByCorpse>false</careIfWornByCorpse>
+			<careIfDamaged>false</careIfDamaged>
+			<wearPerDay>0</wearPerDay>
+			<bodyPartGroups>
+				<li>Waist</li>
+			</bodyPartGroups>
+			<layers>
+				<li>Belt</li>
+			</layers>
+			<tags>
+				<li>BeltDefense</li>
+				<li>WaurborneGear</li>
+				<li>BeltDefense</li>
+			</tags>
+		</apparel>
+		<tradeTags>
+		  <li>Armor</li>
+		</tradeTags>
+	</ThingDef>
+	<!-- End of thingDefs -->
+</Defs>

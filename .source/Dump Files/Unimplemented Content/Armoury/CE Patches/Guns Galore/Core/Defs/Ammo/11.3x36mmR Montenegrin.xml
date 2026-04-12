@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingCategoryDef>
+    <defName>Ammo113x36mmR_Montenegrin</defName>
+    <label>11.3x36mmR Montenegrin</label>
+    <parent>AmmoPistols</parent>
+    <iconPath>UI/Icons/ThingCategories/CaliberPistol</iconPath>
+  </ThingCategoryDef>
+
+  <!-- ==================== AmmoSet ========================== -->
+
+  <CombatExtended.AmmoSetDef MayRequire="cgf1.gunsgalore.industrialage.i">
+    <defName>AmmoSet_113x36mmR_Montenegrin</defName>
+    <label>11.3x36mmR Montenegrin</label>
+    <ammoTypes>
+      <Ammo_113x36mmR_Montenegrin_FMJ>Bullet_113x36mmR_Montenegrin_FMJ</Ammo_113x36mmR_Montenegrin_FMJ>
+    </ammoTypes>
+		<similarTo>AmmoSet_Pistol</similarTo>
+  </CombatExtended.AmmoSetDef>
+
+  <!-- ==================== Ammo ========================== -->
+
+  <ThingDef Class="CombatExtended.AmmoDef" Name="113x36mmR_MontenegrinBase" ParentName="SmallAmmoBase" Abstract="True" MayRequire="cgf1.gunsgalore.industrialage.i">
+    <description>Old pistol cartridge used in revolvers and rifles.</description>
+    <statBases>
+      <Mass>0.012</Mass>
+      <Bulk>0.01</Bulk>
+    </statBases>
+    <tradeTags>
+      <li>CE_AutoEnableTrade</li>
+      <li>CE_AutoEnableCrafting</li>
+    </tradeTags>
+    <thingCategories>
+      <li>Ammo113x36mmR_Montenegrin</li>
+    </thingCategories>
+  </ThingDef>
+
+  <ThingDef Class="CombatExtended.AmmoDef" ParentName="113x36mmR_MontenegrinBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+    <defName>Ammo_113x36mmR_Montenegrin_FMJ</defName>
+    <label>11.3x36mmR Montenegrin cartridge (FMJ)</label>
+    <graphicData>
+      <texPath>Things/Ammo/Pistol/FMJ</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>0.06</MarketValue>
+    </statBases>
+    <ammoClass>FullMetalJacket</ammoClass>
+    <cookOffProjectile>Bullet_113x36mmR_Montenegrin_FMJ</cookOffProjectile>
+  </ThingDef>
+
+  <!-- ================== Projectiles ================== -->
+
+  <ThingDef Name="Base113x36mmR_MontenegrinBullet" ParentName="BaseBulletCE" Abstract="true" MayRequire="cgf1.gunsgalore.industrialage.i">
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <damageDef>Bullet</damageDef>
+      <speed>55</speed>
+      <dropsCasings>true</dropsCasings>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="Base113x36mmR_MontenegrinBullet">
+    <defName>Bullet_113x36mmR_Montenegrin_FMJ</defName>
+    <label>11.3x36mmR Montenegrin bullet (FMJ)</label>
+    <projectile Class="CombatExtended.ProjectilePropertiesCE">
+      <damageAmountBase>9</damageAmountBase>
+      <armorPenetrationSharp>3.5</armorPenetrationSharp>
+      <armorPenetrationBlunt>6.78</armorPenetrationBlunt>
+    </projectile>
+  </ThingDef>
+
+  <!-- ==================== Recipes ========================== -->
+
+  <!-- Standard manufacture -->
+  <RecipeDef ParentName="AmmoRecipeBase" MayRequire="cgf1.gunsgalore.industrialage.i">
+    <defName>MakeAmmo_113x36mmR_Montenegrin_FMJ</defName>
+    <label>make 11.3x36mmR Montenegrin (FMJ) cartridge x500</label>
+    <description>Craft 500 11.3x36mmR Montenegrin (FMJ) cartridges.</description>
+    <jobString>Making 11.3x36mmR Montenegrin (FMJ) cartridges.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </filter>
+        <count>12</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Steel</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <Ammo_113x36mmR_Montenegrin_FMJ>500</Ammo_113x36mmR_Montenegrin_FMJ>
+    </products>
+    <workAmount>1200</workAmount>
+  </RecipeDef>
+
+</Defs>

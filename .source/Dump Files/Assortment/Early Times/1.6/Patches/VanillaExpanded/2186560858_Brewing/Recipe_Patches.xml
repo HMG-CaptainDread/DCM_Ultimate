@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  
+  <Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>Vanilla Brewing Expanded</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[defName = "VBE_MakeCoffee"
+								    or defName = "VBE_MakeTea"]/recipeUsers</xpath>		
+				<value>
+					<li>MedTimes_FoodPrepStation</li>
+				</value>
+			</li>	
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/RecipeDef[defName = "VBE_MakeCigarettes"
+								   or defName = "VBE_MakeCigars"]/recipeUsers</xpath>		
+				<value>
+					<li>MedTimes_CraftingStation</li>
+				</value>
+			</li>				
+			
+		</operations>
+	</match>
+  </Operation>
+  
+</Patch>
+
+
+
+

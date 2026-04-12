@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>	
+	<!-- Cannon -->
+	<ThingDef Name="CannonAmmoBase" ParentName="ResourceBase" Abstract="True">
+		<soundInteract>Stone_Drop</soundInteract>
+		<soundDrop>Stone_Drop</soundDrop>
+		<tickerType>Normal</tickerType>
+		<stackLimit>25</stackLimit>
+		<techLevel>Medieval</techLevel>
+		<statBases>
+			<MaxHitPoints>240</MaxHitPoints>
+			<Flammability>0.0</Flammability>
+			<DeteriorationRate>0.0</DeteriorationRate>
+			<Beauty>2</Beauty>
+		</statBases>
+		<thingCategories>
+			<li>CannonAmmo</li>
+		</thingCategories>
+	</ThingDef>
+	<!-- Stone cannon ammo -->
+	<ThingDef ParentName="CannonAmmoBase">
+		<defName>MedTimes_CannonBallStone</defName>
+		<label>Stone cannon ball</label>
+		<description>Standart cannon ball, made of stone.</description>
+		<graphicData>
+			<texPath>Things/Item/Shells/CannonBallStone</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<projectileWhenLoaded>Bullet_Cannon_Stone</projectileWhenLoaded>
+		<statBases>
+			<Mass>4</Mass>
+			<MarketValue>10</MarketValue>
+		</statBases>
+	</ThingDef>
+	<ThingDef ParentName="BaseBullet">
+		<thingClass>Projectile_Explosive</thingClass>
+		<defName>Bullet_Cannon_Stone</defName>
+		<label>Stone cannon ball</label>
+		<graphicData>
+			<texPath>Bullets/CannonStoneShot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<projectile>
+			<damageDef>Thump</damageDef>
+			<damageAmountBase>30</damageAmountBase>
+			<stoppingPower>3</stoppingPower>
+			<armorPenetrationBase>0.75</armorPenetrationBase>
+			<explosionRadius>1.6</explosionRadius>
+			<preExplosionSpawnChance>0.3</preExplosionSpawnChance>
+			<preExplosionSpawnThingDef>Crushed_Stones</preExplosionSpawnThingDef>
+			<speed>50</speed>
+			<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+			<soundExplode>MedTimes_Sound_Impact</soundExplode>
+			<soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+			<soundAmbient>MortarRound_Ambient</soundAmbient>
+		</projectile>
+	</ThingDef>
+	<!-- metal cannon ammo -->
+	<ThingDef ParentName="CannonAmmoBase">
+		<defName>MedTimes_CannonBallMetal</defName>
+		<label>Metal cannon ball</label>
+		<description>Standart cannon ball, made of metal. Nec Pluribus Impar.</description>
+		<graphicData>
+			<texPath>Things/Item/Shells/CannonBallMetal</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<projectileWhenLoaded>Bullet_Cannon_Standart</projectileWhenLoaded>
+		<smeltable>true</smeltable>
+		<statBases>
+			<Mass>3</Mass>
+			<MarketValue>18</MarketValue>
+		</statBases>
+		<smeltProducts>
+			<Steel>8</Steel>
+		</smeltProducts>
+	</ThingDef>
+	<ThingDef ParentName="BaseBullet">
+		<thingClass>Projectile_Explosive</thingClass>
+		<defName>Bullet_Cannon_Standart</defName>
+		<label>Metal cannon ball</label>
+		<graphicData>
+			<texPath>Bullets/CannonStandartShot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<projectile>
+			<damageDef>Thump</damageDef>
+			<damageAmountBase>50</damageAmountBase>
+			<stoppingPower>6</stoppingPower>
+			<armorPenetrationBase>1.25</armorPenetrationBase>
+			<explosionRadius>1.6</explosionRadius>
+			<preExplosionSpawnThingDef>Steel</preExplosionSpawnThingDef>
+			<preExplosionSpawnChance>0.3</preExplosionSpawnChance>
+			<speed>50</speed>
+			<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+			<soundExplode>MedTimes_Sound_Impact</soundExplode>
+			<soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+			<soundAmbient>MortarRound_Ambient</soundAmbient>
+		</projectile>
+	</ThingDef>
+	<!-- shrapnel cannon ammo -->
+	<ThingDef ParentName="CannonAmmoBase">
+		<defName>MedTimes_CannonShrapnel</defName>
+		<label>Cannon shrapnel</label>
+		<description>Shrapnel cannon payload. Effective against unarmored targets.</description>
+		<graphicData>
+			<texPath>Things/Item/Shells/CannonShrapnel</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<projectileWhenLoaded>Bullet_Cannon_Shrapnel</projectileWhenLoaded>
+		<statBases>
+			<Mass>4</Mass>
+			<MarketValue>35</MarketValue>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>3.4</explosiveRadius>
+				<explosiveDamageType>Bomb</explosiveDamageType>
+				<damageAmountBase>12</damageAmountBase>
+				<explosiveExpandPerStackcount>1.0</explosiveExpandPerStackcount>
+				<startWickHitPointsPercent>0.5</startWickHitPointsPercent>
+				<wickTicks>
+					<min>56</min>
+					<max>180</max>
+				</wickTicks>
+			</li>
+		</comps>
+	</ThingDef>
+	<ThingDef ParentName="BaseBullet">
+		<thingClass>Projectile_Explosive</thingClass>
+		<defName>Bullet_Cannon_Shrapnel</defName>
+		<label>Cannon shrapnel</label>
+		<graphicData>
+			<texPath>Bullets/CannonShrapnelShot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<projectile>
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>21</damageAmountBase>
+			<stoppingPower>2</stoppingPower>
+			<explosionRadius>5.4</explosionRadius>
+			<armorPenetrationBase>0.3</armorPenetrationBase>
+			<speed>60</speed>
+			<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+			<preExplosionSpawnThingDef>Filth_RubbleRock</preExplosionSpawnThingDef>
+			<soundExplode>MedTimes_Sound_Impact</soundExplode>
+			<soundAmbient>MortarRound_Ambient</soundAmbient>
+		</projectile>
+	</ThingDef>
+	<!-- smoke cannon ammo -->
+	<ThingDef ParentName="CannonAmmoBase">
+		<defName>MedTimes_CannonBallFumes</defName>
+		<label>Cannon fume ball</label>
+		<description>Fume cannon payload. Creates smoke clouds and occasionally ignites things.</description>
+		<graphicData>
+			<texPath>Things/Item/Shells/CannonFume</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<projectileWhenLoaded>Bullet_Cannon_Fume</projectileWhenLoaded>
+		<statBases>
+			<Mass>4</Mass>
+			<MarketValue>35</MarketValue>
+		</statBases>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveDamageType>Smoke</explosiveDamageType>
+				<explosiveRadius>4</explosiveRadius>
+				<postExplosionGasType>BlindSmoke</postExplosionGasType>
+				<postExplosionSpawnChance>0.9</postExplosionSpawnChance>
+				<postExplosionSpawnThingCount>1</postExplosionSpawnThingCount>
+				<explosiveExpandPerStackcount>0.4</explosiveExpandPerStackcount>
+				<chanceToStartFire>0.2</chanceToStartFire>
+				<startWickOnDamageTaken>
+					<li>Flame</li>
+				</startWickOnDamageTaken>
+				<wickTicks>
+					<min>50</min>
+					<max>120</max>
+				</wickTicks>
+			</li>
+		</comps>
+	</ThingDef>
+	<ThingDef ParentName="BaseBullet">
+		<thingClass>Projectile_Explosive</thingClass>
+		<defName>Bullet_Cannon_Fume</defName>
+		<label>Cannon fumeball</label>
+		<graphicData>
+			<texPath>Bullets/CannonFumeShot</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>TransparentPostLight</shaderType>
+		</graphicData>
+		<projectile>
+			<damageDef>Smoke</damageDef>
+			<speed>60</speed>
+			<explosionRadius>6</explosionRadius>
+			<soundExplode>Explosion_Smoke</soundExplode>
+			<postExplosionGasType>BlindSmoke</postExplosionGasType>
+			<postExplosionSpawnChance>0.5</postExplosionSpawnChance>
+			<explosionChanceToStartFire>0.2</explosionChanceToStartFire>
+			<explosionDelay>55</explosionDelay>
+		</projectile>
+	</ThingDef>
+	
+</Defs>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>    
+
+<!-- Spacer -->
+
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Cooking Expanded</li>
+		</mods>
+		<match Class="PatchOperationConditional">
+                <success>Always</success>
+                    <xpath>/Defs/ResearchProjectDef[defName="VCE_VegMilkExtraction"]/tags</xpath>
+                    <match Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="VCE_VegMilkExtraction"]/tags</xpath>
+                                <value>
+                                    <li>FernySpacerStart</li>
+                                </value>
+                            </li>
+                        </operations>
+                    </match>
+                    <nomatch Class="PatchOperationSequence">
+                        <operations>
+                            <li Class="PatchOperationAdd">
+                                <xpath>/Defs/ResearchProjectDef[defName="VCE_VegMilkExtraction"]</xpath>
+                                <value>
+                                <tags>
+                                    <li>FernySpacerStart</li>
+                                </tags>
+                                </value>
+                            </li>
+                        </operations>
+                    </nomatch>
+		</match>
+	</Operation>
+</Patch>

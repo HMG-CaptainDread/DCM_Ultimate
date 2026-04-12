@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+<!-- Mechanoid Upgrades Ancient Building patch -->
+
+<Operation Class="PatchOperationConditional" MayRequire="OskarPotocki.VanillaVehiclesExpandedTier3">
+	<success>Normal</success>
+	<!-- MU_AncientMechUpgrader deconstructible check -->
+	<xpath>*/ThingDef[defName="VVEW_BangBusWreck"]/building/deconstructible</xpath>
+	<!-- deconstructible false -->
+	<match Class="PatchOperationReplace">
+		<xpath>*/ThingDef[defName="VVEW_BangBusWreck" or defName="VVEW_BunsenWreck" or defName="VVEW_DirtbikeWreck" or defName="VVEW_FrogWreck" or defName="VVEW_HighwaymanWreck" or defName="VVEW_MuleWreck" or defName="VVEW_ProwlerWreck" or defName="VVEW_RoadkillWreck" or defName="VVEW_ScythemanWreck" or defName="VVEW_ToadWreck" or defName="VVEW_TravellerWreck" or defName="VVEW_BulldogWreck" or defName="VVEW_CharleyWreck" or defName="VVEW_MosquitoWreck" or defName="VVEW_RoadrunnerWreck" or defName="VVEW_SmugglerWreck" or defName="VVEW_SnatcherWreck" or defName="VVEW_TangoWreck" or defName="VVEW_WagonWreck" or defName="VVEW_WarbirdWreck" or defName="VVEW_WisentWreck"]/building[deconstructible="false"][deconstructible != "true"]</xpath>
+		<value>
+			<building>
+				<deconstructible>true</deconstructible>
+			</building>
+		</value>
+	</match>
+	<!-- deconstructible add -->
+	<nomatch Class="PatchOperationAdd">
+		<xpath>*/ThingDef[defName="VVEW_BangBusWreck" or defName="VVEW_BunsenWreck" or defName="VVEW_DirtbikeWreck" or defName="VVEW_FrogWreck" or defName="VVEW_HighwaymanWreck" or defName="VVEW_MuleWreck" or defName="VVEW_ProwlerWreck" or defName="VVEW_RoadkillWreck" or defName="VVEW_ScythemanWreck" or defName="VVEW_ToadWreck" or defName="VVEW_TravellerWreck" or defName="VVEW_BulldogWreck" or defName="VVEW_CharleyWreck" or defName="VVEW_MosquitoWreck" or defName="VVEW_RoadrunnerWreck" or defName="VVEW_SmugglerWreck" or defName="VVEW_SnatcherWreck" or defName="VVEW_TangoWreck" or defName="VVEW_WagonWreck" or defName="VVEW_WarbirdWreck" or defName="VVEW_WisentWreck"]/building</xpath>
+		<value>
+			<deconstructible>true</deconstructible>
+		</value>
+	</nomatch>
+</Operation>
+
+<!-- killedLeavings ChunkSlagSteel 1 -->
+
+<Operation Class="PatchOperationConditional">
+	<success>Normal</success>
+	<!-- Ancient Mech Upgrader check -->
+	<xpath>*/ThingDef[defName="VVEW_DirtbikeWreck"]/statBases</xpath>
+	<!-- Add WorkToBuild and costList -->
+	<match Class="PatchOperationSequence">
+		<operations>
+			<li Class="PatchOperationAdd">
+				<xpath>*/ThingDef[defName="VVEW_DirtbikeWreck" or defName="VVEW_FrogWreck" or defName="VVEW_ProwlerWreck" or defName="VVEW_CharleyWreck"]/statBases</xpath>
+				<value>
+					<WorkToBuild>3000</WorkToBuild>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>*/ThingDef[defName="VVEW_DirtbikeWreck" or defName="VVEW_FrogWreck" or defName="VVEW_ProwlerWreck" or defName="VVEW_CharleyWreck"]</xpath>
+				<value>
+					<costList>
+						<ChunkSlagSteel>2</ChunkSlagSteel>
+					</costList>
+				</value>
+			</li>
+		</operations>
+	</match>
+	<nomatch/>
+</Operation>
+
+<!-- killedLeavings ChunkSlagSteel 2 -->
+
+<Operation Class="PatchOperationConditional">
+	<success>Normal</success>
+	<!-- Ancient Basic Upgrades Assembler check -->
+	<xpath>*/ThingDef[defName="VVEW_BangBusWreck"]/statBases</xpath>
+	<!-- Add WorkToBuild and costList -->
+	<match Class="PatchOperationSequence">
+		<operations>
+			<li Class="PatchOperationAdd">
+				<xpath>*/ThingDef[defName="VVEW_BangBusWreck" or defName="VVEW_MuleWreck" or defName="VVEW_ScythemanWreck" or defName="VVEW_ToadWreck" or defName="VVEW_TravellerWreck" or defName="VVEW_MosquitoWreck" or defName="VVEW_RoadrunnerWreck" or defName="VVEW_SnatcherWreck" or defName="VVEW_WagonWreck"]/statBases</xpath>
+				<value>
+					<WorkToBuild>9000</WorkToBuild>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>*/ThingDef[defName="VVEW_BangBusWreck" or defName="VVEW_MuleWreck" or defName="VVEW_ScythemanWreck" or defName="VVEW_ToadWreck" or defName="VVEW_TravellerWreck" or defName="VVEW_MosquitoWreck" or defName="VVEW_RoadrunnerWreck" or defName="VVEW_SnatcherWreck" or defName="VVEW_WagonWreck"]</xpath>
+				<value>
+					<costList>
+						<Steel>30</Steel>
+						<ChunkSlagSteel>4</ChunkSlagSteel>
+					</costList>
+				</value>
+			</li>
+		</operations>
+	</match>
+	<nomatch/>
+</Operation>
+
+<!-- killedLeavings ChunkSlagSteel 3 -->
+
+<Operation Class="PatchOperationConditional">
+	<success>Normal</success>
+	<!-- Ancient Advanced Upgrades Assembler check -->
+	<xpath>*/ThingDef[defName="VVEW_BunsenWreck"]/statBases</xpath>
+	<!-- Add WorkToBuild and costList -->
+	<match Class="PatchOperationSequence">
+		<operations>
+			<li Class="PatchOperationAdd">
+				<xpath>*/ThingDef[defName="VVEW_BunsenWreck" or defName="VVEW_HighwaymanWreck" or defName="VVEW_RoadkillWreck" or defName="VVEW_BulldogWreck" or defName="VVEW_SmugglerWreck" or defName="VVEW_TangoWreck" or defName="VVEW_WarbirdWreck" or defName="VVEW_WisentWreck"]/statBases</xpath>
+				<value>
+					<WorkToBuild>12000</WorkToBuild>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+				<xpath>*/ThingDef[defName="VVEW_BunsenWreck" or defName="VVEW_HighwaymanWreck" or defName="VVEW_RoadkillWreck" or defName="VVEW_BulldogWreck" or defName="VVEW_SmugglerWreck" or defName="VVEW_TangoWreck" or defName="VVEW_WarbirdWreck" or defName="VVEW_WisentWreck"]</xpath>
+				<value>
+					<costList>
+						<Steel>60</Steel>
+						<ChunkSlagSteel>6</ChunkSlagSteel>
+					</costList>
+				</value>
+			</li>
+		</operations>
+	</match>
+	<nomatch/>
+</Operation>
+
+</Patch>

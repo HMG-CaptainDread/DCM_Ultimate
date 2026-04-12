@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<!-- Change MO Honey thing category -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="DankPyon_Honey"]/thingCategories</xpath>
+		<value>
+			<thingCategories>
+				<li>RB_Honeys</li>
+			</thingCategories>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/RecipeDef[defName="RB_MeadMust"]</xpath>
+		<value>
+			<researchPrerequisites>
+				<li>Brewing</li>
+			</researchPrerequisites>
+		</value>
+	</Operation>
+
+	<!-- Change MO Mead to Must -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ProcessorFramework.ProcessDef[defName="DankPyon_HoneyIntoMead"]/ingredientFilter/thingDefs</xpath>
+		<value>
+			<thingDefs>
+				<li>RB_Must</li>
+			</thingDefs>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ProcessorFramework.ProcessDef[defName="DankPyon_HoneyIntoMead"]/efficiency</xpath>
+		<value>
+			<efficiency>1.0</efficiency>
+		</value>
+	</Operation>
+
+	<!-- Remove Duplicate Mead -->
+	<Operation Class="PatchOperationConditional">
+		<xpath>*/ThingDef[defName = "BarrelProcessor"]/comps/li[@Class="ProcessorFramework.CompProperties_Processor"]/processes/li[.="RB_Mead"]</xpath>
+		<match Class="PatchOperationRemove">
+			<xpath>*/ThingDef[defName = "BarrelProcessor"]/comps/li[@Class="ProcessorFramework.CompProperties_Processor"]/processes/li[.="RB_Mead"]</xpath>
+		</match>
+	</Operation>
+
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ItemProcessor.CombinationDef[defName="RB_MustToMead"]</xpath>
+		<match Class="PatchOperationRemove">
+			<xpath>Defs/ItemProcessor.CombinationDef[defName="RB_MustToMead"]</xpath>
+		</match>
+	</Operation>
+
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ItemProcessor.ItemAcceptedDef[defName="RB_MeadBarrelFirstItem"]</xpath>
+		<match Class="PatchOperationRemove">
+			<xpath>Defs/ItemProcessor.ItemAcceptedDef[defName="RB_MeadBarrelFirstItem"]</xpath>
+		</match>
+	</Operation>
+
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ThingDef[defName="RB_MeadFermentingBarrel"]/researchPrerequisites</xpath>
+		<match Class="PatchOperationRemove">
+			<xpath>Defs/ThingDef[defName="RB_MeadFermentingBarrel"]/researchPrerequisites</xpath>
+		</match>
+	</Operation>
+
+	<Operation Class="PatchOperationConditional">
+		<xpath>Defs/ResearchProjectDef[defName="RB_MeadBrewing"]</xpath>
+		<match Class="PatchOperationRemove">
+			<xpath>Defs/ResearchProjectDef[defName="RB_MeadBrewing"]</xpath>
+		</match>
+	</Operation>
+
+</Patch>
