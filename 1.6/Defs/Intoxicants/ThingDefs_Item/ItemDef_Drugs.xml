@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!-- TMM_Drug_ -->
+
+
+	<!-- BLUESKY --> <!-- METH -->
+		<ThingDef ParentName="MakeableDrugPillBase">
+			<defName>TMM_Drug_BlueSky</defName>
+			<label>blue sky</label>
+			<description>Closely related to Wake-up, Blue sky is a synthetic stimulant that promotes both energy and wakefulness in users. However, it's a highly addictive drug that also causes extreme aggressiveness, not to mention many health problems for long-term users. It is, however, cheaper to produce than Wake-up.</description>
+			<graphicData>
+				<texPath>Modules/Intoxicants/Things/BlueSky</texPath>
+				<graphicClass>Graphic_StackCount</graphicClass>
+			</graphicData>
+			<rotatable>false</rotatable>
+			<statBases>
+				<WorkToMake>450</WorkToMake>
+				<MarketValue>22</MarketValue>
+				<Mass>0.005</Mass>
+			</statBases>
+			<techLevel>Industrial</techLevel>
+			<ingestible>
+				<joyKind>Chemical</joyKind>
+				<joy>0.30</joy>
+				<drugCategory>Hard</drugCategory>
+				<outcomeDoers>
+					<li Class="IngestionOutcomeDoer_GiveHediff">
+						<hediffDef>TMM_Hediff_BlueSkyHigh</hediffDef>
+						<severity>0.75</severity>
+						<toleranceChemical>WakeUp</toleranceChemical>
+					</li>
+					<li Class="IngestionOutcomeDoer_OffsetNeed">
+						<need>Rest</need>
+						<offset>0.75</offset>
+						<toleranceChemical>WakeUp</toleranceChemical>
+					</li>
+					<li Class="IngestionOutcomeDoer_GiveHediff">
+						<hediffDef>WakeUpTolerance</hediffDef>
+						<severity>0.055</severity>
+						<divideByBodySize>true</divideByBodySize>
+					</li>
+				</outcomeDoers>
+			</ingestible>
+			<recipeMaker>
+				<researchPrerequisite>WakeUpProduction</researchPrerequisite>
+				<recipeUsers>
+					<li>DrugLab</li>
+				</recipeUsers>
+			</recipeMaker>
+			<costList>
+				<Neutroamine>1</Neutroamine>
+			</costList>
+			<comps>
+				<li Class="CompProperties_Drug">
+					<chemical>WakeUp</chemical>
+					<addictiveness>0.20</addictiveness>
+					<minToleranceToAddict>0.03</minToleranceToAddict>
+					<existingAddictionSeverityOffset>0.30</existingAddictionSeverityOffset>
+					<needLevelOffset>1</needLevelOffset>
+					<listOrder>210</listOrder>
+					<overdoseSeverityOffset>
+						<min>0.18</min>
+						<max>0.35</max>
+					</overdoseSeverityOffset>
+					<largeOverdoseChance>0.02</largeOverdoseChance>
+				</li>
+			</comps>
+		</ThingDef>
+	<!-- FLOXACAINE -->
+		<ThingDef ParentName="MakeableDrugPillBase">
+			<defName>TMM_Drug_Floxacine</defName>
+			<label>floxacine</label>
+			<description>This useful synthetic medicine greatly boosts the immune system for a short time when taken. However, tolerance builds up extremely fast, and those with high tolerance suffer from liver problems down the line. Still, if used in emergencies it's a useful drug to have around.</description>
+			<graphicData>
+				<texPath>Modules/Intoxicants/Things/Floxacine</texPath>
+				<graphicClass>Graphic_StackCount</graphicClass>
+			</graphicData>
+			<statBases>
+				<MarketValue>18</MarketValue>
+				<Mass>0.1</Mass>
+				<DeteriorationRate>4</DeteriorationRate>
+			</statBases>
+			<techLevel>Industrial</techLevel>
+			<ingestible>
+				<baseIngestTicks>100</baseIngestTicks>
+				<chairSearchRadius>1</chairSearchRadius>
+				<!--<preferability>NeverForNutrition</preferability>
+				<foodType>Processed</foodType>-->
+				<nurseable>true</nurseable>
+				<drugCategory>Medical</drugCategory>
+				<outcomeDoers>
+					<li Class="IngestionOutcomeDoer_GiveHediff">
+						<hediffDef>TMM_Hediff_FloxacineHigh</hediffDef>
+						<severity>1</severity>
+						<toleranceChemical>TMM_Chemical_Floxacine</toleranceChemical>
+					</li>
+					<li Class="IngestionOutcomeDoer_GiveHediff">
+						<hediffDef>TMM_Tolerance_Floxacine</hediffDef>
+						<severity>0.34</severity>
+						<divideByBodySize>true</divideByBodySize>
+					</li>
+				</outcomeDoers>
+			</ingestible>
+			<recipeMaker>
+				<researchPrerequisite>PenoxycylineProduction</researchPrerequisite>
+				<recipeUsers>
+					<li>DrugLab</li>
+				</recipeUsers>
+			</recipeMaker>
+			<costList>
+				<Neutroamine>2</Neutroamine>
+				<MedicineHerbal>2</MedicineHerbal>
+			</costList>
+			<comps>
+				<li Class="CompProperties_Drug">
+					<chemical>TMM_Chemical_Floxacine</chemical>
+					<listOrder>30</listOrder>
+					<overdoseSeverityOffset>
+						<min>0.08</min>
+						<max>0.14</max>
+					</overdoseSeverityOffset>
+				</li>
+			</comps>
+		</ThingDef>
+	<!-- SOLDIER PILL -->
+		<ThingDef ParentName="DrugPillBase">
+			<defName>TMM_Drug_SoldierPill</defName>
+			<label>Soldier Pill</label>
+			<description>These potent brown 'pills' are made from a combination of high-energy food stuffs and various chemicals. They provide the user with long-term energy and decreased hunger, although after their effects wear off, the user becomes exhausted and hungry. Their best use is for soldiers in the field, but are well known to cause a dependence on them, causing stomach conditions.</description>
+			<graphicData>
+				<texPath>Modules/Intoxicants/Things/SoldierPill</texPath>
+				<graphicClass>Graphic_StackCount</graphicClass>
+			</graphicData>
+			<rotatable>false</rotatable>
+			<statBases>
+				<WorkToMake>800</WorkToMake>
+				<MarketValue>16</MarketValue>
+				<Mass>0.005</Mass>
+				<Nutrition>1.0</Nutrition>
+			</statBases>
+			<techLevel>Industrial</techLevel>
+			<ingestible>
+				<foodType>Processed</foodType>
+				<baseIngestTicks>120</baseIngestTicks>
+				<nurseable>true</nurseable>
+				<drugCategory>Hard</drugCategory>
+				<ingestHoldOffsetStanding>
+					<northDefault>
+						<offset>(0.18,0,0)</offset>
+						<behind>true</behind>
+					</northDefault>
+				</ingestHoldOffsetStanding>
+				<outcomeDoers>
+					<li Class="IngestionOutcomeDoer_GiveHediff">
+						<hediffDef>TMM_Hediff_SoldierPillHigh</hediffDef>
+						<severity>1.0</severity>
+						<toleranceChemical>TMM_Chemical_SoldierPill</toleranceChemical>
+						<divideByBodySize>true</divideByBodySize>
+					</li>
+					<li Class="IngestionOutcomeDoer_OffsetNeed">
+						<need>Rest</need>
+						<offset>0.5</offset>
+						<toleranceChemical>TMM_Chemical_SoldierPill</toleranceChemical>
+					</li>
+					<li Class="IngestionOutcomeDoer_GiveHediff">
+						<hediffDef>TMM_Tolerance_SoldierPill</hediffDef>
+						<severity>0.06</severity>
+						<divideByBodySize>true</divideByBodySize>
+					</li>
+				</outcomeDoers>
+			</ingestible>
+			<comps>
+				<li Class="CompProperties_Drug">
+					<chemical>TMM_Chemical_SoldierPill</chemical>
+					<addictiveness>0.05</addictiveness>
+					<minToleranceToAddict>0.1</minToleranceToAddict>
+					<existingAddictionSeverityOffset>0.2</existingAddictionSeverityOffset>
+					<needLevelOffset>1</needLevelOffset>
+					<listOrder>20</listOrder>
+				</li>
+			</comps>
+		</ThingDef>
+	<!-- SUNSHINE -->
+		<ThingDef ParentName="MakeableDrugPillBase">
+			<defName>TMM_Drug_Sunshine</defName>
+			<label>sunshine</label>
+			<description>Sunshine is a potent hallucinogenic drug made from refined and condensed mechshrooms and neutroamine. Relatively non-addictive, it is a potent mood booster, but makes the user useless when performing tasks. While not very addictive, long-term users have been noted to suffer from a drug-induced form of dementia, so use sparingly.</description>
+			<socialPropernessMatters>true</socialPropernessMatters>
+			<tickerType>Rare</tickerType>
+			<graphicData>
+				<texPath>Modules/Intoxicants/Things/Sunshine</texPath>
+				<graphicClass>Graphic_StackCount</graphicClass>
+			</graphicData>
+			<statBases>
+				<MarketValue>32</MarketValue>
+				<Mass>0.005</Mass>
+				<DeteriorationRate>4</DeteriorationRate>
+				<Nutrition>0.05</Nutrition>
+			</statBases>
+			<techLevel>Industrial</techLevel>
+			<ingestible>
+				<baseIngestTicks>100</baseIngestTicks>
+				<chairSearchRadius>1</chairSearchRadius>
+				<preferability>NeverForNutrition</preferability>
+				<tasteThought></tasteThought>
+				<foodType>Processed</foodType>
+				<joy>1</joy>
+				<joyKind>Chemical</joyKind>
+				<nurseable>true</nurseable>
+				<drugCategory>Hard</drugCategory>
+				<outcomeDoers>
+					<li Class="IngestionOutcomeDoer_GiveHediff">
+						<hediffDef>TMM_Hediff_SunshineHigh</hediffDef>
+						<severity>0.75</severity>
+						<toleranceChemical>TMM_Chemical_Sunshine</toleranceChemical>
+					</li>
+					<li Class="IngestionOutcomeDoer_GiveHediff">
+						<hediffDef>TMM_Tolerance_Sunshine</hediffDef>
+						<severity>0.03</severity>
+						<divideByBodySize>true</divideByBodySize>
+					</li>
+				</outcomeDoers>
+			</ingestible>
+			<recipeMaker>
+				<researchPrerequisite>DrugProduction</researchPrerequisite>
+				<recipeUsers>
+					<li>DrugLab</li>
+				</recipeUsers>
+			</recipeMaker>
+			<costList>
+				<Neutroamine>1</Neutroamine>
+				<TMM_RawMechshroom>4</TMM_RawMechshroom>
+			</costList>
+			<comps>
+				<li Class="CompProperties_Drug">
+					<chemical>TMM_Chemical_Sunshine</chemical>
+					<addictiveness>0.05</addictiveness>
+					<minToleranceToAddict>.25</minToleranceToAddict>
+					<existingAddictionSeverityOffset>0.2</existingAddictionSeverityOffset>
+					<needLevelOffset>1</needLevelOffset>
+					<listOrder>30</listOrder>
+					<overdoseSeverityOffset>
+						<min>0.08</min>
+						<max>0.14</max>
+					</overdoseSeverityOffset>
+					<largeOverdoseChance>0.01</largeOverdoseChance>
+				</li>
+			</comps>
+		</ThingDef>
+	<!-- TANGO -->
+		<ThingDef ParentName="MakeableDrugPillBase">
+			<defName>TMM_Drug_Tango</defName>
+			<label>tango</label>
+			<description>A synthetic super-painkiller, tango is a highly addictive drug with a high overdose chance - but boy does it do its job for those who need extreme pain relief. If used extremely sparingly, it can be relatively safe however - except for the overdose chance.</description>
+			<socialPropernessMatters>true</socialPropernessMatters>
+			<tickerType>Rare</tickerType>
+			<graphicData>
+				<texPath>Modules/Intoxicants/Things/Tango</texPath>
+				<graphicClass>Graphic_StackCount</graphicClass>
+			</graphicData>
+			<statBases>
+				<MarketValue>26</MarketValue>
+				<Mass>0.005</Mass>
+				<DeteriorationRate>4</DeteriorationRate>
+				<Nutrition>0.05</Nutrition>
+			</statBases>
+			<techLevel>Industrial</techLevel>
+			<ingestible>
+				<baseIngestTicks>100</baseIngestTicks>
+				<chairSearchRadius>1</chairSearchRadius>
+				<preferability>NeverForNutrition</preferability>
+				<tasteThought></tasteThought>
+				<foodType>Processed</foodType>
+				<joy>0.5</joy>
+				<joyKind>Chemical</joyKind>
+				<nurseable>true</nurseable>
+				<drugCategory>Hard</drugCategory>
+				<outcomeDoers>
+					<li Class="IngestionOutcomeDoer_GiveHediff">
+						<hediffDef>TMM_Hediff_TangoHigh</hediffDef>
+						<severity>0.75</severity>
+						<toleranceChemical>TMM_Chemical_Tango</toleranceChemical>
+					</li>
+					<li Class="IngestionOutcomeDoer_GiveHediff">
+						<hediffDef>TMM_Tolerance_Tango</hediffDef>
+						<severity>0.1</severity>
+						<divideByBodySize>true</divideByBodySize>
+					</li>
+				</outcomeDoers>
+			</ingestible>
+			<recipeMaker>
+				<researchPrerequisite>MedicineProduction</researchPrerequisite>
+				<recipeUsers>
+					<li>DrugLab</li>
+				</recipeUsers>
+			</recipeMaker>
+			<costList>
+				<Neutroamine>2</Neutroamine>
+			</costList>
+			<comps>
+				<li Class="CompProperties_Drug">
+					<chemical>TMM_Chemical_Tango</chemical>
+					<addictiveness>0.15</addictiveness>
+					<minToleranceToAddict>.10</minToleranceToAddict>
+					<existingAddictionSeverityOffset>0.2</existingAddictionSeverityOffset>
+					<needLevelOffset>1</needLevelOffset>
+					<listOrder>30</listOrder>
+					<overdoseSeverityOffset>
+						<min>0.18</min>
+						<max>0.37</max>
+					</overdoseSeverityOffset>
+					<largeOverdoseChance>0.08</largeOverdoseChance>
+				</li>
+			</comps>
+		</ThingDef>
+</Defs>

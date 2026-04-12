@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- Modules/Afflictions/Drugs/Decoctions/ -->
+
+	<!-- MAIN BASES -->
+		<ThingDef ParentName="MedicineBase" Name="TMM_MedicineBase" Abstract="True">
+			<graphicData>
+				<graphicClass>Graphic_StackCount</graphicClass>
+			</graphicData>
+			<recipeMaker>
+				<workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+				<workSkill>Intellectual</workSkill>
+				<recipeUsers>
+					<li>CraftingSpot</li>
+					<li>DrugLab</li>
+				</recipeUsers>
+			</recipeMaker>
+		</ThingDef>
+	<!-- SPECIFIC MEDICINE TYPE BASES -->
+		<!-- HERBAL -->
+			<ThingDef ParentName="TMM_MedicineBase" Name="TMM_HerbalMedicineBase" Abstract="True">
+				<graphicData>
+					<drawSize>0.85</drawSize>
+				</graphicData>
+				<techLevel>Neolithic</techLevel>
+				<statBases>
+					<Flammability>1.0</Flammability>
+					<DeteriorationRate>6</DeteriorationRate>
+				</statBases>
+				<recipeMaker>
+					<!-- <researchPrerequisite>VV_HerbalRemedies</researchPrerequisite> -->
+					<bulkRecipeCount>4</bulkRecipeCount>
+				</recipeMaker>
+				<allowedArchonexusCount>10</allowedArchonexusCount>
+			</ThingDef>
+		<!-- OINTMENT BASES -->
+			<!-- MAIN -->
+				<ThingDef ParentName="TMM_MedicineBase" Name="TMM_OintmentBase" Abstract="True">
+					<graphicData>
+						<drawSize>0.85</drawSize>
+					</graphicData>
+					<recipeMaker>
+						<bulkRecipeCount>4</bulkRecipeCount>
+					</recipeMaker>
+				</ThingDef>
+			<!-- HERBAL -->
+				<ThingDef ParentName="TMM_OintmentBase" Name="TMM_HerbalOintmentBase" Abstract="True">
+					<techLevel>Neolithic</techLevel>
+					<statBases>
+						<Mass>0.40</Mass>
+						<Flammability>0.2</Flammability>
+						<MedicalPotency>0.80</MedicalPotency>
+						<MedicalQualityMax>0.85</MedicalQualityMax>
+						<DeteriorationRate>2</DeteriorationRate>
+					</statBases>
+					<!-- <recipeMaker>
+						<researchPrerequisite>VV_HerbalRemedies</researchPrerequisite>
+					</recipeMaker> -->
+					<allowedArchonexusCount>15</allowedArchonexusCount>
+				</ThingDef>
+</Defs>

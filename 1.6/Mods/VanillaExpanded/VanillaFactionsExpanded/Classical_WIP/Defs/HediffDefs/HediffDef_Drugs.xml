@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!-- TMM_Hediff_ -->
+
+
+
+	<!-- DREAMSTICK HIGH --> <!-- TODO: -->
+		<HediffDef>
+			<defName>RC2_DreamstickHigh</defName>
+			<hediffClass>HediffWithComps</hediffClass>
+			<label>high on dreamstick</label>
+			<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+			<scenarioCanAdd>true</scenarioCanAdd>
+			<maxSeverity>1.0</maxSeverity>
+			<description>Dreamsticks reduce pain, manipulation, and moving at higher dosages. at the highest possible dosage, pawns are incapable of feeling pain.</description>
+			<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-1.0</severityPerDay>
+			</li>
+			</comps>
+			<stages>
+			<li>
+				<label>dreamstick level 1</label>
+				<restFallFactor>1.2</restFallFactor>
+				<painOffset>-0.1</painOffset>
+				<painFactor>0.8</painFactor>
+				<capMods>
+				<li>
+					<capacity>Manipulation</capacity>
+					<postFactor>0.85</postFactor>
+				</li>
+				</capMods>
+			</li>
+			<li>
+				<minSeverity>.21</minSeverity>
+				<label>dreamstick level 2</label>
+				<restFallFactor>1.4</restFallFactor>
+				<painOffset>-0.2</painOffset>
+				<painFactor>0.6</painFactor>
+				<capMods>
+				<li>
+					<capacity>Manipulation</capacity>
+					<postFactor>0.7</postFactor>
+				</li>
+				</capMods>
+			</li>
+			<li>
+				<minSeverity>.41</minSeverity>
+				<label>dreamstick level 3</label>
+				<restFallFactor>1.6</restFallFactor>
+				<painOffset>-0.3</painOffset>
+				<painFactor>0.4</painFactor>
+				<capMods>
+				<li>
+					<capacity>Manipulation</capacity>
+					<postFactor>0.55</postFactor>
+				</li>
+				</capMods>
+			</li>
+			<li>
+				<minSeverity>.61</minSeverity>
+				<label>dreamstick level 4</label>
+				<restFallFactor>1.8</restFallFactor>
+				<painOffset>-0.4</painOffset>
+				<painFactor>0.2</painFactor>
+				<capMods>
+				<li>
+					<capacity>Manipulation</capacity>
+					<postFactor>0.4</postFactor>
+				</li>
+				<li>
+					<capacity>Moving</capacity>
+					<postFactor>0.80</postFactor>
+				</li>
+				</capMods>
+			</li>
+			<li>
+				<minSeverity>.81</minSeverity>
+				<label>dreamstick level 5</label>
+				<restFallFactor>2.0</restFallFactor>
+				<painOffset>-0.5</painOffset>
+				<painFactor>0.0</painFactor>
+				<capMods>
+				<li>
+					<capacity>Manipulation</capacity>
+					<postFactor>0.25</postFactor>
+				</li>
+				<li>
+					<capacity>Moving</capacity>
+					<postFactor>0.60</postFactor>
+				</li>
+				</capMods>
+			</li>
+			</stages>
+		</HediffDef>
+	<!-- SKAG HIGH --> <!-- TODO: -->
+		<HediffDef>
+			<defName>RC2_SkagHigh</defName>
+			<hediffClass>HediffWithComps</hediffClass>
+			<label>high on skag</label>
+			<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+			<scenarioCanAdd>true</scenarioCanAdd>
+			<description>Skag almost entirely removes pain, causes exhaustion and reduces breathing and blood flow.</description>
+			<maxSeverity>1.0</maxSeverity>
+			<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-2.0</severityPerDay>
+			</li>
+			</comps>
+			<stages>
+			<li>
+				<label>skag high</label>
+				<restFallFactor>5.0</restFallFactor>
+				<painOffset>-0.1</painOffset>
+				<painFactor>0.2</painFactor>
+				<capMods>
+				<li>
+					<capacity>Breathing</capacity>
+					<postFactor>0.5</postFactor>
+				</li>
+				<li>
+					<capacity>BloodPumping</capacity>
+					<postFactor>0.5</postFactor>
+				</li>
+				</capMods>
+				<hediffGivers>
+				<li Class="HediffGiver_Random">
+					<hediff>ChemicalDamageSevere</hediff>
+					<mtbDays>180</mtbDays>
+					<partsToAffect>
+					<li>Liver</li>
+					</partsToAffect>
+					<countToAffect>1</countToAffect>
+				</li>
+				<li Class="HediffGiver_Random">
+					<hediff>ChemicalDamageSevere</hediff>
+					<mtbDays>180</mtbDays>
+					<partsToAffect>
+					<li>Kidney</li>
+					</partsToAffect>
+					<countToAffect>1</countToAffect>
+				</li>
+				</hediffGivers>
+			</li>
+			</stages>
+		</HediffDef>
+	<!-- VIKO --> <!-- TODO: -->
+		<HediffDef>
+			<defName>RC2_VikoHigh</defName>
+			<description>Viko is in the pawn's system, easing pain and increasing rest needs.</description>
+			<hediffClass>HediffWithComps</hediffClass>
+			<label>high on viko</label>
+			<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+			<scenarioCanAdd>true</scenarioCanAdd>
+			<maxSeverity>1.0</maxSeverity>
+			<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-1.0</severityPerDay>
+			</li>
+			</comps>
+			<stages>
+			<li>
+				<label>viko high</label>
+				<restFallFactor>1.25</restFallFactor>
+				<painOffset>-0.3</painOffset>
+				<painFactor>0.9</painFactor>
+				<vomitMtbDays>1</vomitMtbDays>
+				<capMods>
+				<li>
+					<capacity>Breathing</capacity>
+					<postFactor>0.9</postFactor>
+				</li>
+				<li>
+					<capacity>BloodPumping</capacity>
+					<postFactor>0.9</postFactor>
+				</li>
+				</capMods>
+				<hediffGivers>
+				<li Class="HediffGiver_RandomDrugEffect">
+					<hediff>ChemicalDamageSevere</hediff>
+					<baseMtbDays>120</baseMtbDays>
+					<minSeverity>0.50</minSeverity>
+					<partsToAffect>
+					<li>Liver</li>
+					</partsToAffect>
+					<countToAffect>1</countToAffect>
+				</li>
+				<li Class="HediffGiver_RandomDrugEffect">
+					<hediff>ChemicalDamageSevere</hediff>
+					<baseMtbDays>120</baseMtbDays>
+					<minSeverity>0.80</minSeverity>
+					<partsToAffect>
+					<li>Kidney</li>
+					</partsToAffect>
+					<countToAffect>1</countToAffect>
+				</li>
+				</hediffGivers>
+			</li>
+			</stages>
+		</HediffDef>
+	<!-- ZOPE --> <!-- TODO: -->
+		<HediffDef>
+			<defName>RC2_ZopeHigh</defName>
+			<description>Zope exhausts a pawn while also decreasing pain slightly. Staying too long on zope can cause lung problems and cancer.</description>
+			<hediffClass>HediffWithComps</hediffClass>
+			<label>high on zope</label>
+			<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+			<scenarioCanAdd>true</scenarioCanAdd>
+			<maxSeverity>1.0</maxSeverity>
+			<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-1.0</severityPerDay>
+			</li>
+			</comps>
+			<stages>
+			<li>
+				<label>zope high</label>
+				<restFallFactor>1.5</restFallFactor>
+				<painOffset>-0.1</painOffset>
+				<painFactor>0.8</painFactor>
+				<capMods>
+				<li>
+					<capacity>Breathing</capacity>
+					<postFactor>0.8</postFactor>
+				</li>
+				</capMods>
+				<hediffGivers>
+				<li Class="HediffGiver_RandomDrugEffect">
+					<hediff>Asthma</hediff>
+					<baseMtbDays>180</baseMtbDays>
+					<minSeverity>0.50</minSeverity>
+					<partsToAffect>
+					<li>Lung</li>
+					</partsToAffect>
+					<countToAffect>2</countToAffect>
+				</li>
+				<li Class="HediffGiver_RandomDrugEffect">
+					<hediff>Carcinoma</hediff>
+					<baseMtbDays>180</baseMtbDays>
+					<minSeverity>0.40</minSeverity>
+					<partsToAffect>
+					<li>Lung</li>
+					</partsToAffect>
+					<countToAffect>1</countToAffect>
+				</li>
+				</hediffGivers>
+			</li>
+			</stages>
+		</HediffDef>
+</Defs>
