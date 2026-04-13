@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- MAIN -->
+		<!-- RAW FOOD BASE -->
+		<!-- ROUGH PLANT BASE -->
+	<!-- MISCELLANEOUS BASES -->
+		<!-- DIGGABLE BASE -->
+			<ThingDef ParentName="ResourceBase" Name="TMM_DiggableBase" Abstract="True">
+				<graphicData>
+					<graphicClass>Graphic_StackCount</graphicClass>
+				</graphicData>
+				<statBases>
+					<Mass>0.50</Mass>
+				</statBases>
+				<thingCategories>
+					<li>ResourcesRaw</li>
+				</thingCategories>
+			</ThingDef>
+	<!-- SPECIFIC ITEM BASES -->
+		<!-- FLOWER BASES -->
+			<ThingDef ParentName="RoughPlantBase" Name="TMM_BlossomBase" Abstract="True">
+				<graphicData>
+					<graphicClass>Graphic_StackCount</graphicClass>
+				</graphicData>
+				<possessionCount>10</possessionCount>
+				<statBases>
+					<Flammability>1</Flammability>
+				</statBases>
+				<comps>
+					<li Class="CompProperties_Rottable">
+						<daysToRotStart>30</daysToRotStart>
+						<rotDestroys>true</rotDestroys>
+					</li>
+				</comps>
+				<thingCategories>
+					<li>PlantMatter</li>
+				</thingCategories>
+				<ingestible>
+					<preferability>DesperateOnly</preferability>
+					<canAutoSelectAsFoodForCaravan>false</canAutoSelectAsFoodForCaravan>
+				</ingestible>
+			</ThingDef>
+		<!-- FRUIT BASES -->
+			<ThingDef ParentName="PlantFoodRawBase" Name="TMM_RawFruitBase" Abstract="True">
+				<soundInteract>Grain_Drop</soundInteract>
+				<soundDrop>Grain_Drop</soundDrop>
+				<graphicData>
+					<graphicClass>Graphic_StackCount</graphicClass>
+				</graphicData>
+				<socialPropernessMatters>true</socialPropernessMatters>
+				<statBases>
+					<MaxHitPoints>100</MaxHitPoints>
+					<Flammability>1</Flammability>
+					<DeteriorationRate>6</DeteriorationRate>
+					<Mass>0.03</Mass>
+					<Nutrition>0.08</Nutrition>
+					<FoodPoisonChanceFixedHuman>0.01</FoodPoisonChanceFixedHuman>
+				</statBases>
+				<ingestible>
+					<preferability>RawTasty</preferability>
+					<ingestEffect>EatVegetarian</ingestEffect>
+					<ingestSound>RawVegetable_Eat</ingestSound>
+					<foodType>VegetableOrFruit</foodType>
+					<joy>0.02</joy>
+					<joyKind>Gluttonous</joyKind>
+				</ingestible>
+				<thingCategories>
+					<li MayRequire="VanillaExpanded.VPlantsE">VCE_Fruit</li>
+					<li MayRequire="Mlie.RC2.Core">RC2_FruitsRaw</li>
+				</thingCategories>
+			</ThingDef>
+		<!-- GRAIN BASES -->
+			<ThingDef ParentName="PlantFoodRawBase" Name="TMM_RawGrainBase" Abstract="True">
+				<soundInteract>Grain_Drop</soundInteract>
+				<soundDrop>Grain_Drop</soundDrop>
+				<graphicData>
+					<graphicClass>Graphic_Random</graphicClass>
+				</graphicData>
+				<socialPropernessMatters>true</socialPropernessMatters>
+				<ingestible>
+					<preferability>DesperateOnlyForHumanlikes</preferability>
+					<tasteThought>TMM_AteGrain</tasteThought>
+					<ingestEffect>EatVegetarian</ingestEffect>
+					<ingestSound>RawVegetable_Eat</ingestSound>
+					<foodType>Seed</foodType>
+				</ingestible>
+				<statBases>
+					<MaxHitPoints>100</MaxHitPoints>
+					<Flammability>1</Flammability>
+					<Mass>0.03</Mass>
+					<Nutrition>0.02</Nutrition>
+					<FoodPoisonChanceFixedHuman>0.05</FoodPoisonChanceFixedHuman>
+				</statBases>
+			</ThingDef>
+		<!-- GRASSES/HAYS BASES -->
+			<!-- HAY BASE -->
+				<ThingDef ParentName="RoughPlantBase" Name="TMM_HayBase" Abstract="True">
+					<stackLimit>200</stackLimit>
+					<graphicData>
+						<graphicClass>Graphic_StackCount</graphicClass>
+					</graphicData>
+					<statBases>
+						<Flammability>1.5</Flammability>
+					</statBases>
+					<comps>
+						<li Class="CompProperties_Rottable">
+							<daysToRotStart>60</daysToRotStart>
+							<rotDestroys>true</rotDestroys>
+						</li>
+					</comps>
+					<thingCategories>
+						<li>Foods</li>
+					</thingCategories>
+					<ingestible>
+						<optimalityOffsetFeedingAnimals>6</optimalityOffsetFeedingAnimals>
+					</ingestible>
+				</ThingDef>
+		<!-- HERB BASES -->
+			<!-- NON-EDIBLE HERB BASE -->
+				<ThingDef ParentName="RoughPlantBase" Name="TMM_RawHerbBase" Abstract="True">
+					<possessionCount>10</possessionCount>
+					<graphicData>
+						<graphicClass>Graphic_StackCount</graphicClass>
+					</graphicData>
+					<thingCategories>
+						<li>PlantMatter</li>
+					</thingCategories>
+					<ingestible>
+						<preferability>DesperateOnly</preferability>
+						<canAutoSelectAsFoodForCaravan>false</canAutoSelectAsFoodForCaravan>
+					</ingestible>
+				</ThingDef>
+			<!-- EDIBLE HERB BASE -->
+				<ThingDef ParentName="PlantFoodRawBase" Name="TMM_RawEdibleHerbBase" Abstract="True">
+					<graphicData>
+						<graphicClass>Graphic_StackCount</graphicClass>
+					</graphicData>
+					<ingestible>
+						<foodType>VegetableOrFruit</foodType>
+					</ingestible>
+				</ThingDef>
+		<!-- MEDICAL CROPS BASES -->
+			<ThingDef ParentName="ResourceBase" Name="TMM_MedicalCropBase" Abstract="True">
+				<graphicData>
+					<graphicClass>Graphic_StackCount</graphicClass>
+				</graphicData>
+				<socialPropernessMatters>true</socialPropernessMatters>
+				<statBases>
+					<MaxHitPoints>100</MaxHitPoints>
+					<Flammability>1</Flammability>
+					<DeteriorationRate>5</DeteriorationRate>
+					<Mass>0.03</Mass>
+				</statBases>
+				<ingestible>
+					<foodType>Plant</foodType>
+					<preferability>NeverForNutrition</preferability>
+				</ingestible>
+				<tickerType>Rare</tickerType>
+				<thingCategories>
+					<li>PlantMatter</li>
+				</thingCategories>
+			</ThingDef>
+		<!-- MUSHROOM BASES -->
+			<!-- MUSHROOM BASE -->
+				<ThingDef ParentName="PlantFoodRawBase" Name="TMM_RawMushroomBase" Abstract="True">
+					<graphicData>
+						<graphicClass>Graphic_StackCount</graphicClass>
+					</graphicData>
+					<ingestible>
+						<foodType>Fungus</foodType>
+						<preferability>RawTasty</preferability>
+					</ingestible>
+					<ingredient>
+						<mergeCompatibilityTags>
+							<li MayRequire="Ludeon.RimWorld.Ideology">Fungus</li>
+						</mergeCompatibilityTags>
+					</ingredient>
+				</ThingDef>
+		<!-- NUT BASES -->
+			<ThingDef ParentName="PlantFoodRawBase" Name="TMM_RawNutBase" Abstract="True">
+				<graphicData>
+					<graphicClass>Graphic_StackCount</graphicClass>
+				</graphicData>
+				<soundInteract>Grain_Drop</soundInteract>
+				<soundDrop>Grain_Drop</soundDrop>
+				<ingestible>
+					<preferability>RawTasty</preferability>
+					<foodType>VegetableOrFruit</foodType>
+				</ingestible>
+			</ThingDef>
+		<!-- RESOURCE CROPS BASES -->
+			<ThingDef ParentName="ResourceBase" Name="TMM_ResourceCropBase" Abstract="True">
+				<graphicData>
+					<graphicClass>Graphic_Random</graphicClass>
+				</graphicData>
+				<thingCategories>
+					<li>GardenResources</li>
+				</thingCategories>
+			</ThingDef>
+		<!-- TEXTILE BASES -->
+			<!-- MAIN BASE -->
+				<ThingDef ParentName="ResourceBase" Name="TMM_TextilesBase" Abstract="True">
+					<graphicData>
+						<graphicClass>Graphic_StackCount</graphicClass>
+					</graphicData>
+					<healthAffectsPrice>false</healthAffectsPrice>
+				</ThingDef>
+			<!-- FIBROUS TEXTILE BASE -->
+				<ThingDef ParentName="TMM_TextilesBase" Name="TMM_FibrousTextilesBase" Abstract="True">
+					<burnableByRecipe>true</burnableByRecipe>
+					<stuffProps>
+						<categories>
+							<li>Fabric</li>
+						</categories>
+						<allowColorGenerators>true</allowColorGenerators>
+						<canSuggestUseDefaultStuff>true</canSuggestUseDefaultStuff>
+					</stuffProps>
+					<thingCategories>
+						<li>Textiles</li>
+					</thingCategories>
+					<comps>
+						<li>
+							<compClass>CompColorable</compClass>
+						</li>
+					</comps>
+				</ThingDef>
+			<!-- WOODY TEXTILE BASE -->
+				<ThingDef ParentName="TMM_TextilesBase" Name="TMM_WoodyTextilesBase" Abstract="True">
+					<soundInteract>Wood_Drop</soundInteract>
+					<soundDrop>Wood_Drop</soundDrop>
+					<burnableByRecipe>false</burnableByRecipe>
+					<stuffProps>
+						<categories>
+							<li>Woody</li>
+						</categories>
+						<constructEffect>ConstructWood</constructEffect>
+						<appearance>Metal</appearance>
+						<soundImpactBullet>BulletImpact_Wood</soundImpactBullet>
+						<soundMeleeHitSharp>MeleeHit_Wood</soundMeleeHitSharp>
+						<soundMeleeHitBlunt>MeleeHit_Wood</soundMeleeHitBlunt>
+						<soundImpactMelee>Pawn_Melee_Punch_HitBuilding_Wood</soundImpactMelee>
+						<canSuggestUseDefaultStuff>true</canSuggestUseDefaultStuff>
+					</stuffProps>
+					<isTechHediff>true</isTechHediff>
+					<thingCategories>
+						<li>ResourcesRaw</li>
+					</thingCategories>
+					<techHediffsTags>
+						<li>Poor</li>
+					</techHediffsTags>
+					<weaponClasses>
+						<li>Melee</li>
+						<li>MeleeBlunt</li>
+						<li>Neolithic</li>
+					</weaponClasses>
+					<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+				</ThingDef>
+		<!-- VEGETABLE BASES -->
+			<ThingDef ParentName="PlantFoodRawBase" Name="TMM_RawVegetableBase" Abstract="True">
+				<soundInteract>Grain_Drop</soundInteract>
+				<soundDrop>Grain_Drop</soundDrop>
+				<graphicData>
+					<graphicClass>Graphic_StackCount</graphicClass>
+				</graphicData>
+				<ingestible>
+					<foodType>VegetableOrFruit</foodType>
+				</ingestible>
+			</ThingDef>
+		<!-- WOOD BASES -->
+			<!-- MAIN BASE -->
+				<ThingDef ParentName="ResourceVerbBase" Name="TMM_WoodBase" Abstract="True">
+					<graphicData>
+						<graphicClass>Graphic_StackCount</graphicClass>
+					</graphicData>
+					<stackLimit>75</stackLimit>
+					<equippedAngleOffset>-20</equippedAngleOffset>
+					<soundInteract>Wood_Drop</soundInteract>
+					<soundDrop>Wood_Drop</soundDrop>
+					<statBases>
+						<MaxHitPoints>150</MaxHitPoints>
+					</statBases>
+					<burnableByRecipe>true</burnableByRecipe>
+					<smeltable>true</smeltable>
+					<healthAffectsPrice>false</healthAffectsPrice>
+					<stuffProps>
+						<categories>
+							<li>Woody</li>
+						</categories>
+						<constructEffect>ConstructWood</constructEffect>
+						<appearance>Planks</appearance>
+						<soundImpactBullet>BulletImpact_Wood</soundImpactBullet>
+						<soundMeleeHitSharp>MeleeHit_Wood</soundMeleeHitSharp>
+						<soundMeleeHitBlunt>MeleeHit_Wood</soundMeleeHitBlunt>
+						<canSuggestUseDefaultStuff>true</canSuggestUseDefaultStuff>
+					</stuffProps>
+					<isTechHediff>true</isTechHediff>
+					<thingCategories>
+						<li>ResourcesRaw</li>
+					</thingCategories>
+					<techHediffsTags>
+						<li>Poor</li>
+					</techHediffsTags>
+					<weaponClasses>
+						<li>Melee</li>
+						<li>MeleeBlunt</li>
+						<li>Neolithic</li>
+					</weaponClasses>
+					<tools>
+						<li>
+							<label>log</label>
+							<capacities>
+								<li>Blunt</li>
+							</capacities>
+							<power>9.7</power>
+							<cooldownTime>2</cooldownTime>
+						</li>
+					</tools>
+					<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+				</ThingDef>
+			<!-- LOG BASE -->
+			<!-- PLANK BASE -->
+</Defs>
