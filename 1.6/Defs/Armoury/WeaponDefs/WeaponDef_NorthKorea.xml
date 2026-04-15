@@ -1,0 +1,1271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- <></> -->
+	<!-- TMM_Rifle_ -->
+
+
+
+	<!-- <texPath>Modules/Armoury/NorthKorea//</texPath> -->
+
+	<ThingDef Name="TMM_Rifle_IndustrialBase" ParentName="TMM_PLACEHOLDER_BaseHumanMakeableGun" Abstract="True">
+		<weaponTags>
+			<li>IndustrialGunAdvanced</li>
+		</weaponTags>
+		<soundInteract>Interact_Rifle</soundInteract>
+		<thingSetMakerTags>
+			<li>TMM_Reward_CommonSuper</li>
+		</thingSetMakerTags>
+	</ThingDef>
+
+	<ThingDef Name="TMM_PLACEHOLDER_BaseHumanMakeableGun" ParentName="BaseGun" Abstract="True">
+		<graphicData>
+			<graphicClass>ModularWeapons2.Graphic_UniqueByComp</graphicClass>
+		</graphicData>
+		<smeltable>true</smeltable>
+		<comps>
+			<li Class="CompProperties_Biocodable"/>
+			<li>
+				<compClass>CompQuality</compClass>
+			</li>
+		</comps>
+		<relicChance>0.0</relicChance>
+		<tradeTags>
+			<li>WeaponRanged</li>
+			<!-- <li>CGF1_GunsGalore_Spawn</li> -->
+		</tradeTags>
+		<recipeMaker>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Crafting</workSkill>
+			<effectWorking>Smith</effectWorking>
+			<soundWorking>Recipe_Smith</soundWorking>
+			<unfinishedThingDef>UnfinishedGun</unfinishedThingDef>
+		</recipeMaker>
+		<!-- <thingCategories Inherit="False">
+			<li>CGF1_MWP_ThingCategory_GunsGalore</li>
+		</thingCategories> -->
+	</ThingDef>
+
+
+	<!-- LMGs -->
+		<!-- TYPE 62 -->
+			<ThingDef ParentName="CGF1_MWP_LMG_BeltFed_T1">
+				<defName>CGF1_MWP_Type62_LMG_</defName>
+				<label>Type 62 LMG</label>
+				<description>Caliber: 7.62x39mm. 100-round bullet link. Select-Fire.</description>
+				<graphicData>
+					<texPath>CGF1/Gun/Type62_LMG</texPath>
+					<drawSize>1.05</drawSize>
+				</graphicData>
+				<recipeMaker>
+					<recipeUsers>
+						<li>CGF1_MWP_Building_Gunsmith</li>
+					</recipeUsers>
+					<researchPrerequisite>CGF1_MWP_Research_T8_AtomicAgeFirearms</researchPrerequisite>
+					<skillRequirements>
+						<Crafting>6</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+				<costList>
+					<Steel>75</Steel>
+					<ComponentIndustrial>7</ComponentIndustrial>
+				</costList>
+				<statBases>
+					<WorkToMake>45000</WorkToMake>
+					<Mass>8.3</Mass>
+					<AccuracyTouch>0.50</AccuracyTouch>
+					<AccuracyShort>0.65</AccuracyShort>
+					<AccuracyMedium>0.55</AccuracyMedium>
+					<AccuracyLong>0.45</AccuracyLong>
+					<RangedWeapon_Cooldown>1.8</RangedWeapon_Cooldown>
+				</statBases>
+				<equippedAngleOffset>40</equippedAngleOffset>
+				<weaponTags>
+					<li>CGF1_LMG_Military</li>
+				</weaponTags>
+				<weaponClasses>
+					<li>RangedHeavy</li>
+				</weaponClasses>
+				<tradeTags>
+					<li>CGF1_GunsGalore_ModernNorthKorea</li>
+				</tradeTags>
+				<verbs>
+					<li>
+						<verbClass>Verb_Shoot</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<defaultProjectile>CGF1_MWP_Bullet_762x39mm_Auto</defaultProjectile>
+						<warmupTime>2</warmupTime>
+						<range>30.9</range>
+						<burstShotCount>8</burstShotCount>
+						<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+						<soundCast>CGF1_MWP_SFX_MG_Light4</soundCast>
+						<soundCastTail>GunTail_Medium</soundCastTail>
+						<muzzleFlashScale>9</muzzleFlashScale>
+					</li>
+				</verbs>
+				<tools>
+					<li>
+						<label>stock</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>11</power>
+						<cooldownTime>2.6</cooldownTime>
+					</li>
+					<li>
+						<label>barrel</label>
+						<capacities>
+							<li>Blunt</li>
+							<li>Poke</li>
+						</capacities>
+						<power>10</power>
+						<cooldownTime>2.6</cooldownTime>
+					</li>
+				</tools>
+				<modExtensions>
+					<li Class="MuzzleFlash.MuzzleFlashProps" MayRequire="issaczhuang.muzzleflash">
+						<def>MF_StandardMuzzleFalsh</def>
+						<drawSize>(0.9,0.9)</drawSize>
+						<offsets>
+							<li>(0.64,0.06)</li>
+						</offsets>
+					</li>
+				</modExtensions>
+				<generateCommonality>0.10</generateCommonality> <!-- Average -->
+			</ThingDef>
+		<!-- TYPE 64 -->
+			<ThingDef ParentName="CGF1_MWP_GPMG_T2">
+				<defName>CGF1_MWP_Type64_MG_</defName>
+				<label>Type 64 MG</label>
+				<description>Caliber: 7.62x54mmR. 100-round bullet link. Select-Fire.</description>
+				<graphicData>
+					<texPath>CGF1/Gun/Type64_MG</texPath>
+					<drawSize>1.10</drawSize>
+				</graphicData>
+				<recipeMaker>
+					<recipeUsers>
+						<li>CGF1_MWP_Building_Gunsmith</li>
+					</recipeUsers>
+					<researchPrerequisite>CGF1_MWP_Research_T8_AtomicAgeFirearms</researchPrerequisite>
+					<skillRequirements>
+						<Crafting>6</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+				<costList>
+					<Steel>85</Steel>
+					<ComponentIndustrial>7</ComponentIndustrial>
+				</costList>
+				<statBases>
+					<WorkToMake>50000</WorkToMake>
+					<Mass>11.5</Mass>
+					<AccuracyTouch>0.40</AccuracyTouch>
+					<AccuracyShort>0.60</AccuracyShort>
+					<AccuracyMedium>0.60</AccuracyMedium>
+					<AccuracyLong>0.50</AccuracyLong>
+					<RangedWeapon_Cooldown>1.8</RangedWeapon_Cooldown>
+				</statBases>
+				<equippedAngleOffset>40</equippedAngleOffset>
+				<weaponTags>
+					<li>CGF1_LMG_Military</li>
+				</weaponTags>
+				<weaponClasses>
+					<li>RangedHeavy</li>
+				</weaponClasses>
+				<tradeTags>
+					<li>CGF1_GunsGalore_ModernNorthKorea</li>
+				</tradeTags>
+				<verbs>
+					<li>
+						<verbClass>Verb_Shoot</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<defaultProjectile>CGF1_MWP_Bullet_762x54mmR_Auto</defaultProjectile>
+						<warmupTime>2.5</warmupTime>
+						<range>36.9</range>
+						<burstShotCount>8</burstShotCount>
+						<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+						<soundCast>CGF1_MWP_SFX_MG_Medium9</soundCast>
+						<soundCastTail>GunTail_Medium</soundCastTail>
+						<muzzleFlashScale>9</muzzleFlashScale>
+					</li>
+				</verbs>
+				<tools>
+					<li>
+						<label>stock</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>11</power>
+						<cooldownTime>2.6</cooldownTime>
+					</li>
+					<li>
+						<label>barrel</label>
+						<capacities>
+							<li>Blunt</li>
+							<li>Poke</li>
+						</capacities>
+						<power>10</power>
+						<cooldownTime>2.6</cooldownTime>
+					</li>
+				</tools>
+				<modExtensions>
+					<li Class="MuzzleFlash.MuzzleFlashProps" MayRequire="issaczhuang.muzzleflash">
+						<def>MF_StandardMuzzleFalsh</def>
+						<drawSize>(1.0,1.0)</drawSize>
+						<offsets>
+							<li>(0.67,0.06)</li>
+						</offsets>
+					</li>
+				</modExtensions>
+				<generateCommonality>0.05</generateCommonality> <!-- Uncommon -->
+			</ThingDef>
+		<!-- TYPE 73 -->
+			<ThingDef ParentName="CGF1_MWP_LMG_MagFed_T1">
+				<defName>CGF1_MWP_Type73_LMG_</defName>
+				<label>Type 73 LMG</label>
+				<description>Caliber: 7.62x54mmR. 30-round detachable mag. Select-Fire.</description>
+				<graphicData>
+					<texPath>CGF1/Gun/Type73_LMG</texPath>
+					<drawSize>1.00</drawSize>
+				</graphicData>
+				<recipeMaker>
+					<recipeUsers>
+						<li>CGF1_MWP_Building_Gunsmith</li>
+					</recipeUsers>
+					<researchPrerequisite>CGF1_MWP_Research_T8_AtomicAgeFirearms</researchPrerequisite>
+					<skillRequirements>
+						<Crafting>6</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+				<costList>
+					<Steel>75</Steel>
+					<ComponentIndustrial>6</ComponentIndustrial>
+				</costList>
+				<statBases>
+					<WorkToMake>40000</WorkToMake>
+					<Mass>10.4</Mass>
+					<AccuracyTouch>0.50</AccuracyTouch>
+					<AccuracyShort>0.65</AccuracyShort>
+					<AccuracyMedium>0.60</AccuracyMedium>
+					<AccuracyLong>0.50</AccuracyLong>
+					<RangedWeapon_Cooldown>1.8</RangedWeapon_Cooldown>
+				</statBases>
+				<equippedAngleOffset>40</equippedAngleOffset>
+				<weaponTags>
+					<li>CGF1_LMG_Military</li>
+				</weaponTags>
+				<weaponClasses>
+					<li>RangedHeavy</li>
+				</weaponClasses>
+				<tradeTags>
+					<li>CGF1_GunsGalore_ModernNorthKorea</li>
+				</tradeTags>
+				<verbs>
+					<li>
+						<verbClass>Verb_Shoot</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<defaultProjectile>CGF1_MWP_Bullet_762x54mmR_Auto</defaultProjectile>
+						<warmupTime>1.8</warmupTime>
+						<range>30.9</range>
+						<burstShotCount>6</burstShotCount>
+						<ticksBetweenBurstShots>6</ticksBetweenBurstShots>
+						<soundCast>CGF1_MWP_SFX_MG_Light6</soundCast>
+						<soundCastTail>GunTail_Medium</soundCastTail>
+						<muzzleFlashScale>9</muzzleFlashScale>
+					</li>
+				</verbs>
+				<tools>
+					<li>
+						<label>stock</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>11</power>
+						<cooldownTime>2.6</cooldownTime>
+					</li>
+					<li>
+						<label>barrel</label>
+						<capacities>
+							<li>Blunt</li>
+							<li>Poke</li>
+						</capacities>
+						<power>10</power>
+						<cooldownTime>2.6</cooldownTime>
+					</li>
+				</tools>
+				<modExtensions>
+					<li Class="MuzzleFlash.MuzzleFlashProps" MayRequire="issaczhuang.muzzleflash">
+						<def>MF_StandardMuzzleFalsh</def>
+						<drawSize>(1.0,1.0)</drawSize>
+						<offsets>
+							<li>(0.56,0.03)</li>
+						</offsets>
+					</li>
+				</modExtensions>
+				<generateCommonality>0.10</generateCommonality> <!-- Average -->
+			</ThingDef>
+		<!-- TYPE 82 -->
+			<ThingDef ParentName="CGF1_MWP_GPMG_T1">
+				<defName>CGF1_MWP_Type82_GPMG_</defName>
+				<label>Type 82 GPMG</label>
+				<description>Caliber: 7.62x54mmR. 100-round bullet link. Select-Fire.</description>
+				<graphicData>
+					<texPath>CGF1/Gun/Type82_GPMG</texPath>
+					<drawSize>1.10</drawSize>
+				</graphicData>
+				<recipeMaker>
+					<recipeUsers>
+						<li>CGF1_MWP_Building_Gunsmith</li>
+					</recipeUsers>
+					<researchPrerequisite>CGF1_MWP_Research_T8_AtomicAgeFirearms</researchPrerequisite>
+					<skillRequirements>
+						<Crafting>6</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+				<costList>
+					<Steel>85</Steel>
+					<ComponentIndustrial>7</ComponentIndustrial>
+				</costList>
+				<statBases>
+					<WorkToMake>50000</WorkToMake>
+					<Mass>10.2</Mass>
+					<AccuracyTouch>0.40</AccuracyTouch>
+					<AccuracyShort>0.60</AccuracyShort>
+					<AccuracyMedium>0.60</AccuracyMedium>
+					<AccuracyLong>0.50</AccuracyLong>
+					<RangedWeapon_Cooldown>1.8</RangedWeapon_Cooldown>
+				</statBases>
+				<equippedAngleOffset>40</equippedAngleOffset>
+				<weaponTags>
+					<li>CGF1_LMG_Military</li>
+				</weaponTags>
+				<weaponClasses>
+					<li>RangedHeavy</li>
+				</weaponClasses>
+				<tradeTags>
+					<li>CGF1_GunsGalore_ModernNorthKorea</li>
+				</tradeTags>
+				<verbs>
+					<li>
+						<verbClass>Verb_Shoot</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<defaultProjectile>CGF1_MWP_Bullet_762x54mmR_Auto</defaultProjectile>
+						<warmupTime>2.4</warmupTime>
+						<range>36.9</range>
+						<burstShotCount>8</burstShotCount>
+						<ticksBetweenBurstShots>7</ticksBetweenBurstShots>
+						<soundCast>CGF1_GG_SFXR_Rifle4</soundCast>
+						<soundCastTail>GunTail_Medium</soundCastTail>
+						<muzzleFlashScale>9</muzzleFlashScale>
+					</li>
+				</verbs>
+				<tools>
+					<li>
+						<label>stock</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>11</power>
+						<cooldownTime>2.6</cooldownTime>
+					</li>
+					<li>
+						<label>barrel</label>
+						<capacities>
+							<li>Blunt</li>
+							<li>Poke</li>
+						</capacities>
+						<power>10</power>
+						<cooldownTime>2.6</cooldownTime>
+					</li>
+				</tools>
+				<modExtensions>
+					<li Class="MuzzleFlash.MuzzleFlashProps" MayRequire="issaczhuang.muzzleflash">
+						<def>MF_StandardMuzzleFalsh</def>
+						<drawSize>(1.0,1.0)</drawSize>
+						<offsets>
+							<li>(0.67,0.06)</li>
+						</offsets>
+					</li>
+				</modExtensions>
+				<generateCommonality>0.10</generateCommonality> <!-- Average -->
+			</ThingDef>
+	<!-- PISTOLS -->
+		<!-- BAEK DU SAN -->
+			<ThingDef ParentName="CGF1_MWP_Pistol_T1">
+				<defName>CGF1_MWP_Baek_DuSan_Pistol_</defName>
+				<label>Baek Du San Pistol</label>
+				<description>Caliber: 9x19mm Parabellum. 16-round detachable mag. Semi-Automatic.</description>
+				<graphicData>
+					<texPath>CGF1/Gun/Baek_DuSan_Pistol</texPath>
+					<drawSize>0.9</drawSize>
+				</graphicData>
+				<uiIconScale>1.4</uiIconScale>
+				<recipeMaker>
+					<recipeUsers>
+						<li>CGF1_MWP_Building_Gunsmith</li>
+					</recipeUsers>
+					<researchPrerequisite>CGF1_MWP_Research_T9_SpaceAgeFirearms</researchPrerequisite>
+					<skillRequirements>
+						<Crafting>4</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+				<costList>
+					<Steel>30</Steel>
+					<ComponentIndustrial>2</ComponentIndustrial>
+				</costList>
+				<statBases>
+					<WorkToMake>5000</WorkToMake>
+					<Mass>1.15</Mass>
+					<AccuracyTouch>0.80</AccuracyTouch>
+					<AccuracyShort>0.70</AccuracyShort>
+					<AccuracyMedium>0.40</AccuracyMedium>
+					<AccuracyLong>0.30</AccuracyLong>
+					<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+				</statBases>
+				<weaponTags>
+					<li>CGF1_Pistol_Civilian</li>
+					<li>CGF1_Pistol_Military</li>
+					<li>CGF1_Pistol_Military_Advanced</li>
+				</weaponTags>
+				<weaponClasses>
+					<li>RangedLight</li>
+				</weaponClasses>
+				<tradeTags>
+					<li>CGF1_GunsGalore_ModernNorthKorea</li>
+				</tradeTags>
+				<verbs>
+					<li>
+						<verbClass>Verb_Shoot</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<defaultProjectile>CGF1_MWP_Bullet_9x19mmParabellum_Pistol</defaultProjectile>
+						<warmupTime>0.3</warmupTime>
+						<range>25.9</range>
+						<soundCast>CGF1_MWP_SFX_Pistol4</soundCast>
+						<soundCastTail>GunTail_Light</soundCastTail>
+						<muzzleFlashScale>9</muzzleFlashScale>
+					</li>
+				</verbs>
+				<tools>
+					<li>
+						<label>grip</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>9</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+					<li>
+						<label>barrel</label>
+						<capacities>
+							<li>Blunt</li>
+							<li>Poke</li>
+						</capacities>
+						<power>9</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+				</tools>
+				<modExtensions>
+					<li Class="MuzzleFlash.MuzzleFlashProps" MayRequire="issaczhuang.muzzleflash">
+						<def>MF_StandardMuzzleFalshTwo</def>
+						<drawSize>(1.0,1.0)</drawSize>
+						<offsets>
+							<li>(0.24,0.14)</li>
+						</offsets>
+					</li>
+				</modExtensions>
+				<generateCommonality>0.05</generateCommonality> <!-- Uncommon -->
+			</ThingDef>
+		<!-- TYPE 64 -->
+			<ThingDef ParentName="CGF1_MWP_Pistol_T1">
+				<defName>CGF1_MWP_Type64_Pistol_NK_</defName>
+				<label>Type 64 Pistol NK</label>
+				<description>Caliber: .32 ACP. 7-round detachable mag. Semi-Automatic. North Korean copy of the FN/Browning M1900 pistol, with domestic markings. While it is unknown how long such pistols were manufactured, the Type 64s are likely still in service in the present day, as the basic design appears to have been remarkably popular in North Korea itself.</description>
+				<graphicData>
+					<texPath>CGF1/Gun/Type64_Pistol_NK</texPath>
+					<drawSize>0.90</drawSize>
+				</graphicData>
+				<uiIconScale>1.4</uiIconScale>
+				<recipeMaker>
+					<recipeUsers>
+						<li>CGF1_MWP_Building_Gunsmith</li>
+					</recipeUsers>
+					<researchPrerequisite>CGF1_MWP_Research_T8_AtomicAgeFirearms</researchPrerequisite>
+					<skillRequirements>
+						<Crafting>4</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+				<costList>
+					<Steel>25</Steel>
+					<ComponentIndustrial>2</ComponentIndustrial>
+				</costList>
+				<statBases>
+					<WorkToMake>5000</WorkToMake>
+					<Mass>1.00</Mass>
+					<AccuracyTouch>0.80</AccuracyTouch>
+					<AccuracyShort>0.70</AccuracyShort>
+					<AccuracyMedium>0.40</AccuracyMedium>
+					<AccuracyLong>0.30</AccuracyLong>
+					<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+				</statBases>
+				<weaponTags>
+					<li>CGF1_Pistol_Civilian</li>
+					<li>CGF1_Pistol_Military</li>
+				</weaponTags>
+				<weaponClasses>
+					<li>RangedLight</li>
+				</weaponClasses>
+				<tradeTags>
+					<li>CGF1_GunsGalore_ModernNorthKorea</li>
+				</tradeTags>
+				<verbs>
+					<li>
+						<verbClass>Verb_Shoot</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<defaultProjectile>CGF1_MWP_Bullet_32ACP_Pistol</defaultProjectile>
+						<warmupTime>0.3</warmupTime>
+						<range>25.9</range>
+						<soundCast>CGF1_MWP_SFX_Pistol3</soundCast>
+						<soundCastTail>GunTail_Light</soundCastTail>
+						<muzzleFlashScale>9</muzzleFlashScale>
+					</li>
+				</verbs>
+				<tools>
+					<li>
+						<label>grip</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>9</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+					<li>
+						<label>barrel</label>
+						<capacities>
+							<li>Blunt</li>
+							<li>Poke</li>
+						</capacities>
+						<power>9</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+				</tools>
+				<modExtensions>
+					<li Class="MuzzleFlash.MuzzleFlashProps" MayRequire="issaczhuang.muzzleflash">
+						<def>MF_StandardMuzzleFalshTwo</def>
+						<drawSize>(1.0,1.0)</drawSize>
+						<offsets>
+							<li>(0.21,0.15)</li>
+						</offsets>
+					</li>
+				</modExtensions>
+				<generateCommonality>0.10</generateCommonality> <!-- Average -->
+			</ThingDef>
+		<!-- TYPE 68 -->
+			<ThingDef ParentName="CGF1_MWP_Pistol_T1">
+				<defName>CGF1_MWP_Type68_Pistol_</defName>
+				<label>Type 68 Pistol</label>
+				<description>Caliber: 7.62x25mm Tokarev. 8-round detachable mag. Semi-Automatic.</description>
+				<graphicData>
+					<texPath>CGF1/Gun/Type68_Pistol</texPath>
+					<drawSize>0.9</drawSize>
+				</graphicData>
+				<uiIconScale>1.4</uiIconScale>
+				<recipeMaker>
+					<recipeUsers>
+						<li>CGF1_MWP_Building_Gunsmith</li>
+					</recipeUsers>
+					<researchPrerequisite>CGF1_MWP_Research_T8_AtomicAgeFirearms</researchPrerequisite>
+					<skillRequirements>
+						<Crafting>4</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+				<costList>
+					<Steel>30</Steel>
+					<ComponentIndustrial>2</ComponentIndustrial>
+				</costList>
+				<statBases>
+					<WorkToMake>5000</WorkToMake>
+					<Mass>1.1</Mass>
+					<AccuracyTouch>0.80</AccuracyTouch>
+					<AccuracyShort>0.70</AccuracyShort>
+					<AccuracyMedium>0.40</AccuracyMedium>
+					<AccuracyLong>0.30</AccuracyLong>
+					<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+				</statBases>
+				<weaponTags>
+					<li>CGF1_Pistol_Civilian</li>
+					<li>CGF1_Pistol_Military</li>
+				</weaponTags>
+				<weaponClasses>
+					<li>RangedLight</li>
+				</weaponClasses>
+				<tradeTags>
+					<li>CGF1_GunsGalore_ModernNorthKorea</li>
+				</tradeTags>
+				<verbs>
+					<li>
+						<verbClass>Verb_Shoot</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<defaultProjectile>CGF1_MWP_Bullet_762x25mmTokarev_Pistol</defaultProjectile>
+						<warmupTime>0.3</warmupTime>
+						<range>25.9</range>
+						<soundCast>CGF1_MWP_SFX_Pistol3</soundCast>
+						<soundCastTail>GunTail_Light</soundCastTail>
+						<muzzleFlashScale>9</muzzleFlashScale>
+					</li>
+				</verbs>
+				<tools>
+					<li>
+						<label>grip</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>9</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+					<li>
+						<label>barrel</label>
+						<capacities>
+							<li>Blunt</li>
+							<li>Poke</li>
+						</capacities>
+						<power>9</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+				</tools>
+				<modExtensions>
+					<li Class="MuzzleFlash.MuzzleFlashProps" MayRequire="issaczhuang.muzzleflash">
+						<def>MF_StandardMuzzleFalshTwo</def>
+						<drawSize>(1.0,1.0)</drawSize>
+						<offsets>
+							<li>(0.24,0.14)</li>
+						</offsets>
+					</li>
+				</modExtensions>
+				<generateCommonality>0.05</generateCommonality> <!-- Uncommon -->
+			</ThingDef>
+		<!-- TYPE 70 -->
+			<ThingDef ParentName="CGF1_MWP_Pistol_T1">
+				<defName>CGF1_MWP_Type70_Pistol_</defName>
+				<label>Type 70 Pistol</label>
+				<description>Caliber: .32 ACP. 7-round detachable mag. Semi-Automatic. North Korean pistol manufactured domestically. Relatively little is known about the pistol's origin, but it appears to incorporate features from various pistols, including the FN M1910, Makarov PM, and Walther PPK.</description>
+				<graphicData>
+					<texPath>CGF1/Gun/Type70_Pistol</texPath>
+					<drawSize>0.90</drawSize>
+				</graphicData>
+				<uiIconScale>1.4</uiIconScale>
+				<recipeMaker>
+					<recipeUsers>
+						<li>CGF1_MWP_Building_Gunsmith</li>
+					</recipeUsers>
+					<researchPrerequisite>CGF1_MWP_Research_T8_AtomicAgeFirearms</researchPrerequisite>
+					<skillRequirements>
+						<Crafting>4</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+				<costList>
+					<Steel>25</Steel>
+					<ComponentIndustrial>2</ComponentIndustrial>
+				</costList>
+				<statBases>
+					<WorkToMake>5000</WorkToMake>
+					<Mass>1.00</Mass>
+					<AccuracyTouch>0.80</AccuracyTouch>
+					<AccuracyShort>0.70</AccuracyShort>
+					<AccuracyMedium>0.40</AccuracyMedium>
+					<AccuracyLong>0.30</AccuracyLong>
+					<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+				</statBases>
+				<weaponTags>
+					<li>CGF1_Pistol_Civilian</li>
+					<li>CGF1_Pistol_Military</li>
+				</weaponTags>
+				<weaponClasses>
+					<li>RangedLight</li>
+				</weaponClasses>
+				<tradeTags>
+					<li>CGF1_GunsGalore_ModernNorthKorea</li>
+				</tradeTags>
+				<verbs>
+					<li>
+						<verbClass>Verb_Shoot</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<defaultProjectile>CGF1_MWP_Bullet_32ACP_Pistol</defaultProjectile>
+						<warmupTime>0.3</warmupTime>
+						<range>25.9</range>
+						<soundCast>CGF1_MWP_SFX_Pistol2</soundCast>
+						<soundCastTail>GunTail_Light</soundCastTail>
+						<muzzleFlashScale>9</muzzleFlashScale>
+					</li>
+				</verbs>
+				<tools>
+					<li>
+						<label>grip</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>9</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+					<li>
+						<label>barrel</label>
+						<capacities>
+							<li>Blunt</li>
+							<li>Poke</li>
+						</capacities>
+						<power>9</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+				</tools>
+				<modExtensions>
+					<li Class="MuzzleFlash.MuzzleFlashProps" MayRequire="issaczhuang.muzzleflash">
+						<def>MF_StandardMuzzleFalshTwo</def>
+						<drawSize>(1.0,1.0)</drawSize>
+						<offsets>
+							<li>(0.22,0.15)</li>
+						</offsets>
+					</li>
+				</modExtensions>
+				<generateCommonality>0.05</generateCommonality> <!-- Uncommon -->
+			</ThingDef>
+	<!-- RIFLES -->
+		<!-- TYPE 58 -->
+			<ThingDef ParentName="CGF1_MWP_AssaultRifle_T1">
+				<defName>CGF1_MWP_Type58_</defName>
+				<label>Type 58</label>
+				<description>Caliber: 7.62x39mm. 30-round detachable mag. Select-Fire.</description>
+				<graphicData>
+					<texPath>CGF1/Gun/Type58</texPath>
+					<drawSize>1.01</drawSize>
+				</graphicData>
+				<recipeMaker>
+					<recipeUsers>
+						<li>CGF1_MWP_Building_Gunsmith</li>
+					</recipeUsers>
+					<researchPrerequisite>CGF1_MWP_Research_T8_AtomicAgeFirearms</researchPrerequisite>
+					<skillRequirements>
+						<Crafting>5</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+				<costList>
+					<Steel>60</Steel>
+					<ComponentIndustrial>7</ComponentIndustrial>
+				</costList>
+				<statBases>
+					<WorkToMake>40000</WorkToMake>
+					<Mass>3.5</Mass>
+					<AccuracyTouch>0.60</AccuracyTouch>
+					<AccuracyShort>0.60</AccuracyShort>
+					<AccuracyMedium>0.55</AccuracyMedium>
+					<AccuracyLong>0.50</AccuracyLong>
+					<RangedWeapon_Cooldown>1.7</RangedWeapon_Cooldown>
+				</statBases>
+				<equippedAngleOffset>40</equippedAngleOffset>
+				<weaponTags>
+					<li>CGF1_AR_Civilian</li>
+					<li>CGF1_AR_Military</li>
+				</weaponTags>
+				<tradeTags>
+					<li>CGF1_GunsGalore_ModernNorthKorea</li>
+				</tradeTags>
+				<verbs>
+					<li>
+						<verbClass>Verb_Shoot</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<defaultProjectile>CGF1_MWP_Bullet_762x39mm_Auto</defaultProjectile>
+						<warmupTime>1</warmupTime>
+						<range>30.9</range>
+						<burstShotCount>4</burstShotCount>
+						<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+						<soundCast>CGF1_GG_SFXR_Rifle2</soundCast>
+						<soundCastTail>GunTail_Medium</soundCastTail>
+						<muzzleFlashScale>9</muzzleFlashScale>
+					</li>
+				</verbs>
+				<tools>
+					<li>
+						<label>stock</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>10</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+					<li>
+						<label>barrel</label>
+						<capacities>
+							<li>Blunt</li>
+							<li>Poke</li>
+						</capacities>
+						<power>9</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+				</tools>
+				<modExtensions>
+					<li Class="MuzzleFlash.MuzzleFlashProps" MayRequire="issaczhuang.muzzleflash">
+						<def>MF_StandardMuzzleFalsh</def>
+						<drawSize>(0.8,0.8)</drawSize>
+						<offsets>
+							<li>(0.5,0.03)</li>
+						</offsets>
+					</li>
+				</modExtensions>
+				<generateCommonality>0.20</generateCommonality> <!-- Common -->
+			</ThingDef>
+		<!-- TYPE 63 -->
+			<ThingDef ParentName="CGF1_MWP_SemiAutoRifle_T2">
+				<defName>CGF1_MWP_Type63_SKS_</defName>
+				<label>Type 63 SKS</label>
+				<description>Caliber: 7.62x39mm. 10-round internal mag. Semi-Automatic. North Korean production SKS rifle, based on the Chinese Type 56 (as it uses a similar bayonet.) While the SKS is common in North Korea, it is unknown to what degree domestic production rifles exist in proportion to the imported Soviet/Chinese carbines.</description>
+				<graphicData>
+					<texPath>CGF1/Gun/Type63_SKS</texPath>
+					<drawSize>1.00</drawSize>
+				</graphicData>
+				<recipeMaker>
+					<recipeUsers>
+						<li>CGF1_MWP_Building_Gunsmith</li>
+					</recipeUsers>
+					<researchPrerequisite>CGF1_MWP_Research_T8_AtomicAgeFirearms</researchPrerequisite>
+					<skillRequirements>
+						<Crafting>5</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+				<costList>
+					<Steel>60</Steel>
+					<ComponentIndustrial>3</ComponentIndustrial>
+				</costList>
+				<statBases>
+					<WorkToMake>20000</WorkToMake>
+					<Mass>3.85</Mass>
+					<AccuracyTouch>0.60</AccuracyTouch>
+					<AccuracyShort>0.70</AccuracyShort>
+					<AccuracyMedium>0.65</AccuracyMedium>
+					<AccuracyLong>0.55</AccuracyLong>
+					<RangedWeapon_Cooldown>1.2</RangedWeapon_Cooldown>
+				</statBases>
+				<equippedAngleOffset>40</equippedAngleOffset>
+				<weaponTags>
+					<li>CGF1_Rifle_Civilian</li>
+					<li>CGF1_Rifle_Military</li>
+				</weaponTags>
+				<tradeTags>
+					<li>CGF1_GunsGalore_ModernNorthKorea</li>
+				</tradeTags>
+				<verbs>
+					<li>
+						<verbClass>Verb_Shoot</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<defaultProjectile>CGF1_MWP_Bullet_762x39mm_Rifle</defaultProjectile>
+						<warmupTime>1</warmupTime>
+						<range>30.9</range>
+						<soundCast>CGF1_MWP_SFX_Rifle_Semi5</soundCast>
+						<soundCastTail>GunTail_Medium</soundCastTail>
+						<muzzleFlashScale>9</muzzleFlashScale>
+					</li>
+				</verbs>
+				<tools>
+					<li>
+						<label>stock</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>10</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+					<li>
+						<label>barrel</label>
+						<capacities>
+							<li>Blunt</li>
+							<li>Poke</li>
+						</capacities>
+						<power>9</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+				</tools>
+				<modExtensions>
+					<li Class="MuzzleFlash.MuzzleFlashProps" MayRequire="issaczhuang.muzzleflash">
+						<def>MF_StandardMuzzleFalsh</def>
+						<drawSize>(0.8,0.8)</drawSize>
+						<offsets>
+							<li>(0.56,0.06)</li>
+						</offsets>
+					</li>
+				</modExtensions>
+				<generateCommonality>0.05</generateCommonality> <!-- Uncommon -->
+			</ThingDef>
+		<!-- TYPE 68 -->
+			<ThingDef ParentName="TMM_Rifle_IndustrialBase">
+				<defName>TMM_Rifle_TypeSixtyEight</defName>
+				<label>Type 68</label>
+				<description>Caliber: 7.62x39mm. 30-round detachable mag. Select-Fire.</description>
+				<graphicData>
+					<texPath>Modules/Armoury/NorthKorea/Rifles/Type68/Type68</texPath>
+					<drawSize>2</drawSize>
+				</graphicData>
+				<recipeMaker>
+					<recipeUsers>
+						<li>TMM_Workbench_GunsmithIndustrial</li>
+					</recipeUsers>
+					<!-- <researchPrerequisite>CGF1_MWP_Research_T8_AtomicAgeFirearms</researchPrerequisite> -->
+					<skillRequirements>
+						<Crafting>5</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+				<costList>
+					<Steel>60</Steel>
+					<ComponentIndustrial>7</ComponentIndustrial>
+				</costList>
+				<statBases>
+					<WorkToMake>40000</WorkToMake>
+					<Mass>2.8</Mass>
+					<AccuracyTouch>0.60</AccuracyTouch>
+					<AccuracyShort>0.60</AccuracyShort>
+					<AccuracyMedium>0.55</AccuracyMedium>
+					<AccuracyLong>0.50</AccuracyLong>
+					<RangedWeapon_Cooldown>1.7</RangedWeapon_Cooldown>
+				</statBases>
+				<equippedAngleOffset>40</equippedAngleOffset>
+				<!-- <weaponTags>
+					<li>CGF1_AR_Civilian</li>
+					<li>CGF1_AR_Military</li>
+				</weaponTags> -->
+				<!-- <tradeTags>
+					<li>CGF1_GunsGalore_ModernNorthKorea</li>
+				</tradeTags> -->
+				<verbs>
+					<li>
+						<verbClass>Verb_Shoot</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<defaultProjectile>TMM_Bullet_762x39mm_Auto</defaultProjectile>
+						<warmupTime>1.25</warmupTime>
+						<range>30.9</range>
+						<burstShotCount>4</burstShotCount>
+						<ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+						<soundCast>TMM_Sound_Rifle2</soundCast>
+						<soundCastTail>GunTail_Medium</soundCastTail>
+						<muzzleFlashScale>9</muzzleFlashScale>
+					</li>
+				</verbs>
+				<tools>
+					<li>
+						<label>stock</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>10</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+					<li>
+						<label>barrel</label>
+						<capacities>
+							<li>Blunt</li>
+							<li>Poke</li>
+						</capacities>
+						<power>9</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+				</tools>
+				<comps>
+					<li Class="ModularWeapons2.CompProperties_ModularWeapon">
+						<baseGraphicData>
+							<texPath>Modules/Armoury/NorthKorea/Rifles/Type68/Type68</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+						</baseGraphicData>
+						<partsMounts>
+							<!-- CALIBRE -->
+								<!-- TODO: -->
+							<!-- MAGAZINE -->
+								<li>
+									<mountDef>TMM_PartMount_Magazine_TypeSixtyEight</mountDef>
+									<offset>(0, 0)</offset>
+									<layerOrder>-1</layerOrder>
+								</li>
+							<!-- STOCK -->
+								<li>
+									<mountDef>TMM_PartMount_Stock_TypeSixtyEight</mountDef>
+									<offset>(-0.3125, 0)</offset>
+									<layerOrder>2</layerOrder>
+								</li>
+						</partsMounts>
+						<defaultParts>
+							<!-- CALIBRE -->
+								<!-- TODO: -->
+							<!-- MAGAZINE -->
+								<li>
+									<partsDef>TMM_WeaponPart_Magazine_TypeSixtyEight_Thirty</partsDef>
+									<attachMountDef>TMM_PartMount_Magazine_TypeSixtyEight</attachMountDef>
+								</li>
+							<!-- STOCK -->
+								<li>
+									<partsDef>TMM_WeaponPart_Stock_TypeSixtyEight_Wood</partsDef>
+									<attachMountDef>TMM_PartMount_Stock_TypeSixtyEight</attachMountDef>
+								</li>
+						</defaultParts>
+					</li>
+				</comps>
+				<modExtensions>
+					<li Class="MuzzleFlash.MuzzleFlashProps" MayRequire="issaczhuang.muzzleflash">
+						<def>MF_StandardMuzzleFalsh</def>
+						<drawSize>(0.8,0.8)</drawSize>
+						<offsets>
+							<li>(0.5,0.03)</li>
+						</offsets>
+					</li>
+				</modExtensions>
+				<generateCommonality>0.10</generateCommonality> <!-- Average -->
+			</ThingDef>
+		<!-- TYPE 78 -->
+			<ThingDef ParentName="CGF1_MWP_SemiBattleRifle_T1">
+				<defName>CGF1_MWP_Type78_SniperRifle_</defName>
+				<label>Type 78 Sniper Rifle</label>
+				<description>Caliber: 7.62x54mmR. 10-round detachable mag. Semi-Automatic. North Korean copy of the Zastava M76 sniper rifle, apparently unlicensed.</description>
+				<graphicData>
+					<texPath>CGF1/Gun/Type78_SniperRifle</texPath>
+					<drawSize>1.00</drawSize>
+				</graphicData>
+				<recipeMaker>
+					<recipeUsers>
+						<li>CGF1_MWP_Building_Gunsmith</li>
+					</recipeUsers>
+					<researchPrerequisite>CGF1_MWP_Research_T9_SpaceAgeFirearms</researchPrerequisite>
+					<skillRequirements>
+						<Crafting>6</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+				<costList>
+					<Steel>80</Steel>
+					<ComponentIndustrial>8</ComponentIndustrial>
+				</costList>
+				<statBases>
+					<WorkToMake>45000</WorkToMake>
+					<Mass>4.6</Mass>
+					<AccuracyTouch>0.55</AccuracyTouch>
+					<AccuracyShort>0.65</AccuracyShort>
+					<AccuracyMedium>0.75</AccuracyMedium>
+					<AccuracyLong>0.60</AccuracyLong>
+					<RangedWeapon_Cooldown>1.1</RangedWeapon_Cooldown>
+				</statBases>
+				<equippedAngleOffset>40</equippedAngleOffset>
+				<weaponTags>
+					<li>CGF1_Rifle_Civilian</li>
+					<li>CGF1_Rifle_Marksman</li>
+				</weaponTags>
+				<weaponClasses>
+					<li>LongShots</li>
+				</weaponClasses>
+				<tradeTags>
+					<li>CGF1_GunsGalore_ModernNorthKorea</li>
+				</tradeTags>
+				<verbs>
+					<li>
+						<verbClass>Verb_Shoot</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<defaultProjectile>CGF1_MWP_Bullet_762x54mmR_Rifle</defaultProjectile>
+						<warmupTime>1.8</warmupTime>
+						<range>39.9</range>
+						<soundCast>CGF1_MWP_SFX_Rifle_Semi1</soundCast>
+						<soundCastTail>GunTail_Medium</soundCastTail>
+						<muzzleFlashScale>9</muzzleFlashScale>
+					</li>
+				</verbs>
+				<tools>
+					<li>
+						<label>stock</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>10</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+					<li>
+						<label>barrel</label>
+						<capacities>
+							<li>Blunt</li>
+							<li>Poke</li>
+						</capacities>
+						<power>9</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+				</tools>
+				<modExtensions>
+					<li Class="MuzzleFlash.MuzzleFlashProps" MayRequire="issaczhuang.muzzleflash">
+						<def>MF_StandardMuzzleFalsh</def>
+						<drawSize>(0.8,0.8)</drawSize>
+						<offsets>
+							<li>(0.6,0.06)</li>
+						</offsets>
+					</li>
+				</modExtensions>
+				<generateCommonality>0.0125</generateCommonality> <!-- Rare -->
+			</ThingDef>
+		<!-- TYPE 88 -->
+			<ThingDef ParentName="CGF1_MWP_AssaultRifle_T0">
+				<defName>CGF1_MWP_Type88_</defName>
+				<label>Type 88</label>
+				<description>Caliber: 5.45x39mm. 30-round detachable mag. Select-Fire.</description>
+				<graphicData>
+					<texPath>CGF1/Gun/Type88</texPath>
+					<drawSize>1.01</drawSize>
+				</graphicData>
+				<recipeMaker>
+					<recipeUsers>
+						<li>CGF1_MWP_Building_Gunsmith</li>
+					</recipeUsers>
+					<researchPrerequisite>CGF1_MWP_Research_T9_SpaceAgeFirearms</researchPrerequisite>
+					<skillRequirements>
+						<Crafting>6</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+				<costList>
+					<Steel>60</Steel>
+					<ComponentIndustrial>7</ComponentIndustrial>
+				</costList>
+				<statBases>
+					<WorkToMake>40000</WorkToMake>
+					<Mass>3.1</Mass>
+					<AccuracyTouch>0.60</AccuracyTouch>
+					<AccuracyShort>0.70</AccuracyShort>
+					<AccuracyMedium>0.65</AccuracyMedium>
+					<AccuracyLong>0.55</AccuracyLong>
+					<RangedWeapon_Cooldown>1.7</RangedWeapon_Cooldown>
+				</statBases>
+				<equippedAngleOffset>40</equippedAngleOffset>
+				<weaponTags>
+					<li>CGF1_AR_Military</li>
+				</weaponTags>
+				<tradeTags>
+					<li>CGF1_GunsGalore_ModernNorthKorea</li>
+				</tradeTags>
+				<verbs>
+					<li>
+						<verbClass>Verb_Shoot</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<defaultProjectile>CGF1_MWP_Bullet_545x39mm_Auto</defaultProjectile>
+						<warmupTime>1</warmupTime>
+						<range>30.9</range>
+						<burstShotCount>4</burstShotCount>
+						<ticksBetweenBurstShots>7</ticksBetweenBurstShots>
+						<soundCast>CGF1_MWP_SFX_Rifle_Auto2</soundCast>
+						<soundCastTail>GunTail_Medium</soundCastTail>
+						<muzzleFlashScale>9</muzzleFlashScale>
+					</li>
+				</verbs>
+				<tools>
+					<li>
+						<label>stock</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>10</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+					<li>
+						<label>barrel</label>
+						<capacities>
+							<li>Blunt</li>
+							<li>Poke</li>
+						</capacities>
+						<power>9</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+				</tools>
+				<modExtensions>
+					<li Class="MuzzleFlash.MuzzleFlashProps" MayRequire="issaczhuang.muzzleflash">
+						<def>MF_StandardMuzzleFalsh</def>
+						<drawSize>(0.8,0.8)</drawSize>
+						<offsets>
+							<li>(0.55,0.04)</li>
+						</offsets>
+					</li>
+				</modExtensions>
+				<generateCommonality>0.05</generateCommonality> <!-- Uncommon -->
+			</ThingDef>
+	<!-- SMGs -->
+		<!-- TYPE 49 -->
+			<ThingDef ParentName="CGF1_MWP_SMG_T2">
+				<defName>CGF1_MWP_Type49_SMG_</defName>
+				<label>Type 49 SMG</label>
+				<description>Caliber: 7.62x25mm Tokarev. 71-round detachable mag. Select-Fire.</description>
+				<graphicData>
+					<texPath>CGF1/Gun/Type49_SMG</texPath>
+					<drawSize>1.00</drawSize>
+				</graphicData>
+				<recipeMaker>
+					<recipeUsers>
+						<li>CGF1_MWP_Building_Gunsmith</li>
+					</recipeUsers>
+					<researchPrerequisite>CGF1_MWP_Research_T8_AtomicAgeFirearms</researchPrerequisite>
+					<skillRequirements>
+						<Crafting>5</Crafting>
+					</skillRequirements>
+				</recipeMaker>
+				<costList>
+					<Steel>65</Steel>
+					<ComponentIndustrial>5</ComponentIndustrial>
+				</costList>
+				<statBases>
+					<WorkToMake>30000</WorkToMake>
+					<Mass>4</Mass>
+					<AccuracyTouch>0.85</AccuracyTouch>
+					<AccuracyShort>0.65</AccuracyShort>
+					<AccuracyMedium>0.35</AccuracyMedium>
+					<AccuracyLong>0.20</AccuracyLong>
+					<RangedWeapon_Cooldown>1.65</RangedWeapon_Cooldown>
+				</statBases>
+				<equippedAngleOffset>40</equippedAngleOffset>
+				<weaponTags>
+					<li>CGF1_SMG_Civilian</li>
+					<li>CGF1_SMG_Military</li>
+				</weaponTags>
+				<weaponClasses>
+					<li>RangedLight</li>
+					<li>ShortShots</li>
+				</weaponClasses>
+				<tradeTags>
+					<li>CGF1_GunsGalore_ModernNorthKorea</li>
+				</tradeTags>
+				<verbs>
+					<li>
+						<verbClass>Verb_Shoot</verbClass>
+						<hasStandardCommand>true</hasStandardCommand>
+						<defaultProjectile>CGF1_MWP_Bullet_762x25mmTokarev_Pistol</defaultProjectile>
+						<warmupTime>1</warmupTime>
+						<range>25.9</range>
+						<burstShotCount>8</burstShotCount>
+						<ticksBetweenBurstShots>4</ticksBetweenBurstShots>
+						<soundCast>CGF1_GG_SFXR_Pistol3</soundCast>
+						<soundCastTail>GunTail_Light</soundCastTail>
+						<muzzleFlashScale>9</muzzleFlashScale>
+					</li>
+				</verbs>
+				<tools>
+					<li>
+						<label>stock</label>
+						<capacities>
+							<li>Blunt</li>
+						</capacities>
+						<power>10</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+					<li>
+						<label>barrel</label>
+						<capacities>
+							<li>Blunt</li>
+							<li>Poke</li>
+						</capacities>
+						<power>9</power>
+						<cooldownTime>2</cooldownTime>
+					</li>
+				</tools>
+				<modExtensions>
+					<li Class="MuzzleFlash.MuzzleFlashProps" MayRequire="issaczhuang.muzzleflash">
+						<def>MF_StandardMuzzleFalsh</def>
+						<drawSize>(0.7,0.7)</drawSize>
+						<offsets>
+							<li>(0.47,0.07)</li>
+						</offsets>
+					</li>
+				</modExtensions>
+				<generateCommonality>0.10</generateCommonality> <!-- Average -->
+			</ThingDef>
+
+
+
+</Defs>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- <></> -->
+	<!-- TMM_Workbench_ -->
+
+
+
+	<!-- <texPath>Modules/Production/Buildings/Benches/Gunsmiths//</texPath> -->
+
+	<!-- BASE GUNSMITH TABLE -->
+		<ThingDef ParentName="BenchBase" Name="TMM_Workbench_GunsmithBase" Abstract="True">
+			<thingClass>Building_WorkTable</thingClass>
+			<graphicData>
+				<graphicClass>Graphic_Multi</graphicClass>
+				<damageData>
+					<cornerTL>Damage/Corner</cornerTL>
+					<cornerTR>Damage/Corner</cornerTR>
+					<cornerBL>Damage/Corner</cornerBL>
+					<cornerBR>Damage/Corner</cornerBR>
+				</damageData>
+			</graphicData>
+			<castEdgeShadows>true</castEdgeShadows>
+			<altitudeLayer>Building</altitudeLayer>
+			<fillPercent>0.5</fillPercent>
+			<useHitPoints>True</useHitPoints>
+			<designationCategory>TMM_ProductionDesignator</designationCategory>
+			<passability>PassThroughOnly</passability>
+			<pathCost>50</pathCost>
+			<hasInteractionCell>True</hasInteractionCell>
+			<surfaceType>Item</surfaceType>
+			<inspectorTabs>
+				<li>ITab_Bills</li>
+			</inspectorTabs>
+			<comps>
+				<li Class="CompProperties_AffectedByFacilities"> <!-- TODO: -->
+					<linkableFacilities>
+						<li>ToolCabinet</li>
+					</linkableFacilities>
+				</li>
+			</comps>
+			<building>
+				<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+			</building>
+			<placeWorkers>
+				<li>PlaceWorker_ShowFacilitiesConnections</li>
+			</placeWorkers>
+		</ThingDef>
+	<!-- MEDIEVAL GUNSMITH TABLE -->
+		<!-- <ThingDef ParentName="TMM_Workbench_GunsmithBase">
+			<defName>CGF1_MWP_Building_Gunsmith_Old</defName>
+			<label>Galore Gunsmith Table</label>
+			<description>A table for producing older, pre-modern firearms like muskets and cannons in Guns Galore.</description>
+			<thingClass>Building_WorkTable</thingClass>
+			<graphicData>
+				<texPath>CGF1/Building/Gunsmith_Old/Gunsmith_Old</texPath>
+				<graphicClass>Graphic_Multi</graphicClass>
+				<drawSize>(3.5,1.5)</drawSize>
+				<damageData>
+					<cornerTL>Damage/Corner</cornerTL>
+					<cornerTR>Damage/Corner</cornerTR>
+					<cornerBL>Damage/Corner</cornerBL>
+					<cornerBR>Damage/Corner</cornerBR>
+				</damageData>
+			</graphicData>
+			<castEdgeShadows>true</castEdgeShadows>
+			<staticSunShadowHeight>0.20</staticSunShadowHeight>
+			<costList>
+				<WoodLog>50</WoodLog>
+				<Steel>5</Steel>
+			</costList>
+			<altitudeLayer>Building</altitudeLayer>
+			<fillPercent>0.5</fillPercent>
+			<useHitPoints>True</useHitPoints>
+			<statBases>
+				<WorkToBuild>3000</WorkToBuild>
+				<MaxHitPoints>180</MaxHitPoints>
+				<Flammability>1.0</Flammability>
+				<Cleanliness>-2</Cleanliness>
+			</statBases>
+			<size>(3,1)</size>
+			<designationCategory>CGF1_MWP_Category_GunsGalore</designationCategory>
+			<passability>PassThroughOnly</passability>
+			<pathCost>50</pathCost>
+			<hasInteractionCell>True</hasInteractionCell>
+			<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+			<surfaceType>Item</surfaceType>
+			<constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+			<inspectorTabs>
+				<li>ITab_Bills</li>
+			</inspectorTabs>
+			<comps>
+				<li Class="CompProperties_AffectedByFacilities">
+					<linkableFacilities>
+					<li>ToolCabinet</li>
+					</linkableFacilities>
+				</li>
+				<li Class="CompProperties_Breakdownable"/>
+			</comps>
+			<building>
+				<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+			</building>
+			<constructEffect>ConstructWood</constructEffect>
+			<researchPrerequisites>
+				<li>CGF1_MWP_Research_T0_MedievalFirearms</li>
+			</researchPrerequisites>
+			<placeWorkers>
+				<li>PlaceWorker_ShowFacilitiesConnections</li>
+			</placeWorkers>
+		</ThingDef> -->
+	<!-- INDUSTRIAL GUNSMITH TABLE -->
+		<ThingDef ParentName="TMM_Workbench_GunsmithBase">
+			<defName>TMM_Workbench_GunsmithIndustrial</defName>
+			<label>Industrial Gunsmith</label>
+			<description>An industrial gunsmithing table fit for producing industrial firearms.</description>
+			<graphicData>
+				<texPath>Modules/Production/Buildings/Benches/Gunsmiths/Industrial/GunsmithIndustrial</texPath>
+				<drawSize>(3.5,1.5)</drawSize>
+			</graphicData>
+			<staticSunShadowHeight>0.20</staticSunShadowHeight>
+			<costList>
+				<WoodLog>10</WoodLog>
+				<Steel>40</Steel>
+				<ComponentIndustrial>3</ComponentIndustrial>
+			</costList>
+			<statBases>
+				<WorkToBuild>4000</WorkToBuild>
+				<MaxHitPoints>180</MaxHitPoints>
+				<Flammability>1.0</Flammability>
+				<Cleanliness>-2</Cleanliness>
+			</statBases>
+			<size>(3,1)</size>
+			<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+			<constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+			<comps>
+				<li Class="CompProperties_Breakdownable"/>
+			</comps>
+			<constructEffect>ConstructMetal</constructEffect>
+			<!-- <researchPrerequisites>
+				<li>CGF1_MWP_Research_T4_IndustrialFirearms</li>
+			</researchPrerequisites> -->
+		</ThingDef>
+	<!-- SPACER GUNSMITH TABLE -->
+	<!-- ULTRA GUNSMITH TABLE -->
+	<!-- ARCHOTECH GUNSMITH TABLE -->
+</Defs>
