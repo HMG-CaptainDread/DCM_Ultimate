@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!-- TMM_Tolerance_ -->
+
+
+
+	<!-- FLOXACAINE TOLERANCE -->
+		<HediffDef ParentName="DrugToleranceBase">
+			<defName>TMM_Tolerance_Floxacine</defName>
+			<description>The pawn has built up a tolerance to Floxacine. It can cause severe liver damage at high levels.</description>
+			<label>floxacine tolerance</label>
+			<scenarioCanAdd>false</scenarioCanAdd>
+			<comps>
+				<li Class="HediffCompProperties_SeverityPerDay">
+					<severityPerDay>-0.015</severityPerDay>
+				</li>
+				<li Class="HediffCompProperties_DrugEffectFactor">
+					<chemical>TMM_Chemical_Floxacine</chemical>
+				</li>
+			</comps>
+			<hediffGivers>
+				<li Class="HediffGiver_RandomDrugEffect">
+					<hediff>ChemicalDamageSevere</hediff>
+					<baseMtbDays>60</baseMtbDays>
+					<minSeverity>0.75</minSeverity>
+					<partsToAffect>
+						<li>Liver</li>
+					</partsToAffect>
+					<countToAffect>1</countToAffect>
+				</li>
+			</hediffGivers>
+		</HediffDef>
+	<!-- MECHSHROOM TOLERANCE -->
+		<HediffDef>
+			<defName>TMM_Tolerance_Mechshroom</defName>
+			<description>Mechshrooms have leeched into this person's nervous system, causing mental cohesion issues and chemical damage.</description>
+			<label>mechshroom tolerance</label>
+			<hediffClass>HediffWithComps</hediffClass>
+			<defaultLabelColor>(179,86,132)</defaultLabelColor>
+			<maxSeverity>1.0</maxSeverity>
+			<scenarioCanAdd>true</scenarioCanAdd>
+			<isBad>false</isBad>
+			<comps>
+				<li Class="HediffCompProperties_SeverityPerDay">
+					<severityPerDay>-0.01</severityPerDay>
+				</li>
+				<li Class="HediffCompProperties_DrugEffectFactor">
+					<chemical>TMM_Chemical_Mechshroom</chemical>
+				</li>
+			</comps>
+			<stages>
+				<!-- NO TOLERANCE -->
+					<li>
+						<minSeverity>0</minSeverity>
+						<becomeVisible>false</becomeVisible>
+						<label>small</label>
+					</li>
+				<!-- SMALL TOLERANCE -->
+					<li>
+						<minSeverity>0.20</minSeverity>
+						<label>small</label>
+						<mentalStateGivers>
+							<li>
+								<mentalState>Wander_OwnRoom</mentalState>
+								<mtbDays>60</mtbDays>
+							</li>
+							<li>
+								<mentalState>Wander_Sad</mentalState>
+								<mtbDays>120</mtbDays>
+							</li>
+							<li>
+								<mentalState>Wander_Psychotic</mentalState>
+								<mtbDays>180</mtbDays>
+							</li>
+							<li>
+								<mentalState>WanderConfused</mentalState>
+								<mtbDays>30</mtbDays>
+							</li>
+						</mentalStateGivers>
+					</li>
+				<!-- LARGE TOLERANCE -->
+					<li>
+						<minSeverity>0.50</minSeverity>
+						<label>large</label>
+						<mentalStateGivers>
+							<li>
+								<mentalState>Wander_OwnRoom</mentalState>
+								<mtbDays>30</mtbDays>
+							</li>
+							<li>
+								<mentalState>WanderConfused</mentalState>
+								<mtbDays>15</mtbDays>
+							</li>
+							<li>
+								<mentalState>Wander_Sad</mentalState>
+								<mtbDays>60</mtbDays>
+							</li>
+							<li>
+								<mentalState>Wander_Psychotic</mentalState>
+								<mtbDays>90</mtbDays>
+							</li>
+							<li>
+								<mentalState>CorpseObsession</mentalState>
+								<mtbDays>120</mtbDays>
+							</li>
+							<li>
+								<mentalState>BedroomTantrum</mentalState>
+								<mtbDays>150</mtbDays>
+							</li>
+							<li>
+								<mentalState>SadisticRage</mentalState>
+								<mtbDays>180</mtbDays>
+							</li>
+						</mentalStateGivers>
+					</li>
+				<!-- MASSIVE TOLERANCE -->
+					<li>
+						<minSeverity>0.80</minSeverity>
+						<label>massive</label>
+						<mentalStateGivers>
+							<li>
+								<mentalState>Wander_OwnRoom</mentalState>
+								<mtbDays>15</mtbDays>
+							</li>
+							<li>
+								<mentalState>WanderConfused</mentalState>
+								<mtbDays>7.5</mtbDays>
+							</li>
+							<li>
+								<mentalState>Wander_Sad</mentalState>
+								<mtbDays>30</mtbDays>
+							</li>
+							<li>
+								<mentalState>Wander_Psychotic</mentalState>
+								<mtbDays>45</mtbDays>
+							</li>
+							<li>
+								<mentalState>CorpseObsession</mentalState>
+								<mtbDays>60</mtbDays>
+							</li>
+							<li>
+								<mentalState>BedroomTantrum</mentalState>
+								<mtbDays>75</mtbDays>
+							</li>
+							<li>
+								<mentalState>SadisticRage</mentalState>
+								<mtbDays>90</mtbDays>
+							</li>
+							<li>
+								<mentalState>Binging_DrugExtreme</mentalState>
+								<mtbDays>105</mtbDays>
+							</li>
+							<li>
+								<mentalState>FireStartingSpree</mentalState>
+								<mtbDays>120</mtbDays>
+							</li>
+						</mentalStateGivers>
+					</li>
+			</stages>
+			<hediffGivers>
+				<li Class="HediffGiver_RandomDrugEffect">
+					<hediff>ChemicalDamageSevere</hediff>
+					<baseMtbDays>180</baseMtbDays>
+					<minSeverity>0.80</minSeverity>
+					<partsToAffect>
+						<li>Brain</li>
+					</partsToAffect>
+					<countToAffect>1</countToAffect>
+				</li>
+			</hediffGivers>
+		</HediffDef>
+	<!-- SOLDIER PILL TOLERANCE -->
+		<HediffDef ParentName="DrugToleranceBase">
+			<defName>TMM_Tolerance_SoldierPill</defName>
+			<description>the pawn has built up tolerance to Soldier Pills. This can cause chemical damage.</description>
+			<label>soldier pill tolerance</label>
+			<comps>
+				<li Class="HediffCompProperties_SeverityPerDay">
+					<severityPerDay>-0.015</severityPerDay>
+				</li>
+				<li Class="HediffCompProperties_DrugEffectFactor">
+					<chemical>TMM_Chemical_SoldierPill</chemical>
+				</li>
+			</comps>
+			<hediffGivers>
+				<li Class="HediffGiver_RandomDrugEffect">
+					<hediff>ChemicalDamageSevere</hediff>
+					<baseMtbDays>120</baseMtbDays>
+					<minSeverity>0.60</minSeverity>
+					<partsToAffect>
+						<li>Stomach</li>
+					</partsToAffect>
+					<countToAffect>1</countToAffect>
+				</li>
+				<li Class="HediffGiver_RandomDrugEffect">
+					<hediff>ChemicalDamageModerate</hediff>
+					<baseMtbDays>60</baseMtbDays>
+					<minSeverity>0.30</minSeverity>
+					<partsToAffect>
+						<li>Stomach</li>
+					</partsToAffect>
+					<countToAffect>1</countToAffect>
+				</li>
+			</hediffGivers>
+		</HediffDef>
+	<!-- SUNSHINE TOLERANCE -->
+		<HediffDef>
+			<description>Sunshine has built up in their system, causing the pawn to have issues separating the euphoria and reality. Mental breaks can happen and can be very dangerous.</description>
+			<defName>TMM_Tolerance_Sunshine</defName>
+			<label>sunshine tolerance</label>
+			<hediffClass>HediffWithComps</hediffClass>
+			<defaultLabelColor>(179,86,132)</defaultLabelColor>
+			<maxSeverity>1.0</maxSeverity>
+			<scenarioCanAdd>true</scenarioCanAdd>
+			<isBad>false</isBad>
+			<comps>
+				<li Class="HediffCompProperties_SeverityPerDay">
+					<severityPerDay>-0.015</severityPerDay>
+				</li>
+				<li Class="HediffCompProperties_DrugEffectFactor">
+					<chemical>TMM_Chemical_Sunshine</chemical>
+				</li>
+			</comps>
+			<stages>
+				<li>
+					<minSeverity>0</minSeverity>
+					<becomeVisible>false</becomeVisible>
+					<label>small</label>
+				</li>
+				<li>
+					<minSeverity>0.20</minSeverity>
+					<label>small</label>
+					<mentalStateGivers>
+						<li>
+							<mentalState>Wander_OwnRoom</mentalState>
+							<mtbDays>30</mtbDays>
+						</li>
+						<li>
+							<mentalState>Wander_Sad</mentalState>
+							<mtbDays>60</mtbDays>
+						</li>
+						<li>
+							<mentalState>Wander_Psychotic</mentalState>
+							<mtbDays>90</mtbDays>
+						</li>
+						<li>
+							<mentalState>WanderConfused</mentalState>
+							<mtbDays>15</mtbDays>
+						</li>
+					</mentalStateGivers>
+				</li>
+				<li>
+					<minSeverity>0.50</minSeverity>
+					<label>large</label>
+					<mentalStateGivers>
+						<li>
+							<mentalState>Wander_OwnRoom</mentalState>
+							<mtbDays>15</mtbDays>
+						</li>
+						<li>
+							<mentalState>WanderConfused</mentalState>
+							<mtbDays>7.5</mtbDays>
+						</li>
+						<li>
+							<mentalState>Wander_Sad</mentalState>
+							<mtbDays>30</mtbDays>
+						</li>
+						<li>
+							<mentalState>Wander_Psychotic</mentalState>
+							<mtbDays>45</mtbDays>
+						</li>
+						<li>
+							<mentalState>CorpseObsession</mentalState>
+							<mtbDays>60</mtbDays>
+						</li>
+						<li>
+							<mentalState>BedroomTantrum</mentalState>
+							<mtbDays>75</mtbDays>
+						</li>
+						<li>
+							<mentalState>SadisticRage</mentalState>
+							<mtbDays>90</mtbDays>
+						</li>
+					</mentalStateGivers>
+				</li>
+				<li>
+					<minSeverity>0.80</minSeverity>
+					<label>massive</label>
+					<mentalStateGivers>
+						<li>
+							<mentalState>Wander_OwnRoom</mentalState>
+							<mtbDays>7.5</mtbDays>
+						</li>
+						<li>
+							<mentalState>WanderConfused</mentalState>
+							<mtbDays>3</mtbDays>
+						</li>
+						<li>
+							<mentalState>Wander_Sad</mentalState>
+							<mtbDays>15</mtbDays>
+						</li>
+						<li>
+							<mentalState>Wander_Psychotic</mentalState>
+							<mtbDays>22.5</mtbDays>
+						</li>
+						<li>
+							<mentalState>CorpseObsession</mentalState>
+							<mtbDays>30</mtbDays>
+						</li>
+						<li>
+							<mentalState>BedroomTantrum</mentalState>
+							<mtbDays>37.5</mtbDays>
+						</li>
+						<li>
+							<mentalState>SadisticRage</mentalState>
+							<mtbDays>45</mtbDays>
+						</li>
+						<li>
+							<mentalState>Binging_DrugExtreme</mentalState>
+							<mtbDays>52.5</mtbDays>
+						</li>
+						<li>
+							<mentalState>FireStartingSpree</mentalState>
+							<mtbDays>60</mtbDays>
+						</li>
+					</mentalStateGivers>
+				</li>
+			</stages>
+			<hediffGivers>
+				<li Class="HediffGiver_RandomDrugEffect">
+					<hediff>Dementia</hediff>
+					<baseMtbDays>90</baseMtbDays>
+					<minSeverity>0.6</minSeverity>
+					<partsToAffect>
+						<li>Brain</li>
+					</partsToAffect>
+					<countToAffect>1</countToAffect>
+				</li>
+			</hediffGivers>
+		</HediffDef>
+	<!-- TANGO -->
+		<HediffDef>
+			<defName>TMM_Tolerance_Tango</defName>
+			<label>tango tolerance</label>
+			<description>Tango has built up in the pawn's system. They more often will go on drug binges the more is built in their system.</description>
+			<hediffClass>HediffWithComps</hediffClass>
+			<defaultLabelColor>(179,86,132)</defaultLabelColor>
+			<maxSeverity>1.0</maxSeverity>
+			<scenarioCanAdd>true</scenarioCanAdd>
+			<isBad>false</isBad>
+			<comps>
+				<li Class="HediffCompProperties_SeverityPerDay">
+					<severityPerDay>-0.015</severityPerDay>
+				</li>
+				<li Class="HediffCompProperties_DrugEffectFactor">
+					<chemical>TMM_Chemical_Tango</chemical>
+				</li>
+			</comps>
+			<stages>
+				<li>
+					<minSeverity>0</minSeverity>
+					<becomeVisible>false</becomeVisible>
+					<label>small</label>
+				</li>
+				<li>
+					<minSeverity>0.20</minSeverity>
+					<label>small</label>
+					<mentalStateGivers>
+						<li>
+							<mentalState>Binging_DrugExtreme</mentalState>
+							<mtbDays>120</mtbDays>
+						</li>
+					</mentalStateGivers>
+				</li>
+				<li>
+					<minSeverity>0.50</minSeverity>
+					<label>large</label>
+					<mentalStateGivers>
+						<li>
+							<mentalState>Binging_DrugExtreme</mentalState>
+							<mtbDays>60</mtbDays>
+						</li>
+					</mentalStateGivers>
+				</li>
+				<li>
+					<minSeverity>0.80</minSeverity>
+					<label>massive</label>
+					<lifeThreatening>true</lifeThreatening>
+					<deathMtbDays>30</deathMtbDays>
+					<mentalStateGivers>
+						<li>
+							<mentalState>Binging_DrugExtreme</mentalState>
+							<mtbDays>30</mtbDays>
+						</li>
+					</mentalStateGivers>
+				</li>
+			</stages>
+			<hediffGivers>
+				<li Class="HediffGiver_RandomDrugEffect">
+					<hediff>ChemicalDamageSevere</hediff>
+					<baseMtbDays>90</baseMtbDays>
+					<minSeverity>0.8</minSeverity>
+					<partsToAffect>
+						<li>Brain</li>
+					</partsToAffect>
+					<countToAffect>1</countToAffect>
+				</li>
+			</hediffGivers>
+		</HediffDef>
+</Defs>
