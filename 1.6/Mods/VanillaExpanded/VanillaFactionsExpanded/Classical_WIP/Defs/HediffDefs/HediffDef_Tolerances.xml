@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!-- TMM_Tolerance_ -->
+
+
+
+	<!-- ZOPIOID --> <!-- TODO: -->
+		<HediffDef ParentName="DrugToleranceBase">
+			<defName>RC2_ZopioidTolerance</defName>
+			<label>zopioid tolerance</label>
+			<description>Taking too many zopoid products in too short of time can cause severe chemical damage in the liver and brain.</description>
+			<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-0.005</severityPerDay>
+			</li>
+			<li Class="HediffCompProperties_DrugEffectFactor">
+				<chemical>RC2_Zopioid</chemical>
+			</li>
+			</comps>
+			<hediffGivers>
+			<li Class="HediffGiver_RandomDrugEffect">
+				<hediff>ChemicalDamageSevere</hediff>
+				<baseMtbDays>120</baseMtbDays>
+				<minSeverity>0.50</minSeverity>
+				<partsToAffect>
+				<li>Liver</li>
+				</partsToAffect>
+				<countToAffect>1</countToAffect>
+			</li>
+			<li Class="HediffGiver_RandomDrugEffect">
+				<hediff>ChemicalDamageModerate</hediff>
+				<baseMtbDays>180</baseMtbDays>
+				<minSeverity>0.80</minSeverity>
+				<partsToAffect>
+				<li>Brain</li>
+				</partsToAffect>
+				<countToAffect>1</countToAffect>
+			</li>
+			</hediffGivers>
+		</HediffDef>
+</Defs>

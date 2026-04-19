@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ThingCategoryDef>
+		<defName>RT_Ammunition</defName>
+		<label>RimThunder Ammunition</label>
+		<parent>Manufactured</parent>
+	</ThingCategoryDef>
+
+	<ThingCategoryDef>
+		<defName>RT_Tank_Missile</defName>
+		<label>Tank Ammunition</label>
+		<parent>RT_Ammunition</parent>
+	</ThingCategoryDef>
+
+	<ThingCategoryDef>
+		<defName>RT_TC_Large_Shell</defName>
+		<label>Tank Ammunition</label>
+		<parent>RT_Ammunition</parent>
+	</ThingCategoryDef>
+	
+	<ThingCategoryDef>
+		<defName>RT_TC_Mid_Shell</defName>
+		<label>Tank Ammunition</label>
+		<parent>RT_Ammunition</parent>
+	</ThingCategoryDef>
+
+	<ThingCategoryDef>
+		<defName>RT_AC_Small_Shell</defName>
+		<label>AutoCannon Ammunition</label>
+		<parent>RT_Ammunition</parent>
+	</ThingCategoryDef>
+	
+	<ThingCategoryDef>
+		<defName>RT_AC_Mid_Shell</defName>
+		<label>AutoCannon Ammunition</label>
+		<parent>RT_Ammunition</parent>
+	</ThingCategoryDef>
+
+
+	<ThingDef Name="RT_AmmunitionBase" ParentName="ResourceBase" Abstract="True">
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Standard_Drop</soundDrop>
+		<tickerType>Normal</tickerType>
+		<techLevel>Industrial</techLevel>
+		<tradeTags>
+			<li>RT_Standard</li>
+		</tradeTags>
+	</ThingDef>
+
+	<ThingDef Name="RT_Tank_MissileBase" ParentName="RT_AmmunitionBase" Abstract="True">
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<MarketValue>55</MarketValue>
+			<Mass>20</Mass>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>1.5</DeteriorationRate>
+		</statBases>
+		<stackLimit>10</stackLimit>
+		<thingCategories>
+			<li>RT_Tank_Missile</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Name="RT_TCLargeShellBase" ParentName="RT_AmmunitionBase" Abstract="True">
+		<statBases>
+			<MaxHitPoints>60</MaxHitPoints>
+			<MarketValue>55</MarketValue>
+			<Mass>5</Mass>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>1.5</DeteriorationRate>
+		</statBases>
+		<stackLimit>25</stackLimit>
+		<thingCategories>
+			<li>RT_TC_Large_Shell</li>
+		</thingCategories>
+	</ThingDef>
+	
+	<ThingDef Name="RT_TCMidShellBase" ParentName="RT_AmmunitionBase" Abstract="True">
+		<statBases>
+			<MaxHitPoints>60</MaxHitPoints>
+			<MarketValue>55</MarketValue>
+			<Mass>3</Mass>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>1.5</DeteriorationRate>
+		</statBases>
+		<stackLimit>25</stackLimit>
+		<thingCategories>
+			<li>RT_TC_Mid_Shell</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThingDef Name="RT_ACSmallShellBase" ParentName="RT_AmmunitionBase" Abstract="True">
+		<statBases>
+			<MaxHitPoints>60</MaxHitPoints>
+			<MarketValue>55</MarketValue>
+			<Mass>0.5</Mass>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>1.5</DeteriorationRate>
+		</statBases>
+		<stackLimit>250</stackLimit>
+		<thingCategories>
+			<li>RT_AC_Small_Shell</li>
+		</thingCategories>
+	</ThingDef>
+	
+	<ThingDef Name="RT_ACMidShellBase" ParentName="RT_AmmunitionBase" Abstract="True">
+		<statBases>
+			<MaxHitPoints>60</MaxHitPoints>
+			<MarketValue>55</MarketValue>
+			<Mass>0.8</Mass>
+			<Flammability>1.0</Flammability>
+			<DeteriorationRate>1.5</DeteriorationRate>
+		</statBases>
+		<stackLimit>150</stackLimit>
+		<thingCategories>
+			<li>RT_AC_Mid_Shell</li>
+		</thingCategories> 
+	</ThingDef>
+
+	<TraderKindDef>
+		<defName>RT_Base_Standard</defName>
+		<stockGenerators>
+			<li Class="StockGenerator_Tag">
+				<tradeTag>RT_Standard</tradeTag>
+				<countRange>25~50</countRange>
+			</li>
+		</stockGenerators>
+	</TraderKindDef>
+</Defs>

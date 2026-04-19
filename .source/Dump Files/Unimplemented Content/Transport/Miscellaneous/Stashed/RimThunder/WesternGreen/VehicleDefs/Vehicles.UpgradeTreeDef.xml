@@ -1,0 +1,457 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<Vehicles.UpgradeTreeDef>
+		<defName>RT_M4A3_Vehicle_UpgradeTree</defName>
+		<nodes>
+			<li>
+				<key>M4A3E8</key>
+				<label>M4A3E8 Sherman</label>
+				<description>Upgrade to M4A3E8 equipped 76mm M1 Tank Gun with better accuracy and range.</description>
+				<icon>M4a3e8/Cannon</icon>
+				<work>2500</work>
+				<disableIfUpgradeNodesEnabled>
+					<li>M4A3E2</li>
+					<li>M4A3R3</li>
+				</disableIfUpgradeNodesEnabled>
+				<gridCoordinate>(5,5)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<upgrades>
+					<li Class="Vehicles.TurretUpgrade">
+						<turrets>
+							<li>
+								<turretDef>RT_M4A3E8_Main_Turret</turretDef>
+								<renderProperties>
+									<north>(0, 0.8)</north>
+									<south>(0, -0.1)</south>
+									<east>(0.3, 0.65)</east>
+									<west>(-0.45, 0.65)</west>
+								</renderProperties>
+
+								<gizmoLabel>Main Turret</gizmoLabel>
+								<aimPieOffset>(0, 2.8)</aimPieOffset>
+								<!-- 預熱指示器的x,z偏移 -->
+								<drawLayer>2</drawLayer>
+								<key>76mmM1</key>
+							</li>
+
+							<li>
+								<!--车顶機槍-->
+								<turretDef>RT_M2HB_WW2_MGTurret</turretDef>
+								<renderProperties>
+									<!--這裡的坐標系是無視旋轉的,所以x就是恆定左右偏移-->
+									<north>(-0.11,-0.55)</north>
+									<!-- x,y -->
+									<south>(0.11,0.55)</south>
+									<!-- -x,-y -->
+									<east>(-0.55,0.11)</east>
+									<!-- y,-x -->
+									<west>(0.55,-0.11)</west>
+									<!-- -y,x -->
+								</renderProperties>
+								<gizmoLabel>support MG</gizmoLabel>
+								<aimPieOffset>(0, 0)</aimPieOffset>
+								<key>topMGB</key>
+								<drawLayer>3</drawLayer>
+								<parentKey>76mmM1</parentKey>
+							</li>
+							<li>
+								<!--同轴機槍-->
+								<turretDef>RT_M1919_MGTurret</turretDef>
+								<renderProperties>
+									<!--這裡的坐標系是無視旋轉的,所以x就是恆定左右偏移-->
+									<north>(0.29,0.8)</north>
+									<!-- x,y -->
+									<south>(-0.29,-0.8)</south>
+									<!-- -x,-y -->
+									<east>(0.8,-0.29)</east>
+									<!-- y,-x -->
+									<west>(-0.8,0.29)</west>
+									<!-- -y,x -->
+								</renderProperties>
+								<gizmoLabel>coaxial MG</gizmoLabel>
+								<angleRestricted>(345,15)</angleRestricted>
+								<aimPieOffset>(0, 0)</aimPieOffset>
+								<key>coaxialMGB</key>
+								<drawLayer>-1</drawLayer>
+								<parentKey>76mmM1</parentKey>
+							</li>
+							<li>
+								<!--航向機槍-->
+								<turretDef>RT_M1919_MGTurret</turretDef>
+								<turretDef>RT_M1919_MGTurret</turretDef>
+								<renderProperties>
+									<north>(0.48,2.11)</north>
+									<south>(-0.44,-1.6)</south>
+									<east>(1.7,0)</east>
+									<west>(-1.87,0.85)</west>
+								</renderProperties>
+								<gizmoLabel>front MG</gizmoLabel>
+								<angleRestricted>(315,45)</angleRestricted>
+								<aimPieOffset>(0, 0)</aimPieOffset>
+								<key>frontMGB</key>
+								<drawLayer>1</drawLayer>
+							</li>
+						</turrets>
+						<removeTurrets>
+							<li>75mmM3</li>
+							<li>topMGA</li>
+							<li>coaxialMGA</li>
+							<li>frontMGA</li>
+						</removeTurrets>
+					</li>
+				</upgrades>
+				<ingredients>
+					<ComponentIndustrial>6</ComponentIndustrial>
+					<Steel>75</Steel>
+				</ingredients>
+			</li>
+
+			<li>
+				<key>M4A3R3</key>
+				<label>M4A3R3 Zippo</label>
+				<description>Upgrade to M4A3R3 with flamethrower instead of coaxial MG.</description>
+				<icon>M4a3e8/Flamethrower</icon>
+				<work>2500</work>
+				<gridCoordinate>(5,10)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<disableIfUpgradeNodesEnabled>
+					<li>M4A3E8</li>
+					<li>M4A3E2</li>
+				</disableIfUpgradeNodesEnabled>
+				<upgrades>
+					<li Class="Vehicles.TurretUpgrade">
+						<turrets>
+							<li>
+								<turretDef>RT_M4A3R3_Main_Turret</turretDef>
+								<renderProperties>
+									<north>(0, 0.8)</north>
+									<south>(0, -0.1)</south>
+									<east>(0.3, 0.65)</east>
+									<west>(-0.45, 0.65)</west>
+								</renderProperties>
+
+								<gizmoLabel>Main Turret</gizmoLabel>
+								<aimPieOffset>(0, 1.8)</aimPieOffset>
+								<!-- 預熱指示器的x,z偏移 -->
+								<drawLayer>2</drawLayer>
+								<key>75mmM3A</key>
+							</li>
+
+							<li>
+								<!--车顶機槍-->
+								<turretDef>RT_M2HB_WW2_MGTurret</turretDef>
+								<renderProperties>
+									<!--這裡的坐標系是無視旋轉的,所以x就是恆定左右偏移-->
+									<north>(-0.11,-0.55)</north>
+									<!-- x,y -->
+									<south>(0.11,0.55)</south>
+									<!-- -x,-y -->
+									<east>(-0.55,0.11)</east>
+									<!-- y,-x -->
+									<west>(0.55,-0.11)</west>
+									<!-- -y,x -->
+								</renderProperties>
+								<gizmoLabel>support MG</gizmoLabel>
+								<aimPieOffset>(0, 0)</aimPieOffset>
+								<key>topMGC</key>
+								<drawLayer>3</drawLayer>
+								<parentKey>75mmM3A</parentKey>
+							</li>
+							<li>
+								<!--喷火器-->
+								<turretDef>RT_M4A3R3_Flamethrower</turretDef>
+								<renderProperties>
+									<!--這裡的坐標系是無視旋轉的,所以x就是恆定左右偏移-->
+									<north>(0.3,2.07)</north>
+									<!-- x,y -->
+									<south>(-0.3,-1.6)</south>
+									<!-- -x,-y -->
+									<east>(2.07,-0.3)</east>
+									<!-- y,-x -->
+									<west>(-2.07,0.3)</west>
+									<!-- -y,x -->
+								</renderProperties>
+								<gizmoLabel>flamethrower</gizmoLabel>
+								<angleRestricted>(330,30)</angleRestricted>
+								<aimPieOffset>(0, 0)</aimPieOffset>
+								<key>coaxialMGC</key>
+								<drawLayer>-1</drawLayer>
+								<parentKey>75mmM3A</parentKey>
+							</li>
+							<li>
+								<!--航向機槍-->
+								<turretDef>RT_M1919_MGTurret</turretDef>
+								<renderProperties>
+									<north>(0.48,2.11)</north>
+									<south>(-0.44,-1.6)</south>
+									<east>(1.7,0)</east>
+									<west>(-1.87,0.85)</west>
+								</renderProperties>
+								<gizmoLabel>front MG</gizmoLabel>
+								<angleRestricted>(315,45)</angleRestricted>
+								<aimPieOffset>(0, 0)</aimPieOffset>
+								<key>frontMGC</key>
+								<drawLayer>1</drawLayer>
+							</li>
+						</turrets>
+						<removeTurrets>
+							<li>75mmM3</li>
+							<li>topMGA</li>
+							<li>coaxialMGA</li>
+							<li>frontMGA</li>
+						</removeTurrets>
+					</li>
+				</upgrades>
+				<ingredients>
+					<ComponentIndustrial>4</ComponentIndustrial>
+					<Steel>50</Steel>
+					<Chemfuel>30</Chemfuel>
+				</ingredients>
+			</li>
+
+			<li>
+				<key>M4A3E2</key>
+				<label>M4A3E2 Jumbo</label>
+				<description>Upgrade to M4A3E2 with add-on armor.</description>
+				<icon>M4a3e8/Armor</icon>
+				<work>2500</work>
+				<gridCoordinate>(5,15)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<disableIfUpgradeNodesEnabled>
+					<li>M4A3E8</li>
+					<li>M4A3R3</li>
+				</disableIfUpgradeNodesEnabled>
+				<upgrades>
+					<li Class = "Vehicles.StatUpgrade"> <!--基础属性修改，可用add/set，具体修改范围参考文档-->
+						<vehicleStats>
+							<li>
+								<def>CargoCapacity</def>
+								<value>-200</value>
+							</li>
+							<li>
+								<def>Mass</def>
+								<value>300</value>
+							</li>
+						</vehicleStats>
+					</li>
+					<li Class = "Vehicles.VehicleUpgrade">
+   						<retextureDef>Jumbo_Hull</retextureDef>
+						<armor>
+							<li>
+								<key>FrontArmorPlating</key>
+								<statModifiers>
+									<ArmorRating_Sharp>0.1</ArmorRating_Sharp>
+								</statModifiers>
+								<type>Add</type>
+							</li>
+							<li>
+								<key>LeftArmorPlating</key>
+								<statModifiers>
+									<ArmorRating_Blunt>0.16</ArmorRating_Blunt>
+									<ArmorRating_Sharp>0.16</ArmorRating_Sharp>
+								</statModifiers>
+								<type>Add</type>
+							</li>
+							<li>
+								<key>RightArmorPlating</key>
+								<statModifiers>
+									<ArmorRating_Blunt>0.16</ArmorRating_Blunt>
+									<ArmorRating_Sharp>0.16</ArmorRating_Sharp>
+								</statModifiers>
+								<type>Add</type>
+							</li>
+							<li>
+								<key>MainTurret</key>
+								<statModifiers>
+									<ArmorRating_Sharp>0.1</ArmorRating_Sharp>
+								</statModifiers>
+								<type>Add</type>
+							</li>
+						</armor>
+						<health> <!-- Modifying health on vehicle components -->
+							<li>
+								<key>FrontArmorPlating</key>
+								<value>300</value>
+								<type>Set</type>
+							</li>
+							<li>
+								<key>LeftArmorPlating</key>
+								<value>270</value>
+								<type>Set</type>
+							</li>
+							<li>
+								<key>RightArmorPlating</key>
+								<value>270</value>
+								<type>Set</type>
+							</li>
+							<li>
+								<key>MainTurret</key>
+								<value>300</value>
+								<type>Set</type>
+							</li>
+						</health>
+					</li>
+				</upgrades>
+				<ingredients>
+					<Steel>150</Steel>
+				</ingredients>
+			</li>
+		</nodes>
+	</Vehicles.UpgradeTreeDef>
+	<Vehicles.UpgradeTreeDef>
+		<defName>RT_M8_Vehicle_UpgradeTree</defName>
+		<nodes>
+			<li>
+				<key>M2HB_Turret</key>
+				<label>Top MG</label>
+				<description>Add extra heavy machinegun on turret.</description>
+				<icon>M4a3e8/TopGun</icon>
+				<work>1500</work>
+				<gridCoordinate>(5,5)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<upgrades>
+					<li Class="Vehicles.TurretUpgrade">
+						<turrets>
+							<li>
+								<turretDef>RT_M8_Main_Turret</turretDef>
+								<renderProperties>
+									<north>(0, 0.49)</north>
+									<south>(0, 0.25)</south>
+									<east>(0.07, 0.31)</east>
+									<west>(-0.07, 0.31)</west>
+								</renderProperties>
+
+								<gizmoLabel>Main Turret</gizmoLabel>
+								<aimPieOffset>(0, 1.5)</aimPieOffset>
+								<!-- 預熱指示器的x,z偏移 -->
+								<drawLayer>1</drawLayer>
+								<key>mainTurretB</key>
+							</li>
+
+							<li>
+								<!--车顶機槍-->
+								<turretDef>RT_M2HB_WW2_MGTurret</turretDef>
+								<renderProperties>
+									<!--這裡的坐標系是無視旋轉的,所以x就是恆定左右偏移-->
+									<north>(-0.11,-0.55)</north>
+									<south>(0.11,0.55)</south>
+									<east>(-0.55,0.11)</east>
+									<west>(0.55,-0.11)</west>
+								</renderProperties>
+								<gizmoLabel>support MG</gizmoLabel>
+								<aimPieOffset>(0, 0)</aimPieOffset>
+								<defaultAngleRotated>180</defaultAngleRotated>
+								<key>topMG</key>
+								<drawLayer>0</drawLayer>
+								<parentKey>mainTurretB</parentKey>
+							</li>
+
+							<li>
+								<!--同轴機槍-->
+								<turretDef>RT_M1919_MGTurret</turretDef>
+								<renderProperties>
+									<!--這裡的坐標系是無視旋轉的,所以x就是恆定左右偏移-->
+									<north>(0.14,0.72)</north>
+									<south>(-0.14,-0.72)</south>
+									<east>(0.72,-0.14)</east>
+									<west>(-0.72,0.14)</west>
+								</renderProperties>
+								<gizmoLabel>coaxial MG</gizmoLabel>
+								<angleRestricted>(345,15)</angleRestricted>
+								<aimPieOffset>(0, 0)</aimPieOffset>
+								<key>coaxialMGB</key>
+								<drawLayer>-1</drawLayer>
+								<parentKey>mainTurretB</parentKey>
+							</li>
+						</turrets>
+						<removeTurrets>
+							<li>mainTurretA</li>
+							<li>coaxialMGA</li>
+						</removeTurrets>
+					</li>
+				</upgrades>
+				<ingredients>
+					<ComponentIndustrial>4</ComponentIndustrial>
+					<Steel>80</Steel>
+				</ingredients>
+			</li>
+		</nodes>
+	</Vehicles.UpgradeTreeDef>
+	<Vehicles.UpgradeTreeDef>
+		<defName>RT_Willys_Vehicle_UpgradeTree</defName>
+		<nodes>
+			<li>
+				<key>Willys_Upgrade_A</key>
+				<label>M1919</label>
+				<description>Add extra light machinegun on back of vehicle.</description>
+				<icon>M3a1/TopGunA</icon>
+				<work>2500</work>
+				<gridCoordinate>(5,5)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<disableIfUpgradeNodeEnabled>Willys_Upgrade_B</disableIfUpgradeNodeEnabled>
+				<upgrades>
+					<li Class="Vehicles.VehicleUpgrade">
+						<retextureDef>RT_Willys_Tachanka</retextureDef>
+					</li>
+					<li Class="Vehicles.TurretUpgrade">
+						<turrets>
+							<li>
+								<turretDef>RT_M1919_MGTurretA</turretDef>
+								<renderProperties>
+									<north>(0,0)</north>
+									<south>(0,0.6)</south>
+									<east>(-0.6,0.6)</east>
+									<west>(0.6,0.6)</west>
+								</renderProperties>
+								<gizmoLabel>top MG</gizmoLabel>
+								<aimPieOffset>(0, 0)</aimPieOffset>
+								<key>M1919</key>
+								<drawLayer>0</drawLayer>
+							</li>
+						</turrets>
+					</li>
+				</upgrades>
+				<ingredients>
+					<ComponentIndustrial>2</ComponentIndustrial>
+					<Steel>50</Steel>
+				</ingredients>
+			</li>
+			<li>
+				<key>Willys_Upgrade_B</key>
+				<label>M2HB</label>
+				<description>Add extra heavy machinegun on back of vehicle.</description>
+				<icon>M4a3e8/TopGun</icon>
+				<work>2500</work>
+				<gridCoordinate>(5,10)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<disableIfUpgradeNodeEnabled>Willys_Upgrade_A</disableIfUpgradeNodeEnabled>
+				<upgrades>
+					<li Class="Vehicles.VehicleUpgrade">
+						<retextureDef>RT_Willys_Tachanka</retextureDef>
+					</li>
+					<li Class="Vehicles.TurretUpgrade">
+						<turrets>
+							<li>
+								<turretDef>RT_M2HB_WW2_MGTurret</turretDef>
+								<renderProperties>
+									<north>(0,0)</north>
+									<south>(0,0.6)</south>
+									<east>(-0.6,0.6)</east>
+									<west>(0.6,0.6)</west>
+								</renderProperties>
+								<gizmoLabel>top MG</gizmoLabel>
+								<aimPieOffset>(0, 0)</aimPieOffset>
+								<key>M2HB</key>
+								<drawLayer>0</drawLayer>
+							</li>
+						</turrets>
+					</li>
+				</upgrades>
+				<ingredients>
+					<ComponentIndustrial>4</ComponentIndustrial>
+					<Steel>80</Steel>
+				</ingredients>
+			</li>
+		</nodes>
+	</Vehicles.UpgradeTreeDef>
+</Defs>

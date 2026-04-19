@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!-- TMM_Addiction_ -->
+
+
+
+	<!-- ZOPE --> <!-- TODO: -->
+		<HediffDef ParentName="AddictionBase">
+			<defName>RC2_ZopioidAddiction</defName>
+			<description>The pawn is now reliant on Zopoid, causing increased pain, tiredness, and stress on the pawn.</description>
+			<hediffClass>Hediff_Addiction</hediffClass>
+			<label>zopioid addiction</label>
+			<chemicalNeed>RC2_Chemical_Zopioid</chemicalNeed>
+			<comps>
+			<li Class="HediffCompProperties_SeverityPerDay">
+				<severityPerDay>-0.0333</severityPerDay>
+			</li>
+			</comps>
+			<stages>
+			<li>
+			</li>
+			<li>
+				<label>withdrawal</label>
+				<restFallFactor>1.5</restFallFactor>
+				<painFactor>1.1</painFactor>
+				<vomitMtbDays>.5</vomitMtbDays>
+				<capMods>
+				<li>
+					<capacity>Consciousness</capacity>
+					<postFactor>0.90</postFactor>
+				</li>
+				</capMods>
+				<statOffsets>
+				<MentalBreakThreshold>0.12</MentalBreakThreshold>
+				<RestRateMultiplier>-0.50</RestRateMultiplier>
+				</statOffsets>
+				<mentalStateGivers>
+				<li>
+					<mentalState>Binging_DrugExtreme</mentalState>
+					<mtbDays>30</mtbDays>
+				</li>
+				<li>
+					<mentalState>Wander_Psychotic</mentalState>
+					<mtbDays>15</mtbDays>
+				</li>
+				</mentalStateGivers>
+			</li>
+			</stages>
+		</HediffDef>
+</Defs>

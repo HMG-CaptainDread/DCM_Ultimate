@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ThingDef ParentName="ResourceBase">
+		<defName>RT_ArtilleryCodeKey</defName>
+		<label>Artillery Key</label>
+		<description>Use to call Artillery support.</description>
+		<possessionCount>20</possessionCount>
+		<tickerType>Normal</tickerType>
+		<graphicData>
+			<texPath>Things/Items/Key</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>0.85</drawSize>
+		</graphicData>
+		<stackLimit>25</stackLimit>
+		<healthAffectsPrice>false</healthAffectsPrice>
+		<intricate>true</intricate>
+		<!-- Not returned to player when product made of this is smelted. -->
+		<statBases>
+			<MaxHitPoints>50</MaxHitPoints>
+			<MarketValue>1000</MarketValue>
+			<Mass>0.05</Mass>
+			<Flammability>0.1</Flammability>
+			<DeteriorationRate>1.0</DeteriorationRate>
+		</statBases>
+		<thingCategories>
+			<li>Manufactured</li>
+		</thingCategories>
+		<tradeTags>
+			<li>RT_Special</li>
+		</tradeTags>
+	</ThingDef>
+
+	<RecipeDef>
+		<defName>Make_RT_ArtilleryCodeKey</defName>
+		<label>make Artillery Code Key</label>
+		<description>make Artillery Code Key</description>
+		<jobString>make Artillery Code Key.</jobString>
+		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+		<effectWorking>Cook</effectWorking>
+		<soundWorking>Recipe_Machining</soundWorking>
+		<workAmount>5000</workAmount>
+		<researchPrerequisite>AdvancedFabrication</researchPrerequisite>
+		<recipeUsers>
+			<li>FabricationBench</li>
+		</recipeUsers>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentSpacer</li>
+					</thingDefs>
+				</filter>
+				<count>3</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>ComponentSpacer</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<RT_ArtilleryCodeKey>1</RT_ArtilleryCodeKey>
+		</products>
+	</RecipeDef>
+
+</Defs>

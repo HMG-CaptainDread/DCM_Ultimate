@@ -1,0 +1,400 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<Vehicles.VehicleTurretDef ParentName="RT_BaseTurret">
+		<defName>RT_Zis2_Turret</defName>
+		<label>Zis2</label>
+		<gizmoIconTexPath>Vehicles/T34/T3457/vehicle_turret_full</gizmoIconTexPath>
+		<graphicData>
+			<texPath>Vehicles/T34/T3457/vehicle_turret</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>CutoutComplexPattern</shaderType> 
+			<drawSize>(7.3,7.3)</drawSize>
+			<layer>1</layer>
+		</graphicData>
+		<!-- 炮管后座部分 -->
+		<graphics>
+			<li>
+				<graphicData>
+					<texPath>Vehicles/T34/T3457/vehicle_barrel</texPath>
+					<drawSize>(7.3,7.3)</drawSize>
+					<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+					<shaderType>CutoutComplexPattern</shaderType>
+				</graphicData>
+				<recoil>
+					<distanceTotal>0.35</distanceTotal>
+					<distancePerTick>0.05</distancePerTick>
+					<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+				</recoil>
+			</li>	
+		</graphics>
+		<reloadTimer>5</reloadTimer>
+		<reloadTimerMultiplierPerCrewCount>
+			<points>
+				<li>(1, 1.5)</li>
+				<li>(2, 1)</li>
+			</points>
+		</reloadTimerMultiplierPerCrewCount>
+		<magazineCapacity>1</magazineCapacity>
+		<chargePerAmmoCount>5</chargePerAmmoCount>
+		<genericAmmo>true</genericAmmo>
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+		<!-- 射程與射界相關 -->
+		<minRange>2</minRange>
+		<maxRange>40.9</maxRange>
+		<rotationSpeed>1.0</rotationSpeed>
+		<!-- 射擊相關 -->
+		<warmUpTimer>2</warmUpTimer>
+		<shotSound>RT_Shot_Zis2Sound</shotSound>
+		<reloadSound>RT_ManpowerReloadSound</reloadSound>
+		<projectile>RT_Bullet_Zis2_Cannon</projectile>
+		<projectileOffset>4.6</projectileOffset>
+		<!-- 出膛前後偏移，主要是能讓子彈能從炮口飛出去 -->
+		<projectileShifting>
+			<!-- 出膛左右偏移，多砲管可以根據list來回切 -->
+			<li>0</li>
+		</projectileShifting>
+		<!-- 炮口製退動畫 -->
+
+		<!-- 射擊模式 -->
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenBursts>1</ticksBetweenBursts>
+				<spreadRadius>3</spreadRadius>
+				<label>Single Shot</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+		</fireModes>
+		<motes>
+			<li>
+				<cycles>1</cycles>
+				<moteDef>Mote_CannonPlume</moteDef>
+				<animationType>Reset</animationType>
+				<offset>(0,0,4.0)</offset>
+			</li>
+		</motes>
+	</Vehicles.VehicleTurretDef>
+
+	<ThingDef ParentName="BaseBullet">
+		<defName>RT_Bullet_Zis2_Cannon</defName>
+		<label>AP-HE shell</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>2</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>80</damageAmountBase>
+			<armorPenetrationBase>0.75</armorPenetrationBase>
+			<speed>78</speed>
+		</projectile>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>2.9</explosiveRadius>
+				<explosiveDamageType>Bomb</explosiveDamageType>
+				<damageAmountBase>25</damageAmountBase>
+				<explodeOnDestroyed>true</explodeOnDestroyed>
+				<explodeOnKilled>true</explodeOnKilled>
+				<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<Vehicles.VehicleTurretDef ParentName="RT_BaseTurret">
+		<defName>RT_T34E_Turret</defName>
+		<label>T34E</label>
+		<gizmoIconTexPath>Vehicles/T34/T34E/vehicle_turret_full</gizmoIconTexPath>
+		<graphicData>
+			<texPath>Vehicles/T34/T34E/vehicle_turret</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>CutoutComplexPattern</shaderType> 
+			<drawSize>(6.1,6.1)</drawSize>
+			<layer>1</layer>
+		</graphicData>
+		<!-- 炮管后座部分 -->
+		<graphics>
+			<li>
+				<graphicData>
+					<texPath>Vehicles/T34/T34E/vehicle_barrel</texPath>
+					<drawSize>(6.1,6.1)</drawSize>
+					<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+					<shaderType>CutoutComplexPattern</shaderType>
+				</graphicData>
+				<recoil>
+					<distanceTotal>0.25</distanceTotal>
+					<distancePerTick>0.05</distancePerTick>
+					<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+				</recoil>
+			</li>	
+		</graphics>
+		<reloadTimer>5</reloadTimer>
+		<reloadTimerMultiplierPerCrewCount>
+			<points>
+				<li>(1, 1.5)</li>
+				<li>(2, 1)</li>
+			</points>
+		</reloadTimerMultiplierPerCrewCount>
+		<magazineCapacity>1</magazineCapacity>
+		<chargePerAmmoCount>5</chargePerAmmoCount>
+		<genericAmmo>true</genericAmmo>
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+		<!-- 射程與射界相關 -->
+		<minRange>2</minRange>
+		<maxRange>40.9</maxRange>
+		<rotationSpeed>1.0</rotationSpeed>
+		<!-- 射擊相關 -->
+		<warmUpTimer>2</warmUpTimer>
+		<shotSound>RT_Shot_Zis5Sound</shotSound>
+		<reloadSound>RT_ManpowerReloadSound</reloadSound>
+		<projectile>RT_Bullet_L10_Cannon</projectile>
+		<projectileOffset>4.6</projectileOffset>
+		<!-- 出膛前後偏移，主要是能讓子彈能從炮口飛出去 -->
+		<projectileShifting>
+			<!-- 出膛左右偏移，多砲管可以根據list來回切 -->
+			<li>0</li>
+		</projectileShifting>
+		<!-- 炮口製退動畫 -->
+
+		<!-- 射擊模式 -->
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenBursts>1</ticksBetweenBursts>
+				<spreadRadius>3</spreadRadius>
+				<label>Single Shot</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+		</fireModes>
+		<motes>
+			<li>
+				<cycles>1</cycles>
+				<moteDef>Mote_CannonPlume</moteDef>
+				<animationType>Reset</animationType>
+				<offset>(0,0,4.0)</offset>
+			</li>
+		</motes>
+	</Vehicles.VehicleTurretDef>
+
+	<Vehicles.VehicleTurretDef ParentName="RT_BaseTurret">
+		<defName>RT_QF4p5_Turret</defName>
+		<label>QF4.5</label>
+		<gizmoIconTexPath>Vehicles/BT5/BT42/vehicle_turret_full</gizmoIconTexPath>
+		<graphicData>
+			<texPath>Vehicles/BT5/BT42/vehicle_turret</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>CutoutComplexPattern</shaderType> 
+			<drawSize>(4.6,4.6)</drawSize>
+			<layer>0</layer>
+		</graphicData>
+		<!-- 炮管后座部分 -->
+		<graphics>
+			<li>
+				<graphicData>
+					<texPath>Vehicles/BT5/BT42/vehicle_barrel</texPath>
+					<drawSize>(4.6,4.6)</drawSize>
+					<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+					<shaderType>CutoutComplexPattern</shaderType>
+					<layer>1</layer>
+				</graphicData>
+				<recoil>
+					<distanceTotal>0.1</distanceTotal>
+					<distancePerTick>0.05</distancePerTick>
+					<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+				</recoil>
+			</li>	
+		</graphics>
+		<reloadTimer>10</reloadTimer>
+		<reloadTimerMultiplierPerCrewCount>
+			<points>
+				<li>(1, 1.5)</li>
+				<li>(2, 1)</li>
+			</points>
+		</reloadTimerMultiplierPerCrewCount>
+		<magazineCapacity>1</magazineCapacity>
+		<chargePerAmmoCount>5</chargePerAmmoCount>
+		<genericAmmo>true</genericAmmo>
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+		<!-- 射程與射界相關 -->
+		<minRange>2</minRange>
+		<maxRange>40.9</maxRange>
+		<rotationSpeed>1.0</rotationSpeed>
+		<!-- 射擊相關 -->
+		<warmUpTimer>2</warmUpTimer>
+		<shotSound>RT_Shot_M58Sound</shotSound>
+		<reloadSound>RT_HowitzerReloadSound</reloadSound>
+		<projectile>RT_Bullet_QF4p5_Cannon</projectile>
+		<projectileOffset>4.6</projectileOffset>
+		<!-- 出膛前後偏移，主要是能讓子彈能從炮口飛出去 -->
+		<projectileShifting>
+			<!-- 出膛左右偏移，多砲管可以根據list來回切 -->
+			<li>0</li>
+		</projectileShifting>
+		<!-- 炮口製退動畫 -->
+
+		<!-- 射擊模式 -->
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenBursts>1</ticksBetweenBursts>
+				<spreadRadius>3</spreadRadius>
+				<label>Single Shot</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+		</fireModes>
+		<motes>
+			<li>
+				<cycles>1</cycles>
+				<moteDef>Mote_CannonPlume</moteDef>
+				<animationType>Reset</animationType>
+				<offset>(0,0,4.0)</offset>
+			</li>
+		</motes>
+	</Vehicles.VehicleTurretDef>
+
+	<ThingDef ParentName="BaseBullet">
+		<defName>RT_Bullet_QF4p5_Cannon</defName>
+		<label>high-explosive shell</label>
+		<thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Big</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>2</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>120</damageAmountBase>
+			<armorPenetrationBase>0.5</armorPenetrationBase>
+			<speed>50</speed>
+			<explosionRadius>3.9</explosionRadius>
+			<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+			<soundExplode>Explosion_GiantBomb</soundExplode>
+			<soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+			<soundAmbient>MortarRound_Ambient</soundAmbient>
+		</projectile>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>3.9</explosiveRadius>
+				<explosiveDamageType>Stun</explosiveDamageType>
+				<damageAmountBase>10</damageAmountBase>
+				<explodeOnDestroyed>true</explodeOnDestroyed>
+				<explodeOnKilled>true</explodeOnKilled>
+				<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<Vehicles.VehicleTurretDef ParentName="RT_BaseVehicleMG_Medium">
+		<defName>RT_DT_Turret_c</defName>
+		<label>topDT</label>
+		<!-- 砲塔的渲染顯示 -->
+		<graphicData>
+			<texPath>Vehicles/T28/DTM_turret</texPath>
+			<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+			<shaderType>CutoutComplexPattern</shaderType> 
+			<drawSize>(1.9,1.9)</drawSize>
+			<layer>2</layer>
+		</graphicData>
+		<!-- 彈藥與裝填容量相關 -->
+		<magazineCapacity>63</magazineCapacity>
+		<chargePerAmmoCount>0.1</chargePerAmmoCount>
+		<reloadTimer>4</reloadTimer>
+		<genericAmmo>true</genericAmmo>
+		<!-- 射程與射界相關 -->
+		<rotationSpeed>2</rotationSpeed>
+		<!-- 射擊相關 -->
+		<warmUpTimer>1.5</warmUpTimer>
+		<shotSound>RT_Shot_DTSound</shotSound>
+		<projectileOffset>1</projectileOffset>
+		<!-- 出膛前後偏移，主要是能讓子彈能從炮口飛出去 -->
+		<projectileShifting>
+			<!-- 出膛左右偏移，多砲管可以根據list來回切 -->
+			<!-- <li>-1</li> -->
+			<li>0</li>
+		</projectileShifting>
+		<recoil Inherit = "false">
+			<distanceTotal>0</distanceTotal>
+			<distancePerTick>0</distancePerTick>
+			<speedMultiplierPostRecoil>0</speedMultiplierPostRecoil>
+		</recoil>
+	</Vehicles.VehicleTurretDef>
+
+	<Vehicles.VehicleTurretDef ParentName="RT_BaseTurret">
+		<defName>RT_OT34_Flamethrower</defName>
+		<label>flamethrower</label>
+		<gizmoIconTexPath>Vehicles/T34/OT34/Flamethrower</gizmoIconTexPath>
+		<projectile>RT_Bullet_OT34_Flamethrower</projectile>
+		<reloadTimer>8</reloadTimer>
+		<warmUpTimer>1.25</warmUpTimer>
+		<magazineCapacity>20</magazineCapacity>
+		<chargePerAmmoCount>5</chargePerAmmoCount>
+		<genericAmmo>true</genericAmmo>
+		<rotationSpeed>3.6</rotationSpeed>
+		<projectileOffset>0</projectileOffset>
+		<!-- 出膛前後偏移，主要是能讓子彈能從炮口飛出去 -->
+		<projectileShifting>
+			<!-- 出膛左右偏移，多砲管可以根據list來回切 -->
+			<li>0</li>
+		</projectileShifting>
+		<maxRange>19.9</maxRange>
+		<minRange>2.9</minRange>
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenBursts>1</ticksBetweenBursts>
+				<spreadRadius>2.9</spreadRadius>
+				<label>Fire Spew</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+		</fireModes>
+		<graphicData>
+			<texPath>nothing</texPath>
+			<drawSize>(0.5,0.5)</drawSize>
+		</graphicData>
+		<ammunition>
+			<thingDefs>
+				<li>Chemfuel</li>
+			</thingDefs>
+		</ammunition>
+	</Vehicles.VehicleTurretDef>
+
+	<VFECore.ExpandableProjectileDef ParentName="BaseBullet">
+		<defName>RT_Bullet_OT34_Flamethrower</defName>
+		<label>spew</label>
+		<thingClass>VFECore.FlamethrowProjectile</thingClass>
+		<graphicData>
+			<texPath>Projectile/Proj_FlameBurn</texPath>
+			<texPathFadeOut>Projectile/Proj_FlameFade</texPathFadeOut>
+			<shaderType>MoteGlow</shaderType>
+		</graphicData>
+		<projectile>
+			<damageDef>Flame</damageDef>
+			<speed>45</speed>
+			<damageAmountBase>20</damageAmountBase>
+		</projectile>
+
+		<drawOffscreen>true</drawOffscreen>
+		<lifeTimeDuration>120</lifeTimeDuration>
+		<widthScaleFactor>0.65</widthScaleFactor>
+		<heightScaleFactor>1</heightScaleFactor>
+		<startingPositionOffset>(0, 0, -2)</startingPositionOffset>
+		<totalSizeScale>1.15</totalSizeScale>
+		<tickFrameRate>2</tickFrameRate>
+		<finalTickFrameRate>5</finalTickFrameRate>
+		<tickDamageRate>20</tickDamageRate>
+		<dealsDamageOnce>true</dealsDamageOnce>
+		<minDistanceToAffect>2</minDistanceToAffect>
+	</VFECore.ExpandableProjectileDef>
+</Defs>

@@ -1,0 +1,929 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	<Vehicles.VehicleBuildDef ParentName="RT_BaseVehicleBuild">
+		<defName>RT_SF40light_Blueprint</defName>
+		<label>SF40</label>
+		<description>An anti-air ferry for air defence and convoy escort, also used in transport, equipped with lots of AA guns.</description>
+		
+		<graphicData>
+			<texPath>SF40/vehicle</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(20, 20)</drawSize>
+		</graphicData>
+		
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
+			<WorkToBuild>240000</WorkToBuild>
+			<Flammability>0.65</Flammability>
+		</statBases>
+		<terrainAffordanceNeeded>ShallowWater</terrainAffordanceNeeded>
+		<size>(10, 15)</size>
+		
+		<costList>
+			<EngineHeavy>2</EngineHeavy>
+			<ComponentFuelTank>4</ComponentFuelTank>
+			<ComponentTransmission>2</ComponentTransmission>
+			<ComponentHeavyCasting>6</ComponentHeavyCasting>
+			<ComponentIndustrial>32</ComponentIndustrial>
+			<Steel>1800</Steel>
+			<WoodLog>600</WoodLog>
+		</costList>
+		
+		<soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+		
+		<thingToSpawn>RT_SF40light</thingToSpawn>
+	</Vehicles.VehicleBuildDef>
+	
+	<Vehicles.VehicleDef ParentName="RT_BaseVehicle">
+		<defName>RT_SF40light</defName>
+		<label>SF40</label>
+		<description>An anti-air ferry for air defence and convoy escort, also used in transport, equipped with lots of AA guns.</description>
+		
+		<graphicData>
+			<texPath>SF40/vehicle</texPath>
+			<drawSize>(20, 20)</drawSize>
+		</graphicData>
+		
+		<fillPercent>0.7</fillPercent>
+		
+		<nameable>false</nameable>
+		<buildDef>RT_SF40light_Blueprint</buildDef>
+		
+		<size>(10, 15)</size>
+		
+		<vehicleMovementPermissions>DriverNeeded</vehicleMovementPermissions>
+		<vehicleCategory>Transport</vehicleCategory>
+		<techLevel>Industrial</techLevel>
+		<vehicleType>Sea</vehicleType>
+				
+		<statBases>
+			<ArmorRating_Blunt>0.8</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.6</ArmorRating_Sharp>
+			<ArmorRating_Heat>1.0</ArmorRating_Heat>
+			<MarketValue>1900</MarketValue>
+			<Flammability>1</Flammability>
+		</statBases>
+		
+		<vehicleStats>
+			<Mass>140000</Mass>
+			<MoveSpeed>5</MoveSpeed>
+			<CargoCapacity>20000</CargoCapacity>
+			<RepairRate>1.8</RepairRate>
+		</vehicleStats>
+		<soundOneShotsOnEvent Inherit = "False">
+			<li>
+				<key>PawnEntered</key>
+				<value>VVE_VehicleEnter</value>
+			</li>
+			<li>
+				<key>PawnExited</key>
+				<value>VVE_VehicleEnter</value>
+			</li>
+			<li>
+				<key>IgnitionOn</key>
+				<value>RT_F4FStart</value>
+			</li>
+			<li>
+				<key>IgnitionOff</key>
+				<value>RT_F4FStop</value>
+			</li>
+		</soundOneShotsOnEvent>
+		<soundSustainersOnEvent Inherit="false"> 
+			<li>
+				<start>IgnitionOn</start>
+				<stop>IgnitionOff</stop>
+				<value>RT_LightShipEngine</value>
+			</li>
+		</soundSustainersOnEvent>
+		<race>
+			<baseBodySize>7.5</baseBodySize>
+		</race>
+		
+		<properties>
+			<fishing>true</fishing>
+			<riverCost>1</riverCost>
+			
+			<track Class = "Vehicles.VehicleTrack_Wake">
+				<speed>1</speed>
+			</track>
+			
+			<defaultBiomesImpassable>true</defaultBiomesImpassable>
+			<defaultTerrainImpassable>true</defaultTerrainImpassable>
+			<customTerrainCosts AllowTerrainWithTag="Water" PathCost="1"/>
+			<customBiomeCosts>
+				<li>
+					<key>Ocean</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>Lake</key>
+					<value>1</value>
+				</li>
+				</customBiomeCosts>
+			<worldSpeedMultiplier>1</worldSpeedMultiplier>
+			<winterSpeedMultiplier>5</winterSpeedMultiplier>
+			<vehicleJobLimitations>
+				<li>(RepairVehicle, 58)</li>
+			</vehicleJobLimitations>
+			<roles>
+				<li>
+					<key>driver</key>
+					<label>Captain</label>
+					<slots>2</slots>
+					<slotsToOperate>2</slotsToOperate>
+					
+					<handlingTypes>
+						<li>Movement</li>
+					</handlingTypes>
+				</li>
+				<li>
+					<key>gunnerA</key>
+					<label>Gunner (A)</label>
+					<slots>2</slots>
+					<slotsToOperate>1</slotsToOperate>			
+					<handlingTypes>Turret</handlingTypes>
+					<turretIds>
+						<li>flak38a</li>
+					</turretIds>
+				</li>
+				<li>
+					<key>gunnerB</key>
+					<label>Gunner (B)</label>
+					<slots>2</slots>
+					<slotsToOperate>1</slotsToOperate>			
+					<handlingTypes>Turret</handlingTypes>
+					<turretIds>
+						<li>flak38b</li>
+					</turretIds>
+				</li>
+				<li>
+					<key>gunnerC</key>
+					<label>Gunner (C)</label>
+					<slots>2</slots>
+					<slotsToOperate>1</slotsToOperate>			
+					<handlingTypes>Turret</handlingTypes>
+					<turretIds>
+						<li>flak38c</li>
+					</turretIds>
+				</li>
+				<li>
+					<key>gunnerD</key>
+					<label>Gunner (D)</label>
+					<slots>2</slots>
+					<slotsToOperate>1</slotsToOperate>			
+					<handlingTypes>Turret</handlingTypes>
+					<turretIds>
+						<li>flak38d</li>
+					</turretIds>
+				</li>
+				<li>
+					<key>passenger</key>
+					<label>Passenger</label>
+					<slots>20</slots>
+				</li>
+			</roles>
+		</properties>
+		
+		<components>
+			<li><!--Engine 100-->
+				<key>leftEngine</key>
+				<label>Left Engine</label>
+				<health>120</health>
+				<priorityStatEfficiency>true</priorityStatEfficiency>
+				<categories><li>MoveSpeed</li></categories>
+				<depth>Internal</depth>		
+				<reactors>
+					<li Class = "Vehicles.Reactor_Explosive">
+						<indicator>VF_Explosive</indicator>
+						<chance>0.25</chance>
+						<maxHealth>0.5</maxHealth>
+						<radius>3</radius>
+						<damageDef>Bomb</damageDef>
+					</li>
+				</reactors>			
+				<hitbox>
+					<cells>
+						<li>(-3, -5)</li>
+						<li>(-3, -6)</li>
+					</cells>
+				</hitbox>				
+			</li>
+			<li><!--Engine 100-->
+				<key>rightEngine</key>
+				<label>Right Engine</label>
+				<health>120</health>
+				<priorityStatEfficiency>true</priorityStatEfficiency>
+				<categories><li>MoveSpeed</li></categories>
+				<depth>Internal</depth>		
+				<reactors>
+					<li Class = "Vehicles.Reactor_Explosive">
+						<indicator>VF_Explosive</indicator>
+						<chance>0.25</chance>
+						<maxHealth>0.5</maxHealth>
+						<radius>3</radius>
+						<damageDef>Bomb</damageDef>
+					</li>
+				</reactors>			
+				<hitbox>
+					<cells>
+						<li>(4, -5)</li>
+						<li>(4, -6)</li>
+					</cells>
+				</hitbox>				
+			</li>			
+			<li><!-- fuel tank 100-->
+				<key>FuelTank</key>
+				<label>fuel tank</label>
+				<health>120</health>
+				<depth>Internal</depth>			
+				<reactors><li Class = "Vehicles.Reactor_FuelLeak"/></reactors>			
+				<hitbox>
+					<cells>
+						<li>(-3, -4)</li>
+						<li>(-2, -4)</li>
+						<li>(3, -4)</li>
+						<li>(4, -4)</li>
+					</cells>
+				</hitbox>
+			</li>
+			<li><!-- Gearbox 50-->
+				<key>DriveShaft</key>
+				<label>drive shaft</label>
+				<health>140</health>
+				<depth>Internal</depth>
+				<categories><li>MoveSpeed</li></categories>			
+			</li>
+			<li><!-- AmmoRack 50-->
+				<key>AmmoRackA</key>
+				<label>A ammo rack</label>
+				<health>140</health>
+				<depth>Internal</depth>
+				<hitWeight>0.2</hitWeight>
+				<reactors>
+					<li Class = "Vehicles.Reactor_Explosive">
+						<indicator>VF_Explosive</indicator>
+						<chance>0.5</chance>
+						<maxHealth>0.5</maxHealth>
+						<radius>5</radius>
+						<damageDef>Bomb</damageDef>
+					</li>
+				</reactors>	
+				<hitbox>
+					<cells>
+						<li>(-3, -4)</li>
+					</cells>
+				</hitbox>
+			</li>
+			<li><!-- AmmoRack 50-->
+				<key>AmmoRackB</key>
+				<label>B ammo rack</label>
+				<health>140</health>
+				<depth>Internal</depth>
+				<hitWeight>0.2</hitWeight>
+				<reactors>
+					<li Class = "Vehicles.Reactor_Explosive">
+						<indicator>VF_Explosive</indicator>
+						<chance>0.3</chance>
+						<maxHealth>0.5</maxHealth>
+						<radius>3</radius>
+						<damageDef>Bomb</damageDef>
+					</li>
+				</reactors>	
+				<hitbox>
+					<cells>
+						<li>(-1, 5)</li>
+					</cells>
+				</hitbox>
+			</li>
+			<li><!-- AmmoRack 50-->
+				<key>AmmoRackC</key>
+				<label>C ammo rack</label>
+				<health>140</health>
+				<depth>Internal</depth>
+				<hitWeight>0.2</hitWeight>
+				<reactors>
+					<li Class = "Vehicles.Reactor_Explosive">
+						<indicator>VF_Explosive</indicator>
+						<chance>0.3</chance>
+						<maxHealth>0.5</maxHealth>
+						<radius>3</radius>
+						<damageDef>Bomb</damageDef>
+					</li>
+				</reactors>	
+				<hitbox>
+					<cells>
+						<li>(4, -4)</li>
+					</cells>
+				</hitbox>
+			</li>
+			<li><!-- AmmoRack 50-->
+				<key>AmmoRackD</key>
+				<label>D ammo rack</label>
+				<health>140</health>
+				<depth>Internal</depth>
+				<hitWeight>0.2</hitWeight>
+				<reactors>
+					<li Class = "Vehicles.Reactor_Explosive">
+						<indicator>VF_Explosive</indicator>
+						<chance>0.3</chance>
+						<maxHealth>0.5</maxHealth>
+						<radius>3</radius>
+						<damageDef>Bomb</damageDef>
+					</li>
+				</reactors>	
+				<hitbox>
+					<cells>
+						<li>(2, 5)</li>
+					</cells>
+				</hitbox>
+			</li>
+			<!-- External mobile Part 外部驅動部件-->		
+			<li><!-- RightTrack 150-->
+				<key>leftProp</key>
+				<label>left propeller</label>
+				<health>175</health>
+				<depth>Internal</depth>
+				<categories><li>MoveSpeed</li></categories>	
+				<tags><li>Wheel</li></tags>
+				<hitWeight>1</hitWeight>
+				<hitbox>
+					<cells>
+						<li>(-3, -6)</li>
+					</cells>
+				</hitbox>
+			</li>
+			<li><!-- RightTrack 150-->
+				<key>rightProp</key>
+				<label>right propeller</label>
+				<health>175</health>
+				<depth>Internal</depth>
+				<categories><li>MoveSpeed</li></categories>	
+				<tags><li>Wheel</li></tags>
+				<hitWeight>1</hitWeight>
+				<hitbox>
+					<cells>
+						<li>(4, -6)</li>
+					</cells>
+				</hitbox>
+			</li>
+			<li><!-- RightTrack 150-->
+				<key>left rudder</key>
+				<label>left rudder</label>
+				<health>175</health>
+				<depth>Internal</depth>
+				<hitWeight>1</hitWeight>
+				<hitbox>
+					<cells>
+						<li>(-3, -7)</li>
+					</cells>
+				</hitbox>
+			</li>
+			<li><!-- RightTrack 150-->
+				<key>right rudder</key>
+				<label>right rudder</label>
+				<health>175</health>
+				<depth>Internal</depth>
+				<hitWeight>1</hitWeight>
+				<hitbox>
+					<cells>
+						<li>(4, -7)</li>
+					</cells>
+				</hitbox>
+			</li>
+		<!-- External Platings 外部防禦部件 -->
+			<li><!-- FrontArmorPlating 200-->
+				<key>FrontArmorPlating</key>
+				<label>front armor Plating</label>
+				<health>800</health>
+				<depth>External</depth>
+				<hitWeight>4</hitWeight>	
+				<armor>
+					<ArmorRating_Blunt>1.00</ArmorRating_Blunt>
+					<ArmorRating_Sharp>0.8</ArmorRating_Sharp>
+				</armor>		
+				<hitbox>
+					<cells>
+						<li>(-4, -7)</li>
+						<li>(-3, -7)</li>
+						<li>(-2, -7)</li>
+						<li>(-1, -7)</li>
+						<li>(0, -7)</li>
+						<li>(1, -7)</li>
+						<li>(2, -7)</li>
+						<li>(3, -7)</li>
+						<li>(4, -7)</li>
+						<li>(5, -7)</li>
+						<li>(-4, -6)</li>
+						<li>(-3, -6)</li>
+						<li>(-2, -6)</li>
+						<li>(-1, -6)</li>
+						<li>(0, -6)</li>
+						<li>(1, -6)</li>
+						<li>(2, -6)</li>
+						<li>(3, -6)</li>
+						<li>(4, -6)</li>
+						<li>(5, -6)</li>
+					</cells>
+				</hitbox>
+			</li>
+			<li><!-- LeftArmorPlating 180-->
+				<key>LeftHull</key>
+				<label>left hull</label>
+				<health>1200</health>
+				<depth>External</depth>
+				<hitWeight>5</hitWeight>		
+				<armor>
+					<ArmorRating_Blunt>1.2</ArmorRating_Blunt>
+					<ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+				</armor>			
+				<hitbox>
+					<cells>
+						<li>(-2, 1)</li>
+						<li>(-3, 1)</li>
+						<li>(-4, 1)</li>
+						<li>(-2, 2)</li>
+						<li>(-3, 2)</li>
+						<li>(-4, 2)</li>
+						<li>(-2, 3)</li>
+						<li>(-3, 3)</li>
+						<li>(-4, 3)</li>
+						<li>(-2, 4)</li>
+						<li>(-3, 4)</li>
+						<li>(-4, 4)</li>
+						<li>(-2, 5)</li>
+						<li>(-3, 5)</li>
+						<li>(-4, 5)</li>
+						<li>(-2, 6)</li>
+						<li>(-3, 6)</li>
+						<li>(-4, 6)</li>
+						<li>(-2, 7)</li>
+						<li>(-3, 7)</li>
+						<li>(-4, 7)</li>
+						<li>(-2, 0)</li>
+						<li>(-3, 0)</li>
+						<li>(-4, 0)</li>
+						<li>(-2, -1)</li>
+						<li>(-3, -1)</li>
+						<li>(-4, -1)</li>
+						<li>(-2, -2)</li>
+						<li>(-3, -2)</li>
+						<li>(-4, -2)</li>
+						<li>(-2, -3)</li>
+						<li>(-3, -3)</li>
+						<li>(-4, -3)</li>
+						<li>(-2, -4)</li>
+						<li>(-3, -4)</li>
+						<li>(-4, -4)</li>
+						<li>(-2, -5)</li>
+						<li>(-3, -5)</li>
+						<li>(-4, -5)</li>
+						<li>(-2, -6)</li>
+						<li>(-3, -6)</li>
+						<li>(-4, -6)</li>
+						<li>(-2, -7)</li>
+						<li>(-3, -7)</li>
+						<li>(-4, -7)</li>
+					</cells>
+				</hitbox>
+			</li>
+			<li><!-- RightArmorPlating 180-->
+				<key>RightHull</key>
+				<label>right hull</label>
+				<health>1200</health>
+				<depth>External</depth>
+				<hitWeight>5</hitWeight>	
+				<armor>
+					<ArmorRating_Blunt>1.2</ArmorRating_Blunt>
+					<ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+				</armor>			
+				<hitbox>
+					<cells>
+						<li>(3, 1)</li>
+						<li>(4, 1)</li>
+						<li>(5, 1)</li>
+						<li>(3, 2)</li>
+						<li>(4, 2)</li>
+						<li>(5, 2)</li>
+						<li>(3, 3)</li>
+						<li>(4, 3)</li>
+						<li>(5, 3)</li>
+						<li>(3, 4)</li>
+						<li>(4, 4)</li>
+						<li>(5, 4)</li>
+						<li>(3, 5)</li>
+						<li>(4, 5)</li>
+						<li>(5, 5)</li>
+						<li>(3, 6)</li>
+						<li>(4, 6)</li>
+						<li>(5, 6)</li>
+						<li>(3, 7)</li>
+						<li>(4, 7)</li>
+						<li>(5, 7)</li>
+						<li>(3, 0)</li>
+						<li>(4, 0)</li>
+						<li>(5, 0)</li>
+						<li>(3, -1)</li>
+						<li>(4, -1)</li>
+						<li>(5, -1)</li>
+						<li>(3, -2)</li>
+						<li>(4, -2)</li>
+						<li>(5, -2)</li>
+						<li>(3, -3)</li>
+						<li>(4, -3)</li>
+						<li>(5, -3)</li>
+						<li>(3, -4)</li>
+						<li>(4, -4)</li>
+						<li>(5, -4)</li>
+						<li>(3, -5)</li>
+						<li>(4, -5)</li>
+						<li>(5, -5)</li>
+						<li>(3, -6)</li>
+						<li>(4, -6)</li>
+						<li>(5, -6)</li>
+						<li>(3, -7)</li>
+						<li>(4, -7)</li>
+						<li>(5, -7)</li>
+					</cells>
+				</hitbox>
+			</li>
+			<li><!-- RoofArmorPlating 150 -->
+				<key>RoofPlatform</key>
+				<label>roof platform</label>
+				<health>1600</health>
+				<depth>External</depth>
+				<hitWeight>5</hitWeight>
+				<armor>
+					<ArmorRating_Blunt>1.00</ArmorRating_Blunt>
+					<ArmorRating_Sharp>0.8</ArmorRating_Sharp>
+				</armor>	
+				<hitbox>
+					<side>Body</side>
+				</hitbox>
+			</li>
+			<li><!-- BackArmorPlating 150-->
+				<key>BackArmorPlating</key>
+				<label>rear armor plating</label>
+				<health>800</health>
+				<depth>External</depth>
+				<hitWeight>5</hitWeight>
+				<armor>
+					<ArmorRating_Blunt>1.00</ArmorRating_Blunt>
+					<ArmorRating_Sharp>0.8</ArmorRating_Sharp>
+				</armor>	
+				<hitbox>
+					<cells>
+						<li>(-4, 7)</li>
+						<li>(-3, 7)</li>
+						<li>(-2, 7)</li>
+						<li>(-1, 7)</li>
+						<li>(0, 7)</li>
+						<li>(1, 7)</li>
+						<li>(2, 7)</li>
+						<li>(3, 7)</li>
+						<li>(4, 7)</li>
+						<li>(5, 7)</li>
+						<li>(-4, 6)</li>
+						<li>(-3, 6)</li>
+						<li>(-2, 6)</li>
+						<li>(-1, 6)</li>
+						<li>(0, 6)</li>
+						<li>(1, 6)</li>
+						<li>(2, 6)</li>
+						<li>(3, 6)</li>
+						<li>(4, 6)</li>
+						<li>(5, 6)</li>
+					</cells>
+				</hitbox>
+			</li>
+			<li><!-- RoofArmorPlating 150 -->
+				<key>ArmoredBridge</key>
+				<label>Armored bridge</label>
+				<health>400</health>
+				<depth>External</depth>
+				<hitWeight>12</hitWeight>
+				<armor>
+					<ArmorRating_Blunt>1.2</ArmorRating_Blunt>
+					<ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+				</armor>	
+				<hitbox>
+					<cells>
+						<li>(0, 1)</li>
+						<li>(1, 1)</li>
+						<li>(0, 2)</li>
+						<li>(1, 2)</li>
+					</cells>
+				</hitbox>
+			</li>
+			<li><!-- AmmoRack 50-->
+				<key>RearBridge</key>
+				<label>Rear Bridge</label>
+				<health>400</health>
+				<depth>External</depth>
+				<hitWeight>12</hitWeight>
+				<armor>
+					<ArmorRating_Blunt>1.2</ArmorRating_Blunt>
+					<ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+				</armor>	
+				<hitbox>
+					<cells>
+						<li>(-2, 0)</li>
+						<li>(-1, 0)</li>
+						<li>(0, 0)</li>
+						<li>(1, 0)</li>
+						<li>(2, 0)</li>
+						<li>(-2, -1)</li>
+						<li>(-1, -1)</li>
+						<li>(0, -1)</li>
+						<li>(1, -1)</li>
+						<li>(2, -1)</li>
+						<li>(-2, -2)</li>
+						<li>(-1, -2)</li>
+						<li>(0, -2)</li>
+						<li>(1, -2)</li>
+						<li>(2, -2)</li>
+						<li>(-2, -3)</li>
+						<li>(-1, -3)</li>
+						<li>(0, -3)</li>
+						<li>(1, -3)</li>
+						<li>(2, -3)</li>
+					</cells>
+				</hitbox>
+			</li>
+			<li><!-- RoofArmorPlating 150 -->
+				<key>turretA</key>
+				<label>A turret</label>
+				<health>400</health>
+				<depth>External</depth>
+				<hitWeight>12</hitWeight>
+				<armor>
+					<ArmorRating_Blunt>0.7</ArmorRating_Blunt>
+					<ArmorRating_Sharp>0.5</ArmorRating_Sharp>
+				</armor>
+				<hitbox>
+					<cells>
+						<li>(-2, -5)</li>
+						<li>(-3, -5)</li>
+						<li>(-4, -5)</li>
+						<li>(-2, -6)</li>
+						<li>(-3, -6)</li>
+						<li>(-4, -6)</li>
+						<li>(-2, -7)</li>
+						<li>(-3, -7)</li>
+						<li>(-4, -7)</li>
+					</cells>
+				</hitbox>
+			</li>
+			<li><!-- RoofArmorPlating 150 -->
+				<key>turretB</key>
+				<label>B turret</label>
+				<health>400</health>
+				<depth>External</depth>
+				<hitWeight>12</hitWeight>
+				<armor>
+					<ArmorRating_Blunt>0.7</ArmorRating_Blunt>
+					<ArmorRating_Sharp>0.5</ArmorRating_Sharp>
+				</armor>
+				<hitbox>
+					<cells>
+						<li>(-2, 4)</li>
+						<li>(-3, 4)</li>
+						<li>(-4, 4)</li>
+						<li>(-2, 5)</li>
+						<li>(-3, 5)</li>
+						<li>(-4, 5)</li>
+						<li>(-2, 6)</li>
+						<li>(-3, 6)</li>
+						<li>(-4, 6)</li>
+					</cells>
+				</hitbox>
+			</li>
+			<li><!-- RoofArmorPlating 150 -->
+				<key>turretC</key>
+				<label>C turret</label>
+				<health>400</health>
+				<depth>External</depth>
+				<hitWeight>12</hitWeight>
+				<armor>
+					<ArmorRating_Blunt>0.7</ArmorRating_Blunt>
+					<ArmorRating_Sharp>0.5</ArmorRating_Sharp>
+				</armor>
+				<hitbox>
+					<cells>
+						<li>(3, -5)</li>
+						<li>(4, -5)</li>
+						<li>(5, -5)</li>
+						<li>(3, -6)</li>
+						<li>(4, -6)</li>
+						<li>(5, -6)</li>
+						<li>(3, -7)</li>
+						<li>(4, -7)</li>
+						<li>(5, -7)</li>
+					</cells>
+				</hitbox>
+			</li>
+			<li><!-- RoofArmorPlating 150 -->
+				<key>turretD</key>
+				<label>D turret</label>
+				<health>400</health>
+				<depth>External</depth>
+				<hitWeight>12</hitWeight>
+				<armor>
+					<ArmorRating_Blunt>0.7</ArmorRating_Blunt>
+					<ArmorRating_Sharp>0.5</ArmorRating_Sharp>
+				</armor>
+				<hitbox>
+					<cells>
+						<li>(3, 4)</li>
+						<li>(4, 4)</li>
+						<li>(5, 4)</li>
+						<li>(3, 5)</li>
+						<li>(4, 5)</li>
+						<li>(5, 5)</li>
+						<li>(3, 6)</li>
+						<li>(4, 6)</li>
+						<li>(5, 6)</li>
+					</cells>
+				</hitbox>
+			</li>
+			<li><!-- RoofArmorPlating 150 -->
+				<key>turretE</key>
+				<label>Rangefinder</label>
+				<health>200</health>
+				<depth>External</depth>
+				<hitWeight>12</hitWeight>
+				<hitbox>
+					<cells>
+						<li>(-1, -2)</li>
+						<li>(0, -2)</li>
+						<li>(1, -2)</li>
+						<li>(-1, -1)</li>
+						<li>(0, -1)</li>
+						<li>(1, -1)</li>
+					</cells>
+				</hitbox>
+			</li>
+		</components>
+		
+		<comps>
+			<li Class="Vehicles.CompProperties_FueledTravel">
+				<fuelType>Chemfuel</fuelType>
+				<leakDef>Filth_Fuel</leakDef>
+				<fuelConsumptionRate>24</fuelConsumptionRate>
+				<fuelCapacity>320</fuelCapacity>
+				<fuelConsumptionWorldMultiplier>0.5</fuelConsumptionWorldMultiplier>
+			</li>
+			<li Class="Vehicles.CompProperties_VehicleTurrets">
+				<!-- 砲塔 -->
+				<turrets>
+					<li>
+						<turretDef>RT_Flak38_Tank_Turret</turretDef>
+						<renderProperties>
+							<north>(-3.7, -4.85)</north>
+							<south>(3.7, 5.65)</south>
+							<east>(-5.45, 3.8)</east>
+							<west>(5.45, -3.4)</west>
+						</renderProperties>
+
+						<gizmoLabel>flak38a</gizmoLabel>
+						<aimPieOffset>(0, 2)</aimPieOffset>
+						<!-- 預熱指示器的x,z偏移 -->
+						<drawLayer>1</drawLayer>
+						<key>flak38a</key>
+					</li>
+
+					<li>
+						<turretDef>RT_Flak38_Tank_Turret</turretDef>
+						<renderProperties>
+							<north>(-3.7, 4.9)</north>
+							<south>(3.7, -3.95)</south>
+							<east>(4.45, 3.8)</east>
+							<west>(-4.45, -3.4)</west>
+						</renderProperties>
+
+						<gizmoLabel>flak38b</gizmoLabel>
+						<aimPieOffset>(0, 2)</aimPieOffset>
+						<!-- 預熱指示器的x,z偏移 -->
+						<drawLayer>1</drawLayer>
+						<key>flak38b</key>
+					</li>
+
+					<li>
+						<turretDef>RT_Flak38_Tank_Turret</turretDef>
+						<renderProperties>
+							<north>(3.7, -4.85)</north>
+							<south>(-3.7, 5.65)</south>
+							<east>(-5.45, -3.4)</east>
+							<west>(5.45, 3.8)</west>
+						</renderProperties>
+
+						<gizmoLabel>flak38c</gizmoLabel>
+						<aimPieOffset>(0, 2)</aimPieOffset>
+						<!-- 預熱指示器的x,z偏移 -->
+						<drawLayer>1</drawLayer>
+						<key>flak38c</key>
+					</li>
+
+					<li>
+						<turretDef>RT_Flak38_Tank_Turret</turretDef>
+						<renderProperties>
+							<north>(3.7, 4.9)</north>
+							<south>(-3.7, -3.95)</south>
+							<east>(4.45, -3.4)</east>
+							<west>(-4.45, 3.8)</west>
+						</renderProperties>
+
+						<gizmoLabel>flak38d</gizmoLabel>
+						<aimPieOffset>(0, 2)</aimPieOffset>
+						<!-- 預熱指示器的x,z偏移 -->
+						<drawLayer>1</drawLayer>
+						<key>flak38d</key>
+					</li>
+				</turrets>
+			</li>
+		</comps>
+	</Vehicles.VehicleDef>
+	
+	<Vehicles.VehicleTurretDef ParentName="RT_BaseTurret">
+		<defName>RT_Flak38_Tank_Turret</defName>
+		<label>Flak38</label>
+		<!-- 炮塔部分 -->
+		<graphicData>
+			<texPath>SF40/flak38</texPath>
+			<drawSize>(4.5,4.5)</drawSize>
+		</graphicData>
+
+		<!-- 彈藥與裝填容量相關 -->
+		<reloadTimer>6</reloadTimer>
+		<magazineCapacity>40</magazineCapacity>
+		<chargePerAmmoCount>1</chargePerAmmoCount>
+		<genericAmmo>true</genericAmmo>
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+		<!-- 射程與射界相關 -->
+		<minRange>2</minRange>
+		<maxRange>42.9</maxRange>
+		<rotationSpeed>2</rotationSpeed>
+		<!-- 射擊相關 -->
+		<warmUpTimer>1.5</warmUpTimer>
+		<shotSound>RT_Shot_Flak38Sound</shotSound>
+		<reloadSound>RT_AutoCannonReloadSound</reloadSound>
+		<projectile>RT_Bullet_WirbelwindShell</projectile>
+		<projectileOffset>1.88</projectileOffset>
+		<!-- 出膛前後偏移，主要是能讓子彈能從炮口飛出去 -->
+		<projectileShifting>
+			<!-- 出膛左右偏移，多砲管可以根據list來回切 -->
+			<li>-0.33</li>
+			<li>0.33</li>
+		</projectileShifting>
+		<!-- 过热 -->
+		<cooldown>
+			<heatPerShot>3.6</heatPerShot>
+			<dissipationRate>0.4</dissipationRate> <!-- 1 per second -->
+		</cooldown>
+		<!-- 射擊模式 -->
+		<fireModes>
+			<li>
+				<shotsPerBurst>16</shotsPerBurst>
+				<ticksBetweenShots>5</ticksBetweenShots>
+				<ticksBetweenBursts>70</ticksBetweenBursts>
+				<spreadRadius>2</spreadRadius>
+				<label>Auto</label>
+				<texPath>UI/Gizmos/FireRate_Auto</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>4</shotsPerBurst>
+				<ticksBetweenShots>5</ticksBetweenShots>
+				<ticksBetweenBursts>50</ticksBetweenBursts>
+				<spreadRadius>2</spreadRadius>
+				<label>Single Shot</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+		</fireModes>
+		<motes>
+			<li>
+				<cycles>1</cycles>
+				<moteDef>Mote_CannonPlume</moteDef>
+				<animationType>Reset</animationType>
+				<offset>(0,0,4.0)</offset>
+			</li>
+		</motes>
+	</Vehicles.VehicleTurretDef>
+
+	<ThingDef ParentName="BaseBullet">
+		<defName>RT_Bullet_WirbelwindShell</defName>
+		<label>armor-piercing shell</label>
+		<graphicData>
+			<texPath>Things/Projectile/Bullet_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<projectile>
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>60</damageAmountBase>
+			<speed>80</speed>
+		</projectile>
+	</ThingDef>
+</Defs>

@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+	<Vehicles.UpgradeTreeDef ParentName="TMM_UpgradeTree_WheeledLandBase">
+		<defName>TMM_UpgradeTree_Rumrunner</defName>
+
+		<nodes>
+			<!-- PERSONNEL CARRIER CONVERSION -->
+				<li>
+					<key>ExpandedCabin_Rumrunner</key>
+					<label>Personnel Carrier Conversion</label>
+					<description>Installs a canvas cover and rear seats in order to carry more passengers in expense of cargo capacity.\n\nPassenger slot &lt;color=#00ff00&gt;+8&lt;/color&gt;\nCargo capacity &lt;color=#ff0000&gt;-600&lt;/color&gt;</description>
+
+					<icon>Modules/Transport/UI/Upgrades/Upgrade_ExtraSeat</icon>
+
+					<work>3200</work>
+
+					<gridCoordinate>(12, 7)</gridCoordinate>
+					<drawSize>(80, 80)</drawSize>
+
+					<disableIfUpgradeNodesEnabled>
+						<li>Ambulance_Rumrunner</li>
+					</disableIfUpgradeNodesEnabled>
+
+					<upgrades>
+						<li Class = "Vehicles.StatUpgrade">
+							<vehicleStats>
+								<li>
+									<def>CargoCapacity</def>
+									<value>-600</value>
+								</li>
+							</vehicleStats>
+						</li>
+						<li Class = "Vehicles.VehicleUpgrade">
+							<roles>
+								<li>
+									<key>passenger_rear</key>
+									<label>Passenger (Rear)</label>
+									<slots>8</slots>
+									<hitbox>
+										<cells>
+											<li>(-1, 0)</li>
+											<li>(1, 0)</li>
+											<li>(-1, -1)</li>
+											<li>(1, -1)</li>
+											<li>(-1, -2)</li>
+											<li>(1, -2)</li>
+											<li>(-1, -3)</li>
+											<li>(1, -3)</li>
+										</cells>
+									</hitbox>
+								</li>
+							</roles>
+						</li>
+					</upgrades>
+
+					<ingredients>
+						<Steel>20</Steel>
+						<Cloth>220</Cloth>
+						<WoodLog>30</WoodLog>
+					</ingredients>
+
+					<graphicOverlays>
+						<li>
+							<graphicData>
+								<texPath>Modules/Transport/Upgrades/Land/Rumrunner_Truck/Canvas/Canvas</texPath>
+								<graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+								<drawSize>(9,9)</drawSize>
+								<layer>7</layer>
+								<shaderType>Cutout</shaderType>
+							</graphicData>
+						</li>
+					</graphicOverlays>
+				</li>
+			<!-- AMBULANCE CONVERSION -->
+				<li>
+					<key>Ambulance_Rumrunner</key>
+					<label>Ambulance Conversion</label>
+					<description>Installs a ambulance module to allow carrying more people in expense of some regular cargo capacity.\n\nPassenger slot &lt;color=#00ff00&gt;+4&lt;/color&gt;\nCargo capacity &lt;color=#ff0000&gt;-400&lt;/color&gt;</description>
+
+					<icon>Modules/Transport/UI/Upgrades/Upgrade_Miscellaneous</icon>
+
+					<work>3200</work>
+
+					<gridCoordinate>(20, 15)</gridCoordinate>
+					<drawSize>(80, 80)</drawSize>
+
+					<disableIfUpgradeNodesEnabled>
+						<li>ExpandedCabin_Rumrunner</li>
+					</disableIfUpgradeNodesEnabled>
+
+					<upgrades>
+						<li Class = "Vehicles.StatUpgrade">
+							<vehicleStats>
+								<li>
+									<def>CargoCapacity</def>
+									<value>-400</value>
+								</li>
+							</vehicleStats>
+						</li>
+						<li Class = "Vehicles.VehicleUpgrade">
+							<roles>
+								<li>
+									<key>passenger_rear</key>
+									<label>Passenger (Rear)</label>
+									<slots>4</slots>
+									<hitbox>
+										<cells>
+											<li>(-1, 0)</li>
+											<li>(1, 0)</li>
+											<li>(-1, -1)</li>
+											<li>(1, -1)</li>
+										</cells>
+									</hitbox>
+								</li>
+							</roles>
+						</li>
+					</upgrades>
+
+					<ingredients>
+						<Steel>20</Steel>
+						<WoodLog>75</WoodLog>
+					</ingredients>
+
+					<graphicOverlays>
+						<li>
+							<graphicData>
+								<texPath>Modules/Transport/Upgrades/Land/Rumrunner_Truck/AmbulanceMain/AmbulanceMain</texPath>
+								<graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+								<drawSize>(9,9)</drawSize>
+								<layer>7</layer>
+								<shaderType>CutoutComplexPattern</shaderType>
+							</graphicData>
+						</li>
+						<li>
+							<graphicData>
+								<texPath>Modules/Transport/Upgrades/Land/Rumrunner_Truck/AmbulanceDecal/AmbulanceDecal</texPath>
+								<graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+								<drawSize>(9,9)</drawSize>
+								<layer>8</layer>
+								<shaderType>Cutout</shaderType>
+							</graphicData>
+						</li>
+					</graphicOverlays>
+				</li>
+			<!-- HALF-TRACK CONVERSION -->
+				<li>
+					<key>HalfTrack_Rumrunner</key>
+					<label>Half-Track Conversion</label>
+					<description>Installs a half-track drive system, improving mobility on rough terrain at the cost of fuel usage.\n\nOff-road penalty &lt;color=#00ff00&gt;-50%&lt;/color&gt;\nFuel consumption &lt;color=#ff0000&gt;+25%&lt;/color&gt;</description>
+					
+					<icon>Modules/Transport/UI/Upgrades/Upgrade_TreadArmour</icon>
+					
+					<work>5200</work>
+					
+					<gridCoordinate>(20, 7)</gridCoordinate>
+					<drawSize>(80, 80)</drawSize>
+					
+					<upgrades>
+						<li Class = "Vehicles.StatUpgrade">
+							<statCategories>
+								<li>
+									<def>OffRoadMultiplier</def>
+									<value>-0.50</value>
+									<type>Add</type>
+								</li>
+								<li>
+									<def>WinterCostMultiplier</def>
+									<value>-2</value>
+									<type>Add</type>
+								</li>
+								<li>
+									<def>WorldSpeedMultiplier</def>
+									<value>0.1</value>
+									<type>Add</type>
+								</li>
+								<li>
+									<def>FuelConsumptionRate</def>
+									<value>+6</value>
+								</li>
+							</statCategories>
+						</li>
+						<li Class="Vehicles.VehicleUpgrade">
+							<health>
+								<li>
+									<key>BackLeftWheel</key>
+									<value>150</value>
+								</li>
+								<li>
+									<key>BackRightWheel</key>
+									<value>150</value>
+								</li>
+							</health>
+							<armor>
+								<li>
+									<key>BackLeftWheel</key>
+									<statModifiers>
+										<ArmorRating_Sharp>0.3</ArmorRating_Sharp>
+										<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+									</statModifiers>
+									<type>Add</type>
+								</li>
+								<li>
+									<key>BackRightWheel</key>
+									<statModifiers>
+										<ArmorRating_Sharp>0.3</ArmorRating_Sharp>
+										<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+									</statModifiers>
+									<type>Add</type>
+								</li>
+							</armor>
+						</li>
+					</upgrades>
+
+					<ingredients>
+						<Steel>75</Steel>
+						<ComponentIndustrial>5</ComponentIndustrial>
+					</ingredients>
+
+					<graphicOverlays>
+						<li>
+							<graphicData>
+								<texPath>Modules/Transport/Upgrades/Land/Rumrunner_Truck/HalfTrackMain/HalfTrackMain</texPath>
+								<graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+								<drawSize>(9,9)</drawSize>
+								<layer>2</layer>
+								<shaderType>Cutout</shaderType>
+							</graphicData>
+						</li>
+						<li>
+							<graphicData>
+								<texPath>Modules/Transport/Upgrades/Land/Rumrunner_Truck/HalfTrackAux/HalfTrackAux</texPath>
+								<graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+								<drawSize>(9,9)</drawSize>
+								<layer>10</layer>
+								<shaderType>Cutout</shaderType>
+							</graphicData>
+						</li>
+					</graphicOverlays>
+				</li>
+			<!-- LONG HAUL TANKS -->
+				<li>
+					<key>LongHaulTanks_Rumrunner</key>
+					<label>Long Haul Fuel Tanks</label>
+					<description>Increases size of the fueltank.\n\nFuel 150 → &lt;color=#00ff00&gt;300&lt;/color&gt;</description>
+
+					<icon>Modules/Transport/UI/Upgrades/Upgrade_FuelStorage</icon>
+
+					<work>800</work>
+
+					<gridCoordinate>(12, 15)</gridCoordinate>
+					<drawSize>(80, 80)</drawSize>
+
+					<upgrades>
+						<li Class = "Vehicles.StatUpgrade">
+							<statCategories>
+								<li>
+									<def>FuelCapacity</def>
+									<value>150</value>
+								</li>
+							</statCategories>
+						</li>
+					</upgrades>
+
+					<ingredients>
+						<Steel>50</Steel>
+					</ingredients>
+				</li>
+		</nodes>
+	</Vehicles.UpgradeTreeDef>
+</Defs>

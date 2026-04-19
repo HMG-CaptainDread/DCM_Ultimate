@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	
+	<Vehicles.VehicleTurretDef ParentName="RT_BaseVehicleMG_Heavy">
+		<defName>RT_M1A2_TopCoaxial_MGTurret</defName>
+		<label>M2HB machine gun</label>
+		<!-- 砲塔的渲染顯示 -->
+		<gizmoIconTexPath>Vehicles/M1A2/MG_turret_B</gizmoIconTexPath>
+		<graphicData>
+			<texPath>Vehicles/M1A2/MG_turret_B</texPath>
+			<drawSize>(4.5,4.5)</drawSize>
+		</graphicData>
+		<!-- 彈藥與裝填容量相關 -->
+		<reloadTimer>8</reloadTimer>
+		<magazineCapacity>100</magazineCapacity>
+		<chargePerAmmoCount>0.2</chargePerAmmoCount>
+		<genericAmmo>true</genericAmmo>
+		<!-- 射程與射界相關 -->
+		<rotationSpeed>1.7</rotationSpeed>
+		<!-- 射擊相關 -->
+		<warmUpTimer>0.8</warmUpTimer>
+		<projectileOffset>2</projectileOffset>
+		<!-- 出膛前後偏移，主要是能讓子彈能從炮口飛出去 -->
+		<projectileShifting>
+			<!-- 出膛左右偏移，多砲管可以根據list來回切 -->
+			<!-- <li>-1</li> -->
+			<li>0</li>
+		</projectileShifting>
+		<ammunition Inherit="false">
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+	</Vehicles.VehicleTurretDef>
+
+	<Vehicles.VehicleTurretDef ParentName="RT_BaseVehicleMG_Heavy">
+		<defName>RT_M1A2_Armor_MGTurret</defName>
+		<label>M2HB machine gun</label>
+		<!-- 砲塔的渲染顯示 -->
+		<gizmoIconTexPath>Vehicles/M1A2/MG_turret_A</gizmoIconTexPath>
+		<graphicData>
+			<texPath>Vehicles/M1A2/MG_turret_A</texPath>
+			<drawSize>(4.5,4.5)</drawSize>
+		</graphicData>
+		<!-- 彈藥與裝填容量相關 -->
+		<reloadTimer>6</reloadTimer>
+		<genericAmmo>true</genericAmmo>
+		<magazineCapacity>100</magazineCapacity>
+		<chargePerAmmoCount>0.2</chargePerAmmoCount>
+		<!-- 射程與射界相關 -->
+		<rotationSpeed>1.7</rotationSpeed>
+		<!-- 射擊相關 -->
+		<warmUpTimer>0.8</warmUpTimer>
+		<projectileOffset>2</projectileOffset>
+		<!-- 出膛前後偏移，主要是能讓子彈能從炮口飛出去 -->
+		<projectileShifting>
+			<!-- 出膛左右偏移，多砲管可以根據list來回切 -->
+			<!-- <li>-1</li> -->
+			<li>0</li>
+		</projectileShifting>
+		<ammunition Inherit="false">
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+	</Vehicles.VehicleTurretDef>
+
+	<Vehicles.VehicleTurretDef ParentName="RT_BaseTurret">
+		<defName>RT_BUSK_Tank_Turret</defName>
+		<label>main turret</label>
+		<gizmoIconTexPath>Vehicles/M2A3/BUSK/vehicle_turret_full</gizmoIconTexPath>
+		<!-- 砲塔的渲染顯示 -->
+		<graphicData>
+			<texPath>Vehicles/M2A3/BUSK/vehicle_turret</texPath>
+			<drawSize>(6.5,6.5)</drawSize>
+		</graphicData>
+		<!-- 射程與射界相關 -->
+		<graphics>
+			<li>
+				<graphicData>
+					<texPath>Vehicles/M2A3/BUSK/vehicle_barrel</texPath>
+					<drawSize>(6.5,6.5)</drawSize>
+					<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+					<shaderType>CutoutComplexPattern</shaderType>
+				</graphicData>
+				<recoil>
+					<distanceTotal>0.2</distanceTotal>
+					<distancePerTick>0.05</distancePerTick>
+					<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+				</recoil>
+			</li>
+		</graphics>
+		<reloadTimer>8</reloadTimer>
+		<magazineCapacity>300</magazineCapacity>
+		<chargePerAmmoCount>1</chargePerAmmoCount>
+		<genericAmmo>true</genericAmmo>
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+		<!-- 射程與射界相關 -->
+		<minRange>2</minRange>
+		<maxRange>45.9</maxRange>
+		<rotationSpeed>3</rotationSpeed>
+		<!-- 射擊相關 -->
+		<warmUpTimer>1</warmUpTimer>
+		<shotSound>RT_Shot_M242Sound</shotSound>
+		<reloadSound>RT_AutoCannonReloadSound</reloadSound>
+		<projectile>RT_Bullet_M2A3_Shell</projectile>
+		<projectileOffset>4</projectileOffset>		<!-- 出膛前後偏移，主要是能讓子彈能從炮口飛出去 -->
+		<projectileShifting>							<!-- 出膛左右偏移，多砲管可以根據list來回切 -->
+			<!-- <li>-1</li> -->
+			<li>0</li>
+		  </projectileShifting>
+		<!-- 炮口製退動畫 -->
+		<!-- 射擊模式 -->
+		<fireModes Inherit = "false">
+			<li>
+				<shotsPerBurst>5</shotsPerBurst>
+				<ticksBetweenShots>15</ticksBetweenShots>
+				<ticksBetweenBursts>80</ticksBetweenBursts>
+				<label>Auto</label>
+				<texPath>UI/Gizmos/FireRate_Auto</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>3</shotsPerBurst>
+				<ticksBetweenShots>15</ticksBetweenShots>
+				<ticksBetweenBursts>50</ticksBetweenBursts>
+				<label>Burst</label>
+				<texPath>UI/Gizmos/FireRate_Burst</texPath>
+			</li>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenBursts>15</ticksBetweenBursts>
+				<spreadRadius>1</spreadRadius>
+				<label>Single Shot</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+		</fireModes>
+		<motes>
+			<li>
+				<cycles>1</cycles>
+				<moteDef>Mote_CannonPlume</moteDef>
+				<animationType>Reset</animationType>
+				<offset>(0,0,4)</offset>
+			</li>
+		</motes>
+	</Vehicles.VehicleTurretDef>
+</Defs>

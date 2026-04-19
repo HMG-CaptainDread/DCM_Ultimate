@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <Vehicles.VehicleBuildDef ParentName="RT_BaseVehicleBuild"><!-- 建築型態的載具，基本上與BuildingDef相同-->
+		<defName>RT_M48H_MediumTank_Blueprint</defName>
+		<label>M48H Medium Tank</label>
+		<description>Old-time workhorse medium tank variant used in jungle and mountain combat. 
+			After undergoing a modern transformation, it was mass-produced with the promotion of the Rimworld War Show. equipped an 105mm cannon with two 7.62mm machine gun.</description>
+		<graphicData>
+			<texPath>Vehicles/M48H/vehicle</texPath>
+			<drawSize>(7,7)</drawSize>
+		</graphicData>	
+		<statBases> 		
+			<MaxHitPoints>500</MaxHitPoints>
+			<WorkToBuild>20000</WorkToBuild>
+			<Flammability>0.05</Flammability>
+		</statBases>
+		<size>(3,5)</size>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>	
+		<costList>
+			<EngineHeavy>1</EngineHeavy>
+			<ComponentFuelTank>2</ComponentFuelTank>
+			<ComponentTransmission>1</ComponentTransmission>
+			<ComponentWheelRoad>16</ComponentWheelRoad>
+			<ComponentIndustrial>20</ComponentIndustrial>
+			<Steel>175</Steel>
+			<Chemfuel>75</Chemfuel>
+		</costList>
+		<thingToSpawn>RT_M48H_MediumTank</thingToSpawn>	<!-- 建造後生成的載具Kind,這是與建築唯一不一樣的-->
+	</Vehicles.VehicleBuildDef>
+
+	<!-- 載具本體 -->
+	<Vehicles.VehicleDef ParentName="RT_BaseVehicle">
+		<defName>RT_M48H_MediumTank</defName>
+		<label>M48H Medium Tank</label>
+		<description>Old-time workhorse medium tank variant used in jungle and mountain combat. 
+			After undergoing a modern transformation, it was mass-produced with the promotion of the Rimworld War Show. equipped an 105mm cannon with two 7.62mm machine gun.</description>
+		<buildDef>RT_M48H_MediumTank_Blueprint</buildDef>
+		<graphicData>
+			<texPath>Vehicles/M48H/vehicle</texPath>
+			<drawSize>(7,7)</drawSize>
+		</graphicData>
+		<size>(3,5)</size>
+		<fillPercent>1</fillPercent>
+		<vehicleCategory>Combat</vehicleCategory>
+		<statBases>
+			<ArmorRating_Blunt>1.0</ArmorRating_Blunt>
+			<ArmorRating_Sharp>0.8</ArmorRating_Sharp>
+			<Flammability>0</Flammability>
+			<MarketValue>2240</MarketValue>
+		</statBases>
+		<vehicleStats>
+			<Mass>1000</Mass>
+			<MoveSpeed>8</MoveSpeed>
+			<CargoCapacity>300</CargoCapacity>
+			<RepairRate>0.5</RepairRate>
+		</vehicleStats>
+		<soundOneShotsOnEvent Inherit = "False">
+			<li>
+				<key>PawnEntered</key>
+				<value>VVE_VehicleEnter</value>
+			</li>
+			<li>
+				<key>PawnExited</key>
+				<value>VVE_VehicleEnter</value>
+			</li>
+			<li>
+				<key>IgnitionOn</key>
+				<value>RT_M60VehicleStart</value>
+			</li>
+			<li>
+				<key>IgnitionOff</key>
+				<value>RT_M60VehicleStop</value>
+			</li>
+		</soundOneShotsOnEvent>
+		<soundSustainersOnEvent Inherit="false"> 
+			<li>
+				<start>IgnitionOn</start>
+				<stop>IgnitionOff</stop>
+				<value>RT_M60VehicleEngine</value>
+			</li>
+		</soundSustainersOnEvent>
+		<race>
+			<baseBodySize>4</baseBodySize>
+		</race>	
+		<properties>	<!-- 座位與功能 -->
+			<customRoadCosts AssignDefaults = "0.4"/>
+			<worldSpeedMultiplier>1.0</worldSpeedMultiplier>
+			<winterSpeedMultiplier>1.0</winterSpeedMultiplier>
+			<customHillinessCosts>
+				<SmallHills>0.3</SmallHills>
+				<LargeHills>1.0</LargeHills>
+				<Mountainous>2</Mountainous>
+			</customHillinessCosts>
+			<vehicleJobLimitations>
+				<li>(RepairVehicle, 4)</li>
+			</vehicleJobLimitations>
+			<roles>
+				<li>
+					<key>driver</key>
+					<label>driver</label>
+					<slots>1</slots>
+					<slotsToOperate>1</slotsToOperate>				
+					<handlingTypes>
+						<li>Movement</li>
+					</handlingTypes>
+				</li>				
+				<li>
+					<key>gunner</key>
+					<label>gunner</label>
+					<slots>2</slots>
+					<slotsToOperate>1</slotsToOperate>			
+					<handlingTypes>Turret</handlingTypes>
+					<turretIds>
+						<li>mainTurret</li>
+						<li>coaxialMG</li>
+						<li>topMG</li>
+						<li>leftSmoke</li>
+						<li>rightSmoke</li>
+					</turretIds>
+				</li>
+				<li>
+					<key>commander</key>
+					<label>commander</label>
+					<slots>1</slots>
+					<slotsToOperate>1</slotsToOperate>			
+				</li>
+			</roles>
+		</properties>	
+		<components>	<!-- 各種零件 -->
+		<!-- Internal mobile Part 內部驅動部件-->
+			<li><!--Engine 100-->
+				<key>Engine</key>
+				<label>Engine</label>
+				<health>100</health>
+				<priorityStatEfficiency>true</priorityStatEfficiency>
+				<categories><li>MoveSpeed</li></categories>
+				<depth>Internal</depth>		
+				<reactors>
+					<li Class = "Vehicles.Reactor_Explosive">
+						<indicator>VF_Explosive</indicator>
+						<chance>0.25</chance>
+						<maxHealth>0.3</maxHealth>
+						<radius>3</radius>
+						<damageDef>Bomb</damageDef>
+					</li>
+				</reactors>			
+				<hitbox>
+					<cells>
+						<li>(0, -1)</li>
+						<li>(0, -2)</li>
+					</cells>
+				</hitbox>				
+			</li>		
+			<li><!-- fuel tank 100-->
+				<key>FuelTank</key>
+				<label>fuel tank</label>
+				<health>100</health>
+				<depth>Internal</depth>			
+				<reactors><li Class = "Vehicles.Reactor_FuelLeak"/></reactors>			
+				<hitbox><cells><li>(0, -1)</li></cells></hitbox>
+			</li>
+			<li><!-- Gearbox 50-->
+				<key>Gearbox</key>
+				<label>gearbox</label>
+				<health>50</health>
+				<depth>Internal</depth>
+				<categories><li>MoveSpeed</li></categories>	
+				<hitbox><cells><li>(0, 1)</li></cells></hitbox>			
+			</li>
+			<li><!-- AmmoRack 50-->
+				<key>AmmoRack</key>
+				<label>ammo rack</label>
+				<health>50</health>
+				<depth>Internal</depth>
+				<hitWeight>0.2</hitWeight>
+				<reactors>
+					<li Class = "Vehicles.Reactor_Explosive">
+						<indicator>VF_Explosive</indicator>
+						<chance>0.5</chance>
+						<maxHealth>0.5</maxHealth>
+						<radius>5</radius>
+						<damageDef>Bomb</damageDef>
+					</li>
+				</reactors>
+			</li>
+			<li><!-- transmission shaft 40 -->
+				<key>TransmissionShaft</key>
+				<label>transmission shaft</label>
+				<health>40</health>
+				<depth>Internal</depth>
+			</li>			
+		<!-- External mobile Part 外部驅動部件-->		
+			<li><!-- LeftTrack 150-->
+				<key>LeftTrack</key>
+				<label>left track</label>
+				<health>150</health>
+				<depth>External</depth>
+				<categories><li>MoveSpeed</li></categories>
+				<tags><li>Wheel</li></tags>
+				<hitWeight>2</hitWeight>
+				<hitbox>
+					<fallthrough>false</fallthrough>
+					<side>Left</side>
+				</hitbox>
+			</li>
+			<li><!-- RightTrack 150-->
+				<key>RightTrack</key>
+				<label>right track</label>
+				<health>150</health>
+				<depth>External</depth>
+				<categories><li>MoveSpeed</li></categories>	
+				<tags><li>Wheel</li></tags>
+				<hitWeight>2</hitWeight>
+				<hitbox>
+					<fallthrough>false</fallthrough>
+					<side>Right</side>
+				</hitbox>
+			</li>
+			<li><!-- LeftRoadWheels 100-->
+				<key>LeftRoadWheels</key>
+				<label>left road wheels</label>
+				<health>100</health>
+				<depth>External</depth>
+				<categories><li>MoveSpeed</li></categories>				
+				<tags><li>Wheel</li></tags>		
+				<hitbox>
+					<fallthrough>false</fallthrough>
+					<side>Left</side>
+				</hitbox>
+			</li>
+			<li><!-- RightRoadWheels 100-->
+				<key>RightRoadWheels</key>
+				<label>right road wheels</label>
+				<health>100</health>
+				<depth>External</depth>
+				<categories><li>MoveSpeed</li></categories>				
+				<tags><li>Wheel</li></tags>		
+				<hitbox>
+					<fallthrough>false</fallthrough>
+					<side>Right</side>
+				</hitbox>
+			</li>
+			<li><!-- LeftDriveSprocket 75-->
+				<key>LeftDriveSprocket</key>
+				<label>left drive sprocket</label>
+				<health>75</health>
+				<depth>External</depth>
+				<categories><li>MoveSpeed</li></categories>				
+				<tags><li>Wheel</li></tags>		
+				<hitbox>
+					<fallthrough>false</fallthrough>
+					<cells><li>(-1, 2)</li></cells><!--左前-->
+				</hitbox>
+			</li>
+			<li><!-- RightDriveSprocket 75-->
+				<key>RightDriveSprocket</key>
+				<label>right drive sprocket</label>
+				<health>75</health>
+				<depth>External</depth>
+				<categories><li>MoveSpeed</li></categories>				
+				<tags><li>Wheel</li></tags>		
+				<hitbox>
+					<fallthrough>false</fallthrough>
+					<cells><li>(1, 2)</li></cells><!--右前-->
+				</hitbox>
+			</li>
+			<li><!-- LeftTensionerWheel 75-->
+				<key>LeftTensionerWheel</key>
+				<label>left tensioner wheel</label>
+				<health>75</health>
+				<depth>External</depth>
+				<categories><li>MoveSpeed</li></categories>				
+				<tags><li>Wheel</li></tags>					
+				<hitbox>
+					<fallthrough>false</fallthrough>
+					<cells><li>(-1, -2)</li></cells><!--左後-->
+				</hitbox>
+			</li>
+			<li><!-- RightTensionerWheel 75-->
+				<key>RightTensionerWheel</key>
+				<label>right tensioner wheel</label>
+				<health>75</health>
+				<depth>External</depth>
+				<categories><li>MoveSpeed</li></categories>				
+				<tags><li>Wheel</li></tags>				
+				<hitbox>
+					<fallthrough>false</fallthrough>
+					<cells><li>(1, -2)</li></cells><!--右後-->
+				</hitbox>
+			</li>
+		<!-- External Platings 外部防禦部件 -->
+			<li><!-- FrontArmorPlating 200-->
+				<key>FrontArmorPlating</key>
+				<label>front armor Plating</label>
+				<health>270</health>
+				<depth>External</depth>
+				<hitWeight>8</hitWeight>	
+				<armor>
+					<ArmorRating_Blunt>1.2</ArmorRating_Blunt>
+					<ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+				</armor>		
+				<hitbox><side>Front</side></hitbox>
+			</li>
+			<li><!-- LeftArmorPlating 180-->
+				<key>LeftArmorPlating</key>
+				<label>left armor plating</label>
+				<health>243</health>
+				<depth>External</depth>
+				<hitWeight>5</hitWeight>		
+				<armor>
+					<ArmorRating_Blunt>0.84</ArmorRating_Blunt>
+					<ArmorRating_Sharp>0.84</ArmorRating_Sharp>
+				</armor>			
+				<hitbox><side>Left</side></hitbox>
+			</li>
+			<li><!-- RightArmorPlating 180-->
+				<key>RightArmorPlating</key>
+				<label>right armor plating</label>
+				<health>243</health>
+				<depth>External</depth>
+				<hitWeight>5</hitWeight>	
+				<armor>
+					<ArmorRating_Blunt>0.84</ArmorRating_Blunt>
+					<ArmorRating_Sharp>0.84</ArmorRating_Sharp>
+				</armor>			
+				<hitbox><side>Right</side></hitbox>
+			</li>
+			<li><!-- RoofArmorPlating 150 -->
+				<key>RoofArmorPlating</key>
+				<label>roof armor plating</label>
+				<health>270</health>
+				<depth>External</depth>
+				<hitWeight>5</hitWeight>
+				<armor>
+					<ArmorRating_Blunt>1.08</ArmorRating_Blunt>
+					<ArmorRating_Sharp>1.08</ArmorRating_Sharp>
+				</armor>
+			</li>
+			<li><!-- BackArmorPlating 150-->
+				<key>BackArmorPlating</key>
+				<label>rear armor plating</label>
+				<health>203</health>
+				<depth>External</depth>
+				<hitWeight>5</hitWeight>
+				<armor>
+					<ArmorRating_Blunt>0.84</ArmorRating_Blunt>
+					<ArmorRating_Sharp>0.84</ArmorRating_Sharp>
+				</armor>
+				<hitbox>
+					<side>Back</side>
+				</hitbox>
+			</li>
+			<li>
+				<!-- mainTurret 250-->
+				<key>MainTurret</key>
+				<label>Main Turret</label>
+				<health>270</health>
+				<depth>External</depth>
+				<hitWeight>6</hitWeight>
+				<armor>
+					<ArmorRating_Blunt>1.2</ArmorRating_Blunt>
+					<ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+				</armor>
+				<hitbox>
+					<cells>
+						<li>(-1, 1)</li>
+						<li>(-1, 0)</li>
+						<li>(-1, -1)</li>
+						<li>(0, 1)</li>
+						<li>(0, 0)</li>
+						<li>(0, -1)</li>
+						<li>(1, 1)</li>
+						<li>(1, 0)</li>
+						<li>(1, -1)</li>
+					</cells>
+				</hitbox>
+			</li>
+
+		<!-- External Platings 外部爆反部件 -->
+			<li>
+				<!-- FrontArmorPlating 75-->
+				<key>FrontERAPlating</key>
+				<label>front ERA Plating</label>
+				<health>122</health>
+				<depth>External</depth>
+				<hitWeight>15</hitWeight>
+				<armor>
+					<ArmorRating_Blunt>1</ArmorRating_Blunt>
+					<ArmorRating_Sharp>0.8</ArmorRating_Sharp>
+				</armor>
+				<hitbox>
+					<side>Front</side>
+				</hitbox>
+			</li>
+			<li>
+				<!-- TurretERAPlating 75 -->
+				<key>TurretERAPlating</key>
+				<label>turret ERA plating</label>
+				<health>122</health>
+				<depth>External</depth>
+				<hitWeight>15</hitWeight>
+				<armor>
+					<ArmorRating_Blunt>1</ArmorRating_Blunt>
+					<ArmorRating_Sharp>0.8</ArmorRating_Sharp>
+				</armor>
+				<hitbox>
+					<cells>
+						<li>(-1, 1)</li>
+						<li>(-1, 0)</li>
+						<li>(-1, -1)</li>
+						<li>(0, 1)</li>
+						<li>(0, 0)</li>
+						<li>(0, -1)</li>
+						<li>(1, 1)</li>
+						<li>(1, 0)</li>
+						<li>(1, -1)</li>
+					</cells>
+				</hitbox>
+			</li>			
+
+		</components>
+		<comps>
+			<li Class="Vehicles.CompProperties_FueledTravel">	<!-- 油箱與油耗 -->
+				<fuelType>Chemfuel</fuelType>
+				<leakDef>Filth_Fuel</leakDef>
+				<fuelConsumptionRate>20</fuelConsumptionRate>
+				<fuelConsumptionWorldMultiplier>1</fuelConsumptionWorldMultiplier>
+				<fuelCapacity>80</fuelCapacity>
+			</li>
+			<li Class="Vehicles.CompProperties_VehicleTurrets">	<!-- 砲塔 -->
+				<turrets>
+					<li>
+						<turretDef>RT_M48H_Tank_Turret</turretDef>					
+						<renderProperties>
+							<north>(0, 0)</north>
+							<south>(0, 0)</south>
+							<east>(0, 0.4)</east>
+							<west>(0, 0.4)</west>
+						</renderProperties>
+						
+						<gizmoLabel>Main Turret</gizmoLabel>
+						<aimPieOffset>(0, 2.75)</aimPieOffset>	<!-- 預熱指示器的x,z偏移 -->
+						<drawLayer>1</drawLayer>						
+						<key>mainTurret</key>
+						<component>
+							<key>MainTurret</key>
+							<healthPercent>0.01</healthPercent>
+						</component>
+					</li>
+
+					<li><!--車頂機槍-->	
+                        <turretDef>RT_M249_MGTurret</turretDef>
+                        <renderProperties><!--這裡的坐標系是無視旋轉的,所以x就是恆定左右偏移-->	
+                            <north>(-0.5,0.2)</north>
+                            <south>(0.5,-0.2)</south>
+                            <east>(0.2,0.5)</east>
+                            <west>(-0.2,-0.5)</west>
+                        </renderProperties>
+                        <gizmoLabel>support MG</gizmoLabel>
+                        <angleRestricted>(270,60)</angleRestricted>
+                        <aimPieOffset>(0, 0)</aimPieOffset>
+                        <key>topMG</key>
+						<drawLayer>2</drawLayer>					
+                        <parentKey>mainTurret</parentKey>
+                    </li>
+				
+					<li><!--同軸機槍-->	
+                        <turretDef>RT_M249_MGTurret</turretDef>
+                        <renderProperties>
+                            <north>(0.2,0.2)</north>
+                            <south>(-0.2,-0.2)</south>
+                            <east>(0.2,-0.2)</east>
+                            <west>(-0.2,0.2)</west>
+                        </renderProperties>
+                        <gizmoLabel>coaxial MG</gizmoLabel>
+                        <angleRestricted>(345,15)</angleRestricted>
+                        <aimPieOffset>(0, 0)</aimPieOffset>
+                        <key>coaxialMG</key>
+						<drawLayer>0</drawLayer>					
+                        <parentKey>mainTurret</parentKey>
+                    </li>
+
+					<li>
+						<turretDef>RT_GrenadeLauncherUS</turretDef>
+						<gizmoLabel>Left Grenade Launcher</gizmoLabel>
+						<renderProperties>
+							<north>(-1.1, 0.2)</north>
+							<south>(1.1, -0.2)</south>
+							<east>(0.2, 1.1)</east>
+							<west>(-0.2, -1.1)</west>
+						</renderProperties>
+						<aimPieOffset>(0, 0)</aimPieOffset>
+						<drawLayer>2</drawLayer>
+						<key>leftSmoke</key>
+						<parentKey>mainTurret</parentKey>
+					</li>
+
+					<li>
+						<turretDef>RT_GrenadeLauncherUS</turretDef>
+						<gizmoLabel>Right Grenade Launcher</gizmoLabel>
+						<renderProperties>
+							<north>(1.1, 0.2)</north>
+							<south>(-1.1, -0.2)</south>
+							<east>(0.2, -1.1)</east>
+							<west>(-0.2, 1.1)</west>
+						</renderProperties>
+						<aimPieOffset>(0, 0)</aimPieOffset>
+						<drawLayer>2</drawLayer>
+						<key>rightSmoke</key>
+						<parentKey>mainTurret</parentKey>
+					</li>
+				</turrets>
+			</li>
+		</comps>
+	</Vehicles.VehicleDef>
+
+		<!-- 主砲的Def -->
+	<Vehicles.VehicleTurretDef ParentName="RT_BaseTurret">
+		<defName>RT_M48H_Tank_Turret</defName>
+		<label>main turret</label>
+		<!-- 砲塔的渲染顯示 -->
+		<gizmoIconTexPath>Vehicles/M48H/mainTurret_full</gizmoIconTexPath>
+		<graphicData>
+			<texPath>Vehicles/M48H/mainTurret</texPath>
+			<drawSize>(7,7)</drawSize>
+		</graphicData>
+		<!-- 彈藥與裝填容量相關 -->
+		<reloadTimer>6.5</reloadTimer>
+		<reloadTimerMultiplierPerCrewCount>
+			<points>
+				<li>(1, 1.5)</li>
+				<li>(2, 1)</li>
+			</points>
+		</reloadTimerMultiplierPerCrewCount>
+		<magazineCapacity>1</magazineCapacity>
+		<chargePerAmmoCount>10</chargePerAmmoCount>
+		<genericAmmo>true</genericAmmo>
+		<ammunition>
+			<thingDefs>
+				<li>Steel</li>
+			</thingDefs>
+		</ammunition>
+		<!-- 射程與射界相關 -->
+		<minRange>2</minRange>
+		<maxRange>60.9</maxRange>
+		<rotationSpeed>1.5</rotationSpeed>
+		<!-- 射擊相關 -->
+		<warmUpTimer>2</warmUpTimer>
+		<shotSound>RT_Shot_L7Sound</shotSound>
+		<reloadSound>RT_ManpowerReloadSound</reloadSound>
+		<projectile>RT_Bullet_M48HShell</projectile>
+		<projectileOffset>5</projectileOffset>		<!-- 出膛前後偏移，主要是能讓子彈能從炮口飛出去 -->
+		<projectileShifting>							<!-- 出膛左右偏移，多砲管可以根據list來回切 -->
+			<li>0</li>
+		</projectileShifting>
+		<!-- 炮口製退動畫 -->
+		<graphics>
+			<li>
+				<graphicData>
+					<texPath>Vehicles/M48H/mainTurret_barrel</texPath>
+					<drawSize>(7,7)</drawSize>
+					<graphicClass>Vehicles.Graphic_Turret</graphicClass>
+					<shaderType>CutoutComplexPattern</shaderType>
+				</graphicData>
+				<recoil>
+					<distanceTotal>0.2</distanceTotal>
+					<distancePerTick>0.05</distancePerTick>
+					<speedMultiplierPostRecoil>0.1</speedMultiplierPostRecoil>
+				</recoil>
+			</li>
+		</graphics>
+		<!-- 射擊模式 -->
+		<fireModes>
+			<li>
+				<shotsPerBurst>1</shotsPerBurst>
+				<ticksBetweenBursts>1</ticksBetweenBursts>
+				<forcedMissRadius>1</forcedMissRadius>
+				<label>Single Shot</label>
+				<texPath>UI/Gizmos/FireRate_Single</texPath>
+			</li>
+		</fireModes>
+		<motes>
+			<li>
+				<cycles>1</cycles>
+				<moteDef>Mote_CannonPlume</moteDef>
+				<animationType>Reset</animationType>
+				<offset>(0,0,2.75)</offset>
+			</li>
+		</motes>
+	</Vehicles.VehicleTurretDef>
+
+		<!-- 主砲的投射物 -->
+	<ThingDef ParentName="BaseBullet">
+		<defName>RT_Bullet_M48HShell</defName>
+		<label>high-explosive shell</label>
+		  <thingClass>Projectile_Explosive</thingClass>
+		<graphicData>
+		  <texPath>Things/Projectile/Bullet_Big</texPath>
+		  <graphicClass>Graphic_Single</graphicClass>
+		  <drawSize>2</drawSize>
+		</graphicData>
+		<projectile>
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>100</damageAmountBase>
+			<armorPenetrationBase>0.75</armorPenetrationBase>
+			<speed>85</speed>
+			<explosionRadius>3.9</explosionRadius>
+			<soundHitThickRoof>Artillery_HitThickRoof</soundHitThickRoof>
+			<soundExplode>Explosion_GiantBomb</soundExplode>
+			<soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+			<soundAmbient>MortarRound_Ambient</soundAmbient>
+		</projectile>
+		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>3.9</explosiveRadius>
+				<explosiveDamageType>Stun</explosiveDamageType>
+				<damageAmountBase>6</damageAmountBase>
+				<explodeOnDestroyed>true</explodeOnDestroyed>
+				<explodeOnKilled>true</explodeOnKilled>
+				<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+			</li>
+		</comps>
+	</ThingDef>
+</Defs>
