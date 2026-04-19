@@ -1,0 +1,488 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!--C-21-->
+  <!--本体-->
+  <ThingDef ParentName="MYDE_AerocraftFramework_XmlParent">
+    <defName>WOP_Dragon_Base</defName>
+    <label>Dragon C-21 Assault ship</label>
+    <description>a quad-rotor VTOL heavy transport and assault aircraft used by the early-colonial era for full-scale military operations against local natives.</description>
+    <thingClass>MYDE_AerocraftFramework.Building_Aerocraft_AsBaseThing</thingClass>
+    <uiIconPath>Things/C21Dragon/UI</uiIconPath>
+    <graphicData>
+      <texPath>Things/C21Dragon/Base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(18,18)</drawSize>
+    </graphicData>
+    <damageMultipliers>
+      <li>
+        <damageDef>EMP</damageDef>
+        <multiplier>0</multiplier>
+      </li>
+      <li>
+        <damageDef>Stun</damageDef>
+        <multiplier>0</multiplier>
+      </li>
+    </damageMultipliers>
+    <statBases>
+      <MaxHitPoints>6000</MaxHitPoints>
+      <WorkToBuild>14000</WorkToBuild>
+      <Mass>5000</Mass>
+      <Beauty>5</Beauty>
+      <!--这个是精准度-->
+      <ShootingAccuracyTurret>0.9</ShootingAccuracyTurret>
+    </statBases>
+    <costList>
+      <Steel>3000</Steel>
+      <Plasteel>500</Plasteel>
+      <ComponentIndustrial>100</ComponentIndustrial>
+      <Chemfuel>300</Chemfuel>
+    </costList>
+    <constructionSkillPrerequisite>8</constructionSkillPrerequisite>
+    <researchPrerequisites>
+      <li>MYDE_AF_Research_AdvancedAerocraf</li>
+    </researchPrerequisites>
+    <size>(9,9)</size>
+    <designationCategory>MYDE_AerocraftFramework_DesignationCategory</designationCategory>
+    <inspectorTabs>
+      <li>ITab_ContentsTransporter</li>
+    </inspectorTabs>
+    <comps>
+      <li Class="CompProperties_Refuelable">
+        <fuelLabel>Fuel</fuelLabel>
+        <fuelGizmoLabel>Fuel</fuelGizmoLabel>
+        <outOfFuelMessage>Needs Fuel</outOfFuelMessage>
+        <fuelFilter>
+          <thingDefs>
+            <li>Chemfuel</li>
+          </thingDefs>
+        </fuelFilter>
+        <fuelCapacity>2250</fuelCapacity>
+        <fuelMultiplier>1</fuelMultiplier>
+        <initialFuelPercent>0.1</initialFuelPercent>
+        <autoRefuelPercent>1</autoRefuelPercent>
+        <showFuelGizmo>true</showFuelGizmo>
+        <minimumFueledThreshold>1</minimumFueledThreshold>
+      </li>
+      <!--本体的渲染+阴影-->
+      <li Class="MYDE_AerocraftFramework.CompProperties_Base_Thing">
+        <!--是否渲染-->
+        <If_Draw_Base>True</If_Draw_Base>
+        <!--飞行的大小变化-->
+        <Draw_ScaleIncreaseFactor_WhenFlying>0.5</Draw_ScaleIncreaseFactor_WhenFlying>
+        <!--本体的大小+高度-->
+        <Draw_Base_TexturePath>Things/C21Dragon/Base</Draw_Base_TexturePath>
+        <Draw_Base_Scale>18</Draw_Base_Scale>
+        <Draw_Base_ExtraAltitudeLayerNum>0.4</Draw_Base_ExtraAltitudeLayerNum>
+        <!--是否制作阴影+阴影最大最下长度+阴影角度-->
+        <If_NeedDrawAllShadow>True</If_NeedDrawAllShadow>
+        <!--是否制作本体阴影+大小+图层+透明度-->
+        <If_DrawShadow_Base>true</If_DrawShadow_Base>
+        <Draw_Shadow_Base_Scale>18</Draw_Shadow_Base_Scale>
+        <Draw_Shadow_Base_HeightFactor>3</Draw_Shadow_Base_HeightFactor>
+        <Draw_Shadow_Base_ExtraAltitudeLayerNum>-0.5</Draw_Shadow_Base_ExtraAltitudeLayerNum>
+        <Draw_Shadow_Base_Transparency>0.5</Draw_Shadow_Base_Transparency>
+      </li>
+
+      <!--機首機槍-->
+      <li Class="MYDE_AerocraftFramework.CompProperties_GetExtraWeapon">
+        <!--武器的Def+偏移量+角度-->
+        <ExtraWeaponDef>MYDE_AF_RotorCraft_FourPropeller_ExtraWeapon_MachineGun</ExtraWeaponDef>
+        <ExtraWeapon_Range>7.0</ExtraWeapon_Range>
+        <ExtraWeapon_Angle>263.404</ExtraWeapon_Angle>
+      </li>
+
+      <li Class="MYDE_AerocraftFramework.CompProperties_Base_Weapon">
+        <!--枪械-->
+        <WeaponDef>MYDE_AF_UniversalWeapon_BaseGun</WeaponDef>
+        <!--是否渲染-->
+        <If_Draw_Gun>True</If_Draw_Gun>
+        <!--枪的图层高度-->
+        <Draw_Gun_Scale>1</Draw_Gun_Scale>
+        <Draw_Gun_ExtraAltitudeLayerNum>-0.6</Draw_Gun_ExtraAltitudeLayerNum>
+        <!--是否制作枪械阴影+大小+图层+透明度-->
+        <If_DrawShadow_Gun>true</If_DrawShadow_Gun>
+        <Draw_Shadow_Gun_Scale>0.75</Draw_Shadow_Gun_Scale>
+        <Draw_Shadow_Gun_ExtraAltitudeLayerNum>-0.6</Draw_Shadow_Gun_ExtraAltitudeLayerNum>
+        <Draw_Shadow_Gun_Transparency>0.5</Draw_Shadow_Gun_Transparency>
+      </li>
+
+      <!--正面火箭巢-->
+
+      <li Class="MYDE_AerocraftFramework.CompProperties_GetExtraWeapon">
+        <!--武器的Def+偏移量+角度-->
+        <ExtraWeaponDef>MYDE_AF_RotorCraft_FourPropeller_ExtraWeapon_Rocket</ExtraWeaponDef>
+        <ExtraWeapon_Range>6.0</ExtraWeapon_Range>
+        <ExtraWeapon_Angle>238.530</ExtraWeapon_Angle>
+      </li>
+      <li Class="MYDE_AerocraftFramework.CompProperties_GetExtraWeapon">
+        <!--武器的Def+偏移量+角度-->
+        <ExtraWeaponDef>MYDE_AF_RotorCraft_FourPropeller_ExtraWeapon_Rocket</ExtraWeaponDef>
+        <ExtraWeapon_Range>6.0</ExtraWeapon_Range>
+        <ExtraWeapon_Angle>301.557</ExtraWeapon_Angle>
+      </li>
+
+      <!--側面機槍-->
+      <li Class="MYDE_AerocraftFramework.CompProperties_GetExtraWeapon">
+        <!--武器的Def+偏移量+角度-->
+        <ExtraWeaponDef>MYDE_AF_RotorCraft_FourPropeller_ExtraWeapon_MachineGun</ExtraWeaponDef>
+        <ExtraWeapon_Range>5.0</ExtraWeapon_Range>
+        <ExtraWeapon_Angle>309.530</ExtraWeapon_Angle>
+      </li>
+      <li Class="MYDE_AerocraftFramework.CompProperties_GetExtraWeapon">
+        <!--武器的Def+偏移量+角度-->
+        <ExtraWeaponDef>MYDE_AF_RotorCraft_FourPropeller_ExtraWeapon_MachineGun</ExtraWeaponDef>
+        <ExtraWeapon_Range>5.0</ExtraWeapon_Range>
+        <ExtraWeapon_Angle>231.148</ExtraWeapon_Angle>
+      </li>
+
+      <!--側面火箭巢-->
+      <li Class="MYDE_AerocraftFramework.CompProperties_GetExtraWeapon">
+        <!--武器的Def+偏移量+角度-->
+        <ExtraWeaponDef>MYDE_AF_RotorCraft_FourPropeller_ExtraWeapon_Rocket</ExtraWeaponDef>
+        <ExtraWeapon_Range>4.0</ExtraWeapon_Range>
+        <ExtraWeapon_Angle>186.480</ExtraWeapon_Angle>
+      </li>
+      <li Class="MYDE_AerocraftFramework.CompProperties_GetExtraWeapon">
+        <!--武器的Def+偏移量+角度-->
+        <ExtraWeaponDef>MYDE_AF_RotorCraft_FourPropeller_ExtraWeapon_Rocket</ExtraWeaponDef>
+        <ExtraWeapon_Range>4.0</ExtraWeapon_Range>
+        <ExtraWeapon_Angle>351.194</ExtraWeapon_Angle>
+      </li>
+
+      <!--尾部機槍-->
+      <li Class="MYDE_AerocraftFramework.CompProperties_GetExtraWeapon">
+        <!--武器的Def+偏移量+角度-->
+        <ExtraWeaponDef>MYDE_AF_RotorCraft_FourPropeller_ExtraWeapon_MachineGun</ExtraWeaponDef>
+        <ExtraWeapon_Range>7.42</ExtraWeapon_Range>
+        <ExtraWeapon_Angle>79.373</ExtraWeapon_Angle>
+      </li>
+      <li Class="MYDE_AerocraftFramework.CompProperties_GetExtraWeapon">
+        <!--武器的Def+偏移量+角度-->
+        <ExtraWeaponDef>MYDE_AF_RotorCraft_FourPropeller_ExtraWeapon_MachineGun</ExtraWeaponDef>
+        <ExtraWeapon_Range>7.42</ExtraWeapon_Range>
+        <ExtraWeapon_Angle>100.796</ExtraWeapon_Angle>
+      </li>
+
+      <!--移动方式-->
+      <li Class="MYDE_AerocraftFramework.CompProperties_MoveToTargetAndHover">
+        <!--碰撞检测的最大移动距离-->
+        <Check_CollideMoveRangeMax>10</Check_CollideMoveRangeMax>
+        <!--起飞需要的预热时间-->
+        <Move_WarmUpTickMax>180</Move_WarmUpTickMax>
+        <!--是否需要转向，False则省略飞行器转向过程-->
+        <If_NeedTurnWhenMoving>True</If_NeedTurnWhenMoving>
+        <!--最大移动速度+转向时的移动速度-->
+        <MoveSpeed_Max>0.2</MoveSpeed_Max>
+        <MoveSpeed_Turning>0.10</MoveSpeed_Turning>
+        <!--默认盘旋设置
+          True为开 False为关-->
+        <Default_HoverSet>False</Default_HoverSet>
+        <!--盘旋的文字+图标-->
+        <Hover_Icon_On_Label>Hover：On</Hover_Icon_On_Label>
+        <Hover_Icon_Off_Label>Hover：Off</Hover_Icon_Off_Label>
+        <Hover_Icon_Description>Whether to turn on or off the hovering of the aerocraft</Hover_Icon_Description>
+        <Hover_Icon_On_IconPath>AerocraftFramework/Icon/Hover</Hover_Icon_On_IconPath>
+        <Hover_Icon_Off_IconPath>AerocraftFramework/Icon/False</Hover_Icon_Off_IconPath>
+        <!--起飞降落的图标切换·文字+图标-->
+        <TakeOffAndLanding_Icon_On_Label>Take off</TakeOffAndLanding_Icon_On_Label>
+        <TakeOffAndLanding_Icon_Off_Label>Landing</TakeOffAndLanding_Icon_Off_Label>
+        <TakeOffAndLanding_Icon_Description>Switch between takeoff and landing. “Samson”SA-2 is a helicopter, which can take off and land vertically at any time. It can only attack in flight. After takeoff, move it with the right mouse button, right-click on Non-Player faction object to forcibly attack the target, right-click on our faction object to switch to follow mode.</TakeOffAndLanding_Icon_Description>
+        <TakeOffAndLanding_Icon_On_IconPath>AerocraftFramework/Icon/Up</TakeOffAndLanding_Icon_On_IconPath>
+        <TakeOffAndLanding_Icon_Off_IconPath>AerocraftFramework/Icon/Down</TakeOffAndLanding_Icon_Off_IconPath>
+        <!--盘旋的角速度+转向速度-->
+        <AngleChangePerTick_Hover>1</AngleChangePerTick_Hover>
+        <AngleChangePerTick_Turning>2</AngleChangePerTick_Turning>
+        <!--每Tick消耗燃料量
+          1 = 60燃料/秒 0.015 = 0.9燃料/秒-->
+        <FuelConsumePerTick>0.015</FuelConsumePerTick>
+      </li>
+      <!--摧毁自爆-->
+      <li Class="MYDE_AerocraftFramework.CompProperties_DoExplosion_BySomeWays">
+        <!--被摧毁时是否自爆-->
+        <If_DoExplosion_WhenDestroy>True</If_DoExplosion_WhenDestroy>
+        <!--生命值归0的时候是否沿路径坠毁后自爆+坠毁距离-->
+        <If_Drop_WhenHitpointZero>True</If_Drop_WhenHitpointZero>
+        <Drop_Range>20</Drop_Range>
+        <!--这个是伤害，写多少就造成多少伤害，不是CompProperties_Explosive的乘数，其他的所有字段都跟原版的CompProperties_Explosive相同-->
+        <damageAmountBase>30</damageAmountBase>
+        <explosiveRadius>3.9</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+      </li>
+
+      <!--装饰物·扇叶-->
+      <li Class="MYDE_AerocraftFramework.CompProperties_BaseDraw_DecorationAndShadow">
+        <!--装饰物的路径+大小+透明度-->
+        <If_UseSecondTexture>true</If_UseSecondTexture>
+        <Draw_Decoration_TexturePath>Things/C21Dragon/Propeller</Draw_Decoration_TexturePath>
+        <Draw_Decoration_TexturePath_Second>Things/C21Dragon/Propeller_2</Draw_Decoration_TexturePath_Second>
+        <Draw_Decoration_Scale>3</Draw_Decoration_Scale>
+        <Draw_Decoration_Transparency>1</Draw_Decoration_Transparency>
+        <!--本体的图层+额外图层数值调整-->
+        <Draw_Decoration_BaseAltitude>WorldClipper</Draw_Decoration_BaseAltitude>
+        <Draw_Decoration_ExtraAltitudeLayerNum>0.6</Draw_Decoration_ExtraAltitudeLayerNum>
+        <!--偏移中心点的长度跟角度（用来计算位置）-->
+        <Draw_Decoration_Range>7.4</Draw_Decoration_Range>
+        <Draw_Decoration_Angle>55.385</Draw_Decoration_Angle>
+        <!--基础旋转方向+转速-->
+        <Draw_Decoration_BaseRotate>60</Draw_Decoration_BaseRotate>
+        <Draw_Decoration_RotateSpeedPerTick_Max>19</Draw_Decoration_RotateSpeedPerTick_Max>
+        <!--是否渲染阴影-->
+        <If_DrawShadow>true</If_DrawShadow>
+        <If_FallowBaseAngle>false</If_FallowBaseAngle>
+        <Draw_Shadow_TexturePath>Things/C21Dragon/Propeller</Draw_Shadow_TexturePath>
+        <Draw_Shadow_TexturePath_Second>Things/C21Dragon/Propeller_2</Draw_Shadow_TexturePath_Second>
+        <Draw_Shadow_ScaleAndRangeFactor>1</Draw_Shadow_ScaleAndRangeFactor>
+        <Draw_Shadow_Transparency>0.5</Draw_Shadow_Transparency>
+        <Draw_Shadow_ExtraAltitudeLayerNum>-0.4</Draw_Shadow_ExtraAltitudeLayerNum>
+      </li>
+      <li Class="MYDE_AerocraftFramework.CompProperties_BaseDraw_DecorationAndShadow">
+        <!--装饰物的路径+大小+透明度-->
+        <If_UseSecondTexture>true</If_UseSecondTexture>
+        <Draw_Decoration_TexturePath>Things/C21Dragon/Propeller</Draw_Decoration_TexturePath>
+        <Draw_Decoration_TexturePath_Second>Things/C21Dragon/Propeller_2</Draw_Decoration_TexturePath_Second>
+        <Draw_Decoration_Scale>3</Draw_Decoration_Scale>
+        <Draw_Decoration_Transparency>1</Draw_Decoration_Transparency>
+        <!--本体的图层+额外图层数值调整-->
+        <Draw_Decoration_BaseAltitude>WorldClipper</Draw_Decoration_BaseAltitude>
+        <Draw_Decoration_ExtraAltitudeLayerNum>0.5</Draw_Decoration_ExtraAltitudeLayerNum>
+        <!--偏移中心点的长度跟角度（用来计算位置）-->
+        <Draw_Decoration_Range>7.4</Draw_Decoration_Range>
+        <Draw_Decoration_Angle>55.385</Draw_Decoration_Angle>
+        <!--基础旋转方向+转速-->
+        <!--基础旋转方向+转速-->
+        <Draw_Decoration_BaseRotate>60</Draw_Decoration_BaseRotate>
+        <Draw_Decoration_RotateSpeedPerTick_Max>-19</Draw_Decoration_RotateSpeedPerTick_Max>
+        <!--是否渲染阴影-->
+        <If_DrawShadow>true</If_DrawShadow>
+        <If_FallowBaseAngle>false</If_FallowBaseAngle>
+        <Draw_Shadow_TexturePath>Things/SA2Samson/Propeller</Draw_Shadow_TexturePath>
+        <Draw_Shadow_TexturePath_Second>Things/SA2Samson/Propeller_2</Draw_Shadow_TexturePath_Second>
+        <Draw_Shadow_ScaleAndRangeFactor>1</Draw_Shadow_ScaleAndRangeFactor>
+        <Draw_Shadow_Transparency>0.5</Draw_Shadow_Transparency>
+        <Draw_Shadow_ExtraAltitudeLayerNum>-0.4</Draw_Shadow_ExtraAltitudeLayerNum>
+      </li>
+
+      <li Class="MYDE_AerocraftFramework.CompProperties_BaseDraw_DecorationAndShadow">
+        <If_UseSecondTexture>true</If_UseSecondTexture>
+        <Draw_Decoration_TexturePath>Things/C21Dragon/Propeller</Draw_Decoration_TexturePath>
+        <Draw_Decoration_TexturePath_Second>Things/C21Dragon/Propeller_2</Draw_Decoration_TexturePath_Second>
+        <Draw_Decoration_Scale>3</Draw_Decoration_Scale>
+        <Draw_Decoration_Transparency>1</Draw_Decoration_Transparency>
+        <Draw_Decoration_BaseAltitude>WorldClipper</Draw_Decoration_BaseAltitude>
+        <Draw_Decoration_ExtraAltitudeLayerNum>0.6</Draw_Decoration_ExtraAltitudeLayerNum>
+        <Draw_Decoration_Range>6.087</Draw_Decoration_Range>
+        <Draw_Decoration_Angle>331.423</Draw_Decoration_Angle>
+        <Draw_Decoration_BaseRotate>60</Draw_Decoration_BaseRotate>
+        <Draw_Decoration_RotateSpeedPerTick_Max>19</Draw_Decoration_RotateSpeedPerTick_Max>
+        <If_DrawShadow>true</If_DrawShadow>
+        <If_FallowBaseAngle>false</If_FallowBaseAngle>
+        <Draw_Shadow_TexturePath>Things/C21Dragon/Propeller</Draw_Shadow_TexturePath>
+        <Draw_Shadow_TexturePath_Second>Things/C21Dragon/Propeller_2</Draw_Shadow_TexturePath_Second>
+        <Draw_Shadow_ScaleAndRangeFactor>1</Draw_Shadow_ScaleAndRangeFactor>
+        <Draw_Shadow_Transparency>0.5</Draw_Shadow_Transparency>
+        <Draw_Shadow_ExtraAltitudeLayerNum>-0.4</Draw_Shadow_ExtraAltitudeLayerNum>
+      </li>
+      <li Class="MYDE_AerocraftFramework.CompProperties_BaseDraw_DecorationAndShadow">
+        <If_UseSecondTexture>true</If_UseSecondTexture>
+        <Draw_Decoration_TexturePath>Things/C21Dragon/Propeller</Draw_Decoration_TexturePath>
+        <Draw_Decoration_TexturePath_Second>Things/C21Dragon/Propeller_2</Draw_Decoration_TexturePath_Second>
+        <Draw_Decoration_Scale>3</Draw_Decoration_Scale>
+        <Draw_Decoration_Transparency>1</Draw_Decoration_Transparency>
+        <Draw_Decoration_BaseAltitude>WorldClipper</Draw_Decoration_BaseAltitude>
+        <Draw_Decoration_ExtraAltitudeLayerNum>0.5</Draw_Decoration_ExtraAltitudeLayerNum>
+        <Draw_Decoration_Range>6.087</Draw_Decoration_Range>
+        <Draw_Decoration_Angle>331.423</Draw_Decoration_Angle>
+        <Draw_Decoration_BaseRotate>60</Draw_Decoration_BaseRotate>
+        <Draw_Decoration_RotateSpeedPerTick_Max>-19</Draw_Decoration_RotateSpeedPerTick_Max>
+        <If_DrawShadow>true</If_DrawShadow>
+        <If_FallowBaseAngle>false</If_FallowBaseAngle>
+        <Draw_Shadow_TexturePath>Things/SA2Samson/Propeller</Draw_Shadow_TexturePath>
+        <Draw_Shadow_TexturePath_Second>Things/SA2Samson/Propeller_2</Draw_Shadow_TexturePath_Second>
+        <Draw_Shadow_ScaleAndRangeFactor>1</Draw_Shadow_ScaleAndRangeFactor>
+        <Draw_Shadow_Transparency>0.5</Draw_Shadow_Transparency>
+        <Draw_Shadow_ExtraAltitudeLayerNum>-0.4</Draw_Shadow_ExtraAltitudeLayerNum>
+      </li>
+
+      <li Class="MYDE_AerocraftFramework.CompProperties_BaseDraw_DecorationAndShadow">
+        <If_UseSecondTexture>true</If_UseSecondTexture>
+        <Draw_Decoration_TexturePath>Things/C21Dragon/Propeller</Draw_Decoration_TexturePath>
+        <Draw_Decoration_TexturePath_Second>Things/C21Dragon/Propeller_2</Draw_Decoration_TexturePath_Second>
+        <Draw_Decoration_Scale>3</Draw_Decoration_Scale>
+        <Draw_Decoration_Transparency>1</Draw_Decoration_Transparency>
+        <Draw_Decoration_BaseAltitude>WorldClipper</Draw_Decoration_BaseAltitude>
+        <Draw_Decoration_ExtraAltitudeLayerNum>0.6</Draw_Decoration_ExtraAltitudeLayerNum>
+        <Draw_Decoration_Range>7.376</Draw_Decoration_Range>
+        <Draw_Decoration_Angle>124.222</Draw_Decoration_Angle>
+        <Draw_Decoration_BaseRotate>60</Draw_Decoration_BaseRotate>
+        <Draw_Decoration_RotateSpeedPerTick_Max>19</Draw_Decoration_RotateSpeedPerTick_Max>
+        <If_DrawShadow>true</If_DrawShadow>
+        <If_FallowBaseAngle>false</If_FallowBaseAngle>
+        <Draw_Shadow_TexturePath>Things/C21Dragon/Propeller</Draw_Shadow_TexturePath>
+        <Draw_Shadow_TexturePath_Second>Things/C21Dragon/Propeller_2</Draw_Shadow_TexturePath_Second>
+        <Draw_Shadow_ScaleAndRangeFactor>1</Draw_Shadow_ScaleAndRangeFactor>
+        <Draw_Shadow_Transparency>0.5</Draw_Shadow_Transparency>
+        <Draw_Shadow_ExtraAltitudeLayerNum>-0.4</Draw_Shadow_ExtraAltitudeLayerNum>
+      </li>
+      <li Class="MYDE_AerocraftFramework.CompProperties_BaseDraw_DecorationAndShadow">
+        <If_UseSecondTexture>true</If_UseSecondTexture>
+        <Draw_Decoration_TexturePath>Things/C21Dragon/Propeller</Draw_Decoration_TexturePath>
+        <Draw_Decoration_TexturePath_Second>Things/C21Dragon/Propeller_2</Draw_Decoration_TexturePath_Second>
+        <Draw_Decoration_Scale>3</Draw_Decoration_Scale>
+        <Draw_Decoration_Transparency>1</Draw_Decoration_Transparency>
+        <Draw_Decoration_BaseAltitude>WorldClipper</Draw_Decoration_BaseAltitude>
+        <Draw_Decoration_ExtraAltitudeLayerNum>0.5</Draw_Decoration_ExtraAltitudeLayerNum>
+        <Draw_Decoration_Range>7.376</Draw_Decoration_Range>
+        <Draw_Decoration_Angle>124.222</Draw_Decoration_Angle>
+        <Draw_Decoration_BaseRotate>60</Draw_Decoration_BaseRotate>
+        <Draw_Decoration_RotateSpeedPerTick_Max>-19</Draw_Decoration_RotateSpeedPerTick_Max>
+        <If_DrawShadow>true</If_DrawShadow>
+        <If_FallowBaseAngle>false</If_FallowBaseAngle>
+        <Draw_Shadow_TexturePath>Things/SA2Samson/Propeller</Draw_Shadow_TexturePath>
+        <Draw_Shadow_TexturePath_Second>Things/SA2Samson/Propeller_2</Draw_Shadow_TexturePath_Second>
+        <Draw_Shadow_ScaleAndRangeFactor>1</Draw_Shadow_ScaleAndRangeFactor>
+        <Draw_Shadow_Transparency>0.5</Draw_Shadow_Transparency>
+        <Draw_Shadow_ExtraAltitudeLayerNum>-0.4</Draw_Shadow_ExtraAltitudeLayerNum>
+      </li>
+
+      <li Class="MYDE_AerocraftFramework.CompProperties_BaseDraw_DecorationAndShadow">
+        <If_UseSecondTexture>true</If_UseSecondTexture>
+        <Draw_Decoration_TexturePath>Things/C21Dragon/Propeller</Draw_Decoration_TexturePath>
+        <Draw_Decoration_TexturePath_Second>Things/C21Dragon/Propeller_2</Draw_Decoration_TexturePath_Second>
+        <Draw_Decoration_Scale>3</Draw_Decoration_Scale>
+        <Draw_Decoration_Transparency>1</Draw_Decoration_Transparency>
+        <Draw_Decoration_BaseAltitude>WorldClipper</Draw_Decoration_BaseAltitude>
+        <Draw_Decoration_ExtraAltitudeLayerNum>0.6</Draw_Decoration_ExtraAltitudeLayerNum>
+        <Draw_Decoration_Range>5.960</Draw_Decoration_Range>
+        <Draw_Decoration_Angle>208.289</Draw_Decoration_Angle>
+        <Draw_Decoration_BaseRotate>60</Draw_Decoration_BaseRotate>
+        <Draw_Decoration_RotateSpeedPerTick_Max>19</Draw_Decoration_RotateSpeedPerTick_Max>
+        <If_DrawShadow>true</If_DrawShadow>
+        <If_FallowBaseAngle>false</If_FallowBaseAngle>
+        <Draw_Shadow_TexturePath>Things/C21Dragon/Propeller</Draw_Shadow_TexturePath>
+        <Draw_Shadow_TexturePath_Second>Things/C21Dragon/Propeller_2</Draw_Shadow_TexturePath_Second>
+        <Draw_Shadow_ScaleAndRangeFactor>1</Draw_Shadow_ScaleAndRangeFactor>
+        <Draw_Shadow_Transparency>0.5</Draw_Shadow_Transparency>
+        <Draw_Shadow_ExtraAltitudeLayerNum>-0.4</Draw_Shadow_ExtraAltitudeLayerNum>
+      </li>
+      <li Class="MYDE_AerocraftFramework.CompProperties_BaseDraw_DecorationAndShadow">
+        <If_UseSecondTexture>true</If_UseSecondTexture>
+        <Draw_Decoration_TexturePath>Things/C21Dragon/Propeller</Draw_Decoration_TexturePath>
+        <Draw_Decoration_TexturePath_Second>Things/C21Dragon/Propeller_2</Draw_Decoration_TexturePath_Second>
+        <Draw_Decoration_Scale>3</Draw_Decoration_Scale>
+        <Draw_Decoration_Transparency>1</Draw_Decoration_Transparency>
+        <Draw_Decoration_BaseAltitude>WorldClipper</Draw_Decoration_BaseAltitude>
+        <Draw_Decoration_ExtraAltitudeLayerNum>0.5</Draw_Decoration_ExtraAltitudeLayerNum>
+        <Draw_Decoration_Range>5.960</Draw_Decoration_Range>
+        <Draw_Decoration_Angle>208.289</Draw_Decoration_Angle>
+        <Draw_Decoration_BaseRotate>60</Draw_Decoration_BaseRotate>
+        <Draw_Decoration_RotateSpeedPerTick_Max>-19</Draw_Decoration_RotateSpeedPerTick_Max>
+        <If_DrawShadow>true</If_DrawShadow>
+        <If_FallowBaseAngle>false</If_FallowBaseAngle>
+        <Draw_Shadow_TexturePath>Things/SA2Samson/Propeller</Draw_Shadow_TexturePath>
+        <Draw_Shadow_TexturePath_Second>Things/SA2Samson/Propeller_2</Draw_Shadow_TexturePath_Second>
+        <Draw_Shadow_ScaleAndRangeFactor>1</Draw_Shadow_ScaleAndRangeFactor>
+        <Draw_Shadow_Transparency>0.5</Draw_Shadow_Transparency>
+        <Draw_Shadow_ExtraAltitudeLayerNum>-0.4</Draw_Shadow_ExtraAltitudeLayerNum>
+      </li>
+      <!--载人-->
+      <li Class="MYDE_AerocraftFramework.CompProperties_CarryPawn">
+        <!--最大载人量-->
+        <CarryPawnNumMax>12</CarryPawnNumMax>
+        <If_ChangeWeaponByPawnWeaponWhenCarry>False</If_ChangeWeaponByPawnWeaponWhenCarry>
+        <If_NeedPawnToControl>true</If_NeedPawnToControl>      
+        <NeedPawnToControl_Number>3</NeedPawnToControl_Number>
+        <If_ShowFastLordGizmos>True</If_ShowFastLordGizmos>
+        <Gizmos_CarryPawn_Label>Fast loading</Gizmos_CarryPawn_Label>
+        <Gizmos_CarryPawn_Description>Fast loading colonizers within the surrounding 5x5 range</Gizmos_CarryPawn_Description>
+        <Gizmos_CarryPawn_IconPath>Things/C21Dragon/CarryPawn</Gizmos_CarryPawn_IconPath>
+        <CarryPawn_MaxRange>12</CarryPawn_MaxRange>
+      </li>
+      <!--替换武器-->
+      <li Class="MYDE_AerocraftFramework.CompProperties_ReplaceCurrentWeapon"></li>
+      <!--跨地图-->
+      <li Class="CompProperties_Transporter">
+        <restEffectiveness>0.8</restEffectiveness>
+        <max1PerGroup>true</max1PerGroup>
+        <massCapacity>3000</massCapacity>
+      </li>
+      <li Class="MYDE_AerocraftFramework.CompProperties_CanCrossMap">
+        <LeavingThingDef>WOP_Skyfalller_Dragon_CrossMapThing</LeavingThingDef>
+        <WorldObjectDef>WOP_WorldObject_Dragon_CrossMapThing</WorldObjectDef>
+        <TravelSpeed>0.0001</TravelSpeed>
+        <!--燃料消耗乘数，10是每格10消耗，算上来回需要20燃料每格，原版空投舱近似于每格2燃料消耗，来回4燃料-->
+        <FuelConsumeBase>10</FuelConsumeBase>
+        <!--文字+图标-->
+        <CrossMap_Label>Cross Map</CrossMap_Label>
+        <CrossMap_Description>Cross map, no open space can be selected as the target location. To avoid situations where it is impossible to return, please ensure that there is sufficient fuel for round-trip travel</CrossMap_Description>
+        <CrossMap_IconPath>AerocraftFramework/Icon/CrossMap</CrossMap_IconPath>
+        <DefaultThing_ToRefuel>Chemfuel</DefaultThing_ToRefuel>
+      </li>
+      <!--特效生成-->
+      <li Class="MYDE_AerocraftFramework.CompProperties_SpawnFleck">
+        <!--生成的特效-->
+        <FleckDef>MYDE_AF_Fleck_Smoke</FleckDef>
+        <!--这个是播放特效的间隔-->
+        <Fleck_MakeFleckTickMax>5</Fleck_MakeFleckTickMax>
+        <!--这个是每隔多少Tick加一个播放次数-->
+        <Fleck_MakeFleck_AddNumTickMax>20</Fleck_MakeFleck_AddNumTickMax>
+        <!--这个是播放多少次特效-->
+        <Fleck_MakeFleckNum_Origin>1</Fleck_MakeFleckNum_Origin>
+        <Fleck_MakeFleckNum_Max>40</Fleck_MakeFleckNum_Max>
+        <!--这个是位置调整-->
+        <Fleck_Range_ToSetPosition>0</Fleck_Range_ToSetPosition>
+        <Fleck_Angle_ToSetPosition>0</Fleck_Angle_ToSetPosition>
+        <!--这个是特效贴图旋转角度-->
+        <Fleck_Rotation>-180~180</Fleck_Rotation>
+        <!--这个是特效飞行方向-->
+        <Fleck_Angle>-180~180</Fleck_Angle>
+        <!--这个是特效大小-->
+        <Fleck_Scale>4~8</Fleck_Scale>
+        <!--这个是特效飞行速度-->
+        <Fleck_Speed>7~20</Fleck_Speed>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <!--跨地图-->
+  <!--ThingDef
+  of cross map-->
+  <ThingDef ParentName="SkyfallerBase">
+    <defName>WOP_Skyfalller_Dragon_CrossMapThing</defName>
+    <label>Leave</label>
+    <thingClass>MYDE_AerocraftFramework.Skyfaller_Aerocraft_Leaving</thingClass>
+    <altitudeLayer>Skyfaller</altitudeLayer>
+    <skyfaller>
+      <movementType>Decelerate</movementType>
+      <reversed>true</reversed>
+      <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
+      <shadowSize>(6, 6)</shadowSize>
+      <anticipationSound>DropPod_Leaving</anticipationSound>
+      <anticipationSoundTicks>-10</anticipationSoundTicks>
+      <ticksToImpactRange>
+        <min>-40</min>
+        <max>-15</max>
+      </ticksToImpactRange>
+    </skyfaller>
+    <graphicData>
+      <texPath>Things/C21Dragon/UI</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutFlying</shaderType>
+      <drawSize>18</drawSize>
+    </graphicData>
+  </ThingDef>
+  <WorldObjectDef>
+    <defName>WOP_WorldObject_Dragon_CrossMapThing</defName>
+    <label>C-21 Dragon</label>
+    <description>C-21 Dragon</description>
+    <worldObjectClass>MYDE_AerocraftFramework.WorldObject_CrossMapThing_Flying</worldObjectClass>
+    <texture>Things/C21Dragon/UI</texture>
+    <expandingIconTexture>Things/C21Dragon/UI</expandingIconTexture>
+    <useDynamicDrawer>true</useDynamicDrawer>
+    <expandingIcon>true</expandingIcon>
+    <expandingIconPriority>60</expandingIconPriority>
+    <rotateGraphicWhenTraveling>true</rotateGraphicWhenTraveling>
+    <expandMore>true</expandMore>
+    <allowCaravanIncidentsWhichGenerateMap>true</allowCaravanIncidentsWhichGenerateMap>
+  </WorldObjectDef>
+
+</Defs>
