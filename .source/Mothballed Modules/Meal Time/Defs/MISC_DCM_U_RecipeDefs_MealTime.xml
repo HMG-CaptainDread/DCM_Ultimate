@@ -2811,9 +2811,157 @@
 						<MealUSAMRE_Carn>1</MealUSAMRE_Carn>
 					</products>
 				</RecipeDef>
-	<!--  -->
-	<!--  -->
-	<!--  -->
+	<!-- CHOCOLATE REDEUX -->
+		<!-- ROAST BEAN -->
+			<RecipeDef>
+				<defName>CR_RoastCacao</defName>
+				<label>roast cocoa beans</label>
+				<jobString>Roasting cocoa beans.</jobString>
+				<workAmount>900</workAmount>
+				<workSpeedStat>WorkSpeedGlobal</workSpeedStat>
+				<workSkill>Cooking</workSkill>
+				<effectWorking>Cook</effectWorking>
+				<workSkillLearnFactor>0.5</workSkillLearnFactor>
+				<ingredients>
+				<li>
+					<filter><thingDefs><li>CR_RawCocoaBeans</li></thingDefs></filter>
+					<count>20</count>
+				</li>
+				</ingredients>
+				<products><CR_RoastedCacaoBeans>20</CR_RoastedCacaoBeans></products>
+				<recipeUsers><li>Campfire</li><li>FueledStove</li><li>ElectricStove</li></recipeUsers>
+			</RecipeDef>
+		<!-- MILL ROASTED BEAN -->
+			<RecipeDef>
+				<defName>CR_MillRoastedCacao</defName>
+				<label>mill roasted cacao</label>
+				<jobString>Milling roasted cacao.</jobString>
+				<workAmount>1200</workAmount>
+				<workSpeedStat>WorkSpeedGlobal</workSpeedStat>
+				<workSkill>Crafting</workSkill>
+				<effectWorking>Cook</effectWorking>
+				<workSkillLearnFactor>0.5</workSkillLearnFactor>
+				<ingredients>
+				<li>
+					<filter><thingDefs><li>CR_RoastedCacaoBeans</li></thingDefs></filter>
+					<count>20</count>
+				</li>
+				</ingredients>
+				<products><CR_ChocolateLiquor>10</CR_ChocolateLiquor></products>
+			</RecipeDef>
+		<!-- COOK CHOCOLATE -->
+			<RecipeDef>
+				<defName>CR_CookChocolate</defName>
+				<label>cook chocolate</label>
+				<jobString>Cooking chocolate.</jobString>
+				<workAmount>1200</workAmount>
+				<workSpeedStat>WorkSpeedGlobal</workSpeedStat>
+				<workSkill>Cooking</workSkill>
+				<effectWorking>Cook</effectWorking>
+				<workSkillLearnFactor>0.55</workSkillLearnFactor>
+				<ingredients>
+				<li>
+					<filter><thingDefs><li>CR_ChocolateLiquor</li></thingDefs></filter>
+					<count>10</count>
+				</li>
+				</ingredients>
+				<products><Chocolate>10</Chocolate></products>
+				<recipeUsers><li>FueledStove</li><li>ElectricStove</li></recipeUsers>
+			</RecipeDef>
+		<!-- COOK MILK CHOCOLATE -->
+			<RecipeDef>
+				<defName>CR_CookMilkChocolate</defName>
+				<label>cook milk chocolate</label>
+				<jobString>Cooking milk chocolate.</jobString>
+				<workAmount>1400</workAmount>
+				<workSpeedStat>WorkSpeedGlobal</workSpeedStat>
+				<workSkill>Cooking</workSkill>
+				<effectWorking>Cook</effectWorking>
+				<workSkillLearnFactor>0.6</workSkillLearnFactor>
+
+				<!-- IMPORTANT: fixed filter is a sibling of <ingredients>, not a child -->
+				<fixedIngredientFilter>
+				<thingDefs>
+					<li>CR_ChocolateLiquor</li>
+					<li>Milk</li>
+				</thingDefs>
+				</fixedIngredientFilter>
+
+				<ingredients>
+				<li>
+					<filter><thingDefs><li>CR_ChocolateLiquor</li></thingDefs></filter>
+					<count>10</count>
+				</li>
+				<li>
+					<filter><thingDefs><li>Milk</li></thingDefs></filter>
+					<count>5</count>
+				</li>
+				</ingredients>
+				<products><CR_MilkChocolate>10</CR_MilkChocolate></products>
+				<recipeUsers><li>FueledStove</li><li>ElectricStove</li></recipeUsers>
+			</RecipeDef>
+		<!-- COOK CHOCOLATE MILK -->
+			<RecipeDef>
+				<defName>CR_CookChocolateMilk</defName>
+				<label>make chocolate milk</label>
+				<jobString>Making chocolate milk.</jobString>
+				<workAmount>600</workAmount>
+				<workSpeedStat>WorkSpeedGlobal</workSpeedStat>
+				<workSkill>Cooking</workSkill>
+				<effectWorking>Cook</effectWorking>
+				<workSkillLearnFactor>0.35</workSkillLearnFactor>
+
+				<fixedIngredientFilter>
+				<thingDefs>
+					<li>Chocolate</li>
+					<li>Milk</li>
+				</thingDefs>
+				</fixedIngredientFilter>
+
+				<ingredients>
+				<li>
+					<filter><thingDefs><li>Chocolate</li></thingDefs></filter>
+					<count>5</count>
+				</li>
+				<li>
+					<filter><thingDefs><li>Milk</li></thingDefs></filter>
+					<count>10</count>
+				</li>
+				</ingredients>
+				<products><CR_ChocolateMilk>10</CR_ChocolateMilk></products>
+				<recipeUsers><li>FueledStove</li><li>ElectricStove</li></recipeUsers>
+			</RecipeDef>
+		<!-- COOK CHOCOLATE MILK (VCE) -->
+			<RecipeDef MayRequire="vanillaexpanded.vcooke">
+				<defName>CR_CookChocolateMilk_VCE</defName>
+				<label>make chocolate milk (syrup)</label>
+				<jobString>Mixing chocolate milk with syrup.</jobString>
+				<workAmount>600</workAmount>
+				<workSpeedStat>WorkSpeedGlobal</workSpeedStat>
+				<workSkill>Cooking</workSkill>
+				<effectWorking>Cook</effectWorking>
+				<workSkillLearnFactor>0.35</workSkillLearnFactor>
+
+				<fixedIngredientFilter>
+				<thingDefs>
+					<li>VCE_ChocolateSyrup</li>
+					<li>Milk</li>
+				</thingDefs>
+				</fixedIngredientFilter>
+
+				<ingredients>
+				<li>
+					<filter><thingDefs><li>VCE_ChocolateSyrup</li></thingDefs></filter>
+					<count>5</count>
+				</li>
+				<li>
+					<filter><thingDefs><li>Milk</li></thingDefs></filter>
+					<count>10</count>
+				</li>
+				</ingredients>
+				<products><CR_ChocolateMilk>10</CR_ChocolateMilk></products>
+				<recipeUsers><li>FueledStove</li><li>ElectricStove</li></recipeUsers>
+			</RecipeDef>
 	<!--  -->
 	<!--  -->
 	<!--  -->
