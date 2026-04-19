@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<Vehicles.UpgradeTreeDef ParentName="SEX_TitanGenericUpgradeTreeAircraft">
+		<defName>SEX_TitanChopper_UpgradeTree</defName>
+		<nodes>
+			<li>
+				<key>SEX_PassengerCabin</key>
+				<label>Pressurized cabin</label>
+				<description>Pressurize the cargo holds and make space for 12 seats. This reduces the effective cargo capacity of the vehicle by 2800 kilos.</description>
+				<icon>Upgrades/Upgrade_ExtraSeat</icon>
+				<work>10800</work>
+				<gridCoordinate>(6,7)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<upgrades>
+					<li Class="Vehicles.StatUpgrade">
+						<vehicleStats>
+							<li>
+								<def>CargoCapacity</def>
+								<value>-2800</value>
+							</li>
+						</vehicleStats>
+					</li>
+					<li Class="Vehicles.VehicleUpgrade">
+						<roles>
+							<li>
+								<label>Passenger</label>
+								<key>passenger</key>
+								<slots>12</slots>
+								<editKey>cabinExpansion</editKey>
+							</li>
+						</roles>
+					</li>
+				</upgrades>
+				<ingredients>
+					<ComponentIndustrial>8</ComponentIndustrial>
+					<Steel>320</Steel>
+					<Cloth>480</Cloth>
+				</ingredients>
+				<graphicOverlays>
+					<li>
+						<graphicData>
+							<texPath>VehicleUpgrades/TitanChopper/SEX_PassengerCabin/SEX_PassengerCabin</texPath>
+							<graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+							<drawSize>(12.5,21.5)</drawSize>
+							<layer>1</layer>
+							<shaderType>CutoutComplex</shaderType>
+						</graphicData>
+					</li>
+				</graphicOverlays>
+			</li>
+			<li>
+				<key>SEX_FuelTanks</key>
+				<label>Auxiliary fuel tanks</label>
+				<description>Install external chemfuel tanks that increase the fuel capacity of the vehicle by 320 units.</description>
+				<icon>Upgrades/Upgrade_FuelStorage</icon>
+				<work>3840</work>
+				<gridCoordinate>(12,7)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<upgrades>
+					<li Class="Vehicles.StatUpgrade">
+						<statCategories>
+							<li>
+								<def>FuelCapacity</def>
+								<value>320</value>
+							</li>
+						</statCategories>
+					</li>
+				</upgrades>
+				<ingredients>
+					<ComponentIndustrial>4</ComponentIndustrial>
+					<VVE_CarFuelTank>6</VVE_CarFuelTank>
+				</ingredients>
+				<graphicOverlays>
+					<li>
+						<graphicData>
+							<texPath>VehicleUpgrades/TitanChopper/SEX_FuelTanks/SEX_FuelTanks</texPath>
+							<graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+							<drawSize>(12.5,21.5)</drawSize>
+							<layer>1</layer>
+							<shaderType>CutoutComplex</shaderType>
+						</graphicData>
+					</li>
+				</graphicOverlays>
+			</li>
+		</nodes>
+	</Vehicles.UpgradeTreeDef>
+</Defs>
