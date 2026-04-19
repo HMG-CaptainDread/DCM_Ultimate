@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<Vehicles.UpgradeTreeDef Name="SEX_TitanGenericUpgradeTree">
+		<defName>SEX_TitanGenericUpgradeTree</defName>
+		<nodes>
+			<!-- These are generic upgrades shared by every vehicle -->
+			<!-- They're generally more expensive than T1 minor upgrades as T3 vehicles are already pretty advanced -->
+			<li>
+				<key>SEX_ExpandedCargo</key>
+				<label>Storage management systems</label>
+				<description>Install electronic systems to manage general storage. This eliminates inefficiencies and practically frees up 50 kilos of capacity.\n\nIncompatible with other storage management systems.</description>
+				<icon>Upgrades/Upgrade_CargoCapacity</icon>
+				<work>1440</work>
+				<gridCoordinate>(6, 15)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<disableIfUpgradeNodeEnabled>SEX_ExpandedFuel</disableIfUpgradeNodeEnabled>
+				<upgrades>
+					<li Class="Vehicles.StatUpgrade">
+						<vehicleStats>
+							<li>
+								<def>CargoCapacity</def>
+								<value>30</value>
+							</li>
+						</vehicleStats>
+					</li>
+				</upgrades>
+				<ingredients>
+					<Plasteel>25</Plasteel>
+					<VVE_CarWiring>3</VVE_CarWiring>
+					<ComponentIndustrial>6</ComponentIndustrial>
+				</ingredients>
+			</li>
+			<li>
+				<key>SEX_ExpandedFuel</key>
+				<label>Fuel management systems</label>
+				<description>Install electronic systems to manage fuel storage. This eliminates inefficiencies and practically frees up 60 units of fuel space.\n\nIncompatible with other storage management systems.</description>
+				<icon>Upgrades/Upgrade_FuelCapacity</icon>
+				<work>1440</work>
+				<gridCoordinate>(6, 19)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<disableIfUpgradeNodeEnabled>SEX_ExpandedCargo</disableIfUpgradeNodeEnabled>
+				<upgrades>
+					<li Class="Vehicles.StatUpgrade">
+						<statCategories>
+							<li>
+								<def>FuelCapacity</def>
+								<value>60</value>
+							</li>
+						</statCategories>
+					</li>
+				</upgrades>
+				<ingredients>
+					<VVE_CarFuelTank>4</VVE_CarFuelTank>
+					<VVE_CarWiring>3</VVE_CarWiring>
+					<ComponentIndustrial>6</ComponentIndustrial>
+				</ingredients>
+			</li>
+			<li>
+				<key>SEX_EngineRetune</key>
+				<label>High-performance engine</label>
+				<description>Tune the engine for better performance using more advanced parts.\n\nIncompatible with other engine tuning options.</description>
+				<icon>Upgrades/Upgrade_MovementSpeed</icon>
+				<work>2520</work>
+				<gridCoordinate>(12, 15)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<disableIfUpgradeNodeEnabled>SEX_EconomyEngine</disableIfUpgradeNodeEnabled>
+				<upgrades>
+					<li Class="Vehicles.StatUpgrade">
+						<vehicleStats>
+							<li>
+								<def>MoveSpeed</def>
+								<value>1.0</value>
+							</li>
+							<li>
+								<def>AccelerationRate</def>
+								<value>0.005</value>
+							</li>
+						</vehicleStats>
+						<statCategories>
+							<li>
+								<def>WorldSpeedMultiplier</def>
+								<value>0.15</value>
+								<type>Add</type>
+							</li>
+						</statCategories>
+					</li>
+				</upgrades>
+				<ingredients>
+					<VVE_EngineBlock>1</VVE_EngineBlock>
+					<VVE_CarTransmission>1</VVE_CarTransmission>
+					<ComponentSpacer>1</ComponentSpacer>
+				</ingredients>
+			</li>
+			<li>
+				<key>SEX_EconomyEngine</key>
+				<label>Economy engine</label>
+				<description>Tune the engine for better fuel mileage using more advanced parts.\n\nIncompatible with other engine tuning options.</description>
+				<icon>Upgrades/Upgrade_FuelConsumption</icon>
+				<work>2520</work>
+				<gridCoordinate>(12, 19)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<disableIfUpgradeNodeEnabled>SEX_EngineRetune</disableIfUpgradeNodeEnabled>
+				<upgrades>
+					<li Class="Vehicles.StatUpgrade">
+						<statCategories>
+							<li>
+								<def>FuelConsumptionRate</def>
+								<value>-4</value>
+							</li>
+						</statCategories>
+					</li>
+				</upgrades>
+				<ingredients>
+					<VVE_CarExhaust>1</VVE_CarExhaust>
+					<VVE_CarAlternator>1</VVE_CarAlternator>
+					<VVE_CarTransmission>1</VVE_CarTransmission>
+					<ComponentSpacer>1</ComponentSpacer>
+				</ingredients>
+			</li>
+			<li>
+				<key>SEX_ReinforcedHull</key>
+				<label>Reinforced hull</label>
+				<description>Use the lightweight properties of plasteel to reinforce the vehicle's armor while not introducing any additional mass.\n\nIncompatible with other hull modifications.</description>
+				<icon>Upgrades/Upgrade_Armor</icon>
+				<work>1800</work>
+				<gridCoordinate>(18, 15)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<disableIfUpgradeNodeEnabled>SEX_LightHull</disableIfUpgradeNodeEnabled>
+				<upgrades>
+					<li Class="Vehicles.StatUpgrade">
+						<stats>
+							<li>
+								<def>ArmorRating_Blunt</def>
+								<value>0.08</value>
+							</li>
+							<li>
+								<def>ArmorRating_Sharp</def>
+								<value>0.12</value>
+							</li>
+						</stats>
+					</li>
+				</upgrades>
+				<ingredients>
+					<Plasteel>120</Plasteel>
+					<ComponentIndustrial>1</ComponentIndustrial>
+				</ingredients>
+			</li>
+			<li>
+				<key>SEX_LightHull</key>
+				<label>Lightweight hull</label>
+				<description>Use the lightweight properties of plasteel to make the vehicle lighter while not compromising protection. This reduction to mass makes the vehicle more agile and fuel efficient.\n\nIncompatible with other hull modifications.</description>
+				<icon>Upgrades/Upgrade_Acceleration</icon>
+				<work>1800</work>
+				<gridCoordinate>(18, 19)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<disableIfUpgradeNodeEnabled>SEX_ReinforcedHull</disableIfUpgradeNodeEnabled>
+				<upgrades>
+					<li Class="Vehicles.StatUpgrade">
+						<statCategories>
+							<li>
+								<def>FuelConsumptionRate</def>
+								<value>-2</value>
+							</li>
+						</statCategories>
+						<vehicleStats>
+							<li>
+								<def>AccelerationRate</def>
+								<value>0.01</value>
+							</li>
+							<li>
+								<def>MoveSpeed</def>
+								<value>1</value>
+							</li>
+							<li>
+								<def>Mass</def>
+								<value>-30</value>
+							</li>
+						</vehicleStats>
+					</li>
+				</upgrades>
+				<ingredients>
+					<Plasteel>120</Plasteel>
+					<ComponentIndustrial>1</ComponentIndustrial>
+				</ingredients>
+			</li>
+			<li>
+				<key>SEX_RacingSuspension</key>
+				<label>Racing suspension</label>
+				<description>Install advanced suspension systems that improve the top speed of the vehicle.\n\nIncompatible with other suspension modifications.</description>
+				<icon>VehicleUpgradeIcons/SEX_Upgrade_Suspension</icon>
+				<work>1440</work>
+				<gridCoordinate>(24, 15)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<disableIfUpgradeNodeEnabled>SEX_OffRoadSuspension</disableIfUpgradeNodeEnabled>
+				<upgrades>
+					<li Class="Vehicles.StatUpgrade">
+						<vehicleStats>
+							<li>
+								<def>MoveSpeed</def>
+								<value>1.6</value>
+							</li>
+						</vehicleStats>
+						<statCategories>
+							<li>
+								<def>WorldSpeedMultiplier</def>
+								<value>0.12</value>
+								<type>Add</type>
+							</li>
+						</statCategories>
+					</li>
+				</upgrades>
+				<ingredients>
+					<Plasteel>30</Plasteel>
+					<VVE_CarSuspension>4</VVE_CarSuspension>
+					<VVE_CarWiring>1</VVE_CarWiring>
+				</ingredients>
+			</li>
+			<li>
+				<key>SEX_OffRoadSuspension</key>
+				<label>Off-road suspension</label>
+				<description>Install advanced suspension systems that offer better performance on rough, uneven terrain.\n\nIncompatible with other suspension modifications.</description>
+				<icon>VehicleUpgradeIcons/SEX_Upgrade_SuspensionOffRoad</icon>
+				<work>1440</work>
+				<gridCoordinate>(24, 19)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<disableIfUpgradeNodeEnabled>SEX_RacingSuspension</disableIfUpgradeNodeEnabled>
+				<upgrades>
+					<li Class="Vehicles.StatUpgrade">
+						<statCategories>
+							<li>
+								<def>OffRoadMultiplier</def>
+								<value>-0.35</value>
+								<type>Add</type>
+							</li>
+							<li>
+								<def>WinterCostMultiplier</def>
+								<value>-2.0</value>
+								<type>Add</type>
+							</li>
+						</statCategories>
+					</li>
+				</upgrades>
+				<ingredients>
+					<Plasteel>15</Plasteel>
+					<VVE_CarSuspension>8</VVE_CarSuspension>
+				</ingredients>
+			</li>
+		</nodes>
+	</Vehicles.UpgradeTreeDef>
+	<Vehicles.UpgradeTreeDef Name="SEX_TitanGenericUpgradeTreeAircraft">
+		<defName>SEX_TitanGenericUpgradeTreeAircraft</defName>
+		<nodes>
+			<!-- Same upgrade tree without the suspension options for aircraft -->
+			<li>
+				<key>SEX_ExpandedCargo</key>
+				<label>Storage management systems</label>
+				<description>Install electronic systems to manage general storage. This eliminates inefficiencies and practically frees up 50 kilos of capacity.\n\nIncompatible with other storage management systems.</description>
+				<icon>Upgrades/Upgrade_CargoCapacity</icon>
+				<work>600</work>
+				<gridCoordinate>(6, 15)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<disableIfUpgradeNodeEnabled>SEX_ExpandedFuel</disableIfUpgradeNodeEnabled>
+				<upgrades>
+					<li Class="Vehicles.StatUpgrade">
+						<vehicleStats>
+							<li>
+								<def>CargoCapacity</def>
+								<value>30</value>
+							</li>
+						</vehicleStats>
+					</li>
+				</upgrades>
+				<ingredients>
+					<Plasteel>25</Plasteel>
+					<VVE_CarWiring>3</VVE_CarWiring>
+					<ComponentIndustrial>6</ComponentIndustrial>
+				</ingredients>
+			</li>
+			<li>
+				<key>SEX_ExpandedFuel</key>
+				<label>Fuel management systems</label>
+				<description>Install electronic systems to manage fuel storage. This eliminates inefficiencies and practically frees up 60 units of fuel space.\n\nIncompatible with other storage management systems.</description>
+				<icon>Upgrades/Upgrade_FuelCapacity</icon>
+				<work>800</work>
+				<gridCoordinate>(6, 19)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<disableIfUpgradeNodeEnabled>SEX_ExpandedCargo</disableIfUpgradeNodeEnabled>
+				<upgrades>
+					<li Class="Vehicles.StatUpgrade">
+						<statCategories>
+							<li>
+								<def>FuelCapacity</def>
+								<value>60</value>
+							</li>
+						</statCategories>
+					</li>
+				</upgrades>
+				<ingredients>
+					<VVE_CarFuelTank>4</VVE_CarFuelTank>
+					<VVE_CarWiring>3</VVE_CarWiring>
+					<ComponentIndustrial>6</ComponentIndustrial>
+				</ingredients>
+			</li>
+			<li>
+				<key>SEX_EngineRetune</key>
+				<label>High-performance engine</label>
+				<description>Tune the engine for better performance using more advanced parts.\n\nIncompatible with other engine tuning options.</description>
+				<icon>Upgrades/Upgrade_MovementSpeed</icon>
+				<work>1700</work>
+				<gridCoordinate>(12, 15)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<disableIfUpgradeNodeEnabled>SEX_EconomyEngine</disableIfUpgradeNodeEnabled>
+				<upgrades>
+					<li Class="Vehicles.StatUpgrade">
+						<vehicleStats>
+							<li>
+								<def>MoveSpeed</def>
+								<value>1.0</value>
+							</li>
+							<li>
+								<def>AccelerationRate</def>
+								<value>0.005</value>
+							</li>
+						</vehicleStats>
+						<statCategories>
+							<li>
+								<def>WorldSpeedMultiplier</def>
+								<value>0.15</value>
+								<type>Add</type>
+							</li>
+						</statCategories>
+					</li>
+				</upgrades>
+				<ingredients>
+					<VVE_EngineBlock>1</VVE_EngineBlock>
+					<VVE_CarTransmission>1</VVE_CarTransmission>
+					<ComponentSpacer>1</ComponentSpacer>
+				</ingredients>
+			</li>
+			<li>
+				<key>SEX_EconomyEngine</key>
+				<label>Economy engine</label>
+				<description>Tune the engine for better fuel mileage using more advanced parts.\n\nIncompatible with other engine tuning options.</description>
+				<icon>Upgrades/Upgrade_FuelConsumption</icon>
+				<work>1000</work>
+				<gridCoordinate>(12, 19)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<disableIfUpgradeNodeEnabled>SEX_EngineRetune</disableIfUpgradeNodeEnabled>
+				<upgrades>
+					<li Class="Vehicles.StatUpgrade">
+						<statCategories>
+							<li>
+								<def>FuelConsumptionRate</def>
+								<value>-4</value>
+							</li>
+						</statCategories>
+					</li>
+				</upgrades>
+				<ingredients>
+					<VVE_CarExhaust>1</VVE_CarExhaust>
+					<VVE_CarAlternator>1</VVE_CarAlternator>
+					<VVE_CarTransmission>1</VVE_CarTransmission>
+					<ComponentSpacer>1</ComponentSpacer>
+				</ingredients>
+			</li>
+			<li>
+				<key>SEX_ReinforcedHull</key>
+				<label>Reinforced hull</label>
+				<description>Use the lightweight properties of plasteel to reinforce the vehicle's armor while not introducing any additional mass.\n\nIncompatible with other hull modifications.</description>
+				<icon>Upgrades/Upgrade_Armor</icon>
+				<work>1200</work>
+				<gridCoordinate>(18, 15)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<disableIfUpgradeNodeEnabled>SEX_LightHull</disableIfUpgradeNodeEnabled>
+				<upgrades>
+					<li Class="Vehicles.StatUpgrade">
+						<stats>
+							<li>
+								<def>ArmorRating_Blunt</def>
+								<value>0.08</value>
+							</li>
+							<li>
+								<def>ArmorRating_Sharp</def>
+								<value>0.12</value>
+							</li>
+						</stats>
+					</li>
+				</upgrades>
+				<ingredients>
+					<Plasteel>120</Plasteel>
+					<ComponentIndustrial>1</ComponentIndustrial>
+				</ingredients>
+			</li>
+			<li>
+				<key>SEX_LightHull</key>
+				<label>Lightweight hull</label>
+				<description>Use the lightweight properties of plasteel to make the vehicle lighter while not compromising protection. This reduction to mass makes the vehicle more agile and fuel efficient.\n\nIncompatible with other hull modifications.</description>
+				<icon>Upgrades/Upgrade_Acceleration</icon>
+				<work>1200</work>
+				<gridCoordinate>(18, 19)</gridCoordinate>
+				<drawSize>(80, 80)</drawSize>
+				<disableIfUpgradeNodeEnabled>SEX_ReinforcedHull</disableIfUpgradeNodeEnabled>
+				<upgrades>
+					<li Class="Vehicles.StatUpgrade">
+						<statCategories>
+							<li>
+								<def>FuelConsumptionRate</def>
+								<value>-2</value>
+							</li>
+						</statCategories>
+						<vehicleStats>
+							<li>
+								<def>AccelerationRate</def>
+								<value>0.01</value>
+							</li>
+							<li>
+								<def>MoveSpeed</def>
+								<value>1</value>
+							</li>
+							<li>
+								<def>Mass</def>
+								<value>-30</value>
+							</li>
+						</vehicleStats>
+					</li>
+				</upgrades>
+				<ingredients>
+					<Plasteel>120</Plasteel>
+					<ComponentIndustrial>1</ComponentIndustrial>
+				</ingredients>
+			</li>
+		</nodes>
+	</Vehicles.UpgradeTreeDef>
+</Defs>
