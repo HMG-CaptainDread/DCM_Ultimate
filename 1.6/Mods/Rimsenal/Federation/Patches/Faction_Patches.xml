@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<Operation Class="PatchOperationSequence">
+		<operations>
+			<!-- FRIENDLY HOSTILES -->
+				<!-- FEDERATION -->
+					<li Class = "PatchOperationReplace">
+						<xpath>/Defs/FactionDef[defName="FPC"]/permanentEnemy/text()</xpath>
+						<value>false</value>
+					</li>
+					<li Class = "PatchOperationAdd">
+						<xpath>/Defs/FactionDef[defName="FPC"]</xpath>
+						<value>
+							<naturalEnemy>true</naturalEnemy>
+						</value>
+					</li>
+					<li Class = "PatchOperationReplace">
+						<xpath>/Defs/FactionDef[defName="FPC"]/description/text()</xpath>
+						<value>The twisted and corrupt remnants of the once-great interstellar state, the "Federation". Defeated in the civil war against the corrupt federation government, survivors of the Federation Peacekeeper Corps(FPC) fled to rimworlds, scattering away from persistent and ruthless pursuers.\n\n They try to plunder everything from resources to slaves throughout the planet before fleeing to another planet again. The FPC is an extremely aggressive and brutal adversary. They are very dangerous enemies because they preserve some of the ancient federation technologies.\n\n It will be very difficult to gain their trust, and maintaining a cordial relationship will require constant investment.</value>
+					</li>
+					<li Class = "PatchOperationAdd">
+						<xpath>/Defs/FactionDef[defName="FPC"]</xpath>
+						<value>
+							<caravanTraderKinds>
+								<li>Caravan_Outlander_CombatSupplier</li>
+								<li>Caravan_Outlander_PirateMerchant</li>
+							</caravanTraderKinds>
+							<visitorTraderKinds>
+								<li>Visitor_Outlander_Standard</li>
+							</visitorTraderKinds>
+							<baseTraderKinds>
+								<li>Base_Outlander_Standard</li>
+							</baseTraderKinds>
+						</value>
+					</li>
+					<li Class = "PatchOperationAdd">
+						<xpath>/Defs/FactionDef[defName="FPC"]/pawnGroupMakers</xpath>
+						<value>
+							<li>
+								<kindDef>Peaceful</kindDef>
+								<options>
+									<TMM_PawnKind_FriendlyHostile_FPCTrader>10</TMM_PawnKind_FriendlyHostile_FPCTrader>
+									<FPCUnityGuard>10</FPCUnityGuard>
+									<FPCCommander>5</FPCCommander>
+								</options>
+							</li>
+							<li>
+								<kindDef>Trader</kindDef>
+								<traders>
+									<TMM_PawnKind_FriendlyHostile_FPCTrader>1</TMM_PawnKind_FriendlyHostile_FPCTrader>
+								</traders>
+								<carriers>
+									<Muffalo>6</Muffalo>
+									<Dromedary>5</Dromedary>
+									<Alpaca>2</Alpaca>
+									<Elephant>1</Elephant>
+								</carriers>
+								<guards>
+									<FPCCommander>5</FPCCommander>
+									<TMM_PawnKind_FriendlyHostile_FPCTrader>20</TMM_PawnKind_FriendlyHostile_FPCTrader>
+									<FPCUnityGuard>10</FPCUnityGuard>
+								</guards>
+							</li>
+						</value>
+					</li>
+		</operations>
+	</Operation>
+</Patch>
