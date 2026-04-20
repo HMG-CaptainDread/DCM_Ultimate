@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!-- TMM_Seating_ -->
+
+
+
+
+	<!-- MISCELLANEOUS -->
+		<!-- SOFA BED -->
+			<ThingDef ParentName="Bed">
+				<defName>TMM_Seating_SofaBed</defName>
+				<label>sofa</label>
+				<description>A large double-wide seat which is cushioned for maximum comfort. Perfect for a luxurious rec room or a homey reading nook, or even something to crash on if no beds are available.</description>
+				<graphicData>
+					<texPath>Modules/Furniture/Buildings/Seats/Sofa/Sofa</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<drawSize>(2.1)</drawSize>
+				</graphicData>
+				<statBases Inherit="False">
+					<MaxHitPoints>160</MaxHitPoints>
+					<WorkToBuild>20000</WorkToBuild>
+					<Mass>70</Mass>
+					<Flammability>1.0</Flammability>
+					<Beauty>4</Beauty>
+					<Comfort>0.85</Comfort>
+					<BedRestEffectiveness>0.95</BedRestEffectiveness>
+				</statBases>
+				<size>(1,2)</size>
+				<researchPrerequisites>
+					<li>ComplexFurniture</li>
+				</researchPrerequisites>
+				<stuffCategories Inherit="False">
+					<li>Fabric</li>
+					<li>Leathery</li>
+				</stuffCategories>
+				<costStuffCount>85</costStuffCount>
+				<pathCost>30</pathCost>
+				<fillPercent>0.40</fillPercent>
+				<defaultPlacingRot>East</defaultPlacingRot>
+				<constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+				<building>
+					<bed_showSleeperBody>true</bed_showSleeperBody>
+					<bed_countsForBedroomOrBarracks>false</bed_countsForBedroomOrBarracks>
+					<paintable>true</paintable>
+					<isSittable>true</isSittable>
+					<multiSittable>true</multiSittable>
+					<destroySound>BuildingDestroyed_Soft_Small</destroySound>
+				</building>
+				<comps>
+					<li Class="CompProperties_AssignableToPawn">
+						<drawAssignmentOverlay>true</drawAssignmentOverlay>
+						<compClass>CompAssignableToPawn_Bed</compClass>
+					</li>
+				</comps>
+			</ThingDef>
+	<!-- THRONES -->
+		<!-- GRAND -->
+			<!-- A -->
+				<ThingDef ParentName="FurnitureWithQualityBase">
+					<defName>TMM_Seating_GrandThroneA</defName>
+					<label>Spiky Flat Grand Throne</label>
+					<drawGUIOverlay>true</drawGUIOverlay>
+					<drawGUIOverlayQuality>false</drawGUIOverlayQuality>
+					<description>A large, ornate chair, designed for a dignity-focused psycaster to sit and meditate. Reigning on a throne is a form of meditation that builds up psyfocus. For dignity psycasters, more impressive meditation thrones and thronerooms increase the rate of psyfocus gain.</description>
+					<defaultPlacingRot>South</defaultPlacingRot>
+					<castEdgeShadows>True</castEdgeShadows>
+					<altitudeLayer>Building</altitudeLayer>
+					<category>Building</category>
+					<thingSetMakerTags>
+						<li>RewardStandardQualitySuper</li>
+					</thingSetMakerTags>
+					<hasInteractionCell>true</hasInteractionCell>
+					<statBases>
+						<MaxHitPoints>150</MaxHitPoints>
+						<WorkToBuild>10000</WorkToBuild>
+						<Mass>40</Mass>
+						<Flammability>1.0</Flammability>
+						<Beauty>4</Beauty>
+						<Comfort>0.75</Comfort>
+						<MeditationFocusStrength>0.15</MeditationFocusStrength>
+					</statBases>
+					<thingClass>Building_Throne</thingClass>
+					<socialPropernessMatters>true</socialPropernessMatters>
+					<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+					<stuffCategories>
+						<li>Metallic</li>
+						<li>Stony</li>
+					</stuffCategories>
+					<costStuffCount>300</costStuffCount>
+					<costList>
+						<Gold>75</Gold>
+					</costList>
+					<pathCost>30</pathCost>
+					<fillPercent>0.4</fillPercent>
+					<building>
+						<isSittable>true</isSittable>
+						<buildingSizeCategory>Medium</buildingSizeCategory>
+					</building>
+					<uiIconOffset>(0, 0.08)</uiIconOffset>
+					<uiIconScale>0.75</uiIconScale>
+					<comps>
+						<li Class="CompProperties_AssignableToPawn">
+							<drawAssignmentOverlay>true</drawAssignmentOverlay>
+							<compClass>CompAssignableToPawn_Throne</compClass>
+						</li>
+						<li Class="CompProperties_MeditationFocus">
+							<statDef>MeditationFocusStrength</statDef>
+							<focusTypes>
+								<li>Dignified</li>
+							</focusTypes>
+							<offsets>
+								<li Class="FocusStrengthOffset_ThroneSatisfiesRequirements">
+									<offset>0.08</offset>
+								</li>
+								<li Class="FocusStrengthOffset_RoomImpressiveness">
+									<curve>
+										<points>
+											<li>(0,   -0.05)</li>
+											<li>(30,   0.00)</li>
+											<li>(60,   0.04)</li>
+											<li>(100,  0.08)</li>
+											<li>(170,  0.10)</li>
+										</points>
+									</curve>
+								</li>
+							</offsets>
+						</li>
+					</comps>
+					<researchPrerequisites>
+						<li>ComplexFurniture</li>
+					</researchPrerequisites>
+					<graphicData>
+						<drawSize>(2.4,2.4)</drawSize>
+						<texPath>Modules/Furniture/Buildings/Seats/Thrones/GrandThroneA/GrandThrone_A</texPath>
+						<graphicClass>Graphic_Multi</graphicClass>
+						<shaderType>CutoutComplex</shaderType>
+						<shadowData>
+							<volume>(0.5,0.35,0.4)</volume>
+						</shadowData>
+						<damageData>
+							<rect>(0.2,0,2, 0.6, 0.6)</rect>
+						</damageData>
+					</graphicData>
+					<ritualFocus>
+						<spectateDistance>2</spectateDistance>
+						<allowedSpectateSides>Up</allowedSpectateSides>
+					</ritualFocus>
+					<placeWorkers>
+						<li>PlaceWorker_RitualFocus</li>
+					</placeWorkers>
+					<drawPlaceWorkersWhileSelected>True</drawPlaceWorkersWhileSelected>
+				</ThingDef>
+			<!-- B -->
+				<ThingDef ParentName="FurnitureWithQualityBase">
+					<defName>TMM_Seating_GrandThroneB</defName>
+					<label>Love Demand Grand Throne</label>
+					<drawGUIOverlay>true</drawGUIOverlay>
+					<drawGUIOverlayQuality>false</drawGUIOverlayQuality>
+					<description>A large, ornate chair, designed for a dignity-focused psycaster to sit and meditate. Reigning on a throne is a form of meditation that builds up psyfocus. For dignity psycasters, more impressive meditation thrones and thronerooms increase the rate of psyfocus gain.</description>
+					<defaultPlacingRot>South</defaultPlacingRot>
+					<castEdgeShadows>True</castEdgeShadows>
+					<altitudeLayer>Building</altitudeLayer>
+					<category>Building</category>
+					<thingSetMakerTags>
+						<li>RewardStandardQualitySuper</li>
+					</thingSetMakerTags>
+					<hasInteractionCell>true</hasInteractionCell>
+					<statBases>
+						<MaxHitPoints>150</MaxHitPoints>
+						<WorkToBuild>10000</WorkToBuild>
+						<Mass>40</Mass>
+						<Flammability>1.0</Flammability>
+						<Beauty>4</Beauty>
+						<Comfort>0.75</Comfort>
+						<MeditationFocusStrength>0.15</MeditationFocusStrength>
+					</statBases>
+					<thingClass>Building_Throne</thingClass>
+					<socialPropernessMatters>true</socialPropernessMatters>
+					<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+					<stuffCategories>
+						<li>Metallic</li>
+						<li>Stony</li>
+					</stuffCategories>
+					<costStuffCount>300</costStuffCount>
+					<costList>
+						<Gold>75</Gold>
+					</costList>
+					<pathCost>30</pathCost>
+					<fillPercent>0.4</fillPercent>
+					<building>
+						<isSittable>true</isSittable>
+						<buildingSizeCategory>Medium</buildingSizeCategory>
+					</building>
+					<uiIconOffset>(0, 0.08)</uiIconOffset>
+					<uiIconScale>0.75</uiIconScale>
+					<comps>
+						<li Class="CompProperties_AssignableToPawn">
+							<drawAssignmentOverlay>true</drawAssignmentOverlay>
+							<compClass>CompAssignableToPawn_Throne</compClass>
+						</li>
+						<li Class="CompProperties_MeditationFocus">
+							<statDef>MeditationFocusStrength</statDef>
+							<focusTypes>
+								<li>Dignified</li>
+							</focusTypes>
+							<offsets>
+								<li Class="FocusStrengthOffset_ThroneSatisfiesRequirements">
+									<offset>0.08</offset>
+								</li>
+								<li Class="FocusStrengthOffset_RoomImpressiveness">
+									<curve>
+										<points>
+											<li>(0,   -0.05)</li>
+											<li>(30,   0.00)</li>
+											<li>(60,   0.04)</li>
+											<li>(100,  0.08)</li>
+											<li>(170,  0.10)</li>
+										</points>
+									</curve>
+								</li>
+							</offsets>
+						</li>
+					</comps>
+					<researchPrerequisites>
+						<li>ComplexFurniture</li>
+					</researchPrerequisites>
+					<graphicData>
+						<drawSize>(2.4,2.4)</drawSize>
+						<texPath>Modules/Furniture/Buildings/Seats/Thrones/GrandThroneB/GrandThrone_B</texPath>
+						<graphicClass>Graphic_Multi</graphicClass>
+						<shaderType>CutoutComplex</shaderType>
+						<shadowData>
+							<volume>(0.5,0.35,0.4)</volume>
+						</shadowData>
+						<damageData>
+							<rect>(0.2,0,2, 0.6, 0.6)</rect>
+						</damageData>
+					</graphicData>
+					<ritualFocus>
+						<spectateDistance>2</spectateDistance>
+						<allowedSpectateSides>Up</allowedSpectateSides>
+					</ritualFocus>
+					<placeWorkers>
+						<li>PlaceWorker_RitualFocus</li>
+					</placeWorkers>
+					<drawPlaceWorkersWhileSelected>True</drawPlaceWorkersWhileSelected>
+				</ThingDef>
+			<!-- C -->
+				<ThingDef ParentName="FurnitureWithQualityBase">
+					<defName>TMM_Seating_GrandThroneC</defName>
+					<label>Fancy Sit Grand Throne</label>
+					<drawGUIOverlay>true</drawGUIOverlay>
+					<drawGUIOverlayQuality>false</drawGUIOverlayQuality>
+					<description>A large, ornate chair, designed for a dignity-focused psycaster to sit and meditate. Reigning on a throne is a form of meditation that builds up psyfocus. For dignity psycasters, more impressive meditation thrones and thronerooms increase the rate of psyfocus gain.</description>
+					<defaultPlacingRot>South</defaultPlacingRot>
+					<castEdgeShadows>True</castEdgeShadows>
+					<altitudeLayer>Building</altitudeLayer>
+					<category>Building</category>
+					<thingSetMakerTags>
+						<li>RewardStandardQualitySuper</li>
+					</thingSetMakerTags>
+					<hasInteractionCell>true</hasInteractionCell>
+					<statBases>
+						<MaxHitPoints>150</MaxHitPoints>
+						<WorkToBuild>10000</WorkToBuild>
+						<Mass>40</Mass>
+						<Flammability>1.0</Flammability>
+						<Beauty>4</Beauty>
+						<Comfort>0.75</Comfort>
+						<MeditationFocusStrength>0.15</MeditationFocusStrength>
+					</statBases>
+					<thingClass>Building_Throne</thingClass>
+					<socialPropernessMatters>true</socialPropernessMatters>
+					<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+					<stuffCategories>
+						<li>Fabric</li>
+						<li>Leathery</li>
+					</stuffCategories>
+					<costStuffCount>300</costStuffCount>
+					<costList>
+						<Gold>75</Gold>
+					</costList>
+					<pathCost>30</pathCost>
+					<fillPercent>0.4</fillPercent>
+					<building>
+						<isSittable>true</isSittable>
+						<buildingSizeCategory>Medium</buildingSizeCategory>
+					</building>
+					<uiIconOffset>(0, 0.08)</uiIconOffset>
+					<uiIconScale>0.75</uiIconScale>
+					<comps>
+						<li Class="CompProperties_AssignableToPawn">
+							<drawAssignmentOverlay>true</drawAssignmentOverlay>
+							<compClass>CompAssignableToPawn_Throne</compClass>
+						</li>
+						<li Class="CompProperties_MeditationFocus">
+							<statDef>MeditationFocusStrength</statDef>
+							<focusTypes>
+								<li>Dignified</li>
+							</focusTypes>
+							<offsets>
+								<li Class="FocusStrengthOffset_ThroneSatisfiesRequirements">
+									<offset>0.08</offset>
+								</li>
+								<li Class="FocusStrengthOffset_RoomImpressiveness">
+									<curve>
+										<points>
+											<li>(0,   -0.05)</li>
+											<li>(30,   0.00)</li>
+											<li>(60,   0.04)</li>
+											<li>(100,  0.08)</li>
+											<li>(170,  0.10)</li>
+										</points>
+									</curve>
+								</li>
+							</offsets>
+						</li>
+					</comps>
+					<researchPrerequisites>
+						<li>ComplexFurniture</li>
+					</researchPrerequisites>
+					<graphicData>
+						<drawSize>(2.4,2.4)</drawSize>
+						<texPath>Modules/Furniture/Buildings/Seats/Thrones/GrandThroneC/GrandThrone_C</texPath>
+						<graphicClass>Graphic_Multi</graphicClass>
+						<shaderType>CutoutComplex</shaderType>
+						<shadowData>
+							<volume>(0.5,0.35,0.4)</volume>
+						</shadowData>
+						<damageData>
+							<rect>(0.2,0,2, 0.6, 0.6)</rect>
+						</damageData>
+					</graphicData>
+					<!--<uiIconPath>Building/Furniture/GrandThrone_C_UI</uiIconPath>-->
+					<ritualFocus>
+						<spectateDistance>2</spectateDistance>
+						<allowedSpectateSides>Up</allowedSpectateSides>
+					</ritualFocus>
+					<placeWorkers>
+						<li>PlaceWorker_RitualFocus</li>
+					</placeWorkers>
+					<drawPlaceWorkersWhileSelected>True</drawPlaceWorkersWhileSelected>
+				</ThingDef>
+		<!-- REGULAR -->
+			<!-- A -->
+				<ThingDef ParentName="FurnitureWithQualityBase">
+					<defName>TMM_Seating_ThroneA</defName>
+					<label>Raid Stabber throne</label>
+					<drawGUIOverlay>true</drawGUIOverlay>
+					<drawGUIOverlayQuality>false</drawGUIOverlayQuality>
+					<description>A chair designed for a dignity-focused psycaster to sit and meditate. Reigning on a throne is a form of meditation that builds up psyfocus. For dignity psycasters, more impressive meditation thrones and thronerooms increase the rate of psyfocus gain.</description>
+					<defaultPlacingRot>South</defaultPlacingRot>
+					<altitudeLayer>Building</altitudeLayer>
+					<category>Building</category>
+					<thingSetMakerTags>
+						<li>RewardStandardQualitySuper</li>
+					</thingSetMakerTags>
+					<hasInteractionCell>true</hasInteractionCell>
+					<statBases>
+						<MaxHitPoints>150</MaxHitPoints>
+						<WorkToBuild>10000</WorkToBuild>
+						<Mass>40</Mass>
+						<Flammability>1.0</Flammability>
+						<Beauty>4</Beauty>
+						<Comfort>0.75</Comfort>
+						<MeditationFocusStrength>0.15</MeditationFocusStrength>
+					</statBases>
+					<thingClass>Building_Throne</thingClass>
+					<socialPropernessMatters>true</socialPropernessMatters>
+					<constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+					<stuffCategories>
+						<li>Metallic</li>
+						<li>Woody</li>
+						<li>Stony</li>
+					</stuffCategories>
+					<costStuffCount>125</costStuffCount>
+					<pathCost>30</pathCost>
+					<fillPercent>0.4</fillPercent>
+					<building>
+						<isSittable>true</isSittable>
+					</building>
+					<uiIconOffset>(0, 0.08)</uiIconOffset>
+					<uiIconScale>0.75</uiIconScale>
+					<comps>
+						<li Class="CompProperties_AssignableToPawn">
+							<drawAssignmentOverlay>true</drawAssignmentOverlay>
+							<compClass>CompAssignableToPawn_Throne</compClass>
+						</li>
+						<li Class="CompProperties_MeditationFocus">
+							<statDef>MeditationFocusStrength</statDef>
+							<focusTypes>
+								<li>Dignified</li>
+							</focusTypes>
+							<offsets>
+								<li Class="FocusStrengthOffset_ThroneSatisfiesRequirements">
+									<offset>0.08</offset>
+								</li>
+								<li Class="FocusStrengthOffset_RoomImpressiveness">
+									<curve>
+										<points>
+											<li>(0, -0.05)</li>
+											<li>(30, 0.0)</li>
+											<li>(60, 0.04)</li>
+											<li>(100,  0.08)</li>
+											<li>(170,  0.1)</li>
+										</points>
+									</curve>
+								</li>
+							</offsets>
+						</li>
+					</comps>
+					<researchPrerequisites>
+						<li>ComplexFurniture</li>
+					</researchPrerequisites>
+					<graphicData>
+						<drawSize>(2.4,2.4)</drawSize>
+						<texPath>Modules/Furniture/Buildings/Seats/Thrones/ThroneA/Throne_A</texPath>
+						<graphicClass>Graphic_Multi</graphicClass>
+						<shadowData>
+							<volume>(0.5,0.35,0.4)</volume>
+						</shadowData>
+						<damageData>
+							<rect>(0.2,0,2, 0.6, 0.6)</rect>
+						</damageData>
+					</graphicData>
+					<ritualFocus>
+						<spectateDistance>2</spectateDistance>
+						<allowedSpectateSides>Up</allowedSpectateSides>
+					</ritualFocus>
+					<placeWorkers>
+						<li>PlaceWorker_RitualFocus</li>
+					</placeWorkers>
+					<drawPlaceWorkersWhileSelected>True</drawPlaceWorkersWhileSelected>
+				</ThingDef>
+			<!-- B -->
+				<ThingDef ParentName="FurnitureWithQualityBase">
+					<defName>TMM_Seating_ThroneB</defName>
+					<label>Round Back throne</label>
+					<drawGUIOverlay>true</drawGUIOverlay>
+					<drawGUIOverlayQuality>false</drawGUIOverlayQuality>
+					<description>A chair designed for a dignity-focused psycaster to sit and meditate. Reigning on a throne is a form of meditation that builds up psyfocus. For dignity psycasters, more impressive meditation thrones and thronerooms increase the rate of psyfocus gain.</description>
+					<defaultPlacingRot>South</defaultPlacingRot>
+					<altitudeLayer>Building</altitudeLayer>
+					<category>Building</category>
+					<thingSetMakerTags>
+						<li>RewardStandardQualitySuper</li>
+					</thingSetMakerTags>
+					<hasInteractionCell>true</hasInteractionCell>
+					<statBases>
+						<MaxHitPoints>150</MaxHitPoints>
+						<WorkToBuild>10000</WorkToBuild>
+						<Mass>40</Mass>
+						<Flammability>1.0</Flammability>
+						<Beauty>4</Beauty>
+						<Comfort>0.75</Comfort>
+						<MeditationFocusStrength>0.15</MeditationFocusStrength>
+					</statBases>
+					<thingClass>Building_Throne</thingClass>
+					<socialPropernessMatters>true</socialPropernessMatters>
+					<constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+					<stuffCategories>
+						<li>Metallic</li>
+						<li>Woody</li>
+						<li>Stony</li>
+					</stuffCategories>
+					<costStuffCount>125</costStuffCount>
+					<pathCost>30</pathCost>
+					<fillPercent>0.4</fillPercent>
+					<building>
+						<isSittable>true</isSittable>
+					</building>
+					<uiIconOffset>(0, 0.08)</uiIconOffset>
+					<uiIconScale>0.75</uiIconScale>
+					<comps>
+						<li Class="CompProperties_AssignableToPawn">
+							<drawAssignmentOverlay>true</drawAssignmentOverlay>
+							<compClass>CompAssignableToPawn_Throne</compClass>
+						</li>
+						<li Class="CompProperties_MeditationFocus">
+							<statDef>MeditationFocusStrength</statDef>
+							<focusTypes>
+								<li>Dignified</li>
+							</focusTypes>
+							<offsets>
+								<li Class="FocusStrengthOffset_ThroneSatisfiesRequirements">
+									<offset>0.08</offset>
+								</li>
+								<li Class="FocusStrengthOffset_RoomImpressiveness">
+									<curve>
+										<points>
+											<li>(0, -0.05)</li>
+											<li>(30, 0.0)</li>
+											<li>(60, 0.04)</li>
+											<li>(100,  0.08)</li>
+											<li>(170,  0.1)</li>
+										</points>
+									</curve>
+								</li>
+							</offsets>
+						</li>
+					</comps>
+					<researchPrerequisites>
+						<li>ComplexFurniture</li>
+					</researchPrerequisites>
+					<graphicData>
+						<drawSize>(2.4,2.4)</drawSize>
+						<texPath>Modules/Furniture/Buildings/Seats/Thrones/ThroneB/Throne_B</texPath>
+						<graphicClass>Graphic_Multi</graphicClass>
+						<shadowData>
+							<volume>(0.5,0.35,0.4)</volume>
+						</shadowData>
+						<damageData>
+							<rect>(0.2,0,2, 0.6, 0.6)</rect>
+						</damageData>
+					</graphicData>
+					<ritualFocus>
+						<spectateDistance>2</spectateDistance>
+						<allowedSpectateSides>Up</allowedSpectateSides>
+					</ritualFocus>
+					<placeWorkers>
+						<li>PlaceWorker_RitualFocus</li>
+					</placeWorkers>
+					<drawPlaceWorkersWhileSelected>True</drawPlaceWorkersWhileSelected>
+				</ThingDef>
+			<!-- C -->
+				<ThingDef ParentName="FurnitureWithQualityBase">
+					<defName>TMM_Seating_ThroneC</defName>
+					<label>Half chair throne</label>
+					<drawGUIOverlay>true</drawGUIOverlay>
+					<drawGUIOverlayQuality>false</drawGUIOverlayQuality>
+					<description>A chair designed for a dignity-focused psycaster to sit and meditate. Reigning on a throne is a form of meditation that builds up psyfocus. For dignity psycasters, more impressive meditation thrones and thronerooms increase the rate of psyfocus gain.</description>
+					<defaultPlacingRot>South</defaultPlacingRot>
+					<altitudeLayer>Building</altitudeLayer>
+					<category>Building</category>
+					<thingSetMakerTags>
+						<li>RewardStandardQualitySuper</li>
+					</thingSetMakerTags>
+					<hasInteractionCell>true</hasInteractionCell>
+					<statBases>
+						<MaxHitPoints>150</MaxHitPoints>
+						<WorkToBuild>10000</WorkToBuild>
+						<Mass>40</Mass>
+						<Flammability>1.0</Flammability>
+						<Beauty>4</Beauty>
+						<Comfort>0.75</Comfort>
+						<MeditationFocusStrength>0.15</MeditationFocusStrength>
+					</statBases>
+					<thingClass>Building_Throne</thingClass>
+					<socialPropernessMatters>true</socialPropernessMatters>
+					<constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+					<stuffCategories>
+						<li>Metallic</li>
+						<li>Woody</li>
+						<li>Stony</li>
+					</stuffCategories>
+					<costStuffCount>125</costStuffCount>
+					<pathCost>30</pathCost>
+					<fillPercent>0.4</fillPercent>
+					<building>
+						<isSittable>true</isSittable>
+					</building>
+					<uiIconOffset>(0, 0.08)</uiIconOffset>
+					<uiIconScale>0.75</uiIconScale>
+					<comps>
+						<li Class="CompProperties_AssignableToPawn">
+							<drawAssignmentOverlay>true</drawAssignmentOverlay>
+							<compClass>CompAssignableToPawn_Throne</compClass>
+						</li>
+						<li Class="CompProperties_MeditationFocus">
+							<statDef>MeditationFocusStrength</statDef>
+							<focusTypes>
+								<li>Dignified</li>
+							</focusTypes>
+							<offsets>
+								<li Class="FocusStrengthOffset_ThroneSatisfiesRequirements">
+									<offset>0.08</offset>
+								</li>
+								<li Class="FocusStrengthOffset_RoomImpressiveness">
+									<curve>
+										<points>
+											<li>(0, -0.05)</li>
+											<li>(30, 0.0)</li>
+											<li>(60, 0.04)</li>
+											<li>(100,  0.08)</li>
+											<li>(170,  0.1)</li>
+										</points>
+									</curve>
+								</li>
+							</offsets>
+						</li>
+					</comps>
+					<researchPrerequisites>
+						<li>ComplexFurniture</li>
+					</researchPrerequisites>
+					<graphicData>
+						<drawSize>(2.4,2.4)</drawSize>
+						<texPath>Modules/Furniture/Buildings/Seats/Thrones/ThroneC/Throne_C</texPath>
+						<graphicClass>Graphic_Multi</graphicClass>
+						<shadowData>
+							<volume>(0.5,0.35,0.4)</volume>
+						</shadowData>
+						<damageData>
+							<rect>(0.2,0,2, 0.6, 0.6)</rect>
+						</damageData>
+					</graphicData>
+					<ritualFocus>
+						<spectateDistance>2</spectateDistance>
+						<allowedSpectateSides>Up</allowedSpectateSides>
+					</ritualFocus>
+					<placeWorkers>
+						<li>PlaceWorker_RitualFocus</li>
+					</placeWorkers>
+					<drawPlaceWorkersWhileSelected>True</drawPlaceWorkersWhileSelected>
+				</ThingDef>
+</Defs>
