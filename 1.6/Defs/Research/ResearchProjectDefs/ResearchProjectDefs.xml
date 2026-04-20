@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Defs>
 	<!-- <></> -->
-	<!--  -->
+	<!-- TMM_Research_ -->
 
 
 
@@ -21,39 +21,50 @@
 		<!-- 0 - ANIMAL BASE - TMM_AnimalResearchBase -->
 			<ResearchProjectDef ParentName="TMM_ResearchBase" Name="TMM_AnimalResearchBase" Abstract="True">
 				<techLevel>Animal</techLevel>
+				<baseCost>50</baseCost>
 			</ResearchProjectDef>
 		<!-- 1 - NEOLITHIC BASE - TMM_NeolithicResearchBase -->
 			<ResearchProjectDef ParentName="TMM_ResearchBase" Name="TMM_NeolithicResearchBase" Abstract="True">
 				<techLevel>Neolithic</techLevel>
+				<baseCost>300</baseCost>
 			</ResearchProjectDef>
 		<!-- 2 - MEDIEVAL BASE - TMM_MedievalResearchBase -->
 			<ResearchProjectDef ParentName="TMM_ResearchBase" Name="TMM_MedievalResearchBase" Abstract="True">
 				<techLevel>Medieval</techLevel>
+				<baseCost>600</baseCost>
 			</ResearchProjectDef>
 		<!-- 3 - INDUSTRIAL BASE - TMM_IndustrialResearchBase -->
 			<ResearchProjectDef ParentName="TMM_ResearchBase" Name="TMM_IndustrialResearchBase" Abstract="True">
 				<techLevel>Industrial</techLevel>
+				<baseCost>1200</baseCost>
 			</ResearchProjectDef>
 		<!-- 4 - SPACER BASE - TMM_SpacerResearchBase -->
 			<ResearchProjectDef ParentName="TMM_ResearchBase" Name="TMM_SpacerResearchBase" Abstract="True">
 				<techLevel>Spacer</techLevel>
+				<baseCost>2400</baseCost>
 			</ResearchProjectDef>
 		<!-- 5 - ULTRA BASE - TMM_UltraResearchBase -->
 			<ResearchProjectDef ParentName="TMM_ResearchBase" Name="TMM_UltraResearchBase" Abstract="True">
 				<techLevel>Ultra</techLevel>
+				<baseCost>3600</baseCost>
 			</ResearchProjectDef>
 		<!-- 6 - ARCHOTECH BASE - TMM_ArchotechResearchBase -->
 			<ResearchProjectDef ParentName="TMM_ResearchBase" Name="TMM_ArchotechResearchBase" Abstract="True">
 				<techLevel>Archotech</techLevel>
+				<baseCost>4800</baseCost>
 			</ResearchProjectDef>
 	<!-- ANIMALS -->
+		<!-- 0 - ANIMAL -->
+		<!-- 1 - NEOLITHIC -->
+		<!-- 2 - MEDIEVAL -->
+		<!-- 3 - INDUSTRIAL -->
+		<!-- 4 - SPACER -->
 		<!-- 5 - ULTRA -->
 			<!-- ANIMAL SAPIENCE -->
 				<ResearchProjectDef ParentName="TMM_UltraResearchBase">
-					<defName>TMM_An_SapiencyDevelopment</defName>
+					<defName>TMM_Research_Animals_SapiencyDevelopment</defName>
 					<label>Animal-Archite Brainwave Compatibility</label>
 					<description>Research into making animals fully sapient. For better or worse...</description>
-					<baseCost>1500</baseCost>
 					<prerequisites>
 						<li>MedicineProduction</li>
 					</prerequisites>
@@ -61,128 +72,130 @@
 					<researchViewX>4.25</researchViewX> <!-- TODO: -->
 					<researchViewY>0</researchViewY> <!-- TODO: -->
 				</ResearchProjectDef>
+		<!-- 6 - ARCHOTECH -->
 	<!-- HARVEST TIME -->
 		<!-- 0 - ANIMAL -->
 			<!-- EARLIEST AGRICULTURE -->
 				<ResearchProjectDef ParentName="TMM_AnimalResearchBase">
-					<defName>TMM_HT_AgricultureI</defName>
-					<label>earliest agriculture</label>
+					<defName>TMM_Research_HarvestTime_AnimalAgriculture</defName>
+					<label>Earliest Agriculture</label>
 					<description>TEMP</description> <!-- TODO: -->
-					<baseCost>300</baseCost>
 					<researchViewX>0</researchViewX> <!-- TODO: -->
 					<researchViewY>0</researchViewY> <!-- TODO: -->
 				</ResearchProjectDef>
 		<!-- 1 - NEOLITHIC -->
 			<!-- NEOLITHIC AGRICULTURE -->
 				<ResearchProjectDef ParentName="TMM_NeolithicResearchBase">
-					<defName>TMM_HT_AgricultureII</defName>
-					<label>neolithic agriculture</label>
+					<defName>TMM_Research_HarvestTime_NeolithicAgriculture</defName>
+					<label>Neolithic Agriculture</label>
 					<description>TEMP</description> <!-- TODO: -->
 					<prerequisites>
-						<li>TMM_HT_AgricultureI</li>
+						<li>TMM_Research_HarvestTime_AnimalAgriculture</li>
 					</prerequisites>
-					<baseCost>300</baseCost>
 					<researchViewX>0.85</researchViewX> <!-- TODO: -->
 					<researchViewY>0</researchViewY> <!-- TODO: -->
 				</ResearchProjectDef>
 			<!-- FLOWER PLANTING -->
 				<ResearchProjectDef ParentName="TMM_NeolithicResearchBase">
-					<defName>TMM_FlowerFarming</defName>
-					<label>flower planting</label>
+					<defName>TMM_Research_HarvestTime_FlowerFarming</defName>
+					<label>Flower Planting</label>
 					<description>TEMP</description> <!-- TODO: -->
 					<prerequisites>
-						<li>TMM_HT_AgricultureI</li>
+						<li>TMM_Research_HarvestTime_AnimalAgriculture</li>
 					</prerequisites>
-					<baseCost>300</baseCost>
 					<researchViewX>0.85</researchViewX> <!-- TODO: -->
 					<researchViewY>0.6</researchViewY> <!-- TODO: -->
+				</ResearchProjectDef>
+			<!-- HERBAL UNDERSTANDING -->
+				<ResearchProjectDef ParentName="TMM_NeolithicResearchBase">
+					<defName>TMM_Research_HarvestTime_HerbFarming</defName>
+					<label>Herbal Understanding</label>
+					<description>TEMP</description> <!-- TODO: -->
+					<prerequisites>
+						<li>TMM_Research_HarvestTime_AnimalAgriculture</li>
+					</prerequisites>
+					<researchViewX>0.85</researchViewX> <!-- TODO: -->
+					<researchViewY>1.2</researchViewY> <!-- TODO: -->
 				</ResearchProjectDef>
 		<!-- 2 - MEDIEVAL -->
 			<!-- MEDIEVAL AGRICULTURE -->
 				<ResearchProjectDef ParentName="TMM_MedievalResearchBase">
-					<defName>TMM_HT_AgricultureIII</defName>
-					<label>medieval agriculture</label>
+					<defName>TMM_Research_HarvestTime_MedievalAgriculture</defName>
+					<label>Medieval Agriculture</label>
 					<description>TEMP</description> <!-- TODO: -->
 					<prerequisites>
-						<li>TMM_HT_AgricultureII</li>
+						<li>TMM_Research_HarvestTime_NeolithicAgriculture</li>
 					</prerequisites>
-					<baseCost>300</baseCost>
 					<researchViewX>1.7</researchViewX> <!-- TODO: -->
 					<researchViewY>0</researchViewY> <!-- TODO: -->
 				</ResearchProjectDef>
 			<!-- PLANTER BOXES -->
 				<ResearchProjectDef ParentName="TMM_MedievalResearchBase">
-					<defName>TMM_HT_PlanterBoxI</defName>
-					<label>planter boxes</label>
+					<defName>TMM_Research_HarvestTime_MedievalPlanterBox</defName>
+					<label>Planter Boxes</label>
 					<description>TEMP</description> <!-- TODO: -->
 					<prerequisites>
-						<li>TMM_HT_AgricultureIII</li>
+						<li>TMM_Research_HarvestTime_MedievalAgriculture</li>
 					</prerequisites>
-					<baseCost>300</baseCost>
 					<researchViewX>2.55</researchViewX> <!-- TODO: -->
 					<researchViewY>0.6</researchViewY> <!-- TODO: -->
 				</ResearchProjectDef>
 		<!-- 3 - INDUSTRIAL -->
 			<!-- INDUSTRIAL AGRICULTURE -->
 				<ResearchProjectDef ParentName="TMM_IndustrialResearchBase">
-					<defName>TMM_HT_AgricultureIV</defName>
-					<label>industrial agriculture</label>
+					<defName>TMM_Research_HarvestTime_IndustrialAgriculture</defName>
+					<label>Industrial Agriculture</label>
 					<description>TEMP</description> <!-- TODO: -->
 					<prerequisites>
-						<li>TMM_HT_AgricultureIII</li>
+						<li>TMM_Research_HarvestTime_MedievalAgriculture</li>
 					</prerequisites>
-					<baseCost>300</baseCost>
 					<researchViewX>2.55</researchViewX> <!-- TODO: -->
 					<researchViewY>0</researchViewY> <!-- TODO: -->
 				</ResearchProjectDef>
 			<!-- ADVANCED PLANTER BOXES -->
 				<ResearchProjectDef ParentName="TMM_IndustrialResearchBase">
-					<defName>TMM_HT_PlanterBoxII</defName>
-					<label>advanced planter boxes</label>
+					<defName>TMM_Research_HarvestTime_IndustrialPlanterBox</defName>
+					<label>Advanced Planter Boxes</label>
 					<description>TEMP</description> <!-- TODO: -->
 					<prerequisites>
-						<li>TMM_HT_AgricultureIV</li>
+						<li>TMM_Research_HarvestTime_IndustrialAgriculture</li>
 					</prerequisites>
-					<baseCost>300</baseCost>
 					<researchViewX>3.4</researchViewX> <!-- TODO: -->
 					<researchViewY>0.6</researchViewY> <!-- TODO: -->
 				</ResearchProjectDef>
 		<!-- 4 - SPACER -->
 			<!-- ADVANCED AGRICULTURE -->
 				<ResearchProjectDef ParentName="TMM_SpacerResearchBase">
-					<defName>TMM_HT_AgricultureV</defName>
-					<label>advanced agriculture</label>
+					<defName>TMM_Research_HarvestTime_SpacerAgriculture</defName>
+					<label>Advanced Agriculture</label>
 					<description>TEMP</description> <!-- TODO: -->
 					<prerequisites>
-						<li>TMM_HT_AgricultureIV</li>
+						<li>TMM_Research_HarvestTime_IndustrialAgriculture</li>
 					</prerequisites>
-					<baseCost>300</baseCost>
 					<researchViewX>3.4</researchViewX> <!-- TODO: -->
 					<researchViewY>0</researchViewY> <!-- TODO: -->
 				</ResearchProjectDef>
 			<!-- ADVANCED HYDROPONICS -->
 				<ResearchProjectDef ParentName="TMM_SpacerResearchBase">
-					<defName>TMM_HT_HydroponicsII</defName>
-					<label>advanced hydroponics</label>
+					<defName>TMM_Research_HarvestTime_AdvancedHydroponics</defName>
+					<label>Advanced Hydroponics</label>
 					<description>TEMP</description> <!-- TODO: -->
 					<prerequisites>
 						<li>Hydroponics</li>
-						<li>TMM_HT_AgricultureV</li>
+						<li>TMM_Research_HarvestTime_SpacerAgriculture</li>
 					</prerequisites>
-					<baseCost>300</baseCost>
 					<researchViewX>4.25</researchViewX> <!-- TODO: -->
 					<researchViewY>0.6</researchViewY> <!-- TODO: -->
 				</ResearchProjectDef>
 		<!-- 5 - ULTRA -->
 			<!-- ULTRA TECH AGRICULTURE -->
 				<ResearchProjectDef ParentName="TMM_UltraResearchBase">
-					<defName>TMM_HT_AgricultureVI</defName>
-					<label>ultra-tech agriculture</label>
+					<defName>TMM_Research_HarvestTime_UltraAgriculture</defName>
+					<label>Ultratech Agriculture</label>
 					<description>TEMP</description> <!-- TODO: -->
 					<prerequisites>
-						<li>TMM_HT_AgricultureV</li>
+						<li>TMM_Research_HarvestTime_SpacerAgriculture</li>
 					</prerequisites>
-					<baseCost>300</baseCost>
 					<researchViewX>4.25</researchViewX> <!-- TODO: -->
 					<researchViewY>0</researchViewY> <!-- TODO: -->
 				</ResearchProjectDef>
@@ -191,75 +204,146 @@
 		<!-- 0 - ANIMAL -->
 		<!-- 1 - NEOLITHIC -->
 			<!-- NEOLITHIC STORAGE -->
-				<ResearchProjectDef>
-					<defName>TMM_St_Neolithic</defName>
-					<label>neolithic storage</label>
+				<ResearchProjectDef ParentName="TMM_NeolithicResearchBase">
+					<defName>TMM_Research_Storage_Neolithic</defName>
+					<label>Neolithic Storage</label>
 					<description>TEMP</description> <!-- TODO: -->
-					<techLevel>Neolithic</techLevel>
-					<tab>TMM_ResearchTab</tab>
-					<baseCost>300</baseCost>
 					<researchViewX>0.85</researchViewX> <!-- TODO: -->
 					<researchViewY>2</researchViewY> <!-- TODO: -->
 				</ResearchProjectDef>
 		<!-- 2 - MEDIEVAL -->
 			<!-- MEDIEVAL STORAGE -->
-				<ResearchProjectDef>
-					<defName>TMM_St_Medieval</defName>
-					<label>medieval storage</label>
+				<ResearchProjectDef ParentName="TMM_MedievalResearchBase">
+					<defName>TMM_Research_Storage_Medieval</defName>
+					<label>Medieval Storage</label>
 					<description>TEMP</description> <!-- TODO: -->
-					<techLevel>Medieval</techLevel>
-					<tab>TMM_ResearchTab</tab>
 					<prerequisites>
-						<li>TMM_St_Neolithic</li>
+						<li>TMM_Research_Storage_Neolithic</li>
 					</prerequisites>
-					<baseCost>300</baseCost>
 					<researchViewX>1.7</researchViewX> <!-- TODO: -->
 					<researchViewY>2</researchViewY> <!-- TODO: -->
 				</ResearchProjectDef>
 		<!-- 3 - INDUSTRIAL -->
 			<!-- INDUSTRIAL STORAGE -->
-				<ResearchProjectDef>
-					<defName>TMM_St_Industrial</defName>
-					<label>industrial storage</label>
+				<ResearchProjectDef ParentName="TMM_IndustrialResearchBase">
+					<defName>TMM_Research_Storage_Industrial</defName>
+					<label>Industrial Storage</label>
 					<description>TEMP</description> <!-- TODO: -->
-					<techLevel>Industrial</techLevel>
-					<tab>TMM_ResearchTab</tab>
 					<prerequisites>
-						<li>TMM_St_Medieval</li>
+						<li>TMM_Research_Storage_Medieval</li>
 					</prerequisites>
-					<baseCost>300</baseCost>
 					<researchViewX>2.55</researchViewX> <!-- TODO: -->
 					<researchViewY>2</researchViewY> <!-- TODO: -->
 				</ResearchProjectDef>
 		<!-- 4 - SPACER -->
 			<!-- SPACER STORAGE -->
-				<ResearchProjectDef>
-					<defName>TMM_St_Spacer</defName>
-					<label>spacer storage</label>
+				<ResearchProjectDef ParentName="TMM_SpacerResearchBase">
+					<defName>TMM_Research_Storage_Spacer</defName>
+					<label>Spacer Storage</label>
 					<description>TEMP</description> <!-- TODO: -->
-					<techLevel>Spacer</techLevel>
-					<tab>TMM_ResearchTab</tab>
 					<prerequisites>
-						<li>TMM_St_Industrial</li>
+						<li>TMM_Research_Storage_Industrial</li>
 					</prerequisites>
-					<baseCost>300</baseCost>
 					<researchViewX>3.4</researchViewX> <!-- TODO: -->
 					<researchViewY>2</researchViewY> <!-- TODO: -->
 				</ResearchProjectDef>
 		<!-- 5 - ULTRA -->
 			<!-- ULTRA STORAGE -->
-				<ResearchProjectDef>
-					<defName>TMM_St_Ultra</defName>
-					<label>ultratech storage</label>
+				<ResearchProjectDef ParentName="TMM_UltraResearchBase">
+					<defName>TMM_Research_Storage_Ultra</defName>
+					<label>Ultratech Storage</label>
 					<description>TEMP</description> <!-- TODO: -->
-					<techLevel>Ultra</techLevel>
-					<tab>TMM_ResearchTab</tab>
 					<prerequisites>
-						<li>TMM_St_Spacer</li>
+						<li>TMM_Research_Storage_Spacer</li>
 					</prerequisites>
-					<baseCost>300</baseCost>
 					<researchViewX>4.25</researchViewX> <!-- TODO: -->
 					<researchViewY>2</researchViewY> <!-- TODO: -->
 				</ResearchProjectDef>
+		<!-- 6 - ARCHOTECH -->
+	<!-- TOOLS -->
+		<!-- 0 - ANIMAL -->
+		<!-- 1 - NEOLITHIC -->
+			<!-- NEOLITHIC TOOLS -->
+				<ResearchProjectDef ParentName="TMM_NeolithicResearchBase">
+					<defName>TMM_Research_Tools_Neolithic</defName>
+					<label>Neolithic Tools</label>
+					<description>A selection of simple tools, knapped or tied together in order to fulfil a rudimentary survival purpose.</description>
+					<tags>
+						<li>TribalStart</li>
+					</tags>
+					<researchViewX>1.00</researchViewX>
+					<researchViewY>0.00</researchViewY>
+				</ResearchProjectDef>
+		<!-- 2 - MEDIEVAL -->
+			<!-- MEDIEVAL TOOLS -->
+				<ResearchProjectDef ParentName="TMM_MedievalResearchBase">
+					<defName>TMM_Research_Tools_Medieval</defName>
+					<label>Medieval Tools</label>
+					<description>A selection of tools created by any form of -monger, hammered or sharpened into shape for easier use for a medieval colony.</description>
+					<prerequisites>
+						<li>TMM_Research_Tools_Neolithic</li>
+						<li>Smithing</li>
+					</prerequisites>
+					<researchViewX>2.00</researchViewX>
+					<researchViewY>0.00</researchViewY>
+				</ResearchProjectDef>
+		<!-- 3 - INDUSTRIAL -->
+			<!-- INDUSTRIAL TOOLS -->
+				<ResearchProjectDef ParentName="TMM_IndustrialResearchBase">
+					<defName>TMM_Research_Tools_Industrial</defName>
+					<label>Industrial Tools</label>
+					<description>With a sufficient enough miniaturisation of batteries and utilisation of electricity, an industrial colony is able to create a selection of tools to speed up a variety of work.</description>
+					<prerequisites>
+						<li>TMM_Research_Tools_Medieval</li>
+						<li>Batteries</li>
+						<li>BiofuelRefining</li>
+					</prerequisites>
+					<researchViewX>3.00</researchViewX>
+					<researchViewY>0.00</researchViewY>
+				</ResearchProjectDef>
+		<!-- 4 - SPACER -->
+			<!-- SPACER TOOLS -->
+				<ResearchProjectDef ParentName="TMM_SpacerResearchBase">
+					<defName>TMM_Research_Tools_Spacer</defName>
+					<label>Spacer Tools</label>
+					<description>With the advent of space age technology comes a variety of better tools that can be utilised by a spacer colony.</description>
+					<prerequisites>
+						<li>TMM_Research_Tools_Industrial</li>
+						<li>MicroelectronicsBasics</li>
+					</prerequisites>
+					<researchViewX>4.00</researchViewX>
+					<researchViewY>0.00</researchViewY>
+				</ResearchProjectDef>
+		<!-- 5 - ULTRA -->
+			<!-- ULTRA TOOLS -->
+				<ResearchProjectDef ParentName="TMM_UltraResearchBase">
+					<defName>TMM_Research_Tools_Ultra</defName>
+					<label>Ultratech Tools</label>
+					<description>With more miniaturisation of technology, an ultratech colony is able to utilise a suite of tools to make the day to day labour fly by.</description>
+					<prerequisites>
+						<li>TMM_Research_Tools_Spacer</li>
+						<li>Fabrication</li>
+					</prerequisites>
+					<researchViewX>5.00</researchViewX>
+					<researchViewY>0.00</researchViewY>
+				</ResearchProjectDef>
+		<!-- 6 - ARCHOTECH -->
+	<!--  -->
+
+
+
+
+
+
+
+
+
+	<!-- TODO: TEMPLATE TODO: -->
+		<!-- 0 - ANIMAL -->
+		<!-- 1 - NEOLITHIC -->
+		<!-- 2 - MEDIEVAL -->
+		<!-- 3 - INDUSTRIAL -->
+		<!-- 4 - SPACER -->
+		<!-- 5 - ULTRA -->
 		<!-- 6 - ARCHOTECH -->
 </Defs>

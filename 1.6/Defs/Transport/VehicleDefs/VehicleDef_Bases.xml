@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- MAIN VEHICLE BASE -->
+		<Vehicles.VehicleDef ParentName="VehiclePawn_Mechanical" Name="TMM_VehicleBase" Abstract="True">
+			<defName>TMM_VehicleBase</defName>
+
+			<graphicData>
+				<graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+				<shaderType>CutoutComplexPattern</shaderType>
+				<color>(200, 200, 200)</color>
+				<colorTwo>(200, 200, 200)</colorTwo>
+				<colorThree>(200, 200, 200)</colorThree>
+			</graphicData>
+
+			<vehicleCategory>Transport</vehicleCategory>
+		</Vehicles.VehicleDef>
+	<!-- AIR BASES -->
+	<!-- LAND BASES -->
+		<!-- MAIN -->
+			<Vehicles.VehicleDef ParentName="TMM_VehicleBase" Name="TMM_VehicleBase_Land" Abstract="True">
+				<defName>TMM_VehicleBase_Land</defName>
+
+				<vehicleType>Land</vehicleType>
+			</Vehicles.VehicleDef>
+		<!-- ERAS -->
+			<!-- 1 - NEOLITHIC BASES -->
+			<!-- 2 - MEDIEVAL BASES -->
+			<!-- 3 - INDUSTRIAL BASES -->
+				<!-- MAIN -->
+					<Vehicles.VehicleDef ParentName="TMM_VehicleBase_Land" Name="TMM_VehicleBase_IndustrialLand" Abstract="True">
+						<defName>TMM_VehicleBase_IndustrialLand</defName>
+
+						<techLevel>Industrial</techLevel>
+					</Vehicles.VehicleDef>
+				<!-- DIESEL -->
+					<Vehicles.VehicleDef ParentName="TMM_VehicleBase_IndustrialLand" Name="TMM_VehicleBase_IndustrialLand_Diesel" Abstract="True">
+						<defName>TMM_VehicleBase_IndustrialLand_Diesel</defName>
+
+						<soundSustainersOnEvent>
+							<li>
+								<start>IgnitionOn</start>
+								<stop>IgnitionOff</stop>
+								<value>TMM_Sound_DieselIdle</value>
+							</li>
+						</soundSustainersOnEvent>
+
+						<soundOneShotsOnEvent Inherit="False">
+							<li>
+								<key>IgnitionOn</key>
+								<value>TMM_Sound_DieselStartup</value>
+							</li>
+							<li>
+								<key>IgnitionOff</key>
+								<value>TMM_Sound_DieselShutdown</value>
+							</li>
+						</soundOneShotsOnEvent>
+					</Vehicles.VehicleDef>
+				<!-- LIGHT DIESEL -->
+					<Vehicles.VehicleDef ParentName="TMM_VehicleBase_IndustrialLand" Name="TMM_VehicleBase_IndustrialLand_LightDiesel" Abstract="True">
+						<defName>TMM_VehicleBase_IndustrialLand_LightDiesel</defName>
+
+						<soundSustainersOnEvent>
+							<li>
+								<start>IgnitionOn</start>
+								<stop>IgnitionOff</stop>
+								<value>TMM_Sound_LightDieselIdle</value>
+							</li>
+						</soundSustainersOnEvent>
+
+						<soundOneShotsOnEvent Inherit="False">
+							<li>
+								<key>IgnitionOn</key>
+								<value>TMM_Sound_LightDieselStartup</value>
+							</li>
+							<li>
+								<key>IgnitionOff</key>
+								<value>TMM_Sound_LightDieselShutdown</value>
+							</li>
+						</soundOneShotsOnEvent>
+					</Vehicles.VehicleDef>
+				<!-- MILITARY (DIESEL) -->
+					<Vehicles.VehicleDef ParentName="TMM_VehicleBase_IndustrialLand" Name="TMM_VehicleBase_IndustrialLand_MilitaryDiesel" Abstract="True">
+						<defName>TMM_VehicleBase_IndustrialLand_Diesel</defName>
+
+						<soundSustainersOnEvent>
+							<li>
+								<start>IgnitionOn</start>
+								<stop>IgnitionOff</stop>
+								<value>TMM_Sound_MilitaryDieselIdle</value>
+							</li>
+						</soundSustainersOnEvent>
+
+						<soundOneShotsOnEvent Inherit="False">
+							<li>
+								<key>IgnitionOn</key>
+								<value>TMM_Sound_MilitaryDieselStartup</value>
+							</li>
+							<li>
+								<key>IgnitionOff</key>
+								<value>TMM_Sound_MilitaryDieselShutdown</value>
+							</li>
+						</soundOneShotsOnEvent>
+					</Vehicles.VehicleDef>
+				<!-- PETROL (CHEMFUEL) -->
+					<Vehicles.VehicleDef ParentName="TMM_VehicleBase_IndustrialLand" Name="TMM_VehicleBase_IndustrialLand_Petrol" Abstract="True">
+						<defName>TMM_VehicleBase_IndustrialLand_Petrol</defName>
+
+						<soundSustainersOnEvent>
+							<li>
+								<start>IgnitionOn</start>
+								<stop>IgnitionOff</stop>
+								<value>VVE_VehicleEngineCar</value> <!-- TODO: uses VVE for now -->
+							</li>
+						</soundSustainersOnEvent>
+
+						<soundOneShotsOnEvent Inherit="False">
+							<li>
+								<key>IgnitionOn</key>
+								<value>VVE_VehicleStart</value> <!-- TODO: uses VVE for now -->
+							</li>
+							<li>
+								<key>IgnitionOff</key>
+								<value>VVE_VehicleStart</value> <!-- TODO: uses VVE for now -->
+							</li>
+						</soundOneShotsOnEvent>
+					</Vehicles.VehicleDef>
+			<!-- 4 - SPACER BASES -->
+			<!-- 5 - ULTRA BASES -->
+			<!-- 6 - ARCHOTECH BASES -->
+	<!-- SEA BASES -->
+
+
+</Defs>

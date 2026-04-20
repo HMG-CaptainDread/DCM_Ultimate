@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<Operation Class="PatchOperationSequence">
+		<operations>
+			<!-- FRIENDLY HOSTILES -->
+				<!-- JUNKERS -->
+					<li Class = "PatchOperationReplace">
+						<xpath>/Defs/FactionDef[defName="VFEP_Junkers"]/permanentEnemy/text()</xpath>
+						<value>false</value>
+					</li>
+					<li Class = "PatchOperationAdd">
+						<xpath>/Defs/FactionDef[defName="VFEP_Junkers"]</xpath>
+						<value>
+							<naturalEnemy>true</naturalEnemy>
+						</value>
+					</li>
+					<li Class = "PatchOperationReplace">
+						<xpath>/Defs/FactionDef[defName="VFEP_Junkers"]/description/text()</xpath>
+						<value>A loose confederation of pirate gangs who've agreed to mostly fight outsiders instead of fighting each other. Pirates don't sow, they don't build, and they rarely trade. Driven by a blood-and-honor culture that values personal strength and ruthlessness, they enrich themselves by raiding and robbing their more productive neighbors. Junkers utilise warcasket technology and seal themselves in metal tombs in which they raid, steal, plunder and inevitably die. They rarely use melee weapons and prefer to keep at distance to the enemy to fully utilise the powerful warcasket weaponry.\n\nIt will be very difficult to gain their trust, and maintaining a cordial relationship will require constant investment.</value>
+					</li>
+					<li Class = "PatchOperationAdd">
+						<xpath>/Defs/FactionDef[defName="VFEP_Junkers"]</xpath>
+						<value>
+							<caravanTraderKinds>
+								<li>Caravan_Outlander_CombatSupplier</li>
+								<li>Caravan_Outlander_PirateMerchant</li>
+							</caravanTraderKinds>
+							<visitorTraderKinds>
+								<li>Visitor_Outlander_Standard</li>
+							</visitorTraderKinds>
+							<baseTraderKinds>
+								<li>Base_Outlander_Standard</li>
+							</baseTraderKinds>
+						</value>
+					</li>
+					<li Class = "PatchOperationAdd">
+						<xpath>/Defs/FactionDef[defName="VFEP_Junkers"]/pawnGroupMakers</xpath>
+						<value>
+							<li>
+								<kindDef>Peaceful</kindDef>
+								<options>
+									<TMM_PawnKind_FriendlyHostile_VFEPirateTrader>20</TMM_PawnKind_FriendlyHostile_VFEPirateTrader>
+								</options>
+							</li>
+							<li>
+								<kindDef>Trader</kindDef>
+								<traders>
+									<Town_Trader>1</Town_Trader>
+								</traders>
+								<carriers>
+									<Muffalo>6</Muffalo>
+									<Dromedary>5</Dromedary>
+									<Alpaca>2</Alpaca>
+									<Elephant>1</Elephant>
+								</carriers>
+								<guards>
+									<VFEP_Hussar>5</VFEP_Hussar>
+									<TMM_PawnKind_FriendlyHostile_VFEPirateTrader>20</TMM_PawnKind_FriendlyHostile_VFEPirateTrader>
+									<VFEP_Scrapper>7</VFEP_Scrapper>
+									<VFEP_Footsoldier>10</VFEP_Footsoldier>
+									<VFEP_Veteran>10</VFEP_Veteran>
+								</guards>
+							</li>
+						</value>
+					</li>
+		</operations>
+	</Operation>
+</Patch>

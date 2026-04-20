@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<Vehicles.UpgradeTreeDef ParentName="TMM_UpgradeTree_WheeledLandBase">
+		<defName>TMM_UpgradeTree_Nomad</defName>
+
+		<nodes>
+			<!-- EXPANDED CARGO BED -->
+				<li>
+					<key>ExpandedCargo_Nomad</key>
+					<label>Expanded Cargo Bed</label>
+					<description>Convert the vehicle to an open bed truck to increase its cargo capacity by 220 kilos.</description>
+
+					<icon>Modules/Transport/UI/Upgrades/Upgrade_ExpandedCargo</icon>
+
+					<work>5400</work>
+
+					<gridCoordinate>(3, 3)</gridCoordinate>
+					<drawSize>(80, 80)</drawSize>
+
+					<upgrades>
+						<li Class="Vehicles.StatUpgrade">
+							<vehicleStats>
+								<li>
+									<def>CargoCapacity</def>
+									<value>220</value>
+								</li>
+							</vehicleStats>
+						</li>
+					</upgrades>
+
+					<ingredients>
+						<Steel>160</Steel>
+						<Cloth>40</Cloth>
+					</ingredients>
+
+					<graphicOverlays>
+						<li>
+							<graphicData>
+								<texPath>Modules/Transport/Upgrades/Land/Nomad_Truck/ExpandedTruckBed/ExpandedTruckBed</texPath>
+								<graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+								<drawSize>(3,5)</drawSize>
+								<layer>2</layer>
+								<shaderType>CutoutComplexPattern</shaderType>
+							</graphicData>
+						</li>
+					</graphicOverlays>
+				</li>
+			<!-- HEAVY DUTY BUMPER -->
+				<li>
+					<key>FrontBumper_Nomad</key>
+					<label>Heavy Duty Bumper</label>
+					<description>Mount a heavy duty bumper to protect the vehicle. This bumper also deals more damage in head-on collisions.</description>
+
+					<icon>Modules/Transport/UI/Upgrades/Upgrade_Bumper</icon>
+
+					<work>1000</work>
+
+					<gridCoordinate>(9, 3)</gridCoordinate>
+					<drawSize>(80, 80)</drawSize>
+
+					<upgrades>
+						<li Class="Vehicles.StatUpgrade">
+							<statCategories>
+								<li>
+									<def>PawnCollisionMultiplier</def>
+									<value>0.2</value>
+								</li>
+							</statCategories>
+							<stats>
+								<li>
+									<def>ArmorRating_Sharp</def>
+									<value>0.14</value>
+								</li>
+								<li>
+									<def>ArmorRating_Blunt</def>
+									<value>0.2</value>
+								</li>
+							</stats>
+						</li>
+						<li Class="Vehicles.VehicleUpgrade">
+							<health>
+								<li>
+									<key>FrontBumper</key>
+									<value>80</value>
+								</li>
+							</health>
+						</li>
+					</upgrades>
+
+					<ingredients>
+						<Steel>120</Steel>
+					</ingredients>
+
+					<graphicOverlays>
+						<li>
+							<graphicData>
+								<texPath>Modules/Transport/Upgrades/Land/Nomad_Truck/HeavyDutyBumper/HeavyDutyBumper</texPath>
+								<graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+								<drawSize>(3,5)</drawSize>
+								<layer>2</layer>
+								<shaderType>Cutout</shaderType>
+							</graphicData>
+						</li>
+					</graphicOverlays>
+				</li>
+		</nodes>
+	</Vehicles.UpgradeTreeDef>
+</Defs>
