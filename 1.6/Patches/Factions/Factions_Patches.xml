@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- CORE -->
+		<Operation Class="PatchOperationSequence">
+			<operations>
+				<!-- FRIENDLY HOSTILES -->
+					<!-- PIRATE BAND -->
+						<li Class = "PatchOperationReplace">
+							<xpath>/Defs/FactionDef[@Name="PirateBandBase"]/permanentEnemy/text()</xpath>
+							<value>false</value>
+						</li>
+						<li Class = "PatchOperationReplace">
+							<xpath>/Defs/FactionDef[@Name="PirateBandBase"]/description/text()</xpath>
+							<value>A loose confederation of pirate gangs who've agreed to mostly fight outsiders instead of fighting each other.\n\nPirates don't sow, they don't build, and they rarely trade. Driven by a blood-and-honor culture that values personal strength and ruthlessness, they enrich themselves by raiding and robbing their more productive neighbors.\n\nTheir technology level depends mostly on who they've managed to steal from recently. Mostly they carry gunpowder weapons, though some prefer to stab victims at close range.\n\nIt will be very difficult to gain their trust, and maintaining a cordial relationship will require constant investment.</value>
+						</li>
+						<li Class = "PatchOperationAdd">
+							<xpath>/Defs/FactionDef[@Name="PirateBandBase"]</xpath>
+							<value>
+								<naturalEnemy>true</naturalEnemy>
+								<caravanTraderKinds>
+									<li>Caravan_Outlander_CombatSupplier</li>
+									<li>Caravan_Outlander_PirateMerchant</li>
+								</caravanTraderKinds>
+								<visitorTraderKinds>
+									<li>Visitor_Outlander_Standard</li>
+								</visitorTraderKinds>
+								<baseTraderKinds>
+									<li>Base_Outlander_Standard</li>
+								</baseTraderKinds>
+							</value>
+						</li>
+						<li Class = "PatchOperationAdd">
+							<xpath>/Defs/FactionDef[@Name="PirateBandBase"]/pawnGroupMakers</xpath>
+							<value>
+								<li>
+									<kindDef>Peaceful</kindDef>
+									<options>
+										<TMM_PawnKind_FriendlyHostile_PirateTrader>20</TMM_PawnKind_FriendlyHostile_PirateTrader>
+									</options>
+								</li>
+								<li>
+									<kindDef>Trader</kindDef>
+									<traders>
+										<Town_Trader>1</Town_Trader>
+									</traders>
+									<carriers>
+										<Muffalo>6</Muffalo>
+										<Dromedary>5</Dromedary>
+										<Alpaca>2</Alpaca>
+										<Elephant>1</Elephant>
+									</carriers>
+									<guards>
+										<TMM_PawnKind_FriendlyHostile_AncientSoldier>5</TMM_PawnKind_FriendlyHostile_AncientSoldier>
+										<TMM_PawnKind_FriendlyHostile_PirateTrader>20</TMM_PawnKind_FriendlyHostile_PirateTrader>
+										<Mercenary_Slasher>7</Mercenary_Slasher>
+										<Mercenary_Gunner>10</Mercenary_Gunner>
+										<Mercenary_Elite>10</Mercenary_Elite>
+									</guards>
+								</li>
+							</value>
+						</li>
+					<!-- SAVAGE TRIBE -->
+						<li Class = "PatchOperationReplace">
+							<xpath>/Defs/FactionDef[@Name="TribeSavageBase"]/permanentEnemy/text()</xpath>
+							<value>false</value>
+						</li>
+						<li Class = "PatchOperationAdd">
+							<xpath>/Defs/FactionDef[@Name="TribeSavageBase"]</xpath>
+							<value>
+								<naturalEnemy>true</naturalEnemy>
+							</value>
+						</li>
+						<li Class = "PatchOperationReplace">
+							<xpath>/Defs/FactionDef[defName="TribeSavage"]/description/text()</xpath>
+							<value>These people have been here a very long time. Maybe their ancestors crashed here a thousand years ago. Maybe they survived some cataclysm that destroyed a technological civilization here. In any case, the tribals are mostly nomadic people who live off the land using primitive tools and weapons.\n\nDespite their apparent technological weakness, the tribals can be dangerous enemies because of their skill with low-tech warfare, their numbers, and their hardiness.\n\nThis particular tribe is driven by a blood-and-honor culture; it will be very difficult to ally with them!</value>
+						</li>
+					<!--  -->
+			</operations>
+		</Operation>
+	<!-- DLC -->
+		<!-- IDEOLOGY -->
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>Ideology</li>
+				</mods>
+				<match Class="PatchOperationSequence">
+					<success>Normal</success>
+					<operations>
+						<!-- FRIENDLY HOSTILES -->
+							<!-- CANNIBAL TRIBE -->
+								<li Class = "PatchOperationReplace">
+									<xpath>/Defs/FactionDef[defName="TribeCannibal"]/permanentEnemy/text()</xpath>
+									<value>false</value>
+								</li>
+								<li Class = "PatchOperationAdd">
+									<xpath>/Defs/FactionDef[defName="TribeCannibal"]</xpath>
+									<value>
+										<naturalEnemy>true</naturalEnemy>
+									</value>
+								</li>
+								<li Class = "PatchOperationReplace">
+									<xpath>/Defs/FactionDef[defName="TribeCannibal"]/description/text()</xpath>
+									<value>These people have been here a very long time. Maybe their ancestors crashed here a thousand years ago. Maybe they survived some cataclysm that destroyed a technological civilization here. In any case, the tribals are mostly nomadic people who live off the land using primitive tools and weapons.\n\nDespite their apparent technological weakness, the tribals can be dangerous enemies because of their skill with low-tech warfare, their numbers, and their hardiness.\n\nThis particularly vicious tribe believes eating the flesh of their enemies is a great honor.\n\nThis particular tribe is driven by a blood-and-honor culture; it will be very difficult to ally with them!</value>
+								</li>
+								<li Class = "PatchOperationReplace">
+									<xpath>/Defs/FactionDef[defName="CannibalPirate"]/description/text()</xpath>
+									<value>A loose confederation of pirate groups who've agreed to mostly fight outsiders instead of fighting each other.\n\nPirates don't sow, they don't build, and they rarely trade. Driven by a blood-and-honor culture that values personal strength and ruthlessness, they enrich themselves by raiding and robbing their more productive neighbors.\n\nTheir technology level depends mostly on who they've managed to steal from recently. Mostly they carry gunpowder weapons, though some prefer to stab victims at close range.\n\nThis particular gang of pirates are cannibals.\n\nIt will be very difficult to gain their trust, and maintaining a cordial relationship will require constant investment.</value>
+								</li>
+							<!--  -->
+					</operations>
+				</match>
+			</Operation>
+		<!-- ODYSSEY -->
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>Odyssey</li>
+				</mods>
+				<match Class="PatchOperationSequence">
+					<success>Normal</success>
+					<operations>
+						<!-- FRIENDLY HOSTILES -->
+							<!-- SALVAGERS -->
+								<li Class = "PatchOperationReplace">
+									<xpath>/Defs/FactionDef[defName="Salvagers"]/permanentEnemy</xpath>
+									<value>
+										<permanentEnemy>false</permanentEnemy>
+									</value>
+								</li>
+								<li Class = "PatchOperationRemove">
+									<xpath>/Defs/FactionDef[defName="Salvagers"]/hostileToFactionlessHumanlikes</xpath>
+								</li>
+								<li Class = "PatchOperationAdd">
+									<xpath>/Defs/FactionDef[defName="Salvagers"]</xpath>
+									<value>
+										<naturalEnemy>true</naturalEnemy>
+									</value>
+								</li>
+								<li Class = "PatchOperationReplace">
+									<xpath>/Defs/FactionDef[defName="Salvagers"]/description/text()</xpath>
+									<value>A ruthless faction of orbital scavengers who scour space for derelict ships and valuable wreckage. Salvagers operate entirely in space.\n\nThis particular faction is driven by a blood-and-honor culture; it will be very difficult to ally with them!</value>
+								</li>
+								<li Class = "PatchOperationAdd">
+									<xpath>/Defs/FactionDef[defName="Salvagers"]</xpath>
+									<value>
+										<caravanTraderKinds>
+											<li>Caravan_Outlander_CombatSupplier</li>
+											<li>Caravan_Outlander_PirateMerchant</li>
+										</caravanTraderKinds>
+										<visitorTraderKinds>
+											<li>Visitor_Outlander_Standard</li>
+										</visitorTraderKinds>
+										<baseTraderKinds>
+											<li>Base_Outlander_Standard</li>
+										</baseTraderKinds>
+									</value>
+								</li>
+								<li Class = "PatchOperationAdd">
+									<xpath>/Defs/FactionDef[defName="Salvagers"]/pawnGroupMakers</xpath>
+									<value>
+										<li>
+											<kindDef>Trader</kindDef>
+											<traders>
+												<Town_Trader>1</Town_Trader>
+											</traders>
+											<carriers>
+												<Muffalo>6</Muffalo>
+												<Dromedary>5</Dromedary>
+												<Alpaca>2</Alpaca>
+												<Elephant>1</Elephant>
+											</carriers>
+											<guards>
+												<Salvager_Pirate>10</Salvager_Pirate>
+											</guards>
+										</li>
+									</value>
+								</li>
+							<!--  -->
+					</operations>
+				</match>
+			</Operation>
+	<!-- MODS -->
+		<!-- RIMROBOTS -->
+			<Operation Class="PatchOperationFindMod">
+				<mods>
+					<li>Rim-Robots_</li>
+				</mods>
+				<match Class="PatchOperationSequence">
+					<success>Normal</success>
+					<operations>
+						<!-- FRIENDLY HOSTILES -->
+							<!-- SYNTH EVIL -->
+								<li Class = "PatchOperationRemove">
+									<xpath>/Defs/FactionDef[defName="SynthEvil"]/permanentEnemyToEveryoneExcept</xpath>
+								</li>
+								<li Class = "PatchOperationAdd">
+									<xpath>/Defs/FactionDef[defName="SynthEvil"]</xpath>
+									<value>
+										<naturalEnemy>true</naturalEnemy>
+									</value>
+								</li>
+								<li Class = "PatchOperationReplace">
+									<xpath>/Defs/FactionDef[defName="SynthEvil"]/description/text()</xpath>
+									<value>These synthetic-sentients have been occupying this planet for a few decades. They are technologically more advanced than regular outlanders, but choose not to leave the planet. They work with advanced machinery and massive factories, and utilize both charge weaponry and advanced pyrotechnics.\n\nAfter either hundreds of years of oppression or a hatred for the biological, they've become completely and utterly hostile.\n\nThis particular group is hostile to all forms of biological life, and those who associate with it.\n\nIt will be very difficult to gain their trust, and maintaining a cordial relationship will require constant investment.</value>
+								</li>
+								<li Class = "PatchOperationAdd">
+									<xpath>/Defs/FactionDef[defName="SynthEvil"]/pawnGroupMakers</xpath>
+									<value>
+										<li>
+											<kindDef>Peaceful</kindDef>
+											<options>
+												<Villager>1</Villager>
+												<Town_Guard>3</Town_Guard>
+												<Mechanent_Villager>13</Mechanent_Villager>
+												<Mechanent_Guard>8</Mechanent_Guard>
+												<Persona_Villager>1</Persona_Villager>
+												<Personae_Nexus>2</Personae_Nexus>
+											</options>
+										</li>
+										<li>
+											<kindDef>Trader</kindDef>
+											<traders>
+												<Mechanent_Trader>1</Mechanent_Trader>
+												<Nexus_Trader>0.3</Nexus_Trader>
+											</traders>
+											<carriers>
+												<Horse>7</Horse>
+												<Muffalo>6</Muffalo>
+												<Donkey>5.5</Donkey>
+												<Yak>5</Yak>
+												<Dromedary>4</Dromedary>
+												<Alpaca>2.5</Alpaca>
+												<Bison>2</Bison>
+												<Elephant>1</Elephant>
+											</carriers>
+											<guards>
+												<Town_Guard>0.07</Town_Guard>
+												<Mercenary_Slasher>0.2</Mercenary_Slasher>
+												<Mercenary_Gunner>0.3</Mercenary_Gunner>
+												<Mechanent_Villager>3</Mechanent_Villager>
+												<Mechanent_Guard>8</Mechanent_Guard>
+												<Mechanent_Grenadier_Destructive>0.5</Mechanent_Grenadier_Destructive>
+												<Mechanent_Charger>7</Mechanent_Charger>
+												<Mechanent_Gunner>6</Mechanent_Gunner>
+												<Mechanent_Elite>3</Mechanent_Elite>
+												<Mechanent_Sniper>2</Mechanent_Sniper>
+												<Mechanent_Heavy>2</Mechanent_Heavy>
+												<Mechanent_Spacer_Trooper>1</Mechanent_Spacer_Trooper>
+												<Mechanent_Spacer_Marine>0.5</Mechanent_Spacer_Marine>
+											</guards>
+										</li>
+									</value>
+								</li>
+							<!--  -->
+					</operations>
+				</match>
+			</Operation>
+		<!-- VANILLA FACTIONS EXPANDED -->
+			<!-- MEDIEVAL 2 -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>Vanilla Factions Expanded - Medieval 2</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Normal</success>
+						<operations>
+							<!-- FRIENDLY HOSTILES -->
+								<!-- SAVAGE CLAN -->
+									<li Class = "PatchOperationReplace">
+										<xpath>/Defs/FactionDef[defName="VFEM2_ClanSavage"]/permanentEnemy/text()</xpath>
+										<value>false</value>
+									</li>
+									<li Class = "PatchOperationAdd">
+										<xpath>/Defs/FactionDef[defName="VFEM2_ClanSavage"]</xpath>
+										<value>
+											<naturalEnemy>true</naturalEnemy>
+										</value>
+									</li>
+									<li Class = "PatchOperationReplace">
+										<xpath>/Defs/FactionDef[defName="VFEM2_ClanSavage"]/description/text()</xpath>
+										<value>These clanmen have been here for a long time. Perhaps their ancestors crashed here a thousand years ago, as their legends suggest. In any case, the nordmen are fierce people who live off of the work of others, and they are not afraid to use force to take what's not theirs.\n\nAlbeit not as technologically advanced as other factions, the nordmen can be a valuable ally and a terrible enemy due to their hardiness and savage, heathen ways.\n\nThis particular clan values warlike dominance; it may be difficult to turn them into an ally.</value>
+									</li>
+								<!-- SAVAGE KINGDOM -->
+									<li Class = "PatchOperationReplace">
+										<xpath>/Defs/FactionDef[defName="VFEM2_KingdomSavage"]/permanentEnemy/text()</xpath>
+										<value>false</value>
+									</li>
+									<li Class = "PatchOperationAdd">
+										<xpath>/Defs/FactionDef[defName="VFEM2_KingdomSavage"]</xpath>
+										<value>
+											<naturalEnemy>true</naturalEnemy>
+										</value>
+									</li>
+									<li Class = "PatchOperationReplace">
+										<xpath>/Defs/FactionDef[defName="VFEM2_KingdomSavage"]/description/text()</xpath>
+										<value>These people have been here for a shorter period of time than their neolithic bretheren. It is believed that some tribespeople and outlanders had come to embrace the medieval ways of life and decided to unite.\n\nThough still technologically inferior to many other factions, the subjects of this kingdom are well-known for using towering fortifications to protect their assets, as well as adopting the use of shields in combat and fighting in a particularly orderly manner.\n\nThis particular kingdom is ruled under a heavy hand and wishes to expand by laying the less fortunate to waste - though it is still possible to befriend them.</value>
+									</li>
+								<!--  -->
+						</operations>
+					</match>
+				</Operation>
+			<!-- SETTLERS -->
+				<Operation Class="PatchOperationFindMod">
+					<mods>
+						<li>Vanilla Factions Expanded - Settlers</li>
+					</mods>
+					<match Class="PatchOperationSequence">
+						<success>Normal</success>
+						<operations>
+							<!-- FRIENDLY HOSTILES -->
+								<!-- SAVAGE SETTLER -->
+									<li Class = "PatchOperationReplace">
+										<xpath>/Defs/FactionDef[defName="SettlerSavage"]/permanentEnemy/text()</xpath>
+										<value>false</value>
+									</li>
+									<li Class = "PatchOperationAdd">
+										<xpath>/Defs/FactionDef[defName="SettlerSavage"]</xpath>
+										<value>
+											<naturalEnemy>true</naturalEnemy>
+										</value>
+									</li>
+									<li Class = "PatchOperationReplace">
+										<xpath>/Defs/FactionDef[defName="SettlerSavage"]/description/text()</xpath>
+										<value>These people have lived here for decades or centuries, and have lost most of the technology that brought them to this world. They are a loose confederation of bandit gangs who've agreed to mostly fight outsiders instead of fighting each other.\n\nIt will be very difficult to gain their trust, and maintaining a cordial relationship will require constant investment.</value>
+									</li>
+								<!--  -->
+						</operations>
+					</match>
+				</Operation>
+</Patch>

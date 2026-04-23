@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<Vehicles.VehicleDef ParentName="TMM_VehicleBase_IndustrialLand_Diesel">
+		<defName>TMM_Vehicle_Husky</defName>
+		<label>Husky Crawler</label>
+		<description>A Husky snow crawler. While generally slower compared to most vehicles, the Husky more than makes up for this with it's near indifference to most terrain, granting it strong off-road capabilities.\n\nDespite being called the winter-"mute" this vehicle has quite the noisy reputation.\n\nDue to it's impressive traversal capabilities, the Husky is the go to for many research teams and exploration vessels, it will get you to where you need to go as long as the planet is vaguely habitable and you've got enough fuel.\n\n&lt;color=#4ec9e4&gt;Roles:&lt;/color&gt; Driver x1, Passenger x3\n&lt;color=#4ec9e4&gt;Fuel type:&lt;/color&gt; Chemfuel</description>
+
+		<graphicData>
+			<texPath>Modules/Transport/Vehicles/Land/Husky_Crawler/HuskyCrawler</texPath>
+			<drawSize>(3,6)</drawSize>
+		</graphicData>
+
+		<fillPercent>0.8</fillPercent>
+
+		<buildDef>TMM_VehicleBlueprint_Husky</buildDef>
+
+		<size>(2,5)</size>
+
+		<statBases>
+			<ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+			<ArmorRating_Heat>1</ArmorRating_Heat>
+			<ArmorRating_Sharp>0.5</ArmorRating_Sharp>
+			<Flammability>0.1</Flammability>
+			<MarketValue>1850</MarketValue>
+		</statBases>
+
+		<vehicleStats>
+			<Mass>350</Mass>
+			<MoveSpeed>7.5</MoveSpeed>
+			<CargoCapacity>425</CargoCapacity>
+			<RepairRate>1</RepairRate>
+			<AccelerationRate>0.06</AccelerationRate>
+		</vehicleStats>
+
+		<soundOneShotsOnEvent Inherit = "True">
+			<li>
+				<key>PawnEntered</key>
+				<value>TMM_Sound_DoorHatch</value>
+			</li>
+			<li>
+				<key>PawnExited</key>
+				<value>TMM_Sound_DoorHatch</value>
+			</li>
+		</soundOneShotsOnEvent>
+
+		<race>
+			<baseBodySize>4</baseBodySize>
+		</race>
+
+		<properties>
+			<visibilityWeight>1.5</visibilityWeight>
+			<winterSpeedMultiplier>0</winterSpeedMultiplier>
+
+			<customRoadCosts AssignDefaults = "0.4"/>
+
+			<worldSpeedMultiplier>1</worldSpeedMultiplier>
+			<offRoadMultiplier>1</offRoadMultiplier>
+
+			<roles>
+				<li>
+					<key>driver</key>
+					<label>Driver</label>
+					<slots>1</slots>
+					<slotsToOperate>1</slotsToOperate>
+
+					<handlingTypes>
+						<li>Movement</li>
+					</handlingTypes>
+
+					<hitbox>
+						<side>Front</side>
+					</hitbox>
+				</li>
+				<li>
+					<key>passenger_front</key>
+					<label>Passenger</label>
+					<slots>3</slots>
+
+					<hitbox>
+						<side>Front</side>
+					</hitbox>
+				</li>
+			</roles>
+
+			<customBiomeCosts>
+				<li>
+					<key>Tundra</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>IceSheet</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>BorealForest</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>ColdBog</key>
+					<value>1</value>
+				</li>
+				<li>
+					<key>SeaIce</key>
+					<value>1</value>
+				</li>
+			</customBiomeCosts>
+
+			<customTerrainCosts AllowTerrainWithTag="Soil" PathCost="1">
+				<li>
+					<key>Ice</key>
+					<value>1</value>
+				</li>
+			</customTerrainCosts>
+
+			<customHillinessCosts>
+				<li>
+					<key>SmallHills</key>
+					<value>0</value>
+				</li>
+				<li>
+					<key>LargeHills</key>
+					<value>0.5</value>
+				</li>
+				<li>
+					<key>Mountainous</key>
+					<value>1</value>
+				</li>
+			</customHillinessCosts>
+		</properties>
+
+		<components>
+			<li>
+				<key>Engine</key>
+				<label>Engine</label>
+				<health>80</health>
+				<priorityStatEfficiency>true</priorityStatEfficiency>
+				<depth>Internal</depth>
+
+				<reactors>
+					<li Class = "Vehicles.Reactor_Explosive">
+						<indicator>VF_Explosive</indicator>
+						<chance>0.12</chance>
+						<radius>2</radius>
+						<damageDef>Bomb</damageDef>
+					</li>
+				</reactors>
+
+				<hitbox>
+					<side>Front</side>
+				</hitbox>
+
+				<categories>
+					<li>MoveSpeed</li>
+				</categories>
+			</li>
+
+			<li>
+				<key>LeftTreads</key>
+				<label>Left Treads</label>
+				<health>200</health>
+				<depth>External</depth>	
+
+				<tags>
+					<li>Wheel</li>
+				</tags>
+
+				<hitbox>
+					<fallthrough>false</fallthrough>
+					<side>Left</side>
+				</hitbox>
+
+				<categories>
+					<li>MoveSpeed</li>
+				</categories>
+			</li>
+			<li>
+				<key>RightTreads</key>
+				<label>Right Treads</label>
+				<health>200</health>
+				<depth>External</depth>	
+
+				<tags>
+					<li>Wheel</li>
+				</tags>
+
+				<hitbox>
+					<fallthrough>false</fallthrough>
+					<side>Right</side>
+				</hitbox>
+
+				<categories>
+					<li>MoveSpeed</li>
+				</categories>
+			</li>
+			<li>
+				<key>Gearbox</key>
+				<label>Gearbox</label>
+				<health>85</health>
+				<depth>Internal</depth>
+
+				<hitbox>
+					<cells>
+						<li>(0, 1)</li>
+						<li>(1, 1)</li>
+					</cells>
+				</hitbox>
+
+				<categories>
+					<li>MoveSpeed</li>
+				</categories>
+			</li>
+			<li>
+				<key>LeftSidePlating</key>
+				<label>Left Hull Plating</label>
+				<health>150</health>
+				<depth>External</depth>
+				
+				<hitbox>
+					<side>Left</side>
+				</hitbox>
+			</li>
+			<li>
+				<key>RightSidePlating</key>
+				<label>Right Hull Plating</label>
+				<health>150</health>
+				<depth>External</depth>
+				
+				<hitbox>
+					<side>Right</side>
+				</hitbox>
+			</li>
+			<li>
+				<key>FuelTank</key>
+				<label>Fuel Tank</label>
+				<health>60</health>
+				<depth>Internal</depth>
+
+				<reactors>
+					<li Class = "Vehicles.Reactor_FuelLeak"/>
+					<li Class = "Vehicles.Reactor_Explosive">
+						<indicator>VF_Explosive</indicator>
+						<chance>0.12</chance>
+						<radius>3</radius>
+						<damageDef>Flame</damageDef>
+					</li>
+				</reactors>
+
+				<hitbox>
+					<cells>
+						<li>(0, -2)</li>
+						<li>(1, -2)</li>
+					</cells>
+				</hitbox>
+			</li>
+			<li>
+				<key>ForwardBumper</key>
+				<label>Forward Bumper</label>
+				<health>75</health>
+				<depth>External</depth>
+
+				<hitbox>
+					<side>Front</side>
+				</hitbox>
+			</li>
+			<li>
+				<key>RearBumper</key>
+				<label>Rear Bumper</label>
+				<health>50</health>
+				<depth>External</depth>
+
+				<hitbox>
+					<side>Back</side>
+				</hitbox>
+			</li>
+			<li>
+				<key>StorageRacks</key>
+				<label>Storage Racks</label>
+				<health>200</health>
+				<depth>Internal</depth>
+
+				<hitbox>
+					<side>Back</side>
+				</hitbox>
+
+				<categories>
+					<li>CargoCapacity</li>
+				</categories>
+			</li>
+			<li>
+				<key>ControlPanel</key>
+				<label>Control Panel</label>
+				<health>35</health>
+				<depth>Internal</depth>
+			</li>
+			<li>
+				<key>Roof</key>
+				<label>Roof</label>
+				<health>100</health>
+				<depth>External</depth>
+				<hitWeight>10</hitWeight>
+			</li>
+		</components>
+
+		<comps>
+			<li Class="Vehicles.CompProperties_UpgradeTree">
+				<def>TMM_UpgradeTree_Husky</def>
+			</li>
+			<li Class="Vehicles.CompProperties_FueledTravel">
+				<fuelType>Chemfuel</fuelType>
+				<leakDef>Filth_Fuel</leakDef>
+				<fuelConsumptionRate>24</fuelConsumptionRate>
+				<fuelConsumptionWorldMultiplier>0.5</fuelConsumptionWorldMultiplier>
+				<fuelCapacity>200</fuelCapacity>
+			</li>
+		</comps>
+	</Vehicles.VehicleDef>
+</Defs>

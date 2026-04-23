@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- AIR -->
+		<!-- MAIN -->
+			<Vehicles.UpgradeTreeDef Name="TMM_UpgradeTree_AirBase">
+				<defName>TMM_UpgradeTree_AirBase</defName>
+
+				<nodes>
+					<!-- CARGO/FUEL SYSTEMS -->
+						<!-- BASIC CARGO MANAGEMENT SYSTEM -->
+							<li>
+								<key>CargoManagement_AirBasic</key>
+								<label>Basic Cargo Management System</label>
+								<description>Install an electronic system to best manage vehicle storage, eliminating inefficiencies and freeing up more capacity.\n\nIncompatible with other storage management systems.</description>
+
+								<icon>Modules/Transport/UI/Upgrades/Upgrade_CargoCapacity</icon>
+
+								<work>1400</work>
+
+								<gridCoordinate>(3, 14)</gridCoordinate>
+								<drawSize>(80, 80)</drawSize>
+
+								<disableIfUpgradeNodesEnabled>
+									<li>FuelManagement_AirBasic</li>
+								</disableIfUpgradeNodesEnabled>
+
+								<upgrades>
+									<li Class="Vehicles.StatUpgrade">
+										<vehicleStats>
+											<li>
+												<def>CargoCapacity</def>
+												<value>25</value>
+											</li>
+										</vehicleStats>
+									</li>
+								</upgrades>
+
+								<ingredients>
+									<VVE_CarWiring>2</VVE_CarWiring>
+									<ComponentIndustrial>1</ComponentIndustrial>
+								</ingredients>
+							</li>
+						<!-- BASIC FUEL MANAGMENT SYSTEM -->
+							<li>
+								<key>FuelManagement_AirBasic</key>
+								<label>Basic Fuel Management System</label>
+								<description>Install an electronic system to best manage fuel storage, by sacrificing some cargo space, it eliminates inefficiencies and frees up some fuel space.\n\nIncompatible with other storage management systems.</description>
+
+								<icon>Modules/Transport/UI/Upgrades/Upgrade_FuelCapacity</icon>
+
+								<work>1440</work>
+
+								<gridCoordinate>(3, 20)</gridCoordinate>
+								<drawSize>(80, 80)</drawSize>
+
+								<disableIfUpgradeNodesEnabled>
+									<li>CargoManagement_AirBasic</li>
+								</disableIfUpgradeNodesEnabled>
+
+								<upgrades>
+									<li Class = "Vehicles.StatUpgrade">
+										<statCategories>
+											<li>
+												<def>FuelCapacity</def>
+												<value>60</value>
+											</li>
+										</statCategories>
+									</li>
+									<li Class="Vehicles.StatUpgrade">
+										<vehicleStats>
+											<li>
+												<def>CargoCapacity</def>
+												<value>-20</value>
+											</li>
+										</vehicleStats>
+									</li>
+								</upgrades>
+
+								<ingredients>
+									<VVE_CarFuelTank>2</VVE_CarFuelTank>
+									<VVE_CarWiring>2</VVE_CarWiring>
+									<ComponentIndustrial>1</ComponentIndustrial>
+								</ingredients>
+							</li>
+					<!-- ENGINE TUNING -->
+						<!-- HIGH PERFORMANCE ENGINE TUNING -->
+							<li>
+								<key>EngineTuning_AirPerformance</key>
+								<label>High Performance Engine Rebuild</label>
+								<description>Rebuild the engine with specific parts for better performance at higher limits.\n\nIncompatible with other engine tuning options.</description>
+
+								<icon>Modules/Transport/UI/Upgrades/Upgrade_MovementSpeed</icon>
+
+								<work>2520</work>
+
+								<gridCoordinate>(9, 14)</gridCoordinate>
+								<drawSize>(80, 80)</drawSize>
+
+								<disableIfUpgradeNodesEnabled>
+									<li>EngineTuning_AirEconomy</li>
+								</disableIfUpgradeNodesEnabled>
+
+								<upgrades>
+									<li Class="Vehicles.StatUpgrade">
+										<vehicleStats>
+											<li>
+												<def>MoveSpeed</def>
+												<value>1.0</value>
+											</li>
+											<li>
+												<def>AccelerationRate</def>
+												<value>0.005</value>
+											</li>
+										</vehicleStats>
+										<statCategories>
+											<li>
+												<def>WorldSpeedMultiplier</def>
+												<value>0.15</value>
+												<type>Add</type>
+											</li>
+										</statCategories>
+									</li>
+								</upgrades>
+
+								<ingredients>
+									<VVE_CarExhaust>1</VVE_CarExhaust>
+									<VVE_EngineBlock>1</VVE_EngineBlock>
+									<VVE_CarTransmission>1</VVE_CarTransmission>
+								</ingredients>
+							</li>
+						<!-- ECONO-SAVE ENGINE TUNING -->
+							<li>
+								<key>EngineTuning_AirEconomy</key>
+								<label>Econo-Save Engine Rebuild</label>
+								<description>Rebuild the engine for better fuel mileage using Econo-Save parts.\n\nIncompatible with other engine tuning options.</description>
+
+								<icon>Modules/Transport/UI/Upgrades/Upgrade_FuelConsumption</icon>
+
+								<work>2520</work>
+
+								<gridCoordinate>(9, 20)</gridCoordinate>
+								<drawSize>(80, 80)</drawSize>
+
+								<disableIfUpgradeNodesEnabled>
+									<li>EngineTuning_AirPerformance</li>
+								</disableIfUpgradeNodesEnabled>
+
+								<upgrades>
+									<li Class="Vehicles.StatUpgrade">
+										<statCategories>
+											<li>
+												<def>FuelConsumptionRate</def>
+												<value>-4</value>
+											</li>
+										</statCategories>
+									</li>
+								</upgrades>
+
+								<ingredients>
+									<VVE_CarExhaust>1</VVE_CarExhaust>
+									<VVE_EngineBlock>1</VVE_EngineBlock>
+									<VVE_CarTransmission>1</VVE_CarTransmission>
+								</ingredients>
+							</li>
+					<!-- CHASSIS TUNING -->
+						<!-- REINFORCED CHASSIS -->
+							<li>
+								<key>Chassis_AirReinforcement</key>
+								<label>Chassis Reinforcement</label>
+								<description>Use the lightweight properties of plasteel to reinforce the vehicle's armour while not introducing any additional mass.\n\nIncompatible with other bodywork modifications.</description>
+
+								<icon>Modules/Transport/UI/Upgrades/Upgrade_Armour</icon>
+
+								<work>1800</work>
+
+								<gridCoordinate>(15, 14)</gridCoordinate>
+								<drawSize>(80, 80)</drawSize>
+
+								<disableIfUpgradeNodesEnabled>
+									<li>Chassis_AirLightweight</li>
+								</disableIfUpgradeNodesEnabled>
+
+								<upgrades>
+									<li Class="Vehicles.StatUpgrade">
+										<stats>
+											<li>
+												<def>ArmorRating_Blunt</def>
+												<value>0.08</value>
+											</li>
+											<li>
+												<def>ArmorRating_Sharp</def>
+												<value>0.12</value>
+											</li>
+										</stats>
+									</li>
+								</upgrades>
+
+								<ingredients>
+									<Plasteel>60</Plasteel>
+									<ComponentIndustrial>1</ComponentIndustrial>
+								</ingredients>
+							</li>
+						<!-- LIGHTWEIGHT PANEL REPLACEMENTS -->
+							<li>
+								<key>Chassis_AirLightweight</key>
+								<label>Airframe Weight Reduction</label>
+								<description>Use the lightweight properties of plasteel to make the vehicle lighter while not compromising protection. This reduction to mass makes the vehicle more agile and fuel efficient.\n\nIncompatible with other bodywork modifications.</description>
+
+								<icon>Modules/Transport/UI/Upgrades/Upgrade_Acceleration</icon>
+
+								<work>1800</work>
+
+								<gridCoordinate>(15, 20)</gridCoordinate>
+								<drawSize>(80, 80)</drawSize>
+
+								<disableIfUpgradeNodesEnabled>
+									<li>Chassis_AirReinforcement</li>
+								</disableIfUpgradeNodesEnabled>
+
+								<upgrades>
+									<li Class="Vehicles.StatUpgrade">
+										<statCategories>
+											<li>
+												<def>FuelConsumptionRate</def>
+												<value>-2</value>
+											</li>
+										</statCategories>
+										<vehicleStats>
+											<li>
+												<def>AccelerationRate</def>
+												<value>0.01</value>
+											</li>
+											<li>
+												<def>MoveSpeed</def>
+												<value>1</value>
+											</li>
+											<li>
+												<def>Mass</def>
+												<value>-30</value>
+											</li>
+										</vehicleStats>
+									</li>
+								</upgrades>
+
+								<ingredients>
+									<Plasteel>60</Plasteel>
+									<ComponentIndustrial>1</ComponentIndustrial>
+								</ingredients>
+							</li>
+				</nodes>
+			</Vehicles.UpgradeTreeDef>
+		<!-- ROTOR -->
+			<Vehicles.UpgradeTreeDef ParentName="TMM_UpgradeTree_AirBase" Name="TMM_UpgradeTree_RotorAirBase">
+				<defName>TMM_UpgradeTree_RotorAirBase</defName>
+			</Vehicles.UpgradeTreeDef>
+		<!-- WINGED -->
+			<Vehicles.UpgradeTreeDef ParentName="TMM_UpgradeTree_AirBase" Name="TMM_UpgradeTree_WingedAirBase">
+				<defName>TMM_UpgradeTree_WingedAirBase</defName>
+			</Vehicles.UpgradeTreeDef>
+	<!-- LAND -->
+		<!-- MAIN BASE -->
+			<Vehicles.UpgradeTreeDef Name="TMM_UpgradeTree_LandBase">
+				<defName>TMM_UpgradeTree_LandBase</defName>
+
+				<nodes>
+					<!-- CARGO/FUEL SYSTEMS -->
+						<!-- BASIC CARGO MANAGEMENT SYSTEM -->
+							<li>
+								<key>CargoManagement_LandBasic</key>
+								<label>Basic Cargo Management System</label>
+								<description>Install an electronic system to best manage vehicle storage, eliminating inefficiencies and freeing up more capacity.\n\nIncompatible with other storage management systems.</description>
+
+								<icon>Modules/Transport/UI/Upgrades/Upgrade_CargoCapacity</icon>
+
+								<work>1400</work>
+
+								<gridCoordinate>(3, 14)</gridCoordinate>
+								<drawSize>(80, 80)</drawSize>
+
+								<disableIfUpgradeNodesEnabled>
+									<li>FuelManagement_LandBasic</li>
+								</disableIfUpgradeNodesEnabled>
+
+								<upgrades>
+									<li Class="Vehicles.StatUpgrade">
+										<vehicleStats>
+											<li>
+												<def>CargoCapacity</def>
+												<value>25</value>
+											</li>
+										</vehicleStats>
+									</li>
+								</upgrades>
+
+								<ingredients>
+									<VVE_CarWiring>2</VVE_CarWiring>
+									<ComponentIndustrial>1</ComponentIndustrial>
+								</ingredients>
+							</li>
+						<!-- BASIC FUEL MANAGMENT SYSTEM -->
+							<li>
+								<key>FuelManagement_LandBasic</key>
+								<label>Basic Fuel Management System</label>
+								<description>Install an electronic system to best manage fuel storage, by sacrificing some cargo space, it eliminates inefficiencies and frees up some fuel space.\n\nIncompatible with other storage management systems.</description>
+
+								<icon>Modules/Transport/UI/Upgrades/Upgrade_FuelCapacity</icon>
+
+								<work>1440</work>
+
+								<gridCoordinate>(3, 20)</gridCoordinate>
+								<drawSize>(80, 80)</drawSize>
+
+								<disableIfUpgradeNodesEnabled>
+									<li>CargoManagement_LandBasic</li>
+								</disableIfUpgradeNodesEnabled>
+
+								<upgrades>
+									<li Class = "Vehicles.StatUpgrade">
+										<statCategories>
+											<li>
+												<def>FuelCapacity</def>
+												<value>60</value>
+											</li>
+										</statCategories>
+									</li>
+									<li Class="Vehicles.StatUpgrade">
+										<vehicleStats>
+											<li>
+												<def>CargoCapacity</def>
+												<value>-20</value>
+											</li>
+										</vehicleStats>
+									</li>
+								</upgrades>
+
+								<ingredients>
+									<VVE_CarFuelTank>2</VVE_CarFuelTank>
+									<VVE_CarWiring>2</VVE_CarWiring>
+									<ComponentIndustrial>1</ComponentIndustrial>
+								</ingredients>
+							</li>
+					<!-- ENGINE TUNING -->
+						<!-- HIGH PERFORMANCE ENGINE TUNING -->
+							<li>
+								<key>EngineTuning_LandPerformance</key>
+								<label>High Performance Engine Rebuild</label>
+								<description>Rebuild the engine with specific parts for better performance at higher limits.\n\nIncompatible with other engine tuning options.</description>
+
+								<icon>Modules/Transport/UI/Upgrades/Upgrade_MovementSpeed</icon>
+
+								<work>2520</work>
+
+								<gridCoordinate>(9, 14)</gridCoordinate>
+								<drawSize>(80, 80)</drawSize>
+
+								<disableIfUpgradeNodesEnabled>
+									<li>EngineTuning_LandEconomy</li>
+								</disableIfUpgradeNodesEnabled>
+
+								<upgrades>
+									<li Class="Vehicles.StatUpgrade">
+										<vehicleStats>
+											<li>
+												<def>MoveSpeed</def>
+												<value>1.0</value>
+											</li>
+											<li>
+												<def>AccelerationRate</def>
+												<value>0.005</value>
+											</li>
+										</vehicleStats>
+										<statCategories>
+											<li>
+												<def>WorldSpeedMultiplier</def>
+												<value>0.15</value>
+												<type>Add</type>
+											</li>
+										</statCategories>
+									</li>
+								</upgrades>
+
+								<ingredients>
+									<VVE_CarExhaust>1</VVE_CarExhaust>
+									<VVE_EngineBlock>1</VVE_EngineBlock>
+									<VVE_CarTransmission>1</VVE_CarTransmission>
+								</ingredients>
+							</li>
+						<!-- ECONO-SAVE ENGINE TUNING -->
+							<li>
+								<key>EngineTuning_LandEconomy</key>
+								<label>Econo-Save Engine Rebuild</label>
+								<description>Rebuild the engine for better fuel mileage using Econo-Save parts.\n\nIncompatible with other engine tuning options.</description>
+
+								<icon>Modules/Transport/UI/Upgrades/Upgrade_FuelConsumption</icon>
+
+								<work>2520</work>
+
+								<gridCoordinate>(9, 20)</gridCoordinate>
+								<drawSize>(80, 80)</drawSize>
+
+								<disableIfUpgradeNodesEnabled>
+									<li>EngineTuning_LandPerformance</li>
+								</disableIfUpgradeNodesEnabled>
+
+								<upgrades>
+									<li Class="Vehicles.StatUpgrade">
+										<statCategories>
+											<li>
+												<def>FuelConsumptionRate</def>
+												<value>-4</value>
+											</li>
+										</statCategories>
+									</li>
+								</upgrades>
+
+								<ingredients>
+									<VVE_CarExhaust>1</VVE_CarExhaust>
+									<VVE_EngineBlock>1</VVE_EngineBlock>
+									<VVE_CarTransmission>1</VVE_CarTransmission>
+								</ingredients>
+							</li>
+					<!-- CHASSIS TUNING -->
+						<!-- REINFORCED CHASSIS -->
+							<li>
+								<key>Chassis_LandReinforcement</key>
+								<label>Chassis Reinforcement</label>
+								<description>Use the lightweight properties of plasteel to reinforce the vehicle's armour while not introducing any additional mass.\n\nIncompatible with other bodywork modifications.</description>
+
+								<icon>Modules/Transport/UI/Upgrades/Upgrade_Armour</icon>
+
+								<work>1800</work>
+
+								<gridCoordinate>(15, 14)</gridCoordinate>
+								<drawSize>(80, 80)</drawSize>
+
+								<disableIfUpgradeNodesEnabled>
+									<li>Chassis_LandLightweight</li>
+								</disableIfUpgradeNodesEnabled>
+
+								<upgrades>
+									<li Class="Vehicles.StatUpgrade">
+										<stats>
+											<li>
+												<def>ArmorRating_Blunt</def>
+												<value>0.08</value>
+											</li>
+											<li>
+												<def>ArmorRating_Sharp</def>
+												<value>0.12</value>
+											</li>
+										</stats>
+									</li>
+								</upgrades>
+
+								<ingredients>
+									<Plasteel>60</Plasteel>
+									<ComponentIndustrial>1</ComponentIndustrial>
+								</ingredients>
+							</li>
+						<!-- LIGHTWEIGHT PANEL REPLACEMENTS -->
+							<li>
+								<key>Chassis_LandLightweight</key>
+								<label>Chassis Weight Reduction</label>
+								<description>Use the lightweight properties of plasteel to make the vehicle lighter while not compromising protection. This reduction to mass makes the vehicle more agile and fuel efficient.\n\nIncompatible with other bodywork modifications.</description>
+
+								<icon>Modules/Transport/UI/Upgrades/Upgrade_Acceleration</icon>
+
+								<work>1800</work>
+
+								<gridCoordinate>(15, 20)</gridCoordinate>
+								<drawSize>(80, 80)</drawSize>
+
+								<disableIfUpgradeNodesEnabled>
+									<li>Chassis_LandReinforcement</li>
+								</disableIfUpgradeNodesEnabled>
+
+								<upgrades>
+									<li Class="Vehicles.StatUpgrade">
+										<statCategories>
+											<li>
+												<def>FuelConsumptionRate</def>
+												<value>-2</value>
+											</li>
+										</statCategories>
+										<vehicleStats>
+											<li>
+												<def>AccelerationRate</def>
+												<value>0.01</value>
+											</li>
+											<li>
+												<def>MoveSpeed</def>
+												<value>1</value>
+											</li>
+											<li>
+												<def>Mass</def>
+												<value>-30</value>
+											</li>
+										</vehicleStats>
+									</li>
+								</upgrades>
+
+								<ingredients>
+									<Plasteel>60</Plasteel>
+									<ComponentIndustrial>1</ComponentIndustrial>
+								</ingredients>
+							</li>
+				</nodes>
+			</Vehicles.UpgradeTreeDef>
+		<!-- TRACKED BASE -->
+			<Vehicles.UpgradeTreeDef ParentName="TMM_UpgradeTree_LandBase" Name="TMM_UpgradeTree_TrackedLandBase">
+				<defName>TMM_UpgradeTree_TrackedLandBase</defName>
+			</Vehicles.UpgradeTreeDef>
+		<!-- WHEELED BASE -->
+			<Vehicles.UpgradeTreeDef ParentName="TMM_UpgradeTree_LandBase" Name="TMM_UpgradeTree_WheeledLandBase">
+				<defName>TMM_UpgradeTree_WheeledLandBase</defName>
+
+				<nodes>
+					<!-- SUSPENSION TUNING -->
+						<!-- RACING SUSPENSION -->
+							<li>
+								<key>Suspension_Racing</key>
+								<label>Racing Suspension</label>
+								<description>Install advanced suspension systems that improve the top speed of the vehicle.\n\nIncompatible with other suspension modifications.</description>
+
+								<icon>Modules/Transport/UI/Upgrades/Upgrade_Suspension</icon>
+
+								<work>1440</work>
+
+								<gridCoordinate>(21, 14)</gridCoordinate>
+								<drawSize>(80, 80)</drawSize>
+
+								<disableIfUpgradeNodesEnabled>
+									<li>Suspension_OffRoad</li>
+								</disableIfUpgradeNodesEnabled>
+
+								<upgrades>
+									<li Class="Vehicles.StatUpgrade">
+										<vehicleStats>
+											<li>
+												<def>MoveSpeed</def>
+												<value>1.6</value>
+											</li>
+										</vehicleStats>
+										<statCategories>
+											<li>
+												<def>WorldSpeedMultiplier</def>
+												<value>0.12</value>
+												<type>Add</type>
+											</li>
+										</statCategories>
+									</li>
+								</upgrades>
+
+								<ingredients>
+									<VVE_CarSuspension>4</VVE_CarSuspension>
+									<VVE_CarWiring>1</VVE_CarWiring>
+								</ingredients>
+							</li>
+						<!-- OFF-ROAD SUSPENSION -->
+							<li>
+								<key>Suspension_OffRoad</key>
+								<label>Off-Road Suspension</label>
+								<description>Install advanced suspension systems that offer better performance on rough, uneven terrain.\n\nIncompatible with other suspension modifications.</description>
+
+								<icon>Modules/Transport/UI/Upgrades/Upgrade_SuspensionDouble</icon>
+
+								<work>1440</work>
+
+								<gridCoordinate>(21, 20)</gridCoordinate>
+								<drawSize>(80, 80)</drawSize>
+
+								<disableIfUpgradeNodesEnabled>
+									<li>Suspension_Racing</li>
+								</disableIfUpgradeNodesEnabled>
+
+								<upgrades>
+									<li Class="Vehicles.StatUpgrade">
+										<statCategories>
+											<li>
+												<def>OffRoadMultiplier</def>
+												<value>-0.35</value>
+												<type>Add</type>
+											</li>
+											<li>
+												<def>WinterCostMultiplier</def>
+												<value>-2.0</value>
+												<type>Add</type>
+											</li>
+										</statCategories>
+									</li>
+								</upgrades>
+
+								<ingredients>
+									<VVE_CarSuspension>8</VVE_CarSuspension>
+								</ingredients>
+							</li>
+				</nodes>
+			</Vehicles.UpgradeTreeDef>
+	<!-- SEA -->
+		<!-- MAIN -->
+			<Vehicles.UpgradeTreeDef Name="TMM_UpgradeTree_SeaBase">
+				<defName>TMM_UpgradeTree_SeaBase</defName>
+			</Vehicles.UpgradeTreeDef>
+</Defs>

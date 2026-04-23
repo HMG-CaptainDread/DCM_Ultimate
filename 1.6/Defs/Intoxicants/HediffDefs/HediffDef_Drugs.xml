@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!-- TMM_Hediff_ -->
+
+
+
+	<!-- BLUESKY HIGH -->
+		<HediffDef>
+			<defName>TMM_Hediff_BlueSkyHigh</defName>
+			<description>Blue Sky reduces rest factor by a little, increases conciousness and moving slightly, but greatly increases aggressiveness.</description>
+			<hediffClass>HediffWithComps</hediffClass>
+			<label>high on blue sky</label>
+			<labelNoun>a blue sky high</labelNoun>
+			<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+			<scenarioCanAdd>true</scenarioCanAdd>
+			<maxSeverity>1.0</maxSeverity>
+			<isBad>false</isBad>
+			<comps>
+				<li Class="HediffCompProperties_SeverityPerDay">
+					<severityPerDay>-1.5</severityPerDay>
+				</li>
+			</comps>
+			<stages>
+				<li>
+					<restFallFactor>0.9</restFallFactor>
+					<socialFightChanceFactor>3.0</socialFightChanceFactor>
+					<capMods>
+						<li>
+							<capacity>Consciousness</capacity>
+							<offset>0.1</offset>
+						</li>
+						<li>
+							<capacity>Moving</capacity>
+							<offset>0.1</offset>
+						</li>
+					</capMods>
+					<statOffsets>
+						<WorkSpeedGlobal>0.25</WorkSpeedGlobal>
+					</statOffsets>
+					<hediffGivers>
+						<li Class="HediffGiver_Random">
+							<hediff>HeartAttack</hediff>
+							<mtbDays>80</mtbDays>
+							<partsToAffect>
+								<li>Heart</li>
+							</partsToAffect>
+						</li>
+						<li Class="HediffGiver_Random">
+							<hediff>ChemicalDamageModerate</hediff>
+							<mtbDays>180</mtbDays>
+							<partsToAffect>
+								<li>Heart</li>
+							</partsToAffect>
+						</li>
+					</hediffGivers>
+					<mentalStateGivers>
+						<li>
+							<mentalState>Slaughterer</mentalState>
+							<mtbDays>60</mtbDays>
+						</li>
+						<li>
+							<mentalState>MurderousRage</mentalState>
+							<mtbDays>75</mtbDays>
+						</li>
+						<li>
+							<mentalState>Tantrum</mentalState>
+							<mtbDays>30</mtbDays>
+						</li>
+						<li>
+							<mentalState>BedroomTantrum</mentalState>
+							<mtbDays>15</mtbDays>
+						</li>
+						<li>
+							<mentalState>SadisticRage</mentalState>
+							<mtbDays>45</mtbDays>
+						</li>
+						<li>
+							<mentalState>Berserk</mentalState>
+							<mtbDays>120</mtbDays>
+						</li>
+					</mentalStateGivers>
+				</li>
+			</stages>
+		</HediffDef>
+	<!-- FLOXACAINE HIGH -->
+		<HediffDef>
+			<defName>TMM_Hediff_FloxacineHigh</defName>
+			<description>Floxacine boosts immunity almost completely. Taking floxacine too much can cause severe liver damage.</description>
+			<hediffClass>HediffWithComps</hediffClass>
+			<label>floxacine</label>
+			<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+			<scenarioCanAdd>true</scenarioCanAdd>
+			<maxSeverity>1</maxSeverity>
+			<comps>
+				<li Class="HediffCompProperties_SeverityPerDay">
+					<severityPerDay>-1</severityPerDay>
+				</li>
+			</comps>
+			<stages>
+				<li>
+					<statOffsets>
+						<ImmunityGainSpeed>1.0</ImmunityGainSpeed>
+					</statOffsets>
+				</li>
+			</stages>
+		</HediffDef>
+	<!-- MECHSHROOM HIGH -->
+		<HediffDef>
+			<defName>TMM_Hediff_MechshroomHigh</defName>
+			<description>This person has eaten some mechshrooms, they will be much more relaxed and not quite with it, they might experience frightening hallucinations if they take too much, but a small amount will leave them quite happy.</description>
+			<hediffClass>HediffWithComps</hediffClass>
+			<label>high on mechshrooms</label>
+			<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+			<scenarioCanAdd>true</scenarioCanAdd>
+			<maxSeverity>2.4</maxSeverity>
+			<comps>
+				<li Class="HediffCompProperties_SeverityPerDay">
+					<severityPerDay>-2.4</severityPerDay>
+				</li>
+			</comps>
+			<stages>
+				<li>
+					<label>low mechshroom trip</label>
+					<vomitMtbDays>30</vomitMtbDays>
+					<capMods>
+						<li>
+							<capacity>Consciousness</capacity>
+							<postFactor>0.9</postFactor>
+						</li>
+						<li>
+							<capacity>Sight</capacity>
+							<postFactor>0.8</postFactor>
+						</li>
+						<li>
+							<capacity>Manipulation</capacity>
+							<postFactor>0.9</postFactor>
+						</li>
+						<li>
+							<capacity>Moving</capacity>
+							<postFactor>0.9</postFactor>
+						</li>
+					</capMods>
+					<mentalStateGivers>
+						<li>
+							<mentalState>WanderConfused</mentalState>
+							<mtbDays>30</mtbDays>
+						</li>
+						<li>
+							<mentalState>Wander_OwnRoom</mentalState>
+							<mtbDays>60</mtbDays>
+						</li>
+						<li>
+							<mentalState>Wander_Sad</mentalState>
+							<mtbDays>120</mtbDays>
+						</li>
+						<li>
+							<mentalState>Wander_Psychotic</mentalState>
+							<mtbDays>180</mtbDays>
+						</li>
+					</mentalStateGivers>
+				</li>
+				<li>
+					<minSeverity>0.5</minSeverity>
+					<label>moderate mechshroom trip</label>
+					<vomitMtbDays>15</vomitMtbDays>
+					<capMods>
+						<li>
+							<capacity>Consciousness</capacity>
+							<postFactor>0.8</postFactor>
+						</li>
+						<li>
+							<capacity>Sight</capacity>
+							<postFactor>0.6</postFactor>
+						</li>
+						<li>
+							<capacity>Manipulation</capacity>
+							<postFactor>0.8</postFactor>
+						</li>
+						<li>
+							<capacity>Moving</capacity>
+							<postFactor>0.8</postFactor>
+						</li>
+					</capMods>
+					<mentalStateGivers>
+						<li>
+							<mentalState>Wander_OwnRoom</mentalState>
+							<mtbDays>30</mtbDays>
+						</li>
+						<li>
+							<mentalState>WanderConfused</mentalState>
+							<mtbDays>15</mtbDays>
+						</li>
+						<li>
+							<mentalState>Wander_Sad</mentalState>
+							<mtbDays>60</mtbDays>
+						</li>
+						<li>
+							<mentalState>Wander_Psychotic</mentalState>
+							<mtbDays>90</mtbDays>
+						</li>
+						<li>
+							<mentalState>CorpseObsession</mentalState>
+							<mtbDays>120</mtbDays>
+						</li>
+						<li>
+							<mentalState>BedroomTantrum</mentalState>
+							<mtbDays>150</mtbDays>
+						</li>
+						<li>
+							<mentalState>SadisticRage</mentalState>
+							<mtbDays>180</mtbDays>
+						</li>
+					</mentalStateGivers>
+				</li>
+				<li>
+					<minSeverity>1.2</minSeverity>
+					<label>deep mechshroom trip</label>
+					<vomitMtbDays>5</vomitMtbDays>
+					<capMods>
+						<li>
+							<capacity>Consciousness</capacity>
+							<postFactor>0.6</postFactor>
+						</li>
+						<li>
+							<capacity>Sight</capacity>
+							<postFactor>0.4</postFactor>
+						</li>
+						<li>
+							<capacity>Manipulation</capacity>
+							<postFactor>0.6</postFactor>
+						</li>
+						<li>
+							<capacity>Moving</capacity>
+							<postFactor>0.6</postFactor>
+						</li>
+					</capMods>
+					<mentalStateGivers>
+						<li>
+							<mentalState>Wander_OwnRoom</mentalState>
+							<mtbDays>15</mtbDays>
+						</li>
+						<li>
+							<mentalState>WanderConfused</mentalState>
+							<mtbDays>7.5</mtbDays>
+						</li>
+						<li>
+							<mentalState>Wander_Sad</mentalState>
+							<mtbDays>30</mtbDays>
+						</li>
+						<li>
+							<mentalState>Wander_Psychotic</mentalState>
+							<mtbDays>45</mtbDays>
+						</li>
+						<li>
+							<mentalState>CorpseObsession</mentalState>
+							<mtbDays>60</mtbDays>
+						</li>
+						<li>
+							<mentalState>BedroomTantrum</mentalState>
+							<mtbDays>75</mtbDays>
+						</li>
+						<li>
+							<mentalState>SadisticRage</mentalState>
+							<mtbDays>90</mtbDays>
+						</li>
+						<li>
+							<mentalState>Binging_DrugExtreme</mentalState>
+							<mtbDays>105</mtbDays>
+						</li>
+						<li>
+							<mentalState>FireStartingSpree</mentalState>
+							<mtbDays>120</mtbDays>
+						</li>
+					</mentalStateGivers>
+					<hediffGivers>
+						<li Class="HediffGiver_RandomDrugEffect">
+							<hediff>ChemicalDamageSevere</hediff>
+							<baseMtbDays>360</baseMtbDays>
+							<minSeverity>2.0</minSeverity>
+							<partsToAffect>
+								<li>Brain</li>
+							</partsToAffect>
+							<countToAffect>1</countToAffect>
+						</li>
+					</hediffGivers>
+				</li>
+			</stages>
+		</HediffDef>
+	<!-- SOLDIER PILL -->
+		<HediffDef>
+			<defName>TMM_Hediff_SoldierPillHigh</defName>
+			<description>soldier pills reduce the need for hunger and rest, but after cause the reverse to happen in acute severities.</description>
+			<hediffClass>HediffWithComps</hediffClass>
+			<label>soldier pill</label>
+			<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+			<scenarioCanAdd>true</scenarioCanAdd>
+			<maxSeverity>1.0</maxSeverity>
+			<comps>
+				<li Class="HediffCompProperties_SeverityPerDay">
+					<severityPerDay>-0.5</severityPerDay>
+				</li>
+			</comps>
+			<stages>
+				<li>
+					<label>soldier pill fall off</label>
+					<restFallFactor>5.0</restFallFactor>
+					<hungerRateFactorOffset>2.0</hungerRateFactorOffset>
+				</li>
+				<li>
+					<minSeverity>0.15</minSeverity>
+					<label>energized by soldier pills</label>
+					<restFallFactor>0.25</restFallFactor>
+					<hungerRateFactorOffset>-0.75</hungerRateFactorOffset>
+				</li>
+			</stages>
+		</HediffDef>
+	<!-- SUNSHINE -->
+		<HediffDef>
+			<description>Sunshine reduces senses and mental competence, but ensures a strong euphoria when in their system.</description>
+			<defName>TMM_Hediff_SunshineHigh</defName>
+			<hediffClass>HediffWithComps</hediffClass>
+			<label>walking on sunshine</label>
+			<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+			<scenarioCanAdd>true</scenarioCanAdd>
+			<maxSeverity>2.4</maxSeverity>
+			<comps>
+				<li Class="HediffCompProperties_SeverityPerDay">
+					<severityPerDay>-2.4</severityPerDay>
+				</li>
+			</comps>
+			<stages>
+				<li>
+					<vomitMtbDays>5</vomitMtbDays>
+					<capMods>
+						<li>
+							<capacity>Consciousness</capacity>
+							<postFactor>0.8</postFactor>
+						</li>
+						<li>
+							<capacity>Sight</capacity>
+							<postFactor>0.5</postFactor>
+						</li>
+						<li>
+							<capacity>Manipulation</capacity>
+							<postFactor>0.5</postFactor>
+						</li>
+						<li>
+							<capacity>Moving</capacity>
+							<postFactor>0.5</postFactor>
+						</li>
+					</capMods>
+					<mentalStateGivers>
+						<li>
+							<mentalState>WanderConfused</mentalState>
+							<mtbDays>5</mtbDays>
+						</li>
+						<li>
+							<mentalState>Wander_OwnRoom</mentalState>
+							<mtbDays>30</mtbDays>
+						</li>
+						<li>
+							<mentalState>Wander_Sad</mentalState>
+							<mtbDays>60</mtbDays>
+						</li>
+						<li>
+							<mentalState>Wander_Psychotic</mentalState>
+							<mtbDays>90</mtbDays>
+						</li>
+					</mentalStateGivers>
+					<hediffGivers>
+						<li Class="HediffGiver_RandomDrugEffect">
+							<hediff>Dementia</hediff>
+							<baseMtbDays>180</baseMtbDays>
+							<minSeverity>0.6</minSeverity>
+							<partsToAffect>
+								<li>Brain</li>
+							</partsToAffect>
+							<countToAffect>1</countToAffect>
+						</li>
+					</hediffGivers>
+				</li>
+			</stages>
+		</HediffDef>
+	<!-- TANGO -->
+		<HediffDef>
+			<defName>TMM_Hediff_TangoHigh</defName>
+			<description>Tango is in the pawn's system, nullifying pain and reducing blood flow.</description>
+			<hediffClass>HediffWithComps</hediffClass>
+			<label>tripping on tango</label>
+			<defaultLabelColor>(1,0,0.5)</defaultLabelColor>
+			<scenarioCanAdd>true</scenarioCanAdd>
+			<maxSeverity>1</maxSeverity>
+			<comps>
+				<li Class="HediffCompProperties_SeverityPerDay">
+					<severityPerDay>-1</severityPerDay>
+				</li>
+			</comps>
+			<stages>
+				<li>
+					<painFactor>0.0</painFactor>
+					<capMods>
+						<li>
+							<capacity>BloodPumping</capacity>
+							<postFactor>0.60</postFactor>
+						</li>
+					</capMods>
+				</li>
+			</stages>
+		</HediffDef>
+</Defs>

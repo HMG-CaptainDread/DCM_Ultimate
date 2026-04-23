@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- MAIN PLANT BASES -->
+		<!-- MAIN BASE -->
+			<ThingDef ParentName="PlantBase" Name="TMM_PlantBase" Abstract="True">
+				<graphicData>
+					<graphicClass>Graphic_Random</graphicClass>
+				</graphicData>
+				<statBases>
+					<MaxHitPoints>85</MaxHitPoints>
+					<Beauty>1</Beauty>
+					<BeautyOutdoors>1</BeautyOutdoors>
+					<Nutrition>0.20</Nutrition>
+				</statBases>
+				<selectable>true</selectable>
+				<neverMultiSelect>False</neverMultiSelect>
+				<pathCost>15</pathCost>
+				<plant>
+					<dieIfLeafless>true</dieIfLeafless>
+					<harvestTag>Standard</harvestTag>
+				</plant>
+			</ThingDef>
+		<!-- DECORATIVE BASE -->
+			<ThingDef ParentName="TMM_PlantBase" Name="TMM_DecorativePlantBase" Abstract="True">
+				<plant>
+					<sowTags>
+						<li>Ground</li>
+						<li>Decorative</li>
+					</sowTags>
+				</plant>
+			</ThingDef>
+		<!-- GROUND ONLY BASE -->
+			<ThingDef ParentName="TMM_PlantBase" Name="TMM_GroundOnlyPlantBase" Abstract="True">
+				<plant>
+					<sowTags>
+						<li>Ground</li>
+					</sowTags>
+				</plant>
+			</ThingDef>
+		<!-- HYDROPONICS BASE -->
+			<ThingDef ParentName="TMM_PlantBase" Name="TMM_HydroponicsPlantBase" Abstract="True">
+				<plant>
+					<sowTags>
+						<li>Ground</li>
+						<li>Hydroponic</li>
+					</sowTags>
+				</plant>
+			</ThingDef>
+	<!-- FLOWER BASES -->
+		<!-- MAIN BASE -->
+			<ThingDef ParentName="TMM_DecorativePlantBase" Name="TMM_FlowerBase" Abstract="True">
+				<statBases>
+					<Beauty>12</Beauty>
+					<BeautyOutdoors>12</BeautyOutdoors>
+					<Nutrition>0.05</Nutrition>
+				</statBases>
+				<ingestible>
+					<foodType>Plant</foodType>
+					<preferability>NeverForNutrition</preferability>
+					<canAutoSelectAsFoodForCaravan>false</canAutoSelectAsFoodForCaravan>
+				</ingestible>
+				<plant>
+					<sowWork>600</sowWork>
+					<purpose>Beauty</purpose>
+					<sowResearchPrerequisites>
+						<li>TMM_Research_HarvestTime_FlowerFarming</li>
+					</sowResearchPrerequisites>
+				</plant>
+			</ThingDef>
+		<!-- BUSH BASE -->
+			<ThingDef ParentName="TMM_FlowerBase" Name="TMM_FlowerBushBase" Abstract="True">
+				<statBases>
+					<Nutrition>0.5</Nutrition>
+				</statBases>
+				<plant>
+					<dieIfLeafless>False</dieIfLeafless>
+				</plant>
+			</ThingDef>
+	<!-- HARVESTABLE BASES -->
+		<!-- BUSH BASE -->
+			<ThingDef ParentName="TMM_HydroponicsPlantBase" Name="TMM_BushPlantBase" Abstract="True">
+				<statBases>
+					<Nutrition>0.5</Nutrition>
+				</statBases>
+				<plant>
+					<dieIfLeafless>false</dieIfLeafless>
+					<sowTags>
+						<li>Ground</li>
+						<li>Hydroponic</li>
+					</sowTags>
+				</plant>
+			</ThingDef>
+	<!-- TREE BASES -->
+		<!-- MAIN TREE BASE -->
+			<ThingDef ParentName="TreeBase" Name="TMM_TreeBase" Abstract="True">
+				<graphicData>
+					<graphicClass>Graphic_Random</graphicClass>
+				</graphicData>
+				<selectable>true</selectable>
+				<statBases>
+					<Nutrition>1</Nutrition>
+				</statBases>
+				<plant>
+					<harvestTag>Wood</harvestTag>
+					<harvestFailable>false</harvestFailable>
+					<blockAdjacentSow>true</blockAdjacentSow>
+					<treeLoversCareIfChopped>true</treeLoversCareIfChopped>
+					<burnedThingDef>BurnedTree</burnedThingDef>
+					<treeCategory>Full</treeCategory>
+					<topWindExposure>0.25</topWindExposure>
+					<mustBeWildToSow>false</mustBeWildToSow>
+					<sowResearchPrerequisites>
+						<li>TreeSowing</li>
+					</sowResearchPrerequisites>
+					<interferesWithRoof>true</interferesWithRoof>
+					<sowTags>
+						<li>Ground</li>
+					</sowTags>
+				</plant>
+			</ThingDef>
+		<!-- FRUIT TREE BASE -->
+			<ThingDef ParentName="PlantBase" Name="TMM_FruitTreeBase" Abstract="True">
+				<statBases>
+					<MaxHitPoints>200</MaxHitPoints>
+					<Flammability>0.8</Flammability>
+					<Nutrition>2</Nutrition>
+					<Mass>150</Mass>
+				</statBases>
+				<altitudeLayer>Building</altitudeLayer>
+				<selectable>true</selectable>
+				<fillPercent>0.25</fillPercent>
+				<graphicData>
+					<shadowData>
+						<volume>(0.2, 0.35, 0.13)</volume>
+						<offset>(0,0,-0.42)</offset>
+					</shadowData>
+					<shaderParameters>
+						<_FallColorSource>(0.254, 0.286, 0.125)</_FallColorSource>
+						<_FallColorDestination>/Other/TreeFallGradient</_FallColorDestination>
+						<_FallTransitionRange>(0.02, 0.10)</_FallTransitionRange>
+						<_FallBehaviorEnabled>1</_FallBehaviorEnabled>
+					</shaderParameters>
+				</graphicData>
+				<passability>PassThroughOnly</passability>
+				<pathCost>42</pathCost>
+				<blockWind>true</blockWind>
+				<ingestible>
+					<foodType>Tree</foodType>
+					<preferability>RawBad</preferability>
+				</ingestible>
+				<plant>
+					<lifespanDaysPerGrowDays>0</lifespanDaysPerGrowDays>
+					<fertilitySensitivity>0.5</fertilitySensitivity>
+					<soundHarvesting>Harvest_Tree</soundHarvesting>
+					<soundHarvestFinish>Harvest_Tree_Finish</soundHarvestFinish>
+					<harvestYield>50</harvestYield>
+					<sowWork>3000</sowWork>
+					<sowMinSkill>6</sowMinSkill>
+					<harvestWork>500</harvestWork>
+					<harvestTag>Standard</harvestTag>
+					<harvestAfterGrowth>0.30</harvestAfterGrowth>
+					<harvestMinGrowth>0.40</harvestMinGrowth>
+					<harvestFailable>true</harvestFailable>
+					<treeLoversCareIfChopped>false</treeLoversCareIfChopped>
+					<visualSizeRange>1.3~2.0</visualSizeRange>
+					<wildClusterRadius>8</wildClusterRadius>
+					<wildClusterWeight>24</wildClusterWeight>
+					<wildOrder>3</wildOrder>
+				</plant>
+			</ThingDef>
+		<!-- WILD FRUIT TREE BASE -->
+			<ThingDef ParentName="TMM_FruitTreeBase" Name="TMM_WildFruitTreeBase" Abstract="True">
+				<minifiedDef>MinifiedTree</minifiedDef>
+				<neverMultiSelect>false</neverMultiSelect>
+				<plant>
+					<harvestYield>20</harvestYield>
+					<treeLoversCareIfChopped>false</treeLoversCareIfChopped>
+					<forceIsTree>true</forceIsTree>
+				</plant>
+			</ThingDef>
+		<!-- WINTER TREE BASE -->
+			<ThingDef ParentName="TMM_TreeBase" Name="TMM_DeciduousTreeBase" Abstract="True">
+				<plant>
+					<dieIfLeafless>false</dieIfLeafless>
+				</plant>
+			</ThingDef>
+		<!-- WINTER FRUIT TREE BASE -->
+			<ThingDef ParentName="TMM_FruitTreeBase" Name="TMM_DeciduousFruitTreeBase" Abstract="True">
+				<plant>
+					<dieIfLeafless>false</dieIfLeafless>
+				</plant>
+			</ThingDef>
+</Defs>
