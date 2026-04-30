@@ -1,0 +1,1382 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Rah's Bionics and Surgery Expansion</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+				<!--li Class="PatchOperationAdd">
+					<xpath>Defs/RecipeDef[defName="InstallNaturalStomach"]</xpath>
+					<value>
+						<descriptionHyperlinks><ThingDef>Stomach</ThingDef></descriptionHyperlinks>
+					</value>
+				</li-->
+				<li Class="PatchOperationAdd">
+					<xpath>Defs</xpath>
+					<value>
+						<!-- BRAIN -->
+							<HediffDef ParentName="addedPartPropsBase">
+								<defName>Brain</defName>
+								<label>Brain transplant</label>
+								<description>A transplanted Brain.</description>
+								<lethalSeverity>1</lethalSeverity>
+								<minSeverity>0.001</minSeverity>
+								<tendable>true</tendable>
+								<spawnThingOnRemoved>Brain</spawnThingOnRemoved>
+								<comps>
+									<li Class="HediffCompProperties_TendDuration">
+										<baseTendDurationHours>96</baseTendDurationHours>
+										<severityPerDayTended>-0.8</severityPerDayTended>
+									</li>
+									<li Class="HediffCompProperties_Immunizable">
+										<severityPerDayNotImmune>0.3</severityPerDayNotImmune>
+									</li>
+								</comps>
+								<addedPartProps>
+									<solid>true</solid>
+									<partEfficiency>1.0</partEfficiency>
+								</addedPartProps>
+								<stages>
+									<li>
+										<label>mild rejection</label>
+										<partEfficiencyOffset>-0.05</partEfficiencyOffset>
+									</li>
+									<li>
+										<label>moderate rejection</label>
+										<minSeverity>0.3</minSeverity>
+										<partEfficiencyOffset>-0.3</partEfficiencyOffset>
+										<vomitMtbDays>1</vomitMtbDays>
+										<painOffset>0.15</painOffset>
+										<capMods>
+											<li>
+												<capacity>Consciousness</capacity>
+												<offset>-0.2</offset>
+											</li>
+										</capMods>
+									</li>
+									<li>
+										<label>serious rejection</label>
+										<minSeverity>0.6</minSeverity>
+										<partEfficiencyOffset>-0.5</partEfficiencyOffset>
+										<vomitMtbDays>1</vomitMtbDays>
+										<painOffset>0.25</painOffset>
+										<capMods>
+											<li>
+												<capacity>Consciousness</capacity>
+												<offset>-0.4</offset>
+											</li>
+										</capMods>
+									</li>
+									<li>
+										<label>deadly rejection</label>
+										<minSeverity>0.8</minSeverity>
+										<partEfficiencyOffset>-0.7</partEfficiencyOffset>
+										<vomitMtbDays>1</vomitMtbDays>
+										<painOffset>0.4</painOffset>
+										<capMods>
+											<li>
+												<capacity>Consciousness</capacity>
+												<offset>-0.6</offset>
+											</li>
+										</capMods>
+									</li>
+								</stages>
+							</HediffDef>
+							<RecipeDef ParentName="SurgeryInstallBodyPartNaturalBase">
+								<defName>InstallNaturalBrain</defName>
+								<label>install brain</label>
+								<description>Installs brain.</description>
+								<descriptionHyperlinks><ThingDef>Brain</ThingDef></descriptionHyperlinks>
+								<workerClass>Recipe_InstallArtificialBodyPart</workerClass>
+								<jobString>Installing brain.</jobString>
+								<deathOnFailedSurgeryChance>0.2</deathOnFailedSurgeryChance>
+								<workAmount>4000</workAmount>
+								<ingredients>
+									<li>
+										<filter>
+											<categories>
+												<li>Medicine</li>
+											</categories>
+										</filter>
+										<count>3</count>
+									</li>
+									<li>
+										<filter>
+											<thingDefs>
+												<li>Brain</li>
+											</thingDefs>
+										</filter>
+										<count>1</count>
+									</li>
+								</ingredients>
+								<fixedIngredientFilter>
+									<categories>
+										<li>Medicine</li>
+									</categories>
+									<thingDefs>
+										<li>Brain</li>
+									</thingDefs>
+								</fixedIngredientFilter>
+								<appliedOnFixedBodyParts>
+									<li>Brain</li>
+								</appliedOnFixedBodyParts>
+								<addsHediff>Brain</addsHediff>
+								<researchPrerequisite>OrganTransplantation</researchPrerequisite>
+							</RecipeDef>
+						<!-- JAW -->
+							<HediffDef ParentName="addedPartPropsBase">
+								<defName>Jaw</defName>
+								<label>Jaw transplant</label>
+								<description>A transplanted Jaw.</description>
+								<lethalSeverity>1</lethalSeverity>
+								<minSeverity>0.001</minSeverity>
+								<tendable>true</tendable>
+								<spawnThingOnRemoved>Jaw</spawnThingOnRemoved>
+								<comps>
+									<li Class="HediffCompProperties_TendDuration">
+										<baseTendDurationHours>96</baseTendDurationHours>
+										<severityPerDayTended>-0.8</severityPerDayTended>
+									</li>
+									<li Class="HediffCompProperties_Immunizable">
+										<severityPerDayNotImmune>0.3</severityPerDayNotImmune>
+									</li>
+								</comps>
+								<addedPartProps>
+									<solid>true</solid>
+									<partEfficiency>1.0</partEfficiency>
+								</addedPartProps>
+								<stages>
+									<li>
+										<label>mild rejection</label>
+										<partEfficiencyOffset>-0.05</partEfficiencyOffset>
+									</li>
+									<li>
+										<label>moderate rejection</label>
+										<minSeverity>0.3</minSeverity>
+										<partEfficiencyOffset>-0.3</partEfficiencyOffset>
+										<vomitMtbDays>1</vomitMtbDays>
+										<painOffset>0.15</painOffset>
+										<capMods>
+											<li>
+												<capacity>Consciousness</capacity>
+												<offset>-0.2</offset>
+											</li>
+										</capMods>
+									</li>
+									<li>
+										<label>serious rejection</label>
+										<minSeverity>0.6</minSeverity>
+										<partEfficiencyOffset>-0.5</partEfficiencyOffset>
+										<vomitMtbDays>1</vomitMtbDays>
+										<painOffset>0.25</painOffset>
+										<capMods>
+											<li>
+												<capacity>Consciousness</capacity>
+												<offset>-0.4</offset>
+											</li>
+										</capMods>
+									</li>
+									<li>
+										<label>deadly rejection</label>
+										<minSeverity>0.8</minSeverity>
+										<partEfficiencyOffset>-0.7</partEfficiencyOffset>
+										<vomitMtbDays>1</vomitMtbDays>
+										<painOffset>0.4</painOffset>
+										<capMods>
+											<li>
+												<capacity>Consciousness</capacity>
+												<offset>-0.6</offset>
+											</li>
+										</capMods>
+									</li>
+								</stages>
+							</HediffDef>
+							<RecipeDef ParentName="SurgeryInstallBodyPartNaturalBase">
+								<defName>InstallNaturalJaw</defName>
+								<label>install jaw</label>
+								<description>Installs jaw.</description>
+								<descriptionHyperlinks><ThingDef>Jaw</ThingDef></descriptionHyperlinks>
+								<workerClass>Recipe_InstallArtificialBodyPart</workerClass>
+								<jobString>Installing jaw.</jobString>
+								<deathOnFailedSurgeryChance>0.2</deathOnFailedSurgeryChance>
+								<workAmount>4000</workAmount>
+								<ingredients>
+									<li>
+										<filter>
+											<categories>
+												<li>Medicine</li>
+											</categories>
+										</filter>
+										<count>3</count>
+									</li>
+									<li>
+										<filter>
+											<thingDefs>
+												<li>Jaw</li>
+											</thingDefs>
+										</filter>
+										<count>1</count>
+									</li>
+								</ingredients>
+								<fixedIngredientFilter>
+									<categories>
+										<li>Medicine</li>
+									</categories>
+									<thingDefs>
+										<li>Jaw</li>
+									</thingDefs>
+								</fixedIngredientFilter>
+								<appliedOnFixedBodyParts>
+									<li>Jaw</li>
+								</appliedOnFixedBodyParts>
+								<addsHediff>Jaw</addsHediff>
+								<researchPrerequisite>OrganTransplantation</researchPrerequisite>
+							</RecipeDef>
+						<!-- SPINE -->
+							<HediffDef ParentName="addedPartPropsBase">
+								<defName>Spine</defName>
+								<label>Spine transplant</label>
+								<description>A transplanted Spine.</description>
+								<lethalSeverity>1</lethalSeverity>
+								<minSeverity>0.001</minSeverity>
+								<tendable>true</tendable>
+								<spawnThingOnRemoved>Spine</spawnThingOnRemoved>
+								<comps>
+									<li Class="HediffCompProperties_TendDuration">
+										<baseTendDurationHours>96</baseTendDurationHours>
+										<severityPerDayTended>-0.8</severityPerDayTended>
+									</li>
+									<li Class="HediffCompProperties_Immunizable">
+										<severityPerDayNotImmune>0.3</severityPerDayNotImmune>
+									</li>
+								</comps>
+								<addedPartProps>
+									<solid>true</solid>
+									<partEfficiency>1.0</partEfficiency>
+								</addedPartProps>
+								<stages>
+									<li>
+										<label>mild rejection</label>
+										<partEfficiencyOffset>-0.05</partEfficiencyOffset>
+									</li>
+									<li>
+										<label>moderate rejection</label>
+										<minSeverity>0.3</minSeverity>
+										<partEfficiencyOffset>-0.3</partEfficiencyOffset>
+										<vomitMtbDays>1</vomitMtbDays>
+										<painOffset>0.15</painOffset>
+										<capMods>
+											<li>
+												<capacity>Consciousness</capacity>
+												<offset>-0.2</offset>
+											</li>
+										</capMods>
+									</li>
+									<li>
+										<label>serious rejection</label>
+										<minSeverity>0.6</minSeverity>
+										<partEfficiencyOffset>-0.5</partEfficiencyOffset>
+										<vomitMtbDays>1</vomitMtbDays>
+										<painOffset>0.25</painOffset>
+										<capMods>
+											<li>
+												<capacity>Consciousness</capacity>
+												<offset>-0.4</offset>
+											</li>
+										</capMods>
+									</li>
+									<li>
+										<label>deadly rejection</label>
+										<minSeverity>0.8</minSeverity>
+										<partEfficiencyOffset>-0.7</partEfficiencyOffset>
+										<vomitMtbDays>1</vomitMtbDays>
+										<painOffset>0.4</painOffset>
+										<capMods>
+											<li>
+												<capacity>Consciousness</capacity>
+												<offset>-0.6</offset>
+											</li>
+										</capMods>
+									</li>
+								</stages>
+							</HediffDef>
+							<RecipeDef ParentName="SurgeryInstallBodyPartNaturalBase">
+								<defName>InstallNaturalSpine</defName>
+								<label>install spine</label>
+								<description>Installs spine.</description>
+								<descriptionHyperlinks><ThingDef>Spine</ThingDef></descriptionHyperlinks>
+								<workerClass>Recipe_InstallArtificialBodyPart</workerClass>
+								<jobString>Installing spine.</jobString>
+								<deathOnFailedSurgeryChance>0.2</deathOnFailedSurgeryChance>
+								<workAmount>4000</workAmount>
+								<ingredients>
+									<li>
+										<filter>
+											<categories>
+												<li>Medicine</li>
+											</categories>
+										</filter>
+										<count>3</count>
+									</li>
+									<li>
+										<filter>
+											<thingDefs>
+												<li>Spine</li>
+											</thingDefs>
+										</filter>
+										<count>1</count>
+									</li>
+								</ingredients>
+								<fixedIngredientFilter>
+									<categories>
+										<li>Medicine</li>
+									</categories>
+									<thingDefs>
+										<li>Spine</li>
+									</thingDefs>
+								</fixedIngredientFilter>
+								<appliedOnFixedBodyParts>
+									<li>Spine</li>
+								</appliedOnFixedBodyParts>
+								<addsHediff>Spine</addsHediff>
+								<researchPrerequisite>OrganTransplantation</researchPrerequisite>
+							</RecipeDef>
+						<!-- EYE -->
+							<HediffDef ParentName="addedPartPropsBase">
+								<defName>Eye</defName>
+								<label>Eye transplant</label>
+								<description>A transplanted Eye.</description>
+								<lethalSeverity>1</lethalSeverity>
+								<minSeverity>0.001</minSeverity>
+								<tendable>true</tendable>
+								<spawnThingOnRemoved>Eye</spawnThingOnRemoved>
+								<comps>
+									<li Class="HediffCompProperties_TendDuration">
+										<baseTendDurationHours>96</baseTendDurationHours>
+										<severityPerDayTended>-0.8</severityPerDayTended>
+									</li>
+									<li Class="HediffCompProperties_Immunizable">
+										<severityPerDayNotImmune>0.3</severityPerDayNotImmune>
+									</li>
+								</comps>
+								<addedPartProps>
+									<solid>true</solid>
+									<partEfficiency>1.0</partEfficiency>
+								</addedPartProps>
+								<stages>
+									<li>
+										<label>mild rejection</label>
+										<partEfficiencyOffset>-0.05</partEfficiencyOffset>
+									</li>
+									<li>
+										<label>moderate rejection</label>
+										<minSeverity>0.3</minSeverity>
+										<partEfficiencyOffset>-0.3</partEfficiencyOffset>
+										<vomitMtbDays>1</vomitMtbDays>
+										<painOffset>0.15</painOffset>
+										<capMods>
+											<li>
+												<capacity>Consciousness</capacity>
+												<offset>-0.2</offset>
+											</li>
+										</capMods>
+									</li>
+									<li>
+										<label>serious rejection</label>
+										<minSeverity>0.6</minSeverity>
+										<partEfficiencyOffset>-0.5</partEfficiencyOffset>
+										<vomitMtbDays>1</vomitMtbDays>
+										<painOffset>0.25</painOffset>
+										<capMods>
+											<li>
+												<capacity>Consciousness</capacity>
+												<offset>-0.4</offset>
+											</li>
+										</capMods>
+									</li>
+									<li>
+										<label>deadly rejection</label>
+										<minSeverity>0.8</minSeverity>
+										<partEfficiencyOffset>-0.7</partEfficiencyOffset>
+										<vomitMtbDays>1</vomitMtbDays>
+										<painOffset>0.4</painOffset>
+										<capMods>
+											<li>
+												<capacity>Consciousness</capacity>
+												<offset>-0.6</offset>
+											</li>
+										</capMods>
+									</li>
+								</stages>
+							</HediffDef>
+							<RecipeDef ParentName="SurgeryInstallBodyPartNaturalBase">
+								<defName>InstallNaturalEye</defName>
+								<label>install eye</label>
+								<description>Installs eye.</description>
+								<descriptionHyperlinks><ThingDef>Eye</ThingDef></descriptionHyperlinks>
+								<workerClass>Recipe_InstallArtificialBodyPart</workerClass>
+								<jobString>Installing eye.</jobString>
+								<deathOnFailedSurgeryChance>0.2</deathOnFailedSurgeryChance>
+								<workAmount>4000</workAmount>
+								<ingredients>
+									<li>
+										<filter>
+											<categories>
+												<li>Medicine</li>
+											</categories>
+										</filter>
+										<count>3</count>
+									</li>
+									<li>
+										<filter>
+											<thingDefs>
+												<li>Eye</li>
+											</thingDefs>
+										</filter>
+										<count>1</count>
+									</li>
+								</ingredients>
+								<fixedIngredientFilter>
+									<categories>
+										<li>Medicine</li>
+									</categories>
+									<thingDefs>
+										<li>Eye</li>
+									</thingDefs>
+								</fixedIngredientFilter>
+								<appliedOnFixedBodyParts>
+									<li>Eye</li>
+								</appliedOnFixedBodyParts>
+								<addsHediff>Eye</addsHediff>
+								<researchPrerequisite>OrganTransplantation</researchPrerequisite>
+							</RecipeDef>
+						<!-- NOSE -->
+							<HediffDef ParentName="addedPartPropsBase">
+								<defName>Nose</defName>
+								<label>Nose transplant</label>
+								<description>A transplanted Nose.</description>
+								<lethalSeverity>1</lethalSeverity>
+								<minSeverity>0.001</minSeverity>
+								<tendable>true</tendable>
+								<spawnThingOnRemoved>Nose</spawnThingOnRemoved>
+								<comps>
+									<li Class="HediffCompProperties_TendDuration">
+										<baseTendDurationHours>96</baseTendDurationHours>
+										<severityPerDayTended>-0.8</severityPerDayTended>
+									</li>
+									<li Class="HediffCompProperties_Immunizable">
+										<severityPerDayNotImmune>0.3</severityPerDayNotImmune>
+									</li>
+								</comps>
+								<addedPartProps>
+									<solid>true</solid>
+									<partEfficiency>1.0</partEfficiency>
+								</addedPartProps>
+								<stages>
+									<li>
+										<label>mild rejection</label>
+										<partEfficiencyOffset>-0.05</partEfficiencyOffset>
+									</li>
+									<li>
+										<label>moderate rejection</label>
+										<minSeverity>0.3</minSeverity>
+										<partEfficiencyOffset>-0.3</partEfficiencyOffset>
+										<vomitMtbDays>1</vomitMtbDays>
+										<painOffset>0.15</painOffset>
+										<capMods>
+											<li>
+												<capacity>Consciousness</capacity>
+												<offset>-0.2</offset>
+											</li>
+										</capMods>
+									</li>
+									<li>
+										<label>serious rejection</label>
+										<minSeverity>0.6</minSeverity>
+										<partEfficiencyOffset>-0.5</partEfficiencyOffset>
+										<vomitMtbDays>1</vomitMtbDays>
+										<painOffset>0.25</painOffset>
+										<capMods>
+											<li>
+												<capacity>Consciousness</capacity>
+												<offset>-0.4</offset>
+											</li>
+										</capMods>
+									</li>
+									<li>
+										<label>deadly rejection</label>
+										<minSeverity>0.8</minSeverity>
+										<partEfficiencyOffset>-0.7</partEfficiencyOffset>
+										<vomitMtbDays>1</vomitMtbDays>
+										<painOffset>0.4</painOffset>
+										<capMods>
+											<li>
+												<capacity>Consciousness</capacity>
+												<offset>-0.6</offset>
+											</li>
+										</capMods>
+									</li>
+								</stages>
+							</HediffDef>
+							<RecipeDef ParentName="SurgeryInstallBodyPartNaturalBase">
+								<defName>InstallNaturalNose</defName>
+								<label>install nose</label>
+								<description>Installs nose.</description>
+								<descriptionHyperlinks><ThingDef>Nose</ThingDef></descriptionHyperlinks>
+								<workerClass>Recipe_InstallArtificialBodyPart</workerClass>
+								<jobString>Installing nose.</jobString>
+								<deathOnFailedSurgeryChance>0.2</deathOnFailedSurgeryChance>
+								<workAmount>4000</workAmount>
+								<ingredients>
+									<li>
+										<filter>
+											<categories>
+												<li>Medicine</li>
+											</categories>
+										</filter>
+										<count>3</count>
+									</li>
+									<li>
+										<filter>
+											<thingDefs>
+												<li>Nose</li>
+											</thingDefs>
+										</filter>
+										<count>1</count>
+									</li>
+								</ingredients>
+								<fixedIngredientFilter>
+									<categories>
+										<li>Medicine</li>
+									</categories>
+									<thingDefs>
+										<li>Nose</li>
+									</thingDefs>
+								</fixedIngredientFilter>
+								<appliedOnFixedBodyParts>
+									<li>Nose</li>
+								</appliedOnFixedBodyParts>
+								<addsHediff>Nose</addsHediff>
+								<researchPrerequisite>OrganTransplantation</researchPrerequisite>
+							</RecipeDef>
+						<!-- EAR -->
+							<HediffDef ParentName="addedPartPropsBase">
+								<defName>Ear</defName>
+								<label>Ear transplant</label>
+								<description>A transplanted Ear.</description>
+								<lethalSeverity>1</lethalSeverity>
+								<minSeverity>0.001</minSeverity>
+								<tendable>true</tendable>
+								<spawnThingOnRemoved>Ear</spawnThingOnRemoved>
+								<comps>
+									<li Class="HediffCompProperties_TendDuration">
+										<baseTendDurationHours>96</baseTendDurationHours>
+										<severityPerDayTended>-0.8</severityPerDayTended>
+									</li>
+									<li Class="HediffCompProperties_Immunizable">
+										<severityPerDayNotImmune>0.3</severityPerDayNotImmune>
+									</li>
+								</comps>
+								<addedPartProps>
+									<solid>true</solid>
+									<partEfficiency>1.0</partEfficiency>
+								</addedPartProps>
+								<stages>
+									<li>
+										<label>mild rejection</label>
+										<partEfficiencyOffset>-0.05</partEfficiencyOffset>
+									</li>
+									<li>
+										<label>moderate rejection</label>
+										<minSeverity>0.3</minSeverity>
+										<partEfficiencyOffset>-0.3</partEfficiencyOffset>
+										<vomitMtbDays>1</vomitMtbDays>
+										<painOffset>0.15</painOffset>
+										<capMods>
+											<li>
+												<capacity>Consciousness</capacity>
+												<offset>-0.2</offset>
+											</li>
+										</capMods>
+									</li>
+									<li>
+										<label>serious rejection</label>
+										<minSeverity>0.6</minSeverity>
+										<partEfficiencyOffset>-0.5</partEfficiencyOffset>
+										<vomitMtbDays>1</vomitMtbDays>
+										<painOffset>0.25</painOffset>
+										<capMods>
+											<li>
+												<capacity>Consciousness</capacity>
+												<offset>-0.4</offset>
+											</li>
+										</capMods>
+									</li>
+									<li>
+										<label>deadly rejection</label>
+										<minSeverity>0.8</minSeverity>
+										<partEfficiencyOffset>-0.7</partEfficiencyOffset>
+										<vomitMtbDays>1</vomitMtbDays>
+										<painOffset>0.4</painOffset>
+										<capMods>
+											<li>
+												<capacity>Consciousness</capacity>
+												<offset>-0.6</offset>
+											</li>
+										</capMods>
+									</li>
+								</stages>
+							</HediffDef>
+							<RecipeDef ParentName="SurgeryInstallBodyPartNaturalBase">
+								<defName>InstallNaturalEar</defName>
+								<label>install ear</label>
+								<description>Installs ear.</description>
+								<descriptionHyperlinks><ThingDef>Ear</ThingDef></descriptionHyperlinks>
+								<workerClass>Recipe_InstallArtificialBodyPart</workerClass>
+								<jobString>Installing ear.</jobString>
+								<deathOnFailedSurgeryChance>0.2</deathOnFailedSurgeryChance>
+								<workAmount>4000</workAmount>
+								<ingredients>
+									<li>
+										<filter>
+											<categories>
+												<li>Medicine</li>
+											</categories>
+										</filter>
+										<count>3</count>
+									</li>
+									<li>
+										<filter>
+											<thingDefs>
+												<li>Ear</li>
+											</thingDefs>
+										</filter>
+										<count>1</count>
+									</li>
+								</ingredients>
+								<fixedIngredientFilter>
+									<categories>
+										<li>Medicine</li>
+									</categories>
+									<thingDefs>
+										<li>Ear</li>
+									</thingDefs>
+								</fixedIngredientFilter>
+								<appliedOnFixedBodyParts>
+									<li>Ear</li>
+								</appliedOnFixedBodyParts>
+								<addsHediff>Ear</addsHediff>
+								<researchPrerequisite>OrganTransplantation</researchPrerequisite>
+							</RecipeDef>
+						<!-- SHOULDER -->
+							<HediffDef ParentName="addedPartPropsBase">
+								<defName>Shoulder</defName>
+								<label>Arm transplant</label>
+								<description>A transplanted Arm.</description>
+								<lethalSeverity>1</lethalSeverity>
+								<minSeverity>0.001</minSeverity>
+								<tendable>true</tendable>
+								<spawnThingOnRemoved>Arm</spawnThingOnRemoved>
+								<comps>
+									<li Class="HediffCompProperties_TendDuration">
+										<baseTendDurationHours>96</baseTendDurationHours>
+										<severityPerDayTended>-0.8</severityPerDayTended>
+									</li>
+									<li Class="HediffCompProperties_Immunizable">
+										<severityPerDayNotImmune>0.3</severityPerDayNotImmune>
+									</li>
+								</comps>
+								<addedPartProps>
+									<solid>true</solid>
+									<partEfficiency>1.0</partEfficiency>
+								</addedPartProps>
+								<stages>
+									<li>
+										<label>mild rejection</label>
+										<partEfficiencyOffset>-0.05</partEfficiencyOffset>
+									</li>
+									<li>
+										<label>moderate rejection</label>
+										<minSeverity>0.3</minSeverity>
+										<partEfficiencyOffset>-0.3</partEfficiencyOffset>
+										<vomitMtbDays>1</vomitMtbDays>
+										<painOffset>0.15</painOffset>
+										<capMods>
+											<li>
+												<capacity>Consciousness</capacity>
+												<offset>-0.2</offset>
+											</li>
+										</capMods>
+									</li>
+									<li>
+										<label>serious rejection</label>
+										<minSeverity>0.6</minSeverity>
+										<partEfficiencyOffset>-0.5</partEfficiencyOffset>
+										<vomitMtbDays>1</vomitMtbDays>
+										<painOffset>0.25</painOffset>
+										<capMods>
+											<li>
+												<capacity>Consciousness</capacity>
+												<offset>-0.4</offset>
+											</li>
+										</capMods>
+									</li>
+									<li>
+										<label>deadly rejection</label>
+										<minSeverity>0.8</minSeverity>
+										<partEfficiencyOffset>-0.7</partEfficiencyOffset>
+										<vomitMtbDays>1</vomitMtbDays>
+										<painOffset>0.4</painOffset>
+										<capMods>
+											<li>
+												<capacity>Consciousness</capacity>
+												<offset>-0.6</offset>
+											</li>
+										</capMods>
+									</li>
+								</stages>
+							</HediffDef>
+							<RecipeDef ParentName="SurgeryInstallBodyPartNaturalBase">
+								<defName>InstallNaturalArm</defName>
+								<label>install arm</label>
+								<description>Installs arm.</description>
+								<descriptionHyperlinks><ThingDef>Arm</ThingDef></descriptionHyperlinks>
+								<workerClass>Recipe_InstallArtificialBodyPart</workerClass>
+								<jobString>Installing arm.</jobString>
+								<deathOnFailedSurgeryChance>0.2</deathOnFailedSurgeryChance>
+								<workAmount>4000</workAmount>
+								<ingredients>
+									<li>
+										<filter>
+											<categories>
+												<li>Medicine</li>
+											</categories>
+										</filter>
+										<count>3</count>
+									</li>
+									<li>
+										<filter>
+											<thingDefs>
+												<li>Arm</li>
+											</thingDefs>
+										</filter>
+										<count>1</count>
+									</li>
+								</ingredients>
+								<fixedIngredientFilter>
+									<categories>
+										<li>Medicine</li>
+									</categories>
+									<thingDefs>
+										<li>Arm</li>
+									</thingDefs>
+								</fixedIngredientFilter>
+								<appliedOnFixedBodyParts>
+									<li>Shoulder</li>
+								</appliedOnFixedBodyParts>
+								<addsHediff>Shoulder</addsHediff>
+								<researchPrerequisite>OrganTransplantation</researchPrerequisite>
+							</RecipeDef>
+						<!-- HAND -->
+							<HediffDef ParentName="addedPartPropsBase">
+								<defName>Hand</defName>
+								<label>Hand transplant</label>
+								<description>A transplanted Hand.</description>
+								<lethalSeverity>1</lethalSeverity>
+								<minSeverity>0.001</minSeverity>
+								<tendable>true</tendable>
+								<spawnThingOnRemoved>Hand</spawnThingOnRemoved>
+								<comps>
+								<li Class="HediffCompProperties_TendDuration">
+								<baseTendDurationHours>96</baseTendDurationHours>
+								<severityPerDayTended>-0.8</severityPerDayTended>
+								</li>
+									<li Class="HediffCompProperties_Immunizable">
+									<severityPerDayNotImmune>0.3</severityPerDayNotImmune>
+								</li>
+								</comps>
+								<addedPartProps>
+								<solid>true</solid>
+								<partEfficiency>1.0</partEfficiency>
+								</addedPartProps>
+								<stages>
+								<li>
+									<label>mild rejection</label>
+											<partEfficiencyOffset>-0.05</partEfficiencyOffset>
+								</li>
+								<li>
+									<label>moderate rejection</label>
+									<minSeverity>0.3</minSeverity>
+											<partEfficiencyOffset>-0.3</partEfficiencyOffset>
+											<vomitMtbDays>1</vomitMtbDays>
+											<painOffset>0.15</painOffset>
+											<capMods>
+										<li>
+											<capacity>Consciousness</capacity>
+											<offset>-0.2</offset>
+										</li>
+									</capMods>
+								</li>
+								<li>
+									<label>serious rejection</label>
+									<minSeverity>0.6</minSeverity>
+											<partEfficiencyOffset>-0.5</partEfficiencyOffset>
+											<vomitMtbDays>1</vomitMtbDays>
+											<painOffset>0.25</painOffset>
+											<capMods>
+										<li>
+											<capacity>Consciousness</capacity>
+											<offset>-0.4</offset>
+										</li>
+									</capMods>
+								</li>
+								<li>
+									<label>deadly rejection</label>
+									<minSeverity>0.8</minSeverity>
+											<partEfficiencyOffset>-0.7</partEfficiencyOffset>
+											<vomitMtbDays>1</vomitMtbDays>
+											<painOffset>0.4</painOffset>
+											<capMods>
+										<li>
+											<capacity>Consciousness</capacity>
+											<offset>-0.6</offset>
+										</li>
+									</capMods>
+								</li>
+								</stages>
+							</HediffDef>
+							<RecipeDef ParentName="SurgeryInstallBodyPartNaturalBase">
+								<defName>InstallNaturalHand</defName>
+								<label>install hand</label>
+								<description>Installs hand.</description>
+								<descriptionHyperlinks><ThingDef>Hand</ThingDef></descriptionHyperlinks>
+								<workerClass>Recipe_InstallArtificialBodyPart</workerClass>
+								<jobString>Installing hand.</jobString>
+								<deathOnFailedSurgeryChance>0.2</deathOnFailedSurgeryChance>
+								<workAmount>4000</workAmount>
+								<ingredients>
+									<li>
+										<filter>
+											<categories>
+												<li>Medicine</li>
+											</categories>
+										</filter>
+										<count>3</count>
+									</li>
+									<li>
+										<filter>
+											<thingDefs>
+												<li>Hand</li>
+											</thingDefs>
+										</filter>
+										<count>1</count>
+									</li>
+								</ingredients>
+								<fixedIngredientFilter>
+									<categories>
+										<li>Medicine</li>
+									</categories>
+									<thingDefs>
+										<li>Hand</li>
+									</thingDefs>
+								</fixedIngredientFilter>
+								<appliedOnFixedBodyParts>
+									<li>Hand</li>
+								</appliedOnFixedBodyParts>
+								<addsHediff>Hand</addsHediff>
+								<researchPrerequisite>OrganTransplantation</researchPrerequisite>
+							</RecipeDef>
+						<!-- LEG -->
+							<HediffDef ParentName="addedPartPropsBase">
+								<defName>Leg</defName>
+								<label>Leg transplant</label>
+								<description>A transplanted Leg.</description>
+								<lethalSeverity>1</lethalSeverity>
+								<minSeverity>0.001</minSeverity>
+								<tendable>true</tendable>
+								<spawnThingOnRemoved>Leg</spawnThingOnRemoved>
+								<comps>
+								<li Class="HediffCompProperties_TendDuration">
+								<baseTendDurationHours>96</baseTendDurationHours>
+								<severityPerDayTended>-0.8</severityPerDayTended>
+								</li>
+									<li Class="HediffCompProperties_Immunizable">
+									<severityPerDayNotImmune>0.3</severityPerDayNotImmune>
+								</li>
+								</comps>
+									<addedPartProps>
+									<solid>true</solid>
+									<partEfficiency>1.0</partEfficiency>
+									</addedPartProps>
+									<stages>
+								<li>
+									<label>mild rejection</label>
+											<partEfficiencyOffset>-0.05</partEfficiencyOffset>
+								</li>
+								<li>
+									<label>moderate rejection</label>
+									<minSeverity>0.3</minSeverity>
+											<partEfficiencyOffset>-0.3</partEfficiencyOffset>
+											<vomitMtbDays>1</vomitMtbDays>
+											<painOffset>0.15</painOffset>
+											<capMods>
+										<li>
+											<capacity>Consciousness</capacity>
+											<offset>-0.2</offset>
+										</li>
+									</capMods>
+								</li>
+								<li>
+									<label>serious rejection</label>
+									<minSeverity>0.6</minSeverity>
+											<partEfficiencyOffset>-0.5</partEfficiencyOffset>
+											<vomitMtbDays>1</vomitMtbDays>
+											<painOffset>0.25</painOffset>
+											<capMods>
+										<li>
+											<capacity>Consciousness</capacity>
+											<offset>-0.4</offset>
+										</li>
+									</capMods>
+								</li>
+								<li>
+									<label>deadly rejection</label>
+									<minSeverity>0.8</minSeverity>
+											<partEfficiencyOffset>-0.7</partEfficiencyOffset>
+											<vomitMtbDays>1</vomitMtbDays>
+											<painOffset>0.4</painOffset>
+											<capMods>
+										<li>
+											<capacity>Consciousness</capacity>
+											<offset>-0.6</offset>
+										</li>
+									</capMods>
+								</li>
+								</stages>
+							</HediffDef>
+							<RecipeDef ParentName="SurgeryInstallBodyPartNaturalBase">
+								<defName>InstallNaturalLeg</defName>
+								<label>install leg</label>
+								<description>Installs leg.</description>
+								<descriptionHyperlinks><ThingDef>Leg</ThingDef></descriptionHyperlinks>
+								<workerClass>Recipe_InstallArtificialBodyPart</workerClass>
+								<jobString>Installing leg.</jobString>
+								<deathOnFailedSurgeryChance>0.2</deathOnFailedSurgeryChance>
+								<workAmount>4000</workAmount>
+								<ingredients>
+									<li>
+										<filter>
+											<categories>
+												<li>Medicine</li>
+											</categories>
+										</filter>
+										<count>3</count>
+									</li>
+									<li>
+										<filter>
+											<thingDefs>
+												<li>Leg</li>
+											</thingDefs>
+										</filter>
+										<count>1</count>
+									</li>
+								</ingredients>
+								<fixedIngredientFilter>
+									<categories>
+										<li>Medicine</li>
+									</categories>
+									<thingDefs>
+										<li>Leg</li>
+									</thingDefs>
+								</fixedIngredientFilter>
+								<appliedOnFixedBodyParts>
+									<li>Leg</li>
+								</appliedOnFixedBodyParts>
+								<addsHediff>Leg</addsHediff>
+								<researchPrerequisite>OrganTransplantation</researchPrerequisite>
+							</RecipeDef>
+						<!-- FOOT -->
+							<HediffDef ParentName="addedPartPropsBase">
+								<defName>Foot</defName>
+								<label>Foot transplant</label>
+								<description>A transplanted Foot.</description>
+								<lethalSeverity>1</lethalSeverity>
+								<minSeverity>0.001</minSeverity>
+								<tendable>true</tendable>
+								<spawnThingOnRemoved>Foot</spawnThingOnRemoved>
+								<comps>
+									<li Class="HediffCompProperties_TendDuration">
+										<baseTendDurationHours>96</baseTendDurationHours>
+										<severityPerDayTended>-0.8</severityPerDayTended>
+									</li>
+									<li Class="HediffCompProperties_Immunizable">
+										<severityPerDayNotImmune>0.3</severityPerDayNotImmune>
+									</li>
+								</comps>
+								<addedPartProps>
+									<solid>true</solid>
+									<partEfficiency>1.0</partEfficiency>
+								</addedPartProps>
+								<stages>
+									<li>
+										<label>mild rejection</label>
+										<partEfficiencyOffset>-0.05</partEfficiencyOffset>
+									</li>
+									<li>
+										<label>moderate rejection</label>
+										<minSeverity>0.3</minSeverity>
+										<partEfficiencyOffset>-0.3</partEfficiencyOffset>
+										<vomitMtbDays>1</vomitMtbDays>
+										<painOffset>0.15</painOffset>
+										<capMods>
+											<li>
+												<capacity>Consciousness</capacity>
+												<offset>-0.2</offset>
+											</li>
+										</capMods>
+									</li>
+									<li>
+										<label>serious rejection</label>
+										<minSeverity>0.6</minSeverity>
+										<partEfficiencyOffset>-0.5</partEfficiencyOffset>
+										<vomitMtbDays>1</vomitMtbDays>
+										<painOffset>0.25</painOffset>
+										<capMods>
+											<li>
+												<capacity>Consciousness</capacity>
+												<offset>-0.4</offset>
+											</li>
+										</capMods>
+									</li>
+									<li>
+										<label>deadly rejection</label>
+										<minSeverity>0.8</minSeverity>
+										<partEfficiencyOffset>-0.7</partEfficiencyOffset>
+										<vomitMtbDays>1</vomitMtbDays>
+										<painOffset>0.4</painOffset>
+										<capMods>
+											<li>
+												<capacity>Consciousness</capacity>
+												<offset>-0.6</offset>
+											</li>
+										</capMods>
+									</li>
+								</stages>
+							</HediffDef>
+							<RecipeDef ParentName="SurgeryInstallBodyPartNaturalBase">
+								<defName>InstallNaturalFoot</defName>
+								<label>install foot</label>
+								<description>Installs foot.</description>
+								<descriptionHyperlinks><ThingDef>Foot</ThingDef></descriptionHyperlinks>
+								<workerClass>Recipe_InstallArtificialBodyPart</workerClass>
+								<jobString>Installing foot.</jobString>
+								<deathOnFailedSurgeryChance>0.2</deathOnFailedSurgeryChance>
+								<workAmount>4000</workAmount>
+								<ingredients>
+									<li>
+										<filter>
+											<categories>
+												<li>Medicine</li>
+											</categories>
+										</filter>
+										<count>3</count>
+									</li>
+									<li>
+										<filter>
+											<thingDefs>
+												<li>Foot</li>
+											</thingDefs>
+										</filter>
+										<count>1</count>
+									</li>
+								</ingredients>
+								<fixedIngredientFilter>
+									<categories>
+										<li>Medicine</li>
+									</categories>
+									<thingDefs>
+										<li>Foot</li>
+									</thingDefs>
+								</fixedIngredientFilter>
+								<appliedOnFixedBodyParts>
+									<li>Foot</li>
+								</appliedOnFixedBodyParts>
+								<addsHediff>Foot</addsHediff>
+								<researchPrerequisite>OrganTransplantation</researchPrerequisite>
+							</RecipeDef>
+					</value>
+				</li>
+			</operations>
+		</match>
+	</Operation>
+
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>The Birds and the Bees</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<!--<success>Always</success>-->
+			<operations>
+				<li Class="PatchOperationFindMod">
+					<mods>
+						<li>Rah's Bionics and Surgery Expansion</li>
+					</mods>
+					<nomatch Class="PatchOperationSequence">
+						<operations>
+							<li Class="PatchOperationAdd">
+								<xpath>/Defs</xpath>
+								<value>
+									<ThingDef ParentName="BodyPartNaturalBase">
+										<defName>ReproductiveOrgans</defName>
+										<label>reproductive organs</label>
+										<description>Biological human reproductive organs. Useful for procreation and recreation , surprisingly interchangeable.</description>
+										<statBases>
+											<MarketValue>300</MarketValue>
+											<Mass>0.4</Mass>
+										</statBases>
+									</ThingDef>
+								
+									<RecipeDef ParentName="SurgeryInstallOrgan">
+										<defName>InstallNaturalReproductiveOrgans</defName>
+										<label>install reproductive organs</label>
+										<description>Install biological reproductive organs.</description>
+										<jobString>Installing reproductive organs.</jobString>
+										<ingredients>
+										<li>
+											<filter>
+												<categories>
+												<li>Medicine</li>
+												</categories>
+											</filter>
+											<count>2</count>
+										</li>
+										<li>
+											<filter>
+												<thingDefs>
+												<li>ReproductiveOrgans</li>
+												</thingDefs>
+											</filter>
+											<count>1</count>
+										</li>
+										</ingredients>
+										<fixedIngredientFilter>
+											<categories>
+											<li>Medicine</li>
+											</categories>
+											<thingDefs>
+											<li>ReproductiveOrgans</li>
+											</thingDefs>
+										</fixedIngredientFilter>
+										<appliedOnFixedBodyParts>
+										<li>ReproductiveOrgans</li>
+										</appliedOnFixedBodyParts>
+									</RecipeDef>
+
+								</value>
+							</li>
+							<li Class="PatchOperationConditional">
+								<xpath>/Defs/BodyPartDef[defName="ReproductiveOrgans"]/spawnThingOnRemoved</xpath>
+						
+								
+								<match Class="PatchOperationAdd">
+							
+									<xpath>/Defs/BodyPartDef[defName="ReproductiveOrgans"]</xpath>
+									<value>
+										<modExtensions>
+										<li Class="Harvest_Everything.ModExtension">
+											<requireCleanChildrenToRemove>true</requireCleanChildrenToRemove>
+										</li>
+										</modExtensions>
+									</value>
+								</match>
+								
+								<nomatch Class="PatchOperationAdd">
+									<xpath>/Defs/BodyPartDef[defName="ReproductiveOrgans"]</xpath>
+									<value>
+										<spawnThingOnRemoved>ReproductiveOrgans</spawnThingOnRemoved>
+										<modExtensions>
+										<li Class="Harvest_Everything.ModExtension">
+											<requireCleanChildrenToRemove>true</requireCleanChildrenToRemove>
+										</li>
+										</modExtensions>
+
+									</value>
+								</nomatch>
+							</li>
+						</operations>
+					</nomatch>
+					<match Class="PatchOperationSequence">
+				
+						<operations>
+						
+							<li Class="PatchOperationAdd">
+								<xpath>/Defs</xpath>
+								<value>
+									<ThingDef ParentName="BodyPartNaturalBase">
+										<defName>ReproductiveOrgans</defName>
+										<label>reproductive organs</label>
+										<description>Biological human reproductive organs. Useful for procreation and recreation , surprisingly interchangeable.</description>
+										<statBases>
+											<MarketValue>300</MarketValue>
+											<Mass>0.4</Mass>
+										</statBases>
+										<tickerType>Rare</tickerType>
+										<comps>
+											<li Class="CompProperties_Rottable">
+											<daysToRotStart>0.6</daysToRotStart>
+											<rotDestroys>true</rotDestroys>
+										</li>
+										</comps>
+									</ThingDef>
+								
+									 <HediffDef ParentName="addedPartPropsBase">
+										<defName>ReproductiveOrgans</defName>
+										<label>Reproductive Organ transplant</label>
+										<description>A transplanted Reproductive Organ.</description>
+										<lethalSeverity>1</lethalSeverity>
+										<minSeverity>0.001</minSeverity>
+										<tendable>true</tendable>
+										<spawnThingOnRemoved>ReproductiveOrgans</spawnThingOnRemoved>
+										<comps>
+										<li Class="HediffCompProperties_TendDuration">
+										<baseTendDurationHours>96</baseTendDurationHours>
+										<severityPerDayTended>-0.8</severityPerDayTended>
+									</li>
+										<li Class="HediffCompProperties_Immunizable">
+										<severityPerDayNotImmune>0.3</severityPerDayNotImmune>
+									</li>
+									</comps>
+										<addedPartProps>
+										 <solid>true</solid>
+										 <partEfficiency>1.0</partEfficiency>
+										</addedPartProps>
+										<stages>
+									<li>
+										<label>mild rejection</label>
+												<partEfficiencyOffset>-0.05</partEfficiencyOffset>
+									</li>
+									<li>
+										<label>moderate rejection</label>
+										<minSeverity>0.3</minSeverity>
+												<partEfficiencyOffset>-0.3</partEfficiencyOffset>
+												<vomitMtbDays>1</vomitMtbDays>
+												<painOffset>0.15</painOffset>
+												<capMods>
+											<li>
+												 <capacity>Consciousness</capacity>
+												 <offset>-0.2</offset>
+											</li>
+										 </capMods>
+									</li>
+									<li>
+										<label>serious rejection</label>
+										<minSeverity>0.6</minSeverity>
+												<partEfficiencyOffset>-0.5</partEfficiencyOffset>
+												<vomitMtbDays>1</vomitMtbDays>
+												<painOffset>0.25</painOffset>
+												<capMods>
+											<li>
+												 <capacity>Consciousness</capacity>
+												 <offset>-0.4</offset>
+											</li>
+										 </capMods>
+									</li>
+									<li>
+										<label>deadly rejection</label>
+										<minSeverity>0.8</minSeverity>
+												<partEfficiencyOffset>-0.7</partEfficiencyOffset>
+												<vomitMtbDays>1</vomitMtbDays>
+												<painOffset>0.4</painOffset>
+												<capMods>
+											<li>
+												 <capacity>Consciousness</capacity>
+												 <offset>-0.6</offset>
+											</li>
+										 </capMods>
+									</li>
+									</stages>
+									 </HediffDef>
+									 
+									<RecipeDef ParentName="SurgeryInstallBodyPartNaturalBase">
+										<defName>InstallNaturalReproductiveOrgans</defName>
+										<label>install reproductive organs</label>
+										<description>Installs reproductive organs.</description>
+										<descriptionHyperlinks><ThingDef>ReproductiveOrgans</ThingDef></descriptionHyperlinks>
+										<workerClass>Recipe_InstallArtificialBodyPart</workerClass>
+										<jobString>Installing reproductive organs.</jobString>
+										<deathOnFailedSurgeryChance>0.2</deathOnFailedSurgeryChance>
+										<workAmount>4000</workAmount>
+										<ingredients>
+											<li>
+												<filter>
+													<categories>
+														<li>Medicine</li>
+													</categories>
+												</filter>
+												<count>3</count>
+											</li>
+											<li>
+												<filter>
+													<thingDefs>
+														<li>ReproductiveOrgans</li>
+													</thingDefs>
+												</filter>
+												<count>1</count>
+											</li>
+										</ingredients>
+										<fixedIngredientFilter>
+											<categories>
+												<li>Medicine</li>
+											</categories>
+											<thingDefs>
+												<li>ReproductiveOrgans</li>
+											</thingDefs>
+										</fixedIngredientFilter>
+										<appliedOnFixedBodyParts>
+											<li>ReproductiveOrgans</li>
+										</appliedOnFixedBodyParts>
+										<addsHediff>ReproductiveOrgans</addsHediff>
+										 <researchPrerequisite>OrganTransplantation</researchPrerequisite>
+									</RecipeDef>
+									
+								</value>
+							</li>
+							<li Class="PatchOperationConditional">
+								<xpath>/Defs/BodyPartDef[defName="ReproductiveOrgans"]/spawnThingOnRemoved</xpath>
+						
+								
+								<match Class="PatchOperationAdd">
+							
+									<xpath>/Defs/BodyPartDef[defName="ReproductiveOrgans"]</xpath>
+									<value>
+										<modExtensions>
+										<li Class="Harvest_Everything.ModExtension">
+											<requireCleanChildrenToRemove>true</requireCleanChildrenToRemove>
+										</li>
+										</modExtensions>
+									</value>
+								</match>
+								
+								<nomatch Class="PatchOperationAdd">
+									<xpath>/Defs/BodyPartDef[defName="ReproductiveOrgans"]</xpath>
+									<value>
+										<spawnThingOnRemoved>ReproductiveOrgans</spawnThingOnRemoved>
+										<modExtensions>
+										<li Class="Harvest_Everything.ModExtension">
+											<requireCleanChildrenToRemove>true</requireCleanChildrenToRemove>
+										</li>
+										</modExtensions>
+
+									</value>
+								</nomatch>
+							</li>
+							
+						</operations>
+					</match>	
+				</li>
+			</operations>
+		</match>
+	</Operation>
+
+</Patch>

@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<!-- <></> -->
+	<!-- TMM_Hediff_ -->
+	<!-- TMM_SurgeryInstall_ -->
+	<!-- TMM_SurgeryRemove_ -->
+	<!-- TMM_Implant_ -->
+
+
+
+	<!-- BASE -->
+
+	<!-- IMPLANTS -->
+		<!-- GOD CORE -->
+			<HediffDef ParentName="ImplantHediffBase">
+				<defName>TMM_Hediff_GodCoreImplant</defName>
+				<label>god core</label>
+				<labelNoun>a god core</labelNoun>
+				<description>An installed god core.</description>
+				<descriptionHyperlinks>
+					<ThingDef>TMM_Implant_GodCoreImplant</ThingDef>
+				</descriptionHyperlinks>
+				<spawnThingOnRemoved>TMM_Implant_GodCoreImplant</spawnThingOnRemoved>
+				<stages>
+					<li>
+						<statOffsets>
+							<MoveSpeed>1000</MoveSpeed>
+						</statOffsets>
+						<statFactors>
+							<IncomingDamageFactor>0.01</IncomingDamageFactor>
+							<StaggerDurationFactor>0.01</StaggerDurationFactor>
+						</statFactors>
+					</li>
+				</stages>
+				<tags>
+					<li>II_GodCore_Implant</li> <!-- TODO: -->
+				</tags>
+			</HediffDef>
+		<!-- LIMB-R-UP -->
+			<HediffDef ParentName="ImplantHediffBase">
+				<defName>TMM_Hediff_LimbRUpImplant</defName>
+				<label>Limb-R-Up implant</label>
+				<labelNoun>a military enhancement implant</labelNoun>
+				<description>A specialized military implant that enhances organs with a metal-like biological substance, making them more efficient.</description>
+				<descriptionHyperlinks>
+					<ThingDef>TMM_Implant_LimbRUpImplant</ThingDef>
+				</descriptionHyperlinks>
+				<spawnThingOnRemoved>TMM_Implant_LimbRUpImplant</spawnThingOnRemoved>
+				<maxSeverity>1.0</maxSeverity>
+				<addedPartProps>
+					<partEfficiency>1.25</partEfficiency>
+				</addedPartProps>
+			</HediffDef>
+		<!-- SPEEDRUN PROTOCOL CHIP -->
+			<HediffDef ParentName="ImplantHediffBase">
+				<defName>TMM_Hediff_SpeedrunProtocolChipImplant</defName>
+				<label>speedrun protocol chip implant</label>
+				<labelNoun>a speedrun protocol chip implant</labelNoun>
+				<description>An incredibly powerful implant that provides pure caffeine and energy into the veins of users, doubling their speed and manipulation and even increasing their learning rate.</description>
+				<descriptionHyperlinks>
+					<ThingDef>TMM_Implant_SpeedrunProtocolChipImplant</ThingDef>
+				</descriptionHyperlinks>
+				<spawnThingOnRemoved>TMM_Implant_SpeedrunProtocolChipImplant</spawnThingOnRemoved>
+				<stages>
+					<li>
+						<hungerRateFactor>4</hungerRateFactor>
+						<statFactors>
+							<GlobalLearningFactor>1.5</GlobalLearningFactor>
+							<RestFallRateFactor>2.0</RestFallRateFactor>
+						</statFactors>
+						<statOffsets>
+							<MentalBreakThreshold>0.25</MentalBreakThreshold>
+						</statOffsets>
+						<capMods>
+							<li>
+								<capacity>Manipulation</capacity>
+								<postFactor>2.0</postFactor>
+							</li>
+							<li>
+								<capacity>Moving</capacity>
+								<postFactor>2.0</postFactor>
+							</li>
+						</capMods>
+					</li>
+				</stages>
+			</HediffDef>
+		<!-- TEMPERATURE IMPLANTS -->
+			<!-- COOLING -->
+				<!-- ECONOSAVE -->
+					<HediffDef ParentName="ImplantHediffBase">
+						<defName>TMM_Hediff_EconoSaveCoolOffImplant</defName>
+						<label>Econo-Save CoolOff™</label>
+						<labelNoun>an Econo-Save CoolOff™</labelNoun>
+						<description>This implant injects a type of liquid that can easily be cooled down, allowing soldiers to survive burning temperatures without extra protection.</description>
+						<descriptionHyperlinks>
+							<ThingDef>TMM_Implant_EconoSaveCoolOffImplant</ThingDef>
+						</descriptionHyperlinks>
+						<stages>
+							<li>
+								<statOffsets>
+									<ComfyTemperatureMax>20</ComfyTemperatureMax>
+								</statOffsets>
+							</li>
+						</stages>
+					</HediffDef>
+				<!-- JUNK TIER -->
+					<HediffDef ParentName="ImplantHediffBase">
+						<defName>TMM_Hediff_JunkersCoolingImplant</defName>
+						<label>junkers cooling implant</label>
+						<labelNoun>a junkers cooling implant</labelNoun>
+						<description>This implant was designed to keep soldiers cool in scorching desert battlegrounds. Unfortunately, this one has a manufacturing defect that causes it to flood the user with cooled liquid at all times, numbing their fingers and making them more susceptible to cold temperatures and frostbite.</description>
+						<descriptionHyperlinks>
+							<ThingDef>TMM_Implant_JunkersCoolingImplant</ThingDef>
+						</descriptionHyperlinks>
+						<spawnThingOnRemoved>TMM_Implant_JunkersCoolingImplant</spawnThingOnRemoved>
+						<stages>
+							<li>
+								<statOffsets>
+									<ComfyTemperatureMin>10</ComfyTemperatureMin>
+									<ComfyTemperatureMax>-15</ComfyTemperatureMax>
+								</statOffsets>
+								<capMods>
+									<li>
+										<capacity>Manipulation</capacity>
+										<offset>-0.05</offset>
+									</li>
+								</capMods>
+							</li>
+						</stages>
+					</HediffDef>
+			<!-- HEATING -->
+				<!-- ECONOSAVE -->
+					<HediffDef ParentName="ImplantHediffBase">
+						<defName>TMM_Hediff_EconoSaveToastEImplant</defName>
+						<label>Econo-Save Toast-E™</label>
+						<labelNoun>an Econo-Save Toast-E™</labelNoun>
+						<description>This implant injects a type of liquid that can easily be warmed up, allowing soldiers to survive freezing temperatures without extra protection.</description>
+						<descriptionHyperlinks>
+							<ThingDef>TMM_Implant_EconoSaveToastEImplant</ThingDef>
+						</descriptionHyperlinks>
+						<stages>
+							<li>
+								<statOffsets>
+									<ComfyTemperatureMin>-20</ComfyTemperatureMin>
+								</statOffsets>
+							</li>
+						</stages>
+					</HediffDef>
+				<!-- JUNK TIER -->
+					<HediffDef ParentName="ImplantHediffBase">
+						<defName>TMM_Hediff_JunkersHeaterImplant</defName>
+						<label>junkers heater implant</label>
+						<labelNoun>a junkers heater implant</labelNoun>
+						<description>This implant was designed to keep soldiers warm in freezing arctic battlegrounds, but this one has a manufacturing defect that causes it to flood the user with heated liquid at all times, making them more susceptible to high temperatures or heatstroke.</description>
+						<descriptionHyperlinks>
+							<ThingDef>TMM_Implant_JunkersHeaterImplant</ThingDef>
+						</descriptionHyperlinks>
+						<spawnThingOnRemoved>TMM_Implant_JunkersHeaterImplant</spawnThingOnRemoved>
+						<stages>
+							<li>
+								<statOffsets>
+									<ComfyTemperatureMin>-15</ComfyTemperatureMin>
+									<ComfyTemperatureMax>-10</ComfyTemperatureMax>
+									<Flammability>1.0</Flammability>
+								</statOffsets>
+							</li>
+						</stages>
+					</HediffDef>
+			<!-- MERCENARY -->
+				<HediffDef ParentName="ImplantHediffBase">
+					<defName>TMM_Hediff_MercenaryTemperatureImplant</defName>
+					<label>mercenary temperature implant</label>
+					<labelNoun>a mercenary temperature implant</labelNoun>
+					<description>This all-in-one temperature implant adds a fluid into the body that can be easily heated or cooled depending on the outside temperature. Useful for fighting in hot or cold environments, and provides protection from heat damage as well.</description>
+					<descriptionHyperlinks>
+						<ThingDef>TMM_Implant_MercenaryTemperatureImplant</ThingDef>
+					</descriptionHyperlinks>
+					<spawnThingOnRemoved>TMM_Implant_MercenaryTemperatureImplant</spawnThingOnRemoved>
+					<stages>
+						<li>
+							<statOffsets>
+								<ComfyTemperatureMin>-10</ComfyTemperatureMin>
+								<ComfyTemperatureMax>10</ComfyTemperatureMax>
+								<ArmorRating_Heat>0.05</ArmorRating_Heat>
+							</statOffsets>
+						</li>
+					</stages>
+				</HediffDef>
+		<!-- VOID ILLUMINATOR -->
+			<HediffDef ParentName="ImplantHediffBase">
+				<defName>TMM_Hediff_VoidIlluminatorImplant</defName>
+				<label>V.O.I.D. Illuminator implant</label>
+				<labelNoun>a V.O.I.D. Illuminator implant</labelNoun>
+				<description>An installed V.O.I.D. Illuminator implant that doubles all capabilities and adds significant armour protection, designed as an attempt to counter the ruthless corporation known as V.O.I.D., in skilled hands, it might just be enough.</description>
+				<descriptionHyperlinks>
+					<ThingDef>TMM_Implant_VoidIlluminatorImplant</ThingDef>
+				</descriptionHyperlinks>
+				<spawnThingOnRemoved>TMM_Implant_VoidIlluminatorImplant</spawnThingOnRemoved>
+				<stages>
+					<li>
+						<painOffset>-0.05</painOffset>
+						<painFactor>0.90</painFactor>
+						<hungerRateFactor>0.75</hungerRateFactor>
+						<foodPoisoningChanceFactor>0.5</foodPoisoningChanceFactor>
+						<totalBleedFactor>0.75</totalBleedFactor>
+						<capMods>
+							<li>
+								<capacity>Moving</capacity>
+								<offset>0.5</offset>
+							</li>
+							<li>
+								<capacity>Manipulation</capacity>
+								<offset>0.5</offset>
+							</li>
+							<li>
+								<capacity>BloodFiltration</capacity>
+								<offset>0.5</offset>
+							</li>
+							<li>
+								<capacity>Sight</capacity>
+								<offset>0.5</offset>
+							</li>
+							<li>
+								<capacity>Hearing</capacity>
+								<offset>0.5</offset>
+							</li>
+							<li>
+								<capacity>Breathing</capacity>
+								<offset>0.25</offset>
+							</li>
+							<li>
+								<capacity>BloodPumping</capacity>
+								<offset>0.25</offset>
+							</li>
+							<li>
+								<capacity>Consciousness</capacity>
+								<offset>0.25</offset>
+							</li>
+							<li>
+								<capacity>Metabolism</capacity>
+								<offset>0.25</offset>
+							</li>
+							<li>
+								<capacity>Eating</capacity>
+								<postFactor>1.2</postFactor> <!-- postFactor is a multiplier -->
+							</li>
+							<li>
+								<capacity>Moving</capacity>
+								<postFactor>1.1</postFactor>
+							</li>
+						</capMods>
+						<statOffsets>
+							<!-- Armor Values (using offsets since they're typically 0-1 range) -->
+							<ArmorRating_Sharp>0.5</ArmorRating_Sharp>
+							<ArmorRating_Blunt>0.5</ArmorRating_Blunt>
+							<ArmorRating_Heat>0.5</ArmorRating_Heat>
+							<ToxicEnvironmentResistance>0.5</ToxicEnvironmentResistance>
+							<!-- Misc -->
+							<PawnBeauty>4.0</PawnBeauty>
+							<SocialImpact>0.5</SocialImpact>
+							<NegotiationAbility>0.5</NegotiationAbility>
+							<TradePriceImprovement>0.25</TradePriceImprovement>
+							<WorkSpeedGlobal>0.2</WorkSpeedGlobal>
+							<ConstructionSpeed>0.25</ConstructionSpeed>
+							<MedicalOperationSpeed>0.2</MedicalOperationSpeed>
+							<MedicalTendSpeed>0.2</MedicalTendSpeed>
+							<MedicalTendQuality>0.6</MedicalTendQuality>
+							<MedicalSurgerySuccessChance>0.6</MedicalSurgerySuccessChance>
+							<ResearchSpeed>3.0</ResearchSpeed>
+							<ImmunityGainSpeed>0.2</ImmunityGainSpeed>
+							<GlobalLearningFactor>3.0</GlobalLearningFactor>
+							<MentalBreakThreshold>-0.14</MentalBreakThreshold>
+							<PainShockThreshold>0.75</PainShockThreshold>
+							<!-- Combat - Melee -->
+							<MeleeHitChance>2.0</MeleeHitChance>
+							<MeleeDodgeChance>2.0</MeleeDodgeChance>
+							<MeleeArmorPenetration>0.35</MeleeArmorPenetration>
+							<MeleeDPS>0.35</MeleeDPS>
+							<ShootingAccuracyPawn>1.25</ShootingAccuracyPawn>
+							<MoveSpeed>10.0</MoveSpeed>
+							<CrawlSpeed>10.0</CrawlSpeed>
+							<ComfyTemperatureMax>600</ComfyTemperatureMax>
+							<ComfyTemperatureMin>-600</ComfyTemperatureMin>
+							<Flammability>-0.5</Flammability>
+							<TrainAnimalChance>0.5</TrainAnimalChance>
+							<TameAnimalChance>0.5</TameAnimalChance>
+							<ArrestSuccessChance>0.5</ArrestSuccessChance>
+							<!-- Work -->
+							<CleaningSpeed>0.5</CleaningSpeed>
+							<HuntingStealth>0.5</HuntingStealth>
+							<SmeltingSpeed>0.5</SmeltingSpeed>
+							<SmoothingSpeed>0.5</SmoothingSpeed>
+							<AnimalGatherSpeed>0.5</AnimalGatherSpeed>
+							<AnimalGatherYield>0.5</AnimalGatherYield>
+							<DrugCookingSpeed>0.5</DrugCookingSpeed>
+							<DrugSynthesisSpeed>0.5</DrugSynthesisSpeed>
+							<FoodPoisonChance>-0.5</FoodPoisonChance>
+							<PlantWorkSpeed>0.5</PlantWorkSpeed>
+							<PlantHarvestYield>0.5</PlantHarvestYield>
+							<ReadingSpeed>0.5</ReadingSpeed>
+							<ConstructSuccessChance>0.5</ConstructSuccessChance>
+							<MiningSpeed>0.5</MiningSpeed>
+							<DeepDrillingSpeed>0.5</DeepDrillingSpeed>
+							<MiningYield>0.5</MiningYield>
+						</statOffsets>
+						<statFactors>
+							<!-- Movement -->
+							<MoveSpeed>2.0</MoveSpeed>
+							<CrawlSpeed>2.0</CrawlSpeed>
+							<!-- Combat - Melee -->
+							<MeleeDamageFactor>2.0</MeleeDamageFactor>
+							<MeleeCooldownFactor>1.0</MeleeCooldownFactor>
+							<!-- Combat - Ranged -->
+							<AimingDelayFactor>0.5</AimingDelayFactor> <!-- Lower is better -->
+							<RangedCooldownFactor>0.5</RangedCooldownFactor> <!-- Lower is better -->
+							<ShootingAccuracyFactor_Touch>2.0</ShootingAccuracyFactor_Touch>
+							<ShootingAccuracyFactor_Short>2.0</ShootingAccuracyFactor_Short>
+							<ShootingAccuracyFactor_Medium>2.0</ShootingAccuracyFactor_Medium>
+							<ShootingAccuracyFactor_Long>2.0</ShootingAccuracyFactor_Long>
+							<!-- Learning -->
+							<GlobalLearningFactor>2.0</GlobalLearningFactor>
+							<AnimalsLearningFactor>2.0</AnimalsLearningFactor>
+							<!-- Recovery/Healing -->
+							<RestRateMultiplier>2.0</RestRateMultiplier>
+							<InjuryHealingFactor>2.0</InjuryHealingFactor>
+							<!-- Need Rates -->
+							<RestFallRateFactor>0.5</RestFallRateFactor> <!-- Lower is better -->
+							<JoyFallRateFactor>0.5</JoyFallRateFactor> <!-- Lower is better -->
+							<Flammability>0.5</Flammability>
+						</statFactors>
+					</li>
+				</stages>
+			</HediffDef>
+		<!-- VITALITY CORE -->
+			<HediffDef ParentName="ImplantHediffBase">
+				<defName>TMM_Hediff_VitalityCoreImplant</defName>
+				<label>vitality core implant</label>
+				<labelNoun>a vitality core implant</labelNoun>
+				<description>An installed vitality core implant. Dramatically enhances the user's survival capabilities through multiple integrated systems.</description>
+				<descriptionHyperlinks>
+					<ThingDef>TMM_Implant_VitalityCoreImplant</ThingDef>
+				</descriptionHyperlinks>
+				<stages>
+					<li>
+						<capMods>
+							<li>
+								<capacity>Consciousness</capacity>
+								<offset>0.50</offset>
+							</li>
+							<li>
+								<capacity>BloodFiltration</capacity>
+								<offset>0.50</offset>
+							</li>
+							<li>
+								<capacity>BloodPumping</capacity>
+								<offset>0.50</offset>
+							</li>
+							<li>
+								<capacity>Breathing</capacity>
+								<offset>0.50</offset>
+							</li>
+							<li>
+								<capacity>Metabolism</capacity>
+								<offset>0.50</offset>
+							</li>
+						</capMods>
+						<statOffsets>
+							<ArmorRating_Sharp>0.30</ArmorRating_Sharp>
+							<ArmorRating_Blunt>0.30</ArmorRating_Blunt>
+							<ArmorRating_Heat>0.30</ArmorRating_Heat>
+							<PainShockThreshold>0.50</PainShockThreshold>
+						</statOffsets>
+						<statFactors>
+							<IncomingDamageFactor>0.50</IncomingDamageFactor>
+						</statFactors>
+					</li>
+				</stages>
+				<comps>
+					<li Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust" MayRequire="V1024.EBFramework">
+						<linearAdjustment>50</linearAdjustment>
+					</li>
+				</comps>
+			</HediffDef>
+</Defs>

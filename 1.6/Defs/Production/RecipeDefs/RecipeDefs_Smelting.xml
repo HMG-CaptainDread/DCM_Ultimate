@@ -5,9 +5,10 @@
 
 
 
+
 	<!-- BASES -->
-		<!-- MAIN BASE -->
-			<RecipeDef Name="TMM_SmeltPlantRecipeBase" Abstract="True">
+		<!-- RESOURCE PLANT BASE -->
+			<RecipeDef Name="TMM_Smelting_PlantRecipeBase" Abstract="True">
 				<jobString>extracting resources from plants.</jobString>
 				<workAmount>1200</workAmount>
 				<workSpeedStat>SmeltingSpeed</workSpeedStat>
@@ -18,304 +19,2336 @@
 				</recipeUsers>
 				<workSkill>Crafting</workSkill>
 			</RecipeDef>
-	<!-- STEEL -->
-		<!-- BASE -->
-			<RecipeDef ParentName="TMM_SmeltPlantRecipeBase" Name="TMM_SmeltSteelshroomBase" Abstract="True">
-				<fixedIngredientFilter>
-					<thingDefs>
-						<li>TMM_RawSteelshroom</li>
-					</thingDefs>
-				</fixedIngredientFilter>
-				<skillRequirements>
-					<Crafting>8</Crafting>
-				</skillRequirements>
+		<!-- SMELT ORE BASE -->
+			<RecipeDef Name="TMM_Smelting_OreRecipeBase" Abstract="True">
+				<description>Smelts raw ores into useable ingots.</description>
+				<workSpeedStat>SmeltingSpeed</workSpeedStat>
+				<workSkill>Crafting</workSkill>
+				<workSkillLearnFactor>0.25</workSkillLearnFactor>
+				<effectWorking>Smelt</effectWorking>
+				<allowMixingIngredients>false</allowMixingIngredients>
+				<soundWorking>Recipe_Smelt</soundWorking>
+				<recipeUsers>
+					<!-- <li>DankPyon_Furnace</li> --> <!-- TODO: -->
+					<li>ElectricSmelter</li>
+				</recipeUsers>
 			</RecipeDef>
-		<!-- REGULAR -->
-			<RecipeDef ParentName="TMM_SmeltSteelshroomBase">
-				<defName>TMM_ExtractSteelshrooms</defName>
-				<label>Smelt Steelshrooms (Small Scale)</label>
-				<description>Use heat and strong electromagnets to separate useful metal from Steelshrooms.\n\nMakes 4 steel from 16 shrooms.</description>
-				<ingredients>
-					<li>
-						<filter>
-							<thingDefs>
-								<li>TMM_RawSteelshroom</li>
-							</thingDefs>
-						</filter>
-						<count>16</count>
-					</li>
-				</ingredients>
-				<products>
-					<Steel>4</Steel>
-				</products>
-			</RecipeDef>
-		<!-- BULK -->
-			<RecipeDef ParentName="TMM_SmeltSteelshroomBase">
-				<defName>TMM_ExtractSteelshroomsBulk</defName>
-				<label>Smelt Steelshrooms (Large Scale)</label>
-				<description>Use heat and strong electromagnets to separate useful metal from Steelshrooms.\n\nMakes 16 steel from 64 shrooms.</description>
-				<ingredients>
-					<li>
-						<filter>
-							<thingDefs>
-								<li>TMM_RawSteelshroom</li>
-							</thingDefs>
-						</filter>
-						<count>64</count>
-					</li>
-				</ingredients>
-				<products>
-					<Steel>16</Steel>
-				</products>
-			</RecipeDef>
-	<!-- PLASTEEL -->
-		<!-- BASE -->
-			<RecipeDef ParentName="TMM_SmeltPlantRecipeBase" Name="TMM_SmeltPlasteelBulbBase" Abstract="True">
-				<fixedIngredientFilter>
-					<thingDefs>
-						<li>TMM_RawPlasteelBulb</li>
-					</thingDefs>
-				</fixedIngredientFilter>
-				<skillRequirements>
-					<Crafting>10</Crafting>
-				</skillRequirements>
-			</RecipeDef>
-		<!-- REGULAR -->
-			<RecipeDef ParentName="TMM_SmeltPlasteelBulbBase">
-				<defName>TMM_ExtractPlasteelBulbs</defName>
-				<label>Smelt Plasteel Bulbs (Small Scale)</label>
-				<description>Use heat and strong electromagnets to separate useful metal from Plasteel Bulbs.\n\nMakes 4 Plasteel from 16 bulbs.</description>
-				<ingredients>
-					<li>
-						<filter>
-							<thingDefs>
-								<li>TMM_RawPlasteelBulb</li>
-							</thingDefs>
-						</filter>
-						<count>16</count>
-					</li>
-				</ingredients>
-				<products>
-					<Plasteel>4</Plasteel>
-				</products>
-			</RecipeDef>
-		<!-- BULK -->
-			<RecipeDef ParentName="TMM_SmeltPlasteelBulbBase">
-				<defName>TMM_ExtractPlasteelBulbsBulk</defName>
-				<label>Smelt Plasteel Bulbs (Large Scale)</label>
-				<description>Use heat and strong electromagnets to separate useful metal from Plasteel Bulbs.\n\nMakes 16 Plasteel from 64 bulbs.</description>
-				<ingredients>
-					<li>
-						<filter>
-							<thingDefs>
-								<li>TMM_RawPlasteelBulb</li>
-							</thingDefs>
-						</filter>
-						<count>64</count>
-					</li>
-				</ingredients>
-				<products>
-					<Plasteel>16</Plasteel>
-				</products>
-			</RecipeDef>
-	<!-- GOLD -->
-		<!-- BASE-->
-			<RecipeDef ParentName="TMM_SmeltPlantRecipeBase" Name="TMM_SmeltGoldFernBase" Abstract="True">
-				<fixedIngredientFilter>
-					<thingDefs>
-						<li>TMM_RawGoldLeaf</li>
-					</thingDefs>
-				</fixedIngredientFilter>
-				<skillRequirements>
-					<Crafting>16</Crafting>
-				</skillRequirements>
-			</RecipeDef>
-		<!-- REGULAR-->
-			<RecipeDef ParentName="TMM_SmeltGoldFernBase">
-				<defName>TMM_ExtractGoldFerns</defName>
-				<label>Smelt Gold Ferns (Small Scale)</label>
-				<description>Use heat and strong electromagnets to separate useful metal from Gold Fern Leaves.\n\nMakes 4 Gold from 16 leaves.</description>
-				<ingredients>
-					<li>
-						<filter>
-							<thingDefs>
-								<li>TMM_RawGoldLeaf</li>
-							</thingDefs>
-						</filter>
-						<count>16</count>
-					</li>
-				</ingredients>
-				<products>
-					<Gold>4</Gold>
-				</products>
-			</RecipeDef>
-		<!-- BULK -->
-			<RecipeDef ParentName="TMM_SmeltGoldFernBase">
-				<defName>TMM_ExtractGoldFernsBulk</defName>
-				<label>Smelt Gold Ferns (Large Scale)</label>
-				<description>Use heat and strong electromagnets to separate useful metal from Gold Fern Leaves.\n\nMakes 16 Gold from 64 leaves.</description>
-				<ingredients>
-					<li>
-						<filter>
-							<thingDefs>
-								<li>TMM_RawGoldLeaf</li>
-							</thingDefs>
-						</filter>
-						<count>64</count>
-					</li>
-				</ingredients>
-				<products>
-					<Gold>16</Gold>
-				</products>
-			</RecipeDef>
-	<!-- JADE -->
-		<!-- BASE -->
-			<RecipeDef ParentName="TMM_SmeltPlantRecipeBase" Name="TMM_SmeltJadeCrystalsBase" Abstract="True">
-				<fixedIngredientFilter>
-					<thingDefs>
-						<li>TMM_RawJadeCrystal</li>
-					</thingDefs>
-				</fixedIngredientFilter>
-				<skillRequirements>
-					<Crafting>12</Crafting>
-				</skillRequirements>
-			</RecipeDef>
-		<!-- REGULAR -->
-			<RecipeDef ParentName="TMM_SmeltJadeCrystalsBase">
-				<defName>TMM_ExtractJadeCrystals</defName>
-				<label>Smelt Jade Crystals (Small Scale)</label>
-				<description>Use heat to separate useful minerals from jade crystal.\n\nMakes 4 Jade from 16 crystals.</description>
-				<ingredients>
-					<li>
-						<filter>
-							<thingDefs>
-								<li>TMM_RawJadeCrystal</li>
-							</thingDefs>
-						</filter>
-						<count>16</count>
-					</li>
-				</ingredients>
-				<products>
-					<Jade>4</Jade>
-				</products>
-			</RecipeDef>
-		<!-- BULK -->
-			<RecipeDef ParentName="TMM_SmeltJadeCrystalsBase">
-				<defName>TMM_ExtractJadeCrystalsBulk</defName>
-				<label>Smelt Jade Crystals (Large Scale)</label>
-				<description>Use heat to separate useful minerals from jade crystals.\n\nMakes 16 Jade from 64 crystals.</description>
-				<ingredients>
-					<li>
-						<filter>
-							<thingDefs>
-								<li>TMM_RawJadeCrystal</li>
-							</thingDefs>
-						</filter>
-						<count>64</count>
-					</li>
-				</ingredients>
-				<products>
-					<Jade>16</Jade>
-				</products>
-			</RecipeDef>
-	<!-- SILVER -->
-		<!-- BASE -->
-			<RecipeDef ParentName="TMM_SmeltPlantRecipeBase" Name="TMM_SmeltSilverPetalsBase" Abstract="True">
-				<fixedIngredientFilter>
-					<thingDefs>
-						<li>TMM_RawSilverFlower</li>
-					</thingDefs>
-				</fixedIngredientFilter>
-				<skillRequirements>
-					<Crafting>12</Crafting>
-				</skillRequirements>
-			</RecipeDef>
-		<!-- REGULAR -->
-			<RecipeDef ParentName="TMM_SmeltSilverPetalsBase">
-				<defName>TMM_ExtractSilverPetals</defName>
-				<label>Smelt Silver Petals (Small Scale)</label>
-				<description>Use heat and strong electromagnets to separate useful metal from Silver Flower Petals.\n\nMakes 4 Silver from 16 petals.</description>
-				<ingredients>
-					<li>
-						<filter>
-							<thingDefs>
-								<li>TMM_RawSilverFlower</li>
-							</thingDefs>
-						</filter>
-						<count>16</count>
-					</li>
-				</ingredients>
-				<products>
-					<Silver>4</Silver>
-				</products>
-			</RecipeDef>
-		<!-- BULK -->
-			<RecipeDef ParentName="TMM_SmeltSilverPetalsBase">
-				<defName>TMM_ExtractSilverPetalsBulk</defName>
-				<label>Smelt Silver Petals (Large Scale)</label>
-				<description>Use heat and strong electromagnets to separate useful metal from Silver Flower Petals.\n\nMakes 16 Silver from 64 petals.</description>
-				<ingredients>
-					<li>
-						<filter>
-							<thingDefs>
-								<li>TMM_RawSilverFlower</li>
-							</thingDefs>
-						</filter>
-						<count>64</count>
-					</li>
-				</ingredients>
-				<products>
-					<Silver>16</Silver>
-				</products>
-			</RecipeDef>
-	<!-- URANIUM -->
-		<!-- BASE -->
-			<RecipeDef ParentName="TMM_SmeltPlantRecipeBase" Name="TMM_SmeltUraniumRootBase" Abstract="True">
-				<fixedIngredientFilter>
-					<thingDefs>
-						<li>TMM_RawUraniumRoot</li>
-					</thingDefs>
-				</fixedIngredientFilter>
-				<skillRequirements>
-					<Crafting>14</Crafting>
-				</skillRequirements>
-			</RecipeDef>
-		<!-- REGULAR -->
-			<RecipeDef ParentName="TMM_SmeltUraniumRootBase">
-				<defName>TMM_ExtractUraniumRoot</defName>
-				<label>Smelt Uranium Roots (Small Scale)</label>
-				<description>Use heat and strong electromagnets to separate useful metal from Uranium Roots.\n\nMakes 4 Uranium from 16 roots.</description>
-				<ingredients>
-					<li>
-						<filter>
-							<thingDefs>
-								<li>TMM_RawUraniumRoot</li>
-							</thingDefs>
-						</filter>
-						<count>16</count>
-					</li>
-				</ingredients>
-				<products>
-					<Uranium>4</Uranium>
-				</products>
-			</RecipeDef>
-		<!-- BULK -->
-			<RecipeDef ParentName="TMM_SmeltUraniumRootBase">
-				<defName>TMM_ExtractUraniumRootBulk</defName>
-				<label>Smelt Uranium Roots (Large Scale)</label>
-				<description>Use heat and strong electromagnets to separate useful metal from Uranium Root.\n\nMakes 16 Uranium from 64 roots.</description>
-				<ingredients>
-					<li>
-						<filter>
-							<thingDefs>
-								<li>TMM_RawUraniumRoot</li>
-							</thingDefs>
-						</filter>
-						<count>64</count>
-					</li>
-				</ingredients>
-				<products>
-					<Uranium>16</Uranium>
-				</products>
-			</RecipeDef>
+	<!-- ALLOYS -->
+		<!-- TODO: -->
+	<!-- ORES -->
+		<!-- ALUMINIUM -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_Smelting_OreRecipeBase" Name="TMM_Smelting_AluminiumOreRecipeBase" Abstract="True">
+					<label>Smelt bauxite into aluminium</label>
+					<jobString>Smelting bauxite into aluminium.</jobString>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>TMM_Ore_Bauxite</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+				</RecipeDef>
+			<!-- SMALL SCALE (x2) -->
+				<RecipeDef ParentName="TMM_Smelting_AluminiumOreRecipeBase">
+					<defName>TMM_Smelting_AluminiumSmall</defName>
+					<workAmount>600</workAmount>
+					<targetCountAdjustment>2</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Bauxite</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Aluminium>1</TMM_Ingot_Aluminium>
+					</products>
+				</RecipeDef>
+			<!-- REGULAR (x10) -->
+				<RecipeDef ParentName="TMM_Smelting_AluminiumOreRecipeBase">
+					<defName>TMM_Smelting_AluminiumRegular</defName>
+					<workAmount>2400</workAmount>
+					<targetCountAdjustment>10</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Bauxite</li>
+								</thingDefs>
+							</filter>
+							<count>10</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Aluminium>5</TMM_Ingot_Aluminium>
+					</products>
+				</RecipeDef>
+			<!-- BULK (x30) -->
+				<RecipeDef ParentName="TMM_Smelting_AluminiumOreRecipeBase">
+					<defName>TMM_Smelting_AluminiumBulk</defName>
+					<workAmount>3600</workAmount>
+					<targetCountAdjustment>30</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Bauxite</li>
+								</thingDefs>
+							</filter>
+							<count>30</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Aluminium>15</TMM_Ingot_Aluminium>
+					</products>
+				</RecipeDef>
+			<!-- BIG BULK (x60) -->
+				<RecipeDef ParentName="TMM_Smelting_AluminiumOreRecipeBase">
+					<defName>TMM_Smelting_AluminiumBigBulk</defName>
+					<workAmount>4800</workAmount>
+					<targetCountAdjustment>60</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Bauxite</li>
+								</thingDefs>
+							</filter>
+							<count>60</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Aluminium>30</TMM_Ingot_Aluminium>
+					</products>
+				</RecipeDef>
+			<!-- INDUSTRIAL (x100) -->
+				<RecipeDef ParentName="TMM_Smelting_AluminiumOreRecipeBase">
+					<defName>TMM_Smelting_AluminiumIndustrial</defName>
+					<workAmount>6000</workAmount>
+					<targetCountAdjustment>100</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Bauxite</li>
+								</thingDefs>
+							</filter>
+							<count>100</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Aluminium>50</TMM_Ingot_Aluminium>
+					</products>
+				</RecipeDef>
+		<!-- BERYLLIUM -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_Smelting_OreRecipeBase" Name="TMM_Smelting_BerylliumOreRecipeBase" Abstract="True">
+					<label>Smelt pegmatite into beryllium</label>
+					<jobString>Smelting pegmatite into beryllium.</jobString>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>TMM_Ore_Pegmatite</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+				</RecipeDef>
+			<!-- SMALL SCALE (x2) -->
+				<RecipeDef ParentName="TMM_Smelting_BerylliumOreRecipeBase">
+					<defName>TMM_Smelting_BerylliumSmall</defName>
+					<workAmount>600</workAmount>
+					<targetCountAdjustment>2</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Pegmatite</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Beryllium>1</TMM_Ingot_Beryllium>
+					</products>
+				</RecipeDef>
+			<!-- REGULAR (x10) -->
+				<RecipeDef ParentName="TMM_Smelting_BerylliumOreRecipeBase">
+					<defName>TMM_Smelting_BerylliumRegular</defName>
+					<workAmount>2400</workAmount>
+					<targetCountAdjustment>10</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Pegmatite</li>
+								</thingDefs>
+							</filter>
+							<count>10</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Beryllium>5</TMM_Ingot_Beryllium>
+					</products>
+				</RecipeDef>
+			<!-- BULK (x30) -->
+				<RecipeDef ParentName="TMM_Smelting_BerylliumOreRecipeBase">
+					<defName>TMM_Smelting_BerylliumBulk</defName>
+					<workAmount>3600</workAmount>
+					<targetCountAdjustment>30</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Pegmatite</li>
+								</thingDefs>
+							</filter>
+							<count>30</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Beryllium>15</TMM_Ingot_Beryllium>
+					</products>
+				</RecipeDef>
+			<!-- BIG BULK (x60) -->
+				<RecipeDef ParentName="TMM_Smelting_BerylliumOreRecipeBase">
+					<defName>TMM_Smelting_BerylliumBigBulk</defName>
+					<workAmount>4800</workAmount>
+					<targetCountAdjustment>60</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Pegmatite</li>
+								</thingDefs>
+							</filter>
+							<count>60</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Beryllium>30</TMM_Ingot_Beryllium>
+					</products>
+				</RecipeDef>
+			<!-- INDUSTRIAL (x100) -->
+				<RecipeDef ParentName="TMM_Smelting_BerylliumOreRecipeBase">
+					<defName>TMM_Smelting_BerylliumIndustrial</defName>
+					<workAmount>6000</workAmount>
+					<targetCountAdjustment>100</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Pegmatite</li>
+								</thingDefs>
+							</filter>
+							<count>100</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Beryllium>50</TMM_Ingot_Beryllium>
+					</products>
+				</RecipeDef>
+		<!-- BISMUTH -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_Smelting_OreRecipeBase" Name="TMM_Smelting_BismuthOreRecipeBase" Abstract="True">
+					<label>Smelt bismuth crystals into bismuth</label>
+					<jobString>Smelting bismuth crystals into bismuth.</jobString>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>TMM_Ore_Bismuth</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+				</RecipeDef>
+			<!-- SMALL SCALE (x2) -->
+				<RecipeDef ParentName="TMM_Smelting_BismuthOreRecipeBase">
+					<defName>TMM_Smelting_BismuthSmall</defName>
+					<workAmount>600</workAmount>
+					<targetCountAdjustment>2</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Bismuth</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Bismuth>1</TMM_Ingot_Bismuth>
+					</products>
+				</RecipeDef>
+			<!-- REGULAR (x10) -->
+				<RecipeDef ParentName="TMM_Smelting_BismuthOreRecipeBase">
+					<defName>TMM_Smelting_BismuthRegular</defName>
+					<workAmount>2400</workAmount>
+					<targetCountAdjustment>10</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Bismuth</li>
+								</thingDefs>
+							</filter>
+							<count>10</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Bismuth>5</TMM_Ingot_Bismuth>
+					</products>
+				</RecipeDef>
+			<!-- BULK (x30) -->
+				<RecipeDef ParentName="TMM_Smelting_BismuthOreRecipeBase">
+					<defName>TMM_Smelting_BismuthBulk</defName>
+					<workAmount>3600</workAmount>
+					<targetCountAdjustment>30</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Bismuth</li>
+								</thingDefs>
+							</filter>
+							<count>30</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Bismuth>15</TMM_Ingot_Bismuth>
+					</products>
+				</RecipeDef>
+			<!-- BIG BULK (x60) -->
+				<RecipeDef ParentName="TMM_Smelting_BismuthOreRecipeBase">
+					<defName>TMM_Smelting_BismuthBigBulk</defName>
+					<workAmount>4800</workAmount>
+					<targetCountAdjustment>60</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Bismuth</li>
+								</thingDefs>
+							</filter>
+							<count>60</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Bismuth>30</TMM_Ingot_Bismuth>
+					</products>
+				</RecipeDef>
+			<!-- INDUSTRIAL (x100) -->
+				<RecipeDef ParentName="TMM_Smelting_BismuthOreRecipeBase">
+					<defName>TMM_Smelting_BismuthIndustrial</defName>
+					<workAmount>6000</workAmount>
+					<targetCountAdjustment>100</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Bismuth</li>
+								</thingDefs>
+							</filter>
+							<count>100</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Bismuth>50</TMM_Ingot_Bismuth>
+					</products>
+				</RecipeDef>
+		<!-- CALCIUM -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_Smelting_OreRecipeBase" Name="TMM_Smelting_CalciumOreRecipeBase" Abstract="True">
+					<label>Smelt calcite into calcium</label>
+					<jobString>Smelting calcite into calcium.</jobString>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>TMM_Ore_Calcite</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+				</RecipeDef>
+			<!-- SMALL SCALE (x2) -->
+				<RecipeDef ParentName="TMM_Smelting_CalciumOreRecipeBase">
+					<defName>TMM_Smelting_CalciumSmall</defName>
+					<workAmount>600</workAmount>
+					<targetCountAdjustment>2</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Calcite</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Calcium>1</TMM_Ingot_Calcium>
+					</products>
+				</RecipeDef>
+			<!-- REGULAR (x10) -->
+				<RecipeDef ParentName="TMM_Smelting_CalciumOreRecipeBase">
+					<defName>TMM_Smelting_CalciumRegular</defName>
+					<workAmount>2400</workAmount>
+					<targetCountAdjustment>10</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Calcite</li>
+								</thingDefs>
+							</filter>
+							<count>10</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Calcium>5</TMM_Ingot_Calcium>
+					</products>
+				</RecipeDef>
+			<!-- BULK (x30) -->
+				<RecipeDef ParentName="TMM_Smelting_CalciumOreRecipeBase">
+					<defName>TMM_Smelting_CalciumBulk</defName>
+					<workAmount>3600</workAmount>
+					<targetCountAdjustment>30</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Calcite</li>
+								</thingDefs>
+							</filter>
+							<count>30</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Calcium>15</TMM_Ingot_Calcium>
+					</products>
+				</RecipeDef>
+			<!-- BIG BULK (x60) -->
+				<RecipeDef ParentName="TMM_Smelting_CalciumOreRecipeBase">
+					<defName>TMM_Smelting_CalciumBigBulk</defName>
+					<workAmount>4800</workAmount>
+					<targetCountAdjustment>60</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Calcite</li>
+								</thingDefs>
+							</filter>
+							<count>60</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Calcium>30</TMM_Ingot_Calcium>
+					</products>
+				</RecipeDef>
+			<!-- INDUSTRIAL (x100) -->
+				<RecipeDef ParentName="TMM_Smelting_CalciumOreRecipeBase">
+					<defName>TMM_Smelting_CalciumIndustrial</defName>
+					<workAmount>6000</workAmount>
+					<targetCountAdjustment>100</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Calcite</li>
+								</thingDefs>
+							</filter>
+							<count>100</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Calcium>50</TMM_Ingot_Calcium>
+					</products>
+				</RecipeDef>
+		<!-- CHROMIUM -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_Smelting_OreRecipeBase" Name="TMM_Smelting_ChromiumOreRecipeBase" Abstract="True">
+					<label>Smelt chromite into chromium</label>
+					<jobString>Smelting chromite into chromium.</jobString>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>TMM_Ore_Chromite</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+				</RecipeDef>
+			<!-- SMALL SCALE (x2) -->
+				<RecipeDef ParentName="TMM_Smelting_ChromiumOreRecipeBase">
+					<defName>TMM_Smelting_ChromiumSmall</defName>
+					<workAmount>600</workAmount>
+					<targetCountAdjustment>2</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Chromite</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Chromium>1</TMM_Ingot_Chromium>
+					</products>
+				</RecipeDef>
+			<!-- REGULAR (x10) -->
+				<RecipeDef ParentName="TMM_Smelting_ChromiumOreRecipeBase">
+					<defName>TMM_Smelting_ChromiumRegular</defName>
+					<workAmount>2400</workAmount>
+					<targetCountAdjustment>10</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Chromite</li>
+								</thingDefs>
+							</filter>
+							<count>10</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Chromium>5</TMM_Ingot_Chromium>
+					</products>
+				</RecipeDef>
+			<!-- BULK (x30) -->
+				<RecipeDef ParentName="TMM_Smelting_ChromiumOreRecipeBase">
+					<defName>TMM_Smelting_ChromiumBulk</defName>
+					<workAmount>3600</workAmount>
+					<targetCountAdjustment>30</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Chromite</li>
+								</thingDefs>
+							</filter>
+							<count>30</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Chromium>15</TMM_Ingot_Chromium>
+					</products>
+				</RecipeDef>
+			<!-- BIG BULK (x60) -->
+				<RecipeDef ParentName="TMM_Smelting_ChromiumOreRecipeBase">
+					<defName>TMM_Smelting_ChromiumBigBulk</defName>
+					<workAmount>4800</workAmount>
+					<targetCountAdjustment>60</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Chromite</li>
+								</thingDefs>
+							</filter>
+							<count>60</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Chromium>30</TMM_Ingot_Chromium>
+					</products>
+				</RecipeDef>
+			<!-- INDUSTRIAL (x100) -->
+				<RecipeDef ParentName="TMM_Smelting_ChromiumOreRecipeBase">
+					<defName>TMM_Smelting_ChromiumIndustrial</defName>
+					<workAmount>6000</workAmount>
+					<targetCountAdjustment>100</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Chromite</li>
+								</thingDefs>
+							</filter>
+							<count>100</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Chromium>50</TMM_Ingot_Chromium>
+					</products>
+				</RecipeDef>
+		<!-- COBALT -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_Smelting_OreRecipeBase" Name="TMM_Smelting_CobaltOreRecipeBase" Abstract="True">
+					<label>Smelt cobaltite into cobalt</label>
+					<jobString>Smelting cobaltite into cobalt.</jobString>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>TMM_Ore_Cobaltite</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+				</RecipeDef>
+			<!-- SMALL SCALE (x2) -->
+				<RecipeDef ParentName="TMM_Smelting_CobaltOreRecipeBase">
+					<defName>TMM_Smelting_CobaltSmall</defName>
+					<workAmount>600</workAmount>
+					<targetCountAdjustment>2</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Cobaltite</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Cobalt>1</TMM_Ingot_Cobalt>
+					</products>
+				</RecipeDef>
+			<!-- REGULAR (x10) -->
+				<RecipeDef ParentName="TMM_Smelting_CobaltOreRecipeBase">
+					<defName>TMM_Smelting_CobaltRegular</defName>
+					<workAmount>2400</workAmount>
+					<targetCountAdjustment>10</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Cobaltite</li>
+								</thingDefs>
+							</filter>
+							<count>10</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Cobalt>5</TMM_Ingot_Cobalt>
+					</products>
+				</RecipeDef>
+			<!-- BULK (x30) -->
+				<RecipeDef ParentName="TMM_Smelting_CobaltOreRecipeBase">
+					<defName>TMM_Smelting_CobaltBulk</defName>
+					<workAmount>3600</workAmount>
+					<targetCountAdjustment>30</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Cobaltite</li>
+								</thingDefs>
+							</filter>
+							<count>30</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Cobalt>15</TMM_Ingot_Cobalt>
+					</products>
+				</RecipeDef>
+			<!-- BIG BULK (x60) -->
+				<RecipeDef ParentName="TMM_Smelting_CobaltOreRecipeBase">
+					<defName>TMM_Smelting_CobaltBigBulk</defName>
+					<workAmount>4800</workAmount>
+					<targetCountAdjustment>60</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Cobaltite</li>
+								</thingDefs>
+							</filter>
+							<count>60</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Cobalt>30</TMM_Ingot_Cobalt>
+					</products>
+				</RecipeDef>
+			<!-- INDUSTRIAL (x100) -->
+				<RecipeDef ParentName="TMM_Smelting_CobaltOreRecipeBase">
+					<defName>TMM_Smelting_CobaltIndustrial</defName>
+					<workAmount>6000</workAmount>
+					<targetCountAdjustment>100</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Cobaltite</li>
+								</thingDefs>
+							</filter>
+							<count>100</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Cobalt>50</TMM_Ingot_Cobalt>
+					</products>
+				</RecipeDef>
+		<!-- COPPER -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_Smelting_OreRecipeBase" Name="TMM_Smelting_CopperOreRecipeBase" Abstract="True">
+					<label>Smelt malachite into copper</label>
+					<jobString>Smelting malachite into copper.</jobString>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>TMM_Ore_Malachite</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+				</RecipeDef>
+			<!-- SMALL SCALE (x2) -->
+				<RecipeDef ParentName="TMM_Smelting_CopperOreRecipeBase">
+					<defName>TMM_Smelting_CopperSmall</defName>
+					<workAmount>600</workAmount>
+					<targetCountAdjustment>2</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Malachite</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Copper>1</TMM_Ingot_Copper>
+					</products>
+				</RecipeDef>
+			<!-- REGULAR (x10) -->
+				<RecipeDef ParentName="TMM_Smelting_CopperOreRecipeBase">
+					<defName>TMM_Smelting_CopperRegular</defName>
+					<workAmount>2400</workAmount>
+					<targetCountAdjustment>10</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Malachite</li>
+								</thingDefs>
+							</filter>
+							<count>10</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Copper>5</TMM_Ingot_Copper>
+					</products>
+				</RecipeDef>
+			<!-- BULK (x30) -->
+				<RecipeDef ParentName="TMM_Smelting_CopperOreRecipeBase">
+					<defName>TMM_Smelting_CopperBulk</defName>
+					<workAmount>3600</workAmount>
+					<targetCountAdjustment>30</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Malachite</li>
+								</thingDefs>
+							</filter>
+							<count>30</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Copper>15</TMM_Ingot_Copper>
+					</products>
+				</RecipeDef>
+			<!-- BIG BULK (x60) -->
+				<RecipeDef ParentName="TMM_Smelting_CopperOreRecipeBase">
+					<defName>TMM_Smelting_CopperBigBulk</defName>
+					<workAmount>4800</workAmount>
+					<targetCountAdjustment>60</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Malachite</li>
+								</thingDefs>
+							</filter>
+							<count>60</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Copper>30</TMM_Ingot_Copper>
+					</products>
+				</RecipeDef>
+			<!-- INDUSTRIAL (x100) -->
+				<RecipeDef ParentName="TMM_Smelting_CopperOreRecipeBase">
+					<defName>TMM_Smelting_CopperIndustrial</defName>
+					<workAmount>6000</workAmount>
+					<targetCountAdjustment>100</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Malachite</li>
+								</thingDefs>
+							</filter>
+							<count>100</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Copper>50</TMM_Ingot_Copper>
+					</products>
+				</RecipeDef>
+		<!-- GOLD --> <!--TODO: -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_Smelting_OreRecipeBase" Name="TMM_Smelting_GoldOreRecipeBase" Abstract="True">
+					<label>Smelt gold ore into an ingot</label>
+					<jobString>Smelting gold ore.</jobString>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>TMM_Ore_GoldOre</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+				</RecipeDef>
+			<!-- SMALL SCALE (x2) -->
+				<RecipeDef ParentName="TMM_Smelting_GoldOreRecipeBase">
+					<defName>TMM_Smelting_GoldSmall</defName>
+					<workAmount>600</workAmount>
+					<targetCountAdjustment>2</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_GoldOre</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+					<products>
+						<Gold>1</Gold>
+					</products>
+				</RecipeDef>
+			<!-- REGULAR (x10) -->
+				<RecipeDef ParentName="TMM_Smelting_GoldOreRecipeBase">
+					<defName>TMM_Smelting_GoldRegular</defName>
+					<workAmount>2400</workAmount>
+					<targetCountAdjustment>10</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_GoldOre</li>
+								</thingDefs>
+							</filter>
+							<count>10</count>
+						</li>
+					</ingredients>
+					<products>
+						<Gold>5</Gold>
+					</products>
+				</RecipeDef>
+			<!-- BULK (x30) -->
+				<RecipeDef ParentName="TMM_Smelting_GoldOreRecipeBase">
+					<defName>TMM_Smelting_GoldBulk</defName>
+					<workAmount>3600</workAmount>
+					<targetCountAdjustment>30</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_GoldOre</li>
+								</thingDefs>
+							</filter>
+							<count>30</count>
+						</li>
+					</ingredients>
+					<products>
+						<Gold>15</Gold>
+					</products>
+				</RecipeDef>
+			<!-- BIG BULK (x60) -->
+				<RecipeDef ParentName="TMM_Smelting_GoldOreRecipeBase">
+					<defName>TMM_Smelting_GoldBigBulk</defName>
+					<workAmount>4800</workAmount>
+					<targetCountAdjustment>60</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_GoldOre</li>
+								</thingDefs>
+							</filter>
+							<count>60</count>
+						</li>
+					</ingredients>
+					<products>
+						<Gold>30</Gold>
+					</products>
+				</RecipeDef>
+			<!-- INDUSTRIAL (x100) -->
+				<RecipeDef ParentName="TMM_Smelting_GoldOreRecipeBase">
+					<defName>TMM_Smelting_GoldIndustrial</defName>
+					<workAmount>6000</workAmount>
+					<targetCountAdjustment>100</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_GoldOre</li>
+								</thingDefs>
+							</filter>
+							<count>100</count>
+						</li>
+					</ingredients>
+					<products>
+						<Gold>50</Gold>
+					</products>
+				</RecipeDef>
+		<!-- IRON -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_Smelting_OreRecipeBase" Name="TMM_Smelting_IronOreRecipeBase" Abstract="True">
+					<label>Smelt ironstone into iron</label>
+					<jobString>Smelting ironstone into iron.</jobString>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>TMM_Ore_Ironstone</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+				</RecipeDef>
+			<!-- SMALL SCALE (x2) -->
+				<RecipeDef ParentName="TMM_Smelting_IronOreRecipeBase">
+					<defName>TMM_Smelting_IronSmall</defName>
+					<workAmount>600</workAmount>
+					<targetCountAdjustment>2</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Ironstone</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Iron>1</TMM_Ingot_Iron>
+					</products>
+				</RecipeDef>
+			<!-- REGULAR (x10) -->
+				<RecipeDef ParentName="TMM_Smelting_IronOreRecipeBase">
+					<defName>TMM_Smelting_IronRegular</defName>
+					<workAmount>2400</workAmount>
+					<targetCountAdjustment>10</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Ironstone</li>
+								</thingDefs>
+							</filter>
+							<count>10</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Iron>5</TMM_Ingot_Iron>
+					</products>
+				</RecipeDef>
+			<!-- BULK (x30) -->
+				<RecipeDef ParentName="TMM_Smelting_IronOreRecipeBase">
+					<defName>TMM_Smelting_IronBulk</defName>
+					<workAmount>3600</workAmount>
+					<targetCountAdjustment>30</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Ironstone</li>
+								</thingDefs>
+							</filter>
+							<count>30</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Iron>15</TMM_Ingot_Iron>
+					</products>
+				</RecipeDef>
+			<!-- BIG BULK (x60) -->
+				<RecipeDef ParentName="TMM_Smelting_IronOreRecipeBase">
+					<defName>TMM_Smelting_IronBigBulk</defName>
+					<workAmount>4800</workAmount>
+					<targetCountAdjustment>60</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Ironstone</li>
+								</thingDefs>
+							</filter>
+							<count>60</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Iron>30</TMM_Ingot_Iron>
+					</products>
+				</RecipeDef>
+			<!-- INDUSTRIAL (x100) -->
+				<RecipeDef ParentName="TMM_Smelting_IronOreRecipeBase">
+					<defName>TMM_Smelting_IronIndustrial</defName>
+					<workAmount>6000</workAmount>
+					<targetCountAdjustment>100</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Ironstone</li>
+								</thingDefs>
+							</filter>
+							<count>100</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Iron>50</TMM_Ingot_Iron>
+					</products>
+				</RecipeDef>
+		<!-- LEAD -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_Smelting_OreRecipeBase" Name="TMM_Smelting_LeadOreRecipeBase" Abstract="True">
+					<label>Smelt galena into lead</label>
+					<jobString>Smelting galena into lead.</jobString>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>TMM_Ore_Galena</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+				</RecipeDef>
+			<!-- SMALL SCALE (x2) -->
+				<RecipeDef ParentName="TMM_Smelting_LeadOreRecipeBase">
+					<defName>TMM_Smelting_LeadSmall</defName>
+					<workAmount>600</workAmount>
+					<targetCountAdjustment>2</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Galena</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Lead>1</TMM_Ingot_Lead>
+					</products>
+				</RecipeDef>
+			<!-- REGULAR (x10) -->
+				<RecipeDef ParentName="TMM_Smelting_LeadOreRecipeBase">
+					<defName>TMM_Smelting_LeadRegular</defName>
+					<workAmount>2400</workAmount>
+					<targetCountAdjustment>10</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Galena</li>
+								</thingDefs>
+							</filter>
+							<count>10</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Lead>5</TMM_Ingot_Lead>
+					</products>
+				</RecipeDef>
+			<!-- BULK (x30) -->
+				<RecipeDef ParentName="TMM_Smelting_LeadOreRecipeBase">
+					<defName>TMM_Smelting_LeadBulk</defName>
+					<workAmount>3600</workAmount>
+					<targetCountAdjustment>30</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Galena</li>
+								</thingDefs>
+							</filter>
+							<count>30</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Lead>15</TMM_Ingot_Lead>
+					</products>
+				</RecipeDef>
+			<!-- BIG BULK (x60) -->
+				<RecipeDef ParentName="TMM_Smelting_LeadOreRecipeBase">
+					<defName>TMM_Smelting_LeadBigBulk</defName>
+					<workAmount>4800</workAmount>
+					<targetCountAdjustment>60</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Galena</li>
+								</thingDefs>
+							</filter>
+							<count>60</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Lead>30</TMM_Ingot_Lead>
+					</products>
+				</RecipeDef>
+			<!-- INDUSTRIAL (x100) -->
+				<RecipeDef ParentName="TMM_Smelting_LeadOreRecipeBase">
+					<defName>TMM_Smelting_LeadIndustrial</defName>
+					<workAmount>6000</workAmount>
+					<targetCountAdjustment>100</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Galena</li>
+								</thingDefs>
+							</filter>
+							<count>100</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Lead>50</TMM_Ingot_Lead>
+					</products>
+				</RecipeDef>
+		<!-- MAGNESIUM -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_Smelting_OreRecipeBase" Name="TMM_Smelting_MagnesiumOreRecipeBase" Abstract="True">
+					<label>Smelt magnesite into magnesium</label>
+					<jobString>Smelting magnesite into magnesium.</jobString>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>TMM_Ore_Magnesite</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+				</RecipeDef>
+			<!-- SMALL SCALE (x2) -->
+				<RecipeDef ParentName="TMM_Smelting_MagnesiumOreRecipeBase">
+					<defName>TMM_Smelting_MagnesiumSmall</defName>
+					<workAmount>600</workAmount>
+					<targetCountAdjustment>2</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Magnesite</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Magnesium>1</TMM_Ingot_Magnesium>
+					</products>
+				</RecipeDef>
+			<!-- REGULAR (x10) -->
+				<RecipeDef ParentName="TMM_Smelting_MagnesiumOreRecipeBase">
+					<defName>TMM_Smelting_MagnesiumRegular</defName>
+					<workAmount>2400</workAmount>
+					<targetCountAdjustment>10</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Magnesite</li>
+								</thingDefs>
+							</filter>
+							<count>10</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Magnesium>5</TMM_Ingot_Magnesium>
+					</products>
+				</RecipeDef>
+			<!-- BULK (x30) -->
+				<RecipeDef ParentName="TMM_Smelting_MagnesiumOreRecipeBase">
+					<defName>TMM_Smelting_MagnesiumBulk</defName>
+					<workAmount>3600</workAmount>
+					<targetCountAdjustment>30</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Magnesite</li>
+								</thingDefs>
+							</filter>
+							<count>30</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Magnesium>15</TMM_Ingot_Magnesium>
+					</products>
+				</RecipeDef>
+			<!-- BIG BULK (x60) -->
+				<RecipeDef ParentName="TMM_Smelting_MagnesiumOreRecipeBase">
+					<defName>TMM_Smelting_MagnesiumBigBulk</defName>
+					<workAmount>4800</workAmount>
+					<targetCountAdjustment>60</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Magnesite</li>
+								</thingDefs>
+							</filter>
+							<count>60</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Magnesium>30</TMM_Ingot_Magnesium>
+					</products>
+				</RecipeDef>
+			<!-- INDUSTRIAL (x100) -->
+				<RecipeDef ParentName="TMM_Smelting_MagnesiumOreRecipeBase">
+					<defName>TMM_Smelting_MagnesiumIndustrial</defName>
+					<workAmount>6000</workAmount>
+					<targetCountAdjustment>100</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Magnesite</li>
+								</thingDefs>
+							</filter>
+							<count>100</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Magnesium>50</TMM_Ingot_Magnesium>
+					</products>
+				</RecipeDef>
+		<!-- MERCURY -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_Smelting_OreRecipeBase" Name="TMM_Smelting_MercuryOreRecipeBase" Abstract="True">
+					<label>Smelt cinnabar into mercury</label>
+					<jobString>Smelting cinnabar into mercury.</jobString>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>TMM_Ore_Cinnabar</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+				</RecipeDef>
+			<!-- SMALL SCALE (x2) -->
+				<RecipeDef ParentName="TMM_Smelting_MercuryOreRecipeBase">
+					<defName>TMM_Smelting_MercurySmall</defName>
+					<workAmount>600</workAmount>
+					<targetCountAdjustment>2</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Cinnabar</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Mercury>1</TMM_Ingot_Mercury>
+					</products>
+				</RecipeDef>
+			<!-- REGULAR (x10) -->
+				<RecipeDef ParentName="TMM_Smelting_MercuryOreRecipeBase">
+					<defName>TMM_Smelting_MercuryRegular</defName>
+					<workAmount>2400</workAmount>
+					<targetCountAdjustment>10</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Cinnabar</li>
+								</thingDefs>
+							</filter>
+							<count>10</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Mercury>5</TMM_Ingot_Mercury>
+					</products>
+				</RecipeDef>
+			<!-- BULK (x30) -->
+				<RecipeDef ParentName="TMM_Smelting_MercuryOreRecipeBase">
+					<defName>TMM_Smelting_MercuryBulk</defName>
+					<workAmount>3600</workAmount>
+					<targetCountAdjustment>30</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Cinnabar</li>
+								</thingDefs>
+							</filter>
+							<count>30</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Mercury>15</TMM_Ingot_Mercury>
+					</products>
+				</RecipeDef>
+			<!-- BIG BULK (x60) -->
+				<RecipeDef ParentName="TMM_Smelting_MercuryOreRecipeBase">
+					<defName>TMM_Smelting_MercuryBigBulk</defName>
+					<workAmount>4800</workAmount>
+					<targetCountAdjustment>60</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Cinnabar</li>
+								</thingDefs>
+							</filter>
+							<count>60</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Mercury>30</TMM_Ingot_Mercury>
+					</products>
+				</RecipeDef>
+			<!-- INDUSTRIAL (x100) -->
+				<RecipeDef ParentName="TMM_Smelting_MercuryOreRecipeBase">
+					<defName>TMM_Smelting_MercuryIndustrial</defName>
+					<workAmount>6000</workAmount>
+					<targetCountAdjustment>100</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Cinnabar</li>
+								</thingDefs>
+							</filter>
+							<count>100</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Mercury>50</TMM_Ingot_Mercury>
+					</products>
+				</RecipeDef>
+		<!-- NICKEL -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_Smelting_OreRecipeBase" Name="TMM_Smelting_NickelOreRecipeBase" Abstract="True">
+					<label>Smelt laterite into nickel</label>
+					<jobString>Smelting laterite into nickel.</jobString>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>TMM_Ore_Laterite</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+				</RecipeDef>
+			<!-- SMALL SCALE (x2) -->
+				<RecipeDef ParentName="TMM_Smelting_NickelOreRecipeBase">
+					<defName>TMM_Smelting_NickelSmall</defName>
+					<workAmount>600</workAmount>
+					<targetCountAdjustment>2</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Laterite</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Nickel>1</TMM_Ingot_Nickel>
+					</products>
+				</RecipeDef>
+			<!-- REGULAR (x10) -->
+				<RecipeDef ParentName="TMM_Smelting_NickelOreRecipeBase">
+					<defName>TMM_Smelting_NickelRegular</defName>
+					<workAmount>2400</workAmount>
+					<targetCountAdjustment>10</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Laterite</li>
+								</thingDefs>
+							</filter>
+							<count>10</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Nickel>5</TMM_Ingot_Nickel>
+					</products>
+				</RecipeDef>
+			<!-- BULK (x30) -->
+				<RecipeDef ParentName="TMM_Smelting_NickelOreRecipeBase">
+					<defName>TMM_Smelting_NickelBulk</defName>
+					<workAmount>3600</workAmount>
+					<targetCountAdjustment>30</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Laterite</li>
+								</thingDefs>
+							</filter>
+							<count>30</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Nickel>15</TMM_Ingot_Nickel>
+					</products>
+				</RecipeDef>
+			<!-- BIG BULK (x60) -->
+				<RecipeDef ParentName="TMM_Smelting_NickelOreRecipeBase">
+					<defName>TMM_Smelting_NickelBigBulk</defName>
+					<workAmount>4800</workAmount>
+					<targetCountAdjustment>60</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Laterite</li>
+								</thingDefs>
+							</filter>
+							<count>60</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Nickel>30</TMM_Ingot_Nickel>
+					</products>
+				</RecipeDef>
+			<!-- INDUSTRIAL (x100) -->
+				<RecipeDef ParentName="TMM_Smelting_NickelOreRecipeBase">
+					<defName>TMM_Smelting_NickelIndustrial</defName>
+					<workAmount>6000</workAmount>
+					<targetCountAdjustment>100</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Laterite</li>
+								</thingDefs>
+							</filter>
+							<count>100</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Nickel>50</TMM_Ingot_Nickel>
+					</products>
+				</RecipeDef>
+		<!-- PALLADIUM -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_Smelting_OreRecipeBase" Name="TMM_Smelting_PalladiumOreRecipeBase" Abstract="True">
+					<label>Smelt braggite into palladium</label>
+					<jobString>Smelting braggite into palladium.</jobString>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>TMM_Ore_Braggite</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+				</RecipeDef>
+			<!-- SMALL SCALE (x2) -->
+				<RecipeDef ParentName="TMM_Smelting_PalladiumOreRecipeBase">
+					<defName>TMM_Smelting_PalladiumSmall</defName>
+					<workAmount>600</workAmount>
+					<targetCountAdjustment>2</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Braggite</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Palladium>1</TMM_Ingot_Palladium>
+					</products>
+				</RecipeDef>
+			<!-- REGULAR (x10) -->
+				<RecipeDef ParentName="TMM_Smelting_PalladiumOreRecipeBase">
+					<defName>TMM_Smelting_PalladiumRegular</defName>
+					<workAmount>2400</workAmount>
+					<targetCountAdjustment>10</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Braggite</li>
+								</thingDefs>
+							</filter>
+							<count>10</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Palladium>5</TMM_Ingot_Palladium>
+					</products>
+				</RecipeDef>
+			<!-- BULK (x30) -->
+				<RecipeDef ParentName="TMM_Smelting_PalladiumOreRecipeBase">
+					<defName>TMM_Smelting_PalladiumBulk</defName>
+					<workAmount>3600</workAmount>
+					<targetCountAdjustment>30</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Braggite</li>
+								</thingDefs>
+							</filter>
+							<count>30</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Palladium>15</TMM_Ingot_Palladium>
+					</products>
+				</RecipeDef>
+			<!-- BIG BULK (x60) -->
+				<RecipeDef ParentName="TMM_Smelting_PalladiumOreRecipeBase">
+					<defName>TMM_Smelting_PalladiumBigBulk</defName>
+					<workAmount>4800</workAmount>
+					<targetCountAdjustment>60</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Braggite</li>
+								</thingDefs>
+							</filter>
+							<count>60</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Palladium>30</TMM_Ingot_Palladium>
+					</products>
+				</RecipeDef>
+			<!-- INDUSTRIAL (x100) -->
+				<RecipeDef ParentName="TMM_Smelting_PalladiumOreRecipeBase">
+					<defName>TMM_Smelting_PalladiumIndustrial</defName>
+					<workAmount>6000</workAmount>
+					<targetCountAdjustment>100</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Braggite</li>
+								</thingDefs>
+							</filter>
+							<count>100</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Palladium>50</TMM_Ingot_Palladium>
+					</products>
+				</RecipeDef>
+		<!-- PLATINUM -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_Smelting_OreRecipeBase" Name="TMM_Smelting_PlatinumOreRecipeBase" Abstract="True">
+					<label>Smelt olivine into platinum</label>
+					<jobString>Smelting olivine into platinum.</jobString>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>TMM_Ore_Olivine</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+				</RecipeDef>
+			<!-- SMALL SCALE (x2) -->
+				<RecipeDef ParentName="TMM_Smelting_PlatinumOreRecipeBase">
+					<defName>TMM_Smelting_PlatinumSmall</defName>
+					<workAmount>600</workAmount>
+					<targetCountAdjustment>2</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Olivine</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Platinum>1</TMM_Ingot_Platinum>
+					</products>
+				</RecipeDef>
+			<!-- REGULAR (x10) -->
+				<RecipeDef ParentName="TMM_Smelting_PlatinumOreRecipeBase">
+					<defName>TMM_Smelting_PlatinumRegular</defName>
+					<workAmount>2400</workAmount>
+					<targetCountAdjustment>10</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Olivine</li>
+								</thingDefs>
+							</filter>
+							<count>10</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Platinum>5</TMM_Ingot_Platinum>
+					</products>
+				</RecipeDef>
+			<!-- BULK (x30) -->
+				<RecipeDef ParentName="TMM_Smelting_PlatinumOreRecipeBase">
+					<defName>TMM_Smelting_PlatinumBulk</defName>
+					<workAmount>3600</workAmount>
+					<targetCountAdjustment>30</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Olivine</li>
+								</thingDefs>
+							</filter>
+							<count>30</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Platinum>15</TMM_Ingot_Platinum>
+					</products>
+				</RecipeDef>
+			<!-- BIG BULK (x60) -->
+				<RecipeDef ParentName="TMM_Smelting_PlatinumOreRecipeBase">
+					<defName>TMM_Smelting_PlatinumBigBulk</defName>
+					<workAmount>4800</workAmount>
+					<targetCountAdjustment>60</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Olivine</li>
+								</thingDefs>
+							</filter>
+							<count>60</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Platinum>30</TMM_Ingot_Platinum>
+					</products>
+				</RecipeDef>
+			<!-- INDUSTRIAL (x100) -->
+				<RecipeDef ParentName="TMM_Smelting_PlatinumOreRecipeBase">
+					<defName>TMM_Smelting_PlatinumIndustrial</defName>
+					<workAmount>6000</workAmount>
+					<targetCountAdjustment>100</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Olivine</li>
+								</thingDefs>
+							</filter>
+							<count>100</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Platinum>50</TMM_Ingot_Platinum>
+					</products>
+				</RecipeDef>
+		<!-- SILVER -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_Smelting_OreRecipeBase" Name="TMM_Smelting_SilverOreRecipeBase" Abstract="True">
+					<label>Smelt argentite into an ingot</label>
+					<jobString>Smelting argentite into silver.</jobString>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>TMM_Ore_Argentite</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+				</RecipeDef>
+			<!-- SMALL SCALE (x2) -->
+				<RecipeDef ParentName="TMM_Smelting_SilverOreRecipeBase">
+					<defName>TMM_Smelting_SilverSmall</defName>
+					<workAmount>600</workAmount>
+					<targetCountAdjustment>2</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Argentite</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+					<products>
+						<Silver>1</Silver>
+					</products>
+				</RecipeDef>
+			<!-- REGULAR (x10) -->
+				<RecipeDef ParentName="TMM_Smelting_SilverOreRecipeBase">
+					<defName>TMM_Smelting_SilverRegular</defName>
+					<workAmount>2400</workAmount>
+					<targetCountAdjustment>10</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Argentite</li>
+								</thingDefs>
+							</filter>
+							<count>10</count>
+						</li>
+					</ingredients>
+					<products>
+						<Silver>5</Silver>
+					</products>
+				</RecipeDef>
+			<!-- BULK (x30) -->
+				<RecipeDef ParentName="TMM_Smelting_SilverOreRecipeBase">
+					<defName>TMM_Smelting_SilverBulk</defName>
+					<workAmount>3600</workAmount>
+					<targetCountAdjustment>30</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Argentite</li>
+								</thingDefs>
+							</filter>
+							<count>30</count>
+						</li>
+					</ingredients>
+					<products>
+						<Silver>15</Silver>
+					</products>
+				</RecipeDef>
+			<!-- BIG BULK (x60) -->
+				<RecipeDef ParentName="TMM_Smelting_SilverOreRecipeBase">
+					<defName>TMM_Smelting_SilverBigBulk</defName>
+					<workAmount>4800</workAmount>
+					<targetCountAdjustment>60</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Argentite</li>
+								</thingDefs>
+							</filter>
+							<count>60</count>
+						</li>
+					</ingredients>
+					<products>
+						<Silver>30</Silver>
+					</products>
+				</RecipeDef>
+			<!-- INDUSTRIAL (x100) -->
+				<RecipeDef ParentName="TMM_Smelting_SilverOreRecipeBase">
+					<defName>TMM_Smelting_SilverIndustrial</defName>
+					<workAmount>6000</workAmount>
+					<targetCountAdjustment>100</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Argentite</li>
+								</thingDefs>
+							</filter>
+							<count>100</count>
+						</li>
+					</ingredients>
+					<products>
+						<Silver>50</Silver>
+					</products>
+				</RecipeDef>
+		<!-- TIN -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_Smelting_OreRecipeBase" Name="TMM_Smelting_TinOreRecipeBase" Abstract="True">
+					<label>Smelt cassiterite into tin</label>
+					<jobString>Smelting cassiterite into tin.</jobString>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>TMM_Ore_Cassiterite</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+				</RecipeDef>
+			<!-- SMALL SCALE (x2) -->
+				<RecipeDef ParentName="TMM_Smelting_TinOreRecipeBase">
+					<defName>TMM_Smelting_TinSmall</defName>
+					<workAmount>600</workAmount>
+					<targetCountAdjustment>2</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Cassiterite</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Tin>1</TMM_Ingot_Tin>
+					</products>
+				</RecipeDef>
+			<!-- REGULAR (x10) -->
+				<RecipeDef ParentName="TMM_Smelting_TinOreRecipeBase">
+					<defName>TMM_Smelting_TinRegular</defName>
+					<workAmount>2400</workAmount>
+					<targetCountAdjustment>10</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Cassiterite</li>
+								</thingDefs>
+							</filter>
+							<count>10</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Tin>5</TMM_Ingot_Tin>
+					</products>
+				</RecipeDef>
+			<!-- BULK (x30) -->
+				<RecipeDef ParentName="TMM_Smelting_TinOreRecipeBase">
+					<defName>TMM_Smelting_TinBulk</defName>
+					<workAmount>3600</workAmount>
+					<targetCountAdjustment>30</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Cassiterite</li>
+								</thingDefs>
+							</filter>
+							<count>30</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Tin>15</TMM_Ingot_Tin>
+					</products>
+				</RecipeDef>
+			<!-- BIG BULK (x60) -->
+				<RecipeDef ParentName="TMM_Smelting_TinOreRecipeBase">
+					<defName>TMM_Smelting_TinBigBulk</defName>
+					<workAmount>4800</workAmount>
+					<targetCountAdjustment>60</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Cassiterite</li>
+								</thingDefs>
+							</filter>
+							<count>60</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Tin>30</TMM_Ingot_Tin>
+					</products>
+				</RecipeDef>
+			<!-- INDUSTRIAL (x100) -->
+				<RecipeDef ParentName="TMM_Smelting_TinOreRecipeBase">
+					<defName>TMM_Smelting_TinIndustrial</defName>
+					<workAmount>6000</workAmount>
+					<targetCountAdjustment>100</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Cassiterite</li>
+								</thingDefs>
+							</filter>
+							<count>100</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Tin>50</TMM_Ingot_Tin>
+					</products>
+				</RecipeDef>
+		<!-- TITANIUM -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_Smelting_OreRecipeBase" Name="TMM_Smelting_TitaniumOreRecipeBase" Abstract="True">
+					<label>Smelt ilmenite into titanium</label>
+					<jobString>Smelting ilmenite into titanium.</jobString>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>TMM_Ore_Ilmenite</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+				</RecipeDef>
+			<!-- SMALL SCALE (x2) -->
+				<RecipeDef ParentName="TMM_Smelting_TitaniumOreRecipeBase">
+					<defName>TMM_Smelting_TitaniumSmall</defName>
+					<workAmount>600</workAmount>
+					<targetCountAdjustment>2</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Ilmenite</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Titanium>1</TMM_Ingot_Titanium>
+					</products>
+				</RecipeDef>
+			<!-- REGULAR (x10) -->
+				<RecipeDef ParentName="TMM_Smelting_TitaniumOreRecipeBase">
+					<defName>TMM_Smelting_TitaniumRegular</defName>
+					<workAmount>2400</workAmount>
+					<targetCountAdjustment>10</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Ilmenite</li>
+								</thingDefs>
+							</filter>
+							<count>10</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Titanium>5</TMM_Ingot_Titanium>
+					</products>
+				</RecipeDef>
+			<!-- BULK (x30) -->
+				<RecipeDef ParentName="TMM_Smelting_TitaniumOreRecipeBase">
+					<defName>TMM_Smelting_TitaniumBulk</defName>
+					<workAmount>3600</workAmount>
+					<targetCountAdjustment>30</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Ilmenite</li>
+								</thingDefs>
+							</filter>
+							<count>30</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Titanium>15</TMM_Ingot_Titanium>
+					</products>
+				</RecipeDef>
+			<!-- BIG BULK (x60) -->
+				<RecipeDef ParentName="TMM_Smelting_TitaniumOreRecipeBase">
+					<defName>TMM_Smelting_TitaniumBigBulk</defName>
+					<workAmount>4800</workAmount>
+					<targetCountAdjustment>60</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Ilmenite</li>
+								</thingDefs>
+							</filter>
+							<count>60</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Titanium>30</TMM_Ingot_Titanium>
+					</products>
+				</RecipeDef>
+			<!-- INDUSTRIAL (x100) -->
+				<RecipeDef ParentName="TMM_Smelting_TitaniumOreRecipeBase">
+					<defName>TMM_Smelting_TitaniumIndustrial</defName>
+					<workAmount>6000</workAmount>
+					<targetCountAdjustment>100</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Ilmenite</li>
+								</thingDefs>
+							</filter>
+							<count>100</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Titanium>50</TMM_Ingot_Titanium>
+					</products>
+				</RecipeDef>
+		<!-- ZINC -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_Smelting_OreRecipeBase" Name="TMM_Smelting_ZincOreRecipeBase" Abstract="True">
+					<label>Smelt sphalerite into zinc</label>
+					<jobString>Smelting sphalerite into zinc.</jobString>
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>TMM_Ore_Sphalerite</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+				</RecipeDef>
+			<!-- SMALL SCALE (x2) -->
+				<RecipeDef ParentName="TMM_Smelting_ZincOreRecipeBase">
+					<defName>TMM_Smelting_ZincSmall</defName>
+					<workAmount>600</workAmount>
+					<targetCountAdjustment>2</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Sphalerite</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Zinc>1</TMM_Ingot_Zinc>
+					</products>
+				</RecipeDef>
+			<!-- REGULAR (x10) -->
+				<RecipeDef ParentName="TMM_Smelting_ZincOreRecipeBase">
+					<defName>TMM_Smelting_ZincRegular</defName>
+					<workAmount>2400</workAmount>
+					<targetCountAdjustment>10</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Sphalerite</li>
+								</thingDefs>
+							</filter>
+							<count>10</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Zinc>5</TMM_Ingot_Zinc>
+					</products>
+				</RecipeDef>
+			<!-- BULK (x30) -->
+				<RecipeDef ParentName="TMM_Smelting_ZincOreRecipeBase">
+					<defName>TMM_Smelting_ZincBulk</defName>
+					<workAmount>3600</workAmount>
+					<targetCountAdjustment>30</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Sphalerite</li>
+								</thingDefs>
+							</filter>
+							<count>30</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Zinc>15</TMM_Ingot_Zinc>
+					</products>
+				</RecipeDef>
+			<!-- BIG BULK (x60) -->
+				<RecipeDef ParentName="TMM_Smelting_ZincOreRecipeBase">
+					<defName>TMM_Smelting_ZincBigBulk</defName>
+					<workAmount>4800</workAmount>
+					<targetCountAdjustment>60</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Sphalerite</li>
+								</thingDefs>
+							</filter>
+							<count>60</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Zinc>30</TMM_Ingot_Zinc>
+					</products>
+				</RecipeDef>
+			<!-- INDUSTRIAL (x100) -->
+				<RecipeDef ParentName="TMM_Smelting_ZincOreRecipeBase">
+					<defName>TMM_Smelting_ZincIndustrial</defName>
+					<workAmount>6000</workAmount>
+					<targetCountAdjustment>100</targetCountAdjustment>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_Ore_Sphalerite</li>
+								</thingDefs>
+							</filter>
+							<count>100</count>
+						</li>
+					</ingredients>
+					<products>
+						<TMM_Ingot_Zinc>50</TMM_Ingot_Zinc>
+					</products>
+				</RecipeDef>
+	<!-- RESOURCE PLANTS -->
+		<!-- STEEL -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_Smelting_PlantRecipeBase" Name="TMM_SmeltSteelshroomBase" Abstract="True">
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>TMM_RawSteelshroom</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<skillRequirements>
+						<Crafting>8</Crafting>
+					</skillRequirements>
+				</RecipeDef>
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_SmeltSteelshroomBase">
+					<defName>TMM_ExtractSteelshrooms</defName>
+					<label>Smelt Steelshrooms (Small Scale)</label>
+					<description>Use heat and strong electromagnets to separate useful metal from Steelshrooms.\n\nMakes 4 steel from 16 shrooms.</description>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_RawSteelshroom</li>
+								</thingDefs>
+							</filter>
+							<count>16</count>
+						</li>
+					</ingredients>
+					<products>
+						<Steel>4</Steel>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_SmeltSteelshroomBase">
+					<defName>TMM_ExtractSteelshroomsBulk</defName>
+					<label>Smelt Steelshrooms (Large Scale)</label>
+					<description>Use heat and strong electromagnets to separate useful metal from Steelshrooms.\n\nMakes 16 steel from 64 shrooms.</description>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_RawSteelshroom</li>
+								</thingDefs>
+							</filter>
+							<count>64</count>
+						</li>
+					</ingredients>
+					<products>
+						<Steel>16</Steel>
+					</products>
+				</RecipeDef>
+		<!-- PLASTEEL -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_Smelting_PlantRecipeBase" Name="TMM_SmeltPlasteelBulbBase" Abstract="True">
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>TMM_RawPlasteelBulb</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<skillRequirements>
+						<Crafting>10</Crafting>
+					</skillRequirements>
+				</RecipeDef>
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_SmeltPlasteelBulbBase">
+					<defName>TMM_ExtractPlasteelBulbs</defName>
+					<label>Smelt Plasteel Bulbs (Small Scale)</label>
+					<description>Use heat and strong electromagnets to separate useful metal from Plasteel Bulbs.\n\nMakes 4 Plasteel from 16 bulbs.</description>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_RawPlasteelBulb</li>
+								</thingDefs>
+							</filter>
+							<count>16</count>
+						</li>
+					</ingredients>
+					<products>
+						<Plasteel>4</Plasteel>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_SmeltPlasteelBulbBase">
+					<defName>TMM_ExtractPlasteelBulbsBulk</defName>
+					<label>Smelt Plasteel Bulbs (Large Scale)</label>
+					<description>Use heat and strong electromagnets to separate useful metal from Plasteel Bulbs.\n\nMakes 16 Plasteel from 64 bulbs.</description>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_RawPlasteelBulb</li>
+								</thingDefs>
+							</filter>
+							<count>64</count>
+						</li>
+					</ingredients>
+					<products>
+						<Plasteel>16</Plasteel>
+					</products>
+				</RecipeDef>
+		<!-- GOLD -->
+			<!-- BASE-->
+				<RecipeDef ParentName="TMM_Smelting_PlantRecipeBase" Name="TMM_SmeltGoldFernBase" Abstract="True">
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>TMM_RawGoldLeaf</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<skillRequirements>
+						<Crafting>16</Crafting>
+					</skillRequirements>
+				</RecipeDef>
+			<!-- REGULAR-->
+				<RecipeDef ParentName="TMM_SmeltGoldFernBase">
+					<defName>TMM_ExtractGoldFerns</defName>
+					<label>Smelt Gold Ferns (Small Scale)</label>
+					<description>Use heat and strong electromagnets to separate useful metal from Gold Fern Leaves.\n\nMakes 4 Gold from 16 leaves.</description>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_RawGoldLeaf</li>
+								</thingDefs>
+							</filter>
+							<count>16</count>
+						</li>
+					</ingredients>
+					<products>
+						<Gold>4</Gold>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_SmeltGoldFernBase">
+					<defName>TMM_ExtractGoldFernsBulk</defName>
+					<label>Smelt Gold Ferns (Large Scale)</label>
+					<description>Use heat and strong electromagnets to separate useful metal from Gold Fern Leaves.\n\nMakes 16 Gold from 64 leaves.</description>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_RawGoldLeaf</li>
+								</thingDefs>
+							</filter>
+							<count>64</count>
+						</li>
+					</ingredients>
+					<products>
+						<Gold>16</Gold>
+					</products>
+				</RecipeDef>
+		<!-- JADE -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_Smelting_PlantRecipeBase" Name="TMM_SmeltJadeCrystalsBase" Abstract="True">
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>TMM_RawJadeCrystal</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<skillRequirements>
+						<Crafting>12</Crafting>
+					</skillRequirements>
+				</RecipeDef>
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_SmeltJadeCrystalsBase">
+					<defName>TMM_ExtractJadeCrystals</defName>
+					<label>Smelt Jade Crystals (Small Scale)</label>
+					<description>Use heat to separate useful minerals from jade crystal.\n\nMakes 4 Jade from 16 crystals.</description>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_RawJadeCrystal</li>
+								</thingDefs>
+							</filter>
+							<count>16</count>
+						</li>
+					</ingredients>
+					<products>
+						<Jade>4</Jade>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_SmeltJadeCrystalsBase">
+					<defName>TMM_ExtractJadeCrystalsBulk</defName>
+					<label>Smelt Jade Crystals (Large Scale)</label>
+					<description>Use heat to separate useful minerals from jade crystals.\n\nMakes 16 Jade from 64 crystals.</description>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_RawJadeCrystal</li>
+								</thingDefs>
+							</filter>
+							<count>64</count>
+						</li>
+					</ingredients>
+					<products>
+						<Jade>16</Jade>
+					</products>
+				</RecipeDef>
+		<!-- SILVER -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_Smelting_PlantRecipeBase" Name="TMM_SmeltSilverPetalsBase" Abstract="True">
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>TMM_RawSilverFlower</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<skillRequirements>
+						<Crafting>12</Crafting>
+					</skillRequirements>
+				</RecipeDef>
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_SmeltSilverPetalsBase">
+					<defName>TMM_ExtractSilverPetals</defName>
+					<label>Smelt Silver Petals (Small Scale)</label>
+					<description>Use heat and strong electromagnets to separate useful metal from Silver Flower Petals.\n\nMakes 4 Silver from 16 petals.</description>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_RawSilverFlower</li>
+								</thingDefs>
+							</filter>
+							<count>16</count>
+						</li>
+					</ingredients>
+					<products>
+						<Silver>4</Silver>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_SmeltSilverPetalsBase">
+					<defName>TMM_ExtractSilverPetalsBulk</defName>
+					<label>Smelt Silver Petals (Large Scale)</label>
+					<description>Use heat and strong electromagnets to separate useful metal from Silver Flower Petals.\n\nMakes 16 Silver from 64 petals.</description>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_RawSilverFlower</li>
+								</thingDefs>
+							</filter>
+							<count>64</count>
+						</li>
+					</ingredients>
+					<products>
+						<Silver>16</Silver>
+					</products>
+				</RecipeDef>
+		<!-- URANIUM -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_Smelting_PlantRecipeBase" Name="TMM_SmeltUraniumRootBase" Abstract="True">
+					<fixedIngredientFilter>
+						<thingDefs>
+							<li>TMM_RawUraniumRoot</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+					<skillRequirements>
+						<Crafting>14</Crafting>
+					</skillRequirements>
+				</RecipeDef>
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_SmeltUraniumRootBase">
+					<defName>TMM_ExtractUraniumRoot</defName>
+					<label>Smelt Uranium Roots (Small Scale)</label>
+					<description>Use heat and strong electromagnets to separate useful metal from Uranium Roots.\n\nMakes 4 Uranium from 16 roots.</description>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_RawUraniumRoot</li>
+								</thingDefs>
+							</filter>
+							<count>16</count>
+						</li>
+					</ingredients>
+					<products>
+						<Uranium>4</Uranium>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_SmeltUraniumRootBase">
+					<defName>TMM_ExtractUraniumRootBulk</defName>
+					<label>Smelt Uranium Roots (Large Scale)</label>
+					<description>Use heat and strong electromagnets to separate useful metal from Uranium Root.\n\nMakes 16 Uranium from 64 roots.</description>
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>TMM_RawUraniumRoot</li>
+								</thingDefs>
+							</filter>
+							<count>64</count>
+						</li>
+					</ingredients>
+					<products>
+						<Uranium>16</Uranium>
+					</products>
+				</RecipeDef>
 </Defs>

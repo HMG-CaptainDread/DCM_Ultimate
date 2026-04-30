@@ -1,0 +1,815 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<!-- <></> -->
+	<!-- TMM_Hediff_ -->
+	<!-- TMM_SurgeryInstall_ -->
+	<!-- TMM_SurgeryRemove_ -->
+	<!-- TMM_Implant_ -->
+
+
+
+	<!-- BASES -->
+
+	<!-- IMPLANTS -->
+		<!-- ARMOUR -->
+			<!-- ECONO-SAVE PLINK-PROTECT™ -->
+				<HediffDef ParentName="ImplantHediffBase">
+					<defName>TMM_Hediff_PlinkProtect</defName>
+					<label>Econo-Save Plink-Protect™</label>
+					<labelNoun>a Plink-Protect™ implant</labelNoun>
+					<description>Increases base body armour by 5% by making the body denser. Causes organs to harden slightly in response to physical trauma.</description>
+					<descriptionHyperlinks>
+						<ThingDef>TMM_Implant_PlinkProtect</ThingDef>
+					</descriptionHyperlinks>
+					<stages>
+						<li>
+							<statOffsets>
+								<ArmorRating_Sharp>0.05</ArmorRating_Sharp>
+								<ArmorRating_Blunt>0.05</ArmorRating_Blunt>
+							</statOffsets>
+						</li>
+					</stages>
+				</HediffDef>
+			<!-- JUNKER'S LATTICE -->
+				<HediffDef ParentName="ImplantHediffBase">
+					<defName>TMM_Hediff_JunkersLattice</defName>
+					<label>Junker's Lattice</label>
+					<labelNoun>a Junker's Lattice implant</labelNoun>
+					<description>A poorly manufactured lattice implant. While providing some protection, it causes constant discomfort and impairs body functions.</description>
+					<descriptionHyperlinks>
+						<ThingDef>TMM_Implant_JunkersLattice</ThingDef>
+					</descriptionHyperlinks>
+					<spawnThingOnRemoved>TMM_Implant_JunkersLattice</spawnThingOnRemoved>
+					<stages>
+						<li>
+							<painOffset>0.05</painOffset>
+							<statOffsets>
+								<ArmorRating_Sharp>0.10</ArmorRating_Sharp>
+								<ArmorRating_Blunt>0.10</ArmorRating_Blunt>
+							</statOffsets>
+							<capMods>
+								<li>
+									<capacity>Manipulation</capacity>
+									<offset>-0.15</offset>
+								</li>
+								<li>
+									<capacity>Moving</capacity>
+									<offset>-0.05</offset>
+								</li>
+								<li>
+									<capacity>BloodPumping</capacity>
+									<offset>-0.05</offset>
+								</li>
+							</capMods>
+						</li>
+					</stages>
+				</HediffDef>
+			<!-- MERCENARY -->
+				<HediffDef ParentName="ImplantHediffBase">
+					<defName>TMM_Hediff_MercenaryArmourImplant</defName>
+					<label>mercenary armour implant</label>
+					<labelNoun>a Mercenary Armour implant</labelNoun>
+					<description>This implant covers the skin in a thin, self-replicating lattice that protects against initial damage.</description>
+					<descriptionHyperlinks>
+						<ThingDef>TMM_Implant_MercenaryArmourImplant</ThingDef>
+					</descriptionHyperlinks>
+					<spawnThingOnRemoved>TMM_Implant_MercenaryArmourImplant</spawnThingOnRemoved>
+					<stages>
+						<li>
+							<statOffsets>
+								<ArmorRating_Sharp>0.10</ArmorRating_Sharp>
+								<ArmorRating_Blunt>0.10</ArmorRating_Blunt>
+							</statOffsets>
+						</li>
+					</stages>
+				</HediffDef>
+			<!-- JUGGERNAUT -->
+				<HediffDef ParentName="ImplantHediffBase">
+					<defName>TMM_Hediff_JuggernautArmourImplant</defName>
+					<label>juggernaut armour implant</label>
+					<labelNoun>a juggernaut armour implant</labelNoun>
+					<description>A specialised military implant that reinforces the body with a metal-like biological substance, providing significant protection against damage.</description>
+					<descriptionHyperlinks>
+						<ThingDef>TMM_Implant_JuggernautArmourImplant</ThingDef>
+					</descriptionHyperlinks>
+					<spawnThingOnRemoved>TMM_Implant_JuggernautArmourImplant</spawnThingOnRemoved>
+					<maxSeverity>1.0</maxSeverity>
+					<stages>
+						<li>
+							<statOffsets>
+								<ArmorRating_Sharp>1.0</ArmorRating_Sharp>
+								<ArmorRating_Blunt>1.0</ArmorRating_Blunt>
+							</statOffsets>
+						</li>
+					</stages>
+				</HediffDef>
+			<!-- X-LATTICE -->
+				<HediffDef ParentName="ImplantHediffBase">
+					<defName>TMM_Hediff_XLattice</defName>
+					<label>x-lattice implant</label>
+					<labelNoun>an x-lattice implant</labelNoun>
+					<description>An installed x-lattice implant.</description>
+					<descriptionHyperlinks>
+						<ThingDef>TMM_Implant_XLattice</ThingDef>
+					</descriptionHyperlinks>
+					<spawnThingOnRemoved>TMM_Implant_XLattice</spawnThingOnRemoved>
+					<stages>
+						<li>
+							<statOffsets>
+								<ArmorRating_Sharp>0.15</ArmorRating_Sharp>
+								<ArmorRating_Blunt>0.15</ArmorRating_Blunt>
+								<ArmorRating_Heat>0.15</ArmorRating_Heat>
+							</statOffsets>
+						</li>
+					</stages>
+					<tags>
+						<li>II_XLattice_Implant</li> <!-- TODO: -->
+					</tags>
+				</HediffDef>
+		<!-- DAMAGE RESISTANCE -->
+			<!-- MERCENARY -->
+				<HediffDef ParentName="ImplantHediffBase">
+					<defName>TMM_Hediff_MercenaryResistanceImplant</defName>
+					<label>mercenary resistance implant</label>
+					<labelNoun>a mercenary resistance implant</labelNoun>
+					<description>This implant extends a weak psionic field throughout the entire body, increasing its density and resilience to damage. The design was created by reverse-engineering an extremely powerful Vacuous-grade implant and copying the psionic field. The materials aren't sufficient for the full field, but this implant is valuable nonetheless.</description>
+					<descriptionHyperlinks>
+						<ThingDef>TMM_Implant_MercenaryResistanceImplant</ThingDef>
+					</descriptionHyperlinks>
+					<spawnThingOnRemoved>TMM_Implant_MercenaryResistanceImplant</spawnThingOnRemoved>
+					<stages>
+						<li>
+							<statFactors>
+								<IncomingDamageFactor>0.75</IncomingDamageFactor>
+							</statFactors>
+						</li>
+					</stages>
+				</HediffDef>
+			<!-- PAIN -->
+				<HediffDef ParentName="ImplantHediffBase">
+					<defName>TMM_Hediff_PainResistanceCoreImplant</defName>
+					<label>pain resistance-core implant</label>
+					<labelNoun>a pain resistance-core implant</labelNoun>
+					<description>There is no strength without suffering. This implant can be installed on all body parts. It is cheap and abundant. It requires no medical skill. But it is incredibly difficult to install.</description>
+					<descriptionHyperlinks>
+						<ThingDef>TMM_Implant_PainResistanceCoreImplant</ThingDef>
+					</descriptionHyperlinks>
+					<spawnThingOnRemoved>TMM_Implant_PainResistanceCoreImplant</spawnThingOnRemoved>
+					<hediffClass>Hediff_Level</hediffClass>
+					<maxSeverity>4</maxSeverity>
+					<stages>
+						<li>
+							<minSeverity>0</minSeverity>
+							<statFactors>
+								<IncomingDamageFactor>1</IncomingDamageFactor>
+							</statFactors>
+						</li>
+						<li>
+							<minSeverity>1</minSeverity>
+							<statFactors>
+								<IncomingDamageFactor>0.95</IncomingDamageFactor>
+							</statFactors>
+						</li>
+						<li>
+							<minSeverity>2</minSeverity>
+							<statFactors>
+								<IncomingDamageFactor>0.90</IncomingDamageFactor>
+							</statFactors>
+						</li>
+						<li>
+							<minSeverity>3</minSeverity>
+							<statFactors>
+								<IncomingDamageFactor>0.85</IncomingDamageFactor>
+							</statFactors>
+						</li>
+					</stages>
+					<injuryProps>
+						<canMerge>true</canMerge>
+					</injuryProps>
+				</HediffDef>
+		<!-- FOCUS CHIP -->
+			<HediffDef ParentName="ImplantHediffBase">
+				<defName>TMM_Hediff_MercenaryFocusImplant</defName>
+				<label>mercenary focus implant</label>
+				<labelNoun>a mercenary focus implant</labelNoun>
+				<description>This implant reduces the need for sleep and recreation, allowing a soldier to focus purely on the battle in front of them.</description>
+				<descriptionHyperlinks>
+					<ThingDef>TMM_Implant_MercenaryFocusImplant</ThingDef>
+				</descriptionHyperlinks>
+				<spawnThingOnRemoved>TMM_Implant_MercenaryFocusImplant</spawnThingOnRemoved>
+				<stages>
+					<li>
+						<painFactor>0.90</painFactor>
+						<statFactors>
+							<RestFallRateFactor>0.5</RestFallRateFactor>
+							<JoyFallRateFactor>0.5</JoyFallRateFactor>
+						</statFactors>
+					</li>
+				</stages>
+			</HediffDef>
+		<!-- MELEE -->
+			<!-- ECONO-SAVE MUSCLE MAKER -->
+				<HediffDef ParentName="ImplantHediffBase">
+					<defName>TMM_Hediff_EconoSaveMuscleMakerImplant</defName>
+					<label>Econo-Save Muscle Maker implant</label>
+					<labelNoun>a Muscle Maker implant</labelNoun>
+					<description>Increases muscle density to increase kinetic melee strikes by 5% force</description>
+					<descriptionHyperlinks>
+						<ThingDef>TMM_Implant_EconoSaveMuscleMakerImplant</ThingDef>
+					</descriptionHyperlinks>
+					<stages>
+						<li>
+							<statFactors>
+								<MeleeDamageFactor>1.05</MeleeDamageFactor>
+							</statFactors>
+						</li>
+					</stages>
+				</HediffDef>
+			<!-- JUNK STRENGTH -->
+				<HediffDef ParentName="ImplantHediffBase">
+					<defName>TMM_Hediff_JunkerSteroidInjectorImplant</defName>
+					<label>Junker's Steroid Injector implant</label>
+					<labelNoun>a Junker's Steroid Injector implant</labelNoun>
+					<description>This implant was made to increase strength and melee damage, but a manufacturing defect causes it to have the side effect of greatly increasing susceptibility to pain and limiting dexterity.</description>
+					<descriptionHyperlinks>
+						<ThingDef>TMM_Implant_JunkerSteroidInjectorImplant</ThingDef>
+					</descriptionHyperlinks>
+					<spawnThingOnRemoved>TMM_Implant_JunkerSteroidInjectorImplant</spawnThingOnRemoved>
+					<stages>
+						<li>
+							<statFactors>
+								<MeleeDamageFactor>1.5</MeleeDamageFactor>
+								<PainShockThreshold>0.25</PainShockThreshold>
+							</statFactors>
+							<capMods>
+								<li>
+									<capacity>Manipulation</capacity>
+									<offset>-0.25</offset>
+								</li>
+							</capMods>
+						</li>
+					</stages>
+				</HediffDef>
+			<!-- MILITARY PIERCING -->
+				<HediffDef ParentName="ImplantHediffBase">
+					<defName>TMM_Hediff_MilitaryPiercingImplant</defName>
+					<label>military piercing implant</label>
+					<labelNoun>a military piercing implant</labelNoun>
+					<description>A specialised military implant that enhances the user's ability to penetrate armour in melee combat. (Useless in Combat Extended)</description>
+					<descriptionHyperlinks>
+						<ThingDef>TMM_Implant_MilitaryPiercingImplant</ThingDef>
+					</descriptionHyperlinks>
+					<spawnThingOnRemoved>TMM_Implant_MilitaryPiercingImplant</spawnThingOnRemoved>
+					<maxSeverity>1.0</maxSeverity>
+					<stages>
+						<li>
+							<statOffsets>
+								<MeleeArmorPenetration>2.0</MeleeArmorPenetration>
+							</statOffsets>
+						</li>
+					</stages>
+				</HediffDef>
+			<!-- MILITARY RAPID-HIT -->
+				<HediffDef ParentName="ImplantHediffBase">
+					<defName>TMM_Hediff_MilitaryRapidHitImplant</defName>
+					<label>military rapid-hit implant</label>
+					<labelNoun>a military rapid-hit implant</labelNoun>
+					<description>A specialised military implant that enhances the user's melee attack speed.</description>
+					<descriptionHyperlinks>
+						<ThingDef>TMM_Implant_MilitaryRapidHitImplant</ThingDef>
+					</descriptionHyperlinks>
+					<spawnThingOnRemoved>TMM_Implant_MilitaryRapidHitImplant</spawnThingOnRemoved>
+					<maxSeverity>1.0</maxSeverity>
+					<stages>
+						<li>
+							<statFactors>
+								<MeleeCooldownFactor>0.9</MeleeCooldownFactor>
+							</statFactors>
+						</li>
+					</stages>
+				</HediffDef>
+			<!-- MILITARY STRENGTH -->
+				<HediffDef ParentName="ImplantHediffBase">
+					<defName>TMM_Hediff_MilitaryStrikeForceImplant</defName>
+					<label>military strike force implant</label>
+					<labelNoun>a military strike force implant</labelNoun>
+					<description>A specialised military implant that enhances the user's melee strike power.</description>
+					<descriptionHyperlinks>
+						<ThingDef>TMM_Implant_MilitaryStrikeForceImplant</ThingDef>
+					</descriptionHyperlinks>
+					<spawnThingOnRemoved>TMM_Implant_MilitaryStrikeForceImplant</spawnThingOnRemoved>
+					<maxSeverity>1.0</maxSeverity>
+					<stages>
+						<li>
+							<statFactors>
+								<MeleeDamageFactor>1.25</MeleeDamageFactor>
+							</statFactors>
+						</li>
+					</stages>
+				</HediffDef>
+			<!-- PAIN STRENGTH -->
+				<HediffDef ParentName="ImplantHediffBase">
+					<defName>TMM_Hediff_PainMeleeCoreImplant</defName>
+					<label>pain melee-core implant</label>
+					<labelNoun>a pain melee-core implant</labelNoun>
+					<description>There is no strength without suffering. This implant can be installed on all body parts. It is cheap and abundant. It requires no medical skill. But it is incredibly difficult to install.</description>
+					<descriptionHyperlinks>
+						<ThingDef>TMM_Implant_PainMeleeCoreImplant</ThingDef>
+					</descriptionHyperlinks>
+					<spawnThingOnRemoved>TMM_Implant_PainMeleeCoreImplant</spawnThingOnRemoved>
+					<stages>
+						<li>
+							<statFactors>
+								<MeleeDamageFactor>1.1</MeleeDamageFactor>
+							</statFactors>
+						</li>
+					</stages>
+				</HediffDef>
+			<!-- X-SPEED -->
+				<HediffDef ParentName="ImplantHediffBase">
+					<defName>TMM_Hediff_XSpeedMeleeImplant</defName>
+					<label>x-speed melee</label>
+					<labelNoun>a x-speed melee</labelNoun>
+					<description>An installed x-speed melee.</description>
+					<descriptionHyperlinks>
+						<ThingDef>TMM_Implant_XSpeedMeleeImplant</ThingDef>
+					</descriptionHyperlinks>
+					<spawnThingOnRemoved>TMM_Implant_XSpeedMeleeImplant</spawnThingOnRemoved>
+					<stages>
+						<li>
+							<statFactors>
+								<MeleeCooldownFactor>0.05</MeleeCooldownFactor>
+							</statFactors>
+						</li>
+					</stages>
+					<tags>
+						<li>II_XSpeedMeleeCore_Implant</li> <!-- TODO: -->
+					</tags>
+				</HediffDef>
+			<!-- X-STRENGTH -->
+				<HediffDef ParentName="ImplantHediffBase">
+					<defName>TMM_Hediff_XStrengthMeleeImplant</defName>
+					<label>x-strength melee</label>
+					<labelNoun>a x-strength melee</labelNoun>
+					<description>An installed x-strength melee.</description>
+					<descriptionHyperlinks>
+						<ThingDef>TMM_Implant_XStrengthMeleeImplant</ThingDef>
+					</descriptionHyperlinks>
+					<spawnThingOnRemoved>TMM_Implant_XStrengthMeleeImplant</spawnThingOnRemoved>
+					<stages>
+						<li>
+							<statFactors>
+								<MeleeDamageFactor>10.0</MeleeDamageFactor>
+							</statFactors>
+							<statOffsets>
+								<MeleeDamageFactor>10.0</MeleeDamageFactor>
+							</statOffsets>
+						</li>
+					</stages>
+					<tags>
+						<li>II_XMeleeCore_Implant</li> <!-- TODO: -->
+					</tags>
+				</HediffDef>
+		<!-- MISCELLANEOUS -->
+			<!-- PROTOTYPE GLASS CANNON -->
+				<HediffDef ParentName="ImplantHediffBase">
+					<defName>TMM_Hediff_PrototypeGlassCannonImplant</defName>
+					<label>Prototype Glass Cannon implant</label>
+					<labelNoun>a Prototype Glass Cannon implant</labelNoun>
+					<description>This implant was discovered in an escaped mutated soldier several miles outside of a Vacuous research facility. It grants the wearer immense strength and speed but extreme vulnerability to damage and pain.</description>
+					<descriptionHyperlinks>
+						<ThingDef>TMM_Implant_PrototypeGlassCannonImplant</ThingDef>
+					</descriptionHyperlinks>
+					<spawnThingOnRemoved>TMM_Implant_PrototypeGlassCannonImplant</spawnThingOnRemoved>
+					<stages>
+						<li>
+							<statFactors>
+								<MeleeDamageFactor>10.0</MeleeDamageFactor>
+								<IncomingDamageFactor>10.0</IncomingDamageFactor>
+								<MoveSpeed>3.0</MoveSpeed>
+							</statFactors>
+							<statOffsets>
+								<MeleeArmorPenetration>1.0</MeleeArmorPenetration>
+							</statOffsets>
+						</li>
+					</stages>
+				</HediffDef>
+			<!-- PROTOTYPE TANK -->
+				<HediffDef ParentName="ImplantHediffBase">
+					<defName>TMM_Hediff_PrototypeTankImplant</defName>
+					<label>Prototype Tank implant</label>
+					<labelNoun>a Prototype Tank implant</labelNoun>
+					<description>An incredibly powerful tank implant found on a frozen 2-story creature. The creature had been obliterated by a Vacuous blast but was still standing upright with the hole in its body.</description>
+					<descriptionHyperlinks>
+						<ThingDef>TMM_Implant_PrototypeTankImplant</ThingDef>
+					</descriptionHyperlinks>
+					<spawnThingOnRemoved>TMM_Implant_PrototypeTankImplant</spawnThingOnRemoved>
+					<stages>
+						<li>
+							<statFactors>
+								<IncomingDamageFactor>0.05</IncomingDamageFactor>
+								<InjuryHealingFactor>10.0</InjuryHealingFactor>
+							</statFactors>
+							<statOffsets>
+								<ArmorRating_Sharp>10.0</ArmorRating_Sharp>
+								<ArmorRating_Blunt>10.0</ArmorRating_Blunt>
+								<ArmorRating_Heat>5.0</ArmorRating_Heat>
+							</statOffsets>
+							<capMods>
+								<li>
+									<capacity>Manipulation</capacity>
+									<postFactor>0.10</postFactor>
+								</li>
+							</capMods>
+						</li>
+					</stages>
+					<comps>
+						<li Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust" MayRequire="V1024.EBFramework">
+							<linearAdjustment>150</linearAdjustment>
+						</li>
+					</comps>
+				</HediffDef>
+		<!-- SHOOTING -->
+			<!-- AIM-QUICK -->
+				<HediffDef ParentName="ImplantHediffBase">
+					<defName>TMM_Hediff_AimQuickImplant</defName>
+					<label>Aim-Quick implant</label>
+					<labelNoun>an Aim-Quick implant</labelNoun>
+					<description>This implant adds momentary bursts of sensation to the fingers and enhances targeting, reducing the time needed to aim while retaining accuracy.</description>
+					<descriptionHyperlinks>
+						<ThingDef>TMM_Implant_AimQuickImplant</ThingDef>
+					</descriptionHyperlinks>
+					<spawnThingOnRemoved>TMM_Implant_AimQuickImplant</spawnThingOnRemoved>
+					<stages>
+						<li>
+							<statOffsets>
+								<AimingDelayFactor>-0.25</AimingDelayFactor>
+							</statOffsets>
+						</li>
+					</stages>
+				</HediffDef>
+			<!-- JUNKER'S BLASTER -->
+				<HediffDef ParentName="ImplantHediffBase">
+					<defName>TMM_Hediff_JunkersBlasterImplant</defName>
+					<label>Junker's Blaster implant</label>
+					<labelNoun>a Junker's Blaster implant</labelNoun>
+					<description>This implant was designed to provide soldiers better shooting accuracy and focus by slowing muscle movement, but a manufacturing defect causes the shooter to move extremely slowly.</description>
+					<descriptionHyperlinks>
+						<ThingDef>TMM_Implant_JunkersBlasterImplant</ThingDef>
+					</descriptionHyperlinks>
+					<spawnThingOnRemoved>TMM_Implant_JunkersBlasterImplant</spawnThingOnRemoved>
+					<stages>
+						<li>
+							<statOffsets>
+								<ShootingAccuracyPawn>8</ShootingAccuracyPawn>
+							</statOffsets>
+							<capMods>
+								<li>
+									<capacity>Moving</capacity>
+									<offset>-0.40</offset>
+								</li>
+							</capMods>
+						</li>
+					</stages>
+				</HediffDef>
+			<!-- MERCENARY SNIPER -->
+				<HediffDef ParentName="ImplantHediffBase">
+					<defName>TMM_Hediff_MercenarySniperImplant</defName>
+					<label>Mercenary Sniper implant</label>
+					<labelNoun>a Mercenary Sniper implant</labelNoun>
+					<description>This implant changes how a mercenary perceives distance, space, and movement, allowing them to fire with significantly increased accuracy.</description>
+					<descriptionHyperlinks>
+						<ThingDef>TMM_Implant_MercenarySniperImplant</ThingDef>
+					</descriptionHyperlinks>
+					<spawnThingOnRemoved>TMM_Implant_MercenarySniperImplant</spawnThingOnRemoved>
+					<stages>
+						<li>
+							<statOffsets>
+								<ShootingAccuracyPawn>6</ShootingAccuracyPawn>
+							</statOffsets>
+						</li>
+					</stages>
+				</HediffDef>
+			<!-- MILITARY SNIPER -->
+				<HediffDef ParentName="ImplantHediffBase">
+					<defName>TMM_Hediff_MilitarySnipingImplant</defName>
+					<label>military sniping implant</label>
+					<labelNoun>a military sniping implant</labelNoun>
+					<description>A specialised military implant that enhances the user's ability to hit targets at long ranges.</description>
+					<descriptionHyperlinks>
+						<ThingDef>TMM_Implant_MilitarySnipingImplant</ThingDef>
+					</descriptionHyperlinks>
+					<spawnThingOnRemoved>TMM_Implant_MilitarySnipingImplant</spawnThingOnRemoved>
+					<maxSeverity>1.0</maxSeverity>
+					<stages>
+						<li>
+							<statFactors>
+								<ShootingAccuracyFactor_Long>2.0</ShootingAccuracyFactor_Long>
+							</statFactors>
+						</li>
+					</stages>
+				</HediffDef>
+			<!-- QUICKSCOPE -->
+				<HediffDef ParentName="ImplantHediffBase">
+					<defName>TMM_Hediff_MilitaryQuickscopeImplant</defName>
+					<label>military quickscope implant</label>
+					<labelNoun>a military quickscope implant</labelNoun>
+					<description>A specialised military implant that enhances the user's ability to quickly acquire and engage targets.</description>
+					<descriptionHyperlinks>
+						<ThingDef>TMM_Implant_MilitaryQuickscopeImplant</ThingDef>
+					</descriptionHyperlinks>
+					<spawnThingOnRemoved>TMM_Implant_MilitaryQuickscopeImplant</spawnThingOnRemoved>
+					<maxSeverity>1.0</maxSeverity>
+					<stages>
+						<li>
+							<statFactors>
+								<AimingDelayFactor>0.75</AimingDelayFactor>
+								<RangedCooldownFactor>0.75</RangedCooldownFactor>
+							</statFactors>
+						</li>
+					</stages>
+				</HediffDef>
+		<!-- SOLO CHIP -->
+			<HediffDef ParentName="ImplantHediffBase">
+				<defName>TMM_Hediff_SoloChipImplant</defName>
+				<label>solo chip implant</label>
+				<labelNoun>a solo chip implant</labelNoun>
+				<description>Formerly used by military forces, this implant has gotten a new life in the hands of solo mercenaries, it enhances overall combat effectiveness and survival capabilities.</description>
+				<descriptionHyperlinks>
+					<ThingDef>TMM_Implant_SoloChipImplant</ThingDef>
+				</descriptionHyperlinks>
+				<spawnThingOnRemoved>TMM_Implant_SoloChipImplant</spawnThingOnRemoved>
+				<maxSeverity>1.0</maxSeverity>
+				<stages>
+					<li>
+						<totalBleedFactor>0.5</totalBleedFactor>
+						<painFactor>0.75</painFactor>
+						<statOffsets>
+							<ShootingAccuracyPawn>4</ShootingAccuracyPawn>
+							<MeleeHitChance>4</MeleeHitChance>
+							<MeleeDodgeChance>4</MeleeDodgeChance>
+							<ArmorRating_Sharp>0.25</ArmorRating_Sharp>
+							<ArmorRating_Blunt>0.25</ArmorRating_Blunt>
+							<ArmorRating_Heat>0.1</ArmorRating_Heat>
+							<MentalBreakThreshold>-0.08</MentalBreakThreshold>
+						</statOffsets>
+						<statFactors>
+							<IncomingDamageFactor>0.5</IncomingDamageFactor>
+						</statFactors>
+						<capMods>
+							<li>
+								<capacity>Sight</capacity>
+								<offset>0.25</offset>
+							</li>
+							<li>
+								<capacity>Manipulation</capacity>
+								<offset>0.25</offset>
+							</li>
+							<li>
+								<capacity>Breathing</capacity>
+								<offset>0.25</offset>
+							</li>
+							<li>
+								<capacity>Eating</capacity>
+								<postFactor>2.0</postFactor>
+							</li>
+						</capMods>
+					</li>
+				</stages>
+				<comps>
+					<li Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust" MayRequire="V1024.EBFramework">
+						<linearAdjustment>50</linearAdjustment>
+					</li>
+				</comps>
+			</HediffDef>
+		<!-- SURVIVALIST AID -->
+			<HediffDef ParentName="ImplantHediffBase">
+				<defName>TMM_Hediff_SurvivalistAidImplant</defName>
+				<label>survivalist aid implant</label>
+				<labelNoun>a survivalist aid implant</labelNoun>
+				<description>A specialised implant designed to reinforce organs with a metal-like biological substance, making them more resistant to damage.</description>
+				<descriptionHyperlinks>
+					<ThingDef>TMM_Implant_SurvivalistAidImplant</ThingDef>
+				</descriptionHyperlinks>
+				<spawnThingOnRemoved>TMM_Implant_SurvivalistAidImplant</spawnThingOnRemoved>
+				<maxSeverity>1.0</maxSeverity>
+				<comps>
+					<li Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust" MayRequire="V1024.EBFramework">
+						<linearAdjustment>25</linearAdjustment>
+					</li>
+				</comps>
+			</HediffDef>
+		<!-- WARRIOR MODULE -->
+			<HediffDef ParentName="ImplantHediffBase">
+				<defName>TMM_Hediff_WarriorModuleImplant</defName>
+				<label>warrior module implant</label>
+				<labelNoun>a warrior module implant</labelNoun>
+				<description>A relatively rare military implant that is consistently used by raiders. Due to its powerful effects, it's often scavenged from battlefields.</description>
+				<descriptionHyperlinks>
+					<ThingDef>TMM_Implant_WarriorModuleImplant</ThingDef>
+				</descriptionHyperlinks>
+				<spawnThingOnRemoved>TMM_Implant_WarriorModuleImplant</spawnThingOnRemoved>
+				<maxSeverity>1.0</maxSeverity>
+				<stages>
+					<li>
+						<painFactor>0.75</painFactor>
+						<statOffsets>
+							<ShootingAccuracyPawn>2</ShootingAccuracyPawn>
+							<IncomingDamageFactor>-0.05</IncomingDamageFactor>
+							<ArmorRating_Sharp>0.1</ArmorRating_Sharp>
+							<ArmorRating_Blunt>0.1</ArmorRating_Blunt>
+						</statOffsets>
+						<statFactors>
+							<MeleeDamageFactor>1.05</MeleeDamageFactor>
+						</statFactors>
+						<capMods>
+							<li>
+								<capacity>Sight</capacity>
+								<offset>0.05</offset>
+							</li>
+							<li>
+								<capacity>Manipulation</capacity>
+								<offset>0.05</offset>
+							</li>
+							<li>
+								<capacity>Eating</capacity>
+								<offset>0.05</offset>
+							</li>
+							<li>
+								<capacity>Consciousness</capacity>
+								<offset>0.05</offset>
+							</li>
+						</capMods>
+					</li>
+				</stages>
+				<comps>
+					<li Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust" MayRequire="V1024.EBFramework">
+						<linearAdjustment>60</linearAdjustment>
+					</li>
+				</comps>
+			</HediffDef>
+		<!-- X-SHIELD -->
+			<!-- TIER 1 -->
+				<HediffDef ParentName="ImplantHediffBase">
+					<defName>TMM_Hediff_XShieldTier1Implant</defName>
+					<label>x-shield tier 1 implant</label>
+					<labelNoun>an x-shield tier 1 implant</labelNoun>
+					<description>An installed x-shield implant, designated "Tier 1".</description>
+					<descriptionHyperlinks>
+						<ThingDef>TMM_Implant_XShieldTier1Implant</ThingDef>
+					</descriptionHyperlinks>
+					<stages>
+						<li>
+							<statOffsets>
+								<ArmorRating_Sharp>0.10</ArmorRating_Sharp>
+							</statOffsets>
+						</li>
+					</stages>
+					<comps>
+						<li Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust" MayRequire="V1024.EBFramework">
+							<linearAdjustment>5</linearAdjustment>
+						</li>
+					</comps>
+				</HediffDef>
+			<!-- TIER 2 -->
+				<HediffDef ParentName="ImplantHediffBase">
+					<defName>TMM_Hediff_XShieldTier2Implant</defName>
+					<label>x-shield tier 2 implant</label>
+					<labelNoun>an x-shield tier 2 implant</labelNoun>
+					<description>An installed x-shield implant, designated "Tier 2".</description>
+					<descriptionHyperlinks>
+						<ThingDef>TMM_Implant_XShieldTier2Implant</ThingDef>
+					</descriptionHyperlinks>
+					<stages>
+						<li>
+							<statOffsets>
+								<ArmorRating_Sharp>0.25</ArmorRating_Sharp>
+								<ArmorRating_Blunt>0.25</ArmorRating_Blunt>
+								<ArmorRating_Heat>0.25</ArmorRating_Heat>
+								<PainShockThreshold>0.10</PainShockThreshold>
+							</statOffsets>
+						</li>
+					</stages>
+					<comps>
+						<li Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust" MayRequire="V1024.EBFramework">
+							<linearAdjustment>25</linearAdjustment>
+						</li>
+					</comps>
+				</HediffDef>
+			<!-- TIER 3 -->
+				<HediffDef ParentName="ImplantHediffBase">
+					<defName>TMM_Hediff_XShieldTier3Implant</defName>
+					<label>x-shield tier 3 implant</label>
+					<labelNoun>a x-shield tier 3 implant</labelNoun>
+					<description>An installed x-shield implant, designated "Tier 3".</description>
+					<descriptionHyperlinks>
+						<ThingDef>TMM_Implant_XShieldTier3Implant</ThingDef>
+					</descriptionHyperlinks>
+					<stages>
+						<li>
+							<statOffsets>
+								<ArmorRating_Sharp>0.50</ArmorRating_Sharp>
+								<ArmorRating_Blunt>0.50</ArmorRating_Blunt>
+								<ArmorRating_Heat>0.50</ArmorRating_Heat>
+								<PainShockThreshold>0.20</PainShockThreshold>
+								<ImmunityGainSpeed>0.20</ImmunityGainSpeed>
+							</statOffsets>
+						</li>
+					</stages>
+					<comps>
+						<li Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust" MayRequire="V1024.EBFramework">
+							<linearAdjustment>75</linearAdjustment>
+						</li>
+					</comps>
+				</HediffDef>
+			<!-- TIER 4 -->
+				<HediffDef ParentName="ImplantHediffBase">
+					<defName>TMM_Hediff_XShieldTier4Implant</defName>
+					<label>x-shield tier 4 implant</label>
+					<labelNoun>a x-shield tier 4 implant</labelNoun>
+					<description>An installed x-shield implant, designated "Tier 4".</description>
+					<descriptionHyperlinks>
+						<ThingDef>TMM_Implant_XShieldTier4Implant</ThingDef>
+					</descriptionHyperlinks>
+					<stages>
+						<li>
+							<statOffsets>
+								<ArmorRating_Sharp>1.00</ArmorRating_Sharp>
+								<ArmorRating_Blunt>1.00</ArmorRating_Blunt>
+								<ArmorRating_Heat>1.00</ArmorRating_Heat>
+								<PainShockThreshold>0.40</PainShockThreshold>
+								<ImmunityGainSpeed>0.40</ImmunityGainSpeed>
+								<MoveSpeed>0.20</MoveSpeed>
+								<WorkSpeedGlobal>0.20</WorkSpeedGlobal>
+							</statOffsets>
+						</li>
+					</stages>
+					<comps>
+						<li Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust" MayRequire="V1024.EBFramework">
+							<linearAdjustment>150</linearAdjustment>
+						</li>
+					</comps>
+				</HediffDef>
+			<!-- TIER 5 -->
+				<HediffDef ParentName="ImplantHediffBase">
+					<defName>TMM_Hediff_XShieldTier5Implant</defName>
+					<label>x-shield tier 5 implant</label>
+					<labelNoun>a x-shield tier 5 implant</labelNoun>
+					<description>An installed x-shield implant, designated "Tier 5".</description>
+					<descriptionHyperlinks>
+						<ThingDef>TMM_Implant_XShieldTier5Implant</ThingDef>
+					</descriptionHyperlinks>
+					<stages>
+						<li>
+							<statOffsets>
+								<ArmorRating_Sharp>2.00</ArmorRating_Sharp>
+								<ArmorRating_Blunt>2.00</ArmorRating_Blunt>
+								<ArmorRating_Heat>2.00</ArmorRating_Heat>
+								<PainShockThreshold>0.80</PainShockThreshold>
+								<ImmunityGainSpeed>0.80</ImmunityGainSpeed>
+								<MoveSpeed>0.40</MoveSpeed>
+								<WorkSpeedGlobal>0.40</WorkSpeedGlobal>
+								<MeleeHitChance>0.20</MeleeHitChance>
+								<ShootingAccuracyPawn>0.20</ShootingAccuracyPawn>
+							</statOffsets>
+						</li>
+					</stages>
+					<comps>
+						<li Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust" MayRequire="V1024.EBFramework">
+							<linearAdjustment>250</linearAdjustment>
+						</li>
+					</comps>
+				</HediffDef>
+			<!-- TIER 11 EXPERIMENTAL -->
+				<HediffDef ParentName="ImplantHediffBase">
+					<defName>TMM_Hediff_XShieldTier11Implant</defName>
+					<label>x-shield tier 11 implant (Experimental)</label>
+					<labelNoun>an experimental x-shield tier 11 implant</labelNoun>
+					<description>An installed experimental x-shield implant, designated "Tier 11". This particular implant's effects are highly unstable but incredibly powerful.</description>
+					<descriptionHyperlinks>
+						<ThingDef>TMM_Implant_XShieldTier11Implant</ThingDef>
+					</descriptionHyperlinks>
+					<stages>
+						<li>
+							<statOffsets>
+								<ArmorRating_Sharp>5.00</ArmorRating_Sharp>
+								<ArmorRating_Blunt>5.00</ArmorRating_Blunt>
+								<ArmorRating_Heat>5.00</ArmorRating_Heat>
+								<PainShockThreshold>1.00</PainShockThreshold>
+								<ImmunityGainSpeed>1.00</ImmunityGainSpeed>
+								<MoveSpeed>1.00</MoveSpeed>
+								<WorkSpeedGlobal>1.00</WorkSpeedGlobal>
+								<MeleeHitChance>1.00</MeleeHitChance>
+								<ShootingAccuracyPawn>1.00</ShootingAccuracyPawn>
+								<MeleeDodgeChance>1.00</MeleeDodgeChance>
+								<MeleeArmorPenetration>1.00</MeleeArmorPenetration>
+							</statOffsets>
+						</li>
+					</stages>
+					<comps>
+						<li Class="EBF.Hediffs.HediffCompProperties_MaxHPAdjust" MayRequire="V1024.EBFramework">
+							<linearAdjustment>100</linearAdjustment>
+						</li>
+					</comps>
+				</HediffDef>
+</Defs>
