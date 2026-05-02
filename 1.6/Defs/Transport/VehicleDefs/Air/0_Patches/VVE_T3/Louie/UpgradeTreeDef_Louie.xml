@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<Vehicles.UpgradeTreeDef ParentName="TMM_UpgradeTree_RotorAirBase">
+		<defName>TMM_UpgradeTree_Louie</defName>
+
+		<nodes>
+			<!-- GROUND SUPPORT PACKAGE -->
+				<li>
+					<key>GroundSupportPackage_Louie</key>
+					<label>Ground support package</label>
+					<description>Mount a high-caliber cannon at the nose of the helicopter. This gun will be controlled by the pilot of the vehicle.</description>
+
+					<icon>Modules/Transport/UI/Upgrades/Upgrade_Turret</icon>
+
+					<work>9600</work>
+
+					<gridCoordinate>(3, 3)</gridCoordinate>
+					<drawSize>(80,80)</drawSize>
+
+					<upgrades>
+						<li Class="Vehicles.VehicleUpgrade">
+							<roles>
+								<li>
+									<key>pilot</key>
+									<label>Pilot</label>
+									<slots>1</slots>
+									<slotsToOperate>1</slotsToOperate>
+									<handlingTypes>Movement, Turret</handlingTypes>
+									<turretIds>
+										<li>pilot</li>
+									</turretIds>
+									<editKey>TMM_PilotGunner</editKey>
+								</li>
+							</roles>
+						</li>
+						<li Class="Vehicles.TurretUpgrade">
+							<turrets>
+								<li>
+									<turretDef>TMM_Turret_GroundSupport</turretDef>
+									<renderProperties>
+										<north>(0, 3.4)</north>
+										<south>(0, -3.5)</south>
+										<east>(3.8, 0.1)</east>
+									</renderProperties>
+									<drawLayer>-1</drawLayer>
+									<gizmoLabel>mounted gun</gizmoLabel>
+									<angleRestricted>(-120, 120)</angleRestricted>
+									<aimPieOffset>(0, -0.35)</aimPieOffset>
+									<key>pilot</key>
+								</li>
+							</turrets>
+						</li>
+					</upgrades>
+
+					<ingredients>
+						<Steel>240</Steel>
+						<Plasteel>30</Plasteel>
+						<ComponentIndustrial>6</ComponentIndustrial>
+					</ingredients>
+				</li>
+		</nodes>
+	</Vehicles.UpgradeTreeDef>
+</Defs>

@@ -1,0 +1,727 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<!-- <></> -->
+	<!-- TMM_QuickhackHediff_ -->
+
+
+
+	<!-- BASE -->
+		<HediffDef Name="hediffQuickhackBase" Abstract="True">
+			<hediffClass>HediffWithComps</hediffClass>
+			<isBad>true</isBad>
+			<tendable>false</tendable>
+			<scenarioCanAdd>false</scenarioCanAdd>
+			<maxSeverity>1.0</maxSeverity>
+			<comps>
+				<li Class="HediffCompProperties_DisappearsOnDeath"/>
+			</comps>
+		</HediffDef>
+	<!-- REVEALED VULNERABILITY -->
+		<!-- PARALINE -->
+			<HediffDef ParentName="hediffQuickhackBase">
+				<defName>MilitechParaline_DamageIncrease</defName>
+				<label>discovered vulnerability</label>
+				<description>A Militech quickhack has revealed a vulnerability in the victim's physical defenses.</description>
+				<comps>
+					<li Class="HediffCompProperties_Disappears">
+						<disappearsAfterTicks>600</disappearsAfterTicks>
+						<showRemainingTime>True</showRemainingTime>
+					</li>
+				</comps>
+				<stages>
+					<li>
+						<statOffsets>
+							<IncomingDamageFactor>0.375</IncomingDamageFactor>
+						</statOffsets>
+					</li>
+				</stages>
+			</HediffDef>
+		<!-- SIGMA -->
+			<HediffDef ParentName="hediffQuickhackBase">
+				<defName>BiotechSigma_DamageIncrease</defName>
+				<label>discovered vulnerability</label>
+				<description>A Biotech quickhack has revealed a major vulnerability in the victim's physical defenses.</description>
+				<comps>
+					<li Class="HediffCompProperties_Disappears">
+						<disappearsAfterTicks>600</disappearsAfterTicks>
+						<showRemainingTime>True</showRemainingTime>
+					</li>
+				</comps>
+				<stages>
+					<li>
+						<statOffsets>
+							<IncomingDamageFactor>0.375</IncomingDamageFactor>
+						</statOffsets>
+					</li>
+				</stages>
+			</HediffDef>
+		<!-- NETDRIVER -->
+			<HediffDef ParentName="hediffQuickhackBase">
+				<defName>NetwatchNetdriver_DamageIncrease</defName>
+				<label>discovered vulnerability</label>
+				<description>A Netwatch quickhack has revealed a vulnerability in the victim's physical defenses.</description>
+				<comps>
+					<li Class="HediffCompProperties_Disappears">
+						<disappearsAfterTicks>600</disappearsAfterTicks>
+						<showRemainingTime>True</showRemainingTime>
+					</li>
+				</comps>
+				<stages>
+					<li>
+						<statOffsets>
+							<IncomingDamageFactor>0.1</IncomingDamageFactor>
+						</statOffsets>
+					</li>
+				</stages>
+			</HediffDef>
+	<!-- CONTAGION -->
+		<!-- 2T -->
+			<HediffDef ParentName="hediffQuickhackBase">
+				<defName>QuickhackContagion_2T</defName>
+				<label>contagion</label>
+				<labelNoun>poisoning</labelNoun>
+				<description>Quickhack-induced poisoning, causing loss of spatial orientation and vomiting.</description>
+				<stages>
+					<li>
+						<vomitMtbDays>0.00005787</vomitMtbDays>
+					</li>
+				</stages>
+				<comps>
+					<li Class="HediffCompProperties_Disappears">
+						<disappearsAfterTicks>900</disappearsAfterTicks>
+						<showRemainingTime>True</showRemainingTime>
+					</li>
+					<li Class="HediffCompProperties_Disorientation">
+						<wanderMtbHours>0.05</wanderMtbHours>
+						<singleWanderDurationTicks>180</singleWanderDurationTicks>
+						<wanderRadius>3</wanderRadius>
+					</li>
+				</comps>
+			</HediffDef>
+		<!-- 2T PARALINE -->
+			<HediffDef ParentName="hediffQuickhackBase">
+				<defName>QuickhackContagion_2T_Paraline</defName>
+				<label>contagion</label>
+				<labelNoun>poisoning</labelNoun>
+				<description>Quickhack-induced poisoning, causing loss of spatial orientation and vomiting. Paraline variant, increases victim's physical vulnerability.</description>
+				<stages>
+					<li>
+						<statOffsets>
+							<IncomingDamageFactor>0.1</IncomingDamageFactor>
+						</statOffsets>
+						<vomitMtbDays>0.00005787</vomitMtbDays>
+					</li>
+				</stages>
+				<comps>
+					<li Class="HediffCompProperties_Disappears">
+						<disappearsAfterTicks>900</disappearsAfterTicks>
+						<showRemainingTime>True</showRemainingTime>
+					</li>
+					<li Class="HediffCompProperties_Disorientation">
+						<wanderMtbHours>0.05</wanderMtbHours>
+						<singleWanderDurationTicks>180</singleWanderDurationTicks>
+						<wanderRadius>3</wanderRadius>
+					</li>
+				</comps>
+			</HediffDef>
+		<!-- 2T SIGMA -->
+			<HediffDef ParentName="hediffQuickhackBase">
+				<defName>QuickhackContagion_2T_Sigma</defName>
+				<label>contagion</label>
+				<labelNoun>poisoning</labelNoun>
+				<description>Quickhack-induced poisoning, causing loss of spatial orientation and vomiting. Sigma variant, reveals a major physical vulnerability.</description>
+				<stages>
+					<li>
+						<statOffsets>
+							<IncomingDamageFactor>0.375</IncomingDamageFactor>
+						</statOffsets>
+						<vomitMtbDays>0.00005787</vomitMtbDays>
+					</li>
+				</stages>
+				<comps>
+					<li Class="HediffCompProperties_Disappears">
+						<disappearsAfterTicks>900</disappearsAfterTicks>
+						<showRemainingTime>True</showRemainingTime>
+					</li>
+					<li Class="HediffCompProperties_Disorientation">
+						<wanderMtbHours>0.05</wanderMtbHours>
+						<singleWanderDurationTicks>180</singleWanderDurationTicks>
+						<wanderRadius>3</wanderRadius>
+					</li>
+				</comps>
+			</HediffDef>
+		<!-- 2T NETDRIVER -->
+			<HediffDef ParentName="hediffQuickhackBase">
+				<defName>QuickhackContagion_2T_Netdriver</defName>
+				<label>contagion</label>
+				<labelNoun>poisoning</labelNoun>
+				<description>Quickhack-induced poisoning, causing loss of spatial orientation and vomiting. Netdriver variant, reveals a major physical vulnerability.</description>
+				<stages>
+					<li>
+						<statOffsets>
+							<IncomingDamageFactor>0.3</IncomingDamageFactor>
+						</statOffsets>
+						<vomitMtbDays>0.00005787</vomitMtbDays>
+					</li>
+				</stages>
+				<comps>
+					<li Class="HediffCompProperties_Disappears">
+						<disappearsAfterTicks>900</disappearsAfterTicks>
+						<showRemainingTime>True</showRemainingTime>
+					</li>
+					<li Class="HediffCompProperties_Disorientation">
+						<wanderMtbHours>0.05</wanderMtbHours>
+						<singleWanderDurationTicks>180</singleWanderDurationTicks>
+						<wanderRadius>3</wanderRadius>
+					</li>
+				</comps>
+			</HediffDef>
+	<!-- SYNAPSE BURNOUT -->
+		<!-- 3T -->
+			<HediffDef ParentName="hediffQuickhackBase">
+				<defName>SynapseBurnout_3T</defName>
+				<label>synapse burnout</label>
+				<labelNoun>a synapse burnout</labelNoun>
+				<description>Synapses have been overloaded with pain signals.</description>
+				<stages>
+					<li>
+						<minSeverity>1.0</minSeverity>
+						<painOffset>2.0</painOffset>
+					</li>
+				</stages>
+				<comps>
+					<li Class="HediffCompProperties_Disappears">
+						<disappearsAfterTicks>1800</disappearsAfterTicks>
+						<showRemainingTime>True</showRemainingTime>
+					</li>
+				</comps>
+			</HediffDef>
+		<!-- 3T PARALINE -->
+			<HediffDef ParentName="hediffQuickhackBase">
+				<defName>SynapseBurnout_3T_Paraline</defName>
+				<label>synapse burnout</label>
+				<labelNoun>a synapse burnout</labelNoun>
+				<description>Synapses have been overloaded with pain signals. Paraline variant, increases victim's physical vulnerability.</description>
+				<stages>
+					<li>
+						<minSeverity>1.0</minSeverity>
+						<statOffsets>
+							<IncomingDamageFactor>0.1</IncomingDamageFactor>
+						</statOffsets>
+						<painOffset>2.0</painOffset>
+					</li>
+				</stages>
+				<comps>
+					<li Class="HediffCompProperties_Disappears">
+						<disappearsAfterTicks>1800</disappearsAfterTicks>
+						<showRemainingTime>True</showRemainingTime>
+					</li>
+				</comps>
+			</HediffDef>
+		<!-- 3T SIGMA -->
+			<HediffDef ParentName="hediffQuickhackBase">
+				<defName>SynapseBurnout_3T_Sigma</defName>
+				<label>synapse burnout</label>
+				<labelNoun>a synapse burnout</labelNoun>
+				<description>Synapses have been overloaded with pain signals. Sigma variant, reveals a major physical vulnerability.</description>
+				<stages>
+					<li>
+						<minSeverity>1.0</minSeverity>
+						<statOffsets>
+							<IncomingDamageFactor>0.375</IncomingDamageFactor>
+						</statOffsets>
+						<painOffset>2.0</painOffset>
+					</li>
+				</stages>
+				<comps>
+					<li Class="HediffCompProperties_Disappears">
+						<disappearsAfterTicks>1800</disappearsAfterTicks>
+						<showRemainingTime>True</showRemainingTime>
+					</li>
+				</comps>
+			</HediffDef>
+		<!-- 3T NETDRIVER -->
+			<HediffDef ParentName="hediffQuickhackBase">
+				<defName>SynapseBurnout_3T_Netdriver</defName>
+				<label>synapse burnout</label>
+				<labelNoun>a synapse burnout</labelNoun>
+				<description>Synapses have been overloaded with pain signals. Netdriver variant, reveals a major physical vulnerability.</description>
+				<stages>
+					<li>
+						<minSeverity>1.0</minSeverity>
+						<statOffsets>
+							<IncomingDamageFactor>0.3</IncomingDamageFactor>
+						</statOffsets>
+						<painOffset>2.0</painOffset>
+					</li>
+				</stages>
+				<comps>
+					<li Class="HediffCompProperties_Disappears">
+						<disappearsAfterTicks>1800</disappearsAfterTicks>
+						<showRemainingTime>True</showRemainingTime>
+					</li>
+				</comps>
+			</HediffDef>
+	<!-- REBOOT OPTICS -->
+		<!-- 2T -->
+			<HediffDef ParentName="hediffQuickhackBase">
+				<defName>QuickhackRebootOptics_2T</defName>
+				<label>optics rebooting</label>
+				<labelNoun>a forced optical reboot</labelNoun>
+				<description>A forced optical reboot caused by a quickhack, causing temporary blindness.</description>
+				<stages>
+					<li>
+						<minSeverity>1.0</minSeverity>
+						<capMods>
+							<li>
+								<capacity>Sight</capacity>
+								<setMax>0</setMax>
+							</li>
+						</capMods>
+					</li>
+				</stages>
+				<comps>
+					<li Class="HediffCompProperties_Disappears">
+						<disappearsAfterTicks>900</disappearsAfterTicks>
+						<showRemainingTime>True</showRemainingTime>
+					</li>
+				</comps>
+			</HediffDef>
+		<!-- 2T PARALINE -->
+			<HediffDef ParentName="hediffQuickhackBase">
+				<defName>QuickhackRebootOptics_2T_Paraline</defName>
+				<label>optics rebooting</label>
+				<labelNoun>a forced optical reboot</labelNoun>
+				<description>A forced optical reboot caused by a quickhack, causing temporary blindness. Paraline variant, increases victim's physical vulnerability.</description>
+				<stages>
+					<li>
+						<minSeverity>1.0</minSeverity>
+						<statOffsets>
+							<IncomingDamageFactor>0.1</IncomingDamageFactor>
+						</statOffsets>
+						<capMods>
+							<li>
+								<capacity>Sight</capacity>
+								<setMax>0</setMax>
+							</li>
+						</capMods>
+					</li>
+				</stages>
+				<comps>
+					<li Class="HediffCompProperties_Disappears">
+						<disappearsAfterTicks>900</disappearsAfterTicks>
+						<showRemainingTime>True</showRemainingTime>
+					</li>
+				</comps>
+			</HediffDef>
+		<!-- 2T RIPPLER -->
+			<HediffDef ParentName="hediffQuickhackBase">
+				<defName>QuickhackRebootOptics_2T_Rippler</defName>
+				<label>optics rebooting</label>
+				<labelNoun>a forced optical reboot</labelNoun>
+				<description>A forced optical reboot caused by a quickhack, causing temporary blindness. Rippler variant, increases victim's physical vulnerability.</description>
+				<stages>
+					<li>
+						<minSeverity>1.0</minSeverity>
+						<statOffsets>
+							<IncomingDamageFactor>0.15</IncomingDamageFactor>
+						</statOffsets>
+						<capMods>
+							<li>
+								<capacity>Sight</capacity>
+								<setMax>0</setMax>
+							</li>
+						</capMods>
+					</li>
+				</stages>
+				<comps>
+					<li Class="HediffCompProperties_Disappears">
+						<disappearsAfterTicks>900</disappearsAfterTicks>
+						<showRemainingTime>True</showRemainingTime>
+					</li>
+				</comps>
+			</HediffDef>
+	<!-- CYBERWARE MALFUNCTION -->
+		<!-- 3T -->
+			<HediffDef ParentName="hediffQuickhackBase">
+				<defName>QuickhackCyberwareMalfunction_3T</defName>
+				<label>cyberware malfunction</label>
+				<labelNoun>a cyberware malfunction</labelNoun>
+				<description>Cyberware malfunction caused by a quickhack. Motor functions are impaired, and incoming damage is slightly amplified.</description>
+				<comps>
+					<li Class="HediffCompProperties_Disappears">
+						<disappearsAfterTicks>600</disappearsAfterTicks>
+						<showRemainingTime>True</showRemainingTime>
+					</li>
+				</comps>
+				<stages>
+					<li>
+						<statOffsets>
+							<IncomingDamageFactor>0.05</IncomingDamageFactor>
+						</statOffsets>
+						<capMods>
+							<li>
+								<capacity>Manipulation</capacity>
+								<setMax>0.85</setMax>
+							</li>
+							<li>
+								<capacity>Moving</capacity>
+								<setMax>0.85</setMax>
+							</li>
+						</capMods>
+					</li>
+				</stages>
+			</HediffDef>
+		<!-- 3T PARALINE -->
+			<HediffDef ParentName="hediffQuickhackBase">
+				<defName>QuickhackCyberwareMalfunction_3T_Paraline</defName>
+				<label>cyberware malfunction</label>
+				<labelNoun>a cyberware malfunction</labelNoun>
+				<description>Cyberware malfunction caused by a quickhack. Motor functions are impaired, and incoming damage is slightly amplified. Paraline variant, increases victim's physical vulnerability.</description>
+				<comps>
+					<li Class="HediffCompProperties_Disappears">
+						<disappearsAfterTicks>600</disappearsAfterTicks>
+						<showRemainingTime>True</showRemainingTime>
+					</li>
+				</comps>
+				<stages>
+					<li>
+						<statOffsets>
+							<IncomingDamageFactor>0.15</IncomingDamageFactor>
+						</statOffsets>
+						<capMods>
+							<li>
+								<capacity>Manipulation</capacity>
+								<setMax>0.85</setMax>
+							</li>
+							<li>
+								<capacity>Moving</capacity>
+								<setMax>0.85</setMax>
+							</li>
+						</capMods>
+					</li>
+				</stages>
+			</HediffDef>
+	<!-- CRIPPLE MOVEMENT -->
+		<!-- 3T -->
+			<HediffDef ParentName="hediffQuickhackBase">
+				<defName>QuickhackCrippleMovement_3T</defName>
+				<label>crippled movement</label>
+				<labelNoun>crippled movement</labelNoun>
+				<description>A temporary leg malfunction caused by a quickhack, inhibiting movement.</description>
+				<comps>
+					<li Class="HediffCompProperties_Disappears">
+						<disappearsAfterTicks>828</disappearsAfterTicks>
+						<showRemainingTime>True</showRemainingTime>
+					</li>
+				</comps>
+				<stages>
+					<li>
+						<minSeverity>1.0</minSeverity>
+						<statFactors>
+							<MoveSpeed>0.0</MoveSpeed>
+						</statFactors>
+					</li>
+				</stages>
+			</HediffDef>
+		<!-- 3T PARALINE -->
+			<HediffDef ParentName="hediffQuickhackBase">
+				<defName>QuickhackCrippleMovement_3T_Paraline</defName>
+				<label>crippled movement</label>
+				<labelNoun>crippled movement</labelNoun>
+				<description>A temporary leg malfunction caused by a quickhack, inhibiting movement. Paraline variant, increases victim's physical vulnerability.</description>
+				<comps>
+					<li Class="HediffCompProperties_Disappears">
+						<disappearsAfterTicks>828</disappearsAfterTicks>
+						<showRemainingTime>True</showRemainingTime>
+					</li>
+				</comps>
+				<stages>
+					<li>
+						<minSeverity>1.0</minSeverity>
+						<statFactors>
+							<MoveSpeed>0.0</MoveSpeed>
+						</statFactors>
+						<statOffsets>
+							<IncomingDamageFactor>0.1</IncomingDamageFactor>
+						</statOffsets>
+					</li>
+				</stages>
+			</HediffDef>
+	<!-- WEAPON GLITCH -->
+		<!-- 3T -->
+			<HediffDef ParentName="hediffQuickhackBase">
+				<defName>QuickhackWeaponGlitch_3T</defName>
+				<label>weapon glitch</label>
+				<labelNoun>a weapon malfunction</labelNoun>
+				<description>A temporary weapon malfunction caused by a quickhack, dramatically reducing accuracy and rate of fire.</description>
+				<hediffClass>HediffWithComps</hediffClass>
+				<comps>
+					<li Class="HediffCompProperties_Disappears">
+						<disappearsAfterTicks>840</disappearsAfterTicks>
+						<showRemainingTime>True</showRemainingTime>
+					</li>
+				</comps>
+				<stages>
+					<li>
+						<minSeverity>1.0</minSeverity>
+						<statFactors>
+							<ShootingAccuracyPawn>0.1</ShootingAccuracyPawn>
+							<AimingDelayFactor>1.5</AimingDelayFactor>
+							<RangedCooldownFactor>1.5</RangedCooldownFactor>
+						</statFactors>
+						<statOffsets>
+							<AimingDelayFactor>1.0</AimingDelayFactor>
+							<RangedCooldownFactor>1.0</RangedCooldownFactor>
+						</statOffsets>
+					</li>
+				</stages>
+			</HediffDef>
+		<!-- 3T PARALINE -->
+			<HediffDef ParentName="hediffQuickhackBase">
+				<defName>QuickhackWeaponGlitch_3T_Paraline</defName>
+				<label>weapon glitch</label>
+				<labelNoun>a weapon malfunction</labelNoun>
+				<description>A temporary weapon malfunction caused by a quickhack, dramatically reducing accuracy and rate of fire. Paraline variant, increases victim's physical vulnerability.</description>
+				<hediffClass>HediffWithComps</hediffClass>
+				<comps>
+					<li Class="HediffCompProperties_Disappears">
+						<disappearsAfterTicks>840</disappearsAfterTicks>
+						<showRemainingTime>True</showRemainingTime>
+					</li>
+				</comps>
+				<stages>
+					<li>
+						<minSeverity>1.0</minSeverity>
+						<statFactors>
+							<ShootingAccuracyPawn>0.1</ShootingAccuracyPawn>
+							<AimingDelayFactor>1.5</AimingDelayFactor>
+							<RangedCooldownFactor>1.5</RangedCooldownFactor>
+						</statFactors>
+						<statOffsets>
+							<AimingDelayFactor>1.0</AimingDelayFactor>
+							<RangedCooldownFactor>1.0</RangedCooldownFactor>
+							<IncomingDamageFactor>0.1</IncomingDamageFactor>
+						</statOffsets>
+					</li>
+				</stages>
+			</HediffDef>
+		<!-- 3T RIPPLER -->
+			<HediffDef ParentName="hediffQuickhackBase">
+				<defName>QuickhackWeaponGlitch_3T_Rippler</defName>
+				<label>weapon glitch</label>
+				<labelNoun>a weapon malfunction</labelNoun>
+				<description>A temporary weapon malfunction caused by a quickhack, dramatically reducing accuracy and rate of fire. Rippler variant, increases victim's physical vulnerability.</description>
+				<hediffClass>HediffWithComps</hediffClass>
+				<comps>
+					<li Class="HediffCompProperties_Disappears">
+						<disappearsAfterTicks>840</disappearsAfterTicks>
+						<showRemainingTime>True</showRemainingTime>
+					</li>
+				</comps>
+				<stages>
+					<li>
+						<minSeverity>1.0</minSeverity>
+						<statFactors>
+							<ShootingAccuracyPawn>0.1</ShootingAccuracyPawn>
+							<AimingDelayFactor>1.5</AimingDelayFactor>
+							<RangedCooldownFactor>1.5</RangedCooldownFactor>
+						</statFactors>
+						<statOffsets>
+							<AimingDelayFactor>1.0</AimingDelayFactor>
+							<RangedCooldownFactor>1.0</RangedCooldownFactor>
+							<IncomingDamageFactor>0.15</IncomingDamageFactor>
+						</statOffsets>
+					</li>
+				</stages>
+			</HediffDef>
+	<!-- MEMORY WIPE -->
+		<HediffDef ParentName="hediffQuickhackBase">
+			<defName>QuickhackMemoryWipe_3T</defName>
+			<label>cognitive invisibility</label>
+			<labelNoun>cognitive invisibility</labelNoun>
+			<description>Quickhack-induced invisibility. Nearby enemies are forced to "forget" this person's presence, rendering them functionally invisible.</description>
+			<isBad>false</isBad>
+			<comps>
+				<li Class="HediffCompProperties_Disappears">
+					<disappearsAfterTicks>840</disappearsAfterTicks>
+					<showRemainingTime>True</showRemainingTime>
+				</li>
+				<li Class="HediffCompProperties_Invisibility">
+					<visibleToPlayer>true</visibleToPlayer>
+				</li>
+			</comps>
+		</HediffDef>
+	<!-- SONIC SHOCK -->
+		<!-- 3T -->
+			<HediffDef ParentName="hediffQuickhackBase">
+				<defName>QuickhackSonicShock_3T</defName>
+				<label>sonic shock</label>
+				<description>A feedback loop in the victim's sensory processors. Extremely distracting. Pain is amplified in this state.</description>
+				<isBad>false</isBad>
+				<stages>
+					<li>
+						<capMods>
+							<li>
+								<capacity>Consciousness</capacity>
+								<setMax>0.31</setMax>
+							</li>
+							<li>
+								<capacity>Hearing</capacity>
+								<setMax>0</setMax>
+							</li>
+							<li>
+								<capacity>Moving</capacity>
+								<setMax>0.16</setMax>
+							</li>
+							<li>
+								<capacity>Sight</capacity>
+								<setMax>0</setMax>
+							</li>
+							<li>
+								<capacity>Talking</capacity>
+								<setMax>0</setMax>
+							</li>
+						</capMods>
+						<painFactor>2</painFactor>
+					</li>
+				</stages>
+				<comps>
+					<li Class="HediffCompProperties_Disappears">
+						<disappearsAfterTicks>2070</disappearsAfterTicks>
+						<showRemainingTime>True</showRemainingTime>
+					</li>
+				</comps>
+			</HediffDef>
+		<!-- 3T PARALINE -->
+			<HediffDef ParentName="hediffQuickhackBase">
+				<defName>QuickhackSonicShock_3T_Paraline</defName>
+				<label>sonic shock</label>
+				<description>A feedback loop in the victim's sensory processors. Extremely distracting. Pain is amplified in this state. Paraline variant, increases victim's physical vulnerability.</description>
+				<isBad>false</isBad>
+				<stages>
+					<li>
+						<statOffsets>
+							<IncomingDamageFactor>0.1</IncomingDamageFactor>
+						</statOffsets>
+						<capMods>
+							<li>
+								<capacity>Consciousness</capacity>
+								<setMax>0.31</setMax>
+							</li>
+							<li>
+								<capacity>Hearing</capacity>
+								<setMax>0</setMax>
+							</li>
+							<li>
+								<capacity>Moving</capacity>
+								<setMax>0.16</setMax>
+							</li>
+							<li>
+								<capacity>Sight</capacity>
+								<setMax>0</setMax>
+							</li>
+							<li>
+								<capacity>Talking</capacity>
+								<setMax>0</setMax>
+							</li>
+						</capMods>
+						<painFactor>2</painFactor>
+					</li>
+				</stages>
+				<comps>
+					<li Class="HediffCompProperties_Disappears">
+						<disappearsAfterTicks>2070</disappearsAfterTicks>
+						<showRemainingTime>True</showRemainingTime>
+					</li>
+				</comps>
+			</HediffDef>
+	<!-- SUICIDE -->
+		<HediffDef ParentName="hediffQuickhackBase">
+			<defName>QuickhackSuicide_4T</defName>
+			<label>suicidal compulsion</label>
+			<description>Suicidal compulsion caused by a quickhack. The victim - fully conscious, aware and completely unwilling - has their motor system remotely taken over by a hacker. They are compelled to stick some iron in their mouth and pull the trigger.</description>
+			<comps>
+				<li Class="HediffCompProperties_Disappears">
+					<disappearsAfterTicks>600</disappearsAfterTicks>
+					<showRemainingTime>True</showRemainingTime>
+				</li>
+			</comps>
+			<stages>
+				<li>
+					<statOffsets>
+						<IncomingDamageFactor>10</IncomingDamageFactor>
+					</statOffsets>
+					<statFactors>
+						<MoveSpeed>0.0</MoveSpeed>
+					</statFactors>
+					<capMods>
+						<li>
+							<capacity>Manipulation</capacity>
+							<setMax>0.01</setMax>
+						</li>
+					</capMods>
+				</li>
+			</stages>
+		</HediffDef>
+	<!-- SYSTEM COLLAPSE -->
+		<HediffDef ParentName="hediffQuickhackBase">
+			<defName>QuickhackSystemCollapse</defName>
+			<label>system collapse</label>
+			<labelNoun>a system collapse</labelNoun>
+			<description>After-effects of a total nervous system collapse.</description>
+			<comps>
+				<li Class="HediffCompProperties_Disappears">
+					<disappearsAfterTicks>18000~25200</disappearsAfterTicks>
+					<showRemainingTime>True</showRemainingTime>
+				</li>
+			</comps>
+			<stages>
+				<li>
+					<minSeverity>1.0</minSeverity>
+					<capMods>
+						<li>
+							<capacity>Consciousness</capacity>
+							<setMax>0.1</setMax>
+						</li>
+					</capMods>
+				</li>
+			</stages>
+		</HediffDef>
+	<!-- BLACKWALL GATEWAY -->
+		<HediffDef ParentName="hediffQuickhackBase">
+			<defName>QuickhackBlackwallGateway</defName>
+			<label>blackwall corruption</label>
+			<description>Nervous system has been overwhelmed by a Blackwall archotech, causing debilitating pain.</description>
+			<stages>
+				<li>
+					<capMods>
+						<li>
+							<capacity>Consciousness</capacity>
+							<setMax>0.31</setMax>
+						</li>
+						<li>
+							<capacity>Hearing</capacity>
+							<setMax>0.10</setMax>
+						</li>
+						<li>
+							<capacity>Moving</capacity>
+							<setMax>0.16</setMax>
+						</li>
+						<li>
+							<capacity>Sight</capacity>
+							<setMax>0.25</setMax>
+						</li>
+					</capMods>
+					<painOffset>0.75</painOffset>
+				</li>
+			</stages>
+			<comps>
+				<li Class="HediffCompProperties_Disappears">
+					<disappearsAfterTicks>360</disappearsAfterTicks>
+					<showRemainingTime>True</showRemainingTime>
+				</li>
+			</comps>
+		</HediffDef>
+	<!--  -->
+</Defs>

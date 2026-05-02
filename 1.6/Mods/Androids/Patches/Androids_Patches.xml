@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<Operation Class="PatchOperationSequence">
+		<success>Normal</success>
+		<operations>
+			<!-- WEAPONS CHANGES -->
+				<!-- REMOVAL -->
+					<li Class="PatchOperationRemove">
+						<xpath>
+							Defs/ThingDef[defName="ChjAndroidGun_RebelRifle"]	|
+							Defs/ThingDef[defName="ChjAndroidGun_Rebelpistol"]	|
+							Defs/ThingDef[defName="Gun_ChjCoreLauncher"]
+						</xpath>
+					</li>
+			<!-- SCENARIO CHANGES -->
+				<!-- PISTOL -->
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ScenarioDef[defName="ChJAndroidResistance"]/scenario/parts/li[9][@Class="ScenPart_StartingThing_Defined"]</xpath>
+						<value>
+							<li Class="ScenPart_StartingThing_Defined">
+								<def>StartingThing_Defined</def>
+								<thingDef>Gun_Autopistol</thingDef>
+								<count>2</count>
+							</li>
+						</value>
+					</li>
+				<!-- RIFLE 1 -->
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ScenarioDef[defName="ChJAndroidResistance"]/scenario/parts/li[10][@Class="ScenPart_StartingThing_Defined"]</xpath>
+						<value>
+							<li Class="ScenPart_StartingThing_Defined">
+								<def>StartingThing_Defined</def>
+								<thingDef>Gun_BoltActionRifle</thingDef>
+							</li>
+						</value>
+					</li>
+				<!-- RIFLE 2 -->
+					<li Class="PatchOperationReplace">
+						<xpath>Defs/ScenarioDef[defName="ChjAndroidRunner"]/scenario/parts/li[13][@Class="ScenPart_StartingThing_Defined"]</xpath>
+						<value>
+							<li Class="ScenPart_StartingThing_Defined">
+								<def>StartingThing_Defined</def>
+								<thingDef>Gun_BoltActionRifle</thingDef>
+							</li>
+						</value>
+					</li>
+			<!-- REMOVE WEEB SHIT -->
+				<li Class="PatchOperationRemove">
+					<xpath>
+						Defs/ThingDef[defName="ChjAndroidMaidOutfit"]				|
+						Defs/ThingDef[defName="ChjAndroidBattleMaidHat"]			|
+						Defs/ThingDef[defName="ChjAndroidMaidBattleDress"]			|
+						Defs/ResearchProjectDef[defName="ChJAndroidMaidDress"]		|
+						Defs/ResearchProjectDef[defName="ChJAndroidSpacerMaidDress"]
+					</xpath>
+				</li>
+		</operations>
+	</Operation>
+
+
+
+
+</Patch>
+
+
+
+

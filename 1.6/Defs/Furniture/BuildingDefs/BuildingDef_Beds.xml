@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!-- TMM_Bed_ -->
+
+
+
+	<!-- <texPath>Modules/Furniture/Buildings/Beds/Cribs/</texPath> -->
+	<!-- <texPath>Modules/Furniture/Buildings/Beds/Tents/</texPath> -->
+
+	<!-- CRIBS -->
+		<!-- TRIBAL -->
+			<ThingDef ParentName="SansComfortBedBase">
+				<defName>TMM_Bed_TribalCrib</defName>
+				<label>Tribal Crib</label>
+				<description>A woven basket with a cloth or fur blanket to keep a baby warm. A high quality crib will make a baby happy. Multiple cribs can be placed in a bedroom without turning it into a barracks.</description>
+				<graphicData>
+					<texPath>Modules/Furniture/Buildings/Beds/Cribs/Tribal/TribalCrib</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<shaderType>CutoutComplex</shaderType>
+					<drawSize>1.4,1.4</drawSize>
+					<shadowData>
+						<volume>(0.4,0.3,0.7)</volume>
+						<offset>(0,0,-0.03)</offset>
+					</shadowData>
+				</graphicData>
+				<comps>
+					<li Class="CompProperties_AffectedByFacilities">
+						<linkableFacilities>
+							<li MayRequire="Ludeon.RimWorld.Ideology">SleepAccelerator</li>
+						</linkableFacilities>
+					</li>
+				</comps>
+				<researchPrerequisites Inherit="False" />
+				<staticSunShadowHeight>0</staticSunShadowHeight>
+				<castEdgeShadows>false</castEdgeShadows>
+				<statBases>
+					<BirthRitualQualityOffset MayRequire="Ludeon.RimWorld.Biotech">0</BirthRitualQualityOffset>
+					<MaxHitPoints>40</MaxHitPoints>
+					<Beauty>1</Beauty>
+					<WorkToBuild>500</WorkToBuild>
+					<Mass>1.5</Mass>
+					<BedRestEffectiveness>1</BedRestEffectiveness>
+				</statBases>
+				<size>(1,1)</size>
+				<stuffCategories Inherit="False">
+					<li>Fabric</li>
+					<li>Leathery</li>
+				</stuffCategories>
+				<costStuffCount>35</costStuffCount>
+				<uiOrder>2022</uiOrder>
+				<building>
+					<bed_maxBodySize>0.25</bed_maxBodySize> <!-- Larger than HumanlikeBaby.BodySizeFactor but less than HumanlikeChild.BodySizeFactor. -->
+					<bed_showSleeperBody>False</bed_showSleeperBody>
+					<bed_emptyCountsForBarracks>false</bed_emptyCountsForBarracks>
+					<bed_crib>True</bed_crib>
+					<bed_pawnDrawOffset>-0.08</bed_pawnDrawOffset>
+					<destroySound>BuildingDestroyed_Soft_Small</destroySound>
+					<paintable>true</paintable>
+				</building>
+			</ThingDef>
+	<!-- MEDICAL BEDS -->
+		<!-- ANIMAL -->
+			<ThingDef ParentName="FurnitureWithQualityBase">
+				<defName>TMM_Bed_MedicalAnimalBed</defName>
+				<label>medical animal bed</label>
+				<description>A soft animal bed for surgery and recovery. Fits any animal.</description>
+				<thingClass>Building_Bed</thingClass>
+				<rotatable>false</rotatable>
+				<fillPercent>0.4</fillPercent>
+				<pathCost>60</pathCost>
+				<leaveResourcesWhenKilled>True</leaveResourcesWhenKilled>
+				<staticSunShadowHeight>0.17</staticSunShadowHeight>
+				<passability>PassThroughOnly</passability>
+				<canOverlapZones>false</canOverlapZones>
+				<graphicData>
+					<texPath>Modules/Furniture/Buildings/AnimalMedicalBed/AnimalMedBed</texPath>
+					<graphicClass>Graphic_Single</graphicClass>
+					<drawSize>1.05</drawSize>
+				</graphicData>
+				<statBases>
+					<MaxHitPoints>80</MaxHitPoints>
+					<Flammability>0.9</Flammability>
+					<WorkToBuild>750</WorkToBuild>
+					<Mass>10</Mass>
+					<BedRestEffectiveness>1</BedRestEffectiveness>
+					<Comfort>0.35</Comfort>
+					<ImmunityGainSpeedFactor>1.20</ImmunityGainSpeedFactor>
+					<MedicalTendQualityOffset>0.15</MedicalTendQualityOffset>
+					<SurgerySuccessChanceFactor>1.3</SurgerySuccessChanceFactor>
+				</statBases>
+				<castEdgeShadows>true</castEdgeShadows>
+				<uiIconScale>0.8</uiIconScale>
+				<stuffCategories>
+					<li>Fabric</li>
+					<li>Leathery</li>
+				</stuffCategories>
+				<costStuffCount>40</costStuffCount>
+				<costList>
+					<Steel>20</Steel>
+					<ComponentIndustrial>3</ComponentIndustrial>
+				</costList>
+				<building>
+					<bed_humanlike>false</bed_humanlike>
+					<bed_showSleeperBody>true</bed_showSleeperBody>
+					<bed_healPerDay>10</bed_healPerDay>
+					<bed_defaultMedical>true</bed_defaultMedical>
+				</building>
+				<altitudeLayer>Building</altitudeLayer>
+				<researchPrerequisites>
+					<li>MicroelectronicsBasics</li>
+				</researchPrerequisites>
+				<comps>
+					<li Class="CompProperties_AffectedByFacilities">
+						<linkableFacilities>
+							<li>VitalsMonitor</li>
+						</linkableFacilities>
+					</li>
+					<li Class="CompProperties_AssignableToPawn">
+						<drawAssignmentOverlay>true</drawAssignmentOverlay>
+						<compClass>CompAssignableToPawn_Bed</compClass>
+					</li>
+				</comps>
+			</ThingDef>
+	<!-- TENTS -->
+		<!-- ARMY TENT -->
+			<ThingDef ParentName="BedWithQualityBase">
+				<defName>TMM_Bed_ArmyTent</defName>
+				<label>Army Tent</label>
+				<description>A military tent, capable of keeping 4 people dry and somewhat comfortable inside, but not so great at keeping the wildlife out.</description>
+				<graphicData>
+					<texPath>Modules/Furniture/Buildings/Beds/Tents/ArmyTent/ArmyTent</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<shaderType>CutoutComplex</shaderType>
+					<drawSize>(8,8)</drawSize>
+					<damageData>
+						<rect>(0,0.05,1,1.95)</rect>
+					</damageData>
+				</graphicData>
+				<statBases>
+					<MaxHitPoints>300</MaxHitPoints>
+					<Flammability>0.5</Flammability>
+					<Beauty>1</Beauty>
+					<WorkToBuild>1600</WorkToBuild>
+					<Mass>20</Mass>
+					<BedRestEffectiveness>.75</BedRestEffectiveness>
+					<Comfort>0.73</Comfort>
+					<ImmunityGainSpeedFactor>1.1</ImmunityGainSpeedFactor>
+					<SurgerySuccessChanceFactor>1.04</SurgerySuccessChanceFactor>
+				</statBases>
+				<tickerType>Normal</tickerType>
+				<comps>
+					<li Class="CompProperties_Refuelable">
+						<fuelConsumptionRate>5.0</fuelConsumptionRate>
+						<fuelCapacity>20.0</fuelCapacity>
+						<fuelConsumptionPerTickInRain>0</fuelConsumptionPerTickInRain>
+						<fuelFilter>
+						<thingDefs>
+							<li>WoodLog</li>
+							<li>Chemfuel</li>
+						</thingDefs>
+						</fuelFilter>
+						<initialFuelPercent>1</initialFuelPercent>
+						<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+					</li>
+					<li Class="CompProperties_AffectedByFacilities">
+						<linkableFacilities>
+							<li>CampingLuggages</li>
+							<li>WoodPile</li>
+						</linkableFacilities>
+					</li>
+					<li>
+						<compClass>Tent.CompAssignBedHediff</compClass>
+					</li>
+					<li Class="CompGiveThought.CompProperties_GiveThought">
+						<thoughtDef>TMM_Thought_ArmyTent</thoughtDef>
+					</li>
+				</comps>
+				<size>(4,4)</size>
+				<stuffCategories>
+					<li>Fabric</li>
+					<li>Leathery</li>
+				</stuffCategories>
+				<costList>
+					<WoodLog>20</WoodLog>
+				</costList>
+				<costStuffCount>100</costStuffCount>
+				<building>
+					<bed_showSleeperBody>False</bed_showSleeperBody>
+					<bed_healPerDay>5</bed_healPerDay>
+					<bed_caravansCanUse>true</bed_caravansCanUse>
+				</building>
+				<techLevel>Industrial</techLevel>
+				<castEdgeShadows>False</castEdgeShadows>
+				<modExtensions>
+					<li Class="tent.TentModExtension">
+						<negateSleptOutside>true</negateSleptOutside>
+						<negateWater>true</negateWater>
+						<negateSleptInBarracks>true</negateSleptInBarracks>
+					</li>
+				</modExtensions>
+			</ThingDef>
+		<!-- SCRAP SHELTER -->
+			<ThingDef ParentName="BedWithQualityBase">
+				<defName>TMM_Bed_ScrapShelter</defName>
+				<label>Scrap Shelter</label>
+				<description>A rudimentary shelter made up of stacked metal sheets, should keep the worst of the elements out.</description>
+				<graphicData>
+					<texPath>Modules/Furniture/Buildings/Beds/Tents/ScrapShelter/shelter</texPath>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<shaderType>CutoutComplex</shaderType>
+					<drawSize>(4,4)</drawSize>
+					<damageData>
+						<rect>(0,0.05,1,1.95)</rect>
+					</damageData>
+				</graphicData>
+				<statBases>
+					<MaxHitPoints>200</MaxHitPoints>
+					<Flammability>0</Flammability>
+					<Beauty>1</Beauty>
+					<WorkToBuild>1000</WorkToBuild>
+					<Mass>10</Mass>
+					<BedRestEffectiveness>1</BedRestEffectiveness>
+					<Comfort>0.65</Comfort>
+					<ImmunityGainSpeedFactor>0.9</ImmunityGainSpeedFactor>
+					<SurgerySuccessChanceFactor>0.8</SurgerySuccessChanceFactor>
+				</statBases>
+				<tickerType>Normal</tickerType>
+				<comps>
+					<li Class="CompProperties_Refuelable">
+						<fuelConsumptionRate>5.0</fuelConsumptionRate>
+						<fuelCapacity>20.0</fuelCapacity>
+						<fuelConsumptionPerTickInRain>0</fuelConsumptionPerTickInRain>
+						<fuelFilter>
+							<thingDefs>
+								<li>WoodLog</li>
+								<li>Chemfuel</li>
+							</thingDefs>
+						</fuelFilter>
+						<initialFuelPercent>1</initialFuelPercent>
+						<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+					</li>
+					<li Class="CompProperties_AffectedByFacilities">
+						<linkableFacilities>
+							<li>CampingLuggages</li>
+							<li>WoodPile</li>
+						</linkableFacilities>
+					</li>
+					<li>
+						<compClass>Tent.CompAssignBedHediff</compClass>
+					</li>
+					<li Class="CompGiveThought.CompProperties_GiveThought">
+						<thoughtDef>TMM_Thought_ScrapShelter</thoughtDef>
+					</li>
+				</comps>
+				<size>(2,2)</size>
+				<costList>
+					<Steel>50 </Steel>
+				</costList>
+				<building>
+					<bed_showSleeperBody>False</bed_showSleeperBody>
+					<bed_healPerDay>4</bed_healPerDay>
+					<bed_caravansCanUse>true</bed_caravansCanUse>
+				</building>
+				<fillPercent>0.4</fillPercent>
+				<pathCost>20</pathCost>
+				<castEdgeShadows>False</castEdgeShadows>
+				<techLevel>Industrial</techLevel>
+				<uiIconScale>0.90</uiIconScale>
+				<staticSunShadowHeight>0.17</staticSunShadowHeight>
+				<minifiedDef>MinifiedThing</minifiedDef>
+				<modExtensions>
+					<li Class="tent.TentModExtension">
+						<negateWater>true</negateWater>
+						<negateSleptOutside>true</negateSleptOutside>
+						<negateSleptInBarracks>true</negateSleptInBarracks>
+					</li>
+				</modExtensions>
+			</ThingDef>
+</Defs>

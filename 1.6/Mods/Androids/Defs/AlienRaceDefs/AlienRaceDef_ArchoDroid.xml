@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!--  -->
+		<AlienRace.ThingDef_AlienRace ParentName="BasePawn">
+			<defName>ChjArchDroid</defName>
+			<label>ArchoDroid</label>
+			<description>A race of archotech humanlike worker robots.\n\nUsually found toiling around in colonies around the rim which got archotech level tech. Capable of sentience to a degree, allowing them to research, train animals and even speak though they will not benefit from conversation. \n\nArchodroids are at their peak, outperforming even humans. \n\nDroids are not born and must be created.</description>
+			<comps>
+				<li Class="Androids.CompProperties_EnergyTracker">
+					<canHibernate>true</canHibernate>
+					<hibernationJob>ChJDroidHibernate</hibernationJob>
+					<maxEnergy>4</maxEnergy>
+					<ticksSpentCharging>300</ticksSpentCharging>
+				</li>
+			</comps>
+			<alienRace>
+				<raceRestriction>
+					<blackGeneTags>
+						<li>SkinColor</li>
+					</blackGeneTags>
+				</raceRestriction>
+				<generalSettings>
+					<maleGenderProbability>0</maleGenderProbability>
+					<immuneToAge>true</immuneToAge>
+					<chemicalSettings>
+						<li>
+							<chemical>Alcohol</chemical>
+							<ingestible>false</ingestible>
+						</li>
+					</chemicalSettings>
+					<disallowedTraits>
+						<!-- DRUG DESIRE -->
+							<!-- <li>
+								<defName>DrugDesire</defName>
+							</li> -->
+						<!-- NATURAL MOOD -->
+							<!-- <li>
+								<defName>NaturalMood</defName>
+							</li> -->
+						<!-- NERVES -->
+							<!-- <li>
+								<defName>Nerves</defName>
+							</li> -->
+						<!-- NEUROTIC -->
+							<!-- <li>
+								<defName>Neurotic</defName>
+							</li> -->
+						<!-- PSYCHIC SENSITIVITY -->
+							<!-- <li>
+								<defName>PsychicSensitivity</defName>
+							</li> -->
+						<!-- CANNIBAL -->
+							<!-- <li>
+								<defName>Cannibal</defName>
+							</li> -->
+						<!-- TOO SMART -->
+							<!-- <li>
+								<defName>TooSmart</defName>
+							</li> -->
+						<!-- BODY PURIST -->
+							<!-- <li>
+								<defName>BodyPurist</defName>
+							</li> -->
+						<!-- GREEDY -->
+							<!-- <li>
+								<defName>Greedy</defName>
+							</li> -->
+						<!-- JEALOUS -->
+							<!-- <li>
+								<defName>Jealous</defName>
+							</li> -->
+						<!-- DISLIKES MEN -->
+							<!-- <li>
+								<defName>DislikesMen</defName>
+							</li> -->
+						<!-- DISLIKES WOMEN -->
+							<!-- <li>
+								<defName>DislikesWomen</defName>
+							</li> -->
+						<!-- XENOPHOBIA -->
+							<!-- <li>
+								<defName>Xenophobia</defName>
+							</li> -->
+						<!-- ANNOYING VOICE -->
+							<!-- <li>
+								<defName>AnnoyingVoice</defName>
+							</li> -->
+						<!-- CREEPY BREATHING -->
+							<!-- <li>
+								<defName>CreepyBreathing</defName>
+							</li> -->
+						<!-- PYROMANIAC -->
+							<!-- <li>
+								<defName>Pyromaniac</defName>
+							</li> -->
+						<!-- WIMP -->
+							<!-- <li>
+								<defName>Wimp</defName>
+							</li> -->
+					</disallowedTraits>
+					<immuneToXenophobia>true</immuneToXenophobia>
+					<alienPartGenerator>
+						<customDrawSize>(1.3)</customDrawSize>
+						<bodyTypes>
+							<li>Female</li>
+						</bodyTypes>
+						<colorChannels>
+							<li>
+								<name>skin</name>
+								<first Class="ColorGenerator_Options">
+									<options>
+										<li>
+											<weight>10</weight>
+											<only>RGBA(255,255,255,255)</only>
+										</li>
+										<!-- <li>
+											<weight>5</weight>
+											<only>RGBA(0.94,0.94,0.94,1)</only>
+										</li>
+										<li>
+											<weight>5</weight>
+											<only>RGBA(0.70,0.70,0.95,1)</only>
+										</li>
+										<li>
+											<weight>5</weight>
+											<only>RGBA(0.70,0.95,0.70,1)</only>
+										</li>
+										<li>
+											<weight>5</weight>
+											<only>RGBA(0.95,0.70,0.70,1)</only>
+										</li>
+										<li>
+											<weight>5</weight>
+											<only>RGBA(0.95,0.95,0.70,1)</only>
+										</li>
+										<li>
+											<weight>5</weight>
+											<only>RGBA(0.70,0.95,0.95,1)</only>
+										</li>
+										<li>
+											<weight>5</weight>
+											<only>RGBA(0.65,0.65,0.65,1)</only>
+										</li> -->
+									</options>
+								</first>
+							</li>
+						</colorChannels>
+					</alienPartGenerator>
+				</generalSettings>
+				<graphicPaths>
+					<body>Things/ArchDroid/</body> <!-- TODO: -->
+					<head>Things/ArchDroid/Head/</head> <!-- TODO: -->
+					<skeleton>Things/Pawn/Humanlike/Bodies/Dessicated/Dessicated_Thin</skeleton> <!-- TODO: -->
+					<skinShader>Cutout</skinShader>
+				</graphicPaths>
+				<styleSettings>
+					<li>
+						<key>HairDef</key>
+						<value>
+							<hasStyle>false</hasStyle>
+						</value>
+					</li>
+					<li MayRequire="Ludeon.RimWorld.Ideology">
+						<key>TattooDef</key>
+						<value>
+							<hasStyle>false</hasStyle>
+						</value>
+					</li>
+					<li>
+						<key>BeardDef</key>
+						<value>
+							<hasStyle>false</hasStyle>
+						</value>
+					</li>
+				</styleSettings>
+				<thoughtSettings>
+					<cannotReceiveThoughtsAtAll>true</cannotReceiveThoughtsAtAll>
+					<cannotReceiveThoughts>
+						<li>NeedFood</li>
+						<li>Naked</li>
+						<li>SharedBed</li>
+						<li>AttendedWedding</li>
+						<li>AttendedParty</li>
+						<li>SleepDisturbed</li>
+						<li>SleptOnGround</li>
+						<li>KnowPrisonerSold</li>
+						<li>KnowGuestOrganHarvested</li>
+						<li>KnowColonistOrganHarvested</li>
+						<li>WasImprisoned</li>
+						<li>KnowBuriedInSarcophagus</li>
+						<li>ButcheredHumanlikeCorpse</li>
+						<li>KnowButcheredHumanlikeCorpse</li>
+						<li>ObservedLayingCorpse</li>
+						<li>ObservedLayingRottingCorpse</li>
+						<li>WitnessedDeathAlly</li>
+						<li>WitnessedDeathNonAlly</li>
+						<li>ColonistBanished</li>
+						<li>ColonistBanishedToDie</li>
+						<li>PrisonerBanishedToDie</li>
+						<li>BondedAnimalBanished</li>
+						<li>SleptInBedroom</li>
+						<li>SleptInBarracks</li>
+						<li>InsultedMood</li>
+						<li>KindWordsMood</li>
+						<li>ArtifactMoodBoost</li>
+						<li>Expectations</li>
+						<li>EnvironmentDark</li>
+						<li>NeedOutdoors</li>
+						<li>ApparelDamaged</li>
+						<li>DeadMansApparel</li>
+						<li>HumanLeatherApparelSad</li>
+						<li>KnowGuestExecuted</li>
+						<li>KnowColonistExecuted</li>
+						<li>KnowPrisonerDiedInnocent</li>
+						<li>KnowColonistDied</li>
+						<li>PawnWithGoodOpinionDied</li>
+					</cannotReceiveThoughts>
+					<canStillReceiveThoughts>
+						<li>ChJDroidAlways</li>
+					</canStillReceiveThoughts>
+					<butcherThoughtGeneral>
+						<thought>NSalvageRobotCorpse</thought>
+						<!-- <knowThought>NKnowSalvageRobotCorpse</knowThought> -->
+					</butcherThoughtGeneral>
+				</thoughtSettings>
+				<relationSettings>
+					<relationChanceModifierChild>0</relationChanceModifierChild>
+					<relationChanceModifierExLover>0</relationChanceModifierExLover>
+					<relationChanceModifierExSpouse>0</relationChanceModifierExSpouse>
+					<relationChanceModifierFiance>0</relationChanceModifierFiance>
+					<relationChanceModifierLover>0</relationChanceModifierLover>
+					<relationChanceModifierParent>0</relationChanceModifierParent>
+					<relationChanceModifierSibling>0</relationChanceModifierSibling>
+					<relationChanceModifierSpouse>0</relationChanceModifierSpouse>
+				</relationSettings>
+			</alienRace>
+			<statBases>
+				<MarketValue>5000</MarketValue>
+				<MoveSpeed>10</MoveSpeed>
+				<Flammability>0.0</Flammability>
+				<ComfyTemperatureMin>-300</ComfyTemperatureMin>
+				<ComfyTemperatureMax>300</ComfyTemperatureMax>
+				<ToxicResistance>1</ToxicResistance>
+				<ToxicEnvironmentResistance>1</ToxicEnvironmentResistance>
+				<PsychicSensitivity>0</PsychicSensitivity>
+				<PainShockThreshold>5</PainShockThreshold>
+				<MentalBreakThreshold>0</MentalBreakThreshold>
+				<SocialImpact>0</SocialImpact>
+				<GlobalLearningFactor>1</GlobalLearningFactor>
+				<SmoothingSpeed>4</SmoothingSpeed>
+				<WorkSpeedGlobal>3</WorkSpeedGlobal>
+				<ImmunityGainSpeed>10</ImmunityGainSpeed>
+				<LeatherAmount>0</LeatherAmount>
+				<MeatAmount>0</MeatAmount>
+				<ArmorRating_Sharp>0.80</ArmorRating_Sharp>
+				<ArmorRating_Blunt>0.60</ArmorRating_Blunt>
+				<ArmorRating_Heat>3.00</ArmorRating_Heat>
+				<CarryingCapacity>200</CarryingCapacity>
+				<Mass>45.0</Mass>
+				<VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">1.0</VacuumResistance>
+			</statBases>
+			<tools>
+				<li>
+					<label>left fist</label>
+					<capacities>
+						<li>Blunt</li>
+					</capacities>
+					<power>30</power>
+					<cooldownTime>1.3</cooldownTime>
+					<linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+					<surpriseAttack>
+						<extraMeleeDamages>
+							<li>
+								<def>Stun</def>
+								<amount>40</amount>
+							</li>
+						</extraMeleeDamages>
+					</surpriseAttack>
+				</li>
+				<li>
+					<label>right fist</label>
+					<capacities>
+						<li>Blunt</li>
+					</capacities>
+					<power>30</power>
+					<cooldownTime>1.3</cooldownTime>
+					<linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+					<surpriseAttack>
+						<extraMeleeDamages>
+							<li>
+								<def>Stun</def>
+								<amount>40</amount>
+							</li>
+						</extraMeleeDamages>
+					</surpriseAttack>
+				</li>
+				<li>
+					<label>head</label>
+					<capacities>
+						<li>Blunt</li>
+					</capacities>
+					<power>22</power>
+					<cooldownTime>1.4</cooldownTime>
+					<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+					<chanceFactor>0.2</chanceFactor>
+				</li>
+			</tools>
+			<race>
+				<renderTree>Humanlike</renderTree>
+				<thinkTreeMain>Droidlike</thinkTreeMain>
+				<thinkTreeConstant>HumanlikeConstant</thinkTreeConstant>
+				<intelligence>Humanlike</intelligence>
+				<fleshType>ChJDroid</fleshType>
+				<makesFootprints>true</makesFootprints>
+				<lifeExpectancy>1000</lifeExpectancy>
+				<baseHungerRate>0</baseHungerRate>
+				<leatherDef>Leather_ChJAndroid</leatherDef>
+				<!-- <nameCategory>HumanStandard</nameCategory> -->
+				<body>DroidBody</body>
+				<bloodDef>ChjFilthCoolant</bloodDef>
+				<deathAction Class="Androids.Workers.DeathActionProps_Droid">
+				</deathAction>
+				<baseBodySize>1.25</baseBodySize>
+				<baseHealthScale>1</baseHealthScale>
+				<foodType>None</foodType>
+				<hasGenders>false</hasGenders>
+				<useMeatFrom>ChjAndroid</useMeatFrom>
+				<gestationPeriodDays>1</gestationPeriodDays>
+				<canBePredatorPrey>false</canBePredatorPrey>
+				<hasMeat>false</hasMeat>
+				<litterSizeCurve>
+					<points>
+						<li>(0.5, 0)</li>
+						<li>(1, 1)</li>
+						<li>(1.01, 0.02)</li>
+						<li>(3.5, 0)</li>
+					</points>
+				</litterSizeCurve>
+				<lifeStageAges>
+					<li>
+						<def>HumanlikeAdult</def>
+						<minAge>0</minAge>
+						<soundWounded>Pawn_Mech_Scyther_Wounded</soundWounded>
+						<soundDeath>Pawn_Mech_Scyther_Death</soundDeath>
+						<soundCall>Pawn_Mech_Scyther_Call</soundCall>
+					</li>
+				</lifeStageAges>
+				<soundMeleeHitPawn>Pawn_Melee_MechanoidBash_HitPawn</soundMeleeHitPawn>
+				<soundMeleeHitBuilding>Pawn_Melee_MechanoidBash_HitBuilding</soundMeleeHitBuilding>
+				<soundMeleeMiss>Pawn_Melee_MechanoidBash_Miss</soundMeleeMiss>
+				<specialShadowData>
+					<volume>(0.3, 0.8, 0.4)</volume>
+					<offset>(0,0,-0.3)</offset>
+				</specialShadowData>
+				<ageGenerationCurve>
+					<points>
+						<li>(14,0)</li>
+						<li>(16,100)</li>
+						<li>(50,100)</li>
+						<li>(60,30)</li>
+						<li>(70,18)</li>
+						<li>(80,10)</li>
+						<li>(90,3)</li>
+						<li>(100,0)</li>
+					</points>
+				</ageGenerationCurve>
+				<hediffGiverSets>
+					<li>ChjAndroidStandard</li>
+					<li>ChjDroid</li>
+				</hediffGiverSets>
+			</race>
+			<recipes>
+				<li>AdministerMechSerumHealer</li>
+				<li>ChJAndroidRepairKit</li>
+				<li>ChJAndroidShutDownDroid</li>
+			</recipes>
+			<butcherProducts>
+				<Steel>100</Steel>
+				<Plasteel>100</Plasteel>
+				<ComponentIndustrial>10</ComponentIndustrial>
+			</butcherProducts>
+			<modExtensions>
+				<li Class="Androids.MechanicalPawnProperties">
+					<!-- If true the pawn will not lose any skill due to decay. -->
+					<noSkillLoss>true</noSkillLoss>
+					<!-- Can this Droid be social? -->
+					<canSocialize>false</canSocialize>
+					<!-- Do the colony care if they die? -->
+					<colonyCaresIfDead>false</colonyCaresIfDead>
+				</li>
+				<li Class="Androids.DroidSpawnProperties">
+					<defaultSkillLevel>16</defaultSkillLevel>
+					<skills>
+						<li>
+							<def>Shooting</def>
+							<level>10</level>
+						</li>
+						<li>
+							<def>Melee</def>
+							<level>10</level>
+						</li>
+						<li>
+							<def>Mining</def>
+							<level>18</level>
+						</li>
+						<li>
+							<def>Plants</def>
+							<level>18</level>
+						</li>
+						<li>
+							<def>Construction</def>
+							<level>18</level>
+						</li>
+						<li>
+							<def>Crafting</def>
+							<level>18</level>
+						</li>
+						<li>
+							<def>Cooking</def>
+							<level>18</level>
+						</li>
+						<li>
+							<def>Medicine</def>
+							<level>14</level>
+						</li>
+					</skills>
+					<backstory>Backstory_Archo1</backstory>
+					<bodyType>Female</bodyType>
+					<headType>Male_AverageNormal</headType>
+				</li>
+			</modExtensions>
+		</AlienRace.ThingDef_AlienRace>
+</Defs>

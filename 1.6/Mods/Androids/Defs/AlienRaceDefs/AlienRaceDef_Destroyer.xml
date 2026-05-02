@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!--  -->
+		<AlienRace.ThingDef_AlienRace ParentName="BasePawn">
+			<defName>ChjArchBattleDroid</defName>
+			<label>Destroyer</label>
+			<description>A race of archotech humanlike warrior robots.\n\nInstalled into military bases and highly sensitive areas. They show no mercy upon targets who fail to identify themselves and are traditionally armed with miniguns and core launchers.\n\nDestroyers are at their peak in power and defensive capabilities. Destroyers possess four arms, each of which is highly deadly. Humans beware: bring an army to defeat this model.\n\nDroids are not born and must be created.</description>
+			<comps>
+				<li Class="Androids.CompProperties_EnergyTracker">
+					<canHibernate>true</canHibernate>
+					<hibernationJob>ChJDroidHibernate</hibernationJob>
+					<maxEnergy>4</maxEnergy>
+					<ticksSpentCharging>400</ticksSpentCharging>
+				</li>
+			</comps>
+			<alienRace>
+				<raceRestriction>
+					<onlyUseRaceRestrictedApparel>true</onlyUseRaceRestrictedApparel>
+					<whiteApparelList>
+						<li>ChjAndroid_ChemfuelGenerator</li>
+						<li>Apparel_ShieldBelt</li>
+						<li>Apparel_SmokepopBelt</li>
+						<li>Apparel_PsychicShockLance</li>
+						<li>Apparel_PsychicInsanityLance</li>
+						<li MayRequire="Ludeon.Rimworld.Royalty">Apparel_PackJump</li>
+						<li MayRequire="Ludeon.Rimworld.Royalty">Apparel_PackBroadshield</li>
+						<li>OrbitalTargeterBombardment</li>
+						<li>OrbitalTargeterPowerBeam</li>
+					</whiteApparelList>
+					<blackGeneTags>
+						<li>SkinColor</li>
+					</blackGeneTags>
+				</raceRestriction>
+				<generalSettings>
+					<!--maxDamageForSocialfight>6</maxDamageForSocialfight-->
+					<!-- <maleGenderProbability>1</maleGenderProbability> -->
+					<immuneToAge>true</immuneToAge>
+					<!-- <disallowedTraits>
+					<li><defName>DrugDesire</defName></li>
+					<li><defName>NaturalMood</defName></li>
+					<li><defName>Nerves</defName></li>
+					<li><defName>Neurotic</defName></li>
+					<li><defName>PsychicSensitivity</defName></li>
+					<li><defName>Cannibal</defName></li>
+					<li><defName>TooSmart</defName></li>
+					<li><defName>BodyPurist</defName></li>
+					<li><defName>Greedy</defName></li>
+					<li><defName>Jealous</defName></li>
+					<li><defName>DislikesMen</defName></li>
+					<li><defName>DislikesWomen</defName></li>
+					<li><defName>Xenophobia</defName></li>
+					<li><defName>AnnoyingVoice</defName></li>
+					<li><defName>CreepyBreathing</defName></li>
+					<li><defName>Pyromaniac</defName></li>
+					<li><defName>Wimp</defName></li>
+					</disallowedTraits> -->
+					<immuneToXenophobia>true</immuneToXenophobia>
+					<alienPartGenerator>
+						<customDrawSize>(2)</customDrawSize>
+						<bodyTypes>
+							<li>Hulk</li>
+						</bodyTypes>
+						<colorChannels>
+							<li>
+								<name>skin</name>
+								<first Class="ColorGenerator_Options">
+									<options>
+										<li>
+											<weight>10</weight>
+											<only>RGBA(255,255,255,255)</only>
+										</li>
+										<!-- <li>
+											<weight>10</weight>
+											<only>RGBA(0.95,0.45,0.45,1)</only>
+										</li>
+										<li>
+											<weight>10</weight>
+											<only>RGBA(0.15,0.15,0.15,1)</only>
+										</li>
+										<li>
+											<weight>6</weight>
+											<only>RGBA(0.95,0.95,0.95,1)</only>
+										</li>
+										<li>
+											<weight>3</weight>
+											<only>RGBA(1.00,0.84,0.00,1)</only>
+										</li> -->
+									</options>
+								</first>
+							</li>
+						</colorChannels>
+					</alienPartGenerator>
+				</generalSettings>
+				<graphicPaths>
+					<body>Things/Destroyer/</body> <!-- TODO: -->
+					<head>Things/Destroyer/Head/</head> <!-- TODO: -->
+					<skeleton>Things/Pawn/Humanlike/Bodies/Dessicated/Dessicated_Thin</skeleton> <!-- TODO: -->
+					<skinShader>Cutout</skinShader>
+				</graphicPaths>
+				<styleSettings>
+					<li>
+						<key>HairDef</key>
+						<value>
+							<hasStyle>false</hasStyle>
+						</value>
+					</li>
+					<li MayRequire="Ludeon.RimWorld.Ideology">
+						<key>TattooDef</key>
+						<value>
+							<hasStyle>false</hasStyle>
+						</value>
+					</li>
+					<li>
+						<key>BeardDef</key>
+						<value>
+							<hasStyle>false</hasStyle>
+						</value>
+					</li>
+				</styleSettings>
+				<thoughtSettings>
+					<cannotReceiveThoughtsAtAll>true</cannotReceiveThoughtsAtAll>
+					<cannotReceiveThoughts>
+						<li>NeedFood</li>
+						<li>Naked</li>
+						<li>SharedBed</li>
+						<li>AttendedWedding</li>
+						<li>AttendedParty</li>
+						<li>SleepDisturbed</li>
+						<li>SleptOnGround</li>
+						<li>KnowPrisonerSold</li>
+						<li>KnowGuestOrganHarvested</li>
+						<li>KnowColonistOrganHarvested</li>
+						<li>WasImprisoned</li>
+						<li>KnowBuriedInSarcophagus</li>
+						<li>ButcheredHumanlikeCorpse</li>
+						<li>KnowButcheredHumanlikeCorpse</li>
+						<li>ObservedLayingCorpse</li>
+						<li>ObservedLayingRottingCorpse</li>
+						<li>WitnessedDeathAlly</li>
+						<li>WitnessedDeathNonAlly</li>
+						<li>ColonistBanished</li>
+						<li>ColonistBanishedToDie</li>
+						<li>PrisonerBanishedToDie</li>
+						<li>BondedAnimalBanished</li>
+						<li>SleptInBedroom</li>
+						<li>SleptInBarracks</li>
+						<li>InsultedMood</li>
+						<li>KindWordsMood</li>
+						<li>ArtifactMoodBoost</li>
+						<li>Expectations</li>
+						<li>EnvironmentDark</li>
+						<li>NeedOutdoors</li>
+						<li>ApparelDamaged</li>
+						<li>DeadMansApparel</li>
+						<li>HumanLeatherApparelSad</li>
+						<li>KnowGuestExecuted</li>
+						<li>KnowColonistExecuted</li>
+						<li>KnowPrisonerDiedInnocent</li>
+						<li>KnowColonistDied</li>
+						<li>PawnWithGoodOpinionDied</li>
+					</cannotReceiveThoughts>
+					<canStillReceiveThoughts>
+						<li>ChJDroidAlways</li>
+					</canStillReceiveThoughts>
+					<butcherThoughtGeneral>
+						<thought>NSalvageRobotCorpse</thought>
+						<knowThought>NKnowSalvageRobotCorpse</knowThought>
+					</butcherThoughtGeneral>
+				</thoughtSettings>
+				<relationSettings>
+					<relationChanceModifierChild>0</relationChanceModifierChild>
+					<relationChanceModifierExLover>0</relationChanceModifierExLover>
+					<relationChanceModifierExSpouse>0</relationChanceModifierExSpouse>
+					<relationChanceModifierFiance>0</relationChanceModifierFiance>
+					<relationChanceModifierLover>0</relationChanceModifierLover>
+					<relationChanceModifierParent>0</relationChanceModifierParent>
+					<relationChanceModifierSibling>0</relationChanceModifierSibling>
+					<relationChanceModifierSpouse>0</relationChanceModifierSpouse>
+				</relationSettings>
+			</alienRace>
+			<statBases>
+				<MarketValue>10000</MarketValue>
+				<MoveSpeed>10</MoveSpeed>
+				<EnergyShieldRechargeRate>0.5</EnergyShieldRechargeRate>
+				<EnergyShieldEnergyMax>2</EnergyShieldEnergyMax>
+				<Flammability>0.0</Flammability>
+				<ComfyTemperatureMin>-1000</ComfyTemperatureMin>
+				<ComfyTemperatureMax>1000</ComfyTemperatureMax>
+				<ToxicResistance>1</ToxicResistance>
+				<ToxicEnvironmentResistance>1</ToxicEnvironmentResistance>
+				<PsychicSensitivity>0</PsychicSensitivity>
+				<PainShockThreshold>5</PainShockThreshold>
+				<MentalBreakThreshold>0</MentalBreakThreshold>
+				<SocialImpact>0</SocialImpact>
+				<GlobalLearningFactor>0.0</GlobalLearningFactor>
+				<ImmunityGainSpeed>10</ImmunityGainSpeed>
+				<LeatherAmount>0</LeatherAmount>
+				<MeatAmount>0</MeatAmount>
+				<AimingDelayFactor>0.20</AimingDelayFactor>
+				<MeleeDodgeChance>-0.99</MeleeDodgeChance>
+				<ArmorRating_Sharp>2.0</ArmorRating_Sharp>
+				<ArmorRating_Blunt>1.5</ArmorRating_Blunt>
+				<ArmorRating_Heat>3.00</ArmorRating_Heat>
+				<CarryingCapacity>200</CarryingCapacity>
+				<Mass>60.0</Mass>
+				<VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">1.0</VacuumResistance>
+			</statBases>
+			<tools>
+				<li>
+					<label>left razor-fist</label>
+					<capacities>
+						<li>Cut</li>
+						<li>Stab</li>
+						<li>Blunt</li>
+					</capacities>
+					<power>80</power>
+					<cooldownTime>1.3</cooldownTime>
+					<linkedBodyPartsGroup>LeftDroidHand</linkedBodyPartsGroup>
+					<surpriseAttack>
+						<extraMeleeDamages>
+							<li>
+								<def>Stun</def>
+								<amount>75</amount>
+							</li>
+						</extraMeleeDamages>
+					</surpriseAttack>
+				</li>
+				<li>
+					<label>right razor-fist</label>
+					<capacities>
+						<li>Cut</li>
+						<li>Stab</li>
+						<li>Blunt</li>
+					</capacities>
+					<power>80</power>
+					<cooldownTime>1.3</cooldownTime>
+					<linkedBodyPartsGroup>RightDroidHand</linkedBodyPartsGroup>
+					<surpriseAttack>
+						<extraMeleeDamages>
+							<li>
+								<def>Stun</def>
+								<amount>75</amount>
+							</li>
+						</extraMeleeDamages>
+					</surpriseAttack>
+				</li>
+				<li>
+					<label>lower left razor-fist</label>
+					<capacities>
+						<li>Cut</li>
+						<li>Stab</li>
+						<li>Blunt</li>
+					</capacities>
+					<power>40</power>
+					<cooldownTime>1.3</cooldownTime>
+					<linkedBodyPartsGroup>LeftDroidHand</linkedBodyPartsGroup>
+					<surpriseAttack>
+						<extraMeleeDamages>
+							<li>
+								<def>Stun</def>
+								<amount>75</amount>
+							</li>
+						</extraMeleeDamages>
+					</surpriseAttack>
+				</li>
+				<li>
+					<label>lower right razor-fist</label>
+					<capacities>
+						<li>Cut</li>
+						<li>Stab</li>
+						<li>Blunt</li>
+					</capacities>
+					<power>40</power>
+					<cooldownTime>1.3</cooldownTime>
+					<linkedBodyPartsGroup>LowerRightDroidHand</linkedBodyPartsGroup>
+					<surpriseAttack>
+						<extraMeleeDamages>
+							<li>
+								<def>Stun</def>
+								<amount>75</amount>
+							</li>
+						</extraMeleeDamages>
+					</surpriseAttack>
+				</li>
+				<li>
+					<label>giant body slam</label>
+					<capacities>
+						<li>Blunt</li>
+					</capacities>
+					<power>160</power>
+					<cooldownTime>2</cooldownTime>
+					<linkedBodyPartsGroup>Torso</linkedBodyPartsGroup>
+					<chanceFactor>0.33</chanceFactor>
+				</li>
+			</tools>
+			<race>
+				<renderTree>Humanlike</renderTree>
+				<thinkTreeMain>Droidlike</thinkTreeMain>
+				<thinkTreeConstant>HumanlikeConstant</thinkTreeConstant>
+				<intelligence>Humanlike</intelligence>
+				<fleshType>ChJDroid</fleshType>
+				<makesFootprints>true</makesFootprints>
+				<lifeExpectancy>1000</lifeExpectancy>
+				<baseHungerRate>0</baseHungerRate>
+				<leatherDef>Leather_ChJAndroid</leatherDef>
+				<nameCategory>HumanStandard</nameCategory>
+				<body>WardroidBody</body>
+				<bloodDef>ChjFilthCoolant</bloodDef>
+				<deathAction Class="Androids.Workers.DeathActionProps_Droid">
+				</deathAction>
+				<baseBodySize>3.00</baseBodySize>
+				<baseHealthScale>6</baseHealthScale>
+				<foodType>None</foodType>
+				<hasGenders>false</hasGenders>
+				<useMeatFrom>ChjAndroid</useMeatFrom>
+				<gestationPeriodDays>1</gestationPeriodDays>
+				<canBePredatorPrey>false</canBePredatorPrey>
+				<hasMeat>false</hasMeat>
+				<litterSizeCurve>
+					<points>
+						<li>(0.5, 0)</li>
+						<li>(1, 1)</li>
+						<li>(1.01, 0.02)</li>
+						<li>(3.5, 0)</li>
+					</points>
+				</litterSizeCurve>
+				<lifeStageAges>
+					<li>
+						<def>HumanlikeAdult</def>
+						<minAge>0</minAge>
+						<soundWounded>Pawn_Mech_Centipede_Wounded</soundWounded>
+						<soundDeath>Pawn_Mech_Centipede_Death</soundDeath>
+						<soundCall>Pawn_Mech_Centipede_Call</soundCall>
+					</li>
+				</lifeStageAges>
+				<soundMeleeHitPawn>Pawn_Melee_MechanoidSlash_HitPawn</soundMeleeHitPawn>
+				<soundMeleeHitBuilding>Pawn_Melee_MechanoidSlash_HitBuilding</soundMeleeHitBuilding>
+				<soundMeleeMiss>Pawn_Melee_MechanoidSlash_Miss</soundMeleeMiss>
+				<specialShadowData>
+					<volume>(0.3, 0.8, 0.4)</volume>
+					<offset>(0,0,-0.3)</offset>
+				</specialShadowData>
+				<ageGenerationCurve>
+					<points>
+						<li>(14,0)</li>
+						<li>(16,100)</li>
+						<li>(50,100)</li>
+						<li>(60,30)</li>
+						<li>(70,18)</li>
+						<li>(80,10)</li>
+						<li>(90,3)</li>
+						<li>(100,0)</li>
+					</points>
+				</ageGenerationCurve>
+				<hediffGiverSets>
+					<li>ChjAndroidStandard</li>
+					<li>ChjDroid</li>
+				</hediffGiverSets>
+			</race>
+			<recipes>
+				<li>AdministerMechSerumHealer</li>
+				<li>ChJAndroidRepairKit</li>
+				<li>ChJAndroidShutDownDroid</li>
+			</recipes>
+			<butcherProducts>
+				<Steel>500</Steel>
+				<Plasteel>200</Plasteel>
+				<ComponentIndustrial>20</ComponentIndustrial>
+			</butcherProducts>
+			<modExtensions>
+				<li Class="Androids.MechanicalPawnProperties">
+					<!-- If true the pawn will not lose any skill due to decay. -->
+					<noSkillLoss>true</noSkillLoss>
+					<!-- Can this Droid be social? -->
+					<canSocialize>false</canSocialize>
+					<!-- Do the colony care if they die? -->
+					<colonyCaresIfDead>false</colonyCaresIfDead>
+				</li>
+				<li Class="Androids.DroidSpawnProperties">
+					<defaultSkillLevel>0</defaultSkillLevel>
+					<skills>
+						<li>
+							<def>Shooting</def>
+							<level>20</level>
+						</li>
+						<li>
+							<def>Melee</def>
+							<level>20</level>
+						</li>
+					</skills>
+					<backstory>Backstory_Archo2</backstory>
+					<bodyType>Hulk</bodyType>
+					<headType>Male_AverageNormal</headType>
+					<hostileResponse>Attack</hostileResponse>
+				</li>
+			</modExtensions>
+		</AlienRace.ThingDef_AlienRace>
+</Defs>

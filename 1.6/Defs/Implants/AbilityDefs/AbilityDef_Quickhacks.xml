@@ -1,0 +1,1864 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<!-- <></> -->
+	<!-- TMM_Quickhack_ -->
+
+
+
+	<!-- QUICKHACK BASE -->
+		<AbilityDef Name="ActivateQuickhack" Abstract="True">
+			<label>activate quickhack</label>
+			<description>Activate a quickhack.</description>
+			<writeCombatLog>true</writeCombatLog>
+			<targetRequired>true</targetRequired>
+			<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+			<verbProperties>
+				<verbClass>Verb_CastAbility</verbClass>
+				<drawAimPie>true</drawAimPie>
+				<requireLineOfSight>false</requireLineOfSight>
+				<nonInterruptingSelfCast>false</nonInterruptingSelfCast>
+				<warmupTime>0.3</warmupTime>
+				<range>29.9</range>
+				<targetParams>
+					<canTargetBuildings>false</canTargetBuildings>
+					<canTargetAnimals>false</canTargetAnimals>
+					<canTargetLocations>false</canTargetLocations>
+					<canTargetMechs>true</canTargetMechs>
+					<canTargetPawns>true</canTargetPawns>
+					<onlyTargetPsychicSensitive>false</onlyTargetPsychicSensitive>
+					<neverTargetIncapacitated>true</neverTargetIncapacitated>
+					<canTargetSelf>false</canTargetSelf>
+					<onlyTargetColonists>false</onlyTargetColonists>
+					<canTargetItems>false</canTargetItems>
+					<canTargetHumans>true</canTargetHumans>
+					<neverTargetHostileFaction>false</neverTargetHostileFaction>
+					<onlyTargetPrisonersOfColony>false</onlyTargetPrisonersOfColony>
+					<canTargetPlants>false</canTargetPlants>
+					<onlyTargetAnimaTrees>false</onlyTargetAnimaTrees>
+					<onlyTargetColonistsOrPrisonersOrSlavesAllowMinorMentalBreaks>false</onlyTargetColonistsOrPrisonersOrSlavesAllowMinorMentalBreaks>
+					<onlyTargetColonistsOrPrisonersOrSlaves>false</onlyTargetColonistsOrPrisonersOrSlaves>
+					<canTargetBloodfeeders>true</canTargetBloodfeeders>
+					<canTargetCorpses>false</canTargetCorpses>
+					<onlyRepairableMechs>false</onlyRepairableMechs>
+				</targetParams>
+			</verbProperties>
+		</AbilityDef>
+	<!-- QUICKHACK EXPLOSION BASE -->
+		<ThingDef Name="QuickhackExplosionThingBase" Abstract="True">
+			<label>blast</label>
+			<description>A blast caused by a quickhack</description>
+			<thingClass>ThingWithComps</thingClass>
+			<tickerType>Normal</tickerType>
+			<altitudeLayer>Projectile</altitudeLayer>
+			<size>(1,1)</size>
+			<passability>Standable</passability>
+			<drawerType>RealtimeOnly</drawerType>
+			<fillPercent>0.01</fillPercent>
+			<pathCost>0</pathCost>
+			<rotatable>false</rotatable>
+			<graphicData>
+				<texPath>Things/Mote/SparkFlash</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<drawSize>(1,1)</drawSize>
+				<drawOffset>(0, 0.1, 0)</drawOffset>
+			</graphicData>
+			<statBases>
+				<MaxHitPoints>6</MaxHitPoints>
+				<Flammability>0</Flammability>
+				<MarketValue>0</MarketValue>
+			</statBases>
+		</ThingDef>
+
+	<!-- COMBAT QUICKHACKS -->
+		<!-- TIER 2 -->
+			<!-- OVERHEAT -->
+				<!-- 2T -->
+					<!-- ABILITY -->
+						<AbilityDef ParentName="ActivateQuickhack">
+							<defName>QuickhackOverheat_2T</defName>
+							<label>overheat</label>
+							<description>Overloads sensitive components within the target, causing a blast of heat.</description>
+							<iconPath>Modules/Implants/UI/Quickhack/Overheat</iconPath>
+							<casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+							<verbProperties>
+								<targetParams>
+									<canTargetBuildings>true</canTargetBuildings>
+								</targetParams>
+							</verbProperties>
+							<cooldownTicksRange>1482</cooldownTicksRange> <!-- 5 RAM, takes 25 seconds to regen - 0.3 seconds warmup -->
+							<statBases>
+								<Ability_Duration>0</Ability_Duration>
+								<Ability_EffectRadius>1.9</Ability_EffectRadius>
+							</statBases>
+							<comps>
+								<li Class="CompProperties_AbilitySpawn">
+									<thingDef>QuickhackOverheat_2T_Explosion</thingDef>
+									<allowOnBuildings>True</allowOnBuildings>
+								</li>
+							</comps>
+						</AbilityDef>
+					<!-- EXPLOSION -->
+						<ThingDef ParentName="QuickhackExplosionThingBase">
+							<defName>QuickhackOverheat_2T_Explosion</defName>
+							<label>heat blast</label>
+							<description>A blast caused by overheating</description>
+							<comps>
+								<li Class="CompProperties_Explosive">
+									<wickTicks>1</wickTicks>
+									<explosiveRadius>0.9</explosiveRadius>
+									<explosiveDamageType>Flame</explosiveDamageType>
+									<explodeOnKilled>true</explodeOnKilled>
+									<startWickHitPointsPercent>0.15</startWickHitPointsPercent>
+									<drawWick>false</drawWick>
+									<startWickOnInternalDamageTaken>
+										<li>Deterioration</li>
+									</startWickOnInternalDamageTaken>
+								</li>
+								<li Class="CompProperties_DamageOnInterval">
+									<damageDef>Deterioration</damageDef>
+									<damage>6</damage>
+									<ticksBetweenDamage>1</ticksBetweenDamage>
+								</li>
+							</comps>
+						</ThingDef>
+				<!-- 2T PARALINE -->
+					<!-- ABILITY -->
+						<AbilityDef ParentName="ActivateQuickhack">
+							<defName>QuickhackOverheat_2T_Paraline</defName>
+							<label>overheat</label>
+							<description>Overloads sensitive components within the target, causing a blast of heat. Paraline variant, gains increased radius, increases target's vulnerability and uploads instantly.</description>
+							<iconPath>Modules/Implants/UI/Quickhack/Overheat</iconPath>
+							<casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+							<verbProperties>
+								<warmupTime>0</warmupTime>
+								<targetParams>
+									<canTargetBuildings>true</canTargetBuildings>
+								</targetParams>
+							</verbProperties>
+							<cooldownTicksRange>1500</cooldownTicksRange> <!-- 5 RAM, takes 25 seconds to regen - 0 seconds warmup -->
+							<statBases>
+								<Ability_Duration>10</Ability_Duration>
+								<Ability_EffectRadius>2.9</Ability_EffectRadius>
+							</statBases>
+							<comps>
+								<li Class="CompProperties_AbilitySpawn">
+									<thingDef>QuickhackOverheat_2T_Explosion_Paraline</thingDef>
+									<allowOnBuildings>True</allowOnBuildings>
+								</li>
+								<li Class="CompProperties_AbilityGiveHediff">
+									<compClass>CompAbilityEffect_GiveHediff</compClass>
+									<hediffDef>MilitechParaline_DamageIncrease</hediffDef>
+									<psychic>False</psychic>
+								</li>
+							</comps>
+						</AbilityDef>
+					<!-- EXPLOSION -->
+						<ThingDef ParentName="QuickhackExplosionThingBase">
+							<defName>QuickhackOverheat_2T_Explosion_Paraline</defName>
+							<label>heat blast</label>
+							<description>A blast caused by overheating</description>
+							<comps>
+								<li Class="CompProperties_Explosive">
+									<wickTicks>1</wickTicks>
+									<explosiveRadius>1.9</explosiveRadius>
+									<explosiveDamageType>Flame</explosiveDamageType>
+									<explodeOnKilled>true</explodeOnKilled>
+									<startWickHitPointsPercent>0.15</startWickHitPointsPercent>
+									<drawWick>false</drawWick>
+									<startWickOnInternalDamageTaken>
+										<li>Deterioration</li>
+									</startWickOnInternalDamageTaken>
+								</li>
+								<li Class="CompProperties_DamageOnInterval">
+									<damageDef>Deterioration</damageDef>
+									<damage>6</damage>
+									<ticksBetweenDamage>1</ticksBetweenDamage>
+								</li>
+							</comps>
+						</ThingDef>
+				<!-- 2T SIGMA -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackOverheat_2T_Sigma</defName>
+						<label>overheat</label>
+						<description>Overloads sensitive components within the target, causing a blast of heat. Sigma variant, reveals a major physical vulnerability and recharges twice as fast.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/Overheat</iconPath>
+						<casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+						<verbProperties>
+							<targetParams>
+								<canTargetBuildings>true</canTargetBuildings>
+							</targetParams>
+						</verbProperties>
+						<cooldownTicksRange>732</cooldownTicksRange> <!-- 2.5 RAM, takes 12.5 seconds to regen - 0.3 seconds warmup -->
+						<statBases>
+							<Ability_Duration>12.5</Ability_Duration>
+							<Ability_EffectRadius>1.9</Ability_EffectRadius>
+						</statBases>
+						<comps>
+							<li Class="CompProperties_AbilitySpawn">
+								<thingDef>QuickhackOverheat_2T_Explosion</thingDef>
+								<allowOnBuildings>True</allowOnBuildings>
+							</li>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>BiotechSigma_DamageIncrease</hediffDef>
+								<psychic>False</psychic>
+							</li>
+						</comps>
+					</AbilityDef>
+				<!-- 2T MICROCYBER -->
+					<!-- ABILITY -->
+						<AbilityDef ParentName="ActivateQuickhack">
+							<defName>QuickhackOverheat_2T_Microcyber</defName>
+							<label>overheat</label>
+							<description>Overloads sensitive components within the target, causing a blast of heat. Microcyber variant, instant upload with increased radius.</description>
+							<iconPath>Modules/Implants/UI/Quickhack/Overheat</iconPath>
+							<casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+							<verbProperties>
+								<warmupTime>0</warmupTime>
+								<targetParams>
+									<canTargetBuildings>true</canTargetBuildings>
+								</targetParams>
+							</verbProperties>
+							<cooldownTicksRange>1500</cooldownTicksRange> <!-- 5 RAM, takes 25 seconds to regen - 0 seconds warmup -->
+							<statBases>
+								<Ability_Duration>0</Ability_Duration>
+								<Ability_EffectRadius>3.4</Ability_EffectRadius>
+							</statBases>
+							<comps>
+								<li Class="CompProperties_AbilitySpawn">
+									<thingDef>QuickhackOverheat_2T_Explosion_Microcyber</thingDef>
+									<allowOnBuildings>True</allowOnBuildings>
+								</li>
+							</comps>
+						</AbilityDef>
+					<!-- EXPLOSION -->
+						<ThingDef ParentName="QuickhackExplosionThingBase">
+							<defName>QuickhackOverheat_2T_Explosion_Microcyber</defName>
+							<label>heat blast</label>
+							<description>A blast caused by overheating</description>
+							<comps>
+								<li Class="CompProperties_Explosive">
+									<wickTicks>1</wickTicks>
+									<explosiveRadius>2.4</explosiveRadius>
+									<explosiveDamageType>Flame</explosiveDamageType>
+									<explodeOnKilled>true</explodeOnKilled>
+									<startWickHitPointsPercent>0.15</startWickHitPointsPercent>
+									<drawWick>false</drawWick>
+									<startWickOnInternalDamageTaken>
+										<li>Deterioration</li>
+									</startWickOnInternalDamageTaken>
+								</li>
+								<li Class="CompProperties_DamageOnInterval">
+									<damageDef>Deterioration</damageDef>
+									<damage>6</damage>
+									<ticksBetweenDamage>1</ticksBetweenDamage>
+								</li>
+							</comps>
+						</ThingDef>
+				<!-- 2T RIPPLER -->
+					<!-- ABILITY -->
+						<AbilityDef ParentName="ActivateQuickhack">
+							<defName>QuickhackOverheat_2T_Rippler</defName>
+							<label>overheat</label>
+							<description>Overloads sensitive components within the target, causing a blast of heat. Rippler variant, gains increased radius.</description>
+							<iconPath>Modules/Implants/UI/Quickhack/Overheat</iconPath>
+							<casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+							<verbProperties>
+								<targetParams>
+									<canTargetBuildings>true</canTargetBuildings>
+								</targetParams>
+							</verbProperties>
+							<cooldownTicksRange>1482</cooldownTicksRange> <!-- 5 RAM, takes 25 seconds to regen - 0.3 seconds warmup -->
+							<statBases>
+								<Ability_Duration>0</Ability_Duration>
+								<Ability_EffectRadius>2.9</Ability_EffectRadius>
+							</statBases>
+							<comps>
+								<li Class="CompProperties_AbilitySpawn">
+									<thingDef>QuickhackOverheat_2T_Explosion_Rippler</thingDef>
+									<allowOnBuildings>True</allowOnBuildings>
+								</li>
+							</comps>
+						</AbilityDef>
+					<!-- EXPLOSION -->
+						<ThingDef ParentName="QuickhackExplosionThingBase">
+							<defName>QuickhackOverheat_2T_Explosion_Rippler</defName>
+							<label>heat blast</label>
+							<description>A blast caused by overheating</description>
+							<comps>
+								<li Class="CompProperties_Explosive">
+									<wickTicks>1</wickTicks>
+									<explosiveRadius>1.9</explosiveRadius>
+									<explosiveDamageType>Flame</explosiveDamageType>
+									<explodeOnKilled>true</explodeOnKilled>
+									<startWickHitPointsPercent>0.15</startWickHitPointsPercent>
+									<drawWick>false</drawWick>
+									<startWickOnInternalDamageTaken>
+										<li>Deterioration</li>
+									</startWickOnInternalDamageTaken>
+								</li>
+								<li Class="CompProperties_DamageOnInterval">
+									<damageDef>Deterioration</damageDef>
+									<damage>6</damage>
+									<ticksBetweenDamage>1</ticksBetweenDamage>
+								</li>
+							</comps>
+						</ThingDef>
+				<!-- 2T NETDRIVER -->
+					<!-- ABILITY -->
+						<AbilityDef ParentName="ActivateQuickhack">
+							<defName>QuickhackOverheat_2T_Netdriver</defName>
+							<label>overheat</label>
+							<description>Overloads sensitive components within the target, causing a blast of heat. Netdriver variant, gains increased radius, reveals a major physical vulnerability and recharges twice as fast.</description>
+							<iconPath>Modules/Implants/UI/Quickhack/Overheat</iconPath>
+							<casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+							<verbProperties>
+								<targetParams>
+									<canTargetBuildings>true</canTargetBuildings>
+								</targetParams>
+							</verbProperties>
+							<cooldownTicksRange>732</cooldownTicksRange> <!-- 2.5 RAM, takes 12.5 seconds to regen - 0.3 seconds warmup -->
+							<statBases>
+								<Ability_Duration>12.5</Ability_Duration>
+								<Ability_EffectRadius>2.9</Ability_EffectRadius>
+							</statBases>
+							<comps>
+								<li Class="CompProperties_AbilitySpawn">
+									<thingDef>QuickhackOverheat_2T_Explosion_Netdriver</thingDef>
+									<allowOnBuildings>True</allowOnBuildings>
+								</li>
+								<li Class="CompProperties_AbilityGiveHediff">
+									<compClass>CompAbilityEffect_GiveHediff</compClass>
+									<hediffDef>NetwatchNetdriver_DamageIncrease</hediffDef>
+									<psychic>False</psychic>
+								</li>
+							</comps>
+						</AbilityDef>
+					<!-- EXPLOSION -->
+						<ThingDef ParentName="QuickhackExplosionThingBase">
+							<defName>QuickhackOverheat_2T_Explosion_Netdriver</defName>
+							<label>heat blast</label>
+							<description>A blast caused by overheating</description>
+							<comps>
+								<li Class="CompProperties_Explosive">
+									<wickTicks>1</wickTicks>
+									<explosiveRadius>1.9</explosiveRadius>
+									<explosiveDamageType>Flame</explosiveDamageType>
+									<explodeOnKilled>true</explodeOnKilled>
+									<startWickHitPointsPercent>0.15</startWickHitPointsPercent>
+									<drawWick>false</drawWick>
+									<startWickOnInternalDamageTaken>
+										<li>Deterioration</li>
+									</startWickOnInternalDamageTaken>
+								</li>
+								<li Class="CompProperties_DamageOnInterval">
+									<damageDef>Deterioration</damageDef>
+									<damage>6</damage>
+									<ticksBetweenDamage>1</ticksBetweenDamage>
+								</li>
+							</comps>
+						</ThingDef>
+			<!-- SHORT CIRCUIT -->
+				<!-- 2T -->
+					<!-- ABILITY -->
+						<AbilityDef ParentName="ActivateQuickhack">
+							<defName>QuickhackShortCircuit_2T</defName>
+							<label>short circuit</label>
+							<description>Overloads circuitry within the target, causing a burst of electromagnetic energy.</description>
+							<iconPath>Modules/Implants/UI/Quickhack/ShortCircuit</iconPath>
+							<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+							<verbProperties>
+								<targetParams>
+									<canTargetBuildings>true</canTargetBuildings>
+								</targetParams>
+							</verbProperties>
+							<cooldownTicksRange>1182</cooldownTicksRange> <!-- 4 RAM, takes 20 seconds to regen - 0.3 seconds warmup -->
+							<statBases>
+								<Ability_Duration>0</Ability_Duration>
+								<Ability_EffectRadius>1.9</Ability_EffectRadius>
+							</statBases>
+							<comps>
+								<li Class="CompProperties_AbilitySpawn">
+									<thingDef>QuickhackShortCircuit_2T_Explosion</thingDef>
+									<allowOnBuildings>True</allowOnBuildings>
+								</li>
+							</comps>
+						</AbilityDef>
+					<!-- EXPLOSION -->
+						<ThingDef ParentName="QuickhackExplosionThingBase">
+							<defName>QuickhackShortCircuit_2T_Explosion</defName>
+							<label>EMP burst</label>
+							<description>An electromagnetic pulse caused by a circuitry overload</description>
+							<comps>
+								<li Class="CompProperties_Explosive">
+									<wickTicks>1</wickTicks>
+									<explosiveRadius>1.9</explosiveRadius>
+									<explosiveDamageType>EMP</explosiveDamageType>
+									<explodeOnKilled>true</explodeOnKilled>
+									<startWickHitPointsPercent>0.15</startWickHitPointsPercent>
+									<drawWick>false</drawWick>
+									<startWickOnInternalDamageTaken>
+										<li>Deterioration</li>
+									</startWickOnInternalDamageTaken>
+								</li>
+								<li Class="CompProperties_DamageOnInterval">
+									<damageDef>Deterioration</damageDef>
+									<damage>6</damage>
+									<ticksBetweenDamage>1</ticksBetweenDamage>
+								</li>
+							</comps>
+						</ThingDef>
+				<!-- 2T PARALINE -->
+					<!-- ABILITY -->
+						<AbilityDef ParentName="ActivateQuickhack">
+							<defName>QuickhackShortCircuit_2T_Paraline</defName>
+							<label>short circuit</label>
+							<description>Overloads circuitry within the target, causing a burst of electromagnetic energy. Paraline variant, gains significantly increased radius, increases target's vulnerability and uploads instantly.</description>
+							<iconPath>Modules/Implants/UI/Quickhack/ShortCircuit</iconPath>
+							<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+							<verbProperties>
+								<warmupTime>0</warmupTime>
+								<targetParams>
+									<canTargetBuildings>true</canTargetBuildings>
+								</targetParams>
+							</verbProperties>
+							<cooldownTicksRange>1200</cooldownTicksRange> <!-- 4 RAM, takes 20 seconds to regen - 0 seconds warmup -->
+							<statBases>
+								<Ability_Duration>0</Ability_Duration>
+								<Ability_EffectRadius>3.9</Ability_EffectRadius>
+							</statBases>
+							<comps>
+								<li Class="CompProperties_AbilitySpawn">
+									<thingDef>QuickhackShortCircuit_2T_Explosion_Paraline</thingDef>
+									<allowOnBuildings>True</allowOnBuildings>
+								</li>
+								<li Class="CompProperties_AbilityGiveHediff">
+									<compClass>CompAbilityEffect_GiveHediff</compClass>
+									<hediffDef>MilitechParaline_DamageIncrease</hediffDef>
+									<psychic>False</psychic>
+								</li>
+							</comps>
+						</AbilityDef>
+					<!-- EXPLOSION -->
+						<ThingDef ParentName="QuickhackExplosionThingBase">
+							<defName>QuickhackShortCircuit_2T_Explosion_Paraline</defName>
+							<label>EMP burst</label>
+							<description>An electromagnetic pulse caused by a circuitry overload</description>
+							<comps>
+								<li Class="CompProperties_Explosive">
+									<wickTicks>1</wickTicks>
+									<explosiveRadius>3.9</explosiveRadius>
+									<explosiveDamageType>EMP</explosiveDamageType>
+									<explodeOnKilled>true</explodeOnKilled>
+									<startWickHitPointsPercent>0.15</startWickHitPointsPercent>
+									<drawWick>false</drawWick>
+									<startWickOnInternalDamageTaken>
+										<li>Deterioration</li>
+									</startWickOnInternalDamageTaken>
+								</li>
+								<li Class="CompProperties_DamageOnInterval">
+									<damageDef>Deterioration</damageDef>
+									<damage>6</damage>
+									<ticksBetweenDamage>1</ticksBetweenDamage>
+								</li>
+							</comps>
+						</ThingDef>
+				<!-- 2T SIGMA -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackShortCircuit_2T_Sigma</defName>
+						<label>short circuit</label>
+						<description>Overloads circuitry within the target, causing a burst of electromagnetic energy. Sigma variant, reveals a major physical vulnerability and recharges twice as fast.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/ShortCircuit</iconPath>
+						<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+						<verbProperties>
+							<targetParams>
+								<canTargetBuildings>true</canTargetBuildings>
+							</targetParams>
+						</verbProperties>
+						<cooldownTicksRange>582</cooldownTicksRange> <!-- 2 RAM, takes 10 seconds to regen - 0.3 seconds warmup -->
+						<statBases>
+							<Ability_Duration>10</Ability_Duration>
+							<Ability_EffectRadius>1.9</Ability_EffectRadius>
+						</statBases>
+						<comps>
+							<li Class="CompProperties_AbilitySpawn">
+								<thingDef>QuickhackShortCircuit_2T_Explosion</thingDef>
+								<allowOnBuildings>True</allowOnBuildings>
+							</li>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>BiotechSigma_DamageIncrease</hediffDef>
+								<psychic>False</psychic>
+							</li>
+						</comps>
+					</AbilityDef>
+				<!-- 2T MICROCYBER -->
+					<!-- ABILITY -->
+						<AbilityDef ParentName="ActivateQuickhack">
+							<defName>QuickhackShortCircuit_2T_Microcyber</defName>
+							<label>short circuit</label>
+							<description>Overloads circuitry within the target, causing a burst of electromagnetic energy. Microcyber variant, gains increased radius and uploads instantly.</description>
+							<iconPath>Modules/Implants/UI/Quickhack/ShortCircuit</iconPath>
+							<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+							<verbProperties>
+								<warmupTime>0</warmupTime>
+								<targetParams>
+									<canTargetBuildings>true</canTargetBuildings>
+								</targetParams>
+							</verbProperties>
+							<cooldownTicksRange>1200</cooldownTicksRange> <!-- 4 RAM, takes 20 seconds to regen - 0 seconds warmup -->
+							<statBases>
+								<Ability_Duration>0</Ability_Duration>
+								<Ability_EffectRadius>3.1</Ability_EffectRadius>
+							</statBases>
+							<comps>
+								<li Class="CompProperties_AbilitySpawn">
+									<thingDef>QuickhackShortCircuit_2T_Explosion_Microcyber</thingDef>
+									<allowOnBuildings>True</allowOnBuildings>
+								</li>
+							</comps>
+						</AbilityDef>
+					<!-- EXPLOSION -->
+						<ThingDef ParentName="QuickhackExplosionThingBase">
+							<defName>QuickhackShortCircuit_2T_Explosion_Microcyber</defName>
+							<label>EMP burst</label>
+							<description>An electromagnetic pulse caused by a circuitry overload</description>
+							<comps>
+								<li Class="CompProperties_Explosive">
+									<wickTicks>1</wickTicks>
+									<explosiveRadius>3.1</explosiveRadius>
+									<explosiveDamageType>EMP</explosiveDamageType>
+									<explodeOnKilled>true</explodeOnKilled>
+									<startWickHitPointsPercent>0.15</startWickHitPointsPercent>
+									<drawWick>false</drawWick>
+									<startWickOnInternalDamageTaken>
+										<li>Deterioration</li>
+									</startWickOnInternalDamageTaken>
+								</li>
+								<li Class="CompProperties_DamageOnInterval">
+									<damageDef>Deterioration</damageDef>
+									<damage>6</damage>
+									<ticksBetweenDamage>1</ticksBetweenDamage>
+								</li>
+							</comps>
+						</ThingDef>
+				<!-- 2T RIPPLER -->
+					<!-- ABILITY -->
+						<AbilityDef ParentName="ActivateQuickhack">
+							<defName>QuickhackShortCircuit_2T_Rippler</defName>
+							<label>short circuit</label>
+							<description>Overloads circuitry within the target, causing a burst of electromagnetic energy. Rippler variant, gains increased radius.</description>
+							<iconPath>Modules/Implants/UI/Quickhack/ShortCircuit</iconPath>
+							<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+							<verbProperties>
+								<targetParams>
+									<canTargetBuildings>true</canTargetBuildings>
+								</targetParams>
+							</verbProperties>
+							<cooldownTicksRange>1182</cooldownTicksRange> <!-- 4 RAM, takes 20 seconds to regen - 0.3 seconds warmup -->
+							<statBases>
+								<Ability_Duration>0</Ability_Duration>
+								<Ability_EffectRadius>2.7</Ability_EffectRadius>
+							</statBases>
+							<comps>
+								<li Class="CompProperties_AbilitySpawn">
+									<thingDef>QuickhackShortCircuit_2T_Explosion_Rippler</thingDef>
+									<allowOnBuildings>True</allowOnBuildings>
+								</li>
+							</comps>
+						</AbilityDef>
+					<!-- EXPLOSION -->
+						<ThingDef ParentName="QuickhackExplosionThingBase">
+							<defName>QuickhackShortCircuit_2T_Explosion_Rippler</defName>
+							<label>EMP burst</label>
+							<description>An electromagnetic pulse caused by a circuitry overload</description>
+							<comps>
+								<li Class="CompProperties_Explosive">
+									<wickTicks>1</wickTicks>
+									<explosiveRadius>2.7</explosiveRadius>
+									<explosiveDamageType>EMP</explosiveDamageType>
+									<explodeOnKilled>true</explodeOnKilled>
+									<startWickHitPointsPercent>0.15</startWickHitPointsPercent>
+									<drawWick>false</drawWick>
+									<startWickOnInternalDamageTaken>
+										<li>Deterioration</li>
+									</startWickOnInternalDamageTaken>
+								</li>
+								<li Class="CompProperties_DamageOnInterval">
+									<damageDef>Deterioration</damageDef>
+									<damage>6</damage>
+									<ticksBetweenDamage>1</ticksBetweenDamage>
+								</li>
+							</comps>
+						</ThingDef>
+				<!-- 2T NETDRIVER -->
+					<!-- ABILITY -->
+						<AbilityDef ParentName="ActivateQuickhack">
+							<defName>QuickhackShortCircuit_2T_Netdriver</defName>
+							<label>short circuit</label>
+							<description>Overloads circuitry within the target, causing a burst of electromagnetic energy. Netdriver variant, gains increased radius, reveals a major physical vulnerability and recharges twice as fast.</description>
+							<iconPath>Modules/Implants/UI/Quickhack/ShortCircuit</iconPath>
+							<casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+							<verbProperties>
+								<targetParams>
+									<canTargetBuildings>true</canTargetBuildings>
+								</targetParams>
+							</verbProperties>
+							<cooldownTicksRange>582</cooldownTicksRange> <!-- 2 RAM, takes 10 seconds to regen - 0.3 seconds warmup -->
+							<statBases>
+								<Ability_Duration>10</Ability_Duration>
+								<Ability_EffectRadius>2.9</Ability_EffectRadius>
+							</statBases>
+							<comps>
+								<li Class="CompProperties_AbilitySpawn">
+									<thingDef>QuickhackShortCircuit_2T_Explosion_Netdriver</thingDef>
+									<allowOnBuildings>True</allowOnBuildings>
+								</li>
+								<li Class="CompProperties_AbilityGiveHediff">
+									<compClass>CompAbilityEffect_GiveHediff</compClass>
+									<hediffDef>NetwatchNetdriver_DamageIncrease</hediffDef>
+									<psychic>False</psychic>
+								</li>
+							</comps>
+						</AbilityDef>
+					<!-- EXPLOSION -->
+						<ThingDef ParentName="QuickhackExplosionThingBase">
+							<defName>QuickhackShortCircuit_2T_Explosion_Netdriver</defName>
+							<label>EMP burst</label>
+							<description>An electromagnetic pulse caused by a circuitry overload</description>
+							<comps>
+								<li Class="CompProperties_Explosive">
+									<wickTicks>1</wickTicks>
+									<explosiveRadius>2.9</explosiveRadius>
+									<explosiveDamageType>EMP</explosiveDamageType>
+									<explodeOnKilled>true</explodeOnKilled>
+									<startWickHitPointsPercent>0.15</startWickHitPointsPercent>
+									<drawWick>false</drawWick>
+									<startWickOnInternalDamageTaken>
+										<li>Deterioration</li>
+									</startWickOnInternalDamageTaken>
+								</li>
+								<li Class="CompProperties_DamageOnInterval">
+									<damageDef>Deterioration</damageDef>
+									<damage>6</damage>
+									<ticksBetweenDamage>1</ticksBetweenDamage>
+								</li>
+							</comps>
+						</ThingDef>
+			<!-- CONTAGION -->
+				<!-- 2T -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackContagion_2T</defName>
+						<label>contagion</label>
+						<description>Hacks safeguards that prevent toxic metal from implants or other sources from slipping into the bloodstream, putting the targets into a nauseated state.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/Contagion</iconPath>
+						<verbProperties>
+							<warmupTime>3.0</warmupTime>
+							<targetParams>
+								<canTargetMechs>false</canTargetMechs>
+							</targetParams>
+						</verbProperties>
+						<cooldownTicksRange>1320</cooldownTicksRange> <!-- 5 RAM, takes 25 seconds to regen - 3 seconds warmup -->
+						<statBases>
+							<Ability_Duration>6.0</Ability_Duration>
+							<Ability_EffectRadius>5.4</Ability_EffectRadius>
+						</statBases>
+						<comps>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>QuickhackContagion_2T</hediffDef>
+								<psychic>False</psychic>
+								<goodwillImpact>-15</goodwillImpact>
+							</li>
+						</comps>
+					</AbilityDef>
+				<!-- 2T PARALINE -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackContagion_2T_Paraline</defName>
+						<label>contagion</label>
+						<description>Hacks safeguards that prevent toxic metal from implants or other sources from slipping into the bloodstream, putting the targets into a nauseated state. Paraline variant, gains increased radius, increases targets' vulnerability and uploads instantly.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/Contagion</iconPath>
+						<verbProperties>
+							<warmupTime>0</warmupTime>
+							<targetParams>
+								<canTargetMechs>false</canTargetMechs>
+							</targetParams>
+						</verbProperties>
+						<cooldownTicksRange>1500</cooldownTicksRange> <!-- 5 RAM, takes 25 seconds to regen - 0 seconds warmup -->
+						<statBases>
+							<Ability_Duration>6.0</Ability_Duration>
+							<Ability_EffectRadius>6.9</Ability_EffectRadius>
+						</statBases>
+						<comps>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>QuickhackContagion_2T_Paraline</hediffDef>
+								<psychic>False</psychic>
+								<goodwillImpact>-15</goodwillImpact>
+							</li>
+						</comps>
+					</AbilityDef>
+				<!-- 2T SIGMA -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackContagion_2T_Sigma</defName>
+						<label>contagion</label>
+						<description>Hacks safeguards that prevent toxic metal from implants or other sources from slipping into the bloodstream, putting the targets into a nauseated state. Sigma variant, reveals major physical vulnerabilities and recharges twice as fast.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/Contagion</iconPath>
+						<verbProperties>
+							<warmupTime>3.0</warmupTime>
+							<targetParams>
+								<canTargetMechs>false</canTargetMechs>
+							</targetParams>
+						</verbProperties>
+						<cooldownTicksRange>570</cooldownTicksRange> <!-- 2.5 RAM, takes 12.5 seconds to regen - 3 seconds warmup -->
+						<statBases>
+							<Ability_Duration>6.0</Ability_Duration>
+							<Ability_EffectRadius>5.4</Ability_EffectRadius>
+						</statBases>
+						<comps>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>QuickhackContagion_2T_Sigma</hediffDef>
+								<psychic>False</psychic>
+								<goodwillImpact>-15</goodwillImpact>
+							</li>
+						</comps>
+					</AbilityDef>
+				<!-- 2T MICROCYBER -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackContagion_2T_Microcyber</defName>
+						<label>contagion</label>
+						<description>Hacks safeguards that prevent toxic metal from implants or other sources from slipping into the bloodstream, putting the targets into a nauseated state. Microcyber variant, gains increased radius and uploads instantly.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/Contagion</iconPath>
+						<verbProperties>
+							<warmupTime>0</warmupTime>
+							<targetParams>
+								<canTargetMechs>false</canTargetMechs>
+							</targetParams>
+						</verbProperties>
+						<cooldownTicksRange>1500</cooldownTicksRange> <!-- 5 RAM, takes 25 seconds to regen - 0 seconds warmup -->
+						<statBases>
+							<Ability_Duration>6.0</Ability_Duration>
+							<Ability_EffectRadius>8.7</Ability_EffectRadius>
+						</statBases>
+						<comps>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>QuickhackContagion_2T</hediffDef>
+								<psychic>False</psychic>
+								<goodwillImpact>-15</goodwillImpact>
+							</li>
+						</comps>
+					</AbilityDef>
+				<!-- 2T NETDRIVER -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackContagion_2T_Netdriver</defName>
+						<label>contagion</label>
+						<description>Hacks safeguards that prevent toxic metal from implants or other sources from slipping into the bloodstream, putting the targets into a nauseated state. Netdriver variant, gains increased duration, reveals major physical vulnerabilities and recharges twice as fast.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/Contagion</iconPath>
+						<verbProperties>
+							<warmupTime>3.0</warmupTime>
+							<targetParams>
+								<canTargetMechs>false</canTargetMechs>
+							</targetParams>
+						</verbProperties>
+						<cooldownTicksRange>570</cooldownTicksRange> <!-- 2.5 RAM, takes 12.5 seconds to regen - 3 seconds warmup -->
+						<statBases>
+							<Ability_Duration>9.0</Ability_Duration>
+							<Ability_EffectRadius>5.4</Ability_EffectRadius>
+						</statBases>
+						<comps>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>QuickhackContagion_2T_Netdriver</hediffDef>
+								<psychic>False</psychic>
+								<goodwillImpact>-15</goodwillImpact>
+							</li>
+						</comps>
+					</AbilityDef>
+		<!-- TIER 3 -->
+			<!-- SYNAPSE BURNOUT -->
+				<!-- 3T -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackSynapseBurnout_3T</defName>
+						<label>synapse burnout</label>
+						<description>Overloads the target's synapses with pain signals, causing them to temporarily drop into pain shock.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/SynapseBurnout</iconPath>
+						<casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+						<verbProperties>
+							<warmupTime>3.0</warmupTime>
+						</verbProperties>
+						<cooldownTicksRange>2820</cooldownTicksRange> <!-- 10 RAM, takes 50 seconds to regen - 3 seconds warmup -->
+						<statBases>
+							<Ability_Duration>30.0</Ability_Duration>
+						</statBases>
+						<comps>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>SynapseBurnout_3T</hediffDef>
+								<psychic>False</psychic>
+								<goodwillImpact>-75</goodwillImpact>
+							</li>
+						</comps>
+					</AbilityDef>
+				<!-- 3T PARALINE -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackSynapseBurnout_3T_Paraline</defName>
+						<label>synapse burnout</label>
+						<description>Overloads the target's synapses with pain signals, causing them to temporarily drop into pain shock. Paraline variant, gains increased duration, increases target's vulnerability and uploads instantly.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/SynapseBurnout</iconPath>
+						<casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+						<verbProperties>
+							<warmupTime>0</warmupTime>
+						</verbProperties>
+						<cooldownTicksRange>3000</cooldownTicksRange> <!-- 10 RAM, takes 50 seconds to regen - 0 seconds warmup -->
+						<statBases>
+							<Ability_Duration>39.0</Ability_Duration>
+						</statBases>
+						<comps>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>SynapseBurnout_3T_Paraline</hediffDef>
+								<psychic>False</psychic>
+								<goodwillImpact>-75</goodwillImpact>
+							</li>
+						</comps>
+					</AbilityDef>
+				<!-- 3T SIGMA -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackSynapseBurnout_3T_Sigma</defName>
+						<label>synapse burnout</label>
+						<description>Overloads the target's synapses with pain signals, causing them to temporarily drop into pain shock. Sigma variant, reveals a major physical vulnerability and recharges twice as fast.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/SynapseBurnout</iconPath>
+						<casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+						<verbProperties>
+							<warmupTime>3.0</warmupTime>
+						</verbProperties>
+						<cooldownTicksRange>1320</cooldownTicksRange> <!-- 5 RAM, takes 25 seconds to regen - 3 seconds warmup -->
+						<statBases>
+							<Ability_Duration>30.0</Ability_Duration>
+						</statBases>
+						<comps>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>SynapseBurnout_3T_Sigma</hediffDef>
+								<psychic>False</psychic>
+								<goodwillImpact>-75</goodwillImpact>
+							</li>
+						</comps>
+					</AbilityDef>
+				<!-- 3T NETDRIVER -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackSynapseBurnout_3T_Netdriver</defName>
+						<label>synapse burnout</label>
+						<description>Overloads the target's synapses with pain signals, causing them to temporarily drop into pain shock. Netdriver variant, reveals a major physical vulnerability and recharges twice as fast.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/SynapseBurnout</iconPath>
+						<casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+						<verbProperties>
+							<warmupTime>3.0</warmupTime>
+						</verbProperties>
+						<cooldownTicksRange>1320</cooldownTicksRange> <!-- 5 RAM, takes 25 seconds to regen - 3 seconds warmup -->
+						<statBases>
+							<Ability_Duration>30.0</Ability_Duration>
+						</statBases>
+						<comps>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>SynapseBurnout_3T_Netdriver</hediffDef>
+								<psychic>False</psychic>
+								<goodwillImpact>-75</goodwillImpact>
+							</li>
+						</comps>
+					</AbilityDef>
+	<!-- CONTROL QUICKHACKS -->
+		<!-- TIER 2 -->
+			<!-- REBOOT OPTICS -->
+				<!-- 2T -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackRebootOptics_2T</defName>
+						<label>reboot optics</label>
+						<description>Forces the target's optics to reboot, blinding them for 15 seconds.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/RebootOptics</iconPath>
+						<cooldownTicksRange>582</cooldownTicksRange> <!-- 2 RAM, takes 10 seconds to regen - 0.3 seconds warmup -->
+						<statBases>
+							<Ability_Duration>15.0</Ability_Duration>
+						</statBases>
+						<comps>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>QuickhackRebootOptics_2T</hediffDef>
+								<psychic>False</psychic>
+								<goodwillImpact>-15</goodwillImpact>
+							</li>
+						</comps>
+					</AbilityDef>
+				<!-- 2T PARALINE -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackRebootOptics_2T_Paraline</defName>
+						<label>reboot optics</label>
+						<description>Forces the target's optics to reboot, blinding them for 15 seconds. Paraline variant, increases target's vulnerability and uploads instantly.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/RebootOptics</iconPath>
+						<verbProperties>
+							<warmupTime>0</warmupTime>
+						</verbProperties>
+						<cooldownTicksRange>600</cooldownTicksRange> <!-- 2 RAM, takes 10 seconds to regen - 0 seconds warmup -->
+						<statBases>
+							<Ability_Duration>15.0</Ability_Duration>
+						</statBases>
+						<comps>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>QuickhackRebootOptics_2T_Paraline</hediffDef>
+								<psychic>False</psychic>
+								<goodwillImpact>-15</goodwillImpact>
+							</li>
+						</comps>
+					</AbilityDef>
+				<!-- 2T RIPPLER -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackRebootOptics_2T_Rippler</defName>
+						<label>reboot optics</label>
+						<description>Forces the target's optics to reboot, blinding them for 15 seconds. Rippler variant, affects a wide area and increases targets' vulnerability.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/RebootOptics</iconPath>
+						<cooldownTicksRange>582</cooldownTicksRange> <!-- 2 RAM, takes 10 seconds to regen - 0.3 seconds warmup -->
+						<statBases>
+							<Ability_Duration>15.0</Ability_Duration>
+							<Ability_EffectRadius>7.9</Ability_EffectRadius>
+						</statBases>
+						<comps>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>QuickhackRebootOptics_2T_Rippler</hediffDef>
+								<psychic>False</psychic>
+								<goodwillImpact>-15</goodwillImpact>
+							</li>
+						</comps>
+					</AbilityDef>
+		<!-- TIER 3 -->
+			<!-- CYBERWARE MALFUNCTION -->
+				<!-- 3T -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackCyberwareMalfunction_3T</defName>
+						<label>cyberware malfunction</label>
+						<description>Overloads a target's cyberware with false data, causing it to glitch and misfire.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/CyberwareMalfunction</iconPath>
+						<cooldownTicksRange>1182</cooldownTicksRange> <!-- 4 RAM, takes 20 seconds to regen - 0.3 seconds warmup -->
+						<statBases>
+							<Ability_Duration>10.0</Ability_Duration>
+						</statBases>
+						<comps>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>QuickhackCyberwareMalfunction_3T</hediffDef>
+								<psychic>False</psychic>
+								<goodwillImpact>-15</goodwillImpact>
+							</li>
+						</comps>
+					</AbilityDef>
+				<!-- 3T PARALINE -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackCyberwareMalfunction_3T_Paraline</defName>
+						<label>cyberware malfunction</label>
+						<description>Overloads a target's cyberware with false data, causing it to glitch and misfire. Paraline variant, increases target's vulnerability and uploads instantly.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/CyberwareMalfunction</iconPath>
+						<verbProperties>
+							<warmupTime>0</warmupTime>
+						</verbProperties>
+						<cooldownTicksRange>1200</cooldownTicksRange> <!-- 4 RAM, takes 20 seconds to regen - 0 seconds warmup -->
+						<statBases>
+							<Ability_Duration>10.0</Ability_Duration>
+						</statBases>
+						<comps>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>QuickhackCyberwareMalfunction_3T_Paraline</hediffDef>
+								<psychic>False</psychic>
+								<goodwillImpact>-15</goodwillImpact>
+							</li>
+						</comps>
+					</AbilityDef>
+			<!-- CRIPPLE MOVEMENT -->
+				<!-- 3T -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackCrippleMovement_3T</defName>
+						<label>cripple movement</label>
+						<description>Impairs target's legs, inhibiting their movement.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/CrippleMovement</iconPath>
+						<cooldownTicksRange>1182</cooldownTicksRange> <!-- 4 RAM, takes 20 seconds to regen - 0.3 seconds warmup -->
+						<statBases>
+							<Ability_Duration>13.8</Ability_Duration>
+						</statBases>
+						<comps>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>QuickhackCrippleMovement_3T</hediffDef>
+								<psychic>False</psychic>
+								<goodwillImpact>-15</goodwillImpact>
+							</li>
+						</comps>
+					</AbilityDef>
+				<!-- 3T PARALINE -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackCrippleMovement_3T_Paraline</defName>
+						<label>cripple movement</label>
+						<description>Impairs target's legs, inhibiting their movement. Paraline variant, increases target's vulnerability and uploads instantly.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/CrippleMovement</iconPath>
+						<verbProperties>
+							<warmupTime>0</warmupTime>
+						</verbProperties>
+						<cooldownTicksRange>1200</cooldownTicksRange> <!-- 4 RAM, takes 20 seconds to regen - 0 seconds warmup -->
+						<statBases>
+							<Ability_Duration>13.8</Ability_Duration>
+						</statBases>
+						<comps>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>QuickhackCrippleMovement_3T_Paraline</hediffDef>
+								<psychic>False</psychic>
+								<goodwillImpact>-15</goodwillImpact>
+							</li>
+						</comps>
+					</AbilityDef>
+				<!-- 3T MICROCYBER -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackCrippleMovement_3T_Microcyber</defName>
+						<label>cripple movement</label>
+						<description>Impairs target's legs, inhibiting their movement. Microcyber variant, gains a small area of effect and uploads instantly.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/CrippleMovement</iconPath>
+						<verbProperties>
+							<warmupTime>0</warmupTime>
+						</verbProperties>
+						<cooldownTicksRange>1200</cooldownTicksRange> <!-- 4 RAM, takes 20 seconds to regen - 0 seconds warmup -->
+						<statBases>
+							<Ability_Duration>13.8</Ability_Duration>
+							<Ability_EffectRadius>1.5</Ability_EffectRadius>
+						</statBases>
+						<comps>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>QuickhackCrippleMovement_3T</hediffDef>
+								<psychic>False</psychic>
+								<goodwillImpact>-15</goodwillImpact>
+							</li>
+						</comps>
+					</AbilityDef>
+			<!-- WEAPON GLITCH -->
+				<!-- 3T -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackWeaponGlitch_3T</defName>
+						<label>Weapon Glitch</label>
+						<description>Causes target's ranged weapon to malfunction, dramatically reducing accuracy and rate of fire.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/WeaponGlitch</iconPath>
+						<cooldownTicksRange>1182</cooldownTicksRange> <!-- 4 RAM, takes 20 seconds to regen - 0.3 seconds warmup -->
+						<statBases>
+							<Ability_Duration>14.0</Ability_Duration>
+						</statBases>
+						<comps>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>QuickhackWeaponGlitch_3T</hediffDef>
+								<psychic>False</psychic>
+								<goodwillImpact>-15</goodwillImpact>
+							</li>
+						</comps>
+					</AbilityDef>
+				<!-- 3T PARALINE -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackWeaponGlitch_3T_Paraline</defName>
+						<label>Weapon Glitch</label>
+						<description>Causes target's ranged weapon to malfunction, dramatically reducing accuracy and rate of fire. Paraline variant, increases target's vulnerability and uploads instantly.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/WeaponGlitch</iconPath>
+						<verbProperties>
+							<warmupTime>0</warmupTime>
+						</verbProperties>
+						<cooldownTicksRange>1200</cooldownTicksRange> <!-- 4 RAM, takes 20 seconds to regen - 0 seconds warmup -->
+						<statBases>
+							<Ability_Duration>14.0</Ability_Duration>
+						</statBases>
+						<comps>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>QuickhackWeaponGlitch_3T_Paraline</hediffDef>
+								<psychic>False</psychic>
+								<goodwillImpact>-15</goodwillImpact>
+							</li>
+						</comps>
+					</AbilityDef>
+				<!-- 3T MICROCYBER -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackWeaponGlitch_3T_Microcyber</defName>
+						<label>Weapon Glitch</label>
+						<description>Causes target's ranged weapon to malfunction, dramatically reducing accuracy and rate of fire. Microcyber variant, gains a small area of effect and uploads instantly.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/WeaponGlitch</iconPath>
+						<verbProperties>
+							<warmupTime>0</warmupTime>
+						</verbProperties>
+						<cooldownTicksRange>1200</cooldownTicksRange> <!-- 4 RAM, takes 20 seconds to regen - 0 seconds warmup -->
+						<statBases>
+							<Ability_Duration>14.0</Ability_Duration>
+							<Ability_EffectRadius>1.5</Ability_EffectRadius>
+						</statBases>
+						<comps>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>QuickhackWeaponGlitch_3T</hediffDef>
+								<psychic>False</psychic>
+								<goodwillImpact>-15</goodwillImpact>
+							</li>
+						</comps>
+					</AbilityDef>
+				<!-- 3T RIPPLER -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackWeaponGlitch_3T_Rippler</defName>
+						<label>Weapon Glitch</label>
+						<description>Causes target's ranged weapon to malfunction, dramatically reducing accuracy and rate of fire. Rippler variant, affects a wide area and increases targets' vulnerability.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/WeaponGlitch</iconPath>
+						<cooldownTicksRange>1182</cooldownTicksRange> <!-- 4 RAM, takes 20 seconds to regen - 0.3 seconds warmup -->
+						<statBases>
+							<Ability_Duration>14.0</Ability_Duration>
+							<Ability_EffectRadius>7.9</Ability_EffectRadius>
+						</statBases>
+						<comps>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>QuickhackWeaponGlitch_3T_Rippler</hediffDef>
+								<psychic>False</psychic>
+								<goodwillImpact>-15</goodwillImpact>
+							</li>
+						</comps>
+					</AbilityDef>
+	<!-- COVERT QUICKHACKS -->
+		<!-- TIER 3 -->
+			<!-- BAIT -->
+				<!-- 3T -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackBait_3T</defName>
+						<label>bait</label>
+						<description>Commands the target to approach the user's location.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/Bait</iconPath>
+						<verbProperties>
+							<warmupTime>2.0</warmupTime>
+						</verbProperties>
+						<cooldownTicksRange>1260</cooldownTicksRange> <!-- 3 RAM, takes 15 seconds to regen - 2 seconds warmup -->
+						<statBases>
+							<Ability_Duration>17.2</Ability_Duration>
+						</statBases>
+						<comps>
+							<li Class ="CompProperties_AbilityForceJob">
+								<compClass>CompAbilityEffect_ForceJob</compClass>
+								<jobDef>GotoMindControlled</jobDef>
+								<destination>Caster</destination>
+								<psychic>False</psychic>
+							</li>
+						</comps>
+					</AbilityDef>
+				<!-- 3T SHADOW -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackBait_3T_Shadow</defName>
+						<label>bait</label>
+						<description>Commands the target to approach the user's location. Shadow variant, recharges much faster.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/Bait</iconPath>
+						<verbProperties>
+							<warmupTime>2.0</warmupTime>
+						</verbProperties>
+						<cooldownTicksRange>180</cooldownTicksRange> <!-- 1 RAM, takes 5 seconds to regen - 2 seconds warmup -->
+						<statBases>
+							<Ability_Duration>17.2</Ability_Duration>
+						</statBases>
+						<comps>
+							<li Class ="CompProperties_AbilityForceJob">
+								<compClass>CompAbilityEffect_ForceJob</compClass>
+								<jobDef>GotoMindControlled</jobDef>
+								<destination>Caster</destination>
+								<psychic>False</psychic>
+							</li>
+						</comps>
+					</AbilityDef>
+				<!-- 3T NETDRIVER -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackBait_3T_Netdriver</defName>
+						<label>bait</label>
+						<description>Commands the target to approach the user's location. Netdriver variant, recharges twice as fast.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/Bait</iconPath>
+						<verbProperties>
+							<warmupTime>2.0</warmupTime>
+						</verbProperties>
+						<cooldownTicksRange>330</cooldownTicksRange> <!-- 1.5 RAM, takes 7.5 seconds to regen - 2 seconds warmup -->
+						<statBases>
+							<Ability_Duration>17.2</Ability_Duration>
+						</statBases>
+						<comps>
+							<li Class ="CompProperties_AbilityForceJob">
+								<compClass>CompAbilityEffect_ForceJob</compClass>
+								<jobDef>GotoMindControlled</jobDef>
+								<destination>Caster</destination>
+								<psychic>False</psychic>
+							</li>
+						</comps>
+					</AbilityDef>
+			<!-- REQUEST BACKUP -->
+				<!-- 3T -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackRequestBackup_3T</defName>
+						<label>request backup</label>
+						<description>Commands multiple targets to approach the user's location.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/RequestBackup</iconPath>
+						<verbProperties>
+							<warmupTime>2.0</warmupTime>
+							<minRange>14.9</minRange>
+							<targetParams>
+								<canTargetBuildings>true</canTargetBuildings>
+								<canTargetLocations>true</canTargetLocations>
+							</targetParams>
+						</verbProperties>
+						<cooldownTicksRange>780</cooldownTicksRange> <!-- 3 RAM, takes 15 seconds to regen - 2 seconds warmup -->
+						<statBases>
+							<Ability_Duration>17.2</Ability_Duration>
+							<Ability_EffectRadius>14.9</Ability_EffectRadius>
+						</statBases>
+						<comps>
+							<li Class ="CompProperties_AbilityForceJob">
+								<compClass>CompAbilityEffect_ForceJob</compClass>
+								<jobDef>GotoMindControlled</jobDef>
+								<destination>Caster</destination>
+								<psychic>False</psychic>
+							</li>
+						</comps>
+					</AbilityDef>
+				<!-- 3T MICROCYBER -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackRequestBackup_3T_Microcyber</defName>
+						<label>request backup</label>
+						<description>Commands multiple targets to approach the user's location. Microcyber variant, has a very wide area of effect. Take care not to accidentally command yourself.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/RequestBackup</iconPath>
+						<verbProperties>
+							<warmupTime>0</warmupTime>
+							<minRange>23.9</minRange>
+							<targetParams>
+								<canTargetBuildings>true</canTargetBuildings>
+								<canTargetLocations>true</canTargetLocations>
+							</targetParams>
+						</verbProperties>
+						<cooldownTicksRange>900</cooldownTicksRange> <!-- 3 RAM, takes 15 seconds to regen - 0 seconds warmup -->
+						<statBases>
+							<Ability_Duration>17.2</Ability_Duration>
+							<Ability_EffectRadius>23.9</Ability_EffectRadius>
+						</statBases>
+						<comps>
+							<li Class ="CompProperties_AbilityForceJob">
+								<compClass>CompAbilityEffect_ForceJob</compClass>
+								<jobDef>GotoMindControlled</jobDef>
+								<destination>Caster</destination>
+								<psychic>False</psychic>
+							</li>
+						</comps>
+					</AbilityDef>
+			<!-- MEMORY WIPE -->
+				<!-- 3T -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackMemoryWipe_3T</defName>
+						<label>memory wipe</label>
+						<description>Prevents the enemy from noticing the target for a short duration. Can target self.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/MemoryWipe</iconPath>
+						<cooldownTicksRange>11910</cooldownTicksRange> <!-- 8 RAM, takes 40 seconds to regen - 1.5 seconds warmup - duration and cooldown multiplied by 5 -->
+						<statBases>
+							<Ability_Duration>46</Ability_Duration> <!-- lore accurate value is 9.2 seconds -->
+						</statBases>
+						<verbProperties>
+							<verbClass>Verb_CastAbility</verbClass>
+							<warmupTime>1.5</warmupTime>
+							<targetParams>
+								<canTargetSelf>true</canTargetSelf>
+							</targetParams>
+						</verbProperties>
+						<comps>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>QuickhackMemoryWipe_3T</hediffDef>
+								<psychic>False</psychic>
+							</li>
+						</comps>
+					</AbilityDef>
+				<!-- 3T SHADOW -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackMemoryWipe_3T_Shadow</defName>
+						<label>memory wipe</label>
+						<description>Prevents the enemy from noticing the target for a short duration. Can target self. Shadow variant, recharges faster.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/MemoryWipe</iconPath>
+						<cooldownTicksRange>8910</cooldownTicksRange> <!-- 6 RAM, takes 30 seconds to regen - 1.5 seconds warmup - duration and cooldown multiplied by 5 -->
+						<statBases>
+							<Ability_Duration>46</Ability_Duration> <!-- lore accurate value is 9.2 seconds -->
+						</statBases>
+						<verbProperties>
+							<verbClass>Verb_CastAbility</verbClass>
+							<warmupTime>1.5</warmupTime>
+							<targetParams>
+								<canTargetSelf>true</canTargetSelf>
+							</targetParams>
+						</verbProperties>
+						<comps>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>QuickhackMemoryWipe_3T</hediffDef>
+								<psychic>False</psychic>
+							</li>
+						</comps>
+					</AbilityDef>
+				<!-- 3T NETDRIVER -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackMemoryWipe_3T_Netdriver</defName>
+						<label>memory wipe</label>
+						<description>Prevents the enemy from noticing the target for a short duration. Can target self. Netdriver variant, lasts longer and recharges very quickly.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/MemoryWipe</iconPath>
+						<cooldownTicksRange>5910</cooldownTicksRange> <!-- 4 RAM, takes 20 seconds to regen - 1.5 seconds warmup - duration and cooldown multiplied by 5 -->
+						<statBases>
+							<Ability_Duration>57.5</Ability_Duration> <!-- lore accurate value is 9.2 seconds, multiplied by 1.25 for Netdriver = 11.5 -->
+						</statBases>
+						<verbProperties>
+							<verbClass>Verb_CastAbility</verbClass>
+							<warmupTime>1.5</warmupTime>
+							<targetParams>
+								<canTargetSelf>true</canTargetSelf>
+							</targetParams>
+						</verbProperties>
+						<comps>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>QuickhackMemoryWipe_3T</hediffDef>
+								<psychic>False</psychic>
+							</li>
+						</comps>
+					</AbilityDef>
+			<!-- SONIC SHOCK -->
+				<!-- 3T -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackSonicShock_3T</defName>
+						<label>sonic shock</label>
+						<description>Creates a feedback loop in the target's sensory processors. Extremely distracting. Not painful in and of itself, but does amplify existing sources of pain.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/SonicShock</iconPath>
+						<verbProperties>
+							<warmupTime>1.0</warmupTime>
+						</verbProperties>
+						<cooldownTicksRange>1140</cooldownTicksRange> <!-- 4 RAM, takes 20 seconds to regen - 1 second warmup -->
+						<statBases>
+							<Ability_Duration>34.5</Ability_Duration>
+						</statBases>
+						<comps>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>QuickhackSonicShock_3T</hediffDef>
+								<psychic>False</psychic>
+							</li>
+						</comps>
+					</AbilityDef>
+				<!-- 3T PARALINE -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackSonicShock_3T_Paraline</defName>
+						<label>sonic shock</label>
+						<description>Creates a feedback loop in the target's sensory processors. Extremely distracting. Not painful in and of itself, but does amplify existing sources of pain. Paraline variant, increases target's vulnerability and uploads instantly.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/SonicShock</iconPath>
+						<verbProperties>
+							<warmupTime>0</warmupTime>
+						</verbProperties>
+						<cooldownTicksRange>1200</cooldownTicksRange> <!-- 4 RAM, takes 20 seconds to regen - 0 seconds warmup -->
+						<statBases>
+							<Ability_Duration>34.5</Ability_Duration>
+						</statBases>
+						<comps>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>QuickhackSonicShock_3T_Paraline</hediffDef>
+								<psychic>False</psychic>
+							</li>
+						</comps>
+					</AbilityDef>
+				<!-- 3T MICROCYBER -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackSonicShock_3T_Microcyber</defName>
+						<label>sonic shock</label>
+						<description>Creates a feedback loop in the target's sensory processors. Extremely distracting. Not painful in and of itself, but does amplify existing sources of pain. Microcyber variant, gains a small area of effect and uploads instantly.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/SonicShock</iconPath>
+						<verbProperties>
+							<warmupTime>0</warmupTime>
+						</verbProperties>
+						<cooldownTicksRange>1200</cooldownTicksRange> <!-- 4 RAM, takes 20 seconds to regen - 0 seconds warmup -->
+						<statBases>
+							<Ability_Duration>34.5</Ability_Duration>
+							<Ability_EffectRadius>1.5</Ability_EffectRadius>
+						</statBases>
+						<comps>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>QuickhackSonicShock_3T</hediffDef>
+								<psychic>False</psychic>
+							</li>
+						</comps>
+					</AbilityDef>
+				<!-- 3T SHADOW -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackSonicShock_3T_Shadow</defName>
+						<label>sonic shock</label>
+						<description>Creates a feedback loop in the target's sensory processors. Extremely distracting. Not painful in and of itself, but does amplify existing sources of pain. Shadow variant, recharges much faster.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/SonicShock</iconPath>
+						<verbProperties>
+							<warmupTime>1.0</warmupTime>
+						</verbProperties>
+						<cooldownTicksRange>540</cooldownTicksRange> <!-- 2 RAM, takes 10 seconds to regen - 1 second warmup -->
+						<statBases>
+							<Ability_Duration>34.5</Ability_Duration>
+						</statBases>
+						<comps>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>QuickhackSonicShock_3T</hediffDef>
+								<psychic>False</psychic>
+							</li>
+						</comps>
+					</AbilityDef>
+				<!-- 3T NETDRIVER -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackSonicShock_3T_Netdriver</defName>
+						<label>sonic shock</label>
+						<description>Creates a feedback loop in the target's sensory processors. Extremely distracting. Not painful in and of itself, but does amplify existing sources of pain. Netdriver variant, recharges twice as fast.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/SonicShock</iconPath>
+						<verbProperties>
+							<warmupTime>1.0</warmupTime>
+						</verbProperties>
+						<cooldownTicksRange>540</cooldownTicksRange> <!-- 2 RAM, takes 10 seconds to regen - 1 second warmup -->
+						<statBases>
+							<Ability_Duration>34.5</Ability_Duration>
+						</statBases>
+						<comps>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>QuickhackSonicShock_3T</hediffDef>
+								<psychic>False</psychic>
+							</li>
+						</comps>
+					</AbilityDef>
+	<!-- ULTIMATE QUICKHACKS -->
+		<!-- TIER 4 -->
+			<!-- SUICIDE -->
+				<!-- ABILITY -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackSuicide_4T</defName>
+						<label>suicide</label>
+						<description>Compels the target to stick some iron in their mouth and pull the trigger.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/Suicide</iconPath>
+						<casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+						<verbProperties>
+							<warmupTime>3.0</warmupTime>
+						</verbProperties>
+						<cooldownTicksRange>7020</cooldownTicksRange> <!-- 24 RAM, takes 120 seconds to regen - 3 seconds warmup -->
+						<statBases>
+							<Ability_Duration>9.5</Ability_Duration>
+						</statBases>
+						<comps>
+							<li Class = "CompProperties_AbilityEffectWithDuration">
+								<compClass>CompAbilityEffect_Stun</compClass>
+								<psychic>False</psychic>
+							</li>
+							<li Class="CompProperties_AbilitySpawn">
+								<thingDef>QuickhackSuicide_4T_Explosion</thingDef>
+								<allowOnBuildings>True</allowOnBuildings>
+							</li>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>QuickhackSuicide_4T</hediffDef>
+								<psychic>False</psychic>
+							</li>
+						</comps>
+					</AbilityDef>
+				<!-- EXPLOSION -->
+					<ThingDef ParentName="QuickhackExplosionThingBase">
+						<defName>QuickhackSuicide_4T_Explosion</defName>
+						<label>suicidal compulsion</label>
+						<description>A suicidal compulsion has taken over this person's motor system, and is forcing them to stick some iron in their mouth and pull the trigger.</description>
+						<graphicData Inherit="False">
+							<texPath>Things/Projectile/Grenade</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawOffset>(0, 0.1, 0)</drawOffset>
+						</graphicData>
+						<comps>
+							<li Class="CompProperties_Explosive">
+								<wickTicks>0</wickTicks>
+								<explosiveRadius>0.9</explosiveRadius>
+								<explosiveDamageType>Bomb</explosiveDamageType>
+								<explodeOnKilled>true</explodeOnKilled>
+								<startWickHitPointsPercent>0.15</startWickHitPointsPercent>
+								<drawWick>false</drawWick>
+								<startWickOnInternalDamageTaken>
+									<li>Deterioration</li>
+								</startWickOnInternalDamageTaken>
+							</li>
+							<li Class="CompProperties_DamageOnInterval">
+								<damageDef>Deterioration</damageDef>
+								<damage>1</damage>
+								<ticksBetweenDamage>60</ticksBetweenDamage>
+							</li>
+						</comps>
+					</ThingDef>
+			<!-- SYSTEM COLLAPSE -->
+				<!-- 4T -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackSystemCollapse_4T</defName>
+						<label>system collapse</label>
+						<description>Disables the target's nervous system, knocking them out without making a sound.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/SystemCollapse</iconPath>
+						<verbProperties>
+							<warmupTime>1.0</warmupTime>
+						</verbProperties>
+						<cooldownTicksRange>8340</cooldownTicksRange> <!-- 28 RAM, takes 140 seconds to regen - 1 second warmup -->
+						<statBases>
+							<Ability_Duration>360</Ability_Duration>
+						</statBases>
+						<comps>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>QuickhackSystemCollapse</hediffDef>
+								<psychic>False</psychic>
+							</li>
+						</comps>
+					</AbilityDef>
+				<!-- 4T SHADOW -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackSystemCollapse_4T_Shadow</defName>
+						<label>system collapse</label>
+						<description>Disables the target's nervous system, knocking them out without making a sound. Shadow variant, recharges significantly faster.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/SystemCollapse</iconPath>
+						<verbProperties>
+							<warmupTime>1.0</warmupTime>
+						</verbProperties>
+						<cooldownTicksRange>6840</cooldownTicksRange> <!-- 23 RAM, takes 115 seconds to regen - 1 second warmup -->
+						<statBases>
+							<Ability_Duration>360</Ability_Duration>
+						</statBases>
+						<comps>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>QuickhackSystemCollapse</hediffDef>
+								<psychic>False</psychic>
+							</li>
+						</comps>
+					</AbilityDef>
+		<!-- TIER 5 -->
+			<!-- CYBERPSYCHOSIS -->
+				<!-- 5T -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackCyberpsychosis_5T</defName>
+						<label>cyberpsychosis</label>
+						<description>Scrambles the target's senses, causing them to lose control and attack anyone in sight.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/Cyberpsychosis</iconPath>
+						<casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+						<verbProperties>
+							<warmupTime>1.5</warmupTime>
+						</verbProperties>
+						<cooldownTicksRange>6510</cooldownTicksRange> <!-- 22 RAM, takes 110 seconds to regen - 1.5 seconds warmup -->
+						<statBases>
+							<Ability_Duration>60</Ability_Duration>
+						</statBases>
+						<comps>
+							<li Class = "CompProperties_AbilityGiveMentalState">
+								<compClass>CompAbilityEffect_GiveMentalState</compClass>
+								<stateDef>Berserk</stateDef>
+								<stateDefForMechs>BerserkMechanoid</stateDefForMechs>
+								<canTargetBosses>false</canTargetBosses>
+							</li>
+						</comps>
+					</AbilityDef>
+				<!-- 5T SHADOW -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackCyberpsychosis_5T_Shadow</defName>
+						<label>cyberpsychosis</label>
+						<description>Scrambles the target's senses, causing them to lose control and attack anyone in sight. Shadow variant, recharges significantly faster.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/Cyberpsychosis</iconPath>
+						<casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+						<verbProperties>
+							<warmupTime>1.5</warmupTime>
+						</verbProperties>
+						<cooldownTicksRange>4410</cooldownTicksRange> <!-- 15 RAM, takes 75 seconds to regen - 1.5 seconds warmup -->
+						<statBases>
+							<Ability_Duration>60</Ability_Duration>
+						</statBases>
+						<comps>
+							<li Class = "CompProperties_AbilityGiveMentalState">
+								<compClass>CompAbilityEffect_GiveMentalState</compClass>
+								<stateDef>Berserk</stateDef>
+								<stateDefForMechs>BerserkMechanoid</stateDefForMechs>
+								<canTargetBosses>false</canTargetBosses>
+							</li>
+						</comps>
+					</AbilityDef>
+		<!-- TIER ICONIC -->
+			<!-- DETONATE GRENADE -->
+				<!-- ICONIC -->
+					<!-- ABILITY -->
+						<AbilityDef ParentName="ActivateQuickhack">
+							<defName>QuickhackDetonateGrenade_Iconic</defName>
+							<label>detonate grenade</label>
+							<description>Hacks a target's grenade, causing it to spontaneously ignite.</description>
+							<iconPath>Modules/Implants/UI/Quickhack/DetonateGrenade</iconPath>
+							<verbProperties>
+								<warmupTime>1.0</warmupTime>
+							</verbProperties>
+							<cooldownTicksRange>2640</cooldownTicksRange> <!-- 9 RAM, takes 45 seconds to regen - 1 second warmup -->
+							<statBases>
+								<Ability_Duration>6</Ability_Duration>
+							</statBases>
+							<comps>
+								<li Class="CompProperties_AbilitySpawn">
+									<thingDef>QuickhackDetonateGrenade_Iconic_Explosion</thingDef>
+									<allowOnBuildings>True</allowOnBuildings>
+								</li>
+							</comps>
+						</AbilityDef>
+					<!-- EXPLOSION -->
+						<ThingDef ParentName="QuickhackExplosionThingBase">
+							<defName>QuickhackDetonateGrenade_Iconic_Explosion</defName>
+							<label>grenade</label>
+							<description>A live grenade, about to explode.</description>
+							<graphicData Inherit="False">
+								<texPath>Things/Projectile/Grenade</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<drawOffset>(0, 0.1, 0)</drawOffset>
+							</graphicData>
+							<comps>
+								<li Class="CompProperties_Explosive">
+									<wickTicks>60</wickTicks>
+									<explosiveRadius>3.9</explosiveRadius>
+									<explosiveDamageType>Bomb</explosiveDamageType>
+									<explodeOnKilled>true</explodeOnKilled>
+									<startWickHitPointsPercent>0.85</startWickHitPointsPercent>
+									<drawWick>true</drawWick>
+									<startWickOnDamageTaken>
+										<li>Bullet</li>
+										<li>Arrow</li>
+										<li>ArrowHighVelocity</li>
+									</startWickOnDamageTaken>
+									<startWickOnInternalDamageTaken>
+										<li>Deterioration</li>
+									</startWickOnInternalDamageTaken>
+								</li>
+								<li Class="CompProperties_DamageOnInterval">
+									<damageDef>Deterioration</damageDef>
+									<damage>1</damage>
+									<ticksBetweenDamage>10</ticksBetweenDamage>
+									<!-- <effectStages>
+										<li>
+											<minHitPointsPercent>9999</minHitPointsPercent>
+											<effecterDef>Power_Cell_Burning</effecterDef>
+										</li>
+										<li>
+											<minHitPointsPercent>0.1666</minHitPointsPercent>
+											<effecterDef>Power_Cell_Sparks</effecterDef>
+										</li>
+									</effectStages> -->
+								</li>
+							</comps>
+						</ThingDef>
+				<!-- ICONIC PARALINE -->
+					<!-- ABILITY -->
+						<AbilityDef ParentName="ActivateQuickhack">
+							<defName>QuickhackDetonateGrenade_Iconic_Paraline</defName>
+							<label>detonate grenade</label>
+							<description>Hacks a target's grenade, causing it to spontaneously ignite. Paraline variant, gains increased radius, increases target's vulnerability and uploads instantly.</description>
+							<iconPath>Modules/Implants/UI/Quickhack/DetonateGrenade</iconPath>
+							<verbProperties>
+								<warmupTime>0</warmupTime>
+							</verbProperties>
+							<cooldownTicksRange>2700</cooldownTicksRange> <!-- 9 RAM, takes 45 seconds to regen - 0 second warmup -->
+							<statBases>
+								<Ability_Duration>10</Ability_Duration>
+							</statBases>
+							<comps>
+								<li Class="CompProperties_AbilitySpawn">
+									<thingDef>QuickhackDetonateGrenade_Iconic_Explosion_Paraline</thingDef>
+									<allowOnBuildings>True</allowOnBuildings>
+								</li>
+								<li Class="CompProperties_AbilityGiveHediff">
+									<compClass>CompAbilityEffect_GiveHediff</compClass>
+									<hediffDef>MilitechParaline_DamageIncrease</hediffDef>
+									<psychic>False</psychic>
+								</li>
+							</comps>
+						</AbilityDef>
+					<!-- EXPLOSION -->
+						<ThingDef ParentName="QuickhackExplosionThingBase">
+							<defName>QuickhackDetonateGrenade_Iconic_Explosion_Paraline</defName>
+							<label>grenade</label>
+							<description>A live grenade, about to explode.</description>
+							<graphicData Inherit="False">
+								<texPath>Things/Projectile/Grenade</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<drawOffset>(0, 0.1, 0)</drawOffset>
+							</graphicData>
+							<comps>
+								<li Class="CompProperties_Explosive">
+									<wickTicks>60</wickTicks>
+									<explosiveRadius>5.4</explosiveRadius>
+									<explosiveDamageType>Bomb</explosiveDamageType>
+									<explodeOnKilled>true</explodeOnKilled>
+									<startWickHitPointsPercent>0.85</startWickHitPointsPercent>
+									<drawWick>true</drawWick>
+									<startWickOnDamageTaken>
+										<li>Bullet</li>
+										<li>Arrow</li>
+										<li>ArrowHighVelocity</li>
+									</startWickOnDamageTaken>
+									<startWickOnInternalDamageTaken>
+										<li>Deterioration</li>
+									</startWickOnInternalDamageTaken>
+								</li>
+								<li Class="CompProperties_DamageOnInterval">
+									<damageDef>Deterioration</damageDef>
+									<damage>1</damage>
+									<ticksBetweenDamage>10</ticksBetweenDamage>
+									<!-- <effectStages>
+										<li>
+											<minHitPointsPercent>9999</minHitPointsPercent>
+											<effecterDef>Power_Cell_Burning</effecterDef>
+										</li>
+										<li>
+											<minHitPointsPercent>0.1666</minHitPointsPercent>
+											<effecterDef>Power_Cell_Sparks</effecterDef>
+										</li>
+									</effectStages> -->
+								</li>
+							</comps>
+						</ThingDef>
+				<!-- ICONIC SIGMA -->
+					<!-- ABILITY -->
+						<AbilityDef ParentName="ActivateQuickhack">
+							<defName>QuickhackDetonateGrenade_Iconic_Sigma</defName>
+							<label>detonate grenade</label>
+							<description>Hacks a target's grenade, causing it to spontaneously ignite.</description>
+							<iconPath>Modules/Implants/UI/Quickhack/DetonateGrenade</iconPath>
+							<verbProperties>
+								<warmupTime>1.0</warmupTime>
+							</verbProperties>
+							<cooldownTicksRange>1290</cooldownTicksRange> <!-- 4.5 RAM, takes 22.5 seconds to regen - 1 second warmup -->
+							<statBases>
+								<Ability_Duration>10</Ability_Duration>
+							</statBases>
+							<comps>
+								<li Class="CompProperties_AbilitySpawn">
+									<thingDef>QuickhackDetonateGrenade_Iconic_Explosion_Sigma</thingDef>
+									<allowOnBuildings>True</allowOnBuildings>
+								</li>
+								<li Class="CompProperties_AbilityGiveHediff">
+									<compClass>CompAbilityEffect_GiveHediff</compClass>
+									<hediffDef>BiotechSigma_DamageIncrease</hediffDef>
+									<psychic>False</psychic>
+								</li>
+							</comps>
+						</AbilityDef>
+					<!-- EXPLOSION -->
+						<ThingDef ParentName="QuickhackExplosionThingBase">
+							<defName>QuickhackDetonateGrenade_Iconic_Explosion_Sigma</defName>
+							<label>grenade</label>
+							<description>A live grenade, about to explode.</description>
+							<graphicData Inherit="False">
+								<texPath>Things/Projectile/Grenade</texPath>
+								<graphicClass>Graphic_Single</graphicClass>
+								<drawOffset>(0, 0.1, 0)</drawOffset>
+							</graphicData>
+							<comps>
+								<li Class="CompProperties_Explosive">
+									<wickTicks>60</wickTicks>
+									<explosiveRadius>3.9</explosiveRadius>
+									<explosiveDamageType>Bomb</explosiveDamageType>
+									<explodeOnKilled>true</explodeOnKilled>
+									<startWickHitPointsPercent>0.85</startWickHitPointsPercent>
+									<drawWick>true</drawWick>
+									<startWickOnDamageTaken>
+										<li>Bullet</li>
+										<li>Arrow</li>
+										<li>ArrowHighVelocity</li>
+									</startWickOnDamageTaken>
+									<startWickOnInternalDamageTaken>
+										<li>Deterioration</li>
+									</startWickOnInternalDamageTaken>
+								</li>
+								<li Class="CompProperties_DamageOnInterval">
+									<damageDef>Deterioration</damageDef>
+									<damage>1</damage>
+									<ticksBetweenDamage>10</ticksBetweenDamage>
+									<!-- <effectStages>
+										<li>
+											<minHitPointsPercent>9999</minHitPointsPercent>
+											<effecterDef>Power_Cell_Burning</effecterDef>
+										</li>
+										<li>
+											<minHitPointsPercent>0.1666</minHitPointsPercent>
+											<effecterDef>Power_Cell_Sparks</effecterDef>
+										</li>
+									</effectStages> -->
+								</li>
+							</comps>
+						</ThingDef>
+			<!-- BLACKWALL GATEWAY -->
+				<!-- ABILITY -->
+					<AbilityDef ParentName="ActivateQuickhack">
+						<defName>QuickhackBlackwallGateway_Iconic</defName>
+						<label>blackwall gateway</label>
+						<description>Summons a Blackwall archotech to infest the targets. The archotech will use their components to conduct an energy experiment. Their senses will also be overwhelmed by excruciating pain, though this is purely an unintended side effect. Upon completion, the archotech's experiment will consume the area in a devastating localized antimatter blast.</description>
+						<iconPath>Modules/Implants/UI/Quickhack/BlackwallGateway</iconPath>
+						<casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+						<verbProperties>
+							<warmupTime>3.0</warmupTime>
+							<minRange>8.9</minRange>
+						</verbProperties>
+						<cooldownTicksRange>4020</cooldownTicksRange> <!-- 14 RAM, takes 70 seconds to regen - 3 seconds warmup -->
+						<statBases>
+							<Ability_Duration>6.0</Ability_Duration>
+							<Ability_EffectRadius>3.9</Ability_EffectRadius>
+						</statBases>
+						<comps>
+							<li Class="CompProperties_AbilitySpawn">
+								<thingDef>QuickhackBlackwallGateway_Iconic_Explosion</thingDef>
+								<allowOnBuildings>True</allowOnBuildings>
+							</li>
+							<li Class="CompProperties_AbilityGiveHediff">
+								<compClass>CompAbilityEffect_GiveHediff</compClass>
+								<hediffDef>QuickhackBlackwallGateway</hediffDef>
+								<psychic>False</psychic>
+								<goodwillImpact>-75</goodwillImpact>
+							</li>
+						</comps>
+					</AbilityDef>
+				<!-- EXPLOSION -->
+					<ThingDef ParentName="QuickhackExplosionThingBase">
+						<defName>QuickhackBlackwallGateway_Iconic_Explosion</defName>
+						<label>blackwall corruption</label>
+						<description>A Blackwall archotech has produced an unstable grain of antimatter, soon to annihilate and consume everything in the area.</description>
+						<graphicData Inherit="False">
+							<texPath>Things/Mote/SparkFlash</texPath>
+							<graphicClass>Graphic_Single</graphicClass>
+							<drawOffset>(0, 0.1, 0)</drawOffset>
+						</graphicData>
+						<comps>
+							<li Class="CompProperties_Explosive">
+								<wickTicks>300</wickTicks>
+								<explosiveRadius>5.9</explosiveRadius>
+								<explosiveDamageType>BombSuper</explosiveDamageType>
+								<explodeOnKilled>true</explodeOnKilled>
+								<explosiveExpandPerStackcount>0.4</explosiveExpandPerStackcount>
+								<startWickHitPointsPercent>0.85</startWickHitPointsPercent>
+								<drawWick>true</drawWick>
+								<startWickOnInternalDamageTaken>
+									<li>Deterioration</li>
+								</startWickOnInternalDamageTaken>
+								<chanceToStartFire>0.22</chanceToStartFire>
+								<damageFalloff>true</damageFalloff>
+								<explosionEffect>GiantExplosion</explosionEffect>
+								<explosionSound>Explosion_GiantBomb</explosionSound>
+							</li>
+							<li Class="CompProperties_DamageOnInterval">
+								<damageDef>Deterioration</damageDef>
+								<damage>1</damage>
+								<ticksBetweenDamage>60</ticksBetweenDamage>
+							</li>
+						</comps>
+					</ThingDef>
+	<!--  -->
+</Defs>

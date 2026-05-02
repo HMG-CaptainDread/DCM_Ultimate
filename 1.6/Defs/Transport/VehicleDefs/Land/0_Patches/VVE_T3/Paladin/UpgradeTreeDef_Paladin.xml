@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<Vehicles.UpgradeTreeDef ParentName="TMM_UpgradeTree_WheeledLandBase">
+		<defName>TMM_UpgradeTree_Paladin</defName>
+
+		<nodes>
+			<!-- ESCORT TURRETS -->
+				<li>
+					<key>EscortTurrets_Paladin</key>
+					<label>Escort Turrets</label>
+					<description>Mount four autonomous turrets around the vehicle. These low-power turrets provide the vehicle with full weapons coverage</description>
+
+					<icon>Modules/Transport/UI/Upgrades/Upgrade_Turret</icon>
+
+					<work>7800</work>
+
+					<gridCoordinate>(3, 3)</gridCoordinate>
+					<drawSize>(80,80)</drawSize>
+
+					<upgrades>
+						<li Class="Vehicles.TurretUpgrade">
+							<turrets>
+								<li>
+									<turretDef>TMM_Turret_Micro</turretDef>
+									<renderProperties>
+										<north>(-1.1, 2.12)</north>
+										<south>(1, -1.2)</south>
+										<east>(1.52, -0.5)</east>
+									</renderProperties>
+									<drawLayer>3</drawLayer>
+									<gizmoLabel>front-left turret</gizmoLabel>
+									<defaultAngleRotated>315</defaultAngleRotated>
+									<angleRestricted>(255, 15)</angleRestricted>
+									<aimPieOffset>(0, -0.35)</aimPieOffset>
+									<key>TMM_EscortTurret_One</key>
+								</li>
+								<li>
+									<turretDef>TMM_Turret_Micro</turretDef>
+									<renderProperties>
+										<north>(1.1, 2.12)</north>
+										<south>(-1, -1.2)</south>
+										<east>(1.52, 1.35)</east>
+									</renderProperties>
+									<drawLayer>3</drawLayer>
+									<gizmoLabel>front-right turret</gizmoLabel>
+									<defaultAngleRotated>45</defaultAngleRotated>
+									<angleRestricted>(345, 105)</angleRestricted>
+									<aimPieOffset>(0, -0.35)</aimPieOffset>
+									<key>TMM_EscortTurret_Two</key>
+								</li>
+								<li>
+									<turretDef>TMM_Turret_Micro</turretDef>
+									<renderProperties>
+										<north>(1.07, -1.65)</north>
+										<south>(-1, 2.2)</south>
+										<east>(-2.7, 1.35)</east>
+									</renderProperties>
+									<drawLayer>3</drawLayer>
+									<gizmoLabel>rear-right turret</gizmoLabel>
+									<defaultAngleRotated>135</defaultAngleRotated>
+									<angleRestricted>(75, 195)</angleRestricted>
+									<aimPieOffset>(0, -0.35)</aimPieOffset>
+									<key>TMM_EscortTurret_Three</key>
+								</li>
+								<li>
+									<turretDef>TMM_Turret_Micro</turretDef>
+									<renderProperties>
+										<north>(-1.07, -1.65)</north>
+										<south>(1, 2.2)</south>
+										<east>(-2.7, -0.5)</east>
+									</renderProperties>
+									<drawLayer>3</drawLayer>
+									<gizmoLabel>rear-left turret</gizmoLabel>
+									<defaultAngleRotated>225</defaultAngleRotated>
+									<angleRestricted>(165, 285)</angleRestricted>
+									<aimPieOffset>(0, -0.35)</aimPieOffset>
+									<key>TMM_EscortTurret_Four</key>
+								</li>
+							</turrets>
+						</li>
+					</upgrades>
+
+					<ingredients>
+						<Steel>320</Steel>
+						<ComponentIndustrial>12</ComponentIndustrial>
+					</ingredients>
+				</li>
+			<!-- EXPANDED CABIN -->
+				<li>
+					<key>ExpandedCabin_Paladin</key>
+					<label>Expanded Cabin</label>
+					<description>Expand the cabin to fit two more seats into the vehicle.</description>
+
+					<icon>Modules/Transport/UI/Upgrades/Upgrade_ExtraSeat</icon>
+
+					<work>2880</work>
+
+					<gridCoordinate>(9, 3)</gridCoordinate>
+					<drawSize>(80, 80)</drawSize>
+
+					<upgrades>
+						<li Class="Vehicles.VehicleUpgrade">
+							<roles>
+								<li>
+									<label>Passenger</label>
+									<key>passenger</key>
+									<editKey>cabinExpansion</editKey>
+									<slots>8</slots>
+								</li>
+							</roles>
+						</li>
+					</upgrades>
+
+					<ingredients>
+						<Steel>180</Steel>
+						<Cloth>60</Cloth>
+					</ingredients>
+
+					<graphicOverlays>
+						<li>
+							<graphicData>
+								<texPath>Modules/Transport/Upgrades/Land/Paladin_IFV/CabinExpansion/CabinExpansion</texPath>
+								<graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+								<drawSize>(4,7)</drawSize>
+								<layer>1</layer>
+								<shaderType>CutoutComplexPattern</shaderType>
+							</graphicData>
+						</li>
+					</graphicOverlays>
+				</li>
+		</nodes>
+	</Vehicles.UpgradeTreeDef>
+</Defs>

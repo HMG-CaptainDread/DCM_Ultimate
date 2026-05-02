@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!-- TMM_Burial_ -->
+
+
+
+	<!-- ANIMAL -->
+		<!-- SARCOPHAGUS -->
+			<!-- LARGE -->
+				<ThingDef ParentName="BuildingBase">
+					<defName>TMM_Burial_AnimalSarcophagusLarge</defName>
+					<label>large animal sarcophagus</label>
+					<description>A large ornamented burial receptacle for the honoured animals.</description>
+					<thingClass>Building_Sarcophagus</thingClass>
+					<containedPawnsSelectable>true</containedPawnsSelectable>
+					<graphicData>
+						<texPath>Modules/Furniture/Buildings/AnimalSarcophagus/Large/Empty/ASempty</texPath>
+						<graphicClass>Graphic_Multi</graphicClass>
+						<drawSize>(2.6,2.6)</drawSize>
+						<damageData>
+							<rect>(0.8,0.8,0.8,0.8)</rect>
+							<cornerTL>Damage/Corner</cornerTL>
+							<cornerTR>Damage/Corner</cornerTR>
+							<cornerBL>Damage/Corner</cornerBL>
+							<cornerBR>Damage/Corner</cornerBR>
+						</damageData>
+						<shadowData>
+							<volume>(1.8, 1, 1.8)</volume>
+							<offset>(0,0,-0.23)</offset>
+						</shadowData>
+					</graphicData>
+					<size>(2,2)</size>
+					<pathCost>52</pathCost>
+					<castEdgeShadows>true</castEdgeShadows>
+					<fillPercent>0.5</fillPercent>
+					<tickerType>Rare</tickerType>
+					<canOverlapZones>false</canOverlapZones>
+					<constructionSkillPrerequisite>5</constructionSkillPrerequisite>
+					<building>
+						<ai_chillDestination>false</ai_chillDestination>
+						<preventDeteriorationInside>true</preventDeteriorationInside>
+						<haulToContainerDuration>800</haulToContainerDuration>
+						<fullGraveGraphicData>
+							<texPath>Modules/Furniture/Buildings/AnimalSarcophagus/Large/Filled/ASfull</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<drawSize>(2.6,2.6)</drawSize>
+							<shadowData>
+								<volume>(1.8, 1, 1.8)</volume>
+								<offset>(0,0,-0.23)</offset>
+							</shadowData>
+						</fullGraveGraphicData>
+						<fixedStorageSettings>
+							<filter>
+								<categories>
+									<li>CorpsesAnimal</li>
+								</categories>
+							</filter>
+						</fixedStorageSettings>
+						<defaultStorageSettings>
+							<priority>Important</priority>
+							<filter>
+								<disallowedCategories>
+									<li>CorpsesAnimal</li>
+								</disallowedCategories>
+							</filter>
+						</defaultStorageSettings>
+						<buildingTags>
+							<li>RitualFocus</li>
+						</buildingTags>
+						<paintable>true</paintable>
+					</building>
+					<statBases>
+						<WorkToBuild>2800</WorkToBuild>
+						<MaxHitPoints>300</MaxHitPoints>
+						<Flammability>1.0</Flammability>
+						<MeditationFocusStrength>0.03</MeditationFocusStrength>
+						<Beauty>5</Beauty>
+					</statBases>
+					<stuffCategories>
+						<li>Woody</li>
+						<li>Metallic</li>
+						<li>Stony</li>
+					</stuffCategories>
+					<inspectorTabs>
+						<li>ITab_Storage</li>
+						<li>ITab_Art</li>
+						<li>ITab_ContentsCasket</li>
+					</inspectorTabs>
+					<comps>
+						<li>
+							<compClass>CompQuality</compClass>
+						</li>
+						<li Class="CompProperties_Art">
+							<nameMaker>NamerArtSarcophagusPlate</nameMaker>
+							<descriptionMaker>ArtDescription_SarcophagusPlate</descriptionMaker>
+							<mustBeFullGrave>true</mustBeFullGrave>
+						</li>
+						<li Class="CompProperties_MeditationFocus">
+							<statDef>MeditationFocusStrength</statDef>
+							<focusTypes>
+								<li>Morbid</li>
+							</focusTypes>
+							<offsets>
+								<li Class="FocusStrengthOffset_NearbyGraves">
+									<defs>
+										<li>Grave</li>
+										<li>Sarcophagus</li>
+									</defs>
+									<offsetPerBuilding>0.01</offsetPerBuilding>
+									<radius>9.9</radius>
+									<maxBuildings>4</maxBuildings>
+									<focusPerFullGrave>0.01</focusPerFullGrave>
+									<explanationKey>MeditationFocusPerGrave</explanationKey>
+									<explanationKeyAbstract>MeditationFocusPerGraveAbstract</explanationKeyAbstract>
+								</li>
+							</offsets>
+						</li>
+					</comps>
+					<costStuffCount>90</costStuffCount>
+					<altitudeLayer>Building</altitudeLayer>
+					<passability>PassThroughOnly</passability>
+					<blockWind>true</blockWind>
+					<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+					<designationCategory>Misc</designationCategory>
+					<uiOrder>2052</uiOrder>
+					<researchPrerequisites>
+						<li>ComplexFurniture</li>
+					</researchPrerequisites>
+					<placeWorkers>
+						<li>PlaceWorker_MeditationOffsetBuildingsNear</li>
+					</placeWorkers>
+					<ritualFocus>
+						<spectateDistance>1</spectateDistance>
+						<allowedSpectateSides>Vertical</allowedSpectateSides>
+					</ritualFocus>
+				</ThingDef>
+			<!-- SMALL -->
+				<ThingDef ParentName="BuildingBase">
+					<defName>TMM_Burial_SmallAnimalSarcophagus</defName>
+					<label>small animal sarcophagus</label>
+					<description>A small ornamented burial receptacle for the honoured animals.</description>
+					<thingClass>Building_Sarcophagus</thingClass>
+					<containedPawnsSelectable>true</containedPawnsSelectable>
+					<graphicData>
+						<texPath>Modules/Furniture/Buildings/AnimalSarcophagus/Small/Empty/ASempty</texPath>
+						<graphicClass>Graphic_Multi</graphicClass>
+						<drawSize>(2,2)</drawSize>
+						<damageData>
+							<rect>(0.8,0.8,0.8,0.8)</rect>
+							<cornerTL>Damage/Corner</cornerTL>
+							<cornerTR>Damage/Corner</cornerTR>
+							<cornerBL>Damage/Corner</cornerBL>
+							<cornerBR>Damage/Corner</cornerBR>
+						</damageData>
+						<shadowData>
+							<volume>(0.4, 0.4, 0.4)</volume>
+							<offset>(0,0,-0.23)</offset>
+						</shadowData>
+					</graphicData>
+					<statBases>
+						<WorkToBuild>1100</WorkToBuild>
+						<MaxHitPoints>200</MaxHitPoints>
+						<Flammability>1.0</Flammability>
+						<MeditationFocusStrength>0.02</MeditationFocusStrength>
+						<Beauty>3</Beauty>
+					</statBases>
+					<size>(1,1)</size>
+					<pathCost>28</pathCost>
+					<castEdgeShadows>true</castEdgeShadows>
+					<fillPercent>0.5</fillPercent>
+					<tickerType>Rare</tickerType>
+					<canOverlapZones>false</canOverlapZones>
+					<constructionSkillPrerequisite>3</constructionSkillPrerequisite>
+					<building>
+						<ai_chillDestination>false</ai_chillDestination>
+						<preventDeteriorationInside>true</preventDeteriorationInside>
+						<haulToContainerDuration>300</haulToContainerDuration>
+						<fullGraveGraphicData>
+							<texPath>Modules/Furniture/Buildings/AnimalSarcophagus/Small/Filled/ASfull</texPath>
+							<graphicClass>Graphic_Multi</graphicClass>
+							<drawSize>(2,2)</drawSize>
+							<shadowData>
+								<volume>(0.4, 0.4, 0.4)</volume>
+								<offset>(0,0,-0.23)</offset>
+							</shadowData>
+						</fullGraveGraphicData>
+						<fixedStorageSettings>
+							<filter>
+								<categories>
+									<li>CorpsesAnimal</li>
+								</categories>
+								<specialFiltersToDisallow>
+									<li>AllowLargeCorpses</li>
+								</specialFiltersToDisallow>
+							</filter>
+						</fixedStorageSettings>
+						<defaultStorageSettings>
+							<priority>Important</priority>
+							<filter>
+								<disallowedCategories>
+									<li>CorpsesAnimal</li>
+								</disallowedCategories>
+							</filter>
+						</defaultStorageSettings>
+						<buildingTags>
+							<li>RitualFocus</li>
+						</buildingTags>
+						<paintable>true</paintable>
+					</building>
+					<stuffCategories>
+						<li>Woody</li>
+						<li>Metallic</li>
+						<li>Stony</li>
+					</stuffCategories>
+					<inspectorTabs>
+						<li>ITab_Storage</li>
+						<li>ITab_Art</li>
+						<li>ITab_ContentsCasket</li>
+					</inspectorTabs>
+					<comps>
+						<li>
+							<compClass>CompQuality</compClass>
+						</li>
+						<li Class="CompProperties_Art">
+							<nameMaker>NamerArtSarcophagusPlate</nameMaker>
+							<descriptionMaker>ArtDescription_SarcophagusPlate</descriptionMaker>
+							<mustBeFullGrave>true</mustBeFullGrave>
+						</li>
+						<li Class="CompProperties_MeditationFocus">
+							<statDef>MeditationFocusStrength</statDef>
+							<focusTypes>
+								<li>Morbid</li>
+							</focusTypes>
+							<offsets>
+								<li Class="FocusStrengthOffset_NearbyGraves">
+									<defs>
+										<li>Grave</li>
+										<li>Sarcophagus</li>
+									</defs>
+									<offsetPerBuilding>0.01</offsetPerBuilding>
+									<radius>6.9</radius>
+									<maxBuildings>4</maxBuildings>
+									<focusPerFullGrave>0.01</focusPerFullGrave>
+									<explanationKey>MeditationFocusPerGrave</explanationKey>
+									<explanationKeyAbstract>MeditationFocusPerGraveAbstract</explanationKeyAbstract>
+								</li>
+							</offsets>
+						</li>
+					</comps>
+					<costStuffCount>30</costStuffCount>
+					<altitudeLayer>Building</altitudeLayer>
+					<passability>PassThroughOnly</passability>
+					<blockWind>false</blockWind>
+					<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+					<designationCategory>Misc</designationCategory>
+					<uiOrder>2051</uiOrder>
+					<researchPrerequisites>
+						<li>ComplexFurniture</li>
+					</researchPrerequisites>
+					<placeWorkers>
+						<li>PlaceWorker_MeditationOffsetBuildingsNear</li>
+					</placeWorkers>
+					<ritualFocus>
+						<spectateDistance>1</spectateDistance>
+						<allowedSpectateSides>Vertical</allowedSpectateSides>
+					</ritualFocus>
+				</ThingDef>
+</Defs>
