@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<Vehicles.UpgradeTreeDef ParentName="TMM_UpgradeTree_WheeledLandBase">
+		<defName>TMM_UpgradeTree_Hermano</defName>
+
+		<nodes>
+			<!-- BOX MODIFICATIONS -->
+				<!-- EXPANDED FRIDGE UNIT -->
+					<li>
+						<key>ExpandedFridgeUnit_Hermano</key>
+						<label>Expanded Fridge Unit</label>
+						<description>Refit the vehicle with a state of the art refrigeration unit, coming with an additional 120 kilos of cargo space.\n\nIncompatible with other conversions.</description>
+
+						<icon>Modules/Transport/UI/Upgrades/Upgrade_ExpandedCargo</icon>
+
+						<work>2400</work>
+
+						<gridCoordinate>(3, 3)</gridCoordinate>
+						<drawSize>(80, 80)</drawSize>
+
+						<disableIfUpgradeNodesEnabled>
+							<li>PanelVanConversion_Hermano</li>
+						</disableIfUpgradeNodesEnabled>
+
+						<upgrades>
+							<li Class="Vehicles.StatUpgrade">
+								<vehicleStats>
+									<li>
+										<def>CargoCapacity</def>
+										<value>120</value>
+									</li>
+								</vehicleStats>
+							</li>
+						</upgrades>
+
+						<ingredients>
+							<Steel>220</Steel>
+							<ComponentIndustrial>5</ComponentIndustrial>
+						</ingredients>
+
+						<graphicOverlays>
+							<li>
+								<graphicData>
+									<texPath>Modules/Transport/Upgrades/Land/Hermano_Truck/ExpandedFridgeUnit/ExpandedFridgeUnit</texPath>
+									<graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+									<drawSize>(4,7)</drawSize>
+									<layer>1</layer>
+									<shaderType>CutoutComplexPattern</shaderType>
+								</graphicData>
+							</li>
+						</graphicOverlays>
+					</li>
+				<!-- PANEL VAN CONVERSION -->
+					<li>
+						<key>PanelVanConversion_Hermano</key>
+						<label>Panel Van Conversion</label>
+						<description>Refit the vehicle with an additional passenger seat.\n\nIncompatible with other conversions.</description>
+
+						<icon>Modules/Transport/UI/Upgrades/Upgrade_ExtraSeat</icon>
+
+						<work>2400</work>
+
+						<gridCoordinate>(3, 9)</gridCoordinate>
+						<drawSize>(80, 80)</drawSize>
+
+						<disableIfUpgradeNodesEnabled>
+							<li>ExpandedFridgeUnit_Hermano</li>
+						</disableIfUpgradeNodesEnabled>
+
+						<upgrades>
+							<li Class="Vehicles.VehicleUpgrade">
+								<roles>
+									<li>
+										<label>Passenger</label>
+										<key>passenger</key>
+										<slots>2</slots>
+										<editKey>panelVanRefit</editKey>
+									</li>
+								</roles>
+							</li>
+						</upgrades>
+
+						<ingredients>
+							<Steel>80</Steel>
+							<ComponentIndustrial>3</ComponentIndustrial>
+							<VVE_CarFuelTank>1</VVE_CarFuelTank>
+							<Cloth>60</Cloth>
+						</ingredients>
+
+						<graphicOverlays>
+							<li>
+								<graphicData>
+									<texPath>Modules/Transport/Upgrades/Land/Hermano_Truck/PanelVanConversion/PanelVanConversion</texPath>
+									<graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+									<drawSize>(4,7)</drawSize>
+									<layer>1</layer>
+									<shaderType>CutoutComplexPattern</shaderType>
+								</graphicData>
+							</li>
+						</graphicOverlays>
+					</li>
+			<!-- LONG HAUL TANKS -->
+				<li>
+					<key>LongHaulTanks_Hermano</key>
+					<label>Long Haul Fuel Tanks</label>
+					<description>Install large chemfuel tanks that increase the fuel capacity of the vehicle by 120 units.</description>
+
+					<icon>Modules/Transport/UI/Upgrades/Upgrade_FuelStorage</icon>
+
+					<work>3840</work>
+
+					<gridCoordinate>(9, 3)</gridCoordinate>
+					<drawSize>(80, 80)</drawSize>
+
+					<upgrades>
+						<li Class="Vehicles.StatUpgrade">
+							<statCategories>
+								<li>
+									<def>FuelCapacity</def>
+									<value>120</value>
+								</li>
+							</statCategories>
+						</li>
+					</upgrades>
+
+					<ingredients>
+						<ComponentIndustrial>3</ComponentIndustrial>
+						<VVE_CarFuelTank>4</VVE_CarFuelTank>
+					</ingredients>
+
+					<graphicOverlays>
+						<li>
+							<graphicData>
+								<texPath>Modules/Transport/Upgrades/Land/Hermano_Truck/LongHaulTanks/LongHaulTanks</texPath>
+								<graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+								<drawSize>(4,7)</drawSize>
+								<layer>2</layer>
+								<shaderType>CutoutComplex</shaderType>
+							</graphicData>
+						</li>
+					</graphicOverlays>
+				</li>
+			<!-- PERFORMANCE WHEELS -->
+				<li>
+					<key>PerformanceWheels_Hermano</key>
+					<label>Performance Wheels</label>
+					<description>Install advanced high performance wheels that improve grip, increasing the top speed of the vehicle.</description>
+
+					<icon>Modules/Transport/UI/Upgrades/Upgrade_BigRims</icon>
+
+					<work>1200</work>
+
+					<gridCoordinate>(9, 9)</gridCoordinate>
+					<drawSize>(80, 80)</drawSize>
+
+					<upgrades>
+						<li Class="Vehicles.StatUpgrade">
+							<vehicleStats>
+								<li>
+									<def>MoveSpeed</def>
+									<value>1</value>
+								</li>
+							</vehicleStats>
+							<statCategories>
+								<li>
+									<def>WorldSpeedMultiplier</def>
+									<value>0.1</value>
+									<type>Add</type>
+								</li>
+							</statCategories>
+						</li>
+					</upgrades>
+
+					<ingredients>
+						<VVE_CarWheel>4</VVE_CarWheel>
+						<Plasteel>25</Plasteel>
+						<Chemfuel>50</Chemfuel>
+					</ingredients>
+
+					<graphicOverlays>
+						<li>
+							<graphicData>
+								<texPath>Modules/Transport/Upgrades/Land/Hermano_Truck/PerformanceWheels/PerformanceWheels</texPath>
+								<graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+								<drawSize>(4,7)</drawSize>
+								<layer>1</layer>
+								<shaderType>CutoutComplex</shaderType>
+							</graphicData>
+						</li>
+					</graphicOverlays>
+				</li>
+		</nodes>
+	</Vehicles.UpgradeTreeDef>
+</Defs>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!-- TMM_Mineable_ -->
+
+
+
+	<!-- BASE -->
+		<ThingDef ParentName="RockBase" Name="TMM_Rock_MiscBase" Abstract="True">
+			<graphicData>
+				<texPath>Things/Building/Linked/RockFlecked_Atlas</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+				<shaderType>CutoutComplex</shaderType>
+			</graphicData>
+
+			<statBases>
+				<MaxHitPoints>900</MaxHitPoints>
+			</statBases>
+
+			<building>
+				<isResourceRock>true</isResourceRock>
+				<mineableYield>50</mineableYield>
+				<mineableScatterCommonality>1.1</mineableScatterCommonality>
+				<mineableScatterLumpSizeRange>12~25</mineableScatterLumpSizeRange>
+				<veinMineable IgnoreIfNoMatchingField="True">true</veinMineable>
+			</building>
+		</ThingDef>
+	<!-- COAL -->
+		<ThingDef ParentName="TMM_Rock_MiscBase">
+			<defName>TMM_Mineable_Coal</defName>
+			<label>coal</label>
+			<description>Rock containing bits of coal.</description>
+
+			<graphicData>
+				<colorTwo>(25,29,34)</colorTwo>
+				<color>(66,69,74)</color>
+			</graphicData>
+
+			<building>
+				<mineableThing>TMM_Resource_Coal</mineableThing>
+				<mineableScatterCommonality>1</mineableScatterCommonality>
+				<mineableScatterLumpSizeRange>20~30</mineableScatterLumpSizeRange>
+			</building>
+		</ThingDef>
+</Defs>
