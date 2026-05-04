@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!-- TMM_DrinkMixer_ -->
+
+
+
+	<!-- BASES -->
+		<!-- DRINK MIXER BASE -->
+			<ThingDef ParentName="BenchBase" Name="TMM_DrinkMixer_Base" Abstract="True">
+				<thingClass>Building_WorkTable</thingClass>
+				<graphicData>
+					<graphicClass>Graphic_Multi</graphicClass>
+					<damageData>
+						<cornerTL>Damage/Corner</cornerTL>
+						<cornerTR>Damage/Corner</cornerTR>
+						<cornerBL>Damage/Corner</cornerBL>
+						<cornerBR>Damage/Corner</cornerBR>
+					</damageData>
+				</graphicData>
+				<altitudeLayer>Building</altitudeLayer>
+				<fillPercent>0.5</fillPercent>
+				<useHitPoints>True</useHitPoints>
+				<statBases>
+					<WorkToBuild>3000</WorkToBuild>
+					<MaxHitPoints>200</MaxHitPoints>
+					<Flammability>1</Flammability>
+				</statBases>
+				<designationCategory>Production</designationCategory>
+				<!-- <uiOrder>2510</uiOrder> -->
+				<passability>PassThroughOnly</passability>
+				<pathCost>50</pathCost>
+				<hasInteractionCell>True</hasInteractionCell>
+				<interactionCellOffset>(0,0,-1)</interactionCellOffset>
+				<surfaceType>Item</surfaceType>
+				<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+				<inspectorTabs>
+					<li>ITab_Bills</li>
+				</inspectorTabs>
+				<building>
+					<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+				</building>
+				<comps>
+					<li Class="CompProperties_Power">
+						<compClass>CompPowerTrader</compClass>
+						<shortCircuitInRain>true</shortCircuitInRain>
+						<basePowerConsumption>150</basePowerConsumption>
+					</li>
+					<li Class="CompProperties_Flickable" />
+					<li Class="CompProperties_AffectedByFacilities">
+						<linkableFacilities>
+							<li>ToolCabinet</li>
+						</linkableFacilities>
+					</li>
+				</comps>
+				<placeWorkers>
+					<li>PlaceWorker_ShowFacilitiesConnections</li>
+					<li>PlaceWorker_PreventInteractionSpotOverlap</li>
+				</placeWorkers>
+				<researchPrerequisites>
+					<li>Electricity</li> <!-- TODO: -->
+				</researchPrerequisites>
+			</ThingDef>
+	<!-- DRINK MIXERS -->
+		<!-- NUKA COLA MIXER -->
+			<ThingDef ParentName="TMM_DrinkMixer_Base">
+				<defName>TMM_DrinkMixer_NukaCola</defName>
+				<label>Nuka-Cola mixer</label>
+				<description>This machine is used to mix up signature blends of Nuka-Cola of all flavours.</description>
+				<graphicData>
+					<texPath>Modules/Production/Buildings/Benches/DrinkMixing/NukaCola/NukaColaMixer</texPath>
+					<drawSize>(4,3)</drawSize>
+					<shadowData>
+						<volume>(2.22, 0.8, 0.62)</volume>
+						<offset>(0, 0, -0.13)</offset>
+					</shadowData>
+				</graphicData>
+				<costList>
+					<Steel>100</Steel>
+					<ComponentIndustrial>3</ComponentIndustrial>
+				</costList>
+				<constructEffect>ConstructMetal</constructEffect>
+				<size>(3,2)</size>
+			</ThingDef>
+		<!-- SUNSET SARSAPARILLA MIXER -->
+			<ThingDef ParentName="TMM_DrinkMixer_Base">
+				<defName>TMM_DrinkMixer_SunsetSarsaparilla</defName>
+				<label>Sunset Sarsaparilla mixer</label>
+				<description>This machine is used to mix up signature blends of Sunset Sarsaparilla.</description>
+				<graphicData>
+					<texPath>Modules/Production/Buildings/Benches/DrinkMixing/SunsetSarsaparilla/SunsetSarsaparillaMixer</texPath>
+					<drawSize>(3,3)</drawSize>
+					<shadowData>
+						<volume>(1.8, 0.8, 0.62)</volume>
+						<offset>(0, 0, -0.13)</offset>
+					</shadowData>
+				</graphicData>
+				<costList>
+					<WoodLog>50</WoodLog>
+					<Steel>50</Steel>
+					<ComponentIndustrial>3</ComponentIndustrial>
+				</costList>
+				<constructEffect>ConstructWood</constructEffect>
+				<size>(2,2)</size>
+			</ThingDef>
+		<!-- VIM MIXER -->
+			<ThingDef ParentName="TMM_DrinkMixer_Base">
+				<defName>TMM_DrinkMixer_Vim</defName>
+				<label>Vim Mixer</label>
+				<description>This machine is used to mix up signature blends of Vim.</description>
+				<graphicData>
+					<texPath>Modules/Production/Buildings/Benches/DrinkMixing/Vim/VimMixer</texPath>
+					<drawSize>(3.5,1.5)</drawSize>
+					<shadowData>
+						<volume>(2.8, 0.3, 0.54)</volume>
+						<offset>(0, 0, -0.18)</offset>
+					</shadowData>
+				</graphicData>
+				<costList>
+					<Steel>100</Steel>
+					<ComponentIndustrial>3</ComponentIndustrial>
+				</costList>
+				<constructEffect>ConstructMetal</constructEffect>
+				<size>(3,1)</size>
+			</ThingDef>
+</Defs>

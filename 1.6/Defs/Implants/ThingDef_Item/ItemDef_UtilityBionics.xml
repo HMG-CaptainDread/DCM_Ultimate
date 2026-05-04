@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!-- TMM_Hediff_ -->
+	<!-- TMM_SurgeryInstall_ -->
+	<!-- TMM_SurgeryRemove_ -->
+	<!-- TMM_Implant_ -->
+
+
+
+	<!-- BASES -->
+		<!-- UTILITY PART -->
+			<ThingDef Name="TMM_Implant_UtilityPartBase" Abstract="True">
+				<thingClass>ThingWithComps</thingClass>
+				<category>Item</category>
+				<useHitPoints>true</useHitPoints>
+				<selectable>true</selectable>
+				<graphicData>
+					<graphicClass>Graphic_Single</graphicClass>
+					<drawSize>1.4</drawSize>
+				</graphicData>
+				<statBases>
+					<MaxHitPoints>50</MaxHitPoints>
+					<Flammability>0.7</Flammability>
+					<Beauty>0</Beauty>
+					<DeteriorationRate>2.0</DeteriorationRate>
+					<Mass>1</Mass>
+				</statBases>
+				<altitudeLayer>Item</altitudeLayer>
+				<tickerType>Never</tickerType>
+				<alwaysHaulable>true</alwaysHaulable>
+				<isTechHediff>true</isTechHediff>
+				<tradeTags>
+					<li>TechHediff</li>
+				</tradeTags>
+				<comps>
+					<li Class="CompProperties_Forbiddable"/>
+				</comps>
+				<pathCost>10</pathCost>
+			</ThingDef>
+		<!-- HOLDOVER BASE -->
+			<ThingDef ParentName="BodyPartBionicBase" Name="TMM_Implant_UtilityPartHoldoverBase" Abstract="True">
+				<graphicData>
+					<texPath>Modules/Implants/Things/Implants/MiscImplants/Bionic</texPath>
+					<graphicClass>Graphic_Single</graphicClass>
+					<color>(220, 220, 220)</color>
+				</graphicData>
+				<techLevel>Spacer</techLevel>
+				<statBases>
+					<Mass>0.3</Mass>
+				</statBases>
+				<tradeTags>
+					<li>ExoticMisc</li>
+				</tradeTags>
+				<thingSetMakerTags>
+					<li>RewardStandardLowFreq</li>
+				</thingSetMakerTags>
+				<comps>
+					<li Class="CompProperties_Forbiddable"/>
+				</comps>
+			</ThingDef>
+	<!-- LIMBS -->
+		<!-- AIMING HAND -->
+			<ThingDef Name="KEP_BASEAimingHand" ParentName="TMM_Implant_UtilityPartBase" Abstract="True">
+				<techLevel>Spacer</techLevel>
+				<tradeTags>
+					<li>Bionic</li>
+				</tradeTags>
+				<thingCategories>
+					<li>BodyPartsBionic</li>
+				</thingCategories>
+			</ThingDef>
+			<ThingDef ParentName="KEP_BASEAimingHand">
+				<defName>TMM_Implant_AimingHand</defName>
+				<label>aiming hand</label>
+				<description>A hand replacement with a built in aim-assister. People with this implant say that their gun handling has hastened after replacing their hand with this.</description>
+				<graphicData>
+					<texPath>Modules/Implants/Things/Implants/UtilityImplants/AimingHand</texPath>
+				</graphicData>
+				<descriptionHyperlinks>
+					<RecipeDef>TMM_SurgeryInstall_AimingHand</RecipeDef>
+				</descriptionHyperlinks>
+				<costList>
+					<Plasteel>25</Plasteel>
+					<ComponentSpacer>1</ComponentSpacer>
+				</costList>
+				<thingSetMakerTags>
+					<li>RewardStandardMidFreq</li>
+				</thingSetMakerTags>
+				<statBases>
+					<Mass>0.3</Mass>
+					<MarketValue>850</MarketValue>
+				</statBases>
+				<techHediffsTags>
+					<li>Advanced</li>
+					<li>KEP</li>
+				</techHediffsTags>
+			</ThingDef>
+		<!-- ARCHOTECH MULTITOOL ARM -->
+			<ThingDef Name="KEP_BASEArchotechMultiToolArm" ParentName="TMM_Implant_UtilityPartBase" Abstract="True">
+				<techLevel>Archotech</techLevel>
+				<tradeTags>
+					<li>AdvancedProstheses</li>
+				</tradeTags>
+				<thingCategories>
+					<li>BodyPartsArchotech</li>
+				</thingCategories>
+			</ThingDef>
+			<ThingDef ParentName="KEP_BASEArchotechMultiToolArm">
+				<defName>TMM_Implant_ArchotechMultiToolArm</defName>
+				<label>archotech multi-tool arm</label>
+				<description>An Archotech arm replacement of unknown origin. Has tools for nearly every situation. Prized and sought after.</description>
+				<graphicData>
+					<texPath>Modules/Implants/Things/Implants/UtilityImplants/ArchotechMultiToolArm</texPath>
+				</graphicData>
+				<descriptionHyperlinks>
+					<RecipeDef>TMM_SurgeryInstall_ArchotechMultiToolArm</RecipeDef>
+				</descriptionHyperlinks>
+				<costList>
+					<Plasteel>25</Plasteel>
+					<ComponentSpacer>1</ComponentSpacer>
+				</costList>
+				<thingSetMakerTags>
+					<li>RewardStandardLowFreq</li>
+				</thingSetMakerTags>
+				<statBases>
+					<Mass>0.3</Mass>
+					<MarketValue>2500</MarketValue>
+				</statBases>
+				<techHediffsTags>
+					<li>Archotech</li>
+					<li>KEP</li>
+				</techHediffsTags>
+			</ThingDef>
+		<!-- CHAINSAW ARM -->
+			<ThingDef Name="KEP_BASEChainsawArm" ParentName="TMM_Implant_UtilityPartBase" Abstract="True">
+				<techLevel>Spacer</techLevel>
+				<tradeTags>
+					<li>Bionic</li>
+				</tradeTags>
+				<thingCategories>
+					<li>BodyPartsBionic</li>
+				</thingCategories>
+			</ThingDef>
+			<ThingDef ParentName="KEP_BASEChainsawArm">
+				<defName>TMM_Implant_ChainsawArm</defName>
+				<label>chainsaw arm</label>
+				<description>A simple arm prosthetic lined with a miniature plasteel chainsaw. Its main use is its melee capabilities, but helps with plant work too.</description>
+				<graphicData>
+					<texPath>Modules/Implants/Things/Implants/UtilityImplants/ChainsawArm</texPath>
+				</graphicData>
+				<descriptionHyperlinks>
+					<RecipeDef>TMM_SurgeryInstall_ChainsawArm</RecipeDef>
+				</descriptionHyperlinks>
+				<costList>
+					<Plasteel>60</Plasteel>
+					<ComponentSpacer>4</ComponentSpacer>
+				</costList>
+				<thingSetMakerTags>
+					<li>RewardStandardMidFreq</li>
+				</thingSetMakerTags>
+				<statBases>
+					<Mass>0.3</Mass>
+					<MarketValue>1800</MarketValue>
+				</statBases>
+				<techHediffsTags>
+					<li>Advanced</li>
+					<li>KEP</li>
+				</techHediffsTags>
+			</ThingDef>
+		<!-- CHEF HAND -->
+			<ThingDef Name="KEP_BASEchefHand" ParentName="TMM_Implant_UtilityPartBase" Abstract="True">
+				<techLevel>Spacer</techLevel>
+				<tradeTags>
+					<li>Bionic</li>
+				</tradeTags>
+				<thingCategories>
+					<li>BodyPartsBionic</li>
+				</thingCategories>
+			</ThingDef>
+			<ThingDef ParentName="KEP_BASEchefHand">
+				<defName>TMM_Implant_ChefHand</defName>
+				<label>chef hand</label>
+				<description>A hand replacement with built-in cooking tools as well as a simple recipe database. Can be rather intrusive at times.</description>
+				<graphicData>
+					<texPath>Modules/Implants/Things/Implants/UtilityImplants/ChefHand</texPath>
+				</graphicData>
+				<descriptionHyperlinks>
+					<RecipeDef>TMM_SurgeryInstall_ChefHand</RecipeDef>
+				</descriptionHyperlinks>
+				<costList>
+					<Plasteel>25</Plasteel>
+					<ComponentSpacer>4</ComponentSpacer>
+				</costList>
+				<thingSetMakerTags>
+					<li>RewardStandardMidFreq</li>
+				</thingSetMakerTags>
+				<statBases>
+					<Mass>0.3</Mass>
+					<MarketValue>850</MarketValue>
+				</statBases>
+				<techHediffsTags>
+					<li>Advanced</li>
+					<li>KEP</li>
+				</techHediffsTags>
+			</ThingDef>
+		<!-- COMPUTING ARM -->
+			<ThingDef Name="KEP_BASEcomputingArm" ParentName="TMM_Implant_UtilityPartBase" Abstract="True">
+				<techLevel>Spacer</techLevel>
+				<tradeTags>
+					<li>Bionic</li>
+				</tradeTags>
+				<thingCategories>
+					<li>BodyPartsBionic</li>
+				</thingCategories>
+			</ThingDef>
+			<ThingDef ParentName="KEP_BASEcomputingArm">
+				<defName>TMM_Implant_ComputingArm</defName>
+				<label>computing arm</label>
+				<description>An arm replacement with an on board sub-persona core and calculator. Shown to increase a persons research capabilities. Teachers demand the arms be shut-down in exams due to thousands of young glitter-world children cheating via telepathy with the sub-persona core.</description>
+				<graphicData>
+					<texPath>Modules/Implants/Things/Implants/UtilityImplants/ComputingArm</texPath>
+				</graphicData>
+				<descriptionHyperlinks>
+					<RecipeDef>TMM_SurgeryInstall_ComputingArm</RecipeDef>
+				</descriptionHyperlinks>
+				<costList>
+					<Plasteel>30</Plasteel>
+					<ComponentSpacer>3</ComponentSpacer>
+				</costList>
+				<thingSetMakerTags>
+					<li>RewardStandardMidFreq</li>
+				</thingSetMakerTags>
+				<statBases>
+					<Mass>0.3</Mass>
+					<MarketValue>850</MarketValue>
+				</statBases>
+				<techHediffsTags>
+					<li>Advanced</li>
+					<li>KEP</li>
+				</techHediffsTags>
+			</ThingDef>
+		<!-- MEDIHAND -->
+			<ThingDef ParentName="BodyPartProstheticImperialBase">
+				<defName>TMM_Implant_MediHand</defName>
+				<label>medi-hand</label>
+				<description>A biomechanical arm replacement. With its built in morphine injectors and electrocautery blade, it can allow the user to rapidly tend wounds or apply surgery. It also has a general-purpose manipulator. It is somewhat ungainly, which slows down movement slightly.</description>
+				<descriptionHyperlinks>
+					<RecipeDef>TMM_SurgeryInstall_MediHand</RecipeDef>
+				</descriptionHyperlinks>
+				<thingSetMakerTags>
+					<li>RewardStandardLowFreq</li>
+				</thingSetMakerTags>
+				<costList>
+					<Steel>60</Steel>
+					<ComponentIndustrial>8</ComponentIndustrial>
+				</costList>
+				<recipeMaker>
+					<researchPrerequisite>SpecializedLimbs</researchPrerequisite>
+				</recipeMaker>
+				<techHediffsTags>
+					<li>TMM_Hediff_MediHand</li>
+				</techHediffsTags>
+			</ThingDef>
+		<!-- MINING HAND -->
+			<ThingDef Name="KEP_BASEMiningHand" ParentName="TMM_Implant_UtilityPartBase" Abstract="True">
+				<techLevel>Spacer</techLevel>
+				<tradeTags>
+					<li>Bionic</li>
+				</tradeTags>
+				<thingCategories>
+					<li>BodyPartsBionic</li>
+				</thingCategories>
+			</ThingDef>
+			<ThingDef ParentName="KEP_BASEMiningHand">
+				<defName>TMM_Implant_MiningHand</defName>
+				<label>mining hand</label>
+				<description>A hand replacement with plasteel-lined fingers for digging and stoneworking. The fingers are a bit slower than its fleshier predecessor.</description>
+				<graphicData>
+					<texPath>Modules/Implants/Things/Implants/UtilityImplants/MiningHand</texPath>
+				</graphicData>
+				<descriptionHyperlinks>
+					<RecipeDef>TMM_SurgeryInstall_MiningHand</RecipeDef>
+				</descriptionHyperlinks>
+				<costList>
+					<Plasteel>25</Plasteel>
+					<ComponentSpacer>1</ComponentSpacer>
+				</costList>
+				<thingSetMakerTags>
+					<li>RewardStandardMidFreq</li>
+				</thingSetMakerTags>
+				<statBases>
+					<Mass>0.3</Mass>
+					<MarketValue>850</MarketValue>
+				</statBases>
+				<techHediffsTags>
+					<li>Advanced</li>
+					<li>KEP</li>
+				</techHediffsTags>
+			</ThingDef>
+		<!-- MULTITOOL ARM -->
+			<ThingDef Name="KEP_BASEMultiToolArm" ParentName="TMM_Implant_UtilityPartBase" Abstract="True">
+				<techLevel>Spacer</techLevel>
+				<tradeTags>
+					<li>Bionic</li>
+				</tradeTags>
+				<thingCategories>
+					<li>BodyPartsBionic</li>
+				</thingCategories>
+				<statBases>
+					<DeteriorationRate>2.0</DeteriorationRate>
+				</statBases>
+			</ThingDef>
+			<ThingDef ParentName="KEP_BASEMultiToolArm">
+				<defName>TMM_Implant_MultiToolArm</defName>
+				<label>multi-tool arm</label>
+				<description>A glitter-world arm replacement with spacer tools for general use. Great for any colonist.</description>
+				<graphicData>
+					<texPath>Modules/Implants/Things/Implants/UtilityImplants/MultiToolArm</texPath>
+				</graphicData>
+				<descriptionHyperlinks>
+					<RecipeDef>TMM_SurgeryInstall_MultiToolArm</RecipeDef>
+				</descriptionHyperlinks>
+				<costList>
+					<Plasteel>60</Plasteel>
+					<ComponentSpacer>3</ComponentSpacer>
+				</costList>
+				<thingSetMakerTags>
+					<li>RewardStandardLowFreq</li>
+				</thingSetMakerTags>
+				<statBases>
+					<Mass>0.3</Mass>
+					<MarketValue>1200</MarketValue>
+				</statBases>
+				<techHediffsTags>
+					<li>Advanced</li>
+					<li>KEP</li>
+				</techHediffsTags>
+			</ThingDef>
+		<!-- SAW ARM -->
+			<ThingDef ParentName="BodyPartProstheticImperialBase">
+				<defName>TMM_Implant_SawArm</defName>
+				<label>saw arm</label>
+				<description>A biomechanical arm replacement. It has a built-in angle grinder, which allows the user to rapidly inflict cuts in melee combat, The saw is also pretty good at harvesting crops. It also has a general-purpose manipulator. It is somewhat ungainly, which slows down movement slightly.</description>
+				<descriptionHyperlinks>
+					<RecipeDef>TMM_SurgeryInstall_SawArm</RecipeDef>
+				</descriptionHyperlinks>
+				<thingSetMakerTags>
+					<li>RewardStandardLowFreq</li>
+				</thingSetMakerTags>
+				<costList>
+					<Steel>60</Steel>
+					<ComponentIndustrial>8</ComponentIndustrial>
+				</costList>
+				<recipeMaker>
+					<researchPrerequisite>SpecializedLimbs</researchPrerequisite>
+				</recipeMaker>
+				<techHediffsTags>
+					<li>TMM_Hediff_SawArm</li>
+				</techHediffsTags>
+			</ThingDef>
+		<!-- TAMER'S HAND -->
+			<ThingDef Name="KEP_BASETamersHand" ParentName="TMM_Implant_UtilityPartBase" Abstract="True">
+				<techLevel>Spacer</techLevel>
+				<tradeTags>
+					<li>Bionic</li>
+				</tradeTags>
+				<thingCategories>
+					<li>BodyPartsBionic</li>
+				</thingCategories>
+				<statBases>
+					<DeteriorationRate>2.0</DeteriorationRate>
+				</statBases>
+			</ThingDef>
+			<ThingDef ParentName="KEP_BASETamersHand">
+				<defName>TMM_Implant_TamersHand</defName>
+				<label>tamer's hand</label>
+				<description>A hand replacement with a built-in animal heartbeat monitor and a soft pillowed palm for calming animals. Great for taming and training thrumbos and rats alike.</description>
+				<graphicData>
+					<texPath>Modules/Implants/Things/Implants/UtilityImplants/TamerHand</texPath>
+				</graphicData>
+				<descriptionHyperlinks>
+					<RecipeDef>TMM_SurgeryInstall_TamersHand</RecipeDef>
+				</descriptionHyperlinks>
+				<costList>
+					<Plasteel>25</Plasteel>
+					<ComponentSpacer>3</ComponentSpacer>
+				</costList>
+				<thingSetMakerTags>
+					<li>RewardStandardMidFreq</li>
+				</thingSetMakerTags>
+				<statBases>
+					<Mass>0.3</Mass>
+					<MarketValue>950</MarketValue>
+				</statBases>
+				<techHediffsTags>
+					<li>Advanced</li>
+					<li>KEP</li>
+				</techHediffsTags>
+			</ThingDef>
+		<!-- TOOLBOX ARM -->
+			<ThingDef Name="KEP_BASEToolboxArm" ParentName="TMM_Implant_UtilityPartBase" Abstract="True">
+				<techLevel>Spacer</techLevel>
+				<tradeTags>
+					<li>Bionic</li>
+				</tradeTags>
+				<thingCategories>
+					<li>BodyPartsBionic</li>
+				</thingCategories>
+				<statBases>
+					<DeteriorationRate>2.0</DeteriorationRate>
+				</statBases>
+			</ThingDef>
+			<ThingDef ParentName="KEP_BASEToolboxArm">
+				<defName>TMM_Implant_ToolboxArm</defName>
+				<label>toolbox arm</label>
+				<description>A light metal arm with slots that contain essential building tools above where the radius bone should have been. Rather intrusive to daily life sometimes but makes up for it with construction power.</description>
+				<graphicData>
+					<texPath>Modules/Implants/Things/Implants/UtilityImplants/ToolboxArm</texPath>
+				</graphicData>
+				<descriptionHyperlinks>
+					<RecipeDef>TMM_SurgeryInstall_ToolboxArm</RecipeDef>
+				</descriptionHyperlinks>
+				<costList>
+					<Steel>50</Steel>
+					<Plasteel>10</Plasteel>
+					<ComponentSpacer>4</ComponentSpacer>
+				</costList>
+				<thingSetMakerTags>
+					<li>RewardStandardMidFreq</li>
+				</thingSetMakerTags>
+				<statBases>
+					<Mass>0.2</Mass>
+					<MarketValue>1100</MarketValue>
+				</statBases>
+				<techHediffsTags>
+					<li>Advanced</li>
+					<li>KEP</li>
+				</techHediffsTags>
+			</ThingDef>
+		<!-- TRADER'S JAW -->
+			<ThingDef Name="KEP_BASETradersJaw" ParentName="TMM_Implant_UtilityPartBase" Abstract="True">
+				<techLevel>Spacer</techLevel>
+				<tradeTags>
+					<li>Bionic</li>
+				</tradeTags>
+				<thingCategories>
+					<li>BodyPartsBionic</li>
+				</thingCategories>
+				<statBases>
+					<DeteriorationRate>2.0</DeteriorationRate>
+				</statBases>
+			</ThingDef>
+			<ThingDef ParentName="KEP_BASETradersJaw">
+				<defName>TMM_Implant_TradersJaw</defName>
+				<label>trader's jaw</label>
+				<description>A jaw replacement with a built-in computer under the tongue. The computer sends information to the brain about how the person in front of you might react to certain questions. Has a built-in pun collection to choose from.</description>
+				<graphicData>
+					<texPath>Modules/Implants/Things/Implants/UtilityImplants/TraderJaw</texPath>
+				</graphicData>
+				<descriptionHyperlinks>
+					<RecipeDef>TMM_SurgeryInstall_TradersJaw</RecipeDef>
+				</descriptionHyperlinks>
+				<costList>
+					<Plasteel>25</Plasteel>
+					<ComponentSpacer>1</ComponentSpacer>
+					<ComponentIndustrial>1</ComponentIndustrial>
+				</costList>
+				<thingSetMakerTags>
+					<li>RewardStandardMidFreq</li>
+				</thingSetMakerTags>
+				<statBases>
+					<Mass>0.3</Mass>
+					<MarketValue>1400</MarketValue>
+				</statBases>
+				<techHediffsTags>
+					<li>Advanced</li>
+					<li>KEP</li>
+				</techHediffsTags>
+			</ThingDef>
+		<!-- WELDER ARM -->
+			<ThingDef ParentName="BodyPartProstheticImperialBase">
+				<defName>TMM_Implant_WelderArm</defName>
+				<label>welder arm</label>
+				<description>A biomechanical arm replacement. It has a built-in spot welder, which allows the user to rapidly construct machinery and buildings. It also has a general-purpose manipulator. It is somewhat ungainly, which slows down movement slightly /n/ The spot welder can inflict burns in melee combat.</description>
+				<descriptionHyperlinks>
+					<RecipeDef>TMM_SurgeryInstall_WelderArm</RecipeDef>
+				</descriptionHyperlinks>
+				<thingSetMakerTags>
+					<li>RewardStandardLowFreq</li>
+				</thingSetMakerTags>
+				<costList>
+					<Steel>60</Steel>
+					<ComponentIndustrial>8</ComponentIndustrial>
+				</costList>
+				<recipeMaker>
+					<researchPrerequisite>SpecializedLimbs</researchPrerequisite>
+				</recipeMaker>
+				<techHediffsTags>
+					<li>TMM_Hediff_WelderArm</li>
+				</techHediffsTags>
+			</ThingDef>
+	<!-- IMPLANTS -->
+		<!-- WORK IMPLANTS -->
+			<!-- TOM NOOK HARVEST -->
+				<ThingDef ParentName="TMM_Implant_UtilityPartHoldoverBase">
+					<defName>TMM_Implant_TomNookHarvestImplant</defName>
+					<label>Tom Nook Harvest implant</label>
+					<description>Another coveted implant bestowed on the world by the Vacuous and then downgraded to be feasible for mass manufacture. This implant dramatically improves a user's capability to strip animal flesh and leather off the bones, allowing the user to get as much meat as possible from animals.\nUsed by workers in the Vacuous' industrial-grade thrumbo farms.</description>
+					<descriptionHyperlinks>
+						<RecipeDef>TMM_SurgeryInstall_TomNookHarvestImplant</RecipeDef>
+					</descriptionHyperlinks>
+					<statBases>
+						<MarketValue>4500</MarketValue>
+					</statBases>
+					<costList>
+						<Plasteel>22</Plasteel>
+						<ComponentSpacer>5</ComponentSpacer>
+					</costList>
+				</ThingDef>
+			<!-- GENERAL LABOUR -->
+				<ThingDef ParentName="TMM_Implant_UtilityPartHoldoverBase">
+					<defName>TMM_Implant_LabourersImplant</defName>
+					<label>labourer's implant</label>
+					<description>Another coveted implant bestowed on the world by the Vacuous and then downgraded to be feasible for mass manufacture. This implant dramatically improves a user's capability to perform random labor. Great for generalists and janitors.</description>
+					<descriptionHyperlinks>
+						<RecipeDef>TMM_SurgeryInstall_LabourersImplant</RecipeDef>
+					</descriptionHyperlinks>
+					<statBases>
+						<MarketValue>3500</MarketValue>
+					</statBases>
+					<costList>
+						<Plasteel>20</Plasteel>
+						<ComponentSpacer>4</ComponentSpacer>
+					</costList>
+				</ThingDef>
+			<!-- MERCENARY CONVENIENCE -->
+				<ThingDef ParentName="TMM_Implant_UtilityPartHoldoverBase">
+					<defName>TMM_Implant_MercenaryConvenienceImplant</defName>
+					<label>mercenary convenience implant</label>
+					<description>This all-in-one work implant allows mercenaries to improve their cooking, cleaning, and general work speed while in camp. It helps avoid food poisoning and general wastes of time and resources. Good for after a battle.</description>
+					<descriptionHyperlinks>
+						<RecipeDef>TMM_SurgeryInstall_MercenaryConvenienceImplant</RecipeDef>
+					</descriptionHyperlinks>
+					<statBases>
+						<MarketValue>2500</MarketValue>
+					</statBases>
+					<costList>
+						<Steel>15</Steel>
+						<ComponentIndustrial>3</ComponentIndustrial>
+					</costList>
+				</ThingDef>
+			<!-- TRADER CHIP -->
+				<ThingDef ParentName="TMM_Implant_UtilityPartHoldoverBase">
+					<defName>TMM_Implant_TraderChipImplant</defName>
+					<label>trader chip implant</label>
+					<description>Another coveted implant bestowed on the world by the Vacuous and then downgraded to be feasible for mass manufacture. This implant dramatically improves trading knowledge. Somewhere in its code is the equation, and solution, for capitalism.\nEarly recipients were able to make fortunes off the stock market before they were eliminated and their wealth taken by mercenaries using combat implants.</description>
+					<descriptionHyperlinks>
+						<RecipeDef>TMM_SurgeryInstall_TraderChipImplant</RecipeDef>
+					</descriptionHyperlinks>
+					<statBases>
+						<MarketValue>6000</MarketValue>
+					</statBases>
+					<costList>
+						<Plasteel>30</Plasteel>
+						<ComponentSpacer>6</ComponentSpacer>
+					</costList>
+				</ThingDef>
+	<!--  -->
+</Defs>

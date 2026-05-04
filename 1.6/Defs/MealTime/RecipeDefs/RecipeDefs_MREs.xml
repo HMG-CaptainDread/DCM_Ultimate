@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!-- TMM_MRECooking_ -->
+
+
+
+	<!-- BASES -->
+		<!-- MAIN -->
+			<RecipeDef ParentName="CookMealBase" Name="TMM_MRECooking_Base" Abstract="True">
+				<jobString>Making MREs.</jobString>
+
+				<workSpeedStat>CookSpeed</workSpeedStat>
+				<requiredGiverWorkType>Cooking</requiredGiverWorkType>
+				<effectWorking>Cook</effectWorking>
+				<soundWorking>Recipe_CookMeal</soundWorking>
+
+				<allowMixingIngredients>true</allowMixingIngredients>
+
+				<recipeUsers>
+					<li>ElectricStove</li>
+					<li>FueledStove</li>
+				</recipeUsers>
+
+				<skillRequirements>
+					<Cooking>8</Cooking>
+				</skillRequirements>
+
+				<researchPrerequisites>
+					<li>PackagedSurvivalMeal</li>
+				</researchPrerequisites>
+			</RecipeDef>
+		<!-- CARNIVORE -->
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_MRECooking_Base" Name="TMM_MRECooking_CarnivoreRegularBase" Abstract="True">
+					<workAmount>700</workAmount>
+
+					<ingredients>
+						<li>
+							<filter>
+								<categories>
+									<li>MeatRaw</li>
+									<li>AnimalProductRaw</li>
+								</categories>
+							</filter>
+							<count>12</count>
+						</li>
+					</ingredients>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_MRECooking_Base" Name="TMM_MRECooking_CarnivoreBulkBase" Abstract="True">
+					<workAmount>2400</workAmount>
+
+					<ingredients>
+						<li>
+							<filter>
+								<categories>
+									<li>MeatRaw</li>
+									<li>AnimalProductRaw</li>
+								</categories>
+							</filter>
+							<count>48</count>
+						</li>
+					</ingredients>
+				</RecipeDef>
+		<!-- REGULAR -->
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_MRECooking_Base" Name="TMM_MRECooking_RegularRegularBase" Abstract="True">
+					<workAmount>600</workAmount>
+
+					<ingredients>
+						<li>
+							<filter>
+								<customSummary>protein</customSummary>
+								<categories>
+									<li>MeatRaw</li>
+									<li>AnimalProductRaw</li>
+								</categories>
+							</filter>
+							<count>6</count>
+						</li>
+						<li>
+							<filter>
+								<categories>
+									<li>PlantFoodRaw</li>
+								</categories>
+							</filter>
+							<count>6</count>
+						</li>
+					</ingredients>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_MRECooking_Base" Name="TMM_MRECooking_RegularBulkBase" Abstract="True">
+					<workAmount>2000</workAmount>
+
+					<ingredients>
+						<li>
+							<filter>
+								<customSummary>protein</customSummary>
+								<categories>
+									<li>MeatRaw</li>
+									<li>AnimalProductRaw</li>
+								</categories>
+							</filter>
+							<count>24</count>
+						</li>
+						<li>
+							<filter>
+								<categories>
+									<li>PlantFoodRaw</li>
+								</categories>
+							</filter>
+							<count>24</count>
+						</li>
+					</ingredients>
+				</RecipeDef>
+		<!-- VEGETARIAN -->
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_MRECooking_Base" Name="TMM_MRECooking_VegetarianRegularBase" Abstract="True">
+					<workAmount>700</workAmount>
+
+					<ingredients>
+						<li>
+							<filter>
+								<categories>
+									<li>PlantFoodRaw</li>
+								</categories>
+							</filter>
+							<count>12</count>
+						</li>
+					</ingredients>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_MRECooking_Base" Name="TMM_MRECooking_VegetarianBulkBase" Abstract="True">
+					<workAmount>2400</workAmount>
+
+					<ingredients>
+						<li>
+							<filter>
+								<categories>
+									<li>PlantFoodRaw</li>
+								</categories>
+							</filter>
+							<count>48</count>
+						</li>
+					</ingredients>
+				</RecipeDef>
+	<!-- AMERICAN -->
+		<!-- CARNIVORE -->
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_MRECooking_CarnivoreRegularBase">
+					<defName>TMM_MRECooking_AmericanCarnivore</defName>
+					<label>Make meat-only American MRE</label>
+					<description>Create a meat-only American MRE.</description>
+
+					<products>
+						<TMM_MRE_AmericanCarnivore>1</TMM_MRE_AmericanCarnivore>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_MRECooking_CarnivoreBulkBase">
+					<defName>TMM_MRECooking_AmericanCarnivoreBulk</defName>
+					<label>Make bulk meat-only American MREs</label>
+					<description>Create a 4-pack of meat-only American MREs.</description>
+
+					<products>
+						<TMM_MRE_AmericanCarnivore>4</TMM_MRE_AmericanCarnivore>
+					</products>
+				</RecipeDef>
+		<!-- REGULAR -->
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_MRECooking_RegularRegularBase">
+					<defName>TMM_MRECooking_AmericanRegular</defName>
+					<label>Make American MRE</label>
+					<description>Create a well-rounded American MRE.</description>
+
+					<products>
+						<TMM_MRE_AmericanRegular>1</TMM_MRE_AmericanRegular>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_MRECooking_RegularBulkBase">
+					<defName>TMM_MRECooking_AmericanRegularBulk</defName>
+					<label>Make bulk American MREs</label>
+					<description>Create a 4-pack of American MREs.</description>
+
+					<products>
+						<TMM_MRE_AmericanRegular>4</TMM_MRE_AmericanRegular>
+					</products>
+				</RecipeDef>
+		<!-- VEGETARIAN -->
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_MRECooking_VegetarianRegularBase">
+					<defName>TMM_MRECooking_AmericanVegetarian</defName>
+					<label>Make vegetarian American MRE</label>
+					<description>Create a vegetarian American MRE.</description>
+
+					<products>
+						<TMM_MRE_AmericanVegetarian>1</TMM_MRE_AmericanVegetarian>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_MRECooking_VegetarianBulkBase">
+					<defName>TMM_MRECooking_AmericanVegetarianBulk</defName>
+					<label>Make bulk vegetarian American MREs</label>
+					<description>Create a 4-pack of vegetarian American MREs.</description>
+
+					<products>
+						<TMM_MRE_AmericanVegetarian>4</TMM_MRE_AmericanVegetarian>
+					</products>
+				</RecipeDef>
+	<!-- GERMAN -->
+		<!-- CARNIVORE -->
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_MRECooking_CarnivoreRegularBase">
+					<defName>TMM_MRECooking_GermanCarnivore</defName>
+					<label>Make meat-only German EPA</label>
+					<description>Create a meat-only German EPA.</description>
+
+					<products>
+						<TMM_MRE_GermanCarnivore>1</TMM_MRE_GermanCarnivore>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_MRECooking_CarnivoreBulkBase">
+					<defName>TMM_MRECooking_GermanCarnivoreBulk</defName>
+					<label>Make bulk meat-only German EPAs</label>
+					<description>Create a 4-pack of meat-only German EPAs.</description>
+
+					<products>
+						<TMM_MRE_GermanCarnivore>4</TMM_MRE_GermanCarnivore>
+					</products>
+				</RecipeDef>
+		<!-- REGULAR -->
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_MRECooking_RegularRegularBase">
+					<defName>TMM_MRECooking_GermanRegular</defName>
+					<label>Make German EPA</label>
+					<description>Create a well-rounded German EPA.</description>
+
+					<products>
+						<TMM_MRE_GermanRegular>1</TMM_MRE_GermanRegular>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_MRECooking_RegularBulkBase">
+					<defName>TMM_MRECooking_GermanRegularBulk</defName>
+					<label>Make bulk German EPAs</label>
+					<description>Create a 4-pack of German EPAs.</description>
+
+					<products>
+						<TMM_MRE_GermanRegular>4</TMM_MRE_GermanRegular>
+					</products>
+				</RecipeDef>
+		<!-- VEGETARIAN -->
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_MRECooking_VegetarianRegularBase">
+					<defName>TMM_MRECooking_GermanVegetarian</defName>
+					<label>Make vegetarian German EPA</label>
+					<description>Create a vegetarian German EPA.</description>
+
+					<products>
+						<TMM_MRE_GermanVegetarian>1</TMM_MRE_GermanVegetarian>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_MRECooking_VegetarianBulkBase">
+					<defName>TMM_MRECooking_GermanVegetarianBulk</defName>
+					<label>Make bulk vegetarian German EPAs</label>
+					<description>Create a 4-pack of vegetarian German EPAs.</description>
+
+					<products>
+						<TMM_MRE_GermanVegetarian>4</TMM_MRE_GermanVegetarian>
+					</products>
+				</RecipeDef>
+	<!-- JAPANESE -->
+		<!-- CARNIVORE -->
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_MRECooking_CarnivoreRegularBase">
+					<defName>TMM_MRECooking_JapaneseCarnivore</defName>
+					<label>Make meat-only JSDF military ration</label>
+					<description>Create a meat-only JSDF military ration.</description>
+
+					<products>
+						<TMM_MRE_JapaneseCarnivore>1</TMM_MRE_JapaneseCarnivore>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_MRECooking_CarnivoreBulkBase">
+					<defName>TMM_MRECooking_JapaneseCarnivoreBulk</defName>
+					<label>Make bulk meat-only JSDF military rations</label>
+					<description>Create a 4-pack of meat-only JSDF military rations.</description>
+
+					<products>
+						<TMM_MRE_JapaneseCarnivore>4</TMM_MRE_JapaneseCarnivore>
+					</products>
+				</RecipeDef>
+		<!-- REGULAR -->
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_MRECooking_RegularRegularBase">
+					<defName>TMM_MRECooking_JapaneseRegular</defName>
+					<label>Make JSDF military ration</label>
+					<description>Create a well-rounded JSDF military ration.</description>
+
+					<products>
+						<TMM_MRE_JapaneseRegular>1</TMM_MRE_JapaneseRegular>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_MRECooking_RegularBulkBase">
+					<defName>TMM_MRECooking_JapaneseRegularBulk</defName>
+					<label>Make bulk JSDF military rations</label>
+					<description>Create a 4-pack of JSDF military rations.</description>
+
+					<products>
+						<TMM_MRE_JapaneseRegular>4</TMM_MRE_JapaneseRegular>
+					</products>
+				</RecipeDef>
+		<!-- VEGETARIAN -->
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_MRECooking_VegetarianRegularBase">
+					<defName>TMM_MRECooking_JapaneseVegetarian</defName>
+					<label>Make vegetarian JSDF military ration</label>
+					<description>Create a vegetarian JSDF military ration.</description>
+
+					<products>
+						<TMM_MRE_JapaneseVegetarian>1</TMM_MRE_JapaneseVegetarian>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_MRECooking_VegetarianBulkBase">
+					<defName>TMM_MRECooking_JapaneseVegetarianBulk</defName>
+					<label>Make bulk vegetarian JSDF military rations</label>
+					<description>Create a 4-pack of vegetarian JSDF military rations.</description>
+
+					<products>
+						<TMM_MRE_JapaneseVegetarian>4</TMM_MRE_JapaneseVegetarian>
+					</products>
+				</RecipeDef>
+	<!-- RUSSIAN -->
+		<!-- CARNIVORE -->
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_MRECooking_CarnivoreRegularBase">
+					<defName>TMM_MRECooking_RussianCarnivore</defName>
+					<label>Make meat-only Russian IRP</label>
+					<description>Create a meat-only Russian IRP.</description>
+
+					<products>
+						<TMM_MRE_RussianCarnivore>1</TMM_MRE_RussianCarnivore>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_MRECooking_CarnivoreBulkBase">
+					<defName>TMM_MRECooking_RussianCarnivoreBulk</defName>
+					<label>Make bulk meat-only Russian IRPs</label>
+					<description>Create a 4-pack of meat-only Russian IRPs.</description>
+
+					<products>
+						<TMM_MRE_RussianCarnivore>4</TMM_MRE_RussianCarnivore>
+					</products>
+				</RecipeDef>
+		<!-- REGULAR -->
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_MRECooking_RegularRegularBase">
+					<defName>TMM_MRECooking_RussianRegular</defName>
+					<label>Make Russian IRP</label>
+					<description>Create a well-rounded Russian IRP.</description>
+
+					<products>
+						<TMM_MRE_RussianRegular>1</TMM_MRE_RussianRegular>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_MRECooking_RegularBulkBase">
+					<defName>TMM_MRECooking_RussianRegularBulk</defName>
+					<label>Make bulk Russian IRPs</label>
+					<description>Create a 4-pack of Russian IRPs.</description>
+
+					<products>
+						<TMM_MRE_RussianRegular>4</TMM_MRE_RussianRegular>
+					</products>
+				</RecipeDef>
+		<!-- VEGETARIAN -->
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_MRECooking_VegetarianRegularBase">
+					<defName>TMM_MRECooking_RussianVegetarian</defName>
+					<label>Make vegetarian Russian IRP</label>
+					<description>Create a vegetarian Russian IRP.</description>
+
+					<products>
+						<TMM_MRE_RussianVegetarian>1</TMM_MRE_RussianVegetarian>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_MRECooking_VegetarianBulkBase">
+					<defName>TMM_MRECooking_RussianVegetarianBulk</defName>
+					<label>Make bulk vegetarian Russian IRPs</label>
+					<description>Create a 4-pack of vegetarian Russian IRPs.</description>
+
+					<products>
+						<TMM_MRE_RussianVegetarian>4</TMM_MRE_RussianVegetarian>
+					</products>
+				</RecipeDef>
+	<!-- TURKISH -->
+		<!-- CARNIVORE -->
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_MRECooking_CarnivoreRegularBase">
+					<defName>TMM_MRECooking_TurkishCarnivore</defName>
+					<label>Make meat-only Turkish MRE</label>
+					<description>Create a meat-only Turkish MRE.</description>
+
+					<products>
+						<TMM_MRE_TurkishCarnivore>1</TMM_MRE_TurkishCarnivore>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_MRECooking_CarnivoreBulkBase">
+					<defName>TMM_MRECooking_TurkishCarnivoreBulk</defName>
+					<label>Make bulk meat-only Turkish MREs</label>
+					<description>Create a 4-pack of meat-only Turkish MREs.</description>
+
+					<products>
+						<TMM_MRE_TurkishCarnivore>4</TMM_MRE_TurkishCarnivore>
+					</products>
+				</RecipeDef>
+		<!-- REGULAR -->
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_MRECooking_RegularRegularBase">
+					<defName>TMM_MRECooking_TurkishRegular</defName>
+					<label>Make Turkish MRE</label>
+					<description>Create a well-rounded Turkish MRE.</description>
+
+					<products>
+						<TMM_MRE_TurkishRegular>1</TMM_MRE_TurkishRegular>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_MRECooking_RegularBulkBase">
+					<defName>TMM_MRECooking_TurkishRegularBulk</defName>
+					<label>Make bulk Turkish MREs</label>
+					<description>Create a 4-pack of Turkish MREs.</description>
+
+					<products>
+						<TMM_MRE_TurkishRegular>4</TMM_MRE_TurkishRegular>
+					</products>
+				</RecipeDef>
+		<!-- VEGETARIAN -->
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_MRECooking_VegetarianRegularBase">
+					<defName>TMM_MRECooking_TurkishVegetarian</defName>
+					<label>Make vegetarian Turkish MRE</label>
+					<description>Create a vegetarian Turkish MRE.</description>
+
+					<products>
+						<TMM_MRE_TurkishVegetarian>1</TMM_MRE_TurkishVegetarian>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_MRECooking_VegetarianBulkBase">
+					<defName>TMM_MRECooking_TurkishVegetarianBulk</defName>
+					<label>Make bulk vegetarian Turkish MREs</label>
+					<description>Create a 4-pack of vegetarian Turkish MREs.</description>
+
+					<products>
+						<TMM_MRE_TurkishVegetarian>4</TMM_MRE_TurkishVegetarian>
+					</products>
+				</RecipeDef>
+	<!--  -->
+</Defs>

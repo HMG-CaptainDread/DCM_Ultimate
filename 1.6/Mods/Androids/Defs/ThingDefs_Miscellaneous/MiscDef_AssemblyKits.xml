@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- ASSEMBLY BASE -->
+		<ThingDef ParentName="ResourceBase" Name="TMM_AndroidAssemblyKit_Base" Abstract="True">
+			<thingClass>ThingWithComps</thingClass>
+			<graphicData>
+				<graphicClass>Graphic_Single</graphicClass>
+			</graphicData>
+			<resourceReadoutPriority>Middle</resourceReadoutPriority>
+			<stackLimit>1</stackLimit>
+			<useHitPoints>true</useHitPoints>
+			<statBases>
+				<MaxHitPoints>70</MaxHitPoints>
+				<Mass>30.0</Mass>
+			</statBases>
+			<thingCategories>
+				<li>Items</li>
+			</thingCategories>
+			<tradeability>All</tradeability>
+			<techLevel>Spacer</techLevel>
+			<tradeTags>
+				<li>ExoticMisc</li>
+			</tradeTags>
+			<comps>
+				<li Class="CompProperties_UseEffectDestroySelf" />
+			</comps>
+		</ThingDef>
+	<!-- ARCHDROID -->
+		<ThingDef ParentName="ResourceBase">
+			<defName>NArchDroidKit</defName>
+			<label>Archdroid assembly kit</label>
+			<thingClass>ThingWithComps</thingClass>
+			<description>A kit containing a disassembled archdroid with all the tools required to assemble it.</description>
+			<graphicData>
+			<texPath>Things/Item/DroidAssemblyKit</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			</graphicData>
+			<resourceReadoutPriority>Middle</resourceReadoutPriority>
+			<stackLimit>1</stackLimit>
+			<useHitPoints>true</useHitPoints>
+			<statBases>
+			<MarketValue>5000</MarketValue>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Mass>60.0</Mass>
+			</statBases>
+			<thingCategories>
+			<li>Items</li>
+			</thingCategories>
+			<tradeability>All</tradeability>
+			<techLevel>Archotech</techLevel>
+			<tradeTags>
+			<li>ExoticMisc</li>
+			</tradeTags>
+			<comps>
+			<li Class="CompProperties_Usable">
+				<useJob>UseItem</useJob>
+				<useLabel>Assemble ArchDroid</useLabel>
+				<useDuration>600</useDuration>
+			</li>
+			<li Class="Androids.CompProperties_SpawnPawn">
+				<compClass>Androids.CompUseEffect_SpawnDroid</compClass>
+				<pawnKind>ChjArchDroidColonist</pawnKind>
+			</li>
+			<li Class="CompProperties_UseEffectDestroySelf" />
+			</comps>
+		</ThingDef>
+	<!-- ASSEMBLY DRONE -->
+		<ThingDef ParentName="TMM_AndroidAssemblyKit_Base">
+			<defName>XAssemblyDroneKit</defName>
+			<label>assembly drone assembly kit</label>
+			<description>A kit containing a disassembled assembly drone with all the tools required to assemble it.</description>
+			<graphicData>
+				<texPath>Things/Item/BattleDroidAssemblyKit</texPath> <!-- TODO: -->
+			</graphicData>
+			<statBases>
+				<MarketValue>800</MarketValue>
+			</statBases>
+			<comps>
+				<li Class="CompProperties_Usable">
+					<useJob>UseItem</useJob>
+					<useLabel>Assemble assembly drone</useLabel>
+					<useDuration>600</useDuration>
+				</li>
+				<li Class="Androids.CompProperties_SpawnPawn">
+					<compClass>Androids.CompUseEffect_SpawnDroid</compClass>
+					<pawnKind>XAssemblyDroneColonist</pawnKind>
+				</li>
+			</comps>
+		</ThingDef>
+	<!-- DESTROYER -->
+		<ThingDef ParentName="ResourceBase">
+			<defName>NdestoyerKit</defName>
+			<label>Destroyer assembly kit</label>
+			<thingClass>ThingWithComps</thingClass>
+			<description>A kit containing a disassembled destroyer with all the tools required to assemble it.</description>
+			<graphicData>
+				<texPath>Things/Item/BattleDroidAssemblyKit</texPath>
+				<graphicClass>Graphic_Single</graphicClass>
+			</graphicData>
+			<resourceReadoutPriority>Middle</resourceReadoutPriority>
+			<stackLimit>1</stackLimit>
+			<useHitPoints>true</useHitPoints>
+			<statBases>
+				<MarketValue>10400</MarketValue>
+				<MaxHitPoints>150</MaxHitPoints>
+				<Mass>110.0</Mass>
+			</statBases>
+			<thingCategories>
+				<li>Items</li>
+			</thingCategories>
+			<tradeability>All</tradeability>
+			<techLevel>Archotech</techLevel>
+			<tradeTags>
+				<li>ExoticMisc</li>
+			</tradeTags>
+			<comps>
+				<li Class="CompProperties_Usable">
+				<useJob>UseItem</useJob>
+				<useLabel>Assemble Destroyer</useLabel>
+				<useDuration>600</useDuration>
+				</li>
+				<li Class="Androids.CompProperties_SpawnPawn">
+				<compClass>Androids.CompUseEffect_SpawnDroid</compClass>
+				<pawnKind>ChjArchBattleDroidColonist</pawnKind>
+				</li>
+				<li Class="CompProperties_UseEffectDestroySelf" />
+				</comps>
+		</ThingDef>
+	<!-- FIREFIGHTER DRONE -->
+		<ThingDef ParentName="TMM_AndroidAssemblyKit_Base">
+			<defName>NFFDroneKit</defName>
+			<label>firefighter drone assembly kit</label>
+			<description>A kit containing a disassembled firefighter drone with all the tools required to assemble it.</description>
+			<graphicData>
+				<texPath>Things/Item/BattleDroidAssemblyKit</texPath> <!-- TODO: -->
+			</graphicData>
+			<statBases>
+				<MarketValue>200</MarketValue>
+			</statBases>
+			<comps>
+				<li Class="CompProperties_Usable">
+					<useJob>UseItem</useJob>
+					<useLabel>Assemble firefighter drone</useLabel>
+					<useDuration>300</useDuration>
+				</li>
+				<li Class="Androids.CompProperties_SpawnPawn">
+					<compClass>Androids.CompUseEffect_SpawnDroid</compClass>
+					<pawnKind>NFFDroneColonist</pawnKind>
+				</li>
+			</comps>
+		</ThingDef>
+	<!-- RANCHER DRONE -->
+		<ThingDef ParentName="TMM_AndroidAssemblyKit_Base">
+			<defName>NAniDroneKit</defName>
+			<label>rancher drone assembly kit</label>
+			<description>A kit containing a disassembled rancher drone with all the tools required to assemble it.</description>
+			<graphicData>
+				<texPath>Things/Item/BattleDroidAssemblyKit</texPath> <!-- TODO: -->
+			</graphicData>
+			<statBases>
+				<MarketValue>800</MarketValue>
+			</statBases>
+			<comps>
+				<li Class="CompProperties_Usable">
+					<useJob>UseItem</useJob>
+					<useLabel>Assemble rancher drone</useLabel>
+					<useDuration>600</useDuration>
+				</li>
+				<li Class="Androids.CompProperties_SpawnPawn">
+					<compClass>Androids.CompUseEffect_SpawnDroid</compClass>
+					<pawnKind>NAniDroneColonist</pawnKind>
+				</li>
+			</comps>
+		</ThingDef>
+	<!-- THINK TANK -->
+		<ThingDef ParentName="TMM_AndroidAssemblyKit_Base">
+			<defName>NTTDroneKit</defName>
+			<label>think tank assembly kit</label>
+			<description>A kit containing a disassembled think tank with all the tools required to assemble it.</description>
+			<graphicData>
+				<texPath>Things/Item/BattleDroidAssemblyKit</texPath> <!-- TODO: -->
+			</graphicData>
+			<statBases>
+				<MarketValue>800</MarketValue>
+			</statBases>
+			<comps>
+				<li Class="CompProperties_Usable">
+					<useJob>UseItem</useJob>
+					<useLabel>Assemble think tank drone</useLabel>
+					<useDuration>600</useDuration>
+				</li>
+				<li Class="Androids.CompProperties_SpawnPawn">
+					<compClass>Androids.CompUseEffect_SpawnDroid</compClass>
+					<pawnKind>NTTDroneColonist</pawnKind>
+				</li>
+			</comps>
+		</ThingDef>
+	<!-- TRANSPORT DRONE -->
+		<ThingDef ParentName="TMM_AndroidAssemblyKit_Base">
+			<defName>XTransportDroneKit</defName>
+			<label>transport drone assembly kit</label>
+			<description>A kit containing a disassembled transport drone with all the tools required to assemble it.</description>
+			<graphicData>
+				<texPath>Things/Item/BattleDroidAssemblyKit</texPath> <!-- TODO: -->
+			</graphicData>
+			<statBases>
+				<MarketValue>800</MarketValue>
+			</statBases>
+			<comps>
+				<li Class="CompProperties_Usable">
+					<useJob>UseItem</useJob>
+					<useLabel>Assemble transport drone</useLabel>
+					<useDuration>600</useDuration>
+				</li>
+				<li Class="Androids.CompProperties_SpawnPawn">
+					<compClass>Androids.CompUseEffect_SpawnDroid</compClass>
+					<pawnKind>XTransportDroneColonist</pawnKind>
+				</li>
+			</comps>
+		</ThingDef>
+</Defs>

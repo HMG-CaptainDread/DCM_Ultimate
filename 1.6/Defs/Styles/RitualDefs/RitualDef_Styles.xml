@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<!-- <></> -->
+	<!-- TMM_RitualMote_ -->
+	<!-- TMM_RitualVisual_ -->
+
+
+
+	<!-- ASTRONOMY -->
+		<!-- MOTE EFFECTS -->
+			<!-- GLOWING STAR -->
+				<ThingDef ParentName="MoteBase">
+					<defName>TMM_RitualMote_AstronomyGlowingStar</defName>
+					<thingClass>MoteThrown</thingClass>
+					<altitudeLayer>VisEffects</altitudeLayer>
+					<mote>
+						<solidTime>99999</solidTime>
+						<fadeInTime>0.3</fadeInTime>
+						<fadeOutTime>1</fadeOutTime>
+						<needsMaintenance>True</needsMaintenance>
+						<fadeOutUnmaintained>True</fadeOutUnmaintained>
+					</mote>
+					<graphicData>
+						<graphicClass>Graphic_MotePulse</graphicClass>
+						<shaderType>RitualGlowSingleRay</shaderType>
+						<color>(153, 153, 153)</color>
+						<texPath>Modules/Styles/Motes/Astronomy/ASP_Star</texPath>
+						<shaderParameters>
+							<_ExtraTex>/Things/Mote/RitualEffects/GlowRays</_ExtraTex>
+							<_ScrollSpeed>0.13</_ScrollSpeed>
+							<_Intensity>24</_Intensity>
+						</shaderParameters>
+						<drawSize>15</drawSize>
+					</graphicData>
+				</ThingDef>
+		<!-- VISUAL EFFECT -->
+			<RitualVisualEffectDef>
+				<defName>TMM_RitualVisual_AstronomyRitual</defName>
+				<tintColor>(153, 153, 153)</tintColor>
+				<comps>
+					<li>
+						<compClass>CompRitualEffect_ConstantCenter</compClass>
+						<moteDef>Mote_RitualSmokeThick</moteDef>
+						<scaleWithRoom>true</scaleWithRoom>
+					</li>
+					<li>
+						<compClass>CompRitualEffect_ConstantCenter</compClass>
+						<moteDef>TMM_RitualMote_AstronomyGlowingStar</moteDef>
+					</li>
+				</comps>
+			</RitualVisualEffectDef>
+	<!-- DWARVEN -->
+		<!-- MOTE EFFECTS -->
+			<!-- CIRCLE -->
+				<ThingDef ParentName="MoteBase">
+					<defName>TMM_RitualMote_DwarvenCircle</defName>
+					<thingClass>MoteThrown</thingClass>
+					<altitudeLayer>VisEffects</altitudeLayer>
+					<mote>
+						<solidTime>99999</solidTime>
+						<fadeInTime>0.3</fadeInTime>
+						<fadeOutTime>1</fadeOutTime>
+						<needsMaintenance>True</needsMaintenance>
+						<fadeOutUnmaintained>True</fadeOutUnmaintained>
+					</mote>
+					<graphicData>
+						<graphicClass>Graphic_MoteWithAgeSecs</graphicClass>
+						<shaderType>RitualOutline</shaderType>
+						<color>(220, 71, 10)</color>
+						<texPath>Modules/Styles/Motes/Dwarven/RitualEffects/RitualCircle</texPath>
+						<shaderParameters>
+							<_GradientTex>/Things/Mote/RitualEffects/GlowRays</_GradientTex>
+							<_ScrollSpeed>0.13</_ScrollSpeed>
+							<_Intensity>0.1</_Intensity>
+						</shaderParameters>
+						<drawSize>15</drawSize>
+					</graphicData>
+				</ThingDef>
+			<!-- SWORD -->
+				<ThingDef ParentName="MoteBase">
+					<defName>TMM_RitualMote_DwarvenSword</defName>
+					<thingClass>MoteThrown</thingClass>
+					<altitudeLayer>LightingOverlay</altitudeLayer>
+					<mote>
+						<solidTime>99999</solidTime>
+						<fadeInTime>0.2</fadeInTime>
+						<fadeOutTime>1</fadeOutTime>
+						<needsMaintenance>True</needsMaintenance>
+						<fadeOutUnmaintained>True</fadeOutUnmaintained>
+					</mote>
+					<graphicData>
+						<graphicClass>Graphic_MoteWithAgeSecs</graphicClass>
+						<shaderType>RitualOutline</shaderType>
+						<texPath>Modules/Styles/Motes/Dwarven/RitualEffects/Sword</texPath>
+						<shaderParameters>
+							<_GradientTex>/Things/Mote/RitualEffects/DustyGradient</_GradientTex>
+							<_ScrollSpeed>0.15</_ScrollSpeed>
+						</shaderParameters>
+						<drawSize>(2.4, 3.8)</drawSize>
+					</graphicData>
+				</ThingDef>
+		<!-- VISUAL EFFECT -->
+			<RitualVisualEffectDef ParentName="RitualSmokeAbstract">
+				<defName>TMM_RitualVisual_DwarvenRitual</defName>
+				<tintColor>(220, 71, 10)</tintColor>
+				<comps>
+					<li Class="CompProperties_RitualEffectConstantCircle">
+						<radius>7.0</radius>
+						<numCopies>6</numCopies>
+						<moteDef>TMM_RitualMote_DwarvenSword</moteDef>
+						<scalePositionWithRoom>true</scalePositionWithRoom>
+						<onlySpawnInSameRoom>true</onlySpawnInSameRoom>
+						<offset>(0, 0, 0.5)</offset>
+						<roomCheckOffset>(0, 0, -1)</roomCheckOffset>
+					</li>
+					<li>
+						<compClass>CompRitualEffect_ConstantCenter</compClass>
+						<moteDef>TMM_RitualMote_DwarvenCircle</moteDef>
+					</li>
+				</comps>
+			</RitualVisualEffectDef>
+	<!-- INDUSTRIAL -->
+		<!-- MOTE EFFECTS -->
+			<!-- SMOKESTACK -->
+				<ThingDef ParentName="MoteBase">
+					<defName>TMM_RitualMote_IndustrialSmokestack</defName>
+					<thingClass>MoteThrown</thingClass>
+					<altitudeLayer>BuildingOnTop</altitudeLayer>
+					<mote>
+						<solidTime>99999</solidTime>
+						<fadeInTime>0.2</fadeInTime>
+						<fadeOutTime>1</fadeOutTime>
+						<needsMaintenance>True</needsMaintenance>
+						<fadeOutUnmaintained>True</fadeOutUnmaintained>
+					</mote>
+					<graphicData>
+						<graphicClass>Graphic_Mote</graphicClass>
+						<texPath>Modules/Styles/Motes/Industrial/Mote_Smokestack</texPath>
+						<drawSize>(1.2, 2.4)</drawSize>
+						<!-- <drawSize>(1, 1)</drawSize> -->
+					</graphicData>
+				</ThingDef>
+		<!-- VISUAL EFFECT -->
+			<RitualVisualEffectDef>
+				<defName>TMM_RitualVisual_IndustrialRitual</defName>
+				<tintColor>(24, 21, 27)</tintColor>
+				<comps>
+					<li>
+						<compClass>CompRitualEffect_ConstantCenter</compClass>
+						<moteDef>Mote_RitualSmokeThickSlim</moteDef>
+						<scaleWithRoom>true</scaleWithRoom>
+					</li>
+					<li Class="CompProperties_RitualEffectConstantCircle">
+						<radius>5.0</radius>
+						<numCopies>8</numCopies>
+						<moteDef>TMM_RitualMote_IndustrialSmokestack</moteDef>
+						<colorOverride>(255, 255, 255, 255)</colorOverride>
+						<offset>(0, 0, -1)</offset>
+						<scalePositionWithRoom>true</scalePositionWithRoom>
+						<onlySpawnInSameRoom>true</onlySpawnInSameRoom>
+					</li>
+					<li Class="CompProperties_RitualEffectIntervalSpawnDividedCircle">
+						<radius>5.0</radius>
+						<numCopies>8</numCopies>
+						<offset>(0, 0, -0.2)</offset>
+						<roomCheckOffset>(0, 0, -1)</roomCheckOffset>
+						<effecterDef>TMM_Effecter_IndustrialSparks</effecterDef>
+						<scalePositionWithRoom>true</scalePositionWithRoom>
+						<onlySpawnInSameRoom>true</onlySpawnInSameRoom>
+					</li>
+				</comps>
+			</RitualVisualEffectDef>
+</Defs>

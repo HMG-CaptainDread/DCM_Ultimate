@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<Vehicles.UpgradeTreeDef ParentName="TMM_UpgradeTree_RotorAirBase">
+		<defName>TMM_UpgradeTree_Cherokee</defName>
+
+		<nodes>
+			<!-- AUXILIARY FUEL TANKS -->
+				<li>
+					<key>AuxiliaryFuelTanks_Cherokee</key>
+					<label>Auxiliary Fuel Tanks</label>
+					<description>Install external chemfuel tanks that increase the fuel capacity of the vehicle by 320 units.</description>
+
+					<icon>Modules/Transport/UI/Upgrades/Upgrade_FuelStorage</icon>
+
+					<work>3840</work>
+
+					<gridCoordinate>(3, 3)</gridCoordinate>
+					<drawSize>(80, 80)</drawSize>
+
+					<upgrades>
+						<li Class="Vehicles.StatUpgrade">
+							<statCategories>
+								<li>
+									<def>FuelCapacity</def>
+									<value>320</value>
+								</li>
+							</statCategories>
+						</li>
+					</upgrades>
+
+					<ingredients>
+						<ComponentIndustrial>4</ComponentIndustrial>
+						<VVE_CarFuelTank>6</VVE_CarFuelTank>
+					</ingredients>
+
+					<graphicOverlays>
+						<li>
+							<graphicData>
+								<texPath>Modules/Transport/Upgrades/Air/Cherokee_Helicopter/AuxiliaryFuelTanks/AuxiliaryFuelTanks</texPath>
+								<graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+								<drawSize>(5,12)</drawSize>
+								<layer>1</layer>
+								<shaderType>CutoutComplex</shaderType>
+							</graphicData>
+						</li>
+					</graphicOverlays>
+				</li>
+			<!-- PRESSURISED CABIN -->
+				<li>
+					<key>PassengerCabin_Cherokee</key>
+					<label>Passenger Cabin</label>
+					<description>Pressurise the cargo hold and make space for 12 seats. This reduces the effective cargo capacity of the vehicle by 2800 kilos.</description>
+
+					<icon>Modules/Transport/UI/Upgrades/Upgrade_ExtraSeat</icon>
+
+					<work>10800</work>
+
+					<gridCoordinate>(9, 3)</gridCoordinate>
+					<drawSize>(80, 80)</drawSize>
+
+					<upgrades>
+						<li Class="Vehicles.StatUpgrade">
+							<vehicleStats>
+								<li>
+									<def>CargoCapacity</def>
+									<value>-2800</value>
+								</li>
+							</vehicleStats>
+						</li>
+						<li Class="Vehicles.VehicleUpgrade">
+							<roles>
+								<li>
+									<label>Passenger</label>
+									<key>passenger</key>
+									<slots>12</slots>
+								</li>
+							</roles>
+						</li>
+					</upgrades>
+
+					<ingredients>
+						<ComponentIndustrial>8</ComponentIndustrial>
+						<Steel>320</Steel>
+						<Cloth>480</Cloth>
+					</ingredients>
+
+					<graphicOverlays>
+						<li>
+							<graphicData>
+								<texPath>Modules/Transport/Upgrades/Air/Cherokee_Helicopter/PassengerCabin/PassengerCabin</texPath>
+								<graphicClass>Vehicles.Graphic_Vehicle</graphicClass>
+								<drawSize>(5,12)</drawSize>
+								<layer>1</layer>
+								<shaderType>CutoutComplex</shaderType>
+							</graphicData>
+						</li>
+					</graphicOverlays>
+				</li>
+		</nodes>
+	</Vehicles.UpgradeTreeDef>
+</Defs>

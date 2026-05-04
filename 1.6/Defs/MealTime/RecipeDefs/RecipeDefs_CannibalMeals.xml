@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!-- TMM_CannibalMealCooking_ -->
+
+
+
+	<!-- BASES -->
+		<!-- MAIN BASE -->
+			<RecipeDef Name="TMM_CannibalMealCooking_MainBase" Abstract="True">
+				<workSpeedStat>CookSpeed</workSpeedStat>
+				<requiredGiverWorkType>Cooking</requiredGiverWorkType>
+				<effectWorking>Cook</effectWorking>
+				<soundWorking>Recipe_CookMeal</soundWorking>
+				<allowMixingIngredients>true</allowMixingIngredients>
+				<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+				<workSkill>Cooking</workSkill>
+
+				<recipeUsers>
+					<li>ElectricStove</li>
+					<li>FueledStove</li>
+				</recipeUsers>
+
+				<fixedIngredientFilter>
+					<thingDefs>
+						<li>Meat_Human</li>
+					</thingDefs>
+					<categories>
+						<li>PlantFoodRaw</li>
+						<li>AnimalProductRaw</li>
+					</categories>
+					<specialFiltersToDisallow>
+						<li>AllowPlantFood</li>
+					</specialFiltersToDisallow>
+				</fixedIngredientFilter>
+
+				<defaultIngredientFilter>
+					<thingDefs>
+						<li>Meat_Human</li>
+					</thingDefs>
+					<categories>
+						<li>PlantFoodRaw</li>
+						<li>AnimalProductRaw</li>
+					</categories>
+					<disallowedCategories>
+						<li>EggsFertilized</li>
+					</disallowedCategories>
+					<disallowedThingDefs>
+						<li>InsectJelly</li>
+					</disallowedThingDefs>
+				</defaultIngredientFilter>
+			</RecipeDef>
+	<!-- MEALS -->
+		<!-- FINE -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_CannibalMealCooking_MainBase" Name="TMM_CannibalMealCooking_FineBase" Abstract="True">
+					<jobString>Cooking fine meal.</jobString>
+
+					<skillRequirements>
+						<Cooking>6</Cooking>
+					</skillRequirements>
+				</RecipeDef>
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_CannibalMealCooking_FineBase">
+					<defName>TMM_CannibalMealCooking_Fine</defName>
+					<label>cook cannibal fine meal</label>
+					<description>Cooks a somewhat complex cannibal meal from a combination of human meat and organic ingredients.</description>
+
+					<workAmount>480</workAmount>
+
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>Meat_Human</li>
+								</thingDefs>
+							</filter>
+							<count>0.25</count>
+						</li>
+						<li>
+							<filter>
+								<categories>
+									<li>AnimalProductRaw</li>
+									<li>PlantFoodRaw</li>
+								</categories>
+							</filter>
+							<count>0.25</count>
+						</li>
+					</ingredients>
+
+					<products>
+						<TMM_CannibalMeal_Fine>1</TMM_CannibalMeal_Fine>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_CannibalMealCooking_FineBase">
+					<defName>TMM_CannibalMealCooking_FineBulk</defName>
+					<label>cook bulk cannibal fine meals</label>
+					<description>Cook 4 somewhat complex cannibal meals from a combination of human meat and plant ingredients.</description>
+
+					<workAmount>1800</workAmount>
+
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>Meat_Human</li>
+								</thingDefs>
+							</filter>
+							<count>1</count>
+						</li>
+						<li>
+							<filter>
+								<categories>
+									<li>AnimalProductRaw</li>
+									<li>PlantFoodRaw</li>
+								</categories>
+							</filter>
+							<count>1</count>
+						</li>
+					</ingredients>
+
+					<products>
+						<TMM_CannibalMeal_Fine>4</TMM_CannibalMeal_Fine>
+					</products>
+				</RecipeDef>
+		<!-- LAVISH -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_CannibalMealCooking_MainBase" Name="TMM_CannibalMealCooking_LavishBase" Abstract="True">
+					<jobString>Cooking lavish meal.</jobString>
+
+					<skillRequirements>
+						<Cooking>8</Cooking>
+					</skillRequirements>
+				</RecipeDef>
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_CannibalMealCooking_LavishBase">
+					<defName>TMM_CannibalMealCooking_Lavish</defName>
+					<label>cook cannibal lavish meal</label>
+					<description>Cooks a very complex cannibal meal from a combination of human meat and organic ingredients. Much of the ingredients are wasted.</description>
+
+					<workAmount>840</workAmount>
+
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>Meat_Human</li>
+								</thingDefs>
+							</filter>
+							<count>0.5</count>
+						</li>
+						<li>
+							<filter>
+								<categories>
+									<li>AnimalProductRaw</li>
+									<li>PlantFoodRaw</li>
+								</categories>
+							</filter>
+							<count>0.5</count>
+						</li>
+					</ingredients>
+
+					<products>
+						<TMM_CannibalMeal_Lavish>1</TMM_CannibalMeal_Lavish>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_CannibalMealCooking_LavishBase">
+					<defName>TMM_CannibalMealCooking_LavishBulk</defName>
+					<label>cook bulk cannibal lavish meals</label>
+					<description>Cook 4 very complex cannibal meals from a combination of human meat and plant ingredients. Much of the ingredients are wasted.</description>
+
+					<workAmount>3240</workAmount>
+
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>Meat_Human</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+						<li>
+							<filter>
+								<categories>
+									<li>AnimalProductRaw</li>
+									<li>PlantFoodRaw</li>
+								</categories>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+
+					<products>
+						<TMM_CannibalMeal_Lavish>4</TMM_CannibalMeal_Lavish>
+					</products>
+				</RecipeDef>
+		<!-- PACKAGED SURVIVAL -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_CannibalMealCooking_MainBase" Name="TMM_CannibalMealCooking_SurvivalBase" Abstract="True">
+					<jobString>Cooking survival meal.</jobString>
+
+					<skillRequirements>
+						<Cooking>8</Cooking>
+					</skillRequirements>
+
+					<researchPrerequisites>
+						<li>PackagedSurvivalMeal</li>
+					</researchPrerequisites>
+				</RecipeDef>
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_CannibalMealCooking_SurvivalBase">
+					<defName>TMM_CannibalMealCooking_Survival</defName>
+					<label>cook cannibal packaged survival meal</label>
+					<description>Cooks a packaged survival cannibal meal from a combination of human meat and organic ingredients. Much of the ingredients are wasted.</description>
+
+					<workAmount>480</workAmount>
+
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>Meat_Human</li>
+								</thingDefs>
+							</filter>
+							<count>0.30</count>
+						</li>
+						<li>
+							<filter>
+								<categories>
+									<li>AnimalProductRaw</li>
+									<li>PlantFoodRaw</li>
+								</categories>
+							</filter>
+							<count>0.30</count>
+						</li>
+					</ingredients>
+
+					<products>
+						<TMM_CannibalMeal_Survival>1</TMM_CannibalMeal_Survival>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_CannibalMealCooking_SurvivalBase">
+					<defName>TMM_CannibalMealCooking_SurvivalBulk</defName>
+					<label>cook bulk cannibal packaged survival meals</label>
+					<description>Prepare 4 packaged survival cannibal meals from a combination of human meat and plant ingredients. Much of the ingredients are wasted in the preservation process.</description>
+
+					<workAmount>1800</workAmount>
+
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>Meat_Human</li>
+								</thingDefs>
+							</filter>
+							<count>1.20</count>
+						</li>
+						<li>
+							<filter>
+								<categories>
+									<li>AnimalProductRaw</li>
+									<li>PlantFoodRaw</li>
+								</categories>
+							</filter>
+							<count>1.20</count>
+						</li>
+					</ingredients>
+
+					<products>
+						<TMM_CannibalMeal_Survival>4</TMM_CannibalMeal_Survival>
+					</products>
+				</RecipeDef>
+		<!-- SIMPLE -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_CannibalMealCooking_MainBase" Name="TMM_CannibalMealCooking_SimpleBase" Abstract="True">
+					<jobString>Cooking simple meal.</jobString>
+
+					<recipeUsers Inherit="True">
+						<li>Campfire</li>
+					</recipeUsers>
+				</RecipeDef>
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_CannibalMealCooking_SimpleBase">
+					<defName>TMM_CannibalMealCooking_Simple</defName>
+					<label>cook cannibal simple meal</label>
+					<description>Cooks a straightforward meal from human meat.</description>
+
+					<workAmount>300</workAmount>
+
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>Meat_Human</li>
+								</thingDefs>
+							</filter>
+							<count>0.5</count>
+						</li>
+					</ingredients>
+
+					<products>
+						<TMM_CannibalMeal_Simple>1</TMM_CannibalMeal_Simple>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_CannibalMealCooking_SimpleBase">
+					<defName>TMM_CannibalMealCooking_SimpleBulk</defName>
+					<label>cook bulk cannibal simple meals</label>
+					<description>Cook 4 straightforward cannibal meals from human meat.</description>
+
+					<workAmount>1200</workAmount>
+
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>Meat_Human</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+
+					<products>
+						<TMM_CannibalMeal_Simple>4</TMM_CannibalMeal_Simple>
+					</products>
+				</RecipeDef>
+	<!-- ORGANIC PRODUCTS -->
+		<!-- KIBBLE -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_CannibalMealCooking_MainBase" Name="TMM_CannibalMealCooking_KibbleBase" Abstract="True">
+					<jobString>Making cannibal kibble.</jobString>
+
+					<recipeUsers Inherit="False">
+						<li>ButcherSpot</li>
+						<li>TableButcher</li>
+					</recipeUsers>
+
+					<fixedIngredientFilter Inherit="False">
+						<thingDefs>
+							<li>Hay</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+				</RecipeDef>
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_CannibalMealCooking_KibbleBase">
+					<defName>TMM_CannibalMealCooking_Kibble</defName>
+					<label>make cannibal kibble</label>
+					<description>Make animal kibble by combining raw human and plants.</description>
+
+					<workAmount>450</workAmount>
+
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>Meat_Human</li>
+								</thingDefs>
+							</filter>
+							<count>1</count>
+						</li>
+						<li>
+							<filter>
+								<categories>
+									<li>PlantFoodRaw</li>
+								</categories>
+								<thingDefs>
+									<li>Hay</li>
+								</thingDefs>
+							</filter>
+							<count>1</count>
+						</li>
+					</ingredients>
+
+					<products>
+						<TMM_CannibalMeal_Kibble>50</TMM_CannibalMeal_Kibble>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_CannibalMealCooking_KibbleBase">
+					<defName>TMM_CannibalMealCooking_KibbleBulk</defName>
+					<label>make bulk cannibal kibble</label>
+					<description>Make bulk animal kibble by combining raw human and plants.</description>
+
+					<workAmount>1700</workAmount>
+
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>Meat_Human</li>
+								</thingDefs>
+							</filter>
+							<count>4</count>
+						</li>
+						<li>
+							<filter>
+								<categories>
+									<li>PlantFoodRaw</li>
+								</categories>
+								<thingDefs>
+									<li>Hay</li>
+								</thingDefs>
+							</filter>
+							<count>4</count>
+						</li>
+					</ingredients>
+
+					<products>
+						<TMM_CannibalMeal_Kibble>200</TMM_CannibalMeal_Kibble>
+					</products>
+				</RecipeDef>
+		<!-- PEMMICAN -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_CannibalMealCooking_MainBase" Name="TMM_CannibalMealCooking_PemmicanBase" Abstract="True">
+					<jobString>Making pemmican.</jobString>
+
+					<recipeUsers Inherit="True">
+						<li>Campfire</li>
+					</recipeUsers>
+
+					<researchPrerequisites>
+						<li>Pemmican</li>
+					</researchPrerequisites>
+				</RecipeDef>
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_CannibalMealCooking_PemmicanBase">
+					<defName>TMM_CannibalMealCooking_Pemmican</defName>
+					<label>Make cannibal pemmican</label>
+					<description>Make cannibal pemmican, a preserved combination of human meat and organic food. It doesn't taste amazing, but lasts a year without refrigeration.</description>
+
+					<workAmount>720</workAmount>
+
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>Meat_Human</li>
+								</thingDefs>
+							</filter>
+							<count>0.25</count>
+						</li>
+						<li>
+							<filter>
+								<categories>
+									<li>AnimalProductRaw</li>
+									<li>PlantFoodRaw</li>
+								</categories>
+							</filter>
+							<count>0.25</count>
+						</li>
+					</ingredients>
+
+					<products>
+						<TMM_CannibalMeal_Pemmican>16</TMM_CannibalMeal_Pemmican>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_CannibalMealCooking_PemmicanBase">
+					<defName>TMM_CannibalMealCooking_PemmicanBulk</defName>
+					<label>Make bulk cannibal pemmican</label>
+					<description>Make bulk cannibal pemmican, a preserved combination of human meat and organic food. It doesn't taste amazing, but lasts a year without refrigeration.</description>
+
+					<workAmount>2820</workAmount>
+
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>Meat_Human</li>
+								</thingDefs>
+							</filter>
+							<count>1</count>
+						</li>
+						<li>
+							<filter>
+								<categories>
+									<li>AnimalProductRaw</li>
+									<li>PlantFoodRaw</li>
+								</categories>
+							</filter>
+							<count>1</count>
+						</li>
+					</ingredients>
+
+					<products>
+						<TMM_CannibalMeal_Pemmican>64</TMM_CannibalMeal_Pemmican>
+					</products>
+				</RecipeDef>
+	<!--  -->
+</Defs>

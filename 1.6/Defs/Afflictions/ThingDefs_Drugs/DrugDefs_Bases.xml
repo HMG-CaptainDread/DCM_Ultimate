@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+
+	<!-- MAIN BASES -->
+		<!-- MAKEABLE DRUG BASE -->
+			<ThingDef ParentName="MakeableDrugBase" Name="TMM_MakeableDrugBase" Abstract="True">
+				<graphicData>
+					<graphicClass>Graphic_StackCount</graphicClass>
+					<drawSize>0.88</drawSize>
+				</graphicData>
+				<rotatable>false</rotatable>
+				<ingestible>
+					<ingestHoldOffsetStanding>
+						<northDefault>
+							<offset>(0.18,0,0)</offset>
+						</northDefault>
+					</ingestHoldOffsetStanding>
+				</ingestible>
+			</ThingDef>
+		<!-- COOKABLE DRUG BASE -->
+			<ThingDef ParentName="TMM_MakeableDrugBase" Name="TMM_CookableDrugBase" Abstract="True">
+				<recipeMaker>
+					<recipeUsers>
+						<li>Campfire</li>
+						<li>FueledStove</li>
+						<li>ElectricStove</li>
+					</recipeUsers>
+					<workSpeedStat>DrugCookingSpeed</workSpeedStat>
+					<workSkill>Cooking</workSkill>
+					<requiredGiverWorkType>Cooking</requiredGiverWorkType>
+				</recipeMaker>
+			</ThingDef>
+	<!-- SPECIFIC DRUG TYPE BASES -->
+		<!-- DECOCTION BASE -->
+			<ThingDef ParentName="TMM_CookableDrugBase" Name="TMM_DecoctionBase" Abstract="True">
+				<statBases>
+					<WorkToMake>1100</WorkToMake>
+					<MarketValue>17</MarketValue>
+					<Mass>0.05</Mass>
+					<DeteriorationRate>6</DeteriorationRate>
+				</statBases>
+				<ingestible>
+					<foodType>Fluid, Processed</foodType>
+					<joyKind>Gluttonous</joyKind>
+					<joy>-0.15</joy>
+					<baseIngestTicks>300</baseIngestTicks>
+					<ingestSound>Ingest_Drink</ingestSound>
+					<drugCategory>Medical</drugCategory>
+					<ingestHoldUsesTable>false</ingestHoldUsesTable>
+					<ingestCommandString>Drink {0}</ingestCommandString>
+					<ingestReportString>Drinking {0}. Grimace incoming.</ingestReportString>
+				</ingestible>
+				<recipeMaker>
+					<bulkRecipeCount>2</bulkRecipeCount>
+					<!-- <researchPrerequisite>VV_HerbalRemedies</researchPrerequisite> -->
+					<skillRequirements>
+						<Cooking>4</Cooking>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+		<!-- TEA BASE -->
+			<ThingDef ParentName="TMM_CookableDrugBase" Name="TMM_TeaBase" Abstract="True">
+				<statBases>
+					<WorkToMake>400</WorkToMake>
+					<Mass>0.05</Mass>
+					<DeteriorationRate>6</DeteriorationRate>
+					<Nutrition>0.08</Nutrition>
+				</statBases>
+				<ingestible>
+					<foodType>Fluid, Processed</foodType>
+					<joyKind>Gluttonous</joyKind>
+					<joy>0.35</joy>
+					<baseIngestTicks>210</baseIngestTicks>
+					<ingestSound>Ingest_Drink</ingestSound>
+					<drugCategory>Social</drugCategory>
+					<ingestCommandString>Drink {0}</ingestCommandString>
+					<ingestReportString>Drinking {0}.</ingestReportString>
+				</ingestible>
+				<recipeMaker>
+					<bulkRecipeCount>4</bulkRecipeCount>
+					<!-- <researchPrerequisite>VV_HerbalRemedies</researchPrerequisite> -->
+					<skillRequirements>
+						<Cooking>2</Cooking>
+					</skillRequirements>
+				</recipeMaker>
+			</ThingDef>
+</Defs>

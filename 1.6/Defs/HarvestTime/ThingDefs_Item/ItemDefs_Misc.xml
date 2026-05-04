@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!--  -->
+
+
+
+	<!-- Modules/HarvestTime/Things/NewThings/Miscellaneous/ -->
+
+	<!-- DIGGABLE STUFF -->
+		<!-- DIRT PILE -->
+			<ThingDef ParentName="TMM_DiggableBase">
+				<defName>TMM_LooseDirt</defName>
+				<label>Dirt</label>
+				<description>Simple soil dug out of the ground at a digging spot. Generally used to make fertiliser, but can be bagged for easier sale too.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Things/NewThings/Miscellaneous/Dirt</texPath>
+				</graphicData>
+			</ThingDef>
+		<!-- MANUFACTURED STUFF -->
+			<!-- COMPOST STARTER -->
+				<ThingDef ParentName="TMM_DiggableBase">
+					<defName>TMM_LooseCompost</defName>
+					<label>Compost Starter</label>
+					<description>Compost starter is use to make fertiliser which enhances the soil and speeds up the growth of plants.</description>
+					<graphicData>
+						<texPath>Modules/HarvestTime/Things/NewThings/Miscellaneous/Compost</texPath>
+					</graphicData>
+					<statBases>
+						<MarketValue>1</MarketValue>
+						<Mass>0.15</Mass>
+					</statBases>
+				</ThingDef>
+			<!-- FERTILISER -->
+				<ThingDef ParentName="TMM_DiggableBase">
+					<defName>TMM_LooseFertiliser</defName>
+					<label>Fertiliser</label>
+					<description>Fertilisers enhance the soil and speeds up the growth of plants.</description>
+					<graphicData>
+						<texPath>Modules/HarvestTime/Things/NewThings/Miscellaneous/Fertiliser</texPath>
+					</graphicData>
+					<statBases>
+						<MarketValue>1</MarketValue>
+						<Mass>0.35</Mass>
+					</statBases>
+				</ThingDef>
+	<!-- SEPARATOR -->
+	<!-- TODO: need to properly abstract these and sort them better -->
+		<!-- CACAO BEANS -->
+			<ThingDef ParentName="ResourceBase">
+				<defName>TMM_RawCacaoBean</defName>
+				<label>Cacao Bean</label>
+				<description>Bitter seeds from the cacao pod. Can be eaten in desperation or roasted first.</description>
+				<thingClass>ThingWithComps</thingClass>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Things/NewThings/Miscellaneous/CacaoBean</texPath>
+					<graphicClass>Graphic_StackCount</graphicClass>
+					<drawSize>0.6</drawSize>
+				</graphicData>
+				<stackLimit>75</stackLimit>
+				<drawGUIOverlay>true</drawGUIOverlay>
+				<statBases>
+					<MarketValue>0.7</MarketValue>
+					<Mass>0.015</Mass>
+					<Flammability>1.0</Flammability>
+					<Nutrition>0.03</Nutrition>
+				</statBases>
+				<thingCategories>
+					<li>Foods</li>
+				</thingCategories>
+				<ingestible>
+					<preferability>DesperateOnlyForHumanlikes</preferability>
+					<foodType>Plant</foodType>
+					<maxNumToIngestAtOnce>10</maxNumToIngestAtOnce>
+					<ingestSound>Meal_Eat</ingestSound>
+				</ingestible>
+			</ThingDef>
+		<!-- GINSENG ROOT -->
+			<ThingDef ParentName="RoughPlantBase">
+				<defName>TMM_GinsengRoots</defName>
+				<label>Ginseng Roots</label>
+				<description>A thick, forked root from the ginseng plant. Valued for its energizing and restorative properties, the root is a key component in many herbal tonics and decoctions.</description>
+				<possessionCount>10</possessionCount>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Things/NewThings/Miscellaneous/Ginseng</texPath>
+					<graphicClass>Graphic_StackCount</graphicClass>
+				</graphicData>
+				<statBases>
+					<MarketValue>3.0</MarketValue>
+					<Flammability>0.8</Flammability>
+				</statBases>
+				<comps>
+					<li Class="CompProperties_Rottable">
+						<daysToRotStart>45</daysToRotStart>
+						<rotDestroys>true</rotDestroys>
+					</li>
+				</comps>
+				<thingCategories>
+					<li>PlantMatter</li>
+				</thingCategories>
+				<ingestible>
+					<preferability>DesperateOnly</preferability>
+					<canAutoSelectAsFoodForCaravan>false</canAutoSelectAsFoodForCaravan>
+				</ingestible>
+			</ThingDef>
+		<!-- PACKAGED MAPLE SYRUP -->
+			<ThingDef ParentName="PlantFoodRawBase">
+				<defName>TMM_PackagedMapleSyrup</defName>
+				<label>Maple Syrup</label>
+				<description>Sweet, thick syrup collected from the sugar maple tree. Delicious and highly valued.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Things/NewThings/Miscellaneous/MapleSyrup</texPath>
+					<graphicClass>Graphic_StackCount</graphicClass>
+				</graphicData>
+				<statBases>
+					<MarketValue>2.5</MarketValue>
+				</statBases>
+				<ingestible>
+					<preferability>RawTasty</preferability>
+					<ingestSound>Ingest_Drink</ingestSound>
+					<foodType>VegetableOrFruit</foodType>
+				</ingestible>
+				<comps>
+					<li Class="CompProperties_Rottable">
+						<daysToRotStart>90</daysToRotStart>
+						<rotDestroys>true</rotDestroys>
+					</li>
+				</comps>
+			</ThingDef>
+		<!-- PROCESSED RUBBER -->
+			<ThingDef ParentName="ResourceBase">
+				<defName>TMM_ProcessedRubber</defName>
+				<label>Rubber</label>
+				<description>A flexible and durable chunk of natural rubber. Harvested directly from rubber trees, it's useful in crafting tools, furniture, and as a construction material where resilience is needed.</description>
+				<graphicData>
+					<texPath>Modules/HarvestTime/Things/NewThings/Miscellaneous/Rubber</texPath>
+					<graphicClass>Graphic_StackCount</graphicClass>
+				</graphicData>
+				<soundInteract>Metal_Drop</soundInteract>
+				<soundDrop>Metal_Drop</soundDrop>
+				<statBases>
+					<MarketValue>1.6</MarketValue>
+					<MaxHitPoints>140</MaxHitPoints>
+					<Mass>0.15</Mass>
+					<Flammability>0.3</Flammability>
+					<DeteriorationRate>0.15</DeteriorationRate>
+					<StuffPower_Armor_Sharp>0.25</StuffPower_Armor_Sharp>
+					<StuffPower_Armor_Blunt>0.5</StuffPower_Armor_Blunt>
+					<StuffPower_Armor_Heat>0.7</StuffPower_Armor_Heat>
+					<StuffPower_Insulation_Cold>14</StuffPower_Insulation_Cold>
+					<StuffPower_Insulation_Heat>18</StuffPower_Insulation_Heat>
+					<SharpDamageMultiplier>0.4</SharpDamageMultiplier>
+					<BluntDamageMultiplier>0.7</BluntDamageMultiplier>
+				</statBases>
+				<burnableByRecipe>false</burnableByRecipe>
+				<healthAffectsPrice>false</healthAffectsPrice>
+				<minRewardCount>10</minRewardCount>
+				<stuffProps>
+					<stuffAdjective>rubber</stuffAdjective>
+					<categories>
+						<li>Metallic</li>
+					</categories>
+					<commonality>0</commonality>
+					<color>(240,240,230)</color>
+					<constructEffect>ConstructWood</constructEffect>
+					<appearance>Metal</appearance>
+					<soundImpactBullet>BulletImpact_Metal</soundImpactBullet>
+					<soundMeleeHitSharp>MeleeHit_Metal_Sharp</soundMeleeHitSharp>
+					<soundMeleeHitBlunt>MeleeHit_Metal_Blunt</soundMeleeHitBlunt>
+					<soundImpactMelee>Pawn_Melee_Punch_HitBuilding_Metal</soundImpactMelee>
+					<statFactors>
+						<MaxHitPoints>0.65</MaxHitPoints>
+						<Beauty>0</Beauty>
+						<Flammability>0.3</Flammability>
+						<WorkToMake>0.75</WorkToMake>
+						<WorkToBuild>0.75</WorkToBuild>
+						<DoorOpenSpeed>1.2</DoorOpenSpeed>
+					</statFactors>
+					<canSuggestUseDefaultStuff>true</canSuggestUseDefaultStuff>
+				</stuffProps>
+				<isTechHediff>true</isTechHediff>
+				<thingCategories>
+					<li>ResourcesRaw</li>
+				</thingCategories>
+				<techHediffsTags>
+					<li>Poor</li>
+				</techHediffsTags>
+				<weaponClasses>
+					<li>Melee</li>
+					<li>MeleeBlunt</li>
+					<li>Neolithic</li>
+				</weaponClasses>
+				<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+				<allowedArchonexusCount>120</allowedArchonexusCount>
+			</ThingDef>
+		<!-- SUGAR BEET --> <!-- TODO: -->
+			<!-- <ThingDef ParentName="RC2_PlantFoodRawBase">
+				<defName>RC2_RawSugarBeets</defName>
+				<label>sugar beets</label>
+				<description>Raw sugar beets.  Edible, but generally too sweet and odd tasting.  Better cooked or used to make beet sugar.</description>
+				<graphicData>
+					<texPath>RC2_Things/RC2_Veg/SugarBeets</texPath>
+				</graphicData>
+				<statBases>
+					<MarketValue>1.4</MarketValue>
+				</statBases>
+				<thingCategories>
+					<li>RC2_VegetablesRaw</li>
+				</thingCategories>
+				<ingestible>
+					<foodType>VegetableOrFruit</foodType>
+					<specialThoughtAsIngredient>AteUncommonAsIngredient</specialThoughtAsIngredient>
+				</ingestible>
+				<comps>
+					<li Class="CompProperties_Rottable">
+						<daysToRotStart>30</daysToRotStart>
+						<rotDestroys>true</rotDestroys>
+					</li>
+				</comps>
+			</ThingDef> -->
+</Defs>
