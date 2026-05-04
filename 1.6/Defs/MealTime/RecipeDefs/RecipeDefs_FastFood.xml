@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!-- TMM_FastFoodCooking_ -->
+
+
+
+	<!-- BASES -->
+
+	<!-- RANDY BURGER -->
+		<!-- BASE -->
+			<RecipeDef ParentName="CookMealBase" Name="TMM_FastFoodCooking_RandyBurgerBase" Abstract="True">
+				<description>Cook a relatively filling meal from a combination of meat and plant ingredients.</description>
+				<jobString>Cooking randy burger.</jobString>
+
+				<workSpeedStat>CookSpeed</workSpeedStat>
+				<effectWorking>Cook</effectWorking>
+				<soundWorking>Recipe_CookMeal</soundWorking>
+				<allowMixingIngredients>true</allowMixingIngredients>
+				<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+
+				<skillRequirements>
+					<Cooking>5</Cooking>
+				</skillRequirements>
+
+				<recipeUsers>
+					<li>FueledStove</li>
+					<li>ElectricStove</li>
+				</recipeUsers>
+			</RecipeDef>
+		<!-- REGULAR -->
+			<RecipeDef ParentName="TMM_FastFoodCooking_RandyBurgerBase">
+				<defName>TMM_FastFoodCooking_RandyBurger</defName>
+				<label>Cook randy burger</label>
+
+				<workAmount>400</workAmount>
+
+				<ingredients>
+					<li>
+						<filter>
+							<categories>
+								<li>MeatRaw</li>
+								<li>AnimalProductRaw</li>
+							</categories>
+						</filter>
+						<count>0.25</count>
+					</li>
+					<li>
+						<filter>
+							<categories>
+								<li>PlantFoodRaw</li>
+							</categories>
+						</filter>
+						<count>0.15</count>
+					</li>
+				</ingredients>
+
+				<products>
+					<TMM_FastFood_RandyBurger>1</TMM_FastFood_RandyBurger>
+				</products>
+			</RecipeDef>
+		<!-- BULK -->
+			<RecipeDef ParentName="TMM_FastFoodCooking_RandyBurgerBase">
+				<defName>TMM_FastFoodCooking_RandyBurgerBulk</defName>
+				<label>Cook 4 randy burgers</label>
+
+				<workAmount>1400</workAmount>
+
+				<ingredients>
+					<li>
+						<filter>
+							<categories>
+								<li>MeatRaw</li>
+								<li>AnimalProductRaw</li>
+							</categories>
+						</filter>
+						<count>1</count>
+					</li>
+					<li>
+						<filter>
+							<categories>
+								<li>PlantFoodRaw</li>
+							</categories>
+						</filter>
+						<count>0.6</count>
+					</li>
+				</ingredients>
+
+				<products>
+					<TMM_FastFood_RandyBurger>4</TMM_FastFood_RandyBurger>
+				</products>
+			</RecipeDef>
+	<!--  -->
+</Defs>

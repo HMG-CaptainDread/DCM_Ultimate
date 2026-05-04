@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!-- TMM_InsectMealCooking_ -->
+
+
+
+	<!-- BASES -->
+		<RecipeDef Name="TMM_InsectMealCooking_MainBase" Abstract="True">
+			<workSpeedStat>CookSpeed</workSpeedStat>
+			<requiredGiverWorkType>Cooking</requiredGiverWorkType>
+			<effectWorking>Cook</effectWorking>
+			<soundWorking>Recipe_CookMeal</soundWorking>
+			<allowMixingIngredients>true</allowMixingIngredients>
+			<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+			<workSkill>Cooking</workSkill>
+
+			<recipeUsers>
+				<li>ElectricStove</li>
+				<li>FueledStove</li>
+			</recipeUsers>
+
+			<fixedIngredientFilter>
+				<thingDefs>
+					<li>Meat_Megaspider</li>
+				</thingDefs>
+				<categories>
+					<li>PlantFoodRaw</li>
+					<li>AnimalProductRaw</li>
+				</categories>
+				<specialFiltersToDisallow>
+					<li>AllowPlantFood</li>
+				</specialFiltersToDisallow>
+			</fixedIngredientFilter>
+
+			<defaultIngredientFilter>
+				<thingDefs>
+					<li>Meat_Megaspider</li>
+				</thingDefs>
+				<categories>
+					<li>PlantFoodRaw</li>
+					<li>AnimalProductRaw</li>
+				</categories>
+				<disallowedCategories>
+					<li>EggsFertilized</li>
+				</disallowedCategories>
+				<disallowedThingDefs>
+					<li>InsectJelly</li>
+				</disallowedThingDefs>
+			</defaultIngredientFilter>
+		</RecipeDef>
+	<!-- MEALS -->
+		<!-- FINE -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_InsectMealCooking_MainBase" Name="TMM_InsectMealCooking_FineBase" Abstract="True">
+					<jobString>Cooking fine meal.</jobString>
+
+					<skillRequirements>
+						<Cooking>6</Cooking>
+					</skillRequirements>
+				</RecipeDef>
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_InsectMealCooking_FineBase">
+					<defName>TMM_InsectMealCooking_Fine</defName>
+					<label>cook insect fine meal</label>
+					<description>Cooks a somewhat complex insect meal from a combination of insect meat and organic ingredients.</description>
+
+					<workAmount>480</workAmount>
+
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>Meat_Megaspider</li>
+								</thingDefs>
+							</filter>
+							<count>0.25</count>
+						</li>
+						<li>
+							<filter>
+								<categories>
+									<li>AnimalProductRaw</li>
+									<li>PlantFoodRaw</li>
+								</categories>
+							</filter>
+							<count>0.25</count>
+						</li>
+					</ingredients>
+
+					<products>
+						<TMM_InsectMeal_Fine>1</TMM_InsectMeal_Fine>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_InsectMealCooking_FineBase">
+					<defName>TMM_InsectMealCooking_FineBulk</defName>
+					<label>cook bulk insect fine meals</label>
+					<description>Cooks 4 somewhat complex insect meals from a combination of insect meat and organic ingredients.</description>
+
+					<workAmount>1800</workAmount>
+
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>Meat_Megaspider</li>
+								</thingDefs>
+							</filter>
+							<count>1</count>
+						</li>
+						<li>
+							<filter>
+								<categories>
+									<li>AnimalProductRaw</li>
+									<li>PlantFoodRaw</li>
+								</categories>
+							</filter>
+							<count>1</count>
+						</li>
+					</ingredients>
+
+					<products>
+						<TMM_InsectMeal_Fine>4</TMM_InsectMeal_Fine>
+					</products>
+				</RecipeDef>
+		<!-- LAVISH -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_InsectMealCooking_MainBase" Name="TMM_InsectMealCooking_LavishBase" Abstract="True">
+					<jobString>Cooking lavish meal.</jobString>
+
+					<skillRequirements>
+						<Cooking>8</Cooking>
+					</skillRequirements>
+				</RecipeDef>
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_InsectMealCooking_LavishBase">
+					<defName>TMM_InsectMealCooking_Lavish</defName>
+					<label>cook insect lavish meal</label>
+					<description>Cooks a very complex insect meal from a combination of insect meat and organic ingredients. Much of the ingredients are wasted.</description>
+
+					<workAmount>840</workAmount>
+
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>Meat_Megaspider</li>
+								</thingDefs>
+							</filter>
+							<count>0.5</count>
+						</li>
+						<li>
+							<filter>
+								<categories>
+									<li>AnimalProductRaw</li>
+									<li>PlantFoodRaw</li>
+								</categories>
+							</filter>
+							<count>0.5</count>
+						</li>
+					</ingredients>
+
+					<products>
+						<TMM_InsectMeal_Lavish>1</TMM_InsectMeal_Lavish>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_InsectMealCooking_LavishBase">
+					<defName>TMM_InsectMealCooking_LavishBulk</defName>
+					<label>cook bulk insect lavish meals</label>
+					<description>Cooks 4 very complex insect meals from a combination of insect meat and organic ingredients. Much of the ingredients are wasted.</description>
+
+					<workAmount>3240</workAmount>
+
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>Meat_Megaspider</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+						<li>
+							<filter>
+								<categories>
+									<li>AnimalProductRaw</li>
+									<li>PlantFoodRaw</li>
+								</categories>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+
+					<products>
+						<TMM_InsectMeal_Lavish>4</TMM_InsectMeal_Lavish>
+					</products>
+				</RecipeDef>
+		<!-- PACKAGED SURVIVAL -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_InsectMealCooking_MainBase" Name="TMM_InsectMealCooking_SurvivalBase" Abstract="True">
+					<jobString>Cooking survival meal.</jobString>
+
+					<skillRequirements>
+						<Cooking>8</Cooking>
+					</skillRequirements>
+
+					<researchPrerequisites>
+						<li>PackagedSurvivalMeal</li>
+					</researchPrerequisites>
+				</RecipeDef>
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_InsectMealCooking_SurvivalBase">
+					<defName>TMM_InsectMealCooking_Survival</defName>
+					<label>cook insect survival meal</label>
+					<description>Cooks a packaged survival insect meal from a combination of insect meat and organic ingredients. Much of the ingredients are wasted.</description>
+
+					<workAmount>480</workAmount>
+
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>Meat_Megaspider</li>
+								</thingDefs>
+							</filter>
+							<count>0.3</count>
+						</li>
+						<li>
+							<filter>
+								<categories>
+									<li>AnimalProductRaw</li>
+									<li>PlantFoodRaw</li>
+								</categories>
+							</filter>
+							<count>0.3</count>
+						</li>
+					</ingredients>
+
+					<products>
+						<TMM_InsectMeal_Survival>1</TMM_InsectMeal_Survival>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_InsectMealCooking_SurvivalBase">
+					<defName>TMM_InsectMealCooking_SurvivalBulk</defName>
+					<label>cook bulk insect survival meals</label>
+					<description>Cooks 4 packaged survival insect meals from a combination of insect meat and organic ingredients. Much of the ingredients are wasted.</description>
+
+					<workAmount>1800</workAmount>
+
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>Meat_Megaspider</li>
+								</thingDefs>
+							</filter>
+							<count>1.20</count>
+						</li>
+						<li>
+							<filter>
+								<categories>
+									<li>AnimalProductRaw</li>
+									<li>PlantFoodRaw</li>
+								</categories>
+							</filter>
+							<count>1.20</count>
+						</li>
+					</ingredients>
+
+					<products>
+						<TMM_InsectMeal_Survival>4</TMM_InsectMeal_Survival>
+					</products>
+				</RecipeDef>
+		<!-- SIMPLE -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_InsectMealCooking_MainBase" Name="TMM_InsectMealCooking_SimpleBase" Abstract="True">
+					<jobString>Cooking simple meal.</jobString>
+
+					<recipeUsers Inherit="True">
+						<li>Campfire</li>
+					</recipeUsers>
+				</RecipeDef>
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_InsectMealCooking_SimpleBase">
+					<defName>TMM_InsectMealCooking_Simple</defName>
+					<label>cook insect simple meal</label>
+					<description>Cooks a straightforward meal from insect meat.</description>
+
+					<workAmount>300</workAmount>
+
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>Meat_Megaspider</li>
+								</thingDefs>
+							</filter>
+							<count>0.5</count>
+						</li>
+					</ingredients>
+
+					<products>
+						<TMM_InsectMeal_Simple>1</TMM_InsectMeal_Simple>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_InsectMealCooking_SimpleBase">
+					<defName>TMM_InsectMealCooking_SimpleBulk</defName>
+					<label>cook bulk insect simple meals</label>
+					<description>Cooks 4 straightforward meals from insect meat.</description>
+
+					<workAmount>1200</workAmount>
+
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>Meat_Megaspider</li>
+								</thingDefs>
+							</filter>
+							<count>2</count>
+						</li>
+					</ingredients>
+
+					<products>
+						<TMM_InsectMeal_Simple>4</TMM_InsectMeal_Simple>
+					</products>
+				</RecipeDef>
+	<!-- ORGANIC PRODUCTS -->
+		<!-- KIBBLE -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_InsectMealCooking_MainBase" Name="TMM_InsectMealCooking_KibbleBase" Abstract="True">
+					<jobString>Making insect kibble.</jobString>
+
+					<recipeUsers Inherit="False">
+						<li>ButcherSpot</li>
+						<li>TableButcher</li>
+					</recipeUsers>
+
+					<fixedIngredientFilter Inherit="False">
+						<thingDefs>
+							<li>Hay</li>
+						</thingDefs>
+					</fixedIngredientFilter>
+				</RecipeDef>
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_InsectMealCooking_KibbleBase">
+					<defName>TMM_InsectMealCooking_Kibble</defName>
+					<label>Make insect kibble</label>
+					<description>Make animal kibble by combining raw insect and plants.</description>
+
+					<workAmount>450</workAmount>
+
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>Meat_Megaspider</li>
+								</thingDefs>
+							</filter>
+							<count>1</count>
+						</li>
+						<li>
+							<filter>
+								<categories>
+									<li>PlantFoodRaw</li>
+								</categories>
+								<thingDefs>
+									<li>Hay</li>
+								</thingDefs>
+							</filter>
+							<count>1</count>
+						</li>
+					</ingredients>
+
+					<products>
+						<TMM_InsectMeal_Kibble>50</TMM_InsectMeal_Kibble>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_InsectMealCooking_KibbleBase">
+					<defName>TMM_InsectMealCooking_KibbleBulk</defName>
+					<label>Make bulk insect kibble</label>
+					<description>Make bulk animal kibble by combining raw insect and plants.</description>
+
+					<workAmount>1700</workAmount>
+
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>Meat_Megaspider</li>
+								</thingDefs>
+							</filter>
+							<count>4</count>
+						</li>
+						<li>
+							<filter>
+								<categories>
+									<li>PlantFoodRaw</li>
+								</categories>
+								<thingDefs>
+									<li>Hay</li>
+								</thingDefs>
+							</filter>
+							<count>4</count>
+						</li>
+					</ingredients>
+
+					<products>
+						<TMM_InsectMeal_Kibble>200</TMM_InsectMeal_Kibble>
+					</products>
+				</RecipeDef>
+		<!-- PEMMICAN -->
+			<!-- BASE -->
+				<RecipeDef ParentName="TMM_InsectMealCooking_MainBase" Name="TMM_InsectMealCooking_PemmicanBase" Abstract="True">
+					<jobString>Making pemmican.</jobString>
+
+					<recipeUsers Inherit="True">
+						<li>Campfire</li>
+					</recipeUsers>
+
+					<researchPrerequisites>
+						<li>Pemmican</li>
+					</researchPrerequisites>
+				</RecipeDef>
+			<!-- REGULAR -->
+				<RecipeDef ParentName="TMM_InsectMealCooking_PemmicanBase">
+					<defName>TMM_InsectMealCooking_Pemmican</defName>
+					<label>Make insect pemmican</label>
+					<description>Make insect pemmican, a preserved combination of insect meat and organic food. It doesn't taste amazing, but lasts a year without refrigeration.</description>
+
+					<workAmount>720</workAmount>
+
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>Meat_Megaspider</li>
+								</thingDefs>
+							</filter>
+							<count>0.25</count>
+						</li>
+						<li>
+							<filter>
+								<categories>
+									<li>AnimalProductRaw</li>
+									<li>PlantFoodRaw</li>
+								</categories>
+							</filter>
+							<count>0.25</count>
+						</li>
+					</ingredients>
+
+					<products>
+						<TMM_InsectMeal_Pemmican>16</TMM_InsectMeal_Pemmican>
+					</products>
+				</RecipeDef>
+			<!-- BULK -->
+				<RecipeDef ParentName="TMM_InsectMealCooking_PemmicanBase">
+					<defName>TMM_InsectMealCooking_PemmicanBulk</defName>
+					<label>Make bulk insect pemmican</label>
+					<description>Make bulk insect pemmican, a preserved combination of insect meat and organic food. It doesn't taste amazing, but lasts a year without refrigeration.</description>
+
+					<workAmount>2820</workAmount>
+
+					<ingredients>
+						<li>
+							<filter>
+								<thingDefs>
+									<li>Meat_Megaspider</li>
+								</thingDefs>
+							</filter>
+							<count>1</count>
+						</li>
+						<li>
+							<filter>
+								<categories>
+									<li>AnimalProductRaw</li>
+									<li>PlantFoodRaw</li>
+								</categories>
+							</filter>
+							<count>1</count>
+						</li>
+					</ingredients>
+
+					<products>
+						<TMM_InsectMeal_Pemmican>64</TMM_InsectMeal_Pemmican>
+					</products>
+				</RecipeDef>
+	<!--  -->
+</Defs>

@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!-- <></> -->
+	<!-- TMM_SoftDrink_ -->
+
+
+
+	<!-- Modules/MealTime/Things/Drinks/SoftDrinks// -->
+
+	<!-- BASES -->
+		<!-- SOFT DRINK BASE -->
+			<ThingDef ParentName="DrugBase" Name="TMM_SoftDrink_Base" Abstract="True">
+				<graphicData>
+					<graphicClass>Graphic_StackCount</graphicClass>
+				</graphicData>
+
+				<thingCategories>
+					<li>Fallout_Drinks</li>
+				</thingCategories>
+
+				<rotatable>false</rotatable>
+				<stackLimit>25</stackLimit>
+
+				<statBases>
+					<DeteriorationRate>0.5</DeteriorationRate>
+					<MarketValue>5</MarketValue>
+					<Mass>0.4</Mass>
+					<Flammability>0.5</Flammability>
+					<Nutrition>0.15</Nutrition>
+				</statBases>
+
+				<ingestible>
+					<foodType>Fluid, Processed, Liquor</foodType>
+					<joyKind>Chemical</joyKind>
+					<joy>0.15</joy>
+					<nurseable>true</nurseable>
+					<drugCategory>Social</drugCategory>
+					<ingestSound>Ingest_Beer</ingestSound>
+
+					<ingestHoldOffsetStanding>
+						<northDefault>
+							<offset>(0.18,0,0)</offset>
+						</northDefault>
+					</ingestHoldOffsetStanding>
+
+					<ingestCommandString>Drink {0}</ingestCommandString>
+					<ingestReportString>Drinking {0}.</ingestReportString>
+					<chairSearchRadius>25</chairSearchRadius>
+				</ingestible>
+
+				<comps>
+					<li Class="CompProperties_Drug">
+						<overdoseSeverityOffset>0.1~0.2</overdoseSeverityOffset>
+					</li>
+				</comps>
+			</ThingDef>
+	<!-- NUKA COLA -->
+		<!-- BASE -->
+			<ThingDef ParentName="TMM_SoftDrink_Base" Name="TMM_SoftDrink_NukaColaBase" Abstract="True">
+				<ingestible Inherit="True">
+					<outcomeDoers>
+						<li Class="IngestionOutcomeDoer_GiveHediff">
+							<hediffDef>ToxicBuildup</hediffDef>
+							<severity>0.02</severity>
+						</li>
+						<!-- <li Class="IngestionOutcomeDoer_GiveHediff">
+							<hediffDef>FO_NukaColaHigh</hediffDef>
+							<severity>0.5</severity>
+						</li> -->
+						<li Class="IngestionOutcomeDoer_OffsetNeed">
+							<need>Rest</need>
+							<offset>0.1</offset>
+						</li>
+					</outcomeDoers>
+				</ingestible>
+			</ThingDef>
+		<!-- BERRY -->
+			<ThingDef ParentName="TMM_SoftDrink_NukaColaBase">
+				<defName>TMM_SoftDrink_NukaColaBerry</defName>
+				<label>Nuka-Cola Berry</label>
+				<description>Conceptualized by the Kanawha Nuka-Cola plant, the idea for the drink came from celery-flavoured sparkling waters, as well as mixing artificial flavors, package design and marketing to trick people into thinking it had health benefits. Like many of the fruit variants of Nuka-Cola, this one would predominantly feature berries produced in the local region.</description>
+
+				<graphicData>
+					<texPath>Modules/MealTime/Things/Drinks/SoftDrinks/NukaCola/Berry</texPath>
+				</graphicData>
+			</ThingDef>
+		<!-- CHERRY -->
+			<ThingDef ParentName="TMM_SoftDrink_NukaColaBase">
+				<defName>TMM_SoftDrink_NukaColaCherry</defName>
+				<label>Nuka-Cola Cherry</label>
+				<description>Nuka-Cherry was originally the product of Merle Haverston, branded as Merle's Very Cherry Soda, prior to being acquired by the Nuka-Cola Corporation. After acquiring the patent, Nuka-Cola Corp. rebranded it as Nuka-Cherry and changed the flavor profile to that of a Nuka-Cola and cherry mixture along with adding coloring to boost its visual appeal to consumers.</description>
+
+				<graphicData>
+					<texPath>Modules/MealTime/Things/Drinks/SoftDrinks/NukaCola/Cherry</texPath>
+				</graphicData>
+			</ThingDef>
+		<!-- CLASSIC -->
+			<ThingDef ParentName="TMM_SoftDrink_NukaColaBase">
+				<defName>TMM_SoftDrink_NukaColaClassic</defName>
+				<label>Nuka-Cola Classic</label>
+				<description>Nuka-Cola is the flagship product of the Nuka-Cola Corporation and one of the symbols of United States culture. Introduced in 2044, it rapidly dominated the soft drink market, eventually becoming the most popular soda on the market and a staple of American culture. Bottled and distributed nationwide, Nuka-Cola was available in such numbers that even two centuries after the Great War put a stop to all major bottling operations, Nuka-Cola bottles can still be found in the wastelands in large quantities. In the aftermath of the Great War, Nuka-Cola bottle caps became the de facto currency in most post-War societies.</description>
+
+				<graphicData>
+					<texPath>Modules/MealTime/Things/Drinks/SoftDrinks/NukaCola/Classic</texPath>
+				</graphicData>
+			</ThingDef>
+		<!-- CLEAR -->
+			<ThingDef ParentName="TMM_SoftDrink_NukaColaBase">
+				<defName>TMM_SoftDrink_NukaColaClear</defName>
+				<label>Nuka-Cola Clear</label>
+				<description>The formula describes how to make Nuka-Cola Clear, a type of Nuka-Cola that was invented shortly before the Great War but never mass-produced. It was said to not have as much kick as Nuka-Cola, but made up for that with its clear appearance.</description>
+
+				<graphicData>
+					<texPath>Modules/MealTime/Things/Drinks/SoftDrinks/NukaCola/Clear</texPath>
+				</graphicData>
+			</ThingDef>
+		<!-- DARK -->
+			<ThingDef ParentName="TMM_SoftDrink_NukaColaBase">
+				<defName>TMM_SoftDrink_NukaColaDark</defName>
+				<label>Nuka-Cola Dark</label>
+				<description>Nuka-Cola Dark was the Nuka-Cola Corporation's attempt at entering the alcoholic beverage market. The beverage was touted as "the most thirst-quenching way to unwind." Those partaking in the drink were recommended to not operate motor vehicles or heavy machinery for at least eight hours after drinking it, and women who were pregnant or planning on becoming pregnant were encouraged to avoid the drink. Still, it found success in many of the finer lounges and restaurants across the nation.</description>
+
+				<graphicData>
+					<texPath>Modules/MealTime/Things/Drinks/SoftDrinks/NukaCola/Dark</texPath>
+				</graphicData>
+			</ThingDef>
+		<!-- GRAPE -->
+			<ThingDef ParentName="TMM_SoftDrink_NukaColaBase">
+				<defName>TMM_SoftDrink_NukaColaGrape</defName>
+				<label>Nuka-Cola Grape</label>
+				<description>Nuka-Grape was originally Grape-Pearl Soda, a patent belonging to Joannie Cheng, prior to its acquisition by the Nuka-Cola Corporation. Its grape flavor profile was virtually unchanged prior to Nuka-Cola Corp. releasing it as Nuka-Grape, aside from ingredients being adjusted to cut production costs</description>
+
+				<graphicData>
+					<texPath>Modules/MealTime/Things/Drinks/SoftDrinks/NukaCola/Grape</texPath>
+				</graphicData>
+			</ThingDef>
+		<!-- MIX -->
+			<ThingDef ParentName="TMM_SoftDrink_NukaColaBase">
+				<defName>TMM_SoftDrink_NukaColaMix</defName>
+				<label>Nuka-Cola Mix</label>
+				<description>A Nuka-Cola drink created by mixing Nuka-Cola and Nuka-Cherry.</description>
+
+				<graphicData>
+					<texPath>Modules/MealTime/Things/Drinks/SoftDrinks/NukaCola/Mix</texPath>
+				</graphicData>
+			</ThingDef>
+		<!-- ORANGE -->
+			<ThingDef ParentName="TMM_SoftDrink_NukaColaBase">
+				<defName>TMM_SoftDrink_NukaColaOrange</defName>
+				<label>Nuka-Cola Orange</label>
+				<description>This Nuka-Cola features the traditional rocket-like bottle with an orange color. The flavor of the cola is orange and it also features a half orange slice as the background of the label with red text.</description>
+
+				<graphicData>
+					<texPath>Modules/MealTime/Things/Drinks/SoftDrinks/NukaCola/Orange</texPath>
+				</graphicData>
+			</ThingDef>
+		<!-- QUANTUM -->
+			<ThingDef ParentName="TMM_SoftDrink_NukaColaBase">
+				<defName>TMM_SoftDrink_NukaColaQuantum</defName>
+				<label>Nuka-Cola Quantum</label>
+				<description>Nuka-Cola Quantum was introduced in the fourth quarter of 2077, as a brand-new flavor of Nuka-Cola, with twice the calories, twice the carbohydrates, twice the caffeine and twice the taste.</description>
+
+				<graphicData>
+					<texPath>Modules/MealTime/Things/Drinks/SoftDrinks/NukaCola/Quantum</texPath>
+				</graphicData>
+			</ThingDef>
+		<!-- QUARTZ -->
+			<ThingDef ParentName="TMM_SoftDrink_NukaColaBase">
+				<defName>TMM_SoftDrink_NukaColaQuartz</defName>
+				<label>Nuka-Cola Quartz</label>
+				<description>A glowing-white bottle of Nuka-Cola, similar to the variant found in the Mojave Wasteland but in the signature Nuka-Cola rocket bottle instead.</description>
+
+				<graphicData>
+					<texPath>Modules/MealTime/Things/Drinks/SoftDrinks/NukaCola/Quartz</texPath>
+				</graphicData>
+			</ThingDef>
+		<!-- SHINE -->
+			<ThingDef ParentName="TMM_SoftDrink_NukaColaBase">
+				<defName>TMM_SoftDrink_NukaColaShine</defName>
+				<label>Nuka-Cola Shine</label>
+				<description>Nukashine was created by Lewis of the Eta Psi fraternity at Vault-Tec University in November 2076. The spirit itself is incredibly potent, causes blackouts, severe hangovers, and is potentially lethal, as the fellow Pi Mu fraternity found out during their "eviction party".</description>
+
+				<graphicData>
+					<texPath>Modules/MealTime/Things/Drinks/SoftDrinks/NukaCola/Shine</texPath>
+				</graphicData>
+			</ThingDef>
+		<!-- TWIST -->
+			<ThingDef ParentName="TMM_SoftDrink_NukaColaBase">
+				<defName>TMM_SoftDrink_NukaColaTwist</defName>
+				<label>Nuka-Cola Twist</label>
+				<description>Nuka-Cola Twist has the signature rocket-shaped bottle used by other Nuka-Cola variants. Its body is colored bubblegum pink, with a spiralling green-and-yellow logo that reads "Nuka-Twist".</description>
+
+				<graphicData>
+					<texPath>Modules/MealTime/Things/Drinks/SoftDrinks/NukaCola/Twist</texPath>
+				</graphicData>
+			</ThingDef>
+		<!-- VACCINATED -->
+			<ThingDef ParentName="TMM_SoftDrink_NukaColaBase">
+				<defName>TMM_SoftDrink_NukaColaVaccinated</defName>
+				<label>Nuka-Cola Vaccinated</label>
+				<description>This type of Nuka-Cola is invented by the Vault Dweller and Vault 76 overseer at the Kanawha Nuka-Cola plant, intended as a way to mass-produce a vaccine for the Scorched Plague.</description>
+
+				<graphicData>
+					<texPath>Modules/MealTime/Things/Drinks/SoftDrinks/NukaCola/Vaccinated</texPath>
+				</graphicData>
+			</ThingDef>
+		<!-- VICTORY -->
+			<ThingDef ParentName="TMM_SoftDrink_NukaColaBase">
+				<defName>TMM_SoftDrink_NukaColaVictory</defName>
+				<label>Nuka-Cola Victory</label>
+				<description>Victory is a bright red-orange variant of the Nuka-Cola product.</description>
+
+				<graphicData>
+					<texPath>Modules/MealTime/Things/Drinks/SoftDrinks/NukaCola/Victory</texPath>
+				</graphicData>
+			</ThingDef>
+		<!-- WILD -->
+			<ThingDef ParentName="TMM_SoftDrink_NukaColaBase">
+				<defName>TMM_SoftDrink_NukaColaWild</defName>
+				<label>Nuka-Cola Wild</label>
+				<description>Nuka-Cola Wild is a root-beer flavored beverage and is the Nuka-Cola Corporation's answer to Sunset Sarsaparilla. While it was never officially advertised as such, the Wild flavor was conceived as a direct counter to their rival's locally popular product after their failed buy-out of the Sunset Sarsaparilla Company.</description>
+
+				<graphicData>
+					<texPath>Modules/MealTime/Things/Drinks/SoftDrinks/NukaCola/Wild</texPath>
+				</graphicData>
+			</ThingDef>
+	<!-- SUNSET SARSAPARILLA -->
+		<!-- BASE -->
+			<ThingDef ParentName="TMM_SoftDrink_Base" Name="TMM_SoftDrink_SunsetSarsaparillaBase" Abstract="True">
+				<ingestible Inherit="True">
+					<outcomeDoers>
+						<!-- <li Class="IngestionOutcomeDoer_GiveHediff">
+							<hediffDef>FO_VimHighBig</hediffDef>
+							<severity>0.5</severity>
+						</li> -->
+						<li Class="IngestionOutcomeDoer_OffsetNeed">
+							<need>Rest</need>
+							<offset>0.1</offset>
+						</li>
+					</outcomeDoers>
+				</ingestible>
+			</ThingDef>
+		<!-- BIG -->
+			<ThingDef ParentName="TMM_SoftDrink_SunsetSarsaparillaBase">
+				<defName>TMM_SoftDrink_SunsetSarsaparillaBig</defName>
+				<label>Sunset Sarsaparilla Star Size</label>
+				<description>This unique variant of the Sunset Sarsaparilla drink was described as a rare "super-sized" edition, which was only released in limited quantities to test markets in the United States and Canada before the Great War.</description>
+
+				<graphicData>
+					<texPath>Modules/MealTime/Things/Drinks/SoftDrinks/SunsetSarsaparillaBig</texPath>
+				</graphicData>
+			</ThingDef>
+		<!-- REGULAR -->
+			<ThingDef ParentName="TMM_SoftDrink_SunsetSarsaparillaBase">
+				<defName>TMM_SoftDrink_SunsetSarsaparilla</defName>
+				<label>Sunset Sarsaparilla</label>
+				<description>Sunset Sarsaparilla is a root-beer-type carbonated beverage.</description>
+
+				<graphicData>
+					<texPath>Modules/MealTime/Things/Drinks/SoftDrinks/SunsetSarsaparilla/SunsetSarsaparilla</texPath>
+				</graphicData>
+			</ThingDef>
+	<!-- VIM -->
+		<!-- BASE -->
+			<ThingDef ParentName="TMM_SoftDrink_Base" Name="TMM_SoftDrink_VimBase" Abstract="True">
+				<ingestible Inherit="True">
+					<outcomeDoers>
+						<li Class="IngestionOutcomeDoer_GiveHediff">
+							<hediffDef>ToxicBuildup</hediffDef>
+							<severity>0.02</severity>
+						</li>
+						<!-- <li Class="IngestionOutcomeDoer_GiveHediff">
+							<hediffDef>FO_VimHigh</hediffDef>
+							<severity>0.5</severity>
+						</li> -->
+						<li Class="IngestionOutcomeDoer_OffsetNeed">
+							<need>Rest</need>
+							<offset>0.1</offset>
+						</li>
+					</outcomeDoers>
+				</ingestible>
+			</ThingDef>
+		<!-- CAPTAIN'S BLEND -->
+			<ThingDef ParentName="TMM_SoftDrink_VimBase">
+				<defName>TMM_SoftDrink_VimCaptainsBlend</defName>
+				<label>Vim Captain's Blend</label>
+				<description>Vim Captain's Blend, test formula 10784, was in its testing state before the Great War. It hadn't yet been released on the market, though it was noted as being remarkably popular among focus groups. The #1 word used to describe the taste was "fishy".</description>
+
+				<graphicData>
+					<texPath>Modules/MealTime/Things/Drinks/SoftDrinks/Vim/CaptainsBlend</texPath>
+				</graphicData>
+			</ThingDef>
+		<!-- CLASSIC -->
+			<ThingDef ParentName="TMM_SoftDrink_VimBase">
+				<defName>TMM_SoftDrink_VimClassic</defName>
+				<label>Vim Classic</label>
+				<description>A combination of pure Maine spring water and other extracts and syrups, the flagship beverage of the Vim! Pop Corporation is slightly fermented, which helps to better bring out its unique and natural flavor profile.</description>
+
+				<graphicData>
+					<texPath>Modules/MealTime/Things/Drinks/SoftDrinks/Vim/Classic</texPath>
+				</graphicData>
+			</ThingDef>
+		<!-- QUARTZ -->
+			<ThingDef ParentName="TMM_SoftDrink_VimBase">
+				<defName>TMM_SoftDrink_VimQuartz</defName>
+				<label>Vim Quartz</label>
+				<description>A twist on classic Vim, Vim Quartz was bubble gum flavoured, and contained extra "oomph" (or "vim"), making drinkers more energized.</description>
+
+				<graphicData>
+					<texPath>Modules/MealTime/Things/Drinks/SoftDrinks/Vim/Quartz</texPath>
+				</graphicData>
+			</ThingDef>
+		<!-- REFRESH -->
+			<ThingDef ParentName="TMM_SoftDrink_VimBase">
+				<defName>TMM_SoftDrink_VimRefresh</defName>
+				<label>Vim Refresh</label>
+				<description>Vim Refresh was even more energizing than Vim Quartz, and was flavoured with apples.Refresh looks the same as regular Vim, but with a light green color and a lime wedge design on the label.</description>
+
+				<graphicData>
+					<texPath>Modules/MealTime/Things/Drinks/SoftDrinks/Vim/Refresh</texPath>
+				</graphicData>
+			</ThingDef>
+</Defs>
