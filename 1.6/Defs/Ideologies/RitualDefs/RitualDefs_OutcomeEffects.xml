@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<!-- <></> -->
+	<!-- TMM_OutcomeEffect_ -->
+
+
+
+	<!-- PROPAGANDA -->
+		<RitualOutcomeEffectDef>
+			<defName>TMM_OutcomeEffect_PropagandaBroadcast</defName>
+			<description>Depending on propaganda quality, participants will get between {MINMOOD} and {MAXMOOD} mood for {MOODDAYS} days.</description>
+
+			<!-- the workerclass can actually do things on the outcome, but more or less the 'default' is RitualOutcomeEffectWorker_FromQuality for a ritual affected by quality -->
+			<!-- the mod framework has a TPRitualAttachableOutcomes.RitualOutcomeEffectWorker_FromQuality_TP_Custom which allows <modExtensions> in this definition that otherwise works exactly like the RitualAttachableOutcomeEffects -->
+			<workerClass>TPRitualAttachableOutcomes.RitualOutcomeEffectWorker_FromQuality_TP_Custom</workerClass>
+
+			<extraPredictedOutcomeDescriptions>
+				<li>If the {0} is Satisfying or Spectacular, the ideoligion certainty of the participants will be increased and pawns of other ideoligions will have their certainty reduced.</li>
+				<li>If the {0} is Spectacular, someone might decide to join your colony.</li>
+				<!-- <li>If the {0} is Satisfying, a participant may gain an inspiration.</li> -->
+				<li>If the {0} is Terrible, the broadcast might attract a group of angry raiders.</li>
+			</extraPredictedOutcomeDescriptions>
+
+			<!-- whether this ritual should allow attachable outcomes. Defaults to true if not supplied -->
+			<allowAttachableOutcome>false</allowAttachableOutcome>
+
+			<comps>
+				<!-- these comps define what affects the quality of the ritual and by how much -->
+				<li Class="RitualOutcomeComp_BuildingOfDefUsed">
+					<def>Lectern</def>
+					<!-- for a speech it's cool if they have a lectern -->
+					<qualityOffset>0.2</qualityOffset>
+					<maxHorDistFromTarget>5</maxHorDistFromTarget>
+				</li>
+				<li Class="RitualOutcomeComp_BuildingOfDefUsed">
+					<def>TMM_IdeologyBuilding_Antenna</def>
+					<!-- for a speech it's cool if they have a lectern -->
+					<qualityOffset>0.2</qualityOffset>
+					<maxHorDistFromTarget>50</maxHorDistFromTarget>
+				</li>
+				<li Class="RitualOutcomeComp_PawnStatScaled">
+					<label>{PAWN_labelShort}'s social impact</label>
+					<labelAbstract>speaker's social impact</labelAbstract>
+					<roleId>moralist</roleId>
+					<statDef>SocialImpact</statDef>
+					<curve>
+						<points>
+							<li>(0.2, 0.0)</li>
+							<li>(0.6, 0.18)</li>
+							<li>(1.0, 0.25)</li>
+							<li>(1.5, 0.3)</li>
+						</points>
+					</curve>
+				</li>
+				<li Class="RitualOutcomeComp_PawnStatScaled">
+					<label>{PAWN_labelShort}'s technical abilities</label>
+					<labelAbstract>operator's technical skills</labelAbstract>
+					<roleId>operator</roleId>
+					<statDef>ResearchSpeed</statDef>
+					<curve>
+						<points>
+							<li>(0.2, 0.0)</li>
+							<li>(0.6, 0.18)</li>
+							<li>(1.0, 0.25)</li>
+							<li>(1.5, 0.3)</li>
+						</points>
+					</curve>
+				</li>
+			</comps>
+
+			<outcomeChances>
+				<li>
+					<label>Terrible</label>
+					<!-- these chances should add up to 1 -->
+					<chance>0.03</chance>
+					<!-- memories will be defined later -->
+					<memory>TerribleService</memory>
+					<!-- this is just a bit of flavor text, but that's really important for a role-play heavy DLC :) -->
+					<description>The {0} was terrible! The speaker droned on and didn't make any good points. The speech said nothing new or interesting, and the recipients surely got upset with this interruption.</description>
+					<!-- in theory you could create your own set of outcomes, more than 4, and have more than -2/-1/+1/+2 as positivityIndices. But mostly I'd leave this alone -->
+					<positivityIndex>-2</positivityIndex>
+				</li>
+				<li>
+					<label>Boring</label>
+					<chance>0.17</chance>
+					<memory>BoringService</memory>
+					<description>The {0} was boring. The speech was filled with shallow platitudes but the speaker tried too hard to engage the listeners and not enough to discuss the topic.</description>
+					<positivityIndex>-1</positivityIndex>
+				</li>
+				<li>
+					<label>Satisfying</label>
+					<chance>0.7</chance>
+					<ideoCertaintyOffset>0.5</ideoCertaintyOffset>
+					<memory>SatisfyingService</memory>
+					<description>The {0} was satisfying. The speech felt meaningful and gave everyone something to think about.</description>
+					<positivityIndex>1</positivityIndex>
+				</li>
+				<li>
+					<label>Spectacular</label>
+					<chance>0.1</chance>
+					<ideoCertaintyOffset>1</ideoCertaintyOffset>
+					<memory>SpectacularService</memory>
+					<description>The {0} was spectacular! The speaker really hit on some deep issues but presented it in a manner everyone could understand. Listeners surely were convinced!</description>
+					<positivityIndex>2</positivityIndex>
+				</li>
+			</outcomeChances>
+
+			<modExtensions>
+				<li Class="TPRitualAttachableOutcomes.RitualAttachableOutcomeEffectDef_TP_Custom">
+					<triggerPositivityIndex>
+						<li>-2</li>
+					</triggerPositivityIndex>
+					<node>
+						<li Class="TPRitualAttachableOutcomes.RitualAttachableOutcomeEffectDef_TP_Custom_Node">
+							<incident>RaidEnemy</incident>
+							<incidentParms Class="TPRitualAttachableOutcomes.IncidentParmsCustom">
+								<scalePoints>true</scalePoints>
+								<myRaidStrategy>ImmediateAttack</myRaidStrategy>
+								<myRaidArrivalMode>EdgeWalkInGroups</myRaidArrivalMode>
+								<myFaction>Pirate</myFaction>
+							</incidentParms>
+						</li>
+					</node>
+				</li>
+				<li Class="TPRitualAttachableOutcomes.RitualAttachableOutcomeEffectDef_TP_Custom">
+					<triggerPositivityIndex>
+						<li>1</li>
+					</triggerPositivityIndex>
+					<node>
+						<li Class="TPRitualAttachableOutcomes.RitualAttachableOutcomeEffectDef_TP_Custom_Node">
+							<inspiration>Inspired_Recruitment</inspiration>
+							<invertApply>true</invertApply>
+							<appliesTo>
+								<li>leader</li>
+							</appliesTo>
+							<appliesToRandom>true</appliesToRandom>
+						</li>
+					</node>
+				</li>
+				<li Class="TPRitualAttachableOutcomes.RitualAttachableOutcomeEffectDef_TP_Custom">
+					<triggerPositivityIndex>
+						<li>2</li>
+					</triggerPositivityIndex>
+					<node>
+						<li Class="TPRitualAttachableOutcomes.RitualAttachableOutcomeEffectDef_TP_Custom_Node">
+							<incident>SP_BroadcastJoin</incident>
+							<incidentParms Class="TPRitualAttachableOutcomes.IncidentParmsCustom">
+								<myQuest>TMM_Quest_BroadcastWanderers</myQuest>
+							</incidentParms>
+						</li>
+					</node>
+				</li>
+			</modExtensions>
+		</RitualOutcomeEffectDef>
+	<!--  -->
+</Defs>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<!-- <></> -->
+	<!-- TMM_Precept_ -->
+
+
+
+	<!-- MILITARISM -->
+		<!-- COMMANDO -->
+			<PreceptDef ParentName="PreceptRoleSingleBase">
+				<defName>TMM_Precept_Commando</defName>
+				<label>commando</label>
+				<description>A special ideoligious status focusing on combat to the exclusion of all else. This specialized role boosts all combat stats in equal regards.</description>
+				<iconPath>Modules/Ideologies/UI/RoleIcons/CommandoRole</iconPath>
+
+				<nameMaker>TMM_RulePack_NamerCommando</nameMaker>
+
+				<roleRequirements>
+					<li Class="RoleRequirement_MinSkillAny">
+						<skills>
+							<Melee>6</Melee>
+							<Shooting>6</Shooting>
+						</skills>
+					</li>
+				</roleRequirements>
+
+				<roleRequiredWorkTags>
+					<li>Violent</li>
+					<li>Shooting</li>
+				</roleRequiredWorkTags>
+
+				<roleTags>
+					<li>Commando</li>
+				</roleTags>
+
+				<requiredMemes>
+					<li>TMM_Meme_Militarism</li>
+				</requiredMemes>
+
+				<roleEffects>
+					<li Class="RoleEffect_PawnStatOffset">
+						<statDef>MeleeHitChance</statDef>
+						<modifier>3</modifier>
+					</li>
+					<li Class="RoleEffect_PawnStatOffset">
+						<statDef>MeleeDodgeChance</statDef>
+						<modifier>3</modifier>
+					</li>
+					<li Class="RoleEffect_PawnStatOffset">
+						<statDef>ShootingAccuracyPawn</statDef>
+						<modifier>3</modifier>
+					</li>
+					<li Class="RoleEffect_PawnStatOffset">
+						<statDef>AimingDelayFactor</statDef>
+						<modifier>-0.3</modifier>
+					</li>
+				</roleEffects>
+
+				<displayOrderInImpact>2</displayOrderInImpact>
+
+				<grantedAbilities>
+					<li>TMM_Ability_MilitarismCombatFocus</li>
+				</grantedAbilities>
+
+				<roleDisabledWorkTags>
+					<li>Crafting</li>
+					<li>Cooking</li>
+					<li>PlantWork</li>
+					<li>Mining</li>
+					<li>Constructing</li>
+				</roleDisabledWorkTags>
+			</PreceptDef>
+		<!-- PARAMEDIC -->
+			<PreceptDef ParentName="PreceptRoleSingleBase">
+				<defName>TMM_Precept_Paramedic</defName>
+				<label>Paramedic</label>
+				<description>A special ideoligious status focusing on combat and medicine to the exclusion of all else. This specialized role boosts all combat stats in equal regards as well as medical stats.</description>
+				<iconPath>Modules/Ideologies/UI/RoleIcons/ParamedicRole</iconPath>
+
+				<nameMaker>TMM_RulePack_NamerParamedic</nameMaker>
+
+				<roleRequirements>
+					<li Class="RoleRequirement_MinSkillAny">
+						<skills>
+							<Melee>6</Melee>
+							<Shooting>6</Shooting>
+							<Medicine>6</Medicine>
+						</skills>
+					</li>
+				</roleRequirements>
+
+				<roleRequiredWorkTags>
+					<li>Caring</li>
+					<li>Violent</li>
+					<li>Shooting</li>
+				</roleRequiredWorkTags>
+
+				<roleTags>
+					<li>Paramedic</li>
+				</roleTags>
+
+				<requiredMemes>
+					<li>TMM_Meme_Militarism</li>
+				</requiredMemes>
+
+				<roleEffects>
+					<li Class="RoleEffect_PawnStatOffset">
+						<statDef>MeleeHitChance</statDef>
+						<modifier>2</modifier>
+					</li>
+					<li Class="RoleEffect_PawnStatOffset">
+						<statDef>MeleeDodgeChance</statDef>
+						<modifier>2</modifier>
+					</li>
+					<li Class="RoleEffect_PawnStatOffset">
+						<statDef>ShootingAccuracyPawn</statDef>
+						<modifier>2</modifier>
+					</li>
+					<li Class="RoleEffect_PawnStatOffset">
+						<statDef>AimingDelayFactor</statDef>
+						<modifier>-0.2</modifier>
+					</li>
+					<li Class="RoleEffect_PawnStatOffset">
+						<statDef>MedicalTendSpeed</statDef>
+						<modifier>1.5</modifier>
+					</li>
+					<li Class="RoleEffect_PawnStatOffset">
+						<statDef>MedicalTendQuality</statDef>
+						<modifier>1.5</modifier>
+					</li>
+				</roleEffects>
+
+				<displayOrderInImpact>3</displayOrderInImpact>
+
+				<grantedAbilities>
+					<li>TMM_Ability_MilitarismMedicalFocus</li>
+				</grantedAbilities>
+
+				<roleDisabledWorkTags>
+					<li>Crafting</li>
+					<li>Cooking</li>
+					<li>PlantWork</li>
+					<li>Mining</li>
+					<li>Constructing</li>
+				</roleDisabledWorkTags>
+			</PreceptDef>
+	<!-- PROPAGANDA -->
+		<!-- BROADCAST -->
+			<PreceptDef>
+				<defName>TMM_Precept_PropagandaBroadcast</defName>
+				<label>propaganda broadcast</label>
+				<description>Use a console to hijack radio frequencies and ancient satellites in orbit to transmit an ideological message of your choosing.</description>
+
+				<issue>Ritual</issue>
+				<impact>Medium</impact>
+				<iconPath>Modules/Ideologies/UI/RitualIcons/PropagandaBroadcast</iconPath>
+				<preceptClass>Precept_Ritual</preceptClass>
+				<ritualPatternBase>TMM_RitualPattern_PropagandaBroadcast</ritualPatternBase>
+				<allowDuplicates>true</allowDuplicates>
+				<countsTowardsPreceptLimit>false</countsTowardsPreceptLimit>
+				<!-- <countsTowardsPreceptLimit>true</countsTowardsPreceptLimit> -->
+				<ignoreLimitsInEditMode>true</ignoreLimitsInEditMode>
+				<receivesExpectationsQualityOffset>true</receivesExpectationsQualityOffset>
+
+				<preceptInstanceCountCurve>
+					<points>
+						<li>(0.6, 0)</li>
+						<li>(1.0, 1)</li>
+					</points>
+				</preceptInstanceCountCurve>
+
+				<modExtensions>
+					<li Class="TPRitualAttachableOutcomes.Precept_Ritual_Custom">
+						<coolDownDays>7</coolDownDays>
+					</li>
+				</modExtensions>
+			</PreceptDef>
+	<!--  -->
+</Defs>
