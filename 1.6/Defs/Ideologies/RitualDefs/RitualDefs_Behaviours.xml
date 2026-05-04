@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<!-- <></> -->
+	<!-- TMM_RitualBehaviour_ -->
+
+
+
+	<!-- PROPAGANDA -->
+		<RitualBehaviorDef>
+			<defName>TMM_RitualBehaviour_PropagandaBroadcast</defName>
+			<durationTicks>6000</durationTicks>
+			<spectatorsLabel>Participants</spectatorsLabel>
+			<spectatorGerund>participate</spectatorGerund>
+
+			<!-- here we can override the roles needed for the ritual. In this case, we just need a moralist (other than the spectators, of course) -->
+			<roles>
+				<li Class="RitualRoleTag">
+					<label>speaker</label>
+					<id>speaker</id>
+					<tag>Moralist</tag>
+					<precept>IdeoRole_Moralist</precept>
+					<required>True</required>
+					<substitutable>false</substitutable>
+					<maxCount>1</maxCount>
+					<countsAsParticipant>False</countsAsParticipant>
+				</li>
+				<!-- anyone can be the musician. May later make a quality based on if a musician was present and their Artistic skill -->
+				<li Class="RitualRoleColonist">
+					<label>operator</label>
+					<id>operator</id>
+					<required>true</required>
+					<substitutable>true</substitutable>
+					<maxCount>1</maxCount>
+					<countsAsParticipant>False</countsAsParticipant>
+				</li>
+				<!-- if we wanted to define more roles involved we would add another li tag like the above -->
+			</roles>
+
+			<stages>
+				<!-- wait for arrival -->
+				<!-- opening hymns, optional if musical instrument is available -->
+				<!-- speaker speaks -->
+				<!-- each of these outermost li tags is one stage of the ritual -->
+				<li>
+					<!-- the default duty is what everyone who doesn't have a roleBehavior assigned will do -->
+					<defaultDuty>Spectate</defaultDuty>
+					<essential>False</essential>
+					<!-- different things can end the stage, but the most common is time based.  The duration percentages are the duration of the total time each step should take, so they should add to 1 --> 
+					<endTriggers>
+						<li Class="StageEndTrigger_DurationPercentage">
+							<percentage>0.7</percentage>
+						</li>
+					</endTriggers>
+					<!-- this just sends a message to the top bar thing -->
+					<postAction Class="RitualStageAction_Message">
+						<text>{0}: Recording is done. The operator will now upload it.</text>
+						<messageTypeDef>NeutralEvent</messageTypeDef>
+					</postAction>
+					<!-- here's where you can define behaviors for each of the ritual's roles. Note that it's the role they take in the ritual, not necessarily the Ideoligion --> 
+					<roleBehaviors>
+						<li>
+							<roleId>speaker</roleId>
+							<dutyDef>SpeakOnCell</dutyDef>
+							<speakerInteraction>Speech_Leader</speakerInteraction>
+							<customPositions>
+								<li Class="RitualPosition_Lectern">
+									<maxDistanceToFocus>5</maxDistanceToFocus>
+								</li>
+								<li Class="RitualPosition_BesideThing" />
+							</customPositions>
+						</li>
+						<li>
+							<roleId>operator</roleId>
+							<dutyDef>ArriveToCell</dutyDef>
+							<speakerInteraction>Speech_DateRitual</speakerInteraction>
+							<customPositions>
+								<li Class="RitualPosition_OnInteractionCell"/>
+							</customPositions>
+						</li>
+					</roleBehaviors>
+				</li>
+				<!-- quiet contemplation -->
+				<li>
+					<defaultDuty>Spectate</defaultDuty>
+					<endTriggers>
+						<li Class="StageEndTrigger_DurationPercentage">
+							<percentage>0.3</percentage>
+						</li>
+					</endTriggers>
+					<roleBehaviors>
+						<li>
+							<roleId>operator</roleId>
+							<dutyDef>StandOnCell</dutyDef>
+							<speakerInteraction>Speech_DateRitual</speakerInteraction>
+							<customPositions>
+								<li Class="RitualPosition_OnInteractionCell"/>
+							</customPositions>
+						</li>
+					</roleBehaviors>
+				</li>
+			</stages>
+		</RitualBehaviorDef>
+	<!--  -->
+</Defs>
